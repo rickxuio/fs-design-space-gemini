@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simplified Optical Ethernet Solution for Higher Education — FS.com</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../fs-components/component-specs/tokens.css">
+  <link rel="stylesheet" href="../fs-components/component-specs/components.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: var(--font-family-base); background: #FFFFFF; color: var(--color-gray-1); }
+
+    .container { max-width: 1200px; margin: 0 auto; }
+    .page-section { padding: 40px 0; }
+    .page-section--white { background: #FFFFFF; }
+    .page-section--gray { background: #FAFBFB; }
+
+    .section-header { text-align: center; margin-bottom: 24px; display: flex; flex-direction: column; align-items: center; }
+    .section-header__title { font-size: 24px; font-weight: 600; line-height: 32px; color: #19191A; margin-bottom: 12px; }
+    .section-header__desc { font-size: 14px; font-weight: 400; line-height: 22px; color: #707070; max-width: 960px; }
+
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .stack-2xl { display: flex; flex-direction: column; gap: 24px; }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER — injected from navigation component (Rule 0, verbatim) -->
+  <header class="ds-nav-header" data-fragment="header">
+    <div class="ds-nav-header__topbar">
+      <div class="ds-nav-header__topbar-inner">
+        <div class="ds-nav-header__topbar-left">
+          <span class="ds-nav-header__topbar-text">FS United States</span>
+          <span class="ds-nav-header__topbar-divider"></span>
+          <span class="ds-nav-header__topbar-text">FREE SHIPPING on Orders Over US$79</span>
+        </div>
+        <div class="ds-nav-header__topbar-right">
+          <a href="#" class="ds-nav-header__topbar-link">Contact Us</a>
+          <span class="ds-nav-header__topbar-divider"></span>
+          <a href="#" class="ds-nav-header__topbar-link">
+            United States / $ USD
+            <svg class="ds-nav-header__dropdown-icon" width="12" height="12" viewBox="0 0 12 12" fill="none">
+              <path d="M3 4.5L6 7.5L9 4.5" stroke="#707070" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <nav class="ds-nav-header__main">
+      <div class="ds-nav-header__main-inner">
+        <a href="#" class="ds-nav-header__logo" aria-label="FS.com Home">
+          <img src="../fs-components/component-specs/icons/icon-logo-fs.svg" alt="FS Logo" width="76" height="36">
+        </a>
+        <ul class="ds-nav-header__links">
+          <li class="ds-nav-header__link-item"><a href="#" class="ds-nav-header__link">All Products</a></li>
+          <li class="ds-nav-header__link-item"><a href="#" class="ds-nav-header__link">Solutions</a></li>
+          <li class="ds-nav-header__link-item"><a href="#" class="ds-nav-header__link">Services</a></li>
+          <li class="ds-nav-header__link-item"><a href="#" class="ds-nav-header__link">Resources</a></li>
+          <li class="ds-nav-header__link-item"><a href="#" class="ds-nav-header__link">Contact Us</a></li>
+        </ul>
+        <div class="ds-nav-header__actions">
+          <button class="ds-nav-header__action-btn" type="button" aria-label="Search">
+            <img src="../fs-components/component-specs/icons/icon-search.svg" alt="" width="24" height="24">
+          </button>
+          <button class="ds-nav-header__action-btn" type="button" aria-label="Account">
+            <img src="../fs-components/component-specs/icons/icon-account.svg" alt="" width="24" height="24">
+          </button>
+          <button class="ds-nav-header__action-btn" type="button" aria-label="Cart">
+            <img src="../fs-components/component-specs/icons/icon-cart.svg" alt="" width="24" height="24">
+          </button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- HERO — ds-banner--hero (dark, competitor-themed campus bg image) -->
+  <div class="ds-banner ds-banner--hero" style="background-color: #19191A; background-image: url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1920&q=80'); background-size: cover; background-position: center; box-shadow: inset 0 0 0 2000px rgba(0,0,0,0.5); display: block; padding: 0;">
+    <div style="max-width: 1200px; margin: 0 auto; height: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; gap: 20px;">
+      <p class="ds-banner__title" style="text-align: left; max-width: 620px; margin: 0;">Simplified Optical Ethernet Solution for Higher Education</p>
+      <p class="ds-banner__desc" style="text-align: left; max-width: 560px; margin: 0;">Providing an All-optical Integrated Ethernet Solution with Unified Authentication.</p>
+      <div style="display: flex; gap: 16px;">
+        <button class="ds-btn ds-btn--outline-white ds-btn--xl-bold"><span class="ds-btn__text">Get a Quote</span></button>
+        <button class="ds-btn ds-btn--outline-white ds-btn--xl-bold"><span class="ds-btn__text">Download Datasheet</span></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ANCHOR NAV — ds-anchor-nav (tabs only, no red CTA) -->
+  <div class="ds-anchor-nav" data-anchor-group>
+    <div class="ds-anchor-nav__inner">
+      <div class="ds-anchor-nav__tabs">
+        <a href="#overview" class="ds-anchor-nav__tab ds-anchor-nav__tab--active" data-anchor-tab style="text-decoration: none;">Overview</a>
+        <a href="#challenges" class="ds-anchor-nav__tab" data-anchor-tab style="text-decoration: none;">Challenges</a>
+        <a href="#benefits" class="ds-anchor-nav__tab" data-anchor-tab style="text-decoration: none;">Benefits</a>
+        <a href="#solution" class="ds-anchor-nav__tab" data-anchor-tab style="text-decoration: none;">Solution</a>
+        <a href="#customer-stories" class="ds-anchor-nav__tab" data-anchor-tab style="text-decoration: none;">Customer Stories</a>
+        <a href="#related-products" class="ds-anchor-nav__tab" data-anchor-tab style="text-decoration: none;">Related Products</a>
+        <a href="#related-resources" class="ds-anchor-nav__tab" data-anchor-tab style="text-decoration: none;">Related Resources</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- OVERVIEW — white, horizontal card (image left + paragraph right) -->
+  <section class="page-section page-section--white" id="overview">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-header__title">Overview</h2>
+      </div>
+      <div class="ds-card ds-card--horizontal" style="width: 1200px;">
+        <div class="ds-card__image" style="width: 600px; height: 338px;">
+          <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80" alt="" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+        </div>
+        <div class="ds-card__body" style="padding: 32px; display: flex; flex-direction: column; justify-content: center;">
+          <p class="ds-card__desc" style="font-size: 14px; line-height: 22px; max-height: none; -webkit-line-clamp: unset; padding-top: 0;">With 20+ years of history and innovation in education, Ruijie's Simplified Optical Ethernet (SOE) solution establishes a next-generation campus network, leveraging all-optical architecture and Ethernet switches for high-speed data transfer. By integrating Layer 3 switches, this solution contributes to smart campus networks by enhancing routing and network segmentation for optimized traffic management. With intelligent management, it seamlessly integrates IoT, wired, and wireless O&M, meeting the digital transformation needs of higher education institutions. Scenario-based innovations simplify O&M, and SAM+ enhances authentication security, ensuring a future-ready intelligent campus.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHALLENGES — gray, 3 vertical cards (no border) -->
+  <section class="page-section page-section--gray" id="challenges">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-header__title">Challenges</h2>
+      </div>
+      <div class="grid-3">
+        <div class="ds-card ds-card--vertical ds-card--no-border">
+          <div class="ds-card__image">
+            <img src="https://images.unsplash.com/photo-1593508512255-86ab42a8e620?auto=format&fit=crop&w=800&q=80" alt="" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+          </div>
+          <div class="ds-card__body">
+            <p class="ds-card__title">Complex Scenarios &amp; Poor Performance</p>
+            <div class="ds-card__desc">
+              <p>As teaching modes evolve and the number of terminals rapidly grows, the traffic demand on campus network devices has increased sharply. However, the traditional network architecture falls short of meeting users' urgent needs for flexible network access and ultra-high bandwidth.</p>
+            </div>
+          </div>
+        </div>
+        <div class="ds-card ds-card--vertical ds-card--no-border">
+          <div class="ds-card__image">
+            <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=80" alt="" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+          </div>
+          <div class="ds-card__body">
+            <p class="ds-card__title">Common Authentication Challenges</p>
+            <div class="ds-card__desc">
+              <p>The campus network authentication faces challenges in security, unified authentication, user experience, and operation efficiency.</p>
+            </div>
+          </div>
+        </div>
+        <div class="ds-card ds-card--vertical ds-card--no-border">
+          <div class="ds-card__image">
+            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80" alt="" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+          </div>
+          <div class="ds-card__body">
+            <p class="ds-card__title">Difficult O&amp;M</p>
+            <div class="ds-card__desc">
+              <p>With the rapid development of information technology, colleges and universities are increasingly embracing digital and intelligent network construction. However, traditional methods such as human inspection and manual operations are becoming insufficient to support the stable operation of campus networks.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BENEFITS — white, 3 horizontal cards alternating (no border) -->
+  <section class="page-section page-section--white" id="benefits">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-header__title">Benefits</h2>
+      </div>
+      <div class="stack-2xl">
+        <!-- 1. Full Coverage High Bandwidth — image left -->
+        <div class="ds-card ds-card--horizontal" style="width: 1200px;">
+          <div class="ds-card__image" style="width: 600px; height: 338px;">
+            <img src="https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=1200&q=80" alt="" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+          </div>
+          <div class="ds-card__body" style="padding: 32px; display: flex; flex-direction: column; justify-content: center;">
+            <p class="ds-card__title">Full Coverage High Bandwidth</p>
+            <p class="ds-card__desc" style="font-size: 14px; line-height: 22px; max-height: none; -webkit-line-clamp: unset; padding-top: 12px;">The all-optical campus network construction encompasses diverse scenarios such as smart classroom, classroom, office, dormitory, stadium and outdoor areas. The solution supports all-optical access, ensuring flexibility and scalability with sufficient bandwidth.</p>
+          </div>
+        </div>
+        <!-- 2. Secure & Reliable Authentication — text left, image right -->
+        <div class="ds-card ds-card--horizontal-reverse" style="width: 1200px;">
+          <div class="ds-card__image" style="width: 600px; height: 338px;">
+            <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=1200&q=80" alt="" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+          </div>
+          <div class="ds-card__body" style="padding: 32px; display: flex; flex-direction: column; justify-content: center;">
+            <p class="ds-card__title">Secure &amp; Reliable Authentication</p>
+            <p class="ds-card__desc" style="font-size: 14px; line-height: 22px; max-height: none; -webkit-line-clamp: unset; padding-top: 12px;">Our simplified network authentication ensures a superior user experience by integrating access and egress, thereby providing a secure and reliable authentication experience.</p>
+          </div>
+        </div>
+        <!-- 3. Simplified O&M — image left -->
+        <div class="ds-card ds-card--horizontal" style="width: 1200px;">
+          <div class="ds-card__image" style="width: 600px; height: 338px;">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80" alt="" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+          </div>
+          <div class="ds-card__body" style="padding: 32px; display: flex; flex-direction: column; justify-content: center;">
+            <p class="ds-card__title">Simplified O&amp;M</p>
+            <p class="ds-card__desc" style="font-size: 14px; line-height: 22px; max-height: none; -webkit-line-clamp: unset; padding-top: 12px;">The SOE solution supports full-scenario network O&M management, including visualized O&M, fault location, and plug-and-play, making O&M simple and efficient for smart campus network solutions.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOLUTION — gray, scenario switcher (Tab + content panel) -->
+  <section class="page-section page-section--gray" id="solution">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-header__title">Solution</h2>
+        <p class="section-header__desc">Reconstruct the Smart Campus Framework</p>
+      </div>
+      <div class="ds-tab ds-tab--standard ds-tab--center" data-solution-tabs style="margin-bottom: 24px;">
+        <div class="ds-tab__item ds-tab__item--active" data-solution-tab="0">
+          <div class="ds-tab__item-inner"><span class="ds-tab__item-text">Dormitory</span><div class="ds-tab__indicator"></div></div>
+        </div>
+        <div class="ds-tab__item" data-solution-tab="1">
+          <div class="ds-tab__item-inner"><span class="ds-tab__item-text">Outdoor Stadium</span></div>
+        </div>
+        <div class="ds-tab__item" data-solution-tab="2">
+          <div class="ds-tab__item-inner"><span class="ds-tab__item-text">Smart Classroom</span></div>
+        </div>
+        <div class="ds-tab__item" data-solution-tab="3">
+          <div class="ds-tab__item-inner"><span class="ds-tab__item-text">Classroom</span></div>
+        </div>
+        <div class="ds-tab__item" data-solution-tab="4">
+          <div class="ds-tab__item-inner"><span class="ds-tab__item-text">Office</span></div>
+        </div>
+      </div>
+      <div class="ds-card ds-card--horizontal" style="width: 1200px;">
+        <div class="ds-card__image" style="width: 600px; height: 338px;">
+          <img src="https://images.unsplash.com/photo-1607237138185-eedd9c632b0b?auto=format&fit=crop&w=1200&q=80" alt="" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+        </div>
+        <div class="ds-card__body" style="padding: 32px; display: flex; flex-direction: column; justify-content: center;">
+          <p class="ds-card__title" data-solution-title>Dormitory</p>
+          <p class="ds-card__desc" data-solution-desc style="font-size: 14px; line-height: 22px; max-height: none; -webkit-line-clamp: unset; padding-top: 12px;">Utilizing a new architecture with hybrid cables for clear cabling, sustainable and easy O&M, fast troubleshooting, and ultra-long-distance PoE for scenario-based deployment.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CUSTOMER STORIES — white, carousel (4 slides) + More button -->
+  <section class="page-section page-section--white" id="customer-stories">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-header__title">Customer Stories</h2>
+      </div>
+      <div style="position: relative; max-width: 1200px; margin: 0 auto;">
+        <div class="ds-carousel" id="cs-carousel" style="border-radius: 8px; overflow: hidden;">
+          <div class="ds-carousel__track" id="cs-track">
+          <!-- Slide 1 — Fuzhou University -->
+          <div class="ds-carousel__slide">
+            <div style="display: flex; width: 1200px;">
+              <div style="width: 600px; height: 360px; flex-shrink: 0;">
+                <img src="https://images.unsplash.com/photo-1607237138185-eedd9c632b0b?auto=format&fit=crop&w=1200&q=80" alt="" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+              </div>
+              <div style="flex: 1; padding: 32px; display: flex; flex-direction: column; justify-content: center; gap: 12px;">
+                <p style="font-size: 20px; font-weight: 600; line-height: 28px; color: #19191A;">Fuzhou University Enhances Campus with Network Solutions for Education</p>
+                <p style="font-size: 14px; font-weight: 400; line-height: 22px; color: #707070;">Fuzhou University, serving 50,000 students, partnered with Ruijie for advanced campus network solutions. The integration of the SOE system and WIS Network Digital Twin Platform enhanced performance and wireless management, offering scalable network solutions for education. This partnership demonstrates efficient, infrastructure for educational institutions.</p>
+                <div>
+                  <a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="#">
+                    <span class="ds-text-btn__text">Learn More</span>
+                    <img class="ds-text-btn__icon" src="../fs-components/component-specs/icons/icon-arrow-right.svg" alt="">
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Slide 2 — Universiti Teknologi MARA -->
+          <div class="ds-carousel__slide">
+            <div style="display: flex; width: 1200px;">
+              <div style="width: 600px; height: 360px; flex-shrink: 0;">
+                <img src="https://images.unsplash.com/photo-1607237138185-eedd9c632b0b?auto=format&fit=crop&w=1200&q=80" alt="" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+              </div>
+              <div style="flex: 1; padding: 32px; display: flex; flex-direction: column; justify-content: center; gap: 12px;">
+                <p style="font-size: 20px; font-weight: 600; line-height: 28px; color: #19191A;">Universiti Teknologi MARA</p>
+                <p style="font-size: 14px; font-weight: 400; line-height: 22px; color: #707070;">Universiti Teknologi MARA (UiTM) in Malaysia faced outdated network challenges during campus expansion. Ruijie's Simplified Optical Ethernet (SOE) solution provided a robust fix, demonstrating impressive performance in a Proof of Concept. This success reinforced Ruijie's capability to deliver scalable, high-quality solutions for large educational institutions.</p>
+              </div>
+            </div>
+          </div>
+          <!-- Slide 3 — Telkom University -->
+          <div class="ds-carousel__slide">
+            <div style="display: flex; width: 1200px;">
+              <div style="width: 600px; height: 360px; flex-shrink: 0;">
+                <img src="https://images.unsplash.com/photo-1607237138185-eedd9c632b0b?auto=format&fit=crop&w=1200&q=80" alt="" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+              </div>
+              <div style="flex: 1; padding: 32px; display: flex; flex-direction: column; justify-content: center; gap: 12px;">
+                <p style="font-size: 20px; font-weight: 600; line-height: 28px; color: #19191A;">Telkom University</p>
+                <p style="font-size: 14px; font-weight: 400; line-height: 22px; color: #707070;">Telkom University in Indonesia partnered with Ruijie to resolve wireless coverage challenges at their Purwokerto campus. By deploying Ruijie's WIS &amp; Wireless solution with Wi-Fi 6, the university improved connectivity in key areas like dormitories and corridors. This collaboration enhanced network performance, showcasing Ruijie's commitment to reliable, high-performance solutions.</p>
+              </div>
+            </div>
+          </div>
+          <!-- Slide 4 — HUST -->
+          <div class="ds-carousel__slide">
+            <div style="display: flex; width: 1200px;">
+              <div style="width: 600px; height: 360px; flex-shrink: 0;">
+                <img src="https://images.unsplash.com/photo-1607237138185-eedd9c632b0b?auto=format&fit=crop&w=1200&q=80" alt="" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+              </div>
+              <div style="flex: 1; padding: 32px; display: flex; flex-direction: column; justify-content: center; gap: 12px;">
+                <p style="font-size: 20px; font-weight: 600; line-height: 28px; color: #19191A;">From Dorm Room to Optical Smart Campus: Network Transformation at HUST</p>
+                <p style="font-size: 14px; font-weight: 400; line-height: 22px; color: #707070;">Ruijie's innovative solutions address university needs, such as student network authentication and HUST's all-optical upgrade. This scenario-based approach enhances user experience and paves the way for future-proof, smart campuses.</p>
+                <div>
+                  <a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="#">
+                    <span class="ds-text-btn__text">Learn More</span>
+                    <img class="ds-text-btn__icon" src="../fs-components/component-specs/icons/icon-arrow-right.svg" alt="">
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+        <button class="ds-carousel__btn ds-carousel__btn--prev" id="cs-prev" type="button" aria-label="Previous slide" disabled style="position: absolute; left: -72px; top: 50%; transform: translateY(-50%);">
+          <img src="../fs-components/component-specs/icons/icon-carousel-prev.svg" alt="">
+        </button>
+        <button class="ds-carousel__btn ds-carousel__btn--next" id="cs-next" type="button" aria-label="Next slide" style="position: absolute; right: -72px; top: 50%; transform: translateY(-50%);">
+          <img src="../fs-components/component-specs/icons/icon-carousel-next.svg" alt="">
+        </button>
+      </div>
+      <div class="ds-carousel__dots" id="cs-dots">
+        <button class="ds-carousel__dot ds-carousel__dot--active" data-index="0" aria-label="Slide 1"></button>
+        <button class="ds-carousel__dot" data-index="1" aria-label="Slide 2"></button>
+        <button class="ds-carousel__dot" data-index="2" aria-label="Slide 3"></button>
+        <button class="ds-carousel__dot" data-index="3" aria-label="Slide 4"></button>
+      </div>
+      <div style="display: flex; justify-content: center; margin-top: 24px;">
+        <button class="ds-btn ds-btn--filled-black ds-btn--l"><span class="ds-btn__text">More customer stories</span></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- RELATED PRODUCTS — gray, category tabs + 3 product cards (no border) -->
+  <section class="page-section page-section--gray" id="related-products">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-header__title">Related Products</h2>
+      </div>
+      <div class="ds-tab ds-tab--standard ds-tab--center" data-tab-group style="margin-bottom: 24px;">
+        <div class="ds-tab__item ds-tab__item--active" data-tab-item>
+          <div class="ds-tab__item-inner"><span class="ds-tab__item-text">All-optical Switches</span><div class="ds-tab__indicator"></div></div>
+        </div>
+        <div class="ds-tab__item" data-tab-item><div class="ds-tab__item-inner"><span class="ds-tab__item-text">Flexible FTTR Devices</span></div></div>
+        <div class="ds-tab__item" data-tab-item><div class="ds-tab__item-inner"><span class="ds-tab__item-text">Flexible Egress Interconnection</span></div></div>
+        <div class="ds-tab__item" data-tab-item><div class="ds-tab__item-inner"><span class="ds-tab__item-text">Unified O&amp;M &amp; Simplified Authentication</span></div></div>
+      </div>
+      <div class="grid-3">
+        <div class="ds-card ds-card--vertical ds-card--no-border">
+          <div class="ds-card__image">
+            <img src="https://images.unsplash.com/photo-1606904825846-647eb07f5be2?auto=format&fit=crop&w=800&q=80" alt="" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+          </div>
+          <div class="ds-card__body">
+            <p class="ds-card__title">RG-18000-E Series</p>
+            <div class="ds-card__desc">
+              <p>10-RU Modular Core Switch for Cloud Architecture Network</p>
+            </div>
+            <div class="ds-card__link">
+              <a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="#">
+                <span class="ds-text-btn__text">Learn More</span>
+                <img class="ds-text-btn__icon" src="../fs-components/component-specs/icons/icon-arrow-right.svg" alt="">
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="ds-card ds-card--vertical ds-card--no-border">
+          <div class="ds-card__image">
+            <img src="https://images.unsplash.com/photo-1606904825846-647eb07f5be2?auto=format&fit=crop&w=800&q=80" alt="" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+          </div>
+          <div class="ds-card__body">
+            <p class="ds-card__title">RG-S7600 Series</p>
+            <div class="ds-card__desc">
+              <p>1-RU Gigabit Ultra High-density CWDM Fixed Core Switch</p>
+            </div>
+            <div class="ds-card__link">
+              <a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="#">
+                <span class="ds-text-btn__text">Learn More</span>
+                <img class="ds-text-btn__icon" src="../fs-components/component-specs/icons/icon-arrow-right.svg" alt="">
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="ds-card ds-card--vertical ds-card--no-border">
+          <div class="ds-card__image">
+            <img src="https://images.unsplash.com/photo-1606904825846-647eb07f5be2?auto=format&fit=crop&w=800&q=80" alt="" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+          </div>
+          <div class="ds-card__body">
+            <p class="ds-card__title">RG-S5750-DP Series</p>
+            <div class="ds-card__desc">
+              <p>24-Port Gigabit All-optical Ethernet PoE Switch for Hybrid Cable Connection</p>
+            </div>
+            <div class="ds-card__link">
+              <a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="#">
+                <span class="ds-text-btn__text">Learn More</span>
+                <img class="ds-text-btn__icon" src="../fs-components/component-specs/icons/icon-arrow-right.svg" alt="">
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RELATED RESOURCES — white, tabs + content -->
+  <section class="page-section page-section--white" id="related-resources">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-header__title">Related Resources</h2>
+      </div>
+      <div class="ds-tab ds-tab--standard ds-tab--center" data-tab-group style="margin-bottom: 24px;">
+        <div class="ds-tab__item ds-tab__item--active" data-tab-item>
+          <div class="ds-tab__item-inner"><span class="ds-tab__item-text">Solution</span><div class="ds-tab__indicator"></div></div>
+        </div>
+        <div class="ds-tab__item" data-tab-item><div class="ds-tab__item-inner"><span class="ds-tab__item-text">News &amp; Events</span></div></div>
+        <div class="ds-tab__item" data-tab-item><div class="ds-tab__item-inner"><span class="ds-tab__item-text">Blog</span></div></div>
+      </div>
+      <div style="display: flex; justify-content: center;">
+        <div class="ds-card ds-card--vertical ds-card--bordered-full" style="width: 380px;">
+          <div class="ds-card__image">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80" alt="" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+          </div>
+          <div class="ds-card__body">
+            <p class="ds-card__title">Simplified Optical Ethernet Solution 3.0</p>
+            <div class="ds-card__link">
+              <a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="#">
+                <span class="ds-text-btn__text">Watch Video</span>
+                <img class="ds-text-btn__icon" src="../fs-components/component-specs/icons/icon-arrow-right.svg" alt="">
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONNECT WITH US — gray section wrapping a dark content banner (bg image + outline-white CTA) -->
+  <section class="page-section page-section--gray">
+    <div class="container">
+      <div style="background-color: #19191A; background-image: url('https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1920&q=80'); background-size: cover; background-position: center right; box-shadow: inset 0 0 0 2000px rgba(0,0,0,0.5); border-radius: 8px; padding: 48px; display: flex; flex-direction: column; gap: 20px;">
+        <h2 style="color: #FFFFFF; font-size: 24px; font-weight: 600; line-height: 32px; max-width: 480px;">Connect with Us for Enhanced Support and Services</h2>
+        <div>
+          <button class="ds-btn ds-btn--outline-white ds-btn--l"><span class="ds-btn__text">Contact Us</span></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER — injected from navigation component (Rule 0, verbatim) -->
+  <footer class="ds-nav-footer" data-fragment="footer">
+    <div class="ds-nav-footer__inner">
+      <div class="ds-nav-footer__columns">
+        <div class="ds-nav-footer__col">
+          <h4 class="ds-nav-footer__col-title">About Us</h4>
+          <ul class="ds-nav-footer__col-links">
+            <li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">Overview</span></a></li>
+            <li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">Global Warehouse</span></a></li>
+            <li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">Advanced R&amp;D Center</span></a></li>
+            <li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">Quality Control</span></a></li>
+            <li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">Compliance Center</span></a></li>
+            <li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">Test Center</span></a></li>
+            <li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">Contact Us</span></a></li>
+          </ul>
+        </div>
+        <div class="ds-nav-footer__col">
+          <h4 class="ds-nav-footer__col-title">Service</h4>
+          <ul class="ds-nav-footer__col-links">
+            <li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">Payment Methods</span></a></li>
+            <li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">Shipping Guide</span></a></li>
+            <li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">Business Account</span></a></li>
+            <li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">Net Terms</span></a></li>
+            <li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">Return Policy</span></a></li>
+            <li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">Product Warranty</span></a></li>
+            <li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">Give us your Feedback</span></a></li>
+          </ul>
+        </div>
+        <div class="ds-nav-footer__col">
+          <h4 class="ds-nav-footer__col-title">Resource</h4>
+          <ul class="ds-nav-footer__col-links">
+            <li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">Documentation</span></a></li>
+            <li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">Glossary</span></a></li>
+            <li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">Audio &amp; Video</span></a></li>
+            <li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">FS Blog</span></a></li>
+            <li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">Case Studies</span></a></li>
+          </ul>
+        </div>
+        <div class="ds-nav-footer__col">
+          <h4 class="ds-nav-footer__col-title">Support</h4>
+          <ul class="ds-nav-footer__col-links">
+            <li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">FAQ &amp; Help Center</span></a></li>
+            <li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">Solution Support</span></a></li>
+            <li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">Query Tool</span></a></li>
+            <li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">WDM Transceiver Stock List</span></a></li>
+            <li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">Products Verification</span></a></li>
+            <li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">Track My Order</span></a></li>
+            <li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">RMA Checklist</span></a></li>
+          </ul>
+        </div>
+        <div class="ds-nav-footer__sidebar">
+          <div class="ds-nav-footer__subscribe">
+            <h4 class="ds-nav-footer__col-title">Stay in Touch</h4>
+            <div class="ds-nav-footer__subscribe-form">
+              <input type="email" class="ds-nav-footer__subscribe-input" placeholder="Email" aria-label="Email">
+              <button class="ds-nav-footer__subscribe-btn" type="button">Subscribe</button>
+            </div>
+          </div>
+          <div class="ds-nav-footer__app">
+            <h4 class="ds-nav-footer__col-title">Download FS APP</h4>
+            <div class="ds-nav-footer__app-badges">
+              <a href="#" aria-label="Download on the App Store"><img src="../fs-components/component-specs/icons/img-app-store.svg" alt="App Store" height="28"></a>
+              <a href="#" aria-label="Get it on Google Play"><img src="../fs-components/component-specs/icons/img-google-play.svg" alt="Google Play" height="28"></a>
+            </div>
+          </div>
+          <div class="ds-nav-footer__social">
+            <a href="#" class="ds-nav-footer__social-link" aria-label="LinkedIn"><img src="../fs-components/component-specs/icons/icon-social-linkedin.svg" alt="" width="16" height="16"></a>
+            <a href="#" class="ds-nav-footer__social-link" aria-label="YouTube"><img src="../fs-components/component-specs/icons/icon-social-youtube.svg" alt="" width="16" height="16"></a>
+            <a href="#" class="ds-nav-footer__social-link" aria-label="Facebook"><img src="../fs-components/component-specs/icons/icon-social-facebook.svg" alt="" width="16" height="16"></a>
+            <a href="#" class="ds-nav-footer__social-link" aria-label="X"><img src="../fs-components/component-specs/icons/icon-social-x.svg" alt="" width="16" height="16"></a>
+            <a href="#" class="ds-nav-footer__social-link" aria-label="Instagram"><img src="../fs-components/component-specs/icons/icon-social-instagram.svg" alt="" width="16" height="16"></a>
+            <a href="#" class="ds-nav-footer__social-link" aria-label="Reddit"><img src="../fs-components/component-specs/icons/icon-social-reddit.svg" alt="" width="16" height="16"></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="ds-nav-footer__badges">
+        <div class="ds-nav-footer__badges-left">
+          <img src="../fs-components/component-specs/icons/img-badge-trustpilot.svg" alt="Trustpilot" height="28">
+          <img src="../fs-components/component-specs/icons/img-badge-trustedsite.svg" alt="TrustedSite" height="28">
+          <img src="../fs-components/component-specs/icons/img-badge-bbb.svg" alt="BBB" height="28">
+          <img src="../fs-components/component-specs/icons/img-badge-google.svg" alt="Google Reviews" height="28">
+        </div>
+        <div class="ds-nav-footer__badges-right">
+          <a href="#" class="ds-nav-footer__region-link">
+            United States / $ USD
+            <svg class="ds-nav-footer__dropdown-icon" width="12" height="12" viewBox="0 0 12 12" fill="none">
+              <path d="M3 4.5L6 7.5L9 4.5" stroke="#707070" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <hr class="ds-nav-footer__divider">
+
+      <div class="ds-nav-footer__legal">
+        <div class="ds-nav-footer__legal-links">
+          <a href="#" class="ds-nav-footer__legal-link">Site Map</a>
+          <span class="ds-nav-footer__legal-divider"></span>
+          <a href="#" class="ds-nav-footer__legal-link">Accessibility</a>
+          <span class="ds-nav-footer__legal-divider"></span>
+          <a href="#" class="ds-nav-footer__legal-link">Privacy Policy and Notice at Collection</a>
+          <span class="ds-nav-footer__legal-divider"></span>
+          <a href="#" class="ds-nav-footer__legal-link">Cookies Notice</a>
+          <span class="ds-nav-footer__legal-divider"></span>
+          <a href="#" class="ds-nav-footer__legal-link">Terms and Conditions</a>
+          <span class="ds-nav-footer__legal-divider"></span>
+          <a href="#" class="ds-nav-footer__legal-link">Report a Vulnerability</a>
+          <span class="ds-nav-footer__legal-divider"></span>
+          <a href="#" class="ds-nav-footer__legal-link">Do Not Sell or Share My Personal Information</a>
+          <span class="ds-nav-footer__legal-divider"></span>
+          <a href="#" class="ds-nav-footer__legal-link">Company Policies</a>
+          <span class="ds-nav-footer__legal-divider"></span>
+          <a href="#" class="ds-nav-footer__legal-link">Cookie Settings</a>
+        </div>
+        <div class="ds-nav-footer__copyright">
+          Copyright &copy; 2009-2026 FS.COM INC. All Rights Reserved.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Anchor nav active state
+    document.querySelectorAll('[data-anchor-group]').forEach(function(nav) {
+      nav.querySelectorAll('[data-anchor-tab]').forEach(function(tab) {
+        tab.addEventListener('click', function() {
+          nav.querySelectorAll('[data-anchor-tab]').forEach(function(t) { t.classList.remove('ds-anchor-nav__tab--active'); });
+          tab.classList.add('ds-anchor-nav__tab--active');
+        });
+      });
+    });
+
+    // Generic standard-tab active toggle (Related Products / Related Resources)
+    document.querySelectorAll('[data-tab-group]').forEach(function(group) {
+      group.querySelectorAll('[data-tab-item]').forEach(function(item) {
+        item.addEventListener('click', function() {
+          group.querySelectorAll('[data-tab-item]').forEach(function(t) {
+            t.classList.remove('ds-tab__item--active');
+            var ind = t.querySelector('.ds-tab__indicator');
+            if (ind) ind.remove();
+          });
+          item.classList.add('ds-tab__item--active');
+          var inner = item.querySelector('.ds-tab__item-inner');
+          if (inner && !inner.querySelector('.ds-tab__indicator')) {
+            var ind = document.createElement('div');
+            ind.className = 'ds-tab__indicator';
+            inner.appendChild(ind);
+          }
+        });
+      });
+    });
+
+    // Solution scenario switcher
+    (function() {
+      var scenarios = [
+        { title: 'Dormitory', desc: 'Utilizing a new architecture with hybrid cables for clear cabling, sustainable and easy O&M, fast troubleshooting, and ultra-long-distance PoE for scenario-based deployment.' },
+        { title: 'Outdoor Stadium', desc: 'Enabling ultra-long-distance power supply over hybrid cables in outdoor scenarios, supporting both data transmission and power supply.' },
+        { title: 'Smart Classroom', desc: 'Implementing indoor cabling with low construction costs and a short implementation period, allowing for the quick onboarding of new services.' },
+        { title: 'Classroom', desc: 'Deploying PoE switches indoors using hybrid cables to provide nearby power supply for classroom devices.' },
+        { title: 'Office', desc: 'Ensuring fast construction, tidy cabling, flexible installation, and loop prevention, enabling easy access to sharing and printing services.' }
+      ];
+      var tabsWrap = document.querySelector('[data-solution-tabs]');
+      if (!tabsWrap) return;
+      var titleEl = document.querySelector('[data-solution-title]');
+      var descEl = document.querySelector('[data-solution-desc]');
+      tabsWrap.querySelectorAll('[data-solution-tab]').forEach(function(item) {
+        item.addEventListener('click', function() {
+          tabsWrap.querySelectorAll('[data-solution-tab]').forEach(function(t) {
+            t.classList.remove('ds-tab__item--active');
+            var ind = t.querySelector('.ds-tab__indicator');
+            if (ind) ind.remove();
+          });
+          item.classList.add('ds-tab__item--active');
+          var inner = item.querySelector('.ds-tab__item-inner');
+          if (inner && !inner.querySelector('.ds-tab__indicator')) {
+            var ind = document.createElement('div');
+            ind.className = 'ds-tab__indicator';
+            inner.appendChild(ind);
+          }
+          var idx = parseInt(item.getAttribute('data-solution-tab'), 10);
+          titleEl.textContent = scenarios[idx].title;
+          descEl.textContent = scenarios[idx].desc;
+        });
+      });
+    })();
+
+    // Customer stories carousel
+    (function() {
+      var track = document.getElementById('cs-track');
+      var prevBtn = document.getElementById('cs-prev');
+      var nextBtn = document.getElementById('cs-next');
+      var dots = document.getElementById('cs-dots').querySelectorAll('.ds-carousel__dot');
+      var total = dots.length;
+      var current = 0;
+      function goTo(index) {
+        current = index;
+        track.style.transform = 'translateX(-' + (current * 100) + '%)';
+        dots.forEach(function(d, i) { d.classList.toggle('ds-carousel__dot--active', i === current); });
+        prevBtn.disabled = (current === 0);
+        nextBtn.disabled = (current === total - 1);
+      }
+      prevBtn.addEventListener('click', function() { if (current > 0) goTo(current - 1); });
+      nextBtn.addEventListener('click', function() { if (current < total - 1) goTo(current + 1); });
+      dots.forEach(function(dot) {
+        dot.addEventListener('click', function() { goTo(parseInt(dot.getAttribute('data-index'), 10)); });
+      });
+    })();
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FS 中保真设计稿合成操作手册</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif; font-size: 14px; line-height: 22px; color: #19191A; background: #FFFFFF; }
+    .wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+    /* Sticky nav */
+    .nav { position: sticky; top: 0; background: #FFFFFF; border-bottom: 1px solid #DEE0E3; z-index: 100; padding: 12px 0; }
+    .nav__inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; gap: 24px; overflow-x: auto; }
+    .nav__brand { display: inline-flex; align-items: center; gap: 4px; font-size: 14px; font-weight: 600; color: #19191A; white-space: nowrap; }
+    .nav__brand img { height: 24px; width: auto; display: block; }
+    .nav__link { font-size: 13px; font-weight: 600; color: #707070; text-decoration: none; white-space: nowrap; padding: 4px 0; border-bottom: 2px solid transparent; transition: all 0.2s ease; }
+    .nav__link:hover { color: #19191A; }
+    .nav__link--active { color: #19191A; border-bottom-color: #C00000; }
+
+    /* Hero */
+    .hero { background: #EEF3FC url('../pages/assets/设计系统banner.png') center / cover no-repeat; color: #19191A; }
+    .hero__inner { max-width: 1200px; margin: 0 auto; padding: 56px 24px; }
+    .hero__eyebrow { font-size: 12px; font-weight: 600; letter-spacing: 1px; color: #707070; text-transform: uppercase; margin-bottom: 12px; }
+    .hero__title { font-size: 32px; font-weight: 600; line-height: 42px; margin-bottom: 16px; max-width: 760px; color: #19191A; }
+    .hero__desc { font-size: 16px; font-weight: 400; line-height: 26px; color: #4B4B4D; max-width: 620px; }
+    .hero__meta { margin-top: 24px; font-size: 13px; color: #707070; }
+
+    section { padding: 40px 0; border-bottom: 1px solid #DEE0E3; }
+    section:last-of-type { border-bottom: none; }
+    .h2 { font-size: 24px; font-weight: 600; line-height: 32px; margin-bottom: 8px; }
+    .h2-sub { font-size: 14px; color: #707070; margin-bottom: 28px; max-width: 800px; }
+    .h3 { font-size: 16px; font-weight: 600; line-height: 24px; margin: 24px 0 12px; }
+    .p { font-size: 14px; line-height: 22px; color: #4B4B4D; margin-bottom: 12px; }
+    .p strong { color: #19191A; font-weight: 600; }
+    code { background: #F6F6F8; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Menlo, monospace; font-size: 12px; color: #C00000; }
+
+    /* Step flow */
+    .steps { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    @media (max-width: 768px) { .steps { grid-template-columns: 1fr; } }
+    .step { border: 1px solid #DEE0E3; border-radius: 8px; padding: 24px; position: relative; }
+    .step__num { width: 32px; height: 32px; border-radius: 50%; background: #707070; color: #fff; font-weight: 600; font-size: 14px; display: flex; align-items: center; justify-content: center; margin-bottom: 12px; }
+    .step__title { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
+    .step__desc { font-size: 13px; line-height: 20px; color: #707070; }
+    .step__desc code { font-size: 11px; }
+
+    /* Cards */
+    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    @media (max-width: 900px) { .cards { grid-template-columns: 1fr; } }
+    .card { border: 1px solid #DEE0E3; border-radius: 8px; padding: 24px; }
+    .card__tag { display: inline-block; font-size: 11px; font-weight: 600; padding: 2px 10px; border-radius: 4px; background: #F6F6F8; color: #4B4B4D; margin-bottom: 12px; }
+    .card__title { font-size: 15px; font-weight: 600; margin-bottom: 8px; }
+    .card__desc { font-size: 13px; line-height: 20px; color: #707070; }
+
+    /* Table */
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+    th { font-size: 12px; font-weight: 600; color: #707070; text-align: left; padding: 10px 12px; border-bottom: 1px solid #DEE0E3; background: #FAFBFB; }
+    td { padding: 12px; border-bottom: 1px solid #F2F2F2; font-size: 13px; line-height: 20px; color: #4B4B4D; vertical-align: top; }
+    td strong { color: #19191A; }
+
+    /* Code block */
+    pre { background: #FAFBFB; color: #19191A; padding: 20px; border: 1px solid #DEE0E3; border-radius: 8px; font-family: 'SF Mono', Menlo, monospace; font-size: 12.5px; line-height: 20px; overflow-x: auto; margin: 12px 0; }
+    pre code { background: none; padding: 0; color: inherit; }
+    .prompt-label { font-size: 12px; font-weight: 600; color: #707070; margin: 20px 0 6px; }
+
+    /* Callout */
+    .callout { border-radius: 8px; padding: 16px 20px; margin: 16px 0; font-size: 13px; line-height: 20px; }
+    .callout--tip { background: #f0faf0; border: 1px solid #10A300; color: #1f6b18; }
+    .callout--warn { background: #fef5f5; border: 1px solid #C00000; color: #99151b; }
+    .callout strong { font-weight: 600; }
+
+    /* Do / Don't */
+    .dd { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 8px; }
+    @media (max-width: 768px) { .dd { grid-template-columns: 1fr; } }
+    .dd__col { padding: 20px; border-radius: 8px; }
+    .dd__col--do { background: #f0faf0; border: 1px solid #10A300; }
+    .dd__col--dont { background: #fef5f5; border: 1px solid #C00000; }
+    .dd__h { font-size: 14px; font-weight: 600; margin-bottom: 12px; }
+    .dd__col--do .dd__h { color: #10A300; }
+    .dd__col--dont .dd__h { color: #C00000; }
+    .dd ul { list-style: none; }
+    .dd li { font-size: 13px; line-height: 20px; padding: 4px 0; color: #4B4B4D; }
+    .dd li::before { content: ""; display: inline-block; width: 6px; height: 6px; border-radius: 50%; margin-right: 8px; vertical-align: middle; }
+    .dd__col--do li::before { background: #10A300; }
+    .dd__col--dont li::before { background: #C00000; }
+
+    /* FAQ */
+    .faq__item { border-bottom: 1px solid #F2F2F2; padding: 16px 0; }
+    .faq__q { font-size: 14px; font-weight: 600; color: #19191A; margin-bottom: 6px; }
+    .faq__a { font-size: 13px; line-height: 21px; color: #707070; }
+
+    .footer { padding: 24px; text-align: center; font-size: 12px; color: #707070; border-top: 1px solid #DEE0E3; }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav__inner">
+    <span class="nav__brand"><img src="https://resource.fs.com/mall/generalImg/20251205102312a9bmyb.svg" alt="FS">操作手册</span>
+    <a class="nav__link" href="#intro">概述</a>
+    <a class="nav__link" href="#flow">生成流程</a>
+    <a class="nav__link" href="#prompt">如何提需求</a>
+    <a class="nav__link" href="#types">两种页面类型</a>
+    <a class="nav__link" href="#review">检查验收</a>
+    <a class="nav__link" href="#faq">常见问题</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero__inner">
+    <p class="hero__eyebrow">FS Design · Operation Manual</p>
+    <h1 class="hero__title">中保真设计稿合成操作手册</h1>
+    <p class="hero__desc">如何用 Kiro 配合 FS 设计知识库，把一句话需求或一个参考网址，转化为符合 FS 设计规范的中保真页面设计稿。</p>
+    <p class="hero__meta">适用对象：设计师 / 产品 / 前端 · 无需手写代码 · 基于 fs-design-system.md 知识库</p>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- 概述 -->
+  <section id="intro">
+    <h2 class="h2">1. 这份手册是做什么的</h2>
+    <p class="h2-sub">Kiro 是一个 AI 开发环境。它能读取本项目里的「FS 设计知识库」，把你的自然语言需求转成一份遵守 FS 设计规范的 HTML 页面设计稿。你不需要写代码，只需要会描述需求、会检查结果。</p>
+    <div class="cards">
+      <div class="card">
+        <span class="card__tag">输入</span>
+        <p class="card__title">你提供什么</p>
+        <p class="card__desc">一句话页面需求，或一个参考网址 / 截图 / 文档。说明页面类型、要展示的内容模块和主要文案。</p>
+      </div>
+      <div class="card">
+        <span class="card__tag">处理</span>
+        <p class="card__title">Kiro 做什么</p>
+        <p class="card__desc">读取知识库规则 → 把内容映射成 FS 组件 → 用 <code>ds-*</code> 类生成 HTML → 自检并修正违规项。</p>
+      </div>
+      <div class="card">
+        <span class="card__tag">输出</span>
+        <p class="card__title">你得到什么</p>
+        <p class="card__desc">一份可在浏览器打开的中保真 HTML 页面，颜色、字体、间距、组件结构都符合 FS 规范，可直接评审或交付前端。</p>
+      </div>
+    </div>
+    <div class="callout callout--tip"><strong>中保真的含义：</strong>结构、布局、组件、规范色彩和间距都到位（可点击、可滚动），但图片用真实或占位图、文案为示例级，不含真实业务数据和最终视觉精修。</div>
+  </section>
+
+  <!-- 生成流程 -->
+  <section id="flow">
+    <h2 class="h2">2. Kiro 的生成流程（四步法）</h2>
+    <p class="h2-sub">这是 Kiro 内部每次都会执行的强制流程。理解它能让你知道每一步该看什么、该确认什么。</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step__num">1</div>
+        <div class="step__title">读规范</div>
+        <div class="step__desc">先读 <code>fs-design-system.md</code>、tokens.css、components.css，以及页面会用到的每个组件 <code>preview/*.html</code>。绝不凭记忆写组件。</div>
+      </div>
+      <div class="step">
+        <div class="step__num">2</div>
+        <div class="step__title">声明确认 + 组件映射</div>
+        <div class="step__desc">列出页面需要哪些组件、确认关键数值（版心 1200px、section 间距 40px、品牌红 #C00000 等）；重构页面时把源页面每个模块映射到 FS 组件。</div>
+      </div>
+      <div class="step">
+        <div class="step__num">3</div>
+        <div class="step__title">写代码</div>
+        <div class="step__desc">只用 <code>ds-*</code> 类，从对应 preview 文件复制结构、替换文案；按白↔灰交替排布 section；header/footer 直接复用 FS 片段。</div>
+      </div>
+      <div class="step">
+        <div class="step__num">4</div>
+        <div class="step__title">自检修正</div>
+        <div class="step__desc">对照自检清单逐项检查（颜色、卡片边框、按钮、字重、版心、间距…），发现违规立即修正后再交付。</div>
+      </div>
+    </div>
+    <div class="callout callout--tip"><strong>你能看到全过程：</strong>Kiro 会在对话里展示它读了哪些文件、做了哪些映射和修改。你可以随时打断、追加要求或让它回退。</div>
+  </section>
+
+  <!-- 如何提需求 -->
+  <section id="prompt">
+    <h2 class="h2">3. 如何向 Kiro 提需求</h2>
+    <p class="h2-sub">需求越具体，结果越准。根据你手上有什么素材，选择对应的指令模板直接套用：有竞品网址用「基于竞品」，有原型图用「基于原型」，有需求文档用「基于需求文档」。</p>
+
+    <p class="prompt-label">模板 A · 基于竞品</p>
+    <pre><code>【页面链接 + 截图】改版这个网页，要求：
+1、100% 复刻原网页的文字和功能；
+2、完全按照 FS 的规范来重构视觉；
+3、保存到 pages/【页面名称】.html，并在 index.html 添加入口卡片。</code></pre>
+
+    <p class="prompt-label">模板 B · 基于原型</p>
+    <pre><code>【原型图】基于此原型图生成页面，要求：
+1、100% 复刻原型图的文字和功能，逐个板块对照原型截图确认，不遗漏任何文字和结构；
+2、完全按照 FS 的规范来重构视觉；
+3、保存到 pages/【页面名称】.html，并在 index.html 添加入口卡片。</code></pre>
+
+    <p class="prompt-label">模板 C · 基于需求文档</p>
+    <pre><code>【上传 Markdown 文件】请根据提供的页面内容文件，严格遵循以下要求生成网页：
+1、100% 完整保留所有文字内容，确保信息准确无误，不进行任何删减或修改；
+2、完全按照 FS 的规范来重构视觉；
+3、内容均使用英文；
+4、保存到 pages/【页面名称】.html，并在 index.html 添加入口卡片。</code></pre>
+
+    <p class="prompt-label">模板 D · 局部修改已生成页面</p>
+    <pre><code>把第二个 section 改成灰色背景，卡片改成 3 列；
+其他模块不要动。</code></pre>
+
+    <div class="callout callout--warn"><strong>提需求时避免：</strong>指定非系统色（黄/绿/青背景）、自定义字重、要求红色用在 banner 或普通卡片上 —— 这些会被规范过滤，Kiro 会替换为合规方案并告诉你原因。</div>
+
+    <h3 class="h3">让结果更可控的小技巧</h3>
+    <table>
+      <thead><tr><th style="width:30%;">想要的效果</th><th>怎么说</th></tr></thead>
+      <tbody>
+        <tr><td>明确页面层级</td><td>说清楚是「落地页 / 解决方案页 / 知识库页 / 专题页」，决定用哪种横幅变体。</td></tr>
+        <tr><td>控制卡片排布</td><td>说明「几列网格」「图左文右还是图上文下」。</td></tr>
+        <tr><td>指定真实配图</td><td>直接给图片 URL；不给则会用主题相关占位图并标注，方便你替换。</td></tr>
+        <tr><td>限定修改范围</td><td>明确「只改 X，其他不动」，避免顺手改到别的模块。</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 两种页面类型 -->
+  <section id="types">
+    <h2 class="h2">4. 两种典型任务</h2>
+    <p class="h2-sub">实际使用中，需求基本落在这两类。它们走同一套四步流程，区别在于「重构」多了一步源页面品牌过滤。</p>
+    <div class="dd">
+      <div class="dd__col dd__col--do">
+        <div class="dd__h">全新页面</div>
+        <ul>
+          <li>你描述模块和文案，Kiro 从 FS 组件搭建</li>
+          <li>配图默认用主题相关占位图（验证可访问）</li>
+          <li>适合：新落地页、专题页、活动页</li>
+          <li>关键：说清楚页面类型和模块顺序</li>
+        </ul>
+      </div>
+      <div class="dd__col" style="background:#f0f6ff;border:1px solid #0060BF;">
+        <div class="dd__h" style="color:#0060BF;">重构参考网页</div>
+        <ul>
+          <li>提供网址 / 截图，Kiro 提取内容与结构</li>
+          <li>保留内容与功能意图，丢弃源站品牌外壳</li>
+          <li>源站 header/hero/footer 一律换成 FS 版本</li>
+          <li>关键：确认配图 URL 和面包屑文案完整</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 检查验收 -->
+  <section id="review">
+    <h2 class="h2">5. 拿到稿子后怎么检查</h2>
+    <p class="h2-sub">Kiro 会自检，但交付前你也应快速过一遍。下面是最容易出问题、也最值得你确认的几项。</p>
+    <table>
+      <thead><tr><th style="width:26%;">检查项</th><th>合规标准</th></tr></thead>
+      <tbody>
+        <tr><td><strong>背景色</strong></td><td>只允许 <code>#FFFFFF</code> / <code>#FAFBFB</code> / <code>#19191A</code> / <code>#4B4B4D</code>，无黄/绿/青/紫等非系统色。</td></tr>
+        <tr><td><strong>红色用法</strong></td><td>红色只出现在表单提交按钮、Hero 搜索按钮；banner、卡片、普通内容区不能用红。</td></tr>
+        <tr><td><strong>卡片边框</strong></td><td>白色 section → 四边边框；灰色 section → 无边框白卡；横向卡片不加边框、hover 无投影。</td></tr>
+        <tr><td><strong>版心与间距</strong></td><td>内容版心 1200px 无水平 padding；section 上下 40px；卡片间距 20px，最多 4 列。</td></tr>
+        <tr><td><strong>section 交替</strong></td><td>白↔灰严格交替，不能连续两个同色。</td></tr>
+        <tr><td><strong>字体字重</strong></td><td>Open Sans，仅 400 / 600 两种字重。</td></tr>
+        <tr><td><strong>header / footer</strong></td><td>用 FS 标准片段，footer 链接、badge、legal 条目完整未删减。</td></tr>
+        <tr><td><strong>配图</strong></td><td>真实可访问的图片 URL（HTTP 200），不是纯色占位块；占位图应被标注。</td></tr>
+      </tbody>
+    </table>
+    <div class="callout callout--tip"><strong>不满意可以继续对话：</strong>直接说「这里改成…」「这个模块去掉」，Kiro 会在原稿上增量修改，无需从头重来。</div>
+  </section>
+
+  <!-- 常见问题 -->
+  <section id="faq">
+    <h2 class="h2">6. 常见问题</h2>
+    <div class="faq__item">
+      <p class="faq__q">我完全不懂代码，能用吗？</p>
+      <p class="faq__a">能。你只需要描述需求、看浏览器里的页面效果、用自然语言提出修改意见。代码由 Kiro 编写和维护。</p>
+    </div>
+    <div class="faq__item">
+      <p class="faq__q">生成的页面在哪里看？</p>
+      <p class="faq__a">Kiro 会把 HTML 文件保存到项目里（全新页面源文件在 page-sources/，重构测试页在 pages/）。双击用浏览器打开即可。</p>
+    </div>
+    <div class="faq__item">
+      <p class="faq__q">为什么我要的某个颜色 / 样式被改掉了？</p>
+      <p class="faq__a">因为它违反 FS 规范。规范优先级高于参考来源，Kiro 会替换成最接近的合规方案，并在对话里说明替换原因。</p>
+    </div>
+    <div class="faq__item">
+      <p class="faq__q">重构网页时图片拉不到怎么办？</p>
+      <p class="faq__a">遇到反爬无法获取源图时，Kiro 会告知你并请你提供图片 URL，或先用主题相关占位图并标注，方便你后续替换为正式素材。</p>
+    </div>
+    <div class="faq__item">
+      <p class="faq__q">规范更新了，页面会自动跟着变吗？</p>
+      <p class="faq__a">已生成的静态页面不会自动变。规范更新后，让 Kiro 基于最新知识库重新生成或检查页面即可。</p>
+    </div>
+    <div class="faq__item">
+      <p class="faq__q">这份稿子能直接上线吗？</p>
+      <p class="faq__a">它是中保真设计稿，用于评审和交付前端。上线前仍需替换真实数据、正式素材，并由前端做生产级实现与适配。占位图属示意，正式商用图片需确认授权。</p>
+    </div>
+  </section>
+
+</div>
+
+<div class="footer">
+  FS 中保真设计稿合成操作手册 · 基于 fs-design-system.md 知识库 · 与 Kiro 配合使用
+</div>
+
+<script>
+  const links = document.querySelectorAll('.nav__link');
+  const secs = document.querySelectorAll('section[id]');
+  const ob = new IntersectionObserver(es => {
+    es.forEach(e => {
+      if (e.isIntersecting) {
+        links.forEach(l => l.classList.remove('nav__link--active'));
+        const a = document.querySelector('.nav__link[href="#' + e.target.id + '"]');
+        if (a) a.classList.add('nav__link--active');
+      }
+    });
+  }, { rootMargin: '-90px 0px -65% 0px' });
+  secs.forEach(s => ob.observe(s));
+</script>
+</body>
+</html>

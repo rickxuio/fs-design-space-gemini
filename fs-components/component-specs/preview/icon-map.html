@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>图标关联关系图 Icon Dependency Map</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../tokens.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: var(--font-family-base);
+      background: #F9FAFB;
+      color: var(--color-gray-1);
+      padding: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    a.back-link {
+      display: inline-block;
+      font-size: 13px;
+      color: var(--color-blue);
+      text-decoration: none;
+      margin-bottom: 20px;
+    }
+    a.back-link:hover { text-decoration: underline; }
+    h1 { font-size: 28px; font-weight: 600; margin-bottom: 8px; }
+    .subtitle { font-size: 14px; color: var(--color-gray-3); margin-bottom: 40px; }
+    h2 { font-size: 20px; font-weight: 600; margin-bottom: 20px; }
+
+    /* Icon grid */
+    .icon-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 16px;
+      margin-bottom: 48px;
+    }
+    .icon-card {
+      background: var(--color-white);
+      border: 1px solid var(--color-gray-5);
+      border-radius: var(--border-radius-lg);
+      padding: 20px;
+      transition: box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+    .icon-card:hover {
+      box-shadow: var(--shadow-md);
+      border-color: var(--color-gray-3);
+    }
+    .icon-card__header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 12px;
+    }
+    .icon-card__preview {
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--color-gray-9);
+      border-radius: var(--border-radius-md);
+      flex-shrink: 0;
+    }
+    .icon-card__preview img {
+      width: 24px;
+      height: 24px;
+    }
+    .icon-card__name {
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .icon-card__path {
+      font-size: 11px;
+      color: var(--color-gray-3);
+      font-family: monospace;
+      margin-top: 2px;
+    }
+    .icon-card__tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 12px;
+    }
+
+    /* Component badges with distinct colors */
+    .badge {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: var(--border-radius-full);
+      font-size: 11px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: opacity 0.15s ease;
+    }
+    .badge:hover { opacity: 0.8; }
+    .badge--button       { background: #FDECEA; color: #C00000; }
+    .badge--videobutton  { background: #EDE7F6; color: #512971; }
+    .badge--textbutton   { background: #E3F2FD; color: #0060BF; }
+    .badge--iconbutton   { background: #E8F5E9; color: #2E7D32; }
+    .badge--searchbox    { background: #FFF3E0; color: #E65100; }
+
+    /* Component section */
+    .component-section { margin-bottom: 32px; }
+    .component-section__header {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--color-gray-5);
+    }
+    .component-icons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .component-icon-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      padding: 12px 16px;
+      background: var(--color-white);
+      border: 1px solid var(--color-gray-5);
+      border-radius: var(--border-radius-lg);
+      min-width: 90px;
+    }
+    .component-icon-item img {
+      width: 24px;
+      height: 24px;
+    }
+    .component-icon-item span {
+      font-size: 11px;
+      color: var(--color-gray-3);
+      text-align: center;
+    }
+
+    .section-divider {
+      border: none;
+      border-top: 1px solid var(--color-gray-5);
+      margin: 40px 0;
+    }
+  </style>
+</head>
+<body>
+  <a href="../../../index.html" class="back-link">← 返回首页 Back to Home</a>
+  <h1>图标关联关系图</h1>
+  <p class="subtitle">Icon Dependency Map — 展示图标与组件之间的引用关系</p>
+
+  <!-- ============================================
+       Section 1: View by Icon
+       ============================================ -->
+  <h2>按图标查看 View by Icon</h2>
+  <div class="icon-grid">
+
+    <!-- icon-loading -->
+    <div class="icon-card">
+      <div class="icon-card__header">
+        <div class="icon-card__preview">
+          <img src="../icons/icon-loading.svg" alt="icon-loading">
+        </div>
+        <div>
+          <div class="icon-card__name">icon-loading</div>
+          <div class="icon-card__path">icons/icon-loading.svg</div>
+        </div>
+      </div>
+      <div class="icon-card__tags">
+        <a href="button.html" class="badge badge--button">Button / processing</a>
+      </div>
+    </div>
+
+    <!-- icon-play -->
+    <div class="icon-card">
+      <div class="icon-card__header">
+        <div class="icon-card__preview" style="background: var(--color-gray-2);">
+          <img src="../icons/icon-play.svg" alt="icon-play">
+        </div>
+        <div>
+          <div class="icon-card__name">icon-play</div>
+          <div class="icon-card__path">icons/icon-play.svg</div>
+        </div>
+      </div>
+      <div class="icon-card__tags">
+        <a href="video-button.html" class="badge badge--videobutton">VideoButton (S, L, XL)</a>
+      </div>
+    </div>
+
+    <!-- icon-pause -->
+    <div class="icon-card">
+      <div class="icon-card__header">
+        <div class="icon-card__preview" style="background: var(--color-gray-2);">
+          <img src="../icons/icon-pause.svg" alt="icon-pause">
+        </div>
+        <div>
+          <div class="icon-card__name">icon-pause</div>
+          <div class="icon-card__path">icons/icon-pause.svg</div>
+        </div>
+      </div>
+      <div class="icon-card__tags">
+        <a href="video-button.html" class="badge badge--videobutton">VideoButton</a>
+      </div>
+    </div>
+
+    <!-- icon-arrow-right -->
+    <div class="icon-card">
+      <div class="icon-card__header">
+        <div class="icon-card__preview">
+          <img src="../icons/icon-arrow-right.svg" alt="icon-arrow-right">
+        </div>
+        <div>
+          <div class="icon-card__name">icon-arrow-right</div>
+          <div class="icon-card__path">icons/icon-arrow-right.svg</div>
+        </div>
+      </div>
+      <div class="icon-card__tags">
+        <a href="text-button.html" class="badge badge--textbutton">TextButton</a>
+      </div>
+    </div>
+
+    <!-- icon-close -->
+    <div class="icon-card">
+      <div class="icon-card__header">
+        <div class="icon-card__preview">
+          <img src="../icons/icon-close.svg" alt="icon-close">
+        </div>
+        <div>
+          <div class="icon-card__name">icon-close</div>
+          <div class="icon-card__path">icons/icon-close.svg</div>
+        </div>
+      </div>
+      <div class="icon-card__tags">
+        <a href="icon-button.html" class="badge badge--iconbutton">IconButton</a>
+      </div>
+    </div>
+
+    <!-- icon-search -->
+    <div class="icon-card">
+      <div class="icon-card__header">
+        <div class="icon-card__preview">
+          <img src="../icons/icon-search.svg" alt="icon-search">
+        </div>
+        <div>
+          <div class="icon-card__name">icon-search</div>
+          <div class="icon-card__path">icons/icon-search.svg</div>
+        </div>
+      </div>
+      <div class="icon-card__tags">
+        <a href="icon-button.html" class="badge badge--iconbutton">IconButton</a>
+        <a href="#" class="badge badge--searchbox">SearchBox</a>
+      </div>
+    </div>
+
+    <!-- icon-upload -->
+    <div class="icon-card">
+      <div class="icon-card__header">
+        <div class="icon-card__preview">
+          <img src="../icons/icon-upload.svg" alt="icon-upload">
+        </div>
+        <div>
+          <div class="icon-card__name">icon-upload</div>
+          <div class="icon-card__path">icons/icon-upload.svg</div>
+        </div>
+      </div>
+      <div class="icon-card__tags">
+        <a href="icon-button.html" class="badge badge--iconbutton">IconButton</a>
+      </div>
+    </div>
+
+    <!-- icon-edit -->
+    <div class="icon-card">
+      <div class="icon-card__header">
+        <div class="icon-card__preview">
+          <img src="../icons/icon-edit.svg" alt="icon-edit">
+        </div>
+        <div>
+          <div class="icon-card__name">icon-edit</div>
+          <div class="icon-card__path">icons/icon-edit.svg</div>
+        </div>
+      </div>
+      <div class="icon-card__tags">
+        <a href="icon-button.html" class="badge badge--iconbutton">IconButton</a>
+      </div>
+    </div>
+
+    <!-- icon-eye -->
+    <div class="icon-card">
+      <div class="icon-card__header">
+        <div class="icon-card__preview">
+          <img src="../icons/icon-eye.svg" alt="icon-eye">
+        </div>
+        <div>
+          <div class="icon-card__name">icon-eye</div>
+          <div class="icon-card__path">icons/icon-eye.svg</div>
+        </div>
+      </div>
+      <div class="icon-card__tags">
+        <a href="icon-button.html" class="badge badge--iconbutton">IconButton</a>
+      </div>
+    </div>
+
+    <!-- icon-eye-off -->
+    <div class="icon-card">
+      <div class="icon-card__header">
+        <div class="icon-card__preview">
+          <img src="../icons/icon-eye-off.svg" alt="icon-eye-off">
+        </div>
+        <div>
+          <div class="icon-card__name">icon-eye-off</div>
+          <div class="icon-card__path">icons/icon-eye-off.svg</div>
+        </div>
+      </div>
+      <div class="icon-card__tags">
+        <a href="icon-button.html" class="badge badge--iconbutton">IconButton</a>
+      </div>
+    </div>
+
+    <!-- icon-more -->
+    <div class="icon-card">
+      <div class="icon-card__header">
+        <div class="icon-card__preview">
+          <img src="../icons/icon-more.svg" alt="icon-more">
+        </div>
+        <div>
+          <div class="icon-card__name">icon-more</div>
+          <div class="icon-card__path">icons/icon-more.svg</div>
+        </div>
+      </div>
+      <div class="icon-card__tags">
+        <a href="icon-button.html" class="badge badge--iconbutton">IconButton</a>
+      </div>
+    </div>
+
+    <!-- icon-download -->
+    <div class="icon-card">
+      <div class="icon-card__header">
+        <div class="icon-card__preview">
+          <img src="../icons/icon-download.svg" alt="icon-download">
+        </div>
+        <div>
+          <div class="icon-card__name">icon-download</div>
+          <div class="icon-card__path">icons/icon-download.svg</div>
+        </div>
+      </div>
+      <div class="icon-card__tags">
+        <a href="icon-button.html" class="badge badge--iconbutton">IconButton</a>
+      </div>
+    </div>
+
+    <!-- icon-grid-view -->
+    <div class="icon-card">
+      <div class="icon-card__header">
+        <div class="icon-card__preview">
+          <img src="../icons/icon-grid-view.svg" alt="icon-grid-view">
+        </div>
+        <div>
+          <div class="icon-card__name">icon-grid-view</div>
+          <div class="icon-card__path">icons/icon-grid-view.svg</div>
+        </div>
+      </div>
+      <div class="icon-card__tags">
+        <a href="icon-button.html" class="badge badge--iconbutton">IconButton</a>
+      </div>
+    </div>
+
+    <!-- icon-list-view -->
+    <div class="icon-card">
+      <div class="icon-card__header">
+        <div class="icon-card__preview">
+          <img src="../icons/icon-list-view.svg" alt="icon-list-view">
+        </div>
+        <div>
+          <div class="icon-card__name">icon-list-view</div>
+          <div class="icon-card__path">icons/icon-list-view.svg</div>
+        </div>
+      </div>
+      <div class="icon-card__tags">
+        <a href="icon-button.html" class="badge badge--iconbutton">IconButton</a>
+      </div>
+    </div>
+
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- ============================================
+       Section 2: View by Component
+       ============================================ -->
+  <h2>按组件查看 View by Component</h2>
+
+  <!-- Button -->
+  <div class="component-section">
+    <div class="component-section__header">
+      <span class="badge badge--button" style="margin-right: 8px;">Button</span> 按钮
+    </div>
+    <div class="component-icons">
+      <div class="component-icon-item">
+        <img src="../icons/icon-loading.svg" alt="icon-loading">
+        <span>icon-loading</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- VideoButton -->
+  <div class="component-section">
+    <div class="component-section__header">
+      <span class="badge badge--videobutton" style="margin-right: 8px;">VideoButton</span> 视频播放按钮
+    </div>
+    <div class="component-icons">
+      <div class="component-icon-item" style="background: var(--color-gray-2);">
+        <img src="../icons/icon-play.svg" alt="icon-play">
+        <span style="color: var(--color-white);">icon-play</span>
+      </div>
+      <div class="component-icon-item" style="background: var(--color-gray-2);">
+        <img src="../icons/icon-pause.svg" alt="icon-pause">
+        <span style="color: var(--color-white);">icon-pause</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- TextButton -->
+  <div class="component-section">
+    <div class="component-section__header">
+      <span class="badge badge--textbutton" style="margin-right: 8px;">TextButton</span> 文字按钮
+    </div>
+    <div class="component-icons">
+      <div class="component-icon-item">
+        <img src="../icons/icon-arrow-right.svg" alt="icon-arrow-right">
+        <span>icon-arrow-right</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- IconButton -->
+  <div class="component-section">
+    <div class="component-section__header">
+      <span class="badge badge--iconbutton" style="margin-right: 8px;">IconButton</span> 图标按钮
+    </div>
+    <div class="component-icons">
+      <div class="component-icon-item">
+        <img src="../icons/icon-close.svg" alt="icon-close">
+        <span>icon-close</span>
+      </div>
+      <div class="component-icon-item">
+        <img src="../icons/icon-search.svg" alt="icon-search">
+        <span>icon-search</span>
+      </div>
+      <div class="component-icon-item">
+        <img src="../icons/icon-upload.svg" alt="icon-upload">
+        <span>icon-upload</span>
+      </div>
+      <div class="component-icon-item">
+        <img src="../icons/icon-edit.svg" alt="icon-edit">
+        <span>icon-edit</span>
+      </div>
+      <div class="component-icon-item">
+        <img src="../icons/icon-eye.svg" alt="icon-eye">
+        <span>icon-eye</span>
+      </div>
+      <div class="component-icon-item">
+        <img src="../icons/icon-eye-off.svg" alt="icon-eye-off">
+        <span>icon-eye-off</span>
+      </div>
+      <div class="component-icon-item">
+        <img src="../icons/icon-more.svg" alt="icon-more">
+        <span>icon-more</span>
+      </div>
+      <div class="component-icon-item">
+        <img src="../icons/icon-download.svg" alt="icon-download">
+        <span>icon-download</span>
+      </div>
+      <div class="component-icon-item">
+        <img src="../icons/icon-grid-view.svg" alt="icon-grid-view">
+        <span>icon-grid-view</span>
+      </div>
+      <div class="component-icon-item">
+        <img src="../icons/icon-list-view.svg" alt="icon-list-view">
+        <span>icon-list-view</span>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

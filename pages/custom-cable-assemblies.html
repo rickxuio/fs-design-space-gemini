@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Custom Cable Assemblies — FS.com</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../fs-components/component-specs/tokens.css">
+  <link rel="stylesheet" href="../fs-components/component-specs/components.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: var(--font-family-base); background: #FFFFFF; color: var(--color-gray-1); }
+
+    .container { max-width: 1200px; margin: 0 auto; }
+    .page-section { padding: 40px 0; }
+    .page-section--white { background: #FFFFFF; }
+    .page-section--gray { background: #FAFBFB; }
+
+    .section-header { text-align: center; margin-bottom: 24px; display: flex; flex-direction: column; align-items: center; }
+    .section-header__title { font-size: 24px; font-weight: 600; line-height: 32px; color: #19191A; margin-bottom: 12px; }
+    .section-header__desc { font-size: 14px; font-weight: 400; line-height: 22px; color: #707070; max-width: 960px; }
+
+    .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+
+    .intro-copy { max-width: 800px; margin: 0 auto; text-align: center; font-size: 14px; font-weight: 400; line-height: 22px; color: #707070; }
+
+    .brand-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    .brand-tile { display: flex; align-items: center; justify-content: center; height: 110px; background: #FFFFFF; border: 1px solid #DEE0E3; border-radius: 8px; padding: 24px; }
+    .brand-name { font-size: 16px; font-weight: 600; line-height: 22px; color: #19191A; text-align: center; }
+
+    .testimonial { display: grid; grid-template-columns: 280px 1fr; gap: 40px; align-items: center; background: #FFFFFF; border: 1px solid #DEE0E3; border-radius: 8px; padding: 40px; }
+    .testimonial-title { font-size: 24px; font-weight: 600; line-height: 32px; color: #19191A; }
+    .testimonial-quote { font-size: 16px; font-weight: 400; line-height: 26px; color: #19191A; }
+    .testimonial-author { font-size: 14px; font-weight: 400; line-height: 22px; color: #707070; margin-top: 12px; }
+
+    .form-layout { display: grid; grid-template-columns: 340px 1fr; gap: 40px; align-items: start; }
+    .form-aside-title { font-size: 24px; font-weight: 600; line-height: 32px; color: #19191A; margin-bottom: 12px; }
+    .form-aside-desc { font-size: 14px; font-weight: 400; line-height: 22px; color: #707070; }
+
+    @media (max-width: 960px) {
+      .grid-3, .brand-grid, .testimonial, .form-layout { grid-template-columns: 1fr; }
+      .container { padding: 0 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================ HEADER (verbatim FS, Rule 0) ============================================ -->
+  <header class="ds-nav-header" data-fragment="header">
+    <div class="ds-nav-header__topbar">
+      <div class="ds-nav-header__topbar-inner">
+        <div class="ds-nav-header__topbar-left">
+          <span class="ds-nav-header__topbar-text">FS United States</span>
+          <span class="ds-nav-header__topbar-divider"></span>
+          <span class="ds-nav-header__topbar-text">FREE SHIPPING on Orders Over US$79</span>
+        </div>
+        <div class="ds-nav-header__topbar-right">
+          <a href="#" class="ds-nav-header__topbar-link">Contact Us</a>
+          <span class="ds-nav-header__topbar-divider"></span>
+          <a href="#" class="ds-nav-header__topbar-link">
+            United States / $ USD
+            <svg class="ds-nav-header__dropdown-icon" width="12" height="12" viewBox="0 0 12 12" fill="none">
+              <path d="M3 4.5L6 7.5L9 4.5" stroke="#707070" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <nav class="ds-nav-header__main">
+      <div class="ds-nav-header__main-inner">
+        <a href="#" class="ds-nav-header__logo" aria-label="FS.com Home">
+          <img src="../fs-components/component-specs/icons/icon-logo-fs.svg" alt="FS Logo" width="76" height="36">
+        </a>
+        <ul class="ds-nav-header__links">
+          <li class="ds-nav-header__link-item"><a href="#" class="ds-nav-header__link">All Products</a></li>
+          <li class="ds-nav-header__link-item"><a href="#" class="ds-nav-header__link">Solutions</a></li>
+          <li class="ds-nav-header__link-item"><a href="#" class="ds-nav-header__link">Services</a></li>
+          <li class="ds-nav-header__link-item"><a href="#" class="ds-nav-header__link">Resources</a></li>
+          <li class="ds-nav-header__link-item"><a href="#" class="ds-nav-header__link">Contact Us</a></li>
+        </ul>
+        <div class="ds-nav-header__actions">
+          <button class="ds-nav-header__action-btn" type="button" aria-label="Search">
+            <img src="../fs-components/component-specs/icons/icon-search.svg" alt="" width="24" height="24">
+          </button>
+          <button class="ds-nav-header__action-btn" type="button" aria-label="Account">
+            <img src="../fs-components/component-specs/icons/icon-account.svg" alt="" width="24" height="24">
+          </button>
+          <button class="ds-nav-header__action-btn" type="button" aria-label="Cart">
+            <img src="../fs-components/component-specs/icons/icon-cart.svg" alt="" width="24" height="24">
+          </button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ============================================ SUB BANNER (dark, breadcrumb + title + desc) ============================================ -->
+  <div class="ds-banner ds-banner--sub" style="background-image: url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1600&q=80'); background-size: cover; background-position: center; padding: 0; display: block; height: 320px; box-shadow: inset 0 0 0 2000px rgba(0,0,0,0.5);">
+    <div class="container" style="height: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; gap: 16px;">
+      <nav class="ds-breadcrumb ds-breadcrumb--dark" style="position: static;">
+        <div class="ds-breadcrumb__item"><a href="#" class="ds-breadcrumb__link">Home</a><span class="ds-breadcrumb__separator">/</span></div>
+        <div class="ds-breadcrumb__item"><a href="#" class="ds-breadcrumb__link">Services</a><span class="ds-breadcrumb__separator">/</span></div>
+        <div class="ds-breadcrumb__item"><span class="ds-breadcrumb__current">Custom Cable Assemblies</span></div>
+      </nav>
+      <p class="ds-banner__title" style="max-width: 620px;">Custom Cable Assemblies</p>
+      <p class="ds-banner__desc" style="max-width: 560px;">Save time and reduce costs with factory-tested cable solutions tailored to your project</p>
+    </div>
+  </div>
+
+  <!-- ============================================ INTRO ============================================ -->
+  <section class="page-section page-section--white">
+    <div class="container">
+      <p class="intro-copy">At ADI, we offer a full range of custom cable assemblies designed to simplify installation, reduce costs and ensure consistent performance. Our custom solutions include fiber trunks, wire harnesses and hybrid composite cables — each tailored to meet the unique requirements of your projects.</p>
+    </div>
+  </section>
+
+  <!-- ============================================ FEATURED BRANDS ============================================ -->
+  <section class="page-section page-section--gray">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-header__title">Featured Brands</h2>
+      </div>
+      <div class="brand-grid">
+        <div class="brand-tile"><span class="brand-name">BSC</span></div>
+        <div class="brand-tile"><span class="brand-name">CP Technologies</span></div>
+        <div class="brand-tile"><span class="brand-name">Lynn Electronics</span></div>
+        <div class="brand-tile"><span class="brand-name">MCC</span></div>
+        <div class="brand-tile"><span class="brand-name">Nettsource</span></div>
+        <div class="brand-tile"><span class="brand-name">OCC</span></div>
+        <div class="brand-tile"><span class="brand-name">Quiktron</span></div>
+      </div>
+    </div>
+  </section>
+  <!-- ============================================ WHY CHOOSE (icon cards) ============================================ -->
+  <section class="page-section page-section--white">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-header__title">Why Choose Custom Cable Assemblies From ADI?</h2>
+      </div>
+      <div class="grid-3">
+        <div class="ds-icon-card ds-icon-card--center ds-icon-card--bg-white ds-icon-card--bordered">
+          <img class="ds-icon-card__icon" src="../fs-components/component-specs/icons/icon-placeholder-switch.svg" alt="" style="width: 36px; height: 36px;">
+          <div class="ds-icon-card__body">
+            <p class="ds-icon-card__title">Save time and money</p>
+            <p class="ds-icon-card__desc">Our pre-terminated assemblies are engineered to help you reduce installation costs by up to 50% compared to field-terminated cables. Because the cables are pre-tested and ready to install, you eliminate the need for field testing equipment and excess labor.</p>
+          </div>
+        </div>
+        <div class="ds-icon-card ds-icon-card--center ds-icon-card--bg-white ds-icon-card--bordered">
+          <img class="ds-icon-card__icon" src="../fs-components/component-specs/icons/icon-placeholder-switch.svg" alt="" style="width: 36px; height: 36px;">
+          <div class="ds-icon-card__body">
+            <p class="ds-icon-card__title">Minimize waste</p>
+            <p class="ds-icon-card__desc">Our custom assemblies arrive in precise lengths and configurations, reducing material overages and trial-and-error cutting. That means no unnecessary waste and costs.</p>
+          </div>
+        </div>
+        <div class="ds-icon-card ds-icon-card--center ds-icon-card--bg-white ds-icon-card--bordered">
+          <img class="ds-icon-card__icon" src="../fs-components/component-specs/icons/icon-placeholder-switch.svg" alt="" style="width: 36px; height: 36px;">
+          <div class="ds-icon-card__body">
+            <p class="ds-icon-card__title">Ensure reliable, high-performance connections</p>
+            <p class="ds-icon-card__desc">Each cable is factory-polished and performance-tested before it leaves the facility. You can count on consistent quality and reduced risk of failure in your installations.</p>
+          </div>
+        </div>
+        <div class="ds-icon-card ds-icon-card--center ds-icon-card--bg-white ds-icon-card--bordered">
+          <img class="ds-icon-card__icon" src="../fs-components/component-specs/icons/icon-placeholder-switch.svg" alt="" style="width: 36px; height: 36px;">
+          <div class="ds-icon-card__body">
+            <p class="ds-icon-card__title">Accelerate project timelines</p>
+            <p class="ds-icon-card__desc">Whether you're working in a fast-paced data center or a critical infrastructure deployment, custom assemblies help speed up deployment and reduce on-site installation time.</p>
+          </div>
+        </div>
+        <div class="ds-icon-card ds-icon-card--center ds-icon-card--bg-white ds-icon-card--bordered">
+          <img class="ds-icon-card__icon" src="../fs-components/component-specs/icons/icon-placeholder-switch.svg" alt="" style="width: 36px; height: 36px;">
+          <div class="ds-icon-card__body">
+            <p class="ds-icon-card__title">Support for complex installations</p>
+            <p class="ds-icon-card__desc">Ideal for critical environments where performance and uptime are non-negotiable, including military, healthcare, telecommunications, utilities and data centers, our custom cable assemblies are built to meet rigorous standards.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ WHAT SETS ADI APART (horizontal image card) ============================================ -->
+  <section class="page-section page-section--gray">
+    <div class="container">
+      <div class="ds-card ds-card--horizontal">
+        <div class="ds-card__image" style="background-image: url('https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=1200&q=80'); background-size: cover; background-position: center;"></div>
+        <div class="ds-card__body" style="padding: 0;">
+          <div style="display: flex; flex-direction: column; gap: 12px;">
+            <p class="ds-card__title">What Sets ADI Apart?</p>
+            <p class="ds-card__desc" style="max-height: none; -webkit-line-clamp: unset; padding-top: 0;">When you work with ADI, you gain access to more than just products. Our dedicated team of RCDD-accredited sales engineers offer end-to-end support on your custom cabling projects. We'll review your plans and specifications to build the right solution and ensure high-quality results at competitive prices. Plus, our expert support is included at no additional cost to you.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- ============================================ TESTIMONIAL ============================================ -->
+  <section class="page-section page-section--white">
+    <div class="container">
+      <div class="testimonial">
+        <div class="testimonial-title">Hear From Our Customers</div>
+        <div>
+          <p class="testimonial-quote">"I was able to add the fiber optic backbone to my project rather than declining that work. This resulted in several thousands of dollars in extra revenue on that project."</p>
+          <p class="testimonial-author">- Brandon R.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ HOW IT WORKS (stepper) ============================================ -->
+  <section class="page-section page-section--gray">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-header__title">How It Works</h2>
+        <p class="section-header__desc">Contact us today to learn how we can help streamline your next project with pre-engineered cable assemblies built to perform.</p>
+      </div>
+      <div class="ds-stepper">
+        <div class="ds-stepper__step">
+          <div class="ds-stepper__step-icon"><img src="../fs-components/component-specs/icons/icon-demo-report.svg" alt=""></div>
+          <div class="ds-stepper__step-body">
+            <span class="ds-stepper__step-title"><span class="ds-stepper__step-title-text">Step 1</span></span>
+            <p class="ds-stepper__step-desc">A representative will gather more information about your assembly requirements and the scope of your project.</p>
+          </div>
+        </div>
+        <div class="ds-stepper__separator"><svg width="36" height="16" viewBox="0 0 36 16" fill="none"><path d="M0 8H32M32 8L26 2M32 8L26 14" stroke="#DEE0E3" stroke-width="1.2"/></svg></div>
+        <div class="ds-stepper__step">
+          <div class="ds-stepper__step-icon"><img src="../fs-components/component-specs/icons/icon-demo-report.svg" alt=""></div>
+          <div class="ds-stepper__step-body">
+            <span class="ds-stepper__step-title"><span class="ds-stepper__step-title-text">Step 2</span></span>
+            <p class="ds-stepper__step-desc">Our datacom team will review your needs and design a custom solution based on your unique needs.</p>
+          </div>
+        </div>
+        <div class="ds-stepper__separator"><svg width="36" height="16" viewBox="0 0 36 16" fill="none"><path d="M0 8H32M32 8L26 2M32 8L26 14" stroke="#DEE0E3" stroke-width="1.2"/></svg></div>
+        <div class="ds-stepper__step">
+          <div class="ds-stepper__step-icon"><img src="../fs-components/component-specs/icons/icon-demo-report.svg" alt=""></div>
+          <div class="ds-stepper__step-body">
+            <span class="ds-stepper__step-title"><span class="ds-stepper__step-title-text">Step 3</span></span>
+            <p class="ds-stepper__step-desc">Then, a sales representative will reach out with your tailored quote.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ CONTACT US (form) ============================================ -->
+  <section class="page-section page-section--white">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-header__title">Contact Us</h2>
+      </div>
+      <div class="ds-form" style="max-width: 800px; margin: 0 auto;">
+        <div class="ds-form__row">
+          <div class="ds-form__field"><span class="ds-form__label">First Name</span><input class="ds-form__input ds-form__input--gray" placeholder="Please enter text"></div>
+          <div class="ds-form__field"><span class="ds-form__label">Last Name</span><input class="ds-form__input ds-form__input--gray" placeholder="Please enter text"></div>
+        </div>
+        <div class="ds-form__row">
+          <div class="ds-form__field"><span class="ds-form__label">Email Address</span><input class="ds-form__input ds-form__input--gray" placeholder="Please enter text"></div>
+          <div class="ds-form__field"><span class="ds-form__label">Company Name</span><input class="ds-form__input ds-form__input--gray" placeholder="Please enter text"></div>
+        </div>
+        <div class="ds-form__row">
+          <div class="ds-form__field"><span class="ds-form__label">Job Function</span>
+            <div class="ds-dropdown" style="width:100%;">
+              <div class="ds-dropdown__trigger" onclick="this.classList.toggle('ds-dropdown__trigger--open');this.nextElementSibling.classList.toggle('ds-dropdown__panel--open')"><span class="ds-dropdown__trigger-text" style="color:var(--color-gray-3);">Select...</span><img class="ds-dropdown__trigger-arrow" src="../fs-components/component-specs/icons/icon-chevron-down.svg" alt=""></div>
+              <div class="ds-dropdown__panel" style="width:100%;"><div class="ds-dropdown__list"><div class="ds-dropdown__item">Installer / Integrator</div><div class="ds-dropdown__item">Consultant</div><div class="ds-dropdown__item">Engineer</div><div class="ds-dropdown__item">Other</div></div></div>
+            </div>
+          </div>
+          <div class="ds-form__field"><span class="ds-form__label">Phone Number</span>
+            <div class="ds-form__phone-row">
+              <div class="ds-form__phone-prefix ds-form__phone-prefix--gray"><span>+1</span><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 4.5L6 7.5L9 4.5" stroke="#707070" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <input class="ds-form__input ds-form__input--gray ds-form__phone-input" placeholder="">
+            </div>
+          </div>
+        </div>
+        <div class="ds-form__row">
+          <div class="ds-form__field"><span class="ds-form__label">Country</span>
+            <div class="ds-dropdown" style="width:100%;">
+              <div class="ds-dropdown__trigger" onclick="this.classList.toggle('ds-dropdown__trigger--open');this.nextElementSibling.classList.toggle('ds-dropdown__panel--open')"><span class="ds-dropdown__trigger-text" style="color:var(--color-gray-3);">Select...</span><img class="ds-dropdown__trigger-arrow" src="../fs-components/component-specs/icons/icon-chevron-down.svg" alt=""></div>
+              <div class="ds-dropdown__panel" style="width:100%;"><div class="ds-dropdown__list"><div class="ds-dropdown__item">United States</div><div class="ds-dropdown__item">Canada</div><div class="ds-dropdown__item">Mexico</div></div></div>
+            </div>
+          </div>
+          <div class="ds-form__field"><span class="ds-form__label">Postal Code</span><input class="ds-form__input ds-form__input--gray" placeholder="Please enter text"></div>
+        </div>
+        <div class="ds-form__field"><span class="ds-form__label">Type of Cable Needed</span>
+          <div class="ds-dropdown" style="width:100%;">
+            <div class="ds-dropdown__trigger" onclick="this.classList.toggle('ds-dropdown__trigger--open');this.nextElementSibling.classList.toggle('ds-dropdown__panel--open')"><span class="ds-dropdown__trigger-text" style="color:var(--color-gray-3);">Select...</span><img class="ds-dropdown__trigger-arrow" src="../fs-components/component-specs/icons/icon-chevron-down.svg" alt=""></div>
+            <div class="ds-dropdown__panel" style="width:100%;"><div class="ds-dropdown__list"><div class="ds-dropdown__item">Copper Category Cable</div><div class="ds-dropdown__item">Fiber Optic Cable</div><div class="ds-dropdown__item">Audio/Video Cable</div></div></div>
+          </div>
+        </div>
+        <div class="ds-form__field">
+          <div class="ds-form__textarea-header"><span class="ds-form__label">Please provide more information about your project needs:</span></div>
+          <textarea class="ds-form__textarea ds-form__textarea--gray" placeholder=""></textarea>
+        </div>
+        <label class="ds-form__checkbox"><input type="checkbox"><span>Opt-in to ADI Marketing Emails</span></label>
+        <div><button class="ds-btn ds-btn--filled-red ds-btn--xl-bold"><span class="ds-btn__text">SUBMIT</span></button></div>
+      </div>
+    </div>
+  </section>
+  <!-- ============================================ FOOTER (verbatim FS, Rule 0) ============================================ -->
+  <footer class="ds-nav-footer" data-fragment="footer">
+    <div class="ds-nav-footer__inner">
+      <div class="ds-nav-footer__columns">
+        <div class="ds-nav-footer__col">
+          <h4 class="ds-nav-footer__col-title">About Us</h4>
+          <ul class="ds-nav-footer__col-links">
+            <li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">Overview</span></a></li>
+            <li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">Global Warehouse</span></a></li>
+            <li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">Advanced R&amp;D Center</span></a></li>
+            <li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">Quality Control</span></a></li>
+            <li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">Compliance Center</span></a></li>
+            <li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">Test Center</span></a></li>
+            <li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">Contact Us</span></a></li>
+          </ul>
+        </div>
+        <div class="ds-nav-footer__col">
+          <h4 class="ds-nav-footer__col-title">Service</h4>
+          <ul class="ds-nav-footer__col-links">
+            <li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">Payment Methods</span></a></li>
+            <li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">Shipping Guide</span></a></li>
+            <li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">Business Account</span></a></li>
+            <li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">Net Terms</span></a></li>
+            <li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">Return Policy</span></a></li>
+            <li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">Product Warranty</span></a></li>
+            <li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">Give us your Feedback</span></a></li>
+          </ul>
+        </div>
+        <div class="ds-nav-footer__col">
+          <h4 class="ds-nav-footer__col-title">Resource</h4>
+          <ul class="ds-nav-footer__col-links">
+            <li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">Documentation</span></a></li>
+            <li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">Glossary</span></a></li>
+            <li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">Audio &amp; Video</span></a></li>
+            <li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">FS Blog</span></a></li>
+            <li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">Case Studies</span></a></li>
+          </ul>
+        </div>
+        <div class="ds-nav-footer__col">
+          <h4 class="ds-nav-footer__col-title">Support</h4>
+          <ul class="ds-nav-footer__col-links">
+            <li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">FAQ &amp; Help Center</span></a></li>
+            <li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">Solution Support</span></a></li>
+            <li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">Query Tool</span></a></li>
+            <li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">WDM Transceiver Stock List</span></a></li>
+            <li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">Products Verification</span></a></li>
+            <li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">Track My Order</span></a></li>
+            <li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">RMA Checklist</span></a></li>
+          </ul>
+        </div>
+        <div class="ds-nav-footer__sidebar">
+          <div class="ds-nav-footer__subscribe">
+            <h4 class="ds-nav-footer__col-title">Stay in Touch</h4>
+            <div class="ds-nav-footer__subscribe-form">
+              <input type="email" class="ds-nav-footer__subscribe-input" placeholder="Email" aria-label="Email">
+              <button class="ds-nav-footer__subscribe-btn" type="button">Subscribe</button>
+            </div>
+          </div>
+          <div class="ds-nav-footer__app">
+            <h4 class="ds-nav-footer__col-title">Download FS APP</h4>
+            <div class="ds-nav-footer__app-badges">
+              <a href="#" aria-label="Download on the App Store"><img src="../fs-components/component-specs/icons/img-app-store.svg" alt="App Store" height="28"></a>
+              <a href="#" aria-label="Get it on Google Play"><img src="../fs-components/component-specs/icons/img-google-play.svg" alt="Google Play" height="28"></a>
+            </div>
+          </div>
+          <div class="ds-nav-footer__social">
+            <a href="#" class="ds-nav-footer__social-link" aria-label="LinkedIn"><img src="../fs-components/component-specs/icons/icon-social-linkedin.svg" alt="" width="16" height="16"></a>
+            <a href="#" class="ds-nav-footer__social-link" aria-label="YouTube"><img src="../fs-components/component-specs/icons/icon-social-youtube.svg" alt="" width="16" height="16"></a>
+            <a href="#" class="ds-nav-footer__social-link" aria-label="Facebook"><img src="../fs-components/component-specs/icons/icon-social-facebook.svg" alt="" width="16" height="16"></a>
+            <a href="#" class="ds-nav-footer__social-link" aria-label="X"><img src="../fs-components/component-specs/icons/icon-social-x.svg" alt="" width="16" height="16"></a>
+            <a href="#" class="ds-nav-footer__social-link" aria-label="Instagram"><img src="../fs-components/component-specs/icons/icon-social-instagram.svg" alt="" width="16" height="16"></a>
+            <a href="#" class="ds-nav-footer__social-link" aria-label="Reddit"><img src="../fs-components/component-specs/icons/icon-social-reddit.svg" alt="" width="16" height="16"></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="ds-nav-footer__badges">
+        <div class="ds-nav-footer__badges-left">
+          <img src="../fs-components/component-specs/icons/img-badge-trustpilot.svg" alt="Trustpilot" height="28">
+          <img src="../fs-components/component-specs/icons/img-badge-trustedsite.svg" alt="TrustedSite" height="28">
+          <img src="../fs-components/component-specs/icons/img-badge-bbb.svg" alt="BBB" height="28">
+          <img src="../fs-components/component-specs/icons/img-badge-google.svg" alt="Google Reviews" height="28">
+        </div>
+        <div class="ds-nav-footer__badges-right">
+          <a href="#" class="ds-nav-footer__region-link">
+            United States / $ USD
+            <svg class="ds-nav-footer__dropdown-icon" width="12" height="12" viewBox="0 0 12 12" fill="none">
+              <path d="M3 4.5L6 7.5L9 4.5" stroke="#707070" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <hr class="ds-nav-footer__divider">
+
+      <div class="ds-nav-footer__legal">
+        <div class="ds-nav-footer__legal-links">
+          <a href="#" class="ds-nav-footer__legal-link">Site Map</a>
+          <span class="ds-nav-footer__legal-divider"></span>
+          <a href="#" class="ds-nav-footer__legal-link">Accessibility</a>
+          <span class="ds-nav-footer__legal-divider"></span>
+          <a href="#" class="ds-nav-footer__legal-link">Privacy Policy and Notice at Collection</a>
+          <span class="ds-nav-footer__legal-divider"></span>
+          <a href="#" class="ds-nav-footer__legal-link">Cookies Notice</a>
+          <span class="ds-nav-footer__legal-divider"></span>
+          <a href="#" class="ds-nav-footer__legal-link">Terms and Conditions</a>
+          <span class="ds-nav-footer__legal-divider"></span>
+          <a href="#" class="ds-nav-footer__legal-link">Report a Vulnerability</a>
+          <span class="ds-nav-footer__legal-divider"></span>
+          <a href="#" class="ds-nav-footer__legal-link">Do Not Sell or Share My Personal Information</a>
+          <span class="ds-nav-footer__legal-divider"></span>
+          <a href="#" class="ds-nav-footer__legal-link">Company Policies</a>
+          <span class="ds-nav-footer__legal-divider"></span>
+          <a href="#" class="ds-nav-footer__legal-link">Cookie Settings</a>
+        </div>
+        <div class="ds-nav-footer__copyright">
+          Copyright &copy; 2009-2026 FS.COM INC. All Rights Reserved.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

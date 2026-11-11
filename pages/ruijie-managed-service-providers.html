@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ruijie Network Solutions for Managed Service Provider — FS.com</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../fs-components/component-specs/tokens.css">
+  <link rel="stylesheet" href="../fs-components/component-specs/components.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: var(--font-family-base); background: #FFFFFF; color: var(--color-gray-1); }
+
+    .container { max-width: 1200px; margin: 0 auto; }
+    .page-section { padding: 40px 0; }
+    .page-section--white { background: #FFFFFF; }
+    .page-section--gray { background: #FAFBFB; }
+
+    .section-header { text-align: center; margin-bottom: 24px; display: flex; flex-direction: column; align-items: center; }
+    .section-header__title { font-size: 24px; font-weight: 600; line-height: 32px; color: #19191A; margin-bottom: 12px; }
+    .section-header__desc { font-size: 14px; font-weight: 400; line-height: 22px; color: #707070; max-width: 960px; }
+
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .stack-2xl { display: flex; flex-direction: column; gap: 24px; }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER — injected from navigation component (Rule 0, verbatim) -->
+  <header class="ds-nav-header" data-fragment="header">
+    <div class="ds-nav-header__topbar">
+      <div class="ds-nav-header__topbar-inner">
+        <div class="ds-nav-header__topbar-left">
+          <span class="ds-nav-header__topbar-text">FS United States</span>
+          <span class="ds-nav-header__topbar-divider"></span>
+          <span class="ds-nav-header__topbar-text">FREE SHIPPING on Orders Over US$79</span>
+        </div>
+        <div class="ds-nav-header__topbar-right">
+          <a href="#" class="ds-nav-header__topbar-link">Contact Us</a>
+          <span class="ds-nav-header__topbar-divider"></span>
+          <a href="#" class="ds-nav-header__topbar-link">
+            United States / $ USD
+            <svg class="ds-nav-header__dropdown-icon" width="12" height="12" viewBox="0 0 12 12" fill="none">
+              <path d="M3 4.5L6 7.5L9 4.5" stroke="#707070" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <nav class="ds-nav-header__main">
+      <div class="ds-nav-header__main-inner">
+        <a href="#" class="ds-nav-header__logo" aria-label="FS.com Home">
+          <img src="../fs-components/component-specs/icons/icon-logo-fs.svg" alt="FS Logo" width="76" height="36">
+        </a>
+        <ul class="ds-nav-header__links">
+          <li class="ds-nav-header__link-item"><a href="#" class="ds-nav-header__link">All Products</a></li>
+          <li class="ds-nav-header__link-item"><a href="#" class="ds-nav-header__link">Solutions</a></li>
+          <li class="ds-nav-header__link-item"><a href="#" class="ds-nav-header__link">Services</a></li>
+          <li class="ds-nav-header__link-item"><a href="#" class="ds-nav-header__link">Resources</a></li>
+          <li class="ds-nav-header__link-item"><a href="#" class="ds-nav-header__link">Contact Us</a></li>
+        </ul>
+        <div class="ds-nav-header__actions">
+          <button class="ds-nav-header__action-btn" type="button" aria-label="Search">
+            <img src="../fs-components/component-specs/icons/icon-search.svg" alt="" width="24" height="24">
+          </button>
+          <button class="ds-nav-header__action-btn" type="button" aria-label="Account">
+            <img src="../fs-components/component-specs/icons/icon-account.svg" alt="" width="24" height="24">
+          </button>
+          <button class="ds-nav-header__action-btn" type="button" aria-label="Cart">
+            <img src="../fs-components/component-specs/icons/icon-cart.svg" alt="" width="24" height="24">
+          </button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- HERO — ds-banner--hero (dark, source banner image + solid scrim) -->
+  <div class="ds-banner ds-banner--hero" style="background-color: #19191A; background-image: url('https://eo-sgp-cos.ruijie.com/site_style/specialPage/managed-service-providers/RJ-img/banner.webp'); background-size: cover; background-position: center; box-shadow: inset 0 0 0 2000px rgba(0,0,0,0.5); display: block; padding: 0;">
+    <div style="max-width: 1200px; margin: 0 auto; height: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; gap: 20px;">
+      <p class="ds-banner__title" style="text-align: left; max-width: 620px; margin: 0;">Ruijie Network Solutions for Managed Service Provider</p>
+      <p class="ds-banner__desc" style="text-align: left; max-width: 620px; margin: 0;">Delivering Full-Scenario, Full-Lifecycle, and Flexible Managed Service Network</p>
+      <div style="display: flex; gap: 16px;">
+        <button class="ds-btn ds-btn--outline-white ds-btn--xl-bold"><span class="ds-btn__text">Get a Quote</span></button>
+        <button class="ds-btn ds-btn--outline-white ds-btn--xl-bold"><span class="ds-btn__text">Download Datasheet</span></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ANCHOR NAV — ds-anchor-nav (tabs only, no red CTA) -->
+  <div class="ds-anchor-nav" data-anchor-group>
+    <div class="ds-anchor-nav__inner">
+      <div class="ds-anchor-nav__tabs">
+        <a href="#overview" class="ds-anchor-nav__tab ds-anchor-nav__tab--active" data-anchor-tab style="text-decoration: none;">Overview</a>
+        <a href="#challenges" class="ds-anchor-nav__tab" data-anchor-tab style="text-decoration: none;">Challenges</a>
+        <a href="#solution-benefits" class="ds-anchor-nav__tab" data-anchor-tab style="text-decoration: none;">Solution Benefits</a>
+        <a href="#technical-cases" class="ds-anchor-nav__tab" data-anchor-tab style="text-decoration: none;">Technical Cases</a>
+        <a href="#related-solutions" class="ds-anchor-nav__tab" data-anchor-tab style="text-decoration: none;">Related Solutions</a>
+        <a href="#related-products" class="ds-anchor-nav__tab" data-anchor-tab style="text-decoration: none;">Related Products</a>
+        <a href="#resources" class="ds-anchor-nav__tab" data-anchor-tab style="text-decoration: none;">Resources</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- OVERVIEW — white, horizontal card (image left + paragraphs right) -->
+  <section class="page-section page-section--white" id="overview">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-header__title">Overview</h2>
+      </div>
+      <div class="ds-card ds-card--horizontal" style="width: 1200px;">
+        <div class="ds-card__image" style="width: 600px; height: 338px;">
+          <img src="https://eo-sgp-cos.ruijie.com/site_style/specialPage/managed-service-providers/RJ-img/overview.webp" alt="Overview" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+        </div>
+        <div class="ds-card__body" style="padding: 32px; display: flex; flex-direction: column; justify-content: center; gap: 16px;">
+          <p class="ds-card__desc" style="font-size: 14px; line-height: 22px; max-height: none; -webkit-line-clamp: unset; padding-top: 0;">With the global digital transformation of enterprises and the rise of emerging technologies, enterprises increasingly turn to professional and reliable managed services to manage their complex devices, networks, and data. This trend presents significant market opportunities for managed service providers.</p>
+          <p class="ds-card__desc" style="font-size: 14px; line-height: 22px; max-height: none; -webkit-line-clamp: unset; padding-top: 0;">Ruijie Networks has developed a full-scenario cloud-based intelligent Wireless Intelligent Solution (WIS) platform for unified management and O&amp;M of wired and wireless networks. Additionally, Ruijie Networks offers the dynamic SD-WAN network solution to enhance service and application experiences. These comprehensive measures create a differentiated, future-proof managed services solution that helps you seize more market opportunities in a highly competitive landscape.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHALLENGES — gray, 3 icon cards (no border, icon exposed) -->
+  <section class="page-section page-section--gray" id="challenges">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-header__title">Challenges</h2>
+        <p class="section-header__desc">Have you encountered the following challenges in your business operation?</p>
+      </div>
+      <div class="grid-3">
+        <div class="ds-icon-card ds-icon-card--left ds-icon-card--bg-white">
+          <img class="ds-icon-card__icon" src="../fs-components/component-specs/icons/icon-placeholder-switch.svg" alt="" style="width: 36px; height: 36px;">
+          <div class="ds-icon-card__body">
+            <p class="ds-icon-card__title">Growth Bottleneck</p>
+            <p class="ds-icon-card__desc">Due to a lack of scalability and service diversity, the existing network architecture fails to fully address the distinct and customized requirements of various industries and scenarios. Consequently, managed service providers (MSPs) face significant challenges in market share and profitability growth.</p>
+          </div>
+        </div>
+        <div class="ds-icon-card ds-icon-card--left ds-icon-card--bg-white">
+          <img class="ds-icon-card__icon" src="../fs-components/component-specs/icons/icon-placeholder-switch.svg" alt="" style="width: 36px; height: 36px;">
+          <div class="ds-icon-card__body">
+            <p class="ds-icon-card__title">Increased Cost</p>
+            <p class="ds-icon-card__desc">In the initial construction phase, significant investment in network hardware is required. During the operational phase, high reliance on public cloud services may make it difficult to reduce full-lifecycle network costs. This conflicts with customers' demand for cost-effective services.</p>
+          </div>
+        </div>
+        <div class="ds-icon-card ds-icon-card--left ds-icon-card--bg-white">
+          <img class="ds-icon-card__icon" src="../fs-components/component-specs/icons/icon-placeholder-switch.svg" alt="" style="width: 36px; height: 36px;">
+          <div class="ds-icon-card__body">
+            <p class="ds-icon-card__title">Technical Challenges</p>
+            <p class="ds-icon-card__desc">Enterprises are increasingly demanding flexible network deployment, high bandwidth, cloud access, and real-time network monitoring. However, legacy technologies fall short of meeting these growing needs, and MSPs are facing significant technical challenges presented by cloud computing, network security, and big data.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOLUTION BENEFITS — white, 3 alternating horizontal cards + CTA button -->
+  <section class="page-section page-section--white" id="solution-benefits">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-header__title">Solution Benefits</h2>
+        <p class="section-header__desc">Ruijie Networks offers a full-scenario, full-lifecycle, and flexible managed network service solution for service providers. This solution aims to lower management and O&amp;M costs, enhance technical capabilities, expand business scopes, and increase revenues.</p>
+      </div>
+      <div class="stack-2xl">
+        <!-- 1. Expanding Business Scopes — text left, image right -->
+        <div class="ds-card ds-card--horizontal-reverse" style="width: 1200px;">
+          <div class="ds-card__image" style="width: 600px; height: 338px;">
+            <img src="https://eo-sgp-cos.ruijie.com/site_style/specialPage/managed-service-providers/RJ-img/benefit-p1.webp" alt="Expanding Business Scopes" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+          </div>
+          <div class="ds-card__body" style="padding: 32px; display: flex; flex-direction: column; justify-content: center;">
+            <p class="ds-card__title">Expanding Business Scopes</p>
+            <p class="ds-card__desc" style="font-size: 14px; line-height: 22px; max-height: none; -webkit-line-clamp: unset; padding-top: 12px;">Ruijie Networks offers the WIS platform, enabling unified management of WLAN, LAN, and WAN devices. It is versatile across various industries and scenarios, such as education, government, and large enterprises. By utilizing this platform, you can broaden your customer base across diverse industries and enhance your market share.</p>
+          </div>
+        </div>
+        <!-- 2. Enhancing Management Efficiency — image left, text right -->
+        <div class="ds-card ds-card--horizontal" style="width: 1200px;">
+          <div class="ds-card__image" style="width: 600px; height: 338px;">
+            <img src="https://eo-sgp-cos.ruijie.com/site_style/specialPage/managed-service-providers/RJ-img/benefit-p2.webp" alt="Enhancing Management Efficiency" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+          </div>
+          <div class="ds-card__body" style="padding: 32px; display: flex; flex-direction: column; justify-content: center;">
+            <p class="ds-card__title">Enhancing Management Efficiency</p>
+            <p class="ds-card__desc" style="font-size: 14px; line-height: 22px; max-height: none; -webkit-line-clamp: unset; padding-top: 12px;">The WIS platform provides full lifecycle services, including network planning, survey, deployment, acceptance, O&amp;M, and network optimization. Leveraging big data, cloud computing, and artificial intelligence technologies, this platform enhances the efficiency of network construction and management while reducing time and labor costs.</p>
+          </div>
+        </div>
+        <!-- 3. Improving Network Experience — text left, image right -->
+        <div class="ds-card ds-card--horizontal-reverse" style="width: 1200px;">
+          <div class="ds-card__image" style="width: 600px; height: 338px;">
+            <img src="https://eo-sgp-cos.ruijie.com/site_style/specialPage/managed-service-providers/RJ-img/benefit-p3.webp" alt="Improving Network Experience" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+          </div>
+          <div class="ds-card__body" style="padding: 32px; display: flex; flex-direction: column; justify-content: center;">
+            <p class="ds-card__title">Improving Network Experience</p>
+            <p class="ds-card__desc" style="font-size: 14px; line-height: 22px; max-height: none; -webkit-line-clamp: unset; padding-top: 12px;">The dynamic SD-WAN technology offers increased throughput and adjusts to bandwidth-intensive applications, enhancing the reliability and efficiency of WAN transmission. This technology safeguards critical services like video conferencing and high-density applications, enhancing customer network experience and satisfaction.</p>
+          </div>
+        </div>
+      </div>
+      <div style="display: flex; justify-content: center; margin-top: 24px;">
+        <button class="ds-btn ds-btn--outline-black ds-btn--l"><span class="ds-btn__text">Experience the WIS Platform</span></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- TECHNICAL CASES — gray, carousel (3 cases) -->
+  <section class="page-section page-section--gray" id="technical-cases">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-header__title">Technical Cases</h2>
+      </div>
+      <div style="position: relative; max-width: 1200px; margin: 0 auto;">
+        <div class="ds-carousel" id="tc-carousel" style="border-radius: 8px; overflow: hidden;">
+          <div class="ds-carousel__track" id="tc-track">
+            <!-- Slide 1 — A MSP in Indonesia -->
+            <div class="ds-carousel__slide">
+              <div style="display: flex; width: 1200px;">
+                <div style="width: 600px; height: 360px; flex-shrink: 0;">
+                  <img src="https://eo-sgp-cos.ruijie.com/site_style/specialPage/managed-service-providers/RJ-img/case-p3.webp" alt="A MSP in Indonesia" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                </div>
+                <div style="flex: 1; padding: 32px; display: flex; flex-direction: column; justify-content: center; gap: 12px;">
+                  <p style="font-size: 20px; font-weight: 600; line-height: 28px; color: #19191A;">A MSP in Indonesia</p>
+                  <p style="font-size: 14px; font-weight: 600; line-height: 22px; color: #19191A;">Serving hundreds of well-known hotels and enterprises</p>
+                  <p style="font-size: 14px; font-weight: 400; line-height: 22px; color: #707070;">A hospitality managed service provider (MSP) in Indonesia implemented Ruijie Networks' WaaS solution to address the O&amp;M challenges faced by hotel customers. Leveraging the WIS platform, the customer streamlined the integration and management of devices, significantly reducing learning and O&amp;M costs and facilitating the daily operation of hotels.</p>
+                </div>
+              </div>
+            </div>
+            <!-- Slide 2 — ICBC -->
+            <div class="ds-carousel__slide">
+              <div style="display: flex; width: 1200px;">
+                <div style="width: 600px; height: 360px; flex-shrink: 0;">
+                  <img src="https://eo-sgp-cos.ruijie.com/site_style/specialPage/managed-service-providers/RJ-img/case-p1.webp" alt="Industrial and Commercial Bank of China (ICBC)" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                </div>
+                <div style="flex: 1; padding: 32px; display: flex; flex-direction: column; justify-content: center; gap: 12px;">
+                  <p style="font-size: 20px; font-weight: 600; line-height: 28px; color: #19191A;">Industrial and Commercial Bank of China (ICBC)</p>
+                  <p style="font-size: 14px; font-weight: 600; line-height: 22px; color: #19191A;">Ranked No.1 in the global 1000 banks by The Banker for 10 consecutive years</p>
+                  <p style="font-size: 14px; font-weight: 400; line-height: 22px; color: #707070;">By implementing Ruijie Networks' SD-WAN solution, ICBC has realized cost reductions for Multi-Protocol Label Switching (MPLS) private lines, significantly enhanced video conferencing experiences, and improved network deployment and operational efficiency. These advancements have further strengthened its position as a leading global bank.</p>
+                </div>
+              </div>
+            </div>
+            <!-- Slide 3 — Sinopec -->
+            <div class="ds-carousel__slide">
+              <div style="display: flex; width: 1200px;">
+                <div style="width: 600px; height: 360px; flex-shrink: 0;">
+                  <img src="https://eo-sgp-cos.ruijie.com/site_style/specialPage/managed-service-providers/RJ-img/case-p2.webp" alt="China Petroleum &amp; Chemical Corporation (Sinopec)" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                </div>
+                <div style="flex: 1; padding: 32px; display: flex; flex-direction: column; justify-content: center; gap: 12px;">
+                  <p style="font-size: 20px; font-weight: 600; line-height: 28px; color: #19191A;">China Petroleum &amp; Chemical Corporation (Sinopec)</p>
+                  <p style="font-size: 14px; font-weight: 600; line-height: 22px; color: #19191A;">The world's largest refining company, with the second-largest number of gas stations in the world</p>
+                  <p style="font-size: 14px; font-weight: 400; line-height: 22px; color: #707070;">Sinopec adopted Ruijie Networks' SD-WAN solution in more than 2,000 network sites, including distribution centers and gas stations, to achieve unified intelligent management of the entire network, improve network flexibility and stability, and consolidate its position as a leading global energy company.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="ds-carousel__btn ds-carousel__btn--prev" id="tc-prev" type="button" aria-label="Previous slide" disabled style="position: absolute; left: -72px; top: 50%; transform: translateY(-50%);">
+          <img src="../fs-components/component-specs/icons/icon-carousel-prev.svg" alt="">
+        </button>
+        <button class="ds-carousel__btn ds-carousel__btn--next" id="tc-next" type="button" aria-label="Next slide" style="position: absolute; right: -72px; top: 50%; transform: translateY(-50%);">
+          <img src="../fs-components/component-specs/icons/icon-carousel-next.svg" alt="">
+        </button>
+      </div>
+      <div class="ds-carousel__dots" id="tc-dots">
+        <button class="ds-carousel__dot ds-carousel__dot--active" data-index="0" aria-label="Slide 1"></button>
+        <button class="ds-carousel__dot" data-index="1" aria-label="Slide 2"></button>
+        <button class="ds-carousel__dot" data-index="2" aria-label="Slide 3"></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- RELATED SOLUTIONS — white, 3 vertical cards (bordered-full) -->
+  <section class="page-section page-section--white" id="related-solutions">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-header__title">Related Solutions</h2>
+      </div>
+      <div class="grid-3">
+        <div class="ds-card ds-card--vertical ds-card--bordered-full">
+          <div class="ds-card__image">
+            <img src="https://eo-sgp-cos.ruijie.com/site_style/specialPage/managed-service-providers/RJ-img/related-p1.webp" alt="Wireless as a Service (WaaS) Solution" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+          </div>
+          <div class="ds-card__body">
+            <p class="ds-card__title">Wireless as a Service (WaaS) Solution</p>
+            <div class="ds-card__desc">
+              <p>Ruijie WaaS Solution enables MSPs to deploy, manage and, maintain wireless networks. The WaaS model is the same as cloud services, providing a cost-effective, scalable, and adaptable way to implement and manage wireless networks.</p>
+            </div>
+            <div class="ds-card__link">
+              <a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="#">
+                <span class="ds-text-btn__text">Solution overview</span>
+                <img class="ds-text-btn__icon" src="../fs-components/component-specs/icons/icon-arrow-right.svg" alt="">
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="ds-card ds-card--vertical ds-card--bordered-full">
+          <div class="ds-card__image">
+            <img src="https://eo-sgp-cos.ruijie.com/site_style/specialPage/managed-service-providers/RJ-img/related-p2.webp" alt="Wired &amp; Wireless Intelligent Service (WIS) Solution" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+          </div>
+          <div class="ds-card__body">
+            <p class="ds-card__title">Wired &amp; Wireless Intelligent Service (WIS) Solution</p>
+            <div class="ds-card__desc">
+              <p>Ruijie WIS solution provides full-lifecycle intelligent network services covering network planning, deployment, operation, and maintenance. The WIS solution improves the efficiency of network construction and operation, maintenance and management.</p>
+            </div>
+            <div class="ds-card__link">
+              <a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="#">
+                <span class="ds-text-btn__text">Solution overview</span>
+                <img class="ds-text-btn__icon" src="../fs-components/component-specs/icons/icon-arrow-right.svg" alt="">
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="ds-card ds-card--vertical ds-card--bordered-full">
+          <div class="ds-card__image">
+            <img src="https://eo-sgp-cos.ruijie.com/site_style/specialPage/managed-service-providers/RJ-img/related-p3.webp" alt="Software-Defined Wide Area Network (SD-WAN) Solution" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+          </div>
+          <div class="ds-card__body">
+            <p class="ds-card__title">Software-Defined Wide Area Network (SD-WAN) Solution</p>
+            <div class="ds-card__desc">
+              <p>Ruijie SD-WAN Solution implements software-defined and centralized control to establish connections using multiple network links, such as Multi-Protocol Label Switching (MPLS), the Internet, and 4G/5G.</p>
+            </div>
+            <div class="ds-card__link">
+              <a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="#">
+                <span class="ds-text-btn__text">Solution overview</span>
+                <img class="ds-text-btn__icon" src="../fs-components/component-specs/icons/icon-arrow-right.svg" alt="">
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RELATED PRODUCTS — gray, category tabs + 3 product cards (no border) -->
+  <section class="page-section page-section--gray" id="related-products">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-header__title">Related Products</h2>
+      </div>
+      <div class="ds-tab ds-tab--standard ds-tab--center" data-tab-group style="margin-bottom: 24px;">
+        <div class="ds-tab__item ds-tab__item--active" data-tab-item>
+          <div class="ds-tab__item-inner"><span class="ds-tab__item-text">Wireless Series</span><div class="ds-tab__indicator"></div></div>
+        </div>
+        <div class="ds-tab__item" data-tab-item><div class="ds-tab__item-inner"><span class="ds-tab__item-text">Wired Series</span></div></div>
+        <div class="ds-tab__item" data-tab-item><div class="ds-tab__item-inner"><span class="ds-tab__item-text">WAN Series</span></div></div>
+        <div class="ds-tab__item" data-tab-item><div class="ds-tab__item-inner"><span class="ds-tab__item-text">Unified O&amp;M</span></div></div>
+      </div>
+      <div class="grid-3">
+        <div class="ds-card ds-card--vertical ds-card--no-border">
+          <div class="ds-card__image">
+            <img src="https://eo-sgp-cos.ruijie.com/site_style/specialPage/managed-service-providers/RJ-img/tab1-pro1.webp" alt="RG-SAP825-SP" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+          </div>
+          <div class="ds-card__body">
+            <p class="ds-card__title">RG-SAP825-SP</p>
+            <div class="ds-card__desc">
+              <p>Wi-Fi 6 Dual-Radio 2.976 Gbps High-Density Indoor Access Point</p>
+            </div>
+            <div class="ds-card__link">
+              <a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="#">
+                <span class="ds-text-btn__text">Explore details</span>
+                <img class="ds-text-btn__icon" src="../fs-components/component-specs/icons/icon-arrow-right.svg" alt="">
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="ds-card ds-card--vertical ds-card--no-border">
+          <div class="ds-card__image">
+            <img src="https://eo-sgp-cos.ruijie.com/site_style/specialPage/managed-service-providers/RJ-img/tab1-pro2.webp" alt="RG-SAP685-SP" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+          </div>
+          <div class="ds-card__body">
+            <p class="ds-card__title">RG-SAP685-SP</p>
+            <div class="ds-card__desc">
+              <p>Wi-Fi 6 Dual-Radio 2.976 Gbps Cost-Effective Outdoor Access Point with Directional Antennas</p>
+            </div>
+            <div class="ds-card__link">
+              <a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="#">
+                <span class="ds-text-btn__text">Explore details</span>
+                <img class="ds-text-btn__icon" src="../fs-components/component-specs/icons/icon-arrow-right.svg" alt="">
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="ds-card ds-card--vertical ds-card--no-border">
+          <div class="ds-card__image">
+            <img src="https://eo-sgp-cos.ruijie.com/site_style/specialPage/managed-service-providers/RJ-img/tab1-pro3.webp" alt="RG-SC6705-SP" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+          </div>
+          <div class="ds-card__body">
+            <p class="ds-card__title">RG-SC6705-SP</p>
+            <div class="ds-card__desc">
+              <p>Multi-Service Wireless Controller with 64 AP License</p>
+            </div>
+            <div class="ds-card__link">
+              <a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="#">
+                <span class="ds-text-btn__text">Explore details</span>
+                <img class="ds-text-btn__icon" src="../fs-components/component-specs/icons/icon-arrow-right.svg" alt="">
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESOURCES — white, E-book / White paper tabs + resource grid -->
+  <section class="page-section page-section--white" id="resources">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-header__title">Resources</h2>
+      </div>
+      <div class="ds-tab ds-tab--standard ds-tab--center" data-tab-group style="margin-bottom: 24px;">
+        <div class="ds-tab__item ds-tab__item--active" data-tab-item>
+          <div class="ds-tab__item-inner"><span class="ds-tab__item-text">E-book</span><div class="ds-tab__indicator"></div></div>
+        </div>
+        <div class="ds-tab__item" data-tab-item><div class="ds-tab__item-inner"><span class="ds-tab__item-text">White paper</span></div></div>
+      </div>
+      <div class="grid-2">
+        <div class="ds-card ds-card--vertical ds-card--bordered-full">
+          <div class="ds-card__body">
+            <p class="ds-card__title">Ruijie Managed Service Provider Solution</p>
+            <div class="ds-card__link">
+              <a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="#">
+                <span class="ds-text-btn__text">Learn More</span>
+                <img class="ds-text-btn__icon" src="../fs-components/component-specs/icons/icon-arrow-right.svg" alt="">
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="ds-card ds-card--vertical ds-card--bordered-full">
+          <div class="ds-card__body">
+            <p class="ds-card__title">Ruijie's Wi-Fi as a Service (WaaS) Solution</p>
+            <div class="ds-card__link">
+              <a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="#">
+                <span class="ds-text-btn__text">Learn More</span>
+                <img class="ds-text-btn__icon" src="../fs-components/component-specs/icons/icon-arrow-right.svg" alt="">
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="ds-card ds-card--vertical ds-card--bordered-full">
+          <div class="ds-card__body">
+            <p class="ds-card__title">WIS Cloud Solution Datasheet</p>
+            <div class="ds-card__link">
+              <a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="#">
+                <span class="ds-text-btn__text">Learn More</span>
+                <img class="ds-text-btn__icon" src="../fs-components/component-specs/icons/icon-arrow-right.svg" alt="">
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="ds-card ds-card--vertical ds-card--bordered-full">
+          <div class="ds-card__body">
+            <p class="ds-card__title">Ruijie SD-WAN Solution</p>
+            <div class="ds-card__link">
+              <a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="#">
+                <span class="ds-text-btn__text">Learn More</span>
+                <img class="ds-text-btn__icon" src="../fs-components/component-specs/icons/icon-arrow-right.svg" alt="">
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONNECT WITH US — gray section wrapping a dark content banner (bg image + outline-white CTA) -->
+  <section class="page-section page-section--gray">
+    <div class="container">
+      <div style="background-color: #19191A; background-image: url('https://eo-sgp-cos.ruijie.com/site_style/specialPage/managed-service-providers/RJ-img/contact.webp'); background-size: cover; background-position: center right; box-shadow: inset 0 0 0 2000px rgba(0,0,0,0.5); border-radius: 8px; padding: 48px; display: flex; flex-direction: column; gap: 20px;">
+        <h2 style="color: #FFFFFF; font-size: 24px; font-weight: 600; line-height: 32px; max-width: 480px;">Connect with Us for Enhanced Support and Services</h2>
+        <div>
+          <button class="ds-btn ds-btn--outline-white ds-btn--l"><span class="ds-btn__text">Contact Us</span></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER — injected from navigation component (Rule 0, verbatim) -->
+  <footer class="ds-nav-footer" data-fragment="footer">
+    <div class="ds-nav-footer__inner">
+      <div class="ds-nav-footer__columns">
+        <div class="ds-nav-footer__col">
+          <h4 class="ds-nav-footer__col-title">About Us</h4>
+          <ul class="ds-nav-footer__col-links">
+            <li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">Overview</span></a></li>
+            <li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">Global Warehouse</span></a></li>
+            <li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">Advanced R&amp;D Center</span></a></li>
+            <li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">Quality Control</span></a></li>
+            <li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">Compliance Center</span></a></li>
+            <li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">Test Center</span></a></li>
+            <li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">Contact Us</span></a></li>
+          </ul>
+        </div>
+        <div class="ds-nav-footer__col">
+          <h4 class="ds-nav-footer__col-title">Service</h4>
+          <ul class="ds-nav-footer__col-links">
+            <li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">Payment Methods</span></a></li>
+            <li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">Shipping Guide</span></a></li>
+            <li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">Business Account</span></a></li>
+            <li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">Net Terms</span></a></li>
+            <li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">Return Policy</span></a></li>
+            <li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">Product Warranty</span></a></li>
+            <li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">Give us your Feedback</span></a></li>
+          </ul>
+        </div>
+        <div class="ds-nav-footer__col">
+          <h4 class="ds-nav-footer__col-title">Resource</h4>
+          <ul class="ds-nav-footer__col-links">
+            <li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">Documentation</span></a></li>
+            <li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">Glossary</span></a></li>
+            <li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">Audio &amp; Video</span></a></li>
+            <li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">FS Blog</span></a></li>
+            <li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">Case Studies</span></a></li>
+          </ul>
+        </div>
+        <div class="ds-nav-footer__col">
+          <h4 class="ds-nav-footer__col-title">Support</h4>
+          <ul class="ds-nav-footer__col-links">
+            <li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">FAQ &amp; Help Center</span></a></li>
+            <li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">Solution Support</span></a></li>
+            <li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">Query Tool</span></a></li>
+            <li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">WDM Transceiver Stock List</span></a></li>
+            <li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">Products Verification</span></a></li>
+            <li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">Track My Order</span></a></li>
+            <li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">RMA Checklist</span></a></li>
+          </ul>
+        </div>
+        <div class="ds-nav-footer__sidebar">
+          <div class="ds-nav-footer__subscribe">
+            <h4 class="ds-nav-footer__col-title">Stay in Touch</h4>
+            <div class="ds-nav-footer__subscribe-form">
+              <input type="email" class="ds-nav-footer__subscribe-input" placeholder="Email" aria-label="Email">
+              <button class="ds-nav-footer__subscribe-btn" type="button">Subscribe</button>
+            </div>
+          </div>
+          <div class="ds-nav-footer__app">
+            <h4 class="ds-nav-footer__col-title">Download FS APP</h4>
+            <div class="ds-nav-footer__app-badges">
+              <a href="#" aria-label="Download on the App Store"><img src="../fs-components/component-specs/icons/img-app-store.svg" alt="App Store" height="28"></a>
+              <a href="#" aria-label="Get it on Google Play"><img src="../fs-components/component-specs/icons/img-google-play.svg" alt="Google Play" height="28"></a>
+            </div>
+          </div>
+          <div class="ds-nav-footer__social">
+            <a href="#" class="ds-nav-footer__social-link" aria-label="LinkedIn"><img src="../fs-components/component-specs/icons/icon-social-linkedin.svg" alt="" width="16" height="16"></a>
+            <a href="#" class="ds-nav-footer__social-link" aria-label="YouTube"><img src="../fs-components/component-specs/icons/icon-social-youtube.svg" alt="" width="16" height="16"></a>
+            <a href="#" class="ds-nav-footer__social-link" aria-label="Facebook"><img src="../fs-components/component-specs/icons/icon-social-facebook.svg" alt="" width="16" height="16"></a>
+            <a href="#" class="ds-nav-footer__social-link" aria-label="X"><img src="../fs-components/component-specs/icons/icon-social-x.svg" alt="" width="16" height="16"></a>
+            <a href="#" class="ds-nav-footer__social-link" aria-label="Instagram"><img src="../fs-components/component-specs/icons/icon-social-instagram.svg" alt="" width="16" height="16"></a>
+            <a href="#" class="ds-nav-footer__social-link" aria-label="Reddit"><img src="../fs-components/component-specs/icons/icon-social-reddit.svg" alt="" width="16" height="16"></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="ds-nav-footer__badges">
+        <div class="ds-nav-footer__badges-left">
+          <img src="../fs-components/component-specs/icons/img-badge-trustpilot.svg" alt="Trustpilot" height="28">
+          <img src="../fs-components/component-specs/icons/img-badge-trustedsite.svg" alt="TrustedSite" height="28">
+          <img src="../fs-components/component-specs/icons/img-badge-bbb.svg" alt="BBB" height="28">
+          <img src="../fs-components/component-specs/icons/img-badge-google.svg" alt="Google Reviews" height="28">
+        </div>
+        <div class="ds-nav-footer__badges-right">
+          <a href="#" class="ds-nav-footer__region-link">
+            United States / $ USD
+            <svg class="ds-nav-footer__dropdown-icon" width="12" height="12" viewBox="0 0 12 12" fill="none">
+              <path d="M3 4.5L6 7.5L9 4.5" stroke="#707070" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <hr class="ds-nav-footer__divider">
+
+      <div class="ds-nav-footer__legal">
+        <div class="ds-nav-footer__legal-links">
+          <a href="#" class="ds-nav-footer__legal-link">Site Map</a>
+          <span class="ds-nav-footer__legal-divider"></span>
+          <a href="#" class="ds-nav-footer__legal-link">Accessibility</a>
+          <span class="ds-nav-footer__legal-divider"></span>
+          <a href="#" class="ds-nav-footer__legal-link">Privacy Policy and Notice at Collection</a>
+          <span class="ds-nav-footer__legal-divider"></span>
+          <a href="#" class="ds-nav-footer__legal-link">Cookies Notice</a>
+          <span class="ds-nav-footer__legal-divider"></span>
+          <a href="#" class="ds-nav-footer__legal-link">Terms and Conditions</a>
+          <span class="ds-nav-footer__legal-divider"></span>
+          <a href="#" class="ds-nav-footer__legal-link">Report a Vulnerability</a>
+          <span class="ds-nav-footer__legal-divider"></span>
+          <a href="#" class="ds-nav-footer__legal-link">Do Not Sell or Share My Personal Information</a>
+          <span class="ds-nav-footer__legal-divider"></span>
+          <a href="#" class="ds-nav-footer__legal-link">Company Policies</a>
+          <span class="ds-nav-footer__legal-divider"></span>
+          <a href="#" class="ds-nav-footer__legal-link">Cookie Settings</a>
+        </div>
+        <div class="ds-nav-footer__copyright">
+          Copyright &copy; 2009-2026 FS.COM INC. All Rights Reserved.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Anchor nav active state
+    document.querySelectorAll('[data-anchor-group]').forEach(function(nav) {
+      nav.querySelectorAll('[data-anchor-tab]').forEach(function(tab) {
+        tab.addEventListener('click', function() {
+          nav.querySelectorAll('[data-anchor-tab]').forEach(function(t) { t.classList.remove('ds-anchor-nav__tab--active'); });
+          tab.classList.add('ds-anchor-nav__tab--active');
+        });
+      });
+    });
+
+    // Generic standard-tab active toggle (Related Products / Resources)
+    document.querySelectorAll('[data-tab-group]').forEach(function(group) {
+      group.querySelectorAll('[data-tab-item]').forEach(function(item) {
+        item.addEventListener('click', function() {
+          group.querySelectorAll('[data-tab-item]').forEach(function(t) {
+            t.classList.remove('ds-tab__item--active');
+            var ind = t.querySelector('.ds-tab__indicator');
+            if (ind) ind.remove();
+          });
+          item.classList.add('ds-tab__item--active');
+          var inner = item.querySelector('.ds-tab__item-inner');
+          if (inner && !inner.querySelector('.ds-tab__indicator')) {
+            var ind = document.createElement('div');
+            ind.className = 'ds-tab__indicator';
+            inner.appendChild(ind);
+          }
+        });
+      });
+    });
+
+    // Technical cases carousel
+    (function() {
+      var track = document.getElementById('tc-track');
+      var prevBtn = document.getElementById('tc-prev');
+      var nextBtn = document.getElementById('tc-next');
+      var dots = document.getElementById('tc-dots').querySelectorAll('.ds-carousel__dot');
+      var total = dots.length;
+      var current = 0;
+      function goTo(index) {
+        current = index;
+        track.style.transform = 'translateX(-' + (current * 100) + '%)';
+        dots.forEach(function(d, i) { d.classList.toggle('ds-carousel__dot--active', i === current); });
+        prevBtn.disabled = (current === 0);
+        nextBtn.disabled = (current === total - 1);
+      }
+      prevBtn.addEventListener('click', function() { if (current > 0) goTo(current - 1); });
+      nextBtn.addEventListener('click', function() { if (current < total - 1) goTo(current + 1); });
+      dots.forEach(function(dot) {
+        dot.addEventListener('click', function() { goTo(parseInt(dot.getAttribute('data-index'), 10)); });
+      });
+    })();
+  </script>
+
+</body>
+</html>

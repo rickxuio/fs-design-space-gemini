@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Banner 横幅 - 组件预览</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../tokens.css">
+  <link rel="stylesheet" href="../components.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: var(--font-family-base); padding: 40px; background: #FFF; color: var(--color-gray-1); }
+    h1 { font-size: 24px; font-weight: 600; margin-bottom: 8px; }
+    .subtitle { font-size: 14px; color: var(--color-gray-3); margin-bottom: 40px; }
+    .section { margin-bottom: 48px; }
+    .section-title { font-size: 18px; font-weight: 600; margin-bottom: 24px; padding-bottom: 8px; border-bottom: 1px solid var(--color-gray-5); }
+    .demo-label { font-size: 12px; color: var(--color-gray-3); margin-bottom: 8px; }
+    .demo-row { margin-bottom: 24px; }
+    .banner-bg-dark { background: linear-gradient(135deg, #2c3e50 0%, #4a6741 100%); }
+    .banner-bg-blue { background: linear-gradient(135deg, #1a365d 0%, #2d5a87 100%); }
+    .banner-bg-light { background: linear-gradient(135deg, #f0f0f0 0%, #e8e8e8 100%); }
+
+    /* Dependency Bar */
+    .ds-dep-bar { display: flex; align-items: flex-start; gap: 12px; padding: 16px 20px; background: #FAFBFC; border: 1px solid var(--color-gray-5); border-radius: 8px; margin-bottom: 40px; }
+    .ds-dep-bar__label { font-size: 12px; font-weight: 600; color: var(--color-gray-3); white-space: nowrap; line-height: 24px; }
+    .ds-dep-bar__tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .ds-dep__tag { display: inline-flex; align-items: center; height: 24px; padding: 0 10px; border-radius: 4px; font-size: 11px; font-weight: 600; line-height: 24px; }
+    .ds-dep__tag--token { background: #FFF3E0; color: #E65100; }
+    .ds-dep__tag--comp { background: #E8F0FE; color: #1a56db; }
+    .ds-dep__tag--icon { background: #F3E8FF; color: #6B21A8; }
+  </style>
+</head>
+<body>
+  <h1>Banner 横幅</h1>
+  <p class="subtitle">页面顶部大图横幅组件 — 按页面类型分为首页/解决方案/知识库/专题页/商品详情页等变体</p>
+
+  <!-- 变体决策表 -->
+  <div style="margin-bottom: 40px; padding: 24px; background: #FAFBFC; border: 1px solid var(--color-gray-5); border-radius: 8px;">
+    <p style="font-size: 14px; font-weight: 600; margin-bottom: 12px;">变体选择决策表（必须先判断再写）</p>
+    <table style="width: 100%; border-collapse: collapse; margin-bottom: 12px;">
+      <thead>
+        <tr>
+          <th style="background: #F6F6F8; font-size: 12px; font-weight: 600; text-align: left; padding: 8px 10px; border: 1px solid #DEE0E3;">源页面特征</th>
+          <th style="background: #F6F6F8; font-size: 12px; font-weight: 600; text-align: left; padding: 8px 10px; border: 1px solid #DEE0E3;">变体</th>
+          <th style="background: #F6F6F8; font-size: 12px; font-weight: 600; text-align: left; padding: 8px 10px; border: 1px solid #DEE0E3;">Class</th>
+          <th style="background: #F6F6F8; font-size: 12px; font-weight: 600; text-align: left; padding: 8px 10px; border: 1px solid #DEE0E3;">尺寸</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td style="font-size: 12px; padding: 8px 10px; border: 1px solid #DEE0E3;">大图+标题+描述+可选按钮，首页/落地页</td><td style="font-size: 12px; padding: 8px 10px; border: 1px solid #DEE0E3;">Hero</td><td style="font-size: 12px; padding: 8px 10px; border: 1px solid #DEE0E3;"><code>ds-banner--hero</code></td><td style="font-size: 12px; padding: 8px 10px; border: 1px solid #DEE0E3;">1920×420</td></tr>
+        <tr><td style="font-size: 12px; padding: 8px 10px; border: 1px solid #DEE0E3;">面包屑+标题+描述，解决方案/产品线页</td><td style="font-size: 12px; padding: 8px 10px; border: 1px solid #DEE0E3;">Sub</td><td style="font-size: 12px; padding: 8px 10px; border: 1px solid #DEE0E3;"><code>ds-banner--sub</code></td><td style="font-size: 12px; padding: 8px 10px; border: 1px solid #DEE0E3;">1920×320</td></tr>
+        <tr><td style="font-size: 12px; padding: 8px 10px; border: 1px solid #DEE0E3;">标题+描述+搜索框，知识库/Case Studies</td><td style="font-size: 12px; padding: 8px 10px; border: 1px solid #DEE0E3;">Search</td><td style="font-size: 12px; padding: 8px 10px; border: 1px solid #DEE0E3;"><code>ds-banner--search</code></td><td style="font-size: 12px; padding: 8px 10px; border: 1px solid #DEE0E3;">1920×320</td></tr>
+        <tr><td style="font-size: 12px; padding: 8px 10px; border: 1px solid #DEE0E3;">仅标题居中，专题/活动页</td><td style="font-size: 12px; padding: 8px 10px; border: 1px solid #DEE0E3;">Title-only</td><td style="font-size: 12px; padding: 8px 10px; border: 1px solid #DEE0E3;"><code>ds-banner--title-only</code></td><td style="font-size: 12px; padding: 8px 10px; border: 1px solid #DEE0E3;">1920×200</td></tr>
+        <tr><td style="font-size: 12px; padding: 8px 10px; border: 1px solid #DEE0E3;">窄条提示，商品详情页内嵌</td><td style="font-size: 12px; padding: 8px 10px; border: 1px solid #DEE0E3;">Mini</td><td style="font-size: 12px; padding: 8px 10px; border: 1px solid #DEE0E3;"><code>ds-banner--mini</code></td><td style="font-size: 12px; padding: 8px 10px; border: 1px solid #DEE0E3;">1200×90</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size: 12px; color: #707070;">⚠️ 不要默认用 Hero。有面包屑→Sub，有搜索框→Search，仅标题→Title-only，不确定看高度。</p>
+  </div>
+
+  <div class="ds-dep-bar">
+    <span class="ds-dep-bar__label">依赖关系</span>
+    <div class="ds-dep-bar__tags">
+      <span class="ds-dep__tag ds-dep__tag--token">--color-white</span>
+      <span class="ds-dep__tag ds-dep__tag--token">--brand-red</span>
+      <span class="ds-dep__tag ds-dep__tag--comp">Button</span>
+      <span class="ds-dep__tag ds-dep__tag--comp">Breadcrumb</span>
+      <span class="ds-dep__tag ds-dep__tag--comp">Input</span>
+    </div>
+  </div>
+
+  <!-- 1. Hero Banner (首页) -->
+  <div class="section">
+    <div class="section-title">① 首页 Hero Banner (1920×420)</div>
+    <div class="demo-row">
+      <div class="ds-banner ds-banner--hero banner-bg-dark" data-fragment="hero">
+        <p class="ds-banner__title">This is a banner title</p>
+        <p class="ds-banner__desc">This is a Banner description text</p>
+        <button class="ds-btn ds-btn--outline-white ds-btn--xl-bold">Button Name</button>
+        <div class="ds-banner__dots">
+          <div class="ds-banner__dot ds-banner__dot--active"></div>
+          <div class="ds-banner__dot"></div>
+          <div class="ds-banner__dot"></div>
+          <div class="ds-banner__dot"></div>
+          <div class="ds-banner__dot"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Sub Banner (解决方案页) -->
+  <div class="section">
+    <div class="section-title">② 解决方案页 Banner (1920×320)</div>
+    <div class="demo-row">
+      <div class="ds-banner ds-banner--sub banner-bg-blue" data-fragment="sub">
+        <nav class="ds-breadcrumb ds-breadcrumb--dark">
+          <div class="ds-breadcrumb__item">
+            <a href="#" class="ds-breadcrumb__link">Home</a>
+            <span class="ds-breadcrumb__separator">/</span>
+          </div>
+          <div class="ds-breadcrumb__item">
+            <a href="#" class="ds-breadcrumb__link">Page A</a>
+            <span class="ds-breadcrumb__separator">/</span>
+          </div>
+          <div class="ds-breadcrumb__item">
+            <span class="ds-breadcrumb__current">Current Page</span>
+          </div>
+        </nav>
+        <p class="ds-banner__title">This is a banner title</p>
+        <p class="ds-banner__desc">This is a Banner description text</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Search Banner (知识库/Case Studies) -->
+  <div class="section">
+    <div class="section-title">③ 知识库 Banner (1920×320，含搜索框)</div>
+    <div class="demo-row">
+      <div class="ds-banner ds-banner--search banner-bg-blue" data-fragment="search">
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 16px; width: 960px;">
+          <p class="ds-banner__title" style="width: auto;">This is a banner title</p>
+          <p class="ds-banner__desc" style="width: auto;">This is a Banner description text</p>
+        </div>
+        <div class="ds-banner__search">
+          <span class="ds-banner__search-input" style="color: var(--color-gray-3);">Search all Case Studies</span>
+          <button class="ds-banner__search-btn">
+            <img src="../icons/icon-search.svg" alt="" style="filter: brightness(0) saturate(100%) opacity(0.6);">
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. Title-only Banner (专题页) -->
+  <div class="section">
+    <div class="section-title">④ 专题页 Banner (1920×200，仅标题)</div>
+    <div class="demo-row">
+      <div class="ds-banner ds-banner--title-only banner-bg-dark" data-fragment="title-only">
+        <p class="ds-banner__title">This is a banner title</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. Mini Banner (商品详情页) -->
+  <div class="section">
+    <div class="section-title">⑤ 商品详情页 Banner (版心 1200×90)</div>
+    <div class="demo-row">
+      <div class="ds-banner ds-banner--mini banner-bg-light" style="max-width: 1200px;" data-fragment="mini">
+        <div class="ds-banner__title">
+          <span>This is a banner title</span>
+          <img src="../icons/icon-arrow-right.svg" alt="" style="filter: brightness(0);">
+        </div>
+        <span class="ds-banner__desc">This is a Banner description text</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

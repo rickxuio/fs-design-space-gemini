@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tab 导航 - 组件预览</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../tokens.css">
+  <link rel="stylesheet" href="../components.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: var(--font-family-base); padding: 40px; background: #FFF; color: var(--color-gray-1); }
+    h1 { font-size: 24px; font-weight: 600; margin-bottom: 8px; }
+    .subtitle { font-size: 14px; color: var(--color-gray-3); margin-bottom: 40px; }
+    .section { margin-bottom: 48px; }
+    .section-title { font-size: 18px; font-weight: 600; margin-bottom: 24px; padding-bottom: 8px; border-bottom: 1px solid var(--color-gray-5); }
+    .demo-row { margin-bottom: 24px; }
+    .demo-label { font-size: 12px; color: var(--color-gray-3); margin-bottom: 8px; }
+
+    /* Dependency Bar */
+    .ds-dep-bar { display: flex; align-items: flex-start; gap: 12px; padding: 16px 20px; background: #FAFBFC; border: 1px solid var(--color-gray-5); border-radius: 8px; margin-bottom: 40px; }
+    .ds-dep-bar__label { font-size: 12px; font-weight: 600; color: var(--color-gray-3); white-space: nowrap; line-height: 24px; }
+    .ds-dep-bar__tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .ds-dep__tag { display: inline-flex; align-items: center; height: 24px; padding: 0 10px; border-radius: 4px; font-size: 11px; font-weight: 600; line-height: 24px; }
+    .ds-dep__tag--token { background: #FFF3E0; color: #E65100; }
+    .ds-dep__tag--comp { background: #E8F0FE; color: #1a56db; }
+    .ds-dep__tag--icon { background: #F3E8FF; color: #6B21A8; }
+  </style>
+</head>
+<body>
+  <h1>Tab 导航</h1>
+  <p class="subtitle">Tab 切换导航组件 — 胶囊型 / 首页产品导航 / 常规型，支持点击切换选中态</p>
+
+  <!-- 变体决策表 -->
+  <div style="margin-bottom: 40px; padding: 24px; background: #FAFBFC; border: 1px solid var(--color-gray-5); border-radius: 8px;">
+    <p style="font-size: 14px; font-weight: 600; margin-bottom: 12px;">变体选择决策表（必须先判断再写）</p>
+    <table style="width: 100%; border-collapse: collapse; margin-bottom: 12px;">
+      <thead>
+        <tr>
+          <th style="background: #F6F6F8; font-size: 12px; font-weight: 600; text-align: left; padding: 8px 10px; border: 1px solid #DEE0E3;">源页面特征</th>
+          <th style="background: #F6F6F8; font-size: 12px; font-weight: 600; text-align: left; padding: 8px 10px; border: 1px solid #DEE0E3;">变体</th>
+          <th style="background: #F6F6F8; font-size: 12px; font-weight: 600; text-align: left; padding: 8px 10px; border: 1px solid #DEE0E3;">Class</th>
+          <th style="background: #F6F6F8; font-size: 12px; font-weight: 600; text-align: left; padding: 8px 10px; border: 1px solid #DEE0E3;">视觉特征</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td style="font-size: 12px; padding: 8px 10px; border: 1px solid #DEE0E3;">内容筛选/过滤（规格切换、分类过滤）</td><td style="font-size: 12px; padding: 8px 10px; border: 1px solid #DEE0E3;">Capsule 胶囊</td><td style="font-size: 12px; padding: 8px 10px; border: 1px solid #DEE0E3;"><code>ds-tab--capsule</code></td><td style="font-size: 12px; padding: 8px 10px; border: 1px solid #DEE0E3;">灰底容器，激活项白底</td></tr>
+        <tr><td style="font-size: 12px; padding: 8px 10px; border: 1px solid #DEE0E3;">页面内容分区（Resources / Stories）</td><td style="font-size: 12px; padding: 8px 10px; border: 1px solid #DEE0E3;">Standard 常规</td><td style="font-size: 12px; padding: 8px 10px; border: 1px solid #DEE0E3;"><code>ds-tab--standard</code></td><td style="font-size: 12px; padding: 8px 10px; border: 1px solid #DEE0E3;">底部线条，激活项红色指示线</td></tr>
+        <tr><td style="font-size: 12px; padding: 8px 10px; border: 1px solid #DEE0E3;">首页产品大类导航（带图标）</td><td style="font-size: 12px; padding: 8px 10px; border: 1px solid #DEE0E3;">Product Nav</td><td style="font-size: 12px; padding: 8px 10px; border: 1px solid #DEE0E3;"><code>ds-tab--product</code></td><td style="font-size: 12px; padding: 8px 10px; border: 1px solid #DEE0E3;">带图标，激活态 opacity 1</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size: 12px; color: #707070;">⚠️ 筛选型→Capsule，分区型→Standard，产品入口→Product Nav。居中加 ds-tab--center。</p>
+  </div>
+
+  <div class="ds-dep-bar">
+    <span class="ds-dep-bar__label">依赖关系</span>
+    <div class="ds-dep-bar__tags">
+            <span class="ds-dep__tag ds-dep__tag--token">--color-gray-*</span>
+      <span class="ds-dep__tag ds-dep__tag--token">--brand-red</span>
+      <span class="ds-dep__tag ds-dep__tag--icon">icon-placeholder-switch</span>
+    </div>
+  </div>
+
+  <!-- SECTION 1: 胶囊 Tab -->
+  <div class="section">
+    <div class="section-title">① 胶囊 Tab (Capsule)</div>
+    <div class="demo-row">
+      <div class="demo-label">通栏</div>
+      <div class="ds-tab ds-tab--capsule" data-tab-group>
+        <div class="ds-tab__item ds-tab__item--active" data-tab-item>
+          <div class="ds-tab__item-inner">
+            <span class="ds-tab__item-text">Title option A</span>
+            <div class="ds-tab__indicator"></div>
+          </div>
+        </div>
+        <div class="ds-tab__item" data-tab-item><span class="ds-tab__item-text">Title option B</span></div>
+        <div class="ds-tab__item" data-tab-item><span class="ds-tab__item-text">Title option C</span></div>
+        <div class="ds-tab__item" data-tab-item><span class="ds-tab__item-text">Title option D</span></div>
+        <div class="ds-tab__item" data-tab-item><span class="ds-tab__item-text">Title option E</span></div>
+        <div class="ds-tab__item" data-tab-item><span class="ds-tab__item-text">Title option F</span></div>
+        <div class="ds-tab__item" data-tab-item><span class="ds-tab__item-text">Title option G</span></div>
+        <div class="ds-tab__item" data-tab-item><span class="ds-tab__item-text">Title option H</span></div>
+        <div class="ds-tab__item" data-tab-item><span class="ds-tab__item-text">Title option I</span></div>
+      </div>
+    </div>
+    <div class="demo-row">
+      <div class="demo-label">带 "All" 下拉按钮</div>
+      <div style="display: flex; gap: 12px; align-items: flex-start;">
+        <div class="ds-tab ds-tab--capsule" data-tab-group>
+          <div class="ds-tab__item ds-tab__item--active" data-tab-item>
+            <div class="ds-tab__item-inner">
+              <span class="ds-tab__item-text">Title option A</span>
+              <div class="ds-tab__indicator"></div>
+            </div>
+          </div>
+          <div class="ds-tab__item" data-tab-item><span class="ds-tab__item-text">Title option B</span></div>
+          <div class="ds-tab__item" data-tab-item><span class="ds-tab__item-text">Title option C</span></div>
+          <div class="ds-tab__item" data-tab-item><span class="ds-tab__item-text">Title option D</span></div>
+          <div class="ds-tab__item" data-tab-item><span class="ds-tab__item-text">Title option E</span></div>
+          <div class="ds-tab__item" data-tab-item><span class="ds-tab__item-text">Title option F</span></div>
+          <div class="ds-tab__item" data-tab-item><span class="ds-tab__item-text">Title option G</span></div>
+          <div class="ds-tab__item" data-tab-item><span class="ds-tab__item-text">Title option H</span></div>
+          <div class="ds-tab__item" data-tab-item><span class="ds-tab__item-text">Title option I</span></div>
+        </div>
+        <div class="ds-tab ds-tab--capsule" style="position: relative;">
+          <button class="ds-tab__all-btn" data-all-toggle>
+            <span>All (8)</span>
+            <svg width="16" height="16" viewBox="0 0 12 12" fill="none"><path d="M3 4.5L6 7.5L9 4.5" stroke="#0060BF" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="ds-tab__all-dropdown" data-all-dropdown>
+            <div class="ds-tab__all-dropdown-item">1st item</div>
+            <div class="ds-tab__all-dropdown-item">2nd item</div>
+            <div class="ds-tab__all-dropdown-item">3rd item</div>
+            <div class="ds-tab__all-dropdown-item">4th item</div>
+            <div class="ds-tab__all-dropdown-item">5th item</div>
+            <div class="ds-tab__all-dropdown-item">6th item</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 2: 首页产品导航 -->
+  <div class="section">
+    <div class="section-title">② 首页产品导航 (Product Nav)</div>
+    <div class="demo-row" style="max-width: 1200px;">
+      <div class="ds-tab ds-tab--product" data-tab-group>
+        <div class="ds-tab__item ds-tab__item--active" data-tab-item>
+          <div class="ds-tab__item-icon"><img src="../icons/icon-placeholder-switch.svg" alt=""></div>
+          <div class="ds-tab__item-inner"><span class="ds-tab__item-text">Title A</span><div class="ds-tab__indicator"></div></div>
+        </div>
+        <div class="ds-tab__item" data-tab-item>
+          <div class="ds-tab__item-icon"><img src="../icons/icon-placeholder-switch.svg" alt=""></div>
+          <div class="ds-tab__item-inner"><span class="ds-tab__item-text">Title A</span></div>
+        </div>
+        <div class="ds-tab__item" data-tab-item>
+          <div class="ds-tab__item-icon"><img src="../icons/icon-placeholder-switch.svg" alt=""></div>
+          <div class="ds-tab__item-inner"><span class="ds-tab__item-text">Title A</span></div>
+        </div>
+        <div class="ds-tab__item" data-tab-item>
+          <div class="ds-tab__item-icon"><img src="../icons/icon-placeholder-switch.svg" alt=""></div>
+          <div class="ds-tab__item-inner"><span class="ds-tab__item-text">Title C</span></div>
+        </div>
+        <div class="ds-tab__item" data-tab-item>
+          <div class="ds-tab__item-icon"><img src="../icons/icon-placeholder-switch.svg" alt=""></div>
+          <div class="ds-tab__item-inner"><span class="ds-tab__item-text">Title A</span></div>
+        </div>
+        <div class="ds-tab__item" data-tab-item>
+          <div class="ds-tab__item-icon"><img src="../icons/icon-placeholder-switch.svg" alt=""></div>
+          <div class="ds-tab__item-inner"><span class="ds-tab__item-text">Title A</span></div>
+        </div>
+        <div class="ds-tab__item" data-tab-item>
+          <div class="ds-tab__item-icon"><img src="../icons/icon-placeholder-switch.svg" alt=""></div>
+          <div class="ds-tab__item-inner"><span class="ds-tab__item-text">Title A</span></div>
+        </div>
+        <div class="ds-tab__item" data-tab-item>
+          <div class="ds-tab__item-icon"><img src="../icons/icon-placeholder-switch.svg" alt=""></div>
+          <div class="ds-tab__item-inner"><span class="ds-tab__item-text">Title A</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 3: 常规 Tab -->
+  <div class="section">
+    <div class="section-title">③ 常规 Tab (Standard)</div>
+
+    <div class="demo-row">
+      <div class="demo-label">居左 — Default (14px)</div>
+      <div class="ds-tab ds-tab--standard" data-tab-group style="max-width: 1200px;">
+        <div class="ds-tab__item ds-tab__item--active" data-tab-item>
+          <div class="ds-tab__item-inner"><span class="ds-tab__item-text">Option</span><div class="ds-tab__indicator"></div></div>
+        </div>
+        <div class="ds-tab__item" data-tab-item>
+          <div class="ds-tab__item-inner"><span class="ds-tab__item-text">Option</span></div>
+        </div>
+        <div class="ds-tab__item" data-tab-item>
+          <div class="ds-tab__item-inner"><span class="ds-tab__item-text">Option</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-row">
+      <div class="demo-label">居左 — Large (16px)</div>
+      <div class="ds-tab ds-tab--standard ds-tab--standard-lg" data-tab-group style="max-width: 1200px;">
+        <div class="ds-tab__item ds-tab__item--active" data-tab-item>
+          <div class="ds-tab__item-inner"><span class="ds-tab__item-text">Option</span><div class="ds-tab__indicator"></div></div>
+        </div>
+        <div class="ds-tab__item" data-tab-item>
+          <div class="ds-tab__item-inner"><span class="ds-tab__item-text">Option</span></div>
+        </div>
+        <div class="ds-tab__item" data-tab-item>
+          <div class="ds-tab__item-inner"><span class="ds-tab__item-text">Option</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-row">
+      <div class="demo-label">居中 — Default (14px)</div>
+      <div class="ds-tab ds-tab--standard ds-tab--center" data-tab-group style="max-width: 1200px;">
+        <div class="ds-tab__item ds-tab__item--active" data-tab-item>
+          <div class="ds-tab__item-inner"><span class="ds-tab__item-text">Option</span><div class="ds-tab__indicator"></div></div>
+        </div>
+        <div class="ds-tab__item" data-tab-item>
+          <div class="ds-tab__item-inner"><span class="ds-tab__item-text">Option</span></div>
+        </div>
+        <div class="ds-tab__item" data-tab-item>
+          <div class="ds-tab__item-inner"><span class="ds-tab__item-text">Option</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-row">
+      <div class="demo-label">居中 — Large (16px)</div>
+      <div class="ds-tab ds-tab--standard ds-tab--standard-lg ds-tab--center" data-tab-group style="max-width: 1200px;">
+        <div class="ds-tab__item ds-tab__item--active" data-tab-item>
+          <div class="ds-tab__item-inner"><span class="ds-tab__item-text">Option</span><div class="ds-tab__indicator"></div></div>
+        </div>
+        <div class="ds-tab__item" data-tab-item>
+          <div class="ds-tab__item-inner"><span class="ds-tab__item-text">Option</span></div>
+        </div>
+        <div class="ds-tab__item" data-tab-item>
+          <div class="ds-tab__item-inner"><span class="ds-tab__item-text">Option</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Tab click-to-switch
+    document.querySelectorAll('[data-tab-group]').forEach(function(group) {
+      group.querySelectorAll('[data-tab-item]').forEach(function(item) {
+        item.addEventListener('click', function() {
+          group.querySelectorAll('[data-tab-item]').forEach(function(t) {
+            t.classList.remove('ds-tab__item--active');
+            var ind = t.querySelector('.ds-tab__indicator');
+            if (ind) ind.remove();
+          });
+          item.classList.add('ds-tab__item--active');
+          var inner = item.querySelector('.ds-tab__item-inner');
+          if (!inner) {
+            var wrap = document.createElement('div');
+            wrap.className = 'ds-tab__item-inner';
+            var text = item.querySelector('.ds-tab__item-text');
+            if (text) { item.removeChild(text); wrap.appendChild(text); }
+            item.appendChild(wrap);
+            inner = wrap;
+          }
+          if (!inner.querySelector('.ds-tab__indicator')) {
+            var ind = document.createElement('div');
+            ind.className = 'ds-tab__indicator';
+            inner.appendChild(ind);
+          }
+        });
+      });
+    });
+    // All dropdown toggle
+    document.querySelectorAll('[data-all-toggle]').forEach(function(btn) {
+      btn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        var dd = btn.parentElement.querySelector('[data-all-dropdown]');
+        dd.classList.toggle('ds-tab__all-dropdown--open');
+      });
+    });
+    document.addEventListener('click', function() {
+      document.querySelectorAll('.ds-tab__all-dropdown--open').forEach(function(d) {
+        d.classList.remove('ds-tab__all-dropdown--open');
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+stages:
+  - check
+
+spec-check:
+  stage: check
+  image: node:20-bookworm
+  before_script:
+    - export DEBIAN_FRONTEND=noninteractive
+    - apt-get update -qq
+    - apt-get install -y -qq chromium > /dev/null
+    - export CHROME_PATH="$(command -v chromium)"
+    - npm ci
+  script:
+    # Fail if the committed build output is stale.
+    - node build.js
+    - git diff --exit-code -- fs-components/page-specs
+    # Static compliance gate.
+    - node validate.js
+    # Headless geometry gate.
+    - node verify.js

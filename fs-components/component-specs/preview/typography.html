@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>字体规范 Typography - 组件预览</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../tokens.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: var(--font-family-base);
+      padding: 40px;
+      background: #FFFFFF;
+      color: var(--color-gray-1);
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    h1 { font-size: 24px; font-weight: 600; margin-bottom: 8px; }
+    .subtitle { font-size: 14px; color: var(--color-gray-3); margin-bottom: 40px; }
+
+    .section { margin-bottom: 48px; }
+    .section-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 24px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--color-gray-5);
+    }
+    .section-desc {
+      font-size: 13px;
+      color: var(--color-gray-3);
+      margin-bottom: 20px;
+    }
+
+    /* Font Family */
+    .font-family-box {
+      background: var(--color-gray-9);
+      border-radius: var(--border-radius-lg);
+      padding: 24px 28px;
+      margin-bottom: 16px;
+    }
+    .font-family-box .label {
+      font-size: 12px;
+      color: var(--color-gray-3);
+      margin-bottom: 8px;
+    }
+    .font-family-box .sample {
+      font-size: 20px;
+      color: var(--color-gray-1);
+      margin-bottom: 12px;
+    }
+    .font-family-box .fallback {
+      font-size: 12px;
+      color: var(--color-gray-3);
+      font-family: monospace;
+    }
+    .weight-compare {
+      display: flex;
+      gap: 48px;
+      margin-top: 16px;
+    }
+    .weight-compare-item .weight-label {
+      font-size: 12px;
+      color: var(--color-gray-3);
+      margin-bottom: 4px;
+    }
+    .weight-compare-item .weight-sample {
+      font-size: 28px;
+      color: var(--color-gray-1);
+    }
+
+    /* Font Weights */
+    .weights-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .weight-card {
+      background: var(--color-gray-9);
+      border-radius: var(--border-radius-lg);
+      padding: 24px 28px;
+    }
+    .weight-card .card-label {
+      font-size: 12px;
+      color: var(--color-gray-3);
+      margin-bottom: 4px;
+    }
+    .weight-card .card-value {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--color-gray-2);
+      margin-bottom: 12px;
+    }
+    .weight-card .card-sample {
+      font-size: 24px;
+      color: var(--color-gray-1);
+    }
+    .weight-card .card-body {
+      font-size: 14px;
+      color: var(--color-gray-2);
+      margin-top: 8px;
+    }
+
+    /* Scale Table */
+    .scale-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .scale-table th {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--color-gray-3);
+      text-align: left;
+      padding: 10px 12px;
+      border-bottom: 2px solid var(--color-gray-5);
+      white-space: nowrap;
+    }
+    .scale-table td {
+      padding: 14px 12px;
+      border-bottom: 1px solid var(--color-gray-5);
+      vertical-align: middle;
+    }
+    .scale-table .level-cell {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--color-gray-2);
+      white-space: nowrap;
+    }
+    .scale-table .spec-cell {
+      font-size: 12px;
+      color: var(--color-gray-3);
+      white-space: nowrap;
+    }
+    .scale-table .mobile-cell {
+      font-size: 12px;
+      color: var(--color-gray-3);
+      white-space: nowrap;
+    }
+
+    /* Text Colors */
+    .color-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 16px;
+    }
+    .color-card {
+      border: 1px solid var(--color-gray-5);
+      border-radius: var(--border-radius-lg);
+      padding: 20px;
+    }
+    .color-card--dark {
+      background: var(--color-gray-1);
+      border-color: var(--color-gray-1);
+    }
+    .color-card .color-sample {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .color-card .color-name {
+      font-size: 12px;
+      color: var(--color-gray-3);
+      margin-bottom: 2px;
+    }
+    .color-card--dark .color-name {
+      color: rgba(255,255,255,0.5);
+    }
+    .color-card .color-value {
+      font-size: 11px;
+      font-family: monospace;
+      color: var(--color-gray-3);
+    }
+    .color-card--dark .color-value {
+      color: rgba(255,255,255,0.5);
+    }
+
+    /* Principles */
+    .principles-list {
+      list-style: none;
+      padding: 0;
+    }
+    .principles-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--color-gray-5);
+      font-size: 14px;
+      color: var(--color-gray-2);
+    }
+    .principles-list li:last-child { border-bottom: none; }
+    .principle-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--color-gray-9);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--color-gray-2);
+      flex-shrink: 0;
+    }
+    .principle-example {
+      margin-top: 8px;
+      padding: 12px 16px;
+      background: var(--color-gray-9);
+      border-radius: var(--border-radius-md);
+      font-size: 13px;
+      color: var(--color-gray-3);
+    }
+  </style>
+</head>
+<body>
+  <h1>字体规范 Typography</h1>
+  <p class="subtitle">完整的字体系统规范，包含字体族、字重、字阶、文字颜色与设计原则</p>
+
+  <!-- ============================================
+       SECTION 1: 字体族 Font Family
+       ============================================ -->
+  <div class="section">
+    <div class="section-title">字体族 Font Family</div>
+    <div class="font-family-box">
+      <div class="label">主字体 Primary Font — Open Sans</div>
+      <div class="sample">The quick brown fox jumps over the lazy dog</div>
+      <div class="fallback">Fallback: PingFang SC, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif</div>
+      <div class="weight-compare">
+        <div class="weight-compare-item">
+          <div class="weight-label">Regular 400</div>
+          <div class="weight-sample" style="font-weight: 400;">FS.com</div>
+        </div>
+        <div class="weight-compare-item">
+          <div class="weight-label">SemiBold 600</div>
+          <div class="weight-sample" style="font-weight: 600;">FS.com</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================
+       SECTION 2: 字重 Font Weights
+       ============================================ -->
+  <div class="section">
+    <div class="section-title">字重 Font Weights</div>
+    <div class="section-desc">系统仅使用两种字重，保持视觉一致性</div>
+    <div class="weights-grid">
+      <div class="weight-card">
+        <div class="card-label">Regular</div>
+        <div class="card-value">400</div>
+        <div class="card-sample" style="font-weight: 400;">FS.com 设计系统</div>
+        <div class="card-body" style="font-weight: 400;">用于正文、描述、辅助文字等常规内容</div>
+      </div>
+      <div class="weight-card">
+        <div class="card-label">SemiBold</div>
+        <div class="card-value">600</div>
+        <div class="card-sample" style="font-weight: 600;">FS.com 设计系统</div>
+        <div class="card-body" style="font-weight: 400;">用于标题、强调、按钮等需要突出的内容</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================
+       SECTION 3: 字阶 Typography Scale (PC & Pad)
+       ============================================ -->
+  <div class="section">
+    <div class="section-title">字阶 Typography Scale — PC &amp; Pad</div>
+    <div class="section-desc">9 级字阶体系，H1–H5 固定 SemiBold 600，H6–H9 可选 SemiBold 600 或 Regular 400</div>
+    <div style="overflow-x: auto;">
+      <table class="scale-table">
+        <thead>
+          <tr>
+            <th>层级 Level</th>
+            <th>示例 Sample</th>
+            <th>字号 Size</th>
+            <th>行高 Line Height</th>
+            <th>字重 Weight</th>
+            <th>移动端适配 Mobile</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="level-cell">H1</td>
+            <td><span style="font-size: var(--font-size-h1); line-height: var(--line-height-h1); font-weight: 600;">FS.com</span></td>
+            <td class="spec-cell">36px</td>
+            <td class="spec-cell">48px (1.3)</td>
+            <td class="spec-cell">SemiBold 600</td>
+            <td class="mobile-cell">24px</td>
+          </tr>
+          <tr>
+            <td class="level-cell">H2</td>
+            <td><span style="font-size: var(--font-size-h2); line-height: var(--line-height-h2); font-weight: 600;">FS.com</span></td>
+            <td class="spec-cell">32px</td>
+            <td class="spec-cell">40px (1.2)</td>
+            <td class="spec-cell">SemiBold 600</td>
+            <td class="mobile-cell">24px</td>
+          </tr>
+          <tr>
+            <td class="level-cell">H3</td>
+            <td><span style="font-size: var(--font-size-h3); line-height: var(--line-height-h3); font-weight: 600;">FS.com</span></td>
+            <td class="spec-cell">24px</td>
+            <td class="spec-cell">32px (1.3)</td>
+            <td class="spec-cell">SemiBold 600</td>
+            <td class="mobile-cell">20px / 16px</td>
+          </tr>
+          <tr>
+            <td class="level-cell">H4</td>
+            <td><span style="font-size: var(--font-size-h4); line-height: var(--line-height-h4); font-weight: 600;">FS.com</span></td>
+            <td class="spec-cell">20px</td>
+            <td class="spec-cell">28px (1.4)</td>
+            <td class="spec-cell">SemiBold 600</td>
+            <td class="mobile-cell">16px</td>
+          </tr>
+          <tr>
+            <td class="level-cell">H5</td>
+            <td><span style="font-size: var(--font-size-h5); line-height: var(--line-height-h5); font-weight: 600;">FS.com</span></td>
+            <td class="spec-cell">18px</td>
+            <td class="spec-cell">26px (1.4)</td>
+            <td class="spec-cell">SemiBold 600</td>
+            <td class="mobile-cell">—</td>
+          </tr>
+          <tr>
+            <td class="level-cell">H6</td>
+            <td><span style="font-size: var(--font-size-h6); line-height: var(--line-height-h6); font-weight: 600;">FS.com</span></td>
+            <td class="spec-cell">16px</td>
+            <td class="spec-cell">24px (1.5)</td>
+            <td class="spec-cell">600 / 400</td>
+            <td class="mobile-cell">14px</td>
+          </tr>
+          <tr>
+            <td class="level-cell">H7</td>
+            <td><span style="font-size: var(--font-size-h7); line-height: var(--line-height-h7); font-weight: 600;">FS.com</span></td>
+            <td class="spec-cell">14px</td>
+            <td class="spec-cell">22px (1.5)</td>
+            <td class="spec-cell">600 / 400</td>
+            <td class="mobile-cell">12px</td>
+          </tr>
+          <tr>
+            <td class="level-cell">H8</td>
+            <td><span style="font-size: var(--font-size-h8); line-height: var(--line-height-h8); font-weight: 600;">FS.com</span></td>
+            <td class="spec-cell">13px</td>
+            <td class="spec-cell">20px (1.5)</td>
+            <td class="spec-cell">600 / 400</td>
+            <td class="mobile-cell">—</td>
+          </tr>
+          <tr>
+            <td class="level-cell">H9</td>
+            <td><span style="font-size: var(--font-size-h9); line-height: var(--line-height-h9); font-weight: 600;">FS.com</span></td>
+            <td class="spec-cell">12px</td>
+            <td class="spec-cell">20px (1.6)</td>
+            <td class="spec-cell">600 / 400</td>
+            <td class="mobile-cell">—</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ============================================
+       SECTION 4: 文字颜色 Text Colors
+       ============================================ -->
+  <div class="section">
+    <div class="section-title">文字颜色 Text Colors</div>
+    <div class="color-grid">
+      <div class="color-card">
+        <div class="color-sample" style="color: var(--color-text-primary);">主要文字 Primary</div>
+        <div class="color-name">color.gray-1 / 标题文字</div>
+        <div class="color-value">#19191A</div>
+      </div>
+      <div class="color-card">
+        <div class="color-sample" style="color: var(--color-text-body);">正文文字 Body</div>
+        <div class="color-name">color.gray-2 / 正文内容</div>
+        <div class="color-value">#4B4B4D</div>
+      </div>
+      <div class="color-card">
+        <div class="color-sample" style="color: var(--color-text-secondary);">辅助文字 Secondary</div>
+        <div class="color-name">color.gray-3 / 次要信息</div>
+        <div class="color-value">#707070</div>
+      </div>
+      <div class="color-card">
+        <div class="color-sample" style="color: var(--color-text-disabled);">禁用文字 Disabled</div>
+        <div class="color-name">color.text-disabled</div>
+        <div class="color-value">rgba(25,25,26,0.3)</div>
+      </div>
+      <div class="color-card color-card--dark">
+        <div class="color-sample" style="color: var(--color-text-white);">白色文字 White</div>
+        <div class="color-name">深色背景上使用</div>
+        <div class="color-value">#FFFFFF</div>
+      </div>
+      <div class="color-card">
+        <div class="color-sample" style="color: var(--color-text-link);">链接文字 Link</div>
+        <div class="color-name">color.blue / 可点击链接</div>
+        <div class="color-value">#0060BF</div>
+      </div>
+      <div class="color-card">
+        <div class="color-sample" style="color: var(--color-text-error);">错误文字 Error</div>
+        <div class="color-name">color.error / 错误提示</div>
+        <div class="color-value">#C00000</div>
+      </div>
+      <div class="color-card">
+        <div class="color-sample" style="color: var(--color-text-success);">成功文字 Success</div>
+        <div class="color-name">color.success / 成功提示</div>
+        <div class="color-value">#10A300</div>
+      </div>
+      <div class="color-card">
+        <div class="color-sample" style="color: var(--color-text-warning);">警告文字 Warning</div>
+        <div class="color-name">color.warning / 警告提示</div>
+        <div class="color-value">#F56300</div>
+      </div>
+      <div class="color-card">
+        <div class="color-sample" style="color: var(--color-text-purple);">紫色文字 Purple</div>
+        <div class="color-name">color.purple-tag / 标签</div>
+        <div class="color-value">#512971</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================
+       SECTION 5: 设计原则 Design Principles
+       ============================================ -->
+  <div class="section">
+    <div class="section-title">设计原则 Design Principles</div>
+    <ul class="principles-list">
+      <li>
+        <span class="principle-num">1</span>
+        <div>
+          <strong>文字层级递减</strong> — 父级到子级，字号与字重逐级递减，建立清晰的视觉层次。
+          <div class="principle-example">
+            <span style="font-size: 24px; font-weight: 600;">H3 页面标题</span>&nbsp;&nbsp;→&nbsp;&nbsp;
+            <span style="font-size: 16px; font-weight: 600;">H6 区块标题</span>&nbsp;&nbsp;→&nbsp;&nbsp;
+            <span style="font-size: 14px; font-weight: 400;">H7 正文内容</span>
+          </div>
+        </div>
+      </li>
+      <li>
+        <span class="principle-num">2</span>
+        <div>
+          <strong>SemiBold 用于强调</strong> — SemiBold 600 用于标题和需要突出的内容，Regular 400 用于正文和描述性文字。
+          <div class="principle-example">
+            <span style="font-size: 14px; font-weight: 600;">SemiBold 强调内容</span>&nbsp;&nbsp;/&nbsp;&nbsp;
+            <span style="font-size: 14px; font-weight: 400;">Regular 正文内容</span>
+          </div>
+        </div>
+      </li>
+      <li>
+        <span class="principle-num">3</span>
+        <div>
+          <strong>子级字重不超过父级</strong> — 子元素的字重不得超过其父元素，确保视觉权重从上到下递减。
+          <div class="principle-example">
+            ✅ 父级 SemiBold → 子级 Regular&nbsp;&nbsp;&nbsp;&nbsp;
+            ❌ 父级 Regular → 子级 SemiBold
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+</body>
+</html>

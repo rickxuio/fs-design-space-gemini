@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Industrial Switches — FS.com</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../component-specs/tokens.css">
+  <link rel="stylesheet" href="../component-specs/components.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: var(--font-family-base); background: var(--color-white); color: var(--color-gray-1); }
+
+    .page-section { width: 100%; padding: 40px 0; }
+    .page-section--white { background: var(--color-white); }
+    .page-section--gray { background: var(--color-gray-9); }
+    .container { max-width: 1200px; margin: 0 auto; }
+
+    .section-header { margin-bottom: 24px; text-align: center; }
+    .section-header__title { font-size: 24px; font-weight: 600; line-height: 34px; color: var(--color-gray-1); margin-bottom: 12px; }
+    .section-header__desc { font-size: 14px; font-weight: 400; line-height: 22px; color: var(--color-gray-3); max-width: 960px; margin-left: auto; margin-right: auto; }
+
+    /* Header nav left-aligned */
+    .ds-nav-header__main-inner { justify-content: flex-start; gap: 48px; }
+    .ds-nav-header__links { flex: 1; }
+
+    /* Benefits grid (layout scaffolding only; cards use ds-icon-card) */
+    .benefits-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .benefits-row-2 { display: flex; justify-content: center; gap: 20px; margin-top: 20px; }
+    .benefits-row-2 .ds-icon-card { width: calc((100% - 40px) / 3); }
+
+    /* Products grid */
+    .products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .product-type-label { font-size: 16px; font-weight: 600; line-height: 24px; color: var(--color-gray-1); margin-bottom: 20px; text-align: center; }
+
+    /* Solutions */
+    .solutions-list { display: flex; flex-direction: column; gap: 20px; }
+
+    /* Case Studies grid */
+    .case-studies-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+
+    /* Resources grid */
+    .resources-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER — injected from navigation component -->
+  <div data-component="navigation" data-fragment="header"></div>
+
+  <!-- SUB BANNER — ds-banner--title-only (dark, centered title) -->
+  <div class="ds-banner ds-banner--title-only" style="background-color: #19191A; background-image: url('https://image-resource.mastergo.com/120872800192464/120873122105923/72a975674564c27d5d2b5c60bd2ae50e.jpg'); box-shadow: inset 0 0 0 2000px rgba(0,0,0,0.5);">
+    <h1 class="ds-banner__title">Industrial Switches Engineered for Extremes</h1>
+  </div>
+
+  <!-- ANCHOR NAV — page-specific tabs, no CTA button -->
+  <div class="ds-anchor-nav" data-anchor-group>
+    <div class="ds-anchor-nav__inner">
+      <div class="ds-anchor-nav__tabs">
+        <div class="ds-anchor-nav__tab ds-anchor-nav__tab--active" data-anchor-tab data-target="benefits">Overview</div>
+        <div class="ds-anchor-nav__tab" data-anchor-tab data-target="benefits">Benefits</div>
+        <div class="ds-anchor-nav__tab" data-anchor-tab data-target="featured-products">Featured Products</div>
+        <div class="ds-anchor-nav__tab" data-anchor-tab data-target="solutions">Solutions</div>
+        <div class="ds-anchor-nav__tab" data-anchor-tab data-target="case-studies">Case Studies</div>
+        <div class="ds-anchor-nav__tab" data-anchor-tab data-target="resources">Resources</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Anchor nav: click to scroll + active state
+    var isScrolling = false;
+    var scrollTimer;
+
+    document.querySelectorAll('[data-anchor-group]').forEach(function(nav) {
+      nav.querySelectorAll('[data-anchor-tab]').forEach(function(tab) {
+        tab.addEventListener('click', function() {
+          // Set active immediately on click
+          nav.querySelectorAll('[data-anchor-tab]').forEach(function(t) {
+            t.classList.remove('ds-anchor-nav__tab--active');
+          });
+          tab.classList.add('ds-anchor-nav__tab--active');
+
+          // Pause scroll listener briefly so it doesn't override click
+          isScrolling = true;
+          clearTimeout(scrollTimer);
+          scrollTimer = setTimeout(function() { isScrolling = false; }, 1000);
+
+          var target = tab.getAttribute('data-target');
+          if (target) {
+            var el = document.getElementById(target);
+            if (el) {
+              var offset = 56;
+              var top = el.getBoundingClientRect().top + window.scrollY - offset;
+              window.scrollTo({ top: top, behavior: 'smooth' });
+            }
+          }
+        });
+      });
+    });
+
+    // Highlight active tab on scroll (only when not triggered by click)
+    var sections = [
+      { id: 'benefits', tab: 'Benefits' },
+      { id: 'featured-products', tab: 'Featured Products' },
+      { id: 'solutions', tab: 'Solutions' },
+      { id: 'case-studies', tab: 'Case Studies' },
+      { id: 'resources', tab: 'Resources' }
+    ];
+
+    window.addEventListener('scroll', function() {
+      if (isScrolling) return;
+      var scrollY = window.scrollY + 80;
+      var current = null;
+      sections.forEach(function(s) {
+        var el = document.getElementById(s.id);
+        if (el && el.offsetTop <= scrollY) current = s.tab;
+      });
+      if (!current) current = 'Overview';
+      document.querySelectorAll('[data-anchor-tab]').forEach(function(tab) {
+        tab.classList.toggle('ds-anchor-nav__tab--active', tab.textContent.trim() === current);
+      });
+    });
+  </script>
+
+  <!-- SECTION 1 — BENEFITS (white) -->
+  <section class="page-section page-section--white" id="benefits">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-header__title">Increase Productivity with FS Industrial Switches</h2>
+        <p class="section-header__desc">Featuring an IP41 rating, anti-electromagnetic interference, and microsecond-level latency, FS ruggedized industrial switches are purpose-built for harsh environments to help you digitize operations, protect against cyber threats, and reduce downtime.</p>
+      </div>
+      <div class="benefits-grid">
+        <div class="ds-icon-card ds-icon-card--center ds-icon-card--bg-white ds-icon-card--bordered">
+          <img class="ds-icon-card__icon" src="../component-specs/icons/icon-placeholder-switch.svg" alt="" style="width: 36px; height: 36px;">
+          <div class="ds-icon-card__body">
+            <p class="ds-icon-card__title">Diverse Port Configuration</p>
+            <p class="ds-icon-card__desc">Support uplinks with speeds ranging from 100M to 10G to accommodate different network architecture layers and ensure scalability for industrial applications.</p>
+          </div>
+        </div>
+        <div class="ds-icon-card ds-icon-card--center ds-icon-card--bg-white ds-icon-card--bordered">
+          <img class="ds-icon-card__icon" src="../component-specs/icons/icon-placeholder-switch.svg" alt="" style="width: 36px; height: 36px;">
+          <div class="ds-icon-card__body">
+            <p class="ds-icon-card__title">Proven Industrial Durability</p>
+            <p class="ds-icon-card__desc">Validated through 7 environmental durability tests, FS industrial switches operate reliably under vibration, shock, dust, extreme temperatures, and strong EMI.</p>
+          </div>
+        </div>
+        <div class="ds-icon-card ds-icon-card--center ds-icon-card--bg-white ds-icon-card--bordered">
+          <img class="ds-icon-card__icon" src="../component-specs/icons/icon-placeholder-switch.svg" alt="" style="width: 36px; height: 36px;">
+          <div class="ds-icon-card__body">
+            <p class="ds-icon-card__title">Sub-10ms Recovery</p>
+            <p class="ds-icon-card__desc">Leverage ERPS, MRP, VRRP, and hardware bypass to achieve sub-10ms failover convergence and comprehensive fault-link recovery, ensuring uninterrupted network connectivity.</p>
+          </div>
+        </div>
+      </div>
+      <div class="benefits-row-2">
+        <div class="ds-icon-card ds-icon-card--center ds-icon-card--bg-white ds-icon-card--bordered">
+          <img class="ds-icon-card__icon" src="../component-specs/icons/icon-placeholder-switch.svg" alt="" style="width: 36px; height: 36px;">
+          <div class="ds-icon-card__body">
+            <p class="ds-icon-card__title">TSN-Ready Performance</p>
+            <p class="ds-icon-card__desc">Time-Sensitive Networking (TSN) prioritizes critical traffic to guarantee real-time communication and minimize latency across industrial control networks.</p>
+          </div>
+        </div>
+        <div class="ds-icon-card ds-icon-card--center ds-icon-card--bg-white ds-icon-card--bordered">
+          <img class="ds-icon-card__icon" src="../component-specs/icons/icon-placeholder-switch.svg" alt="" style="width: 36px; height: 36px;">
+          <div class="ds-icon-card__body">
+            <p class="ds-icon-card__title">Secure Network Management</p>
+            <p class="ds-icon-card__desc">Offer intuitive Web/CLI/SNMP with SSH2.0, SSL, and SNMPv3 encryption, ensuring secure access and efficient network management.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 2 — FEATURED PRODUCTS (gray) -->
+  <section class="page-section page-section--gray" id="featured-products">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-header__title">Find the Ideal Industrial Switch for Your Needs</h2>
+      </div>
+      <p class="product-type-label">DIN Rail Mount</p>
+      <div class="products-grid">
+        <div class="ds-card ds-card--vertical ds-card--no-border">
+          <div class="ds-card__image">
+            <img src="https://image-resource.mastergo.com/120872800192464/120873122105923/3070f818059b1b0faf4f6b1f6b977370.jpg" alt="IES2100 Series" style="width:100%;height:100%;object-fit:cover;">
+          </div>
+          <div class="ds-card__body">
+            <p class="ds-card__title">IES2100 Series</p>
+            <div class="ds-card__bullets">
+              <div class="ds-card__bullet-item"><img class="ds-card__bullet-icon" src="../component-specs/icons/icon-bullet.svg" alt=""><p class="ds-card__bullet-text">Compact Unmanaged Switch</p></div>
+              <div class="ds-card__bullet-item"><img class="ds-card__bullet-icon" src="../component-specs/icons/icon-bullet.svg" alt=""><p class="ds-card__bullet-text">Up to 5 Fast Ethernet Ports</p></div>
+              <div class="ds-card__bullet-item"><img class="ds-card__bullet-icon" src="../component-specs/icons/icon-bullet.svg" alt=""><p class="ds-card__bullet-text">IP41 Metal Enclosure with Conformal Coating</p></div>
+              <div class="ds-card__bullet-item"><img class="ds-card__bullet-icon" src="../component-specs/icons/icon-bullet.svg" alt=""><p class="ds-card__bullet-text">Plug-and-Play Deployment</p></div>
+            </div>
+            <p class="ds-card__desc" style="padding-top:8px;">Suitable for Simple, Unmanaged Small Industrial Networks</p>
+          </div>
+        </div>
+        <div class="ds-card ds-card--vertical ds-card--no-border">
+          <div class="ds-card__image">
+            <img src="https://image-resource.mastergo.com/120872800192464/120873122105923/83b7bedf59eedc5028bc005c4a7b192e.jpg" alt="IES3100/IES3110 Series" style="width:100%;height:100%;object-fit:cover;">
+          </div>
+          <div class="ds-card__body">
+            <p class="ds-card__title">IES3100/IES3110 Series</p>
+            <div class="ds-card__bullets">
+              <div class="ds-card__bullet-item"><img class="ds-card__bullet-icon" src="../component-specs/icons/icon-bullet.svg" alt=""><p class="ds-card__bullet-text">Entry-level L2/L2+ Managed Switch</p></div>
+              <div class="ds-card__bullet-item"><img class="ds-card__bullet-icon" src="../component-specs/icons/icon-bullet.svg" alt=""><p class="ds-card__bullet-text">Up to 16 Ports, 8 PoE+ Ports (240W Budget)</p></div>
+              <div class="ds-card__bullet-item"><img class="ds-card__bullet-icon" src="../component-specs/icons/icon-bullet.svg" alt=""><p class="ds-card__bullet-text">IP40/30 Metal Enclosure</p></div>
+              <div class="ds-card__bullet-item"><img class="ds-card__bullet-icon" src="../component-specs/icons/icon-bullet.svg" alt=""><p class="ds-card__bullet-text">Support ERPS and PTP</p></div>
+            </div>
+            <p class="ds-card__desc" style="padding-top:8px;">Suitable for Entry-level Industrial Access Networks</p>
+          </div>
+        </div>
+        <div class="ds-card ds-card--vertical ds-card--no-border">
+          <div class="ds-card__image">
+            <img src="https://image-resource.mastergo.com/120872800192464/120873122105923/0e8cc19f17b815039a8598ea55faa200.jpg" alt="IES3220 Series" style="width:100%;height:100%;object-fit:cover;">
+          </div>
+          <div class="ds-card__body">
+            <p class="ds-card__title">IES3220 Series</p>
+            <div class="ds-card__bullets">
+              <div class="ds-card__bullet-item"><img class="ds-card__bullet-icon" src="../component-specs/icons/icon-bullet.svg" alt=""><p class="ds-card__bullet-text">Marvell Chipset L2+ Managed Switch</p></div>
+              <div class="ds-card__bullet-item"><img class="ds-card__bullet-icon" src="../component-specs/icons/icon-bullet.svg" alt=""><p class="ds-card__bullet-text">Up to 12 Ports, 8 PoE++ Ports (360W Budget)</p></div>
+              <div class="ds-card__bullet-item"><img class="ds-card__bullet-icon" src="../component-specs/icons/icon-bullet.svg" alt=""><p class="ds-card__bullet-text">IP41 Metal Enclosure with Conformal Coating</p></div>
+              <div class="ds-card__bullet-item"><img class="ds-card__bullet-icon" src="../component-specs/icons/icon-bullet.svg" alt=""><p class="ds-card__bullet-text">Support ERPS, PTP, and PROFINET</p></div>
+            </div>
+            <p class="ds-card__desc" style="padding-top:8px;">Suitable for High Redundancy Industrial Access Networks</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3 — SOLUTIONS (white) -->
+  <section class="page-section page-section--white" id="solutions">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-header__title">Discover Industrial Switches in These Solutions</h2>
+      </div>
+      <div class="solutions-list">
+        <div style="display:flex;border-radius:8px;overflow:hidden;background:var(--color-white);border:1px solid var(--color-gray-5);">
+          <div style="width:580px;flex-shrink:0;background:#FAFBFB;">
+            <img src="https://image-resource.mastergo.com/120872800192464/120873122105923/0ced59a3f0aabceb29a455e8f80aa440.png" alt="Industrial Automation Ring Network Solution" style="width:100%;height:338px;object-fit:cover;display:block;">
+          </div>
+          <div style="flex:1;padding:32px;display:flex;flex-direction:column;justify-content:center;gap:12px;">
+            <p style="font-size:20px;font-weight:600;line-height:28px;color:var(--color-gray-1);">Industrial Automation Ring Network Solution</p>
+            <p style="font-size:12px;font-weight:400;line-height:20px;color:var(--color-gray-3);">Industrial ring topology network architecture designed to decrease complexity, enhance security, and increase efficiency and operating uptime for your industrial network.</p>
+            <a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="#" style="margin-top:4px;">
+              <span class="ds-text-btn__text">Explore Ring Network Solution</span>
+              <img class="ds-text-btn__icon" src="../component-specs/icons/icon-arrow-right.svg" alt="">
+            </a>
+          </div>
+        </div>
+        <div style="display:flex;border-radius:8px;overflow:hidden;background:var(--color-white);border:1px solid var(--color-gray-5);">
+          <div style="flex:1;padding:32px;display:flex;flex-direction:column;justify-content:center;gap:12px;">
+            <p style="font-size:20px;font-weight:600;line-height:28px;color:var(--color-gray-1);">Rail Communication Network Solution</p>
+            <p style="font-size:12px;font-weight:400;line-height:20px;color:var(--color-gray-3);">FS integrates onboard networks, wayside infrastructure, and remote control center networks into an end-to-end unified architecture, providing a high-speed, robust, and scalable railway communication network that enhances operational efficiency and optimizes the passenger experience.</p>
+            <a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="#" style="margin-top:4px;">
+              <span class="ds-text-btn__text">View Railway Use Cases</span>
+              <img class="ds-text-btn__icon" src="../component-specs/icons/icon-arrow-right.svg" alt="">
+            </a>
+          </div>
+          <div style="width:580px;flex-shrink:0;background:#F7F7F7;">
+            <img src="https://image-resource.mastergo.com/120872800192464/120873122105923/bf778a6c8f55db00d1fceb3c51be707e.png" alt="Rail Communication Network Solution" style="width:100%;height:338px;object-fit:cover;display:block;">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4 — CASE STUDIES (gray) -->
+  <section class="page-section page-section--gray" id="case-studies">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-header__title">Case Studies</h2>
+      </div>
+      <div class="case-studies-grid">
+        <div class="ds-card ds-card--vertical ds-card--no-border">
+          <div class="ds-card__image">
+            <img src="https://image-resource.mastergo.com/120872800192464/120873122105923/17913ff777d7ab4fb9934f70e157ea3b.png" alt="Transform Surgical Efficiency" style="width:100%;height:100%;object-fit:cover;">
+          </div>
+          <div class="ds-card__body">
+            <div class="ds-card__meta"><span class="ds-card__category">France</span></div>
+            <p class="ds-card__title">Transform Surgical Efficiency with FS Industrial Solution</p>
+            <div class="ds-card__info" style="padding-top:12px;">
+              <span class="ds-card__info-text">Healthcare</span>
+              <div class="ds-card__info-divider"></div>
+              <span class="ds-card__info-text">Enterprise LAN</span>
+            </div>
+          </div>
+        </div>
+        <div class="ds-card ds-card--vertical ds-card--no-border">
+          <div class="ds-card__image">
+            <img src="https://image-resource.mastergo.com/120872800192464/120873122105923/676d38374e92cd3dd10901779549a914.jpg" alt="FS Empowers US Industrial Computing Partner" style="width:100%;height:100%;object-fit:cover;">
+          </div>
+          <div class="ds-card__body">
+            <div class="ds-card__meta"><span class="ds-card__category">United States</span></div>
+            <p class="ds-card__title">FS Empowers US Industrial Computing Partner with Reliable Networking</p>
+            <div class="ds-card__info" style="padding-top:12px;">
+              <span class="ds-card__info-text">Manufacturing</span>
+              <div class="ds-card__info-divider"></div>
+              <span class="ds-card__info-text">Enterprise LAN</span>
+            </div>
+          </div>
+        </div>
+        <div class="ds-card ds-card--vertical ds-card--no-border">
+          <div class="ds-card__image">
+            <img src="https://image-resource.mastergo.com/120872800192464/120873122105923/7bc04993fc7cf0f20eade23153b9d397.png" alt="FS Video Surveillance Solution" style="width:100%;height:100%;object-fit:cover;">
+          </div>
+          <div class="ds-card__body">
+            <div class="ds-card__meta"><span class="ds-card__category">United States</span></div>
+            <p class="ds-card__title">FS Video Surveillance Solution Enhances Worker Safety &amp; Streamlines Management in Industrial Park</p>
+            <div class="ds-card__info" style="padding-top:12px;">
+              <span class="ds-card__info-text">Manufacturing</span>
+              <div class="ds-card__info-divider"></div>
+              <span class="ds-card__info-text">Surveillance System</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 5 — RESOURCES (white) -->
+  <section class="page-section page-section--white" id="resources">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-header__title">Resources</h2>
+      </div>
+      <div class="resources-grid">
+        <div class="ds-icon-card ds-icon-card--left ds-icon-card--bg-white ds-icon-card--bordered">
+          <img class="ds-icon-card__icon" src="../component-specs/icons/icon-placeholder-switch.svg" alt="" style="width:36px;height:36px;">
+          <div class="ds-icon-card__body">
+            <p class="ds-icon-card__title">Product Documents</p>
+            <div class="ds-icon-card__bullets">
+              <div class="ds-card__bullet-item"><img class="ds-card__bullet-icon" src="../component-specs/icons/icon-bullet.svg" alt=""><p class="ds-card__bullet-text">Industrial Switches Documents</p></div>
+              <div class="ds-card__bullet-item"><img class="ds-card__bullet-icon" src="../component-specs/icons/icon-bullet.svg" alt=""><p class="ds-card__bullet-text">Industrial Switches FAQ</p></div>
+              <div class="ds-card__bullet-item"><img class="ds-card__bullet-icon" src="../component-specs/icons/icon-bullet.svg" alt=""><p class="ds-card__bullet-text">Industrial Switches Product Portfolio</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="ds-icon-card ds-icon-card--left ds-icon-card--bg-white ds-icon-card--bordered">
+          <img class="ds-icon-card__icon" src="../component-specs/icons/icon-placeholder-switch.svg" alt="" style="width:36px;height:36px;">
+          <div class="ds-icon-card__body">
+            <p class="ds-icon-card__title">Service and Support</p>
+            <div class="ds-icon-card__bullets">
+              <div class="ds-card__bullet-item"><img class="ds-card__bullet-icon" src="../component-specs/icons/icon-bullet.svg" alt=""><p class="ds-card__bullet-text">FS Design Center</p></div>
+              <div class="ds-card__bullet-item"><img class="ds-card__bullet-icon" src="../component-specs/icons/icon-bullet.svg" alt=""><p class="ds-card__bullet-text">Tech Support</p></div>
+              <div class="ds-card__bullet-item"><img class="ds-card__bullet-icon" src="../component-specs/icons/icon-bullet.svg" alt=""><p class="ds-card__bullet-text">Solution Support</p></div>
+              <div class="ds-card__bullet-item"><img class="ds-card__bullet-icon" src="../component-specs/icons/icon-bullet.svg" alt=""><p class="ds-card__bullet-text">Test Support Center</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="ds-icon-card ds-icon-card--left ds-icon-card--bg-white ds-icon-card--bordered">
+          <img class="ds-icon-card__icon" src="../component-specs/icons/icon-placeholder-switch.svg" alt="" style="width:36px;height:36px;">
+          <div class="ds-icon-card__body">
+            <p class="ds-icon-card__title">FAQ</p>
+            <div class="ds-icon-card__bullets">
+              <div class="ds-card__bullet-item"><img class="ds-card__bullet-icon" src="../component-specs/icons/icon-bullet.svg" alt=""><p class="ds-card__bullet-text">Shipping &amp; Delivery</p></div>
+              <div class="ds-card__bullet-item"><img class="ds-card__bullet-icon" src="../component-specs/icons/icon-bullet.svg" alt=""><p class="ds-card__bullet-text">Payment Methods</p></div>
+              <div class="ds-card__bullet-item"><img class="ds-card__bullet-icon" src="../component-specs/icons/icon-bullet.svg" alt=""><p class="ds-card__bullet-text">Products Warranty</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER — injected from navigation component -->
+  <div data-component="navigation" data-fragment="footer"></div>
+
+</body>
+</html>

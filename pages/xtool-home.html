@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>xTool Home — FS Design System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../fs-components/component-specs/tokens.css">
+  <link rel="stylesheet" href="../fs-components/component-specs/components.css">
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: var(--font-family-base); color: var(--color-gray-1); background: #FFFFFF; }
+    .page-section { padding: 40px 0; background: #FFFFFF; }
+    .page-section--gray { background: #FAFBFB; }
+    .page-container { max-width: 1200px; margin: 0 auto; }
+    .section-heading { font-size: 24px; line-height: 32px; font-weight: 600; text-align: center; margin: 0 0 24px; }
+    .feature-grid, .story-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 20px; }
+    .promo-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+    .three-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 20px; }
+    .four-grid { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 20px; }
+    .feature-grid > *, .three-grid > *, .four-grid > *, .story-grid > * { min-width: 0; }
+    .feature-grid .ds-card__body { min-height: 158px; }
+    .category-tabs { margin: 0 auto 24px; display: table; }
+    .category-panel[hidden] { display: none; }
+    .category-panel .ds-card__image img { object-fit: contain; }
+    .category-panel .ds-card__body { min-height: 172px; }
+    .card-actions { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .promo-grid { margin-top: 24px; }
+    .inspiration-cards .ds-card__body { min-height: 190px; }
+    .community-cards .ds-card__body { min-height: 160px; }
+    .story-grid .ds-card__body { min-height: 230px; }
+    .explore-cards .ds-card__body { min-height: 96px; }
+    .support-grid { max-width: 840px; margin: 24px auto 0; }
+    .support-grid .ds-icon-card { height: 100%; }
+    .carousel-viewport { overflow: hidden; }
+    .carousel-track { display: flex; transition: transform .3s ease; }
+    .carousel-page { flex: 0 0 100%; min-width: 0; }
+    .carousel-controls { margin-top: 20px; }
+    .hero-wrap { position: relative; }
+    .hero-wrap .ds-carousel { overflow: hidden; }
+    .hero-wrap .ds-banner--hero { width: 100%; }
+    .hero-wrap .ds-carousel__btn { z-index: 2; }
+    .hero-wrap .ds-carousel__dots { padding: 0; position: absolute; bottom: 16px; left: 50%; transform: translateX(-50%); z-index: 2; }
+    @media (max-width: 1240px) { .page-container { margin: 0 20px; } .hero-wrap .ds-banner--hero > div { padding: 0 20px; } }
+    @media (max-width: 800px) {
+      .three-grid, .four-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .feature-grid, .promo-grid, .story-grid { grid-template-columns: 1fr; }
+      .hero-wrap .ds-banner--hero > div { padding: 0 28px; }
+      .promo-grid .ds-card--horizontal { flex-direction: column; align-items: stretch; gap: 0; }
+      .promo-grid .ds-card--horizontal .ds-card__image { width: 100%; height: 160px; }
+      .ds-nav-header__topbar-inner { padding: 0 12px; }
+      .ds-nav-header__topbar-right { display: none; }
+      .ds-nav-header__main-inner { gap: 16px; padding: 0 12px; }
+      .ds-nav-header__links { min-width: 0; flex: 1; gap: 16px; overflow-x: auto; scrollbar-width: none; }
+      .ds-nav-header__links::-webkit-scrollbar { display: none; }
+      .ds-nav-footer__inner { padding: 32px 20px; }
+      .ds-nav-footer__columns { flex-wrap: wrap; gap: 24px 20px; }
+      .ds-nav-footer__col { flex: 1 1 calc(50% - 10px); }
+      .ds-nav-footer__sidebar { width: 100%; }
+      .ds-nav-footer__badges, .ds-nav-footer__badges-left { flex-wrap: wrap; gap: 16px; }
+      .ds-nav-footer__legal, .ds-nav-footer__legal-links { flex-wrap: wrap; }
+    }
+    @media (max-width: 520px) { .three-grid, .four-grid { grid-template-columns: 1fr; } .page-section { padding: 32px 0; } .hero-wrap .ds-banner__title { max-width: 300px; } .hero-wrap .ds-banner__desc { max-width: 300px; } .category-tabs { display: block; overflow-x: auto; } }
+  </style>
+</head>
+<body>
+  <header class="ds-nav-header" data-fragment="header">
+    <div class="ds-nav-header__topbar">
+      <div class="ds-nav-header__topbar-inner">
+        <div class="ds-nav-header__topbar-left">
+          <span class="ds-nav-header__topbar-text">FS United States</span>
+          <span class="ds-nav-header__topbar-divider"></span>
+          <span class="ds-nav-header__topbar-text">FREE SHIPPING on Orders Over US$79</span>
+        </div>
+        <div class="ds-nav-header__topbar-right">
+          <a href="#" class="ds-nav-header__topbar-link">Contact Us</a>
+          <span class="ds-nav-header__topbar-divider"></span>
+          <a href="#" class="ds-nav-header__topbar-link">
+            United States / $ USD
+            <svg class="ds-nav-header__dropdown-icon" width="12" height="12" viewBox="0 0 12 12" fill="none">
+              <path d="M3 4.5L6 7.5L9 4.5" stroke="#707070" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <nav class="ds-nav-header__main">
+      <div class="ds-nav-header__main-inner">
+        <a href="#" class="ds-nav-header__logo" aria-label="FS.com Home">
+          <img src="../fs-components/component-specs/icons/icon-logo-fs.svg" alt="FS Logo" width="76" height="36">
+        </a>
+        <ul class="ds-nav-header__links">
+          <li class="ds-nav-header__link-item"><a href="#" class="ds-nav-header__link">All Products</a></li>
+          <li class="ds-nav-header__link-item"><a href="#" class="ds-nav-header__link">Solutions</a></li>
+          <li class="ds-nav-header__link-item"><a href="#" class="ds-nav-header__link">Services</a></li>
+          <li class="ds-nav-header__link-item"><a href="#" class="ds-nav-header__link">Resources</a></li>
+          <li class="ds-nav-header__link-item"><a href="#" class="ds-nav-header__link">Contact Us</a></li>
+        </ul>
+        <div class="ds-nav-header__actions">
+          <button class="ds-nav-header__action-btn" type="button" aria-label="Search"><img src="../fs-components/component-specs/icons/icon-search.svg" alt="" width="24" height="24"></button>
+          <button class="ds-nav-header__action-btn" type="button" aria-label="Account"><img src="../fs-components/component-specs/icons/icon-account.svg" alt="" width="24" height="24"></button>
+          <button class="ds-nav-header__action-btn" type="button" aria-label="Cart"><img src="../fs-components/component-specs/icons/icon-cart.svg" alt="" width="24" height="24"></button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <div class="hero-wrap" data-carousel="hero">
+      <div class="ds-carousel carousel-viewport">
+        <div class="ds-carousel__track carousel-track">
+          <div class="ds-carousel__slide carousel-page">
+            <div class="ds-banner ds-banner--hero" style="background-color:#19191A; background-image:url('https://cdn.shopify.com/s/files/1/0467/7985/9095/files/mk-guanwang_us_pc_banner-pc-en-2560x600_3442-17084.webp?v=1778247445'); background-size:cover; background-position:center; box-shadow:inset 0 0 0 2000px rgba(0,0,0,0.5); display:block; padding:0;">
+              <div style="max-width:1200px; margin:0 auto; height:420px; display:flex; flex-direction:column; align-items:flex-start; justify-content:center; gap:20px;">
+                <p class="ds-banner__title" style="text-align:left; max-width:500px; margin:0;">Free Reserve. Try Before You Buy.</p>
+                <p class="ds-banner__desc" style="text-align:left; max-width:560px; margin:0;">xTool Squad Product Demo. Learn, touch, and make guided by local hosts near your location.</p>
+                <a class="ds-btn ds-btn--outline-white ds-btn--l" href="https://support.xtool.com/" target="_blank" rel="noopener"><span class="ds-btn__text">Book Free Demo</span></a>
+              </div>
+            </div>
+          </div>
+          <div class="ds-carousel__slide carousel-page">
+            <div class="ds-banner ds-banner--hero" style="background-color:#19191A; background-image:url('https://cdn.shopify.com/s/files/1/0467/7985/9095/files/mk-20261023heiwu_us_pc_us-xtoolbanner-pc_1162-68797_d38c57b8-57b1-48af-b04e-b9f327b90df8.webp?v=1793604381'); background-size:cover; background-position:center; box-shadow:inset 0 0 0 2000px rgba(0,0,0,0.5); display:block; padding:0;">
+              <div style="max-width:1200px; margin:0 auto; height:420px; display:flex; flex-direction:column; align-items:flex-start; justify-content:center; gap:20px;">
+                <p class="ds-banner__title" style="text-align:left; max-width:500px; margin:0;">Save up to $3,467 &amp; Gifts</p>
+                <p class="ds-banner__desc" style="text-align:left; max-width:560px; margin:0;">Black Friday</p>
+                <a class="ds-btn ds-btn--outline-white ds-btn--l" href="https://www.xtool.com/pages/black-friday" target="_blank" rel="noopener"><span class="ds-btn__text">Shop Now</span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="ds-carousel__btn ds-carousel__btn--prev" type="button" aria-label="Previous slide" disabled><img src="../fs-components/component-specs/icons/icon-carousel-prev.svg" alt=""></button>
+        <button class="ds-carousel__btn ds-carousel__btn--next" type="button" aria-label="Next slide"><img src="../fs-components/component-specs/icons/icon-carousel-next.svg" alt=""></button>
+      </div>
+      <div class="ds-carousel__dots"><button class="ds-carousel__dot ds-carousel__dot--active" type="button" aria-label="Slide 1"></button><button class="ds-carousel__dot" type="button" aria-label="Slide 2"></button></div>
+    </div>
+
+    <section class="page-section page-section--white"><div class="page-container feature-grid">
+      <div class="ds-card ds-card--vertical ds-card--bordered-full"><div class="ds-card__image"><img src="https://cdn.shopify.com/s/files/1/0467/7985/9095/files/mk-c1_us_pc_pc-x1_3180-1913.webp?v=1792480766" alt="xTool X1"></div><div class="ds-card__body"><span class="ds-card__category">New Arrival</span><p class="ds-card__title">xTool X1</p><p class="ds-card__desc">The Next-Gen All-in-One Laser.</p><div class="ds-card__link card-actions"><a class="ds-btn ds-btn--outline-black ds-btn--m" href="https://www.xtool.com/" target="_blank" rel="noopener"><span class="ds-btn__text">Explore</span></a><a class="ds-btn ds-btn--filled-black ds-btn--m" href="https://www.xtool.com/" target="_blank" rel="noopener"><span class="ds-btn__text">Buy Now</span></a></div></div></div>
+      <div class="ds-card ds-card--vertical ds-card--bordered-full"><div class="ds-card__image"><img src="https://cdn.shopify.com/s/files/1/0467/7985/9095/files/mk-c1_us_pc_pc-preheatc1-second_3157-1891.webp?v=1792480766" alt="xTool C1 Color Cutter"></div><div class="ds-card__body"><span class="ds-card__category">Coming Soon</span><p class="ds-card__title">xTool C1 Color Cutter</p><p class="ds-card__desc">The full-color cutting machine—Scan, print, and cut in one go.</p><div class="ds-card__link"><a class="ds-btn ds-btn--filled-black ds-btn--m" href="https://www.xtool.com/" target="_blank" rel="noopener"><span class="ds-btn__text">Explore</span></a></div></div></div>
+    </div></section>
+
+    <section class="page-section page-section--gray" id="products"><div class="page-container">
+      <h2 class="section-heading">Meet All the Innovative Tools Tailored for Makers</h2>
+      <div class="category-tabs"><div class="ds-tab ds-tab--capsule" role="tablist" aria-label="Product categories">
+        <div class="ds-tab__item ds-tab__item--active" role="tab" tabindex="0" aria-selected="true" data-category="laser"><div class="ds-tab__item-inner"><span class="ds-tab__item-text">Laser</span><div class="ds-tab__indicator"></div></div></div>
+        <div class="ds-tab__item" role="tab" tabindex="0" aria-selected="false" data-category="printer"><span class="ds-tab__item-text">Printer</span></div>
+        <div class="ds-tab__item" role="tab" tabindex="0" aria-selected="false" data-category="metalfab"><span class="ds-tab__item-text">MetalFab</span></div>
+        <div class="ds-tab__item" role="tab" tabindex="0" aria-selected="false" data-category="craft"><span class="ds-tab__item-text">Craft Machine</span></div>
+      </div></div>
+      <div class="category-panel" data-panel="laser"><div class="three-grid">
+        <div class="ds-card ds-card--vertical ds-card--no-border"><div class="ds-card__image"><img src="https://cdn.shopify.com/s/files/1/0467/7985/9095/files/mk-guanwang_us_pc_m2_4705-12571_211a9021-7040-4bb9-8d74-8cb272566ea5.webp?v=1779866690" alt="M2"></div><div class="ds-card__body"><span class="ds-card__category">Full-Color CMYK Inkjet &amp; 10W/20W Diode Laser</span><p class="ds-card__title">M2</p><p class="ds-card__desc">The easiest craft laser with color printing for everyday making.</p><div class="ds-card__link card-actions"><a class="ds-btn ds-btn--filled-black ds-btn--m" href="https://www.xtool.com/" target="_blank" rel="noopener"><span class="ds-btn__text">Learn More</span></a><a class="ds-btn ds-btn--outline-gray ds-btn--m" href="https://www.xtool.com/" target="_blank" rel="noopener"><span class="ds-btn__text">Buy</span></a></div></div></div>
+        <div class="ds-card ds-card--vertical ds-card--no-border"><div class="ds-card__image"><img src="https://cdn.shopify.com/s/files/1/0467/7985/9095/files/mk-guanwang_us_pc_p3_1219-5482_e4bbd1a7-6988-4465-b4de-e7be5b75330f.webp?v=1778491125" alt="P3"></div><div class="ds-card__body"><span class="ds-card__category">Ultimate Smart CO₂ Powerhouse</span><p class="ds-card__title">P3</p><p class="ds-card__desc">80W smart CO₂ laser for high-efficiency, high-volume production.</p><div class="ds-card__link card-actions"><a class="ds-btn ds-btn--filled-black ds-btn--m" href="https://www.xtool.com/" target="_blank" rel="noopener"><span class="ds-btn__text">Learn More</span></a><a class="ds-btn ds-btn--outline-gray ds-btn--m" href="https://www.xtool.com/" target="_blank" rel="noopener"><span class="ds-btn__text">Buy</span></a></div></div></div>
+        <div class="ds-card ds-card--vertical ds-card--no-border"><div class="ds-card__image"><img src="https://cdn.shopify.com/s/files/1/0467/7985/9095/files/mk-guanwang_us_pc_f2uuv_1219-5506_47338e68-d14e-4d5c-a31e-6e505e2bb61b.webp?v=1779355728" alt="F2 Ultra UV"></div><div class="ds-card__body"><span class="ds-card__category">The Master Glass Engraver</span><p class="ds-card__title">F2 Ultra UV</p><p class="ds-card__desc">Designed for intricate marking on glass, crystal and high-precision crafts.</p><div class="ds-card__link card-actions"><a class="ds-btn ds-btn--filled-black ds-btn--m" href="https://www.xtool.com/" target="_blank" rel="noopener"><span class="ds-btn__text">Learn More</span></a><a class="ds-btn ds-btn--outline-gray ds-btn--m" href="https://www.xtool.com/" target="_blank" rel="noopener"><span class="ds-btn__text">Buy</span></a></div></div></div>
+      </div></div>
+      <div class="category-panel" data-panel="printer" hidden><div class="three-grid">
+        <div class="ds-card ds-card--vertical ds-card--no-border"><div class="ds-card__image"><img src="https://cdn.shopify.com/s/files/1/0467/7985/9095/files/mk-guanwang_us_pc_xtoolomin_3295-8700_5ac6948e-05cc-4f14-835a-afcc747c9db3.webp?v=1786954447" alt="O1 Omni Printer"></div><div class="ds-card__body"><p class="ds-card__title">O1 Omni Printer</p><p class="ds-card__desc">The World's First 4-in-1 Omni Printer.</p><div class="ds-card__link"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="https://www.xtool.com/" target="_blank" rel="noopener"><span class="ds-text-btn__text">Learn More</span><img class="ds-text-btn__icon" src="../fs-components/component-specs/icons/icon-arrow-right.svg" alt=""></a></div></div></div>
+        <div class="ds-card ds-card--vertical ds-card--no-border"><div class="ds-card__image"><img src="https://cdn.shopify.com/s/files/1/0467/7985/9095/files/mk-guanwang_us_pc_xtoolapparelprinter_3295-8667.webp?v=1778148024" alt="Apparel Printer Plus"></div><div class="ds-card__body"><p class="ds-card__title">Apparel Printer Plus</p><p class="ds-card__desc">One Click DTF Printer, Effortless Customization for Business.</p><div class="ds-card__link"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="https://www.xtool.com/" target="_blank" rel="noopener"><span class="ds-text-btn__text">Learn More</span><img class="ds-text-btn__icon" src="../fs-components/component-specs/icons/icon-arrow-right.svg" alt=""></a></div></div></div>
+        <div class="ds-card ds-card--vertical ds-card--no-border"><div class="ds-card__image"><img src="https://cdn.shopify.com/s/files/1/0467/7985/9095/files/mk-guanwang_us_pc_xtoolsiwang_4225-16513.webp?v=1779343542" alt="Screen Printer"></div><div class="ds-card__body"><p class="ds-card__title">Screen Printer</p><p class="ds-card__desc">Streamline stencil creation for artwork and handmade projects.</p><div class="ds-card__link"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="https://www.xtool.com/" target="_blank" rel="noopener"><span class="ds-text-btn__text">Buy</span><img class="ds-text-btn__icon" src="../fs-components/component-specs/icons/icon-arrow-right.svg" alt=""></a></div></div></div>
+      </div></div>
+      <div class="category-panel" data-panel="metalfab" hidden><div class="three-grid">
+        <div class="ds-card ds-card--vertical ds-card--no-border"><div class="ds-card__image"><img src="https://cdn.shopify.com/s/files/1/0467/7985/9095/files/mk-guanwang_us_pc_xtoolmetalfab_3295-8662.webp?v=1778148024" alt="MetalFab"></div><div class="ds-card__body"><p class="ds-card__title">MetalFab</p><p class="ds-card__desc">Your All-in-One Metal Workshop.</p><div class="ds-card__link"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="https://www.xtool.com/" target="_blank" rel="noopener"><span class="ds-text-btn__text">Learn More</span><img class="ds-text-btn__icon" src="../fs-components/component-specs/icons/icon-arrow-right.svg" alt=""></a></div></div></div>
+        <div class="ds-card ds-card--vertical ds-card--no-border"><div class="ds-card__image"><img src="https://cdn.shopify.com/s/files/1/0467/7985/9095/files/mk-a-hanqieji_us_pc_pc-mf800w_6856-1075.webp?v=1782459626" alt="Laser Welder"></div><div class="ds-card__body"><p class="ds-card__title">Laser Welder</p><p class="ds-card__desc">3-in-1 Laser Welder for Every Shop.</p><div class="ds-card__link"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="https://www.xtool.com/" target="_blank" rel="noopener"><span class="ds-text-btn__text">Learn More</span><img class="ds-text-btn__icon" src="../fs-components/component-specs/icons/icon-arrow-right.svg" alt=""></a></div></div></div>
+      </div></div>
+      <div class="category-panel" data-panel="craft" hidden><div class="three-grid">
+        <div class="ds-card ds-card--vertical ds-card--no-border"><div class="ds-card__image"><img src="https://cdn.shopify.com/s/files/1/0467/7985/9095/files/mk-c1_us_pc_c1_2708-12562.webp?v=1792478884" alt="C1 Color Cutter"></div><div class="ds-card__body"><p class="ds-card__title">C1 Color Cutter</p><p class="ds-card__desc">The full-color cutting machine—Scan, print, and cut in one go.</p><div class="ds-card__link"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="https://www.xtool.com/" target="_blank" rel="noopener"><span class="ds-text-btn__text">Explore</span><img class="ds-text-btn__icon" src="../fs-components/component-specs/icons/icon-arrow-right.svg" alt=""></a></div></div></div>
+        <div class="ds-card ds-card--vertical ds-card--no-border"><div class="ds-card__image"><img src="https://cdn.shopify.com/s/files/1/0467/7985/9095/files/mk-a-reyaji_us_pc_wonderpress_9476-24404_78b96c46-66bf-4d63-bedd-f7993e22cbe2.webp?v=1782372892" alt="WonderPress"></div><div class="ds-card__body"><p class="ds-card__title">WonderPress</p><p class="ds-card__desc">The First 3D Auto Heat Press with Switchable Creativity.</p><div class="ds-card__link"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="https://www.xtool.com/" target="_blank" rel="noopener"><span class="ds-text-btn__text">Learn More</span><img class="ds-text-btn__icon" src="../fs-components/component-specs/icons/icon-arrow-right.svg" alt=""></a></div></div></div>
+      </div></div>
+    </div></section>
+
+    <section class="page-section page-section--white"><div class="page-container promo-grid">
+      <div class="ds-card ds-card--horizontal"><div class="ds-card__image"><img src="https://cdn.shopify.com/s/files/1/0467/7985/9095/files/mk-guanwang_us_pc_material_3295-8960_f5544081-8444-4349-822d-0ccc14d1539b.webp?v=1778730975" alt="Selected Material"></div><div class="ds-card__body"><p class="ds-card__title">Selected Material</p><p class="ds-card__desc">Premium materials with ready-set parameters for great xTool laser results.</p><div class="ds-card__link"><a class="ds-btn ds-btn--outline-black ds-btn--m" href="https://www.xtool.com/collections/materials" target="_blank" rel="noopener"><span class="ds-btn__text">Shop Now</span></a></div></div></div>
+      <div class="ds-card ds-card--horizontal"><div class="ds-card__image"><img src="https://cdn.shopify.com/s/files/1/0467/7985/9095/files/mk-guanwang_us_pc_accessories_3295-8961.webp?v=1778148512" alt="Accessories"></div><div class="ds-card__body"><p class="ds-card__title">Accessories</p><p class="ds-card__desc">Power up your productivity and creative capability.</p><div class="ds-card__link"><a class="ds-btn ds-btn--outline-black ds-btn--m" href="https://www.xtool.com/collections/accessories" target="_blank" rel="noopener"><span class="ds-btn__text">Shop Now</span></a></div></div></div>
+    </div></section>
+
+    <section class="page-section page-section--gray" id="inspiration"><div class="page-container">
+      <h2 class="section-heading">From Inspiration to Creation</h2>
+      <div data-carousel="inspiration"><div class="carousel-viewport"><div class="ds-carousel"><div class="ds-carousel__track carousel-track">
+        <div class="ds-carousel__slide carousel-page four-grid inspiration-cards">
+          <div class="ds-card ds-card--vertical ds-card--no-border"><div class="ds-card__image"><img src="https://cdn.shopify.com/s/files/1/0467/7985/9095/files/mk-guanwang_us_pc_aimake_5152-15987.webp?v=1781174079" alt="AImake craft files"></div><div class="ds-card__body"><p class="ds-card__title">Craft-ready files with AImake</p><p class="ds-card__desc">Describe an idea or upload a photo, then quickly generate, style, and refine craft-ready files for engraving, cutting, printing, relief, and 3D projects.</p><div class="ds-card__link"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--blue ds-text-btn--m" href="https://www.atomm.com/" target="_blank" rel="noopener"><span class="ds-text-btn__text">Try Atomm</span><img class="ds-text-btn__icon" src="../fs-components/component-specs/icons/icon-arrow-right.svg" alt=""></a></div></div></div>
+          <div class="ds-card ds-card--vertical ds-card--no-border"><div class="ds-card__image"><img src="https://cdn.shopify.com/s/files/1/0467/7985/9095/files/mk-atommgaiban_us_pc_buildin3d-pc_1119-1021.webp?v=1790045772" alt="Build in 3D"></div><div class="ds-card__body"><p class="ds-card__title">Go beyond flat, Build in 3D</p><p class="ds-card__desc">Create ready-to-make 3D designs for boxes, display stands, dollhouse furniture, and more—no CAD or joinery skills needed.</p><div class="ds-card__link"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--blue ds-text-btn--m" href="https://www.atomm.com/" target="_blank" rel="noopener"><span class="ds-text-btn__text">Try New Feature</span><img class="ds-text-btn__icon" src="../fs-components/component-specs/icons/icon-arrow-right.svg" alt=""></a></div></div></div>
+          <div class="ds-card ds-card--vertical ds-card--no-border"><div class="ds-card__image"><img src="https://cdn.shopify.com/s/files/1/0467/7985/9095/files/mk-guanwang_us_pc_creativetools_5152-16042_5c3ffb1d-ae73-494c-b9ee-c7677908c722.webp?v=1781236165" alt="Creative templates"></div><div class="ds-card__body"><p class="ds-card__title">Customizable templates &amp; tools</p><p class="ds-card__desc">Start with Etsy-inspired templates, personalize fast, and make trending products in minutes.</p><div class="ds-card__link"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--blue ds-text-btn--m" href="https://www.atomm.com/" target="_blank" rel="noopener"><span class="ds-text-btn__text">Explore More</span><img class="ds-text-btn__icon" src="../fs-components/component-specs/icons/icon-arrow-right.svg" alt=""></a></div></div></div>
+          <div class="ds-card ds-card--vertical ds-card--no-border"><div class="ds-card__image"><img src="https://cdn.shopify.com/s/files/1/0467/7985/9095/files/mk-guanwang_us_pc_materialsetting_5152-16069.webp?v=1781174079" alt="Material settings"></div><div class="ds-card__body"><p class="ds-card__title">Proven material settings</p><p class="ds-card__desc">Atomm pairs official settings with user-shared parameters, so projects turn out right the first time.</p><div class="ds-card__link"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--blue ds-text-btn--m" href="https://www.atomm.com/" target="_blank" rel="noopener"><span class="ds-text-btn__text">Explore More</span><img class="ds-text-btn__icon" src="../fs-components/component-specs/icons/icon-arrow-right.svg" alt=""></a></div></div></div>
+        </div>
+        <div class="ds-carousel__slide carousel-page four-grid inspiration-cards">
+          <div class="ds-card ds-card--vertical ds-card--no-border"><div class="ds-card__image"><img src="https://cdn.shopify.com/s/files/1/0467/7985/9095/files/mk-guanwang_us_pc_projects_5152-16090.webp?v=1781174079" alt="Atomm projects"></div><div class="ds-card__body"><p class="ds-card__title">100K+ projects ready to make</p><p class="ds-card__desc">Browse detailed LaserCut and Print projects with files, materials, settings, and step-by-step tutorials, then follow along to make the final product.</p><div class="ds-card__link"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--blue ds-text-btn--m" href="https://www.atomm.com/" target="_blank" rel="noopener"><span class="ds-text-btn__text">Try Atomm</span><img class="ds-text-btn__icon" src="../fs-components/component-specs/icons/icon-arrow-right.svg" alt=""></a></div></div></div>
+          <div class="ds-card ds-card--vertical ds-card--no-border"><div class="ds-card__image"><img src="https://cdn.shopify.com/s/files/1/0467/7985/9095/files/mk-guanwang_us_pc_studio_5152-16279.webp?v=1781174079" alt="xTool Studio"></div><div class="ds-card__body"><p class="ds-card__title">xTool Studio: craft with AI workflows</p><p class="ds-card__desc">Powerful and highly efficient for engraving, embossing, cutting, blade, printing, and even advanced working processes.</p><div class="ds-card__link"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--blue ds-text-btn--m" href="https://www.xtool.com/" target="_blank" rel="noopener"><span class="ds-text-btn__text">Download</span><img class="ds-text-btn__icon" src="../fs-components/component-specs/icons/icon-arrow-right.svg" alt=""></a></div></div></div>
+        </div>
+      </div></div></div><div class="ds-carousel__controls carousel-controls"><button class="ds-carousel__btn" type="button" aria-label="Previous inspiration page" disabled><img src="../fs-components/component-specs/icons/icon-carousel-prev.svg" alt=""></button><div class="ds-carousel__dots" style="padding-top:0"><button class="ds-carousel__dot ds-carousel__dot--active" type="button" aria-label="Inspiration page 1"></button><button class="ds-carousel__dot" type="button" aria-label="Inspiration page 2"></button></div><button class="ds-carousel__btn" type="button" aria-label="Next inspiration page"><img src="../fs-components/component-specs/icons/icon-carousel-next.svg" alt=""></button></div></div>
+    </div></section>
+
+    <section class="page-section page-section--white" id="community"><div class="page-container"><h2 class="section-heading">Grow in the Supportive Maker Community</h2><div class="three-grid community-cards">
+      <div class="ds-card ds-card--vertical ds-card--bordered-full"><div class="ds-card__image"><img src="https://cdn.shopify.com/s/files/1/0467/7985/9095/files/mk-guanwang_us_pc_xtoolsquad_3295-10051.webp?v=1778148512" alt="xTool Squad"></div><div class="ds-card__body"><p class="ds-card__title">xTool Squad</p><p class="ds-card__desc">Get hands-on help or a free-of-charge product demo from our passionate hosts near you.</p><div class="ds-card__link"><a class="ds-btn ds-btn--filled-black ds-btn--m" href="https://support.xtool.com/" target="_blank" rel="noopener"><span class="ds-btn__text">Make My Appointment</span></a></div></div></div>
+      <div class="ds-card ds-card--vertical ds-card--bordered-full"><div class="ds-card__image"><img src="https://cdn.shopify.com/s/files/1/0467/7985/9095/files/mk-guanwang_us_pc_makerfesttour_3295-10053.webp?v=1778148512" alt="MakerFest Tour"></div><div class="ds-card__body"><p class="ds-card__title">MakerFest Tour</p><p class="ds-card__desc">Vroom! Our Mobile Makerspace is Touring Your City, come to meet us and other makers like you.</p><div class="ds-card__link"><a class="ds-btn ds-btn--filled-black ds-btn--m" href="https://www.xtool.com/" target="_blank" rel="noopener"><span class="ds-btn__text">RSVP Now</span></a></div></div></div>
+      <div class="ds-card ds-card--vertical ds-card--bordered-full"><div class="ds-card__image"><img src="https://cdn.shopify.com/s/files/1/0467/7985/9095/files/mk-guanwang_us_pc_todayatxtool_3295-10052.webp?v=1778148512" alt="Squad Events"></div><div class="ds-card__body"><p class="ds-card__title">Squad Events</p><p class="ds-card__desc">Join free sessions to practice, learn and explore the latest from xTool. Anytime, Anywhere.</p><div class="ds-card__link"><a class="ds-btn ds-btn--filled-black ds-btn--m" href="https://support.xtool.com/" target="_blank" rel="noopener"><span class="ds-btn__text">Learn More</span></a></div></div></div>
+    </div></div></section>
+
+    <section class="page-section page-section--gray" id="stories"><div class="page-container"><h2 class="section-heading">Heartful Sharing from Our Makers</h2>
+      <div data-carousel="stories"><div class="carousel-viewport"><div class="ds-carousel"><div class="ds-carousel__track carousel-track">
+        <div class="ds-carousel__slide carousel-page story-grid">
+          <div class="ds-card ds-card--vertical ds-card--no-border"><div class="ds-card__image"><img src="https://i.ytimg.com/vi/IzcTK8j1RKY/maxresdefault.jpg" alt="Eric Street"></div><div class="ds-card__body"><p class="ds-card__title">Eric Street</p><p class="ds-card__desc">“Before my stroke, I never thought of myself as creative. I'm a maker now.”</p><div class="ds-card__link"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="https://www.xtool.com/blogs/user-story/eric-street-side-hustles-from-home" target="_blank" rel="noopener"><span class="ds-text-btn__text">Watch Story</span><img class="ds-text-btn__icon" src="../fs-components/component-specs/icons/icon-arrow-right.svg" alt=""></a></div></div></div>
+          <div class="ds-card ds-card--vertical ds-card--no-border"><div class="ds-card__image"><img src="https://cdn.shopify.com/s/files/1/0467/7985/9095/files/michelle-story-with-xtool.webp?v=1785133491&amp;width=2048" alt="Michelle Arguedas"></div><div class="ds-card__body"><p class="ds-card__title">Michelle Arguedas</p><p class="ds-card__desc">“I went from being homeless in my teens to being a government engineer. Today I make $3,000 a month running my own business.”</p><div class="ds-card__link"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="https://www.xtool.com/blogs/user-story/michelle-wedding-business-from-home" target="_blank" rel="noopener"><span class="ds-text-btn__text">Watch Story</span><img class="ds-text-btn__icon" src="../fs-components/component-specs/icons/icon-arrow-right.svg" alt=""></a></div></div></div>
+        </div>
+        <div class="ds-carousel__slide carousel-page story-grid">
+          <div class="ds-card ds-card--vertical ds-card--no-border"><div class="ds-card__image"><img src="https://cdn.shopify.com/s/files/1/0467/7985/9095/files/carissa-with-xtool.jpg?v=1780644413&amp;width=2048" alt="Carrissa Ringger"></div><div class="ds-card__body"><p class="ds-card__title">Carrissa Ringger</p><p class="ds-card__desc">“Anytime I felt down in the last few years, crafting and my laser have been there for me.”</p><div class="ds-card__link"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="https://www.xtool.com/blogs/user-story/carissa-laser-engraving-business-from-home" target="_blank" rel="noopener"><span class="ds-text-btn__text">Watch Story</span><img class="ds-text-btn__icon" src="../fs-components/component-specs/icons/icon-arrow-right.svg" alt=""></a></div></div></div>
+          <div class="ds-card ds-card--vertical ds-card--no-border"><div class="ds-card__image"><img src="https://cdn.shopify.com/s/files/1/0467/7985/9095/files/jaccobb-using-xtool.webp?v=1787573724&amp;width=2048" alt="Jaccobb"></div><div class="ds-card__body"><p class="ds-card__title">Jaccobb</p><p class="ds-card__desc">“I used to battle with severe depression. Things got incredibly dark for me. But then a little laser engraver pretty much changed everything.”</p><div class="ds-card__link"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="https://www.xtool.com/blogs/user-story/jaccobb-laser-engraving-ideas" target="_blank" rel="noopener"><span class="ds-text-btn__text">Watch full story</span><img class="ds-text-btn__icon" src="../fs-components/component-specs/icons/icon-arrow-right.svg" alt=""></a></div></div></div>
+        </div>
+      </div></div></div><div class="ds-carousel__controls carousel-controls"><button class="ds-carousel__btn" type="button" aria-label="Previous maker stories" disabled><img src="../fs-components/component-specs/icons/icon-carousel-prev.svg" alt=""></button><div class="ds-carousel__dots" style="padding-top:0"><button class="ds-carousel__dot ds-carousel__dot--active" type="button" aria-label="Maker stories page 1"></button><button class="ds-carousel__dot" type="button" aria-label="Maker stories page 2"></button></div><button class="ds-carousel__btn" type="button" aria-label="Next maker stories"><img src="../fs-components/component-specs/icons/icon-carousel-next.svg" alt=""></button></div></div>
+    </div></section>
+
+    <section class="page-section page-section--white" id="explore"><div class="page-container"><h2 class="section-heading">Explore More</h2><div class="three-grid explore-cards">
+      <div class="ds-card ds-card--vertical ds-card--bordered-full"><div class="ds-card__image"><img src="https://cdn.shopify.com/s/files/1/0467/7985/9095/files/mk-guanwang_us_pc_retail_1271-7651_4a275fa1-c829-4c78-8294-cd134bf461e1.webp?v=1778507111" alt="Enterprise Retail Solution"></div><div class="ds-card__body"><p class="ds-card__title">Enterprise Retail Solution</p><div class="ds-card__link"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="https://www.xtool.com/" target="_blank" rel="noopener"><span class="ds-text-btn__text">Learn More</span><img class="ds-text-btn__icon" src="../fs-components/component-specs/icons/icon-arrow-right.svg" alt=""></a></div></div></div>
+      <div class="ds-card ds-card--vertical ds-card--bordered-full"><div class="ds-card__image"><img src="https://cdn.shopify.com/s/files/1/0467/7985/9095/files/mk-guanwang_us_pc_1_donation_1237-7115_54dbf7be-5689-4b1a-8790-b345ebcc7140.webp?v=1779178609" alt="Donation for makers"></div><div class="ds-card__body"><p class="ds-card__title">1% For The Makers Donation Program</p><div class="ds-card__link"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="https://www.xtool.com/" target="_blank" rel="noopener"><span class="ds-text-btn__text">Explore More</span><img class="ds-text-btn__icon" src="../fs-components/component-specs/icons/icon-arrow-right.svg" alt=""></a></div></div></div>
+      <div class="ds-card ds-card--vertical ds-card--bordered-full"><div class="ds-card__image"><img src="https://cdn.shopify.com/s/files/1/0467/7985/9095/files/mk-guanwang_us_pc_store_1237-7182_0191cc72-1897-448f-99d4-c85a16f83350.webp?v=1778225673" alt="Small and Medium Business Support"></div><div class="ds-card__body"><p class="ds-card__title">Small and Medium Business Support</p><div class="ds-card__link"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="https://www.xtool.com/" target="_blank" rel="noopener"><span class="ds-text-btn__text">Learn More</span><img class="ds-text-btn__icon" src="../fs-components/component-specs/icons/icon-arrow-right.svg" alt=""></a></div></div></div>
+      <div class="ds-card ds-card--vertical ds-card--bordered-full"><div class="ds-card__image"><img src="https://cdn.shopify.com/s/files/1/0467/7985/9095/files/mk-guanwang_us_pc_aimake_5152-15987.webp?v=1781174079" alt="Atomm Contest"></div><div class="ds-card__body"><p class="ds-card__title">Atomm Contest</p><div class="ds-card__link"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="https://www.atomm.com/" target="_blank" rel="noopener"><span class="ds-text-btn__text">Join Now</span><img class="ds-text-btn__icon" src="../fs-components/component-specs/icons/icon-arrow-right.svg" alt=""></a></div></div></div>
+      <div class="ds-card ds-card--vertical ds-card--bordered-full"><div class="ds-card__image"><img src="https://cdn.shopify.com/s/files/1/0467/7985/9095/files/mk-guanwang_us_pc_webinar_3884-13354_44abdbcf-c0ea-4098-9577-b417ddf7a80c.webp?v=1779271339" alt="Maker Happenings"></div><div class="ds-card__body"><p class="ds-card__title">Maker Happenings</p><div class="ds-card__link"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="https://support.xtool.com/" target="_blank" rel="noopener"><span class="ds-text-btn__text">Learn From Pro Makers</span><img class="ds-text-btn__icon" src="../fs-components/component-specs/icons/icon-arrow-right.svg" alt=""></a></div></div></div>
+      <div class="ds-card ds-card--vertical ds-card--bordered-full"><div class="ds-card__image"><img src="https://cdn.shopify.com/s/files/1/0467/7985/9095/files/mk-guanwang_us_pc_studio_5152-16279.webp?v=1781174079" alt="Blog Center"></div><div class="ds-card__body"><p class="ds-card__title">Blog Center</p><div class="ds-card__link"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="https://www.xtool.com/blogs" target="_blank" rel="noopener"><span class="ds-text-btn__text">Explore More</span><img class="ds-text-btn__icon" src="../fs-components/component-specs/icons/icon-arrow-right.svg" alt=""></a></div></div></div>
+    </div>
+    <div class="four-grid support-grid">
+      <div class="ds-icon-card ds-icon-card--left ds-icon-card--bg-white ds-icon-card--bordered"><img class="ds-icon-card__icon" src="../fs-components/component-specs/icons/icon-placeholder-switch.svg" alt=""><div class="ds-icon-card__body"><p class="ds-icon-card__title">24/7 Expert Support</p><p class="ds-icon-card__desc">Tell us what confuses you</p><div class="ds-icon-card__link"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s" href="https://support.xtool.com/" target="_blank" rel="noopener"><span class="ds-text-btn__text">Get help</span><img class="ds-text-btn__icon" src="../fs-components/component-specs/icons/icon-arrow-right.svg" alt=""></a></div></div></div>
+      <div class="ds-icon-card ds-icon-card--left ds-icon-card--bg-white ds-icon-card--bordered"><img class="ds-icon-card__icon" src="../fs-components/component-specs/icons/icon-placeholder-switch.svg" alt=""><div class="ds-icon-card__body"><p class="ds-icon-card__title">Product Support</p><p class="ds-icon-card__desc">Get help with your product</p><div class="ds-icon-card__link"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s" href="https://support.xtool.com/" target="_blank" rel="noopener"><span class="ds-text-btn__text">Find support</span><img class="ds-text-btn__icon" src="../fs-components/component-specs/icons/icon-arrow-right.svg" alt=""></a></div></div></div>
+      <div class="ds-icon-card ds-icon-card--left ds-icon-card--bg-white ds-icon-card--bordered"><img class="ds-icon-card__icon" src="../fs-components/component-specs/icons/icon-placeholder-switch.svg" alt=""><div class="ds-icon-card__body"><p class="ds-icon-card__title">xTool Academy</p><p class="ds-icon-card__desc">Explore guides and tutorials</p><div class="ds-icon-card__link"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s" href="https://support.xtool.com/" target="_blank" rel="noopener"><span class="ds-text-btn__text">Learn more</span><img class="ds-text-btn__icon" src="../fs-components/component-specs/icons/icon-arrow-right.svg" alt=""></a></div></div></div>
+      <div class="ds-icon-card ds-icon-card--left ds-icon-card--bg-white ds-icon-card--bordered"><img class="ds-icon-card__icon" src="../fs-components/component-specs/icons/icon-placeholder-switch.svg" alt=""><div class="ds-icon-card__body"><p class="ds-icon-card__title">Aftersale Service</p><p class="ds-icon-card__desc">Fast Response, Simple Request</p><div class="ds-icon-card__link"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s" href="https://support.xtool.com/" target="_blank" rel="noopener"><span class="ds-text-btn__text">Learn more</span><img class="ds-text-btn__icon" src="../fs-components/component-specs/icons/icon-arrow-right.svg" alt=""></a></div></div></div>
+    </div></div></section>
+  </main>
+
+  <footer class="ds-nav-footer" data-fragment="footer">
+    <div class="ds-nav-footer__inner">
+      <div class="ds-nav-footer__columns">
+        <div class="ds-nav-footer__col"><h4 class="ds-nav-footer__col-title">About Us</h4><ul class="ds-nav-footer__col-links">
+          <li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">Overview</span></a></li><li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">Global Warehouse</span></a></li><li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">Advanced R&amp;D Center</span></a></li><li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">Quality Control</span></a></li><li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">Compliance Center</span></a></li><li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">Test Center</span></a></li><li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">Contact Us</span></a></li>
+        </ul></div>
+        <div class="ds-nav-footer__col"><h4 class="ds-nav-footer__col-title">Service</h4><ul class="ds-nav-footer__col-links">
+          <li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">Payment Methods</span></a></li><li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">Shipping Guide</span></a></li><li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">Business Account</span></a></li><li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">Net Terms</span></a></li><li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">Return Policy</span></a></li><li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">Product Warranty</span></a></li><li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">Give us your Feedback</span></a></li>
+        </ul></div>
+        <div class="ds-nav-footer__col"><h4 class="ds-nav-footer__col-title">Resource</h4><ul class="ds-nav-footer__col-links">
+          <li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">Documentation</span></a></li><li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">Glossary</span></a></li><li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">Audio &amp; Video</span></a></li><li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">FS Blog</span></a></li><li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">Case Studies</span></a></li>
+        </ul></div>
+        <div class="ds-nav-footer__col"><h4 class="ds-nav-footer__col-title">Support</h4><ul class="ds-nav-footer__col-links">
+          <li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">FAQ &amp; Help Center</span></a></li><li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">Solution Support</span></a></li><li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">Query Tool</span></a></li><li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">WDM Transceiver Stock List</span></a></li><li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">Products Verification</span></a></li><li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">Track My Order</span></a></li><li><a href="#" class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--s"><span class="ds-text-btn__text">RMA Checklist</span></a></li>
+        </ul></div>
+        <div class="ds-nav-footer__sidebar">
+          <div class="ds-nav-footer__subscribe"><h4 class="ds-nav-footer__col-title">Stay in Touch</h4><div class="ds-nav-footer__subscribe-form"><input type="email" class="ds-nav-footer__subscribe-input" placeholder="Email" aria-label="Email"><button class="ds-nav-footer__subscribe-btn" type="button">Subscribe</button></div></div>
+          <div class="ds-nav-footer__app"><h4 class="ds-nav-footer__col-title">Download FS APP</h4><div class="ds-nav-footer__app-badges"><a href="#" aria-label="Download on the App Store"><img src="../fs-components/component-specs/icons/img-app-store.svg" alt="App Store" height="28"></a><a href="#" aria-label="Get it on Google Play"><img src="../fs-components/component-specs/icons/img-google-play.svg" alt="Google Play" height="28"></a></div></div>
+          <div class="ds-nav-footer__social"><a href="#" class="ds-nav-footer__social-link" aria-label="LinkedIn"><img src="../fs-components/component-specs/icons/icon-social-linkedin.svg" alt="" width="16" height="16"></a><a href="#" class="ds-nav-footer__social-link" aria-label="YouTube"><img src="../fs-components/component-specs/icons/icon-social-youtube.svg" alt="" width="16" height="16"></a><a href="#" class="ds-nav-footer__social-link" aria-label="Facebook"><img src="../fs-components/component-specs/icons/icon-social-facebook.svg" alt="" width="16" height="16"></a><a href="#" class="ds-nav-footer__social-link" aria-label="X"><img src="../fs-components/component-specs/icons/icon-social-x.svg" alt="" width="16" height="16"></a><a href="#" class="ds-nav-footer__social-link" aria-label="Instagram"><img src="../fs-components/component-specs/icons/icon-social-instagram.svg" alt="" width="16" height="16"></a><a href="#" class="ds-nav-footer__social-link" aria-label="Reddit"><img src="../fs-components/component-specs/icons/icon-social-reddit.svg" alt="" width="16" height="16"></a></div>
+        </div>
+      </div>
+      <div class="ds-nav-footer__badges"><div class="ds-nav-footer__badges-left"><img src="../fs-components/component-specs/icons/img-badge-trustpilot.svg" alt="Trustpilot" height="28"><img src="../fs-components/component-specs/icons/img-badge-trustedsite.svg" alt="TrustedSite" height="28"><img src="../fs-components/component-specs/icons/img-badge-bbb.svg" alt="BBB" height="28"><img src="../fs-components/component-specs/icons/img-badge-google.svg" alt="Google Reviews" height="28"></div><div class="ds-nav-footer__badges-right"><a href="#" class="ds-nav-footer__region-link">United States / $ USD<svg class="ds-nav-footer__dropdown-icon" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 4.5L6 7.5L9 4.5" stroke="#707070" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></div>
+      <hr class="ds-nav-footer__divider">
+      <div class="ds-nav-footer__legal"><div class="ds-nav-footer__legal-links"><a href="#" class="ds-nav-footer__legal-link">Site Map</a><span class="ds-nav-footer__legal-divider"></span><a href="#" class="ds-nav-footer__legal-link">Accessibility</a><span class="ds-nav-footer__legal-divider"></span><a href="#" class="ds-nav-footer__legal-link">Privacy Policy and Notice at Collection</a><span class="ds-nav-footer__legal-divider"></span><a href="#" class="ds-nav-footer__legal-link">Cookies Notice</a><span class="ds-nav-footer__legal-divider"></span><a href="#" class="ds-nav-footer__legal-link">Terms and Conditions</a><span class="ds-nav-footer__legal-divider"></span><a href="#" class="ds-nav-footer__legal-link">Report a Vulnerability</a><span class="ds-nav-footer__legal-divider"></span><a href="#" class="ds-nav-footer__legal-link">Do Not Sell or Share My Personal Information</a><span class="ds-nav-footer__legal-divider"></span><a href="#" class="ds-nav-footer__legal-link">Company Policies</a><span class="ds-nav-footer__legal-divider"></span><a href="#" class="ds-nav-footer__legal-link">Cookie Settings</a></div><div class="ds-nav-footer__copyright">Copyright &copy; 2009-2026 FS.COM INC. All Rights Reserved.</div></div>
+    </div>
+  </footer>
+  <script>
+    document.querySelectorAll('[data-carousel]').forEach(function (root) {
+      var track = root.querySelector('.carousel-track');
+      var slides = root.querySelectorAll('.carousel-page');
+      var dots = root.querySelectorAll('.ds-carousel__dot');
+      var prev = root.querySelector('.ds-carousel__btn--prev') || root.querySelector('.ds-carousel__controls .ds-carousel__btn:first-child');
+      var next = root.querySelector('.ds-carousel__btn--next') || root.querySelector('.ds-carousel__controls .ds-carousel__btn:last-child');
+      var current = 0;
+      function show(index) { current = Math.max(0, Math.min(index, slides.length - 1)); track.style.transform = 'translateX(-' + (100 * current) + '%)'; dots.forEach(function (dot, i) { dot.classList.toggle('ds-carousel__dot--active', i === current); dot.setAttribute('aria-current', i === current ? 'true' : 'false'); }); prev.disabled = current === 0; next.disabled = current === slides.length - 1; }
+      prev.addEventListener('click', function () { show(current - 1); });
+      next.addEventListener('click', function () { show(current + 1); });
+      dots.forEach(function (dot, i) { dot.addEventListener('click', function () { show(i); }); });
+      show(0);
+    });
+    document.querySelectorAll('[data-category]').forEach(function (tab) {
+      function select() { document.querySelectorAll('[data-category]').forEach(function (item) { var active = item === tab; item.classList.toggle('ds-tab__item--active', active); item.setAttribute('aria-selected', active ? 'true' : 'false'); if (active && !item.querySelector('.ds-tab__indicator')) { var inner = item.querySelector('.ds-tab__item-inner') || item; var mark = document.createElement('div'); mark.className = 'ds-tab__indicator'; inner.appendChild(mark); } else if (!active) { item.querySelector('.ds-tab__indicator')?.remove(); } }); document.querySelectorAll('[data-panel]').forEach(function (panel) { panel.hidden = panel.dataset.panel !== tab.dataset.category; }); }
+      tab.addEventListener('click', select);
+      tab.addEventListener('keydown', function (event) { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); select(); } });
+    });
+  </script>
+</body>
+</html>
