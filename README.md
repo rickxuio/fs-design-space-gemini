@@ -6,8 +6,9 @@ generated pages. Not the official FS.com design system.
 
 **Version:** 1.1.0
 
-> **Planning:** see [`PLAN.md`](PLAN.md) for the department-wide construction plan,
-> the platform roadmap (A/B/C), and the fragment catalog (方案 B).
+> **Planning:** see [`PLAN.md`](PLAN.md) for the department-wide construction plan
+> and the platform roadmap (A/B/C), and [`FRAGMENT-CATALOG.md`](FRAGMENT-CATALOG.md)
+> for the detailed fragment catalog implementation plan (方案 B).
 
 ---
 
