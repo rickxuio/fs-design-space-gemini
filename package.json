@@ -12,8 +12,10 @@
     "verify": "node verify.js",
     "check": "node scripts/run-design-check.cjs",
     "preview": "node scripts/local-preview.cjs",
+    "preview:live": "node scripts/local-preview.cjs --live-css",
     "component:export": "node scripts/local-component-library.cjs",
     "component:check": "node scripts/local-component-library.cjs --check",
+    "component:check:impact": "node scripts/check-component-impact.cjs",
     "component:sync": "node scripts/local-component-maintenance.cjs",
     "component:watch": "node scripts/local-component-maintenance.cjs --watch",
     "impact": "node scripts/local-component-maintenance.cjs --impact",
@@ -28,7 +30,8 @@
     "ingest": "node scripts/ingest-source-page.cjs",
     "audit:page": "node scripts/audit-and-capture.cjs",
     "page:upgrade": "node scripts/page-upgrade.cjs",
-    "release:prune": "node scripts/prune-releases.cjs"
+    "release:prune": "node scripts/prune-releases.cjs",
+    "variants:slim": "node scripts/slim-variant-sources.cjs"
   },
   "dependencies": {
     "puppeteer-core": "25.1.0"
