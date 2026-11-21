@@ -1,0 +1,15 @@
+/* Native control reset for opt-in basic single choice; parent owns width. */
+.ds-dropdown[data-dropdown-current] { width: 100%; }
+.ds-dropdown[data-dropdown-current] .ds-dropdown__trigger {
+  width: 100%; font-family: var(--font-family-base); font-weight: var(--font-weight-regular); text-align: left;
+}
+.ds-dropdown[data-dropdown-current] .ds-dropdown__item {
+  width: 100%; border: var(--border-style-none); background: none;
+  font-family: var(--font-family-base); font-weight: var(--font-weight-regular); text-align: left;
+}
+.ds-dropdown[data-dropdown-current] .ds-dropdown__item:hover,
+.ds-dropdown[data-dropdown-current] .ds-dropdown__item--active { background: var(--color-gray-9); }
+.ds-dropdown[data-dropdown-current] .ds-dropdown__panel[hidden] { display: none; }
+.ds-dropdown[data-dropdown-current] .ds-dropdown__item[hidden] { display: none; }
+.ds-dropdown[data-dropdown-current][data-dropdown-kind="brand"] .ds-dropdown__search-icon { width: 14px; height: 14px; }
+.ds-dropdown[data-dropdown-current][data-dropdown-kind="brand"] .ds-dropdown__panel { border: var(--border-width-default) var(--border-style-default) var(--border-color-default); }

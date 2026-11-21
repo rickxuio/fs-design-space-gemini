@@ -1,0 +1,35 @@
+/* Current opt-in atoms: InputNumber v1.0.2602A visible state annotations.
+   Historical unmarked calls retain components.css. */
+.ds-input-number[data-input-number-current] .ds-input-number__button::before {
+  background: var(--color-gray-3);
+  -webkit-mask: var(--ds-input-number-icon) center / 10px 10px no-repeat;
+  mask: var(--ds-input-number-icon) center / 10px 10px no-repeat;
+  opacity: 1;
+}
+.ds-input-number[data-input-number-current] .ds-input-number__button:hover:not(:disabled)::before,
+.ds-input-number[data-input-number-current] .ds-input-number__button--hover:not(:disabled)::before {
+  background: var(--color-gray-1);
+}
+.ds-input-number[data-input-number-current] .ds-input-number__button:disabled::before {
+  background: var(--color-text-disabled);
+  opacity: 1;
+}
+/* Own filled42 Hover Button024933 has no fill; outline024886 owns4%. */
+.ds-input-number--filled[data-input-number-current] .ds-input-number__button:hover:not(:disabled),
+.ds-input-number--filled[data-input-number-current] .ds-input-number__button--hover:not(:disabled) {
+  background: transparent;
+}
+.ds-input-number[data-input-number-current]:has(.ds-input-number__input[readonly]) .ds-input-number__button:disabled {
+  color: var(--color-text-disabled);
+  cursor: default;
+}
+/* Readonly retains the base input colour. A separate :has() override would
+   outrank the disabled colour when both native flags are present. */
+/* Disabled wins when readonly and disabled occur together. */
+.ds-input-number--filled[data-input-number-current]:not([aria-disabled="true"]) .ds-input-number__input[readonly]:not(:disabled) {
+  opacity: 0.7; /* Own filled42 Readonly text layer under source slot025019. */
+}
+.ds-input-number[data-input-number-current][aria-disabled="true"] .ds-input-number__input {
+  color: var(--color-text-disabled);
+  caret-color: var(--color-text-disabled);
+}

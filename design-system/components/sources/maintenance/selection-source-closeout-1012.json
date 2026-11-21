@@ -1,0 +1,127 @@
+{
+  "schemaVersion": "fs-selection-source-verification-closeout/1.0.0",
+  "date": "2026-10-12",
+  "scope": "Established Banner call mutation proof; explicitly auto-generated legacy Context guard; obsolete Card negative-test expected classes only",
+  "priorEvidence": "components/sources/maintenance/selection-source-1012.json",
+  "beforeOldContextProbe": {
+    "plan": {
+      "schemaVersion": "1.1.0",
+      "implementationReadiness": "ready",
+      "automaticGeneration": {
+        "componentSelection": "scripts/select-page-components.js"
+      },
+      "sections": []
+    },
+    "oldContext": {
+      "schemaVersion": "fs-page-generation-context/1.0.0",
+      "generatedBy": "scripts/prepare-page-generation-context.js",
+      "sourcePlan": "/var/folders/zj/tqydc6gn4835hd3l46vqt7fw0000gn/T/fs-old-context-probe-UzhYNB/old.plan.json",
+      "planMeta": {
+        "implementationReadiness": "ready"
+      },
+      "sourceFacts": {
+        "referenceFacts": {
+          "sources": []
+        }
+      },
+      "readSet": {
+        "required": []
+      },
+      "integrity": {
+        "contentGate": "ready",
+        "blockedComponentCount": 0,
+        "unresolvedComponents": [],
+        "unresolvedVariants": []
+      },
+      "components": []
+    },
+    "runnerErrors": [],
+    "scope": "Repair-before schema fixture constructed without source binding or selectionSource; no page implementation or component approval tested"
+  },
+  "results": {
+    "newTests": 3,
+    "total": 46,
+    "passed": 46,
+    "failed": 0,
+    "skipped": 0,
+    "banner": "Actual current selector CLI selects Banner/hero, draft contains verified Banner call and ready readiness, Context includes Banner. Mutating text with exactly preserved mtime leaves old selection untouched, makes draft blocked and actual SEC-001 componentComposition empty. Restored original Plan retains old call but regenerated and original Context are rejected by actual runner source guard.",
+    "legacyContext": "Hand-built pre-binding 1.0.0 Context schema (no sourceFactsBinding/selectionSource), explicit existing automaticGeneration.componentSelection Plan: actual runner previously returned []; after minimal guard it rejects unverified source. Fixture did not come from a new Context with fields removed.",
+    "manualControl": "Unmarked manually maintained legacy Plan fixture retains previous assertContext [] under isolated gates; this is not a source verification claim.",
+    "card": "Current spliced.vertical.single-event contract cssClass and real Preview require ds-card--vertical AND ds-card--no-border. Existing negative test now expects both missing classes. No Card contract, Preview or runtime modified."
+  },
+  "implementationChange": {
+    "file": "scripts/run-page-generation.js",
+    "guard": "When Plan has sourceFactsBinding or explicit automaticGeneration.componentSelection, independently recheck selectionSourceStatus and require current Context selectionSource status. Old missing binding becomes unverified and errors block generation.",
+    "schemaChange": false,
+    "legacyMigration": false
+  },
+  "modifiedFiles": [
+    "scripts/run-page-generation.js",
+    "scripts/selection-source-freshness.test.js",
+    "scripts/prepare-page-generation-context.test.js"
+  ],
+  "checks": [
+    {
+      "command": "node --test scripts/selection-source-freshness.test.js scripts/select-page-components.test.js scripts/run-page-generation.test.js scripts/prepare-page-generation-context.test.js",
+      "exitCode": 0,
+      "total": 46,
+      "passed": 46,
+      "failed": 0,
+      "log": "components/sources/maintenance/selection-source-closeout-1012.tap.txt"
+    },
+    {
+      "command": "node --check scripts/run-page-generation.js",
+      "exitCode": 0
+    }
+  ],
+  "cardSourceEvidence": "components/sources/maintenance/selection-source-closeout-1012-card.json",
+  "sourceAndToolFingerprints": {
+    "scripts/run-page-generation.js": "013d21681b1612567a07060278f68dc8592689e7e0987570ca8901aa625529d2",
+    "scripts/selection-source-freshness.test.js": "239af4e8078ebcb7e4c04ee6c37d4c6a86a237be47e4438a47bbc987857ce997",
+    "scripts/prepare-page-generation-context.test.js": "8cf676ca27c5c01492470af6848756213c8ef2bce20a94f5b66ed8f368d7d50c",
+    "scripts/select-page-components.js": "c020e7de6dfda39594a497f49ba1bf1177dbb669486c4b5289b887df3e630e5d",
+    "scripts/generate-page-plan-draft.js": "9ef21aee352346853b108629bb98efd23cb5fd5c11c8837504ed7393d9f84435",
+    "scripts/prepare-page-generation-context.js": "d082ea430ea913765a80f8eaf79e696a13ddf9be920a583e7c867d312a5b3602",
+    "scripts/select-page-components.test.js": "0aa0abbd3a812a0dac5ab9dd7f1f89456925d62498364af895314f5ac9d3c55d",
+    "scripts/run-page-generation.test.js": "c3fba927dccb464b4515f374fde0b6ab3ad9edeff5451ddd06d7edb4d580049e",
+    "components/contracts/banner.json": "f21751379e6534c118f0c4fd4704c538491b5949ba670afea68443ddef54beb1",
+    "components/preview/banner.html": "04ee2772a20a1726842b2ca40d58960efd5b2751e145deccc84a94e9e22a2004",
+    "components/contracts/card.json": "7a6725e241e3d02fe62ff7e7e72fdf249283942afb900bdb8cde6ad8df85b55f",
+    "components/preview/card.html": "af50f6ec9b5cc189c97d65d9e1c6587366f55bb162b1ad27e258f044f6457089",
+    "components/generation-index.json": "6b522b3b9e8b5a3298e4dd84f7ac2be03084afe041c55f933f62fbeb325942f9",
+    "components/component-selection-mvp.json": "4ad72f1a3f7dc554ed6ab7d45d10772a3b26e2afba1bd61c06c0001aae60795d",
+    "AGENTS.md": "18e69cd3c00626bfbafff3026a17aa6f035e7442bca2eb8c99511f9274417cde",
+    "package.json": "b8d55152f4d658a04ffcc77b95b8ae72e69b3209d6edd8a9f7067fad2230d88f"
+  },
+  "logFingerprints": {
+    "components/sources/maintenance/selection-source-closeout-1012.tap.txt": "ac1e6791a746d6ac187c29c161507525e45a8aadc3828e8b2ad0db896ec76d98",
+    "components/sources/maintenance/selection-source-closeout-1012-card.json": "9710ea2eba92d0edcb1d5303dcae0c6adc19e85d9ba4a8b333b34efdd9e8319f"
+  },
+  "unchangedHistory": [
+    {
+      "file": "page-inputs/omada-home-rebuild-0930/reference-facts.json",
+      "sha256": "64143a86ca310be52083ee6d0f4c0edb9a7fb4524b99a4b6f39479cdfe2930f7",
+      "unchanged": true
+    },
+    {
+      "file": "page-inputs/omada-home-rebuild-0930/component-selection.json",
+      "sha256": "28730c780a021314c19d8a81d49c9cdd5dd7989da849658f4a04084dc2e09679",
+      "unchanged": true
+    }
+  ],
+  "remainingBoundary": {
+    "id": "unmarked-legacy-plan-provenance",
+    "status": "undetermined-preserve-existing-semantics",
+    "description": "A legacy Plan without explicit selector provenance may be manual or automatic; generatedBy/tool name/date does not reliably distinguish them. The new guard does not infer ownership or block all such Plans.",
+    "decisionNeeded": "If stricter handling is desired, user must decide whether all unbound legacy Plans require explicit source confirmation before generation; do not silently change manual legacy semantics."
+  },
+  "limits": [
+    "All 46 directly affected tests pass; no full npm page-generation suite, full health, component engineering acceptance, MasterGo or browser/visual approval performed",
+    "Banner positive is synthetic A1 facts using the real registered selector/contract pipeline; no fabricated page or loaded image delivery/visual conformity claim",
+    "Current source binding does not waive unrelated Banner/Navigation engineering/ref/structure gates; actual diagnostic errors remain logged",
+    "Card standalone Preview validation ready means static structure only; image/title slot observations remain unverifiable, not visual approval",
+    "No automatic variant reselection or rewrite of historical selection/Plan/Context/page records",
+    "No dependencies installed, service mutations, Git commits/pushes, automation/caffeinate started"
+  ],
+  "next": "Stop for independent review; coordinator decides subsequent work"
+}

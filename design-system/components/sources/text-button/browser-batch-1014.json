@@ -1,0 +1,257 @@
+{
+  "mainComponent": "TextButton",
+  "scope": "清理后7变体10尺寸的真实Hover下划线、文字与箭头尺寸稳定性",
+  "status": "finite-source-paint-fix-and-browser-closed-user-visual-pending",
+  "reason": "复用已取得10组合20SVG及有限调用；关闭实际浏览器Hover待办，不重复原件导出",
+  "sourceRange": [
+    "components/contracts/text-button.json",
+    "components/sources/text-button"
+  ],
+  "necessaryRelations": [
+    "当前Card真实inline-black/M调用，已在上批验证"
+  ],
+  "completionConditions": [
+    "当前10个真实规范展示Default/Hover实际1920×1000检查",
+    "箭头加载/样式、文字色/字重/尺寸及下划线符合有限契约",
+    "用户视觉仍待确认，其他宿主与未投喂状态不扩大"
+  ],
+  "remaining": [
+    "用户视觉批准",
+    "背景动画最终帧未单独验证，未冒称即时中间色符合最终色",
+    "其他真实宿主"
+  ],
+  "directionalChecks": [
+    "真指针悬浮，不用静态Hover类冒充操作",
+    "不新增演示，不升级冻结页面"
+  ],
+  "result": "七变体十尺寸真实指针Hover已取得：八个Inline加下划线、带背景两尺寸按原件不加下划线，所有字号/字重/边界稳定；发现并修正旧with-bg:hover:not规则抢占原始箭头颜色，当前两个Hover路径明确filter:none；11项来源/级联检查和2项调用闸门通过，去掉guard的负例可重现旧错误。冻结历史资源不升级。",
+  "engineering": {
+    "status": "passed-finite-scoped",
+    "testedAt": "2026-10-13T16:16:37.927Z",
+    "scope": "seven existing TextButton variants / ten source-matched Default-Hover size calls, official arrow paint guard and negative legacy cascade; actual pointer evidence recorded separately, other hosts and user approval pending",
+    "log": "components/sources/text-button/browser-arrow-paint-tests-1014.log",
+    "visual": "browser-hover-measured-user-approval-pending",
+    "fullFamilyAcceptance": false
+  },
+  "browser": "components/sources/text-button/browser-states-1014.json",
+  "libraryClosure1014": {
+    "scope": "既有7变体10尺寸Default/Hover普通右箭头；真实Card调用必要关联",
+    "sourceReused": [
+      "design-inventory.json",
+      "arrow-export-index-1012.json",
+      "browser-states-1014.json",
+      "browser-bg-terminal-states-1014.json"
+    ],
+    "sourceHashCheck": {
+      "officialSvgFiles": 20,
+      "matched": 20,
+      "onlineLatestNotInferred": true
+    },
+    "corrections": [
+      "states.hover.with-bg旧brightness(0)改为官方HoverSVG/filter:none",
+      "iconHandling明确当前原件与旧非canonical宿主滤镜边界",
+      "sourceInventory摘要承认已取得矢量与实际Hover证据，保留未覆盖范围"
+    ],
+    "renderChanges": false,
+    "checks": {
+      "command": "node --test scripts/text-button-source-inventory.test.js scripts/text-button-arrow-paint.test.js scripts/card-reference.test.js scripts/card-current.test.js scripts/link-icon-host-dependencies.test.js",
+      "passed": 31,
+      "failed": 0,
+      "sync": "library-closeout-sync-1014.log",
+      "engineeringLog": "library-closeout-engineering-1014.log",
+      "supersededBy": "arrowVisibility"
+    },
+    "remaining": [
+      "用户视觉批准",
+      "其他真实宿主各自完整范围；Card首批有限关联已检查，整Card缺口继续处理",
+      "源头完整独立规范正文与原件属性适用范围分开，不由工程批准替代"
+    ],
+    "sourceReadAttempts": [
+      {
+        "route": "MasterGo native UI",
+        "result": "有效143880409387753按钮页3752:3993实际可访问，锁屏旧限制已不适用"
+      },
+      {
+        "route": "get_selection_node",
+        "target": "68268:62417",
+        "result": "读取规范文字按钮行及ui-component属性；设计图层生成代码，不作为原始前端代码或主节点完整身份证明"
+      },
+      {
+        "route": "get_selection_node",
+        "target": "68908:026379",
+        "page": "68908:093275",
+        "result": "TargetNodeNotFound；不能证明List不存在，且不是该主原件已知页093273。停止该路线，沿已存有效List来源缺口处理，不重复旧失败路径。"
+      }
+    ],
+    "fullFamilyAcceptance": false,
+    "scopeAdjustment": {
+      "reason": "真实20原件已登记向右箭头显示开关；当前规范62451实例为false，本地AI仅开放箭头on，遗漏原有属性",
+      "scope": "仅原有右箭头显示/隐藏；保留img DOM及官方资源，不允许左图标、自定义图标或宿主隐式省略",
+      "completionConditions": [
+        "20个原件开关指向真实arrow层",
+        "arrowHidden为唯一boolean绑定，非法target/默认值及来源开关缺失被拒绝",
+        "显式current原子管理hidden样式；当前canonical Preview保持箭头on，不新增能力演示",
+        "来源要求有箭头的Card调用禁止隐藏",
+        "实际装配验证on/off文字样式与Default/Hover及布局，用户视觉单列"
+      ]
+    },
+    "arrowVisibility": {
+      "sourcePropertiesMatched": 20,
+      "binding": "arrowHidden:boolean -> img.ds-text-btn__icon.hidden; preserve registered img and src",
+      "sourceVisibility": "向右箭头 defaulttrue; hidden inverts that boolean",
+      "regressionLog": "library-closeout-regression-1014-r2.log",
+      "passed": 33,
+      "failed": 0,
+      "failedFixtureLog": "library-closeout-regression-1014.log",
+      "failureResolution": "Negative fixture originally changed both property target and node ID; corrected to break property link only. Product guard not weakened.",
+      "syncLog": "library-closeout-sync-1014-r2.log",
+      "browser": {
+        "url": "http://127.0.0.1:4317/page-reviews/component-stage-status-2026-10-11/fixtures/text-button-arrow-visibility-1014.html",
+        "viewport": {
+          "width": 1920,
+          "height": 1000
+        },
+        "calls": 40,
+        "matchedGroups": 10,
+        "visibleGlyph": [
+          12,
+          12
+        ],
+        "hiddenGlyph": [
+          0,
+          0
+        ],
+        "hiddenDisplay": "none",
+        "nodePreserved": true,
+        "widthReduction": 14,
+        "textAndHeightUnchangedWithinEachState": true,
+        "stateType": "40 Default/explicit Hover-class assembled calls, plus10 actual default-off pointer Hover calls",
+        "samples": [
+          {
+            "call": "inline-blue/s",
+            "widths": [
+              62,
+              48,
+              62,
+              48
+            ],
+            "height": 20
+          },
+          {
+            "call": "inline-gray/s",
+            "widths": [
+              62,
+              48,
+              62,
+              48
+            ],
+            "height": 20
+          },
+          {
+            "call": "inline-black/m",
+            "widths": [
+              66,
+              52,
+              66,
+              52
+            ],
+            "height": 20
+          },
+          {
+            "call": "inline-black/l",
+            "widths": [
+              70,
+              56,
+              70,
+              56
+            ],
+            "height": 22
+          },
+          {
+            "call": "inline-black-bold/l",
+            "widths": [
+              70,
+              56,
+              70,
+              56
+            ],
+            "height": 22
+          },
+          {
+            "call": "inline-blue-link/m",
+            "widths": [
+              66,
+              52,
+              66,
+              52
+            ],
+            "height": 20
+          },
+          {
+            "call": "inline-blue-link/l",
+            "widths": [
+              70,
+              56,
+              70,
+              56
+            ],
+            "height": 22
+          },
+          {
+            "call": "inline-white/l",
+            "widths": [
+              70,
+              56,
+              70,
+              56
+            ],
+            "height": 22
+          },
+          {
+            "call": "with-bg-default/s-bg",
+            "widths": [
+              86,
+              72,
+              86,
+              72
+            ],
+            "height": 32
+          },
+          {
+            "call": "with-bg-default/l-bg",
+            "widths": [
+              102,
+              88,
+              102,
+              88
+            ],
+            "height": 36
+          }
+        ],
+        "screenshot": "Native CUA inline screenshot in current conversation; no local PNG claimed",
+        "userVisualApproval": "pending",
+        "realPointerOff": {
+          "calls": 10,
+          "allActuallyHovered": true,
+          "hiddenArrowDisplay": "none",
+          "rootWidthHeightStable": true,
+          "inlineUnderline": 8,
+          "withBgNoUnderline": 2,
+          "withBgTerminalBackground": "rgb(242,242,242)",
+          "grayAndWithBgHoverText": "rgb(25,25,26)"
+        }
+      },
+      "hostBoundary": "Existing Card arrows remain required; hidden-arrow injection rejected by actual host validator",
+      "previewBoundary": "Canonical20 cells unchanged; engineering fixture only, no new Preview ability demo",
+      "finalGuardsLog": "library-closeout-final-guards-1014.log",
+      "validationCorrection": "Removed an invalid JSDOM negative that expected removing the explicit hidden rule to unhide an img; native hidden already works without that rule. This was not a product failure. Actual40 assembled states and10 pointer states passed; source-binding and required-host-arrow negatives retained."
+    },
+    "userVisualConfirmation": {
+      "date": "2026-10-14",
+      "answer": "显示正常",
+      "status": "approved",
+      "scope": "10 sourced sizes; Default/Hover; arrow visible/hidden; fixture text-button-arrow-visibility-1014.html",
+      "boundary": "Does not approve other host assemblies or the full component library."
+    }
+  }
+}

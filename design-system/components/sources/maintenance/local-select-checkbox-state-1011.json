@@ -1,0 +1,49 @@
+{
+  "date": "2026-10-11",
+  "scope": "Current Select controlled Checkbox marker availability and related existing runtime regressions",
+  "fix": {
+    "problem": "Dynamic option aria-disabled/native disabled did not synchronize controlled Checkbox disabled class",
+    "redReproduced": true,
+    "resolution": "Initialize/synchronize marker checked and disabled state from owning option; observe option availability changes only in initialized Select roots; preserve selection and emit no synthetic change"
+  },
+  "tests": {
+    "passed": 14,
+    "suites": [
+      "scripts/select-runtime-guards.test.js",
+      "scripts/select-reference.test.js"
+    ],
+    "logs": [
+      "/tmp/fs-select-marker-disable-before.log",
+      "/tmp/fs-select-marker-disable-final-test.log",
+      "/tmp/fs-select-marker-disable-sync.log",
+      "/tmp/fs-select-marker-disable-health.log"
+    ],
+    "covered": [
+      "dynamic disable/re-enable",
+      "blocked activation",
+      "no extra events",
+      "other-instance isolation",
+      "existing confirmation cancel/commit and Checkbox rollback",
+      "existing IME/host disable guards",
+      "existing authored call structure"
+    ],
+    "syncPassed": true,
+    "healthPassed": true,
+    "healthWarnings": 2
+  },
+  "fingerprints": {
+    "components/select-current.js": "7aa4e5225f5d49348db9717400a6a5a7581eb485cc146921ee072a4dc749da86",
+    "components/contracts/select.json": "c3b49ec0e1f1e36169990ee1bcd4ef33d6037fdc878b0505f0bb7802c4b62d25",
+    "scripts/select-runtime-guards.test.js": "1954aa727dee584d86468b82b0bea3215c1e813a089cb9746096465b96e9915f",
+    "scripts/select-reference.test.js": "9cb3f836efbfe3d77e6ef241993dcf6ed717d8e1da0f5560fcf2ab122298b500"
+  },
+  "boundaries": {
+    "mastergoVerified": false,
+    "browserVerified": false,
+    "visualVerified": false,
+    "businessSelectionPolicyChanged": false,
+    "newCanonicalAdmission": false,
+    "frozenPagesChanged": false,
+    "completeFamilyCoverage": false
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "fs-component-source-review/1.0.0",
+  "component": "checkbox",
+  "status": "verified-rules-and-structure",
+  "source": {
+    "root": "3:218635",
+    "title": "【复选框 Checkbox】设计规范v1.2.2608C",
+    "file": "components/sources/foundation-mg-20261114/checkbox.txt",
+    "fileId": "209944605602401",
+    "sha256": "603cbdd8a741b76c19f84f1eab84a78ba54d1fff5c5fbfda9dcf66f1bc07b911",
+    "recordedAt": "2026-11-14T05:25:33.834Z",
+    "method": "MasterGo get_selection_node; explicit current-file node read",
+    "url": "https://mastergo.com/file/209944605602401?page_id=M&layer_id=3:218635"
+  },
+  "scope": "Current admitted desktop calls: scene rules, declared states and actual source relationships; not pixel or whole-family visual approval",
+  "findings": [
+    {
+      "id": "group-and-single-switch",
+      "nodes": [
+        "3:219184",
+        "3:218866"
+      ],
+      "sourceFact": "普通组≥2且不互斥，单项仅条款/记住密码/保持登录等开关。",
+      "correction": "补齐选型条件；规范样板的普通演示改为两项。"
+    },
+    {
+      "id": "host-ownership",
+      "nodes": [
+        "3:218855",
+        "3:219158"
+      ],
+      "sourceFact": "下拉场景遵守宿主交互；Checkbox分子只管理图标、字体和状态外观。",
+      "correction": "保留Select受控标记，禁止再叠加原生input事件。"
+    }
+  ],
+  "unverified": [
+    "Source prose says four interactions while typed set has twelve size/state masters (six per size); typed Disabled/Disabled-checked retained, no new uncheckable-active business rule inferred."
+  ],
+  "ruleDigest": "4b91c233d9690fb6a2547099d8145da26fa0fb381102c8871fd64010ac5738a3"
+}

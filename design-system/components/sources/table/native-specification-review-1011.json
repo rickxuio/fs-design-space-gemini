@@ -1,0 +1,302 @@
+{
+  "date": "2026-10-11",
+  "status": "selected-visible-fragment-only",
+  "source": {
+    "fileId": "143880409387753",
+    "pageId": "68908:251131",
+    "visibleContainerTitle": "表格规范v2.2.2511A",
+    "selectedNodeId": "68908:255304",
+    "remoteRevision": null,
+    "mode": "native-visible-canvas-at-80-102-and-330-percent",
+    "selectedContextNodeId": "68908:255295",
+    "visibleTitleVersion": "v2.2.2511A",
+    "visibleLogVersion": "v2.3.2511A",
+    "visibleUpdateDate": "2025-11-24"
+  },
+  "facts": [
+    {
+      "section": "停用说明",
+      "text": "取消所有表格圆角，统一为直角。"
+    },
+    {
+      "section": "停用说明",
+      "text": "取消“Yes/No”的数据表达，统一为“✓”、“-”。"
+    },
+    {
+      "section": "更新内容-优化",
+      "text": "按数据结构分为垂直型、水平型、矩阵型；按表格样式分为蓝色斑马纹与描边。"
+    },
+    {
+      "section": "更新内容-优化",
+      "text": "统一单元格内间距为纵向8、横向10。"
+    },
+    {
+      "section": "更新内容-优化",
+      "text": "统一表格字号为13px，除GPT跟随页面使用12px。"
+    },
+    {
+      "section": "更新内容-优化",
+      "text": "蓝色值统一为#4080FF，6%透明度；描边表格线条为#EEEEEE。"
+    },
+    {
+      "section": "3.1 通用规范",
+      "text": "标题和单元格文本均为#19191A；示意标注标题13px粗体、单元格13px常规。"
+    },
+    {
+      "section": "3.1 通用规范",
+      "text": "运用✓和-等通用符号替代是/有、无/否；字号13px、GPT12px，内间距纵8横10。"
+    },
+    {
+      "section": "2.2 描边表格",
+      "text": "描边表格适用于技术文档、开放平台和部分政策页面；示例包含合并单元格，当前有限调用不支持合并。"
+    },
+    {
+      "section": "2.2 行线",
+      "text": "行线仅行数据含下描边，用于库存专题页；可见示例有蓝色ID链接及库存状态点。当前纯文本有限调用不包含它们。"
+    },
+    {
+      "section": "2.3 矩阵型-有产品图",
+      "text": "原稿默认标注产品数量<6、数据溢出标注产品数量≥6；此数量指产品列，不是body行数。运行时继续按实际scroll/client宽度判断溢出，不用body行数模拟产品阈值。"
+    },
+    {
+      "section": "3.3 PC端列宽定义",
+      "text": "主要按数据内容定义，三种方式为按比例、均分、首列固定宽度+单元格均分。产品对比示例首列184px，最多展示5列产品，超出滑动。"
+    },
+    {
+      "section": "4.1 表格滑动",
+      "text": "数据较多的水平型、矩阵型表格在滑动时保持标题数据吸顶；Web示例分别展示上下、左右、同时上下左右滑动，后一示例标注吸顶高度52px。当前有限调用不宣称完整吸顶通过。"
+    },
+    {
+      "section": "4.2 数据折叠",
+      "text": "数据量过大可将超出数据折叠展示。产品兼容表格例子默认6行，超出折叠；示例See more按钮为文字按钮实例。规范并未将折叠限定于行线型。"
+    }
+  ],
+  "implementationBoundary": {
+    "currentCss": "Table根、table、cell未声明圆角；scrollbar thumb的小圆角属于滚动条，不能误当表格圆角。只读声明观察，未证明最终计算样式。",
+    "data": "矩阵示例目前使用✓/—；ASCII连字符、en/em dash与规范标记是否等价尚待明确。不自动重写用户正文或任意Yes/No业务数据。",
+    "nestedControls": "有产品图PC原稿为40×40的组12126，嵌套20×20向右箭头实例与白色圆形58。限定current matrix-products修正底板尺寸/形状；不强行登记IconButton。无产品图及完整状态仍pending。",
+    "columnWidths": "通用矩阵yes/pc68908:036227中行头原子200×36，内距8/10、13px。现行200px与原子一致，保留。规范3.3产品详情应用例184px不覆盖通用原子。已撤回184px草稿，仅40px圆形控件改动保留。"
+  },
+  "pending": [
+    "完整适用PC规范及标题v2.2/日志v2.3版本角色冲突",
+    "垂直/水平/矩阵原子集合及变体对应",
+    "行线型TextButton、矩阵无产品图及完整控件状态；有产品图group/icon/ellipse有限来源已记录",
+    "实际PC浏览器几何/滚动/视觉；适配仍deferred",
+    "完整吸顶/首列固定与有限实现对应；通用200px原子与应用例184px边界已明确，实际浏览器几何仍待验证"
+  ],
+  "browserAcceptance": false,
+  "visualApproval": false,
+  "evidenceLimit": "仅原生内联截图和可见属性，不保存隐藏DSL或恢复远端组件。",
+  "versionConflict": {
+    "status": "recorded-not-resolved",
+    "description": "正文标题和容器均v2.2.2511A，更新日志当前版本v2.3.2511A；不根据单一标签宣称全规范最新版。"
+  },
+  "matrixProductControl": {
+    "status": "selected-PC-default-source-geometry-only",
+    "sourceParent": {
+      "label": "组 12126",
+      "nodeId": null,
+      "type": "group",
+      "width": 40,
+      "height": 40,
+      "x": 1160,
+      "y": 196.8,
+      "masterComponentIdentity": null
+    },
+    "icon": {
+      "label": "向右箭头",
+      "nodeId": "68908:259667",
+      "type": "instance",
+      "width": 20,
+      "height": 20,
+      "x": 10,
+      "y": 10,
+      "fillStyle": "Gray-707070"
+    },
+    "background": {
+      "label": "圆形 58",
+      "nodeId": null,
+      "type": "ellipse",
+      "width": 40,
+      "height": 40,
+      "x": 0,
+      "y": 0,
+      "fillStyle": "White-FFFFFF",
+      "effectStyle": "气泡卡片投影",
+      "effectTooltip": "外阴影, 0, 2",
+      "blur": null,
+      "spread": null,
+      "color": null
+    },
+    "identityDecision": "Table-owned group with a nested icon instance and ellipse, not evidence of an IconButton instance. No IconButton dependency or carousel-icon whitelist extension.",
+    "localChange": "Only marked current matrix-products gets 40×40 circular controls in table-current.css. Icon stays 20×20. Shared CSS, unmarked demos, matrix-plain and frozen pages unchanged. Canonical component constraints now source current vertical centering/right20px; unlike the earlier norm application position, these are the generic component measurements.",
+    "pending": [
+      "Exact shared shadow blur/spread/color",
+      "Current product-matrix enabled/nonhover Next contour/paint source closed 2026-10-13; Prev/Hover/Disabled/plain remain pending",
+      "通用组件父组位置已确认居中/right20；规范应用例位置与通用组件分别记录；prev完整位置/状态仍待核对",
+      "Prev/hover/disabled states and matrix-plain identity",
+      "Actual local browser geometry/visual"
+    ]
+  },
+  "disclosureSource": {
+    "nodeId": "68908:260501",
+    "type": "instance",
+    "masterLabel": "文字按钮",
+    "width": 72,
+    "height": 20,
+    "gap": 2,
+    "size": "13px",
+    "state": "Default",
+    "color": "蓝色",
+    "colorStyle": "辅助色/Blue-#0060BF",
+    "bold": false,
+    "leadingIcon": false,
+    "trailingArrow": true,
+    "arrowDirection": "Icon/通用Icon/Down-向下",
+    "text": "See more",
+    "localDecision": "Keep previously user-directed black Disclosure / M; recorded in table contract history 2026-08-13. Do not silently overwrite that choice from the newer online example.",
+    "sourceScope": "Example is product-compatibility zebra table, not proof all row-line disclosure uses this exact blue source.",
+    "pending": [
+      "Hover/expanded host states and Down icon instance geometry; master identity finite-confirmed",
+      "Existing row-line host source versus compatibility example scope",
+      "Current Preview still needs actual browser keyboard/visual proof"
+    ],
+    "currentAtomResource": "Preview now loads text-button-current.css; finite ≤6-row AI calls still have no disclosure child and >6-row call remains unsupported.",
+    "previewGuardReview": "Adapter duplicate-load and disabled/hidden/aria-disabled synthetic-click guards fixed, limited JSDOM state proof only. Historical table.js and frozen pages unchanged.",
+    "masterReview": {
+      "pageId": "3752:3993",
+      "nativeJump": "instance component diamond navigated to blue 13px Default/off master",
+      "blueNodeId": "hj66450:91634",
+      "blackPeerNodeId": "64858:84948",
+      "width": 85,
+      "height": 20,
+      "gap": 2,
+      "padding": 0,
+      "colorStyle": "颜色系统/辅助色/Blue-#0060BF",
+      "localInventory": "components/sources/text-button/design-inventory.json",
+      "localOriginal": "components/sources/text-button/mastergo-original-components.json",
+      "identityStatus": "node IDs match saved blue M / black M atoms; instance width 72 follows See more content, master width85 follows Learn more",
+      "localDecision": "Existing user-directed black Disclosure is an explicit atom choice, not a blue source match. Preserve original preference."
+    }
+  },
+  "canonicalMatrixReview": {
+    "pageId": "68908:251131",
+    "componentNodeId": "68908:036227",
+    "componentLabel": "表格/矩阵型/组件",
+    "variant": "yes,pc",
+    "width": 1200,
+    "height": 284,
+    "radius": 0,
+    "rowHeadingInstancePath": "68908:036288/68908:024657",
+    "rowHeadingSourceLayerId": "68908:024657",
+    "rowHeadingAtomLabel": "表格/原子",
+    "rowHeadingAtomProperties": {
+      "type": "表头",
+      "color": "蓝",
+      "client": "PC",
+      "size": "13px",
+      "width": 200,
+      "height": 36,
+      "paddingVertical": 8,
+      "paddingHorizontal": 10,
+      "radius": 0,
+      "textAlign": "居左对齐"
+    },
+    "specification3_3": {
+      "width": 184,
+      "scope": "product-detail product-comparison application example"
+    },
+    "decision": "Canonical200px confirmed from native component/atom. Keep actual atom dimensions;184px application-specific example does not overwrite generic matrix. Draft184px width change withdrawn before delivery. No new component variant.",
+    "productHeading": {
+      "instancePath": "68908:036274/68908:018772/68908:016303",
+      "sourceLayerId": "68908:016303",
+      "label": "类型二｜产品对比表格/原子",
+      "width": 200,
+      "height": 140,
+      "gap": 4,
+      "padding": {
+        "top": 0,
+        "right": 8,
+        "bottom": 16,
+        "left": 8
+      },
+      "media": {
+        "sourceLayerId": "68908:016311",
+        "width": 100,
+        "height": 100
+      },
+      "localBefore": "Product inner wrapper160px plus generic cell8px top/bottom produced declared176px header;3-row preview incorrectly labeled284px.",
+      "localAfter": "Current product-header th gets canonical0/8/16/8 padding and inner wrapper124px (100 media+4 gap+20 label), totaling140px. Five columns retain200px canonical widths.3-body-row Preview label248px is a target declaration, not measured browser proof.",
+      "pending": [
+        "Actual computed header height/asset loading/text wrapping",
+        "Full image-atom master correspondence and image contour",
+        "Plain matrix/header or mobile changes not included"
+      ]
+    },
+    "nextControl": {
+      "iconNodeId": "68908:036230",
+      "iconSize": "20×20",
+      "iconPosition": "10,10",
+      "groupNodeId": null,
+      "groupSize": "40×40",
+      "groupPosition": "1140,122",
+      "parentSize": "1200×284",
+      "verticalConstraint": "居中",
+      "rightInset": 20,
+      "localChange": "Current product matrix controls use top50%/translateY(-50%) and right20px to preserve canonical vertical-center constraint across allowed editable row counts. Prev placement/end visibility and shadow still pending."
+    }
+  },
+  "defaultNextSource1013": {
+    "date": "2026-10-13",
+    "node": "68908:036230",
+    "size": [
+      20,
+      20
+    ],
+    "position": [
+      10,
+      10
+    ],
+    "color": "#707070",
+    "asset": "components/sources/table/matrix-products-next-official-1013.svg",
+    "evidence": "components/sources/table/matrix-products-next-native-1013.txt",
+    "originalExportConfigRestored": true,
+    "difference": "原件为完整圆润filled path，现有carousel-next为square/miter stroke重绘#4B4B4D；未以缩放圆润外观推断其他方向/状态",
+    "implementationScope": "仅current PC matrix-products的next enabled/nonhover用独立asset；fallback、其他形态及通用计算行为保留"
+  },
+  "nextShadowBatch1013": {
+    "mainComponent": "Table",
+    "scope": "PC有产品图可用Default Next白色40px圆底的已登记阴影属性",
+    "sourceNode": "68908:036229",
+    "required": [
+      "取得精确圆底属性或已关联阴影样式值",
+      "核对现有current Table控制样式，只在明确差异时修正",
+      "必要关联与定向检查、同步及视觉结论分别收尾"
+    ],
+    "excluded": [
+      "Prev/Hover/Disabled",
+      "无图/线型矩阵",
+      "恢复适配",
+      "构造额外演示或升级历史"
+    ],
+    "status": "engineering-scoped-passed-visual-pending",
+    "sourceNote": "本批为canonical036227的圆底036229；旧259667是另一规范例图箭头，不能当作圆底。",
+    "sourceType": "ELLIPSE",
+    "parent": "68908:036228",
+    "nativeStyle": "气泡卡片投影",
+    "rawSvg": "components/sources/table/matrix-products-next-circle-native-1013.svg",
+    "sha256": "fb0921e696f80d50ae1d6653ec66955b74b16cec495a64b8ce799a55d442f544",
+    "effect": {
+      "dx": 0,
+      "dy": 2,
+      "gaussianStdDeviation": 4,
+      "spread": 0,
+      "color": "rgba(0,0,0,0.1)",
+      "cssBlur": 8
+    },
+    "implementation": "table-current.css only enabled nonHover current product Next; existing exact shadow.list-panel token reused",
+    "originalExportConfigRestored": true,
+    "visual": "pending actual rendered evidence; source export is not page visual acceptance",
+    "conversionReference": "https://www.w3.org/TR/css-backgrounds-3/#shadow-blur"
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "schemaVersion": "fs-component-source-review/1.0.0",
+  "component": "card",
+  "status": "partial-source-scope",
+  "source": {
+    "file": "components/sources/card-carousel-mg-20261114/card-icon-card.txt",
+    "fileId": "209944605602401",
+    "root": "3:082263",
+    "title": "【卡片】设计规范v3.1.2608A",
+    "sha256": "21d65be253d35339ec97b30ef9890b32fc720bf97c6032713b7592ed2044d9ac",
+    "url": "https://mastergo.com/file/209944605602401?page_id=M&layer_id=3:082263",
+    "recordedAt": "2026-11-14T10:20:59.834Z",
+    "method": "Fresh MasterGo get_selection_node(3:082263), after get_library_list verified local-209944605602401; exact snapshot equality confirmed"
+  },
+  "scope": "当前MG原件的分类、可见结构和父子原件核对；交互约束同时沿用原规范文字和实际本地实现。不把静态画布当作可执行行为或视觉批准。",
+  "findings": [
+    {
+      "nodes": [
+        "3:082331",
+        "3:082489",
+        "3:082360"
+      ],
+      "sourceFact": "图文卡片区分拼接式和嵌入式；不能仅凭含图片与文字视作同一种内容卡。",
+      "correction": "决策先区分内容角色，再匹配原生变体与实际fragment；搜索产品和普通内容分别处理。"
+    },
+    {
+      "nodes": [
+        "3:082455",
+        "3:082432",
+        "3:082435",
+        "3:082410",
+        "3:082521",
+        "3:082564"
+      ],
+      "sourceFact": "原稿区分单事件/多事件、通栏/侧边栏，以及上下/左右结构。",
+      "correction": "不从卡片宽度推断侧栏或事件类型；保留侧栏和未开放组合为参考。"
+    },
+    {
+      "nodes": [
+        "3:082439",
+        "3:082563",
+        "3:082583",
+        "3:082429",
+        "3:082423"
+      ],
+      "sourceFact": "拼接式存在不同描边和图文结构；内部实际含文字按钮、列表与标签。",
+      "correction": "沿用TextButton/List/Tag依赖及受控图片方向；不得用页面删类切换描边，不把参考组合标成可调用。"
+    },
+    {
+      "nodes": [
+        "3:082403",
+        "3:082407",
+        "3:082347"
+      ],
+      "sourceFact": "嵌入式分别有最近浏览、产品选购和产品展示原件。",
+      "correction": "保留不同用途；小产品卡继续使用实际Cart子原子，不以普通红色按钮替换。"
+    }
+  ],
+  "unverified": [
+    "当前两种左菜单PC侧栏图文及已有精确变体可调用；逆向、M/Pad和未映射隐藏分支不据此开放。",
+    "未进行全设备或逐像素视觉批准；样例图片为本地内容素材。"
+  ],
+  "ruleDigest": "31fb54fe29686cb15ded81e0f4a6093b5383c86a8053c81ec3a521e9f12c5deb",
+  "capabilityCompletion": {
+    "date": "2026-11-15",
+    "scope": "Finite source-backed additions only; original source findings retained as historical review, current call boundary is catalog",
+    "visualApproval": false
+  },
+  "currentAdmission1115": {
+    "review": "components/sources/five-variants-20261115/review.json",
+    "onlineRevalidation": false,
+    "scope": "Finite source-backed PC call, actual child composition, local runtime and original synchronization. Earlier withheld/placeholder findings remain dated source observations."
+  },
+  "historicalUnverifiedBeforeFive1115": [
+    "隐藏层的显隐属性不能从本次HTML快照完整判定；不据此新增调用。",
+    "侧栏、描边横向、产品详情及完整选购仍按原准入；本次不扩展。",
+    "未进行全设备或像素级视觉批准。"
+  ]
+}

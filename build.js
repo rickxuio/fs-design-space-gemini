@@ -145,7 +145,12 @@ function findPlaceholders(htmlString) {
     let props = null;
     const propsMatch = fullMatch.match(/data-props='([^']+)'|data-props="([^"]+)"/);
     if (propsMatch) {
-      const propsStr = propsMatch[1] || propsMatch[2];
+      let propsStr = propsMatch[1] || propsMatch[2];
+      if (component.startsWith('library-')) {
+        const JSDOM = require('./scripts/local-component-library.cjs').domAPI();
+        const dom = new JSDOM(); const textarea = dom.window.document.createElement('textarea');
+        textarea.innerHTML = propsStr; propsStr = textarea.value; dom.window.close();
+      }
       try {
         props = JSON.parse(propsStr);
       } catch (e) {
@@ -220,10 +225,13 @@ function applyProps(html, props) {
 // ─────────────────────────────────────────────
 // 6. assemblePage(pageSourceHtml, registry, fragmentCache, sourceFile)
 // ─────────────────────────────────────────────
-function assemblePage(pageSourceHtml, registry, fragmentCache, sourceFile) {
+function assemblePage(pageSourceHtml, registry, fragmentCache, sourceFile, options = {}) {
   const placeholders = findPlaceholders(pageSourceHtml);
   const registryDir = path.dirname(REGISTRY_PATH);
-  const toDir = PAGE_SPECS_DIR;
+  const toDir = options.targetDir || PAGE_SPECS_DIR;
+  const library = require('./scripts/local-component-library.cjs');
+  const uses = [];
+  if (placeholders.some(p => p.component.startsWith('library-')) && placeholders.some(p => !p.component.startsWith('library-'))) throw Error('Cannot mix legacy and new-library components in one page');
   const dependencies = [];
 
   let result = pageSourceHtml;
@@ -242,6 +250,14 @@ function assemblePage(pageSourceHtml, registry, fragmentCache, sourceFile) {
     if (props && props.__parseError) {
       console.error(`ERROR: Invalid JSON in data-props attribute in ${sourceFile} (line ${line}): ${props.__parseError}`);
       process.exit(1);
+    }
+
+    if (component.startsWith('library-')) {
+      const use = library.render(component, fragment, props || {}, { targetDir: toDir });
+      result = result.replace(fullMatch, use.html);
+      uses.push(use);
+      dependencies.push(`${component}/${fragment}`);
+      continue;
     }
 
     // Load and cache component fragments
@@ -273,7 +289,7 @@ function assemblePage(pageSourceHtml, registry, fragmentCache, sourceFile) {
     dependencies.push(`${component}/${fragment}`);
   }
 
-  return { html: result, dependencies };
+  return { html: library.finalizePage(result, uses, toDir), dependencies };
 }
 
 // ─────────────────────────────────────────────
@@ -379,11 +395,24 @@ function checkComponent(componentName) {
 // ─────────────────────────────────────────────
 // Entry point
 // ─────────────────────────────────────────────
-const args = process.argv.slice(2);
-if (args[0] === '--check' && args[1]) {
-  checkComponent(args[1]);
-} else {
-  buildAll();
+if (require.main === module) {
+  const args = process.argv.slice(2);
+  if (args[0] === '--check' && args[1]) {
+    checkComponent(args[1]);
+  } else if (args[0] === '--inspect') {
+    const inspector = require('./scripts/inspect-component.cjs');
+    try {
+      const out = args.length === 1
+        ? inspector.inspectAll()
+        : inspector.inspectComponent(args[1], args[2]);
+      console.log(JSON.stringify(out, null, 2));
+    } catch (e) {
+      console.error('ERROR:', e.message);
+      process.exit(1);
+    }
+  } else {
+    buildAll();
+  }
 }
 
 // Export functions for testing

@@ -1,0 +1,1613 @@
+{
+  "id": "comp_navigation_001",
+  "name": "Navigation",
+  "chineseName": "公共导航",
+  "description": "页面级布局组件，包含站点公共头部（Header）和公共底部（Footer），用于所有页面的统一导航框架",
+  "category": "导航 Navigation",
+  "variants": [
+    {
+      "name": "header",
+      "chineseName": "公共头部",
+      "description": "站点顶部导航，包含顶部信息栏(32px)和主导航栏(68px)。Rule 0 硬约束：逐字使用，不可定制 Logo/导航项/右侧 actions。",
+      "styleProperties": {
+        "topbarHeight": "32px",
+        "mainNavHeight": "68px",
+        "background": "#FFFFFF",
+        "contentMaxWidth": "1200px"
+      },
+      "isComplete": true,
+      "pendingParts": [],
+      "cssClass": "ds-nav-header",
+      "editable": [],
+      "requiredChildren": [
+        "div.ds-nav-header__topbar",
+        "nav.ds-nav-header__main",
+        "ul.ds-nav-header__links",
+        "div.ds-nav-header__actions"
+      ],
+      "selectionDecisionType": "公共头部",
+      "whenToUse": "新页面的同版US英文PC固定公共头部。",
+      "whenNotToUse": "其他站点/语言、竞品/子站头部、自定义导航或生产业务。",
+      "usage": "新页面的同版US英文PC固定公共头部。",
+      "currentMgSource": {
+        "fileId": "209944605602401",
+        "nodeId": "3:87058",
+        "site": "US",
+        "device": "PC/Web",
+        "state": "Default"
+      }
+    },
+    {
+      "name": "footer",
+      "chineseName": "公共底部",
+      "description": "当前US英文PC固定Default：直接文字、保留源图形、真实Button S与专属32px Input保留子部分。实际可调用性读取同版catalog和工程记录；其他状态/全族视觉及活母组件不据此批准。",
+      "styleProperties": {
+        "background": "#FFFFFF",
+        "borderTop": "1px solid #DEE0E3",
+        "contentMaxWidth": "1200px",
+        "padding": "32px 0"
+      },
+      "styles": [
+        "components/navigation-footer-current.css",
+        "components/button-current.css",
+        "components/input-footer-source.css"
+      ],
+      "sourceNode": "68908:047031",
+      "reviewStatus": {
+        "engineering": "finite-source-subset-passed",
+        "visual": "pending",
+        "inputAssociation": "retained-default-source-read; live-main/states-unverified",
+        "aiCall": "finite-default-source-scope; availability-from-current-catalog"
+      },
+      "isComplete": true,
+      "pendingParts": [],
+      "cssClass": "ds-nav-footer",
+      "editable": [],
+      "requiredChildren": [
+        "div.ds-nav-footer__inner",
+        "div.ds-nav-footer__columns",
+        "div.ds-nav-footer__sidebar",
+        "div.ds-nav-footer__badges",
+        "div.ds-nav-footer__legal"
+      ],
+      "selectionDecisionType": "公共底部",
+      "whenToUse": "同版US英文PC固定Footer Default。",
+      "whenNotToUse": "内容区链接组、其他站点/语言或订阅业务。",
+      "usage": "同版US英文PC固定Footer Default。",
+      "currentMgSource": {
+        "fileId": "209944605602401",
+        "nodeId": "3:84947",
+        "site": "US",
+        "device": "PC/Web",
+        "state": "Default"
+      }
+    },
+    {
+      "name": "header-responsive",
+      "chineseName": "响应式公共头部",
+      "description": "既有美国站适配实现，随窗口宽度切换；并非三端独立展示或验收。本轮只推进PC，Pad/手机适配走查暂缓。导航仅展示，移动折叠属于已有运行时适配，不冒称原件交互。",
+      "cssClass": "ds-nav-header ds-nav-header--responsive",
+      "sourceNodes": [
+        "68908:033051",
+        "68908:033001"
+      ],
+      "isComplete": true,
+      "pendingParts": [],
+      "editable": [],
+      "requiredChildren": [
+        "ds-nav-header__topbar",
+        "ds-nav-header__main",
+        "ds-nav-header__menu-toggle",
+        "ds-nav-header__links",
+        "ds-nav-header__actions"
+      ],
+      "reviewStatus": {
+        "visual": "pending",
+        "Pad/M": "deferred",
+        "aiCall": "unsupported"
+      },
+      "selectionDecisionType": "响应式公共头部",
+      "whenToUse": "已有响应式头部规范参考。",
+      "whenNotToUse": "认为参考即三端验收或替换旧页。",
+      "usage": "已有响应式头部规范参考。"
+    },
+    {
+      "name": "footer-responsive",
+      "chineseName": "响应式公共底部",
+      "description": "既有美国站适配实现，随窗口宽度切换；并非三端独立展示或验收。本轮只推进PC，Pad/手机适配走查暂缓。导航仅展示，移动折叠属于已有运行时适配，不冒称原件交互。",
+      "cssClass": "ds-nav-footer ds-nav-footer--responsive",
+      "sourceNodes": [
+        "68908:045174",
+        "68908:038867"
+      ],
+      "isComplete": true,
+      "pendingParts": [],
+      "editable": [],
+      "requiredChildren": [
+        "ds-nav-footer__columns",
+        "ds-nav-footer__col-links",
+        "ds-nav-footer__disclosure",
+        "ds-nav-footer__sidebar",
+        "ds-nav-footer__badges",
+        "ds-nav-footer__legal"
+      ],
+      "reviewStatus": {
+        "visual": "pending",
+        "Pad/M": "deferred",
+        "aiCall": "unsupported"
+      },
+      "selectionDecisionType": "响应式公共底部",
+      "whenToUse": "已有响应式底部规范参考。",
+      "whenNotToUse": "认为参考即三端验收或其他国家页脚。",
+      "usage": "已有响应式底部规范参考。"
+    }
+  ],
+  "sections": [
+    {
+      "name": "header",
+      "chineseName": "公共头部",
+      "description": "站点顶部导航，包含顶部信息栏和主导航栏",
+      "subSections": [
+        {
+          "name": "topbar",
+          "chineseName": "顶部信息栏",
+          "height": "32px",
+          "background": "#F6F6F8",
+          "contentMaxWidth": "1200px",
+          "styleProperties": {
+            "height": "32px",
+            "background": "#F6F6F8",
+            "fontFamily": "Open Sans",
+            "fontSize": "12px",
+            "lineHeight": "20px",
+            "fontWeight": "400",
+            "textColor": "#707070",
+            "dividerColor": "#DEE0E3",
+            "dividerWidth": "1px",
+            "dividerHeight": "12px"
+          },
+          "content": {
+            "left": [
+              "FS United States",
+              "divider",
+              "FREE SHIPPING on Orders Over US$79"
+            ],
+            "right": [
+              "Contact Us",
+              "divider",
+              "United States / $ USD + dropdown"
+            ]
+          }
+        },
+        {
+          "name": "mainNav",
+          "chineseName": "主导航栏",
+          "height": "68px",
+          "background": "#FFFFFF",
+          "borderBottom": "1px solid #DEE0E3",
+          "contentMaxWidth": "1200px",
+          "styleProperties": {
+            "height": "68px",
+            "background": "#FFFFFF",
+            "borderBottom": "1px solid #DEE0E3"
+          },
+          "content": {
+            "logo": {
+              "icon": "icon-logo-fs.svg",
+              "width": "76px",
+              "height": "36px"
+            },
+            "navLinks": {
+              "items": [
+                "All Products",
+                "Solutions",
+                "Services",
+                "Resources",
+                "Contact Us"
+              ],
+              "fontSize": "14px",
+              "lineHeight": "22px",
+              "fontWeight": "400",
+              "textColor": "#19191A",
+              "hoverBehavior": "PC Web Hover:400 weight unchanged, sameGray1, independent2px Red bottom marker; no text or layout jump (user correction1013)",
+              "gap": "48px",
+              "itemHeight": "68px"
+            },
+            "actions": {
+              "icons": [
+                "icon-search.svg",
+                "icon-cart.svg",
+                "icon-account.svg"
+              ],
+              "iconSize": "24x24px",
+              "containerPadding": "8px",
+              "totalWidth": "144px",
+              "layout": "space-between"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "footer",
+      "chineseName": "公共底部",
+      "description": "站点底部，包含链接列、订阅、认证徽章和法律信息",
+      "background": "#FFFFFF",
+      "borderTop": "1px solid #DEE0E3",
+      "contentMaxWidth": "1200px",
+      "padding": "32px 0",
+      "subSections": [
+        {
+          "name": "linkColumns",
+          "chineseName": "链接列区域",
+          "layout": "4 link columns + 280px sidebar",
+          "columnTitles": {
+            "fontSize": "14px",
+            "lineHeight": "22px",
+            "fontWeight": "600",
+            "textColor": "#19191A"
+          },
+          "columnLinks": {
+            "fontSize": "12px",
+            "lineHeight": "20px",
+            "fontWeight": "400",
+            "textColor": "#707070",
+            "gap": "8px",
+            "perColumnGaps": {
+              "about": "8px",
+              "service": "12px",
+              "resource": "8px",
+              "support": "8px"
+            }
+          },
+          "columns": [
+            "About Us",
+            "Service",
+            "Resource",
+            "Support"
+          ]
+        },
+        {
+          "name": "sidebar",
+          "chineseName": "右侧边栏",
+          "width": "280px",
+          "content": {
+            "subscribe": {
+              "title": "Stay in Touch",
+              "inputHeight": "32px",
+              "inputBackground": "#F6F6F8",
+              "buttonBackground": "#C00000",
+              "buttonTextColor": "#FFFFFF",
+              "buttonFontSize": "12px",
+              "buttonComponent": "Button/filled-red/S Default",
+              "inputSource": "Input/navigation-us-retained-default"
+            },
+            "appDownload": {
+              "title": "Download FS APP",
+              "badges": [
+                "components/sources/navigation/footer-assets-1013/68908-047170.png",
+                "components/sources/navigation/footer-assets-1013/68908-047171.png"
+              ]
+            },
+            "socialIcons": {
+              "source": "既有官方社媒组合图片，未改成六个独立IconButton",
+              "graphic": "components/sources/navigation/footer-assets-1013/68908-047164.png",
+              "labels": [
+                "LinkedIn",
+                "YouTube",
+                "Facebook",
+                "X",
+                "Instagram",
+                "Reddit"
+              ]
+            }
+          }
+        },
+        {
+          "name": "certificationBadges",
+          "chineseName": "认证徽章",
+          "badges": [
+            {
+              "label": "DigiCert",
+              "source": "components/sources/navigation/footer-assets-1013/68908-047076.png"
+            },
+            {
+              "label": "TrustedSite",
+              "source": "components/sources/navigation/footer-assets-1013/68908-047074.png"
+            },
+            {
+              "label": "BBB",
+              "source": "components/sources/navigation/footer-assets-1013/68908-047075.png"
+            },
+            {
+              "label": "Google Reviews",
+              "source": "components/sources/navigation/footer-assets-1013/68908-047073.png"
+            }
+          ],
+          "regionSelector": "United States / $ USD + dropdown"
+        },
+        {
+          "name": "legalLinks",
+          "chineseName": "法律链接与版权",
+          "links": [
+            "Site Map",
+            "Accessibility",
+            "Privacy Policy and Notice at Collection",
+            "Cookies Notice",
+            "Terms and Conditions",
+            "Report a Vulnerability",
+            "Do Not Sell or Share My Personal Information",
+            "Company Policies",
+            "Cookie Settings"
+          ],
+          "linkStyle": {
+            "fontSize": "12px",
+            "lineHeight": "20px",
+            "textColor": "#707070"
+          },
+          "dividerStyle": {
+            "height": "1px",
+            "width": "8px",
+            "color": "#DEE0E3",
+            "gap": "8px",
+            "scope": "沿用原PC Default实际布局；不改变源分隔线视觉"
+          },
+          "copyright": "Copyright © 2009-2026 FS.COM INC. All Rights Reserved."
+        }
+      ]
+    }
+  ],
+  "states": [
+    {
+      "name": "default",
+      "chineseName": "默认",
+      "styleOverrides": {},
+      "description": "PC Web原子Default/Hover保留；用户纠正1013要求Hover字重400不变及独立2px Red标记，无视觉跳变；原件Hover600快照保留为来源差异。"
+    }
+  ],
+  "layout": {
+    "designWidth": "1920px",
+    "contentMaxWidth": "1200px",
+    "contentPadding": "0 360px (on 1920px), responsive: max-width 1200px + auto margins"
+  },
+  "iconReferences": [
+    "icon-logo-fs.svg",
+    "icon-search.svg",
+    "icon-account.svg",
+    "icon-cart.svg",
+    "icon-social-facebook.svg",
+    "icon-social-x.svg",
+    "icon-social-instagram.svg",
+    "icon-social-linkedin.svg",
+    "icon-social-reddit.svg",
+    "icon-social-youtube.svg",
+    "img-app-store.svg",
+    "img-google-play.svg",
+    "img-badge-trustpilot.svg",
+    "img-badge-trustedsite.svg",
+    "img-badge-bbb.svg",
+    "img-badge-google.svg"
+  ],
+  "tokenReferences": [
+    "color.brand-red",
+    "color.blue",
+    "color.gray-1",
+    "color.gray-3",
+    "color.gray-5",
+    "color.gray-9",
+    "color.white",
+    "color.hover-overlay-light",
+    "border-radius.sm",
+    "border-radius.md",
+    "typography.font-family-base",
+    "spacing.sm",
+    "spacing.md",
+    "spacing.lg",
+    "spacing.xl",
+    "spacing.2xl",
+    "spacing.xs",
+    "spacing.48",
+    "spacing.20",
+    "border.width.default",
+    "border.style.default",
+    "border.color.default",
+    "border.style.none",
+    "typography.font-weight-regular",
+    "typography.font-weight-semibold",
+    "typography.font-size-md",
+    "typography.font-size-sm",
+    "typography.h7-regular",
+    "typography.h7-semibold",
+    "typography.h9-regular",
+    "color.gray-8",
+    "spacing.2"
+  ],
+  "bemPrefix": "ds-nav",
+  "usageGuidelines": "Navigation 是页面级布局组件，应作为每个页面的最外层结构使用。Header 固定在页面顶部，Footer 位于页面底部。内容区域使用 max-width: 1200px 居中布局。所有图标引用 icons/ 目录下的 SVG 文件。",
+  "constraints": {
+    "requiredSections": [
+      "header",
+      "footer"
+    ],
+    "notes": [
+      "Header 包含两行：顶部信息栏 (32px) + 主导航栏 (68px)",
+      "Footer 包含四行：链接列、认证徽章、分割线、法律信息",
+      "内容区域最大宽度 1200px，在 1920px 设计稿中对应 padding 0 360px",
+      "PC Web Hover文字400不变、独立定位底部2px Red标记；文字颜色/位置不变，不加文字下划线（用户纠正1013）",
+      "所有链接为静态展示，无实际导航功能（预览用途）",
+      "邮箱订阅输入框为视觉模型，无实际功能"
+    ]
+  },
+  "relations": {
+    "iconDependencies": [
+      {
+        "icon": "icon-logo-fs.svg",
+        "usage": "站点 Logo（Rule 0：始终使用，不可替换）",
+        "required": true,
+        "appliesTo": [
+          "header"
+        ]
+      },
+      {
+        "icon": "icon-search.svg",
+        "usage": "右侧 actions — 搜索入口",
+        "required": true,
+        "appliesTo": [
+          "header"
+        ]
+      },
+      {
+        "icon": "icon-account.svg",
+        "usage": "右侧 actions — 账户入口",
+        "required": true,
+        "appliesTo": [
+          "header"
+        ]
+      },
+      {
+        "icon": "icon-cart.svg",
+        "usage": "右侧 actions — 购物车入口",
+        "required": true,
+        "appliesTo": [
+          "header"
+        ]
+      },
+      {
+        "icon": "icon-social-facebook.svg",
+        "usage": "底部社交媒体链接 — Facebook",
+        "required": true,
+        "appliesTo": [
+          "footer"
+        ]
+      },
+      {
+        "icon": "icon-social-x.svg",
+        "usage": "底部社交媒体链接 — X",
+        "required": true,
+        "appliesTo": [
+          "footer"
+        ]
+      },
+      {
+        "icon": "icon-social-instagram.svg",
+        "usage": "底部社交媒体链接 — Instagram",
+        "required": true,
+        "appliesTo": [
+          "footer"
+        ]
+      },
+      {
+        "icon": "icon-social-linkedin.svg",
+        "usage": "底部社交媒体链接 — LinkedIn",
+        "required": true,
+        "appliesTo": [
+          "footer"
+        ]
+      },
+      {
+        "icon": "icon-social-reddit.svg",
+        "usage": "底部社交媒体链接 — Reddit",
+        "required": true,
+        "appliesTo": [
+          "footer"
+        ]
+      },
+      {
+        "icon": "icon-social-youtube.svg",
+        "usage": "底部社交媒体链接 — YouTube",
+        "required": true,
+        "appliesTo": [
+          "footer"
+        ]
+      },
+      {
+        "icon": "img-app-store.svg",
+        "usage": "底部 App 下载徽章 — App Store",
+        "required": true,
+        "appliesTo": [
+          "footer"
+        ]
+      },
+      {
+        "icon": "img-google-play.svg",
+        "usage": "底部 App 下载徽章 — Google Play",
+        "required": true,
+        "appliesTo": [
+          "footer"
+        ]
+      },
+      {
+        "icon": "img-badge-trustpilot.svg",
+        "usage": "底部认证徽章 — Trustpilot",
+        "required": true,
+        "appliesTo": [
+          "footer"
+        ]
+      },
+      {
+        "icon": "img-badge-trustedsite.svg",
+        "usage": "底部认证徽章 — TrustedSite",
+        "required": true,
+        "appliesTo": [
+          "footer"
+        ]
+      },
+      {
+        "icon": "img-badge-bbb.svg",
+        "usage": "底部认证徽章 — BBB",
+        "required": true,
+        "appliesTo": [
+          "footer"
+        ]
+      },
+      {
+        "icon": "img-badge-google.svg",
+        "usage": "底部认证徽章 — Google Reviews",
+        "required": true,
+        "appliesTo": [
+          "footer"
+        ]
+      }
+    ],
+    "radiusDependencies": [
+      {
+        "token": "border-radius.md",
+        "value": "4px",
+        "usage": "中圆角 - 按钮默认圆角",
+        "appliesTo": [
+          "header",
+          "footer"
+        ]
+      }
+    ],
+    "fontSizeDependencies": [
+      {
+        "token": "typography.font-size-md",
+        "value": "14px",
+        "usage": "中号字体 - XL/L 按钮及 Footer 栏目标题",
+        "appliesTo": [
+          "header",
+          "footer"
+        ]
+      },
+      {
+        "token": "typography.font-size-sm",
+        "value": "12px",
+        "usage": "小号字体 - M/S 按钮及 Footer 灰色栏目链接",
+        "appliesTo": [
+          "header",
+          "footer"
+        ]
+      }
+    ],
+    "fontWeightDependencies": [
+      {
+        "token": "typography.font-weight-regular",
+        "value": "400",
+        "usage": "Header 导航与 Footer 链接/订阅/法律文字",
+        "appliesTo": [
+          "header",
+          "footer"
+        ],
+        "properties": [
+          "font-weight"
+        ],
+        "selectors": [
+          ".ds-nav-header__topbar-text",
+          ".ds-nav-header__topbar-link",
+          ".ds-nav-header__link",
+          ".ds-nav-footer__col-link",
+          ".ds-nav-footer__col-links .ds-text-btn--black .ds-text-btn__text",
+          ".ds-nav-footer__subscribe-btn",
+          ".ds-nav-footer__region-link",
+          ".ds-nav-footer__legal-link",
+          ".ds-nav-footer__copyright"
+        ]
+      },
+      {
+        "token": "typography.font-weight-semibold",
+        "value": "600",
+        "usage": "Footer 栏目标题",
+        "appliesTo": [
+          "footer"
+        ],
+        "properties": [
+          "font-weight"
+        ],
+        "selectors": [
+          ".ds-nav-footer__col-title"
+        ]
+      }
+    ],
+    "typographyDependencies": [
+      {
+        "token": "typography.h7-regular",
+        "fontSizeToken": "typography.font-size-md",
+        "fontSizeValue": "14px",
+        "fontWeightToken": "typography.font-weight-regular",
+        "fontWeightValue": "400",
+        "weightEvidence": "explicit-css",
+        "usage": "Header 主导航文字",
+        "appliesTo": [
+          "header"
+        ]
+      },
+      {
+        "token": "typography.h7-semibold",
+        "fontSizeToken": "typography.font-size-md",
+        "fontSizeValue": "14px",
+        "fontWeightToken": "typography.font-weight-semibold",
+        "fontWeightValue": "600",
+        "weightEvidence": "explicit-css",
+        "usage": "Footer 栏目标题",
+        "appliesTo": [
+          "header",
+          "footer"
+        ]
+      },
+      {
+        "token": "typography.h9-regular",
+        "fontSizeToken": "typography.font-size-sm",
+        "fontSizeValue": "12px",
+        "fontWeightToken": "typography.font-weight-regular",
+        "fontWeightValue": "400",
+        "weightEvidence": "explicit-css",
+        "usage": "顶部栏与 Footer 灰色栏目链接文字（12px / 20px / 400）",
+        "appliesTo": [
+          "header",
+          "footer"
+        ]
+      }
+    ],
+    "colorDependencies": [
+      {
+        "token": "color.gray-1",
+        "value": "#19191A",
+        "usage": "标题/深色文字 (Primary text)",
+        "appliesTo": [
+          "header",
+          "footer"
+        ]
+      },
+      {
+        "token": "color.gray-3",
+        "value": "#707070",
+        "usage": "次要/辅助文字 (Secondary/auxiliary text)",
+        "appliesTo": [
+          "header",
+          "footer"
+        ]
+      },
+      {
+        "token": "color.gray-5",
+        "value": "#DEE0E3",
+        "usage": "边框色 / 菜单项禁用色",
+        "appliesTo": [
+          "header",
+          "footer"
+        ]
+      },
+      {
+        "token": "color.gray-8",
+        "value": "#F6F6F8",
+        "usage": "US Header顶部背景及Footer保留Input Default背景，来源#F6F6F8",
+        "appliesTo": [
+          "header",
+          "footer"
+        ]
+      },
+      {
+        "token": "color.gray-9",
+        "value": "#FAFBFB",
+        "usage": "最浅灰背景（hover/展开态整行底、输入框底、卡片区底）",
+        "appliesTo": [
+          "header"
+        ]
+      },
+      {
+        "token": "color.hover-overlay-light",
+        "value": "rgba(25,25,26,0.04)",
+        "usage": "Hover 浅色叠加层（描边按钮用）",
+        "appliesTo": [
+          "header",
+          "footer"
+        ]
+      },
+      {
+        "token": "color.white",
+        "value": "#FFFFFF",
+        "usage": "白色 (深色背景上的文字)",
+        "appliesTo": [
+          "header",
+          "footer"
+        ]
+      },
+      {
+        "token": "color.brand-red",
+        "value": "#C00000",
+        "usage": "PC Web Hover底部标记及Footer Submit红色",
+        "appliesTo": [
+          "header",
+          "footer"
+        ]
+      },
+      {
+        "token": "color.blue",
+        "value": "#0060BF",
+        "usage": "state-only 导航控件的键盘聚焦描边",
+        "properties": [
+          "box-shadow"
+        ],
+        "selectors": [
+          ".ds-nav-header__topbar-link:focus-visible",
+          ".ds-nav-header__link:focus-visible",
+          ".ds-nav-header__logo:focus-visible",
+          ".ds-nav-footer__region-link:focus-visible",
+          ".ds-nav-footer__legal-link:focus-visible",
+          ".ds-nav-footer__app-badges > button:focus-visible",
+          ".ds-nav-footer__social-link:focus-visible"
+        ],
+        "appliesTo": [
+          "header",
+          "footer"
+        ]
+      }
+    ],
+    "variantDecisionsDescription": "按内容与交互选具体变体，再核对同版调用资格。候选、不用、参考同时用于规范展示与AI；既有来源、当前MG核对、工程与视觉批准分开记录。",
+    "variantDecisions": [
+      {
+        "type": "公共头部",
+        "className": "ds-nav-header",
+        "whenToUse": "新页面的同版US英文PC固定公共头部。",
+        "whenNotToUse": "其他站点/语言、竞品/子站头部、自定义导航或生产业务。",
+        "nestedComponents": [],
+        "status": "当前《新文件》US Web Default来源已核对；Hover保留用户修正与MG差异，不批准其他范围。",
+        "variant": "header",
+        "fragment": "header",
+        "selectionCases": [
+          {
+            "id": "navigation.header.1",
+            "kind": "use",
+            "condition": "新页面的同版US英文PC固定公共头部。",
+            "result": "调用header；零内容编辑，沿用原固定壳及三项操作。",
+            "targetVariant": "header",
+            "strength": "candidate"
+          },
+          {
+            "id": "navigation.header.2",
+            "kind": "avoid",
+            "condition": "其他站点/语言、竞品/子站头部、自定义导航或生产业务。",
+            "result": "不使用此变体；先核对相邻组件和实际调用范围。",
+            "targetVariant": "header",
+            "strength": "avoid"
+          }
+        ]
+      },
+      {
+        "type": "公共底部",
+        "className": "ds-nav-footer",
+        "whenToUse": "同版US英文PC固定Footer Default。",
+        "nestedComponents": [
+          {
+            "component": "Button",
+            "href": "button.html"
+          }
+        ],
+        "status": "当前《新文件》US Web Default来源已核对；Hover保留用户修正与MG差异，不批准其他范围。",
+        "whenNotToUse": "内容区链接组、其他站点/语言或订阅业务。",
+        "variant": "footer",
+        "fragment": "footer",
+        "selectionCases": [
+          {
+            "id": "navigation.footer.1",
+            "kind": "use",
+            "condition": "同版US英文PC固定Footer Default。",
+            "result": "调用footer；零内容编辑，保留锁定输入实例。",
+            "targetVariant": "footer",
+            "strength": "candidate"
+          },
+          {
+            "id": "navigation.footer.2",
+            "kind": "avoid",
+            "condition": "内容区链接组、其他站点/语言或订阅业务。",
+            "result": "不使用此变体；先核对相邻组件和实际调用范围。",
+            "targetVariant": "footer",
+            "strength": "avoid"
+          }
+        ]
+      },
+      {
+        "type": "响应式公共头部",
+        "className": "ds-nav-header ds-nav-header--responsive",
+        "whenToUse": "已有响应式头部规范参考。",
+        "whenNotToUse": "认为参考即三端验收或替换旧页。",
+        "nestedComponents": [],
+        "status": "既有设备参考；本轮仅US英文PC Default，不实现或开放此分支。",
+        "variant": "header-responsive",
+        "fragment": "header-responsive",
+        "selectionCases": [
+          {
+            "id": "navigation.header-responsive.1",
+            "kind": "reference",
+            "condition": "已有响应式头部规范参考。",
+            "result": "仅规范参考；当前不可调用；不推断Pad/M能力。",
+            "targetVariant": "header-responsive",
+            "strength": "reference"
+          },
+          {
+            "id": "navigation.header-responsive.2",
+            "kind": "avoid",
+            "condition": "认为参考即三端验收或替换旧页。",
+            "result": "不使用此变体；先核对相邻组件和实际调用范围。",
+            "targetVariant": "header-responsive",
+            "strength": "avoid"
+          }
+        ]
+      },
+      {
+        "type": "响应式公共底部",
+        "className": "ds-nav-footer ds-nav-footer--responsive",
+        "whenToUse": "已有响应式底部规范参考。",
+        "whenNotToUse": "认为参考即三端验收或其他国家页脚。",
+        "nestedComponents": [
+          {
+            "component": "TextButton",
+            "href": "text-button.html"
+          }
+        ],
+        "status": "既有设备参考；本轮仅US英文PC Default，不实现或开放此分支。",
+        "variant": "footer-responsive",
+        "fragment": "footer-responsive",
+        "selectionCases": [
+          {
+            "id": "navigation.footer-responsive.1",
+            "kind": "reference",
+            "condition": "已有响应式底部规范参考。",
+            "result": "仅规范参考；当前不可调用；保留固定US默认。",
+            "targetVariant": "footer-responsive",
+            "strength": "reference"
+          },
+          {
+            "id": "navigation.footer-responsive.2",
+            "kind": "avoid",
+            "condition": "认为参考即三端验收或其他国家页脚。",
+            "result": "不使用此变体；先核对相邻组件和实际调用范围。",
+            "targetVariant": "footer-responsive",
+            "strength": "avoid"
+          }
+        ]
+      }
+    ],
+    "immutableRule": {
+      "level": "Rule 0 — 最高优先级，永不违反",
+      "description": "首次生成时，header/footer 必须逐字使用本组件 preview/navigation.html 的标准片段。禁止改 Logo（始终 icon-logo-fs.svg）、禁止改导航项（All Products/Solutions/Services/Resources/Contact Us）、禁止改右侧 actions（搜索/账户/购物车）、禁止增删按钮、禁止在 header 内加红色 CTA。源站/竞品/第三方页面显示的任何 header 一律忽略，不带入。唯一允许的定制是文档化的 data-props。",
+      "enforcedBy": "validate.js: checkHeaderFooter (NAV_HEADER/NAV_FOOTER/NAV_LINK/NAV_LOGO/NAV_RED_CTA)"
+    },
+    "componentDependencies": [
+      {
+        "component": "TextButton",
+        "usage": "仅保留既有响应式Footer中的旧TextButton实现依赖；本轮PC047031已按原始直接文字叶移除此伪嵌套，响应式不在本轮迁移范围。",
+        "slot": "footer.linkColumns",
+        "requiredVariants": [
+          "inline-black"
+        ],
+        "implementationClasses": [
+          "ds-text-btn",
+          "ds-text-btn--inline",
+          "ds-text-btn--black",
+          "ds-text-btn--s"
+        ],
+        "appliesTo": [
+          "footer-responsive"
+        ]
+      },
+      {
+        "component": "Button",
+        "usage": "US PC Footer真实调用Button filled-red/S32px/12px Default；新文件3:85036与既有047160来源保留，无左右图标或宿主样式覆盖，业务订阅由宿主接入。",
+        "slot": "footer.subscribe",
+        "requiredVariants": [
+          "filled-red"
+        ],
+        "implementationClasses": [
+          "ds-btn",
+          "ds-btn--filled-red",
+          "ds-btn--s"
+        ],
+        "appliesTo": [
+          "footer"
+        ],
+        "requiredSizes": [
+          {
+            "variant": "filled-red",
+            "size": "s"
+          }
+        ]
+      },
+      {
+        "component": "Input",
+        "part": "navigation-us-retained-default",
+        "requiredVariants": [
+          "gray"
+        ],
+        "implementationClasses": [
+          "ds-input-footer-source"
+        ],
+        "slot": "footer.subscribeInput",
+        "appliesTo": [
+          "footer"
+        ],
+        "usage": "新文件3:85040确认Email/Default插槽；保留已闭合实例047152的32px专属子部分，不升级基础42px Input或宣称活母组件/其他状态已核对。"
+      },
+      {
+        "component": "MenuNavigation",
+        "slot": "all-products-menu",
+        "requiredVariants": [
+          "public-header"
+        ],
+        "implementationClasses": [
+          "ds-menu-navigation",
+          "ds-menu-navigation--public-header",
+          "ds-menu-navigation__item",
+          "ds-menu-navigation__product-icon"
+        ],
+        "appliesTo": [
+          "header"
+        ],
+        "usage": "固定英文头部All Products的真实产品菜单；Menu源变化同步进入Header，旧页面保留旧版本。"
+      }
+    ],
+    "mutuallyExclusiveWith": [
+      {
+        "component": "自定义/竞品/子站 header",
+        "reason": "Rule 0 绝对约束：不允许用竞品、FS Support 子站、第三方页面的 header/footer 替代标准片段"
+      }
+    ],
+    "recommendedProp": "data-props（唯一允许的定制入口：addClass/removeClass/cta/tabs；interactionMode=state-only 时使用 Preview 定义的同结构 button 叶节点，仅切换 aria-pressed 选中态）",
+    "stateOnlyMode": {
+      "prop": "data-props.interactionMode",
+      "value": "state-only",
+      "skeleton": "标准 Preview 的全部 wrapper、class、顺序和图标必须保留",
+      "allowedLeafSubstitution": "仅 a → button type=button，移除 href，补充 aria-pressed",
+      "navigation": false
+    },
+    "notes": "页面级固定US英文骨架，一页通常只用一次header与footer。当前PC Footer栏目是原始直接文字叶，Subscribe真实复用Button filled-red/S（32px/12px）；Input使用来源锁定的navigation-us-retained-default专属子部分。历史响应式Footer仍保留旧TextButton/自绘结构的原参考，不在本轮改造或开放。",
+    "enforcementStatus": {
+      "componentDependencies.implementationClasses-evidence": {
+        "enforced": true,
+        "mechanism": "check-contracts.js保留真实implementationClasses证据校验。PC Footer复用Button及Input专属保留子部分；TextButton仅用于既有响应式参考。",
+        "note": "旧自绘Subscribe及仅TextButton的裁定属于历史；当前PC Default已有真实Button和Input part依赖，不据旧说明取消现有有限资格。"
+      },
+      "colorDependencies.tokens-exist": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 2b：colorDependencies 引用的 color.* token 必须存在于 token-specs/colors.json（缺失即 error）；token 为 / 表示无对应 token 的白名单裸值；双源值一致由 validate-tokens.js 全量保证；Guard C 保证声明了就必须有颜色依赖表"
+      },
+      "colorDependencies.css-uses-var": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 2c：切出组件样式段，校验用到的 var(--color-*) 都在 colorDependencies 声明过，且无未声明裸色值（box-shadow/注释除外），违反即 error —— 保证颜色映射闭环"
+      },
+      "radiusDependencies.tokens-exist": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 3a：radiusDependencies 引用的 border-radius.* token 必须存在于 token-specs/border-radius.json（缺失即 error）；token 为 / 表示白名单裸值；Guard D 保证声明了就必须有圆角依赖表"
+      },
+      "radiusDependencies.css-uses-var": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 3b：校验 border-radius 用到的 var(--border-radius-*) 都在 radiusDependencies 声明过，且无未声明裸圆角值（0 除外），违反即 error —— 保证圆角映射闭环"
+      },
+      "fontSizeDependencies.tokens-exist": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 4a：fontSizeDependencies 引用的 typography.font-size-* token 必须存在于 token-specs/typography.json（缺失即 error）；token 为 / 表示无对应正式 token 的白名单值；Guard E 保证声明了就必须有字号依赖表"
+      },
+      "fontSizeDependencies.css-uses-var": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 4b：校验 font-size 用到的 var(--font-size-*) 都在 fontSizeDependencies 声明过，且无未声明裸字号值，违反即 error —— 保证字号映射闭环"
+      },
+      "shadowDependencies": {
+        "enforced": true,
+        "mechanism": "/",
+        "note": "本组件无 box-shadow，无 shadowDependencies"
+      },
+      "immutableRule.rule0": {
+        "enforced": true,
+        "mechanism": "validate.js: checkHeaderFooter (NAV_HEADER/NAV_FOOTER/NAV_LINK/NAV_LOGO/NAV_RED_CTA)",
+        "note": "唯一一组关系规则里覆盖最完整的，5 条子规则全部机械化"
+      },
+      "componentDependencies.footer-links-color-override": {
+        "enforced": false,
+        "mechanism": "无",
+        "note": "footer 链接颜色是否真的覆盖为 gray-3 目前无专门校验"
+      },
+      "spacingDependencies.tokens-and-css-closure": {
+        "enforced": true,
+        "mechanism": "check-contracts.js: spacingDependencies token/value/selector/property 与组件 CSS 双向闭环校验"
+      },
+      "borderDependencies.tokens-and-css-closure": {
+        "enforced": true,
+        "mechanism": "check-contracts.js: borderDependencies token/value/aspect/selector/property 与组件 CSS 双向闭环校验"
+      },
+      "fontWeightDependencies.tokens-and-css-closure": {
+        "enforced": true,
+        "mechanism": "check-contracts.js: fontWeightDependencies token/value/selector/property 与组件 CSS 双向闭环校验；仅允许 Regular 400 / SemiBold 600，禁止裸字重值"
+      },
+      "typographyDependencies.size-weight-pairing": {
+        "enforced": true,
+        "mechanism": "check-contracts.js: typographyDependencies.token 必须引用 token-specs/typography.json 中真实 composite typography token；该 token 同时锁定 fontSize、lineHeight、fontWeight，并核对底层字号/字重 primitive 与 CSS 证据，依赖汇总表只输出一个 Token 链接"
+      }
+    },
+    "spacingDependencies": [
+      {
+        "token": "spacing.md",
+        "value": "12px",
+        "usage": "margin / padding / gap：.ds-nav-header__topbar-divider、.ds-nav-footer__col-title、.ds-nav-footer__col-links、.ds-nav-footer__subscribe-input、.ds-nav-footer__subscribe-btn、.ds-nav-footer__app-badges",
+        "properties": [
+          "margin",
+          "padding",
+          "gap"
+        ],
+        "selectors": [
+          ".ds-nav-header__topbar-divider",
+          ".ds-nav-footer__col-title",
+          ".ds-nav-footer__col-links",
+          ".ds-nav-footer__subscribe-input",
+          ".ds-nav-footer__subscribe-btn",
+          ".ds-nav-footer__app-badges"
+        ],
+        "appliesTo": [
+          "header",
+          "footer"
+        ]
+      },
+      {
+        "token": "spacing.xs",
+        "value": "4px",
+        "usage": "margin-left / gap：.ds-nav-header__dropdown-icon、.ds-nav-footer__social、.ds-nav-footer__dropdown-icon",
+        "properties": [
+          "margin-left",
+          "gap"
+        ],
+        "selectors": [
+          ".ds-nav-header__dropdown-icon",
+          ".ds-nav-footer__social",
+          ".ds-nav-footer__dropdown-icon"
+        ],
+        "appliesTo": [
+          "header",
+          "footer"
+        ]
+      },
+      {
+        "token": "spacing.48",
+        "value": "48px",
+        "usage": "gap：.ds-nav-header__main-inner、.ds-nav-header__links",
+        "properties": [
+          "gap"
+        ],
+        "selectors": [
+          ".ds-nav-header__main-inner",
+          ".ds-nav-header__links"
+        ],
+        "appliesTo": [
+          "header"
+        ]
+      },
+      {
+        "token": "spacing.sm",
+        "value": "8px",
+        "usage": "padding / gap / margin：.ds-nav-header__action-btn、.ds-nav-footer__social-link、.ds-nav-footer__legal-divider",
+        "properties": [
+          "padding",
+          "margin"
+        ],
+        "selectors": [
+          ".ds-nav-header__action-btn",
+          ".ds-nav-footer__social-link",
+          ".ds-nav-footer__legal-divider"
+        ],
+        "appliesTo": [
+          "header",
+          "footer"
+        ]
+      },
+      {
+        "token": "spacing.2xl",
+        "value": "32px",
+        "usage": "padding：.ds-nav-footer__inner",
+        "properties": [
+          "padding"
+        ],
+        "selectors": [
+          ".ds-nav-footer__inner"
+        ],
+        "appliesTo": [
+          "footer"
+        ]
+      },
+      {
+        "token": "spacing.xl",
+        "value": "24px",
+        "usage": "margin-bottom / margin：.ds-nav-footer__columns、.ds-nav-footer__badges、.ds-nav-footer__divider",
+        "properties": [
+          "margin-bottom",
+          "margin"
+        ],
+        "selectors": [
+          ".ds-nav-footer__columns",
+          ".ds-nav-footer__badges",
+          ".ds-nav-footer__divider"
+        ],
+        "appliesTo": [
+          "footer"
+        ]
+      },
+      {
+        "token": "spacing.20",
+        "value": "20px",
+        "usage": "gap：.ds-nav-footer__sidebar、.ds-nav-footer__legal",
+        "properties": [
+          "gap"
+        ],
+        "selectors": [
+          ".ds-nav-footer__sidebar",
+          ".ds-nav-footer__legal"
+        ],
+        "appliesTo": [
+          "footer"
+        ]
+      },
+      {
+        "token": "spacing.lg",
+        "value": "16px",
+        "usage": "gap：.ds-nav-footer__badges-left",
+        "properties": [
+          "gap"
+        ],
+        "selectors": [
+          ".ds-nav-footer__badges-left"
+        ],
+        "appliesTo": [
+          "footer"
+        ]
+      },
+      {
+        "token": "spacing.2",
+        "value": "2px",
+        "usage": "PC Web Hover底部标记与22px顶部装配间距(20+2)",
+        "appliesTo": [
+          "header"
+        ]
+      }
+    ],
+    "borderDependencies": [
+      {
+        "token": "border.width.default",
+        "value": "1px",
+        "usage": "border-bottom / border-top：.ds-nav-header__main、.ds-nav-footer",
+        "aspect": "width",
+        "properties": [
+          "border-bottom",
+          "border-top"
+        ],
+        "selectors": [
+          ".ds-nav-header__main",
+          ".ds-nav-footer"
+        ],
+        "appliesTo": [
+          "header",
+          "footer"
+        ]
+      },
+      {
+        "token": "border.style.default",
+        "value": "solid",
+        "usage": "border-bottom / border-top：.ds-nav-header__main、.ds-nav-footer",
+        "aspect": "style",
+        "properties": [
+          "border-bottom",
+          "border-top"
+        ],
+        "selectors": [
+          ".ds-nav-header__main",
+          ".ds-nav-footer"
+        ],
+        "appliesTo": [
+          "header",
+          "footer"
+        ]
+      },
+      {
+        "token": "border.color.default",
+        "value": "var(--color-gray-5)",
+        "usage": "border-bottom / border-top：.ds-nav-header__main、.ds-nav-footer",
+        "aspect": "color",
+        "properties": [
+          "border-bottom",
+          "border-top"
+        ],
+        "selectors": [
+          ".ds-nav-header__main",
+          ".ds-nav-footer"
+        ],
+        "appliesTo": [
+          "header",
+          "footer"
+        ]
+      },
+      {
+        "token": "border.style.none",
+        "value": "none",
+        "usage": "border：.ds-nav-header__action-btn、.ds-nav-footer__subscribe-input、.ds-nav-footer__subscribe-btn、.ds-nav-footer__divider",
+        "aspect": "style",
+        "properties": [
+          "border"
+        ],
+        "selectors": [
+          ".ds-nav-header__action-btn",
+          ".ds-nav-footer__subscribe-input",
+          ".ds-nav-footer__subscribe-btn",
+          ".ds-nav-footer__divider"
+        ],
+        "appliesTo": [
+          "header",
+          "footer"
+        ]
+      }
+    ],
+    "hardRules": [
+      {
+        "title": "Rule 0（最高优先级）：Header / Footer 逐字使用",
+        "description": "首次生成任何页面时，header 和 footer 必须逐字复制本文件的标准片段，不做任何修改。",
+        "ruleContent": "<strong>首次生成时，header/footer 逐字使用。</strong><br>\n            • Logo 始终 <code>icon-logo-fs.svg</code>，不能换<br>\n            • 导航项固定：All Products / Solutions / Services / Resources / Contact Us<br>\n            • 右侧 actions 固定：搜索 / 购物车 / 账户，不能增删（US036747原件顺序）<br>\n            • 禁止在 header 内加红色 CTA<br>\n            • 源站/竞品/第三方页面的 header 一律忽略不带入<br>\n            • 唯一允许的定制：文档化的 <code>data-props</code>",
+        "aiParse": "relations.immutableRule = {\n  level: \"Rule 0 — 最高优先级，永不违反\",\n  description: \"首次生成时，header/footer 必须逐字使用本组件 preview/navigation.html 的标准片段。禁止改 Logo（始终 icon-logo-fs.svg）、禁止改导航项（All Products/Solutions/...\"\n}\n\nrelations.recommendedProp\n  = \"data-props（唯一允许的定制入口）\"",
+        "enforcement": "<code>validate.js</code> 强制检查 5 条子规则：<br>\n            • <code>NAV_HEADER</code> — header 结构完整性<br>\n            • <code>NAV_FOOTER</code> — footer 结构完整性<br>\n            • <code>NAV_LINK</code> — 导航项完全匹配<br>\n            • <code>NAV_LOGO</code> — Logo 未被替换<br>\n            • <code>NAV_RED_CTA</code> — header 内无红色按钮<br>\n            违反任一条判 <strong style=\"color:#C00000;\">error</strong>。"
+      }
+    ],
+    "prototypeRollout": {
+      "template": "docs/component-spec-template.html",
+      "source": "relations.variantDecisions",
+      "workflow": "existing-local-only",
+      "scope": "existing finite calls and original references; no publication expansion",
+      "currentMg": {
+        "status": "partial-source-scope",
+        "reason": "已核对《新文件》头部底部规范3:81025中的US英文Web头部3:87058与底部3:84947。仅保留两个PC Default调用；Hover字重差异按原用户修正保留，其他站点、语言和设备不在本轮范围。",
+        "scope": "english-US-PC-default-only"
+      },
+      "retainedEvidence": [
+        {
+          "name": "comparison",
+          "file": "components/sources/navigation/local-structure-review.json"
+        },
+        {
+          "name": "footerCurrentInputComparison",
+          "file": "components/sources/navigation/footer-current-input-comparison-1013.json"
+        },
+        {
+          "name": "headerHostReview",
+          "file": "components/sources/navigation/pc-header-host-review-1013.json"
+        }
+      ]
+    },
+    "interactionRules": [
+      {
+        "name": "实际调用",
+        "rule": "仅使用同版catalog的callable变体和allowedEdits；参考示例不授予调用资格，不用改类或自绘控件绕过。",
+        "owner": "原本地选型与调用入口"
+      },
+      {
+        "name": "父子与同步",
+        "rule": "沿用原componentDependencies及反向父关系；改原规范后协调契约/实现，继续component:sync/watch；已交付页保留固定版本。",
+        "owner": "既有维护机制"
+      },
+      {
+        "name": "交互与业务",
+        "rule": "零内容编辑，沿用原固定壳及三项操作。；零内容编辑，保留锁定输入实例。；当前不可调用；不推断Pad/M能力。；当前不可调用；保留固定US默认。",
+        "owner": "具体变体运行时与原页面宿主"
+      }
+    ]
+  },
+  "searchIntents": [
+    "公共导航",
+    "网站头部",
+    "网站底部",
+    "顶部导航栏",
+    "页脚",
+    "站点导航",
+    "全局导航"
+  ],
+  "history": [
+    {
+      "date": "2026-07-23",
+      "author": "Kiro",
+      "change": "将字号与字重配对提升为正式 composite typography token；组件依赖以单一 token 引用完整字号、行高、字重，primitive 字段仅保留作 CSS 证据。"
+    },
+    {
+      "date": "2026-07-22",
+      "change": "新增 typographyDependencies 成对字体依赖：每条记录明确绑定字号与字重，依赖汇总表按“字号 · 层级 · 字重”整体展示，禁止拆列后猜测组合。",
+      "author": "Kiro"
+    },
+    {
+      "date": "2026-07-22",
+      "change": "新增 fontWeightDependencies：按组件 CSS 显式 font-weight 证据登记 Regular 400 / SemiBold 600；无显式声明的组件保留空数组，并纳入 token/value/selector/property 双向闭环校验。",
+      "author": "Kiro"
+    },
+    {
+      "date": "2026-07-20",
+      "change": "父子依赖治理：Navigation→TextButton 依赖补齐 inline-black requiredVariants；Subscribe 继续保持导航专属实现，不伪装成 Button 依赖。",
+      "author": "Kiro"
+    },
+    {
+      "date": "2026-07-16",
+      "change": "方案 B 裁定：移除 componentDependencies 里的 Button(footer 订阅按钮 filled-red) 依赖——该按钮实为导航自绘元素 ds-nav-footer__subscribe-btn（brand-red 底、直角、font-weight:400），非 Button 组件，契约与实现不符，改为契约向实现看齐。已在 notes 记录其 bespoke 属性；footer column links 的 TextButton 依赖保留并补了 implementationClasses 证据。",
+      "author": "TBD"
+    },
+    {
+      "date": "2026-06-30",
+      "change": "新增 relations（含 Rule 0 的机器可读版本）与 searchIntents 字段",
+      "author": "TBD"
+    },
+    {
+      "date": "2026-06-30",
+      "change": "字段命名统一治理（方向A）：新增 variants（header/footer 两个 fragment，语义上不是传统样式变体，是页面级骨架的两个固定片段，Rule 0 要求逐字使用不可定制，故 styleProperties 内容较简单）与 states（仅 default，Navigation 本身无多状态设计）以满足 schema 必填要求；sections 字段保留作为更详细的结构说明，无信息丢失",
+      "author": "TBD"
+    },
+    {
+      "date": "2026-07-14",
+      "change": "增加间距与描边 token 依赖、CSS 选择器/属性证据及机械闭环校验映射",
+      "author": "Kiro"
+    },
+    {
+      "date": "2026-07-14",
+      "change": "依据契约语义、组件 CSS 选择器与预览结构，补齐全部现有依赖的 appliesTo 汇总行映射；仅使用真实 types/variants，不新增伪类型或不确定依赖",
+      "author": "Kiro"
+    },
+    {
+      "date": "2026-08-21",
+      "change": "Footer 灰色栏目链接正式收敛为 H9 Regular：font-size 12px、line-height 20px、font-weight 400、color gray-3；补齐嵌套 TextButton 选择器证据。",
+      "author": "Codex"
+    },
+    {
+      "date": "2026-08-21",
+      "change": "Footer 栏目链接行间距由 8px 调整为 12px（spacing.md）；栏目黑色标题明确锁定 H7 SemiBold：14px / 22px / 600。",
+      "author": "Codex"
+    },
+    {
+      "date": "2026-10-09",
+      "author": "Codex",
+      "change": "统一规范维护质量标准：登记真实实现与选型规则入口、源变更重新验收、父子影响检查及历史页面隔离；不推断可编辑槽位或视觉批准。"
+    },
+    {
+      "date": "2026-10-09",
+      "author": "Codex",
+      "change": "补齐固定 Footer 排除场景，保持固定壳层与内容区局部链接的边界。"
+    },
+    {
+      "date": "2026-10-09",
+      "author": "Codex",
+      "change": "Add opt-in US responsive shell variants from supplied MG Pad/M nodes; legacy fragments and rules remain unchanged."
+    },
+    {
+      "date": "2026-10-10",
+      "author": "Codex",
+      "change": "修正tokenReferences中的旧别名，改用Token注册表实际名称；依据既有CSS变量--brand-red/--font-family-base及明确映射，不改Token值、CSS或历史页。新增健康检查阻止未知/重复Token引用。"
+    },
+    {
+      "date": "2026-10-13",
+      "change": "固定Header调用补齐Preview border-box运行资源，独立HTTP夹具原测32+69=101，待复测；DOM/文字/图标及Footer未改变，冻结历史不升级。"
+    }
+  ],
+  "isComplete": true,
+  "createdAt": "2025-01-15T10:00:00Z",
+  "updatedAt": "2026-11-15",
+  "qualityProfile": {
+    "schemaVersion": "1.0.0",
+    "standard": "docs/component-quality-standard.md",
+    "implementation": "components/variants/navigation.html",
+    "selection": {
+      "mappingSource": "components/selection-mvp-policy.json",
+      "mappingPointer": "components.navigation.variantDecisionTypes",
+      "rulesPointer": "relations.variantDecisions"
+    },
+    "maintenance": {
+      "authority": "contract-preview-runtime-token-icon",
+      "generatedOnly": [
+        "preview-reference-tables",
+        "component-index",
+        "selection-catalog",
+        "design-reading-view",
+        "ai-reference"
+      ],
+      "changePolicy": "记录来源差异、兼容性与受影响父子组件；源文件变化后旧工程验收失效。",
+      "historicalPages": "不自动升级；新页面锁定本地组件运行资源版本。"
+    },
+    "acceptance": {
+      "report": "components/quality/report.json",
+      "proof": "components/quality/acceptance.json",
+      "declarationIsNotProof": true
+    }
+  },
+  "responsiveExtension": {
+    "scope": "US public Header/Footer only, opt-in; no historical upgrades",
+    "source": "page-inputs/bdcom-oem-m2/component-sources/navigation.json",
+    "stylesheet": "components/navigation-responsive.css",
+    "script": "components/navigation-responsive.js",
+    "breakpoints": {
+      "compactHeader": 1248,
+      "mobileFooter": 640
+    },
+    "adaptation": "Preserve canonical desktop link labels/content across widths; MG mobile footer layout differs in legal labels/count. Keep all existing legal content reachable, rather than silently deleting it. Expanded menu/footer layouts and keyboard handling are implementation adaptations; MG proves only default/collapsed shape.",
+    "evidenceIndex": "components/sources/navigation/source-index.json",
+    "sourceFormat": "mastergo-tool-generated-html-not-original-frontend",
+    "originalNodeTypesConfirmed": false,
+    "sourceRole": "composition-candidates-await-original-node-type"
+  },
+  "editable": [],
+  "integration": {
+    "styles": [
+      "components/tokens.css",
+      "components/components.css",
+      "components/navigation-current.css",
+      "components/navigation-header-web-atom.css",
+      "components/button-current.css",
+      "components/button-runtime-current.css",
+      "components/input-footer-source.css",
+      "components/navigation-footer-current.css",
+      "components/navigation-header-action-atom.css",
+      "components/menu-navigation-current.css",
+      "components/navigation-products-current.css"
+    ],
+    "scripts": [
+      "components/menu-navigation-current.js",
+      "components/navigation-products-current.js"
+    ],
+    "fontStylesheets": [
+      "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+    ]
+  },
+  "aiContract": {
+    "schemaVersion": "1.0.0",
+    "rootTag": "header",
+    "scope": "fixed-desktop-header-footer-default",
+    "supported": [
+      "header",
+      "footer"
+    ],
+    "unsupported": [
+      "header-responsive",
+      "footer-responsive",
+      "editable-fixed-shell",
+      "live-site-navigation",
+      "production-search-account-cart",
+      "other-footer-sites",
+      "live-input-master",
+      "input-non-default-source-approval"
+    ],
+    "reviewStatus": {
+      "engineering": "pending",
+      "visual": "pending",
+      "familyCoverage": "partial"
+    },
+    "previewAssets": [
+      "components/preview/reference-live.js"
+    ],
+    "selectionPolicy": "仅使用同版US英文PC固定header/footer Default，零内容编辑。新文件87058/84947已核对；不新增其他国家/语言或Pad/M。主导航Hover沿用用户确认的400字重、独立2px红色标记及无位移规则；新MG原子Hover600列为视觉差异，不直接覆盖。Footer复用原Button红色S32px/12px，Input仍锁定已闭合的专属保留Default32px实例，不升级基础42px Input；订阅/搜索/账户/购物车生产业务不在本调用范围。",
+    "identity": {
+      "rule": "Frozen authored native Header literal, including actual logo/link/action hierarchy. No rewrite, wrapper div or custom labels. data-ai-example is only reference metadata. New fixed header includes the source public product menu; source shell is separately hashed so synchronizing the child cannot approve unrelated shell changes.",
+      "authoredSha256": "4d7b286d27e9abd3b45940b2a2b9e98e25d6b4d5ccbe0316bf26bc8fa6e65545",
+      "footerAuthoredSha256": "3a45da8726c6ed5ca25221ba8af0fd8ba983f6084d7c83d682b7cb2e8470065a",
+      "footerSource": "source-locked US047031 Default with retained Input047152; not a live generic Input master",
+      "previousHeaderAuthoredSha256": "148183118db34baf6fb0b1297207b389c59c696f31873f0864cbe064e8a8c4a1",
+      "headerSource": "US036747 host Default source reviewed; opaque nested atom internals and states pending",
+      "headerProductsShellSha256": "88c2161edd698f2c67f02cc4cb1cc77e8da9d3301c9eddebca8620121083e23c"
+    },
+    "locked": [
+      "Entire fixed Header authored DOM/text/attributes",
+      "Existing 32px topbar / 68px nav / 1200px layout",
+      "Existing inline icon export and navigation placeholders",
+      "No content edits or new search/account/cart behavior"
+    ],
+    "behavior": {
+      "fixedShell": "Zero editable fields; preserve Rule 0. DOM changes require separately reviewed source, never a page CSS override.",
+      "links": "Existing href=# values are legacy Preview placeholders, not live-site target proof; this literal has no new destination or business implementation.",
+      "footer": "US Footer来源锁定Default精确片段：Input047152/022380、022382内部已读取并作为独立源锁定子部件。旧母组件仍删除，非Default输入状态未批准；不得当成当前42px基础Input或通用32px变体。",
+      "source": "2026-10-13 PC/Web US Header036747及Footer047031宿主完整节点已读取；Header嵌套原子内部与状态未闭合。Footer保留输入Default子部件已闭合，旧母组件及其他状态仍待。",
+      "productMenu": "All Products click/hover/ArrowDown opens source240px child; hoverable trigger+panel region, outside click/focus exit closes, Escape closes and restores trigger. Leaf emits existing ds:menu-navigation-change. No hidden source routing or backend assumed."
+    },
+    "evidence": {
+      "localImplementation": "components/variants/navigation.html",
+      "comparison": "components/sources/navigation/local-structure-review.json",
+      "baseline": "components/sources/navigation/fixed-header-baseline.html",
+      "exportIndex": "components/sources/navigation/source-index.json",
+      "nativeUsFooterOverviewCurrent": "components/sources/navigation/pc-us-footer-overview-review-1013.json",
+      "fixedHeaderHttp": "components/sources/navigation/header-http-review-1013.json",
+      "currentUsFooter": "components/sources/navigation/pc-us-footer-full-node-1013.json",
+      "footerInputReference": "components/sources/navigation/footer-input-reference-1013.json",
+      "footerCurrentInputComparison": "components/sources/navigation/footer-current-input-comparison-1013.json",
+      "footerPcChanges": "components/sources/navigation/pc-footer-implementation-review-1013.json",
+      "footerRetainedInput": "components/sources/navigation/footer-retained-input-default-1013.json",
+      "fixedFooterBaseline": "components/sources/navigation/fixed-footer-baseline.html",
+      "currentUsHeader": "components/sources/navigation/pc-us-header-full-node-1013.json",
+      "headerHostReview": "components/sources/navigation/pc-header-host-review-1013.json",
+      "headerWebAtom": "components/sources/navigation/header-web-atom-review-1013.json",
+      "headerWebHoverRaster": "components/sources/navigation/header-web-hover-mastergo-1013.png",
+      "headerActionAtoms": "components/sources/navigation/header-action-atoms-review-1013.json",
+      "headerSearchRaster": "components/icons/navigation-header-search-1013.png",
+      "currentMgReview": "components/sources/navigation-us-mg-20261115/review.json",
+      "fiveVariantSource": "components/sources/five-variants-20261115/review.json"
+    },
+    "variants": {
+      "header": {
+        "purpose": "fixed-existing-native-desktop-header",
+        "exampleSelector": "[data-ai-example=\"ai-navigation-fixed-header\"]",
+        "allowedEdits": [],
+        "slots": {},
+        "bindings": {}
+      },
+      "footer": {
+        "purpose": "fixed-source-locked-us-footer-default",
+        "rootTag": "footer",
+        "exampleSelector": "[data-ai-example=\"ai-navigation-fixed-footer\"]",
+        "allowedEdits": [],
+        "slots": {},
+        "bindings": {}
+      }
+    }
+  },
+  "privateParts": {
+    "pc-web-link": {
+      "sourceSet": "68908:014236",
+      "states": {
+        "Default": "68908:021288",
+        "Hover": "68908:021283"
+      },
+      "instanceMainReference": "US036751 →021288 verified through native Edit component",
+      "rendererSelector": ".ds-nav-header__link",
+      "styles": [
+        "components/navigation-header-web-atom.css"
+      ],
+      "scope": "Existing PC Header text navigation only; no public standalone variant or Pad/M admission"
+    },
+    "pc-default-actions": {
+      "sourceHost": "68908:036747",
+      "nodes": {
+        "Search": "68908:036775",
+        "Cart": "68908:036779",
+        "Account": "68908:036777"
+      },
+      "styles": [
+        "components/navigation-header-action-atom.css"
+      ],
+      "scope": "Existing PC US Header Default only; no new public variant or verified Hover/Focus",
+      "searchAsset": "components/icons/navigation-header-search-1013.png"
+    }
+  },
+  "userRuntimeAdaptations": {
+    "navigationStateCorrection1013": {
+      "authority": "用户2026-10-13确认本地公共导航规范错误，要求源头修正",
+      "sourceSnapshot": "原MG Default400/Hover600及padding22原始记录保留；不冒称原件已变",
+      "currentRule": "导航Default/Hover/Click保持14/22、400、文字颜色及位置；Hover仅2px Red底线。Footer邮箱Focus不新增描边。",
+      "implementation": [
+        "components/navigation-header-web-atom.css",
+        "components/input-footer-source.css"
+      ],
+      "historicalPages": "冻结页不自动升级"
+    }
+  }
+}

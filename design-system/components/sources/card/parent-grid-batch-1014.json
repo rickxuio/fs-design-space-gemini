@@ -1,0 +1,39 @@
+{
+  "mainComponent": "Card",
+  "scope": "新白色父级285px有限调用的父级布局声明与输出检查",
+  "status": "engineering-and-browser-scope-passed-user-visual-pending",
+  "reason": "cardCount只表示卡片数量，不证明列数/宽度。已开放调用必须在A2声明真实四栏1200/20父级并在A5检查输出，避免正确原子被装入错误网格",
+  "sourceRange": [
+    "components/sources/card/vertical-white-parent-review-1013.json",
+    "既有FS1200版心/20间距及PC四栏285实际证据"
+  ],
+  "necessaryRelations": [
+    "现有Plan configuration/outputGroup与A2/A5检查，不新增生成阶段"
+  ],
+  "completionConditions": [
+    "A2缺布局或宽度/列数/gap不符阻断",
+    "A5输出组样式/数量/直接根与声明一致；默认静态检查不冒称浏览器完整布局",
+    "负例四卡片两栏/错宽/错gap/错误根位置均拒绝",
+    "当前既有四栏真实调用回归，冻结页不升级"
+  ],
+  "remaining": [
+    "用户视觉批准及其余Card家族范围；非本批自动准入"
+  ],
+  "directionalChecks": [
+    "源头范围仍仅PC4×285",
+    "不用声明数字替代真实CSS检查",
+    "实际浏览器证据与静态样式检查分开"
+  ],
+  "engineering": {
+    "tests": 25,
+    "log": "components/sources/card/parent-grid-acceptance-1014.log",
+    "negativeCases": [
+      "缺少布局/错列数/错间距/错版心/缺outputGroup/错quantity",
+      "声明正确但真实CSS两栏、600px、16px、实际token为16px、padding/border压缩、flex",
+      "非直接根、额外第5卡、原子width覆盖"
+    ],
+    "staticBoundary": "只审静态可解析CSS/直接装配，实际几何仍由浏览器证据判定"
+  },
+  "browser": "components/sources/card/parent-grid-browser-1014.json",
+  "nextAction": "Select灰底Multi-basic当前已有闭合/Hover箭头和移除热区实际状态检查"
+}

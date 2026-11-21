@@ -1,0 +1,45 @@
+{
+  "date": "2026-10-11",
+  "scope": "现有对话框与表格取消操作边界",
+  "changes": [
+    {
+      "id": "dialog",
+      "note": "本地取消点击保护已补：已取消的打开/关闭/确认操作不执行，已取消遮罩点击消耗该次手势，取消pointerdown不授权关闭；正常确认与既有禁用保护已定向测试。原生模态布局/焦点圈定/Escape仍待浏览器。"
+    },
+    {
+      "id": "table",
+      "note": "当前矩阵滚动及Preview展开适配尊重已取消点击；取消后滚动/隐藏行保持，正常操作及实例隔离通过。滚动尺寸为离线模拟，不作为真实几何或视觉验收；旧table.js未修改。"
+    }
+  ],
+  "verification": {
+    "redCasesReproduced": 3,
+    "offlinePassed": 20,
+    "syncPassed": true,
+    "healthPassed": true,
+    "healthErrors": 0,
+    "existingWarnings": 2,
+    "logs": [
+      "/tmp/fs-dialog-table-cancel-before.log",
+      "/tmp/fs-dialog-table-cancel-final-test.log",
+      "/tmp/fs-dialog-table-cancel-sync.log",
+      "/tmp/fs-dialog-table-cancel-health.log"
+    ]
+  },
+  "fingerprints": {
+    "components/dialog-current.js": "7399925c745799c2337f7c24d2d1125c49f0ddaf069a741b348b60d65b39db01",
+    "components/table-current.js": "8718625c43d7bd168df132cb47bb25fba9e736a898be609bdb0e8412ca88d665",
+    "components/preview/table-legacy-adapter.js": "78b5c5af9bbddccd467e763833788425fd0372b0bd7d7ebe5a0be06ee7ea3069",
+    "scripts/dialog-runtime-guards.test.js": "9c0b89ba3be58a07882981ab9ce02b65820a2be593088028f517944f040d814e",
+    "scripts/table-matrix-runtime.test.js": "4b11e659fe375d66610355b148a41fb4d6161a139e96ecec977346f32d196b6c"
+  },
+  "boundaries": {
+    "mastergoVerified": false,
+    "browserVerified": false,
+    "visualVerified": false,
+    "dialogNativeModalTested": false,
+    "tableScrollGeometry": "mocked",
+    "familyComplete": false,
+    "frozenPagesChanged": false,
+    "newCanonicalAdmission": false
+  }
+}

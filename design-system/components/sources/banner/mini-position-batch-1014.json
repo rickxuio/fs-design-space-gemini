@@ -1,0 +1,35 @@
+{
+  "mainComponent": "Banner",
+  "scope": "既有PC1200×120 Mini静态展示内容组纵向来源位置",
+  "status": "source-scoped-engineering-and-browser-passed-user-visual-pending",
+  "sourceRange": [
+    "components/sources/banner/native-component-review-1011.json：69947:112274内容组112275，680×72/x320/y24",
+    "components/sources/banner/source-difference-reconciliation-1013.json"
+  ],
+  "reason": "有效原件已有y24，而current CSS写spacing-lg=16；需先实际浏览器核对，再只修该源头值",
+  "completionConditions": [
+    "实际Mini根1200×120及内容组680×72/x320/y24",
+    "真实标题16/24/600、描述13/20/400与TextButton保持",
+    "修复位置的负例和必要同步；不开放完整轮播或Mini AI调用"
+  ],
+  "remaining": [
+    "Mini背景/完整轮播来源与行为仍待",
+    "用户视觉批准；Mini AI仍不准入"
+  ],
+  "necessaryRelations": [
+    "仅data-banner-mini-current内容组top值；冻结页和其他Banner不升级"
+  ],
+  "directionalChecks": [
+    "已有来源复用，不重复回查",
+    "A5静态原子布局绑定",
+    "默认截图；没有carousel行为验收"
+  ],
+  "browser": "components/sources/banner/mini-position-browser-1014.json",
+  "engineering": {
+    "tests": 10,
+    "log": "components/sources/banner/mini-position-tests-1014.log",
+    "sync": "components/sources/banner/mini-position-sync-1014.log",
+    "suiteBinding": "components/sources/banner/mini-position-suite-binding-1014.log",
+    "negative": "实际token恢复旧spacing-lg=16会与来源y24不符；新增定向用例已登记现有offline组，未重复全库运行"
+  }
+}

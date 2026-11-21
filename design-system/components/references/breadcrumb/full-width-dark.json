@@ -1,0 +1,295 @@
+{
+  "schemaVersion": "fs-component-reference/1.0.0",
+  "component": {
+    "id": "breadcrumb",
+    "name": "Breadcrumb",
+    "scope": "existing-desktop-breadcrumb-light-dark-multilevel",
+    "reviewStatus": {
+      "engineering": "pending",
+      "visual": "pending",
+      "familyCoverage": "partial"
+    }
+  },
+  "selection": {
+    "policy": "先按实际背景选择default/dark，再按确有固定1920通栏需求选择full-width-light/dark。四个现有调用均保留；普通路径至少两层，文字和层级完整。分类下拉、自动缩写和移动适配未开放；通栏不表示任意宽度适配。面包屑可选，不参与Banner变体判断，定位由当前父级负责。",
+    "supported": [
+      "default",
+      "dark",
+      "full-width-light",
+      "full-width-dark"
+    ],
+    "unsupported": [
+      "single-current-level",
+      "custom-separator",
+      "automatic-text-shortening",
+      "mobile",
+      "category-dropdown-arrow",
+      "automatic-sibling-page-menu"
+    ]
+  },
+  "runtime": {
+    "styles": [
+      "components/tokens.css",
+      "components/components.css",
+      "components/breadcrumb-current.css"
+    ],
+    "scripts": [],
+    "fontStylesheets": [
+      "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+    ],
+    "fontFallback": "沿用Open Sans；实际字体待浏览器确认。"
+  },
+  "identity": {
+    "rule": "保留nav及Breadcrumb可访问名称；只保留一个最后current，前面每层为真实anchor及分隔符。",
+    "labelRule": "原文顺序和大小写按来源；不要删级别。"
+  },
+  "locked": [
+    "nav根元素与明暗变体",
+    "每层item结构、最后current与斜杠分隔符",
+    "共享文字样式与宿主定位",
+    "不添加点击脚本或折叠菜单",
+    "data-breadcrumb-current及分隔符aria-hidden=true；准确SVG mask和原子透明度"
+  ],
+  "behavior": {
+    "navigation": "anchor采用原生导航；示例href=#仅为组件库展示。页面装配必须按Plan替换真实目标或声明仅展示，不保留导致跳页首的#占位。",
+    "external": "页面重构的外部导航边界仍按AGENTS执行：保留文字和样式，不补目标、不执行业务动作。",
+    "scope": "此处只验证本地结构和安全链接文本；没有实际导航或Banner定位验收。"
+  },
+  "examples": [
+    {
+      "name": "full-width-dark",
+      "publication": {
+        "key": "breadcrumb/full-width-dark",
+        "disposition": "restricted",
+        "newPages": true,
+        "reason": "Full-width calls are1920-only; light/dark use respective surfaces. No category dropdown.",
+        "constraints": [
+          "Full-width calls are1920-only; light/dark use respective surfaces. No category dropdown."
+        ],
+        "contractPolicy": "浅色surface用default，深色surface用dark；有限常规多级路径，至少两级。保留来源完整文案顺序，不缩写；通栏容器和分类下拉尚未开放。Banner定位由宿主负责；当前Hover浅色Gray1/反白White100%，均无下划线。 通栏仅1920px：调用full-width-light/dark，容器只定位常规原子；适配仍未开放。",
+        "use": "finite-new-page-candidate",
+        "evidence": "components/contracts/breadcrumb.json#aiContract/evidence",
+        "requiresCurrentEngineering": true,
+        "visualApproval": "separate-not-granted",
+        "viewportWidth": 1920
+      },
+      "rootTag": "div",
+      "sizeOptions": [],
+      "purpose": "source-1920-full-width-dark-breadcrumb",
+      "whenToUse": "1920px深色通栏容器中的反白路径。",
+      "whenNotToUse": "浅色宿主、内联路径、窄窗口适配或分类下拉。",
+      "rootClasses": "ds-breadcrumb-source-full-width",
+      "requiredStructure": [
+        "nav.ds-breadcrumb"
+      ],
+      "slots": {
+        "items": {
+          "selector": "nav.ds-breadcrumb",
+          "mode": "structured-content",
+          "required": true,
+          "preserve": [
+            "div.ds-breadcrumb__item",
+            "a.ds-breadcrumb__link",
+            "span.ds-breadcrumb__separator",
+            "span.ds-breadcrumb__current"
+          ],
+          "fields": [
+            "linkText",
+            "hrefOrDisplayOnly",
+            "currentText"
+          ],
+          "rule": "至少两层；每个前置item为anchor + /；最后一个item为current。"
+        }
+      },
+      "allowedEdits": [
+        "items"
+      ],
+      "exampleHtml": "<div class=\"ds-breadcrumb-source-full-width\" data-breadcrumb-source-container=\"dark\" data-ai-example=\"ai-breadcrumb-full-width-dark\"><nav class=\"ds-breadcrumb ds-breadcrumb--dark\" aria-label=\"Breadcrumb\" data-breadcrumb-current>\n        <div class=\"ds-breadcrumb__item\">\n          <a href=\"#\" class=\"ds-breadcrumb__link\">Home</a>\n          <span class=\"ds-breadcrumb__separator\" aria-hidden=\"true\">/</span>\n        </div>\n        <div class=\"ds-breadcrumb__item\">\n          <a href=\"#\" class=\"ds-breadcrumb__link\">Page A</a>\n          <span class=\"ds-breadcrumb__separator\" aria-hidden=\"true\">/</span>\n        </div>\n        <div class=\"ds-breadcrumb__item\">\n          <span class=\"ds-breadcrumb__current\">Current Page</span>\n        </div>\n      </nav></div>"
+    }
+  ],
+  "relationships": {
+    "children": [],
+    "parents": [
+      {
+        "id": "banner",
+        "contract": "components/contracts/banner.json",
+        "preview": "components/variants/banner.html",
+        "status": "preview-class-evidence-only",
+        "evidence": {
+          "status": "preview-class-evidence-only",
+          "verified": false,
+          "previewExists": true,
+          "classEvidence": true,
+          "declaredClasses": [
+            "ds-breadcrumb",
+            "ds-breadcrumb--dark"
+          ],
+          "missingClasses": [],
+          "exactStructure": "not-established",
+          "browserEvidence": "not-established",
+          "note": "宿主依赖声明及离线类名盘点；未证明具体变体、尺寸、必需子结构、宿主适配或浏览器行为。"
+        },
+        "usage": [
+          {
+            "component": "Breadcrumb",
+            "usage": "深色Banner存在面包屑时直接使用dark；有限Title-only未放入此可选槽",
+            "slot": "breadcrumb",
+            "requiredVariants": [
+              "dark"
+            ],
+            "implementationClasses": [
+              "ds-breadcrumb",
+              "ds-breadcrumb--dark"
+            ],
+            "appliesTo": [
+              "hero",
+              "sub",
+              "search",
+              "title-only"
+            ]
+          }
+        ]
+      }
+    ],
+    "parentStatus": "declared-hosts",
+    "icons": [],
+    "tokens": [
+      {
+        "name": "color.gray-1",
+        "value": "#19191A",
+        "unit": null,
+        "cssVar": "--color-gray-1",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.gray-3",
+        "value": "#707070",
+        "unit": null,
+        "cssVar": "--color-gray-3",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "typography.font-family-base",
+        "value": "Open Sans",
+        "unit": null,
+        "cssVar": "--font-family-base",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "spacing.xs",
+        "value": 4,
+        "unit": "px",
+        "cssVar": "--spacing-xs",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "typography.font-size-sm",
+        "value": 12,
+        "unit": "px",
+        "cssVar": "--font-size-sm",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-weight-regular",
+        "value": 400,
+        "unit": null,
+        "cssVar": "--font-weight-regular",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.h9-regular",
+        "value": {
+          "fontSize": "12px",
+          "lineHeight": "20px",
+          "fontWeight": 400
+        },
+        "unit": null,
+        "cssVar": null,
+        "primitiveReferences": {
+          "fontSize": "typography.font-size-sm",
+          "fontWeight": "typography.font-weight-regular"
+        },
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "spacing.20",
+        "value": 20,
+        "unit": "px",
+        "cssVar": "--spacing-20",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.banner-content-inset",
+        "value": 360,
+        "unit": "px",
+        "cssVar": "--spacing-banner-content-inset",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      }
+    ]
+  },
+  "evidence": {
+    "localImplementation": "components/variants/breadcrumb.html",
+    "comparison": "components/sources/breadcrumb/local-structure-review.json",
+    "specificationReview": "components/sources/breadcrumb/native-specification-review-1011.json",
+    "original": "components/sources/breadcrumb/分隔线.svg",
+    "fullWidthSource": "components/sources/breadcrumb/full-width-source-1014.json",
+    "currentMgReview": "components/sources/banner-navigation-mg-20261114/breadcrumb-review.json"
+  },
+  "sourceValidation": {
+    "componentIdentity": {
+      "status": "not-established",
+      "files": []
+    },
+    "specificationBody": {
+      "status": "not-established",
+      "files": []
+    },
+    "originalOnlineFrontendCode": false,
+    "browserComputedStyles": false,
+    "completeSpecificationCoverage": false,
+    "fullWidth": {
+      "source": "components/sources/breadcrumb/full-width-source-1014.json",
+      "nodes": [
+        "10621:10128",
+        "62724:74229"
+      ],
+      "scope": "1920-only"
+    }
+  },
+  "freshness": {
+    "fingerprints": {
+      "components/breadcrumb-current.css": "965e27a7afa3abc650157452e1c01c4384f80ec5718595ef2ca5be2b0e4b52ee",
+      "components/components.css": "a08b4fe2790b5ff2b784c6362a90f1b94e7535a03e863232ce6d620a52e85f73",
+      "components/contracts/breadcrumb.json": "6280fc547d11b5da94b1ae6269f4cbe587e8d9b2c1fcd3c777fe74ed574481a4",
+      "components/icons/icon-breadcrumb-separator.svg": "5a6e1a305ed11d87eb64fdf43cac0ae3b27186104ab21c5ed9f6dcdf37dca3bc",
+      "components/icons/icons-manifest.json": "12c48af6d1dc59d50b76046bb0507005f565aa4224a6d8056ce4eaaf8050c43e",
+      "components/preview/reference-live.js": "4839383529a3ee82df1d8efe675d430567abc1986034499107aa429d21a18ea6",
+      "components/reference-policy.json": "4ae8f51f623386417e38d497caafb8bda4417c929159002a7ac088e6e526b482",
+      "components/sources/banner-navigation-mg-20261114/breadcrumb-review.json": "079c4e22ce7570e2d945414cee024687b55d98b1fede454aaf889e924cbd6378",
+      "components/sources/breadcrumb/full-width-source-1014.json": "90bef60bfd8e393aa76964945b447d9a8114cc377a78f814d4b4765f534c36e1",
+      "components/sources/breadcrumb/local-structure-review.json": "10e57ce73b8562df7c8a61d1f0d2ad00af3602f6d5bd29b4031838f13eb3ee37",
+      "components/sources/breadcrumb/native-specification-review-1011.json": "9c2ec75729b1813fa15ffd66f9534f24cd0ad554349540bf0c372777c2b597f2",
+      "components/sources/breadcrumb/分隔线.svg": "5a6e1a305ed11d87eb64fdf43cac0ae3b27186104ab21c5ed9f6dcdf37dca3bc",
+      "components/token-specs/colors.json": "5267d59fdc687b54496977280c00c97f0beb6ffce013f87853504f5b736d3389",
+      "components/token-specs/spacing.json": "351b14cfce4411248ad41e00eaaf2b1cab9b705997980dfed1fc65693740e65c",
+      "components/token-specs/typography.json": "93b7dc07547218a33c075b7cdcd942f89094353a7847d483d8378b8883327e16",
+      "components/tokens.css": "f63f3c8fea511d8029902bc3905b01853ac5e92049c1b18ca35ebc9a680c3e69",
+      "components/variants/banner.html": "fa9af2a1b48a9b7fe7f8720a6935613bcd52aebb44313a77dbfd94f2f273c6e6",
+      "components/variants/breadcrumb.html": "924dc5e6ca92138ffaacf80e212f73abcf04fd16fffcbe0b9aa80ea88c5af9b0"
+    },
+    "graphFingerprint": "ecec7b34e418d537c659485ce1d5ef95152f8f641a8a26063688f030645454b1",
+    "note": "从本地源文件生成；不是 MasterGo 在线实时状态。"
+  },
+  "readScope": {
+    "variant": "full-width-dark",
+    "note": "只展开当前已选变体；其他变体没有被声明为不可用。尺寸继续按真实 sizeOptions 选择。"
+  }
+}

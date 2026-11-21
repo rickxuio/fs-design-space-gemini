@@ -461,8 +461,9 @@ const CHECKS = [
   checkAssetPathDepth,
 ];
 
-function validateFile(filePath) {
+function validateFile(filePath, options = {}) {
   const html = fs.readFileSync(filePath, 'utf8');
+  if (/data-fs-library=|data-library-component=|component-specs\/library\/releases\/|design-system\/components\//.test(html)) return require('./scripts/check-local-library-page.cjs').validateFile(filePath, options);
   let issues = [];
   for (const check of CHECKS) {
     issues = issues.concat(check(html, filePath));
@@ -504,6 +505,8 @@ function main() {
     process.exit(0);
   }
 
+  const started = Date.now();
+  const context = require('./scripts/check-context.cjs').createContext();
   let totalErrors = 0;
   let totalWarns = 0;
 
@@ -513,7 +516,7 @@ function main() {
       totalErrors++;
       continue;
     }
-    const issues = validateFile(file);
+    const issues = validateFile(file, { context });
     const errors = issues.filter(i => i.level === 'error');
     const warns = issues.filter(i => i.level === 'warn');
     totalErrors += errors.length;
@@ -536,6 +539,7 @@ function main() {
   console.log(`\n────────────────────────────────────`);
   console.log(`校验完成：${targets.length} 个文件，${totalErrors} 个 error，${totalWarns} 个 warning`);
 
+  console.log(`静态检查耗时 ${Date.now()-started}ms`);
   if (totalErrors > 0 || (strict && totalWarns > 0)) {
     console.log('结果：未通过 ✗');
     process.exit(1);

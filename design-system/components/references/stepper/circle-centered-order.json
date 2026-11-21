@@ -1,0 +1,404 @@
+{
+  "schemaVersion": "fs-component-reference/1.0.0",
+  "component": {
+    "id": "stepper",
+    "name": "Stepper",
+    "scope": "existing-desktop-four-stage-circle-and-icon-specimens",
+    "reviewStatus": {
+      "engineering": "pending",
+      "visual": "pending",
+      "familyCoverage": "partial"
+    }
+  },
+  "selection": {
+    "policy": "先确认先后关系，非引导的纯流程状态按MG规则另核时间轴；当前订单示例是原稿的只读专用展示。circle-centered-solution仅原PC四步初始结构；可用阶段本地切换，待开始禁点，无阶段值绑定或业务推进API。order和两种图标步骤只读；保留4节点、状态和真实图标。箭头/点状/竖向、Error、任意数量、替换图标及移动适配未开放。",
+    "supported": [
+      "circle-centered-solution",
+      "circle-centered-order",
+      "icon-regular",
+      "icon-divider"
+    ],
+    "unsupported": [
+      "non-four-stage-canonical-call",
+      "error-state",
+      "invented-change-event",
+      "native-form-step-value",
+      "dynamic-insertion-api",
+      "alternate-icon-assets",
+      "mobile"
+    ]
+  },
+  "runtime": {
+    "styles": [
+      "components/tokens.css",
+      "components/components.css",
+      "components/stepper-current.css",
+      "components/text-button-current.css"
+    ],
+    "scripts": [
+      "components/stepper-current.js"
+    ],
+    "fontStylesheets": [
+      "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+    ],
+    "fontFallback": "Open Sans stack; actual browser geometry/font proof pending."
+  },
+  "identity": {
+    "rule": "Reuse authored four-stage DOM. Solution has empty data-stepper-interactive and solution-completed-only marker; order requires order-static and no interactive marker. No copied initialized DOM.",
+    "labelRule": "Edit text only: divider title uses genuine inline-black-bold/l TextButton text; no navigation destination evidenced. Other titles retain existing structure.",
+    "icon68Source": "icon-divider requires data-stepper-source-icon68=official and icon-demo-report-current-68.svg; old resource remains for icon-regular/history. No new states."
+  },
+  "locked": [
+    "Four-stage item ordering and required inner regions",
+    "Circle ordinal marker, solution connector and order bar",
+    "Existing static icons and divider geometry",
+    "Shared CSS, status mapping and current stepper-current.js",
+    "No fake event callback or business completion guard",
+    "Solution current marker solution-completed-only; pending stages blocked for click and keyboard, aria-disabled announced.",
+    "Order order-static, no data-stepper-interactive, button roles or keyboard handlers.",
+    "Divider current marker divider-text-atom and genuine TextButton title, no host paint override."
+  ],
+  "behavior": {
+    "initialization": "Current document/root guards initialize marked circle roots once. No public dynamic insertion API; do not co-load old and current scripts.",
+    "selection": "Solution rejects pending; completed/current local selection only. Order displays state without handlers; no business advance API.",
+    "keyboard": "Solution enabled visible stages only; order/icon have no interaction tabstop. Actual native focus remains pending.",
+    "events": "Existing runtime emits no dedicated stage-change event. Host requires separate page integration; no actionCallback advertised.",
+    "static": "Icon forms do not change progress. Divider title is genuine TextButton display-only aria-disabled without href; source target unverified.",
+    "visual": "Connector colors, order bars, pseudo-element checks and long-title line wrapping require actual browser proof; JSDOM state checks are not visual approval.",
+    "availability": "Hidden/native disabled fieldset/ARIA-disabled stage or ancestor blocks synthetic activation. Disable changes tabstops without changing current/completed state; re-enable restores access."
+  },
+  "examples": [
+    {
+      "name": "circle-centered-order",
+      "publication": {
+        "key": "stepper/circle-centered-order",
+        "disposition": "restricted",
+        "newPages": true,
+        "reason": "Local normative Preview, typed contract and actual shared dependencies reviewed; finite PC call requires current browser engineering proof. No claim of independent latest MG/whole-family acceptance.",
+        "constraints": [
+          "circle-centered-order仅展示四阶段订单状态/日期，不可点击推进；icon-regular仅展示四个68px图标阶段及原箭头连接。只改标题和已有描述，不开放业务进度或Tooltip新能力；circle-centered-solution仍待交互冲突核对。",
+          "只允许契约列明的内容参数；工程验证必须当前有效，原规范视觉、子组件结构与资源版本保持。"
+        ],
+        "contractPolicy": "circle-centered-order仅展示四阶段订单状态/日期，不可点击推进；icon-regular仅展示四个68px图标阶段及原箭头连接。只改标题和已有描述，不开放业务进度或Tooltip新能力；circle-centered-solution仍待交互冲突核对。",
+        "use": "withheld",
+        "evidence": "components/contracts/stepper.json#aiContract/evidence",
+        "requiresCurrentEngineering": true,
+        "visualApproval": "separate-not-granted"
+      },
+      "rootTag": "div",
+      "type": "圆标步骤条",
+      "sizeOptions": [],
+      "purpose": "four-stage-circle-centered-order",
+      "whenToUse": "四阶段订单/RMA状态与日期的只读展示。",
+      "whenNotToUse": "点击切换状态、编辑订单或提交流程。",
+      "rootClasses": "ds-stepper ds-stepper--circle-order",
+      "requiredStructure": [
+        "div.ds-stepper__item",
+        "div.ds-stepper__body",
+        "p.ds-stepper__title",
+        "span.ds-stepper__marker",
+        "span.ds-stepper__order-bar",
+        "p.ds-stepper__description"
+      ],
+      "slots": {
+        "steps": {
+          "selector": ":scope",
+          "mode": "structured-content",
+          "required": true,
+          "preserve": [
+            "div.ds-stepper__item",
+            "div.ds-stepper__body",
+            "p.ds-stepper__title",
+            "span.ds-stepper__marker",
+            "span.ds-stepper__order-bar",
+            "p.ds-stepper__description"
+          ],
+          "rule": "Edit only title and existing description text plus circle group aria-label; preserve four-item structure, authored default state, markers/connectors/assets. Existing shapes only."
+        }
+      },
+      "allowedEdits": [
+        "steps"
+      ],
+      "exampleHtml": "<div class=\"ds-stepper ds-stepper--circle-order\" data-ai-example=\"ai-stepper-circle-centered-order\" data-stepper-current=\"order-static\" aria-label=\"Four-step order progress\">\n      <div class=\"ds-stepper__item ds-stepper__item--current\" data-stepper-item><span class=\"ds-stepper__order-bar\" aria-hidden=\"true\"></span><span class=\"ds-stepper__marker\" aria-hidden=\"true\">1</span><div class=\"ds-stepper__body\"><p class=\"ds-stepper__title\">State</p><p class=\"ds-stepper__description\">Mar 18, 2026</p></div></div>\n      <div class=\"ds-stepper__item\" data-stepper-item><span class=\"ds-stepper__order-bar\" aria-hidden=\"true\"></span><span class=\"ds-stepper__marker\" aria-hidden=\"true\">2</span><div class=\"ds-stepper__body\"><p class=\"ds-stepper__title\">State</p><p class=\"ds-stepper__description\">Mar 18, 2026</p></div></div>\n      <div class=\"ds-stepper__item\" data-stepper-item><span class=\"ds-stepper__order-bar\" aria-hidden=\"true\"></span><span class=\"ds-stepper__marker\" aria-hidden=\"true\">3</span><div class=\"ds-stepper__body\"><p class=\"ds-stepper__title\">State</p><p class=\"ds-stepper__description\">Mar 18, 2026</p></div></div>\n      <div class=\"ds-stepper__item\" data-stepper-item><span class=\"ds-stepper__order-bar\" aria-hidden=\"true\"></span><span class=\"ds-stepper__marker\" aria-hidden=\"true\">4</span><div class=\"ds-stepper__body\"><p class=\"ds-stepper__title\">State</p><p class=\"ds-stepper__description\">Mar 18, 2026</p></div></div>\n    </div>"
+    }
+  ],
+  "relationships": {
+    "children": [],
+    "parents": [],
+    "parentStatus": "no-declared-hosts",
+    "icons": [
+      {
+        "file": "components/icons/icon-stepper-completed.svg",
+        "registry": "components/icons/icons-manifest.json",
+        "appliesTo": [
+          "circle-centered-solution",
+          "circle-centered-order"
+        ],
+        "usage": "圆标步骤条已完成标记的本地对勾；订单型通过滤镜呈现为实绿圆内白色对勾"
+      }
+    ],
+    "tokens": [
+      {
+        "name": "color.gray-1",
+        "value": "#19191A",
+        "unit": null,
+        "cssVar": "--color-gray-1",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.gray-3",
+        "value": "#707070",
+        "unit": null,
+        "cssVar": "--color-gray-3",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.gray-5",
+        "value": "#DEE0E3",
+        "unit": null,
+        "cssVar": "--color-gray-5",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.white",
+        "value": "#FFFFFF",
+        "unit": null,
+        "cssVar": "--color-white",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.success",
+        "value": "#10A300",
+        "unit": null,
+        "cssVar": "--color-success",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.success-bg",
+        "value": "rgba(16,163,0,0.1)",
+        "unit": null,
+        "cssVar": "--color-success-bg",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "border-radius.md",
+        "value": 4,
+        "unit": "px",
+        "cssVar": "--border-radius-md",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border-radius.json"
+      },
+      {
+        "name": "border-radius.full",
+        "value": 9999,
+        "unit": "px",
+        "cssVar": "--border-radius-full",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border-radius.json"
+      },
+      {
+        "name": "typography.font-size-md",
+        "value": 14,
+        "unit": "px",
+        "cssVar": "--font-size-md",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-size-sm",
+        "value": 12,
+        "unit": "px",
+        "cssVar": "--font-size-sm",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-weight-regular",
+        "value": 400,
+        "unit": null,
+        "cssVar": "--font-weight-regular",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-weight-semibold",
+        "value": 600,
+        "unit": null,
+        "cssVar": "--font-weight-semibold",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.h7-semibold",
+        "value": {
+          "fontSize": "14px",
+          "lineHeight": "22px",
+          "fontWeight": 600
+        },
+        "unit": null,
+        "cssVar": null,
+        "primitiveReferences": {
+          "fontSize": "typography.font-size-md",
+          "fontWeight": "typography.font-weight-semibold"
+        },
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.h9-regular",
+        "value": {
+          "fontSize": "12px",
+          "lineHeight": "20px",
+          "fontWeight": 400
+        },
+        "unit": null,
+        "cssVar": null,
+        "primitiveReferences": {
+          "fontSize": "typography.font-size-sm",
+          "fontWeight": "typography.font-weight-regular"
+        },
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "spacing.xs",
+        "value": 4,
+        "unit": "px",
+        "cssVar": "--spacing-xs",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.6",
+        "value": 6,
+        "unit": "px",
+        "cssVar": "--spacing-6",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.sm",
+        "value": 8,
+        "unit": "px",
+        "cssVar": "--spacing-sm",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.md",
+        "value": 12,
+        "unit": "px",
+        "cssVar": "--spacing-md",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.lg",
+        "value": 16,
+        "unit": "px",
+        "cssVar": "--spacing-lg",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.2xl",
+        "value": 32,
+        "unit": "px",
+        "cssVar": "--spacing-2xl",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      }
+    ]
+  },
+  "evidence": {
+    "localImplementation": "components/variants/stepper.html",
+    "comparison": "components/sources/stepper/local-structure-review.json",
+    "nativeSpecification": "components/sources/stepper/native-specification-review-1011.json",
+    "nativeComponent": "components/sources/stepper/native-component-review-1011.json",
+    "icon68CurrentReview": "components/sources/stepper/icon68-property-review-1013.json",
+    "currentMgReview": "components/sources/form-stepper-list-mg-20261115/stepper-review.json"
+  },
+  "sourceValidation": {
+    "componentIdentity": {
+      "status": "not-established",
+      "files": []
+    },
+    "specificationBody": {
+      "status": "not-established",
+      "files": []
+    },
+    "originalOnlineFrontendCode": false,
+    "browserComputedStyles": false,
+    "completeSpecificationCoverage": false,
+    "otherAtomNesting": {
+      "TextButton": {
+        "scope": "finite-canonical-TextButton-default-calls",
+        "checked": [
+          {
+            "variant": "icon-divider",
+            "children": [
+              {
+                "variant": "inline-black-bold",
+                "size": "l"
+              },
+              {
+                "variant": "inline-black-bold",
+                "size": "l"
+              },
+              {
+                "variant": "inline-black-bold",
+                "size": "l"
+              },
+              {
+                "variant": "inline-black-bold",
+                "size": "l"
+              }
+            ]
+          }
+        ],
+        "inactive": [],
+        "browserVerified": false,
+        "hostStyleCascadeVerified": false
+      }
+    }
+  },
+  "freshness": {
+    "fingerprints": {
+      "components/components.css": "a08b4fe2790b5ff2b784c6362a90f1b94e7535a03e863232ce6d620a52e85f73",
+      "components/contracts/stepper.json": "f4cad8ebacb305ceebce91da193228afeb8cf3dd85907faa9143fe31c747f3ac",
+      "components/contracts/text-button.json": "323301e3a3438778dd29d5d6c32fd7e661846707ce711b5c0ec82d11fea12fc5",
+      "components/icons/icon-demo-report.svg": "9e9702fcf8d17d19541934a5ae57c6ed7c4e3949a77df7573dc06a016bfd26c3",
+      "components/icons/icon-stepper-completed.svg": "d1a93c98cc65e7d979d3e148e8e75842aa15b6321b71731091a75b40a4339faf",
+      "components/icons/icon-stepper-divider-next.svg": "2e67be0d1a01736a2049b7e183efc1d5ef7afe0a91396fbd05ac6e8a7a3183ac",
+      "components/icons/icon-text-button-arrow-right-bold.svg": "38f1e47fc42245ffc9a32ed3bc39cc393576bfc900b06d1525f2fe5caf300fb0",
+      "components/icons/icons-manifest.json": "12c48af6d1dc59d50b76046bb0507005f565aa4224a6d8056ce4eaaf8050c43e",
+      "components/preview/reference-live.js": "4839383529a3ee82df1d8efe675d430567abc1986034499107aa429d21a18ea6",
+      "components/reference-policy.json": "4ae8f51f623386417e38d497caafb8bda4417c929159002a7ac088e6e526b482",
+      "components/sources/form-stepper-list-mg-20261115/stepper-review.json": "67220c76bb21e6a9e008d375a3c3d625c6147938dc4bdc625d4c86d38951efb2",
+      "components/sources/stepper/icon68-property-review-1013.json": "3d76fe3fcaedc4fa1103c52f1e2338ab0a1138f77744fae8d34796e0d7995f00",
+      "components/sources/stepper/local-structure-review.json": "2619c2d23eb23b202634a12beca955e66fd17d98731ddb3ee74d6f0e561a3329",
+      "components/sources/stepper/native-component-review-1011.json": "2ae17fc41979893ec4987477b722ffbd92a2dc4fe3f70586ad0055615aab06a5",
+      "components/sources/stepper/native-specification-review-1011.json": "c73763106337b0ec180fbdbf0d92e4f11c64a978297cdc9d317cd841495c613c",
+      "components/stepper-current.css": "b0bd86b690125cbb2b7a9e98c94849aff7a13440d60057b1f48ea980732cb7dc",
+      "components/stepper-current.js": "e66b454b212276c976845812947ba7f6d28f21208260ae2afd9cd4866fab7d9c",
+      "components/text-button-current.css": "b38b1b1ad0099d580f7676be7cb2def987753a8eaebd86348ab965768696eb1d",
+      "components/token-specs/border-radius.json": "b01e4c23fbc7e19983d9592b59b0303155b79d66c52459356eda0ea9f4ca74b5",
+      "components/token-specs/colors.json": "5267d59fdc687b54496977280c00c97f0beb6ffce013f87853504f5b736d3389",
+      "components/token-specs/spacing.json": "351b14cfce4411248ad41e00eaaf2b1cab9b705997980dfed1fc65693740e65c",
+      "components/token-specs/typography.json": "93b7dc07547218a33c075b7cdcd942f89094353a7847d483d8378b8883327e16",
+      "components/tokens.css": "f63f3c8fea511d8029902bc3905b01853ac5e92049c1b18ca35ebc9a680c3e69",
+      "components/variants/stepper.html": "836a01fd979e10e7e397ceac59de6774bae25365362b0f4ff25a05ece9736f5c",
+      "components/variants/text-button.html": "6295056d973b26231a68158bd758ebde321d8a105326a740f159006a1a7bd2f8"
+    },
+    "graphFingerprint": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "note": "从本地源文件生成；不是 MasterGo 在线实时状态。"
+  },
+  "readScope": {
+    "variant": "circle-centered-order",
+    "note": "只展开当前已选变体；其他变体没有被声明为不可用。尺寸继续按真实 sizeOptions 选择。"
+  }
+}

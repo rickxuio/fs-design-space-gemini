@@ -1,0 +1,35 @@
+{
+  "mainComponent": "InputNumber",
+  "scope": "既有outline-sm 32px Default/真实Hover/加减点击/Disabled与键盘状态",
+  "status": "finite-browser-and-related-check-passed-user-visual-pending",
+  "sourceRange": [
+    "components/sources/input-number/outline32-source-close-1013.json",
+    "components/sources/input-number/outline32-svg-closeout-1013.json",
+    "components/sources/input-number/outline32-disabled-children-review-1013.json"
+  ],
+  "completionConditions": [
+    "实际1920×1000核32px及10px加减素材显示",
+    "真实Hover与点击几何、值和边界按钮同步",
+    "Disabled真实点击不改值；键盘操作按当前已授权运行时核对"
+  ],
+  "remaining": [
+    "实际IME与原生表单重置宿主未测",
+    "其他尺寸/状态/用户视觉批准"
+  ],
+  "necessaryRelations": [
+    "仅现有outline-sm及其已有Disabled样例，其他尺寸不扩验"
+  ],
+  "directionalChecks": [
+    "88×32 Default",
+    "加减10px",
+    "不靠静态hover class冒称实际Hover"
+  ],
+  "scopeAdjustment": "现有Disabled small矩阵没有data-input-number-current，实际仍用旧图标background-image/opacity；有效原件确认19191A30%，与当前已实现mask一致。仅将已有32px Disabled矩阵接入当前原子，原生全部disabled保持；其他未核矩阵不联动。",
+  "browser": "components/sources/input-number/browser-outline32-states-1014.json",
+  "engineering": {
+    "targetedTests": 1,
+    "log": "components/sources/input-number/browser-outline32-tests-1014.log",
+    "sync": "components/sources/input-number/browser-outline32-sync-1014.log",
+    "reused": "未改变runtime或CSS，复用既有数值/重置/取消离线检查"
+  }
+}

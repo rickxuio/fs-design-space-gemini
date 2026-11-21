@@ -1,0 +1,52 @@
+{
+  "date": "2026-10-11",
+  "scope": "Existing finite inline-edit and order-preview hosts; no new canonical admission",
+  "counts": {
+    "inlineEdit": {
+      "inputs": 2,
+      "textButtons": 2,
+      "cancelButtons": 2,
+      "disabledSaveButtons": 2
+    },
+    "orderPreview": {
+      "viewOrderButtons": 2,
+      "badges": 4
+    }
+  },
+  "fix": {
+    "problem": "Host Escape canceled editing during native input composition or after a child consumed Escape",
+    "redReproduced": true,
+    "resolution": "Respect isComposing, composition lifecycle and defaultPrevented; keep normal Escape rollback and atom-owned input states"
+  },
+  "tests": {
+    "passed": 15,
+    "files": [
+      "scripts/collapse-host-preview.test.js",
+      "scripts/collapse-reference.test.js"
+    ],
+    "logs": [
+      "/tmp/fs-collapse-ime-before.log",
+      "/tmp/fs-collapse-host-final-test.log",
+      "/tmp/fs-collapse-host-final-sync.log",
+      "/tmp/fs-collapse-host-final-health.log"
+    ],
+    "syncPassed": true,
+    "healthPassed": true,
+    "healthWarnings": 2
+  },
+  "fingerprints": {
+    "components/collapse-host-preview.js": "6864c800b8e3d634f1b501eee4cf020eebc14e77d01d8e694a1503a80e749d9c",
+    "components/collapse-host-preview.css": "806531e65a6a68a475c8278aa1e4c4665a65c0f64cfbd71e74da5e0a0913307a",
+    "components/contracts/collapse.json": "3194c8325371750c24ca9af26edbf9db1d6e15447f3287bacee24ed7d3591c1a",
+    "components/preview/collapse.html": "8e62f007e5ccbb9505db83e3d3ac2965b4f0eb1d5f39a1d27bf7ee0c0bfbfbb2",
+    "scripts/collapse-host-preview.test.js": "827065e6bc4ab3fa188f52cdc4c7bac1a6a93be4cbd3d1bdad8eb9e849532c50"
+  },
+  "limits": {
+    "mastergoVerified": false,
+    "browserVerified": false,
+    "visualVerified": false,
+    "saveBusinessStillUnconfirmed": true,
+    "legacyAndMediaNotChecked": true,
+    "frozenPagesUnchanged": true
+  }
+}

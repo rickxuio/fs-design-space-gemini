@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "fs-local-component-review/1.0.0",
+  "status": "finite-source-comparison-and-local-structure-only",
+  "originalComponentSnapshot": "components/sources/video-button/mastergo-original-components.json",
+  "independentSpecDocument": null,
+  "supported": [
+    "dark/s",
+    "dark/l",
+    "light/s",
+    "light/l"
+  ],
+  "sizeDiscrepancy": {
+    "localXL": {
+      "height": 60,
+      "icon": 25,
+      "declaredWidth": 143
+    },
+    "designLargePlayer": {
+      "nodeIds": [
+        "64858:84564",
+        "64896:87470"
+      ],
+      "width": 100,
+      "height": 50,
+      "icon": 20
+    },
+    "decision": "Keep shared CSS and historical pages intact; exclude xl from finite AI call scope pending variant/source resolution."
+  },
+  "accessibilityChanges": [
+    "Canonical buttons type=button",
+    "Nonempty root aria-label; decorative icon alt empty",
+    "Preview icon-map ID moved to wrapper, excluded from reusable button"
+  ],
+  "pending": [
+    "Full independent specification",
+    "Actual browser hover/focus/geometry and fonts",
+    "XL shape and other playback controls",
+    "Host player integration; no built-in media runtime"
+  ],
+  "compatibility": "Only four canonical Preview buttons and contract/source metadata change. No shared CSS or historical page changes.",
+  "sourceIndexGeneration": "node scripts/inventory-video-button-source.js; reference compilation re-indexes and rejects stale/altered output."
+}

@@ -1,0 +1,310 @@
+{
+  "date": "2026-10-13",
+  "scope": "current fixed Header independent HTTP fixture; does not prove MasterGo full Header/Footer or whole page",
+  "before": {
+    "viewport": {
+      "width": 1920,
+      "height": 1000
+    },
+    "header": {
+      "width": 1920,
+      "height": 101
+    },
+    "topbar": {
+      "height": 32
+    },
+    "main": {
+      "height": 69
+    },
+    "inner": {
+      "x": 360,
+      "width": 1200,
+      "height": 68
+    },
+    "link": {
+      "fontSize": "14px",
+      "lineHeight": "22px",
+      "fontWeight": "400",
+      "color": "rgb(25, 25, 26)",
+      "textDecoration": "none"
+    },
+    "imagesLoaded": 4
+  },
+  "reason": "Preview reset supplies border-box; original integration styles did not. Default content-box adds main bottom border outside 68px height.",
+  "fix": "components/navigation-current.css opt-in integration; authored Header literal unchanged",
+  "after": {
+    "url": "http://127.0.0.1:4317/components/sources/navigation/header-http-fixture-1013.html",
+    "viewport": {
+      "width": 1920,
+      "height": 1000
+    },
+    "header": {
+      "x": 0,
+      "y": 0,
+      "width": 1920,
+      "height": 100,
+      "boxSizing": "border-box"
+    },
+    "topbar": {
+      "height": 32
+    },
+    "main": {
+      "y": 32,
+      "height": 68,
+      "boxSizing": "border-box"
+    },
+    "inner": {
+      "x": 360,
+      "width": 1200,
+      "height": 68
+    },
+    "link": {
+      "fontSize": "14px",
+      "lineHeight": "22px",
+      "fontWeight": "400",
+      "color": "rgb(25, 25, 26)",
+      "textDecoration": "none"
+    },
+    "imagesLoaded": 4
+  },
+  "visualApproval": "pending",
+  "sourceHeaderOriginalIdentity": "verified PC/Web US component68908:036747; nested opaque atom internals pending",
+  "measurementMethod": "Codex In-app Browser current HTTP fixture: read-only DOM getBoundingClientRect/getComputedStyle; actual viewport checked",
+  "runtimeFingerprints": {
+    "components/tokens.css": "2424558781ddfc12cad4d2b91e78451dc26fe5e126e6f24a3b9631753b644afa",
+    "components/components.css": "a08b4fe2790b5ff2b784c6362a90f1b94e7535a03e863232ce6d620a52e85f73",
+    "components/navigation-current.css": "ad6bb2f9e2f313094a52fe879ab1337d1cfe8902f4929cb9919f82c72012d9c3",
+    "components/sources/navigation/fixed-header-baseline.html": "cf0cac5a47f8623e4a6d998eb57d54f57aefe534866b7b53e9c99c7528cd5b93",
+    "components/button-current.css": "652659471c98bd8219c463f998676e908b9ff4796d48dba63f68badce69b67d2",
+    "components/sources/navigation/header-http-fixture-1013.html": "24762107e0850d7ee513e3b5c93233a8092ed0965ce45f8371284f9ca46ea11e",
+    "components/input-footer-source.css": "d2b0747530794b3fcba5e8db98a360b98192aa2b295cdc66e8f77c482be1e64c",
+    "components/navigation-footer-current.css": "862bdcaefde34d94faa0dedac89d4f0254eae7c5fc6e2fb4bd417ff59c06de26",
+    "components/navigation-header-web-atom.css": "6c3bdd2fc6499e53679cb8dae300b3665c42c3cdc9f4c13c392b5f1b65d0d6a5",
+    "components/navigation-header-action-atom.css": "5d559688f9bbcedd42f24c89d97cb2fe48328d69e023a1d5f88edafad4933515",
+    "components/icons/navigation-header-search-1013.png": "eed580b7f2ac40f414bd809ce870c303a1387d236f954e9ed3f87e172cb23ddc"
+  },
+  "engineeringScope": "existing authored fixed Header default structure, independent box model, typography declarations, container geometry and image loading",
+  "unverified": [
+    "Hover/键盘焦点/实际业务动作",
+    "实际字体绘制与完整视觉批准",
+    "Footer与完整页面",
+    "Header嵌套原子内部与完整状态来源"
+  ],
+  "previousHttpAfter": {
+    "url": "http://127.0.0.1:56708/components/preview/header-current.html",
+    "viewport": {
+      "width": 1920,
+      "height": 1000
+    },
+    "header": {
+      "x": 0,
+      "y": 0,
+      "width": 1920,
+      "height": 100,
+      "boxSizing": "border-box"
+    },
+    "topbar": {
+      "height": 32
+    },
+    "main": {
+      "y": 32,
+      "height": 68,
+      "boxSizing": "border-box"
+    },
+    "inner": {
+      "x": 360,
+      "width": 1200,
+      "height": 67
+    },
+    "link": {
+      "fontSize": "14px",
+      "lineHeight": "22px",
+      "fontWeight": "400",
+      "color": "rgb(25, 25, 26)",
+      "textDecoration": "none"
+    },
+    "imagesLoaded": 4
+  },
+  "latestRegression": "用户纠正1013：公共原子Default/Hover400，独立2px Red标记；默认100/32/68及Hover400实测，原MG600差异保留。",
+  "sourceHostDefault": {
+    "node": "68908:036747",
+    "topbarBackground": "rgb(246, 246, 248)",
+    "dividers": [
+      {
+        "width": 1,
+        "height": 10
+      },
+      {
+        "width": 1,
+        "height": 12
+      }
+    ],
+    "actions": [
+      "Search",
+      "Cart",
+      "Account"
+    ],
+    "actualViewport": {
+      "width": 1920,
+      "height": 1000
+    },
+    "method": "Actual independent HTTP fixture DOM and native inline screenshot, 2026-10-13",
+    "previousExportDividers": [
+      {
+        "width": 1,
+        "height": 10
+      },
+      {
+        "width": 12,
+        "height": 1
+      }
+    ]
+  },
+  "dividerCorrectionActual": {
+    "viewport": {
+      "width": 1920,
+      "height": 1000
+    },
+    "size": {
+      "width": 1,
+      "height": 12
+    },
+    "color": "rgb(222, 224, 227)",
+    "headerHeight": 100,
+    "topbarHeight": 32,
+    "source": "header-right-divider-mastergo-1013.png",
+    "screenshotBoundary": "Native fixture screenshot does not provide complete right-side visible capture; physical direction established by exact-node official PNG, computed local geometry separately."
+  },
+  "previousAfter": {
+    "url": "http://127.0.0.1:4317/components/sources/navigation/header-http-fixture-1013.html#",
+    "viewport": {
+      "width": 1920,
+      "height": 1000
+    },
+    "header": {
+      "x": 0,
+      "y": 0,
+      "width": 1920,
+      "height": 100,
+      "boxSizing": "border-box"
+    },
+    "topbar": {
+      "height": 32
+    },
+    "main": {
+      "y": 32,
+      "height": 68,
+      "boxSizing": "border-box"
+    },
+    "inner": {
+      "x": 360,
+      "width": 1200,
+      "height": 68
+    },
+    "link": {
+      "fontSize": "14px",
+      "lineHeight": "22px",
+      "fontWeight": "400",
+      "color": "rgb(25, 25, 26)",
+      "textDecoration": "none"
+    },
+    "imagesLoaded": 4
+  },
+  "webAtomActual": {
+    "viewport": [
+      1920,
+      1000
+    ],
+    "default": {
+      "hovered": false,
+      "fontWeight": "400",
+      "height": 68,
+      "width": 77.6484375,
+      "markerContent": "none"
+    },
+    "hover": {
+      "hovered": true,
+      "fontWeight": "400",
+      "height": 68,
+      "width": 80.8046875,
+      "paddingTop": "22px",
+      "color": "rgb(25, 25, 26)",
+      "marker": {
+        "height": "2px",
+        "color": "rgb(192, 0, 0)",
+        "content": "\"\""
+      }
+    },
+    "source": "header-web-atom-review-1013.json",
+    "method": "Actual native pointer on All Products; read-only DOM and native inline screenshot; then pointer moved to Search to measure Default",
+    "limits": "No whole-header state or glyph-edge visual approval"
+  },
+  "previousAfterBeforePermissionRestore": {
+    "url": "http://127.0.0.1:4317/components/sources/navigation/header-http-fixture-1013.html#",
+    "viewport": {
+      "width": 1920,
+      "height": 1000
+    },
+    "header": {
+      "x": 0,
+      "y": 0,
+      "width": 1920,
+      "height": 100,
+      "boxSizing": "border-box"
+    },
+    "topbar": {
+      "height": 32
+    },
+    "main": {
+      "y": 32,
+      "height": 68,
+      "boxSizing": "border-box"
+    },
+    "inner": {
+      "x": 360,
+      "width": 1200,
+      "height": 68
+    },
+    "link": {
+      "fontSize": "14px",
+      "lineHeight": "22px",
+      "fontWeight": "400",
+      "color": "rgb(25, 25, 26)",
+      "textDecoration": "none"
+    },
+    "imagesLoaded": 4
+  },
+  "permissionRestore1013": {
+    "evidence": "用户本轮设置截图：默认浏览始终允许，无站点例外；随后在原IAB/原URL实际读取成功。",
+    "screenshot": "原生内联附件，1920×1000默认状态",
+    "actions": [
+      {
+        "role": "Search",
+        "width": 24,
+        "height": 24
+      },
+      {
+        "role": "Cart",
+        "width": 23.8203125,
+        "height": 24
+      },
+      {
+        "role": "Account",
+        "width": 24,
+        "height": 24
+      }
+    ],
+    "scope": "当前Header默认几何/图像加载以及All Products实际Hover；不等同所有状态或用户整页视觉批准。"
+  },
+  "userCorrectionActual1013": {
+    "authority": "用户指出本地公共导航规范错误并要求源头修正",
+    "actualViewport": [
+      1920,
+      1000
+    ],
+    "header": "100/32/68, inner1200/x360",
+    "hover": "14/22/400，2px #C00000独立底线，无文字变宽/位移",
+    "footer": "1920×451，七图加载，邮箱Focus border:none/outline:none",
+    "method": "当前HTTP独立组件夹具及用户OEM标签实际操作；旧receipt已保存，原件快照保留"
+  }
+}

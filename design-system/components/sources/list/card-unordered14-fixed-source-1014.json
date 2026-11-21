@@ -1,0 +1,620 @@
+{
+  "fileId": "143880524770062",
+  "fileStatus": "retired-fixed-source-user-approved",
+  "pageId": "1:079087",
+  "node": "2766:061747",
+  "scope": "Card-required unordered14 fixed-source only",
+  "userAuthorization": "list确实是旧组件的，但是样式没问题，你可以参考",
+  "readAt": "2026-10-14",
+  "overview": {
+    "sections": [
+      {
+        "id": "2766:061748",
+        "name": "容器 1119",
+        "type": "FRAME",
+        "nodeCount": 4,
+        "x": 0,
+        "y": 0,
+        "width": 318,
+        "height": 22,
+        "textPreview": "2x 2nd Gen Intel Xeo",
+        "structureHash": "{\"t\":\"FRAME\",\"l\":{\"w\":318,\"h\":22},\"c\":[{\"t\":\"INSTANCE\",\"l\":{\"w\":4,\"h\":22},\"c\":[{\"t\":\"SVG_ELLIPSE\",\"l\":{\"w\":4,\"h\":4}}]},{\"t\":\"TEXT\",\"l\":{\"w\":306,\"h\":22}}]}",
+        "structureSiblingCount": 3
+      },
+      {
+        "id": "2766:061753",
+        "name": "容器 1120",
+        "type": "FRAME",
+        "nodeCount": 4,
+        "x": 0,
+        "y": 26,
+        "width": 318,
+        "height": 22,
+        "textPreview": "2x 2nd Gen Intel Xeo",
+        "structureHash": "{\"t\":\"FRAME\",\"l\":{\"w\":318,\"h\":22},\"c\":[{\"t\":\"INSTANCE\",\"l\":{\"w\":4,\"h\":22},\"c\":[{\"t\":\"SVG_ELLIPSE\",\"l\":{\"w\":4,\"h\":4}}]},{\"t\":\"TEXT\",\"l\":{\"w\":306,\"h\":22}}]}",
+        "structureSiblingCount": 3
+      },
+      {
+        "id": "2766:061758",
+        "name": "容器 1121",
+        "type": "FRAME",
+        "nodeCount": 4,
+        "x": 0,
+        "y": 52,
+        "width": 318,
+        "height": 22,
+        "textPreview": "2x 2nd Gen Intel Xeo",
+        "structureHash": "{\"t\":\"FRAME\",\"l\":{\"w\":318,\"h\":22},\"c\":[{\"t\":\"INSTANCE\",\"l\":{\"w\":4,\"h\":22},\"c\":[{\"t\":\"SVG_ELLIPSE\",\"l\":{\"w\":4,\"h\":4}}]},{\"t\":\"TEXT\",\"l\":{\"w\":306,\"h\":22}}]}",
+        "structureSiblingCount": 3
+      },
+      {
+        "id": "2766:061763",
+        "name": "容器 1123",
+        "type": "FRAME",
+        "nodeCount": 1,
+        "x": 0,
+        "y": 78,
+        "width": 318,
+        "height": 20,
+        "structureSiblingCount": 1
+      }
+    ],
+    "totalSections": 4,
+    "totalNodes": 13,
+    "allTexts": [
+      "2x 2nd Gen Intel Xeon Scalable CPUs"
+    ],
+    "rootMetadata": {
+      "width": 318,
+      "height": 98,
+      "name": "类型[a0]=无序列表,文本字号[a2]=14px",
+      "type": "COMPONENT",
+      "allTexts": [
+        "2x 2nd Gen Intel Xeon Scalable CPUs"
+      ]
+    },
+    "rootContainer": {
+      "width": "318px",
+      "minHeight": "98px",
+      "background": "transparent",
+      "overflow": "hidden",
+      "position": "relative"
+    },
+    "nextAction": "STOP. This section LIST is only a directory — it has NO DSL nodes,  NO rowTexts. You CANNOT generate HTML from this list alone. Your NEXT ACTION: call mcp__getDesignSections with sectionIndex=0, then sectionIndex=1, ... up to sectionIndex=3 (total 4 calls). Fetch ALL 4 sections in batches of 3-5 before writing ANY HTML. Sections with nodeCount=3 and empty name are NOT empty — they contain real menu items and content (resolved from INSTANCE overrides during DSL transfer). WARNING: 3 sections have structureSiblingCount up to 3 — they look identical in the list (same nodeCount, empty name) but each has DIFFERENT text content and variant state. You MUST fetch ALL of them individually (do NOT skip any after fetching a few). Skipping sibling sections causes missing active-state styling and wrong menu item rendering. Skipping section DSL fetch is the #1 cause of missing menus, broken icons, and wrong data.",
+    "rules": [
+      "CRITICAL — Page positioning: the section LIST response contains splitContainers with page-absolute coordinates for each page region. Use splitContainers to construct the page skeleton (position:absolute with exact coordinates). Do NOT guess or stack with flex. IMPORTANT: splitContainers x/y are the container's absolute position on the canvas — they are NOT CSS margins/padding for child elements. Do NOT apply a container's y coordinate as top/margin-top on the main content wrapper. The main content area should start at top:0 within its own positioning context; sub-sections inside it use their own bbox y coordinates relative to the container, not to the page root.",
+      "CRITICAL — Multi-column sidebar layout: render ALL sidebar levels as persistent visible columns positioned via splitContainers coordinates. Do NOT use position:absolute/fixed for submenu panels (they become floating overlays and break the main content width). Instead, lay out ALL columns (primary sidebar + submenu + main content) side-by-side using flex or absolute positioning that ACCOUNTS for every column's width. The main content area width = rootContainer.width minus ALL sidebar column widths. Do NOT use flex:1 for main content when there are multiple sidebar columns — it will expand into the submenu's space. Each sidebar column's width comes from its splitContainer entry.",
+      "token filed must be generated as a variable (colors, shadows, fonts, etc.) and the token field must be displayed in the comment",
+      "componentDocumentLinks is a list of frontend component documentation links. When it exists and is not empty, use mcp__getComponentLink to get the documentation.",
+      "",
+      "CRITICAL — SVG FROM PATH NODES (MUST FOLLOW): Every PATH node has a `svgShortKey` field (a short sequential ID like `S0#0`, `S0#1`). The SVG markup is NOT in the DSL. You MUST place a placeholder `@@SVG:{svgShortKey}@@` where each icon goes, then call `mcp__applyDesign` at the end to inject the real high-precision SVG. NEVER hand-write `<path d=\"...\">` — the DSL does NOT contain path data. NEVER leave a PATH node unrendered — every icon MUST have a `@@SVG:{svgShortKey}@@` placeholder.",
+      "CRITICAL — RENDER EVERY ICON IN PATH NODES: Every PATH node has a `svgShortKey`. Place `@@SVG:{svgShortKey}@@` for each — sidebar menu icons, table header sort/filter/search icons, pagination prev/next/refresh icons, and action buttons. A header cell or menu item showing only plain text is a fidelity defect. After ALL placeholders are placed, call `mcp__applyDesign` to replace them with real SVG.",
+      "",
+      "CRITICAL — _placeholder TEXT handling: TEXT nodes with `_placeholder: true` (name==text) are listed in `dsl.placeholderTexts`. These are component-library boilerplate — NOT real column headers, labels, or data. Do NOT render them as table headers, column names, or visible UI labels. They appear alongside real text in the same section (e.g. a header cell has both realTitle='用户名称' and placeholder='Hillstone Design') — render ONLY the real title, omit the placeholder. EXCEPTION: if a placeholder text is the SOLE text in its section AND it reads as a legitimate brand name or page title (e.g. '智源智能安全运营平台'), it may be real content — render it in its proper context (logo area, page title), never as a table header.",
+      "CRITICAL — CLOSED-SET TEXT: the section LIST response carries `rootMetadata.allTexts` — the complete whitelist of text strings in this design (including placeholder strings). Any visible string NOT in allTexts is a hallucination and MUST be removed. Use `dsl.placeholderTexts` in each section to identify which strings are component-library boilerplate.",
+      "",
+      "CRITICAL — INSTANCE fill color: when an INSTANCE has both `fill` and `_color`, use `_color` directly as the CSS value. Do NOT guess colors from _variantProps semantics.",
+      "CRITICAL — INSTANCE _variantProps: compare across siblings for selected/hovered/disabled. Active class MUST match DSL variant state, NOT a default index.",
+      "CRITICAL — Render count = structureSiblingCount: if ssc=1, that single instance IS complete — do NOT fabricate extra rows/items.",
+      "CRITICAL — BACKGROUND FROM splitContainers: splitContainers[].background IS the exact CSS background-color. Copy verbatim, no changes.",
+      "CRITICAL — FRAME/GROUP opacity: translate to rgba() on background only, NOT CSS opacity (would make children translucent).",
+      "CRITICAL — rowTexts: each entry has parentType/parentName for context and `_placeholder: true` if boilerplate. Use parentName to place text correctly; skip _placeholder entries. IMPORTANT: if a short numeric text (like '8') has parentName matching a button INSTANCE (e.g. '分类[a3]=文本按钮,类型[aI]=危险'), it is likely a badge/count indicator overlaid on that button — NOT part of the button label. Do NOT render it inside the button text; render it as a separate badge element positioned on the button corner, OR omit it if the design does not show a visible badge on that specific button instance.",
+      "Render ALL nodes recursively. Section root layoutStyle.width = section width. Do not call mcp__getDsl after completing section workflow.",
+      "CRITICAL — ICON-TO-NODE BINDING: match PATH nodes to their UI position by the node's ancestor name. A PATH node under a menu item belongs in that menu's icon slot; one under a button/refresh belongs in that button. NEVER substitute a memorized icon — use the exact `@@SVG:{svgShortKey}@@` from the PATH node in its section. NEVER reuse a svgShortKey from a different section.",
+      "CRITICAL — TEXT PROVENANCE SELF-CHECK: before finalizing output, verify every visible text string exists in allTexts. If you emit MORE distinct strings than allTexts.length, you are hallucinating. Typical hallucinations: fabricated table headers, invented data, brand tokens, generic labels not in the design.",
+      "CRITICAL — DO NOT SKIP SECTION DSL FETCH: the section LIST response is ONLY a directory (id/name/nodeCount/textPreview). It does NOT contain DSL nodes, rowTexts, or any rendering data. You CANNOT generate correct HTML from the list alone. You MUST call mcp__getDesignSections with sectionIndex=0, then 1, ... up to totalSections-1 to get each section's DSL. Generating HTML without fetching ALL section DSLs will produce missing content (menus, table data, icons) and incorrect SVGs — this is the #1 cause of broken output."
+    ]
+  },
+  "sections": [
+    {
+      "sectionIndex": 0,
+      "section": {
+        "id": "2766:061748",
+        "name": "容器 1119",
+        "type": "FRAME"
+      },
+      "rootContainer": {
+        "width": "318px",
+        "minHeight": "98px",
+        "background": "transparent",
+        "overflow": "hidden",
+        "position": "relative"
+      },
+      "structureSiblingCount": 3,
+      "dsl": {
+        "styles": {
+          "font_2:910": {
+            "value": {
+              "family": "Open Sans",
+              "size": 14,
+              "style": "{\"fontStyle\":\"Regular\",\"opsz\":\"auto\"}",
+              "decoration": "none",
+              "case": "none",
+              "lineHeight": "22",
+              "letterSpacing": "auto",
+              "weight": "400"
+            },
+            "token": "Open Sans/14px-Regular"
+          },
+          "paint_585:87321": {
+            "value": [
+              "#707070"
+            ],
+            "token": "中性色/Gray3-#707070",
+            "description": "💚场景：文本(弱)"
+          }
+        },
+        "nodes": [
+          {
+            "type": "FRAME",
+            "id": "2766:061748",
+            "name": "容器 1119",
+            "layoutStyle": {
+              "width": 318,
+              "height": 22,
+              "relativeX": 0,
+              "relativeY": 0
+            },
+            "flexShrink": 1,
+            "children": [
+              {
+                "type": "INSTANCE",
+                "id": "2766:061749",
+                "name": "无序圆点",
+                "layoutStyle": {
+                  "width": 4,
+                  "height": 22,
+                  "relativeX": 0,
+                  "relativeY": 0
+                },
+                "flexContainerInfo": {
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "flexWrap": "wrap",
+                  "mainSizing": "auto",
+                  "crossSizing": "fixed"
+                },
+                "componentInfo": {},
+                "children": [
+                  {
+                    "type": "SVG_ELLIPSE",
+                    "id": "2766:061749/46:77365",
+                    "name": "椭圆形",
+                    "layoutStyle": {
+                      "width": 4,
+                      "height": 4,
+                      "relativeX": 0,
+                      "relativeY": 8
+                    },
+                    "fill": "paint_585:87321",
+                    "_color": "#707070",
+                    "_token": "中性色/Gray3-#707070",
+                    "path": [
+                      {
+                        "data": "",
+                        "fill": "#707070"
+                      }
+                    ]
+                  }
+                ],
+                "componentId": "46:77364"
+              },
+              {
+                "type": "TEXT",
+                "id": "2766:061750",
+                "name": "文本",
+                "layoutStyle": {
+                  "width": 306,
+                  "height": 22,
+                  "relativeX": 12,
+                  "relativeY": 0
+                },
+                "flexGrow": 1,
+                "fill": "paint_585:87321",
+                "_color": "#707070",
+                "_token": "中性色/Gray3-#707070",
+                "text": [
+                  {
+                    "text": "2x 2nd Gen Intel Xeon Scalable CPUs",
+                    "font": "font_2:910"
+                  }
+                ],
+                "textColor": [
+                  {
+                    "start": 0,
+                    "end": 35,
+                    "color": "paint_585:87321"
+                  }
+                ],
+                "textAlign": "left",
+                "textMode": "auto-height"
+              }
+            ],
+            "flexContainerInfo": {
+              "flexDirection": "row",
+              "mainSizing": "fixed",
+              "crossSizing": "auto",
+              "gap": "8px"
+            }
+          }
+        ],
+        "components": [],
+        "rowTexts": [
+          {
+            "text": "2x 2nd Gen Intel Xeon Scalable CPUs",
+            "parentType": "FRAME",
+            "parentName": "容器 1119"
+          }
+        ]
+      },
+      "nodeCount": 4,
+      "componentDocumentLinks": [],
+      "fetchProgress": "Fetched 1/4. MISSING 3 sections: [1,2,3]. You MUST fetch ALL remaining sections before generating HTML. Do NOT stop early."
+    },
+    {
+      "sectionIndex": 1,
+      "section": {
+        "id": "2766:061753",
+        "name": "容器 1120",
+        "type": "FRAME"
+      },
+      "rootContainer": {
+        "width": "318px",
+        "minHeight": "98px",
+        "background": "transparent",
+        "overflow": "hidden",
+        "position": "relative"
+      },
+      "structureSiblingCount": 3,
+      "dsl": {
+        "styles": {
+          "effect_1:078672": {
+            "value": []
+          },
+          "font_2:910": {
+            "value": {
+              "family": "Open Sans",
+              "size": 14,
+              "style": "{\"fontStyle\":\"Regular\",\"opsz\":\"auto\"}",
+              "decoration": "none",
+              "case": "none",
+              "lineHeight": "22",
+              "letterSpacing": "auto",
+              "weight": "400"
+            },
+            "token": "Open Sans/14px-Regular"
+          },
+          "paint_585:87321": {
+            "value": [
+              "#707070"
+            ],
+            "token": "中性色/Gray3-#707070",
+            "description": "💚场景：文本(弱)"
+          }
+        },
+        "nodes": [
+          {
+            "type": "FRAME",
+            "id": "2766:061753",
+            "name": "容器 1120",
+            "layoutStyle": {
+              "width": 318,
+              "height": 22,
+              "relativeX": 0,
+              "relativeY": 0
+            },
+            "flexShrink": 1,
+            "children": [
+              {
+                "type": "INSTANCE",
+                "id": "2766:061754",
+                "name": "无序圆点",
+                "layoutStyle": {
+                  "width": 4,
+                  "height": 22,
+                  "relativeX": 0,
+                  "relativeY": 0
+                },
+                "flexContainerInfo": {
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "flexWrap": "wrap",
+                  "mainSizing": "auto",
+                  "crossSizing": "fixed"
+                },
+                "componentInfo": {},
+                "children": [
+                  {
+                    "type": "SVG_ELLIPSE",
+                    "id": "2766:061754/46:77365",
+                    "name": "椭圆形",
+                    "layoutStyle": {
+                      "width": 4,
+                      "height": 4,
+                      "relativeX": 0,
+                      "relativeY": 8
+                    },
+                    "fill": "paint_585:87321",
+                    "_color": "#707070",
+                    "_token": "中性色/Gray3-#707070",
+                    "path": [
+                      {
+                        "data": "",
+                        "fill": "#707070"
+                      }
+                    ]
+                  }
+                ],
+                "componentId": "46:77364"
+              },
+              {
+                "type": "TEXT",
+                "id": "2766:061755",
+                "name": "文本",
+                "layoutStyle": {
+                  "width": 306,
+                  "height": 22,
+                  "relativeX": 12,
+                  "relativeY": 0
+                },
+                "flexGrow": 1,
+                "fill": "paint_585:87321",
+                "_color": "#707070",
+                "_token": "中性色/Gray3-#707070",
+                "effect": "effect_1:078672",
+                "text": [
+                  {
+                    "text": "2x 2nd Gen Intel Xeon Scalable CPUs",
+                    "font": "font_2:910"
+                  }
+                ],
+                "textColor": [
+                  {
+                    "start": 0,
+                    "end": 35,
+                    "color": "paint_585:87321"
+                  }
+                ],
+                "textAlign": "left",
+                "textMode": "auto-height"
+              }
+            ],
+            "flexContainerInfo": {
+              "flexDirection": "row",
+              "mainSizing": "fixed",
+              "crossSizing": "auto",
+              "gap": "8px"
+            }
+          }
+        ],
+        "components": [],
+        "rowTexts": [
+          {
+            "text": "2x 2nd Gen Intel Xeon Scalable CPUs",
+            "parentType": "FRAME",
+            "parentName": "容器 1120"
+          }
+        ]
+      },
+      "nodeCount": 4,
+      "componentDocumentLinks": [],
+      "fetchProgress": "Fetched 2/4. MISSING 2 sections: [2,3]. You MUST fetch ALL remaining sections before generating HTML. Do NOT stop early."
+    },
+    {
+      "sectionIndex": 2,
+      "section": {
+        "id": "2766:061758",
+        "name": "容器 1121",
+        "type": "FRAME"
+      },
+      "rootContainer": {
+        "width": "318px",
+        "minHeight": "98px",
+        "background": "transparent",
+        "overflow": "hidden",
+        "position": "relative"
+      },
+      "structureSiblingCount": 3,
+      "dsl": {
+        "styles": {
+          "effect_1:078672": {
+            "value": []
+          },
+          "font_2:910": {
+            "value": {
+              "family": "Open Sans",
+              "size": 14,
+              "style": "{\"fontStyle\":\"Regular\",\"opsz\":\"auto\"}",
+              "decoration": "none",
+              "case": "none",
+              "lineHeight": "22",
+              "letterSpacing": "auto",
+              "weight": "400"
+            },
+            "token": "Open Sans/14px-Regular"
+          },
+          "paint_585:87321": {
+            "value": [
+              "#707070"
+            ],
+            "token": "中性色/Gray3-#707070",
+            "description": "💚场景：文本(弱)"
+          }
+        },
+        "nodes": [
+          {
+            "type": "FRAME",
+            "id": "2766:061758",
+            "name": "容器 1121",
+            "layoutStyle": {
+              "width": 318,
+              "height": 22,
+              "relativeX": 0,
+              "relativeY": 0
+            },
+            "flexShrink": 1,
+            "children": [
+              {
+                "type": "INSTANCE",
+                "id": "2766:061759",
+                "name": "无序圆点",
+                "layoutStyle": {
+                  "width": 4,
+                  "height": 22,
+                  "relativeX": 0,
+                  "relativeY": 0
+                },
+                "flexContainerInfo": {
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "flexWrap": "wrap",
+                  "mainSizing": "auto",
+                  "crossSizing": "fixed"
+                },
+                "componentInfo": {},
+                "children": [
+                  {
+                    "type": "SVG_ELLIPSE",
+                    "id": "2766:061759/46:77365",
+                    "name": "椭圆形",
+                    "layoutStyle": {
+                      "width": 4,
+                      "height": 4,
+                      "relativeX": 0,
+                      "relativeY": 8
+                    },
+                    "fill": "paint_585:87321",
+                    "_color": "#707070",
+                    "_token": "中性色/Gray3-#707070",
+                    "path": [
+                      {
+                        "data": "",
+                        "fill": "#707070"
+                      }
+                    ]
+                  }
+                ],
+                "componentId": "46:77364"
+              },
+              {
+                "type": "TEXT",
+                "id": "2766:061760",
+                "name": "文本",
+                "layoutStyle": {
+                  "width": 306,
+                  "height": 22,
+                  "relativeX": 12,
+                  "relativeY": 0
+                },
+                "flexGrow": 1,
+                "fill": "paint_585:87321",
+                "_color": "#707070",
+                "_token": "中性色/Gray3-#707070",
+                "effect": "effect_1:078672",
+                "text": [
+                  {
+                    "text": "2x 2nd Gen Intel Xeon Scalable CPUs",
+                    "font": "font_2:910"
+                  }
+                ],
+                "textColor": [
+                  {
+                    "start": 0,
+                    "end": 35,
+                    "color": "paint_585:87321"
+                  }
+                ],
+                "textAlign": "left",
+                "textMode": "auto-height"
+              }
+            ],
+            "flexContainerInfo": {
+              "flexDirection": "row",
+              "mainSizing": "fixed",
+              "crossSizing": "auto",
+              "gap": "8px"
+            }
+          }
+        ],
+        "components": [],
+        "rowTexts": [
+          {
+            "text": "2x 2nd Gen Intel Xeon Scalable CPUs",
+            "parentType": "FRAME",
+            "parentName": "容器 1121"
+          }
+        ]
+      },
+      "nodeCount": 4,
+      "componentDocumentLinks": [],
+      "fetchProgress": "Fetched 3/4. MISSING 1 sections: [3]. You MUST fetch ALL remaining sections before generating HTML. Do NOT stop early."
+    },
+    {
+      "sectionIndex": 3,
+      "section": {
+        "id": "2766:061763",
+        "name": "容器 1123",
+        "type": "FRAME"
+      },
+      "rootContainer": {
+        "width": "318px",
+        "minHeight": "98px",
+        "background": "transparent",
+        "overflow": "hidden",
+        "position": "relative"
+      },
+      "structureSiblingCount": 1,
+      "dsl": {
+        "styles": {},
+        "nodes": [
+          {
+            "type": "FRAME",
+            "id": "2766:061763",
+            "name": "容器 1123",
+            "layoutStyle": {
+              "width": 318,
+              "height": 20,
+              "relativeX": 0,
+              "relativeY": 0
+            },
+            "flexShrink": 1,
+            "children": [],
+            "flexContainerInfo": {
+              "flexDirection": "column",
+              "mainSizing": "auto",
+              "crossSizing": "fixed",
+              "gap": "4px"
+            }
+          }
+        ],
+        "components": []
+      },
+      "nodeCount": 1,
+      "componentDocumentLinks": [],
+      "fetchProgress": "ALL 4 sections fetched. You can now generate the complete HTML."
+    }
+  ],
+  "limits": [
+    "Three populated rows and one empty source frame; no invented fourth content row.",
+    "No new local runtime or family approval."
+  ],
+  "nativeResolution": {
+    "method": "Chrome原生可见属性面板：搜索椭圆形后选中List14首条圆点子层",
+    "wrapper": [
+      4,
+      22
+    ],
+    "ellipse": {
+      "x": 0,
+      "y": 9,
+      "width": 4,
+      "height": 4,
+      "color": "#707070"
+    },
+    "decision": "原生实际y9优先于缓存DSL子层relativeY8；按22px首行居中实现，12px维持20px首行y8。",
+    "sourceUrl": "https://mastergo.com/file/143880524770062?page_id=1%3A079087&layer_id=2766%3A061749"
+  }
+}

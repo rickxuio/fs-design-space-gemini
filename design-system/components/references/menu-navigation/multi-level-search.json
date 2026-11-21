@@ -1,0 +1,700 @@
+{
+  "schemaVersion": "fs-component-reference/1.0.0",
+  "component": {
+    "id": "menu-navigation",
+    "name": "MenuNavigation",
+    "scope": "existing-desktop-native-button-menu-four-exact-width-shapes",
+    "reviewStatus": {
+      "engineering": "pending",
+      "visual": "pending",
+      "familyCoverage": "partial"
+    }
+  },
+  "selection": {
+    "policy": "PC single250、multi288和search250可调用；Search真实引用42px Input私有部件与IconButton。父项单一展开、叶子唯一选中、查询只发事件；不自动路由、过滤或开放移动。public-header240仍参考，不能替换固定Navigation/header。 Current five-variant closure 20261115: only supported exact source examples and publication decisions permit local calls. Earlier preview-only or placeholder descriptions are historical; PC geometry and host boundaries remain explicit.",
+    "supported": [
+      "single-level",
+      "multi-level",
+      "multi-level-search",
+      "public-header"
+    ],
+    "unsupported": [
+      "single-level-interactive-288-canonical",
+      "multi-level-250-canonical",
+      "multi-level-search-288-canonical",
+      "third-level",
+      "native-links",
+      "automatic-search-filtering",
+      "hidden-li-filter-keyboard",
+      "mobile"
+    ]
+  },
+  "runtime": {
+    "styles": [
+      "components/tokens.css",
+      "components/components.css",
+      "components/menu-navigation-current.css",
+      "components/icon-button-current.css",
+      "components/input-search-current.css"
+    ],
+    "scripts": [
+      "components/menu-navigation-current.js",
+      "components/input-search-current.js"
+    ],
+    "fontStylesheets": [
+      "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+    ],
+    "fontFallback": "Open Sans stack; actual browser native keyboard and visual proof pending."
+  },
+  "identity": {
+    "rule": "Root nav/data-menu-navigation, safe native buttons with distinct data-values, globally unique panel IDs paired with aria-controls. At most one parent open and one visible selected leaf. Regenerate panel IDs for copies; never copy data-menu-navigation-ready or runtime tabindex.",
+    "labelRule": "menuContent edits actual labels/value identities, optional title, search placeholder/name and paired panel IDs while retaining required structure and valid state. Product icons stay registered and matched to product values."
+  },
+  "locked": [
+    "Exact root width/surface and native button structure",
+    "Two-level maximum and unique values/panel identities",
+    "Parent chevron and public product icons",
+    "Current opt-in runtime and actual custom events",
+    "No real navigation or implicit filtering"
+  ],
+  "behavior": {
+    "initialization": "FSMenuNavigation.initialize/initializeAll are actual APIs for authored dynamically inserted menus; data-menu-navigation-ready guards repeats. Do not copy initialized DOM.",
+    "selection": "Leaf selection is unique per root; change detail=value/label. Parent toggles single-open panels and emits toggle detail=expanded/value/label.",
+    "focusCorrection": "Current opt-in runtime moves the tab stop to an activated parent, including after closing selected descendants. Initial focus only chooses visible items. Legacy runtime is unchanged for historical pages.",
+    "keyboard": "ArrowUp/Down wrap through visible panel items; Home/End first/last; Escape closes current panel and focuses parent. Enter/Space rely on native button activation; actual browser validation pending.",
+    "search": "Search input emits query only; no internal filtering, highlight or auto-expand. Host hidden-li filtering is outside current keyboard visibility logic.",
+    "business": "Buttons are local controls. Host listens to events; component does not open links, submit forms or call APIs.",
+    "publicHeader": "Source240px product menu is now actually embedded in the fixed English Navigation/header; original leaf events and keyboard behavior retained. Not an arbitrary sidebar/MegaMenu.",
+    "nativeStateGuard": "Native disabled items and fieldsets block synthetic click/keyboard/search; roving focus skips disabled items and restores one enabled tab stop. Existing selected/open state preserved, no new business filtering.",
+    "composition": "Search composition intermediate input emits no query callback. A changed committed query emits once on compositionend; its identical following input is suppressed once. Ordinary input callbacks remain; unavailable completion emits nothing. No filtering, request or business submission; actual browser IME/event ordering pending.",
+    "atomStates": "Current ordinary menu atoms: Hover leaf red text-width indicator; parent Hover/Press has no selection indicator. Actual atom white states retained where norm gray conflicts. Public-header source pending.",
+    "searchSourceBoundary": "PC250px搜索菜单现引用Input/menu-search42私有部件与真实IconButton；input/composition继续原查询语义，Enter/搜索按钮补发submitted查询意图。原独立搜索框旧来源、业务过滤及M端范围分开，不混作本次准入。"
+  },
+  "examples": [
+    {
+      "name": "multi-level-search",
+      "publication": {
+        "key": "menu-navigation/multi-level-search",
+        "disposition": "restricted",
+        "newPages": true,
+        "reason": "Real source shape, owned child parts and finite local runtime; caller owns business requests.",
+        "constraints": [
+          "250px PC二级菜单，配真实42px搜索部件，向宿主发出查询意图。",
+          "自动生成搜索结果、未接业务的数据过滤、三级导航或移动端。",
+          "Only allowedEdits; real current dependencies and runtime required; visual approval separate."
+        ],
+        "evidence": "components/contracts/menu-navigation.json#aiContract/evidence",
+        "requiresCurrentEngineering": true,
+        "visualApproval": "separate-not-granted"
+      },
+      "rootTag": "nav",
+      "sizeOptions": [],
+      "bindings": {
+        "changeCallback": {
+          "mode": "event-handler",
+          "target": "root",
+          "event": "ds:menu-navigation-change"
+        },
+        "toggleCallback": {
+          "mode": "event-handler",
+          "target": "root",
+          "event": "ds:menu-navigation-toggle"
+        },
+        "searchCallback": {
+          "mode": "event-handler",
+          "target": "root",
+          "event": "ds:menu-navigation-search"
+        }
+      },
+      "purpose": "native-multi-level-search-menu",
+      "whenToUse": "250px PC二级菜单，配真实42px搜索部件，向宿主发出查询意图。",
+      "whenNotToUse": "自动生成搜索结果、未接业务的数据过滤、三级导航或移动端。",
+      "rootClasses": "ds-menu-navigation ds-menu-navigation--multi-level-search",
+      "requiredStructure": [
+        "ul.ds-menu-navigation__list",
+        "button.ds-menu-navigation__item",
+        "span.ds-menu-navigation__item-label",
+        "ul.ds-menu-navigation__panel",
+        "img.ds-menu-navigation__chevron",
+        "input.ds-input-search__field",
+        "button.ds-icon-btn"
+      ],
+      "slots": {
+        "menuContent": {
+          "selector": ":scope",
+          "mode": "structured-content",
+          "required": true,
+          "preserve": [
+            "ul.ds-menu-navigation__list",
+            "button.ds-menu-navigation__item",
+            "span.ds-menu-navigation__item-label",
+            "ul.ds-menu-navigation__panel",
+            "img.ds-menu-navigation__chevron",
+            "input.ds-input-search__field",
+            "button.ds-icon-btn"
+          ],
+          "rule": "Retain exact native item structure, states and paired IDs; label/value text only, optional title, search metadata where present. No extra levels or source-less controls."
+        }
+      },
+      "allowedEdits": [
+        "menuContent",
+        "changeCallback",
+        "toggleCallback",
+        "searchCallback"
+      ],
+      "exampleHtml": "<nav class=\"ds-menu-navigation ds-menu-navigation--multi-level-search ds-menu-navigation--width-250\" data-menu-navigation-current=\"menu-atom\" data-menu-navigation=\"\" data-ai-example=\"ai-menu-multi-level-search\" aria-label=\"Searchable multi-level product menu\">\n        \n        <div class=\"ds-menu-navigation__search\"><form class=\"ds-input-search\" data-input-part=\"menu-search42\" data-input-search-surface=\"white\" role=\"search\"><input class=\"ds-input-search__field\" type=\"search\" placeholder=\"Search all Case Studies\" aria-label=\"Search\"><button class=\"ds-icon-btn ds-icon-btn--plain ds-icon-btn--m\" type=\"button\" aria-label=\"Search\"><img class=\"ds-icon-btn__icon\" src=\"../icons/icon-button-search-m-default.svg\" alt=\"\"></button></form></div>\n        <ul class=\"ds-menu-navigation__list\">\n          <li>\n            <button class=\"ds-menu-navigation__item\" type=\"button\" data-value=\"optical-transceivers\" aria-expanded=\"true\" aria-controls=\"menu-optical-panel\">\n              <span class=\"ds-menu-navigation__item-label\">Optical Transceivers</span>\n              <img class=\"ds-menu-navigation__chevron\" src=\"../icons/icon-chevron-down.svg\" alt=\"\">\n            </button>\n            <ul class=\"ds-menu-navigation__panel\" id=\"menu-optical-panel\">\n              <li><button class=\"ds-menu-navigation__item\" type=\"button\" data-value=\"fiber-optic-cables\"><span class=\"ds-menu-navigation__item-label\">Fiber Optic Cables</span></button></li>\n              <li><button class=\"ds-menu-navigation__item\" type=\"button\" data-value=\"panels-enclosures-racks\"><span class=\"ds-menu-navigation__item-label\">Panels, Enclosures &amp; Racks</span></button></li>\n            </ul>\n          </li>\n          <li><button class=\"ds-menu-navigation__item ds-menu-navigation__item--selected\" type=\"button\" data-value=\"copper-systems\" aria-pressed=\"true\"><span class=\"ds-menu-navigation__item-label\">Copper Systems</span></button></li>\n        </ul>\n      </nav>"
+    }
+  ],
+  "relationships": {
+    "children": [
+      {
+        "id": "input",
+        "contract": "components/contracts/input.json",
+        "part": "menu-search42",
+        "scope": "Source42px search field, keyboard/IME-aware submit intent, official current Search IconButton. Host-owned no labels adaptation; not a standalone new Input family.",
+        "variants": [
+          "white"
+        ],
+        "appliesTo": [
+          "multi-level-search"
+        ],
+        "slot": "search",
+        "preview": "components/variants/input.html"
+      },
+      {
+        "id": "icon-button",
+        "contract": "components/contracts/icon-button.json",
+        "variants": [
+          "plain-m"
+        ],
+        "appliesTo": [
+          "multi-level-search"
+        ],
+        "slot": "search-submit",
+        "preview": "components/variants/icon-button.html"
+      }
+    ],
+    "parents": [
+      {
+        "id": "card",
+        "contract": "components/contracts/card.json",
+        "preview": "components/variants/card.html",
+        "status": "preview-class-evidence-only",
+        "evidence": {
+          "status": "preview-class-evidence-only",
+          "verified": false,
+          "previewExists": true,
+          "classEvidence": true,
+          "declaredClasses": [
+            "ds-menu-navigation",
+            "ds-menu-navigation--single-level",
+            "ds-menu-navigation--width-288",
+            "ds-menu-navigation__item",
+            "ds-menu-navigation__item-label"
+          ],
+          "missingClasses": [],
+          "exactStructure": "not-established",
+          "browserEvidence": "not-established",
+          "note": "宿主依赖声明及离线类名盘点；未证明具体变体、尺寸、必需子结构、宿主适配或浏览器行为。"
+        },
+        "usage": [
+          {
+            "component": "MenuNavigation",
+            "part": "card-sidebar-288",
+            "slot": "sidebar",
+            "requiredVariants": [
+              "single-level"
+            ],
+            "implementationClasses": [
+              "ds-menu-navigation",
+              "ds-menu-navigation--single-level",
+              "ds-menu-navigation--width-288",
+              "ds-menu-navigation__item",
+              "ds-menu-navigation__item-label"
+            ],
+            "appliesTo": [
+              "spliced.horizontal.with-sidebar"
+            ],
+            "usage": "PC原件sidebar288，真实Menu子部件由原同步入口维护。"
+          },
+          {
+            "component": "MenuNavigation",
+            "part": "card-sidebar-288",
+            "slot": "sidebar",
+            "requiredVariants": [
+              "single-level"
+            ],
+            "implementationClasses": [
+              "ds-menu-navigation",
+              "ds-menu-navigation--single-level",
+              "ds-menu-navigation--width-288",
+              "ds-menu-navigation__item",
+              "ds-menu-navigation__item-label"
+            ],
+            "appliesTo": [
+              "spliced.horizontal.with-sidebar.bordered-background"
+            ],
+            "usage": "PC原件sidebar288，真实Menu子部件由原同步入口维护。"
+          }
+        ]
+      },
+      {
+        "id": "navigation",
+        "contract": "components/contracts/navigation.json",
+        "preview": "components/variants/navigation.html",
+        "status": "preview-class-evidence-only",
+        "evidence": {
+          "status": "preview-class-evidence-only",
+          "verified": false,
+          "previewExists": true,
+          "classEvidence": true,
+          "declaredClasses": [
+            "ds-menu-navigation",
+            "ds-menu-navigation--public-header",
+            "ds-menu-navigation__item",
+            "ds-menu-navigation__product-icon"
+          ],
+          "missingClasses": [],
+          "exactStructure": "not-established",
+          "browserEvidence": "not-established",
+          "note": "宿主依赖声明及离线类名盘点；未证明具体变体、尺寸、必需子结构、宿主适配或浏览器行为。"
+        },
+        "usage": [
+          {
+            "component": "MenuNavigation",
+            "slot": "all-products-menu",
+            "requiredVariants": [
+              "public-header"
+            ],
+            "implementationClasses": [
+              "ds-menu-navigation",
+              "ds-menu-navigation--public-header",
+              "ds-menu-navigation__item",
+              "ds-menu-navigation__product-icon"
+            ],
+            "appliesTo": [
+              "header"
+            ],
+            "usage": "固定英文头部All Products的真实产品菜单；Menu源变化同步进入Header，旧页面保留旧版本。"
+          }
+        ]
+      }
+    ],
+    "parentStatus": "declared-hosts",
+    "icons": [
+      {
+        "file": "components/icons/icon-search.svg",
+        "registry": "components/icons/icons-manifest.json",
+        "appliesTo": [
+          "multi-level-search"
+        ],
+        "usage": "multi-level-search 搜索输入前置图标，以 16×16px 显示"
+      },
+      {
+        "file": "components/icons/icon-chevron-down.svg",
+        "registry": "components/icons/icons-manifest.json",
+        "appliesTo": [
+          "multi-level",
+          "multi-level-search"
+        ],
+        "usage": "多层级父项展开指示，以 16×16px 显示"
+      }
+    ],
+    "tokens": [
+      {
+        "name": "color.brand-red",
+        "value": "#C00000",
+        "unit": null,
+        "cssVar": "--brand-red",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.gray-1",
+        "value": "#19191A",
+        "unit": null,
+        "cssVar": "--color-gray-1",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.gray-3",
+        "value": "#707070",
+        "unit": null,
+        "cssVar": "--color-gray-3",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.gray-8",
+        "value": "#F6F6F8",
+        "unit": null,
+        "cssVar": "--color-gray-8",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.white",
+        "value": "#FFFFFF",
+        "unit": null,
+        "cssVar": "--color-white",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "typography.font-family-base",
+        "value": "Open Sans",
+        "unit": null,
+        "cssVar": "--font-family-base",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-size-h6",
+        "value": 16,
+        "unit": "px",
+        "cssVar": "--font-size-h6",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-size-md",
+        "value": 14,
+        "unit": "px",
+        "cssVar": "--font-size-md",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-size-h8",
+        "value": 13,
+        "unit": "px",
+        "cssVar": "--font-size-h8",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-weight-regular",
+        "value": 400,
+        "unit": null,
+        "cssVar": "--font-weight-regular",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-weight-semibold",
+        "value": 600,
+        "unit": null,
+        "cssVar": "--font-weight-semibold",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.h6-semibold",
+        "value": {
+          "fontSize": "16px",
+          "lineHeight": "24px",
+          "fontWeight": 600
+        },
+        "unit": null,
+        "cssVar": null,
+        "primitiveReferences": {
+          "fontSize": "typography.font-size-h6",
+          "fontWeight": "typography.font-weight-semibold"
+        },
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.h7-regular",
+        "value": {
+          "fontSize": "14px",
+          "lineHeight": "22px",
+          "fontWeight": 400
+        },
+        "unit": null,
+        "cssVar": null,
+        "primitiveReferences": {
+          "fontSize": "typography.font-size-md",
+          "fontWeight": "typography.font-weight-regular"
+        },
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.h8-regular",
+        "value": {
+          "fontSize": "13px",
+          "lineHeight": "20px",
+          "fontWeight": 400
+        },
+        "unit": null,
+        "cssVar": null,
+        "primitiveReferences": {
+          "fontSize": "typography.font-size-h8",
+          "fontWeight": "typography.font-weight-regular"
+        },
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "spacing.sm",
+        "value": 8,
+        "unit": "px",
+        "cssVar": "--spacing-sm",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.md",
+        "value": 12,
+        "unit": "px",
+        "cssVar": "--spacing-md",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.lg",
+        "value": 16,
+        "unit": "px",
+        "cssVar": "--spacing-lg",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.20",
+        "value": 20,
+        "unit": "px",
+        "cssVar": "--spacing-20",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.2xl",
+        "value": 32,
+        "unit": "px",
+        "cssVar": "--spacing-2xl",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.40",
+        "value": 40,
+        "unit": "px",
+        "cssVar": "--spacing-40",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.menu-navigation-left-gutter",
+        "value": 15,
+        "unit": "px",
+        "cssVar": "--spacing-menu-navigation-left-gutter",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "border.width.default",
+        "value": 1,
+        "unit": "px",
+        "cssVar": "--border-width-default",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.width.strong",
+        "value": 2,
+        "unit": "px",
+        "cssVar": "--border-width-strong",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.style.default",
+        "value": "solid",
+        "unit": null,
+        "cssVar": "--border-style-default",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.style.none",
+        "value": "none",
+        "unit": null,
+        "cssVar": "--border-style-none",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.default",
+        "value": "var(--color-gray-5)",
+        "unit": null,
+        "cssVar": "--border-color-default",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.focus",
+        "value": "var(--color-blue)",
+        "unit": null,
+        "cssVar": "--border-color-focus",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border-radius.md",
+        "value": 4,
+        "unit": "px",
+        "cssVar": "--border-radius-md",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border-radius.json"
+      },
+      {
+        "name": "color.gray-5",
+        "value": "#DEE0E3",
+        "unit": null,
+        "cssVar": "--color-gray-5",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.blue",
+        "value": "#0060BF",
+        "unit": null,
+        "cssVar": "--color-blue",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "spacing.3",
+        "value": 3,
+        "unit": "px",
+        "cssVar": "--spacing-3",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "border.color.emphasis",
+        "value": "var(--color-gray-1)",
+        "unit": null,
+        "cssVar": "--border-color-emphasis",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      }
+    ]
+  },
+  "evidence": {
+    "localImplementation": "components/variants/menu-navigation.html",
+    "comparison": "components/sources/menu-navigation/local-structure-review.json",
+    "legacyRuntime": "components/menu-navigation.js",
+    "originalSpecification": "components/sources/menu-navigation/native-specification-review-1011.json",
+    "originalMenuAtom": "components/sources/menu-navigation/native-component-review-1011.json",
+    "currentMgReview": "components/sources/remaining-prototypes-mg-20261115/menu-navigation-review.json",
+    "fiveVariantSource": "components/sources/five-variants-20261115/review.json"
+  },
+  "sourceValidation": {
+    "componentIdentity": {
+      "status": "not-established",
+      "files": []
+    },
+    "specificationBody": {
+      "status": "not-established",
+      "files": []
+    },
+    "originalOnlineFrontendCode": false,
+    "browserComputedStyles": false,
+    "completeSpecificationCoverage": false,
+    "otherAtomNesting": {
+      "IconButton": {
+        "scope": "finite-canonical-IconButton-default-calls",
+        "checked": [
+          {
+            "variant": "multi-level-search",
+            "children": [
+              {
+                "variant": "plain-m"
+              }
+            ]
+          }
+        ],
+        "inactive": [],
+        "browserVerified": false,
+        "hostStyleCascadeVerified": false
+      }
+    },
+    "currentGutter": [
+      {
+        "variant": "single-level",
+        "value": 16,
+        "selector": ".ds-menu-navigation[data-menu-navigation-current=\"menu-atom\"]",
+        "scope": "finite-static-padding-left-cascade-not-browser-geometry"
+      },
+      {
+        "variant": "multi-level",
+        "value": 16,
+        "selector": ".ds-menu-navigation[data-menu-navigation-current=\"menu-atom\"]",
+        "scope": "finite-static-padding-left-cascade-not-browser-geometry"
+      },
+      {
+        "variant": "multi-level-search",
+        "value": 16,
+        "selector": ".ds-menu-navigation[data-menu-navigation-current=\"menu-atom\"]",
+        "scope": "finite-static-padding-left-cascade-not-browser-geometry"
+      }
+    ]
+  },
+  "freshness": {
+    "fingerprints": {
+      "components/components.css": "a08b4fe2790b5ff2b784c6362a90f1b94e7535a03e863232ce6d620a52e85f73",
+      "components/contracts/card.json": "7ebea9bece316a42a11dd5643e103bde1211914519164cd973fb5954652d2cc1",
+      "components/contracts/icon-button.json": "19f3ce860f24650fba7fbc0b43b59c80255feae164b8d24d9ed71cb4d39d782d",
+      "components/contracts/input.json": "b367155c40d99807834add264130f574d150f95f09836fe70e84e3bf37a174d1",
+      "components/contracts/list.json": "42201beb4d1d142d5192f5397169e408632eedbbcb641c53b7840e31c9446162",
+      "components/contracts/menu-navigation.json": "44245628e9fe977355b231a6126fd3af379ddf7a0676f10358f6410a098c1b72",
+      "components/contracts/navigation.json": "71339b624eade6758958b1d75f2bd7c04cf31dcc0cb75114dad0bfb79c82ef66",
+      "components/icon-button-current.css": "5a4d55cf3817c9491473c1db1df6690cd9a06faf89663a7116e4b044ac5bbd2d",
+      "components/icons/icon-chevron-down.svg": "fe5df03acb1cb4b8a38a928357775416656fbf97cc54f3c6a5b7d0e4906f3e91",
+      "components/icons/icon-menu-copper-systems.svg": "db0b7fa3d606468f1495ba31acf68e7358bc4e1129c642c9a96bff9d7e2bdf77",
+      "components/icons/icon-menu-fiber-optic-cables.svg": "b5c318bb095e7f37f016799f36ca57be22fe6d49c31251fab2151c7758992baa",
+      "components/icons/icon-menu-networking.svg": "e8a667f3906f18373da1743b1cdafde3217efa2d43d1de6d25e284f86a9478c4",
+      "components/icons/icon-menu-optical-networking.svg": "999e1471c52488ad04920a5b7b94a345079d01cadf61012577325be9efbf9de5",
+      "components/icons/icon-menu-optical-transceivers.svg": "35c4160ac05c2811a85d68a32251d9b1e04e8f2cc7278e870e594c5c997879f5",
+      "components/icons/icon-menu-panels-enclosures-racks.svg": "6d1e1499eb6813d5cc05f43eb4a464fcdb93dc0f2cfd5d51cc9ee9eac2f95838",
+      "components/icons/icon-menu-switches.svg": "bac209fea97a53dbcf5efeaa6f5a897fe3ce9eaeeb0a36452bf98a7c35ef5280",
+      "components/icons/icon-menu-testers-tools.svg": "044a291b90d4e5d163db21ad66c0688b05dd5ebbc9e92d48c79321c4855cbbf3",
+      "components/icons/icon-search.svg": "11e01599b008320c723773284b56944f810762688a2928b37e6cb228fc9a3347",
+      "components/icons/icons-manifest.json": "12c48af6d1dc59d50b76046bb0507005f565aa4224a6d8056ce4eaaf8050c43e",
+      "components/input-search-current.css": "82949f58ed7c4632a3de64b4bf34c90152b00883bd8fe916adfbc35104018823",
+      "components/input-search-current.js": "438521858276ac565ac41871676f62707f048f2d18c9a483cca465f4cf6e7c92",
+      "components/menu-navigation-current.css": "4c0bd3fe77d5dfe7b48de489878dc574cbe7ff91fa78b6f875cb15f4733c146e",
+      "components/menu-navigation-current.js": "512de10798b244da08f7f8d34a0c2de06cb333e0d508952b896c6eefd202b115",
+      "components/menu-navigation.js": "400d7e3c2ad7d4078e7609e7de7cc46d81c33bb87806cc686ebfa301094c7d44",
+      "components/preview/reference-live.js": "4839383529a3ee82df1d8efe675d430567abc1986034499107aa429d21a18ea6",
+      "components/reference-policy.json": "4ae8f51f623386417e38d497caafb8bda4417c929159002a7ac088e6e526b482",
+      "components/sources/banner/search42-gpt-nested-source-1015.json": "1b00c6cdece269182e08903d90404a2d14b23a4da17fa8184fd2318c27b37fa7",
+      "components/sources/five-variants-20261115/review.json": "821baac5e00e60f1a796ae8d0a1881ae122da740e477666a54b3e94a13a7556f",
+      "components/sources/input/menu-search42-current.html": "4201e4a2c24ef5be0788b9849b3dc7782740e09b34f541fdbd29069900964cdb",
+      "components/sources/menu-navigation/card-sidebar-288-1115.html": "7334274f9f489d5f756ce038e6607fbccdda77c664d91455cb2fdfb67abb6c85",
+      "components/sources/menu-navigation/local-structure-review.json": "2fcd31250d875e0368c8c95b515b9eda00f6c13905ec545120b576aefd4f45b3",
+      "components/sources/menu-navigation/native-component-review-1011.json": "4c96c8b9b3f74a931390f4eeeb0efa307ad448b830ac89107dffb4aca9c49d1f",
+      "components/sources/menu-navigation/native-specification-review-1011.json": "cfb05152389039e9d0078d986184a622c5b1f3cdfa6f5fcd5d28ffbdf12ab7c9",
+      "components/sources/remaining-prototypes-mg-20261115/menu-navigation-review.json": "9441f2c113822991e8702dc824f097ed060e0c1d5fa3624993805714f5943e2e",
+      "components/token-specs/border-radius.json": "b01e4c23fbc7e19983d9592b59b0303155b79d66c52459356eda0ea9f4ca74b5",
+      "components/token-specs/border.json": "d286ee4681deda1c7702c310b065c86f824539b3a8797efba05b24bc225ab322",
+      "components/token-specs/colors.json": "5267d59fdc687b54496977280c00c97f0beb6ffce013f87853504f5b736d3389",
+      "components/token-specs/spacing.json": "351b14cfce4411248ad41e00eaaf2b1cab9b705997980dfed1fc65693740e65c",
+      "components/token-specs/typography.json": "93b7dc07547218a33c075b7cdcd942f89094353a7847d483d8378b8883327e16",
+      "components/tokens.css": "f63f3c8fea511d8029902bc3905b01853ac5e92049c1b18ca35ebc9a680c3e69",
+      "components/variants/card-call-checks.html": "616c3a4b805d7d9921ef3756141087546ff08473907fa0563e00bb69da6fbc03",
+      "components/variants/card.html": "b43e27ebba1815709741d779b54961fa6b11cf71f5d3235d578a4b2047aa1cd4",
+      "components/variants/icon-button.html": "91c84e01916ffb0fb58a102a83123aa24b16263a9d3a744dc0316ec19f2f317f",
+      "components/variants/input.html": "d34e9585cb00f4293912c199391e0b8328b13fe8db16ac4b4ea4b05b596d10c1",
+      "components/variants/list.html": "51f7f184f06b1e0a334887d65cf352e2c89a43a5ac72358b88bf405500f0d98e",
+      "components/variants/menu-navigation.html": "6238b924e7c62295141a5dba9b8900cd5eb39779a19ce00fb307aac928900462",
+      "components/variants/navigation.html": "300042ed2992013e57983a3895b164ae4499712707e8aa5a5bffe67ac0660081"
+    },
+    "graphFingerprint": "4c918901a72d9d6ea52f6d6095058c6a6e13454a8ade27c45c808d4be2f67bbb",
+    "note": "从本地源文件生成；不是 MasterGo 在线实时状态。"
+  },
+  "readScope": {
+    "variant": "multi-level-search",
+    "note": "只展开当前已选变体；其他变体没有被声明为不可用。尺寸继续按真实 sizeOptions 选择。"
+  }
+}

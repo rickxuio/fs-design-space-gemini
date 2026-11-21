@@ -1,0 +1,247 @@
+{
+  "date": "2026-10-12",
+  "status": "partial-mobile-contact-implemented-offline-passed-browser-pending",
+  "scope": "Existing gray/white M contact Phone/Email slots only, no complete M Form admission",
+  "sourceRoots": [
+    "68908:057115",
+    "70918:203614"
+  ],
+  "sourceBinding": {
+    "checkboxSet": "67746:093527",
+    "Email": {
+      "sourceLayer": "70918:192450",
+      "mainVariant": "67746:094199",
+      "state": "Press",
+      "nativeChecked": true
+    },
+    "Phone": {
+      "sourceLayer": "70918:192445",
+      "mainVariant": "67746:093625",
+      "state": "Default",
+      "nativeChecked": false
+    }
+  },
+  "changes": [
+    "Added two opt-in contact specimens in existing partial M Preview",
+    "Gray width381 preserved, white382; host group placement only",
+    "Real sm Checkbox DOM/input/box/label, existing shared resources/runtime; no atomic paint or icon edits",
+    "Contract source/partial dependency registration and derived sync",
+    "Three contact regression cases added to existing real-Preview test file; Submit tests narrowed to actual Submit hosts"
+  ],
+  "commands": [
+    {
+      "command": "node --test scripts/form-mobile-slots.test.js",
+      "result": "6/6 passed; original3 plus contact3,0 failures/skips"
+    },
+    {
+      "command": "node scripts/sync-component-reference.js",
+      "result": "passed"
+    }
+  ],
+  "coverage": [
+    "Own root/source layer/state bindings and381/382 widths",
+    "Actual label/input/box/caption anatomy; fake atom, swapped source/state/missing box/group label negative cases rejected by regression assertions",
+    "Native label clicks, input clicks, native focus, disabled activation suppression, FormData and reset isolated by color and Phone/Email",
+    "Checkbox runtime loaded twice without parallel state; PC protection retained in same test file"
+  ],
+  "keyboardBoundary": "JSDOM verifies native input focus and absence of invented synthetic Space handler. Real browser Tab/Space activation, focus visual and MG rendered alignment unverified.",
+  "limits": [
+    "No source icon sublayer detail inferred; canonical current atom reused under atomic-priority rule",
+    "MG protocol child evidence pending manual unlock",
+    "Telephone deleted source and Textarea authority/alignment conflicts untouched",
+    "Historical pages unchanged, no new full AI variant, no adaptation/visual acceptance"
+  ],
+  "tools": {
+    "node": "v22.16.0",
+    "jsdom": "30.1.2"
+  },
+  "freshness": {
+    "basis": "Exact saved local source/implementation/tool bytes at this run, not online MG latest revision",
+    "fingerprints": {
+      "components/preview/form.html": {
+        "sha256": "7fd08c23b34d4702a51eae5a79fb4b74f7a5f10ed246e62a9b9b7c1ee98413c2",
+        "bytes": 57291
+      },
+      "components/contracts/form.json": {
+        "sha256": "05cac9d680a87130d2ed97fa7367e890b7cc526b7d2c74373bfa693b7f64f0d8",
+        "bytes": 58459
+      },
+      "components/contracts/checkbox.json": {
+        "sha256": "24aa0d68d19b5a37387788303d9de000fcac5509d785bff118ada4356b4510ca",
+        "bytes": 26887
+      },
+      "components/form-current.css": {
+        "sha256": "a7ff711983820d4faaaf1cb35d5c4b82b7d6f2f09da3cb5d91370dc175af8511",
+        "bytes": 1801
+      },
+      "components/form-current.js": {
+        "sha256": "df375ef4cb76b71ea80cd5710aacfd026d04acb50a1f38b29fa5baa1bd884979",
+        "bytes": 1404
+      },
+      "components/checkbox-current.css": {
+        "sha256": "bf26c2103d905597e22a0e817dc5d4e8ded02f351690399f5229ec44f35717ac",
+        "bytes": 5654
+      },
+      "components/checkbox-current.js": {
+        "sha256": "f17c17e8200809ae486de4cdcd392dc787769fad828f433adb8023d86890dae8",
+        "bytes": 2049
+      },
+      "scripts/form-mobile-slots.test.js": {
+        "sha256": "5c073641b5ae277a755bfa4111ba89cc2be41ac02f110baacfc9336f2c3aef0f",
+        "bytes": 9833
+      },
+      "scripts/button-host-dependencies.js": {
+        "sha256": "0052bc5ba500cf302c7c130e0d86bb823c9a7249022b960dd4739bc07cec7de5",
+        "bytes": 4049
+      },
+      "scripts/sync-component-reference.js": {
+        "sha256": "0fe4b3c08f57a8997f72b693cfd85dc0c8f8ad1d7dfd62708786311b37d9f3c1",
+        "bytes": 5268
+      },
+      "package.json": {
+        "sha256": "125f2f0b16267393b0da04621e0ba86eba52f5a63d07dc5ae4cb3262ecb54ed4",
+        "bytes": 7718
+      },
+      "components/sources/form/native-authority-review-1012/review.json": {
+        "sha256": "6287dbecea0a2a6f828431dc9414a9c9b8e0c2e96aa90138ed7e7072b9d8f389",
+        "bytes": 38345
+      },
+      "components/sources/form/native-authority-review-1012/submit-size-mapping-correction.json": {
+        "sha256": "7496b65af8a62dc1f8bf7f00e4bf0fb73f2a56517f979342842a6801637f5718",
+        "bytes": 3858
+      },
+      "components/sources/form/native-authority-review-1012/m-gray-contact-root.ax.txt": {
+        "sha256": "ffc02d08f10c9660e3623a7c18ac04c42ebee70c499f58834ee71d013ac2b613",
+        "bytes": 17146
+      },
+      "components/sources/form/native-authority-review-1012/m-gray-contact-root.png": {
+        "sha256": "3093b06e3ba7df6ae44280f2513c326f0fd181ac970ba6a07d69e5cd393c6e4e",
+        "bytes": 2113327
+      },
+      "components/sources/form/native-authority-review-1012/m-gray-contact-group.ax.txt": {
+        "sha256": "f3ee21a78ecb302be5f79a1e29fd78e95b02f8d6c16710e9805c1432d1d982ba",
+        "bytes": 17200
+      },
+      "components/sources/form/native-authority-review-1012/m-gray-contact-phone.ax.txt": {
+        "sha256": "153a986b459ec5bf642b5ed5951dd47b7354796d23e0ada66b587d3f5179906b",
+        "bytes": 18095
+      },
+      "components/sources/form/native-authority-review-1012/m-gray-contact-phone-main.ax.txt": {
+        "sha256": "7da0d7ea3aba2780616b9788b5e8b197e4c1a4bd9f5561863ea584a2c84e16e7",
+        "bytes": 16770
+      },
+      "components/sources/form/native-authority-review-1012/m-gray-contact-phone-set.ax.txt": {
+        "sha256": "ed4510fa248d7c7d3a5c4b3087a16f554ee5df2af7ec9b7127b7252745f415e1",
+        "bytes": 16816
+      },
+      "components/sources/form/native-authority-review-1012/m-gray-contact-phone-variant.ax.txt": {
+        "sha256": "633505f3d5e5d919174239c1c9e4d5ff57d9c378957ba216d74d626cda9b2a74",
+        "bytes": 16294
+      },
+      "components/sources/form/native-authority-review-1012/m-gray-contact-email.ax.txt": {
+        "sha256": "aff47d785c77ff99a6f3164fe59aa47f153b28bb0ed46cd66631a3c98f3c9090",
+        "bytes": 18040
+      },
+      "components/sources/form/native-authority-review-1012/m-gray-contact-email-main.ax.txt": {
+        "sha256": "d62ee1f784f7b3bd9e5de62391d3c05c9077c5bcae3db05a030b7024ff848e0f",
+        "bytes": 16717
+      },
+      "components/sources/form/native-authority-review-1012/m-gray-contact-email-set.ax.txt": {
+        "sha256": "8a98ba03c197810d6ec7222df46cd7174b82cf7219b5ddca6f9e7dab9e7cd669",
+        "bytes": 16764
+      },
+      "components/sources/form/native-authority-review-1012/m-gray-contact-email-variant.ax.txt": {
+        "sha256": "4adcbd72edf78b93757b21defae081b3b44fd0f537d10169093b8c9bfc71aa71",
+        "bytes": 16315
+      },
+      "components/sources/form/native-authority-review-1012/m-gray-contact-main.ax.txt": {
+        "sha256": "637fa6761d672fc16440616543a9d551465f275207bca0a883b562520b77d758",
+        "bytes": 19604
+      },
+      "components/sources/form/native-authority-review-1012/m-gray-contact-set.ax.txt": {
+        "sha256": "5c4ebc1eb8250c8cb51dc99c9492a776463763a10b1f7c19c29b7e0e3e413137",
+        "bytes": 20170
+      },
+      "components/sources/form/native-authority-review-1012/m-gray-contact-variant.ax.txt": {
+        "sha256": "4d720126e63614925ada3accedeb9997580ca48f27904e2d776d3322b1ef2f33",
+        "bytes": 19685
+      },
+      "components/sources/form/native-authority-review-1012/m-white-contact-root.ax.txt": {
+        "sha256": "d3f6c62b3e4786617c7923516821e56dafb5c5c36814f69712a11e3c8e38a846",
+        "bytes": 16998
+      },
+      "components/sources/form/native-authority-review-1012/m-white-contact-root.png": {
+        "sha256": "5c9427200340a6f2d88946aebeac6caefd2a2edda008348e37e32f9c02d13b09",
+        "bytes": 2119536
+      },
+      "components/sources/form/native-authority-review-1012/m-white-contact-main.ax.txt": {
+        "sha256": "989f758fff7dbed7b72925ca9da670f3175acd718de271dd0702f4159aaaa957",
+        "bytes": 18588
+      },
+      "components/sources/form/native-authority-review-1012/m-white-contact-set.ax.txt": {
+        "sha256": "e3fa95c28f550c8f85df319c0d062b5d07a63db12f3cdac82a28548841ac0035",
+        "bytes": 19154
+      },
+      "components/sources/form/native-authority-review-1012/m-white-contact-variant.ax.txt": {
+        "sha256": "9d2c4c6d00c2719f4e46c8b0e6d8a86771a6b84577767619e0fb35493dab19a7",
+        "bytes": 18465
+      },
+      "components/sources/form/native-authority-review-1012/m-white-contact-phone.ax.txt": {
+        "sha256": "400d2a7265bda23a054cc7f2ef7b4da5cdfcf310e20edb171d7912f592d29bb1",
+        "bytes": 17846
+      },
+      "components/sources/form/native-authority-review-1012/m-white-contact-phone-main.ax.txt": {
+        "sha256": "6e6505f995a4044d04c18eb4b07da1ddac225c9a905bea7e570018acc1e13a99",
+        "bytes": 16696
+      },
+      "components/sources/form/native-authority-review-1012/m-white-contact-phone-set.ax.txt": {
+        "sha256": "36ea1c4a00e161606ea0844f3bc632cdd23256f83ffca9675f60294613de1786",
+        "bytes": 16742
+      },
+      "components/sources/form/native-authority-review-1012/m-white-contact-phone-variant.ax.txt": {
+        "sha256": "d54bf69430103f737724acf03771bff34c6c6763d89840a92a4400474c21797f",
+        "bytes": 16682
+      },
+      "components/sources/form/native-authority-review-1012/m-white-contact-email.ax.txt": {
+        "sha256": "1136b35aa6d68f68db686fc9f1bb1c344d8a5804648848b16b4fbcee1ce63893",
+        "bytes": 18960
+      },
+      "components/sources/form/native-authority-review-1012/m-white-contact-email-main.ax.txt": {
+        "sha256": "0f6eed183673f56edee8b01ba6a5bfcb20f5a8858073414995039d4c25e70fe6",
+        "bytes": 16717
+      },
+      "components/sources/form/native-authority-review-1012/m-white-contact-email-set.ax.txt": {
+        "sha256": "3c59da704b7ace6db35a5cb4b9631b356bf0203af24d77945fb427afdbc5a9df",
+        "bytes": 16764
+      },
+      "components/sources/form/native-authority-review-1012/m-white-contact-email-variant.ax.txt": {
+        "sha256": "77ae26383a2d9fc469a3f0816389ef259f1045531390724da4637a3ea2e65b10",
+        "bytes": 16315
+      },
+      "components/sources/form/native-authority-review-1012/mobile-contact-tests.log": {
+        "sha256": "3a78496f014c41a0527690b3813f7d38234b50382780aac5a98f6bbe706814bf",
+        "bytes": 1757
+      },
+      "components/sources/form/native-authority-review-1012/mobile-contact-sync.log": {
+        "sha256": "19c00856bdc3e273bf49b380603c578931bde1c3a96478155d3ad1da53f3ffe5",
+        "bytes": 104
+      }
+    },
+    "historicalEvidence": [
+      {
+        "file": "components/sources/form/native-authority-review-1012/mobile-slot-regression-closeout.json",
+        "sha256": "6a5eb08b316b4f6951bdca45d43378980351d272ab70e0c2ddb4b2854f4e4a8c",
+        "bytes": 7199,
+        "status": "Historical three-slot-test-run; superseded current test/Preview/contract fingerprints by this contact record, original log/result retained"
+      },
+      {
+        "file": "components/sources/form/native-authority-review-1012/submit-size-mapping-correction.json",
+        "status": "Historical48+6 run remains preserved; appended exact log hashes without rerunning, current source differences recorded here"
+      }
+    ]
+  },
+  "remaining": {
+    "independent": "Review contact real nesting and negative regressions; current6 local specimens available for future permitted browser acceptance",
+    "blocked": "Protocol text/link/icon MG child read requires unlock. Phone/textarea source conflicts require resolution before complete M Form."
+  }
+}

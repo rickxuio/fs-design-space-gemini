@@ -1,0 +1,63 @@
+{
+  "schemaVersion": "fs-native-specification-review/1.0.0",
+  "status": "desktop-visible-definition-log-sections1-through5-read",
+  "source": {
+    "fileId": "143880409387753",
+    "pageId": "68908:093270",
+    "node": "70934:182798",
+    "exhibitNode": "68908:111067",
+    "readDate": "2026-10-11",
+    "remoteRevision": null,
+    "method": "Native Chrome Rick visible canvas at63%",
+    "version": "v2.3.2605B",
+    "updateDate": "2026-05-18"
+  },
+  "definition": "Click navigation entries to jump or switch target content.",
+  "log": [
+    "Refresh obsolete library references",
+    "Online desktop widths288/250",
+    "Unify multilevel Hover/Click styling",
+    "Include public-header menu",
+    "Horizontal and landscape removed: separate AnchorNav",
+    "Filter removed: separate filtering component"
+  ],
+  "structure": {
+    "elements": [
+      "Label",
+      "Optional description icon",
+      "Selected red line under label",
+      "Optional expansion icon"
+    ],
+    "ordinary": "Top20px; horizontal16px; illustration288 single/250 multi is not a hierarchy-wide width restriction",
+    "publicHeader": "240px; top32px; icon22px; left12px/gap8/bottom20px",
+    "expandIconPx": 16
+  },
+  "application": {
+    "policyWidthPx": 288,
+    "accountWidthPx": 250,
+    "publicHeaderWidthPx": 240,
+    "height": "Content-driven"
+  },
+  "states": {
+    "singleLevel": "Default/Hover#F6F6F8; Hover red2px line matching text width; Press white and same line",
+    "parent": "Default/Press#F6F6F8; Hover white; Click only toggles expansion, preserves selected child/content; expanding another closes prior group",
+    "secondLevel": "Default#F6F6F8; Hover/Press white and red2px line matching text width"
+  },
+  "overflow": {
+    "labels": "Wrap completely without truncation; single item horizontal spacing13px; height follows text; expansion arrow top-aligned on wrapped labels",
+    "onlineException": "Visible note: double underline and rounding cannot coexist in current implementation; online single line retains rounding. Do not infer a per-line renderer."
+  },
+  "behavior": {
+    "expansion": "No connecting lines; only one group expanded by default; expanding a new group collapses previous",
+    "scroll": "After scrolling, ordinary menu fixed16px from viewport top; public-header navigation excluded"
+  },
+  "summary": "White demonstration background is norm layout only, not component paint; shows288 and250 for both ordinary single/multi and search variants; public-header styling intentionally omitted here. Mobile mask annotations observed only and not accepted as adaptation.",
+  "pending": [
+    "Actual current component and menu atom variants/nested references",
+    "Exact text, inset and background comparison to local current calls",
+    "Native local browser geometry/focus/visual acceptance"
+  ],
+  "deferred": [
+    "Mobile adaptation and new/filter component admission"
+  ]
+}

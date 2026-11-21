@@ -1,0 +1,797 @@
+{
+  "schemaVersion": "fs-component-reference/1.0.0",
+  "component": {
+    "id": "collapse",
+    "name": "Collapse",
+    "scope": "existing-desktop-split-feature-and-source-faq-and-PC-order-preview",
+    "reviewStatus": {
+      "engineering": "pending",
+      "visual": "pending",
+      "familyCoverage": "partial"
+    }
+  },
+  "selection": {
+    "policy": "按原件区分 Cookies、FAQ、账户编辑、订单预览、特征导引和地图联动。当前 split/feature/faq/data-preview 按各自来源可调用；参考形态不得套现有类名冒充。默认单项展开；媒体/地图/业务保存需真实宿主实现。 已有FAQ原件可用faq组合：首中尾随行数确定，原箭头与底线状态联动，默认全部收起，单项展开。 List折叠详情先转引本组件data-preview，仅账户订单快照适用，不能冒充FAQ或任意树表。 Current five-variant closure 20261115: only supported exact source examples and publication decisions permit local calls. Earlier preview-only or placeholder descriptions are historical; PC geometry and host boundaries remain explicit.",
+    "supported": [
+      "split",
+      "feature",
+      "faq",
+      "data-preview",
+      "inline-edit"
+    ],
+    "unsupported": [
+      "toggle-aside-canonical-call",
+      "feature-media-synchronization",
+      "invented-change-event",
+      "mobile",
+      "v3-faq-atom-six-variants",
+      "map-synchronization"
+    ]
+  },
+  "runtime": {
+    "styles": [
+      "components/tokens.css",
+      "components/components.css",
+      "components/button-current.css",
+      "components/button-runtime-current.css",
+      "components/input-current.css",
+      "components/text-button-current.css",
+      "components/collapse-host-preview.css",
+      "components/collapse-current.css",
+      "components/collapse-faq-source.css",
+      "components/badge-current.css",
+      "components/tag-configuration-current.css",
+      "components/collapse-data-current.css",
+      "components/collapse-edit-current.css"
+    ],
+    "scripts": [
+      "components/collapse-current.js",
+      "components/input-current.js",
+      "components/collapse-host-preview.js",
+      "components/collapse-data-current.js"
+    ],
+    "fontStylesheets": [
+      "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+    ],
+    "fontFallback": "Open Sans stack; actual browser focus/visual pending."
+  },
+  "identity": {
+    "rule": "Every header is a type=button with aria-controls pointing to a globally unique body ID; body hidden/aria-hidden and expanded state agree. Copies must regenerate body IDs and paired controls. Default first item open only. Marker-only data-collapse-current calls; current script guards repeated registration and disabled headers. Exception: data-preview starts all closed and uses its explicitly paired order-toggle only.",
+    "labelRule": "items preserves header/title icon and body; replace title/body text and regenerate identity as a pair. Optional read-only aside can be omitted for source absence as a declared adaptation; no fake switch."
+  },
+  "locked": [
+    "Actual disclosure header/body structure",
+    "Single-open default and icon/ARIA/hidden state",
+    "Split plus/minus and Feature registered leading icons",
+    "Shared CSS and delegated collapse.js",
+    "No invented save action, media synchronization or callback"
+  ],
+  "behavior": {
+    "initialization": "Current runtime requires marker, registers one document delegate set and keeps declared initial hidden/ARIA/icon state. Legacy collapse.js unchanged; do not co-load both.",
+    "split": "Header click toggles. Single mode closes peers; only split data-collapse-mode=multiple allows multiple. Icons, aria-expanded and body hidden/aria-hidden update together.",
+    "feature": "Mouseover opens a row; pointer-generated click detail!=0 does not toggle. Native keyboard-generated click detail=0 can toggle. No dedicated keydown polyfill; actual keyboard activation remains browser pending.",
+    "events": "No dedicated disclosure-change event. Native click bubbles and is not a business-save or media-change signal.",
+    "repeatLoad": "Current marker-only runtime has one document guard and delegated listener set. Legacy collapse.js must not be co-loaded; old repeat-binding behavior is not the current contract.",
+    "hosts": "Current PC inline-edit and data-preview calls use explicit typed controls and current child atoms. Inline edits support cancel/IME-safe Escape, native validity, cancelable Save intent and local preview commit only.",
+    "nativeStateGuard": "Native fieldset/button disabled, hidden item/ancestor and ARIA-disabled header/ancestor block synthetic activation and feature hover without discarding open state. Availability restoration permits subsequent operation; no hidden disclosure mutation.",
+    "editAtom": "Preview-only Edit delegates structure, font, paint, icon dimensions and hover to TextButton inline-black/L. The host owns only placement and paired disclosure events. Original 16px icon differs from current 12px atom; use user-confirmed atom-first policy, preserve source difference. No new exact action variant or Save behavior.",
+    "sourceV3Boundary": "Retained FAQ six source rows are composed by the existing faq call; source variants remain evidence, not independent business calls. Source arrows, first/middle/last borders and hidden state stay source-owned. Visual approval and M/Pad are separate.",
+    "cookiesHotZone1014": "Readonly finite split uses paragraph copy-region; click inside stays open and text is selectable, body padding/item blank closes. Header keyboard/click and authored single/multiple semantics retained. Missing source marker or paragraph region rejected; no Switch upgrade.",
+    "sourceV31": "《新文件》折叠面板v3.1沿用默认单项手风琴，新增基础分割型地图联动。该规范场景不等于现有split已具备地图能力；FAQ、编辑、订单和地图继续按各自调用资格判断。 Current source order snapshot is now admitted as data-preview; previous historical unsupported statement is superseded for this finite PC call only.",
+    "faq": "Native button activation; all closed initially, single-open, first/middle/last source padding/divider and up/down SVGs; answers remain inside true row, copy does not toggle. No image/map/business linkage.",
+    "dataPreview": "Current MG v3.1 finite PC order snapshot; explicit arrow/native Enter/Space toggles, single-open. View/info/more emit action/orderId only; no whole-row toggle, popup or backend promise. Both Pickup/no-Pickup source forms retained. Fixed PC row is internally scrollable on narrow host; no M call.",
+    "inlineEdit": "All closed initially; one open field at a time, opening another cancels prior draft. Cancel/Escape rollback/refocus; composing Escape/submit do not commit. Save uses form validity and bubbles cancelable ds:collapse-save {field,values}; preventDefault keeps editor open. Without cancellation, local display is updated; no server persistence promised."
+  },
+  "examples": [
+    {
+      "name": "feature",
+      "runtime": {
+        "styles": [
+          "components/tokens.css",
+          "components/components.css",
+          "components/button-current.css",
+          "components/button-runtime-current.css",
+          "components/input-current.css",
+          "components/text-button-current.css",
+          "components/collapse-host-preview.css",
+          "components/collapse-current.css",
+          "components/collapse-faq-source.css"
+        ],
+        "scripts": [
+          "components/collapse-current.js",
+          "components/input-current.js",
+          "components/collapse-host-preview.js"
+        ]
+      },
+      "publication": {
+        "key": "collapse/feature",
+        "disposition": "restricted",
+        "newPages": true,
+        "reason": "split is Cookies-source single-open; multiple requires explicit source/Plan. feature keeps original four icons, no inferred media business.",
+        "constraints": [
+          "split is Cookies-source single-open; multiple requires explicit source/Plan. feature keeps original four icons, no inferred media business."
+        ],
+        "contractPolicy": "Split is default single-open, with optional read-only aside; multiple requires explicit source and Plan. Feature keeps four existing leading icons and first open. Inline-edit/data-preview preview structures have partial atom and disclosure fixes, but remain outside exact AI support pending full source and runtime proof. Current split keeps the existing Cookies plus/minus anatomy; it is not the separate v3 FAQ right-chevron atom with first/middle/last row variants. Do not change locked source anatomy to imitate that family.",
+        "use": "finite-new-page-candidate",
+        "evidence": "components/contracts/collapse.json#aiContract/evidence",
+        "requiresCurrentEngineering": true,
+        "visualApproval": "separate-not-granted"
+      },
+      "rootTag": "div",
+      "sizeOptions": [],
+      "purpose": "feature-single-open-disclosure",
+      "whenToUse": "产品技术导引，图标语义匹配。",
+      "whenNotToUse": "教育、机构内容无匹配登记图标。",
+      "rootClasses": "ds-collapse ds-collapse--feature",
+      "requiredStructure": [
+        "div.ds-collapse__item",
+        "button.ds-collapse__header",
+        "span.ds-collapse__title",
+        "div.ds-collapse__body"
+      ],
+      "slots": {
+        "items": {
+          "selector": ":scope",
+          "mode": "structured-content",
+          "required": true,
+          "preserve": [
+            "div.ds-collapse__item",
+            "button.ds-collapse__header",
+            "span.ds-collapse__title",
+            "div.ds-collapse__body"
+          ],
+          "rule": "Existing title/body text and paired unique identities only; preserve authored first-open state and icons. Split read-only aside optional with declared source-based adaptation."
+        }
+      },
+      "allowedEdits": [
+        "items"
+      ],
+      "exampleHtml": "<div class=\"ds-collapse ds-collapse--feature\" data-ai-example=\"ai-collapse-feature\" data-collapse-current=\"\">\n        <div class=\"ds-collapse__item ds-collapse__item--open\"><button class=\"ds-collapse__header\" type=\"button\" aria-expanded=\"true\" aria-controls=\"collapse-feature-body-1\"><span class=\"ds-collapse__title\"><img src=\"../icons/icon-grid-view.svg\" alt=\"\">Centralized Resource Management</span></button><div class=\"ds-collapse__body\" id=\"collapse-feature-body-1\" aria-hidden=\"false\">Manage all your network resources from a single cloud console — devices, configurations, firmware and monitoring in one place.</div></div>\n        <div class=\"ds-collapse__item\"><button class=\"ds-collapse__header\" type=\"button\" aria-expanded=\"false\" aria-controls=\"collapse-feature-body-2\"><span class=\"ds-collapse__title\"><img src=\"../icons/icon-demo-report.svg\" alt=\"\">Real-time Monitoring &amp; Reports</span></button><div class=\"ds-collapse__body\" id=\"collapse-feature-body-2\" aria-hidden=\"true\" hidden=\"\">Manage all your network resources from a single cloud console — devices, configurations, firmware and monitoring in one place.</div></div>\n        <div class=\"ds-collapse__item\"><button class=\"ds-collapse__header\" type=\"button\" aria-expanded=\"false\" aria-controls=\"collapse-feature-body-3\"><span class=\"ds-collapse__title\"><img src=\"../icons/icon-list-view.svg\" alt=\"\">Batch Configuration</span></button><div class=\"ds-collapse__body\" id=\"collapse-feature-body-3\" aria-hidden=\"true\" hidden=\"\">Manage all your network resources from a single cloud console — devices, configurations, firmware and monitoring in one place.</div></div>\n        <div class=\"ds-collapse__item\"><button class=\"ds-collapse__header\" type=\"button\" aria-expanded=\"false\" aria-controls=\"collapse-feature-body-4\"><span class=\"ds-collapse__title\"><img src=\"../icons/icon-eye.svg\" alt=\"\">Network-wide Visibility</span></button><div class=\"ds-collapse__body\" id=\"collapse-feature-body-4\" aria-hidden=\"true\" hidden=\"\">Manage all your network resources from a single cloud console — devices, configurations, firmware and monitoring in one place.</div></div>\n      </div>"
+    }
+  ],
+  "relationships": {
+    "children": [],
+    "parents": [],
+    "parentStatus": "no-declared-hosts",
+    "icons": [
+      {
+        "file": "components/icons/icon-placeholder-switch.svg",
+        "registry": "components/icons/icons-manifest.json",
+        "appliesTo": [
+          "feature"
+        ],
+        "usage": "特征导引型前导图标占位之一（从库中现有图标选用）；仅说明现有素材，不证明业务语义匹配，禁止按选项序号循环调用。"
+      },
+      {
+        "file": "components/icons/icon-demo-report.svg",
+        "registry": "components/icons/icons-manifest.json",
+        "appliesTo": [
+          "feature"
+        ],
+        "usage": "特征导引型前导图标占位之一（从库中现有图标选用）；仅说明现有素材，不证明业务语义匹配，禁止按选项序号循环调用。"
+      },
+      {
+        "file": "components/icons/icon-grid-view.svg",
+        "registry": "components/icons/icons-manifest.json",
+        "appliesTo": [
+          "feature"
+        ],
+        "usage": "特征导引型前导图标占位之一（从库中现有图标选用）；仅说明现有素材，不证明业务语义匹配，禁止按选项序号循环调用。"
+      },
+      {
+        "file": "components/icons/icon-list-view.svg",
+        "registry": "components/icons/icons-manifest.json",
+        "appliesTo": [
+          "feature"
+        ],
+        "usage": "特征导引型前导图标占位之一（从库中现有图标选用）；仅说明现有素材，不证明业务语义匹配，禁止按选项序号循环调用。"
+      },
+      {
+        "file": "components/icons/icon-eye.svg",
+        "registry": "components/icons/icons-manifest.json",
+        "appliesTo": [
+          "feature"
+        ],
+        "usage": "特征导引型前导图标占位之一（从库中现有图标选用）；仅说明现有素材，不证明业务语义匹配，禁止按选项序号循环调用。"
+      }
+    ],
+    "tokens": [
+      {
+        "name": "color.gray-1",
+        "value": "#19191A",
+        "unit": null,
+        "cssVar": "--color-gray-1",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.gray-3",
+        "value": "#707070",
+        "unit": null,
+        "cssVar": "--color-gray-3",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.gray-5",
+        "value": "#DEE0E3",
+        "unit": null,
+        "cssVar": "--color-gray-5",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.gray-6",
+        "value": "#EDEDF0",
+        "unit": null,
+        "cssVar": "--color-gray-6",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.gray-9",
+        "value": "#FAFBFB",
+        "unit": null,
+        "cssVar": "--color-gray-9",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.white",
+        "value": "#FFFFFF",
+        "unit": null,
+        "cssVar": "--color-white",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.success",
+        "value": "#10A300",
+        "unit": null,
+        "cssVar": "--color-success",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.success-bg",
+        "value": "rgba(16,163,0,0.1)",
+        "unit": null,
+        "cssVar": "--color-success-bg",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.blue",
+        "value": "#0060BF",
+        "unit": null,
+        "cssVar": "--color-blue",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "border-radius.md",
+        "value": 4,
+        "unit": "px",
+        "cssVar": "--border-radius-md",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border-radius.json"
+      },
+      {
+        "name": "typography.font-family-base",
+        "value": "Open Sans",
+        "unit": null,
+        "cssVar": "--font-family-base",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-size-h8",
+        "value": 13,
+        "unit": "px",
+        "cssVar": "--font-size-h8",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "spacing.lg",
+        "value": 16,
+        "unit": "px",
+        "cssVar": "--spacing-lg",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.20",
+        "value": 20,
+        "unit": "px",
+        "cssVar": "--spacing-20",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.sm",
+        "value": 8,
+        "unit": "px",
+        "cssVar": "--spacing-sm",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.xl",
+        "value": 24,
+        "unit": "px",
+        "cssVar": "--spacing-xl",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.2",
+        "value": 2,
+        "unit": "px",
+        "cssVar": "--spacing-2",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.md",
+        "value": 12,
+        "unit": "px",
+        "cssVar": "--spacing-md",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.6",
+        "value": 6,
+        "unit": "px",
+        "cssVar": "--spacing-6",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.collapse-status-indent",
+        "value": 42,
+        "unit": "px",
+        "cssVar": "--spacing-collapse-status-indent",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.xs",
+        "value": 4,
+        "unit": "px",
+        "cssVar": "--spacing-xs",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.48",
+        "value": 48,
+        "unit": "px",
+        "cssVar": "--spacing-48",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.36",
+        "value": 36,
+        "unit": "px",
+        "cssVar": "--spacing-36",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.9",
+        "value": 9,
+        "unit": "px",
+        "cssVar": "--spacing-9",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.collapse-body-indent",
+        "value": 52,
+        "unit": "px",
+        "cssVar": "--spacing-collapse-body-indent",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "border.width.default",
+        "value": 1,
+        "unit": "px",
+        "cssVar": "--border-width-default",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.style.default",
+        "value": "solid",
+        "unit": null,
+        "cssVar": "--border-style-default",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.subtle",
+        "value": "var(--color-gray-6)",
+        "unit": null,
+        "cssVar": "--border-color-subtle",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "typography.font-weight-semibold",
+        "value": 600,
+        "unit": null,
+        "cssVar": "--font-weight-semibold",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-size-sm",
+        "value": 12,
+        "unit": "px",
+        "cssVar": "--font-size-sm",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-weight-regular",
+        "value": 400,
+        "unit": null,
+        "cssVar": "--font-weight-regular",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-size-md",
+        "value": 14,
+        "unit": "px",
+        "cssVar": "--font-size-md",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.h8-semibold",
+        "value": {
+          "fontSize": "13px",
+          "lineHeight": "20px",
+          "fontWeight": 600
+        },
+        "unit": null,
+        "cssVar": null,
+        "primitiveReferences": {
+          "fontSize": "typography.font-size-h8",
+          "fontWeight": "typography.font-weight-semibold"
+        },
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.h9-semibold",
+        "value": {
+          "fontSize": "12px",
+          "lineHeight": "20px",
+          "fontWeight": 600
+        },
+        "unit": null,
+        "cssVar": null,
+        "primitiveReferences": {
+          "fontSize": "typography.font-size-sm",
+          "fontWeight": "typography.font-weight-semibold"
+        },
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.h9-regular",
+        "value": {
+          "fontSize": "12px",
+          "lineHeight": "20px",
+          "fontWeight": 400
+        },
+        "unit": null,
+        "cssVar": null,
+        "primitiveReferences": {
+          "fontSize": "typography.font-size-sm",
+          "fontWeight": "typography.font-weight-regular"
+        },
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.h7-semibold",
+        "value": {
+          "fontSize": "14px",
+          "lineHeight": "22px",
+          "fontWeight": 600
+        },
+        "unit": null,
+        "cssVar": null,
+        "primitiveReferences": {
+          "fontSize": "typography.font-size-md",
+          "fontWeight": "typography.font-weight-semibold"
+        },
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.h7-regular",
+        "value": {
+          "fontSize": "14px",
+          "lineHeight": "22px",
+          "fontWeight": 400
+        },
+        "unit": null,
+        "cssVar": null,
+        "primitiveReferences": {
+          "fontSize": "typography.font-size-md",
+          "fontWeight": "typography.font-weight-regular"
+        },
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.h8-regular",
+        "value": {
+          "fontSize": "13px",
+          "lineHeight": "20px",
+          "fontWeight": 400
+        },
+        "unit": null,
+        "cssVar": null,
+        "primitiveReferences": {
+          "fontSize": "typography.font-size-h8",
+          "fontWeight": "typography.font-weight-regular"
+        },
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "border.style.none",
+        "value": "none",
+        "unit": null,
+        "cssVar": "--border-style-none",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.strong",
+        "value": "var(--color-gray-3)",
+        "unit": null,
+        "cssVar": "--border-color-strong",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.input-disabled",
+        "value": "var(--color-input-disabled-border)",
+        "unit": null,
+        "cssVar": "--border-color-input-disabled",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.default",
+        "value": "var(--color-gray-5)",
+        "unit": null,
+        "cssVar": "--border-color-default",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "spacing.10",
+        "value": 10,
+        "unit": "px",
+        "cssVar": "--spacing-10",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "typography.font-size-h6",
+        "value": 16,
+        "unit": "px",
+        "cssVar": "--font-size-h6",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.h6-semibold",
+        "value": {
+          "fontSize": "16px",
+          "lineHeight": "24px",
+          "fontWeight": 600
+        },
+        "unit": null,
+        "cssVar": null,
+        "primitiveReferences": {
+          "fontSize": "typography.font-size-h6",
+          "fontWeight": "typography.font-weight-semibold"
+        },
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "border.color.tag",
+        "value": "var(--color-tag-border)",
+        "unit": null,
+        "cssVar": "--border-color-tag",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.emphasis",
+        "value": "var(--color-gray-1)",
+        "unit": null,
+        "cssVar": "--border-color-emphasis",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      }
+    ]
+  },
+  "evidence": {
+    "localImplementation": "components/variants/collapse.html",
+    "comparison": "components/sources/collapse/local-structure-review.json",
+    "nativeSpecificationReview": "components/sources/collapse/specification-v3-review-1011.json",
+    "faqFirstExpandedReview": "components/sources/collapse/faq-first-expanded-property-review-1013.json",
+    "faqFirstCollapsedReview": "components/sources/collapse/faq-first-collapsed-property-review-1013.json",
+    "faqMiddleLastReview": "components/sources/collapse/faq-middle-last-source-1014.json",
+    "cookiesReadonlySource": "components/sources/collapse/cookies-readonly-source-1014.json",
+    "currentMgReview": "components/sources/tab-collapse-mg-20261114/collapse-review.json",
+    "listOptionSource": "components/sources/list-option-mg-20261115/review.json",
+    "fiveVariantSource": "components/sources/five-variants-20261115/review.json"
+  },
+  "sourceValidation": {
+    "componentIdentity": {
+      "status": "not-established",
+      "files": []
+    },
+    "specificationBody": {
+      "status": "not-established",
+      "files": []
+    },
+    "originalOnlineFrontendCode": false,
+    "browserComputedStyles": false,
+    "completeSpecificationCoverage": false,
+    "buttonNesting": {
+      "scope": "finite-authored-button-nesting-only",
+      "checked": [
+        {
+          "variant": "data-preview",
+          "buttons": [
+            {
+              "variant": "outline-black",
+              "size": "xl",
+              "type": "button"
+            },
+            {
+              "variant": "outline-black",
+              "size": "xl",
+              "type": "button"
+            }
+          ]
+        },
+        {
+          "variant": "inline-edit",
+          "buttons": [
+            {
+              "variant": "outline-gray",
+              "size": "xl",
+              "type": "button"
+            },
+            {
+              "variant": "filled-black",
+              "size": "xl",
+              "type": "submit"
+            },
+            {
+              "variant": "outline-gray",
+              "size": "xl",
+              "type": "button"
+            },
+            {
+              "variant": "filled-black",
+              "size": "xl",
+              "type": "submit"
+            }
+          ]
+        }
+      ],
+      "pending": [],
+      "browserVerified": false
+    },
+    "otherAtomNesting": {
+      "TextButton": {
+        "scope": "finite-canonical-TextButton-default-calls",
+        "checked": [
+          {
+            "variant": "inline-edit",
+            "children": [
+              {
+                "variant": "inline-black",
+                "size": "l"
+              },
+              {
+                "variant": "inline-black",
+                "size": "l"
+              }
+            ]
+          }
+        ],
+        "inactive": [],
+        "browserVerified": false,
+        "hostStyleCascadeVerified": false
+      }
+    }
+  },
+  "freshness": {
+    "fingerprints": {
+      "components/badge-current.css": "9ee02c266a713b9f86d506a43c55badaf4066febc3eddf9a2018b6b044678689",
+      "components/button-current.css": "45e94e48ec97a34b4883ecc4f11b33301cdd6679445a3970cb16a2a87c6d8c9e",
+      "components/button-runtime-current.css": "caaa9b65a8d2fbebfa487ca3e0cf0c67d36e0219ffc55d4b0d801371a02da76c",
+      "components/collapse-current.css": "e335b0fec7d736d743b11a812569d6b418fc233b3e1fc53efb7c47138f7861ed",
+      "components/collapse-current.js": "741e0ccd4a9692d8eb35c3dac855134c071ca840eb9be8c334d0880b442d2c75",
+      "components/collapse-data-current.css": "a94bdd733b521eb533651e7ccc37e09e15670d49ef171f63259a7138f10c126b",
+      "components/collapse-data-current.js": "5abf31947bfb1d2bc6e7934460adb49a5e844dcbcd3c1e40a8cb10012e6167a5",
+      "components/collapse-edit-current.css": "9c7b300c42b60712f36694afc76ba788b32abcf6c82ecaeb6ea3466551e5253b",
+      "components/collapse-faq-source.css": "add8492903ffae552dc31416c3b7809479a907fc632a2893ce6c10550d31da74",
+      "components/collapse-host-preview.css": "806531e65a6a68a475c8278aa1e4c4665a65c0f64cfbd71e74da5e0a0913307a",
+      "components/collapse-host-preview.js": "a9004e8899bbde3ca2ff179809fe29821be362a41de9da98dadb7a19529c817e",
+      "components/components.css": "a08b4fe2790b5ff2b784c6362a90f1b94e7535a03e863232ce6d620a52e85f73",
+      "components/contracts/badge.json": "3dae55f794d4f8900f22baea6b8e098d888056af8d4bce1abbfbdcee386397a0",
+      "components/contracts/button.json": "1f3092d74e19c1a840fbf2e8b8ecaf6115976b2941cc5484e4cda824025b1f73",
+      "components/contracts/collapse.json": "e723bf5d2e055846a15f14036d2711334b77408f64000ba0b5956383b1351c61",
+      "components/contracts/input.json": "b367155c40d99807834add264130f574d150f95f09836fe70e84e3bf37a174d1",
+      "components/contracts/tag.json": "bb8c4c7ca112feacb0af9aed188e4279df4fbab6b7774885f8e8e3508aa00cf5",
+      "components/contracts/text-button.json": "323301e3a3438778dd29d5d6c32fd7e661846707ce711b5c0ec82d11fea12fc5",
+      "components/icons/icon-chevron-down.svg": "fe5df03acb1cb4b8a38a928357775416656fbf97cc54f3c6a5b7d0e4906f3e91",
+      "components/icons/icon-collapse-faq-down-current.svg": "c364e7ac34df5ecb77b10b136d3ffdfb7d9d387e3a52c75a70c1b240bbe617d8",
+      "components/icons/icon-collapse-faq-up-current.svg": "9f0e089a63bb7b75888b1b340b2e2dbe900276176a111ede7e631eb914243380",
+      "components/icons/icon-collapse-minus.svg": "3c8b4366c99b7dcea96fcb152eaf1a875e1928a5650931089017f736106a9e1c",
+      "components/icons/icon-collapse-plus.svg": "830e77b12afd6cc838afc23aa482437a0a5ae801874a98f2bc8a91b2b4251649",
+      "components/icons/icon-demo-report.svg": "9e9702fcf8d17d19541934a5ae57c6ed7c4e3949a77df7573dc06a016bfd26c3",
+      "components/icons/icon-edit.svg": "c6076863bfb71113c79317b5218b7d6e17a547c00c7c87e8e9baea3be11b8f6b",
+      "components/icons/icon-eye.svg": "11c57eb3fa61bb24b072d8bb8a785f58bd1371a6543338902e39607097378db6",
+      "components/icons/icon-grid-view.svg": "7337e2156917d2c0db7a77a62d0c0f7e5748253a928ae996d68130eaa1d2e284",
+      "components/icons/icon-info.svg": "6e6c97d5d691758fe1b009b4dd6229e9dd20cda4641f341589e0e3fb1fde2bb6",
+      "components/icons/icon-list-view.svg": "321faa85653328e3b319e2512c8e984c90809f5a39b8499128c36f7943d034b3",
+      "components/icons/icon-more.svg": "20f6e039a56fa1b3decd4430ce56186f85fd7190416eef9d4c434a5cab4332c8",
+      "components/icons/icon-placeholder-switch.svg": "0f52c5a675441071196593d5d90c3f97f29b0b43719170d8a7df7ac9a974b5d5",
+      "components/icons/icons-manifest.json": "12c48af6d1dc59d50b76046bb0507005f565aa4224a6d8056ce4eaaf8050c43e",
+      "components/input-current.css": "81df82b74844b99bdb11674ed4ffe47c0e6e02595408a113fec9f4426d5f9d14",
+      "components/input-current.js": "e218bd2029d632ce9d9564fa67a25cfb05819e5cf9668a25333d7fd04cfc7acc",
+      "components/preview/reference-live.js": "4839383529a3ee82df1d8efe675d430567abc1986034499107aa429d21a18ea6",
+      "components/reference-policy.json": "4ae8f51f623386417e38d497caafb8bda4417c929159002a7ac088e6e526b482",
+      "components/sources/badge/collapse-pending-1115.html": "64778ce1f231338a6112c345afb3677074894d0a56bf35b4458bb6ac23fa1a3b",
+      "components/sources/collapse/cookies-readonly-source-1014.json": "1bcfb57d685456b3b299558df3a90a6b72faa838020c79a0944113e2e95b45a0",
+      "components/sources/collapse/faq-down-official-1015.svg": "c364e7ac34df5ecb77b10b136d3ffdfb7d9d387e3a52c75a70c1b240bbe617d8",
+      "components/sources/collapse/faq-first-collapsed-property-review-1013.json": "974dbcc1fa2b5d7d3a1078347d94fbd5a4c9c6771bcf4f6974870814452420d4",
+      "components/sources/collapse/faq-first-expanded-property-review-1013.json": "614d6d000a61ae58d1ca43e773b5d7d6fbddca59cf56898128b3d60c83602fb7",
+      "components/sources/collapse/faq-middle-last-source-1014.json": "d03c34541011fc6bc2d3a2e5c39e61d57b73fcf8d5fa753d753c16d63d1e29db",
+      "components/sources/collapse/faq-six-source-preview-1015.json": "7d733768bbf0202b57cdf455e919fce40ce9962f37304c3214669c9b3aed8e41",
+      "components/sources/collapse/faq-type-glyph-review-1015.json": "e5678f28124c46951f171b651120d6a8d834962e4be3dbabd981692ac9b656e9",
+      "components/sources/collapse/faq-up-official-1015.svg": "9f0e089a63bb7b75888b1b340b2e2dbe900276176a111ede7e631eb914243380",
+      "components/sources/collapse/local-structure-review.json": "2f23c478029c962b201a4354b00d464cbda8d6369c6aaca5b14b5aac785c4da6",
+      "components/sources/collapse/specification-v3-review-1011.json": "da8ce354e0864a8614c4e9ae005ec1461d7f6a1cd57f0f989dbdb402b469890d",
+      "components/sources/five-variants-20261115/review.json": "821baac5e00e60f1a796ae8d0a1881ae122da740e477666a54b3e94a13a7556f",
+      "components/sources/list-option-mg-20261115/review.json": "e8d424ddcef3f8c44413851d17943317e386c0f9cd8f8eaeec964ab3192194ae",
+      "components/sources/tab-collapse-mg-20261114/collapse-review.json": "d02f5eee46655b60057db21c27a703aae49e9345780f2f168d11b5ab75be828b",
+      "components/sources/tag/collapse-pickup-1115.html": "9a439e021216fb81b9c154d16146fbb08528dcc13c0352565067d039dfe74945",
+      "components/sources/text-button/collapse-edit-current-1115.html": "dbea123d730d8495e2b43599a02f384d81b9a60a30192f12d08801958aa2df0c",
+      "components/tag-configuration-current.css": "6016d2be7ab1192477ac4630e51d8f02a0575c1553bc538e935aa5389c09f124",
+      "components/text-button-current.css": "b38b1b1ad0099d580f7676be7cb2def987753a8eaebd86348ab965768696eb1d",
+      "components/token-specs/border-radius.json": "b01e4c23fbc7e19983d9592b59b0303155b79d66c52459356eda0ea9f4ca74b5",
+      "components/token-specs/border.json": "d286ee4681deda1c7702c310b065c86f824539b3a8797efba05b24bc225ab322",
+      "components/token-specs/colors.json": "5267d59fdc687b54496977280c00c97f0beb6ffce013f87853504f5b736d3389",
+      "components/token-specs/spacing.json": "351b14cfce4411248ad41e00eaaf2b1cab9b705997980dfed1fc65693740e65c",
+      "components/token-specs/typography.json": "93b7dc07547218a33c075b7cdcd942f89094353a7847d483d8378b8883327e16",
+      "components/tokens.css": "f63f3c8fea511d8029902bc3905b01853ac5e92049c1b18ca35ebc9a680c3e69",
+      "components/variants/badge.html": "b0ceb6daec916b05c772cf2755ccddf2beca0baa7ce10f760d68e59aee44a4b7",
+      "components/variants/button.html": "6b6715b66e6c0b684c072dcdcbf7170aeb9f49a31bb32ca5b8986644d626cfe6",
+      "components/variants/collapse.html": "26f87a715552789e80ed66e1a7428719beddfaba67be4e165f5eb40b22c1e45c",
+      "components/variants/input.html": "d34e9585cb00f4293912c199391e0b8328b13fe8db16ac4b4ea4b05b596d10c1",
+      "components/variants/tag.html": "fcafd08ba11ca6faf2d41e185fc69099175769db0fa030ae9e9fa0ae7e410a04",
+      "components/variants/text-button.html": "6295056d973b26231a68158bd758ebde321d8a105326a740f159006a1a7bd2f8"
+    },
+    "graphFingerprint": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "note": "从本地源文件生成；不是 MasterGo 在线实时状态。"
+  },
+  "readScope": {
+    "variant": "feature",
+    "note": "只展开当前已选变体；其他变体没有被声明为不可用。尺寸继续按真实 sizeOptions 选择。"
+  }
+}

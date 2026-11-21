@@ -1,0 +1,982 @@
+{
+  "schemaVersion": "fs-component-reference/1.0.0",
+  "component": {
+    "id": "card",
+    "name": "Card",
+    "scope": "ten-finite-source-backed-PC-card-shapes",
+    "reviewStatus": {
+      "engineering": "pending",
+      "visual": "pending",
+      "familyCoverage": "partial"
+    }
+  },
+  "selection": {
+    "policy": "按普通内容、分类多链接、搜索结果、最近浏览或产品选购选型，再核对布局、背景与设备。当前十个精确调用含描边通栏、嵌入详情和完整产品卡；侧栏仍参考。Card真实引用List、Tag和Cart；仅按allowedEdits修改内容，不自动扩展移动端或业务请求。 Current five-variant closure 20261115: only supported exact source examples and publication decisions permit local calls. Earlier preview-only or placeholder descriptions are historical; PC geometry and host boundaries remain explicit.",
+    "supported": [
+      "spliced.horizontal.full-width.responsive",
+      "spliced.horizontal.full-width",
+      "spliced.vertical.single-event",
+      "spliced.vertical.single-event.bordered",
+      "embedded.product-standard",
+      "embedded.product-small",
+      "spliced.vertical.category-nav",
+      "embedded.product-detail",
+      "embedded.product-full",
+      "spliced.horizontal.full-width.bordered-background",
+      "spliced.horizontal.with-sidebar",
+      "spliced.horizontal.with-sidebar.bordered-background"
+    ],
+    "unsupported": [
+      "image-omission-canonical",
+      "reverse-layout",
+      "extra-inline-overrides",
+      "mobile-tablet-acceptance",
+      "vertical-white-parent-bordered-canonical",
+      "category-folded-unverified"
+    ]
+  },
+  "runtime": {
+    "styles": [
+      "components/tokens.css",
+      "components/components.css",
+      "components/card-responsive.css",
+      "components/text-button-current.css",
+      "components/button-current.css",
+      "components/button-runtime-current.css",
+      "components/card-current.css",
+      "components/cart-current.css",
+      "components/menu-navigation-current.css",
+      "components/tag-current.css",
+      "components/list-unordered-current.css",
+      "components/tag-product-current.css",
+      "components/card-completion-current.css",
+      "components/card-sidebar-current.css"
+    ],
+    "scripts": [
+      "components/card-current.js",
+      "components/tag-product-current.js",
+      "components/menu-navigation-current.js"
+    ],
+    "fontStylesheets": [
+      "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+    ]
+  },
+  "identity": {
+    "rule": "Complete actual image + body, selected stack/meta/description wrappers, and real inline-black/M TextButton. No Preview inline sizing, placeholder media or fictitious action child. Bordered horizontal auto-call withdrawn pending scrollbar/tall-content and visual verification; vertical metadata is category plaintext. Current vertical requires data-card-current=vertical-single-event.",
+    "assetRule": "Default existing engineering photo is demo/page content, not a design-system icon or MG component asset. Rebase relative image/icon paths when assembled elsewhere."
+  },
+  "locked": [
+    "True Card image/body/content-stack/link hierarchy",
+    "Current opt-in Card stylesheet and shared base styles",
+    "Genuine TextButton inline-black/M label + registered arrow",
+    "Native spacing, typography, radius and states; vertical single-event current parent-grid sizing is defined below, no page CSS overrides",
+    "Exact horizontal border or vertical no-border variant; parent surface per contract",
+    "Vertical meta/description wrappers and bordered horizontal full bullet fragments",
+    "Source on variant: three inside body edges only; root and image unbordered; Default/Hover geometry identical",
+    "spliced.vertical.single-event.bordered页面调用须configuration.parentGrid=1200/4/20、quantity4及outputGroup；只声明cardCount4不能冒称真实4栏285几何。"
+  ],
+  "behavior": {
+    "static": "普通内容按真实TextButton导航；产品选购使用真实Tag、List12和Cart，选择/加购业务由宿主处理。原稿和当前调用的资格分别记录。",
+    "content": "Image, title, description and link text are page content; existing Pexels photo is replaceable and not MG visual evidence.",
+    "source": "Partial native independent norm and actual PC/vertical nodes linked separately from historical generated export; remaining shape/slot/state sources pending.",
+    "geometry": "本批实测当前精确调用的受控图文方向、文档宽度和资源。桌面文档渲染不构成全设备视觉批准。"
+  },
+  "examples": [
+    {
+      "name": "spliced.horizontal.full-width.bordered-background",
+      "publication": {
+        "key": "card/spliced.horizontal.full-width.bordered-background",
+        "disposition": "restricted",
+        "newPages": true,
+        "reason": "Real source shape, owned child parts and finite local runtime; caller owns business requests.",
+        "constraints": [
+          "左右图文通栏，文本区明确为描边/白底，包含可滚动参数列表。",
+          "没有描边表面、无侧边结构或移动端自由尺寸。",
+          "Only allowedEdits; real current dependencies and runtime required; visual approval separate."
+        ],
+        "evidence": "components/contracts/card.json#aiContract/evidence",
+        "requiresCurrentEngineering": true,
+        "visualApproval": "separate-not-granted"
+      },
+      "rootTag": "div",
+      "sizeOptions": [],
+      "bindings": {
+        "href": {
+          "mode": "navigation-target",
+          "target": "a.ds-text-btn",
+          "attribute": "href",
+          "protocols": [
+            "https:",
+            "http:",
+            "mailto:",
+            "tel:"
+          ],
+          "relative": true,
+          "previewPlaceholder": "#"
+        }
+      },
+      "purpose": "finite-spliced.horizontal.full-width.bordered-background",
+      "whenToUse": "左右图文通栏，文本区明确为描边/白底，包含可滚动参数列表。",
+      "whenNotToUse": "没有描边表面、无侧边结构或移动端自由尺寸。",
+      "rootClasses": "ds-card ds-card--horizontal ds-card--horizontal-bordered",
+      "requiredStructure": [
+        "div.ds-card__image",
+        "img",
+        "div.ds-card__body",
+        "div.ds-card__content-stack",
+        "p.ds-card__title",
+        "p.ds-card__desc",
+        "div.ds-card__link",
+        "a.ds-text-btn",
+        "span.ds-text-btn__text",
+        "img.ds-text-btn__icon",
+        ".ds-list",
+        "div.ds-list__unordered-item",
+        "span.ds-list__unordered-dot",
+        "p.ds-list__unordered-text"
+      ],
+      "slots": {
+        "title": {
+          "selector": "p.ds-card__title",
+          "mode": "text",
+          "required": true
+        },
+        "description": {
+          "selector": "p.ds-card__desc",
+          "mode": "text",
+          "required": true
+        },
+        "image": {
+          "selector": "div.ds-card__image",
+          "mode": "structured-content",
+          "required": true,
+          "preserve": [
+            "img"
+          ],
+          "rule": "One actual image with evidence-backed src and descriptive alt. No placeholder text or extra wrapper."
+        },
+        "linkLabel": {
+          "selector": "span.ds-text-btn__text",
+          "mode": "text",
+          "required": true
+        },
+        "items": {
+          "selector": ".ds-list",
+          "mode": "structured-content",
+          "required": true,
+          "preserve": [
+            "div.ds-list__unordered-item",
+            "span.ds-list__unordered-dot",
+            "p.ds-list__unordered-text"
+          ],
+          "rule": "One real List/unordered-12; long content remains in source scroll region."
+        }
+      },
+      "allowedEdits": [
+        "title",
+        "description",
+        "image",
+        "linkLabel",
+        "href",
+        "items"
+      ],
+      "exampleHtml": "<div class=\"ds-card ds-card--horizontal ds-card--horizontal-bordered\" data-card-source-layout-one-list=\"official\" data-source-example=\"card-layout-one-pc-bordered\" data-card-source-layout-one-title=\"official\" data-ai-example=\"ai-card-completion-spliced-horizontal-full-width-bordered-background\">\n        <div class=\"ds-card__image\"><img src=\"../sources/card/preview-assets/img-placeholder.svg\" alt=\"Img 图片占位\"></div>\n        <div class=\"ds-card__body\">\n          <div class=\"ds-card__content-stack\">\n            <p class=\"ds-card__title ds-card__title--single-line\">This is card title, This is card title, This is card title</p>\n            <p class=\"ds-card__desc\">This is the description, This is the description, This is the description, This is the description.</p>\n            <div class=\"ds-list ds-list--unordered-12\" data-list-current=\"unordered\" data-list-source=\"legacy-fixed\"><div class=\"ds-list__unordered-item\"><span class=\"ds-list__unordered-dot\" aria-hidden=\"true\"></span><p class=\"ds-list__unordered-text\">2x 2nd Gen Intel Xeon Scalable CPUs</p></div><div class=\"ds-list__unordered-item\"><span class=\"ds-list__unordered-dot\" aria-hidden=\"true\"></span><p class=\"ds-list__unordered-text\">2x 2nd Gen Intel Xeon Scalable CPUs</p></div><div class=\"ds-list__unordered-item\"><span class=\"ds-list__unordered-dot\" aria-hidden=\"true\"></span><p class=\"ds-list__unordered-text\">2x 2nd Gen Intel Xeon Scalable CPUs</p></div><div class=\"ds-list__unordered-item\"><span class=\"ds-list__unordered-dot\" aria-hidden=\"true\"></span><p class=\"ds-list__unordered-text\">2x 2nd Gen Intel Xeon Scalable CPUs</p></div></div>\n          </div>\n          <div class=\"ds-card__link\">\n            <a class=\"ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m\" href=\"#\">\n              <span class=\"ds-text-btn__text\">Learn more</span>\n              <img class=\"ds-text-btn__icon\" src=\"../icons/icon-text-button-arrow-right-regular.svg\" alt=\"\">\n            </a>\n          </div>\n        </div>\n      </div>"
+    }
+  ],
+  "relationships": {
+    "children": [
+      {
+        "id": "text-button",
+        "contract": "components/contracts/text-button.json",
+        "variants": [
+          "inline-black"
+        ],
+        "sizes": [
+          {
+            "variant": "inline-black",
+            "size": "m"
+          }
+        ],
+        "appliesTo": [
+          "spliced.vertical.single-event",
+          "spliced.horizontal.full-width",
+          "spliced.horizontal.full-width.bordered-background",
+          "spliced.horizontal.with-sidebar",
+          "spliced.horizontal.with-sidebar.bordered-background",
+          "embedded.product-standard",
+          "spliced.horizontal.full-width.responsive",
+          "spliced.vertical.single-event.bordered"
+        ],
+        "slot": "link",
+        "preview": "components/variants/text-button.html"
+      },
+      {
+        "id": "list",
+        "contract": "components/contracts/list.json",
+        "variants": [
+          "unordered-12"
+        ],
+        "appliesTo": [
+          "embedded.product-detail",
+          "spliced.horizontal.full-width.bordered-background",
+          "spliced.horizontal.with-sidebar.bordered-background",
+          "spliced.vertical.single-event",
+          "embedded.product-full"
+        ],
+        "slot": "bullets",
+        "finiteAppliesTo": [
+          "embedded.product-detail",
+          "embedded.product-full",
+          "spliced.horizontal.full-width.bordered-background",
+          "spliced.horizontal.with-sidebar.bordered-background"
+        ],
+        "preview": "components/variants/list.html"
+      }
+    ],
+    "parents": [
+      {
+        "id": "carousel",
+        "contract": "components/contracts/carousel.json",
+        "preview": "components/variants/carousel.html",
+        "status": "declared-unverified",
+        "evidence": {
+          "status": "declared-unverified",
+          "verified": false,
+          "previewExists": true,
+          "classEvidence": false,
+          "declaredClasses": [
+            "ds-card",
+            "ds-card--vertical"
+          ],
+          "missingClasses": [
+            "ds-card",
+            "ds-card--vertical"
+          ],
+          "exactStructure": "not-established",
+          "browserEvidence": "not-established",
+          "note": "宿主依赖声明及离线类名盘点；未证明具体变体、尺寸、必需子结构、宿主适配或浏览器行为。"
+        },
+        "usage": [
+          {
+            "component": "Card",
+            "slot": "items",
+            "appliesTo": [
+              "external-cards"
+            ],
+            "requiredVariants": [
+              "spliced.vertical.single-event"
+            ],
+            "implementationClasses": [
+              "ds-card",
+              "ds-card--vertical"
+            ],
+            "usage": "按受控items真实调用普通竖向内容Card；与IconCard择一，不能混用或替换为产品卡。"
+          }
+        ]
+      }
+    ],
+    "parentStatus": "declared-hosts",
+    "icons": [
+      {
+        "file": "components/icons/icon-bullet.svg",
+        "registry": "components/icons/icons-manifest.json",
+        "appliesTo": [
+          "spliced.vertical.single-event",
+          "spliced.horizontal.full-width",
+          "spliced.horizontal.with-sidebar",
+          "spliced.horizontal.full-width.bordered-background",
+          "spliced.horizontal.with-sidebar.bordered-background"
+        ],
+        "usage": "要点列表圆点"
+      }
+    ],
+    "tokens": [
+      {
+        "name": "color.gray-1",
+        "value": "#19191A",
+        "unit": null,
+        "cssVar": "--color-gray-1",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.gray-3",
+        "value": "#707070",
+        "unit": null,
+        "cssVar": "--color-gray-3",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.white",
+        "value": "#FFFFFF",
+        "unit": null,
+        "cssVar": "--color-white",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "typography.font-family-base",
+        "value": "Open Sans",
+        "unit": null,
+        "cssVar": "--font-family-base",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-size-h8",
+        "value": 13,
+        "unit": "px",
+        "cssVar": "--font-size-h8",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-size-sm",
+        "value": 12,
+        "unit": "px",
+        "cssVar": "--font-size-sm",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-size-md",
+        "value": 14,
+        "unit": "px",
+        "cssVar": "--font-size-md",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-size-h4",
+        "value": 20,
+        "unit": "px",
+        "cssVar": "--font-size-h4",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "spacing.40",
+        "value": 40,
+        "unit": "px",
+        "cssVar": "--spacing-40",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.20",
+        "value": 20,
+        "unit": "px",
+        "cssVar": "--spacing-20",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.md",
+        "value": 12,
+        "unit": "px",
+        "cssVar": "--spacing-md",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.xs",
+        "value": 4,
+        "unit": "px",
+        "cssVar": "--spacing-xs",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.sm",
+        "value": 8,
+        "unit": "px",
+        "cssVar": "--spacing-sm",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.lg",
+        "value": 16,
+        "unit": "px",
+        "cssVar": "--spacing-lg",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.2",
+        "value": 2,
+        "unit": "px",
+        "cssVar": "--spacing-2",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.2xl",
+        "value": 32,
+        "unit": "px",
+        "cssVar": "--spacing-2xl",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.xl",
+        "value": 24,
+        "unit": "px",
+        "cssVar": "--spacing-xl",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.6",
+        "value": 6,
+        "unit": "px",
+        "cssVar": "--spacing-6",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "border.style.none",
+        "value": "none",
+        "unit": null,
+        "cssVar": "--border-style-none",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.width.default",
+        "value": 1,
+        "unit": "px",
+        "cssVar": "--border-width-default",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.style.default",
+        "value": "solid",
+        "unit": null,
+        "cssVar": "--border-style-default",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.default",
+        "value": "var(--color-gray-5)",
+        "unit": null,
+        "cssVar": "--border-color-default",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.subtle",
+        "value": "var(--color-gray-6)",
+        "unit": null,
+        "cssVar": "--border-color-subtle",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.emphasis",
+        "value": "var(--color-gray-1)",
+        "unit": null,
+        "cssVar": "--border-color-emphasis",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.width.strong",
+        "value": 2,
+        "unit": "px",
+        "cssVar": "--border-width-strong",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "typography.font-weight-semibold",
+        "value": 600,
+        "unit": null,
+        "cssVar": "--font-weight-semibold",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-weight-regular",
+        "value": 400,
+        "unit": null,
+        "cssVar": "--font-weight-regular",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.h7-semibold",
+        "value": {
+          "fontSize": "14px",
+          "lineHeight": "22px",
+          "fontWeight": 600
+        },
+        "unit": null,
+        "cssVar": null,
+        "primitiveReferences": {
+          "fontSize": "typography.font-size-md",
+          "fontWeight": "typography.font-weight-semibold"
+        },
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.h6-semibold",
+        "value": {
+          "fontSize": "16px",
+          "lineHeight": "24px",
+          "fontWeight": 600
+        },
+        "unit": null,
+        "cssVar": null,
+        "primitiveReferences": {
+          "fontSize": "typography.font-size-h6",
+          "fontWeight": "typography.font-weight-semibold"
+        },
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.h7-regular",
+        "value": {
+          "fontSize": "14px",
+          "lineHeight": "22px",
+          "fontWeight": 400
+        },
+        "unit": null,
+        "cssVar": null,
+        "primitiveReferences": {
+          "fontSize": "typography.font-size-md",
+          "fontWeight": "typography.font-weight-regular"
+        },
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.h9-regular",
+        "value": {
+          "fontSize": "12px",
+          "lineHeight": "20px",
+          "fontWeight": 400
+        },
+        "unit": null,
+        "cssVar": null,
+        "primitiveReferences": {
+          "fontSize": "typography.font-size-sm",
+          "fontWeight": "typography.font-weight-regular"
+        },
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.h8-regular",
+        "value": {
+          "fontSize": "13px",
+          "lineHeight": "20px",
+          "fontWeight": 400
+        },
+        "unit": null,
+        "cssVar": null,
+        "primitiveReferences": {
+          "fontSize": "typography.font-size-h8",
+          "fontWeight": "typography.font-weight-regular"
+        },
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "border.color.tag",
+        "value": "var(--color-tag-border)",
+        "unit": null,
+        "cssVar": "--border-color-tag",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.focus",
+        "value": "var(--color-blue)",
+        "unit": null,
+        "cssVar": "--border-color-focus",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "color.tag-border",
+        "value": "#EEEEEE",
+        "unit": null,
+        "cssVar": "--color-tag-border",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.brand-red",
+        "value": "#C00000",
+        "unit": null,
+        "cssVar": "--brand-red",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.gray-2",
+        "value": "#4B4B4D",
+        "unit": null,
+        "cssVar": "--color-gray-2",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.gray-7",
+        "value": "#F2F2F2",
+        "unit": null,
+        "cssVar": "--color-gray-7",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.gray-9",
+        "value": "#FAFBFB",
+        "unit": null,
+        "cssVar": "--color-gray-9",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.blue",
+        "value": "#0060BF",
+        "unit": null,
+        "cssVar": "--color-blue",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.hover-overlay",
+        "value": "rgba(25,25,26,0.2)",
+        "unit": null,
+        "cssVar": "--color-hover-overlay",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.success-tag-bg",
+        "value": "#D6F5DF",
+        "unit": null,
+        "cssVar": "--color-success-tag-bg",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.success-tag-text",
+        "value": "#09832A",
+        "unit": null,
+        "cssVar": "--color-success-tag-text",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      }
+    ]
+  },
+  "evidence": {
+    "localImplementation": "components/variants/card.html",
+    "comparison": "components/sources/card/local-structure-review.json",
+    "exportIndex": "components/sources/card/source-index.json",
+    "nativeComponents": "components/sources/card/native-component-review-1011.json",
+    "nativeSpecification": "components/sources/card/native-specification-review-1011.json",
+    "nativeVertical": "components/sources/card/native-vertical-review-1011.json",
+    "nativeTextBorderCurrent": "components/sources/card/layout-one-text-border-review-1013.json",
+    "nativeTitleListCurrent": "components/sources/card/layout-one-title-list-review-1013.json",
+    "verticalWhiteParent": "components/sources/card/vertical-white-parent-review-1013.json",
+    "embeddedStandardHover": "components/sources/card/embedded-standard-hover-source-1014.json",
+    "embeddedDetail": "components/sources/card/embedded-detail-source-1014.json",
+    "embeddedSmall": "components/sources/card/embedded-small-source-1014.json",
+    "categoryNav": "components/sources/card/category-nav-source-1014.json",
+    "verticalGridClarification": "components/sources/card/vertical-grid-clarification-20261110.json",
+    "localHorizontalAdmission": "components/sources/card/horizontal-local-admission-20261113.json",
+    "currentMgReview": "components/sources/card-carousel-mg-20261114/card-review.json",
+    "fiveVariantSource": "components/sources/five-variants-20261115/review.json"
+  },
+  "sourceValidation": {
+    "componentIdentity": {
+      "status": "not-established",
+      "files": []
+    },
+    "specificationBody": {
+      "status": "not-established",
+      "files": []
+    },
+    "originalOnlineFrontendCode": false,
+    "browserComputedStyles": false,
+    "completeSpecificationCoverage": false,
+    "buttonNesting": {
+      "scope": "finite-authored-button-nesting-only",
+      "checked": [
+        {
+          "variant": "embedded.product-small",
+          "component": "Button",
+          "childVariant": "cart-product-card",
+          "calls": 1,
+          "sourceStates": "Default/Hover only",
+          "geometry": "Cart-owned"
+        },
+        {
+          "variant": "embedded.product-full",
+          "component": "Button",
+          "childVariant": "cart-product-card",
+          "calls": 1,
+          "sourceStates": "Default/Hover only",
+          "geometry": "Cart-owned"
+        }
+      ],
+      "pending": [],
+      "browserVerified": false
+    },
+    "otherAtomNesting": {
+      "TextButton": {
+        "scope": "finite-canonical-TextButton-default-calls",
+        "checked": [
+          {
+            "variant": "spliced.horizontal.full-width.responsive",
+            "children": [
+              {
+                "variant": "inline-black",
+                "size": "m"
+              }
+            ]
+          },
+          {
+            "variant": "spliced.horizontal.full-width",
+            "children": [
+              {
+                "variant": "inline-black",
+                "size": "m"
+              }
+            ]
+          },
+          {
+            "variant": "spliced.vertical.single-event",
+            "children": [
+              {
+                "variant": "inline-black",
+                "size": "m"
+              }
+            ]
+          },
+          {
+            "variant": "spliced.vertical.single-event.bordered",
+            "children": [
+              {
+                "variant": "inline-black",
+                "size": "m"
+              }
+            ]
+          },
+          {
+            "variant": "embedded.product-standard",
+            "children": [
+              {
+                "variant": "inline-black",
+                "size": "m"
+              }
+            ]
+          },
+          {
+            "variant": "spliced.horizontal.full-width.bordered-background",
+            "children": [
+              {
+                "variant": "inline-black",
+                "size": "m"
+              }
+            ]
+          },
+          {
+            "variant": "spliced.horizontal.with-sidebar",
+            "children": [
+              {
+                "variant": "inline-black",
+                "size": "m"
+              }
+            ]
+          },
+          {
+            "variant": "spliced.horizontal.with-sidebar.bordered-background",
+            "children": [
+              {
+                "variant": "inline-black",
+                "size": "m"
+              }
+            ]
+          }
+        ],
+        "inactive": [],
+        "browserVerified": false,
+        "hostStyleCascadeVerified": false
+      },
+      "ButtonCart": {
+        "checked": [
+          {
+            "host": ".ds-card--embedded-small",
+            "atom": "product-card",
+            "slotOnlyPosition": true
+          },
+          {
+            "host": ".ds-card--embedded-small",
+            "atom": "product-card",
+            "slotOnlyPosition": true
+          },
+          {
+            "host": ".ds-card--embedded-full",
+            "atom": "product-card",
+            "slotOnlyPosition": true
+          },
+          {
+            "host": ".ds-card--embedded-full",
+            "atom": "product-card",
+            "slotOnlyPosition": true
+          },
+          {
+            "host": ".ds-card--embedded-full",
+            "atom": "product-card",
+            "slotOnlyPosition": true
+          },
+          {
+            "host": ".ds-card--embedded-full",
+            "atom": "product-card",
+            "slotOnlyPosition": true
+          },
+          {
+            "host": ".ds-card--embedded-full",
+            "atom": "product-card",
+            "slotOnlyPosition": true
+          },
+          {
+            "host": ".ds-card--embedded-full",
+            "atom": "product-card",
+            "slotOnlyPosition": true
+          }
+        ]
+      }
+    },
+    "newTag": {
+      "source": "components/sources/tag/semantic-new-source-1014.json",
+      "node": "68908:016413"
+    },
+    "newTagHosts": {
+      "count": 6,
+      "variant": "semantic-new"
+    },
+    "cart": {
+      "status": "product-default-hover-and-official-svg-checked",
+      "source": "components/sources/card/cart-dependency-source-1014.json",
+      "svg": "components/sources/card/cart-icon-original-1014.svg"
+    },
+    "categoryNav": {
+      "source": "components/sources/card/category-nav-source-1014.json",
+      "nodes": [
+        "68908:047953",
+        "68908:048090",
+        "68908:048065",
+        "68908:048035"
+      ],
+      "scope": "unfolded PC285 only"
+    },
+    "embeddedSmall": {
+      "status": "two-original-small-members-checked",
+      "file": "components/sources/card/embedded-small-source-1014.json",
+      "nodes": [
+        "68908:035265",
+        "68908:035246"
+      ]
+    },
+    "embeddedStandard": {
+      "status": "two-original-hover-members-checked-default-native-record-reused",
+      "file": "components/sources/card/embedded-standard-hover-source-1014.json",
+      "nodes": [
+        "68908:040885",
+        "68908:040948"
+      ],
+      "browserVerified": false
+    }
+  },
+  "freshness": {
+    "fingerprints": {
+      "components/button-current.css": "45e94e48ec97a34b4883ecc4f11b33301cdd6679445a3970cb16a2a87c6d8c9e",
+      "components/button-runtime-current.css": "caaa9b65a8d2fbebfa487ca3e0cf0c67d36e0219ffc55d4b0d801371a02da76c",
+      "components/card-completion-current.css": "9cb17574a4bd11eb12760e6f08499adf3c8edcd88f43b0f71911d2c52ffb3aa2",
+      "components/card-current.css": "96957596168e20d1cd870d5c5f667f1757d005616e09d6878516da0f82af2ce6",
+      "components/card-current.js": "c1b3f0df4885d94775f867fd748e3be37b601af668a59846ffbceefb2132f842",
+      "components/card-responsive.css": "8b5e2bb425816ac031e93224fdb61f13bcb46006cccc27641de04d499803fc3c",
+      "components/card-sidebar-current.css": "d1d90b4caab1fdc2470f9dbb4234b2979e0342d9d7c6a8fbcbd316dbee13406c",
+      "components/cart-current.css": "1dcceb0139a292876bac11eee7d617d76365ef4a45b324efafd9ffd6f99ddc40",
+      "components/components.css": "a08b4fe2790b5ff2b784c6362a90f1b94e7535a03e863232ce6d620a52e85f73",
+      "components/contracts/button.json": "1f3092d74e19c1a840fbf2e8b8ecaf6115976b2941cc5484e4cda824025b1f73",
+      "components/contracts/card.json": "7ebea9bece316a42a11dd5643e103bde1211914519164cd973fb5954652d2cc1",
+      "components/contracts/list.json": "42201beb4d1d142d5192f5397169e408632eedbbcb641c53b7840e31c9446162",
+      "components/contracts/menu-navigation.json": "44245628e9fe977355b231a6126fd3af379ddf7a0676f10358f6410a098c1b72",
+      "components/contracts/tag.json": "bb8c4c7ca112feacb0af9aed188e4279df4fbab6b7774885f8e8e3508aa00cf5",
+      "components/contracts/text-button.json": "323301e3a3438778dd29d5d6c32fd7e661846707ce711b5c0ec82d11fea12fc5",
+      "components/icons/icon-bullet.svg": "d97e82725de89af391e3c14c5a14d541f8171b1cd714e57b2768edfcab773dbd",
+      "components/icons/icon-cart-add.svg": "ec9abb0e806f0d23db0e279cc5a8935bab0619d0c2c8b71d8b56b0945e3b8377",
+      "components/icons/icon-featured-star.svg": "3ff7625e9743df2f295b32dc8e7e12349839525ff1539d47c091b40d44188643",
+      "components/icons/icons-manifest.json": "12c48af6d1dc59d50b76046bb0507005f565aa4224a6d8056ce4eaaf8050c43e",
+      "components/list-unordered-current.css": "4b257420500aab077912b1687d45246d29f959dd05f36ef8a92115306c984e8c",
+      "components/menu-navigation-current.css": "4c0bd3fe77d5dfe7b48de489878dc574cbe7ff91fa78b6f875cb15f4733c146e",
+      "components/menu-navigation-current.js": "512de10798b244da08f7f8d34a0c2de06cb333e0d508952b896c6eefd202b115",
+      "components/preview/reference-live.js": "4839383529a3ee82df1d8efe675d430567abc1986034499107aa429d21a18ea6",
+      "components/reference-policy.json": "4ae8f51f623386417e38d497caafb8bda4417c929159002a7ac088e6e526b482",
+      "components/sources/card-carousel-mg-20261114/card-review.json": "55a136d7939a4df4756af14e3f8ae23b4421b50aab8445f499482afcddb44228",
+      "components/sources/card/bordered-sidebar-list-host-review-1015.json": "8431c0297a1f422ca387435bc509248e5feb5ca403293d726bb721061badf0e1",
+      "components/sources/card/cart-dependency-source-1014.json": "5b489f0b93fad1c5d896bfc892aebe621139ba0a9594a660a6d29e3d1163b68d",
+      "components/sources/card/cart-icon-original-1014.svg": "d82ec09fa66e10017004d5de93827524612793d6b90602bbb63e7f8e7d451d73",
+      "components/sources/card/category-nav-source-1014.json": "b5c69f3f4ef663900e5f319296ff304c81eaa1eda74a9d4e47ecd3d05f361810",
+      "components/sources/card/embedded-detail-source-1014.json": "e18a69c8e53b593cff4340bec782aa0506a13862ccb3032cefcab67e34e83e5f",
+      "components/sources/card/embedded-small-source-1014.json": "f84127a00e8b587c02eb962e4b5252d9f4cc01f2ef157ed6309c0526ab5b5614",
+      "components/sources/card/embedded-standard-hover-source-1014.json": "b3a8b21a1080d56a7da937b55b298b68ae4bf0fd2e342f94dfb520cbcb9f6589",
+      "components/sources/card/horizontal-local-admission-20261113.json": "0ed0144d970559dccf57efc5c85d9742234fbe525ebe54f2bcc3a63022c6f008",
+      "components/sources/card/layout-one-list-host-review-1015.json": "cb09cf8b9f1b38d486af3f94e3f42ae7ced6b64500e30dbb7a5b5e2b339c2e1d",
+      "components/sources/card/layout-one-reverse-list-host-review-1015.json": "9ce3d2624cee065246da6320ebc1f6b86fbbfed3eed1b7e9b48d9170d94164fe",
+      "components/sources/card/layout-one-text-border-review-1013.json": "5b67319d635afa665bcfc0764b3ea95a6c239f7da66c6ab6ea9bbe9882d35e4b",
+      "components/sources/card/layout-one-title-list-review-1013.json": "f57ce8ca787db8286a55631a16ce4d6f688ca512c8aca9cb926112b9359f7e82",
+      "components/sources/card/local-structure-review.json": "54a801525f6f273f9f5db9a8c794935bcfd612f5cb601d88ab13e7657b0b8cfd",
+      "components/sources/card/native-component-review-1011.json": "3711eb10992b6d7d9f41b66ace6a430df88aff55a988bed7bbc6f9e07e35d520",
+      "components/sources/card/native-specification-review-1011.json": "cd37623275f33ba243dba8dfe70eec15f9ac5bb62a86146ec6493122b8849835",
+      "components/sources/card/native-vertical-review-1011.json": "af3528dffc264d921b8311e28a63b03defff245ea9f6e41f3618f65d4ab7f480",
+      "components/sources/card/preview-assets/img-placeholder.svg": "7c0e16e6b04ff7717d4ee4241d8f162c6c5b528359a0fece1ffcda9711633eae",
+      "components/sources/card/reverse-bordered-sidebar-list-host-review-1015.json": "3c2453896c39b972d21cf52ff62bdfb50b5cad443dfbf8276c65c9a920ca19bc",
+      "components/sources/card/reverse-unbordered-list-host-review-1015.json": "15508543a8097d9ed8f0fbcf541eed097d8d16d1092639b788d7c77525dfafb6",
+      "components/sources/card/server-product-list-host-review-1015.json": "aef4003f86d64a3a71d282c73894497e48a334ff429c7acff93f4f2fe1c25ee2",
+      "components/sources/card/source-index.json": "2d296d45eb0c9c4ed760fda8d756729346af0bd03071c6dfb99932fa2768251e",
+      "components/sources/card/unbordered-list-host-review-1015.json": "b4ce3ded9749f868c29e849a36f4d26120fbdee1b0f12ef7050e06196d96044b",
+      "components/sources/card/vertical-grid-clarification-20261110.json": "78913618db77e2aeb64c3db94a985f4fee18c31f7d0d4ad804192f2c8a1c5a45",
+      "components/sources/card/vertical-list-host-review-1015.json": "6535c22bbb77b3be6c92509b11cd788b9402e1acd45cdeab7bddd2eac7817c79",
+      "components/sources/card/vertical-white-parent-review-1013.json": "150203c22fe67543bbe2a7b7a83c2391aff651070e7d7f8662c3c6614547bb1b",
+      "components/sources/five-variants-20261115/review.json": "821baac5e00e60f1a796ae8d0a1881ae122da740e477666a54b3e94a13a7556f",
+      "components/sources/menu-navigation/card-sidebar-288-1115.html": "7334274f9f489d5f756ce038e6607fbccdda77c664d91455cb2fdfb67abb6c85",
+      "components/sources/tag/card-count-popup-review-1015.json": "b69a3b611b59ec116c88e3b292f9d41bf09329089605b770712397767fa1017c",
+      "components/sources/tag/card-gray-label-adaptation-1015.json": "b3485b9b47e6409a4a0be6d94f13bd5fde9fdd31c790e69ba5d4c5780868eeb8",
+      "components/sources/tag/card-gray-label-source-calls-1015.html": "964ea5ce271a1b41258c9bc0d5ed0ede7ef6ec33eb497690e959e9a759c001c1",
+      "components/sources/tag/card-metadata-featured-review-1015.json": "f3c6851e940ab2c8edbb79b4e63d0d84b6b3f28b9081bb64f6a2ea0184b4ddd0",
+      "components/sources/tag/card-single-metadata-review-1015.json": "e68939418389fe720c8241dcb8a789efe9fc60b07c51618f0a0fb0604121cdae",
+      "components/sources/tag/semantic-new-source-1014.json": "6650e34ff9dec2b7d703df47d6b3794afe601a8715a41a08a3578fdfac55b505",
+      "components/tag-current.css": "bdbf11b9a730d851ce640041874bced37b6e7e316b606c14719dfa72600d9aa7",
+      "components/tag-product-current.css": "b9edd951ef01a97794d55f8dd3bffaf9ab11b5b90b6e0256643bad0c92fc7ab5",
+      "components/tag-product-current.js": "bfcb8a4ec29cee2b3e3613aa73470f58440ae6b267c6dea8edb588ccbb883806",
+      "components/text-button-current.css": "b38b1b1ad0099d580f7676be7cb2def987753a8eaebd86348ab965768696eb1d",
+      "components/token-specs/border.json": "d286ee4681deda1c7702c310b065c86f824539b3a8797efba05b24bc225ab322",
+      "components/token-specs/colors.json": "5267d59fdc687b54496977280c00c97f0beb6ffce013f87853504f5b736d3389",
+      "components/token-specs/spacing.json": "351b14cfce4411248ad41e00eaaf2b1cab9b705997980dfed1fc65693740e65c",
+      "components/token-specs/typography.json": "93b7dc07547218a33c075b7cdcd942f89094353a7847d483d8378b8883327e16",
+      "components/tokens.css": "f63f3c8fea511d8029902bc3905b01853ac5e92049c1b18ca35ebc9a680c3e69",
+      "components/variants/button.html": "6b6715b66e6c0b684c072dcdcbf7170aeb9f49a31bb32ca5b8986644d626cfe6",
+      "components/variants/card-call-checks.html": "616c3a4b805d7d9921ef3756141087546ff08473907fa0563e00bb69da6fbc03",
+      "components/variants/card.html": "b43e27ebba1815709741d779b54961fa6b11cf71f5d3235d578a4b2047aa1cd4",
+      "components/variants/carousel.html": "96c79a0f343f6e7e6f26efcce99a2a8d7f7ebdd3fc3fa7bc9349155c6c0cc6ed",
+      "components/variants/list.html": "51f7f184f06b1e0a334887d65cf352e2c89a43a5ac72358b88bf405500f0d98e",
+      "components/variants/menu-navigation.html": "6238b924e7c62295141a5dba9b8900cd5eb39779a19ce00fb307aac928900462",
+      "components/variants/tag.html": "fcafd08ba11ca6faf2d41e185fc69099175769db0fa030ae9e9fa0ae7e410a04",
+      "components/variants/text-button.html": "6295056d973b26231a68158bd758ebde321d8a105326a740f159006a1a7bd2f8",
+      "page-inputs/bdcom-oem-m2/component-sources/card.json": "3da107a30840ec9f242a6d089c48b0b2dd09b8b7da94cd9d60af0bdef5c7a78e"
+    },
+    "graphFingerprint": "bf1644ddf3f4d99a3ab098c722959e8aa44a5f828e60aba9772e6465f5877dbd",
+    "note": "从本地源文件生成；不是 MasterGo 在线实时状态。"
+  },
+  "readScope": {
+    "variant": "spliced.horizontal.full-width.bordered-background",
+    "note": "只展开当前已选变体；其他变体没有被声明为不可用。尺寸继续按真实 sizeOptions 选择。"
+  }
+}

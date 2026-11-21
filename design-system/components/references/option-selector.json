@@ -1,0 +1,897 @@
+{
+  "schemaVersion": "fs-component-reference/1.0.0",
+  "component": {
+    "id": "option-selector",
+    "name": "OptionSelector",
+    "scope": "desktop-plain-h7-media-and-compact-SKU-price-product-radio-options-MG-Tag-PC-color-and-accessory",
+    "reviewStatus": {
+      "engineering": "pending",
+      "visual": "pending",
+      "familyCoverage": "partial"
+    }
+  },
+  "selection": {
+    "policy": "Use full plain H7 media or two-line detail product radio button. Every operational call needs the existing radiogroup wrapper with an accessible name and >=2 unique nonempty values; alone the specimen is presentation-only. 当前《新文件》仅核实Radio结算插槽边界；OptionSelector独立规范未定位，保留本地兼容范围，不标为全族MG通过。 颜色与服务已定位Tag常规属性/配件属性；颜色复用Select下拉，服务复用原生Checkbox。仅PC，不沿本地草案的Radio/24px图/M横向行。",
+    "supported": [
+      "media",
+      "product",
+      "color",
+      "service"
+    ],
+    "unsupported": [
+      "payment-brand",
+      "plain-sm",
+      "other-size-canonical-calls",
+      "standalone-interaction",
+      "initial-selected-canonical",
+      "public-dynamic-api",
+      "legacy-current-co-loading",
+      "mobile"
+    ]
+  },
+  "runtime": {
+    "styles": [
+      "components/tokens.css",
+      "components/components.css",
+      "components/checkbox-current.css",
+      "components/option-selector-current.css",
+      "components/tag-configuration-current.css",
+      "components/select-current.css",
+      "components/option-configuration-current.css"
+    ],
+    "scripts": [
+      "components/checkbox-current.js",
+      "components/option-selector-current.js",
+      "components/select-current.js",
+      "components/option-configuration-current.js"
+    ],
+    "fontStylesheets": [
+      "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+    ]
+  },
+  "identity": {
+    "rule": "media/product retain named radiogroup and unique values. color uses Tag PC trigger + existing Select single listbox. service uses Tag PC accessory + native Checkbox. These four current call shapes have separate semantics and allowed content; no page style overrides.",
+    "groupAssembly": {
+      "selector": "div.ds-option-selector-group[role=\"radiogroup\"]",
+      "minimumItems": 2,
+      "required": [
+        "aria-label",
+        "unique nonempty option values"
+      ],
+      "rule": "Wrapper is page assembly using the existing Preview class, not a new variant. Groups are independent and options cannot be nested groups.",
+      "appliesTo": [
+        "media",
+        "product"
+      ]
+    }
+  },
+  "locked": [
+    "Safe button/radio native semantics",
+    "Plain H7 media or compact SKU/price product structure; source example retained",
+    "Single-selection group assembly",
+    "Current reusable runtime and shared CSS"
+  ],
+  "behavior": {
+    "group": "Existing .ds-option-selector-group[role=radiogroup] required; initialization makes first enabled option tabbable if none selected. Click and arrows select once and emit ds:option-selector-change with value/label. Groups independent; no submission or navigation.",
+    "disabled": "Native disabled option is cleared and skipped; current runtime also ignores synthetic disabled keyboard events.",
+    "keyboard": "Arrow directions wrap; Home/End select boundaries. Enter/Space rely on native button activation and require browser evidence.",
+    "initialization": "New current runtime uses a document guard to prevent duplicate delegates. Load timing supports DOMContentLoaded; no public insertion API. Do not co-load legacy and current scripts.",
+    "scope": "Current PC media/product compatibility, Tag color dropdown and Tag accessory calls are available. Payment-brand, other source sizes, M/Pad and backend requests remain outside current call scope.",
+    "nativeStateGuard": "Current native :disabled guards inherited fieldset; disabled changes resync tabstops without changing selection, and new choice clears previously disabled selection. Browser proof pending.",
+    "availability": "Native disabled/fieldset, hidden or ARIA-disabled ancestors block synthetic selection and remove all unavailable tabstops while preserving previously committed state. Re-enable restores one available tabstop. Composing arrows do not select.",
+    "groupOwnership": "Nearest radiogroup owns its options. Nested groups and dynamically inserted groups have independent state/tabstops; initialization runs once per group and subsequent availability sync does not clear prior selection.",
+    "serviceCheckbox": "PC service is source Tag accessory + actual Checkbox(sm),264×80/64px image, native label activation. Existing M row specimen is not admitted.",
+    "finiteProduct": "当前精确调用采用规范页已有SKU+价格紧凑项；原Address/Shipping/Payment演示不作为商品选型依据，结算基础互斥项使用Radio/bordered-detail。",
+    "sourceConfiguration": "color uses existing Select keyboard/outside/Escape/focus and ds:select-change(values,labels); Tag swatch follows selected data-color. service uses genuine Checkbox input and native change/disabled/Space. Host owns product/data requests; not a checkout/cart backend."
+  },
+  "examples": [
+    {
+      "name": "media",
+      "runtime": {
+        "styles": [
+          "components/tokens.css",
+          "components/components.css",
+          "components/checkbox-current.css",
+          "components/option-selector-current.css"
+        ],
+        "scripts": [
+          "components/checkbox-current.js",
+          "components/option-selector-current.js"
+        ]
+      },
+      "publication": {
+        "key": "option-selector/media",
+        "disposition": "restricted",
+        "newPages": true,
+        "reason": "Local normative Preview, typed contract and actual shared dependencies reviewed; finite PC call requires current browser engineering proof. No claim of independent latest MG/whole-family acceptance.",
+        "constraints": [
+          "当前media为原无框图文项，product为规范页已有紧凑SKU/价格项；必须放入有名称的ds-option-selector-group radiogroup且至少两项。保留原原生按钮和键盘语义，不据此开放颜色、服务、支付或其他外观/尺寸；基础结算说明使用Radio/bordered-detail。",
+          "只允许契约列明的内容参数；工程验证必须当前有效，原规范视觉、子组件结构与资源版本保持。"
+        ],
+        "contractPolicy": "当前media为原无框图文项，product为规范页已有紧凑SKU/价格项；必须放入有名称的ds-option-selector-group radiogroup且至少两项。保留原原生按钮和键盘语义，不据此开放颜色、服务、支付或其他外观/尺寸；基础结算说明使用Radio/bordered-detail。",
+        "use": "withheld",
+        "evidence": "components/contracts/option-selector.json#aiContract/evidence",
+        "requiresCurrentEngineering": true,
+        "visualApproval": "separate-not-granted"
+      },
+      "rootTag": "button",
+      "sizeOptions": [],
+      "bindings": {
+        "value": {
+          "mode": "native-attribute",
+          "target": "root",
+          "attribute": "value",
+          "valueType": "nonempty-string"
+        },
+        "disabled": {
+          "mode": "native-attribute",
+          "target": "root",
+          "attribute": "disabled",
+          "values": [
+            false,
+            true
+          ],
+          "default": false
+        },
+        "changeCallback": {
+          "mode": "event-handler",
+          "target": "root",
+          "event": "ds:option-selector-change"
+        }
+      },
+      "purpose": "plain-h7-illustrated-radio-option",
+      "whenToUse": "图文内容本身构成互斥配置；当前仅已登记无框H7。支付品牌不据此选型。",
+      "whenNotToUse": "只有圆形状态图加单行文字时使用 Radio regular；仅靠颜色辨识时使用 color；需要商品、价格等复合双行信息时使用 product；不得把 104/95/111px specimen 宽度写入生产 CSS。",
+      "rootClasses": "ds-option-selector ds-option-selector--plain",
+      "requiredStructure": [
+        "img.ds-option-selector__media",
+        "span.ds-option-selector__label"
+      ],
+      "slots": {
+        "label": {
+          "selector": "span.ds-option-selector__label",
+          "mode": "text",
+          "required": true
+        }
+      },
+      "allowedEdits": [
+        "label",
+        "value",
+        "disabled",
+        "changeCallback"
+      ],
+      "exampleHtml": "<button class=\"ds-option-selector ds-option-selector--plain\" data-ai-example=\"ai-option-selector-media\" value=\"media-option\" type=\"button\" role=\"radio\" aria-checked=\"false\" tabindex=\"-1\"><img class=\"ds-option-selector__media\" src=\"../icons/goods-包裹.svg\" alt=\"\"><span class=\"ds-option-selector__label\">100 QSFP28</span></button>"
+    },
+    {
+      "name": "product",
+      "runtime": {
+        "styles": [
+          "components/tokens.css",
+          "components/components.css",
+          "components/checkbox-current.css",
+          "components/option-selector-current.css"
+        ],
+        "scripts": [
+          "components/checkbox-current.js",
+          "components/option-selector-current.js"
+        ]
+      },
+      "publication": {
+        "key": "option-selector/product",
+        "disposition": "restricted",
+        "newPages": true,
+        "reason": "Local normative Preview, typed contract and actual shared dependencies reviewed; finite PC call requires current browser engineering proof. No claim of independent latest MG/whole-family acceptance.",
+        "constraints": [
+          "当前media为原无框图文项，product为规范页已有紧凑SKU/价格项；必须放入有名称的ds-option-selector-group radiogroup且至少两项。保留原原生按钮和键盘语义，不据此开放颜色、服务、支付或其他外观/尺寸；基础结算说明使用Radio/bordered-detail。",
+          "只允许契约列明的内容参数；工程验证必须当前有效，原规范视觉、子组件结构与资源版本保持。"
+        ],
+        "contractPolicy": "当前media为原无框图文项，product为规范页已有紧凑SKU/价格项；必须放入有名称的ds-option-selector-group radiogroup且至少两项。保留原原生按钮和键盘语义，不据此开放颜色、服务、支付或其他外观/尺寸；基础结算说明使用Radio/bordered-detail。",
+        "use": "withheld",
+        "evidence": "components/contracts/option-selector.json#aiContract/evidence",
+        "requiresCurrentEngineering": true,
+        "visualApproval": "separate-not-granted"
+      },
+      "rootTag": "button",
+      "sizeOptions": [],
+      "bindings": {
+        "value": {
+          "mode": "native-attribute",
+          "target": "root",
+          "attribute": "value",
+          "valueType": "nonempty-string"
+        },
+        "disabled": {
+          "mode": "native-attribute",
+          "target": "root",
+          "attribute": "disabled",
+          "values": [
+            false,
+            true
+          ],
+          "default": false
+        },
+        "changeCallback": {
+          "mode": "event-handler",
+          "target": "root",
+          "event": "ds:option-selector-change"
+        }
+      },
+      "purpose": "actual-SKU-and-price-compact-radio-option",
+      "whenToUse": "商品/SKU与价格共同构成互斥配置；按现有本地规范候选，当前MG独立来源未定位。",
+      "whenNotToUse": "只有圆形状态图加主副文本的结算地址、配送或支付项使用 Radio bordered-detail；可独立加购服务使用 service；支付品牌 Logo-only 使用 media + payment；不得把 378px specimen 宽度固化为生产宽度。",
+      "rootClasses": "ds-option-selector ds-option-selector--sm ds-option-selector--product",
+      "requiredStructure": [
+        "img.ds-option-selector__media",
+        "span.ds-option-selector__label",
+        "span.ds-option-selector__price",
+        "span.ds-option-selector__disclosure"
+      ],
+      "slots": {
+        "label": {
+          "selector": "span.ds-option-selector__label",
+          "mode": "text",
+          "required": true
+        },
+        "price": {
+          "selector": "span.ds-option-selector__price",
+          "mode": "text",
+          "required": true
+        },
+        "image": {
+          "selector": "img.ds-option-selector__media",
+          "mode": "structured-content",
+          "required": true
+        }
+      },
+      "allowedEdits": [
+        "label",
+        "price",
+        "image",
+        "value",
+        "disabled",
+        "changeCallback"
+      ],
+      "exampleHtml": "<button class=\"ds-option-selector ds-option-selector--sm ds-option-selector--product\" data-ai-example=\"ai-option-selector-product\" value=\"product-option\" type=\"button\" role=\"radio\" aria-checked=\"false\" tabindex=\"-1\"><img class=\"ds-option-selector__media\" src=\"../../docs/assets/20250901105611h7ydr7.jpg.webp\" alt=\"\"><span class=\"ds-option-selector__label\">IES5220-4T4FP-E | 4x 1Gb RJ45</span><span class=\"ds-option-selector__price\">US$1,669.00</span><span class=\"ds-option-selector__disclosure\" aria-hidden=\"true\"></span></button>"
+    },
+    {
+      "name": "color",
+      "runtime": {
+        "styles": [
+          "components/tokens.css",
+          "components/components.css",
+          "components/select-current.css",
+          "components/tag-configuration-current.css",
+          "components/option-configuration-current.css"
+        ],
+        "scripts": [
+          "components/select-current.js",
+          "components/option-configuration-current.js"
+        ]
+      },
+      "publication": {
+        "key": "option-selector/color",
+        "disposition": "restricted",
+        "newPages": true,
+        "reason": "Current MG source-bound PC adaptation and real local call.",
+        "constraints": [
+          "Exact Tag/Badge/Checkbox/Select/Button parts and original source referral",
+          "PC only; backend and visual sign-off not implied"
+        ],
+        "requiresCurrentEngineering": true,
+        "visualApproval": "separate-not-granted"
+      },
+      "rootTag": "div",
+      "sizeOptions": [],
+      "bindings": {
+        "changeCallback": {
+          "mode": "event-handler",
+          "target": "root",
+          "event": "ds:select-change"
+        }
+      },
+      "purpose": "MG-Tag-PC-color-dropdown-with-real-Select",
+      "whenToUse": "PC产品属性文本＋颜色下拉：306×30，14px色块，复用Select单选。",
+      "whenNotToUse": "仅色块Tag、Radio按钮组、M端42px形态或用颜色替代语义图标。",
+      "rootClasses": "ds-select ds-option-selector--color",
+      "requiredStructure": [
+        "button.ds-select__trigger",
+        "div.ds-select__panel",
+        "div.ds-select__option",
+        "span.ds-tag__configuration-swatch"
+      ],
+      "slots": {
+        "options": {
+          "selector": ".ds-select__list",
+          "mode": "structured-content",
+          "required": true,
+          "preserve": [
+            "div.ds-select__option",
+            "span.ds-select__option-label"
+          ],
+          "rule": "2..24 unique options; one initially selected, paired IDs, safe six-digit data-color business values only."
+        }
+      },
+      "allowedEdits": [
+        "options",
+        "changeCallback"
+      ],
+      "exampleHtml": "<div data-ai-example=\"ai-option-color-source\" class=\"ds-select ds-option-selector--color\" data-option-color-current=\"mg-pc\" data-select-mode=\"single\" id=\"configuration-color\"><button class=\"ds-select__trigger\" type=\"button\" role=\"combobox\" aria-haspopup=\"listbox\" aria-label=\"Color: Blue\" aria-expanded=\"false\" aria-controls=\"configuration-color-panel\" id=\"configuration-color-trigger\"><span class=\"ds-tag ds-tag--configuration-color\" data-tag-part=\"configuration-color\"><span class=\"ds-tag__configuration-swatch\" aria-hidden=\"true\"></span><span class=\"ds-tag__configuration-label ds-select__value\" data-placeholder=\"Blue\">Blue</span><img class=\"ds-tag__configuration-arrow ds-select__arrow\" src=\"../icons/icon-select-down.svg\" alt=\"\"></span></button><div class=\"ds-select__panel\" role=\"listbox\" hidden=\"\" id=\"configuration-color-panel\" aria-labelledby=\"configuration-color-trigger\" data-select-part=\"configuration-color-options\"><div class=\"ds-select__list\"><div class=\"ds-select__option\" role=\"option\" aria-selected=\"true\" data-value=\"blue\" data-color=\"#5A82F7\" id=\"configuration-blue\"><span class=\"ds-select__option-label\">Blue</span></div><div class=\"ds-select__option\" role=\"option\" aria-selected=\"false\" data-value=\"black\" data-color=\"#19191A\" id=\"configuration-black\"><span class=\"ds-select__option-label\">Black</span></div></div></div></div>"
+    },
+    {
+      "name": "service",
+      "runtime": {
+        "styles": [
+          "components/tokens.css",
+          "components/components.css",
+          "components/checkbox-current.css",
+          "components/tag-configuration-current.css"
+        ],
+        "scripts": [
+          "components/checkbox-current.js"
+        ]
+      },
+      "publication": {
+        "key": "option-selector/service",
+        "disposition": "restricted",
+        "newPages": true,
+        "reason": "Current MG source-bound PC adaptation and real local call.",
+        "constraints": [
+          "Exact Tag/Badge/Checkbox/Select/Button parts and original source referral",
+          "PC only; backend and visual sign-off not implied"
+        ],
+        "requiresCurrentEngineering": true,
+        "visualApproval": "separate-not-granted"
+      },
+      "rootTag": "label",
+      "sizeOptions": [],
+      "bindings": {
+        "value": {
+          "mode": "native-attribute",
+          "target": "input.ds-checkbox__input",
+          "attribute": "value",
+          "valueType": "nonempty-string"
+        },
+        "disabled": {
+          "mode": "native-attribute",
+          "target": "input.ds-checkbox__input",
+          "attribute": "disabled",
+          "values": [
+            false,
+            true
+          ],
+          "default": false
+        },
+        "changeCallback": {
+          "mode": "event-handler",
+          "target": "root",
+          "event": "change"
+        }
+      },
+      "purpose": "MG-Tag-PC-accessory-native-checkbox",
+      "whenToUse": "PC配件或可独立加购服务：264×80、64px图，Checkbox多选。",
+      "whenNotToUse": "互斥套餐、M端右侧Checkbox服务行、库存与加购后端。",
+      "rootClasses": "ds-option-selector--service ds-tag ds-tag--accessory-pc",
+      "requiredStructure": [
+        "input.ds-checkbox__input",
+        "span.ds-checkbox__box",
+        "img.ds-option-selector__media",
+        "span.ds-option-selector__content"
+      ],
+      "slots": {
+        "label": {
+          "selector": "span.ds-option-selector__label",
+          "mode": "text",
+          "required": true
+        },
+        "price": {
+          "selector": "span.ds-option-selector__price",
+          "mode": "text",
+          "required": true
+        },
+        "image": {
+          "selector": "img.ds-option-selector__media",
+          "mode": "structured-content",
+          "required": true
+        }
+      },
+      "allowedEdits": [
+        "label",
+        "price",
+        "image",
+        "value",
+        "disabled",
+        "changeCallback"
+      ],
+      "exampleHtml": "<label data-ai-example=\"ai-option-service-source\" class=\"ds-option-selector--service ds-tag ds-tag--accessory-pc\" data-option-service-current=\"mg-pc\" data-tag-part=\"configuration-service\"><span class=\"ds-option-selector__checkbox ds-checkbox ds-checkbox--sm\" data-checkbox-current=\"\" data-checkbox-control=\"\"><input class=\"ds-option-selector__input ds-checkbox__input\" type=\"checkbox\" name=\"services\" value=\"one-year\"><span class=\"ds-checkbox__box\" aria-hidden=\"true\"></span></span><img class=\"ds-option-selector__media\" src=\"../../docs/assets/20250901105611h7ydr7.jpg.webp\" alt=\"Service accessory reference\"><span class=\"ds-option-selector__content\"><span class=\"ds-option-selector__label\">1 Year Service</span><span class=\"ds-option-selector__price\">US$109.00</span></span></label>"
+    }
+  ],
+  "relationships": {
+    "children": [
+      {
+        "id": "checkbox",
+        "contract": "components/contracts/checkbox.json",
+        "variants": [
+          "sm"
+        ],
+        "appliesTo": [
+          "service"
+        ],
+        "slot": "check",
+        "preview": "components/variants/checkbox.html"
+      },
+      {
+        "id": "tag",
+        "contract": "components/contracts/tag.json",
+        "part": "configuration-color",
+        "scope": "Finite current MG source part; host owns operational semantics. No standalone variant or independent visual approval.",
+        "variants": [
+          "product-configuration-color-source"
+        ],
+        "appliesTo": [
+          "color"
+        ],
+        "slot": "trigger",
+        "preview": "components/variants/tag.html"
+      },
+      {
+        "id": "tag",
+        "contract": "components/contracts/tag.json",
+        "part": "configuration-service",
+        "scope": "Finite current MG source part; host owns operational semantics. No standalone variant or independent visual approval.",
+        "variants": [
+          "product-accessory-pc-source"
+        ],
+        "appliesTo": [
+          "service"
+        ],
+        "slot": "accessory",
+        "preview": "components/variants/tag.html"
+      },
+      {
+        "id": "select",
+        "contract": "components/contracts/select.json",
+        "part": "configuration-color-options",
+        "scope": "Existing native single-basic listbox with business color content; private finite OptionSelector host part.",
+        "variants": [
+          "single-basic"
+        ],
+        "appliesTo": [
+          "color"
+        ],
+        "slot": "color-options",
+        "preview": "components/variants/select.html"
+      }
+    ],
+    "parents": [],
+    "parentStatus": "no-declared-hosts",
+    "icons": [
+      {
+        "file": "components/icons/icon-chevron-down.svg",
+        "registry": "components/icons/icons-manifest.json",
+        "appliesTo": [
+          "media",
+          "color",
+          "product"
+        ],
+        "usage": "可选右侧 disclosure，12×12px，通过 mask 继承文字色"
+      },
+      {
+        "file": "components/icons/icon-checkbox-default-14.svg",
+        "registry": "components/icons/icons-manifest.json",
+        "appliesTo": [
+          "service"
+        ],
+        "usage": "历史未标记service兼容资产；当前service经Checkbox(sm)原子资源间接引用，不由宿主切图。"
+      },
+      {
+        "file": "components/icons/icon-checkbox-hover-14.svg",
+        "registry": "components/icons/icons-manifest.json",
+        "appliesTo": [
+          "service"
+        ],
+        "usage": "历史未标记service兼容资产；当前service经Checkbox(sm)原子资源间接引用，不由宿主切图。"
+      },
+      {
+        "file": "components/icons/icon-checkbox-checked-14.svg",
+        "registry": "components/icons/icons-manifest.json",
+        "appliesTo": [
+          "service"
+        ],
+        "usage": "历史未标记service兼容资产；当前service经Checkbox(sm)原子资源间接引用，不由宿主切图。"
+      }
+    ],
+    "tokens": [
+      {
+        "name": "color.gray-1",
+        "value": "#19191A",
+        "unit": null,
+        "cssVar": "--color-gray-1",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.gray-3",
+        "value": "#707070",
+        "unit": null,
+        "cssVar": "--color-gray-3",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.gray-7",
+        "value": "#F2F2F2",
+        "unit": null,
+        "cssVar": "--color-gray-7",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.white",
+        "value": "#FFFFFF",
+        "unit": null,
+        "cssVar": "--color-white",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.blue",
+        "value": "#0060BF",
+        "unit": null,
+        "cssVar": "--color-blue",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.option-border",
+        "value": "#EEEEEE",
+        "unit": null,
+        "cssVar": "--color-option-border",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "typography.font-family-base",
+        "value": "Open Sans",
+        "unit": null,
+        "cssVar": "--font-family-base",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-size-md",
+        "value": 14,
+        "unit": "px",
+        "cssVar": "--font-size-md",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-size-h8",
+        "value": 13,
+        "unit": "px",
+        "cssVar": "--font-size-h8",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-size-sm",
+        "value": 12,
+        "unit": "px",
+        "cssVar": "--font-size-sm",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-weight-regular",
+        "value": 400,
+        "unit": null,
+        "cssVar": "--font-weight-regular",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-weight-semibold",
+        "value": 600,
+        "unit": null,
+        "cssVar": "--font-weight-semibold",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.h7-regular",
+        "value": {
+          "fontSize": "14px",
+          "lineHeight": "22px",
+          "fontWeight": 400
+        },
+        "unit": null,
+        "cssVar": null,
+        "primitiveReferences": {
+          "fontSize": "typography.font-size-md",
+          "fontWeight": "typography.font-weight-regular"
+        },
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.h8-regular",
+        "value": {
+          "fontSize": "13px",
+          "lineHeight": "20px",
+          "fontWeight": 400
+        },
+        "unit": null,
+        "cssVar": null,
+        "primitiveReferences": {
+          "fontSize": "typography.font-size-h8",
+          "fontWeight": "typography.font-weight-regular"
+        },
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.h9-regular",
+        "value": {
+          "fontSize": "12px",
+          "lineHeight": "20px",
+          "fontWeight": 400
+        },
+        "unit": null,
+        "cssVar": null,
+        "primitiveReferences": {
+          "fontSize": "typography.font-size-sm",
+          "fontWeight": "typography.font-weight-regular"
+        },
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "spacing.xs",
+        "value": 4,
+        "unit": "px",
+        "cssVar": "--spacing-xs",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.3",
+        "value": 3,
+        "unit": "px",
+        "cssVar": "--spacing-3",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.sm",
+        "value": 8,
+        "unit": "px",
+        "cssVar": "--spacing-sm",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.md",
+        "value": 12,
+        "unit": "px",
+        "cssVar": "--spacing-md",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.lg",
+        "value": 16,
+        "unit": "px",
+        "cssVar": "--spacing-lg",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "border.width.default",
+        "value": 1,
+        "unit": "px",
+        "cssVar": "--border-width-default",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.style.default",
+        "value": "solid",
+        "unit": null,
+        "cssVar": "--border-style-default",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.option",
+        "value": "var(--color-option-border)",
+        "unit": null,
+        "cssVar": "--border-color-option",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.emphasis",
+        "value": "var(--color-gray-1)",
+        "unit": null,
+        "cssVar": "--border-color-emphasis",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.focus",
+        "value": "var(--color-blue)",
+        "unit": null,
+        "cssVar": "--border-color-focus",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.transparent",
+        "value": "transparent",
+        "unit": null,
+        "cssVar": "--border-color-transparent",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border-radius.md",
+        "value": 4,
+        "unit": "px",
+        "cssVar": "--border-radius-md",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border-radius.json"
+      },
+      {
+        "name": "border-radius.lg",
+        "value": 8,
+        "unit": "px",
+        "cssVar": "--border-radius-lg",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border-radius.json"
+      },
+      {
+        "name": "border-radius.sm",
+        "value": 2,
+        "unit": "px",
+        "cssVar": "--border-radius-sm",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border-radius.json"
+      },
+      {
+        "name": "spacing.2",
+        "value": 2,
+        "unit": "px",
+        "cssVar": "--spacing-2",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "border.color.tag",
+        "value": "var(--color-tag-border)",
+        "unit": null,
+        "cssVar": "--border-color-tag",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      }
+    ]
+  },
+  "evidence": {
+    "localImplementation": "components/variants/option-selector.html",
+    "comparison": "components/sources/option-selector/local-structure-review.json",
+    "currentMgReview": "components/sources/foundation-mg-20261114/option-selector-review.json",
+    "listOptionSource": "components/sources/list-option-mg-20261115/review.json",
+    "fiveVariantSource": "components/sources/five-variants-20261115/review.json"
+  },
+  "sourceValidation": {
+    "componentIdentity": {
+      "status": "not-established",
+      "files": []
+    },
+    "specificationBody": {
+      "status": "not-established",
+      "files": []
+    },
+    "originalOnlineFrontendCode": false,
+    "browserComputedStyles": false,
+    "completeSpecificationCoverage": false,
+    "otherAtomNesting": {
+      "Checkbox": {
+        "scope": "local-finite-Checkbox-host-assemblies-including-legacy-Dropdown-markers",
+        "checked": [
+          {
+            "variant": "service",
+            "mode": "native-caption-omitted",
+            "count": 1
+          },
+          {
+            "variant": "service",
+            "exampleIndex": 0,
+            "mode": "native-caption-omitted",
+            "count": 1
+          },
+          {
+            "variant": "service",
+            "exampleIndex": 1,
+            "mode": "native-caption-omitted",
+            "count": 1
+          },
+          {
+            "variant": "service",
+            "exampleIndex": 2,
+            "mode": "native-caption-omitted",
+            "count": 1
+          },
+          {
+            "variant": "service",
+            "exampleIndex": 3,
+            "mode": "native-caption-omitted",
+            "count": 1
+          },
+          {
+            "variant": "service",
+            "exampleIndex": 4,
+            "mode": "native-caption-omitted",
+            "count": 1
+          },
+          {
+            "variant": "service",
+            "exampleIndex": 5,
+            "mode": "native-caption-omitted",
+            "count": 1
+          },
+          {
+            "variant": "service",
+            "exampleIndex": 6,
+            "mode": "native-caption-omitted",
+            "count": 1
+          }
+        ],
+        "pending": [],
+        "browserVerified": false,
+        "mastergoVerified": false,
+        "hostStyleCascadeVerified": false
+      }
+    }
+  },
+  "freshness": {
+    "fingerprints": {
+      "components/checkbox-current.css": "81bace454b5f7612b84fd778d5596605dbce94f2bdc1784ba2636140622b168e",
+      "components/checkbox-current.js": "742518c24ba917376a24e0338be88cc6d8d9ae65e74f8c1c1ee215abb1088eee",
+      "components/components.css": "a08b4fe2790b5ff2b784c6362a90f1b94e7535a03e863232ce6d620a52e85f73",
+      "components/contracts/checkbox.json": "ea3c1e3a082df421cafa2729384e7a7849e67048f51c3fde0979c0c3b0c94d63",
+      "components/contracts/option-selector.json": "43f845ad81fc7182be32bb89a640fd8920acbae4d93cb76667048f8b5ab249c1",
+      "components/contracts/select.json": "351bf37ab7259d48bec9e4cdebbfea3054c5fc6dd4c5581fa4af64696dd5b293",
+      "components/contracts/tag.json": "bb8c4c7ca112feacb0af9aed188e4279df4fbab6b7774885f8e8e3508aa00cf5",
+      "components/icons/icon-checkbox-checked-14.svg": "f83d910808d0bca0125c75639d4256daab143d1db8fe44bd86805405c5c2f3b4",
+      "components/icons/icon-checkbox-default-14.svg": "e610d5b12893e274c8ac42f93263adbd46e1f3ec846463727fcf7b6166dae1b5",
+      "components/icons/icon-checkbox-hover-14.svg": "5c9ebcc0364f5c73f07e9c2a6f8a9b2f2e7a8125d25f88924e65e519d69dbfb6",
+      "components/icons/icon-chevron-down.svg": "fe5df03acb1cb4b8a38a928357775416656fbf97cc54f3c6a5b7d0e4906f3e91",
+      "components/icons/icons-manifest.json": "12c48af6d1dc59d50b76046bb0507005f565aa4224a6d8056ce4eaaf8050c43e",
+      "components/option-configuration-current.css": "a6ec0eb19f48611882e22c76c042e054df636a4fae7a8805087a3a5d7f2462c2",
+      "components/option-configuration-current.js": "e88f46aaf18864596f6b46bd9375d5cca3499cb9748586fadfc2bb7be9c4d283",
+      "components/option-selector-current.css": "4a0078798837bb5381399c21ef604a6c82b7a0918244a8b31276fea04563b1e9",
+      "components/option-selector-current.js": "808b5e7327fe9c95f62ec85ae4794076f9f0eb8c50bc736ded8f54a7637830eb",
+      "components/preview/reference-live.js": "4839383529a3ee82df1d8efe675d430567abc1986034499107aa429d21a18ea6",
+      "components/reference-policy.json": "4ae8f51f623386417e38d497caafb8bda4417c929159002a7ac088e6e526b482",
+      "components/select-current.css": "6d005b445b4f1d7a73d9e7dc432655bad4df8bfbbf032f98c46811006c2a94d5",
+      "components/select-current.js": "a725ea2c4f030bebed5d947e1fb84c521bb7441ae362df95d634482bc9f2ed31",
+      "components/sources/five-variants-20261115/review.json": "821baac5e00e60f1a796ae8d0a1881ae122da740e477666a54b3e94a13a7556f",
+      "components/sources/foundation-mg-20261114/option-selector-review.json": "3cb27c1f760b278fdf72600e521f37c073c721e9e69a47a0b640ea1003da975c",
+      "components/sources/list-option-mg-20261115/review.json": "e8d424ddcef3f8c44413851d17943317e386c0f9cd8f8eaeec964ab3192194ae",
+      "components/sources/option-selector/local-structure-review.json": "a0b57a1c1c34c22a1eb5dd4cdcc6456c14ddc2cc06f5b0b2d396133f778bce48",
+      "components/sources/select/configuration-color-options-1115.html": "7713f173f0748d575a83c40a8190418ddfee74518d177bd5511b69dcad15f407",
+      "components/sources/tag/configuration-color-1115.html": "b333e965e92442739f619c1e94a28989966c1aef56955bfa00f4a8814e82e953",
+      "components/sources/tag/configuration-service-1115.html": "261d7b0ed4e59e0d119596784b504ad0b63ccf668f4a19ce2cf3ec7031c4627c",
+      "components/tag-configuration-current.css": "6016d2be7ab1192477ac4630e51d8f02a0575c1553bc538e935aa5389c09f124",
+      "components/token-specs/border-radius.json": "b01e4c23fbc7e19983d9592b59b0303155b79d66c52459356eda0ea9f4ca74b5",
+      "components/token-specs/border.json": "d286ee4681deda1c7702c310b065c86f824539b3a8797efba05b24bc225ab322",
+      "components/token-specs/colors.json": "5267d59fdc687b54496977280c00c97f0beb6ffce013f87853504f5b736d3389",
+      "components/token-specs/spacing.json": "351b14cfce4411248ad41e00eaaf2b1cab9b705997980dfed1fc65693740e65c",
+      "components/token-specs/typography.json": "93b7dc07547218a33c075b7cdcd942f89094353a7847d483d8378b8883327e16",
+      "components/tokens.css": "f63f3c8fea511d8029902bc3905b01853ac5e92049c1b18ca35ebc9a680c3e69",
+      "components/variants/checkbox.html": "7d99c4b8d7b3c89433a31d6a9205f89607c5cbd398abd76824ae7c92bbdf83f6",
+      "components/variants/option-selector.html": "e2afba24d5b67c306f264762dfea9b0d7ffd7c9db132feac6b6a29214cf1196e",
+      "components/variants/select.html": "0042deb9a302606c3a82505cafbd807753c3c6eb31e8b107e3ecb0fe0538bf7f",
+      "components/variants/tag.html": "fcafd08ba11ca6faf2d41e185fc69099175769db0fa030ae9e9fa0ae7e410a04"
+    },
+    "graphFingerprint": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "note": "从本地源文件生成；不是 MasterGo 在线实时状态。"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "schemaVersion": "fs-local-component-review/1.0.0",
+  "status": "local-structure-and-current-opt-in-runtime-only",
+  "originalComponentSnapshot": null,
+  "independentSpecDocument": null,
+  "legacyRuntime": {
+    "path": "components/menu-navigation.js",
+    "sha256": "400d7e3c2ad7d4078e7609e7de7cc46d81c33bb87806cc686ebfa301094c7d44"
+  },
+  "reproducedDefect": {
+    "action": "Collapse expanded parent containing selected child",
+    "legacy": {
+      "visibleTabStops": 0,
+      "hiddenTabStops": 1
+    },
+    "currentExpected": {
+      "visibleTabStops": 1,
+      "hiddenTabStops": 0
+    },
+    "boundary": "JSDOM role/tabindex state; actual browser focus/Tab pending."
+  },
+  "changes": [
+    "Current opt-in script keeps activated parent as roving focus target",
+    "Initial focus excludes collapsed panel descendants",
+    "Preview and new AI calls load current script; legacy unchanged",
+    "Current native items exclude hidden and ARIA-disabled ancestor chains, ignore composing keys and retain selections; controls/panels/search belong only to the nearest root, including repeated ids. Nested layout is not approved by this guard."
+  ],
+  "pending": [
+    "Original MG component/spec",
+    "Actual browser keyboard/focus and long-label wrapping",
+    "Other width canonical specimens",
+    "Host filter visibility and public-header embedding"
+  ],
+  "compatibility": "No shared CSS, legacy menu-navigation.js or historical pages changed.",
+  "compositionRuntimeReview": "Offline search lifecycle emits only committed changed query once, ignores intermediate/hidden completion and retains ordinary callbacks. No internal filtering or remote effects; native event order pending.",
+  "gutterCascadeReconciliation1014": {
+    "source": "native-component-review-1011.json 原始288根/272列表左16",
+    "before": "旧共享not(public-header)选择器覆盖current attribute-only：左15/列表273；假共享CSS测试未检出",
+    "after": "current类+attribute选择器相同specificity且后置，实际左16/列表272",
+    "guard": "真实CSS与token读取，A2 buildReference校验；旧选择器和组合伪类负例拦截",
+    "browser": "browser-multi-states-1014.json",
+    "boundary": "仅已有普通current根，不改历史shared或公共头部/Search原子"
+  }
+}

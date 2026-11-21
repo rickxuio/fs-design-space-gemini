@@ -1,0 +1,47 @@
+{
+  "schemaVersion": "fs-local-component-review/1.0.0",
+  "status": "local-runtime-and-selected-native-specification-reviewed",
+  "scope": [
+    "outline-sm",
+    "outline-lg",
+    "filled-lg"
+  ],
+  "originalComponentSnapshot": "components/sources/input-number/native-component-review-1011.json",
+  "independentSpecDocument": "components/sources/input-number/native-specification-review-1011.json",
+  "canonicalRange": {
+    "outline-sm": "1..9999; default recommendation confirmed in native specification section3.1",
+    "outline-lg": "1..20",
+    "filled-lg": "1..20"
+  },
+  "runtimeFacts": [
+    "Instance listeners attached only at initialization",
+    "min/max/step captured in closure",
+    "Typing removes non-digits; blur clamps without an added change event",
+    "Step adjustments emit input and change only when changed",
+    "Disabled or readonly disallow adjustment"
+  ],
+  "pending": [
+    "Remaining original authored variant geometry/colors and exact glyph paths",
+    "Allowed browser geometry and icon measurement",
+    "Full static state and host integration coverage"
+  ],
+  "compatibility": "Legacy input-number.js/shared CSS/historical HTML unchanged; finite current calls opt in. Disabled fieldsets guarded; no dynamic range/insertion support added.",
+  "currentRuntime": "components/input-number-current.js",
+  "changes": [
+    "Current hidden/ARIA-disabled ancestors block synthetic operations and preserve state; InputNumber also defers sanitization and arrows during composition. Actual browser evidence remains pending."
+  ],
+  "listHostNormalization1011": {
+    "change": "Current atom normalizes native change at target before host bubbling; blur retains no extra change callback.",
+    "host": "List3PC outline-sm current controls, atom initializes before legacy; host updates total on normalized change or post-atom blur.",
+    "verification": "7 existing InputNumber reference cases plus3 meaningful List host cases passed; 26 combined checks passed. Actual native browser remains pending.",
+    "source": "components/sources/list/native-operation-review-1011.json"
+  },
+  "nativeSpecification1011": {
+    "source": "components/sources/input-number/native-specification-review-1011.json",
+    "scope": "visible business, core numeric/keyboard/paste/focus rules and size/state annotations",
+    "verification": "22 targeted offline tests passed; actual local browser remains pending",
+    "fix": "Overflowing positive digit sequences now normalize to max rather than min",
+    "originalComponentReview": "components/sources/input-number/native-component-review-1011.json",
+    "currentStyleBoundary": "Source body numeric rules and selected original nodes checked; Readonly background conflict retained with atom priority. Actual local browser remains pending."
+  }
+}

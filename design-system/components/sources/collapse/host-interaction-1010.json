@@ -1,0 +1,43 @@
+{
+  "schemaVersion": "fs-finite-host-interaction-review/1.0.0",
+  "status": "inline-preview-switching-only",
+  "source": {
+    "fileId": "143880409387753",
+    "pageId": "68908:251135",
+    "normativeTitle": "折叠面板设计规范v3.0",
+    "componentCollectionId": "69424:119809",
+    "componentName": "折叠面板/行内编辑型",
+    "visibleProperties": [
+      "状态：默认,展开"
+    ],
+    "collectionGeometry": [
+      1186,
+      347
+    ],
+    "observedNormativeText": "用于账户信息管理，支持“预览态”与“编辑态”的就地切换，减少页面跳转。",
+    "boundary": "原生Chrome可见UI与截图观察，非完整DSL快照；71817:175329是此前选中的FAQ规范内容容器，不是行内编辑来源节点。"
+  },
+  "implemented": [
+    "两个原生Edit控制与唯一aria-controls、hidden和expanded同步",
+    "Cancel/Escape回滚进入编辑时的草稿并返回焦点",
+    "同组切换关闭并回滚前一行",
+    "重复脚本只登记一次",
+    "Save原生disabled；不实现或宣称持久化"
+  ],
+  "basis": {
+    "open": "在线默认/展开和预览/编辑切换说明",
+    "cancelRollback": "既有Cancel语义的本地草稿实现；不是MasterGo原型运行验证"
+  },
+  "pending": [
+    "保存规则与宿主callback",
+    "订单展开具体热区",
+    "Dropdown勾选及原子交互登记",
+    "Edit hover颜色与原子归属",
+    "实际本地浏览器状态及视觉",
+    "完整组件原稿几何/素材核对"
+  ],
+  "browserVerified": false,
+  "supportedVariantsExpanded": false,
+  "offlineTests": 9,
+  "before": "components/sources/collapse/host-interaction-before-1010.html"
+}

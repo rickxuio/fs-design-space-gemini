@@ -1,0 +1,1263 @@
+{
+  "id": "comp_tab_001",
+  "name": "Tab",
+  "chineseName": "标签导航",
+  "description": "Tab 切换导航组件，三种变体：胶囊（内容筛选）、常规（页面内容分区）、产品导航（首页产品大类入口，带图标）",
+  "category": "导航 Navigation",
+  "variants": [
+    {
+      "name": "capsule",
+      "chineseName": "胶囊",
+      "class": "ds-tab--capsule",
+      "styleProperties": {
+        "background": "var(--color-gray-8)",
+        "borderRadius": "40px",
+        "padding": "6px",
+        "gap": "4px",
+        "itemHeight": "30px, current capsule-atom opt-in"
+      },
+      "activeStyle": {
+        "background": "var(--color-white)",
+        "color": "var(--color-gray-1)"
+      },
+      "usage": "商品详情胶囊导航，全部选项可见。",
+      "cssClass": "ds-tab ds-tab--capsule",
+      "isComplete": true,
+      "requiredChildren": [
+        "div.ds-tab__item",
+        "div.ds-tab__item-inner",
+        "span.ds-tab__item-text",
+        "div.ds-tab__indicator"
+      ],
+      "selectionDecisionType": "Capsule 胶囊",
+      "whenToUse": "商品详情页，选项全部可见。",
+      "whenNotToUse": "仅因分类筛选或用于普通专题。"
+    },
+    {
+      "name": "standard",
+      "chineseName": "常规",
+      "class": "ds-tab--standard",
+      "styleProperties": {
+        "borderBottom": "1px solid var(--color-gray-5)",
+        "gap": "16px",
+        "itemHorizontalPadding": "16px, current regular-atom opt-in"
+      },
+      "activeStyle": {
+        "indicator": "ds-tab__indicator，2px 红色底线"
+      },
+      "sizeModifiers": {
+        "default": "14px/22px",
+        "large": "ds-tab--standard-lg，16px/24px"
+      },
+      "usage": "居左常规内容分区，选项全部可见。",
+      "cssClass": "ds-tab ds-tab--standard",
+      "isComplete": true,
+      "requiredChildren": [
+        "div.ds-tab__item",
+        "div.ds-tab__item-inner",
+        "span.ds-tab__item-text",
+        "div.ds-tab__indicator"
+      ],
+      "sizes": [
+        {
+          "name": "default",
+          "cssClass": "ds-tab--standard",
+          "styleProperties": {
+            "text": "14px/22px"
+          }
+        },
+        {
+          "name": "large",
+          "cssClass": "ds-tab--standard-lg",
+          "styleProperties": {
+            "text": "16px/24px"
+          }
+        }
+      ],
+      "selectionDecisionType": "Standard 常规",
+      "whenToUse": "居左常规分区，选项全部可见。",
+      "whenNotToUse": "来源为居中常规导航。；每项需图标、二级标题或菜单。"
+    },
+    {
+      "name": "product",
+      "chineseName": "产品导航",
+      "class": "ds-tab--product",
+      "styleProperties": {
+        "width": "100%（铺满父级版心，不是浏览器视口）",
+        "itemLayout": "flex: 1 1 0; min-width: 0；各项等宽，内部图标与文字居中；1200px 版心 8 项各占 150px",
+        "borderBottom": "1px solid var(--color-gray-5)",
+        "iconSize": "64x64px 容器内 48x48px 图标",
+        "iconOpacityDefault": "0.4",
+        "iconOpacityActive": "1"
+      },
+      "usage": "首页产品大类，图标语义匹配。",
+      "cssClass": "ds-tab ds-tab--product",
+      "isComplete": true,
+      "requiredChildren": [
+        "div.ds-tab__item",
+        "div.ds-tab__item-inner",
+        "span.ds-tab__item-text",
+        "div.ds-tab__indicator",
+        "div.ds-tab__item-icon",
+        "img"
+      ],
+      "selectionDecisionType": "Product Nav 产品导航",
+      "whenToUse": "首页产品大类，登记图标语义匹配。",
+      "whenNotToUse": "普通图标Tab或无匹配素材。"
+    },
+    {
+      "name": "standard-center",
+      "chineseName": "常规·居中",
+      "class": "ds-tab--standard",
+      "styleProperties": {
+        "borderBottom": "1px solid var(--color-gray-5)",
+        "gap": "16px",
+        "itemHorizontalPadding": "16px, current regular-atom opt-in"
+      },
+      "activeStyle": {
+        "indicator": "ds-tab__indicator，2px 红色底线"
+      },
+      "sizeModifiers": {
+        "default": "14px/22px",
+        "large": "ds-tab--standard-lg，16px/24px"
+      },
+      "usage": "居中常规内容分区，选项全部可见。",
+      "cssClass": "ds-tab ds-tab--standard ds-tab--center",
+      "isComplete": true,
+      "requiredChildren": [
+        "div.ds-tab__item",
+        "div.ds-tab__item-inner",
+        "span.ds-tab__item-text",
+        "div.ds-tab__indicator"
+      ],
+      "sizes": [
+        {
+          "name": "default",
+          "cssClass": "ds-tab--standard",
+          "styleProperties": {
+            "text": "14px/22px"
+          }
+        },
+        {
+          "name": "large",
+          "cssClass": "ds-tab--standard-lg",
+          "styleProperties": {
+            "text": "16px/24px"
+          }
+        }
+      ],
+      "selectionDecisionType": "Standard常规·居中",
+      "whenToUse": "居中常规分区，选项全部可见。",
+      "whenNotToUse": "居左来源或通栏等宽导航。"
+    }
+  ],
+  "variantSelectionDecisionTable": [
+    {
+      "sourceFeature": "商品详情页的胶囊导航；选项全部可见且无需 All 溢出菜单。",
+      "variant": "capsule",
+      "className": "ds-tab--capsule（灰底容器，激活项白底；激活态 --active + ds-tab__indicator）"
+    },
+    {
+      "sourceFeature": "来源为居左常规导航，在同一位置切换内容分区；选项可全部展示。",
+      "variant": "standard",
+      "className": "ds-tab--standard（底部线条，激活项 2px 红色指示线；激活态 --active + ds-tab__indicator）"
+    },
+    {
+      "sourceFeature": "已登记的首页产品大类图标导航，每项图标含义与实际产品一致。",
+      "variant": "product",
+      "className": "ds-tab--product（带图标，激活态 opacity 1；激活态 --active，opacity 变化）"
+    },
+    {
+      "sourceFeature": "来源为居中的常规内容分区导航，选项全部可见。",
+      "variant": "standard-center",
+      "className": "ds-tab ds-tab--standard ds-tab--center"
+    }
+  ],
+  "variantSelectionRules": [
+    "商品详情页的胶囊导航；选项全部可见且无需 All 溢出菜单。 → 候选 capsule；宿主负责内容切换。",
+    "仅因是分类筛选，或用于普通专题、教育页。 → 不能据此套胶囊型；需有对应来源。",
+    "选项宽度超出版心，需 All、隐藏数量和下拉选择。 → 原稿有此能力，当前精确调用未闭环；不删选项凑合。",
+    "来源为居左常规导航，在同一位置切换内容分区；选项可全部展示。 → 候选 standard；按来源选择 default 或 large。",
+    "来源为居中常规导航。 → 改核对 standard-center，不按宽度不足猜测对齐。",
+    "需要每项图标、二级标题或菜单箭头。 → 常规调用不开放这些插槽；不得手加图标。",
+    "需要滚动消隐、全部选项菜单、Hover 即切换。 → 原稿支持；当前调用仅本地点击/键盘选中，需补接实际能力。",
+    "已登记的首页产品大类图标导航，每项图标含义与实际产品一致。 → 保留既有 product 调用；图标仅限登记列表。",
+    "只是普通场景需要带图标 Tab，或没有匹配语义的登记图标。 → 不能因有图标就套首页产品导航，也不能轮流复用示例图标。",
+    "当前 Tab 规范未提供本地首页 product 的完整原件对应。 → 保留原来源记录；本次不标为《新文件》全形态核实。",
+    "来源为居中的常规内容分区导航，选项全部可见。 → 候选 standard-center；底线随内容宽度，按来源选尺寸。",
+    "来源要求居左、产品通栏等宽导航或整组铺满。 → 不要通过修改类名把居中变成其他形态。",
+    "注册登录、表单或分段按钮 Tab，以及有菜单/二级标题的导航。 → 这些是原稿其他形态，不作为当前居中调用。"
+  ],
+  "states": [
+    {
+      "name": "default",
+      "chineseName": "未激活",
+      "styleOverrides": {},
+      "description": "静态展示"
+    },
+    {
+      "name": "active",
+      "chineseName": "激活",
+      "styleOverrides": {
+        "structure": "ds-tab__item--active + 内部 ds-tab__indicator"
+      },
+      "description": "结构固定：激活项必须同时加 --active class 和内部 indicator 元素，二者缺一不可"
+    },
+    {
+      "name": "hover",
+      "chineseName": "悬停（非激活项）",
+      "styleOverrides": {
+        "capsule": "background: rgba(255,255,255,0.6)",
+        "standard/product": "文字颜色变深至 gray-1"
+      },
+      "description": "非激活项 hover 态"
+    }
+  ],
+  "contentSlots": {
+    "items": {
+      "required": true,
+      "description": "Tab 选项列表，每项 ds-tab__item > ds-tab__item-inner > ds-tab__item-text"
+    },
+    "icon": {
+      "required": false,
+      "description": "仅 product 变体使用，ds-tab__item-icon"
+    },
+    "allDropdown": {
+      "required": false,
+      "description": "capsule 变体可选的 All(n) 下拉按钮，用于收纳超出的选项"
+    }
+  },
+  "relations": {
+    "radiusDependencies": [
+      {
+        "token": "border-radius.md",
+        "value": "4px",
+        "usage": "中圆角 - 按钮默认圆角",
+        "appliesTo": [
+          "capsule",
+          "standard",
+          "standard-center"
+        ]
+      },
+      {
+        "token": "/",
+        "value": "30px",
+        "usage": "未 token 化的圆角值，白名单登记",
+        "appliesTo": [
+          "capsule"
+        ]
+      },
+      {
+        "token": "/",
+        "value": "40px",
+        "usage": "未 token 化的圆角值，白名单登记",
+        "appliesTo": [
+          "capsule"
+        ]
+      }
+    ],
+    "fontSizeDependencies": [
+      {
+        "token": "typography.font-size-md",
+        "value": "14px",
+        "usage": "中号字体 - XL/L 按钮",
+        "appliesTo": [
+          "capsule",
+          "standard",
+          "standard-center"
+        ]
+      },
+      {
+        "token": "typography.font-size-h8",
+        "value": "13px",
+        "usage": "H8 紧凑正文/组件文字",
+        "appliesTo": [
+          "capsule"
+        ]
+      },
+      {
+        "token": "/",
+        "value": "16px",
+        "usage": "无对应正式 token 的字号值，白名单登记",
+        "appliesTo": [
+          "standard",
+          "product",
+          "standard-center"
+        ]
+      }
+    ],
+    "fontWeightDependencies": [],
+    "typographyDependencies": [
+      {
+        "token": "typography.h7-regular",
+        "fontSizeToken": "typography.font-size-md",
+        "fontSizeValue": "14px",
+        "fontWeightToken": "typography.font-weight-regular",
+        "fontWeightValue": "400",
+        "weightEvidence": "inherited-regular",
+        "usage": "胶囊与常规 Tab 文字",
+        "appliesTo": [
+          "capsule",
+          "standard",
+          "standard-center"
+        ]
+      },
+      {
+        "token": "typography.h8-regular",
+        "fontSizeToken": "typography.font-size-h8",
+        "fontSizeValue": "13px",
+        "fontWeightToken": "typography.font-weight-regular",
+        "fontWeightValue": "400",
+        "weightEvidence": "inherited-regular",
+        "usage": "胶囊 Tab 紧凑文字",
+        "appliesTo": [
+          "capsule"
+        ]
+      },
+      {
+        "token": "typography.h6-regular",
+        "fontSizeToken": "/",
+        "fontSizeValue": "16px",
+        "fontWeightToken": "typography.font-weight-regular",
+        "fontWeightValue": "400",
+        "weightEvidence": "inherited-regular",
+        "usage": "常规与产品导航文字",
+        "appliesTo": [
+          "standard",
+          "product",
+          "standard-center"
+        ]
+      }
+    ],
+    "shadowDependencies": [
+      {
+        "token": "/",
+        "value": "0px 2px 8px rgba(0,0,0,0.1)",
+        "usage": "无对应 token 的投影值，白名单登记",
+        "appliesTo": [
+          "capsule"
+        ]
+      }
+    ],
+    "colorDependencies": [
+      {
+        "token": "color.gray-1",
+        "value": "#19191A",
+        "usage": "标题/深色文字 (Primary text)",
+        "appliesTo": [
+          "capsule",
+          "standard",
+          "product",
+          "standard-center"
+        ]
+      },
+      {
+        "token": "color.gray-3",
+        "value": "#707070",
+        "usage": "次要/辅助文字 (Secondary/auxiliary text)",
+        "appliesTo": [
+          "capsule",
+          "standard",
+          "product",
+          "standard-center"
+        ]
+      },
+      {
+        "token": "color.gray-5",
+        "value": "#DEE0E3",
+        "usage": "边框色 / 菜单项禁用色",
+        "appliesTo": [
+          "standard",
+          "standard-center"
+        ]
+      },
+      {
+        "token": "color.gray-8",
+        "value": "#F6F6F8",
+        "usage": "胶囊 Tab 容器底色（与原始 SVG 及设计规范一致）",
+        "appliesTo": [
+          "capsule"
+        ]
+      },
+      {
+        "token": "color.gray-9",
+        "value": "#FAFBFB",
+        "usage": "All 下拉菜单项 hover 底色",
+        "appliesTo": [
+          "capsule"
+        ]
+      },
+      {
+        "token": "color.white",
+        "value": "#FFFFFF",
+        "usage": "白色 (深色背景上的文字)",
+        "appliesTo": [
+          "capsule"
+        ]
+      },
+      {
+        "token": "color.brand-red",
+        "value": "#C00000",
+        "usage": "品牌红色，主操作按钮背景色",
+        "appliesTo": [
+          "standard",
+          "standard-center"
+        ]
+      },
+      {
+        "token": "/",
+        "value": "rgba(255,255,255,0.6)",
+        "usage": "一次性遮罩/渐变停靠色，未 token 化，白名单登记",
+        "appliesTo": [
+          "capsule"
+        ]
+      }
+    ],
+    "componentDependencies": [],
+    "iconDependencies": [
+      {
+        "icon": "icon-placeholder-switch",
+        "usage": "product 变体默认图标；仅说明现有素材，不证明业务语义匹配，禁止按选项序号循环调用。",
+        "required": false,
+        "appliesTo": [
+          "product"
+        ]
+      },
+      {
+        "icon": "icon-chevron-down",
+        "usage": "capsule 变体 All(n) 下拉箭头",
+        "required": false,
+        "appliesTo": [
+          "capsule"
+        ]
+      }
+    ],
+    "mutuallyExclusiveWith": [],
+    "variantDecisionsDescription": "先核对具体场景与原件，再排除不适用条件；候选只映射当前可调用变体，设计参考不开放调用。页面展示与 AI 读取同一份规则。",
+    "variantDecisions": [
+      {
+        "type": "Capsule 胶囊",
+        "className": "ds-tab--capsule（灰底容器，激活项白底；激活态 --active + ds-tab__indicator）",
+        "whenToUse": "商品详情页，选项全部可见。",
+        "whenNotToUse": "仅因分类筛选或用于普通专题。",
+        "nestedComponents": [],
+        "status": "调用资格读取同版 catalog；来源范围和工程、视觉分别记录。",
+        "variant": "capsule",
+        "selectionCases": [
+          {
+            "id": "t1",
+            "kind": "use",
+            "condition": "商品详情页，选项全部可见。",
+            "result": "宿主切内容。",
+            "targetVariant": "capsule"
+          },
+          {
+            "id": "t2",
+            "kind": "avoid",
+            "condition": "仅因分类筛选或用于普通专题。",
+            "result": "不能据此外推胶囊场景。",
+            "targetVariant": "capsule"
+          },
+          {
+            "id": "t3",
+            "kind": "reference",
+            "condition": "需要All菜单、隐藏数量。",
+            "result": "仅参考；未开放。",
+            "targetVariant": "capsule"
+          }
+        ]
+      },
+      {
+        "type": "Standard 常规",
+        "className": "ds-tab--standard（底部线条，激活项 2px 红色指示线；激活态 --active + ds-tab__indicator）",
+        "whenToUse": "居左常规分区，选项全部可见。",
+        "whenNotToUse": "来源为居中常规导航。；每项需图标、二级标题或菜单。",
+        "nestedComponents": [],
+        "status": "调用资格读取同版 catalog；来源范围和工程、视觉分别记录。",
+        "variant": "standard",
+        "selectionCases": [
+          {
+            "id": "t4",
+            "kind": "use",
+            "condition": "居左常规分区，选项全部可见。",
+            "result": "尺寸按来源。",
+            "targetVariant": "standard"
+          },
+          {
+            "id": "t5",
+            "kind": "avoid",
+            "condition": "来源为居中常规导航。",
+            "result": "核对standard-center。",
+            "targetVariant": "standard"
+          },
+          {
+            "id": "t6",
+            "kind": "avoid",
+            "condition": "每项需图标、二级标题或菜单。",
+            "result": "禁止手加未开放插槽。",
+            "targetVariant": "standard"
+          },
+          {
+            "id": "t7",
+            "kind": "reference",
+            "condition": "需要滚动消隐、All或悬停即切换。",
+            "result": "仅参考；未开放。",
+            "targetVariant": "standard"
+          }
+        ]
+      },
+      {
+        "type": "Product Nav 产品导航",
+        "className": "ds-tab--product（带图标，激活态 opacity 1；激活态 --active，opacity 变化）",
+        "whenToUse": "首页产品大类，登记图标语义匹配。",
+        "whenNotToUse": "普通图标Tab或无匹配素材。",
+        "nestedComponents": [],
+        "status": "调用资格读取同版 catalog；来源范围和工程、视觉分别记录。",
+        "variant": "product",
+        "selectionCases": [
+          {
+            "id": "t8",
+            "kind": "use",
+            "condition": "首页产品大类，登记图标语义匹配。",
+            "result": "仅登记图标。",
+            "targetVariant": "product"
+          },
+          {
+            "id": "t9",
+            "kind": "avoid",
+            "condition": "普通图标Tab或无匹配素材。",
+            "result": "不用首页产品导航。",
+            "targetVariant": "product"
+          }
+        ]
+      },
+      {
+        "type": "Standard常规·居中",
+        "className": "ds-tab ds-tab--standard ds-tab--center",
+        "whenToUse": "居中常规分区，选项全部可见。",
+        "whenNotToUse": "居左来源或通栏等宽导航。",
+        "nestedComponents": [],
+        "status": "调用资格读取同版 catalog；来源范围和工程、视觉分别记录。",
+        "variant": "standard-center",
+        "selectionCases": [
+          {
+            "id": "t10",
+            "kind": "use",
+            "condition": "居中常规分区，选项全部可见。",
+            "result": "底线适应内容。",
+            "targetVariant": "standard-center"
+          },
+          {
+            "id": "t11",
+            "kind": "avoid",
+            "condition": "居左来源或通栏等宽导航。",
+            "result": "不改类替代。",
+            "targetVariant": "standard-center"
+          },
+          {
+            "id": "t12",
+            "kind": "reference",
+            "condition": "注册、表单、分段或带菜单导航。",
+            "result": "仅参考；未开放。",
+            "targetVariant": "standard-center"
+          }
+        ]
+      }
+    ],
+    "structuralRequirement": {
+      "rule": "激活态必须同时具备 ds-tab__item--active class 与内部 ds-tab__indicator 元素；只加 class 不加 indicator 会导致缺少红色/白底视觉反馈",
+      "appliesTo": [
+        "standard",
+        "capsule"
+      ]
+    },
+    "coOccursWith": [
+      {
+        "component": "page-content",
+        "reason": "Standard 分区型 Tab 切换的是页面内容板块，不是异步加载数据；Capsule 筛选型切换的是同一板块内的展示内容"
+      }
+    ],
+    "notes": "三个变体不能混用同一套 class 组合；product 变体永远带图标，standard/capsule 永远不带图标。",
+    "enforcementStatus": {
+      "colorDependencies.tokens-exist": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 2b：colorDependencies 引用的 color.* token 必须存在于 token-specs/colors.json（缺失即 error）；token 为 / 表示无对应 token 的白名单裸值；双源值一致由 validate-tokens.js 全量保证；Guard C 保证声明了就必须有颜色依赖表"
+      },
+      "colorDependencies.css-uses-var": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 2c：切出组件样式段，校验用到的 var(--color-*) 都在 colorDependencies 声明过，且无未声明裸色值（box-shadow/注释除外），违反即 error —— 保证颜色映射闭环"
+      },
+      "radiusDependencies.tokens-exist": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 3a：radiusDependencies 引用的 border-radius.* token 必须存在于 token-specs/border-radius.json（缺失即 error）；token 为 / 表示白名单裸值；Guard D 保证声明了就必须有圆角依赖表"
+      },
+      "radiusDependencies.css-uses-var": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 3b：校验 border-radius 用到的 var(--border-radius-*) 都在 radiusDependencies 声明过，且无未声明裸圆角值（0 除外），违反即 error —— 保证圆角映射闭环"
+      },
+      "fontSizeDependencies.tokens-exist": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 4a：fontSizeDependencies 引用的 typography.font-size-* token 必须存在于 token-specs/typography.json（缺失即 error）；token 为 / 表示无对应正式 token 的白名单值；Guard E 保证声明了就必须有字号依赖表"
+      },
+      "fontSizeDependencies.css-uses-var": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 4b：校验 font-size 用到的 var(--font-size-*) 都在 fontSizeDependencies 声明过，且无未声明裸字号值，违反即 error —— 保证字号映射闭环"
+      },
+      "shadowDependencies.tokens-exist": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 5a：shadowDependencies 引用的 shadow.* token 必须存在于 token-specs/shadows.json（缺失即 error）；token 为 / 表示无对应 token 的白名单值；Guard F 保证声明了就必须有投影依赖表"
+      },
+      "shadowDependencies.css-uses-var": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 5b：校验 box-shadow 用到的 var(--shadow-*) 都在 shadowDependencies 声明过，且无未声明裸投影值（none 除外），违反即 error —— 保证投影映射闭环"
+      },
+      "structuralRequirement.active-needs-class-and-indicator": {
+        "enforced": true,
+        "mechanism": "verify.js: pageProbe TAB_ACTIVE_INDICATOR（2026-07-16 新增）——每个 .ds-tab__item--active 内必须存在 .ds-tab__indicator，缺失即 error。",
+        "note": "真实 DOM 判断激活项内是否含 indicator 元素。"
+      },
+      "variantSelectionDecisionTable": {
+        "enforced": false,
+        "mechanism": "无",
+        "note": "语义型选型判断，无法机械检查"
+      },
+      "spacingDependencies.tokens-and-css-closure": {
+        "enforced": true,
+        "mechanism": "check-contracts.js: spacingDependencies token/value/selector/property 与组件 CSS 双向闭环校验"
+      },
+      "borderDependencies.tokens-and-css-closure": {
+        "enforced": true,
+        "mechanism": "check-contracts.js: borderDependencies token/value/aspect/selector/property 与组件 CSS 双向闭环校验"
+      },
+      "fontWeightDependencies.tokens-and-css-closure": {
+        "enforced": true,
+        "mechanism": "check-contracts.js: fontWeightDependencies token/value/selector/property 与组件 CSS 双向闭环校验；仅允许 Regular 400 / SemiBold 600，禁止裸字重值"
+      },
+      "typographyDependencies.size-weight-pairing": {
+        "enforced": true,
+        "mechanism": "check-contracts.js: typographyDependencies.token 必须引用 token-specs/typography.json 中真实 composite typography token；该 token 同时锁定 fontSize、lineHeight、fontWeight，并核对底层字号/字重 primitive 与 CSS 证据，依赖汇总表只输出一个 Token 链接"
+      }
+    },
+    "spacingDependencies": [
+      {
+        "token": "spacing.xs",
+        "value": "4px",
+        "usage": "gap / padding / padding-top：.ds-tab--capsule、.ds-tab--capsule .ds-tab__item、.ds-tab--capsule .ds-tab__item--active .ds-tab__item-inner、.ds-tab__all-btn",
+        "properties": [
+          "gap",
+          "padding",
+          "padding-top"
+        ],
+        "selectors": [
+          ".ds-tab--capsule",
+          ".ds-tab--capsule .ds-tab__item",
+          ".ds-tab--capsule .ds-tab__item--active .ds-tab__item-inner",
+          ".ds-tab__all-btn"
+        ],
+        "appliesTo": [
+          "capsule"
+        ]
+      },
+      {
+        "token": "spacing.6",
+        "value": "6px",
+        "usage": "padding / gap：.ds-tab--capsule、.ds-tab--standard .ds-tab__item-inner",
+        "properties": [
+          "padding",
+          "gap"
+        ],
+        "selectors": [
+          ".ds-tab--capsule",
+          ".ds-tab--standard .ds-tab__item-inner"
+        ],
+        "appliesTo": [
+          "capsule",
+          "standard",
+          "standard-center"
+        ]
+      },
+      {
+        "token": "spacing.sm",
+        "value": "8px",
+        "usage": "gap / padding：.ds-tab--capsule .ds-tab__item、.ds-tab__all-btn、.ds-tab__all-dropdown、.ds-tab__all-dropdown-item",
+        "properties": [
+          "gap",
+          "padding"
+        ],
+        "selectors": [
+          ".ds-tab--capsule .ds-tab__item",
+          ".ds-tab__all-btn",
+          ".ds-tab__all-dropdown",
+          ".ds-tab__all-dropdown-item"
+        ],
+        "appliesTo": [
+          "capsule"
+        ]
+      },
+      {
+        "token": "spacing.lg",
+        "value": "16px",
+        "usage": "padding / gap / padding-right / padding-top：.ds-tab--capsule .ds-tab__item、.ds-tab--standard、.ds-tab--standard .ds-tab__item、.ds-tab--standard-lg .ds-tab__item、.ds-tab__all-btn",
+        "properties": [
+          "padding",
+          "gap",
+          "padding-right",
+          "padding-top"
+        ],
+        "selectors": [
+          ".ds-tab--capsule .ds-tab__item",
+          ".ds-tab--standard",
+          ".ds-tab--standard .ds-tab__item",
+          ".ds-tab--standard-lg .ds-tab__item",
+          ".ds-tab__all-btn"
+        ],
+        "appliesTo": [
+          "capsule",
+          "standard",
+          "standard-center"
+        ]
+      },
+      {
+        "token": "spacing.10",
+        "value": "10px",
+        "usage": "padding-top：.ds-tab--standard .ds-tab__item",
+        "properties": [
+          "padding-top"
+        ],
+        "selectors": [
+          ".ds-tab--standard .ds-tab__item"
+        ],
+        "appliesTo": [
+          "standard",
+          "standard-center"
+        ]
+      },
+      {
+        "token": "spacing.14",
+        "value": "14px",
+        "usage": "gap：.ds-tab--standard-lg .ds-tab__item-inner",
+        "properties": [
+          "gap"
+        ],
+        "selectors": [
+          ".ds-tab--standard-lg .ds-tab__item-inner"
+        ],
+        "appliesTo": [
+          "standard",
+          "standard-center"
+        ]
+      },
+      {
+        "token": "spacing.md",
+        "value": "12px",
+        "usage": "gap / padding：.ds-tab--product .ds-tab__item-inner、.ds-tab__all-dropdown-item",
+        "properties": [
+          "gap",
+          "padding"
+        ],
+        "selectors": [
+          ".ds-tab--product .ds-tab__item-inner",
+          ".ds-tab__all-dropdown-item"
+        ],
+        "appliesTo": [
+          "capsule",
+          "product"
+        ]
+      }
+    ],
+    "borderDependencies": [
+      {
+        "token": "border.width.default",
+        "value": "1px",
+        "usage": "border-bottom：.ds-tab--standard、.ds-tab--product（整行浅灰实线，与选中项红色短线独立）",
+        "aspect": "width",
+        "properties": [
+          "border-bottom"
+        ],
+        "selectors": [
+          ".ds-tab--standard",
+          ".ds-tab--product"
+        ],
+        "appliesTo": [
+          "standard",
+          "product",
+          "standard-center"
+        ]
+      },
+      {
+        "token": "border.style.default",
+        "value": "solid",
+        "usage": "border-bottom：.ds-tab--standard、.ds-tab--product（整行浅灰实线，与选中项红色短线独立）",
+        "aspect": "style",
+        "properties": [
+          "border-bottom"
+        ],
+        "selectors": [
+          ".ds-tab--standard",
+          ".ds-tab--product"
+        ],
+        "appliesTo": [
+          "standard",
+          "product",
+          "standard-center"
+        ]
+      },
+      {
+        "token": "border.color.default",
+        "value": "var(--color-gray-5)",
+        "usage": "border-bottom：.ds-tab--standard、.ds-tab--product（整行浅灰实线，与选中项红色短线独立）",
+        "aspect": "color",
+        "properties": [
+          "border-bottom"
+        ],
+        "selectors": [
+          ".ds-tab--standard",
+          ".ds-tab--product"
+        ],
+        "appliesTo": [
+          "standard",
+          "product",
+          "standard-center"
+        ]
+      },
+      {
+        "token": "border.style.none",
+        "value": "none",
+        "usage": "border：.ds-tab__item、.ds-tab__all-btn",
+        "aspect": "style",
+        "properties": [
+          "border"
+        ],
+        "selectors": [
+          ".ds-tab__item",
+          ".ds-tab__all-btn"
+        ],
+        "appliesTo": [
+          "capsule",
+          "standard",
+          "product",
+          "standard-center"
+        ]
+      }
+    ],
+    "hardRules": [
+      {
+        "title": "激活态必须同时具备 class + indicator 元素",
+        "description": "AI 生成页面时必须遵守。左边是描述原文，右边是 AI 解析后写入 <code>tab.json</code> 的字段值。",
+        "ruleContent": "<strong>Standard/Capsule 的激活态必须同时加 <code>ds-tab__item--active</code> class 与内部 <code>ds-tab__indicator</code> 元素，二者缺一不可。</strong>只加 class 不加 indicator 会缺少红色/白底视觉反馈。居中对齐加 <code>ds-tab--center</code>。",
+        "aiParse": "relations.structuralRequirement = {\n  rule: \"激活态必须同时具备 ds-tab__item--active class 与内部 ds-tab__indicator 元素；只加 class 不加 indicator 会导致缺少红色/白底视觉反馈\",\n  appliesTo: [\"standard\",\"capsule\"]\n}\n\nstates[1].styleOverrides.structure\n  = \"ds-tab__item--active\n    + 内部 ds-tab__indicator\"",
+        "enforcement": "设计规范硬约束。目前无专门机械检查（validate/verify 未覆盖此结构完整性），依赖 AI 自觉。"
+      },
+      {
+        "title": "Tab选项清除原生外观；居左/居中按原件选择",
+        "description": "防止交互语义改为 button 后引入浏览器默认灰底、边框和偏移。",
+        "ruleContent": "<strong><code>ds-tab__item</code>必须保留完整内层结构并清除原生button外观。常规Tab按对应原件选择居左或居中，不能因选项未占满而强制居中；居中原件使用<code>ds-tab--center</code>、内容适应宽度，底线覆盖自身内容区域。</strong>",
+        "aiParse": "alignment follows source layout; centered regular Tab uses intrinsic content width. Available spare width does not override left-aligned source.",
+        "enforcement": "verify.js: TAB_ITEM_STRUCTURE + TAB_CONTROL_RESET 保留；TAB_ALIGNMENT仅检查显式居中形态的内容适应宽度，不否决真实居左原件。"
+      },
+      {
+        "title": "可见 Tab 必须支持单击与键盘切换，禁止静态假控件",
+        "description": "适用于 Standard/Capsule/Product Nav 及页面中复用 Tab 视觉的当前页选中态导航；跨页链接与真实页内锚点必须先按页面生成规则另行判型。",
+        "ruleContent": "<strong>只要 Tab 在视觉上呈现为可切换，每个非禁用项就必须可单击；不得实现为无监听器的静态 <code>div</code>。</strong>当前页选中态切换不得跳转、刷新或改变 <code>location.href</code>、hash、滚动位置；切换后必须保持唯一 <code>ds-tab__item--active</code>、唯一 <code>ds-tab__indicator</code>、唯一 <code>aria-selected=&quot;true&quot;</code>，并采用 roving tabindex。键盘必须支持 ArrowLeft/ArrowRight 循环、Home/End、Enter/Space。",
+        "aiParse": "interaction = {\n  click: \"全部非禁用项可切换\",\n  keyboard: [\"ArrowLeft\", \"ArrowRight\", \"Home\", \"End\", \"Enter\", \"Space\"],\n  state: \"唯一 active + indicator + aria-selected=true\",\n  focus: \"roving tabindex: active=0, others=-1\",\n  currentPageSelection: \"URL/hash/scroll 均保持不变\"\n}\n\n禁止：静态 div、因本地路由缺失而整组 aria-disabled",
+        "enforcement": "页面交付硬闸门：浏览器逐项点击全部 Tab，并执行完整键盘回归；记录项目总数、URL 保持数、唯一状态通过数，失败数必须为 0，结束后恢复默认激活项。"
+      }
+    ],
+    "interactionRules": [
+      {
+        "name": "选中与键盘",
+        "rule": "点击及方向键/Home/End/Enter/Space改变唯一选中项；不可用项跳过。",
+        "owner": "Tab 运行时"
+      },
+      {
+        "name": "内容切换",
+        "rule": "Tab 本身只维护选中态；内容面板、筛选或导航须按页面事实绑定。",
+        "owner": "页面宿主"
+      },
+      {
+        "name": "图标",
+        "rule": "product 保留图标容器及已登记素材；先核对含义，禁止按项序循环套图。",
+        "owner": "原图标资源与契约"
+      },
+      {
+        "name": "溢出与其他形态",
+        "rule": "All 菜单、滚动消隐、分段按钮、二级标题不在当前精确调用内。",
+        "owner": "仅规范参考"
+      }
+    ]
+  },
+  "searchIntents": [
+    "标签切换",
+    "Tab导航",
+    "胶囊筛选",
+    "分类切换",
+    "产品导航入口",
+    "筛选标签",
+    "内容分区切换"
+  ],
+  "tokenReferences": [
+    "color.gray-1",
+    "color.gray-3",
+    "color.gray-5",
+    "color.gray-8",
+    "color.gray-9",
+    "color.brand-red",
+    "typography.font-family-base",
+    "typography.font-size-h8",
+    "spacing.xs",
+    "spacing.6",
+    "spacing.sm",
+    "spacing.lg",
+    "spacing.10",
+    "spacing.14",
+    "spacing.md",
+    "border.width.default",
+    "border.style.default",
+    "border.color.default",
+    "border.style.none",
+    "typography.font-size-md",
+    "typography.font-weight-regular",
+    "typography.h7-regular",
+    "typography.h8-regular",
+    "typography.h6-regular"
+  ],
+  "constraints": {
+    "allowedChildren": [
+      "Icon",
+      "Text"
+    ],
+    "requiredProperties": [
+      "variant"
+    ],
+    "forbiddenCombinations": [
+      [
+        "product",
+        "无图标"
+      ],
+      [
+        "capsule",
+        "红色指示线"
+      ]
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-10-08",
+      "author": "Codex",
+      "change": "依据用户提供的原始胶囊 Tab SVG 和既有设计规范，将容器背景由 gray-9 校正为 gray-8；保留选中白底、红色指示线及既有结构和交互。"
+    },
+    {
+      "date": "2026-07-23",
+      "author": "Kiro",
+      "change": "将字号与字重配对提升为正式 composite typography token；组件依赖以单一 token 引用完整字号、行高、字重，primitive 字段仅保留作 CSS 证据。"
+    },
+    {
+      "date": "2026-07-22",
+      "change": "新增 typographyDependencies 成对字体依赖：每条记录明确绑定字号与字重，依赖汇总表按“字号 · 层级 · 字重”整体展示，禁止拆列后猜测组合。",
+      "author": "Kiro"
+    },
+    {
+      "date": "2026-07-22",
+      "change": "新增 fontWeightDependencies：按组件 CSS 显式 font-weight 证据登记 Regular 400 / SemiBold 600；无显式声明的组件保留空数组，并纳入 token/value/selector/property 双向闭环校验。",
+      "author": "Kiro"
+    },
+    {
+      "date": "2026-06-30",
+      "change": "新建档案，记录激活态结构完整性要求（class+indicator缺一不可）",
+      "author": "TBD"
+    },
+    {
+      "date": "2026-07-14",
+      "change": "增加间距与描边 token 依赖、CSS 选择器/属性证据及机械闭环校验映射",
+      "author": "Kiro"
+    },
+    {
+      "date": "2026-07-14",
+      "change": "依据契约语义、组件 CSS 选择器与预览结构，补齐全部现有依赖的 appliesTo 汇总行映射；仅使用真实 types/variants，不新增伪类型或不确定依赖",
+      "author": "Kiro"
+    },
+    {
+      "date": "2026-10-09",
+      "author": "Codex",
+      "change": "统一规范维护质量标准：登记真实实现与选型规则入口、源变更重新验收、父子影响检查及历史页面隔离；不推断可编辑槽位或视觉批准。"
+    },
+    {
+      "date": "2026-10-10",
+      "author": "Codex",
+      "change": "修正tokenReferences中的旧别名，改用Token注册表实际名称；依据既有CSS变量--brand-red/--font-family-base及明确映射，不改Token值、CSS或历史页。新增健康检查阻止未知/重复Token引用。"
+    }
+  ],
+  "isComplete": true,
+  "createdAt": "2026-06-30T00:00:00Z",
+  "updatedAt": "2026-10-08T00:00:00Z",
+  "qualityProfile": {
+    "schemaVersion": "1.0.0",
+    "standard": "docs/component-quality-standard.md",
+    "implementation": "components/variants/tab.html",
+    "selection": {
+      "mappingSource": "components/selection-mvp-policy.json",
+      "mappingPointer": "components.tab.variantDecisionTypes",
+      "rulesPointer": "relations.variantDecisions"
+    },
+    "maintenance": {
+      "authority": "contract-preview-runtime-token-icon",
+      "generatedOnly": [
+        "preview-reference-tables",
+        "component-index",
+        "selection-catalog",
+        "design-reading-view",
+        "ai-reference"
+      ],
+      "changePolicy": "记录来源差异、兼容性与受影响父子组件；源文件变化后旧工程验收失效。",
+      "historicalPages": "不自动升级；新页面锁定本地组件运行资源版本。"
+    },
+    "acceptance": {
+      "report": "components/quality/report.json",
+      "proof": "components/quality/acceptance.json",
+      "declarationIsNotProof": true
+    }
+  },
+  "editable": [
+    "items",
+    "size"
+  ],
+  "integration": {
+    "styles": [
+      "components/tokens.css",
+      "components/components.css",
+      "components/tab-current.css"
+    ],
+    "scripts": [
+      "components/tab.js"
+    ],
+    "fontStylesheets": [
+      "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+    ],
+    "fontFallback": "Open Sans stack; actual browser layout/focus/scroll pending."
+  },
+  "aiContract": {
+    "schemaVersion": "1.0.0",
+    "rootTag": "div",
+    "scope": "existing-desktop-capsule-product-and-standard-two-size-tabs",
+    "supported": [
+      "capsule",
+      "standard",
+      "product",
+      "standard-center"
+    ],
+    "unsupported": [
+      "all-dropdown",
+      "disabled-canonical-call",
+      "built-in-content-panels",
+      "dedicated-change-event",
+      "dynamic-insertion-api",
+      "mobile",
+      "unregistered-product-icons"
+    ],
+    "reviewStatus": {
+      "engineering": "pending",
+      "visual": "pending",
+      "familyCoverage": "partial"
+    },
+    "previewAssets": [
+      "components/preview/reference-live.js"
+    ],
+    "selectionPolicy": "按来源区分商品详情胶囊、居左/居中常规和首页产品图标导航。只调用 catalog 中 callable 的具体变体；内容切换由宿主负责，不把本地选中态当成内容/菜单联动。不得以图标需求或通用筛选外推原稿场景。",
+    "identity": {
+      "rule": "Authored first active item plus one indicator; each item keeps complete inner/text structure. Runtime creates tablist/tab, unique aria-selected and roving tabindex. Do not copy data-tab-ready or initialized roles/tabindex.",
+      "labelRule": "items replaces existing visible labels and item count, min two; retain product icon wrappers and locked local example assets. Source-specific content targets and panels are page integration.",
+      "registeredSizes": "standard/standard-center仅接受已登记default/large，从对应真实Preview提取；capsule/product不开放size，禁止任意改类。"
+    },
+    "locked": [
+      "Real div item/inner/text and active indicator",
+      "Product icon wrapper and existing registered asset",
+      "Standard size and default left alignment",
+      "Shared CSS and current tab.js",
+      "No built-in panel bindings, URLs or callbacks",
+      "Current standard roots retain data-tab-current=regular-atom; native atom horizontal padding16 including first item.",
+      "Current capsule selection roots retain data-tab-current=capsule-atom; every item height30, active vertical padding0 around inner top4."
+    ],
+    "behavior": {
+      "selection": "Click selects exactly one active/aria-selected item and one indicator; per-group state independent. No dedicated change event.",
+      "keyboard": "Arrows wrap enabled visible items only; Home/End choose enabled boundaries and Enter/Space consume normal native default. Composition keys and unavailable items do nothing. Focus requests preventScroll=true; real browser scroll/focus remains pending.",
+      "initialization": "Document/root guards prevent repeated binding; no public dynamic insertion API. Existing All display remains finite Preview behavior only.",
+      "structureCorrection": "All items get full inner wrapper, including inactive capsule labels. Canonical Preview authored markup normalized to same required structure.",
+      "all": "Existing Preview dropdown display toggle retained, but overflow selection, menu ARIA and keyboard are not part of finite call scope.",
+      "business": "Local state only; the local page workflow must implement evidenced content/filter integration. No source-less panel or navigation.",
+      "availability": "Hidden/native fieldset/ARIA-disabled item or ancestor blocks synthetic actions; tabstop synchronizes without clearing selected state.",
+      "currentDefaultBottom": "当前Default居左有限样例灰色1px底线来自049853容器的外部底描边，采用不占布局高度的外绘制；标记必需，不外推Large/居中/其他形态。",
+      "currentLargeCenterBottom": "已独立读取Large居左049804/内层049817、居中默认049539与居中大号049509的Gray4底部1px外描边；仅当前有限来源标记外绘制，Large调用保留独立来源标记。居中自适应宽度映射及视觉待验证，当前居中调用资格读取同版catalog，视觉批准独立记录。 当前本地通过受控size参数选择对应default/large原件，不通过样式类覆盖。"
+    },
+    "evidence": {
+      "localImplementation": "components/variants/tab.html",
+      "comparison": "components/sources/tab/local-structure-review.json",
+      "previousInlineRuntime": "components/sources/tab/preview-inline-runtime-before.txt",
+      "nativeSpecification": "components/sources/tab/native-specification-review-1011.json",
+      "nativeComponent": "components/sources/tab/native-component-review-1011.json",
+      "nativeRegularGapBottomCurrent": "components/sources/tab/pc-regular-gap-bottom-review-1013.json",
+      "nativeDropdownDefaultCurrent": "components/sources/tab/drop-item-default-review-1013.json",
+      "nativeLargeCenterBottomCurrent": "components/sources/tab/pc-large-center-bottom-review-1013.json",
+      "nativeCenterFullCurrent": "components/sources/tab/pc-center-full-source-1014.json",
+      "currentMgReview": "components/sources/tab-collapse-mg-20261114/tab-review.json"
+    },
+    "variants": {
+      "capsule": {
+        "purpose": "capsule-local-selection-tabs",
+        "exampleSelector": "[data-ai-example=\"ai-tab-capsule\"]",
+        "allowedEdits": [
+          "items"
+        ],
+        "slots": {
+          "items": {
+            "selector": ":scope",
+            "mode": "structured-content",
+            "required": true,
+            "preserve": [
+              "div.ds-tab__item",
+              "div.ds-tab__item-inner",
+              "span.ds-tab__item-text",
+              "div.ds-tab__indicator"
+            ],
+            "rule": "At least two complete item/inner/text nodes, first active with sole indicator; product wrappers/assets preserved. Visible labels and count only."
+          }
+        }
+      },
+      "standard": {
+        "purpose": "standard-local-selection-tabs",
+        "exampleSelector": "[data-ai-example=\"ai-tab-standard-default\"]",
+        "allowedEdits": [
+          "items",
+          "size"
+        ],
+        "slots": {
+          "items": {
+            "selector": ":scope",
+            "mode": "structured-content",
+            "required": true,
+            "preserve": [
+              "div.ds-tab__item",
+              "div.ds-tab__item-inner",
+              "span.ds-tab__item-text",
+              "div.ds-tab__indicator"
+            ],
+            "rule": "At least two complete item/inner/text nodes, first active with sole indicator; product wrappers/assets preserved. Visible labels and count only."
+          }
+        },
+        "defaultSize": "default",
+        "sizes": [
+          {
+            "name": "default",
+            "cssClass": "ds-tab--standard",
+            "exampleSelector": "[data-ai-example=\"ai-tab-standard-default\"]"
+          },
+          {
+            "name": "large",
+            "cssClass": "ds-tab--standard-lg",
+            "exampleSelector": "[data-ai-example=\"ai-tab-standard-large\"]"
+          }
+        ],
+        "bindings": {
+          "size": {
+            "mode": "source-example-size",
+            "target": "root",
+            "values": [
+              "default",
+              "large"
+            ],
+            "default": "default"
+          }
+        }
+      },
+      "product": {
+        "purpose": "product-local-selection-tabs",
+        "exampleSelector": "[data-ai-example=\"ai-tab-product\"]",
+        "allowedEdits": [
+          "items"
+        ],
+        "slots": {
+          "items": {
+            "selector": ":scope",
+            "mode": "structured-content",
+            "required": true,
+            "preserve": [
+              "div.ds-tab__item",
+              "div.ds-tab__item-inner",
+              "span.ds-tab__item-text",
+              "div.ds-tab__indicator",
+              "div.ds-tab__item-icon",
+              "img"
+            ],
+            "rule": "Preserve every native item, icon wrapper, image, inner/text and sole initial indicator. Labels/count and the finite registered icon list may change; do not reuse sample icons by item position. Icon meanings must be recorded separately from graphic provenance.",
+            "registeredIcons": {
+              "selector": ".ds-tab__item-icon > img",
+              "values": [
+                "components/icons/mastergo-library/定制Icon/67934-114409.svg",
+                "components/icons/mastergo-library/定制Icon/67934-124368.svg",
+                "components/icons/mastergo-library/定制Icon/67934-115143.svg",
+                "components/icons/mastergo-library/定制Icon/67934-118847.svg",
+                "components/icons/mastergo-library/定制Icon/67934-126731.svg"
+              ]
+            }
+          }
+        }
+      },
+      "standard-center": {
+        "purpose": "source-centered-intrinsic-width-local-selection-tabs",
+        "exampleSelector": "[data-ai-example=\"ai-tab-standard-center-default\"]",
+        "allowedEdits": [
+          "items",
+          "size"
+        ],
+        "slots": {
+          "items": {
+            "selector": ":scope",
+            "mode": "structured-content",
+            "required": true,
+            "preserve": [
+              "div.ds-tab__item",
+              "div.ds-tab__item-inner",
+              "span.ds-tab__item-text",
+              "div.ds-tab__indicator"
+            ],
+            "rule": "At least two complete item/inner/text nodes, first active with sole indicator; product wrappers/assets preserved. Visible labels and count only."
+          }
+        },
+        "defaultSize": "default",
+        "sizes": [
+          {
+            "name": "default",
+            "cssClass": "ds-tab--standard",
+            "exampleSelector": "[data-ai-example=\"ai-tab-standard-center-default\"]"
+          },
+          {
+            "name": "large",
+            "cssClass": "ds-tab--standard-lg",
+            "exampleSelector": "[data-ai-example=\"ai-tab-standard-center-large\"]"
+          }
+        ],
+        "bindings": {
+          "size": {
+            "mode": "source-example-size",
+            "target": "root",
+            "values": [
+              "default",
+              "large"
+            ],
+            "default": "default"
+          }
+        }
+      }
+    }
+  },
+  "centerWidthResolution1014": {
+    "sourceMembers": [
+      "68908:049539",
+      "68908:049509"
+    ],
+    "width": "intrinsic; no source fixed width",
+    "gap": "16px",
+    "sourceSlot": "three typed regular atoms plus optional slot; exported empty slot has no fixed width declaration; saved372/390 are source specimen measurements, not target business widths",
+    "generation": "Existing standard left and source standard-center default/large calls opened; no slot dropdown or responsive admission.",
+    "correctedRule": "旧未占满必居中与真实居左原件冲突，按原件纠正文案及A5判断。"
+  }
+}

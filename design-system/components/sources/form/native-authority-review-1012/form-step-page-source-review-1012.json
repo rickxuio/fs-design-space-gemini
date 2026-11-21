@@ -1,0 +1,119 @@
+{
+  "date": "2026-10-12",
+  "fileId": "143880409387753",
+  "pageId": "68908:333210",
+  "section": "3.3 分步单页表单",
+  "identity": "Actual selected title in live layer tree3.3分步单页表单; old parent name下拉菜单 does not classify this as Dropdown.",
+  "method": "Finite groups exported through official browser PNG controls; all temporary export rows undone and absence verified. Images original pixels preserved.",
+  "sources": [
+    {
+      "nodeId": "68908:408993",
+      "role": "rules",
+      "path": "components/sources/form/native-authority-review-1012/form-step-page-rules-official-1012.png",
+      "rootBounds": [
+        2120,
+        768
+      ],
+      "pngPixels": [
+        2124,
+        772
+      ],
+      "sha256": "f71bf4c4fa214c6f4da768eca25ac7a5511a20159396d99d3bc98e4a186804d8"
+    },
+    {
+      "nodeId": "68908:408825",
+      "role": "PC form/success example",
+      "path": "components/sources/form/native-authority-review-1012/form-step-page-group-408825-official-1012.png",
+      "rootBounds": [
+        2120,
+        1602
+      ],
+      "pngPixels": [
+        2120,
+        1602
+      ],
+      "sha256": "98e157278c18b363f0283852e324c273f431c12f99c72e8a95c5fde2dda4f14b"
+    },
+    {
+      "nodeId": "68908:408897",
+      "role": "M form/success example",
+      "path": "components/sources/form/native-authority-review-1012/form-step-page-group-408897-official-1012.png",
+      "rootBounds": [
+        2120,
+        1006
+      ],
+      "pngPixels": [
+        2120,
+        1006
+      ],
+      "sha256": "2aa777fb48513339780e8d3b9d492f6025f6d9abda4752d1ecea61a14451d193"
+    }
+  ],
+  "rules": {
+    "PC-form": {
+      "stepper": "Numbered Stepper; selection result plus Reselect below; Reselect returns previous step",
+      "contentWidthPx": 864,
+      "formWidthPx": 800,
+      "cardPaddingLeftRightPx": 32,
+      "layout": "Two columns, submit right; card no border, shadow0px2px0px rgba(0,0,0,0.1)",
+      "spacing": "vertical24/horizontal56",
+      "interaction": "Enter submits; submit loads; success dialog; Esc closes"
+    },
+    "PC-success": {
+      "layout": "Dialog, text follows container; text/optional guide button centered",
+      "spacing": "top40+12/bottom40/horizontal24",
+      "interaction": "Esc closes; return to current form with entered values; repeated submit allowed for complex form"
+    },
+    "M-form": {
+      "stepper": "Numbered Stepper, result shown; Reselect below step hidden, Back placed above submit",
+      "layout": "Container/card width follow host; card left/right padding24; one column; Back and Submit full-width",
+      "spacing": "top24/bottom56/horizontal16",
+      "interaction": "Back returns previous step; submit loads; success appears from screen bottom"
+    },
+    "M-success": {
+      "layout": "Drawer, text follows container; text/optional guide button centered",
+      "spacing": "top40+12/bottom40/horizontal16+8",
+      "interaction": "Return to current form with entered values; repeated submission permitted"
+    }
+  },
+  "sourceConflicts": [
+    {
+      "object": "PC submit alignment",
+      "rule": "right aligned",
+      "example": "left aligned",
+      "category": "规范问题",
+      "status": "resolved by user",
+      "decision": {
+        "date": "2026-10-12",
+        "userReply": "以组件为主，组件是左边就是左边",
+        "basis": "Original component takes precedence in this PC Submit alignment conflict",
+        "effectiveAlignment": "left",
+        "scope": "Form 3.3 PC Submit only; no step-page variant or business-flow creation"
+      }
+    },
+    {
+      "object": "Card inner horizontal padding",
+      "rule": "PC32/M24",
+      "example": "PC/M illustrations show20 markers",
+      "category": "规范问题",
+      "status": "resolved basis: source component wins; exact node geometry pending",
+      "decision": {
+        "date": "2026-10-12",
+        "userReply": "所有的都已组件为准；规范正文都是出自于组件，如果有矛盾，一般都是规范正文不对",
+        "basis": "Corresponding original component, not conflicting prose",
+        "sourceAnnotation": "PC/M20px",
+        "measurementBoundary": "20px is visible source annotation, not independently verified node measurement"
+      }
+    }
+  ],
+  "limits": [
+    "No new step-page variant or business flow admitted",
+    "No local page screenshot or full-family approval",
+    "No adaptation audit restoration",
+    "Remote revision unavailable, team-library update not applied"
+  ],
+  "effectiveDecisions": {
+    "pcSubmitAlignment": "left; source component preferred by user; original conflicting prose retained for traceability",
+    "cardPaddingBasis": "original component; source20px annotation retained, exact native geometry pending"
+  }
+}

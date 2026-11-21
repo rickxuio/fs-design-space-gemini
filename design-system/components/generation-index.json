@@ -1,0 +1,5853 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedFrom": {
+    "contracts": "components/contracts/*.json",
+    "previews": "components/variants/*.html",
+    "fragmentAssembly": "components/registry.json"
+  },
+  "componentCount": 30,
+  "components": [
+    {
+      "id": "anchor-nav",
+      "contractId": "comp_anchor_nav_001",
+      "name": "AnchorNav",
+      "chineseName": "锚点导航",
+      "category": "导航 Navigation",
+      "description": "页面内锚点跳转导航条，固定在 Banner 之后，左侧 Tab 选项用于滚动定位页面内区块，右侧固定一个 CTA 按钮",
+      "available": true,
+      "fullyAvailable": true,
+      "isComplete": true,
+      "pendingParts": [],
+      "contractPath": "components/contracts/anchor-nav.json",
+      "previewPath": "components/variants/anchor-nav.html",
+      "searchIntents": [
+        "锚点导航",
+        "页内导航",
+        "楼层导航",
+        "页面内跳转",
+        "固定导航条",
+        "sticky导航"
+      ],
+      "variants": [
+        {
+          "name": "anchor-nav",
+          "type": null,
+          "label": "标准锚点导航",
+          "usage": "同一长页多个真实章节，需要横向章节入口及现有单CTA。",
+          "classes": [
+            "ds-anchor-nav"
+          ],
+          "sizes": [],
+          "selectorCandidates": [],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/anchor-nav~1anchor-nav"
+          }
+        }
+      ],
+      "fragmentAssembly": {
+        "registryPath": "components/registry.json",
+        "previewPath": "components/variants/anchor-nav.html",
+        "fragmentsVerified": true,
+        "fragments": [
+          "anchor-nav"
+        ]
+      },
+      "relationSummary": {
+        "parentContexts": [
+          "page-top"
+        ],
+        "componentDependencies": [
+          "Button"
+        ],
+        "mutuallyExclusiveWith": [],
+        "hardRuleCount": 3,
+        "hasVariantSelectionRules": false
+      }
+    },
+    {
+      "id": "badge",
+      "contractId": "comp_badge_001",
+      "name": "Badge",
+      "chineseName": "徽标数",
+      "category": "数据展示 Data Display",
+      "description": "徽标数组件，一个组件三种类型：圆点徽标（8px 状态色圆点，可带文字）/ 数量徽标（红底白字未读数，使用已格式化数量，超量按场景展示 99+）/ 图案徽标（容器内放图标）。纯展示无交互状态。规范 v1.1.2603A。",
+      "available": true,
+      "fullyAvailable": true,
+      "isComplete": true,
+      "pendingParts": [],
+      "contractPath": "components/contracts/badge.json",
+      "previewPath": "components/variants/badge.html",
+      "searchIntents": [
+        "徽标数",
+        "角标",
+        "红点提醒",
+        "未读数量徽标",
+        "圆点状态徽标",
+        "图案徽标",
+        "订单状态点"
+      ],
+      "variants": [
+        {
+          "name": "dot",
+          "type": null,
+          "label": "圆点徽标",
+          "usage": "完成状态的8px绿色圆点与文字。",
+          "classes": [
+            "ds-badge-status"
+          ],
+          "sizes": [],
+          "selectorCandidates": [],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/badge~1dot"
+          }
+        },
+        {
+          "name": "count",
+          "type": null,
+          "label": "数量徽标",
+          "usage": "宿主已提供0–99或99+的显示数量。",
+          "classes": [
+            "ds-badge-count",
+            "ds-badge-count--m",
+            "ds-badge-count--max"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-badge-count--m",
+            ".ds-badge-count--max",
+            ".ds-badge-count--m.ds-badge-count--max",
+            ".ds-badge-count.ds-badge-count--m"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/badge~1count"
+          }
+        },
+        {
+          "name": "icon",
+          "type": null,
+          "label": "图案徽标",
+          "usage": "现有PC/Pad18px红底白勾图案。",
+          "classes": [
+            "ds-badge-icon"
+          ],
+          "sizes": [],
+          "selectorCandidates": [],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/badge~1icon"
+          }
+        }
+      ],
+      "fragmentAssembly": {
+        "registryPath": "components/registry.json",
+        "previewPath": "components/variants/badge.html",
+        "fragmentsVerified": false,
+        "fragments": [
+          "badge"
+        ]
+      },
+      "relationSummary": {
+        "parentContexts": [],
+        "componentDependencies": [],
+        "mutuallyExclusiveWith": [],
+        "hardRuleCount": 1,
+        "hasVariantSelectionRules": true
+      }
+    },
+    {
+      "id": "banner",
+      "contractId": "comp_banner_001",
+      "name": "Banner",
+      "chineseName": "横幅",
+      "category": "数据展示 Data Display",
+      "description": "页面顶部横幅组件，包含 Hero/Sub/Search/Title-only/Mini 五个变体；各变体可按需使用面包屑，面包屑不参与变体判断。",
+      "available": true,
+      "fullyAvailable": true,
+      "isComplete": true,
+      "pendingParts": [],
+      "contractPath": "components/contracts/banner.json",
+      "previewPath": "components/variants/banner.html",
+      "searchIntents": [
+        "页面横幅",
+        "首页大图",
+        "Hero区域",
+        "顶部大图",
+        "面包屑横幅",
+        "搜索横幅",
+        "专题页标题条",
+        "商品详情页提示条"
+      ],
+      "variants": [
+        {
+          "name": "hero",
+          "type": null,
+          "label": "首页级 Hero",
+          "usage": "仅1920桌面首页，完整标题、描述和一个白色描边XL按钮。",
+          "classes": [
+            "ds-banner",
+            "ds-banner--hero"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-banner--hero",
+            ".ds-banner.ds-banner--hero"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/banner~1hero"
+          }
+        },
+        {
+          "name": "sub",
+          "type": null,
+          "label": "解决方案/产品线页 Sub Banner",
+          "usage": "1920px解决方案页标题、描述与当前模板的深色面包屑。",
+          "classes": [
+            "ds-banner",
+            "ds-banner--sub"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-banner--sub",
+            ".ds-banner.ds-banner--sub"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/banner~1sub"
+          }
+        },
+        {
+          "name": "search",
+          "type": null,
+          "label": "知识库/Case Studies Search Banner",
+          "usage": "知识库或案例页的关键词搜索顶部，42px真实搜索输入与FS GPT宿主入口。",
+          "classes": [
+            "ds-banner",
+            "ds-banner--search"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-banner--search",
+            ".ds-banner.ds-banner--search"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/banner~1search"
+          }
+        },
+        {
+          "name": "title-only",
+          "type": null,
+          "label": "专题/活动页 Title-only Banner",
+          "usage": "1920×200专题/外围/分类页，核心内容只有标题。",
+          "classes": [
+            "ds-banner",
+            "ds-banner--title-only"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-banner--title-only",
+            ".ds-banner.ds-banner--title-only"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/banner~1title-only"
+          }
+        },
+        {
+          "name": "mini",
+          "type": null,
+          "label": "商品详情页内嵌提示 Mini Banner",
+          "usage": "PC商品详情内容中的120px窄幅信息，需真实三项分页切换。",
+          "classes": [
+            "ds-banner",
+            "ds-banner--mini"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-banner--mini",
+            ".ds-banner.ds-banner--mini"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/banner~1mini"
+          }
+        },
+        {
+          "name": "hero-responsive",
+          "type": null,
+          "label": "响应式 Hero（完整文案）",
+          "usage": "来源标题、描述与单CTA均需完整保留的信息页，使用既有本地响应式实现。",
+          "classes": [
+            "ds-banner",
+            "ds-banner--hero",
+            "ds-banner--hero-responsive"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-banner--hero",
+            ".ds-banner--hero-responsive",
+            ".ds-banner--hero.ds-banner--hero-responsive",
+            ".ds-banner.ds-banner--hero"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/banner~1hero-responsive"
+          }
+        }
+      ],
+      "fragmentAssembly": {
+        "registryPath": "components/registry.json",
+        "previewPath": "components/variants/banner.html",
+        "fragmentsVerified": true,
+        "fragments": [
+          "hero",
+          "sub",
+          "search",
+          "title-only",
+          "mini"
+        ]
+      },
+      "relationSummary": {
+        "parentContexts": [
+          "page-top"
+        ],
+        "componentDependencies": [
+          "Breadcrumb",
+          "Button",
+          "Button",
+          "Carousel",
+          "IconButton",
+          "Input",
+          "TextButton"
+        ],
+        "mutuallyExclusiveWith": [
+          "content-banner-dark"
+        ],
+        "hardRuleCount": 4,
+        "hasVariantSelectionRules": false
+      }
+    },
+    {
+      "id": "breadcrumb",
+      "contractId": "comp_breadcrumb_001",
+      "name": "Breadcrumb",
+      "chineseName": "面包屑",
+      "category": "导航 Navigation",
+      "description": "面包屑导航，常规（浅色背景）/ 反白（深色背景）两种样式，分隔符为斜线 /，用于标注页面层级路径",
+      "available": true,
+      "fullyAvailable": true,
+      "isComplete": true,
+      "pendingParts": [],
+      "contractPath": "components/contracts/breadcrumb.json",
+      "previewPath": "components/variants/breadcrumb.html",
+      "searchIntents": [
+        "面包屑",
+        "路径导航",
+        "层级导航",
+        "Breadcrumb",
+        "位置导航"
+      ],
+      "variants": [
+        {
+          "name": "default",
+          "type": null,
+          "label": "常规（浅色背景）",
+          "usage": "浅色背景的完整多级路径。",
+          "classes": [
+            "ds-breadcrumb"
+          ],
+          "sizes": [],
+          "selectorCandidates": [],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/breadcrumb~1default"
+          }
+        },
+        {
+          "name": "dark",
+          "type": null,
+          "label": "反白（深色背景）",
+          "usage": "深色背景上的完整多级路径。",
+          "classes": [
+            "ds-breadcrumb",
+            "ds-breadcrumb--dark"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-breadcrumb--dark",
+            ".ds-breadcrumb.ds-breadcrumb--dark"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/breadcrumb~1dark"
+          }
+        },
+        {
+          "name": "full-width-light",
+          "type": null,
+          "label": "通栏（浅色）",
+          "usage": "1920px浅色通栏容器中的常规路径。",
+          "classes": [
+            "ds-breadcrumb-source-full-width"
+          ],
+          "sizes": [],
+          "selectorCandidates": [],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/breadcrumb~1full-width-light"
+          }
+        },
+        {
+          "name": "full-width-dark",
+          "type": null,
+          "label": "通栏（反白）",
+          "usage": "1920px深色通栏容器中的反白路径。",
+          "classes": [
+            "ds-breadcrumb-source-full-width"
+          ],
+          "sizes": [],
+          "selectorCandidates": [],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/breadcrumb~1full-width-dark"
+          }
+        }
+      ],
+      "fragmentAssembly": {
+        "registryPath": "components/registry.json",
+        "previewPath": null,
+        "fragmentsVerified": false,
+        "fragments": []
+      },
+      "relationSummary": {
+        "parentContexts": [
+          "ds-banner--hero",
+          "ds-banner--mini",
+          "ds-banner--search",
+          "ds-banner--sub",
+          "ds-banner--title-only"
+        ],
+        "componentDependencies": [],
+        "mutuallyExclusiveWith": [],
+        "hardRuleCount": 2,
+        "hasVariantSelectionRules": false
+      }
+    },
+    {
+      "id": "button",
+      "contractId": "comp_button_001",
+      "name": "Button",
+      "chineseName": "按钮",
+      "category": "通用 General",
+      "description": "按钮组件，包含填充、描边与Cart加购按钮类型；各类型按自身原件的尺寸、样式和状态调用。",
+      "available": true,
+      "fullyAvailable": true,
+      "isComplete": true,
+      "pendingParts": [],
+      "contractPath": "components/contracts/button.json",
+      "previewPath": "components/variants/button.html",
+      "searchIntents": [
+        "主操作按钮",
+        "次要操作按钮",
+        "深色操作按钮",
+        "描边按钮-黑色",
+        "描边按钮-灰色",
+        "描边按钮-白色",
+        "描边按钮-蓝色",
+        "表单提交按钮",
+        "CTA按钮",
+        "红色按钮",
+        "确认按钮"
+      ],
+      "variants": [
+        {
+          "name": "filled-red",
+          "type": "filled",
+          "label": "红色填充",
+          "usage": "商品详情页顶部购买区的主加购 → 必须用红色填充。；表单提交、搜索提交、指定确认弹窗底部确认；已登记锚点导航的42px主CTA → 可用，按具体宿主核对。锚点导航主CTA采用红色XL Regular（42px、左右24px）；不要沿用旧L标签。",
+          "classes": [
+            "ds-btn",
+            "ds-btn--filled-red"
+          ],
+          "sizes": [
+            {
+              "name": "xl-bold",
+              "classes": [],
+              "styleProperties": {
+                "height": "42px",
+                "padding": "0 24px",
+                "fontSize": "14px",
+                "fontWeight": "600",
+                "backgroundColor": "color.brand-red (#C00000)",
+                "color": "color.white (#FFFFFF)",
+                "borderRadius": "4px",
+                "fontFamily": "Open Sans",
+                "lineHeight": "22px",
+                "gap": "2px"
+              }
+            },
+            {
+              "name": "xl-regular",
+              "classes": [],
+              "styleProperties": {
+                "height": "42px",
+                "padding": "0 24px",
+                "fontSize": "14px",
+                "fontWeight": "400",
+                "backgroundColor": "color.brand-red (#C00000)",
+                "color": "color.white (#FFFFFF)",
+                "borderRadius": "4px",
+                "fontFamily": "Open Sans",
+                "lineHeight": "22px",
+                "gap": "2px"
+              }
+            },
+            {
+              "name": "l",
+              "classes": [],
+              "styleProperties": {
+                "height": "36px",
+                "padding": "0 16px",
+                "fontSize": "14px",
+                "fontWeight": "400",
+                "backgroundColor": "color.brand-red (#C00000)",
+                "color": "color.white (#FFFFFF)",
+                "borderRadius": "4px",
+                "fontFamily": "Open Sans",
+                "lineHeight": "22px",
+                "gap": "2px"
+              }
+            },
+            {
+              "name": "m",
+              "classes": [],
+              "styleProperties": {
+                "height": "32px",
+                "padding": "0 12px",
+                "fontSize": "12px",
+                "fontWeight": "400",
+                "backgroundColor": "color.brand-red (#C00000)",
+                "color": "color.white (#FFFFFF)",
+                "borderRadius": "4px",
+                "fontFamily": "Open Sans",
+                "lineHeight": "20px",
+                "gap": "2px"
+              }
+            },
+            {
+              "name": "s",
+              "classes": [],
+              "styleProperties": {
+                "height": "32px",
+                "padding": "0 8px",
+                "fontSize": "12px",
+                "fontWeight": "400",
+                "backgroundColor": "color.brand-red (#C00000)",
+                "color": "color.white (#FFFFFF)",
+                "borderRadius": "4px",
+                "fontFamily": "Open Sans",
+                "lineHeight": "20px",
+                "gap": "2px"
+              }
+            }
+          ],
+          "selectorCandidates": [
+            ".ds-btn--filled-red",
+            ".ds-btn.ds-btn--filled-red"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/button~1filled-red"
+          }
+        },
+        {
+          "name": "filled-black",
+          "type": "filled",
+          "label": "黑色填充",
+          "usage": "需要较高视觉权重的操作 → 列入黑色填充候选，核对操作角色及所在组件。；只知道这是主操作 → 继续比较候选，不能据此改用红色。",
+          "classes": [
+            "ds-btn",
+            "ds-btn--filled-black"
+          ],
+          "sizes": [
+            {
+              "name": "xl",
+              "classes": [],
+              "styleProperties": {
+                "height": "42px",
+                "padding": "0 24px",
+                "fontSize": "14px",
+                "fontWeight": "400",
+                "backgroundColor": "color.gray-2 (#4B4B4D)",
+                "color": "color.white (#FFFFFF)",
+                "borderRadius": "4px",
+                "fontFamily": "Open Sans",
+                "lineHeight": "22px",
+                "gap": "2px"
+              }
+            }
+          ],
+          "selectorCandidates": [
+            ".ds-btn--filled-black",
+            ".ds-btn.ds-btn--filled-black"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/button~1filled-black"
+          }
+        },
+        {
+          "name": "filled-gray",
+          "type": "filled",
+          "label": "灰色填充",
+          "usage": "辅助或次要操作 → 列入灰色填充候选，结合同组层级比较。",
+          "classes": [
+            "ds-btn",
+            "ds-btn--filled-gray"
+          ],
+          "sizes": [
+            {
+              "name": "xl-bold",
+              "classes": [],
+              "styleProperties": {
+                "height": "42px",
+                "padding": "0 24px",
+                "fontSize": "14px",
+                "fontWeight": "600",
+                "backgroundColor": "color.gray-7 (#F2F2F2)",
+                "color": "color.gray-1 (#19191A)",
+                "borderRadius": "4px",
+                "fontFamily": "Open Sans",
+                "lineHeight": "22px",
+                "gap": "2px"
+              }
+            },
+            {
+              "name": "xl-regular",
+              "classes": [],
+              "styleProperties": {
+                "height": "42px",
+                "padding": "0 24px",
+                "fontSize": "14px",
+                "fontWeight": "400",
+                "backgroundColor": "color.gray-7 (#F2F2F2)",
+                "color": "color.gray-3 (#707070)",
+                "borderRadius": "4px",
+                "fontFamily": "Open Sans",
+                "lineHeight": "22px",
+                "gap": "2px"
+              }
+            },
+            {
+              "name": "l",
+              "classes": [],
+              "styleProperties": {
+                "height": "36px",
+                "padding": "0 16px",
+                "fontSize": "14px",
+                "fontWeight": "400",
+                "backgroundColor": "color.gray-7 (#F2F2F2)",
+                "color": "color.gray-3 (#707070)",
+                "borderRadius": "4px",
+                "fontFamily": "Open Sans",
+                "lineHeight": "22px",
+                "gap": "2px"
+              }
+            },
+            {
+              "name": "m",
+              "classes": [],
+              "styleProperties": {
+                "height": "32px",
+                "padding": "0 12px",
+                "fontSize": "12px",
+                "fontWeight": "400",
+                "backgroundColor": "color.gray-8 (#F6F6F8)",
+                "color": "color.gray-3 (#707070)",
+                "borderRadius": "4px",
+                "fontFamily": "Open Sans",
+                "lineHeight": "20px",
+                "gap": "2px"
+              }
+            }
+          ],
+          "selectorCandidates": [
+            ".ds-btn--filled-gray",
+            ".ds-btn.ds-btn--filled-gray"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/button~1filled-gray"
+          }
+        },
+        {
+          "name": "outline-black",
+          "type": "outline",
+          "label": "黑色描边",
+          "usage": "浅色背景上的辅助操作，需要醒目的边框 → 列入黑色描边候选。",
+          "classes": [
+            "ds-btn",
+            "ds-btn--outline-black"
+          ],
+          "sizes": [
+            {
+              "name": "xl",
+              "classes": [],
+              "styleProperties": {
+                "height": "42px",
+                "padding": "0 24px",
+                "fontSize": "14px",
+                "fontWeight": "400",
+                "backgroundColor": "transparent",
+                "color": "color.gray-1 (#19191A)",
+                "border": "1px solid color.gray-1 (#19191A)",
+                "borderRadius": "4px",
+                "fontFamily": "Open Sans",
+                "lineHeight": "22px",
+                "gap": "2px"
+              }
+            }
+          ],
+          "selectorCandidates": [
+            ".ds-btn--outline-black",
+            ".ds-btn.ds-btn--outline-black"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/button~1outline-black"
+          }
+        },
+        {
+          "name": "outline-gray",
+          "type": "outline",
+          "label": "灰色描边",
+          "usage": "政策页或技术文档里的小型辅助入口 → 可比较灰色描边 M（高 32px，文字 12px 常规字重）。；只知道是低强调的辅助操作 → 继续比较黑色与灰色描边。",
+          "classes": [
+            "ds-btn",
+            "ds-btn--outline-gray"
+          ],
+          "sizes": [
+            {
+              "name": "xl",
+              "classes": [],
+              "styleProperties": {
+                "height": "42px",
+                "padding": "0 24px",
+                "fontSize": "14px",
+                "fontWeight": "400",
+                "backgroundColor": "transparent",
+                "color": "color.gray-1 (#19191A)",
+                "border": "1px solid color.gray-5 (#DEE0E3)",
+                "borderRadius": "4px",
+                "fontFamily": "Open Sans",
+                "lineHeight": "22px",
+                "gap": "2px"
+              }
+            },
+            {
+              "name": "m",
+              "classes": [],
+              "styleProperties": {
+                "height": "32px",
+                "padding": "0 12px",
+                "fontSize": "12px",
+                "fontWeight": "400",
+                "backgroundColor": "transparent",
+                "color": "color.gray-1 (#19191A)",
+                "border": "1px solid color.gray-5 (#DEE0E3)",
+                "borderRadius": "4px",
+                "fontFamily": "Open Sans",
+                "lineHeight": "20px",
+                "gap": "2px"
+              }
+            }
+          ],
+          "selectorCandidates": [
+            ".ds-btn--outline-gray",
+            ".ds-btn.ds-btn--outline-gray"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/button~1outline-gray"
+          }
+        },
+        {
+          "name": "outline-white",
+          "type": "outline",
+          "label": "白色描边",
+          "usage": "已开放的深色单图桌面 Hero，只有一个操作入口 → 按 Hero 调用白色描边 XL。",
+          "classes": [
+            "ds-btn",
+            "ds-btn--outline-white"
+          ],
+          "sizes": [
+            {
+              "name": "xl",
+              "classes": [],
+              "styleProperties": {
+                "height": "42px",
+                "padding": "0 24px",
+                "fontSize": "14px",
+                "fontWeight": "400",
+                "backgroundColor": "color.white-translucent (rgba(255,255,255,0.1))",
+                "color": "color.white (#FFFFFF)",
+                "border": "1px solid color.white (#FFFFFF)",
+                "borderRadius": "4px",
+                "fontFamily": "Open Sans",
+                "lineHeight": "22px",
+                "gap": "2px"
+              }
+            }
+          ],
+          "selectorCandidates": [
+            ".ds-btn--outline-white",
+            ".ds-btn.ds-btn--outline-white"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/button~1outline-white"
+          }
+        },
+        {
+          "name": "outline-blue",
+          "type": "outline",
+          "label": "蓝色描边",
+          "usage": "明确需要蓝色强调的链接式按钮 → 列入蓝色描边候选。",
+          "classes": [
+            "ds-btn",
+            "ds-btn--outline-blue"
+          ],
+          "sizes": [
+            {
+              "name": "xl",
+              "classes": [],
+              "styleProperties": {
+                "height": "42px",
+                "padding": "0 24px",
+                "fontSize": "14px",
+                "fontWeight": "400",
+                "backgroundColor": "transparent",
+                "color": "color.blue (#0060BF)",
+                "border": "1px solid color.blue (#0060BF)",
+                "borderRadius": "4px",
+                "fontFamily": "Open Sans",
+                "lineHeight": "22px",
+                "gap": "2px"
+              }
+            }
+          ],
+          "selectorCandidates": [
+            ".ds-btn--outline-blue",
+            ".ds-btn.ds-btn--outline-blue"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/button~1outline-blue"
+          }
+        },
+        {
+          "name": "cart-product-card",
+          "type": "cart",
+          "label": "Cart加购按钮（产品卡片）",
+          "usage": "已核对的产品小卡片或完整产品卡片内的 Add 入口 → 按对应卡片核对 Cart 加购。",
+          "classes": [
+            "ds-cart",
+            "ds-cart--product-card"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-cart--product-card",
+            ".ds-cart.ds-cart--product-card"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/button~1cart-product-card"
+          }
+        }
+      ],
+      "fragmentAssembly": {
+        "registryPath": "components/registry.json",
+        "previewPath": "components/variants/button.html",
+        "fragmentsVerified": false,
+        "fragments": [
+          "button"
+        ]
+      },
+      "relationSummary": {
+        "parentContexts": [
+          "[data-page-type=\"product-detail\"] [data-product-purchase-zone=\"top\"]",
+          "content-banner-dark",
+          "ds-anchor-nav__action",
+          "ds-banner--hero",
+          "ds-banner--sub",
+          "ds-dialog--confirmation",
+          "ds-dropdown__footer",
+          "ds-form",
+          "ds-nav-header"
+        ],
+        "componentDependencies": [],
+        "mutuallyExclusiveWith": [],
+        "hardRuleCount": 1,
+        "hasVariantSelectionRules": false
+      }
+    },
+    {
+      "id": "card",
+      "contractId": "card",
+      "name": "Card",
+      "chineseName": "图文卡片",
+      "category": "数据展示 Data Display",
+      "description": "图文卡片组件，用于展示图片+文字内容的组合。分为拼接式（上下结构/左右结构）和嵌入式两大类。支持多种内容组合、边框样式和交互状态。",
+      "available": true,
+      "fullyAvailable": true,
+      "isComplete": true,
+      "pendingParts": [],
+      "contractPath": "components/contracts/card.json",
+      "previewPath": "components/variants/card.html",
+      "searchIntents": [
+        "图文卡片",
+        "产品卡片",
+        "文章列表卡片",
+        "通栏图文展示",
+        "图左文右",
+        "文左图右",
+        "多事件卡片",
+        "侧边栏图文卡片",
+        "嵌入式标准产品卡片"
+      ],
+      "variants": [
+        {
+          "name": "spliced.vertical.single-event",
+          "type": null,
+          "label": "拼接式 · 上下结构 · 单事件卡片",
+          "usage": "普通内容图上文下，灰色父级。",
+          "classes": [
+            "ds-card",
+            "ds-card--no-border",
+            "ds-card--vertical"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-card--no-border",
+            ".ds-card--vertical",
+            ".ds-card--no-border.ds-card--vertical",
+            ".ds-card.ds-card--no-border"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/card~1spliced.vertical.single-event"
+          }
+        },
+        {
+          "name": "spliced.vertical.category-nav",
+          "type": null,
+          "label": "拼接式 · 上下结构 · 多事件卡片",
+          "usage": "图片、标题及多个独立分类链接。",
+          "classes": [
+            "ds-card--vertical"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-card--vertical"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/card~1spliced.vertical.category-nav"
+          }
+        },
+        {
+          "name": "spliced.horizontal.full-width",
+          "type": null,
+          "label": "拼接式 · 左右结构 · 通栏",
+          "usage": "一行独占版心的左右图文。",
+          "classes": [
+            "ds-card",
+            "ds-card--horizontal",
+            "ds-card--horizontal-reverse"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-card--horizontal",
+            ".ds-card--horizontal-reverse",
+            ".ds-card--horizontal.ds-card--horizontal-reverse",
+            ".ds-card.ds-card--horizontal"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/card~1spliced.horizontal.full-width"
+          }
+        },
+        {
+          "name": "spliced.horizontal.full-width.bordered-background",
+          "type": null,
+          "label": "拼接式-左右结构-通栏（1200px）-描边/背景",
+          "usage": "左右图文通栏，文本区明确为描边/白底，包含可滚动参数列表。",
+          "classes": [
+            "ds-card",
+            "ds-card--horizontal",
+            "ds-card--horizontal-bordered",
+            "ds-card--horizontal-reverse"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-card--horizontal",
+            ".ds-card--horizontal-bordered",
+            ".ds-card--horizontal-reverse",
+            ".ds-card--horizontal.ds-card--horizontal-bordered.ds-card--horizontal-reverse",
+            ".ds-card.ds-card--horizontal"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/card~1spliced.horizontal.full-width.bordered-background"
+          }
+        },
+        {
+          "name": "spliced.horizontal.with-sidebar",
+          "type": null,
+          "label": "拼接式 · 左右结构 · 含侧边栏",
+          "usage": "PC左侧真实菜单＋无描边左右图文内容，图文源件为样式二。",
+          "classes": [
+            "ds-card--horizontal-sidebar"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-card--horizontal-sidebar"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/card~1spliced.horizontal.with-sidebar"
+          }
+        },
+        {
+          "name": "spliced.horizontal.with-sidebar.bordered-background",
+          "type": null,
+          "label": "拼接式-左右结构-含侧边栏-描边/背景",
+          "usage": "PC左侧真实菜单＋左右图文内容，文字半区需原件描边与List12。",
+          "classes": [
+            "ds-card--horizontal-bordered",
+            "ds-card--horizontal-reverse",
+            "ds-card--horizontal-sidebar"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-card--horizontal-bordered",
+            ".ds-card--horizontal-reverse",
+            ".ds-card--horizontal-sidebar",
+            ".ds-card--horizontal-bordered.ds-card--horizontal-reverse.ds-card--horizontal-sidebar"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/card~1spliced.horizontal.with-sidebar.bordered-background"
+          }
+        },
+        {
+          "name": "embedded.product-small",
+          "type": null,
+          "label": "嵌入式 · 产品小卡片",
+          "usage": "最近浏览式产品图、标题和价格。",
+          "classes": [
+            "ds-card",
+            "ds-card--embedded",
+            "ds-card--embedded-bg-gray",
+            "ds-card--embedded-small"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-card--embedded",
+            ".ds-card--embedded-bg-gray",
+            ".ds-card--embedded-small",
+            ".ds-card--embedded.ds-card--embedded-bg-gray.ds-card--embedded-small",
+            ".ds-card.ds-card--embedded"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/card~1embedded.product-small"
+          }
+        },
+        {
+          "name": "embedded.product-standard",
+          "type": null,
+          "label": "嵌入式 · 产品卡片",
+          "usage": "搜索结果页产品展示卡。",
+          "classes": [
+            "ds-card--embedded-standard"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-card--embedded-standard"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/card~1embedded.product-standard"
+          }
+        },
+        {
+          "name": "embedded.product-detail",
+          "type": null,
+          "label": "嵌入式 · 产品详情卡片",
+          "usage": "产品小图、标题、说明及参数列表，横向嵌入式详情卡片。",
+          "classes": [
+            "ds-card",
+            "ds-card--embedded",
+            "ds-card--embedded-detail"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-card--embedded",
+            ".ds-card--embedded-detail",
+            ".ds-card--embedded.ds-card--embedded-detail",
+            ".ds-card.ds-card--embedded"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/card~1embedded.product-detail"
+          }
+        },
+        {
+          "name": "embedded.product-full",
+          "type": null,
+          "label": "嵌入式 · 产品完整卡片",
+          "usage": "完整产品选购卡：兼容标签、参数、价格、库存、销量评价及真实Cart加购按钮同时存在。",
+          "classes": [
+            "ds-card",
+            "ds-card--embedded",
+            "ds-card--embedded-bg-gray",
+            "ds-card--embedded-full"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-card--embedded",
+            ".ds-card--embedded-bg-gray",
+            ".ds-card--embedded-full",
+            ".ds-card--embedded.ds-card--embedded-bg-gray.ds-card--embedded-full",
+            ".ds-card.ds-card--embedded"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/card~1embedded.product-full"
+          }
+        },
+        {
+          "name": "spliced.horizontal.full-width.responsive",
+          "type": null,
+          "label": "拼接式 · 通栏 · 响应式（当前MG）",
+          "usage": "明确需适配的左右图文通栏。",
+          "classes": [
+            "ds-card",
+            "ds-card--horizontal",
+            "ds-card--horizontal-reverse",
+            "ds-card--source-responsive"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-card--horizontal",
+            ".ds-card--horizontal-reverse",
+            ".ds-card--source-responsive",
+            ".ds-card--horizontal.ds-card--horizontal-reverse.ds-card--source-responsive",
+            ".ds-card.ds-card--horizontal"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/card~1spliced.horizontal.full-width.responsive"
+          }
+        },
+        {
+          "name": "spliced.vertical.single-event.bordered",
+          "type": null,
+          "label": "拼接式 · 上下结构 · 单事件 · 白色父级描边",
+          "usage": "白色父级PC四栏的285px图文卡。",
+          "classes": [
+            "ds-card",
+            "ds-card--bordered",
+            "ds-card--vertical"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-card--bordered",
+            ".ds-card--vertical",
+            ".ds-card--bordered.ds-card--vertical",
+            ".ds-card.ds-card--bordered"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/card~1spliced.vertical.single-event.bordered"
+          }
+        }
+      ],
+      "fragmentAssembly": {
+        "registryPath": "components/registry.json",
+        "previewPath": "components/variants/card.html",
+        "fragmentsVerified": false,
+        "fragments": [
+          "vertical",
+          "horizontal"
+        ]
+      },
+      "relationSummary": {
+        "parentContexts": [
+          "page-section--gray",
+          "page-section--white"
+        ],
+        "componentDependencies": [
+          "Button",
+          "List",
+          "List",
+          "MenuNavigation",
+          "MenuNavigation",
+          "Tag",
+          "Tag",
+          "Tag",
+          "Tag",
+          "Tag",
+          "TextButton"
+        ],
+        "mutuallyExclusiveWith": [
+          "content-banner-dark"
+        ],
+        "hardRuleCount": 5,
+        "hasVariantSelectionRules": true
+      }
+    },
+    {
+      "id": "carousel",
+      "contractId": "comp_carousel_001",
+      "name": "Carousel",
+      "chineseName": "走马灯",
+      "category": "数据展示 Data Display",
+      "description": "轮播组件，圆形实心导航按钮（Prev/Next）+ 分页指示器（Dots），浅色/深色两套配色，支持叠加、版心两侧及首页 Banner 场景",
+      "available": true,
+      "fullyAvailable": false,
+      "isComplete": false,
+      "pendingParts": [
+        "完整轮播组合未逐项对齐原件；本地light-five/dark-seven架子已撤出展示和精确AI调用"
+      ],
+      "contractPath": "components/contracts/carousel.json",
+      "previewPath": "components/variants/carousel.html",
+      "searchIntents": [
+        "走马灯",
+        "轮播图",
+        "轮播组件",
+        "图片轮播",
+        "内容轮播",
+        "Carousel",
+        "幻灯片切换"
+      ],
+      "variants": [
+        {
+          "name": "light",
+          "type": null,
+          "label": "浅色背景导航按钮",
+          "usage": "",
+          "classes": [
+            "ds-carousel",
+            "ds-carousel--light"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-carousel--light",
+            ".ds-carousel.ds-carousel--light"
+          ],
+          "isComplete": false,
+          "pendingParts": [
+            "仅留历史分类；完整组合需真实来源映射，不由本地演示证明"
+          ],
+          "available": false,
+          "publication": {
+            "disposition": "withheld",
+            "newPages": false,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/carousel~1light"
+          }
+        },
+        {
+          "name": "dark",
+          "type": null,
+          "label": "深色背景导航按钮",
+          "usage": "用于深色 Banner 背景",
+          "classes": [
+            "ds-carousel",
+            "ds-carousel--dark",
+            "ds-carousel--homepage-banner",
+            "ds-carousel__btn--dark"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-carousel--dark",
+            ".ds-carousel--homepage-banner",
+            ".ds-carousel__btn--dark",
+            ".ds-carousel--dark.ds-carousel--homepage-banner.ds-carousel__btn--dark",
+            ".ds-carousel.ds-carousel--dark"
+          ],
+          "isComplete": false,
+          "pendingParts": [
+            "仅留历史分类；完整组合需真实来源映射，不由本地演示证明"
+          ],
+          "available": false,
+          "publication": {
+            "disposition": "withheld",
+            "newPages": false,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/carousel~1dark"
+          }
+        },
+        {
+          "name": "navigation.outlined-m.left",
+          "type": null,
+          "label": "描边28独立左切换控制",
+          "usage": "明确描边28场景的上一项动作。",
+          "classes": [
+            "ds-carousel__btn",
+            "ds-carousel__btn--outlined-m"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-carousel__btn--outlined-m",
+            ".ds-carousel__btn.ds-carousel__btn--outlined-m"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/carousel~1navigation.outlined-m.left"
+          }
+        },
+        {
+          "name": "navigation.outlined-m.right",
+          "type": null,
+          "label": "描边28独立右切换控制",
+          "usage": "明确描边28场景的下一项动作。",
+          "classes": [
+            "ds-carousel__btn",
+            "ds-carousel__btn--outlined-m"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-carousel__btn--outlined-m",
+            ".ds-carousel__btn.ds-carousel__btn--outlined-m"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/carousel~1navigation.outlined-m.right"
+          }
+        },
+        {
+          "name": "navigation.solid-xl.left",
+          "type": null,
+          "label": "实心48独立左切换控制",
+          "usage": "外部多卡片轮播上一项；排除详情与解决方案页。",
+          "classes": [
+            "ds-carousel__btn",
+            "ds-carousel__btn--xl"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-carousel__btn--xl",
+            ".ds-carousel__btn.ds-carousel__btn--xl"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/carousel~1navigation.solid-xl.left"
+          }
+        },
+        {
+          "name": "navigation.solid-xl.right",
+          "type": null,
+          "label": "实心48独立右切换控制",
+          "usage": "外部多卡片轮播下一项；排除详情与解决方案页。",
+          "classes": [
+            "ds-carousel__btn",
+            "ds-carousel__btn--xl"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-carousel__btn--xl",
+            ".ds-carousel__btn.ds-carousel__btn--xl"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/carousel~1navigation.solid-xl.right"
+          }
+        },
+        {
+          "name": "external-cards",
+          "type": "组合",
+          "label": "普通外部多卡片轮播",
+          "usage": "外部普通内容多卡片需左右切换；复用Card或IconCard及48px按钮。",
+          "classes": [
+            "ds-carousel-external"
+          ],
+          "sizes": [],
+          "selectorCandidates": [],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "retain",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/carousel~1external-cards"
+          }
+        }
+      ],
+      "fragmentAssembly": {
+        "registryPath": "components/registry.json",
+        "previewPath": "components/variants/carousel.html",
+        "fragmentsVerified": false,
+        "fragments": [
+          "carousel"
+        ]
+      },
+      "relationSummary": {
+        "parentContexts": [],
+        "componentDependencies": [
+          "Card",
+          "IconCard"
+        ],
+        "mutuallyExclusiveWith": [],
+        "hardRuleCount": 5,
+        "hasVariantSelectionRules": true
+      }
+    },
+    {
+      "id": "checkbox",
+      "contractId": "comp_checkbox_001",
+      "name": "Checkbox",
+      "chineseName": "复选框",
+      "category": "数据录入 Data Entry",
+      "description": "复选框组件，两种尺寸（大 18px / 小 14px），六种状态（默认未选 / 悬停 / 选中 / 半选 / 禁用 / 选中且禁用）。方块视觉由 icons/icon-checkbox-*.svg SVG资源按状态切换，不使用浏览器原生 input 默认样式。",
+      "available": true,
+      "fullyAvailable": true,
+      "isComplete": true,
+      "pendingParts": [],
+      "contractPath": "components/contracts/checkbox.json",
+      "previewPath": "components/variants/checkbox.html",
+      "searchIntents": [
+        "复选框",
+        "多选框",
+        "勾选框",
+        "Checkbox组件",
+        "半选状态复选框",
+        "全选控件"
+      ],
+      "variants": [
+        {
+          "name": "lg",
+          "type": null,
+          "label": "大号",
+          "usage": "普通大号18px选项；普通多选同组≥2，协议等布尔开关可单项。",
+          "classes": [
+            "ds-checkbox"
+          ],
+          "sizes": [],
+          "selectorCandidates": [],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "retain",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/checkbox~1lg"
+          }
+        },
+        {
+          "name": "sm",
+          "type": null,
+          "label": "小号",
+          "usage": "密集14px选项或已核实的表单/协议宿主；普通多选同组≥2，协议等布尔开关可单项。",
+          "classes": [
+            "ds-checkbox",
+            "ds-checkbox--sm"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-checkbox--sm",
+            ".ds-checkbox.ds-checkbox--sm"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "retain",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/checkbox~1sm"
+          }
+        }
+      ],
+      "fragmentAssembly": {
+        "registryPath": "components/registry.json",
+        "previewPath": "components/variants/checkbox.html",
+        "fragmentsVerified": false,
+        "fragments": [
+          "checkbox"
+        ]
+      },
+      "relationSummary": {
+        "parentContexts": [],
+        "componentDependencies": [],
+        "mutuallyExclusiveWith": [],
+        "hardRuleCount": 1,
+        "hasVariantSelectionRules": true
+      }
+    },
+    {
+      "id": "collapse",
+      "contractId": "comp_collapse_001",
+      "name": "Collapse",
+      "chineseName": "折叠面板",
+      "category": "数据展示 Data Display",
+      "description": "折叠面板组件，一个组件四种类型：基础分割型（设置/信息组，右侧 Always Active 绿字或 toggle 开关，折叠指示器用 icon-collapse-plus/minus）/ 行内编辑型（账户信息，预览态⇄编辑态，复用 Input + Button）/ 数据预览型（订单行展开 Order Preview，两种形态：含/不含 Pickup Order 标签）/ 特征导引型（产品特征列表，默认展开首条，前导图标，联动右侧媒体，鼠标悬浮展开）。默认手风琴单开；仅 split 可通过 data-collapse-mode=multiple 显式多开。规范 v2.0。",
+      "available": true,
+      "fullyAvailable": false,
+      "isComplete": true,
+      "pendingParts": [],
+      "contractPath": "components/contracts/collapse.json",
+      "previewPath": "components/variants/collapse.html",
+      "searchIntents": [
+        "折叠面板",
+        "手风琴",
+        "可折叠列表",
+        "行内编辑折叠",
+        "订单展开预览",
+        "特征导引折叠",
+        "Cookie 设置项"
+      ],
+      "variants": [
+        {
+          "name": "split",
+          "type": null,
+          "label": "基础分割型",
+          "usage": "Cookies加减号只读说明，正文需复制。",
+          "classes": [
+            "ds-collapse",
+            "ds-collapse--split",
+            "ds-collapse__copy-region",
+            "ds-toggle"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-collapse--split",
+            ".ds-collapse.ds-collapse--split"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/collapse~1split"
+          }
+        },
+        {
+          "name": "inline-edit",
+          "type": null,
+          "label": "行内编辑型",
+          "usage": "PC账户资料原位查看、编辑与取消，需真实灰底Input及Save/Cancel。",
+          "classes": [
+            "ds-collapse",
+            "ds-collapse--inline-edit"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-collapse--inline-edit",
+            ".ds-collapse.ds-collapse--inline-edit"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/collapse~1inline-edit"
+          }
+        },
+        {
+          "name": "data-preview",
+          "type": null,
+          "label": "数据预览型",
+          "usage": "PC账户订单快照，或List折叠详情规范明确转引的订单物料预览。",
+          "classes": [
+            "ds-collapse",
+            "ds-collapse--data-preview"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-collapse--data-preview",
+            ".ds-collapse.ds-collapse--data-preview"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/collapse~1data-preview"
+          }
+        },
+        {
+          "name": "feature",
+          "type": null,
+          "label": "特征导引型",
+          "usage": "产品技术导引，图标语义匹配。",
+          "classes": [
+            "ds-collapse",
+            "ds-collapse--feature"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-collapse--feature",
+            ".ds-collapse.ds-collapse--feature"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/collapse~1feature"
+          }
+        },
+        {
+          "name": "v3-faq-atom-six-variants",
+          "type": null,
+          "label": "FAQ原件六态（静态来源）",
+          "usage": "仅规范参考，当前不开放精确调用。",
+          "classes": [
+            "ds-collapse",
+            "ds-collapse--faq-source-row"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-collapse--faq-source-row",
+            ".ds-collapse.ds-collapse--faq-source-row"
+          ],
+          "isComplete": false,
+          "pendingParts": [],
+          "available": false,
+          "publication": {
+            "disposition": "withheld",
+            "newPages": false,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/collapse~1v3-faq-atom-six-variants"
+          }
+        },
+        {
+          "name": "faq",
+          "type": null,
+          "label": "FAQ 问答组合",
+          "usage": "来源是明确的问题/答案，需要单项展开和FAQ右箭头。",
+          "classes": [
+            "ds-collapse",
+            "ds-collapse--faq"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-collapse--faq",
+            ".ds-collapse.ds-collapse--faq"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/collapse~1faq"
+          }
+        }
+      ],
+      "fragmentAssembly": {
+        "registryPath": "components/registry.json",
+        "previewPath": "components/variants/collapse.html",
+        "fragmentsVerified": false,
+        "fragments": [
+          "collapse"
+        ]
+      },
+      "relationSummary": {
+        "parentContexts": [],
+        "componentDependencies": [
+          "Badge",
+          "Button",
+          "Button",
+          "Input",
+          "Tag",
+          "TextButton"
+        ],
+        "mutuallyExclusiveWith": [],
+        "hardRuleCount": 3,
+        "hasVariantSelectionRules": true
+      }
+    },
+    {
+      "id": "comment",
+      "contractId": "comp_comment_001",
+      "name": "Comment",
+      "chineseName": "评论",
+      "category": "数据展示 Data Display",
+      "description": "评论v2.1 PC有限调用：已回答/未回答问答、客户评论、评分汇总、客户媒体画廊。真实状态交互和数据槽已接入；提交只发宿主事件，不虚构保存成功。",
+      "available": true,
+      "fullyAvailable": true,
+      "isComplete": false,
+      "pendingParts": [
+        "移动端、远程分页/筛选、鉴权和持久化属于接入方或后续范围",
+        "视觉批准待完成"
+      ],
+      "contractPath": "components/contracts/comment.json",
+      "previewPath": "components/variants/comment.html",
+      "searchIntents": [
+        "评论组件",
+        "客户评价",
+        "商品问答",
+        "评论回复",
+        "评分总览",
+        "客户画廊"
+      ],
+      "variants": [
+        {
+          "name": "qa-thread",
+          "type": "qa-thread",
+          "label": "已回答问答",
+          "usage": "产品问答已有回答，主回答始终展开，可展开子评论输入。",
+          "classes": [
+            "ds-comment",
+            "ds-comment--qa-thread"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-comment--qa-thread",
+            ".ds-comment.ds-comment--qa-thread"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/comment~1qa-thread"
+          }
+        },
+        {
+          "name": "review-thread",
+          "type": "review-thread",
+          "label": "产品评论",
+          "usage": "展示客户评论、只读评分、媒体和Helpful/子评论入口。",
+          "classes": [
+            "ds-comment",
+            "ds-comment--review-thread"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-comment--review-thread",
+            ".ds-comment.ds-comment--review-thread"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/comment~1review-thread"
+          }
+        },
+        {
+          "name": "rating-summary",
+          "type": "rating-summary",
+          "label": "评分总览",
+          "usage": "展示评分分布与分类筛选；数据由调用方提供，筛选发事件。",
+          "classes": [
+            "ds-comment",
+            "ds-comment--rating-summary"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-comment--rating-summary",
+            ".ds-comment.ds-comment--rating-summary"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/comment~1rating-summary"
+          }
+        },
+        {
+          "name": "customer-gallery",
+          "type": "customer-gallery",
+          "label": "客户画廊",
+          "usage": "展示客户媒体网格与单图详情，支持缩略图、前后切换及关闭返回。",
+          "classes": [
+            "ds-comment",
+            "ds-comment--customer-gallery"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-comment--customer-gallery",
+            ".ds-comment.ds-comment--customer-gallery"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/comment~1customer-gallery"
+          }
+        },
+        {
+          "name": "qa-unanswered",
+          "type": "qa-unanswered",
+          "label": "未回答问答",
+          "usage": "产品问答暂无回答，展示未回答提示并请求宿主提供回答入口。",
+          "classes": [
+            "ds-comment",
+            "ds-comment--qa-thread"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-comment--qa-thread",
+            ".ds-comment.ds-comment--qa-thread"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/comment~1qa-unanswered"
+          }
+        }
+      ],
+      "fragmentAssembly": {
+        "registryPath": "components/registry.json",
+        "previewPath": null,
+        "fragmentsVerified": false,
+        "fragments": []
+      },
+      "relationSummary": {
+        "parentContexts": [],
+        "componentDependencies": [
+          "Button",
+          "IconButton",
+          "Rate",
+          "Rate",
+          "Tag",
+          "TextButton",
+          "TextButton"
+        ],
+        "mutuallyExclusiveWith": [
+          "List"
+        ],
+        "hardRuleCount": 0,
+        "hasVariantSelectionRules": true
+      }
+    },
+    {
+      "id": "dialog",
+      "contractId": "comp_dialog_001",
+      "name": "Dialog",
+      "chineseName": "对话框",
+      "category": "反馈 Feedback",
+      "description": "对话框v2.3.2607A：内容提示、删除确认、内容填写、加购提示和成功消息五个PC模板已接实际调用；移动端和未登记特殊状态独立保留。",
+      "available": true,
+      "fullyAvailable": true,
+      "isComplete": false,
+      "pendingParts": [
+        "移动端全屏/抽屉/浮层尚未实现",
+        "附件上传、错误/警告消息图标状态及其他特殊业务模板未开放",
+        "用户视觉确认待完成"
+      ],
+      "contractPath": "components/contracts/dialog.json",
+      "previewPath": "components/variants/dialog.html",
+      "searchIntents": [
+        "对话框",
+        "弹窗",
+        "删除确认",
+        "内容提示",
+        "遮罩",
+        "模态窗口"
+      ],
+      "variants": [
+        {
+          "name": "information",
+          "type": "information",
+          "label": "内容提示",
+          "usage": "只读说明，采用650px原内容提示模板及既有分组结构。",
+          "classes": [
+            "ds-dialog",
+            "ds-dialog--information"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-dialog--information",
+            ".ds-dialog.ds-dialog--information"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/dialog~1information"
+          }
+        },
+        {
+          "name": "confirmation",
+          "type": "confirmation",
+          "label": "删除确认",
+          "usage": "普通简短删除确认，采用480px原模板，提供取消与确认操作。",
+          "classes": [
+            "ds-dialog",
+            "ds-dialog--confirmation"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-dialog--confirmation",
+            ".ds-dialog.ds-dialog--confirmation"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/dialog~1confirmation"
+          }
+        },
+        {
+          "name": "form",
+          "type": "form",
+          "label": "内容填写",
+          "usage": "需要在弹窗中填写资料；使用650px内容填写模板，校验与提交交给真实Form和宿主。",
+          "classes": [
+            "ds-dialog",
+            "ds-dialog--form"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-dialog--form",
+            ".ds-dialog.ds-dialog--form"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/dialog~1form"
+          }
+        },
+        {
+          "name": "cart",
+          "type": "cart",
+          "label": "加购提示",
+          "usage": "加购后展示商品、数量和金额，使用750px模板并交给宿主处理查看购物车动作。",
+          "classes": [
+            "ds-dialog",
+            "ds-dialog--cart"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-dialog--cart",
+            ".ds-dialog.ds-dialog--cart"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/dialog~1cart"
+          }
+        },
+        {
+          "name": "message",
+          "type": "message",
+          "label": "消息提示",
+          "usage": "提交结果已由宿主确认，需要480px成功消息提示。",
+          "classes": [
+            "ds-dialog",
+            "ds-dialog--message"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-dialog--message",
+            ".ds-dialog.ds-dialog--message"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/dialog~1message"
+          }
+        }
+      ],
+      "fragmentAssembly": {
+        "registryPath": "components/registry.json",
+        "previewPath": null,
+        "fragmentsVerified": false,
+        "fragments": []
+      },
+      "relationSummary": {
+        "parentContexts": [],
+        "componentDependencies": [
+          "Button",
+          "Checkbox",
+          "Form",
+          "IconButton",
+          "Input",
+          "InputNumber",
+          "List"
+        ],
+        "mutuallyExclusiveWith": [],
+        "hardRuleCount": 1,
+        "hasVariantSelectionRules": false
+      }
+    },
+    {
+      "id": "dropdown",
+      "contractId": "comp_dropdown_001",
+      "name": "Dropdown",
+      "chineseName": "下拉菜单",
+      "category": "导航 Navigation",
+      "description": "MG v2.5.2604C命令菜单：文本、Dot、账户未登录/已登录四种PC调用。旧选择型Dropdown仅保留历史兼容，新页面选择值使用Select。",
+      "available": true,
+      "fullyAvailable": false,
+      "isComplete": false,
+      "pendingParts": [
+        "移动端、级联子菜单与其他未登记业务组合仍未实现"
+      ],
+      "contractPath": "components/contracts/dropdown.json",
+      "previewPath": "components/variants/dropdown.html",
+      "searchIntents": [
+        "操作下拉菜单",
+        "更多操作命令",
+        "账户菜单",
+        "登录注册入口"
+      ],
+      "automaticSelection": {
+        "enabled": true,
+        "scope": [
+          "command-text",
+          "command-dot",
+          "account-guest",
+          "account-signed-in"
+        ],
+        "reason": "仅召回已开放PC命令菜单；值选择使用Select。旧选择型Dropdown仅保留历史兼容。"
+      },
+      "variants": [
+        {
+          "name": "basic",
+          "type": null,
+          "label": "基础下拉",
+          "usage": "历史选择型基础示例的归档对照。",
+          "classes": [
+            "ds-dropdown"
+          ],
+          "sizes": [],
+          "selectorCandidates": [],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": false,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": false,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/dropdown~1basic"
+          }
+        },
+        {
+          "name": "with-search",
+          "type": null,
+          "label": "带搜索",
+          "usage": "历史搜索选择示例的归档对照。",
+          "classes": [
+            "ds-dropdown"
+          ],
+          "sizes": [],
+          "selectorCandidates": [],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": false,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": false,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/dropdown~1with-search"
+          }
+        },
+        {
+          "name": "multi-select-checkbox",
+          "type": null,
+          "label": "多选 Checkbox",
+          "usage": "历史复选多选示例的归档对照。",
+          "classes": [],
+          "sizes": [],
+          "selectorCandidates": [],
+          "isComplete": false,
+          "pendingParts": [
+            "移动端、级联子菜单与其他未登记业务组合仍未实现"
+          ],
+          "available": false,
+          "publication": {
+            "disposition": "withheld",
+            "newPages": false,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/dropdown~1multi-select-checkbox"
+          }
+        },
+        {
+          "name": "grouped",
+          "type": null,
+          "label": "分组",
+          "usage": "历史分组选择示例的归档对照。",
+          "classes": [],
+          "sizes": [],
+          "selectorCandidates": [],
+          "isComplete": false,
+          "pendingParts": [
+            "Select来源组合在Dropdown中的历史归属需迁移复核；不得作为动作菜单推荐",
+            "原生交互与视觉证据待验证"
+          ],
+          "available": false,
+          "publication": {
+            "disposition": "withheld",
+            "newPages": false,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/dropdown~1grouped"
+          }
+        },
+        {
+          "name": "filter",
+          "type": null,
+          "label": "Filter 筛选",
+          "usage": "历史Filter组合的归档对照。",
+          "classes": [],
+          "sizes": [],
+          "selectorCandidates": [],
+          "isComplete": false,
+          "pendingParts": [
+            "Select来源组合在Dropdown中的历史归属需迁移复核；不得作为动作菜单推荐",
+            "原生交互与视觉证据待验证"
+          ],
+          "available": false,
+          "publication": {
+            "disposition": "withheld",
+            "newPages": false,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/dropdown~1filter"
+          }
+        },
+        {
+          "name": "brand-select",
+          "type": null,
+          "label": "品牌选择（小尺寸+搜索）",
+          "usage": "历史品牌选择示例的归档对照。",
+          "classes": [
+            "ds-dropdown"
+          ],
+          "sizes": [],
+          "selectorCandidates": [],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": false,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": false,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/dropdown~1brand-select"
+          }
+        },
+        {
+          "name": "command-text",
+          "type": "command-text",
+          "label": "文本操作命令",
+          "usage": "用文本入口收纳排序、导出等操作命令。",
+          "classes": [
+            "ds-dropdown-command"
+          ],
+          "sizes": [],
+          "selectorCandidates": [],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/dropdown~1command-text"
+          }
+        },
+        {
+          "name": "command-dot",
+          "type": "command-dot",
+          "label": "Dot图标操作命令",
+          "usage": "更多操作收纳，以图标触发命令列表。",
+          "classes": [
+            "ds-dropdown-command"
+          ],
+          "sizes": [],
+          "selectorCandidates": [],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/dropdown~1command-dot"
+          }
+        },
+        {
+          "name": "account-guest",
+          "type": "account-guest",
+          "label": "账户未登录命令",
+          "usage": "未登录账户入口的登录/注册命令。",
+          "classes": [
+            "ds-dropdown-command"
+          ],
+          "sizes": [],
+          "selectorCandidates": [],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/dropdown~1account-guest"
+          }
+        },
+        {
+          "name": "account-signed-in",
+          "type": "account-signed-in",
+          "label": "账户已登录命令",
+          "usage": "已登录账户入口的账户、订单与退出命令。",
+          "classes": [
+            "ds-dropdown-command"
+          ],
+          "sizes": [],
+          "selectorCandidates": [],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/dropdown~1account-signed-in"
+          }
+        }
+      ],
+      "fragmentAssembly": {
+        "registryPath": "components/registry.json",
+        "previewPath": "components/variants/dropdown.html",
+        "fragmentsVerified": false,
+        "fragments": [
+          "dropdown"
+        ]
+      },
+      "relationSummary": {
+        "parentContexts": [],
+        "componentDependencies": [
+          "Button",
+          "Button",
+          "Checkbox",
+          "IconButton"
+        ],
+        "mutuallyExclusiveWith": [],
+        "hardRuleCount": 0,
+        "hasVariantSelectionRules": false
+      }
+    },
+    {
+      "id": "form",
+      "contractId": "comp_form_001",
+      "name": "Form",
+      "chineseName": "表单",
+      "category": "数据录入 Data Entry",
+      "description": "已投喂Form包含PC/M×灰底/白底四种原始组合；当前精确AI调用仅PC灰/白；灰白M整体结构已实现，但来源与浏览器验收未完成，M精确AI调用未开放。输入、电话、文本域及选项按真实原子嵌套维护，不能将PC两栏规则套到M。",
+      "available": true,
+      "fullyAvailable": false,
+      "isComplete": true,
+      "pendingParts": [],
+      "contractPath": "components/contracts/form.json",
+      "previewPath": "components/variants/form.html",
+      "searchIntents": [
+        "表单",
+        "联系表单",
+        "咨询表单",
+        "询价表单",
+        "注册表单",
+        "提交表单",
+        "Product Inquiry"
+      ],
+      "variants": [
+        {
+          "name": "gray",
+          "type": null,
+          "label": "灰底表单",
+          "usage": "白色背景的既有灰底字段表单，或已保留来源字段的初始组合。",
+          "classes": [
+            "ds-form",
+            "ds-form--gray"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-form--gray",
+            ".ds-form.ds-form--gray"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/form~1gray"
+          }
+        },
+        {
+          "name": "white",
+          "type": null,
+          "label": "白底描边表单",
+          "usage": "灰色背景中使用当前白底描边固定结构表单。",
+          "classes": [
+            "ds-form",
+            "ds-form--white"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-form--white",
+            ".ds-form.ds-form--white"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/form~1white"
+          }
+        },
+        {
+          "name": "white-responsive",
+          "type": null,
+          "label": "白底描边表单 · 响应式",
+          "usage": "旧响应式登记的历史对照。",
+          "classes": [
+            "ds-form",
+            "ds-form--source-responsive"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-form--source-responsive",
+            ".ds-form.ds-form--source-responsive"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": false,
+          "publication": {
+            "disposition": "withheld",
+            "newPages": false,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/form~1white-responsive"
+          }
+        },
+        {
+          "name": "mobile-source-slots",
+          "type": null,
+          "label": "M端局部槽位装配",
+          "usage": "已有移动原件的有限槽位参考。",
+          "classes": [
+            "ds-form-mobile-slot"
+          ],
+          "sizes": [],
+          "selectorCandidates": [],
+          "isComplete": false,
+          "pendingParts": [
+            "完整M Form装配",
+            "电话与文本域冲突",
+            "协议富文本",
+            "浏览器验收"
+          ],
+          "available": false,
+          "publication": {
+            "disposition": "withheld",
+            "newPages": false,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/form~1mobile-source-slots"
+          }
+        },
+        {
+          "name": "mobile-integrated",
+          "type": null,
+          "label": "M端整体结构（待验收）",
+          "usage": "已有移动表单整体结构参考。",
+          "classes": [
+            "ds-form"
+          ],
+          "sizes": [],
+          "selectorCandidates": [],
+          "isComplete": false,
+          "pendingParts": [
+            "区号搜索待补",
+            "文本域规范冲突",
+            "浏览器验收"
+          ],
+          "available": false,
+          "publication": {
+            "disposition": "withheld",
+            "newPages": false,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/form~1mobile-integrated"
+          }
+        }
+      ],
+      "fragmentAssembly": {
+        "registryPath": "components/registry.json",
+        "previewPath": "components/variants/form.html",
+        "fragmentsVerified": false,
+        "fragments": [
+          "form"
+        ]
+      },
+      "relationSummary": {
+        "parentContexts": [
+          "page-section--gray",
+          "page-section--white"
+        ],
+        "componentDependencies": [
+          "Button",
+          "Button",
+          "Checkbox",
+          "Checkbox",
+          "Checkbox",
+          "Checkbox",
+          "Input",
+          "Input",
+          "Input",
+          "Input",
+          "Input",
+          "Input",
+          "Input",
+          "Input",
+          "Input",
+          "Input",
+          "Input",
+          "Input",
+          "Input",
+          "Input",
+          "Input",
+          "Select"
+        ],
+        "mutuallyExclusiveWith": [],
+        "hardRuleCount": 2,
+        "hasVariantSelectionRules": false
+      }
+    },
+    {
+      "id": "icon-button",
+      "contractId": "comp_icon_button_001",
+      "name": "IconButton",
+      "chineseName": "图标按钮",
+      "category": "通用 General",
+      "description": "仅包含图标的按钮，用于关闭、搜索、编辑、下载等操作，支持带边框和无边框两种类型",
+      "available": true,
+      "fullyAvailable": true,
+      "isComplete": true,
+      "pendingParts": [],
+      "contractPath": "components/contracts/icon-button.json",
+      "previewPath": "components/variants/icon-button.html",
+      "searchIntents": [
+        "图标按钮",
+        "关闭按钮",
+        "搜索按钮图标",
+        "编辑图标按钮",
+        "工具栏图标按钮",
+        "纯图标操作按钮"
+      ],
+      "variants": [
+        {
+          "name": "bordered-xl",
+          "type": "bordered",
+          "label": "带边框 · XL",
+          "usage": "筛选条件未启用，40px容器、16px筛选图标",
+          "classes": [
+            "ds-icon-btn",
+            "ds-icon-btn--bordered",
+            "ds-icon-btn--xl"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-icon-btn--bordered",
+            ".ds-icon-btn--xl",
+            ".ds-icon-btn--bordered.ds-icon-btn--xl",
+            ".ds-icon-btn.ds-icon-btn--bordered"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/icon-button~1bordered-xl"
+          }
+        },
+        {
+          "name": "plain-l",
+          "type": "plain",
+          "label": "无边框 · L",
+          "usage": "宫格、列表或关闭操作，32px容器、20px图标",
+          "classes": [
+            "ds-icon-btn",
+            "ds-icon-btn--l",
+            "ds-icon-btn--plain"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-icon-btn--l",
+            ".ds-icon-btn--plain",
+            ".ds-icon-btn--l.ds-icon-btn--plain",
+            ".ds-icon-btn.ds-icon-btn--l"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "retain",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/icon-button~1plain-l"
+          }
+        },
+        {
+          "name": "plain-m",
+          "type": "plain",
+          "label": "无边框 · M",
+          "usage": "下载、删除、关闭、搜索、显示、隐藏或更多操作，28px容器、16px图标",
+          "classes": [
+            "ds-icon-btn",
+            "ds-icon-btn--m",
+            "ds-icon-btn--plain"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-icon-btn--m",
+            ".ds-icon-btn--plain",
+            ".ds-icon-btn--m.ds-icon-btn--plain",
+            ".ds-icon-btn.ds-icon-btn--m"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "retain",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/icon-button~1plain-m"
+          }
+        },
+        {
+          "name": "plain-s",
+          "type": "plain",
+          "label": "无边框 · S",
+          "usage": "关闭或搜索操作，20px容器、14px图标",
+          "classes": [
+            "ds-icon-btn",
+            "ds-icon-btn--plain",
+            "ds-icon-btn--s"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-icon-btn--plain",
+            ".ds-icon-btn--s",
+            ".ds-icon-btn--plain.ds-icon-btn--s",
+            ".ds-icon-btn.ds-icon-btn--plain"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "retain",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/icon-button~1plain-s"
+          }
+        },
+        {
+          "name": "plain-xs",
+          "type": "plain",
+          "label": "无边框 · XS",
+          "usage": "编辑操作，24px容器、12px图标",
+          "classes": [
+            "ds-icon-btn",
+            "ds-icon-btn--plain",
+            "ds-icon-btn--xs"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-icon-btn--plain",
+            ".ds-icon-btn--xs",
+            ".ds-icon-btn--plain.ds-icon-btn--xs",
+            ".ds-icon-btn.ds-icon-btn--plain"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "retain",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/icon-button~1plain-xs"
+          }
+        },
+        {
+          "name": "bordered-xl-checked",
+          "type": "bordered",
+          "label": "筛选 · XL · 已选中",
+          "usage": "筛选条件已启用，40px容器、16px筛选图标",
+          "classes": [
+            "ds-icon-btn",
+            "ds-icon-btn--bordered",
+            "ds-icon-btn--checked",
+            "ds-icon-btn--xl"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-icon-btn--bordered",
+            ".ds-icon-btn--checked",
+            ".ds-icon-btn--xl",
+            ".ds-icon-btn--bordered.ds-icon-btn--checked.ds-icon-btn--xl",
+            ".ds-icon-btn.ds-icon-btn--bordered"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/icon-button~1bordered-xl-checked"
+          }
+        }
+      ],
+      "fragmentAssembly": {
+        "registryPath": "components/registry.json",
+        "previewPath": null,
+        "fragmentsVerified": false,
+        "fragments": []
+      },
+      "relationSummary": {
+        "parentContexts": [],
+        "componentDependencies": [],
+        "mutuallyExclusiveWith": [],
+        "hardRuleCount": 0,
+        "hasVariantSelectionRules": false
+      }
+    },
+    {
+      "id": "icon-card",
+      "contractId": "comp_icon_card_001",
+      "name": "IconCard",
+      "chineseName": "图标卡片",
+      "category": "数据展示 Data Display",
+      "description": "以图标代替图片的卡片组件，图标直接暴露在卡片表面（不加圆形/圆角容器），支持居中/居左两种布局，单事件/跳转型两种内容形态，以及多事件的折叠展开",
+      "available": true,
+      "fullyAvailable": true,
+      "isComplete": false,
+      "pendingParts": [],
+      "contractPath": "components/contracts/icon-card.json",
+      "previewPath": "components/variants/icon-card.html",
+      "searchIntents": [
+        "图标卡片",
+        "图标+标题+描述",
+        "功能特性卡片",
+        "图标网格",
+        "服务介绍卡片",
+        "跳转链接卡片"
+      ],
+      "variants": [
+        {
+          "name": "center.single-event",
+          "type": null,
+          "label": "居中 · 单事件",
+          "usage": "居中单事件，图标和描述槽齐备。",
+          "classes": [
+            "ds-icon-card",
+            "ds-icon-card--center"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-icon-card--center",
+            ".ds-icon-card.ds-icon-card--center"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/icon-card~1center.single-event"
+          }
+        },
+        {
+          "name": "center.multi-event-expandable",
+          "type": null,
+          "label": "居中 · 多事件折叠展开",
+          "usage": "居中灰色图标卡片明确需要长列表展开/收起，完整说明保持可见。",
+          "classes": [
+            "ds-icon-card",
+            "ds-icon-card--bg-gray",
+            "ds-icon-card--center"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-icon-card--bg-gray",
+            ".ds-icon-card--center",
+            ".ds-icon-card--bg-gray.ds-icon-card--center",
+            ".ds-icon-card.ds-icon-card--bg-gray"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/icon-card~1center.multi-event-expandable"
+          }
+        },
+        {
+          "name": "left.single-event",
+          "type": null,
+          "label": "居左 · 单事件",
+          "usage": "居左单事件，图标和描述槽齐备。",
+          "classes": [
+            "ds-icon-card",
+            "ds-icon-card--left"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-icon-card--left",
+            ".ds-icon-card.ds-icon-card--left"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/icon-card~1left.single-event"
+          }
+        },
+        {
+          "name": "left.jump-type",
+          "type": null,
+          "label": "居左 · 跳转型",
+          "usage": "白色图标卡片标题下有多个独立蓝色链接，使用真实List12子组件。",
+          "classes": [
+            "ds-icon-card",
+            "ds-icon-card--bg-white",
+            "ds-icon-card--bordered",
+            "ds-icon-card--left"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-icon-card--bg-white",
+            ".ds-icon-card--bordered",
+            ".ds-icon-card--left",
+            ".ds-icon-card--bg-white.ds-icon-card--bordered.ds-icon-card--left",
+            ".ds-icon-card.ds-icon-card--bg-white"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/icon-card~1left.jump-type"
+          }
+        },
+        {
+          "name": "left.multi-event-expandable",
+          "type": null,
+          "label": "居左 · 多事件折叠展开",
+          "usage": "居左灰色图标卡片明确需要长列表展开/收起，完整说明保持可见。",
+          "classes": [
+            "ds-icon-card",
+            "ds-icon-card--bg-gray",
+            "ds-icon-card--left"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-icon-card--bg-gray",
+            ".ds-icon-card--left",
+            ".ds-icon-card--bg-gray.ds-icon-card--left",
+            ".ds-icon-card.ds-icon-card--bg-gray"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/icon-card~1left.multi-event-expandable"
+          }
+        }
+      ],
+      "fragmentAssembly": {
+        "registryPath": "components/registry.json",
+        "previewPath": "components/variants/icon-card.html",
+        "fragmentsVerified": false,
+        "fragments": [
+          "icon-card"
+        ]
+      },
+      "relationSummary": {
+        "parentContexts": [],
+        "componentDependencies": [
+          "List",
+          "List",
+          "TextButton",
+          "TextButton",
+          "TextButton",
+          "TextButton",
+          "TextButton"
+        ],
+        "mutuallyExclusiveWith": [],
+        "hardRuleCount": 3,
+        "hasVariantSelectionRules": true
+      }
+    },
+    {
+      "id": "input-number",
+      "contractId": "comp_input_number_001",
+      "name": "InputNumber",
+      "chineseName": "数字输入框",
+      "category": "数据录入 Data Entry",
+      "description": "数字输入框规范 v1.0.2602A：用于在明确范围内快速增减正整数，提供白底线框分离式 32px/42px 与灰底一体式 42px 三种形态。",
+      "available": true,
+      "fullyAvailable": true,
+      "isComplete": true,
+      "pendingParts": [],
+      "contractPath": "components/contracts/input-number.json",
+      "previewPath": "components/variants/input-number.html",
+      "searchIntents": [
+        "数字输入框",
+        "数量加减",
+        "购物车数量",
+        "正整数输入",
+        "InputNumber"
+      ],
+      "variants": [
+        {
+          "name": "outline-sm",
+          "type": null,
+          "label": "白底线框分离式／小号",
+          "usage": "紧凑商品数量，现有32px线框原件。",
+          "classes": [
+            "ds-input-number",
+            "ds-input-number--outline",
+            "ds-input-number--sm"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-input-number--outline",
+            ".ds-input-number--sm",
+            ".ds-input-number--outline.ds-input-number--sm",
+            ".ds-input-number.ds-input-number--outline"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "retain",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/input-number~1outline-sm"
+          }
+        },
+        {
+          "name": "outline-lg",
+          "type": null,
+          "label": "白底线框分离式／大号",
+          "usage": "商品详情或白底表单的42px数量。",
+          "classes": [
+            "ds-input-number",
+            "ds-input-number--outline"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-input-number--outline",
+            ".ds-input-number.ds-input-number--outline"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "retain",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/input-number~1outline-lg"
+          }
+        },
+        {
+          "name": "filled-lg",
+          "type": null,
+          "label": "灰底一体式／大号",
+          "usage": "灰底表单里的42px一体式数量。",
+          "classes": [
+            "ds-input-number",
+            "ds-input-number--filled"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-input-number--filled",
+            ".ds-input-number.ds-input-number--filled"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "retain",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/input-number~1filled-lg"
+          }
+        }
+      ],
+      "fragmentAssembly": {
+        "registryPath": "components/registry.json",
+        "previewPath": null,
+        "fragmentsVerified": false,
+        "fragments": []
+      },
+      "relationSummary": {
+        "parentContexts": [],
+        "componentDependencies": [],
+        "mutuallyExclusiveWith": [
+          "Input",
+          "Slider"
+        ],
+        "hardRuleCount": 0,
+        "hasVariantSelectionRules": true
+      }
+    },
+    {
+      "id": "input",
+      "contractId": "comp_input_001",
+      "name": "Input",
+      "chineseName": "输入框",
+      "category": "数据录入 Data Entry",
+      "description": "桌面基础输入gray/white保持原42px七态接口；Banner和MenuNavigation按限定私有part复用42px搜索结构。独立密码、属性、文本域及通用搜索族不因私有part而开放。",
+      "available": true,
+      "fullyAvailable": true,
+      "isComplete": true,
+      "pendingParts": [],
+      "contractPath": "components/contracts/input.json",
+      "previewPath": "components/variants/input.html",
+      "searchIntents": [
+        "输入框",
+        "文本框",
+        "文本输入",
+        "表单输入框",
+        "文字输入"
+      ],
+      "variants": [
+        {
+          "name": "gray",
+          "type": null,
+          "label": "灰底",
+          "usage": "白色背景上的42px基础单行录入。",
+          "classes": [
+            "ds-input-field",
+            "ds-input-field__input--gray"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-input-field__input--gray",
+            ".ds-input-field.ds-input-field__input--gray"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/input~1gray"
+          }
+        },
+        {
+          "name": "white",
+          "type": null,
+          "label": "白底描边",
+          "usage": "灰色背景上的42px基础单行录入。",
+          "classes": [
+            "ds-input-field",
+            "ds-input-field__input--white"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-input-field__input--white",
+            ".ds-input-field.ds-input-field__input--white"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/input~1white"
+          }
+        }
+      ],
+      "fragmentAssembly": {
+        "registryPath": "components/registry.json",
+        "previewPath": "components/variants/input.html",
+        "fragmentsVerified": false,
+        "fragments": [
+          "input"
+        ]
+      },
+      "relationSummary": {
+        "parentContexts": [],
+        "componentDependencies": [],
+        "mutuallyExclusiveWith": [],
+        "hardRuleCount": 0,
+        "hasVariantSelectionRules": false
+      }
+    },
+    {
+      "id": "list",
+      "contractId": "comp_list_001",
+      "name": "List",
+      "chineseName": "列表",
+      "category": "数据展示 Data Display",
+      "description": "List 列表组件。结构化数据型、操作密集型、商品内容型、属性键值型和内容信息流型已依据用户提供的 PC/M 原始 HTML 核实；折叠详情型等待源码投喂。",
+      "available": true,
+      "fullyAvailable": false,
+      "isComplete": false,
+      "pendingParts": [
+        "折叠详情型 PC/M 源码"
+      ],
+      "contractPath": "components/contracts/list.json",
+      "previewPath": "components/variants/list.html",
+      "searchIntents": [
+        "列表组件",
+        "账户中心列表",
+        "消息列表",
+        "购物车列表",
+        "属性列表",
+        "折叠详情列表",
+        "搜索结果列表"
+      ],
+      "variants": [
+        {
+          "name": "structured-data",
+          "type": null,
+          "label": "结构化数据型",
+          "usage": "四列对齐的有限账户数据列表。",
+          "classes": [
+            "ds-list",
+            "ds-list--structured"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-list--structured",
+            ".ds-list.ds-list--structured"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/list~1structured-data"
+          }
+        },
+        {
+          "name": "operation-intensive",
+          "type": null,
+          "label": "操作密集型",
+          "usage": "带选择和批量操作的消息列表。",
+          "classes": [
+            "ds-list--operations"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-list--operations"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/list~1operation-intensive"
+          }
+        },
+        {
+          "name": "product-content",
+          "type": null,
+          "label": "商品内容型",
+          "usage": "现有PC商品行，数量、金额及本地删除。",
+          "classes": [
+            "ds-list--products"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-list--products"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/list~1product-content"
+          }
+        },
+        {
+          "name": "attribute-key-value",
+          "type": null,
+          "label": "属性键值型",
+          "usage": "PC账户资料的属性和值展示，照片/认证/编辑操作交由宿主处理实际请求。",
+          "classes": [
+            "ds-list--key-value"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-list--key-value"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/list~1attribute-key-value"
+          }
+        },
+        {
+          "name": "collapsible-detail",
+          "type": null,
+          "label": "折叠详情型",
+          "usage": "父项展开子详情；订单快照按MG转引Collapse/data-preview。",
+          "classes": [
+            "ds-list--collapsible"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-list--collapsible"
+          ],
+          "isComplete": false,
+          "pendingParts": [
+            "PC/M 源码"
+          ],
+          "available": false,
+          "publication": {
+            "disposition": "withheld",
+            "newPages": false,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/list~1collapsible-detail"
+          }
+        },
+        {
+          "name": "content-stream",
+          "type": null,
+          "label": "内容信息流型",
+          "usage": "只读文章、搜索结果长摘要与元信息。",
+          "classes": [
+            "ds-list",
+            "ds-list--stream"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-list--stream",
+            ".ds-list.ds-list--stream"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/list~1content-stream"
+          }
+        },
+        {
+          "name": "unordered-12",
+          "type": null,
+          "label": "无序正文列表12px",
+          "usage": "已确认Card宿主的12px无序正文。",
+          "classes": [
+            "ds-list",
+            "ds-list--unordered-12"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-list--unordered-12",
+            ".ds-list.ds-list--unordered-12"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/list~1unordered-12"
+          }
+        },
+        {
+          "name": "unordered-14",
+          "type": null,
+          "label": "无序正文列表14px",
+          "usage": "已确认Card宿主的14px无序正文。",
+          "classes": [
+            "ds-list",
+            "ds-list--unordered-14"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-list--unordered-14",
+            ".ds-list.ds-list--unordered-14"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/list~1unordered-14"
+          }
+        }
+      ],
+      "fragmentAssembly": {
+        "registryPath": "components/registry.json",
+        "previewPath": null,
+        "fragmentsVerified": false,
+        "fragments": []
+      },
+      "relationSummary": {
+        "parentContexts": [],
+        "componentDependencies": [
+          "Button",
+          "Checkbox",
+          "IconButton",
+          "InputNumber"
+        ],
+        "mutuallyExclusiveWith": [
+          "Table"
+        ],
+        "hardRuleCount": 0,
+        "hasVariantSelectionRules": true
+      }
+    },
+    {
+      "id": "menu-navigation",
+      "contractId": "comp_menu_navigation_001",
+      "name": "MenuNavigation",
+      "chineseName": "菜单导航",
+      "category": "导航 Navigation",
+      "description": "PC 端侧边菜单导航。支持单层级、多层级、多层级加搜索和公共头部产品菜单四种形态；叶子项维护唯一选中态，父项只负责单一展开，搜索仅派发输入事件。",
+      "available": true,
+      "fullyAvailable": true,
+      "isComplete": true,
+      "pendingParts": [],
+      "contractPath": "components/contracts/menu-navigation.json",
+      "previewPath": "components/variants/menu-navigation.html",
+      "searchIntents": [
+        "菜单导航",
+        "Menu Navigation",
+        "侧边菜单",
+        "二级菜单",
+        "多层级菜单",
+        "带搜索菜单",
+        "公共头部产品菜单"
+      ],
+      "variants": [
+        {
+          "name": "single-level",
+          "type": null,
+          "label": "单层级",
+          "usage": "PC250px侧栏只有同级叶子入口。",
+          "classes": [
+            "ds-menu-navigation",
+            "ds-menu-navigation--single-level"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-menu-navigation--single-level",
+            ".ds-menu-navigation.ds-menu-navigation--single-level"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/menu-navigation~1single-level"
+          }
+        },
+        {
+          "name": "multi-level",
+          "type": null,
+          "label": "多层级",
+          "usage": "PC288px侧栏有一级父项和二级叶子。",
+          "classes": [
+            "ds-menu-navigation",
+            "ds-menu-navigation--multi-level"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-menu-navigation--multi-level",
+            ".ds-menu-navigation.ds-menu-navigation--multi-level"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/menu-navigation~1multi-level"
+          }
+        },
+        {
+          "name": "multi-level-search",
+          "type": null,
+          "label": "多层级＋搜索",
+          "usage": "250px PC二级菜单，配真实42px搜索部件，向宿主发出查询意图。",
+          "classes": [
+            "ds-menu-navigation",
+            "ds-menu-navigation--multi-level-search"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-menu-navigation--multi-level-search",
+            ".ds-menu-navigation.ds-menu-navigation--multi-level-search"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/menu-navigation~1multi-level-search"
+          }
+        },
+        {
+          "name": "public-header",
+          "type": null,
+          "label": "公共头部",
+          "usage": "固定英文Header中All Products的240px产品菜单子组件维护与调用。",
+          "classes": [
+            "ds-menu-navigation",
+            "ds-menu-navigation--public-header"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-menu-navigation--public-header",
+            ".ds-menu-navigation.ds-menu-navigation--public-header"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/menu-navigation~1public-header"
+          }
+        }
+      ],
+      "fragmentAssembly": {
+        "registryPath": "components/registry.json",
+        "previewPath": null,
+        "fragmentsVerified": false,
+        "fragments": []
+      },
+      "relationSummary": {
+        "parentContexts": [],
+        "componentDependencies": [
+          "IconButton",
+          "Input"
+        ],
+        "mutuallyExclusiveWith": [
+          "AnchorNav",
+          "Collapse",
+          "Tab",
+          "Tree Navigation"
+        ],
+        "hardRuleCount": 5,
+        "hasVariantSelectionRules": true
+      }
+    },
+    {
+      "id": "navigation",
+      "contractId": "comp_navigation_001",
+      "name": "Navigation",
+      "chineseName": "公共导航",
+      "category": "导航 Navigation",
+      "description": "页面级布局组件，包含站点公共头部（Header）和公共底部（Footer），用于所有页面的统一导航框架",
+      "available": true,
+      "fullyAvailable": false,
+      "isComplete": true,
+      "pendingParts": [],
+      "contractPath": "components/contracts/navigation.json",
+      "previewPath": "components/variants/navigation.html",
+      "searchIntents": [
+        "公共导航",
+        "网站头部",
+        "网站底部",
+        "顶部导航栏",
+        "页脚",
+        "站点导航",
+        "全局导航"
+      ],
+      "variants": [
+        {
+          "name": "header",
+          "type": null,
+          "label": "公共头部",
+          "usage": "新页面的同版US英文PC固定公共头部。",
+          "classes": [
+            "ds-nav-header"
+          ],
+          "sizes": [],
+          "selectorCandidates": [],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/navigation~1header"
+          }
+        },
+        {
+          "name": "footer",
+          "type": null,
+          "label": "公共底部",
+          "usage": "同版US英文PC固定Footer Default。",
+          "classes": [
+            "ds-nav-footer"
+          ],
+          "sizes": [],
+          "selectorCandidates": [],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/navigation~1footer"
+          }
+        },
+        {
+          "name": "header-responsive",
+          "type": null,
+          "label": "响应式公共头部",
+          "usage": "已有响应式头部规范参考。",
+          "classes": [
+            "ds-nav-header",
+            "ds-nav-header--responsive"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-nav-header--responsive",
+            ".ds-nav-header.ds-nav-header--responsive"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": false,
+          "publication": {
+            "disposition": "withheld",
+            "newPages": false,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/navigation~1header-responsive"
+          }
+        },
+        {
+          "name": "footer-responsive",
+          "type": null,
+          "label": "响应式公共底部",
+          "usage": "已有响应式底部规范参考。",
+          "classes": [
+            "ds-nav-footer",
+            "ds-nav-footer--responsive"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-nav-footer--responsive",
+            ".ds-nav-footer.ds-nav-footer--responsive"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": false,
+          "publication": {
+            "disposition": "withheld",
+            "newPages": false,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/navigation~1footer-responsive"
+          }
+        }
+      ],
+      "fragmentAssembly": {
+        "registryPath": "components/registry.json",
+        "previewPath": "components/variants/navigation.html",
+        "fragmentsVerified": true,
+        "fragments": [
+          "header",
+          "footer"
+        ]
+      },
+      "relationSummary": {
+        "parentContexts": [],
+        "componentDependencies": [
+          "Button",
+          "Input",
+          "MenuNavigation",
+          "TextButton"
+        ],
+        "mutuallyExclusiveWith": [
+          "自定义/竞品/子站 header"
+        ],
+        "hardRuleCount": 1,
+        "hasVariantSelectionRules": false
+      }
+    },
+    {
+      "id": "option-selector",
+      "contractId": "comp_option_selector_001",
+      "name": "OptionSelector",
+      "chineseName": "选项选择器",
+      "category": "数据录入 Data Entry",
+      "description": "Configuration adapter: media/product keep their existing local radio calls. Current MG color/service belong to Tag product attributes: PC color uses the real Select dropdown; PC accessories use native Checkbox. The M right-checkbox row is a separate source shape.",
+      "available": true,
+      "fullyAvailable": true,
+      "isComplete": true,
+      "pendingParts": [],
+      "contractPath": "components/contracts/option-selector.json",
+      "previewPath": "components/variants/option-selector.html",
+      "searchIntents": [
+        "选项选择器",
+        "配置选择",
+        "模块选择",
+        "无框图文选择",
+        "紧凑描边选项",
+        "双行详情选择卡",
+        "支付方式选择",
+        "支付品牌选择",
+        "颜色选择",
+        "商品配置选择",
+        "服务选择",
+        "服务勾选卡",
+        "附加服务多选",
+        "许可证套餐选择",
+        "商品套餐选择",
+        "SKU选择",
+        "Option Selector"
+      ],
+      "variants": [
+        {
+          "name": "media",
+          "type": null,
+          "label": "图文配置选项",
+          "usage": "图文内容本身构成互斥配置；当前仅已登记无框H7。支付品牌不据此选型。",
+          "classes": [
+            "ds-option-selector",
+            "ds-option-selector--payment",
+            "ds-option-selector--plain"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-option-selector--payment",
+            ".ds-option-selector--plain",
+            ".ds-option-selector--payment.ds-option-selector--plain",
+            ".ds-option-selector.ds-option-selector--payment"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/option-selector~1media"
+          }
+        },
+        {
+          "name": "color",
+          "type": null,
+          "label": "颜色配置选项",
+          "usage": "PC产品属性文本＋颜色下拉：306×30，14px色块，复用Select单选。",
+          "classes": [
+            "ds-option-selector--color",
+            "ds-select"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-option-selector--color",
+            ".ds-select.ds-option-selector--color"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/option-selector~1color"
+          }
+        },
+        {
+          "name": "product",
+          "type": null,
+          "label": "商品、套餐与双行详情选项",
+          "usage": "商品/SKU与价格共同构成互斥配置；按现有本地规范候选，当前MG独立来源未定位。",
+          "classes": [
+            "ds-option-selector",
+            "ds-option-selector--detail",
+            "ds-option-selector--product",
+            "ds-option-selector--sm"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-option-selector--detail",
+            ".ds-option-selector--product",
+            ".ds-option-selector--sm",
+            ".ds-option-selector--detail.ds-option-selector--product.ds-option-selector--sm",
+            ".ds-option-selector.ds-option-selector--detail"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/option-selector~1product"
+          }
+        },
+        {
+          "name": "service",
+          "type": null,
+          "label": "服务勾选项",
+          "usage": "PC配件或可独立加购服务：264×80、64px图，Checkbox多选。",
+          "classes": [
+            "ds-option-selector--service",
+            "ds-tag",
+            "ds-tag--accessory-pc"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-option-selector--service",
+            ".ds-tag--accessory-pc",
+            ".ds-option-selector--service.ds-tag--accessory-pc",
+            ".ds-tag.ds-option-selector--service"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/option-selector~1service"
+          }
+        }
+      ],
+      "fragmentAssembly": {
+        "registryPath": "components/registry.json",
+        "previewPath": null,
+        "fragmentsVerified": false,
+        "fragments": []
+      },
+      "relationSummary": {
+        "parentContexts": [],
+        "componentDependencies": [
+          "Checkbox",
+          "Select",
+          "Tag",
+          "Tag"
+        ],
+        "mutuallyExclusiveWith": [
+          "Card",
+          "Dropdown",
+          "Radio",
+          "Tag"
+        ],
+        "hardRuleCount": 1,
+        "hasVariantSelectionRules": true
+      }
+    },
+    {
+      "id": "radio",
+      "contractId": "comp_radio_001",
+      "name": "Radio",
+      "chineseName": "单选框",
+      "category": "数据录入 Data Entry",
+      "description": "在一组相关且互斥的选项中只允许选择一个选项。由原生 input[type=radio]、圆形状态图和右侧文本标签组成；支持常规大/小号、紧凑带边框和结算详情带边框四种形态。",
+      "available": true,
+      "fullyAvailable": true,
+      "isComplete": true,
+      "pendingParts": [],
+      "contractPath": "components/contracts/radio.json",
+      "previewPath": "components/variants/radio.html",
+      "searchIntents": [
+        "单选框",
+        "单选项",
+        "Radio",
+        "互斥选择",
+        "地址选择",
+        "配送方式选择",
+        "支付方式单选",
+        "带边框单选",
+        "表单单选"
+      ],
+      "variants": [
+        {
+          "name": "regular-lg",
+          "type": null,
+          "label": "常规大号",
+          "usage": "同组≥2；商品详情页解决方案产品筛选等 PC 宽松区域；18×18px 状态图与 14px/22px 标签。",
+          "classes": [
+            "ds-radio"
+          ],
+          "sizes": [],
+          "selectorCandidates": [],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "retain",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/radio~1regular-lg"
+          }
+        },
+        {
+          "name": "regular-sm",
+          "type": null,
+          "label": "常规小号",
+          "usage": "同组≥2；下拉菜单、常规表单、筛选抽屉等密集互斥列表；14×14px 状态图与 13px/20px 标签。",
+          "classes": [
+            "ds-radio",
+            "ds-radio--sm"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-radio--sm",
+            ".ds-radio.ds-radio--sm"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "retain",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/radio~1regular-sm"
+          }
+        },
+        {
+          "name": "bordered-compact",
+          "type": null,
+          "label": "①带边框",
+          "usage": "同组≥2；表单中需要 30px 高、4px 圆角和 8px 水平内边距的紧凑描边单选项。",
+          "classes": [
+            "ds-radio",
+            "ds-radio--bordered-compact"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-radio--bordered-compact",
+            ".ds-radio.ds-radio--bordered-compact"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/radio~1bordered-compact"
+          }
+        },
+        {
+          "name": "bordered-detail",
+          "type": null,
+          "label": "②带边框",
+          "usage": "同组≥2；仅结算页收货地址、账单地址、配送方式和支付方式等需要主副文本或业务插槽的互斥选择。",
+          "classes": [
+            "ds-radio",
+            "ds-radio--bordered-detail"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-radio--bordered-detail",
+            ".ds-radio.ds-radio--bordered-detail"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/radio~1bordered-detail"
+          }
+        }
+      ],
+      "fragmentAssembly": {
+        "registryPath": "components/registry.json",
+        "previewPath": null,
+        "fragmentsVerified": false,
+        "fragments": []
+      },
+      "relationSummary": {
+        "parentContexts": [],
+        "componentDependencies": [],
+        "mutuallyExclusiveWith": [
+          "Checkbox",
+          "OptionSelector"
+        ],
+        "hardRuleCount": 2,
+        "hasVariantSelectionRules": true
+      }
+    },
+    {
+      "id": "rate",
+      "contractId": "comp_rate_001",
+      "name": "Rate",
+      "chineseName": "评分",
+      "category": "数据录入 Data Entry",
+      "description": "用于展示单个 1–5 星评分、录入或修改完整星评分，以及展示精简评分汇总。支持 16px、20px、24px 三档星形素材；不支持半星。",
+      "available": true,
+      "fullyAvailable": true,
+      "isComplete": false,
+      "pendingParts": [
+        "既有评分组合七种属性无独立禁用状态来源；disabled-canonical-call保持不开放，不由runtime禁用能力推定规范。"
+      ],
+      "contractPath": "components/contracts/rate.json",
+      "previewPath": "components/variants/rate.html",
+      "searchIntents": [
+        "评分",
+        "星级评分",
+        "五星评分",
+        "评分输入",
+        "评分展示",
+        "评分汇总",
+        "Rate",
+        "Rating"
+      ],
+      "variants": [
+        {
+          "name": "display",
+          "type": null,
+          "label": "评分展示",
+          "usage": "既有单值评分的只读展示。",
+          "classes": [
+            "ds-rate",
+            "ds-rate--display"
+          ],
+          "sizes": [
+            {
+              "name": "sm",
+              "classes": [
+                "ds-rate--sm"
+              ],
+              "styleProperties": {
+                "starSize": "16px"
+              }
+            },
+            {
+              "name": "md",
+              "classes": [
+                "ds-rate--md"
+              ],
+              "styleProperties": {
+                "starSize": "20px"
+              }
+            },
+            {
+              "name": "lg",
+              "classes": [
+                "ds-rate--lg"
+              ],
+              "styleProperties": {
+                "starSize": "24px"
+              }
+            }
+          ],
+          "selectorCandidates": [
+            ".ds-rate--display",
+            ".ds-rate.ds-rate--display"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/rate~1display"
+          }
+        },
+        {
+          "name": "input",
+          "type": null,
+          "label": "评分输入",
+          "usage": "邀评场景需要完整五星输入及现有Clear。",
+          "classes": [
+            "ds-rate",
+            "ds-rate--input"
+          ],
+          "sizes": [
+            {
+              "name": "md",
+              "classes": [
+                "ds-rate--md"
+              ],
+              "styleProperties": {
+                "starSize": "20px"
+              }
+            },
+            {
+              "name": "lg",
+              "classes": [
+                "ds-rate--lg"
+              ],
+              "styleProperties": {
+                "starSize": "24px"
+              }
+            }
+          ],
+          "selectorCandidates": [
+            ".ds-rate--input",
+            ".ds-rate.ds-rate--input"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/rate~1input"
+          }
+        },
+        {
+          "name": "summary",
+          "type": null,
+          "label": "评分汇总",
+          "usage": "产品综合评分、评价数量、5至1星占比及统计筛选。",
+          "classes": [
+            "ds-rate",
+            "ds-rate--summary"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-rate--summary",
+            ".ds-rate.ds-rate--summary"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/rate~1summary"
+          }
+        }
+      ],
+      "fragmentAssembly": {
+        "registryPath": "components/registry.json",
+        "previewPath": null,
+        "fragmentsVerified": false,
+        "fragments": []
+      },
+      "relationSummary": {
+        "parentContexts": [],
+        "componentDependencies": [],
+        "mutuallyExclusiveWith": [
+          "OptionSelector"
+        ],
+        "hardRuleCount": 1,
+        "hasVariantSelectionRules": true
+      }
+    },
+    {
+      "id": "select",
+      "contractId": "comp_select_001",
+      "name": "Select",
+      "chineseName": "选择器",
+      "category": "数据录入 Data Entry",
+      "description": "Select v2.1.2608A PC 组件，保留单选、多选、搜索筛选与多列分组九种形态，并补齐触发器状态、组合与确认交互。",
+      "available": true,
+      "fullyAvailable": true,
+      "isComplete": true,
+      "pendingParts": [],
+      "contractPath": "components/contracts/select.json",
+      "previewPath": "components/variants/select.html",
+      "searchIntents": [
+        "表单选择器",
+        "单选选择器",
+        "多选选择器",
+        "带勾选择",
+        "区号搜索选择",
+        "双列分组选择"
+      ],
+      "variants": [
+        {
+          "name": "single-basic",
+          "type": null,
+          "label": "常规单选",
+          "usage": "表单预设值单选，选项>5，无需选框或勾标记。",
+          "classes": [
+            "ds-select--single-basic"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-select--single-basic"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/select~1single-basic"
+          }
+        },
+        {
+          "name": "single-radio",
+          "type": null,
+          "label": "带选框单选",
+          "usage": "表单预设值单选，选项>5，以14px单选图标标识唯一选择。",
+          "classes": [
+            "ds-select--single-radio"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-select--single-radio"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/select~1single-radio"
+          }
+        },
+        {
+          "name": "single-check",
+          "type": null,
+          "label": "带勾单选",
+          "usage": "表单预设值单选，选项>5，以8px行尾勾标识唯一选择。",
+          "classes": [
+            "ds-select--single-check"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-select--single-check"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/select~1single-check"
+          }
+        },
+        {
+          "name": "multi-basic",
+          "type": null,
+          "label": "常规多选",
+          "usage": "表单预设值多选，选项>5，以行底色及标签回写状态。",
+          "classes": [
+            "ds-select--multi-basic"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-select--multi-basic"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/select~1multi-basic"
+          }
+        },
+        {
+          "name": "multi-checkbox",
+          "type": null,
+          "label": "带选框多选",
+          "usage": "表单预设值多选，选项>5，逐项显示复选框。",
+          "classes": [
+            "ds-select--multi-checkbox"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-select--multi-checkbox"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/select~1multi-checkbox"
+          }
+        },
+        {
+          "name": "phone-search",
+          "type": null,
+          "label": "区号选择",
+          "usage": "国家或地区区号搜索单选，候选>5。",
+          "classes": [
+            "ds-select--phone-search"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-select--phone-search"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/select~1phone-search"
+          }
+        },
+        {
+          "name": "search",
+          "type": null,
+          "label": "搜索选择",
+          "usage": "预设值列表>5项，需要关键词过滤。",
+          "classes": [
+            "ds-select--search"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-select--search"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/select~1search"
+          }
+        },
+        {
+          "name": "two-column",
+          "type": null,
+          "label": "双列分组",
+          "usage": "预设值多选>5项，需要分组双列展示；宽度按宿主。",
+          "classes": [
+            "ds-select--two-column"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-select--two-column"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/select~1two-column"
+          }
+        },
+        {
+          "name": "grouped-combination",
+          "type": null,
+          "label": "双列与组合分组",
+          "usage": "预设值多选>5项，需要分组及Cancel/OK确认；宽度按宿主。",
+          "classes": [
+            "ds-select--grouped-combination"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-select--grouped-combination"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/select~1grouped-combination"
+          }
+        }
+      ],
+      "fragmentAssembly": {
+        "registryPath": "components/registry.json",
+        "previewPath": null,
+        "fragmentsVerified": false,
+        "fragments": []
+      },
+      "relationSummary": {
+        "parentContexts": [],
+        "componentDependencies": [
+          "Button",
+          "Checkbox",
+          "Input"
+        ],
+        "mutuallyExclusiveWith": [
+          "Dropdown",
+          "OptionSelector"
+        ],
+        "hardRuleCount": 2,
+        "hasVariantSelectionRules": true
+      }
+    },
+    {
+      "id": "stepper",
+      "contractId": "comp_stepper_001",
+      "name": "Stepper",
+      "chineseName": "步骤条",
+      "category": "导航 Navigation",
+      "description": "步骤条设计规范 v2.3.2602D：圆标步骤条两类、图标步骤条两类，用于展示具有明确顺序的解决方案、订单状态与阶段说明。圆标居中方案型和订单型均支持本地四阶段交互。",
+      "available": true,
+      "fullyAvailable": true,
+      "isComplete": true,
+      "pendingParts": [],
+      "contractPath": "components/contracts/stepper.json",
+      "previewPath": "components/variants/stepper.html",
+      "searchIntents": [
+        "步骤条",
+        "流程步骤",
+        "订单状态步骤条",
+        "图标流程说明"
+      ],
+      "variants": [
+        {
+          "name": "circle-centered-solution",
+          "type": "圆标步骤条",
+          "label": "圆标步骤条／居中型（方案）",
+          "usage": "四阶段方案引导；仅当前和已完成阶段允许本地查看。",
+          "classes": [
+            "ds-stepper",
+            "ds-stepper--circle-centered"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-stepper--circle-centered",
+            ".ds-stepper.ds-stepper--circle-centered"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/stepper~1circle-centered-solution"
+          }
+        },
+        {
+          "name": "circle-centered-order",
+          "type": "圆标步骤条",
+          "label": "圆标步骤条／居中型（订单）",
+          "usage": "四阶段订单/RMA状态与日期的只读展示。",
+          "classes": [
+            "ds-stepper",
+            "ds-stepper--circle-order"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-stepper--circle-order",
+            ".ds-stepper.ds-stepper--circle-order"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/stepper~1circle-centered-order"
+          }
+        },
+        {
+          "name": "icon-regular",
+          "type": "图标步骤条",
+          "label": "图标步骤条／常规型",
+          "usage": "四步横向68px图标与顺序说明。",
+          "classes": [
+            "ds-stepper",
+            "ds-stepper--icon-regular"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-stepper--icon-regular",
+            ".ds-stepper.ds-stepper--icon-regular"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/stepper~1icon-regular"
+          }
+        },
+        {
+          "name": "icon-divider",
+          "type": "图标步骤条",
+          "label": "图标步骤条／分隔线型",
+          "usage": "品牌信息中的四项图标分隔式阶段展示。",
+          "classes": [
+            "ds-stepper",
+            "ds-stepper--icon-divider"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-stepper--icon-divider",
+            ".ds-stepper.ds-stepper--icon-divider"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/stepper~1icon-divider"
+          }
+        }
+      ],
+      "fragmentAssembly": {
+        "registryPath": "components/registry.json",
+        "previewPath": "components/variants/stepper.html",
+        "fragmentsVerified": true,
+        "fragments": [
+          "stepper"
+        ]
+      },
+      "relationSummary": {
+        "parentContexts": [],
+        "componentDependencies": [
+          "TextButton"
+        ],
+        "mutuallyExclusiveWith": [
+          "Card（网格排列表示顺序步骤）",
+          "IconCard（网格排列表示顺序步骤）"
+        ],
+        "hardRuleCount": 4,
+        "hasVariantSelectionRules": true
+      }
+    },
+    {
+      "id": "tab",
+      "contractId": "comp_tab_001",
+      "name": "Tab",
+      "chineseName": "标签导航",
+      "category": "导航 Navigation",
+      "description": "Tab 切换导航组件，三种变体：胶囊（内容筛选）、常规（页面内容分区）、产品导航（首页产品大类入口，带图标）",
+      "available": true,
+      "fullyAvailable": true,
+      "isComplete": true,
+      "pendingParts": [],
+      "contractPath": "components/contracts/tab.json",
+      "previewPath": "components/variants/tab.html",
+      "searchIntents": [
+        "标签切换",
+        "Tab导航",
+        "胶囊筛选",
+        "分类切换",
+        "产品导航入口",
+        "筛选标签",
+        "内容分区切换"
+      ],
+      "variants": [
+        {
+          "name": "capsule",
+          "type": null,
+          "label": "胶囊",
+          "usage": "商品详情页，选项全部可见。",
+          "classes": [
+            "ds-tab",
+            "ds-tab--capsule",
+            "ds-tab__indicator"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-tab--capsule",
+            ".ds-tab.ds-tab--capsule"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/tab~1capsule"
+          }
+        },
+        {
+          "name": "standard",
+          "type": null,
+          "label": "常规",
+          "usage": "居左常规分区，选项全部可见。",
+          "classes": [
+            "ds-tab",
+            "ds-tab--standard",
+            "ds-tab__indicator"
+          ],
+          "sizes": [
+            {
+              "name": "default",
+              "classes": [
+                "ds-tab--standard"
+              ],
+              "styleProperties": {
+                "text": "14px/22px"
+              }
+            },
+            {
+              "name": "large",
+              "classes": [
+                "ds-tab--standard-lg"
+              ],
+              "styleProperties": {
+                "text": "16px/24px"
+              }
+            }
+          ],
+          "selectorCandidates": [
+            ".ds-tab--standard",
+            ".ds-tab.ds-tab--standard"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "retain",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/tab~1standard"
+          }
+        },
+        {
+          "name": "product",
+          "type": null,
+          "label": "产品导航",
+          "usage": "首页产品大类，登记图标语义匹配。",
+          "classes": [
+            "ds-tab",
+            "ds-tab--product"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-tab--product",
+            ".ds-tab.ds-tab--product"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/tab~1product"
+          }
+        },
+        {
+          "name": "standard-center",
+          "type": null,
+          "label": "常规·居中",
+          "usage": "居中常规分区，选项全部可见。",
+          "classes": [
+            "ds-tab",
+            "ds-tab--center",
+            "ds-tab--standard"
+          ],
+          "sizes": [
+            {
+              "name": "default",
+              "classes": [
+                "ds-tab--standard"
+              ],
+              "styleProperties": {
+                "text": "14px/22px"
+              }
+            },
+            {
+              "name": "large",
+              "classes": [
+                "ds-tab--standard-lg"
+              ],
+              "styleProperties": {
+                "text": "16px/24px"
+              }
+            }
+          ],
+          "selectorCandidates": [
+            ".ds-tab--center",
+            ".ds-tab--standard",
+            ".ds-tab--center.ds-tab--standard",
+            ".ds-tab.ds-tab--center"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "retain",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/tab~1standard-center"
+          }
+        }
+      ],
+      "fragmentAssembly": {
+        "registryPath": "components/registry.json",
+        "previewPath": "components/variants/tab.html",
+        "fragmentsVerified": false,
+        "fragments": [
+          "tab"
+        ]
+      },
+      "relationSummary": {
+        "parentContexts": [],
+        "componentDependencies": [],
+        "mutuallyExclusiveWith": [],
+        "hardRuleCount": 3,
+        "hasVariantSelectionRules": false
+      }
+    },
+    {
+      "id": "table",
+      "contractId": "comp_table_001",
+      "name": "Table",
+      "chineseName": "表格",
+      "category": "数据展示 Data Display",
+      "description": "Table 表格组件，依据 v2.2.2511A 规范与用户提供的垂直型、水平型、矩阵型 PC/M 原始代码统一落地八个形态。12px GPT 与行线型由用户授权按规范补齐。",
+      "available": true,
+      "fullyAvailable": true,
+      "isComplete": true,
+      "pendingParts": [],
+      "contractPath": "components/contracts/table.json",
+      "previewPath": "components/variants/table.html",
+      "searchIntents": [
+        "表格组件",
+        "纵向表头表格",
+        "横向表头表格",
+        "矩阵对比表",
+        "六行展开表格",
+        "GPT 紧凑表格"
+      ],
+      "variants": [
+        {
+          "name": "vertical-double",
+          "type": "vertical",
+          "label": "垂直型·蓝色斑马纹·双列",
+          "usage": "同一行对照两组属性与值。",
+          "classes": [
+            "ds-table",
+            "ds-table--vertical",
+            "ds-table--vertical-double"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-table--vertical",
+            ".ds-table--vertical-double",
+            ".ds-table--vertical.ds-table--vertical-double",
+            ".ds-table.ds-table--vertical"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/table~1vertical-double"
+          }
+        },
+        {
+          "name": "vertical-single",
+          "type": "vertical",
+          "label": "垂直型·蓝色斑马纹·单列",
+          "usage": "每行只表达一组属性和值。",
+          "classes": [
+            "ds-table",
+            "ds-table--vertical",
+            "ds-table--vertical-single"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-table--vertical",
+            ".ds-table--vertical-single",
+            ".ds-table--vertical.ds-table--vertical-single",
+            ".ds-table.ds-table--vertical"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/table~1vertical-single"
+          }
+        },
+        {
+          "name": "horizontal-zebra",
+          "type": "horizontal",
+          "label": "水平型·蓝色表头基础型",
+          "usage": "常规列标题与横向静态数据。",
+          "classes": [
+            "ds-table",
+            "ds-table--horizontal"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-table--horizontal",
+            ".ds-table.ds-table--horizontal"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/table~1horizontal-zebra"
+          }
+        },
+        {
+          "name": "horizontal-grid-13",
+          "type": "horizontal",
+          "label": "水平型·内部网格描边·13px",
+          "usage": "普通数据需要内部单元格边界。",
+          "classes": [
+            "ds-table",
+            "ds-table--grid",
+            "ds-table--horizontal"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-table--grid",
+            ".ds-table--horizontal",
+            ".ds-table--grid.ds-table--horizontal",
+            ".ds-table.ds-table--grid"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/table~1horizontal-grid-13"
+          }
+        },
+        {
+          "name": "horizontal-grid-12-gpt",
+          "type": "horizontal",
+          "label": "水平型·内部网格描边·12px（GPT）",
+          "usage": "现有GPT等高密度内部网格场景。",
+          "classes": [
+            "ds-table",
+            "ds-table--grid",
+            "ds-table--grid-compact",
+            "ds-table--horizontal"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-table--grid",
+            ".ds-table--grid-compact",
+            ".ds-table--horizontal",
+            ".ds-table--grid.ds-table--grid-compact.ds-table--horizontal",
+            ".ds-table.ds-table--grid"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/table~1horizontal-grid-12-gpt"
+          }
+        },
+        {
+          "name": "horizontal-row-line",
+          "type": "horizontal",
+          "label": "水平型·行线",
+          "usage": "按行阅读、不强调列边界的静态表。",
+          "classes": [
+            "ds-table",
+            "ds-table--horizontal",
+            "ds-table--row-line"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-table--horizontal",
+            ".ds-table--row-line",
+            ".ds-table--horizontal.ds-table--row-line",
+            ".ds-table.ds-table--horizontal"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/table~1horizontal-row-line"
+          }
+        },
+        {
+          "name": "matrix-products",
+          "type": "matrix",
+          "label": "矩阵型·有产品图",
+          "usage": "需要产品图识别的六列对比矩阵。",
+          "classes": [
+            "ds-table",
+            "ds-table--matrix",
+            "ds-table--matrix-products"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-table--matrix",
+            ".ds-table--matrix-products",
+            ".ds-table--matrix.ds-table--matrix-products",
+            ".ds-table.ds-table--matrix"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/table~1matrix-products"
+          }
+        },
+        {
+          "name": "matrix-plain",
+          "type": "matrix",
+          "label": "矩阵型·无产品图",
+          "usage": "不依赖产品图的六列文字对比矩阵。",
+          "classes": [
+            "ds-table",
+            "ds-table--matrix",
+            "ds-table--matrix-plain"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-table--matrix",
+            ".ds-table--matrix-plain",
+            ".ds-table--matrix.ds-table--matrix-plain",
+            ".ds-table.ds-table--matrix"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/table~1matrix-plain"
+          }
+        }
+      ],
+      "fragmentAssembly": {
+        "registryPath": "components/registry.json",
+        "previewPath": null,
+        "fragmentsVerified": false,
+        "fragments": []
+      },
+      "relationSummary": {
+        "parentContexts": [],
+        "componentDependencies": [
+          "TextButton"
+        ],
+        "mutuallyExclusiveWith": [],
+        "hardRuleCount": 5,
+        "hasVariantSelectionRules": true
+      }
+    },
+    {
+      "id": "tag",
+      "contractId": "comp_tag_001",
+      "name": "Tag",
+      "chineseName": "标签",
+      "category": "数据展示 Data Display",
+      "description": "Tag v2.5 已登记常规标签，另包含Card所需22px小号产品属性常规、Customized及颜色标签的有限调用；不包含完整SKU/计数器/配件选择器。",
+      "available": true,
+      "fullyAvailable": false,
+      "isComplete": true,
+      "pendingParts": [],
+      "contractPath": "components/contracts/tag.json",
+      "previewPath": "components/variants/tag.html",
+      "searchIntents": [
+        "常规标签",
+        "状态文字标签",
+        "元数据标签",
+        "语义标签",
+        "属性胶囊标签",
+        "复合筛选条件",
+        "FEATURED标签",
+        "可选择标签"
+      ],
+      "variants": [
+        {
+          "name": "status-text",
+          "type": null,
+          "label": "纯文字状态标签",
+          "usage": "无底短状态文字，沿用当前success文字实例。",
+          "classes": [
+            "ds-tag",
+            "ds-tag--status-lg",
+            "ds-tag--status-text"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-tag--status-lg",
+            ".ds-tag--status-text",
+            ".ds-tag--status-lg.ds-tag--status-text",
+            ".ds-tag.ds-tag--status-lg"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/tag~1status-text"
+          }
+        },
+        {
+          "name": "metadata",
+          "type": null,
+          "label": "并列元数据标签",
+          "usage": "两个同级元数据值，如行业与地区。",
+          "classes": [
+            "ds-tag-meta"
+          ],
+          "sizes": [],
+          "selectorCandidates": [],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/tag~1metadata"
+          }
+        },
+        {
+          "name": "metadata-single",
+          "type": null,
+          "label": "单值元数据标签",
+          "usage": "一个只读元数据值。",
+          "classes": [
+            "ds-tag-meta",
+            "ds-tag-meta--single"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-tag-meta--single",
+            ".ds-tag-meta.ds-tag-meta--single"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/tag~1metadata-single"
+          }
+        },
+        {
+          "name": "semantic",
+          "type": null,
+          "label": "语义标签",
+          "usage": "固定Individual语义与原info图标。",
+          "classes": [
+            "ds-tag",
+            "ds-tag--semantic"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-tag--semantic",
+            ".ds-tag.ds-tag--semantic"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/tag~1semantic"
+          }
+        },
+        {
+          "name": "selectable",
+          "type": null,
+          "label": "可选择胶囊标签",
+          "usage": "纯文字条件需要本地选中/取消。",
+          "classes": [
+            "ds-tag",
+            "ds-tag--selectable"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-tag--selectable",
+            ".ds-tag.ds-tag--selectable"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/tag~1selectable"
+          }
+        },
+        {
+          "name": "filter",
+          "type": null,
+          "label": "复合筛选标签",
+          "usage": "前缀+值的条件标签，关闭由宿主处理。",
+          "classes": [
+            "ds-tag",
+            "ds-tag--filter",
+            "ds-tag--selectable"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-tag--filter",
+            ".ds-tag--selectable",
+            ".ds-tag--filter.ds-tag--selectable",
+            ".ds-tag.ds-tag--filter"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/tag~1filter"
+          }
+        },
+        {
+          "name": "featured",
+          "type": null,
+          "label": "FEATURED 图标标签",
+          "usage": "固定FEATURED精选标记。",
+          "classes": [
+            "ds-tag",
+            "ds-tag--featured"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-tag--featured",
+            ".ds-tag.ds-tag--featured"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/tag~1featured"
+          }
+        },
+        {
+          "name": "semantic-new",
+          "type": null,
+          "label": "语义标签·New",
+          "usage": "固定绿色New展示标记。",
+          "classes": [
+            "ds-tag",
+            "ds-tag--emphasis",
+            "ds-tag--new",
+            "ds-tag--semantic"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-tag--emphasis",
+            ".ds-tag--new",
+            ".ds-tag--semantic",
+            ".ds-tag--emphasis.ds-tag--new.ds-tag--semantic",
+            ".ds-tag.ds-tag--emphasis"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/tag~1semantic-new"
+          }
+        },
+        {
+          "name": "product-regular-small",
+          "type": null,
+          "label": "产品属性·常规小号",
+          "usage": "现有22px产品属性，原件产品图=false。",
+          "classes": [
+            "ds-tag",
+            "ds-tag--product-small"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-tag--product-small",
+            ".ds-tag.ds-tag--product-small"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/tag~1product-regular-small"
+          }
+        },
+        {
+          "name": "product-custom-small",
+          "type": null,
+          "label": "产品属性·Customized小号",
+          "usage": "现有22px Customized属性动作入口。",
+          "classes": [
+            "ds-tag",
+            "ds-tag--product-custom",
+            "ds-tag--product-small"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-tag--product-custom",
+            ".ds-tag--product-small",
+            ".ds-tag--product-custom.ds-tag--product-small",
+            ".ds-tag.ds-tag--product-custom"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/tag~1product-custom-small"
+          }
+        },
+        {
+          "name": "product-color-small",
+          "type": null,
+          "label": "产品属性·颜色小号",
+          "usage": "现有22px颜色选项，产品图=false。",
+          "classes": [
+            "ds-tag",
+            "ds-tag--product-color",
+            "ds-tag--product-small"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-tag--product-color",
+            ".ds-tag--product-small",
+            ".ds-tag--product-color.ds-tag--product-small",
+            ".ds-tag.ds-tag--product-color"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/tag~1product-color-small"
+          }
+        },
+        {
+          "name": "product-configuration-color-source",
+          "type": null,
+          "label": "product-configuration-color-source",
+          "usage": "Current MG product attribute source identity; finite owner part, not the22px small Tag call. Use OptionSelector/color or service for actual calls.",
+          "classes": [
+            "ds-tag",
+            "ds-tag--configuration-color"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-tag--configuration-color",
+            ".ds-tag.ds-tag--configuration-color"
+          ],
+          "isComplete": false,
+          "pendingParts": [
+            "standalone-call-not-published; complete finite source part is used by OptionSelector"
+          ],
+          "available": false,
+          "publication": {
+            "disposition": "withheld",
+            "newPages": false,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/tag~1product-configuration-color-source"
+          }
+        },
+        {
+          "name": "product-accessory-pc-source",
+          "type": null,
+          "label": "product-accessory-pc-source",
+          "usage": "Current MG product attribute source identity; finite owner part, not the22px small Tag call. Use OptionSelector/color or service for actual calls.",
+          "classes": [
+            "ds-tag",
+            "ds-tag--accessory-pc"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-tag--accessory-pc",
+            ".ds-tag.ds-tag--accessory-pc"
+          ],
+          "isComplete": false,
+          "pendingParts": [
+            "standalone-call-not-published; complete finite source part is used by OptionSelector"
+          ],
+          "available": false,
+          "publication": {
+            "disposition": "withheld",
+            "newPages": false,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/tag~1product-accessory-pc-source"
+          }
+        }
+      ],
+      "fragmentAssembly": {
+        "registryPath": "components/registry.json",
+        "previewPath": null,
+        "fragmentsVerified": false,
+        "fragments": []
+      },
+      "relationSummary": {
+        "parentContexts": [],
+        "componentDependencies": [
+          "Checkbox"
+        ],
+        "mutuallyExclusiveWith": [
+          "Card",
+          "Dropdown",
+          "OptionSelector"
+        ],
+        "hardRuleCount": 1,
+        "hasVariantSelectionRules": true
+      }
+    },
+    {
+      "id": "text-button",
+      "contractId": "comp_text_button_001",
+      "name": "TextButton",
+      "chineseName": "文字按钮",
+      "category": "通用 General",
+      "description": "文字按钮，当前AI调用范围为已核原始组件的7变体10尺寸组合；图标保留官方向右箭头与原有显示开关，不开放左图标、自定义图标或折叠控件用途。",
+      "available": true,
+      "fullyAvailable": true,
+      "isComplete": true,
+      "pendingParts": [],
+      "contractPath": "components/contracts/text-button.json",
+      "previewPath": "components/variants/text-button.html",
+      "searchIntents": [
+        "文字链接",
+        "了解更多",
+        "查看详情",
+        "文字按钮",
+        "箭头链接",
+        "行内链接",
+        "纯文字链接",
+        "图标文字按钮",
+        "前置图标",
+        "后置图标"
+      ],
+      "variants": [
+        {
+          "name": "inline-blue",
+          "type": "inline",
+          "label": "蓝色链接（小）",
+          "usage": "来源需要12px蓝色紧凑导航，如表单隐私政策链接；当前仅处理导航目标",
+          "classes": [
+            "ds-text-btn",
+            "ds-text-btn--blue",
+            "ds-text-btn--inline"
+          ],
+          "sizes": [
+            {
+              "name": "s",
+              "classes": [],
+              "styleProperties": {
+                "fontSize": "12px",
+                "lineHeight": "20px",
+                "fontWeight": "400",
+                "fontFamily": "Open Sans",
+                "color": "#0060BF",
+                "iconSize": "12x12px",
+                "gap": "2px",
+                "defaultIcon": "icon-text-button-arrow-right-blue-s.svg",
+                "iconOptional": true,
+                "iconFilter": "none"
+              }
+            }
+          ],
+          "selectorCandidates": [
+            ".ds-text-btn--blue",
+            ".ds-text-btn--inline",
+            ".ds-text-btn--blue.ds-text-btn--inline",
+            ".ds-text-btn.ds-text-btn--blue"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "retain",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/text-button~1inline-blue"
+          }
+        },
+        {
+          "name": "inline-gray",
+          "type": "inline",
+          "label": "灰色链接（小）",
+          "usage": "来源为12px灰色次要导航，如公共导航或详情页评论入口",
+          "classes": [
+            "ds-text-btn",
+            "ds-text-btn--gray",
+            "ds-text-btn--inline"
+          ],
+          "sizes": [
+            {
+              "name": "s",
+              "classes": [],
+              "styleProperties": {
+                "fontSize": "12px",
+                "lineHeight": "20px",
+                "fontWeight": "400",
+                "fontFamily": "Open Sans",
+                "color": "#707070",
+                "iconSize": "12x12px",
+                "gap": "2px",
+                "defaultIcon": "icon-text-button-arrow-right-gray-s-default.svg",
+                "iconOptional": true,
+                "iconFilter": "none"
+              }
+            }
+          ],
+          "selectorCandidates": [
+            ".ds-text-btn--gray",
+            ".ds-text-btn--inline",
+            ".ds-text-btn--gray.ds-text-btn--inline",
+            ".ds-text-btn.ds-text-btn--gray"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "retain",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/text-button~1inline-gray"
+          }
+        },
+        {
+          "name": "inline-black",
+          "type": "inline",
+          "label": "黑色",
+          "usage": "来源与宿主需要13px常规黑色文字导航，如已登记卡片、表格或详情入口",
+          "classes": [
+            "ds-text-btn",
+            "ds-text-btn--black",
+            "ds-text-btn--inline"
+          ],
+          "sizes": [
+            {
+              "name": "m",
+              "classes": [],
+              "styleProperties": {
+                "fontSize": "13px",
+                "lineHeight": "20px",
+                "fontWeight": "400",
+                "fontFamily": "Open Sans",
+                "color": "#19191A",
+                "iconSize": "12x12px",
+                "gap": "2px",
+                "defaultIcon": "icon-text-button-arrow-right-regular.svg",
+                "iconOptional": true,
+                "iconFilter": "none"
+              }
+            },
+            {
+              "name": "l",
+              "classes": [],
+              "styleProperties": {
+                "fontSize": "14px",
+                "lineHeight": "22px",
+                "fontWeight": "400",
+                "fontFamily": "Open Sans",
+                "color": "#19191A",
+                "iconSize": "12x12px",
+                "gap": "2px",
+                "defaultIcon": "icon-text-button-arrow-right-regular.svg",
+                "iconOptional": true,
+                "iconFilter": "none"
+              }
+            }
+          ],
+          "selectorCandidates": [
+            ".ds-text-btn--black",
+            ".ds-text-btn--inline",
+            ".ds-text-btn--black.ds-text-btn--inline",
+            ".ds-text-btn.ds-text-btn--black"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "retain",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/text-button~1inline-black"
+          }
+        },
+        {
+          "name": "inline-black-bold",
+          "type": "inline",
+          "label": "黑色加粗",
+          "usage": "来源明确为14px加粗文字入口，如首页特定卡片中的Get more Information、FS Certified",
+          "classes": [
+            "ds-text-btn",
+            "ds-text-btn--black-bold",
+            "ds-text-btn--inline"
+          ],
+          "sizes": [
+            {
+              "name": "l",
+              "classes": [],
+              "styleProperties": {
+                "fontSize": "14px",
+                "lineHeight": "22px",
+                "fontWeight": "600",
+                "fontFamily": "Open Sans",
+                "color": "#19191A",
+                "iconSize": "12x12px",
+                "gap": "2px",
+                "defaultIcon": "icon-text-button-arrow-right-bold.svg",
+                "iconOptional": true,
+                "iconFilter": "none"
+              }
+            }
+          ],
+          "selectorCandidates": [
+            ".ds-text-btn--black-bold",
+            ".ds-text-btn--inline",
+            ".ds-text-btn--black-bold.ds-text-btn--inline",
+            ".ds-text-btn.ds-text-btn--black-bold"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "retain",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/text-button~1inline-black-bold"
+          }
+        },
+        {
+          "name": "inline-blue-link",
+          "type": "inline",
+          "label": "蓝色链接",
+          "usage": "来源明确为13px蓝色导航，如详情、加购对话框、表格或外围页",
+          "classes": [
+            "ds-text-btn",
+            "ds-text-btn--blue-link",
+            "ds-text-btn--inline"
+          ],
+          "sizes": [
+            {
+              "name": "m",
+              "classes": [],
+              "styleProperties": {
+                "fontSize": "13px",
+                "lineHeight": "20px",
+                "fontWeight": "400",
+                "fontFamily": "Open Sans",
+                "color": "#0060BF",
+                "iconSize": "12x12px",
+                "gap": "2px",
+                "defaultIcon": "icon-text-button-arrow-right-blue-s.svg",
+                "iconOptional": true,
+                "iconFilter": "none"
+              }
+            },
+            {
+              "name": "l",
+              "classes": [],
+              "styleProperties": {
+                "fontSize": "14px",
+                "lineHeight": "22px",
+                "fontWeight": "400",
+                "fontFamily": "Open Sans",
+                "color": "#0060BF",
+                "iconSize": "12x12px",
+                "gap": "2px",
+                "defaultIcon": "icon-text-button-arrow-right-blue-s.svg",
+                "iconOptional": true,
+                "iconFilter": "none"
+              }
+            }
+          ],
+          "selectorCandidates": [
+            ".ds-text-btn--blue-link",
+            ".ds-text-btn--inline",
+            ".ds-text-btn--blue-link.ds-text-btn--inline",
+            ".ds-text-btn.ds-text-btn--blue-link"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "retain",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/text-button~1inline-blue-link"
+          }
+        },
+        {
+          "name": "inline-white",
+          "type": "inline",
+          "label": "白色（深色背景）",
+          "usage": "深色背景上的14px白色导航，如有明确来源的专题页Banner入口",
+          "classes": [
+            "ds-text-btn",
+            "ds-text-btn--inline",
+            "ds-text-btn--white"
+          ],
+          "sizes": [
+            {
+              "name": "l",
+              "classes": [],
+              "styleProperties": {
+                "fontSize": "14px",
+                "lineHeight": "22px",
+                "fontWeight": "400",
+                "fontFamily": "Open Sans",
+                "color": "#FFFFFF",
+                "iconSize": "12x12px",
+                "gap": "2px",
+                "defaultIcon": "icon-text-button-arrow-right-white-l.svg",
+                "iconOptional": true,
+                "iconFilter": "none"
+              }
+            }
+          ],
+          "selectorCandidates": [
+            ".ds-text-btn--inline",
+            ".ds-text-btn--white",
+            ".ds-text-btn--inline.ds-text-btn--white",
+            ".ds-text-btn.ds-text-btn--inline"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "retain",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/text-button~1inline-white"
+          }
+        },
+        {
+          "name": "with-bg-default",
+          "type": "with-bg",
+          "label": "带背景",
+          "usage": "来源需要12px、32px高的带容器文字入口，如社区场景中的导航动作",
+          "classes": [
+            "ds-text-btn",
+            "ds-text-btn--with-bg"
+          ],
+          "sizes": [
+            {
+              "name": "s-bg",
+              "classes": [],
+              "styleProperties": {
+                "fontSize": "12px",
+                "lineHeight": "20px",
+                "fontWeight": "400",
+                "fontFamily": "Open Sans",
+                "color": "#707070",
+                "height": "32px",
+                "padding": "0 12px",
+                "backgroundColor": "transparent",
+                "borderRadius": "4px",
+                "iconSize": "12x12px",
+                "gap": "2px",
+                "defaultIcon": "icon-text-button-arrow-right-gray-s-default.svg",
+                "iconOptional": true,
+                "iconFilter": "none"
+              }
+            },
+            {
+              "name": "l-bg",
+              "classes": [],
+              "styleProperties": {
+                "fontSize": "14px",
+                "lineHeight": "22px",
+                "fontWeight": "400",
+                "fontFamily": "Open Sans",
+                "color": "#707070",
+                "height": "36px",
+                "padding": "0 16px",
+                "backgroundColor": "transparent",
+                "borderRadius": "4px",
+                "iconSize": "12x12px",
+                "gap": "2px",
+                "defaultIcon": "icon-text-button-arrow-right-gray-s-default.svg",
+                "iconOptional": true,
+                "iconFilter": "none"
+              }
+            }
+          ],
+          "selectorCandidates": [
+            ".ds-text-btn--with-bg",
+            ".ds-text-btn.ds-text-btn--with-bg"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "retain",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/text-button~1with-bg-default"
+          }
+        }
+      ],
+      "fragmentAssembly": {
+        "registryPath": "components/registry.json",
+        "previewPath": "components/variants/text-button.html",
+        "fragmentsVerified": false,
+        "fragments": [
+          "text-button"
+        ]
+      },
+      "relationSummary": {
+        "parentContexts": [
+          "ds-nav-footer__col-links"
+        ],
+        "componentDependencies": [],
+        "mutuallyExclusiveWith": [],
+        "hardRuleCount": 1,
+        "hasVariantSelectionRules": true
+      }
+    },
+    {
+      "id": "video-button",
+      "contractId": "comp_video_button_001",
+      "name": "VideoButton",
+      "chineseName": "视频播放按钮",
+      "category": "通用 General",
+      "description": "视频播放控制按钮，用于深色背景上的视频播放操作，支持时间标签和播放按钮两种形态",
+      "available": true,
+      "fullyAvailable": true,
+      "isComplete": true,
+      "pendingParts": [],
+      "contractPath": "components/contracts/video-button.json",
+      "previewPath": "components/variants/video-button.html",
+      "searchIntents": [
+        "视频播放按钮",
+        "播放图标",
+        "视频时长标签",
+        "视频封面按钮",
+        "播放控制按钮"
+      ],
+      "variants": [
+        {
+          "name": "dark",
+          "type": "time-tag / play-button",
+          "label": "黑色",
+          "usage": "亮色视频封面上的深色S时长标签。",
+          "classes": [
+            "ds-video-btn",
+            "ds-video-btn--dark"
+          ],
+          "sizes": [
+            {
+              "name": "s",
+              "classes": [
+                "ds-video-btn--s"
+              ],
+              "styleProperties": {
+                "width": "auto",
+                "height": "24px",
+                "padding": "8px",
+                "gap": "4px",
+                "fontSize": "12px",
+                "lineHeight": "20px",
+                "fontWeight": "400",
+                "fontFamily": "Open Sans",
+                "backgroundColor": "rgba(25,25,26,0.6)",
+                "color": "#FFFFFF",
+                "borderRadius": "4px",
+                "iconSize": "12x12px",
+                "icon": "icon-play.svg"
+              }
+            },
+            {
+              "name": "l",
+              "classes": [
+                "ds-video-btn--l"
+              ],
+              "styleProperties": {
+                "width": "auto",
+                "height": "38px",
+                "padding": "8px 16px",
+                "gap": "8px",
+                "fontSize": "14px",
+                "lineHeight": "22px",
+                "fontWeight": "400",
+                "fontFamily": "Open Sans",
+                "backgroundColor": "rgba(25,25,26,0.6)",
+                "color": "#FFFFFF",
+                "borderRadius": "4px",
+                "iconSize": "14x14px",
+                "icon": "icon-play.svg"
+              }
+            },
+            {
+              "name": "xl",
+              "classes": [
+                "ds-video-btn--xl"
+              ],
+              "styleProperties": {
+                "width": "100px",
+                "height": "50px",
+                "padding": "12px 25px",
+                "gap": "12px",
+                "fontFamily": "Open Sans",
+                "backgroundColor": "rgba(25,25,26,0.6)",
+                "color": "#FFFFFF",
+                "borderRadius": "4px",
+                "iconSize": "20x20px",
+                "icon": "icon-play.svg",
+                "content": "icon only, no text"
+              }
+            }
+          ],
+          "selectorCandidates": [
+            ".ds-video-btn--dark",
+            ".ds-video-btn.ds-video-btn--dark"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "retain",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/video-button~1dark"
+          }
+        },
+        {
+          "name": "light",
+          "type": "time-tag / play-button",
+          "label": "反白",
+          "usage": "深色视频封面上的反白S时长标签。",
+          "classes": [
+            "ds-video-btn",
+            "ds-video-btn--light"
+          ],
+          "sizes": [
+            {
+              "name": "s",
+              "classes": [
+                "ds-video-btn--s"
+              ],
+              "styleProperties": {
+                "width": "auto",
+                "height": "24px",
+                "padding": "8px",
+                "gap": "4px",
+                "fontSize": "12px",
+                "lineHeight": "20px",
+                "fontWeight": "400",
+                "fontFamily": "Open Sans",
+                "backgroundColor": "rgba(255,255,255,0.1)",
+                "color": "#FFFFFF",
+                "borderRadius": "4px",
+                "iconSize": "12x12px",
+                "icon": "icon-play.svg"
+              }
+            },
+            {
+              "name": "l",
+              "classes": [
+                "ds-video-btn--l"
+              ],
+              "styleProperties": {
+                "width": "auto",
+                "height": "38px",
+                "padding": "8px 16px",
+                "gap": "8px",
+                "fontSize": "14px",
+                "lineHeight": "22px",
+                "fontWeight": "400",
+                "fontFamily": "Open Sans",
+                "backgroundColor": "rgba(255,255,255,0.1)",
+                "color": "#FFFFFF",
+                "borderRadius": "4px",
+                "iconSize": "14x14px",
+                "icon": "icon-play.svg"
+              }
+            },
+            {
+              "name": "xl",
+              "classes": [
+                "ds-video-btn--xl"
+              ],
+              "styleProperties": {
+                "width": "100px",
+                "height": "50px",
+                "padding": "12px 25px",
+                "gap": "12px",
+                "fontFamily": "Open Sans",
+                "backgroundColor": "rgba(255,255,255,0.1)",
+                "color": "#FFFFFF",
+                "borderRadius": "4px",
+                "iconSize": "20x20px",
+                "icon": "icon-play.svg",
+                "content": "icon only, no text"
+              }
+            }
+          ],
+          "selectorCandidates": [
+            ".ds-video-btn--light",
+            ".ds-video-btn.ds-video-btn--light"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "retain",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/video-button~1light"
+          }
+        }
+      ],
+      "fragmentAssembly": {
+        "registryPath": "components/registry.json",
+        "previewPath": null,
+        "fragmentsVerified": false,
+        "fragments": []
+      },
+      "relationSummary": {
+        "parentContexts": [
+          "深色/图片背景"
+        ],
+        "componentDependencies": [],
+        "mutuallyExclusiveWith": [],
+        "hardRuleCount": 0,
+        "hasVariantSelectionRules": false
+      }
+    }
+  ]
+}

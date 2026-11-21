@@ -1,0 +1,92 @@
+{
+  "schemaVersion": "fs-button-slot-classification-audit/1",
+  "reviewedAt": "2026-10-19T02:10:14.947Z",
+  "question": "FS规范禁止组合，还是本地契约没支持？",
+  "conclusion": "本地实现及调用契约未接入真实图标槽；没有证据判定FS禁止组合，也不要求存在预先拼好Cart/询价文案的业务成品",
+  "sourceEvidence": [
+    {
+      "file": "components/sources/maintenance/j4858d-required-source-read-1016/mgShape.json",
+      "scope": "真实组件集及左图标开关；不是靠槽名称猜测"
+    },
+    {
+      "file": "components/sources/maintenance/j4858d-required-source-read-1016/mgHiddenButton.json",
+      "scope": "真实16px隐藏Download及padding-right2的装配组"
+    },
+    {
+      "file": "components/sources/maintenance/j4858d-required-source-read-1016/button-rules-read-1019.json",
+      "node": "68268:63477",
+      "scope": "显示左图标的156×42真实描边实例，16px图标、有效4px间距、左右24px"
+    },
+    {
+      "file": "components/sources/button/specification-index.json",
+      "scope": "按钮类型正文明确图标按钮可以与其他按钮组合；与真实左槽交叉判定"
+    }
+  ],
+  "qualification": "68268:63989“可与以上任意填充/描边/文字按钮组合使用”位于播放按钮分节，不将其脱离层级作为全部功能图标的唯一依据",
+  "localGaps": [
+    {
+      "file": "components/contracts/button.json",
+      "finding": "constraints.allowedChildren已包含Icon，但editable及aiContract.variants的slots/allowedEdits仅label/actionCallback/buttonType，没有图标槽和有限绑定"
+    },
+    {
+      "file": "components/preview/button.html",
+      "finding": "普通42px可调用示例只含span.ds-btn__text；未接入真实可选左图标结构"
+    },
+    {
+      "file": "components/components.css",
+      "finding": "普通按钮已有inline-flex和2px根gap，尚无功能图标槽尺寸、源分组及原子状态装配"
+    },
+    {
+      "file": "scripts/button-host-dependencies.js",
+      "finding": "validateHostedButtons对普通Button硬性要求node.children.length===1，只有文字骨架；即使使用真实FS资源也被拒绝"
+    }
+  ],
+  "diagnostic": {
+    "file": "components/sources/maintenance/j4858d-required-source-read-1016/button-slot-contract-diagnostic-1019.json",
+    "results": [
+      {
+        "variant": "filled-red",
+        "size": "xl-regular",
+        "kind": "text-only",
+        "accepted": true,
+        "calls": 1
+      },
+      {
+        "variant": "filled-red",
+        "size": "xl-regular",
+        "kind": "existing-FS-icon-in-left-slot",
+        "accepted": false,
+        "reason": "Button host source-slot-audit: native Button anatomy mismatch"
+      },
+      {
+        "variant": "outline-black",
+        "size": "xl",
+        "kind": "text-only",
+        "accepted": true,
+        "calls": 1
+      },
+      {
+        "variant": "outline-black",
+        "size": "xl",
+        "kind": "existing-FS-icon-in-left-slot",
+        "accepted": false,
+        "reason": "Button host source-slot-audit: native Button anatomy mismatch"
+      }
+    ],
+    "boundary": "Existing local host validator only; does not assert FS icon geometry/semantic acceptance or visual correctness"
+  },
+  "resourceClassification": {
+    "cart": "真实FS Cart图标已存在，14px反白资源有原件验证；它的16px槽位用法仍需尺寸/颜色适用性核对，不等于Cart原件缺失",
+    "quote": "FS Quotes-报价1673:14001是16px真实候选；需核本页Get Quote语义及最终资源绑定，不要求另找带Get Quote文字的整按钮",
+    "heart": "已读范围未找到，仍是独立来源待核项；不与按钮槽缺口合并"
+  },
+  "resolution": [
+    "按真实原件补本地Button可选图标槽，而不是另造业务专用组件或放宽文字槽插HTML",
+    "限定已核FS图标、尺寸、颜色、左右位置和状态；保留42px按钮自身padding/圆角/命中区",
+    "同步Preview、AI调用、原子依赖、结构/状态检查，并保留普通无图标调用的兼容正例",
+    "对不明尺寸/语义/状态继续拦截；不再把缺少预组合业务示例当规范禁止或原件缺失"
+  ],
+  "targetPageChanged": false,
+  "runtimeContractChanged": false,
+  "wholePageAdmission": "A2仍未完成；本诊断不是页面视觉验收"
+}

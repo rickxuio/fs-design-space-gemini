@@ -1,0 +1,353 @@
+<!-- INTERNAL VARIANT SOURCE: for compile/sync scripts only. Human-facing spec: maintenance/icon-button-prototype-20261114/preview.html -->
+<!DOCTYPE html>
+<html data-component-reference="icon-button" lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IconButton 图标按钮 - 组件预览</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../tokens.css">
+  <link rel="stylesheet" href="../components.css">
+  <link rel="stylesheet" href="../icon-button-current.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: var(--font-family-base);
+      padding: 40px;
+      background: #FFFFFF;
+      color: var(--color-gray-1);
+    }
+    h1 { font-size: 24px; font-weight: 600; margin-bottom: 8px; }
+    .subtitle { font-size: 14px; color: var(--color-gray-3); margin-bottom: 40px; }
+
+    /* 关联关系表：与依赖表统一表头浅灰底 + 方格描边 */
+    .rel-table { width: 100%; border-collapse: collapse; }
+    .rel-table th { background: #F6F6F8; font-size: 12px; font-weight: 600; text-align: left; padding: 8px 10px; border: 1px solid #DEE0E3; vertical-align: top; }
+    .rel-table td { font-size: 12px; padding: 8px 10px; border: 1px solid #DEE0E3; vertical-align: top; }
+
+    /* Category Badge（分类与左侧导航栏保持一致） */
+    .cat-badge { display: inline-flex; align-items: center; height: 22px; padding: 0 10px; border-radius: 11px; font-size: 11px; font-weight: 700; margin-bottom: 10px; }
+
+    .section { margin-bottom: 48px; }
+    .section-title {
+      font-size: 18px; font-weight: 600; margin-bottom: 24px;
+      padding-bottom: 8px; border-bottom: 1px solid var(--color-gray-5);
+    }
+
+    .state-label {
+      font-size: 12px;
+      color: var(--color-gray-3);
+      margin-bottom: 8px;
+    }
+
+    .btn-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .btn-row .label {
+      font-size: 12px;
+      color: var(--color-gray-3);
+      min-width: 120px;
+    }
+
+  </style>
+</head>
+<body>
+<p><a href="../../../maintenance/icon-button-prototype-20261114/preview.html">本地调用样板：变体决策、调用状态与原依赖表</a></p>
+  <span class="cat-badge" style="background:#EEE8F3;color:#512971;">通用 General</span>
+  <h1>IconButton 图标按钮 <span class="version-badge" style="font-size:18px;font-weight:600;color:#707070;vertical-align:middle;margin-left:10px;">v1.0</span></h1>
+  <p class="subtitle">仅包含图标的按钮 — 用于关闭、搜索、编辑、下载等操作，支持带边框和无边框两种类型</p>
+
+    <div style="height:24px;"></div>
+    <!-- 变体决策 + 关联关系表 -->
+  <div style="margin-bottom: 0; padding: 24px; background: #FAFBFC; border: 1px solid var(--color-gray-5); border-radius: 8px;">
+    <!-- AUTO-GENERATED-DECISION-TABLE:START -->
+    <p style="font-size:14px;font-weight:600;margin-bottom:4px;">变体决策</p>
+    <p style="font-size:12px;color:#707070;margin-bottom:12px;">类型、尺寸范围和互斥规则均以组件契约为准；实际图标属于图标库选择，不在嵌套子组件列登记。</p>
+    <table style="width:100%;border-collapse:collapse;table-layout:fixed;">
+      <colgroup><col style="width:18%"><col style="width:38%"><col style="width:44%"></colgroup>
+      <thead><tr><th scope="col" style="background:#F6F6F8;font-size:12px;font-weight:600;text-align:left;padding:8px 10px;border:1px solid #DEE0E3;">变体</th><th scope="col" style="background:#F6F6F8;font-size:12px;font-weight:600;text-align:left;padding:8px 10px;border:1px solid #DEE0E3;">匹配条件</th><th scope="col" style="background:#F6F6F8;font-size:12px;font-weight:600;text-align:left;padding:8px 10px;border:1px solid #DEE0E3;">选型结论</th></tr></thead>
+<tbody><tr><th scope="rowgroup" rowspan="2" style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">带边框 XL</th><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">筛选条件未启用，40px容器、16px筛选图标</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>候选 · </strong>aria-pressed=false；宿主处理筛选动作。</td></tr>
+<tr><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">不是搜索、关闭或任意加边框操作</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>不用 · </strong>排除本变体；不能靠改尺寸、改类或换未登记图标适配。</td></tr></tbody>
+<tbody><tr><th scope="rowgroup" rowspan="2" style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">无边框 L</th><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">宫格、列表或关闭操作，32px容器、20px图标</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>候选 · </strong>与真实宿主核对，再作为候选。</td></tr>
+<tr><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">不是按名称放大其他图标；仅3个已登记图标</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>不用 · </strong>排除本变体；不能靠改尺寸、改类或换未登记图标适配。</td></tr></tbody>
+<tbody><tr><th scope="rowgroup" rowspan="2" style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">无边框 M</th><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">下载、删除、关闭、搜索、显示、隐藏或更多操作，28px容器、16px图标</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>候选 · </strong>与真实宿主核对，再作为候选。</td></tr>
+<tr><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">不是任意16px图标；仅7个已登记图标</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>不用 · </strong>排除本变体；不能靠改尺寸、改类或换未登记图标适配。</td></tr></tbody>
+<tbody><tr><th scope="rowgroup" rowspan="2" style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">无边框 S</th><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">关闭或搜索操作，20px容器、14px图标</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>候选 · </strong>保持现有3px实现内距，不改类缩放。</td></tr>
+<tr><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">不能因S名称假定点击区大于XS，也不用于12px图标</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>不用 · </strong>排除本变体；不能靠改尺寸、改类或换未登记图标适配。</td></tr></tbody>
+<tbody><tr><th scope="rowgroup" rowspan="2" style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">无边框 XS</th><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">编辑操作，24px容器、12px图标</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>候选 · </strong>按实际24px热区选择，不按XS字面缩小。</td></tr>
+<tr><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">不是任意极小操作；置顶等原稿图标未登记不能替换</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>不用 · </strong>排除本变体；不能靠改尺寸、改类或换未登记图标适配。</td></tr></tbody>
+<tbody><tr><th scope="rowgroup" rowspan="2" style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">筛选XL已选中</th><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">筛选条件已启用，40px容器、16px筛选图标</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>候选 · </strong>aria-pressed=true；宿主更新状态。</td></tr>
+<tr><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">未选中筛选用bordered-xl；其他角色不套此变体</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>不用 · </strong>排除本变体；不能靠改尺寸、改类或换未登记图标适配。</td></tr></tbody>
+    </table>
+    <!-- AUTO-GENERATED-DECISION-TABLE:END -->
+  </div>
+
+    <!-- DEPENDENCY-SUMMARY-SPACING -->
+    <div style="height:24px;"></div>
+    <!-- AUTO-GENERATED-DEPENDENCY-SUMMARY-TABLE:START -->
+    <div style="margin-bottom: 0; padding: 24px; background: #FAFBFC; border: 1px solid var(--color-gray-5); border-radius: 8px;">
+      <p style="font-size: 14px; font-weight: 600; margin-bottom: 4px;">依赖汇总表</p>
+      <p style="font-size: 12px; color: #707070; margin-bottom: 12px;">按组件类型汇总组件关系、颜色、字体、间距、描边、圆角、阴影和图标依赖；未填写 <code>appliesTo</code> 的组件级依赖不猜测变体归属，不参与本表归类。「组件关系」列用标签区分：<span style="display:inline-block;font-size:11px;line-height:16px;padding:0 5px;border-radius:3px;background:#EAF2FF;color:#0060BF;">子组件</span> = 嵌入本组件内部；<span style="display:inline-block;font-size:11px;line-height:16px;padding:0 5px;border-radius:3px;background:#F3EEFA;color:#512971;">父组件·类名证据／仅声明</span> = 从宿主 <code>componentDependencies</code> 自动推导；类名出现不等于具体变体、尺寸、必需结构或交互已验证，链接仅供打开 Preview 复核；<span style="display:inline-block;font-size:11px;line-height:16px;padding:0 5px;border-radius:3px;background:#FFF3E0;color:#A65300;">参考·未验证</span> = 仅保留设计意图，宿主 preview 尚无真实结构，不可作为已实现依赖。</p>
+      <div class="dep-summary-scroll">
+        <div class="dep-summary-grid" style="grid-template-columns:minmax(max-content, auto) repeat(8, minmax(max-content, 1fr));">
+          <div class="dep-cell dep-cell--sticky dep-cell--head" role="columnheader">组件类型</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">颜色</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">字体</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">间距</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">描边</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">圆角</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">阴影</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">图标</div>
+          <div class="dep-cell dep-cell--head dep-cell--right-edge" role="columnheader">组件关系</div>
+          <div class="dep-cell dep-cell--sticky" role="rowheader"><strong>带边框</strong><br><code>bordered</code></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#19191A;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-1" style="color:#0060BF;text-decoration:underline;"><code>color.gray-1</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#DEE0E3;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-5" style="color:#0060BF;text-decoration:underline;"><code>color.gray-5</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#F6F6F8;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-8" style="color:#0060BF;text-decoration:underline;"><code>color.gray-8</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">8px</span><a href="spacing.html#tok-spacing-sm" style="color:#0060BF;text-decoration:underline;"><code>spacing.sm</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">16px</span><a href="spacing.html#tok-spacing-lg" style="color:#0060BF;text-decoration:underline;"><code>spacing.lg</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;color:#A6A6A6;font-size:11px;margin-right:8px;vertical-align:-3px;flex:0 0 auto;">∅</span><a href="stroke.html#tok-border-style-none" style="color:#0060BF;text-decoration:underline;"><code>border.style.none</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:1px;background:#707070;margin-right:8px;vertical-align:middle;flex:0 0 auto;"></span><a href="stroke.html#tok-border-width-default" style="color:#0060BF;text-decoration:underline;"><code>border.width.default</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:0;border-top:2px solid #707070;margin-right:8px;vertical-align:middle;flex:0 0 auto;"></span><a href="stroke.html#tok-border-style-default" style="color:#0060BF;text-decoration:underline;"><code>border.style.default</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;box-sizing:border-box;border:2px solid var(--color-gray-5);background:transparent;margin-right:8px;vertical-align:-3px;flex:0 0 auto;"></span><a href="stroke.html#tok-border-color-default" style="color:#0060BF;text-decoration:underline;"><code>border.color.default</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;box-sizing:border-box;border:2px solid var(--color-gray-1);background:transparent;margin-right:8px;vertical-align:-3px;flex:0 0 auto;"></span><a href="stroke.html#tok-border-color-emphasis" style="color:#0060BF;text-decoration:underline;"><code>border.color.emphasis</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">4px</span><a href="radius.html#tok-border-radius-md" style="color:#0060BF;text-decoration:underline;"><code>border-radius.md</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><img src="../icons/icon-filter.svg?v=8a4911b2335d" alt="" style="display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;"><a href="icon-map.html#icon-filter" style="color:#0060BF;text-decoration:underline;"><code>icon-filter.svg</code></a></span></div>
+          <div class="dep-cell dep-cell--right-edge" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:normal;overflow-wrap:anywhere;"><span style="display:inline-block;flex-shrink:0;font-size:11px;line-height:16px;padding:0 5px;margin-right:6px;border-radius:3px;background:#FFF3E0;color:#A65300;">参考·未验证</span><span style="color:#19191A;" title="2026-07-17 核查：card.html preview 里没有 ds-icon-btn 真实结构，card.json 也未声明依赖 IconButton。此条为设计意图/未来参考用法（如有才出现），保留手写。">Card</span></span></div>
+          <div class="dep-cell dep-cell--sticky dep-cell--bottom-edge" role="rowheader"><strong>无边框</strong><br><code>plain</code></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:rgba(25,25,26,0.04);vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-hover-overlay-light" style="color:#0060BF;text-decoration:underline;"><code>color.hover-overlay-light</code></a></span></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">6px</span><a href="spacing.html#tok-spacing-6" style="color:#0060BF;text-decoration:underline;"><code>spacing.6</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">3px</span><a href="spacing.html#tok-spacing-3" style="color:#0060BF;text-decoration:underline;"><code>spacing.3</code></a></span></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;color:#A6A6A6;font-size:11px;margin-right:8px;vertical-align:-3px;flex:0 0 auto;">∅</span><a href="stroke.html#tok-border-style-none" style="color:#0060BF;text-decoration:underline;"><code>border.style.none</code></a></span></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">4px</span><a href="radius.html#tok-border-radius-md" style="color:#0060BF;text-decoration:underline;"><code>border-radius.md</code></a></span></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><img src="../icons/icon-grid-view.svg?v=7337e2156917" alt="" style="display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;"><a href="icon-map.html#icon-grid-view" style="color:#0060BF;text-decoration:underline;"><code>icon-grid-view.svg</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><img src="../icons/icon-list-view.svg?v=321faa856533" alt="" style="display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;"><a href="icon-map.html#icon-list-view" style="color:#0060BF;text-decoration:underline;"><code>icon-list-view.svg</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><img src="../icons/icon-close.svg?v=226867654d63" alt="" style="display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;"><a href="icon-map.html#icon-close" style="color:#0060BF;text-decoration:underline;"><code>icon-close.svg</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><img src="../icons/icon-download.svg?v=d22356b69888" alt="" style="display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;"><a href="icon-map.html#icon-download" style="color:#0060BF;text-decoration:underline;"><code>icon-download.svg</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><img src="../icons/icon-delete.svg?v=3b8807c395d1" alt="" style="display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;"><a href="icon-map.html#icon-delete" style="color:#0060BF;text-decoration:underline;"><code>icon-delete.svg</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><img src="../icons/icon-search.svg?v=11e01599b008" alt="" style="display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;"><a href="icon-map.html#icon-search" style="color:#0060BF;text-decoration:underline;"><code>icon-search.svg</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><img src="../icons/icon-eye.svg?v=11c57eb3fa61" alt="" style="display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;"><a href="icon-map.html#icon-eye" style="color:#0060BF;text-decoration:underline;"><code>icon-eye.svg</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><img src="../icons/icon-eye-off.svg?v=6899d93cc075" alt="" style="display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;"><a href="icon-map.html#icon-eye-off" style="color:#0060BF;text-decoration:underline;"><code>icon-eye-off.svg</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><img src="../icons/icon-more.svg?v=20f6e039a56f" alt="" style="display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;"><a href="icon-map.html#icon-more" style="color:#0060BF;text-decoration:underline;"><code>icon-more.svg</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><img src="../icons/icon-edit.svg?v=c6076863bfb7" alt="" style="display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;"><a href="icon-map.html#icon-edit" style="color:#0060BF;text-decoration:underline;"><code>icon-edit.svg</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><img src="../icons/icon-button-close-s.svg?v=d05154223c9e" alt="" style="display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;"><a href="icon-map.html#icon-button-close-s" style="color:#0060BF;text-decoration:underline;"><code>icon-button-close-s.svg</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><img src="../icons/icon-button-search-s-hover.svg?v=43dcaefba567" alt="" style="display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;"><a href="icon-map.html#icon-button-search-s-hover" style="color:#0060BF;text-decoration:underline;"><code>icon-button-search-s-hover.svg</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><img src="../icons/icon-button-search-m-hover.svg?v=24ea696a2f70" alt="" style="display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;"><a href="icon-map.html#icon-button-search-m-hover" style="color:#0060BF;text-decoration:underline;"><code>icon-button-search-m-hover.svg</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><img src="../icons/icon-button-search-m-default.svg?v=1d711c6df60e" alt="" style="display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;"><a href="icon-map.html#icon-button-search-m-default" style="color:#0060BF;text-decoration:underline;"><code>icon-button-search-m-default.svg</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><img src="../icons/icon-button-close-m-hover.svg?v=931e0ca5fc7a" alt="" style="display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;"><a href="icon-map.html#icon-button-close-m-hover" style="color:#0060BF;text-decoration:underline;"><code>icon-button-close-m-hover.svg</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><img src="../icons/icon-button-close-l-hover.svg?v=bd3c01a47929" alt="" style="display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;"><a href="icon-map.html#icon-button-close-l-hover" style="color:#0060BF;text-decoration:underline;"><code>icon-button-close-l-hover.svg</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><img src="../icons/icon-button-download-m-hover.svg?v=8bf3f4c8445b" alt="" style="display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;"><a href="icon-map.html#icon-button-download-m-hover" style="color:#0060BF;text-decoration:underline;"><code>icon-button-download-m-hover.svg</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><img src="../icons/icon-button-delete-m-hover.svg?v=0cc7d10a7fce" alt="" style="display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;"><a href="icon-map.html#icon-button-delete-m-hover" style="color:#0060BF;text-decoration:underline;"><code>icon-button-delete-m-hover.svg</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><img src="../icons/icon-button-more-m-hover.svg?v=dd9249724383" alt="" style="display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;"><a href="icon-map.html#icon-button-more-m-hover" style="color:#0060BF;text-decoration:underline;"><code>icon-button-more-m-hover.svg</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><img src="../icons/icon-button-eye-off-m-hover.svg?v=3fd228a98200" alt="" style="display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;"><a href="icon-map.html#icon-button-eye-off-m-hover" style="color:#0060BF;text-decoration:underline;"><code>icon-button-eye-off-m-hover.svg</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><img src="../icons/icon-button-eye-m-hover.svg?v=e26bab2c6149" alt="" style="display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;"><a href="icon-map.html#icon-button-eye-m-hover" style="color:#0060BF;text-decoration:underline;"><code>icon-button-eye-m-hover.svg</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><img src="../icons/icon-button-edit-xs-hover.svg?v=04a6051081f1" alt="" style="display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;"><a href="icon-map.html#icon-button-edit-xs-hover" style="color:#0060BF;text-decoration:underline;"><code>icon-button-edit-xs-hover.svg</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><img src="../icons/icon-button-grid-l-hover.svg?v=6ee3fab85e52" alt="" style="display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;"><a href="icon-map.html#icon-button-grid-l-hover" style="color:#0060BF;text-decoration:underline;"><code>icon-button-grid-l-hover.svg</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><img src="../icons/icon-button-list-l-hover.svg?v=38d07b2f36ad" alt="" style="display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;"><a href="icon-map.html#icon-button-list-l-hover" style="color:#0060BF;text-decoration:underline;"><code>icon-button-list-l-hover.svg</code></a></span></div>
+          <div class="dep-cell dep-cell--right-edge dep-cell--bottom-edge" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:normal;overflow-wrap:anywhere;"><span style="display:inline-block;flex-shrink:0;font-size:11px;line-height:16px;padding:0 5px;margin-right:6px;border-radius:3px;background:#F3EEFA;color:#512971;">父组件·仅声明</span><a href="banner.html" style="color:#0060BF;text-decoration:underline;">Banner</a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:normal;overflow-wrap:anywhere;"><span style="display:inline-block;flex-shrink:0;font-size:11px;line-height:16px;padding:0 5px;margin-right:6px;border-radius:3px;background:#F3EEFA;color:#512971;">父组件·仅声明</span><a href="comment.html" style="color:#0060BF;text-decoration:underline;">Comment</a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:normal;overflow-wrap:anywhere;"><span style="display:inline-block;flex-shrink:0;font-size:11px;line-height:16px;padding:0 5px;margin-right:6px;border-radius:3px;background:#F3EEFA;color:#512971;">父组件·仅声明</span><a href="dialog.html#demo-information" style="color:#0060BF;text-decoration:underline;">Dialog</a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:normal;overflow-wrap:anywhere;"><span style="display:inline-block;flex-shrink:0;font-size:11px;line-height:16px;padding:0 5px;margin-right:6px;border-radius:3px;background:#F3EEFA;color:#512971;">父组件·仅声明</span><a href="dropdown.html" style="color:#0060BF;text-decoration:underline;">Dropdown</a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:normal;overflow-wrap:anywhere;"><span style="display:inline-block;flex-shrink:0;font-size:11px;line-height:16px;padding:0 5px;margin-right:6px;border-radius:3px;background:#F3EEFA;color:#512971;">父组件·仅声明</span><a href="list.html#list-product-content" style="color:#0060BF;text-decoration:underline;">List</a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:normal;overflow-wrap:anywhere;"><span style="display:inline-block;flex-shrink:0;font-size:11px;line-height:16px;padding:0 5px;margin-right:6px;border-radius:3px;background:#F3EEFA;color:#512971;">父组件·仅声明</span><a href="menu-navigation.html" style="color:#0060BF;text-decoration:underline;">MenuNavigation</a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:normal;overflow-wrap:anywhere;"><span style="display:inline-block;flex-shrink:0;font-size:11px;line-height:16px;padding:0 5px;margin-right:6px;border-radius:3px;background:#FFF3E0;color:#A65300;">参考·未验证</span><span style="color:#19191A;" title="2026-07-17 核查：card.html preview 里没有 ds-icon-btn 真实结构，card.json 也未声明依赖 IconButton。此条为设计意图/未来参考用法（如有才出现），保留手写。">Card</span></span></div>
+        </div>
+      </div>
+    </div>
+    <!-- AUTO-GENERATED-DEPENDENCY-SUMMARY-TABLE:END -->
+
+  <!-- TEMPLATE-DEMO-SPACING -->
+  <div style="height:24px;"></div>
+
+
+
+<!-- ============================================
+       SECTION 1: Bordered 带边框 (XL)
+       ============================================ -->
+  <div class="section">
+    <div class="section-title">Bordered 带边框 — XL (40×40, icon 16×16)</div>
+
+    <div class="btn-row">
+      <span class="label">默认 Default</span>
+      <button id="icon-usage-icon-filter" class="ds-icon-btn ds-icon-btn--bordered ds-icon-btn--xl" type="button" aria-pressed="false" aria-label="筛选" data-ai-example="ai-icon-button-bordered-xl">
+        <img class="ds-icon-btn__icon" src="../icons/icon-filter.svg" alt="">
+      </button>
+    </div>
+
+    <p class="source-boundary-note">描边筛选的独立 Hover 原件尚未核实，暂不展示为已确认状态；Default 与 Checked 已有各自来源。</p>
+  </div>
+
+  <div class="section"><div class="section-title">筛选选中状态 Checked</div><p>选中状态由使用页面维护。此处仅展示，不执行筛选业务。</p><button class="ds-icon-btn ds-icon-btn--bordered ds-icon-btn--xl ds-icon-btn--checked" type="button" aria-label="筛选" aria-pressed="true" data-ai-example="ai-icon-button-bordered-xl-checked"><img class="ds-icon-btn__icon" src="../icons/icon-filter.svg" alt=""></button></div>
+
+  <!-- ============================================
+       SECTION 2: Plain L (32×32, icon 20×20)
+       ============================================ -->
+  <div class="section">
+    <div class="section-title">Plain 无边框 — L (32×32, icon 20×20)</div>
+
+    <div class="state-label">默认 Default</div>
+    <div class="btn-row">
+      <button id="icon-usage-icon-grid-view" class="ds-icon-btn ds-icon-btn--plain ds-icon-btn--l" type="button" aria-label="宫格视图" style="scroll-margin-top: 40px;" data-ai-example="ai-icon-button-plain-l">
+        <img class="ds-icon-btn__icon" src="../icons/icon-grid-view.svg" alt="">
+      </button>
+      <button id="icon-usage-icon-list-view" class="ds-icon-btn ds-icon-btn--plain ds-icon-btn--l" type="button" aria-label="列表视图" style="scroll-margin-top: 40px;">
+        <img class="ds-icon-btn__icon" src="../icons/icon-list-view.svg" alt="">
+      </button>
+      <button id="icon-usage-icon-close" class="ds-icon-btn ds-icon-btn--plain ds-icon-btn--l" type="button" aria-label="关闭" style="scroll-margin-top: 40px;">
+        <img class="ds-icon-btn__icon" src="../icons/icon-close.svg" alt="">
+      </button>
+    </div>
+
+    <div class="state-label">悬停 Hover</div>
+    <div class="btn-row">
+      <button class="ds-icon-btn ds-icon-btn--plain ds-icon-btn--l ds-icon-btn--hover" type="button" aria-label="宫格视图">
+        <img class="ds-icon-btn__icon" src="../icons/icon-grid-view.svg" alt="">
+      </button>
+      <button class="ds-icon-btn ds-icon-btn--plain ds-icon-btn--l ds-icon-btn--hover" type="button" aria-label="列表视图">
+        <img class="ds-icon-btn__icon" src="../icons/icon-list-view.svg" alt="">
+      </button>
+      <button class="ds-icon-btn ds-icon-btn--plain ds-icon-btn--l ds-icon-btn--hover" type="button" aria-label="关闭">
+        <img class="ds-icon-btn__icon" src="../icons/icon-close.svg" alt="">
+      </button>
+    </div>
+  </div>
+
+  <!-- ============================================
+       SECTION 3: Plain M (28×28, icon 16×16)
+       ============================================ -->
+  <div class="section">
+    <div class="section-title">Plain 无边框 — M (28×28, icon 16×16)</div>
+
+    <div class="state-label">默认 Default</div>
+    <div class="btn-row">
+      <button id="icon-usage-icon-download" class="ds-icon-btn ds-icon-btn--plain ds-icon-btn--m" type="button" aria-label="下载" style="scroll-margin-top: 40px;" data-ai-example="ai-icon-button-plain-m">
+        <img class="ds-icon-btn__icon" src="../icons/icon-download.svg" alt="">
+      </button>
+      <button id="icon-usage-icon-delete" class="ds-icon-btn ds-icon-btn--plain ds-icon-btn--m" type="button" aria-label="删除" style="scroll-margin-top: 40px;">
+        <img class="ds-icon-btn__icon" src="../icons/icon-delete.svg" alt="">
+      </button>
+      <button class="ds-icon-btn ds-icon-btn--plain ds-icon-btn--m" type="button" aria-label="关闭" style="scroll-margin-top: 40px;">
+        <img class="ds-icon-btn__icon" src="../icons/icon-close.svg" alt="">
+      </button>
+      <button id="icon-usage-icon-search" class="ds-icon-btn ds-icon-btn--plain ds-icon-btn--m" type="button" aria-label="搜索" style="scroll-margin-top: 40px;">
+        <img class="ds-icon-btn__icon" src="../icons/icon-button-search-m-default.svg" alt="">
+      </button>
+      <button id="icon-usage-icon-eye" class="ds-icon-btn ds-icon-btn--plain ds-icon-btn--m" type="button" aria-label="显示" style="scroll-margin-top: 40px;">
+        <img class="ds-icon-btn__icon" src="../icons/icon-eye.svg" alt="">
+      </button>
+      <button id="icon-usage-icon-eye-off" class="ds-icon-btn ds-icon-btn--plain ds-icon-btn--m" type="button" aria-label="隐藏" style="scroll-margin-top: 40px;">
+        <img class="ds-icon-btn__icon" src="../icons/icon-eye-off.svg" alt="">
+      </button>
+      <button id="icon-usage-icon-more" class="ds-icon-btn ds-icon-btn--plain ds-icon-btn--m" type="button" aria-label="更多">
+        <img class="ds-icon-btn__icon" src="../icons/icon-more.svg" alt="">
+      </button>
+      <button class="ds-icon-btn ds-icon-btn--plain ds-icon-btn--m" type="button" aria-label="下载">
+        <img class="ds-icon-btn__icon" src="../icons/icon-download.svg" alt="">
+      </button>
+    </div>
+
+    <div class="state-label">悬停 Hover</div>
+    <div class="btn-row">
+      <button class="ds-icon-btn ds-icon-btn--plain ds-icon-btn--m ds-icon-btn--hover" type="button" aria-label="删除">
+        <img class="ds-icon-btn__icon" src="../icons/icon-delete.svg" alt="">
+      </button>
+      <button class="ds-icon-btn ds-icon-btn--plain ds-icon-btn--m ds-icon-btn--hover" type="button" aria-label="关闭">
+        <img class="ds-icon-btn__icon" src="../icons/icon-close.svg" alt="">
+      </button>
+      <button class="ds-icon-btn ds-icon-btn--plain ds-icon-btn--m ds-icon-btn--hover" type="button" aria-label="搜索">
+        <img class="ds-icon-btn__icon" src="../icons/icon-button-search-m-default.svg" alt="">
+      </button>
+      <button class="ds-icon-btn ds-icon-btn--plain ds-icon-btn--m ds-icon-btn--hover" type="button" aria-label="显示">
+        <img class="ds-icon-btn__icon" src="../icons/icon-eye.svg" alt="">
+      </button>
+      <button class="ds-icon-btn ds-icon-btn--plain ds-icon-btn--m ds-icon-btn--hover" type="button" aria-label="隐藏">
+        <img class="ds-icon-btn__icon" src="../icons/icon-eye-off.svg" alt="">
+      </button>
+      <button class="ds-icon-btn ds-icon-btn--plain ds-icon-btn--m ds-icon-btn--hover" type="button" aria-label="更多">
+        <img class="ds-icon-btn__icon" src="../icons/icon-more.svg" alt="">
+      </button>
+      <button class="ds-icon-btn ds-icon-btn--plain ds-icon-btn--m ds-icon-btn--hover" type="button" aria-label="下载">
+        <img class="ds-icon-btn__icon" src="../icons/icon-download.svg" alt="">
+      </button>
+      <button class="ds-icon-btn ds-icon-btn--plain ds-icon-btn--m ds-icon-btn--hover" type="button" aria-label="删除">
+        <img class="ds-icon-btn__icon" src="../icons/icon-delete.svg" alt="">
+      </button>
+    </div>
+  </div>
+
+  <!-- ============================================
+       SECTION 4: Plain S (20×20, icon 14×14)
+       ============================================ -->
+  <div class="section" id="plain-s">
+    <div class="section-title">Plain 无边框 — S (20×20, icon 14×14)</div>
+
+    <div class="state-label">默认 Default</div>
+    <div class="btn-row">
+      <button class="ds-icon-btn ds-icon-btn--plain ds-icon-btn--s" type="button" aria-label="关闭" data-ai-example="ai-icon-button-plain-s">
+        <img class="ds-icon-btn__icon" src="../icons/icon-button-close-s.svg" alt="">
+      </button>
+      <button class="ds-icon-btn ds-icon-btn--plain ds-icon-btn--s" type="button" aria-label="搜索">
+        <img class="ds-icon-btn__icon" src="../icons/icon-search.svg" alt="">
+      </button>
+    </div>
+
+    <div class="state-label">悬停 Hover</div>
+    <div class="btn-row">
+      <button class="ds-icon-btn ds-icon-btn--plain ds-icon-btn--s ds-icon-btn--hover" type="button" aria-label="关闭">
+        <img class="ds-icon-btn__icon" src="../icons/icon-button-close-s.svg" alt="">
+      </button>
+      <button class="ds-icon-btn ds-icon-btn--plain ds-icon-btn--s ds-icon-btn--hover" type="button" aria-label="搜索">
+        <img class="ds-icon-btn__icon" src="../icons/icon-search.svg" alt="">
+      </button>
+    </div>
+  </div>
+
+  <!-- ============================================
+       SECTION 5: Plain XS (24×24, icon 12×12)
+       ============================================ -->
+  <div class="section">
+    <div class="section-title">Plain 无边框 — XS (24×24, icon 12×12)</div>
+
+    <div class="state-label">默认 Default</div>
+    <div class="btn-row">
+      <button id="icon-usage-icon-edit" class="ds-icon-btn ds-icon-btn--plain ds-icon-btn--xs" type="button" aria-label="编辑" data-ai-example="ai-icon-button-plain-xs">
+        <img class="ds-icon-btn__icon" src="../icons/icon-edit.svg" alt="">
+      </button>
+      <button class="ds-icon-btn ds-icon-btn--plain ds-icon-btn--xs" type="button" aria-label="编辑">
+        <img class="ds-icon-btn__icon" src="../icons/icon-edit.svg" alt="">
+      </button>
+    </div>
+
+    <div class="state-label">悬停 Hover</div>
+    <div class="btn-row">
+      <button class="ds-icon-btn ds-icon-btn--plain ds-icon-btn--xs ds-icon-btn--hover" type="button" aria-label="编辑">
+        <img class="ds-icon-btn__icon" src="../icons/icon-edit.svg" alt="">
+      </button>
+      <button class="ds-icon-btn ds-icon-btn--plain ds-icon-btn--xs ds-icon-btn--hover" type="button" aria-label="编辑">
+        <img class="ds-icon-btn__icon" src="../icons/icon-edit.svg" alt="">
+      </button>
+    </div>
+  
+  </div>
+
+  <!-- DS_PREVIEW_AUTOHEIGHT: 供 component-library.html 堆叠合并视图自撑高，勿删 -->
+  <script>
+    (function () {
+      // 嵌入组件库 iframe 时，关闭自身竖向滚动条：高度由父页按内容精确设定，
+      // 避免出现「父页滚动条 + iframe 自身滚动条」两条滚动条。
+      if (window.parent !== window && document.documentElement) {
+        document.documentElement.style.overflow = 'hidden';
+      }
+      // 用 body 最后一个可视元素的 bottom 作为高度，去掉 body padding-bottom / 尾部 section
+      // margin-bottom 等空白，避免合并视图（stage--stacked）里两个 iframe 之间出现过大间隙。
+      // rAF 节流合并 ResizeObserver 抖动，减少视觉上的高度反复变化。
+      var reportPending = false;
+      function measure() {
+        var last = null;
+        if (document.body) {
+          for (var i = document.body.children.length - 1; i >= 0; i--) {
+            var c = document.body.children[i];
+            if (c.tagName === 'SCRIPT' || c.tagName === 'STYLE') continue;
+            last = c;
+            break;
+          }
+        }
+        if (last) {
+          var rect = last.getBoundingClientRect();
+          var scrollY = window.scrollY || window.pageYOffset || 0;
+          return Math.ceil(rect.bottom + scrollY);
+        }
+        return Math.max(document.body ? document.body.scrollHeight : 0, document.documentElement.scrollHeight);
+      }
+      function report() {
+        parent.postMessage({ __dsPreviewHeight: measure(), __dsUrl: location.href }, '*');
+      }
+      function scheduleReport() {
+        if (reportPending) return;
+        reportPending = true;
+        requestAnimationFrame(function () { reportPending = false; report(); });
+      }
+      window.addEventListener('load', scheduleReport);
+      window.addEventListener('resize', scheduleReport);
+      setTimeout(report, 300);
+      if (window.ResizeObserver && document.body) {
+        new ResizeObserver(scheduleReport).observe(document.body);
+      }
+    })();
+  </script>
+  <script src="../preview/preview-link.js"></script>
+  <script src="../preview/reference-live.js"></script>
+</body>
+</html>

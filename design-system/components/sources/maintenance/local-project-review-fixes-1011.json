@@ -1,0 +1,69 @@
+{
+  "date": "2026-10-11",
+  "scope": "Three authorized local project review fixes",
+  "changes": [
+    {
+      "issue": "InputNumber native reset left derived ARIA and bound controls stale",
+      "files": [
+        "components/input-number-current.js",
+        "components/list-products-current.js"
+      ],
+      "resolution": "Refresh derived atomic state after uncanceled native reset, then refresh affected product totals; respect actual form ownership; no synthetic change callback."
+    },
+    {
+      "issue": "Form validator missed new shared Dropdown resources",
+      "files": [
+        "scripts/form-host-dependencies.js"
+      ],
+      "resolution": "Require declared atom resources; only exclude styles of explicitly non-basic child dependencies."
+    },
+    {
+      "issue": "Acceptance tool fingerprints omitted four dependency validators",
+      "files": [
+        "scripts/component-acceptance-tools.js",
+        "scripts/record-component-acceptance.js",
+        "scripts/component-quality.js"
+      ],
+      "resolution": "Shared required manifest in writer and reader; missing or changed tools invalidate proof, including manifest itself."
+    }
+  ],
+  "validation": {
+    "offlineTestsPassed": 39,
+    "redReproductions": [
+      "InputNumber reset",
+      "Form missing shared resource",
+      "List reset total"
+    ],
+    "logs": [
+      "/tmp/fs-review-fixes-before.log",
+      "/tmp/fs-review-host-reset-before.log",
+      "/tmp/fs-review-fixes-test.log",
+      "/tmp/fs-review-proof-test.log",
+      "/tmp/fs-review-fixes-sync.log",
+      "/tmp/fs-review-fixes-health.log"
+    ],
+    "browserVerified": false,
+    "mastergoVerified": false,
+    "visualVerified": false,
+    "syncPassed": true,
+    "healthPassed": true,
+    "healthWarnings": 2
+  },
+  "boundaries": [
+    "No M implementation or MG normative claims",
+    "No historical frozen-page upgrades",
+    "No acceptance record produced by offline tests"
+  ],
+  "fingerprints": {
+    "components/input-number-current.js": "ba986d5c4796d86ea1097610caa593bed1039996b4dd43a75a4cb8db15d482df",
+    "components/list-products-current.js": "acccca5b32fd6823c3db3b9921668ed4f66a10ffade9ff75a7725b014e5797a3",
+    "scripts/form-host-dependencies.js": "262f14a54bd9d5a7248ab19bef69c8b4082b923f86fdff14b9f9c09fedf57c09",
+    "scripts/component-acceptance-tools.js": "7a47f1eddf7991cd0069050384183d15232605c499c23a1156ce751f709ca040",
+    "scripts/record-component-acceptance.js": "822ba988475cfe3714ac99f585c9df4e86090fb4ba74019bf6fc23257f197381",
+    "scripts/component-quality.js": "95481f782a9001be711db061555a6aa6511fa0611d81684d4ac668564f045953",
+    "scripts/input-number-reference.test.js": "9c4b18efb8d186a6a972f1dad3fa8a4544a6dab73549f0278b8e60b1fe420c24",
+    "scripts/list-products-current.test.js": "9ce0f7349744b332b52bacb95bee9ba46f61828088a7f09b8b741d7d68aacaf3",
+    "scripts/form-reference.test.js": "fe563d0d2ce6d49f8b6ca1e1bb95f5e6c9799f7ef527dc406355027216fc6356",
+    "scripts/component-quality.test.js": "9c62ac4b480cde78565c635b715badbb31b528431c9bf9b32988a8fefcdb8da4"
+  }
+}

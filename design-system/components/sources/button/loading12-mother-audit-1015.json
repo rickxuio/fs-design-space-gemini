@@ -1,0 +1,76 @@
+{
+  "readAt": "2026-10-15",
+  "scope": "Necessary source audit of newly acquired L36 Loading12 outline; not a new Button family batch",
+  "parentSections": [
+    {
+      "status": "fulfilled",
+      "value": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"sectionIndex\":0,\"section\":{\"id\":\"64858:84660\",\"name\":\"Icon/系统Icon/Loading-加载\",\"type\":\"INSTANCE\"},\"rootContainer\":{\"width\":\"120px\",\"minHeight\":\"36px\",\"background\":\"#C00000\",\"overflow\":\"hidden\",\"position\":\"relative\",\"borderRadius\":\"4px\"},\"structureSiblingCount\":1,\"dsl\":{\"styles\":{},\"nodes\":[{\"type\":\"INSTANCE\",\"id\":\"64858:84660\",\"name\":\"Icon/系统Icon/Loading-加载\",\"layoutStyle\":{\"width\":12,\"height\":12,\"relativeX\":0,\"relativeY\":0},\"componentInfo\":{},\"children\":[{\"type\":\"LAYER\",\"id\":\"64858:84660/1634:37852\",\"name\":\"矩形\",\"layoutStyle\":{\"width\":12,\"height\":12,\"relativeX\":0,\"relativeY\":0},\"opacity\":0},{\"type\":\"PATH\",\"id\":\"64858:84660/1634:37849\",\"name\":\"路径\",\"layoutStyle\":{\"width\":12,\"height\":12,\"relativeX\":0,\"relativeY\":0},\"path\":[]}],\"componentId\":\"1634:37848\"}],\"components\":[]},\"nodeCount\":3,\"componentDocumentLinks\":[],\"fetchProgress\":\"ALL 1 sections fetched. You can now generate the complete HTML.\"}"
+          }
+        ]
+      }
+    }
+  ],
+  "motherOverview": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"sections\":[{\"id\":\"1634:37852\",\"name\":\"矩形\",\"type\":\"LAYER\",\"nodeCount\":1,\"x\":0,\"y\":0,\"width\":16,\"height\":16,\"structureSiblingCount\":1},{\"id\":\"1634:37849\",\"name\":\"路径\",\"type\":\"PATH\",\"nodeCount\":1,\"x\":0,\"y\":0,\"width\":16,\"height\":16,\"structureSiblingCount\":1}],\"totalSections\":2,\"totalNodes\":2,\"rootMetadata\":{\"width\":16,\"height\":16,\"name\":\"Icon/系统Icon/Loading-加载\",\"type\":\"COMPONENT\"},\"rootContainer\":{\"width\":\"16px\",\"minHeight\":\"16px\",\"background\":\"transparent\",\"overflow\":\"hidden\",\"position\":\"relative\"},\"nextAction\":\"STOP. This section LIST is only a directory — it has NO DSL nodes,  NO rowTexts. You CANNOT generate HTML from this list alone. Your NEXT ACTION: call mcp__getDesignSections with sectionIndex=0, then sectionIndex=1, ... up to sectionIndex=1 (total 2 calls). Fetch ALL 2 sections in batches of 3-5 before writing ANY HTML. Sections with nodeCount=3 and empty name are NOT empty — they contain real menu items and content (resolved from INSTANCE overrides during DSL transfer). Skipping section DSL fetch is the #1 cause of missing menus, broken icons, and wrong data.\",\"rules\":[\"CRITICAL — Page positioning: the section LIST response contains splitContainers with page-absolute coordinates for each page region. Use splitContainers to construct the page skeleton (position:absolute with exact coordinates). Do NOT guess or stack with flex. IMPORTANT: splitContainers x/y are the container's absolute position on the canvas — they are NOT CSS margins/padding for child elements. Do NOT apply a container's y coordinate as top/margin-top on the main content wrapper. The main content area should start at top:0 within its own positioning context; sub-sections inside it use their own bbox y coordinates relative to the container, not to the page root.\",\"CRITICAL — Multi-column sidebar layout: render ALL sidebar levels as persistent visible columns positioned via splitContainers coordinates. Do NOT use position:absolute/fixed for submenu panels (they become floating overlays and break the main content width). Instead, lay out ALL columns (primary sidebar + submenu + main content) side-by-side using flex or absolute positioning that ACCOUNTS for every column's width. The main content area width = rootContainer.width minus ALL sidebar column widths. Do NOT use flex:1 for main content when there are multiple sidebar columns — it will expand into the submenu's space. Each sidebar column's width comes from its splitContainer entry.\",\"token filed must be generated as a variable (colors, shadows, fonts, etc.) and the token field must be displayed in the comment\",\"componentDocumentLinks is a list of frontend component documentation links. When it exists and is not empty, use mcp__getComponentLink to get the documentation.\",\"\",\"CRITICAL — SVG FROM PATH NODES (MUST FOLLOW): Every PATH node has a `svgShortKey` field (a short sequential ID like `S0#0`, `S0#1`). The SVG markup is NOT in the DSL. You MUST place a placeholder `@@SVG:{svgShortKey}@@` where each icon goes, then call `mcp__applyDesign` at the end to inject the real high-precision SVG. NEVER hand-write `<path d=\\\"...\\\">` — the DSL does NOT contain path data. NEVER leave a PATH node unrendered — every icon MUST have a `@@SVG:{svgShortKey}@@` placeholder.\",\"CRITICAL — RENDER EVERY ICON IN PATH NODES: Every PATH node has a `svgShortKey`. Place `@@SVG:{svgShortKey}@@` for each — sidebar menu icons, table header sort/filter/search icons, pagination prev/next/refresh icons, and action buttons. A header cell or menu item showing only plain text is a fidelity defect. After ALL placeholders are placed, call `mcp__applyDesign` to replace them with real SVG.\",\"\",\"CRITICAL — _placeholder TEXT handling: TEXT nodes with `_placeholder: true` (name==text) are listed in `dsl.placeholderTexts`. These are component-library boilerplate — NOT real column headers, labels, or data. Do NOT render them as table headers, column names, or visible UI labels. They appear alongside real text in the same section (e.g. a header cell has both realTitle='用户名称' and placeholder='Hillstone Design') — render ONLY the real title, omit the placeholder. EXCEPTION: if a placeholder text is the SOLE text in its section AND it reads as a legitimate brand name or page title (e.g. '智源智能安全运营平台'), it may be real content — render it in its proper context (logo area, page title), never as a table header.\",\"CRITICAL — CLOSED-SET TEXT: the section LIST response carries `rootMetadata.allTexts` — the complete whitelist of text strings in this design (including placeholder strings). Any visible string NOT in allTexts is a hallucination and MUST be removed. Use `dsl.placeholderTexts` in each section to identify which strings are component-library boilerplate.\",\"\",\"CRITICAL — INSTANCE fill color: when an INSTANCE has both `fill` and `_color`, use `_color` directly as the CSS value. Do NOT guess colors from _variantProps semantics.\",\"CRITICAL — INSTANCE _variantProps: compare across siblings for selected/hovered/disabled. Active class MUST match DSL variant state, NOT a default index.\",\"CRITICAL — Render count = structureSiblingCount: if ssc=1, that single instance IS complete — do NOT fabricate extra rows/items.\",\"CRITICAL — BACKGROUND FROM splitContainers: splitContainers[].background IS the exact CSS background-color. Copy verbatim, no changes.\",\"CRITICAL — FRAME/GROUP opacity: translate to rgba() on background only, NOT CSS opacity (would make children translucent).\",\"CRITICAL — rowTexts: each entry has parentType/parentName for context and `_placeholder: true` if boilerplate. Use parentName to place text correctly; skip _placeholder entries. IMPORTANT: if a short numeric text (like '8') has parentName matching a button INSTANCE (e.g. '分类[a3]=文本按钮,类型[aI]=危险'), it is likely a badge/count indicator overlaid on that button — NOT part of the button label. Do NOT render it inside the button text; render it as a separate badge element positioned on the button corner, OR omit it if the design does not show a visible badge on that specific button instance.\",\"Render ALL nodes recursively. Section root layoutStyle.width = section width. Do not call mcp__getDsl after completing section workflow.\",\"CRITICAL — ICON-TO-NODE BINDING: match PATH nodes to their UI position by the node's ancestor name. A PATH node under a menu item belongs in that menu's icon slot; one under a button/refresh belongs in that button. NEVER substitute a memorized icon — use the exact `@@SVG:{svgShortKey}@@` from the PATH node in its section. NEVER reuse a svgShortKey from a different section.\",\"CRITICAL — TEXT PROVENANCE SELF-CHECK: before finalizing output, verify every visible text string exists in allTexts. If you emit MORE distinct strings than allTexts.length, you are hallucinating. Typical hallucinations: fabricated table headers, invented data, brand tokens, generic labels not in the design.\",\"CRITICAL — DO NOT SKIP SECTION DSL FETCH: the section LIST response is ONLY a directory (id/name/nodeCount/textPreview). It does NOT contain DSL nodes, rowTexts, or any rendering data. You CANNOT generate correct HTML from the list alone. You MUST call mcp__getDesignSections with sectionIndex=0, then 1, ... up to totalSections-1 to get each section's DSL. Generating HTML without fetching ALL section DSLs will produce missing content (menus, table data, icons) and incorrect SVGs — this is the #1 cause of broken output.\"]}"
+      }
+    ]
+  },
+  "motherSections": [
+    {
+      "status": "fulfilled",
+      "value": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"sectionIndex\":0,\"section\":{\"id\":\"1634:37852\",\"name\":\"矩形\",\"type\":\"LAYER\"},\"rootContainer\":{\"width\":\"16px\",\"minHeight\":\"16px\",\"background\":\"transparent\",\"overflow\":\"hidden\",\"position\":\"relative\"},\"structureSiblingCount\":1,\"dsl\":{\"styles\":{},\"nodes\":[{\"type\":\"LAYER\",\"id\":\"1634:37852\",\"name\":\"矩形\",\"layoutStyle\":{\"width\":16,\"height\":16,\"relativeX\":0,\"relativeY\":0},\"opacity\":0}],\"components\":[]},\"nodeCount\":1,\"componentDocumentLinks\":[],\"fetchProgress\":\"ALL 2 sections fetched. You can now generate the complete HTML.\"}"
+          }
+        ]
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"sectionIndex\":1,\"section\":{\"id\":\"1634:37849\",\"name\":\"路径\",\"type\":\"PATH\"},\"rootContainer\":{\"width\":\"16px\",\"minHeight\":\"16px\",\"background\":\"transparent\",\"overflow\":\"hidden\",\"position\":\"relative\"},\"structureSiblingCount\":1,\"dsl\":{\"styles\":{\"paint_1:8\":{\"value\":[\"#FFFFFF\"],\"token\":\"颜色系统/中性色/White-#FFFFFF\",\"description\":\"💚场景：白色背景\"}},\"nodes\":[{\"type\":\"PATH\",\"id\":\"1634:37849\",\"name\":\"路径\",\"layoutStyle\":{\"width\":16,\"height\":16,\"relativeX\":0,\"relativeY\":0},\"svgKey\":\"S1:1634:37849|1634:37849\",\"svgShortKey\":\"S1#0\",\"svgName\":\"\"}],\"components\":[]},\"nodeCount\":1,\"svgNodeCount\":1,\"hasStrippedSvgs\":true,\"componentDocumentLinks\":[],\"fetchProgress\":\"Fetched 1/2. MISSING 1 sections: [0]. You MUST fetch ALL remaining sections before generating HTML. Do NOT stop early.\"}"
+          }
+        ]
+      }
+    }
+  ],
+  "motherExtractor": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"totalCount\":1,\"count\":1,\"svgs\":[{\"name\":\"Icon_系统Icon_Loading-加载\",\"id\":\"1634:37848\",\"svg\":\"<?xml version=\\\"1.0\\\" encoding=\\\"UTF-8\\\"?>\\n<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" viewBox=\\\"0 0 16 16\\\" width=\\\"16\\\" height=\\\"16\\\">\\n  <path d=\\\"M8,16C6.9203124,16,5.8718748,15.789062,4.8859377,15.370313C3.9328125,14.96875,3.078125,14.390625,2.34375,13.65625C1.609375,12.921875,1.03125,12.067187,0.62968749,11.114062C0.2109375,10.128125,0,9.0796871,0,8C0,6.9203124,0.2109375,5.8718748,0.62968749,4.8859377C1.03125,3.9328125,1.609375,3.078125,2.34375,2.34375C3.078125,1.609375,3.9328125,1.03125,4.8859377,0.62968749C5.8718748,0.2109375,6.9203124,0,8,0C8.3203125,0,8.5796871,0.25937501,8.5796871,0.57968748C8.5796871,0.89999998,8.3203125,1.159375,8,1.159375C7.0765624,1.159375,6.1812501,1.340625,5.3375001,1.696875C4.5234375,2.0406251,3.7906251,2.534375,3.1624999,3.1624999C2.534375,3.7906251,2.0406251,4.5218749,1.696875,5.3375001C1.340625,6.1796875,1.159375,7.0765624,1.159375,8C1.159375,8.9234371,1.340625,9.8187504,1.696875,10.6625C2.0406251,11.476562,2.534375,12.209375,3.1624999,12.8375C3.7906251,13.465625,4.5218749,13.959375,5.3375001,14.303125C6.1812501,14.659375,7.0765624,14.840625,8,14.840625C8.9234371,14.840625,9.8187504,14.659375,10.6625,14.303125C11.476562,13.959375,12.209375,13.465625,12.8375,12.8375C13.465625,12.209375,13.959375,11.478125,14.303125,10.6625C14.659375,9.8203125,14.840625,8.9234371,14.840625,8C14.840625,7.6796875,15.1,7.4203124,15.420313,7.4203124C15.740625,7.4203124,16,7.6796875,16,8C16,9.0796871,15.789062,10.128125,15.370313,11.114062C14.96875,12.067187,14.390625,12.921875,13.65625,13.65625C12.921875,14.390625,12.065625,14.967188,11.114062,15.370313C10.128125,15.789062,9.0796871,16,8,16Z\\\" fill=\\\"#FFFFFF\\\"/>\\n</svg>\"}]}"
+      }
+    ]
+  },
+  "limits": "Extractor emits fill paths and does not establish stroke absence. Native complete mother export needed to distinguish shared atom contour from host override.",
+  "pending": [
+    "Actual visual/animation and other loader references"
+  ],
+  "fullFamilyAcceptance": false,
+  "nativeMother": {
+    "page": "3752:3996",
+    "route": "Actual Edit component operation within valid file; retained instance layer_id is not asserted to be main id",
+    "nominal": [
+      16,
+      16
+    ],
+    "type": "COMPONENT in source; native component-properties panel",
+    "official": "loading-mother-official-1015.svg",
+    "pathCount": 1,
+    "evidence": "loading-mother-export-restored-native-1015.txt",
+    "temporaryExport": "removed"
+  },
+  "resolution": "Extra outlined path belongs to old12 host override, not current mother. Atom priority retains one-path mother scaled12. Candidate contour rendering/icon registration removed."
+}

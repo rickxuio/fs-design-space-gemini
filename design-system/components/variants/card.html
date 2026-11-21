@@ -1,0 +1,1184 @@
+<!-- INTERNAL VARIANT SOURCE: for compile/sync scripts only. Human-facing spec: maintenance/foundation-prototypes-20261114/card.html -->
+<!DOCTYPE html><html data-component-reference="card" lang="zh-CN"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Card 图文卡片 - 组件预览</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../tokens.css">
+  <link rel="stylesheet" href="../components.css?v=2">
+<link rel="stylesheet" href="../button-current.css">
+<link rel="stylesheet" href="../card-current.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: var(--font-family-base);
+      padding: 40px;
+      background: #FFFFFF;
+      color: var(--color-gray-1);
+    }
+    h1 { font-size: 24px; font-weight: 600; margin-bottom: 8px; }
+    .subtitle { font-size: 14px; color: var(--color-gray-3); margin-bottom: 40px; }
+    .section { margin-bottom: 48px; }
+    .section-title {
+      font-size: 18px; font-weight: 600; margin-bottom: 24px;
+      padding-bottom: 8px; border-bottom: 1px solid var(--color-gray-5);
+    }
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 285px);
+      gap: 20px;
+    }
+    .card-grid--2col {
+      grid-template-columns: repeat(2, 285px);
+    }
+    .card-grid--5col {
+      grid-template-columns: repeat(5, 285px);
+    }
+    .state-label {
+      font-size: 12px; color: var(--color-gray-3);
+      margin-bottom: 8px; text-align: center;
+    }
+    .card-col { display: flex; flex-direction: column; gap: 8px; }
+    /* placeholder image */
+    .placeholder-img {
+      width: 100%; height: 100%;
+      background: #E8E8E8;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px; color: #999; font-weight: 600;
+    }
+    .horizontal-section {
+      display: flex; flex-direction: column; gap: 24px;
+      max-width: 1200px;
+    }
+    /* 强制 hover 卡片内的 Learn more 显示下划线 */
+    .ds-card--hover .ds-text-btn__text,
+    .ds-card--hover .ds-card__link .ds-text-btn__text {
+      text-decoration: underline !important;
+    }
+
+
+    /* Category Badge（分类与左侧导航栏保持一致） */
+    .cat-badge { display: inline-flex; align-items: center; height: 22px; padding: 0 10px; border-radius: 11px; font-size: 11px; font-weight: 700; margin-bottom: 10px; }
+  </style>
+  <script>
+    // Product Tag atoms own state/style; Card coordinates one choice per real row.
+    document.addEventListener('ds:tag-change', function(e) {
+      var tag = e.target.closest('button[data-tag-product="current"]');
+      var group = tag && tag.closest('.ds-card__compat-tags,.ds-card__color-tags');
+      if (!group) return;
+      group.querySelectorAll('button[data-tag-product="current"]').forEach(function(item) {
+        item.removeAttribute('data-tag-state');
+        item.setAttribute('aria-pressed', String(item === tag));
+      });
+    });
+    document.addEventListener('ds:tag-activate', function(e) {
+      var more = e.target.closest('[data-card-tag-more]');
+      if (!more) return;
+      var body = more.closest('.ds-card__product-body');
+      var popup = body && body.querySelector('.ds-card__more-popup');
+      if (popup) popup.style.display = popup.style.display === 'flex' ? 'none' : 'flex';
+    });
+    document.addEventListener('click', function(e) {
+      if (e.target.closest('[data-card-tag-more]')) return;
+      document.querySelectorAll('.ds-card__more-popup').forEach(function(p) {
+        if (!p.contains(e.target)) p.style.display = 'none';
+      });
+    });
+  </script>
+<link rel="stylesheet" href="../card-responsive.css">
+<link rel="stylesheet" href="../text-button-current.css">  <link rel="stylesheet" href="../cart-current.css">
+<link rel="stylesheet" href="../tag-current.css"><link rel="stylesheet" href="../list-unordered-current.css">
+<link rel="stylesheet" href="../tag-product-current.css">
+<link rel="stylesheet" href="../menu-navigation-current.css"><link rel="stylesheet" href="../card-sidebar-current.css"></head>
+<body>
+  <span class="cat-badge" style="background:#FBEAEA;color:#C00000;">数据展示 Data Display</span>
+  <h1>Card 图文卡片 <span class="version-badge" style="font-size:18px;font-weight:600;color:#707070;vertical-align:middle;margin-left:10px;">v1.0</span></h1>
+  <p class="subtitle">图文卡片组件 — 拼接式（上下结构 / 左右结构），支持多种内容组合、边框样式和交互状态</p>
+
+  <!-- 变体决策 + 关联关系表 -->
+  <div style="margin-bottom: 0; padding: 24px; background: #FAFBFC; border: 1px solid var(--color-gray-5); border-radius: 8px;">
+    <!-- AUTO-GENERATED-PREVIEW:START -->
+<!-- 合并模式：硬规则已并入下方合并表 -->
+    <!-- AUTO-GENERATED-PREVIEW:END -->
+    <!-- AUTO-GENERATED-DECISION-TABLE:START -->
+    <p style="font-size:14px;font-weight:600;margin-bottom:4px;">变体决策</p>
+    <p style="font-size:12px;color:#707070;margin-bottom:12px;">按内容角色与实际行为选型，再核对布局、父级背景及同版调用资格。原变体和本地fragment明确对应；参考不授权调用。《新文件》已核对可见结构分类；交互执行结合原契约及本地实测。</p>
+    <table style="width:100%;border-collapse:collapse;table-layout:fixed;">
+      <colgroup><col style="width:18%"><col style="width:38%"><col style="width:44%"></colgroup>
+      <thead><tr><th scope="col" style="background:#F6F6F8;font-size:12px;font-weight:600;text-align:left;padding:8px 10px;border:1px solid #DEE0E3;">变体</th><th scope="col" style="background:#F6F6F8;font-size:12px;font-weight:600;text-align:left;padding:8px 10px;border:1px solid #DEE0E3;">匹配条件</th><th scope="col" style="background:#F6F6F8;font-size:12px;font-weight:600;text-align:left;padding:8px 10px;border:1px solid #DEE0E3;">选型结论</th></tr></thead>
+<tbody><tr><th scope="rowgroup" rowspan="2" style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">上下结构·单事件卡片</th><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">普通内容图上文下，灰色父级。</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>候选 · </strong>按同版登记调用。</td></tr>
+<tr><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">分类链接入口或专用产品选购。</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>不用 · </strong>不据此选型。</td></tr></tbody>
+<tbody><tr><th scope="rowgroup" rowspan="2" style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">上下结构·多事件卡片</th><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">图片、标题及多个独立分类链接。</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>候选 · </strong>按同版登记调用。</td></tr>
+<tr><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">仅一个普通操作或长描述。</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>不用 · </strong>不据此选型。</td></tr></tbody>
+<tbody><tr><th scope="rowgroup" rowspan="2" style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">左右结构·通栏</th><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">一行独占版心的左右图文。</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>候选 · </strong>按同版登记调用。</td></tr>
+<tr><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">侧栏、网格单格或描边半区。</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>不用 · </strong>不据此选型。</td></tr></tbody>
+<tbody><tr><th scope="rowgroup" rowspan="2" style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">拼接式-左右结构-通栏（1200px）-描边/背景</th><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">通栏图文的文字半区需描边/白底。</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>设计参考 · </strong>仅规范参考，不开放调用。</td></tr>
+<tr><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">不能给根和图片整体加描边。</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>不用 · </strong>不据此选型。</td></tr></tbody>
+<tbody><tr><th scope="rowgroup" rowspan="2" style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">左右结构·含侧边栏</th><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">PC左侧真实菜单＋无描边左右图文内容，图文源件为样式二。</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>候选 · </strong>侧栏复用MenuNavigation/288源部件；内容文字、图片和链接按槽编辑。</td></tr>
+<tr><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">没有实际侧栏、普通通栏卡片或M/Pad适配。</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>不用 · </strong>不扩大为其他场景或后台业务。</td></tr></tbody>
+<tbody><tr><th scope="rowgroup" rowspan="2" style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">拼接式-左右结构-含侧边栏-描边/背景</th><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">PC左侧真实菜单＋左右图文内容，文字半区需原件描边与List12。</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>候选 · </strong>侧栏复用MenuNavigation/288源部件；内容文字、图片和链接按槽编辑。</td></tr>
+<tr><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">没有实际侧栏、普通通栏卡片或M/Pad适配。</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>不用 · </strong>不扩大为其他场景或后台业务。</td></tr></tbody>
+<tbody><tr><th scope="rowgroup" rowspan="2" style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">嵌入式·产品小卡片</th><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">最近浏览式产品图、标题和价格。</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>候选 · </strong>按同版登记调用。</td></tr>
+<tr><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">参数、库存、销量或新品不能据此补画。</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>不用 · </strong>不据此选型。</td></tr></tbody>
+<tbody><tr><th scope="rowgroup" rowspan="2" style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">嵌入式·产品卡片</th><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">搜索结果页产品展示卡。</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>候选 · </strong>按同版登记调用。</td></tr>
+<tr><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">普通内容页不默认套搜索产品卡。</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>不用 · </strong>不据此选型。</td></tr></tbody>
+<tbody><tr><th scope="rowgroup" rowspan="2" style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">嵌入式·产品详情卡片</th><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">产品小图、标题、说明及参数列表，横向嵌入式详情卡片。</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>候选 · </strong>调用embedded.product-detail，保留真实子原子及当前资源。</td></tr>
+<tr><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">没有参数列表、完整选购或价格/库存操作。</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>undefined · </strong>按内容和交互另选变体。</td></tr></tbody>
+<tbody><tr><th scope="rowgroup" rowspan="2" style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">嵌入式·产品完整卡片</th><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">完整产品选购卡：兼容标签、参数、价格、库存、销量评价及真实Cart加购按钮同时存在。</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>候选 · </strong>调用embedded.product-full，保留真实子原子及当前资源。</td></tr>
+<tr><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">普通图文展示，或来源没有兼容标签、库存与选购数据。</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>undefined · </strong>按内容和交互另选变体。</td></tr></tbody>
+<tbody><tr><th scope="rowgroup" rowspan="2" style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">左右结构·通栏·响应式</th><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">明确需适配的左右图文通栏。</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>候选 · </strong>按同版登记调用。</td></tr>
+<tr><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">旧页、侧栏和描边形态不自动升级。</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>不用 · </strong>不据此选型。</td></tr></tbody>
+<tbody><tr><th scope="rowgroup" rowspan="2" style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">上下结构·单事件·白色父级描边</th><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">白色父级PC四栏的285px图文卡。</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>候选 · </strong>按同版登记调用。</td></tr>
+<tr><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">灰父级或其他宽度网格不外推。</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>不用 · </strong>不据此选型。</td></tr></tbody>
+<tbody><tr><th colspan="3" style="background:#F6F6F8;font-size:12px;font-weight:600;text-align:left;padding:8px 10px;border:1px solid #DEE0E3;">⚠️ 硬规则：嵌入式标准产品卡片仅用于搜索结果页</th></tr><tr><td colspan="2" style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>描述原文</strong><div><strong><code>embedded.product-standard</code> 仅允许用于搜索结果页，普通页面不得使用。</strong>普通页面的图上文下卡片优先核对 <code>spliced.vertical.single-event</code> 的契约与 Preview；只有参考内容能够填入其必需区域时才使用，不得编造内容或删减组件结构。</div></td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>AI 解析（写入契约 JSON 的字段）</strong><pre style="white-space:pre-wrap;word-break:break-all;">本地组件映射选择 embedded.product-standard 前，必须有页面为搜索结果页的可见证据并在本地模块映射中说明；普通页面优先核对 spliced.vertical.single-event，内容不适配时继续映射其他真实变体。</pre></td></tr></tbody>
+<tbody><tr><th colspan="3" style="background:#F6F6F8;font-size:12px;font-weight:600;text-align:left;padding:8px 10px;border:1px solid #DEE0E3;">⚠️ 硬规则：卡片边框 ↔ Section 背景色</th></tr><tr><td colspan="2" style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>描述原文</strong><div><strong>卡片在白底时，必须要有描边；在灰底时，不能有描边。</strong>多个通栏卡片上下排列时，图左文右 / 文左图右要交替。</div></td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>AI 解析（写入契约 JSON 的字段）</strong><pre style="white-space:pre-wrap;word-break:break-all;">relations.parentContext[
+  &quot;page-section--white&quot;
+].resultingClass
+  = &quot;ds-card--bordered&quot;
+
+relations.parentContext[
+  &quot;page-section--gray&quot;
+].resultingClass
+  = &quot;ds-card--no-border&quot;</pre></td></tr></tbody>
+<tbody><tr><th colspan="3" style="background:#F6F6F8;font-size:12px;font-weight:600;text-align:left;padding:8px 10px;border:1px solid #DEE0E3;">⚠️ 硬规则：横向图文卡片的操作入口统一使用黑色 TextButton</th></tr><tr><td colspan="2" style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>描述原文</strong><div><strong>所有横向图文卡片的操作入口统一使用黑色 TextButton（inline-black）；不使用实心或描边 Button。</strong>只有嵌入式产品卡片的 Add 操作复用 Button 家族的 Cart 产品卡加购原子（不是普通 filled-red Button）。</div></td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>AI 解析（写入契约 JSON 的字段）</strong><pre style="white-space:pre-wrap;word-break:break-all;">relations.notes +=
+  &quot;横向图文 Card：操作入口统一使用黑色 TextButton；嵌入式产品卡 Add 才使用 filled-red Button&quot;</pre></td></tr></tbody>
+<tbody><tr><th colspan="3" style="background:#F6F6F8;font-size:12px;font-weight:600;text-align:left;padding:8px 10px;border:1px solid #DEE0E3;">⚠️ 硬规则：竖向单事件卡片的操作槽仅允许 TextButton</th></tr><tr><td colspan="2" style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>描述原文</strong><div><strong>竖向单事件 Card 的 <code>ds-card__link</code> 必须复用真实 TextButton Preview DOM，包含 <code>ds-text-btn__text</code>；inline 变体还必须包含 <code>ds-text-btn__icon</code>。</strong>不允许放入实心或描边 Button。横向图文 Card 同样只允许黑色 TextButton。</div></td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>AI 解析（写入契约 JSON 的字段）</strong><pre style="white-space:pre-wrap;word-break:break-all;">relations.notes +=
+  &quot;竖向单事件 Card 的 link slot 仅允许 TextButton Preview 完整 DOM；inline 包含 text 与 icon；横向图文 Card 同样只允许黑色 TextButton&quot;</pre></td></tr></tbody>
+<tbody><tr><th colspan="3" style="background:#F6F6F8;font-size:12px;font-weight:600;text-align:left;padding:8px 10px;border:1px solid #DEE0E3;">⚠️ 硬规则：横向卡片标题到正文固定 12px</th></tr><tr><td colspan="2" style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>描述原文</strong><div><strong>横向 Card 的 <code>ds-card__desc</code> 顶部间距必须使用 <code>spacing.md</code>（12px）。</strong></div></td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>AI 解析（写入契约 JSON 的字段）</strong><pre style="white-space:pre-wrap;word-break:break-all;">relations.notes +=
+  &quot;horizontal / horizontal-reverse 标题到正文使用 spacing.md = 12px&quot;</pre></td></tr></tbody>
+    </table>
+    <!-- AUTO-GENERATED-DECISION-TABLE:END -->
+  </div>
+  <!-- DEPENDENCY-SUMMARY-SPACING -->
+  <div style="height:24px;"></div>
+  <!-- AUTO-GENERATED-DEPENDENCY-SUMMARY-TABLE:START -->
+    <div style="margin-bottom: 0; padding: 24px; background: #FAFBFC; border: 1px solid var(--color-gray-5); border-radius: 8px;">
+      <p style="font-size: 14px; font-weight: 600; margin-bottom: 4px;">依赖汇总表</p>
+      <p style="font-size: 12px; color: #707070; margin-bottom: 12px;">按组件类型汇总组件关系、颜色、字体、间距、描边、圆角、阴影和图标依赖；未填写 <code>appliesTo</code> 的组件级依赖不猜测变体归属，不参与本表归类。「组件关系」列用标签区分：<span style="display:inline-block;font-size:11px;line-height:16px;padding:0 5px;border-radius:3px;background:#EAF2FF;color:#0060BF;">子组件</span> = 嵌入本组件内部；<span style="display:inline-block;font-size:11px;line-height:16px;padding:0 5px;border-radius:3px;background:#F3EEFA;color:#512971;">父组件·类名证据／仅声明</span> = 从宿主 <code>componentDependencies</code> 自动推导；类名出现不等于具体变体、尺寸、必需结构或交互已验证，链接仅供打开 Preview 复核；<span style="display:inline-block;font-size:11px;line-height:16px;padding:0 5px;border-radius:3px;background:#FFF3E0;color:#A65300;">参考·未验证</span> = 仅保留设计意图，宿主 preview 尚无真实结构，不可作为已实现依赖。</p>
+      <div class="dep-summary-scroll">
+        <div class="dep-summary-grid" style="grid-template-columns:minmax(max-content, auto) repeat(8, minmax(max-content, 1fr));">
+          <div class="dep-cell dep-cell--sticky dep-cell--head" role="columnheader">组件类型</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">颜色</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">字体</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">间距</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">描边</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">圆角</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">阴影</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">图标</div>
+          <div class="dep-cell dep-cell--head dep-cell--right-edge" role="columnheader">组件关系</div>
+          <div class="dep-cell dep-cell--sticky" role="rowheader"><strong>拼接式 · 上下结构 · 单事件卡片</strong><br><code>spliced.vertical.single-event</code></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#19191A;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-1" style="color:#0060BF;text-decoration:underline;"><code>color.gray-1</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#4B4B4D;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-2" style="color:#0060BF;text-decoration:underline;"><code>color.gray-2</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#707070;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-3" style="color:#0060BF;text-decoration:underline;"><code>color.gray-3</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#DEE0E3;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-5" style="color:#0060BF;text-decoration:underline;"><code>color.gray-5</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#F2F2F2;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-7" style="color:#0060BF;text-decoration:underline;"><code>color.gray-7</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#FFFFFF;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-white" style="color:#0060BF;text-decoration:underline;"><code>color.white</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">14px · md · SemiBold 600</span><a href="font.html#tok-typography-h7-semibold" style="color:#0060BF;text-decoration:underline;"><code>typography.h7-semibold</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">12px · sm · Regular 400</span><a href="font.html#tok-typography-h9-regular" style="color:#0060BF;text-decoration:underline;"><code>typography.h9-regular</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">13px · H8 · Regular 400</span><a href="font.html#tok-typography-h8-regular" style="color:#0060BF;text-decoration:underline;"><code>typography.h8-regular</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">20px</span><a href="spacing.html#tok-spacing-20" style="color:#0060BF;text-decoration:underline;"><code>spacing.20</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">12px</span><a href="spacing.html#tok-spacing-md" style="color:#0060BF;text-decoration:underline;"><code>spacing.md</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">4px</span><a href="spacing.html#tok-spacing-xs" style="color:#0060BF;text-decoration:underline;"><code>spacing.xs</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">8px</span><a href="spacing.html#tok-spacing-sm" style="color:#0060BF;text-decoration:underline;"><code>spacing.sm</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">16px</span><a href="spacing.html#tok-spacing-lg" style="color:#0060BF;text-decoration:underline;"><code>spacing.lg</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">2px</span><a href="spacing.html#tok-spacing-2" style="color:#0060BF;text-decoration:underline;"><code>spacing.2</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;color:#A6A6A6;font-size:11px;margin-right:8px;vertical-align:-3px;flex:0 0 auto;">∅</span><a href="stroke.html#tok-border-style-none" style="color:#0060BF;text-decoration:underline;"><code>border.style.none</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:1px;background:#707070;margin-right:8px;vertical-align:middle;flex:0 0 auto;"></span><a href="stroke.html#tok-border-width-default" style="color:#0060BF;text-decoration:underline;"><code>border.width.default</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:0;border-top:2px solid #707070;margin-right:8px;vertical-align:middle;flex:0 0 auto;"></span><a href="stroke.html#tok-border-style-default" style="color:#0060BF;text-decoration:underline;"><code>border.style.default</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;box-sizing:border-box;border:2px solid var(--color-gray-5);background:transparent;margin-right:8px;vertical-align:-3px;flex:0 0 auto;"></span><a href="stroke.html#tok-border-color-default" style="color:#0060BF;text-decoration:underline;"><code>border.color.default</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">8px</span><a href="radius.html#tok-border-radius-lg" style="color:#0060BF;text-decoration:underline;"><code>border-radius.lg</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">4px</span><a href="radius.html#tok-border-radius-md" style="color:#0060BF;text-decoration:underline;"><code>border-radius.md</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;background:#FFFFFF;border:1px solid #F0F0F0;box-shadow:0px 15px 15px -10px rgba(0, 0, 0, 0.1);margin-right:8px;vertical-align:-3px;flex:0 0 auto;"></span>0px 15px 15px -10px rgba(0, 0, 0, 0.1) <span style="color:#707070;">（未 token 化）</span></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><img src="../icons/icon-bullet.svg?v=d97e82725de8" alt="" style="display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;"><a href="icon-map.html#icon-bullet" style="color:#0060BF;text-decoration:underline;"><code>icon-bullet.svg</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><img src="../icons/icon-featured-star.svg?v=3ff7625e9743" alt="" style="display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;"><a href="icon-map.html#icon-featured-star" style="color:#0060BF;text-decoration:underline;"><code>icon-featured-star.svg</code></a></span></div>
+          <div class="dep-cell dep-cell--right-edge" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:normal;overflow-wrap:anywhere;"><span style="display:inline-block;flex-shrink:0;font-size:11px;line-height:16px;padding:0 5px;margin-right:6px;border-radius:3px;background:#EAF2FF;color:#0060BF;">子组件</span><a href="text-button.html" style="color:#0060BF;text-decoration:underline;">TextButton (inline-black)</a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:normal;overflow-wrap:anywhere;"><span style="display:inline-block;flex-shrink:0;font-size:11px;line-height:16px;padding:0 5px;margin-right:6px;border-radius:3px;background:#F3EEFA;color:#512971;">父组件·仅声明</span><a href="carousel.html" style="color:#0060BF;text-decoration:underline;">Carousel</a></span></div>
+          <div class="dep-cell dep-cell--sticky" role="rowheader"><strong>拼接式 · 上下结构 · 多事件卡片</strong><br><code>spliced.vertical.category-nav</code></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#19191A;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-1" style="color:#0060BF;text-decoration:underline;"><code>color.gray-1</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#707070;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-3" style="color:#0060BF;text-decoration:underline;"><code>color.gray-3</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#DEE0E3;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-5" style="color:#0060BF;text-decoration:underline;"><code>color.gray-5</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#FFFFFF;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-white" style="color:#0060BF;text-decoration:underline;"><code>color.white</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">14px · md · SemiBold 600</span><a href="font.html#tok-typography-h7-semibold" style="color:#0060BF;text-decoration:underline;"><code>typography.h7-semibold</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">12px · sm · Regular 400</span><a href="font.html#tok-typography-h9-regular" style="color:#0060BF;text-decoration:underline;"><code>typography.h9-regular</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">13px · H8 · Regular 400</span><a href="font.html#tok-typography-h8-regular" style="color:#0060BF;text-decoration:underline;"><code>typography.h8-regular</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">20px</span><a href="spacing.html#tok-spacing-20" style="color:#0060BF;text-decoration:underline;"><code>spacing.20</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">12px</span><a href="spacing.html#tok-spacing-md" style="color:#0060BF;text-decoration:underline;"><code>spacing.md</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">4px</span><a href="spacing.html#tok-spacing-xs" style="color:#0060BF;text-decoration:underline;"><code>spacing.xs</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">8px</span><a href="spacing.html#tok-spacing-sm" style="color:#0060BF;text-decoration:underline;"><code>spacing.sm</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;color:#A6A6A6;font-size:11px;margin-right:8px;vertical-align:-3px;flex:0 0 auto;">∅</span><a href="stroke.html#tok-border-style-none" style="color:#0060BF;text-decoration:underline;"><code>border.style.none</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:1px;background:#707070;margin-right:8px;vertical-align:middle;flex:0 0 auto;"></span><a href="stroke.html#tok-border-width-default" style="color:#0060BF;text-decoration:underline;"><code>border.width.default</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:0;border-top:2px solid #707070;margin-right:8px;vertical-align:middle;flex:0 0 auto;"></span><a href="stroke.html#tok-border-style-default" style="color:#0060BF;text-decoration:underline;"><code>border.style.default</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;box-sizing:border-box;border:2px solid var(--color-gray-5);background:transparent;margin-right:8px;vertical-align:-3px;flex:0 0 auto;"></span><a href="stroke.html#tok-border-color-default" style="color:#0060BF;text-decoration:underline;"><code>border.color.default</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">8px</span><a href="radius.html#tok-border-radius-lg" style="color:#0060BF;text-decoration:underline;"><code>border-radius.lg</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;background:#FFFFFF;border:1px solid #F0F0F0;box-shadow:0px 15px 15px -10px rgba(0, 0, 0, 0.1);margin-right:8px;vertical-align:-3px;flex:0 0 auto;"></span>0px 15px 15px -10px rgba(0, 0, 0, 0.1) <span style="color:#707070;">（未 token 化）</span></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;background:#FFFFFF;border:1px solid #F0F0F0;box-shadow:0px 2px 8px 0px rgba(0, 0, 0, 0.1);margin-right:8px;vertical-align:-3px;flex:0 0 auto;"></span>0px 2px 8px 0px rgba(0, 0, 0, 0.1) <span style="color:#707070;">（未 token 化）</span></span></div>
+          <div class="dep-cell" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell dep-cell--right-edge" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell dep-cell--sticky" role="rowheader"><strong>拼接式 · 左右结构 · 通栏</strong><br><code>spliced.horizontal.full-width</code></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#19191A;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-1" style="color:#0060BF;text-decoration:underline;"><code>color.gray-1</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#707070;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-3" style="color:#0060BF;text-decoration:underline;"><code>color.gray-3</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">14px · md · Regular 400</span><a href="font.html#tok-typography-h7-regular" style="color:#0060BF;text-decoration:underline;"><code>typography.h7-regular</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">12px · sm · Regular 400</span><a href="font.html#tok-typography-h9-regular" style="color:#0060BF;text-decoration:underline;"><code>typography.h9-regular</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">13px · H8 · Regular 400</span><a href="font.html#tok-typography-h8-regular" style="color:#0060BF;text-decoration:underline;"><code>typography.h8-regular</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">40px</span><a href="spacing.html#tok-spacing-40" style="color:#0060BF;text-decoration:underline;"><code>spacing.40</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">20px</span><a href="spacing.html#tok-spacing-20" style="color:#0060BF;text-decoration:underline;"><code>spacing.20</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">12px</span><a href="spacing.html#tok-spacing-md" style="color:#0060BF;text-decoration:underline;"><code>spacing.md</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">4px</span><a href="spacing.html#tok-spacing-xs" style="color:#0060BF;text-decoration:underline;"><code>spacing.xs</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">8px</span><a href="spacing.html#tok-spacing-sm" style="color:#0060BF;text-decoration:underline;"><code>spacing.sm</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">16px</span><a href="spacing.html#tok-spacing-lg" style="color:#0060BF;text-decoration:underline;"><code>spacing.lg</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">8px</span><a href="radius.html#tok-border-radius-lg" style="color:#0060BF;text-decoration:underline;"><code>border-radius.lg</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><img src="../icons/icon-bullet.svg?v=d97e82725de8" alt="" style="display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;"><a href="icon-map.html#icon-bullet" style="color:#0060BF;text-decoration:underline;"><code>icon-bullet.svg</code></a></span></div>
+          <div class="dep-cell dep-cell--right-edge" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:normal;overflow-wrap:anywhere;"><span style="display:inline-block;flex-shrink:0;font-size:11px;line-height:16px;padding:0 5px;margin-right:6px;border-radius:3px;background:#EAF2FF;color:#0060BF;">子组件</span><a href="text-button.html" style="color:#0060BF;text-decoration:underline;">TextButton (inline-black)</a></span></div>
+          <div class="dep-cell dep-cell--sticky" role="rowheader"><strong>拼接式-左右结构-通栏（1200px）-描边/背景</strong><br><code>spliced.horizontal.full-width.bordered-background</code></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#19191A;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-1" style="color:#0060BF;text-decoration:underline;"><code>color.gray-1</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#707070;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-3" style="color:#0060BF;text-decoration:underline;"><code>color.gray-3</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#DEE0E3;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-5" style="color:#0060BF;text-decoration:underline;"><code>color.gray-5</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#FFFFFF;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-white" style="color:#0060BF;text-decoration:underline;"><code>color.white</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">12px · sm · Regular 400</span><a href="font.html#tok-typography-h9-regular" style="color:#0060BF;text-decoration:underline;"><code>typography.h9-regular</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">13px · H8 · Regular 400</span><a href="font.html#tok-typography-h8-regular" style="color:#0060BF;text-decoration:underline;"><code>typography.h8-regular</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">20px</span><a href="spacing.html#tok-spacing-20" style="color:#0060BF;text-decoration:underline;"><code>spacing.20</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">12px</span><a href="spacing.html#tok-spacing-md" style="color:#0060BF;text-decoration:underline;"><code>spacing.md</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">4px</span><a href="spacing.html#tok-spacing-xs" style="color:#0060BF;text-decoration:underline;"><code>spacing.xs</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">8px</span><a href="spacing.html#tok-spacing-sm" style="color:#0060BF;text-decoration:underline;"><code>spacing.sm</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">16px</span><a href="spacing.html#tok-spacing-lg" style="color:#0060BF;text-decoration:underline;"><code>spacing.lg</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:1px;background:#707070;margin-right:8px;vertical-align:middle;flex:0 0 auto;"></span><a href="stroke.html#tok-border-width-default" style="color:#0060BF;text-decoration:underline;"><code>border.width.default</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:0;border-top:2px solid #707070;margin-right:8px;vertical-align:middle;flex:0 0 auto;"></span><a href="stroke.html#tok-border-style-default" style="color:#0060BF;text-decoration:underline;"><code>border.style.default</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;box-sizing:border-box;border:2px solid var(--color-gray-5);background:transparent;margin-right:8px;vertical-align:-3px;flex:0 0 auto;"></span><a href="stroke.html#tok-border-color-default" style="color:#0060BF;text-decoration:underline;"><code>border.color.default</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;color:#A6A6A6;font-size:11px;margin-right:8px;vertical-align:-3px;flex:0 0 auto;">∅</span><a href="stroke.html#tok-border-style-none" style="color:#0060BF;text-decoration:underline;"><code>border.style.none</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">8px</span><a href="radius.html#tok-border-radius-lg" style="color:#0060BF;text-decoration:underline;"><code>border-radius.lg</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><img src="../icons/icon-bullet.svg?v=d97e82725de8" alt="" style="display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;"><a href="icon-map.html#icon-bullet" style="color:#0060BF;text-decoration:underline;"><code>icon-bullet.svg</code></a></span></div>
+          <div class="dep-cell dep-cell--right-edge" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:normal;overflow-wrap:anywhere;"><span style="display:inline-block;flex-shrink:0;font-size:11px;line-height:16px;padding:0 5px;margin-right:6px;border-radius:3px;background:#EAF2FF;color:#0060BF;">子组件</span><a href="text-button.html" style="color:#0060BF;text-decoration:underline;">TextButton (inline-black / M)</a></span></div>
+          <div class="dep-cell dep-cell--sticky" role="rowheader"><strong>拼接式 · 左右结构 · 含侧边栏</strong><br><code>spliced.horizontal.with-sidebar</code></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#19191A;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-1" style="color:#0060BF;text-decoration:underline;"><code>color.gray-1</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#707070;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-3" style="color:#0060BF;text-decoration:underline;"><code>color.gray-3</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#EDEDF0;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-6" style="color:#0060BF;text-decoration:underline;"><code>color.gray-6</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">14px · md · Regular 400</span><a href="font.html#tok-typography-h7-regular" style="color:#0060BF;text-decoration:underline;"><code>typography.h7-regular</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">12px · sm · Regular 400</span><a href="font.html#tok-typography-h9-regular" style="color:#0060BF;text-decoration:underline;"><code>typography.h9-regular</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">13px · H8 · Regular 400</span><a href="font.html#tok-typography-h8-regular" style="color:#0060BF;text-decoration:underline;"><code>typography.h8-regular</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">40px</span><a href="spacing.html#tok-spacing-40" style="color:#0060BF;text-decoration:underline;"><code>spacing.40</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">20px</span><a href="spacing.html#tok-spacing-20" style="color:#0060BF;text-decoration:underline;"><code>spacing.20</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">12px</span><a href="spacing.html#tok-spacing-md" style="color:#0060BF;text-decoration:underline;"><code>spacing.md</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">4px</span><a href="spacing.html#tok-spacing-xs" style="color:#0060BF;text-decoration:underline;"><code>spacing.xs</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">8px</span><a href="spacing.html#tok-spacing-sm" style="color:#0060BF;text-decoration:underline;"><code>spacing.sm</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">32px</span><a href="spacing.html#tok-spacing-2xl" style="color:#0060BF;text-decoration:underline;"><code>spacing.2xl</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">8px</span><a href="radius.html#tok-border-radius-lg" style="color:#0060BF;text-decoration:underline;"><code>border-radius.lg</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><img src="../icons/icon-bullet.svg?v=d97e82725de8" alt="" style="display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;"><a href="icon-map.html#icon-bullet" style="color:#0060BF;text-decoration:underline;"><code>icon-bullet.svg</code></a></span></div>
+          <div class="dep-cell dep-cell--right-edge" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:normal;overflow-wrap:anywhere;"><span style="display:inline-block;flex-shrink:0;font-size:11px;line-height:16px;padding:0 5px;margin-right:6px;border-radius:3px;background:#EAF2FF;color:#0060BF;">子组件</span><a href="text-button.html" style="color:#0060BF;text-decoration:underline;">TextButton (inline-black)</a></span></div>
+          <div class="dep-cell dep-cell--sticky" role="rowheader"><strong>拼接式-左右结构-含侧边栏-描边/背景</strong><br><code>spliced.horizontal.with-sidebar.bordered-background</code></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#19191A;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-1" style="color:#0060BF;text-decoration:underline;"><code>color.gray-1</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#707070;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-3" style="color:#0060BF;text-decoration:underline;"><code>color.gray-3</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#DEE0E3;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-5" style="color:#0060BF;text-decoration:underline;"><code>color.gray-5</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#EDEDF0;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-6" style="color:#0060BF;text-decoration:underline;"><code>color.gray-6</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#FFFFFF;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-white" style="color:#0060BF;text-decoration:underline;"><code>color.white</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#EEEEEE;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-tag-border" style="color:#0060BF;text-decoration:underline;"><code>color.tag-border</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">12px · sm · Regular 400</span><a href="font.html#tok-typography-h9-regular" style="color:#0060BF;text-decoration:underline;"><code>typography.h9-regular</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">13px · H8 · Regular 400</span><a href="font.html#tok-typography-h8-regular" style="color:#0060BF;text-decoration:underline;"><code>typography.h8-regular</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">20px</span><a href="spacing.html#tok-spacing-20" style="color:#0060BF;text-decoration:underline;"><code>spacing.20</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">12px</span><a href="spacing.html#tok-spacing-md" style="color:#0060BF;text-decoration:underline;"><code>spacing.md</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">4px</span><a href="spacing.html#tok-spacing-xs" style="color:#0060BF;text-decoration:underline;"><code>spacing.xs</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">8px</span><a href="spacing.html#tok-spacing-sm" style="color:#0060BF;text-decoration:underline;"><code>spacing.sm</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">16px</span><a href="spacing.html#tok-spacing-lg" style="color:#0060BF;text-decoration:underline;"><code>spacing.lg</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">32px</span><a href="spacing.html#tok-spacing-2xl" style="color:#0060BF;text-decoration:underline;"><code>spacing.2xl</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:1px;background:#707070;margin-right:8px;vertical-align:middle;flex:0 0 auto;"></span><a href="stroke.html#tok-border-width-default" style="color:#0060BF;text-decoration:underline;"><code>border.width.default</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:0;border-top:2px solid #707070;margin-right:8px;vertical-align:middle;flex:0 0 auto;"></span><a href="stroke.html#tok-border-style-default" style="color:#0060BF;text-decoration:underline;"><code>border.style.default</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;box-sizing:border-box;border:2px solid var(--color-gray-5);background:transparent;margin-right:8px;vertical-align:-3px;flex:0 0 auto;"></span><a href="stroke.html#tok-border-color-default" style="color:#0060BF;text-decoration:underline;"><code>border.color.default</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;color:#A6A6A6;font-size:11px;margin-right:8px;vertical-align:-3px;flex:0 0 auto;">∅</span><a href="stroke.html#tok-border-style-none" style="color:#0060BF;text-decoration:underline;"><code>border.style.none</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">8px</span><a href="radius.html#tok-border-radius-lg" style="color:#0060BF;text-decoration:underline;"><code>border-radius.lg</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><img src="../icons/icon-bullet.svg?v=d97e82725de8" alt="" style="display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;"><a href="icon-map.html#icon-bullet" style="color:#0060BF;text-decoration:underline;"><code>icon-bullet.svg</code></a></span></div>
+          <div class="dep-cell dep-cell--right-edge" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:normal;overflow-wrap:anywhere;"><span style="display:inline-block;flex-shrink:0;font-size:11px;line-height:16px;padding:0 5px;margin-right:6px;border-radius:3px;background:#EAF2FF;color:#0060BF;">子组件</span><a href="text-button.html" style="color:#0060BF;text-decoration:underline;">TextButton (inline-black / M)</a></span></div>
+          <div class="dep-cell dep-cell--sticky" role="rowheader"><strong>嵌入式 · 产品小卡片</strong><br><code>embedded.product-small</code></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#19191A;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-1" style="color:#0060BF;text-decoration:underline;"><code>color.gray-1</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#FAFBFB;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-9" style="color:#0060BF;text-decoration:underline;"><code>color.gray-9</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#FFFFFF;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-white" style="color:#0060BF;text-decoration:underline;"><code>color.white</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">14px · md · SemiBold 600</span><a href="font.html#tok-typography-h7-semibold" style="color:#0060BF;text-decoration:underline;"><code>typography.h7-semibold</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">20px</span><a href="spacing.html#tok-spacing-20" style="color:#0060BF;text-decoration:underline;"><code>spacing.20</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">12px</span><a href="spacing.html#tok-spacing-md" style="color:#0060BF;text-decoration:underline;"><code>spacing.md</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">8px</span><a href="spacing.html#tok-spacing-sm" style="color:#0060BF;text-decoration:underline;"><code>spacing.sm</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">4px</span><a href="radius.html#tok-border-radius-md" style="color:#0060BF;text-decoration:underline;"><code>border-radius.md</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;background:#FFFFFF;border:1px solid #F0F0F0;box-shadow:0px 2px 8px 0px rgba(0, 0, 0, 0.1);margin-right:8px;vertical-align:-3px;flex:0 0 auto;"></span>0px 2px 8px 0px rgba(0, 0, 0, 0.1) <span style="color:#707070;">（未 token 化）</span></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;background:#FFFFFF;border:1px solid #F0F0F0;box-shadow:0px 2px 8px 0px rgba(0, 0, 0, 0.1) !important;margin-right:8px;vertical-align:-3px;flex:0 0 auto;"></span>0px 2px 8px 0px rgba(0, 0, 0, 0.1) !important <span style="color:#707070;">（未 token 化）</span></span></div>
+          <div class="dep-cell" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell dep-cell--right-edge" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:normal;overflow-wrap:anywhere;"><span style="display:inline-block;flex-shrink:0;font-size:11px;line-height:16px;padding:0 5px;margin-right:6px;border-radius:3px;background:#EAF2FF;color:#0060BF;">子组件</span><a href="button.html#cart-product-card" style="color:#0060BF;text-decoration:underline;">Button · Cart加购（产品卡片）</a></span></div>
+          <div class="dep-cell dep-cell--sticky" role="rowheader"><strong>嵌入式 · 产品卡片</strong><br><code>embedded.product-standard</code></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#19191A;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-1" style="color:#0060BF;text-decoration:underline;"><code>color.gray-1</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#707070;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-3" style="color:#0060BF;text-decoration:underline;"><code>color.gray-3</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#FAFBFB;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-9" style="color:#0060BF;text-decoration:underline;"><code>color.gray-9</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#FFFFFF;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-white" style="color:#0060BF;text-decoration:underline;"><code>color.white</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">14px · md · SemiBold 600</span><a href="font.html#tok-typography-h7-semibold" style="color:#0060BF;text-decoration:underline;"><code>typography.h7-semibold</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">12px · sm · Regular 400</span><a href="font.html#tok-typography-h9-regular" style="color:#0060BF;text-decoration:underline;"><code>typography.h9-regular</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">13px · H8 · Regular 400</span><a href="font.html#tok-typography-h8-regular" style="color:#0060BF;text-decoration:underline;"><code>typography.h8-regular</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">20px</span><a href="spacing.html#tok-spacing-20" style="color:#0060BF;text-decoration:underline;"><code>spacing.20</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">4px</span><a href="spacing.html#tok-spacing-xs" style="color:#0060BF;text-decoration:underline;"><code>spacing.xs</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">16px</span><a href="spacing.html#tok-spacing-lg" style="color:#0060BF;text-decoration:underline;"><code>spacing.lg</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">8px</span><a href="radius.html#tok-border-radius-lg" style="color:#0060BF;text-decoration:underline;"><code>border-radius.lg</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;background:#FFFFFF;border:1px solid #F0F0F0;box-shadow:0px 15px 15px -10px rgba(0, 0, 0, 0.15);margin-right:8px;vertical-align:-3px;flex:0 0 auto;"></span>0px 15px 15px -10px rgba(0, 0, 0, 0.15) <span style="color:#707070;">（未 token 化）</span></span></div>
+          <div class="dep-cell" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell dep-cell--right-edge" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:normal;overflow-wrap:anywhere;"><span style="display:inline-block;flex-shrink:0;font-size:11px;line-height:16px;padding:0 5px;margin-right:6px;border-radius:3px;background:#EAF2FF;color:#0060BF;">子组件</span><a href="text-button.html" style="color:#0060BF;text-decoration:underline;">TextButton (inline-black / M)</a></span></div>
+          <div class="dep-cell dep-cell--sticky" role="rowheader"><strong>嵌入式 · 产品详情卡片</strong><br><code>embedded.product-detail</code></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#19191A;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-1" style="color:#0060BF;text-decoration:underline;"><code>color.gray-1</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#707070;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-3" style="color:#0060BF;text-decoration:underline;"><code>color.gray-3</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#DEE0E3;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-5" style="color:#0060BF;text-decoration:underline;"><code>color.gray-5</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#FFFFFF;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-white" style="color:#0060BF;text-decoration:underline;"><code>color.white</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">14px · md · SemiBold 600</span><a href="font.html#tok-typography-h7-semibold" style="color:#0060BF;text-decoration:underline;"><code>typography.h7-semibold</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">12px · sm · Regular 400</span><a href="font.html#tok-typography-h9-regular" style="color:#0060BF;text-decoration:underline;"><code>typography.h9-regular</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">20px</span><a href="spacing.html#tok-spacing-20" style="color:#0060BF;text-decoration:underline;"><code>spacing.20</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">12px</span><a href="spacing.html#tok-spacing-md" style="color:#0060BF;text-decoration:underline;"><code>spacing.md</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:1px;background:#707070;margin-right:8px;vertical-align:middle;flex:0 0 auto;"></span><a href="stroke.html#tok-border-width-default" style="color:#0060BF;text-decoration:underline;"><code>border.width.default</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:0;border-top:2px solid #707070;margin-right:8px;vertical-align:middle;flex:0 0 auto;"></span><a href="stroke.html#tok-border-style-default" style="color:#0060BF;text-decoration:underline;"><code>border.style.default</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;box-sizing:border-box;border:2px solid var(--color-gray-5);background:transparent;margin-right:8px;vertical-align:-3px;flex:0 0 auto;"></span><a href="stroke.html#tok-border-color-default" style="color:#0060BF;text-decoration:underline;"><code>border.color.default</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">8px</span><a href="radius.html#tok-border-radius-lg" style="color:#0060BF;text-decoration:underline;"><code>border-radius.lg</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;background:#FFFFFF;border:1px solid #F0F0F0;box-shadow:0px 15px 15px -10px rgba(0, 0, 0, 0.1);margin-right:8px;vertical-align:-3px;flex:0 0 auto;"></span>0px 15px 15px -10px rgba(0, 0, 0, 0.1) <span style="color:#707070;">（未 token 化）</span></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;background:#FFFFFF;border:1px solid #F0F0F0;box-shadow:0px 2px 8px 0px rgba(0, 0, 0, 0.1);margin-right:8px;vertical-align:-3px;flex:0 0 auto;"></span>0px 2px 8px 0px rgba(0, 0, 0, 0.1) <span style="color:#707070;">（未 token 化）</span></span></div>
+          <div class="dep-cell" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell dep-cell--right-edge" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell dep-cell--sticky" role="rowheader"><strong>嵌入式 · 产品完整卡片</strong><br><code>embedded.product-full</code></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#0060BF;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-blue" style="color:#0060BF;text-decoration:underline;"><code>color.blue</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#19191A;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-1" style="color:#0060BF;text-decoration:underline;"><code>color.gray-1</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#707070;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-3" style="color:#0060BF;text-decoration:underline;"><code>color.gray-3</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#DEE0E3;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-5" style="color:#0060BF;text-decoration:underline;"><code>color.gray-5</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#EDEDF0;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-6" style="color:#0060BF;text-decoration:underline;"><code>color.gray-6</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#F2F2F2;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-7" style="color:#0060BF;text-decoration:underline;"><code>color.gray-7</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#FAFBFB;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-9" style="color:#0060BF;text-decoration:underline;"><code>color.gray-9</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#A65300;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-sold-label" style="color:#0060BF;text-decoration:underline;"><code>color.sold-label</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#D6F5DF;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-success-tag-bg" style="color:#0060BF;text-decoration:underline;"><code>color.success-tag-bg</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#09832A;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-success-tag-text" style="color:#0060BF;text-decoration:underline;"><code>color.success-tag-text</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#FFFFFF;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-white" style="color:#0060BF;text-decoration:underline;"><code>color.white</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#C00000;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-brand-red" style="color:#0060BF;text-decoration:underline;"><code>color.brand-red</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:rgba(25,25,26,0.2);vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-hover-overlay" style="color:#0060BF;text-decoration:underline;"><code>color.hover-overlay</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">14px · md · SemiBold 600</span><a href="font.html#tok-typography-h7-semibold" style="color:#0060BF;text-decoration:underline;"><code>typography.h7-semibold</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">16px · SemiBold 600</span><a href="font.html#tok-typography-h6-semibold" style="color:#0060BF;text-decoration:underline;"><code>typography.h6-semibold</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">12px · sm · Regular 400</span><a href="font.html#tok-typography-h9-regular" style="color:#0060BF;text-decoration:underline;"><code>typography.h9-regular</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">13px · H8 · Regular 400</span><a href="font.html#tok-typography-h8-regular" style="color:#0060BF;text-decoration:underline;"><code>typography.h8-regular</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">20px</span><a href="spacing.html#tok-spacing-20" style="color:#0060BF;text-decoration:underline;"><code>spacing.20</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">12px</span><a href="spacing.html#tok-spacing-md" style="color:#0060BF;text-decoration:underline;"><code>spacing.md</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">4px</span><a href="spacing.html#tok-spacing-xs" style="color:#0060BF;text-decoration:underline;"><code>spacing.xs</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">8px</span><a href="spacing.html#tok-spacing-sm" style="color:#0060BF;text-decoration:underline;"><code>spacing.sm</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">16px</span><a href="spacing.html#tok-spacing-lg" style="color:#0060BF;text-decoration:underline;"><code>spacing.lg</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">2px</span><a href="spacing.html#tok-spacing-2" style="color:#0060BF;text-decoration:underline;"><code>spacing.2</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">24px</span><a href="spacing.html#tok-spacing-xl" style="color:#0060BF;text-decoration:underline;"><code>spacing.xl</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">6px</span><a href="spacing.html#tok-spacing-6" style="color:#0060BF;text-decoration:underline;"><code>spacing.6</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:1px;background:#707070;margin-right:8px;vertical-align:middle;flex:0 0 auto;"></span><a href="stroke.html#tok-border-width-default" style="color:#0060BF;text-decoration:underline;"><code>border.width.default</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:0;border-top:2px solid #707070;margin-right:8px;vertical-align:middle;flex:0 0 auto;"></span><a href="stroke.html#tok-border-style-default" style="color:#0060BF;text-decoration:underline;"><code>border.style.default</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;box-sizing:border-box;border:2px solid var(--color-gray-6);background:transparent;margin-right:8px;vertical-align:-3px;flex:0 0 auto;"></span><a href="stroke.html#tok-border-color-subtle" style="color:#0060BF;text-decoration:underline;"><code>border.color.subtle</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;box-sizing:border-box;border:2px solid var(--color-gray-1);background:transparent;margin-right:8px;vertical-align:-3px;flex:0 0 auto;"></span><a href="stroke.html#tok-border-color-emphasis" style="color:#0060BF;text-decoration:underline;"><code>border.color.emphasis</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:2px;background:#707070;margin-right:8px;vertical-align:middle;flex:0 0 auto;"></span><a href="stroke.html#tok-border-width-strong" style="color:#0060BF;text-decoration:underline;"><code>border.width.strong</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;box-sizing:border-box;border:2px solid var(--color-tag-border);background:transparent;margin-right:8px;vertical-align:-3px;flex:0 0 auto;"></span><a href="stroke.html#tok-border-color-tag" style="color:#0060BF;text-decoration:underline;"><code>border.color.tag</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;box-sizing:border-box;border:2px solid var(--color-blue);background:transparent;margin-right:8px;vertical-align:-3px;flex:0 0 auto;"></span><a href="stroke.html#tok-border-color-focus" style="color:#0060BF;text-decoration:underline;"><code>border.color.focus</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">4px</span><a href="radius.html#tok-border-radius-md" style="color:#0060BF;text-decoration:underline;"><code>border-radius.md</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;background:#FFFFFF;border:1px solid #F0F0F0;box-shadow:0px 2px 8px 0px rgba(0, 0, 0, 0.1);margin-right:8px;vertical-align:-3px;flex:0 0 auto;"></span>0px 2px 8px 0px rgba(0, 0, 0, 0.1) <span style="color:#707070;">（未 token 化）</span></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;background:#FFFFFF;border:1px solid #F0F0F0;box-shadow:0px 2px 8px 0px rgba(0, 0, 0, 0.1) !important;margin-right:8px;vertical-align:-3px;flex:0 0 auto;"></span>0px 2px 8px 0px rgba(0, 0, 0, 0.1) !important <span style="color:#707070;">（未 token 化）</span></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><img src="../icons/icon-cart-add.svg?v=ec9abb0e806f" alt="" style="display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;"><a href="icon-map.html#icon-cart-add" style="color:#0060BF;text-decoration:underline;"><code>icon-cart-add.svg</code></a></span></div>
+          <div class="dep-cell dep-cell--right-edge" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:normal;overflow-wrap:anywhere;"><span style="display:inline-block;flex-shrink:0;font-size:11px;line-height:16px;padding:0 5px;margin-right:6px;border-radius:3px;background:#EAF2FF;color:#0060BF;">子组件</span><a href="button.html#cart-product-card" style="color:#0060BF;text-decoration:underline;">Button · Cart加购（产品卡片）</a></span></div>
+          <div class="dep-cell dep-cell--sticky" role="rowheader"><strong>拼接式 · 通栏 · 响应式（当前MG）</strong><br><code>spliced.horizontal.full-width.responsive</code></div>
+          <div class="dep-cell" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell dep-cell--right-edge" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell dep-cell--sticky dep-cell--bottom-edge" role="rowheader"><strong>拼接式 · 上下结构 · 单事件 · 白色父级描边</strong><br><code>spliced.vertical.single-event.bordered</code></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell dep-cell--right-edge dep-cell--bottom-edge" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:normal;overflow-wrap:anywhere;"><span style="display:inline-block;flex-shrink:0;font-size:11px;line-height:16px;padding:0 5px;margin-right:6px;border-radius:3px;background:#EAF2FF;color:#0060BF;">子组件</span><a href="text-button.html" style="color:#0060BF;text-decoration:underline;">TextButton (inline-black / M)</a></span></div>
+        </div>
+      </div>
+    </div>
+    <!-- AUTO-GENERATED-DEPENDENCY-SUMMARY-TABLE:END -->
+
+  <!-- TEMPLATE-DEMO-SPACING -->
+  <div style="height:24px;"></div>
+
+
+
+<!-- Formal page skeletons: optional content slots are selected by the page Context. -->
+  <template data-preview-skeleton="vertical-basic"><div data-preview-skeleton="vertical-basic" class="ds-card ds-card--vertical ds-card--no-border"><div class="ds-card__image"><div class="placeholder-img">Img</div></div><div class="ds-card__body"><div class="ds-card__meta"><span class="ds-card__category">Category</span></div><p class="ds-card__title">Card title</p><div class="ds-card__desc"><p>Card description.</p></div></div></div></template>
+  <template data-preview-skeleton="vertical-with-link"><div data-preview-skeleton="vertical-with-link" class="ds-card ds-card--vertical ds-card--no-border"><div class="ds-card__image"><div class="placeholder-img">Img</div></div><div class="ds-card__body"><div class="ds-card__meta"><span class="ds-card__category">Category</span></div><p class="ds-card__title">Card title</p><div class="ds-card__desc"><p>Card description.</p></div><div class="ds-card__link"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="#"><span class="ds-text-btn__text">Learn more</span><img class="ds-text-btn__icon" src="../icons/icon-text-button-arrow-right-regular.svg" alt=""></a></div></div></div></template>
+  <template data-preview-skeleton="horizontal-normal"><div data-preview-skeleton="horizontal-normal" class="ds-card ds-card--horizontal"><div class="ds-card__image"><div class="placeholder-img">Img</div></div><div class="ds-card__body"><div class="ds-card__content-stack"><p class="ds-card__title">Card title</p><p class="ds-card__desc">Card description.</p></div><div class="ds-card__link"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="#"><span class="ds-text-btn__text">Learn more</span><img class="ds-text-btn__icon" src="../icons/icon-text-button-arrow-right-regular.svg" alt=""></a></div></div></div></template>
+  <template data-preview-skeleton="horizontal-normal-reverse"><div data-preview-skeleton="horizontal-normal-reverse" class="ds-card ds-card--horizontal-reverse"><div class="ds-card__image"><div class="placeholder-img">Img</div></div><div class="ds-card__body"><div class="ds-card__content-stack"><p class="ds-card__title">Card title</p><p class="ds-card__desc">Card description.</p></div><div class="ds-card__link"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="#"><span class="ds-text-btn__text">Learn more</span><img class="ds-text-btn__icon" src="../icons/icon-text-button-arrow-right-regular.svg" alt=""></a></div></div></div></template>
+
+
+
+<!-- ============================================
+       SECTION 1: 上下结构 - 单事件卡片
+       ============================================ -->
+  <div class="section">
+    <div class="section-title">① 拼接式 — 上下结构 — 单事件卡片</div>
+
+    <div class="card-grid">
+      <!-- Default / 无描边 -->
+      <div class="card-col">
+        <div class="state-label">Default 无描边</div>
+        <div class="ds-card ds-card--vertical ds-card--no-border" data-card-source-vertical-list="official" data-card-source-node="68908:047900" style="width: 285px;">
+          <div class="ds-card__image">
+            <div class="placeholder-img">Img</div>
+          </div>
+          <div class="ds-card__body">
+            <div class="ds-card__meta">
+              <span class="ds-tag-meta ds-tag-meta--single" data-tag-source-metadata="single"><span data-tag-value="first">Education</span></span>
+              <div class="ds-card__featured-slot"><span class="ds-tag ds-tag--featured" data-tag-source-featured="official"><img class="ds-tag__icon" src="../icons/icon-featured-star.svg" alt=""><span class="ds-tag__label">FEATURED</span></span></div>
+            </div>
+            <p class="ds-card__title">This is a card title</p>
+            <div class="ds-card__desc">
+              <p>This is a card description. This is a card description. This is a card description.</p>
+            </div>
+            <div class="ds-card__list-slot"><div class="ds-list ds-list--unordered-12" data-list-current="unordered" data-list-source="legacy-fixed"><div class="ds-list__unordered-item"><span class="ds-list__unordered-dot" aria-hidden="true"></span><p class="ds-list__unordered-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div><div class="ds-list__unordered-item"><span class="ds-list__unordered-dot" aria-hidden="true"></span><p class="ds-list__unordered-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div><div class="ds-list__unordered-item"><span class="ds-list__unordered-dot" aria-hidden="true"></span><p class="ds-list__unordered-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div></div></div>
+            <div class="ds-card__info"><span class="ds-tag-meta" data-tag-source-metadata="dual"><span data-tag-value="first">Education</span><span class="ds-tag-meta__divider" aria-hidden="true"></span><span data-tag-value="second">United States</span></span></div>
+            <div class="ds-card__tags">
+              <span class="ds-tag ds-tag--semantic ds-tag--neutral" data-tag-card-gray-source="official" data-tag-source-node="68908:047937"><span class="ds-tag__label">This is tag A</span></span>
+              <span class="ds-tag ds-tag--semantic ds-tag--neutral" data-tag-card-gray-source="official" data-tag-source-node="68908:047941"><span class="ds-tag__label">This is tag B</span></span>
+            </div>
+            <div class="ds-card__link">
+              <a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="#">
+                <span class="ds-text-btn__text">Learn more</span>
+                <img class="ds-text-btn__icon" src="../icons/icon-text-button-arrow-right-regular.svg" alt="">
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Default / 含描边 -->
+      <div class="card-col">
+        <div class="state-label">Default 含描边</div>
+        <div class="ds-card ds-card--vertical ds-card--bordered" data-card-source-vertical-list="official" data-card-source-node="68908:047790" style="width: 285px;">
+          <div class="ds-card__image">
+            <div class="placeholder-img">Img</div>
+          </div>
+          <div class="ds-card__body">
+            <div class="ds-card__meta">
+              <span class="ds-tag-meta ds-tag-meta--single" data-tag-source-metadata="single"><span data-tag-value="first">Education</span></span>
+              <div class="ds-card__featured-slot"><span class="ds-tag ds-tag--featured" data-tag-source-featured="official"><img class="ds-tag__icon" src="../icons/icon-featured-star.svg" alt=""><span class="ds-tag__label">FEATURED</span></span></div>
+            </div>
+            <p class="ds-card__title">This is a card title</p>
+            <div class="ds-card__desc">
+              <p>This is a card description. This is a card description. This is a card description.</p>
+            </div>
+            <div class="ds-card__list-slot"><div class="ds-list ds-list--unordered-12" data-list-current="unordered" data-list-source="legacy-fixed"><div class="ds-list__unordered-item"><span class="ds-list__unordered-dot" aria-hidden="true"></span><p class="ds-list__unordered-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div><div class="ds-list__unordered-item"><span class="ds-list__unordered-dot" aria-hidden="true"></span><p class="ds-list__unordered-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div><div class="ds-list__unordered-item"><span class="ds-list__unordered-dot" aria-hidden="true"></span><p class="ds-list__unordered-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div></div></div>
+            <div class="ds-card__info"><span class="ds-tag-meta" data-tag-source-metadata="dual"><span data-tag-value="first">Education</span><span class="ds-tag-meta__divider" aria-hidden="true"></span><span data-tag-value="second">United States</span></span></div>
+            <div class="ds-card__tags">
+              <span class="ds-tag ds-tag--semantic ds-tag--neutral" data-tag-card-gray-source="official" data-tag-source-node="68908:047819"><span class="ds-tag__label">This is tag A</span></span>
+              <span class="ds-tag ds-tag--semantic ds-tag--neutral" data-tag-card-gray-source="official" data-tag-source-node="68908:047823"><span class="ds-tag__label">This is tag B</span></span>
+            </div>
+            <div class="ds-card__link">
+              <a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="#">
+                <span class="ds-text-btn__text">Learn more</span>
+                <img class="ds-text-btn__icon" src="../icons/icon-text-button-arrow-right-regular.svg" alt="">
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hover / 无描边 -->
+      <div class="card-col">
+        <div class="state-label">Hover 无描边</div>
+        <div class="ds-card ds-card--vertical ds-card--no-border ds-card--hover" data-card-source-vertical-list="official" data-card-source-node="68908:047843" style="width: 285px;">
+          <div class="ds-card__image">
+            <div class="placeholder-img">Img</div>
+          </div>
+          <div class="ds-card__body">
+            <div class="ds-card__meta">
+              <span class="ds-tag-meta ds-tag-meta--single" data-tag-source-metadata="single"><span data-tag-value="first">Education</span></span>
+              <div class="ds-card__featured-slot"><span class="ds-tag ds-tag--featured" data-tag-source-featured="official"><img class="ds-tag__icon" src="../icons/icon-featured-star.svg" alt=""><span class="ds-tag__label">FEATURED</span></span></div>
+            </div>
+            <p class="ds-card__title">This is a card title</p>
+            <div class="ds-card__desc">
+              <p>This is a card description. This is a card description. This is a card description.</p>
+            </div>
+            <div class="ds-card__list-slot"><div class="ds-list ds-list--unordered-12" data-list-current="unordered" data-list-source="legacy-fixed"><div class="ds-list__unordered-item"><span class="ds-list__unordered-dot" aria-hidden="true"></span><p class="ds-list__unordered-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div><div class="ds-list__unordered-item"><span class="ds-list__unordered-dot" aria-hidden="true"></span><p class="ds-list__unordered-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div><div class="ds-list__unordered-item"><span class="ds-list__unordered-dot" aria-hidden="true"></span><p class="ds-list__unordered-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div></div></div>
+            <div class="ds-card__info"><span class="ds-tag-meta" data-tag-source-metadata="dual"><span data-tag-value="first">Education</span><span class="ds-tag-meta__divider" aria-hidden="true"></span><span data-tag-value="second">United States</span></span></div>
+            <div class="ds-card__tags">
+              <span class="ds-tag ds-tag--semantic ds-tag--neutral" data-tag-card-gray-source="official" data-tag-source-node="68908:047884"><span class="ds-tag__label">This is tag A</span></span>
+              <span class="ds-tag ds-tag--semantic ds-tag--neutral" data-tag-card-gray-source="official" data-tag-source-node="68908:047880"><span class="ds-tag__label">This is tag B</span></span>
+            </div>
+            <div class="ds-card__link">
+              <a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m ds-text-btn--hover" href="#">
+                <span class="ds-text-btn__text" style="text-decoration: underline;">Learn more</span>
+                <img class="ds-text-btn__icon" src="../icons/icon-text-button-arrow-right-regular.svg" alt="">
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hover / 含描边 -->
+      <div class="card-col">
+        <div class="state-label">Hover 含描边</div>
+        <div class="ds-card ds-card--vertical ds-card--bordered ds-card--hover" data-card-source-vertical-list="official" data-card-source-node="68908:047978" style="width: 285px;">
+          <div class="ds-card__image">
+            <div class="placeholder-img">Img</div>
+          </div>
+          <div class="ds-card__body">
+            <div class="ds-card__meta">
+              <span class="ds-tag-meta ds-tag-meta--single" data-tag-source-metadata="single"><span data-tag-value="first">Education</span></span>
+              <div class="ds-card__featured-slot"><span class="ds-tag ds-tag--featured" data-tag-source-featured="official"><img class="ds-tag__icon" src="../icons/icon-featured-star.svg" alt=""><span class="ds-tag__label">FEATURED</span></span></div>
+            </div>
+            <p class="ds-card__title">This is a card title</p>
+            <div class="ds-card__desc">
+              <p>This is a card description. This is a card description. This is a card description.</p>
+            </div>
+            <div class="ds-card__list-slot"><div class="ds-list ds-list--unordered-12" data-list-current="unordered" data-list-source="legacy-fixed"><div class="ds-list__unordered-item"><span class="ds-list__unordered-dot" aria-hidden="true"></span><p class="ds-list__unordered-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div><div class="ds-list__unordered-item"><span class="ds-list__unordered-dot" aria-hidden="true"></span><p class="ds-list__unordered-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div><div class="ds-list__unordered-item"><span class="ds-list__unordered-dot" aria-hidden="true"></span><p class="ds-list__unordered-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div></div></div>
+            <div class="ds-card__info"><span class="ds-tag-meta" data-tag-source-metadata="dual"><span data-tag-value="first">Education</span><span class="ds-tag-meta__divider" aria-hidden="true"></span><span data-tag-value="second">United States</span></span></div>
+            <div class="ds-card__tags">
+              <span class="ds-tag ds-tag--semantic ds-tag--neutral" data-tag-card-gray-source="official" data-tag-source-node="68908:047989"><span class="ds-tag__label">This is tag A</span></span>
+              <span class="ds-tag ds-tag--semantic ds-tag--neutral" data-tag-card-gray-source="official" data-tag-source-node="68908:047993"><span class="ds-tag__label">This is tag B</span></span>
+            </div>
+            <div class="ds-card__link">
+              <a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m ds-text-btn--hover" href="#">
+                <span class="ds-text-btn__text" style="text-decoration: underline;">Learn more</span>
+                <img class="ds-text-btn__icon" src="../icons/icon-text-button-arrow-right-regular.svg" alt="">
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================
+       SECTION 2: 上下结构 - 多事件卡片
+       ============================================ -->
+  <div class="section">
+    <div class="section-title">② 拼接式 — 上下结构 — 多事件卡片</div>
+
+    <div class="card-grid card-grid--5col">
+      <!-- Default / 无描边 -->
+      <div class="card-col">
+        <div class="state-label">Default 无描边</div>
+        <div class="ds-card ds-card--vertical ds-card--no-border" data-card-current="category-nav">
+          <div class="ds-card__image">
+            <img src="../sources/card/preview-assets/img-placeholder.svg" alt="Img 图片占位">
+          </div>
+          <div class="ds-card__body">
+            <span class="ds-card__title ds-card__title--single-line">This is a card title</span>
+            <div class="ds-card__sub-links">
+              <span class="ds-card__sub-link">10G Switches</span>
+              <span class="ds-card__sub-link">25G Switches</span>
+              <span class="ds-card__sub-link">40G Switches</span>
+              <span class="ds-card__sub-link">100G Switches</span>
+              <span class="ds-card__sub-link">400G Switches</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Default / 含描边 -->
+      <div class="card-col">
+        <div class="state-label">Default 含描边</div>
+        <div class="ds-card ds-card--vertical ds-card--bordered" data-card-current="category-nav">
+          <div class="ds-card__image">
+            <img src="../sources/card/preview-assets/img-placeholder.svg" alt="Img 图片占位">
+          </div>
+          <div class="ds-card__body">
+            <span class="ds-card__title ds-card__title--single-line">This is a card title</span>
+            <div class="ds-card__sub-links">
+              <span class="ds-card__sub-link">10G Switches</span>
+              <span class="ds-card__sub-link">25G Switches</span>
+              <span class="ds-card__sub-link">40G Switches</span>
+              <span class="ds-card__sub-link">100G Switches</span>
+              <span class="ds-card__sub-link">400G Switches</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hover / 无描边 -->
+      <div class="card-col">
+        <div class="state-label">Hover 无描边</div>
+        <div class="ds-card ds-card--vertical ds-card--no-border ds-card--hover" data-card-current="category-nav">
+          <div class="ds-card__image">
+            <img src="../sources/card/preview-assets/img-placeholder.svg" alt="Img 图片占位">
+          </div>
+          <div class="ds-card__body">
+            <span class="ds-card__title ds-card__title--single-line">This is a card title</span>
+            <div class="ds-card__sub-links">
+              <span class="ds-card__sub-link">10G Switches</span>
+              <span class="ds-card__sub-link ds-card__sub-link--active">25G Switches</span>
+              <span class="ds-card__sub-link">40G Switches</span>
+              <span class="ds-card__sub-link">100G Switches</span>
+              <span class="ds-card__sub-link">400G Switches</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hover / 含描边 -->
+      <div class="card-col">
+        <div class="state-label">Hover 含描边</div>
+        <div class="ds-card ds-card--vertical ds-card--bordered ds-card--hover" data-card-current="category-nav">
+          <div class="ds-card__image">
+            <img src="../sources/card/preview-assets/img-placeholder.svg" alt="Img 图片占位">
+          </div>
+          <div class="ds-card__body">
+            <span class="ds-card__title ds-card__title--single-line">This is a card title</span>
+            <div class="ds-card__sub-links">
+              <span class="ds-card__sub-link">10G Switches</span>
+              <span class="ds-card__sub-link ds-card__sub-link--active">25G Switches</span>
+              <span class="ds-card__sub-link">40G Switches</span>
+              <span class="ds-card__sub-link">100G Switches</span>
+              <span class="ds-card__sub-link">400G Switches</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+
+  <!-- ============================================
+       SECTION 3: 左右结构 — 通栏
+       ============================================ -->
+  <div class="section">
+    <div class="section-title">③ 拼接式 — 左右结构 — 通栏 (1200px)</div>
+
+    <div class="horizontal-section">
+      <!-- 图左文右 -->
+      <div style="margin-bottom: 8px; font-size: 12px; color: var(--color-gray-3);">图左文右</div>
+      <div class="ds-card ds-card--horizontal" data-card-current="horizontal-unbordered" data-card-source-layout-two-list="official" data-card-source-node="68908:052289" style="width: 1200px; height: 326px; border-radius: 8px;">
+        <div class="ds-card__image" style="width: 580px; height: 326px;">
+          <div class="placeholder-img">Img</div>
+        </div>
+        <div class="ds-card__body" style="padding: 0;">
+          <div style="display: flex; flex-direction: column; gap: 12px;">
+            <p class="ds-card__title">This is card title, This is card title</p>
+            <p class="ds-card__desc" style="max-height: none; -webkit-line-clamp: unset; padding-top: 0;">This is the description, This is the description, This is the description,This is the description, This is the description, This is the description.</p>
+            <div class="ds-list ds-list--unordered-14" data-list-current="unordered" data-list-source="legacy-fixed"><div class="ds-list__unordered-item"><span class="ds-list__unordered-dot" aria-hidden="true"></span><p class="ds-list__unordered-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div><div class="ds-list__unordered-item"><span class="ds-list__unordered-dot" aria-hidden="true"></span><p class="ds-list__unordered-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div><div class="ds-list__unordered-item"><span class="ds-list__unordered-dot" aria-hidden="true"></span><p class="ds-list__unordered-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div><div class="ds-list__unordered-item"><span class="ds-list__unordered-dot" aria-hidden="true"></span><p class="ds-list__unordered-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div></div>
+          </div>
+          <div class="ds-card__link" style="padding-top: 16px;">
+            <a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="#"><span class="ds-text-btn__text">Learn more</span><img class="ds-text-btn__icon" src="../icons/icon-text-button-arrow-right-regular.svg" alt=""></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 文左图右 -->
+      <div style="margin-bottom: 8px; font-size: 12px; color: var(--color-gray-3);">文左图右</div>
+      <div class="ds-card ds-card--horizontal-reverse" data-card-current="horizontal-unbordered" data-card-source-layout-two-list="official" data-card-source-node="68908:052191" style="width: 1200px; height: 326px; border-radius: 8px;">
+        <div class="ds-card__image" style="width: 580px; height: 326px;">
+          <div class="placeholder-img">Img</div>
+        </div>
+        <div class="ds-card__body" style="padding: 0;">
+          <div style="display: flex; flex-direction: column; gap: 12px;">
+            <p class="ds-card__title" style="font-size: 20px; line-height: 28px; -webkit-line-clamp: unset;">This is card title, This is card title</p>
+            <p class="ds-card__desc" style="font-size: 14px; line-height: 22px; max-height: none; -webkit-line-clamp: unset; padding-top: 0;">This is the description, This is the description, This is the description,This is the description, This is the description, This is the description.</p>
+            <div class="ds-list ds-list--unordered-14" data-list-current="unordered" data-list-source="legacy-fixed"><div class="ds-list__unordered-item"><span class="ds-list__unordered-dot" aria-hidden="true"></span><p class="ds-list__unordered-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div><div class="ds-list__unordered-item"><span class="ds-list__unordered-dot" aria-hidden="true"></span><p class="ds-list__unordered-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div><div class="ds-list__unordered-item"><span class="ds-list__unordered-dot" aria-hidden="true"></span><p class="ds-list__unordered-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div><div class="ds-list__unordered-item"><span class="ds-list__unordered-dot" aria-hidden="true"></span><p class="ds-list__unordered-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div></div>
+          </div>
+          <div class="ds-card__link" style="padding-top: 16px;">
+            <a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="#">
+              <span class="ds-text-btn__text">Learn more</span>
+              <img class="ds-text-btn__icon" src="../icons/icon-text-button-arrow-right-regular.svg" alt="">
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================
+       SECTION 3B: 左右结构 — 通栏 — 描边/背景
+       ============================================ -->
+  <div class="section">
+    <div class="section-title">④ 拼接式-左右结构-通栏（1200px）-描边/背景</div>
+
+    <div class="horizontal-section">
+      <div class="state-label">图左文右</div>
+      <div class="ds-card ds-card--horizontal ds-card--horizontal-bordered" data-card-source-layout-one-list="official" data-card-source-layout-one-title="official" style="width: 1200px;">
+        <div class="ds-card__image"><div class="placeholder-img">Img</div></div>
+        <div class="ds-card__body">
+          <div class="ds-card__content-stack">
+            <p class="ds-card__title ds-card__title--single-line">This is card title, This is card title, This is card title</p>
+            <p class="ds-card__desc">This is the description, This is the description, This is the description, This is the description.</p>
+            <div class="ds-list ds-list--unordered-12" data-list-current="unordered" data-list-source="legacy-fixed">
+              <div class="ds-list__unordered-item"><span class="ds-list__unordered-dot" aria-hidden="true"></span><p class="ds-list__unordered-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div>
+              <div class="ds-list__unordered-item"><span class="ds-list__unordered-dot" aria-hidden="true"></span><p class="ds-list__unordered-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div>
+              <div class="ds-list__unordered-item"><span class="ds-list__unordered-dot" aria-hidden="true"></span><p class="ds-list__unordered-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div>
+              <div class="ds-list__unordered-item"><span class="ds-list__unordered-dot" aria-hidden="true"></span><p class="ds-list__unordered-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div>
+            </div>
+          </div>
+          <div class="ds-card__link">
+            <a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="#">
+              <span class="ds-text-btn__text">Learn more</span>
+              <img class="ds-text-btn__icon" src="../icons/icon-text-button-arrow-right-regular.svg" alt="">
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="state-label">文左图右</div>
+      <div class="ds-card ds-card--horizontal-reverse ds-card--horizontal-bordered" data-card-source-layout-one-list="official" data-card-source-layout-one-title="official" style="width: 1200px;">
+        <div class="ds-card__image"><div class="placeholder-img">Img</div></div>
+        <div class="ds-card__body">
+          <div class="ds-card__content-stack">
+            <p class="ds-card__title ds-card__title--single-line">This is card title, This is card title, This is card title</p>
+            <p class="ds-card__desc">This is the description, This is the description, This is the description, This is the description.</p>
+            <div class="ds-list ds-list--unordered-12" data-list-current="unordered" data-list-source="legacy-fixed">
+              <div class="ds-list__unordered-item"><span class="ds-list__unordered-dot" aria-hidden="true"></span><p class="ds-list__unordered-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div>
+              <div class="ds-list__unordered-item"><span class="ds-list__unordered-dot" aria-hidden="true"></span><p class="ds-list__unordered-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div>
+              <div class="ds-list__unordered-item"><span class="ds-list__unordered-dot" aria-hidden="true"></span><p class="ds-list__unordered-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div>
+              <div class="ds-list__unordered-item"><span class="ds-list__unordered-dot" aria-hidden="true"></span><p class="ds-list__unordered-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div>
+            </div>
+          </div>
+          <div class="ds-card__link">
+            <a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="#">
+              <span class="ds-text-btn__text">Learn more</span>
+              <img class="ds-text-btn__icon" src="../icons/icon-text-button-arrow-right-regular.svg" alt="">
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================
+       SECTION 4: 左右结构 — 含侧边栏
+       ============================================ -->
+  <div class="section">
+    <div class="section-title">⑤ 拼接式 — 左右结构 — 含侧边栏</div>
+
+    <div class="horizontal-section">
+      <!-- 图左文右 + 侧边栏 -->
+      <div style="margin-bottom: 8px; font-size: 12px; color: var(--color-gray-3);">侧边栏 + 图左文右</div>
+      <div class="ds-card--horizontal-sidebar" style="width: 1196px; height: 254px;">
+        <div class="ds-card__sidebar-placeholder"><span>侧边导航</span></div>
+        <div class="ds-card__content-area">
+          <div class="ds-card__image" style="width: 438px; height: 246px;">
+            <div class="placeholder-img">Img</div>
+          </div>
+          <div class="ds-card__body" style="padding: 0; flex: 1;">
+            <div style="display: flex; flex-direction: column; gap: 12px;">
+              <p class="ds-card__title" style="font-size: 20px; line-height: 28px; -webkit-line-clamp: unset;">This is card title, This is card title</p>
+              <p class="ds-card__desc" style="font-size: 14px; line-height: 22px; max-height: none; -webkit-line-clamp: unset; padding-top: 0;">This is the description, This is the description, This is the description, This is the description, This is the description, This is the description.</p>
+              <div class="ds-list ds-list--unordered-14" data-list-current="unordered" data-list-source="legacy-fixed"><div class="ds-list__unordered-item"><span class="ds-list__unordered-dot" aria-hidden="true"></span><p class="ds-list__unordered-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div><div class="ds-list__unordered-item"><span class="ds-list__unordered-dot" aria-hidden="true"></span><p class="ds-list__unordered-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div><div class="ds-list__unordered-item"><span class="ds-list__unordered-dot" aria-hidden="true"></span><p class="ds-list__unordered-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div><div class="ds-list__unordered-item"><span class="ds-list__unordered-dot" aria-hidden="true"></span><p class="ds-list__unordered-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div></div>
+            </div>
+            <div class="ds-card__link" style="padding-top: 16px;">
+              <a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="#">
+                <span class="ds-text-btn__text">Learn more</span>
+                <img class="ds-text-btn__icon" src="../icons/icon-text-button-arrow-right-regular.svg" alt="">
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 文左图右 + 侧边栏 -->
+      <div style="margin-bottom: 8px; font-size: 12px; color: var(--color-gray-3);">侧边栏 + 文左图右</div>
+      <div class="ds-card--horizontal-sidebar" style="width: 1196px; height: 254px;">
+        <div class="ds-card__sidebar-placeholder"><span>侧边导航</span></div>
+        <div class="ds-card__content-area" style="flex-direction: row-reverse;">
+          <div class="ds-card__image" style="width: 438px; height: 246px;">
+            <div class="placeholder-img">Img</div>
+          </div>
+          <div class="ds-card__body" style="padding: 0; flex: 1;">
+            <div style="display: flex; flex-direction: column; gap: 12px;">
+              <p class="ds-card__title" style="font-size: 20px; line-height: 28px; -webkit-line-clamp: unset;">This is card title, This is card title</p>
+              <p class="ds-card__desc" style="font-size: 14px; line-height: 22px; max-height: none; -webkit-line-clamp: unset; padding-top: 0;">This is the description, This is the description, This is the description, This is the description, This is the description, This is the description.</p>
+              <div class="ds-list ds-list--unordered-14" data-list-current="unordered" data-list-source="legacy-fixed"><div class="ds-list__unordered-item"><span class="ds-list__unordered-dot" aria-hidden="true"></span><p class="ds-list__unordered-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div><div class="ds-list__unordered-item"><span class="ds-list__unordered-dot" aria-hidden="true"></span><p class="ds-list__unordered-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div><div class="ds-list__unordered-item"><span class="ds-list__unordered-dot" aria-hidden="true"></span><p class="ds-list__unordered-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div><div class="ds-list__unordered-item"><span class="ds-list__unordered-dot" aria-hidden="true"></span><p class="ds-list__unordered-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div></div>
+            </div>
+            <div class="ds-card__link" style="padding-top: 16px;">
+              <a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="#">
+                <span class="ds-text-btn__text">Learn more</span>
+                <img class="ds-text-btn__icon" src="../icons/icon-text-button-arrow-right-regular.svg" alt="">
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================
+       SECTION 4B: 左右结构 — 含侧边栏 — 描边/背景
+       ============================================ -->
+  <div class="section">
+    <div class="section-title">⑥ 拼接式-左右结构-含侧边栏-描边/背景</div>
+
+    <div class="horizontal-section">
+      <div class="state-label">侧边栏 + 图左文右</div>
+      <div class="ds-card--horizontal-sidebar" data-card-source-sidebar-layout-one="official" style="width: 1196px; height: 246px;">
+        <div class="ds-card__sidebar-placeholder"><span>侧边导航</span></div>
+        <div class="ds-card ds-card--horizontal ds-card--horizontal-bordered ds-card__content-area" data-card-source-layout-one-list="official" data-card-source-layout-one-title="official" data-card-source-node="68908:051801">
+          <div class="ds-card__image"><div class="placeholder-img">Img</div></div>
+          <div class="ds-card__body">
+            <div class="ds-card__content-stack">
+              <p class="ds-card__title ds-card__title--single-line">This is card title, This is card title, This is card title</p>
+              <p class="ds-card__desc">This is the description, This is the description, This is the description,This is the description.</p>
+              <div class="ds-list ds-list--unordered-12" data-list-current="unordered" data-list-source="legacy-fixed"><div class="ds-list__unordered-item"><span class="ds-list__unordered-dot" aria-hidden="true"></span><p class="ds-list__unordered-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div><div class="ds-list__unordered-item"><span class="ds-list__unordered-dot" aria-hidden="true"></span><p class="ds-list__unordered-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div><div class="ds-list__unordered-item"><span class="ds-list__unordered-dot" aria-hidden="true"></span><p class="ds-list__unordered-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div><div class="ds-list__unordered-item"><span class="ds-list__unordered-dot" aria-hidden="true"></span><p class="ds-list__unordered-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div></div>
+            </div>
+            <div class="ds-card__link">
+              <a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="#"><span class="ds-text-btn__text">Learn more</span><img class="ds-text-btn__icon" src="../icons/icon-text-button-arrow-right-regular.svg" alt=""></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="state-label">侧边栏 + 文左图右</div>
+      <div class="ds-card--horizontal-sidebar" data-card-source-sidebar-layout-one="official" style="width: 1196px; height: 246px;">
+        <div class="ds-card__sidebar-placeholder"><span>侧边导航</span></div>
+        <div class="ds-card ds-card--horizontal-reverse ds-card--horizontal-bordered ds-card__content-area" data-card-source-layout-one-list="official" data-card-source-layout-one-title="official" data-card-source-node="68908:051860">
+          <div class="ds-card__image"><div class="placeholder-img">Img</div></div>
+          <div class="ds-card__body">
+            <div class="ds-card__content-stack">
+              <p class="ds-card__title ds-card__title--single-line">This is card title, This is card title, This is card title</p>
+              <p class="ds-card__desc">This is the description, This is the description, This is the description,This is the description.</p>
+              <div class="ds-list ds-list--unordered-12" data-list-current="unordered" data-list-source="legacy-fixed"><div class="ds-list__unordered-item"><span class="ds-list__unordered-dot" aria-hidden="true"></span><p class="ds-list__unordered-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div><div class="ds-list__unordered-item"><span class="ds-list__unordered-dot" aria-hidden="true"></span><p class="ds-list__unordered-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div><div class="ds-list__unordered-item"><span class="ds-list__unordered-dot" aria-hidden="true"></span><p class="ds-list__unordered-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div><div class="ds-list__unordered-item"><span class="ds-list__unordered-dot" aria-hidden="true"></span><p class="ds-list__unordered-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div></div>
+            </div>
+            <div class="ds-card__link">
+              <a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="#"><span class="ds-text-btn__text">Learn more</span><img class="ds-text-btn__icon" src="../icons/icon-text-button-arrow-right-regular.svg" alt=""></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================
+       SECTION 5: 嵌入式 — 产品小卡片
+       ============================================ -->
+  <div class="section">
+    <div class="section-title">⑦ 嵌入式 — 产品小卡片 (230px)</div>
+
+    <div style="display: flex; gap: 40px; align-items: flex-start;">
+      <!-- Default (gray bg) -->
+      <div class="card-col">
+        <div class="state-label">Default</div>
+        <div class="ds-card--embedded ds-card--embedded-small ds-card--embedded-bg-gray ds-card" data-card-current="embedded-small">
+          <img class="ds-card__product-image" src="../sources/card/preview-assets/img-placeholder.svg" alt="Img 图片占位">
+          <div class="ds-card__product-body">
+            <p class="ds-card__product-title">FMU 2-Slot 1U 19" Rack Chassis Unloaded, Holds up to 2 Units FMU Plug-in Module</p>
+            <p class="ds-card__product-price">US$ 160.00</p>
+          <div class="ds-card__add-btn ds-card__cart-slot"><button class="ds-cart ds-cart--product-card" type="button"><img class="ds-cart__icon" src="../icons/icon-cart-add.svg" alt=""><span class="ds-cart__text">Add</span></button></div></div>
+          
+        </div>
+      </div>
+
+      <!-- Hover (white bg + shadow + Add btn) -->
+      <div class="card-col">
+        <div class="state-label">Hover</div>
+        <div class="ds-card--embedded ds-card--embedded-small ds-card--embedded-bg-white ds-card" data-card-current="embedded-small" data-card-state="hover">
+          <img class="ds-card__product-image" src="../sources/card/preview-assets/img-placeholder.svg" alt="Img 图片占位">
+          <div class="ds-card__product-body">
+            <p class="ds-card__product-title">FMU 2-Slot 1U 19" Rack Chassis Unloaded, Holds up to 2 Units FMU Plug-in Module</p>
+            <p class="ds-card__product-price">US$ 160.00</p>
+          <div class="ds-card__add-btn ds-card__cart-slot"><button class="ds-cart ds-cart--product-card" type="button"><img class="ds-cart__icon" src="../icons/icon-cart-add.svg" alt=""><span class="ds-cart__text">Add</span></button></div></div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================
+       SECTION 6: 嵌入式 — 产品卡片 (285px)
+       ============================================ -->
+  <div class="section">
+    <div class="section-title">⑧ 嵌入式 — 产品卡片 (285px)</div>
+    <div style="display: flex; gap: 20px; align-items: flex-start; flex-wrap: wrap;">
+      <div class="card-col">
+        <div class="state-label">白色背景 · Default</div>
+        <div class="ds-card ds-card--embedded ds-card--embedded-standard ds-card--embedded-standard-bg-white" data-card-current="embedded-standard" data-card-surface="white">
+          <div class="ds-card__product-image"><img src="../sources/card/preview-assets/img-placeholder.svg" alt="Img 图片占位"></div>
+          <div class="ds-card__product-body">
+            <p class="ds-card__product-title">This is a card title</p>
+            <p class="ds-card__product-description">This is a card description. This is a card description. This is a card description.</p>
+            <div class="ds-card__product-link">
+              <a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="#">
+                <span class="ds-text-btn__text">Learn more</span>
+                <img class="ds-text-btn__icon" src="../icons/icon-text-button-arrow-right-regular.svg" alt="">
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-col">
+        <div class="state-label">灰色背景 · Default</div>
+        <div class="ds-card ds-card--embedded ds-card--embedded-standard ds-card--embedded-standard-bg-gray" data-card-current="embedded-standard" data-card-surface="gray">
+          <div class="ds-card__product-image"><img src="../sources/card/preview-assets/img-placeholder.svg" alt="Img 图片占位"></div>
+          <div class="ds-card__product-body">
+            <p class="ds-card__product-title">This is a card title</p>
+            <p class="ds-card__product-description">This is a card description. This is a card description. This is a card description.</p>
+            <div class="ds-card__product-link">
+              <a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="#">
+                <span class="ds-text-btn__text">Learn more</span>
+                <img class="ds-text-btn__icon" src="../icons/icon-text-button-arrow-right-regular.svg" alt="">
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-col">
+        <div class="state-label">白色背景·hover</div>
+        <div class="ds-card ds-card--embedded ds-card--embedded-standard ds-card--embedded-standard-bg-white ds-card--embedded-standard-hover" data-card-current="embedded-standard" data-card-surface="white">
+          <div class="ds-card__product-image"><img src="../sources/card/preview-assets/img-placeholder.svg" alt="Img 图片占位"></div>
+          <div class="ds-card__product-body">
+            <p class="ds-card__product-title">This is a card title</p>
+            <p class="ds-card__product-description">This is a card description. This is a card description. This is a card description.</p>
+            <div class="ds-card__product-link">
+              <a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="#">
+                <span class="ds-text-btn__text">Learn more</span>
+                <img class="ds-text-btn__icon" src="../icons/icon-text-button-arrow-right-regular.svg" alt="">
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-col">
+        <div class="state-label">灰色背景·hover</div>
+        <div class="ds-card ds-card--embedded ds-card--embedded-standard ds-card--embedded-standard-bg-gray ds-card--embedded-standard-hover" data-card-current="embedded-standard" data-card-surface="gray">
+          <div class="ds-card__product-image"><img src="../sources/card/preview-assets/img-placeholder.svg" alt="Img 图片占位"></div>
+          <div class="ds-card__product-body">
+            <p class="ds-card__product-title">This is a card title</p>
+            <p class="ds-card__product-description">This is a card description. This is a card description. This is a card description.</p>
+            <div class="ds-card__product-link">
+              <a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="#">
+                <span class="ds-text-btn__text">Learn more</span>
+                <img class="ds-text-btn__icon" src="../icons/icon-text-button-arrow-right-regular.svg" alt="">
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================
+       SECTION 7: 嵌入式 — 产品详情卡片 (左右布局)
+       ============================================ -->
+  <div class="section">
+    <div class="section-title">⑨ 嵌入式 — 产品详情卡片 (430px 左右布局)</div>
+
+    <div style="display: flex; gap: 40px; align-items: flex-start;">
+      <!-- Default -->
+      <div class="card-col">
+        <div class="state-label">Default</div>
+        <div class="ds-card--embedded ds-card--embedded-detail">
+          <div class="ds-card__product-image-wrap">
+            <div class="placeholder-img" style="width: 80px; height: 80px;">Img</div>
+          </div>
+          <div class="ds-card__product-body">
+            <div>
+              <p class="ds-card__product-title">IPC301-5M-D</p>
+              <p class="ds-card__product-subtitle">Key Applications: shopping area, entrance and exit</p>
+            </div>
+            <div class="ds-list ds-list--unordered-12" data-list-current="unordered" data-list-source="legacy-fixed"><div class="ds-list__unordered-item"><span class="ds-list__unordered-dot" aria-hidden="true"></span><p class="ds-list__unordered-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div><div class="ds-list__unordered-item"><span class="ds-list__unordered-dot" aria-hidden="true"></span><p class="ds-list__unordered-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div><div class="ds-list__unordered-item"><span class="ds-list__unordered-dot" aria-hidden="true"></span><p class="ds-list__unordered-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div><div class="ds-list__unordered-item"><span class="ds-list__unordered-dot" aria-hidden="true"></span><p class="ds-list__unordered-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hover -->
+      <div class="card-col">
+        <div class="state-label">Hover</div>
+        <div class="ds-card--embedded ds-card--embedded-detail" style="box-shadow: 0px 15px 15px -10px rgba(0,0,0,0.1);">
+          <div class="ds-card__product-image-wrap">
+            <div class="placeholder-img" style="width: 80px; height: 80px;">Img</div>
+          </div>
+          <div class="ds-card__product-body">
+            <div>
+              <p class="ds-card__product-title">IPC301-5M-D</p>
+              <p class="ds-card__product-subtitle">Key Applications: shopping area, entrance and exit</p>
+            </div>
+            <div class="ds-list ds-list--unordered-12" data-list-current="unordered" data-list-source="legacy-fixed"><div class="ds-list__unordered-item"><span class="ds-list__unordered-dot" aria-hidden="true"></span><p class="ds-list__unordered-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div><div class="ds-list__unordered-item"><span class="ds-list__unordered-dot" aria-hidden="true"></span><p class="ds-list__unordered-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div><div class="ds-list__unordered-item"><span class="ds-list__unordered-dot" aria-hidden="true"></span><p class="ds-list__unordered-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div><div class="ds-list__unordered-item"><span class="ds-list__unordered-dot" aria-hidden="true"></span><p class="ds-list__unordered-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================
+       SECTION 8: 嵌入式 — 产品完整卡片 (300px)
+       三种标签类型：常规（文字）、定制（+N折叠）、颜色（色块）
+       ============================================ -->
+  <div class="section">
+    <div class="section-title">⑩ 嵌入式 — 产品完整卡片 — 三种标签类型</div>
+
+    <!-- 8A: 常规标签 -->
+    <div style="margin-bottom: 12px; font-size: 14px; font-weight: 600; color: var(--color-gray-2);">A. 常规标签（文字 + Customized）</div>
+    <div style="display: flex; gap: 20px; align-items: flex-start; flex-wrap: wrap;">
+      <!-- Default (gray bg, text tags) -->
+      <div class="card-col">
+        <div class="state-label">Default</div>
+        <div class="ds-card--embedded ds-card--embedded-full ds-card--embedded-bg-gray" style="position: relative;" data-card-source-server-list="official" data-card-source-node="68908:037032">
+          <div class="ds-card__product-image placeholder-img" style="width: 180px; height: 180px; border-radius: 0;">Img</div>
+          <div class="ds-card__product-body">
+            <div class="ds-card__compat-tags">
+              <button class="ds-tag ds-tag--product-small" type="button" aria-pressed="false" data-tag-product="current" data-tag-image="false"><span class="ds-tag__product-label">Cisco</span></button>
+              <button class="ds-tag ds-tag--product-small" type="button" aria-pressed="true" data-tag-product="current" data-tag-image="false"><span class="ds-tag__product-label">Juniper</span></button>
+              <button class="ds-tag ds-tag--product-small" type="button" aria-pressed="false" data-tag-product="current" data-tag-image="false"><span class="ds-tag__product-label">Arista</span></button>
+              <button class="ds-tag ds-tag--product-small ds-tag--product-custom" type="button" aria-pressed="false" data-tag-product="current" data-tag-image="false"><span class="ds-tag__product-label">Customized</span></button>
+            </div>
+            <p class="ds-card__title">S5860-24XB-U, 24-Port Multi-Gigabit Ethernet L3 Fully Managed Pro Co…</p>
+            <p class="ds-card__price">US$ 9,502.00</p>
+            <div class="ds-list ds-list--unordered-12" data-list-current="unordered" data-list-source="legacy-fixed"><div class="ds-list__unordered-item"><span class="ds-list__unordered-dot" aria-hidden="true"></span><p class="ds-list__unordered-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div><div class="ds-list__unordered-item"><span class="ds-list__unordered-dot" aria-hidden="true"></span><p class="ds-list__unordered-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div><div class="ds-list__unordered-item"><span class="ds-list__unordered-dot" aria-hidden="true"></span><p class="ds-list__unordered-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div><div class="ds-list__unordered-item"><span class="ds-list__unordered-dot" aria-hidden="true"></span><p class="ds-list__unordered-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div></div>
+            <div class="ds-card__stock">
+              <span class="ds-card__stock-text">Pre-order, Ship by 30 Jul, 2025</span>
+            </div>
+            <div class="ds-card__stats" style="position: relative;">
+              <span><span class="ds-card__sold-count">15</span><span class="ds-card__sold-label"> Sold</span></span>
+              <div class="ds-card__stats-divider"></div>
+              <span><span class="ds-card__review-count">10</span><span class="ds-card__review-label"> Reviews</span></span>
+              <div class="ds-card__add-btn ds-card__cart-slot" style="position: absolute; right: 0; top: -6px;"><button class="ds-cart ds-cart--product-card" type="button"><img class="ds-cart__icon" src="../icons/icon-cart-add.svg" alt=""><span class="ds-cart__text">Add</span></button></div>
+            </div>
+          </div>
+          <div class="ds-card__tag-slot"><span class="ds-tag ds-tag--semantic ds-tag--new ds-tag--emphasis" data-tag-source-new="official"><span class="ds-tag__label">New</span></span></div>
+        </div>
+      </div>
+
+      <!-- Hover -->
+      <div class="card-col">
+        <div class="state-label">Hover</div>
+        <div class="ds-card--embedded ds-card--embedded-full ds-card--embedded-bg-white" style="position: relative;" data-card-source-server-list="official" data-card-source-node="68908:037088">
+          <div class="ds-card__product-image placeholder-img" style="width: 180px; height: 180px; border-radius: 0;">Img</div>
+          <div class="ds-card__product-body">
+            <div class="ds-card__compat-tags">
+              <button class="ds-tag ds-tag--product-small" type="button" aria-pressed="false" data-tag-product="current" data-tag-image="false"><span class="ds-tag__product-label">Cisco</span></button>
+              <button class="ds-tag ds-tag--product-small" type="button" aria-pressed="true" data-tag-product="current" data-tag-image="false"><span class="ds-tag__product-label">Juniper</span></button>
+              <button class="ds-tag ds-tag--product-small" type="button" aria-pressed="false" data-tag-product="current" data-tag-image="false"><span class="ds-tag__product-label">Arista</span></button>
+              <button class="ds-tag ds-tag--product-small ds-tag--product-custom" type="button" aria-pressed="false" data-tag-product="current" data-tag-image="false" data-tag-state="hover"><span class="ds-tag__product-label">Customized</span></button>
+            </div>
+            <p class="ds-card__title">S5860-24XB-U, 24-Port Multi-Gigabit Ethernet L3 Fully Managed Pro Co…</p>
+            <p class="ds-card__price">US$ 9,502.00</p>
+            <div class="ds-list ds-list--unordered-12" data-list-current="unordered" data-list-source="legacy-fixed"><div class="ds-list__unordered-item"><span class="ds-list__unordered-dot" aria-hidden="true"></span><p class="ds-list__unordered-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div><div class="ds-list__unordered-item"><span class="ds-list__unordered-dot" aria-hidden="true"></span><p class="ds-list__unordered-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div><div class="ds-list__unordered-item"><span class="ds-list__unordered-dot" aria-hidden="true"></span><p class="ds-list__unordered-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div><div class="ds-list__unordered-item"><span class="ds-list__unordered-dot" aria-hidden="true"></span><p class="ds-list__unordered-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div></div>
+            <div class="ds-card__stock"><span class="ds-card__stock-text">Pre-order, Ship by 30 Jul, 2025</span></div>
+            <div class="ds-card__stats" style="position: relative;">
+              <span><span class="ds-card__sold-count">15</span><span class="ds-card__sold-label"> Sold</span></span>
+              <div class="ds-card__stats-divider"></div>
+              <span><span class="ds-card__review-count">10</span><span class="ds-card__review-label"> Reviews</span></span>
+              <div class="ds-card__add-btn ds-card__cart-slot" style="position: absolute; right: 0; top: -6px;"><button class="ds-cart ds-cart--product-card" type="button"><img class="ds-cart__icon" src="../icons/icon-cart-add.svg" alt=""><span class="ds-cart__text">Add</span></button></div>
+            </div>
+          </div>
+          <div class="ds-card__tag-slot"><span class="ds-tag ds-tag--semantic ds-tag--new ds-tag--emphasis" data-tag-source-new="official"><span class="ds-tag__label">New</span></span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 8B: 定制标签（+N 折叠） -->
+    <div style="margin: 40px 0 12px; font-size: 14px; font-weight: 600; color: var(--color-gray-2);">B. 定制标签（+N 折叠展开）</div>
+    <div style="display: flex; gap: 20px; align-items: flex-start; flex-wrap: wrap;">
+      <div class="card-col">
+        <div class="state-label">Default</div>
+        <div class="ds-card--embedded ds-card--embedded-full ds-card--embedded-bg-gray" style="position: relative; width: 291px;">
+          <div class="ds-card__product-image placeholder-img" style="width: 180px; height: 180px; border-radius: 0;">Img</div>
+          <div class="ds-card__product-body">
+            <div class="ds-card__compat-tags">
+              <button class="ds-tag ds-tag--product-small" type="button" aria-pressed="false" data-tag-product="current" data-tag-image="false"><span class="ds-tag__product-label">Cisco</span></button>
+              <button class="ds-tag ds-tag--product-small" type="button" aria-pressed="true" data-tag-product="current" data-tag-image="false"><span class="ds-tag__product-label">Juniper</span></button>
+              <button class="ds-tag ds-tag--product-small" type="button" aria-pressed="false" data-tag-product="current" data-tag-image="false"><span class="ds-tag__product-label">Arista</span></button>
+              <button class="ds-tag ds-tag--product-small" type="button" aria-pressed="false" data-tag-product="current" data-tag-image="false"><span class="ds-tag__product-label">Arista</span></button>
+              <button class="ds-tag ds-tag--product-small" type="button" aria-pressed="false" data-tag-product="current" data-tag-image="false" data-tag-action="host" data-card-tag-more=""><span class="ds-tag__product-label">+4</span></button>
+            </div>
+            <p class="ds-card__title">S5860-24XB-U, 24-Port Multi-Gigabit Ethernet L3 Fully Managed Pro Co…</p>
+            <div class="ds-card__spec-row">
+              <span class="ds-card__spec-text">L3</span><div class="ds-card__spec-divider"></div>
+              <span class="ds-card__spec-text">40G Uplink</span><div class="ds-card__spec-divider"></div>
+              <span class="ds-card__spec-text">Stack</span><div class="ds-card__spec-divider"></div>
+              <span class="ds-card__spec-text">BGP</span>
+            </div>
+            <p class="ds-card__price">US$ 800.00</p>
+            <div class="ds-card__stock">
+              <span class="ds-card__stock-text">1390 In US Warehouse, Get It By Mar 28, 2023</span>
+              <span class="ds-card__stock-text">1390 In US Warehouse, Get It By Mar 28, 2023</span>
+            </div>
+            <div class="ds-card__stats" style="position: relative;">
+              <span><span class="ds-card__sold-count">15</span><span class="ds-card__sold-label"> Sold</span></span>
+              <div class="ds-card__stats-divider"></div>
+              <span><span class="ds-card__review-count">10</span><span class="ds-card__review-label"> Reviews</span></span>
+              <div class="ds-card__add-btn ds-card__cart-slot" style="position: absolute; right: 0; top: -6px;"><button class="ds-cart ds-cart--product-card" type="button"><img class="ds-cart__icon" src="../icons/icon-cart-add.svg" alt=""><span class="ds-cart__text">Add</span></button></div>
+            </div>
+          </div>
+          <div class="ds-card__tag-slot"><span class="ds-tag ds-tag--semantic ds-tag--new ds-tag--emphasis" data-tag-source-new="official"><span class="ds-tag__label">New</span></span></div>
+        </div>
+      </div>
+      <div class="card-col">
+        <div class="state-label">Hover（+4 展开）</div>
+        <div class="ds-card--embedded ds-card--embedded-full ds-card--embedded-bg-white" style="position: relative; width: 291px;">
+          <div class="ds-card__product-image placeholder-img" style="width: 180px; height: 180px; border-radius: 0;">Img</div>
+          <div class="ds-card__product-body" style="position: relative;">
+            <div class="ds-card__more-popup" data-card-source-popup="68908:035480" style="display: flex; position: absolute; left: 0; right: 0; top: 26px; z-index: 10; flex-wrap: wrap; gap: 4px; padding: 12px; background: #FFF; border-radius: 4px; box-shadow: 0px 2px 8px rgba(0,0,0,0.1);">
+              <button class="ds-tag ds-tag--product-small" type="button" aria-pressed="false" data-tag-product="current" data-tag-image="false"><span class="ds-tag__product-label">Arista</span></button>
+              <button class="ds-tag ds-tag--product-small" type="button" aria-pressed="false" data-tag-product="current" data-tag-image="false"><span class="ds-tag__product-label">Arista</span></button>
+              <button class="ds-tag ds-tag--product-small ds-tag--product-custom" type="button" aria-pressed="false" data-tag-product="current" data-tag-image="false"><span class="ds-tag__product-label">Customized</span></button>
+            </div>
+            <div class="ds-card__compat-tags">
+              <button class="ds-tag ds-tag--product-small" type="button" aria-pressed="false" data-tag-product="current" data-tag-image="false"><span class="ds-tag__product-label">Cisco</span></button>
+              <button class="ds-tag ds-tag--product-small" type="button" aria-pressed="true" data-tag-product="current" data-tag-image="false"><span class="ds-tag__product-label">Juniper</span></button>
+              <button class="ds-tag ds-tag--product-small" type="button" aria-pressed="false" data-tag-product="current" data-tag-image="false"><span class="ds-tag__product-label">Arista</span></button>
+              <button class="ds-tag ds-tag--product-small" type="button" aria-pressed="false" data-tag-product="current" data-tag-image="false"><span class="ds-tag__product-label">Arista</span></button>
+              <button class="ds-tag ds-tag--product-small" type="button" aria-pressed="false" data-tag-product="current" data-tag-image="false" data-tag-state="hover" data-tag-action="host" data-card-tag-more=""><span class="ds-tag__product-label">+4</span></button>
+            </div>
+            <p class="ds-card__title">S5860-24XB-U, 24-Port Multi-Gigabit Ethernet L3 Fully Managed Pro Co…</p>
+            <div class="ds-card__spec-row">
+              <span class="ds-card__spec-text">L3</span><div class="ds-card__spec-divider"></div>
+              <span class="ds-card__spec-text">40G Uplink</span><div class="ds-card__spec-divider"></div>
+              <span class="ds-card__spec-text">Stack</span><div class="ds-card__spec-divider"></div>
+              <span class="ds-card__spec-text">BGP</span>
+            </div>
+            <p class="ds-card__price">US$ 800.00</p>
+            <div class="ds-card__stock">
+              <span class="ds-card__stock-text">1390 In US Warehouse, Get It By Mar 28, 2023</span>
+              <span class="ds-card__stock-text">1390 In US Warehouse, Get It By Mar 28, 2023</span>
+            </div>
+            <div class="ds-card__stats" style="position: relative;">
+              <span><span class="ds-card__sold-count">15</span><span class="ds-card__sold-label"> Sold</span></span>
+              <div class="ds-card__stats-divider"></div>
+              <span><span class="ds-card__review-count">10</span><span class="ds-card__review-label"> Reviews</span></span>
+              <div class="ds-card__add-btn ds-card__cart-slot" style="position: absolute; right: 0; top: -6px;"><button class="ds-cart ds-cart--product-card" type="button"><img class="ds-cart__icon" src="../icons/icon-cart-add.svg" alt=""><span class="ds-cart__text">Add</span></button></div>
+            </div>
+          </div>
+          <div class="ds-card__tag-slot"><span class="ds-tag ds-tag--semantic ds-tag--new ds-tag--emphasis" data-tag-source-new="official"><span class="ds-tag__label">New</span></span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 8C: 颜色标签（色块） -->
+    <div style="margin: 40px 0 12px; font-size: 14px; font-weight: 600; color: var(--color-gray-2);">C. 颜色标签（色块）</div>
+    <div style="display: flex; gap: 20px; align-items: flex-start; flex-wrap: wrap;">
+      <div class="card-col">
+        <div class="state-label">Default</div>
+        <div class="ds-card--embedded ds-card--embedded-full ds-card--embedded-bg-gray" style="position: relative;">
+          <div class="ds-card__product-image placeholder-img" style="width: 180px; height: 180px; border-radius: 0;">Img</div>
+          <div class="ds-card__product-body">
+            <div class="ds-card__color-tags">
+              <button class="ds-tag ds-tag--product-small ds-tag--product-color" type="button" aria-pressed="true" data-tag-product="current" data-tag-color="#5A82F7" aria-label="颜色 #5A82F7"><span class="ds-tag__product-chip" aria-hidden="true"></span></button>
+              <button class="ds-tag ds-tag--product-small ds-tag--product-color" type="button" aria-pressed="false" data-tag-product="current" data-tag-color="#7E7E7E" aria-label="颜色 #7E7E7E"><span class="ds-tag__product-chip" aria-hidden="true"></span></button>
+              <button class="ds-tag ds-tag--product-small ds-tag--product-color" type="button" aria-pressed="false" data-tag-product="current" data-tag-color="#232323" aria-label="颜色 #232323"><span class="ds-tag__product-chip" aria-hidden="true"></span></button>
+              <button class="ds-tag ds-tag--product-small ds-tag--product-color" type="button" aria-pressed="false" data-tag-product="current" data-tag-color="#FFFFFF" aria-label="颜色 #FFFFFF"><span class="ds-tag__product-chip" aria-hidden="true"></span></button>
+              <button class="ds-tag ds-tag--product-small ds-tag--product-color" type="button" aria-pressed="false" data-tag-product="current" data-tag-color="#52B13E" aria-label="颜色 #52B13E"><span class="ds-tag__product-chip" aria-hidden="true"></span></button>
+              <button class="ds-tag ds-tag--product-small ds-tag--product-color" type="button" aria-pressed="false" data-tag-product="current" data-tag-color="#F74837" aria-label="颜色 #F74837"><span class="ds-tag__product-chip" aria-hidden="true"></span></button>
+              <button class="ds-tag ds-tag--product-small ds-tag--product-color" type="button" aria-pressed="false" data-tag-product="current" data-tag-color="#F8D93D" aria-label="颜色 #F8D93D"><span class="ds-tag__product-chip" aria-hidden="true"></span></button>
+              <button class="ds-tag ds-tag--product-small ds-tag--product-color" type="button" aria-pressed="false" data-tag-product="current" data-tag-color="#F29B29" aria-label="颜色 #F29B29"><span class="ds-tag__product-chip" aria-hidden="true"></span></button>
+              <button class="ds-tag ds-tag--product-small ds-tag--product-color" type="button" aria-pressed="false" data-tag-product="current" data-tag-color="#AB7BD8" aria-label="颜色 #AB7BD8"><span class="ds-tag__product-chip" aria-hidden="true"></span></button>
+            </div>
+            <p class="ds-card__title">S5860-24XB-U, 24-Port Multi-Gigabit Ethernet L3 Fully Managed Pro Co…</p>
+            <div class="ds-card__spec-row">
+              <span class="ds-card__spec-text">L3</span><div class="ds-card__spec-divider"></div>
+              <span class="ds-card__spec-text">40G Uplink</span><div class="ds-card__spec-divider"></div>
+              <span class="ds-card__spec-text">Stack</span><div class="ds-card__spec-divider"></div>
+              <span class="ds-card__spec-text">BGP</span>
+            </div>
+            <p class="ds-card__price">US$ 9,502.00</p>
+            <div class="ds-card__stock">
+              <span class="ds-card__stock-text">1390 In US Warehouse, Get It By Mar 28, 2023</span>
+              <span class="ds-card__stock-text">1390 In US Warehouse, Get It By Mar 28, 2023</span>
+            </div>
+            <div class="ds-card__stats" style="position: relative;">
+              <span><span class="ds-card__sold-count">15</span><span class="ds-card__sold-label"> Sold</span></span>
+              <div class="ds-card__stats-divider"></div>
+              <span><span class="ds-card__review-count">10</span><span class="ds-card__review-label"> Reviews</span></span>
+              <div class="ds-card__add-btn ds-card__cart-slot" style="position: absolute; right: 0; top: -6px;"><button class="ds-cart ds-cart--product-card" type="button"><img class="ds-cart__icon" src="../icons/icon-cart-add.svg" alt=""><span class="ds-cart__text">Add</span></button></div>
+            </div>
+          </div>
+          <div class="ds-card__tag-slot"><span class="ds-tag ds-tag--semantic ds-tag--new ds-tag--emphasis" data-tag-source-new="official"><span class="ds-tag__label">New</span></span></div>
+        </div>
+      </div>
+      <div class="card-col">
+        <div class="state-label">Hover</div>
+        <div class="ds-card--embedded ds-card--embedded-full ds-card--embedded-bg-white" style="position: relative;">
+          <div class="ds-card__product-image placeholder-img" style="width: 180px; height: 180px; border-radius: 0;">Img</div>
+          <div class="ds-card__product-body">
+            <div class="ds-card__color-tags">
+              <button class="ds-tag ds-tag--product-small ds-tag--product-color" type="button" aria-pressed="true" data-tag-product="current" data-tag-color="#5A82F7" aria-label="颜色 #5A82F7"><span class="ds-tag__product-chip" aria-hidden="true"></span></button>
+              <button class="ds-tag ds-tag--product-small ds-tag--product-color" type="button" aria-pressed="false" data-tag-product="current" data-tag-color="#7E7E7E" aria-label="颜色 #7E7E7E"><span class="ds-tag__product-chip" aria-hidden="true"></span></button>
+              <button class="ds-tag ds-tag--product-small ds-tag--product-color" type="button" aria-pressed="false" data-tag-product="current" data-tag-color="#232323" aria-label="颜色 #232323"><span class="ds-tag__product-chip" aria-hidden="true"></span></button>
+              <button class="ds-tag ds-tag--product-small ds-tag--product-color" type="button" aria-pressed="false" data-tag-product="current" data-tag-color="#FFFFFF" aria-label="颜色 #FFFFFF" data-tag-state="hover"><span class="ds-tag__product-chip" aria-hidden="true"></span></button>
+              <button class="ds-tag ds-tag--product-small ds-tag--product-color" type="button" aria-pressed="false" data-tag-product="current" data-tag-color="#52B13E" aria-label="颜色 #52B13E"><span class="ds-tag__product-chip" aria-hidden="true"></span></button>
+              <button class="ds-tag ds-tag--product-small ds-tag--product-color" type="button" aria-pressed="false" data-tag-product="current" data-tag-color="#F74837" aria-label="颜色 #F74837"><span class="ds-tag__product-chip" aria-hidden="true"></span></button>
+              <button class="ds-tag ds-tag--product-small ds-tag--product-color" type="button" aria-pressed="false" data-tag-product="current" data-tag-color="#F8D93D" aria-label="颜色 #F8D93D"><span class="ds-tag__product-chip" aria-hidden="true"></span></button>
+              <button class="ds-tag ds-tag--product-small ds-tag--product-color" type="button" aria-pressed="false" data-tag-product="current" data-tag-color="#F29B29" aria-label="颜色 #F29B29"><span class="ds-tag__product-chip" aria-hidden="true"></span></button>
+              <button class="ds-tag ds-tag--product-small ds-tag--product-color" type="button" aria-pressed="false" data-tag-product="current" data-tag-color="#AB7BD8" aria-label="颜色 #AB7BD8"><span class="ds-tag__product-chip" aria-hidden="true"></span></button>
+            </div>
+            <p class="ds-card__title">S5860-24XB-U, 24-Port Multi-Gigabit Ethernet L3 Fully Managed Pro Co…</p>
+            <div class="ds-card__spec-row">
+              <span class="ds-card__spec-text">L3</span><div class="ds-card__spec-divider"></div>
+              <span class="ds-card__spec-text">40G Uplink</span><div class="ds-card__spec-divider"></div>
+              <span class="ds-card__spec-text">Stack</span><div class="ds-card__spec-divider"></div>
+              <span class="ds-card__spec-text">BGP</span>
+            </div>
+            <p class="ds-card__price">US$ 9,502.00</p>
+            <div class="ds-card__stock">
+              <span class="ds-card__stock-text">1390 In US Warehouse, Get It By Mar 28, 2023</span>
+              <span class="ds-card__stock-text">1390 In US Warehouse, Get It By Mar 28, 2023</span>
+            </div>
+            <div class="ds-card__stats" style="position: relative;">
+              <span><span class="ds-card__sold-count">15</span><span class="ds-card__sold-label"> Sold</span></span>
+              <div class="ds-card__stats-divider"></div>
+              <span><span class="ds-card__review-count">10</span><span class="ds-card__review-label"> Reviews</span></span>
+              <div class="ds-card__add-btn ds-card__cart-slot" style="position: absolute; right: 0; top: -6px;"><button class="ds-cart ds-cart--product-card" type="button"><img class="ds-cart__icon" src="../icons/icon-cart-add.svg" alt=""><span class="ds-cart__text">Add</span></button></div>
+            </div>
+          </div>
+          <div class="ds-card__tag-slot"><span class="ds-tag ds-tag--semantic ds-tag--new ds-tag--emphasis" data-tag-source-new="official"><span class="ds-tag__label">New</span></span></div>
+        </div>
+      </div>
+    </div>
+  
+  </div>
+
+  <!-- DS_PREVIEW_AUTOHEIGHT: 供 component-library.html 堆叠合并视图自撑高，勿删 -->
+  <script>
+    (function () {
+      // 嵌入组件库 iframe 时，关闭自身竖向滚动条：高度由父页按内容精确设定，
+      // 避免出现「父页滚动条 + iframe 自身滚动条」两条滚动条。
+      if (window.parent !== window && document.documentElement) {
+        document.documentElement.style.overflow = 'hidden';
+      }
+      // 用 body 最后一个可视元素的 bottom 作为高度，去掉 body padding-bottom / 尾部 section
+      // margin-bottom 等空白，避免合并视图（stage--stacked）里两个 iframe 之间出现过大间隙。
+      // rAF 节流合并 ResizeObserver 抖动，减少视觉上的高度反复变化。
+      var reportPending = false;
+      function measure() {
+        var last = null;
+        if (document.body) {
+          for (var i = document.body.children.length - 1; i >= 0; i--) {
+            var c = document.body.children[i];
+            if (c.tagName === 'SCRIPT' || c.tagName === 'STYLE') continue;
+            last = c;
+            break;
+          }
+        }
+        if (last) {
+          var rect = last.getBoundingClientRect();
+          var scrollY = window.scrollY || window.pageYOffset || 0;
+          return Math.ceil(rect.bottom + scrollY);
+        }
+        return Math.max(document.body ? document.body.scrollHeight : 0, document.documentElement.scrollHeight);
+      }
+      function report() {
+        parent.postMessage({ __dsPreviewHeight: measure(), __dsUrl: location.href }, '*');
+      }
+      function scheduleReport() {
+        if (reportPending) return;
+        reportPending = true;
+        requestAnimationFrame(function () { reportPending = false; report(); });
+      }
+      window.addEventListener('load', scheduleReport);
+      window.addEventListener('resize', scheduleReport);
+      setTimeout(report, 300);
+      if (window.ResizeObserver && document.body) {
+        new ResizeObserver(scheduleReport).observe(document.body);
+      }
+    })();
+  </script>
+  <script src="../preview/preview-link.js"></script>
+  <script src="../preview/reference-live.js"></script>
+<script src="../card-current.js"></script><script src="../tag-product-current.js"></script>
+<section data-five-sidebar-overview><h2>当前可调用 · PC 侧栏图文</h2><div data-five-sidebar-view="plain"><div class="ds-card--horizontal-sidebar" data-card-sidebar-current="plain"><div class="ds-card__sidebar-layout"><aside class="ds-card__sidebar-shell"><nav class="ds-menu-navigation ds-menu-navigation--single-level ds-menu-navigation--width-288" data-menu-navigation-current="menu-atom" data-menu-navigation="" aria-label="Product information sections" data-menu-card-sidebar="current">
+          <ul class="ds-menu-navigation__list">
+            <li><button class="ds-menu-navigation__item ds-menu-navigation__item--selected" type="button" data-value="fiber-optic-cables" aria-pressed="true"><span class="ds-menu-navigation__item-label">Fiber Optic Cables</span></button></li>
+            <li><button class="ds-menu-navigation__item" type="button" data-value="panels-enclosures-racks"><span class="ds-menu-navigation__item-label">Panels, Enclosures &amp; Racks</span></button></li>
+            <li><button class="ds-menu-navigation__item" type="button" data-value="testers-tools"><span class="ds-menu-navigation__item-label">Testers &amp; Tools</span></button></li>
+          </ul>
+        </nav></aside><div class="ds-card__content-area"><div class="ds-card ds-card--horizontal" data-card-sidebar-content="plain"><div class="ds-card__image"><img src="../sources/card/preview-assets/img-placeholder.svg" alt="Img 图片占位"></div><div class="ds-card__body"><div class="ds-card__content-stack"><p class="ds-card__title">Card title</p><p class="ds-card__desc">Card description.</p></div><div class="ds-card__link"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="#"><span class="ds-text-btn__text">Learn more</span><img class="ds-text-btn__icon" src="../icons/icon-text-button-arrow-right-regular.svg" alt=""></a></div></div></div></div></div></div></div><div data-five-sidebar-view="bordered"><div class="ds-card--horizontal-sidebar" data-card-sidebar-current="bordered"><div class="ds-card__sidebar-layout"><aside class="ds-card__sidebar-shell"><nav class="ds-menu-navigation ds-menu-navigation--single-level ds-menu-navigation--width-288" data-menu-navigation-current="menu-atom" data-menu-navigation="" aria-label="Product information sections" data-menu-card-sidebar="current">
+          <ul class="ds-menu-navigation__list">
+            <li><button class="ds-menu-navigation__item ds-menu-navigation__item--selected" type="button" data-value="fiber-optic-cables" aria-pressed="true"><span class="ds-menu-navigation__item-label">Fiber Optic Cables</span></button></li>
+            <li><button class="ds-menu-navigation__item" type="button" data-value="panels-enclosures-racks"><span class="ds-menu-navigation__item-label">Panels, Enclosures &amp; Racks</span></button></li>
+            <li><button class="ds-menu-navigation__item" type="button" data-value="testers-tools"><span class="ds-menu-navigation__item-label">Testers &amp; Tools</span></button></li>
+          </ul>
+        </nav></aside><div class="ds-card__content-area"><div class="ds-card ds-card--horizontal ds-card--horizontal-bordered" data-card-source-layout-one-list="official" data-source-example="card-layout-one-pc-bordered" data-card-source-layout-one-title="official" data-card-sidebar-content="bordered">
+        <div class="ds-card__image"><img src="../sources/card/preview-assets/img-placeholder.svg" alt="Img 图片占位"></div>
+        <div class="ds-card__body">
+          <div class="ds-card__content-stack">
+            <p class="ds-card__title ds-card__title--single-line">This is card title, This is card title, This is card title</p>
+            <p class="ds-card__desc">This is the description, This is the description, This is the description, This is the description.</p>
+            <div class="ds-list ds-list--unordered-12" data-list-current="unordered" data-list-source="legacy-fixed"><div class="ds-list__unordered-item"><span class="ds-list__unordered-dot" aria-hidden="true"></span><p class="ds-list__unordered-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div><div class="ds-list__unordered-item"><span class="ds-list__unordered-dot" aria-hidden="true"></span><p class="ds-list__unordered-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div><div class="ds-list__unordered-item"><span class="ds-list__unordered-dot" aria-hidden="true"></span><p class="ds-list__unordered-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div><div class="ds-list__unordered-item"><span class="ds-list__unordered-dot" aria-hidden="true"></span><p class="ds-list__unordered-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div></div>
+          </div>
+          <div class="ds-card__link">
+            <a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="#">
+              <span class="ds-text-btn__text">Learn more</span>
+              <img class="ds-text-btn__icon" src="../icons/icon-text-button-arrow-right-regular.svg" alt="">
+            </a>
+          </div>
+        </div>
+      </div></div></div></div></div></section><script src="../menu-navigation-current.js"></script></body></html>

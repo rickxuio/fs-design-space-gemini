@@ -1,0 +1,123 @@
+{
+  "_notice": "占位符拼装机制（data-component + build.js）目前项目内几乎未被使用——唯一真实页面 industrial-switches.html 仅 navigation 走此机制，其余组件均为手写死代码，不经过占位符替换。2026-06-30 决策：本机制标记为遗留/可选，不纳入二期投喂流程的强制交付物。投喂新组件时，只需完成契约 JSON（spec/component-specs/）+ preview HTML + components.css 三件事，不要求同步维护本文件的 fragments 是否真实可用。fragmentsVerified=false 表示该组件的 preview 文件里没有对应 data-fragment 标记，此处登记的 fragments 名称仅供人工参考文件位置，不代表可被 build.js 实际拼装。若未来有人确实需要用占位符方式拼装某组件的页面，需先在该组件的 preview 文件里补 data-fragment 标记，并将 fragmentsVerified 改为 true。",
+  "components": {
+    "navigation": {
+      "path": "variants/navigation.html",
+      "fragments": [
+        "header",
+        "footer"
+      ],
+      "fragmentsVerified": true
+    },
+    "banner": {
+      "path": "variants/banner.html",
+      "fragments": [
+        "hero",
+        "sub",
+        "search",
+        "title-only",
+        "mini"
+      ],
+      "fragmentsVerified": true
+    },
+    "anchor-nav": {
+      "path": "variants/anchor-nav.html",
+      "fragments": [
+        "anchor-nav"
+      ],
+      "fragmentsVerified": true
+    },
+    "card": {
+      "path": "variants/card.html",
+      "fragments": [
+        "vertical",
+        "horizontal"
+      ],
+      "fragmentsVerified": false
+    },
+    "icon-card": {
+      "path": "variants/icon-card.html",
+      "fragments": [
+        "icon-card"
+      ],
+      "fragmentsVerified": false
+    },
+    "form": {
+      "path": "variants/form.html",
+      "fragments": [
+        "form"
+      ],
+      "fragmentsVerified": false
+    },
+    "button": {
+      "path": "variants/button.html",
+      "fragments": [
+        "button"
+      ],
+      "fragmentsVerified": false
+    },
+    "text-button": {
+      "path": "variants/text-button.html",
+      "fragments": [
+        "text-button"
+      ],
+      "fragmentsVerified": false
+    },
+    "tab": {
+      "path": "variants/tab.html",
+      "fragments": [
+        "tab"
+      ],
+      "fragmentsVerified": false
+    },
+    "input": {
+      "path": "variants/input.html",
+      "fragments": [
+        "input"
+      ],
+      "fragmentsVerified": false
+    },
+    "dropdown": {
+      "path": "variants/dropdown.html",
+      "fragments": [
+        "dropdown"
+      ],
+      "fragmentsVerified": false
+    },
+    "checkbox": {
+      "path": "variants/checkbox.html",
+      "fragments": [
+        "checkbox"
+      ],
+      "fragmentsVerified": false
+    },
+    "badge": {
+      "path": "variants/badge.html",
+      "fragments": [
+        "badge"
+      ],
+      "fragmentsVerified": false
+    },
+    "collapse": {
+      "path": "variants/collapse.html",
+      "fragments": [
+        "collapse"
+      ],
+      "fragmentsVerified": false
+    },
+    "stepper": {
+      "path": "variants/stepper.html",
+      "fragments": [
+        "stepper"
+      ],
+      "fragmentsVerified": true
+    },
+    "carousel": {
+      "path": "variants/carousel.html",
+      "fragments": [
+        "carousel"
+      ],
+      "fragmentsVerified": false
+    }
+  }
+}

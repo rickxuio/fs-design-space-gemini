@@ -1,0 +1,422 @@
+<!-- INTERNAL VARIANT SOURCE: for compile/sync scripts only. Human-facing spec: maintenance/text-button-prototype-20261114/preview.html -->
+<!DOCTYPE html>
+<html data-component-reference="text-button" lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TextButton 文字按钮 - 组件预览</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../tokens.css">
+  <link rel="stylesheet" href="../components.css">
+  <link rel="stylesheet" href="../text-button-current.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: var(--font-family-base);
+      padding: 40px;
+      background: #FFFFFF;
+      color: var(--color-gray-1);
+    }
+    h1 { font-size: 24px; font-weight: 600; margin-bottom: 8px; }
+    .subtitle { font-size: 14px; color: var(--color-gray-3); margin-bottom: 40px; }
+
+    /* Category Badge（分类与左侧导航栏保持一致） */
+    .cat-badge { display: inline-flex; align-items: center; height: 22px; padding: 0 10px; border-radius: 11px; font-size: 11px; font-weight: 700; margin-bottom: 10px; }
+
+    .section { margin-bottom: 48px; }
+    .section-title {
+      font-size: 18px; font-weight: 600; margin-bottom: 24px;
+      padding-bottom: 8px; border-bottom: 1px solid var(--color-gray-5);
+    }
+
+    /* Grid layout for state columns */
+    .state-header {
+      display: grid;
+      grid-template-columns: 180px repeat(2, 1fr);
+      gap: 16px;
+      margin-bottom: 12px;
+      padding: 0 24px;
+    }
+    .state-header span {
+      font-size: 12px;
+      color: var(--color-gray-3);
+      text-align: center;
+    }
+    .state-header span:first-child { text-align: left; }
+
+    .state-header--dark span {
+      color: rgba(255,255,255,0.5);
+    }
+
+    .btn-row {
+      display: grid;
+      grid-template-columns: 180px repeat(2, 1fr);
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 16px;
+      padding: 0 24px;
+    }
+    .btn-row .label {
+      font-size: 12px;
+      color: var(--color-gray-3);
+    }
+    .btn-row--dark .label {
+      color: rgba(255,255,255,0.5);
+    }
+    .btn-row .cell {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Dark background container */
+    .dark-bg {
+      background: #4B4B4D;
+      border-radius: 8px;
+      padding: 24px 0;
+    }
+
+  </style>
+</head>
+<body>
+<p class="text-button-current-prototype-link"><a href="../../../maintenance/text-button-prototype-20261114/preview.html">本地调用样板：调用状态、变体决策与完整依赖表</a></p>
+  <span class="cat-badge" style="background:#EEE8F3;color:#512971;">通用 General</span>
+  <h1>TextButton 文字按钮 <span class="version-badge" style="font-size:18px;font-weight:600;color:#707070;vertical-align:middle;margin-left:10px;">v1.0</span></h1>
+  <p class="subtitle">展示已核对的 MasterGo 原始文字按钮：无背景、带背景，七个变体、十个尺寸组合及其 Default / Hover 状态</p>
+
+  <!-- 变体决策 + 关联关系表 -->
+  <div style="margin-bottom: 0; padding: 24px; background: #FAFBFC; border: 1px solid var(--color-gray-5); border-radius: 8px;">
+    <!-- AUTO-GENERATED-PREVIEW:START -->
+<!-- 合并模式：硬规则已并入下方合并表 -->
+    <!-- AUTO-GENERATED-PREVIEW:END -->
+    <!-- AUTO-GENERATED-DECISION-TABLE:START -->
+    <p style="font-size:14px;font-weight:600;margin-bottom:4px;">变体决策</p>
+    <p style="font-size:12px;color:#707070;margin-bottom:12px;">每种 TextButton 变体：什么场景用 → 常被哪些组件嵌套使用。</p>
+    <table style="width:100%;border-collapse:collapse;table-layout:fixed;">
+      <colgroup><col style="width:18%"><col style="width:38%"><col style="width:44%"></colgroup>
+      <thead><tr><th scope="col" style="background:#F6F6F8;font-size:12px;font-weight:600;text-align:left;padding:8px 10px;border:1px solid #DEE0E3;">变体</th><th scope="col" style="background:#F6F6F8;font-size:12px;font-weight:600;text-align:left;padding:8px 10px;border:1px solid #DEE0E3;">匹配条件</th><th scope="col" style="background:#F6F6F8;font-size:12px;font-weight:600;text-align:left;padding:8px 10px;border:1px solid #DEE0E3;">选型结论</th></tr></thead>
+<tbody><tr><th scope="rowgroup" rowspan="3" style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">Inline 黑色</th><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">来源与宿主需要13px常规黑色文字导航，如已登记卡片、表格或详情入口</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>候选 · </strong>列入候选，再核对宿主和当前调用尺寸。</td></tr>
+<tr><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">宿主明确需要蓝色、白色或14px加粗时，改按对应变体；不要仅凭“链接”默认黑色</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>不用 · </strong>排除当前调用，不以改类、改字体或换图标适配。</td></tr>
+<tr><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">规范中另有14px原例</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>设计参考 · </strong>保留资料；当前本地调用仅默认尺寸，size参数尚未开放。</td></tr></tbody>
+<tbody><tr><th scope="rowgroup" rowspan="2" style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">灰色链接（小）</th><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">来源为12px灰色次要导航，如公共导航或详情页评论入口</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>候选 · </strong>列入候选，再核对宿主和当前调用尺寸。</td></tr>
+<tr><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">明确需要蓝色、深色反白或带容器时不用本变体</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>不用 · </strong>排除当前调用，不以改类、改字体或换图标适配。</td></tr></tbody>
+<tbody><tr><th scope="rowgroup" rowspan="2" style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">Inline 黑色加粗</th><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">来源明确为14px加粗文字入口，如首页特定卡片中的Get more Information、FS Certified</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>候选 · </strong>列入候选，再核对宿主和当前调用尺寸。</td></tr>
+<tr><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">无加粗依据的普通链接，不凭“更重要”擅自加粗</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>不用 · </strong>排除当前调用，不以改类、改字体或换图标适配。</td></tr></tbody>
+<tbody><tr><th scope="rowgroup" rowspan="3" style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">Inline 蓝色链接</th><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">来源明确为13px蓝色导航，如详情、加购对话框、表格或外围页</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>候选 · </strong>列入候选，再核对宿主和当前调用尺寸。</td></tr>
+<tr><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">宿主明确使用黑色子组件、或来源指定12/14px时，不套用当前13px默认调用</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>不用 · </strong>排除当前调用，不以改类、改字体或换图标适配。</td></tr>
+<tr><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">规范中另有14px原例</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>设计参考 · </strong>保留资料；当前本地调用仅默认尺寸，size参数尚未开放。</td></tr></tbody>
+<tbody><tr><th scope="rowgroup" rowspan="2" style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">Inline 蓝色（小）</th><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">来源需要12px蓝色紧凑导航，如表单隐私政策链接；当前仅处理导航目标</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>候选 · </strong>列入候选，再核对宿主和当前调用尺寸。</td></tr>
+<tr><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">不作为13/14px正文链接，也不代替复选框、折叠或业务动作触发器</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>不用 · </strong>排除当前调用，不以改类、改字体或换图标适配。</td></tr></tbody>
+<tbody><tr><th scope="rowgroup" rowspan="2" style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">Inline 白色</th><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">深色背景上的14px白色导航，如有明确来源的专题页Banner入口</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>候选 · </strong>列入候选，再核对宿主和当前调用尺寸。</td></tr>
+<tr><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">浅色背景不使用白色；不据此增加第二个Banner入口</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>不用 · </strong>排除当前调用，不以改类、改字体或换图标适配。</td></tr></tbody>
+<tbody><tr><th scope="rowgroup" rowspan="3" style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">带背景</th><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">来源需要12px、32px高的带容器文字入口，如社区场景中的导航动作</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>候选 · </strong>列入候选，再核对宿主和当前调用尺寸。</td></tr>
+<tr><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">正文行内链接不套用容器；不据此开放14px/36px或业务操作</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>不用 · </strong>排除当前调用，不以改类、改字体或换图标适配。</td></tr>
+<tr><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">规范中另有14px/36px容器原例</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>设计参考 · </strong>保留资料；当前本地调用仅默认尺寸，size参数尚未开放。</td></tr></tbody>
+<tbody><tr><th colspan="3" style="background:#F6F6F8;font-size:12px;font-weight:600;text-align:left;padding:8px 10px;border:1px solid #DEE0E3;">⚠️ 硬规则：卡片内 Learn more 固定变体</th></tr><tr><td colspan="2" style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>描述原文</strong><div><strong>Card / IconCard 的 Learn more 使用对应宿主契约规定的黑色常规文字按钮。</strong>独立TextButton只开放当前aiContract的真实变体、尺寸、官方右箭头和原有显示开关；不强套来源左图标或折叠控件。既有宿主的Chevron与展开态仅在该宿主契约范围保留，不作为独立TextButton新增能力。默认和Hover不能混用，不把下划线常驻Default。</div></td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>AI 解析（写入契约 JSON 的字段）</strong><pre style="white-space:pre-wrap;word-break:break-all;">relations.commonlyEmbeddedIn[0] = {
+  component: &quot;Card&quot;,
+  usage: &quot;vertical/horizontal 卡片的 Learn more 链接，固定 ds-text-btn--inline ds-text-btn--black ds-text-btn--m，父级依赖 margin-top:auto 居底&quot;
+}
+
+relations.commonlyEmbeddedIn[1] = {
+  component: &quot;IconCard&quot;,
+  usage: &quot;单事件卡片的 Learn more 链接，同 Card 用法，位于 ds-icon-card__link 行内&quot;
+}</pre></td></tr></tbody>
+    </table>
+    <!-- AUTO-GENERATED-DECISION-TABLE:END -->
+  </div>
+
+    <!-- DEPENDENCY-SUMMARY-SPACING -->
+    <div style="height:24px;"></div>
+    <!-- AUTO-GENERATED-DEPENDENCY-SUMMARY-TABLE:START -->
+    <div style="margin-bottom: 0; padding: 24px; background: #FAFBFC; border: 1px solid var(--color-gray-5); border-radius: 8px;">
+      <p style="font-size: 14px; font-weight: 600; margin-bottom: 4px;">依赖汇总表</p>
+      <p style="font-size: 12px; color: #707070; margin-bottom: 12px;">按组件类型汇总组件关系、颜色、字体、间距、描边、圆角、阴影和图标依赖；未填写 <code>appliesTo</code> 的组件级依赖不猜测变体归属，不参与本表归类。「组件关系」列用标签区分：<span style="display:inline-block;font-size:11px;line-height:16px;padding:0 5px;border-radius:3px;background:#EAF2FF;color:#0060BF;">子组件</span> = 嵌入本组件内部；<span style="display:inline-block;font-size:11px;line-height:16px;padding:0 5px;border-radius:3px;background:#F3EEFA;color:#512971;">父组件·类名证据／仅声明</span> = 从宿主 <code>componentDependencies</code> 自动推导；类名出现不等于具体变体、尺寸、必需结构或交互已验证，链接仅供打开 Preview 复核；<span style="display:inline-block;font-size:11px;line-height:16px;padding:0 5px;border-radius:3px;background:#FFF3E0;color:#A65300;">参考·未验证</span> = 仅保留设计意图，宿主 preview 尚无真实结构，不可作为已实现依赖。</p>
+      <div class="dep-summary-scroll">
+        <div class="dep-summary-grid" style="grid-template-columns:minmax(max-content, auto) repeat(8, minmax(max-content, 1fr));">
+          <div class="dep-cell dep-cell--sticky dep-cell--head" role="columnheader">组件类型</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">颜色</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">字体</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">间距</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">描边</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">圆角</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">阴影</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">图标</div>
+          <div class="dep-cell dep-cell--head dep-cell--right-edge" role="columnheader">组件关系</div>
+          <div class="dep-cell dep-cell--sticky" role="rowheader"><strong>无背景</strong><br><code>inline</code></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#0060BF;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-blue" style="color:#0060BF;text-decoration:underline;"><code>color.blue</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#19191A;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-1" style="color:#0060BF;text-decoration:underline;"><code>color.gray-1</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#FFFFFF;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-white" style="color:#0060BF;text-decoration:underline;"><code>color.white</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">14px · md · Regular 400</span><a href="font.html#tok-typography-h7-regular" style="color:#0060BF;text-decoration:underline;"><code>typography.h7-regular</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">14px · md · SemiBold 600</span><a href="font.html#tok-typography-h7-semibold" style="color:#0060BF;text-decoration:underline;"><code>typography.h7-semibold</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">12px · sm · Regular 400</span><a href="font.html#tok-typography-h9-regular" style="color:#0060BF;text-decoration:underline;"><code>typography.h9-regular</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">13px · H8 · Regular 400</span><a href="font.html#tok-typography-h8-regular" style="color:#0060BF;text-decoration:underline;"><code>typography.h8-regular</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">2px</span><a href="spacing.html#tok-spacing-2" style="color:#0060BF;text-decoration:underline;"><code>spacing.2</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;color:#A6A6A6;font-size:11px;margin-right:8px;vertical-align:-3px;flex:0 0 auto;">∅</span><a href="stroke.html#tok-border-style-none" style="color:#0060BF;text-decoration:underline;"><code>border.style.none</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><img src="../icons/icon-chevron-down.svg?v=fe5df03acb1c" alt="" style="display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;"><a href="icon-map.html#icon-chevron-down" style="color:#0060BF;text-decoration:underline;"><code>icon-chevron-down.svg</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><img src="../icons/icon-text-button-arrow-right-regular.svg?v=9b0c2168243c" alt="" style="display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;"><a href="icon-map.html#icon-text-button-arrow-right-regular" style="color:#0060BF;text-decoration:underline;"><code>icon-text-button-arrow-right-regular.svg</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><img src="../icons/icon-text-button-arrow-right-bold.svg?v=38f1e47fc422" alt="" style="display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;"><a href="icon-map.html#icon-text-button-arrow-right-bold" style="color:#0060BF;text-decoration:underline;"><code>icon-text-button-arrow-right-bold.svg</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><img src="../icons/icon-text-button-arrow-right-blue-s.svg?v=9d863376000d" alt="" style="display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;"><a href="icon-map.html#icon-text-button-arrow-right-blue-s" style="color:#0060BF;text-decoration:underline;"><code>icon-text-button-arrow-right-blue-s.svg</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><img src="../icons/icon-text-button-arrow-right-gray-s-default.svg?v=9e952b3be4c1" alt="" style="display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;"><a href="icon-map.html#icon-text-button-arrow-right-gray-s-default" style="color:#0060BF;text-decoration:underline;"><code>icon-text-button-arrow-right-gray-s-default.svg</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><img src="../icons/icon-text-button-arrow-right-gray-s-hover.svg?v=f84e971c96c3" alt="" style="display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;"><a href="icon-map.html#icon-text-button-arrow-right-gray-s-hover" style="color:#0060BF;text-decoration:underline;"><code>icon-text-button-arrow-right-gray-s-hover.svg</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><img src="../icons/icon-text-button-arrow-right-white-l.svg?v=d0667d602bd3" alt="" style="display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;"><a href="icon-map.html#icon-text-button-arrow-right-white-l" style="color:#0060BF;text-decoration:underline;"><code>icon-text-button-arrow-right-white-l.svg</code></a></span></div>
+          <div class="dep-cell dep-cell--right-edge" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:normal;overflow-wrap:anywhere;"><span style="display:inline-block;flex-shrink:0;font-size:11px;line-height:16px;padding:0 5px;margin-right:6px;border-radius:3px;background:#F3EEFA;color:#512971;">父组件·仅声明</span><a href="banner.html" style="color:#0060BF;text-decoration:underline;">Banner</a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:normal;overflow-wrap:anywhere;"><span style="display:inline-block;flex-shrink:0;font-size:11px;line-height:16px;padding:0 5px;margin-right:6px;border-radius:3px;background:#F3EEFA;color:#512971;">父组件·类名证据</span><a href="card.html" style="color:#0060BF;text-decoration:underline;">Card</a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:normal;overflow-wrap:anywhere;"><span style="display:inline-block;flex-shrink:0;font-size:11px;line-height:16px;padding:0 5px;margin-right:6px;border-radius:3px;background:#F3EEFA;color:#512971;">父组件·仅声明</span><a href="collapse.html" style="color:#0060BF;text-decoration:underline;">Collapse</a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:normal;overflow-wrap:anywhere;"><span style="display:inline-block;flex-shrink:0;font-size:11px;line-height:16px;padding:0 5px;margin-right:6px;border-radius:3px;background:#F3EEFA;color:#512971;">父组件·仅声明</span><a href="comment.html" style="color:#0060BF;text-decoration:underline;">Comment</a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:normal;overflow-wrap:anywhere;"><span style="display:inline-block;flex-shrink:0;font-size:11px;line-height:16px;padding:0 5px;margin-right:6px;border-radius:3px;background:#F3EEFA;color:#512971;">父组件·仅声明</span><a href="icon-card.html" style="color:#0060BF;text-decoration:underline;">IconCard</a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:normal;overflow-wrap:anywhere;"><span style="display:inline-block;flex-shrink:0;font-size:11px;line-height:16px;padding:0 5px;margin-right:6px;border-radius:3px;background:#F3EEFA;color:#512971;">父组件·仅声明</span><a href="navigation.html" style="color:#0060BF;text-decoration:underline;">Navigation</a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:normal;overflow-wrap:anywhere;"><span style="display:inline-block;flex-shrink:0;font-size:11px;line-height:16px;padding:0 5px;margin-right:6px;border-radius:3px;background:#F3EEFA;color:#512971;">父组件·仅声明</span><a href="stepper.html" style="color:#0060BF;text-decoration:underline;">Stepper</a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:normal;overflow-wrap:anywhere;"><span style="display:inline-block;flex-shrink:0;font-size:11px;line-height:16px;padding:0 5px;margin-right:6px;border-radius:3px;background:#F3EEFA;color:#512971;">父组件·仅声明</span><a href="table.html" style="color:#0060BF;text-decoration:underline;">Table</a></span></div>
+          <div class="dep-cell dep-cell--sticky dep-cell--bottom-edge" role="rowheader"><strong>带背景</strong><br><code>with-bg</code></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#19191A;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-1" style="color:#0060BF;text-decoration:underline;"><code>color.gray-1</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#707070;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-3" style="color:#0060BF;text-decoration:underline;"><code>color.gray-3</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#F2F2F2;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-7" style="color:#0060BF;text-decoration:underline;"><code>color.gray-7</code></a></span></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">14px · md · Regular 400</span><a href="font.html#tok-typography-h7-regular" style="color:#0060BF;text-decoration:underline;"><code>typography.h7-regular</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">12px · sm · Regular 400</span><a href="font.html#tok-typography-h9-regular" style="color:#0060BF;text-decoration:underline;"><code>typography.h9-regular</code></a></span></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">2px</span><a href="spacing.html#tok-spacing-2" style="color:#0060BF;text-decoration:underline;"><code>spacing.2</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">12px</span><a href="spacing.html#tok-spacing-md" style="color:#0060BF;text-decoration:underline;"><code>spacing.md</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">16px</span><a href="spacing.html#tok-spacing-lg" style="color:#0060BF;text-decoration:underline;"><code>spacing.lg</code></a></span></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;color:#A6A6A6;font-size:11px;margin-right:8px;vertical-align:-3px;flex:0 0 auto;">∅</span><a href="stroke.html#tok-border-style-none" style="color:#0060BF;text-decoration:underline;"><code>border.style.none</code></a></span></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">4px</span><a href="radius.html#tok-border-radius-md" style="color:#0060BF;text-decoration:underline;"><code>border-radius.md</code></a></span></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><img src="../icons/icon-text-button-arrow-right-gray-s-default.svg?v=9e952b3be4c1" alt="" style="display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;"><a href="icon-map.html#icon-text-button-arrow-right-gray-s-default" style="color:#0060BF;text-decoration:underline;"><code>icon-text-button-arrow-right-gray-s-default.svg</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><img src="../icons/icon-text-button-arrow-right-gray-s-hover.svg?v=f84e971c96c3" alt="" style="display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;"><a href="icon-map.html#icon-text-button-arrow-right-gray-s-hover" style="color:#0060BF;text-decoration:underline;"><code>icon-text-button-arrow-right-gray-s-hover.svg</code></a></span></div>
+          <div class="dep-cell dep-cell--right-edge dep-cell--bottom-edge" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:normal;overflow-wrap:anywhere;"><span style="display:inline-block;flex-shrink:0;font-size:11px;line-height:16px;padding:0 5px;margin-right:6px;border-radius:3px;background:#F3EEFA;color:#512971;">父组件·仅声明</span><a href="comment.html" style="color:#0060BF;text-decoration:underline;">Comment</a></span></div>
+        </div>
+      </div>
+    </div>
+    <!-- AUTO-GENERATED-DEPENDENCY-SUMMARY-TABLE:END -->
+
+  <!-- TEMPLATE-DEMO-SPACING -->
+  <div style="height:24px;"></div>
+
+
+
+<!-- ============================================
+       SECTION 1: Inline 无背景
+       ============================================ -->
+  <div class="section">
+    <div class="section-title">Inline 无背景 — 原始组件 Default / Hover</div>
+
+    <div class="state-header">
+      <span>变体 / 尺寸</span>
+      <span>默认 Default</span>
+      <span>悬停 Hover</span>
+    </div>
+
+    <!-- blue / S -->
+    <div class="btn-row">
+      <span class="label">blue / S — 12px</span>
+      <div class="cell">
+        <a id="icon-usage-icon-arrow-right" class="ds-text-btn ds-text-btn--inline ds-text-btn--blue ds-text-btn--s" href="#" style="scroll-margin-top: 40px;" data-ai-example="ai-text-button-inline-blue-s">
+          <span class="ds-text-btn__text">了解更多</span>
+          <img class="ds-text-btn__icon" src="../icons/icon-text-button-arrow-right-blue-s.svg" alt="">
+        </a>
+      </div>
+      <div class="cell">
+        <a class="ds-text-btn ds-text-btn--inline ds-text-btn--blue ds-text-btn--s ds-text-btn--hover" href="#">
+          <span class="ds-text-btn__text">了解更多</span>
+          <img class="ds-text-btn__icon" src="../icons/icon-text-button-arrow-right-blue-s.svg" alt="">
+        </a>
+      </div>
+    </div>
+
+    <!-- MG original gray / S: separate from gray-with-container -->
+    <div class="btn-row">
+      <span class="label">gray / S — 12px</span>
+      <div class="cell"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--gray ds-text-btn--s" href="#" data-ai-example="ai-text-button-inline-gray-s"><span class="ds-text-btn__text">了解更多</span><img class="ds-text-btn__icon" src="../icons/icon-text-button-arrow-right-gray-s-default.svg" alt=""></a></div>
+      <div class="cell"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--gray ds-text-btn--s ds-text-btn--hover" href="#"><span class="ds-text-btn__text">了解更多</span><img class="ds-text-btn__icon" src="../icons/icon-text-button-arrow-right-gray-s-default.svg" alt=""></a></div>
+    </div>
+
+    <!-- black / M -->
+    <div class="btn-row">
+      <span class="label">black / M — 13px</span>
+      <div class="cell">
+        <a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="#" data-ai-example="ai-text-button-inline-black-m">
+          <span class="ds-text-btn__text">了解更多</span>
+          <img class="ds-text-btn__icon" src="../icons/icon-text-button-arrow-right-regular.svg" alt="">
+        </a>
+      </div>
+      <div class="cell">
+        <a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m ds-text-btn--hover" href="#">
+          <span class="ds-text-btn__text">了解更多</span>
+          <img class="ds-text-btn__icon" src="../icons/icon-text-button-arrow-right-regular.svg" alt="">
+        </a>
+      </div>
+    </div>
+
+    <!-- black / L -->
+    <div class="btn-row">
+      <span class="label">black / L — 14px</span>
+      <div class="cell">
+        <a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--l" href="#" data-ai-example="ai-text-button-inline-black-l">
+          <span class="ds-text-btn__text">了解更多</span>
+          <img class="ds-text-btn__icon" src="../icons/icon-text-button-arrow-right-regular.svg" alt="">
+        </a>
+      </div>
+      <div class="cell">
+        <a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--l ds-text-btn--hover" href="#">
+          <span class="ds-text-btn__text">了解更多</span>
+          <img class="ds-text-btn__icon" src="../icons/icon-text-button-arrow-right-regular.svg" alt="">
+        </a>
+      </div>
+    </div>
+
+    <!-- black-bold / L -->
+    <div class="btn-row">
+      <span class="label">black-bold / L — 14px 600</span>
+      <div class="cell">
+        <a class="ds-text-btn ds-text-btn--inline ds-text-btn--black-bold ds-text-btn--l" href="#" data-ai-example="ai-text-button-inline-black-bold-l">
+          <span class="ds-text-btn__text">了解更多</span>
+          <img class="ds-text-btn__icon" src="../icons/icon-text-button-arrow-right-bold.svg" alt="">
+        </a>
+      </div>
+      <div class="cell">
+        <a class="ds-text-btn ds-text-btn--inline ds-text-btn--black-bold ds-text-btn--l ds-text-btn--hover" href="#">
+          <span class="ds-text-btn__text">了解更多</span>
+          <img class="ds-text-btn__icon" src="../icons/icon-text-button-arrow-right-bold.svg" alt="">
+        </a>
+      </div>
+    </div>
+
+    <!-- blue-link / M -->
+    <div class="btn-row">
+      <span class="label">blue-link / M — 13px</span>
+      <div class="cell">
+        <a class="ds-text-btn ds-text-btn--inline ds-text-btn--blue-link ds-text-btn--m" href="#" data-ai-example="ai-text-button-inline-blue-link-m">
+          <span class="ds-text-btn__text">了解更多</span>
+          <img class="ds-text-btn__icon" src="../icons/icon-text-button-arrow-right-blue-s.svg" alt="">
+        </a>
+      </div>
+      <div class="cell">
+        <a class="ds-text-btn ds-text-btn--inline ds-text-btn--blue-link ds-text-btn--m ds-text-btn--hover" href="#">
+          <span class="ds-text-btn__text">了解更多</span>
+          <img class="ds-text-btn__icon" src="../icons/icon-text-button-arrow-right-blue-s.svg" alt="">
+        </a>
+      </div>
+    </div>
+
+    <!-- blue-link / L -->
+    <div class="btn-row">
+      <span class="label">blue-link / L — 14px</span>
+      <div class="cell">
+        <a class="ds-text-btn ds-text-btn--inline ds-text-btn--blue-link ds-text-btn--l" href="#" data-ai-example="ai-text-button-inline-blue-link-l">
+          <span class="ds-text-btn__text">了解更多</span>
+          <img class="ds-text-btn__icon" src="../icons/icon-text-button-arrow-right-blue-s.svg" alt="">
+        </a>
+      </div>
+      <div class="cell">
+        <a class="ds-text-btn ds-text-btn--inline ds-text-btn--blue-link ds-text-btn--l ds-text-btn--hover" href="#">
+          <span class="ds-text-btn__text">了解更多</span>
+          <img class="ds-text-btn__icon" src="../icons/icon-text-button-arrow-right-blue-s.svg" alt="">
+        </a>
+      </div>
+    </div>
+
+    <!-- white / L (on dark background) -->
+    <div style="margin-top: 16px;">
+      <div class="dark-bg">
+        <div class="state-header state-header--dark">
+          <span>变体 / 尺寸</span>
+          <span>默认 Default</span>
+          <span>悬停 Hover</span>
+        </div>
+        <div class="btn-row btn-row--dark">
+          <span class="label">white / L — 14px</span>
+          <div class="cell">
+            <a class="ds-text-btn ds-text-btn--inline ds-text-btn--white ds-text-btn--l" href="#" data-ai-example="ai-text-button-inline-white-l">
+              <span class="ds-text-btn__text">了解更多</span>
+              <img class="ds-text-btn__icon" src="../icons/icon-text-button-arrow-right-white-l.svg" alt="">
+            </a>
+          </div>
+          <div class="cell">
+            <a class="ds-text-btn ds-text-btn--inline ds-text-btn--white ds-text-btn--l ds-text-btn--hover" href="#">
+              <span class="ds-text-btn__text">了解更多</span>
+              <img class="ds-text-btn__icon" src="../icons/icon-text-button-arrow-right-white-l.svg" alt="">
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+  <!-- ============================================
+       SECTION 2: With Background 带背景
+       ============================================ -->
+  <div class="section">
+    <div class="section-title">With Background 带背景 — 悬停时显示背景色</div>
+
+    <div class="state-header">
+      <span>尺寸</span>
+      <span>默认 Default</span>
+      <span>悬停 Hover</span>
+    </div>
+
+    <!-- S-bg -->
+    <div class="btn-row">
+      <span class="label">S-bg — 12px / 32px</span>
+      <div class="cell">
+        <a class="ds-text-btn ds-text-btn--with-bg ds-text-btn--s-bg" href="#" data-ai-example="ai-text-button-with-bg-default-s-bg">
+          <span class="ds-text-btn__text">了解更多</span>
+          <img class="ds-text-btn__icon" src="../icons/icon-text-button-arrow-right-gray-s-default.svg" alt="">
+        </a>
+      </div>
+      <div class="cell">
+        <a class="ds-text-btn ds-text-btn--with-bg ds-text-btn--s-bg ds-text-btn--hover" href="#">
+          <span class="ds-text-btn__text">了解更多</span>
+          <img class="ds-text-btn__icon" src="../icons/icon-text-button-arrow-right-gray-s-default.svg" alt="">
+        </a>
+      </div>
+    </div>
+
+    <!-- L-bg -->
+    <div class="btn-row">
+      <span class="label">L-bg — 14px / 36px</span>
+      <div class="cell">
+        <a class="ds-text-btn ds-text-btn--with-bg ds-text-btn--l-bg" href="#" data-ai-example="ai-text-button-with-bg-default-l-bg">
+          <span class="ds-text-btn__text">了解更多</span>
+          <img class="ds-text-btn__icon" src="../icons/icon-text-button-arrow-right-gray-s-default.svg" alt="">
+        </a>
+      </div>
+      <div class="cell">
+        <a class="ds-text-btn ds-text-btn--with-bg ds-text-btn--l-bg ds-text-btn--hover" href="#">
+          <span class="ds-text-btn__text">了解更多</span>
+          <img class="ds-text-btn__icon" src="../icons/icon-text-button-arrow-right-gray-s-default.svg" alt="">
+        </a>
+      </div>
+    </div>
+  
+  </div>
+
+  <!-- DS_PREVIEW_AUTOHEIGHT: 供 component-library.html 堆叠合并视图自撑高，勿删 -->
+  <script>
+    (function () {
+      // 嵌入组件库 iframe 时，关闭自身竖向滚动条：高度由父页按内容精确设定，
+      // 避免出现「父页滚动条 + iframe 自身滚动条」两条滚动条。
+      if (window.parent !== window && document.documentElement) {
+        document.documentElement.style.overflow = 'hidden';
+      }
+      // 用 body 最后一个可视元素的 bottom 作为高度，去掉 body padding-bottom / 尾部 section
+      // margin-bottom 等空白，避免合并视图（stage--stacked）里两个 iframe 之间出现过大间隙。
+      // rAF 节流合并 ResizeObserver 抖动，减少视觉上的高度反复变化。
+      var reportPending = false;
+      function measure() {
+        var last = null;
+        if (document.body) {
+          for (var i = document.body.children.length - 1; i >= 0; i--) {
+            var c = document.body.children[i];
+            if (c.tagName === 'SCRIPT' || c.tagName === 'STYLE') continue;
+            last = c;
+            break;
+          }
+        }
+        if (last) {
+          var rect = last.getBoundingClientRect();
+          var scrollY = window.scrollY || window.pageYOffset || 0;
+          return Math.ceil(rect.bottom + scrollY);
+        }
+        return Math.max(document.body ? document.body.scrollHeight : 0, document.documentElement.scrollHeight);
+      }
+      function report() {
+        parent.postMessage({ __dsPreviewHeight: measure(), __dsUrl: location.href }, '*');
+      }
+      function scheduleReport() {
+        if (reportPending) return;
+        reportPending = true;
+        requestAnimationFrame(function () { reportPending = false; report(); });
+      }
+      window.addEventListener('load', scheduleReport);
+      window.addEventListener('resize', scheduleReport);
+      setTimeout(report, 300);
+      if (window.ResizeObserver && document.body) {
+        new ResizeObserver(scheduleReport).observe(document.body);
+      }
+    })();
+  </script>
+  <script src="preview-link.js?v=20260813-stacked-anchor-stable"></script>
+  <script src="../preview/reference-live.js"></script>
+<section class="section"><h2>IconCard disclosure source part</h2><button type="button" class="ds-text-btn ds-text-btn--inline ds-text-btn--blue-link ds-text-btn--m" data-text-button-part="icon-card-disclosure" aria-expanded="false"><span class="ds-text-btn__text">See more</span><img class="ds-text-btn__icon" src="../icons/icon-chevron-down.svg" alt=""></button></section><section data-five-current="20261115"><button class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--l ds-text-btn--icon-start" data-collapse-edit="" type="button" data-collapse-edit-atom="current"><img class="ds-text-btn__icon" src="../icons/icon-edit.svg" alt=""><span class="ds-text-btn__text">Edit</span></button></section>
+</body>
+</html>

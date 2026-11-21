@@ -1,0 +1,1408 @@
+{
+  "schemaVersion": "fs-component-reference/1.0.0",
+  "component": {
+    "id": "button",
+    "name": "Button",
+    "scope": "desktop-existing-library-with-source-cart-product-card",
+    "reviewStatus": {
+      "engineering": "pending",
+      "visual": "pending",
+      "familyCoverage": "default-sizes-with-explicit-options"
+    }
+  },
+  "selection": {
+    "policy": "颜色按 relations.variantDecisions 的宿主场景选择；尺寸必须从真实 sizeOptions 选取，默认示例不代表所有宿主共用同一尺寸。 Cart为Button内的按钮类型，产品卡片形态只开放Default/Hover；不套用形状按钮的尺寸/Disabled/Processing。",
+    "supported": [
+      "filled-red",
+      "filled-black",
+      "filled-gray",
+      "outline-black",
+      "outline-gray",
+      "outline-white",
+      "outline-blue",
+      "cart-product-card"
+    ],
+    "unsupported": [
+      "mobile",
+      "unlisted-size",
+      "invented-color",
+      "account-center-fixed-width-multiline",
+      "cart-processing",
+      "cart-popover"
+    ]
+  },
+  "runtime": {
+    "styles": [
+      "components/tokens.css",
+      "components/components.css",
+      "components/button-current.css",
+      "components/button-runtime-current.css",
+      "components/cart-current.css"
+    ],
+    "scripts": [],
+    "businessBoundary": "原生 button；宿主接入 click 业务，不在组件中编写固定跳转或数据操作。",
+    "fontStylesheets": [
+      "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+    ],
+    "fontFallback": "沿用 tokens.css 系统字体回退；精确视觉验收确认字体加载。"
+  },
+  "identity": {
+    "rule": "原生 button 使用唯一实例 ID（需要外部关联时）；文案变化同步已有 aria-label，保持 type 与业务语义一致。"
+  },
+  "locked": [
+    "ds-btn 根类与颜色变体",
+    "所选尺寸类和对应结构",
+    "ds-btn__text 节点",
+    "组件状态样式与图标",
+    "宿主颜色限制"
+  ],
+  "behavior": {
+    "action": "宿主监听原生 click；组件不执行固定业务。",
+    "state": "disabled与processing是互斥视觉状态。禁用使用原生disabled；processing使用ds-btn--processing、原生disabled及aria-busy=true，并用aria-label保留当前动作名称；loading图标alt为空且aria-hidden=true。退出processing时宿主清理busy标记并按原业务禁用状态恢复disabled，不无条件启用。",
+    "type": "默认 type=button，避免放入表单时意外提交；只有真实表单提交动作才配置 type=submit。颜色和尺寸仍按宿主限制。",
+    "specificationScope": "Saved Button update log and type section only: 4 explicit rule texts and 33 document usage rows paired by actual source ancestry. Original text-node IDs retained; document examples do not define new components or automatically approve hosts. There is no complete specification, browser or visual approval inferred.",
+    "engineeringStatus": "Current acceptance is determined by components/quality/acceptance.json source/tool fingerprints. Old finite proofs are preserved but stale, and are not renewed by scoped Node tests.",
+    "sourceStateScope": "原Preview的15种规格、45项Hover/Disabled/Processing声明匹配属于历史快照。当前本地调用使用relations.iconSlots中60条已核对MG状态；工程与浏览器验证分别见质量记录和Button样板报告，不推定全族视觉批准。",
+    "processingSourceLayout": "当前本地调用使用button-mg-20261112-v1：保留文案、前置Loading、普通左右图标暂隐，间距8px，图标尺寸按relations.iconSlots。原Preview中的隐藏文字、绝对定位和固定宽Processing示例保留为历史资料，不用于当前新增调用。",
+    "leadingIcon": "当前本地调用按relations.iconSlots的已核对MG状态：左右图标独立显隐；Processing保留文案和前置Loading，普通左右图标暂隐。旧原例保留为历史证据。"
+  },
+  "examples": [
+    {
+      "name": "cart-product-card",
+      "publication": {
+        "key": "button/cart-product-card",
+        "disposition": "restricted",
+        "newPages": true,
+        "reason": "Only registered sizes/scenes. Do not generalize Processing dynamic width from static samples. Cart is product-card Default/Hover only.",
+        "constraints": [
+          "Only registered sizes/scenes. Do not generalize Processing dynamic width from static samples. Cart is product-card Default/Hover only."
+        ],
+        "contractPolicy": "颜色按 relations.variantDecisions 的宿主场景选择；尺寸必须从真实 sizeOptions 选取，默认示例不代表所有宿主共用同一尺寸。 Cart为Button内的按钮类型，产品卡片形态只开放Default/Hover；不套用形状按钮的尺寸/Disabled/Processing。",
+        "use": "finite-new-page-candidate",
+        "evidence": "components/contracts/button.json#aiContract/evidence",
+        "requiresCurrentEngineering": true,
+        "visualApproval": "separate-not-granted",
+        "hostComponent": "Card"
+      },
+      "rootTag": "button",
+      "type": "cart",
+      "sizeOptions": [],
+      "purpose": "product-card-cart-add-button",
+      "whenToUse": "已核对的产品小卡片或完整产品卡片内的 Add 入口 → 按对应卡片核对 Cart 加购。",
+      "whenNotToUse": "普通按钮、气泡 Cart 或未定义状态 → 排除产品卡片 Cart 变体。",
+      "rootClasses": "ds-cart ds-cart--product-card",
+      "requiredStructure": [
+        "img.ds-cart__icon",
+        "span.ds-cart__text"
+      ],
+      "slots": {
+        "label": {
+          "selector": "span.ds-cart__text",
+          "mode": "text",
+          "required": true
+        }
+      },
+      "allowedEdits": [
+        "label"
+      ],
+      "exampleHtml": "<button class=\"ds-cart ds-cart--product-card\" type=\"button\" data-ai-example=\"ai-button-cart-product-card\"><img class=\"ds-cart__icon\" src=\"../icons/icon-cart-add.svg\" alt=\"\"><span class=\"ds-cart__text\">Add</span></button>"
+    }
+  ],
+  "relationships": {
+    "children": [],
+    "parents": [
+      {
+        "id": "anchor-nav",
+        "contract": "components/contracts/anchor-nav.json",
+        "preview": "components/variants/anchor-nav.html",
+        "status": "preview-class-evidence-only",
+        "evidence": {
+          "status": "preview-class-evidence-only",
+          "verified": false,
+          "previewExists": true,
+          "classEvidence": true,
+          "declaredClasses": [
+            "ds-btn",
+            "ds-btn--filled-red",
+            "ds-btn--xl-regular"
+          ],
+          "missingClasses": [],
+          "exactStructure": "not-established",
+          "browserEvidence": "not-established",
+          "note": "宿主依赖声明及离线类名盘点；未证明具体变体、尺寸、必需子结构、宿主适配或浏览器行为。"
+        },
+        "usage": [
+          {
+            "component": "Button",
+            "usage": "已核对42px锚点主CTA：Button filled-red/xl-regular，左右24px；修正旧L名称映射。",
+            "slot": "action",
+            "requiredVariants": [
+              "filled-red"
+            ],
+            "implementationClasses": [
+              "ds-btn",
+              "ds-btn--filled-red",
+              "ds-btn--xl-regular"
+            ],
+            "requiredSizes": [
+              {
+                "variant": "filled-red",
+                "size": "xl-regular"
+              }
+            ],
+            "appliesTo": [
+              "anchor-nav"
+            ],
+            "sourceEvidence": {
+              "review": "components/sources/button/local-rule-review-20261113.json",
+              "nodes": [
+                "3:14936",
+                "3:14944",
+                "3:23920"
+              ],
+              "scope": "Button规范中的锚点CTA规则和42px原子；不宣称整个AnchorNav新文件家族已验收。"
+            }
+          }
+        ]
+      },
+      {
+        "id": "banner",
+        "contract": "components/contracts/banner.json",
+        "preview": "components/variants/banner.html",
+        "status": "preview-class-evidence-only",
+        "evidence": {
+          "status": "preview-class-evidence-only",
+          "verified": false,
+          "previewExists": true,
+          "classEvidence": true,
+          "declaredClasses": [
+            "ds-btn",
+            "ds-btn--outline-white",
+            "ds-btn--xl"
+          ],
+          "missingClasses": [],
+          "exactStructure": "not-established",
+          "browserEvidence": "not-established",
+          "note": "宿主依赖声明及离线类名盘点；未证明具体变体、尺寸、必需子结构、宿主适配或浏览器行为。"
+        },
+        "usage": [
+          {
+            "component": "Button",
+            "usage": "Native single-action Hero: actual outline-white/xl Button atom14/22/400; no host typography override.",
+            "slot": "button",
+            "requiredVariants": [
+              "outline-white"
+            ],
+            "implementationClasses": [
+              "ds-btn",
+              "ds-btn--outline-white",
+              "ds-btn--xl"
+            ],
+            "appliesTo": [
+              "hero"
+            ],
+            "requiredSizes": [
+              {
+                "variant": "outline-white",
+                "size": "xl"
+              }
+            ]
+          },
+          {
+            "component": "Button",
+            "usage": "当前完整文案Hero单CTA：outline-white / xl regular",
+            "slot": "button",
+            "requiredVariants": [
+              "outline-white"
+            ],
+            "implementationClasses": [
+              "ds-btn",
+              "ds-btn--outline-white",
+              "ds-btn--xl"
+            ],
+            "appliesTo": [
+              "hero-responsive"
+            ],
+            "requiredSizes": [
+              {
+                "variant": "outline-white",
+                "size": "xl"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "card",
+        "contract": "components/contracts/card.json",
+        "preview": "components/variants/card.html",
+        "status": "preview-class-evidence-only",
+        "evidence": {
+          "status": "preview-class-evidence-only",
+          "verified": false,
+          "previewExists": true,
+          "classEvidence": true,
+          "declaredClasses": [
+            "ds-cart",
+            "ds-cart--product-card",
+            "ds-cart__icon",
+            "ds-cart__text"
+          ],
+          "missingClasses": [],
+          "exactStructure": "not-established",
+          "browserEvidence": "not-established",
+          "note": "宿主依赖声明及离线类名盘点；未证明具体变体、尺寸、必需子结构、宿主适配或浏览器行为。"
+        },
+        "usage": [
+          {
+            "component": "Button",
+            "usage": "Button家族Cart产品卡片按钮；宿主只管理位置和业务事件。",
+            "slot": "actionButton",
+            "requiredVariants": [
+              "cart-product-card"
+            ],
+            "implementationClasses": [
+              "ds-cart",
+              "ds-cart--product-card",
+              "ds-cart__icon",
+              "ds-cart__text"
+            ],
+            "appliesTo": [
+              "embedded.product-small",
+              "embedded.product-full"
+            ],
+            "status": "source-verified-implemented-visual-pending"
+          }
+        ]
+      },
+      {
+        "id": "collapse",
+        "contract": "components/contracts/collapse.json",
+        "preview": "components/variants/collapse.html",
+        "status": "preview-class-evidence-only",
+        "evidence": {
+          "status": "preview-class-evidence-only",
+          "verified": false,
+          "previewExists": true,
+          "classEvidence": true,
+          "declaredClasses": [
+            "ds-btn",
+            "ds-btn--outline-gray",
+            "ds-btn--filled-black",
+            "ds-btn--xl",
+            "ds-btn--outline-black"
+          ],
+          "missingClasses": [],
+          "exactStructure": "not-established",
+          "browserEvidence": "not-established",
+          "note": "宿主依赖声明及离线类名盘点；未证明具体变体、尺寸、必需子结构、宿主适配或浏览器行为。"
+        },
+        "usage": [
+          {
+            "component": "Button",
+            "usage": "Cancel使用现行outline-gray/XL，Save使用filled-black/XL原生submit；保留原子默认样式，不从旧库复制覆盖。",
+            "slot": "body/row",
+            "requiredVariants": [
+              "outline-gray",
+              "filled-black"
+            ],
+            "implementationClasses": [
+              "ds-btn",
+              "ds-btn--outline-gray",
+              "ds-btn--filled-black",
+              "ds-btn--xl"
+            ],
+            "appliesTo": [
+              "inline-edit"
+            ],
+            "requiredSizes": [
+              {
+                "variant": "outline-gray",
+                "size": "xl"
+              },
+              {
+                "variant": "filled-black",
+                "size": "xl"
+              }
+            ],
+            "sourceEvidence": {
+              "review": "components/sources/collapse/inline-button-source-1010.json",
+              "basis": "user-confirmed-atom-first-assembly",
+              "originalHostMapping": "finite-instance-properties-and-retired-main-reference-confirmed",
+              "note": "Native original Cancel is gray-outline Default 69424:119931, Save black-fill Default 69424:119935, both 92x42; their referenced old library components have been deleted. Local current atom sizes/paint take precedence under user atom-first policy; do not claim pixel equivalence."
+            }
+          },
+          {
+            "component": "Button",
+            "usage": "当前MG描边黑色42px View Order；复用现行Button XL，保留原子优先取舍。",
+            "slot": "body/row",
+            "requiredVariants": [
+              "outline-black"
+            ],
+            "implementationClasses": [
+              "ds-btn",
+              "ds-btn--outline-black",
+              "ds-btn--xl"
+            ],
+            "appliesTo": [
+              "data-preview"
+            ],
+            "requiredSizes": [
+              {
+                "variant": "outline-black",
+                "size": "xl"
+              }
+            ],
+            "sourceEvidence": {
+              "review": "components/sources/list-option-mg-20261115/review.json",
+              "basis": "current-MG-instance-and-atom-first",
+              "originalHostMapping": "3:144776"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comment",
+        "contract": "components/contracts/comment.json",
+        "preview": "components/variants/comment.html",
+        "status": "preview-class-evidence-only",
+        "evidence": {
+          "status": "preview-class-evidence-only",
+          "verified": false,
+          "previewExists": true,
+          "classEvidence": true,
+          "declaredClasses": [
+            "ds-btn",
+            "ds-btn--filled-red",
+            "ds-btn--l"
+          ],
+          "missingClasses": [],
+          "exactStructure": "not-established",
+          "browserEvidence": "not-established",
+          "note": "宿主依赖声明及离线类名盘点；未证明具体变体、尺寸、必需子结构、宿主适配或浏览器行为。"
+        },
+        "usage": [
+          {
+            "component": "Button",
+            "usage": "问答与评论输入区的 Submit 主操作。",
+            "slot": "composer/actions",
+            "appliesTo": [
+              "qa-thread",
+              "review-thread"
+            ],
+            "requiredVariants": [
+              "filled-red"
+            ],
+            "implementationClasses": [
+              "ds-btn",
+              "ds-btn--filled-red",
+              "ds-btn--l"
+            ],
+            "requiredSizes": [
+              {
+                "variant": "filled-red",
+                "size": "l"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "dialog",
+        "contract": "components/contracts/dialog.json",
+        "preview": "components/variants/dialog.html",
+        "status": "preview-class-evidence-only",
+        "evidence": {
+          "status": "preview-class-evidence-only",
+          "verified": false,
+          "previewExists": true,
+          "classEvidence": true,
+          "declaredClasses": [
+            "ds-btn",
+            "ds-btn--filled-gray",
+            "ds-btn--filled-red",
+            "ds-btn--xl-regular"
+          ],
+          "missingClasses": [],
+          "exactStructure": "not-established",
+          "browserEvidence": "not-established",
+          "note": "宿主依赖声明及离线类名盘点；未证明具体变体、尺寸、必需子结构、宿主适配或浏览器行为。"
+        },
+        "usage": [
+          {
+            "component": "Button",
+            "usage": "删除确认底部 42px 灰色取消按钮与红色确认按钮，直接使用现有按钮 DOM/CSS",
+            "requiredVariants": [
+              "filled-gray",
+              "filled-red"
+            ],
+            "implementationClasses": [
+              "ds-btn",
+              "ds-btn--filled-gray",
+              "ds-btn--filled-red",
+              "ds-btn--xl-regular"
+            ],
+            "appliesTo": [
+              "confirmation",
+              "form",
+              "cart"
+            ],
+            "slot": "footer",
+            "hostPreviewAnchor": "demo-confirmation",
+            "requiredSizes": [
+              {
+                "variant": "filled-gray",
+                "size": "xl-regular"
+              },
+              {
+                "variant": "filled-red",
+                "size": "xl-regular"
+              }
+            ],
+            "sourceEvidence": {
+              "inventory": "components/sources/dialog/source-inventory.json",
+              "scope": "saved-instance-component-reference-and-contract-size-only",
+              "instanceIds": [
+                "68908:052339/68908:041272",
+                "68908:052339/68908:041268"
+              ],
+              "componentIds": [
+                "hj66450:99105",
+                "hj66450:98573"
+              ],
+              "inheritedPositionsResolved": false
+            }
+          }
+        ]
+      },
+      {
+        "id": "dropdown",
+        "contract": "components/contracts/dropdown.json",
+        "preview": "components/variants/dropdown.html",
+        "status": "preview-class-evidence-only",
+        "evidence": {
+          "status": "preview-class-evidence-only",
+          "verified": false,
+          "previewExists": true,
+          "classEvidence": true,
+          "declaredClasses": [
+            "ds-btn",
+            "ds-btn--outline-gray",
+            "ds-btn--outline-black",
+            "ds-btn--xl",
+            "ds-btn--filled-red",
+            "ds-btn--filled-gray",
+            "ds-btn--l",
+            "ds-btn__text"
+          ],
+          "missingClasses": [],
+          "exactStructure": "not-established",
+          "browserEvidence": "not-established",
+          "note": "宿主依赖声明及离线类名盘点；未证明具体变体、尺寸、必需子结构、宿主适配或浏览器行为。"
+        },
+        "usage": [
+          {
+            "component": "Button",
+            "usage": "现有宿主按钮采用已登记 XL 原子；宿主仅管理装配与事件，原稿对应关系待核实",
+            "slot": "footer",
+            "requiredVariants": [
+              "outline-gray",
+              "outline-black"
+            ],
+            "implementationClasses": [
+              "ds-btn",
+              "ds-btn--outline-gray",
+              "ds-btn--outline-black",
+              "ds-btn--xl"
+            ],
+            "appliesTo": [
+              "grouped"
+            ],
+            "requiredSizes": [
+              {
+                "variant": "outline-gray",
+                "size": "xl"
+              },
+              {
+                "variant": "outline-black",
+                "size": "xl"
+              }
+            ],
+            "sourceEvidence": {
+              "review": "components/sources/dropdown/button-nesting-1010.json",
+              "basis": "user-confirmed-atom-first-assembly",
+              "originalHostMapping": "pending",
+              "note": "XL follows the current registered atom; this does not certify the original host component or its source dimensions."
+            }
+          },
+          {
+            "component": "Button",
+            "slot": "account-guest/actions",
+            "requiredVariants": [
+              "filled-red",
+              "filled-gray"
+            ],
+            "requiredSizes": [
+              {
+                "variant": "filled-red",
+                "size": "l"
+              },
+              {
+                "variant": "filled-gray",
+                "size": "l"
+              }
+            ],
+            "implementationClasses": [
+              "ds-btn",
+              "ds-btn--filled-red",
+              "ds-btn--filled-gray",
+              "ds-btn--l",
+              "ds-btn__text"
+            ],
+            "appliesTo": [
+              "account-guest"
+            ],
+            "usage": "MG36px登录/注册按钮，原子拥有样式；宿主只分配256px宽。"
+          }
+        ]
+      },
+      {
+        "id": "form",
+        "contract": "components/contracts/form.json",
+        "preview": "components/variants/form.html",
+        "status": "preview-class-evidence-only",
+        "evidence": {
+          "status": "preview-class-evidence-only",
+          "verified": false,
+          "previewExists": true,
+          "classEvidence": true,
+          "declaredClasses": [
+            "ds-btn",
+            "ds-btn--filled-red",
+            "ds-btn--xl-regular"
+          ],
+          "missingClasses": [],
+          "exactStructure": "not-established",
+          "browserEvidence": "not-established",
+          "note": "宿主依赖声明及离线类名盘点；未证明具体变体、尺寸、必需子结构、宿主适配或浏览器行为。"
+        },
+        "usage": [
+          {
+            "component": "Button",
+            "usage": "PC gray193814 and white055775: genuine filled-red/xl-regular (42px/24px, regular14). Host only assembles/events.",
+            "slot": "submitButton",
+            "requiredVariants": [
+              "filled-red"
+            ],
+            "implementationClasses": [
+              "ds-btn",
+              "ds-btn--filled-red",
+              "ds-btn--xl-regular"
+            ],
+            "requiredSizes": [
+              {
+                "variant": "filled-red",
+                "size": "xl-regular"
+              }
+            ],
+            "appliesTo": [
+              "gray",
+              "white"
+            ]
+          },
+          {
+            "component": "Button",
+            "slot": "mobileSubmitSourceSlots",
+            "usage": "Finite M Submit uses genuine filled-red/xl-regular (42px/24px regular), main hj66450:98573; host allocates width only.",
+            "requiredVariants": [
+              "filled-red"
+            ],
+            "implementationClasses": [
+              "ds-btn",
+              "ds-btn--filled-red",
+              "ds-btn--xl-regular"
+            ],
+            "requiredSizes": [
+              {
+                "variant": "filled-red",
+                "size": "xl-regular"
+              }
+            ],
+            "appliesTo": [
+              "mobile-source-slots",
+              "mobile-integrated"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "list",
+        "contract": "components/contracts/list.json",
+        "preview": "components/variants/list.html",
+        "status": "preview-class-evidence-only",
+        "evidence": {
+          "status": "preview-class-evidence-only",
+          "verified": false,
+          "previewExists": true,
+          "classEvidence": true,
+          "declaredClasses": [
+            "ds-btn",
+            "ds-btn--outline-black",
+            "ds-btn--xl",
+            "ds-btn__text"
+          ],
+          "missingClasses": [],
+          "exactStructure": "not-established",
+          "browserEvidence": "not-established",
+          "note": "宿主依赖声明及离线类名盘点；未证明具体变体、尺寸、必需子结构、宿主适配或浏览器行为。"
+        },
+        "usage": [
+          {
+            "component": "Button",
+            "usage": "PC操作列表四个批量动作真实调用outline-black/XL（42px）；宿主只绑定本地演示动作及gap8装配，保持原子结构/状态。",
+            "slot": "operation-toolbar",
+            "appliesTo": [
+              "operation-intensive"
+            ],
+            "requiredVariants": [
+              "outline-black"
+            ],
+            "implementationClasses": [
+              "ds-btn",
+              "ds-btn--outline-black",
+              "ds-btn--xl",
+              "ds-btn__text"
+            ],
+            "requiredSizes": [
+              {
+                "variant": "outline-black",
+                "size": "xl"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "navigation",
+        "contract": "components/contracts/navigation.json",
+        "preview": "components/variants/navigation.html",
+        "status": "preview-class-evidence-only",
+        "evidence": {
+          "status": "preview-class-evidence-only",
+          "verified": false,
+          "previewExists": true,
+          "classEvidence": true,
+          "declaredClasses": [
+            "ds-btn",
+            "ds-btn--filled-red",
+            "ds-btn--s"
+          ],
+          "missingClasses": [],
+          "exactStructure": "not-established",
+          "browserEvidence": "not-established",
+          "note": "宿主依赖声明及离线类名盘点；未证明具体变体、尺寸、必需子结构、宿主适配或浏览器行为。"
+        },
+        "usage": [
+          {
+            "component": "Button",
+            "usage": "US PC Footer真实调用Button filled-red/S32px/12px Default；新文件3:85036与既有047160来源保留，无左右图标或宿主样式覆盖，业务订阅由宿主接入。",
+            "slot": "footer.subscribe",
+            "requiredVariants": [
+              "filled-red"
+            ],
+            "implementationClasses": [
+              "ds-btn",
+              "ds-btn--filled-red",
+              "ds-btn--s"
+            ],
+            "appliesTo": [
+              "footer"
+            ],
+            "requiredSizes": [
+              {
+                "variant": "filled-red",
+                "size": "s"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "select",
+        "contract": "components/contracts/select.json",
+        "preview": "components/variants/select.html",
+        "status": "preview-class-evidence-only",
+        "evidence": {
+          "status": "preview-class-evidence-only",
+          "verified": false,
+          "previewExists": true,
+          "classEvidence": true,
+          "declaredClasses": [
+            "ds-btn",
+            "ds-btn--outline-gray",
+            "ds-btn--outline-black",
+            "ds-btn--xl"
+          ],
+          "missingClasses": [],
+          "exactStructure": "not-established",
+          "browserEvidence": "not-established",
+          "note": "宿主依赖声明及离线类名盘点；未证明具体变体、尺寸、必需子结构、宿主适配或浏览器行为。"
+        },
+        "usage": [
+          {
+            "component": "Button",
+            "usage": "组合分组面板Cancel/OK真实调用描边XL原子；已保存宿主INSTANCE明确42px/24px，旧L36px为本地装配偏差",
+            "slot": "footer",
+            "appliesTo": [
+              "grouped-combination"
+            ],
+            "requiredVariants": [
+              "outline-gray",
+              "outline-black"
+            ],
+            "implementationClasses": [
+              "ds-btn",
+              "ds-btn--outline-gray",
+              "ds-btn--outline-black",
+              "ds-btn--xl"
+            ],
+            "requiredSizes": [
+              {
+                "variant": "outline-gray",
+                "size": "xl"
+              },
+              {
+                "variant": "outline-black",
+                "size": "xl"
+              }
+            ],
+            "sourceEvidence": {
+              "inventory": "components/sources/select/source-inventory.json",
+              "hostComponentId": "68908:053450",
+              "instanceIds": [
+                "68908:053469/68908:037485",
+                "68908:053469/68908:037489"
+              ],
+              "referencedComponentIds": [
+                "68908:026435",
+                "68908:026423"
+              ],
+              "sourceSize": "42px/24px",
+              "basis": "宿主真实INSTANCE尺寸与颜色/描边属性 + 已登记Button原子XL；旧引用ID与新原子节点不同，未宣称同版同ID",
+              "parentOverrides": "宿主旧字体/间距等声明保留为来源事实；用户确认原子优先，样式由Button负责",
+              "currentReview": {
+                "file": "components/sources/foundation-mg-20261114/select-review.json",
+                "nodes": [
+                  "3:289812",
+                  "3:289808"
+                ]
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "parentStatus": "declared-hosts",
+    "icons": [
+      {
+        "file": "components/icons/icon-cart-add.svg",
+        "registry": "components/icons/icons-manifest.json",
+        "appliesTo": [
+          "cart"
+        ],
+        "usage": "已导出官方Cart1 SVG，路径/画布/填色与现有文件一致"
+      }
+    ],
+    "tokens": [
+      {
+        "name": "color.brand-red",
+        "value": "#C00000",
+        "unit": null,
+        "cssVar": "--brand-red",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.gray-1",
+        "value": "#19191A",
+        "unit": null,
+        "cssVar": "--color-gray-1",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.gray-2",
+        "value": "#4B4B4D",
+        "unit": null,
+        "cssVar": "--color-gray-2",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.gray-3",
+        "value": "#707070",
+        "unit": null,
+        "cssVar": "--color-gray-3",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.gray-5",
+        "value": "#DEE0E3",
+        "unit": null,
+        "cssVar": "--color-gray-5",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.gray-7",
+        "value": "#F2F2F2",
+        "unit": null,
+        "cssVar": "--color-gray-7",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.gray-8",
+        "value": "#F6F6F8",
+        "unit": null,
+        "cssVar": "--color-gray-8",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.white",
+        "value": "#FFFFFF",
+        "unit": null,
+        "cssVar": "--color-white",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.blue",
+        "value": "#0060BF",
+        "unit": null,
+        "cssVar": "--color-blue",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.hover-overlay",
+        "value": "rgba(25,25,26,0.2)",
+        "unit": null,
+        "cssVar": "--color-hover-overlay",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.hover-overlay-light",
+        "value": "rgba(25,25,26,0.04)",
+        "unit": null,
+        "cssVar": "--color-hover-overlay-light",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.blue-hover-overlay",
+        "value": "rgba(0,96,191,0.04)",
+        "unit": null,
+        "cssVar": "--color-blue-hover-overlay",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.white-translucent",
+        "value": "rgba(255,255,255,0.1)",
+        "unit": null,
+        "cssVar": "--color-white-translucent",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "typography.font-family-base",
+        "value": "Open Sans",
+        "unit": null,
+        "cssVar": "--font-family-base",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-size-sm",
+        "value": 12,
+        "unit": "px",
+        "cssVar": "--font-size-sm",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-size-md",
+        "value": 14,
+        "unit": "px",
+        "cssVar": "--font-size-md",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-weight-regular",
+        "value": 400,
+        "unit": null,
+        "cssVar": "--font-weight-regular",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-weight-semibold",
+        "value": 600,
+        "unit": null,
+        "cssVar": "--font-weight-semibold",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "border-radius.md",
+        "value": 4,
+        "unit": "px",
+        "cssVar": "--border-radius-md",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border-radius.json"
+      },
+      {
+        "name": "opacity.disabled",
+        "value": 0.3,
+        "unit": null,
+        "cssVar": "--opacity-disabled",
+        "primitiveReferences": null,
+        "source": "components/token-specs/opacity.json"
+      },
+      {
+        "name": "opacity.processing",
+        "value": 0.6,
+        "unit": null,
+        "cssVar": "--opacity-processing",
+        "primitiveReferences": null,
+        "source": "components/token-specs/opacity.json"
+      },
+      {
+        "name": "spacing.xl",
+        "value": 24,
+        "unit": "px",
+        "cssVar": "--spacing-xl",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.lg",
+        "value": 16,
+        "unit": "px",
+        "cssVar": "--spacing-lg",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.md",
+        "value": 12,
+        "unit": "px",
+        "cssVar": "--spacing-md",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.sm",
+        "value": 8,
+        "unit": "px",
+        "cssVar": "--spacing-sm",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "border.style.none",
+        "value": "none",
+        "unit": null,
+        "cssVar": "--border-style-none",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.width.default",
+        "value": 1,
+        "unit": "px",
+        "cssVar": "--border-width-default",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.style.default",
+        "value": "solid",
+        "unit": null,
+        "cssVar": "--border-style-default",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.emphasis",
+        "value": "var(--color-gray-1)",
+        "unit": null,
+        "cssVar": "--border-color-emphasis",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.default",
+        "value": "var(--color-gray-5)",
+        "unit": null,
+        "cssVar": "--border-color-default",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.inverse",
+        "value": "var(--color-white)",
+        "unit": null,
+        "cssVar": "--border-color-inverse",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.focus",
+        "value": "var(--color-blue)",
+        "unit": null,
+        "cssVar": "--border-color-focus",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "typography.h7-regular",
+        "value": {
+          "fontSize": "14px",
+          "lineHeight": "22px",
+          "fontWeight": 400
+        },
+        "unit": null,
+        "cssVar": null,
+        "primitiveReferences": {
+          "fontSize": "typography.font-size-md",
+          "fontWeight": "typography.font-weight-regular"
+        },
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.h7-semibold",
+        "value": {
+          "fontSize": "14px",
+          "lineHeight": "22px",
+          "fontWeight": 600
+        },
+        "unit": null,
+        "cssVar": null,
+        "primitiveReferences": {
+          "fontSize": "typography.font-size-md",
+          "fontWeight": "typography.font-weight-semibold"
+        },
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.h9-regular",
+        "value": {
+          "fontSize": "12px",
+          "lineHeight": "20px",
+          "fontWeight": 400
+        },
+        "unit": null,
+        "cssVar": null,
+        "primitiveReferences": {
+          "fontSize": "typography.font-size-sm",
+          "fontWeight": "typography.font-weight-regular"
+        },
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "color.black-button-hover-overlay",
+        "value": "rgba(25,25,26,0.6)",
+        "unit": null,
+        "cssVar": "--color-black-button-hover-overlay",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "spacing.2",
+        "value": 2,
+        "unit": "px",
+        "cssVar": "--spacing-2",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.6",
+        "value": 6,
+        "unit": "px",
+        "cssVar": "--spacing-6",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.xs",
+        "value": 4,
+        "unit": "px",
+        "cssVar": "--spacing-xs",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      }
+    ]
+  },
+  "evidence": {
+    "localPreview": "components/variants/button.html",
+    "sourceStatus": "60 saved COMPONENT nodes: 15 Default calls and 45 Hover/Disabled/Processing declarations matched. Online set identity and gray outline M default geometry checked only; full online state, browser rendering and acceptance pending.",
+    "specificationIndex": "components/sources/button/specification-index.json",
+    "originalComponents": "docs/handoff/archives/2026-10-09-overnight/mastergo/button-shape-component-set.json",
+    "inventory": "components/sources/button/design-inventory.json",
+    "loadingContourReview": "components/sources/button/loading-contour-review-1012.json",
+    "loadingOriginalSvg": "components/sources/button/loading-user-export-1012.svg",
+    "nativeProcessingReview": "components/sources/button/native-processing-review-1012.json",
+    "redXlBoldProcessingCurrent": "components/sources/button/red-xl-bold-processing-review-1013.json",
+    "cartProductCard": "components/sources/card/cart-dependency-source-1014.json",
+    "xlBoldLoadingIdentity1015": "components/sources/button/xl-bold-loading-identity-1015.json",
+    "leadingIcon": "components/sources/button/leading-icon-source-1019.json",
+    "localRuleReview": "components/sources/button/local-rule-review-20261113.json",
+    "currentRuleSource": "components/sources/button/mg-rule-review-20261113.json"
+  },
+  "sourceValidation": {
+    "componentIdentity": {
+      "status": "saved-typed-nodes-checked",
+      "files": [
+        "components/sources/button/design-inventory.json",
+        "docs/handoff/archives/2026-10-09-overnight/mastergo/button-shape-component-set.json"
+      ],
+      "basis": "Original saved COMPONENT_SET/COMPONENT types and finite node identities; not screen position or container title."
+    },
+    "specificationBody": {
+      "status": "selected-saved-body-texts-checked",
+      "scope": "shared-button-section-only",
+      "files": [
+        "components/sources/button/specification-index.json",
+        "docs/handoff/archives/2026-10-09-overnight/mastergo/button-spec-document.json"
+      ]
+    },
+    "originalOnlineFrontendCode": false,
+    "browserComputedStyles": false,
+    "completeSpecificationCoverage": false,
+    "cart": {
+      "status": "product-default-hover-and-official-svg-checked",
+      "source": "components/sources/card/cart-dependency-source-1014.json",
+      "svg": "components/sources/card/cart-icon-original-1014.svg"
+    },
+    "stateSemantics": {
+      "scope": "authored-preview-state-semantics-only",
+      "counts": {
+        "default": 16,
+        "hover": 15,
+        "disabled": 15,
+        "processing": 15
+      },
+      "nativeKeyboardVerified": false,
+      "browserVerified": false,
+      "processingLayoutApproved": false
+    },
+    "leadingIcon": {
+      "schemaVersion": "fs-button-leading-icon-source/1",
+      "scope": "Button filled-red/xl-regular and outline-black/xl optional left slot; Default/Hover/Disabled. Visible Processing left slot withheld.",
+      "fileId": "143880409387753",
+      "pageId": "3752:3993",
+      "readAt": "2026-10-19T02:18:38.237Z",
+      "remoteRevision": null,
+      "evidence": [
+        {
+          "file": "components/sources/maintenance/j4858d-required-source-read-1016/mgShape.json",
+          "kind": "real button set and left-visible property"
+        },
+        {
+          "file": "components/sources/maintenance/j4858d-required-source-read-1016/mgHiddenButton.json",
+          "kind": "16px glyph and right2 group"
+        },
+        {
+          "file": "components/sources/maintenance/j4858d-required-source-read-1016/button-rules-read-1019.json",
+          "node": "68268:63477",
+          "kind": "visible left icon original instance and dimensions"
+        },
+        {
+          "file": "components/sources/maintenance/j4858d-required-source-read-1016/mgIconSpec.json",
+          "kind": "functional icon equal-ratio SVG use; common14/16/18/20/24 sizes"
+        },
+        {
+          "file": "components/sources/maintenance/j4858d-required-source-read-1016/exports/cart-dark-slot/Icon-通用Icon-Cart-2-加购.json",
+          "kind": "Real Cart2 full artboard and fragment offsets, current online source"
+        }
+      ],
+      "geometry": {
+        "height": 42,
+        "sidePadding": 24,
+        "iconBox": 16,
+        "groupPaddingRight": 2,
+        "rootGap": 2,
+        "effectiveLabelGap": 4
+      },
+      "iconScalePolicy": "Functional SVG geometry remains unchanged; Cart native14 is rendered proportionally16 in the genuine16px slot under Icon functional scaling guidance. This is not a resize permission for the separately locked static content icons.",
+      "excluded": "67636:070148 hidden Download exported an empty16×16 SVG and no PNG; not installed or used as valid white glyph.",
+      "previewBoundary": "Only the actual black Download visible example is displayed in the component gallery. Cart/quote call combinations are verified as host calls, not new business component variants.",
+      "assets": [
+        {
+          "file": "components/icons/icon-cart-add.svg",
+          "original": "components/sources/card/cart-icon-original-1014.svg",
+          "node": "66737:80343",
+          "nativeSize": 14,
+          "paint": "#FFFFFF",
+          "role": "cart",
+          "screenshot": "components/sources/maintenance/j4858d-required-source-read-1016/screenshots/card-purchase-visual-1019.png",
+          "sha256": "ec9abb0e806f0d23db0e279cc5a8935bab0619d0c2c8b71d8b56b0945e3b8377",
+          "originalSha256": "d82ec09fa66e10017004d5de93827524612793d6b90602bbb63e7f8e7d451d73",
+          "screenshotSha256": "2c91316cfdb856c172508ea8d375aa12d13d288039117a31b2af3b3afd5cc400"
+        },
+        {
+          "file": "components/icons/icon-fs-download-black-16.svg",
+          "original": "components/sources/maintenance/j4858d-required-source-read-1016/exports/button-slot-black/asset/icons/svg_df1a2ad5.svg",
+          "node": "1673:49930",
+          "nativeSize": 16,
+          "paint": "#19191A",
+          "role": "download",
+          "screenshot": "components/sources/maintenance/j4858d-required-source-read-1016/screenshots/download-black-16-1019.png",
+          "sha256": "a967c41357f8b311134dbfce13f253fc270ab85c3285654d4b16dca7061ce40d",
+          "originalSha256": "a967c41357f8b311134dbfce13f253fc270ab85c3285654d4b16dca7061ce40d",
+          "screenshotSha256": "ba3f32890f6a5d11da551e85fdb33a5d8f87fc63c4605145f8f1d8c97326749a"
+        },
+        {
+          "file": "components/icons/icon-fs-quotes-black-16.svg",
+          "original": "components/sources/maintenance/j4858d-required-source-read-1016/exports/button-slot-black/asset/icons/svg_62428f83.svg",
+          "node": "1673:14001",
+          "nativeSize": 16,
+          "paint": "#19191A",
+          "role": "quote",
+          "screenshot": "components/sources/maintenance/j4858d-required-source-read-1016/screenshots/quotes-black-16-1019.png",
+          "sha256": "1b7692468dad3f29781c3994b44676aa08f800650a4a63c94a4e172dffadd94f",
+          "originalSha256": "1b7692468dad3f29781c3994b44676aa08f800650a4a63c94a4e172dffadd94f",
+          "screenshotSha256": "ddac1c997ba21603935bdd866a631161d1015d9a6927c612ee37bc177e0a8212"
+        },
+        {
+          "file": "components/icons/icon-cart.svg",
+          "original": "components/sources/maintenance/j4858d-required-source-read-1016/exports/cart-dark-slot/asset/icons/svg_27631d6e.svg",
+          "node": "55716:016051",
+          "nativeSize": 24,
+          "nativeWidth": 23.826171875,
+          "paint": "#19191A",
+          "role": "cart",
+          "screenshot": "components/sources/maintenance/j4858d-required-source-read-1016/screenshots/cart-dark-24-1019.png",
+          "sha256": "b86811904a2144428d62db5374820e8f76a06e2f120c03e1ec87ca35c90753db",
+          "originalSha256": "0fbb2e15f8d295ebd48a7f5006db258a0e7c9dbfc98f4a1ff63e0d9da365d38b",
+          "screenshotSha256": "daf3554076e867ddac30cad54d1fb5dd128c28f2480cbf2736b260b12350d6da",
+          "geometryTransform": {
+            "kind": "source-fragment-in-original-artboard",
+            "translation": [
+              1.9854736328125,
+              2
+            ],
+            "runtimeViewBox": [
+              0,
+              0,
+              23.826171875,
+              24
+            ],
+            "sourceFrameEvidence": "components/sources/maintenance/j4858d-required-source-read-1016/exports/cart-dark-slot/Icon-通用Icon-Cart-2-加购.json",
+            "reason": "Original Cart2 has a24px artboard and one inset path. The retained Header SVG expresses that same path translated into its original full artboard; all source commands, control points and paint are checked, with no redrawing.16px slot uses existing proportional functional-icon guidance.",
+            "sourceFrameSha256": "da1b4c40f2e374ab9de4493f164b97b0fe774d08403c85767aef782ebab0cee5"
+          }
+        }
+      ],
+      "completionConditions": [
+        "Source property and finite geometry registered",
+        "Existing no-icon calls remain valid",
+        "Finite same-paint FS resources bind without label HTML or external overlays",
+        "Compiler, public output and actual browser geometry/states checked",
+        "Affected host references synchronized; no historical page upgrade"
+      ],
+      "remaining": [
+        "Heart independently source-pending",
+        "Visible left icon in Processing not admitted",
+        "Whole-page A2/A3 and regeneration/review remain separate"
+      ]
+    }
+  },
+  "freshness": {
+    "fingerprints": {
+      "components/button-current.css": "45e94e48ec97a34b4883ecc4f11b33301cdd6679445a3970cb16a2a87c6d8c9e",
+      "components/button-runtime-current.css": "caaa9b65a8d2fbebfa487ca3e0cf0c67d36e0219ffc55d4b0d801371a02da76c",
+      "components/cart-current.css": "1dcceb0139a292876bac11eee7d617d76365ef4a45b324efafd9ffd6f99ddc40",
+      "components/components.css": "a08b4fe2790b5ff2b784c6362a90f1b94e7535a03e863232ce6d620a52e85f73",
+      "components/contracts/button.json": "1f3092d74e19c1a840fbf2e8b8ecaf6115976b2941cc5484e4cda824025b1f73",
+      "components/contracts/collapse.json": "e723bf5d2e055846a15f14036d2711334b77408f64000ba0b5956383b1351c61",
+      "components/contracts/input.json": "b367155c40d99807834add264130f574d150f95f09836fe70e84e3bf37a174d1",
+      "components/contracts/text-button.json": "323301e3a3438778dd29d5d6c32fd7e661846707ce711b5c0ec82d11fea12fc5",
+      "components/icons/icon-cart-add.svg": "ec9abb0e806f0d23db0e279cc5a8935bab0619d0c2c8b71d8b56b0945e3b8377",
+      "components/icons/icon-cart.svg": "b86811904a2144428d62db5374820e8f76a06e2f120c03e1ec87ca35c90753db",
+      "components/icons/icon-fs-download-black-16.svg": "a967c41357f8b311134dbfce13f253fc270ab85c3285654d4b16dca7061ce40d",
+      "components/icons/icon-fs-quotes-black-16.svg": "1b7692468dad3f29781c3994b44676aa08f800650a4a63c94a4e172dffadd94f",
+      "components/icons/icon-loading.svg": "eacc5498fda78990c78ea625c70278e547ad650168bbfae03184a9fae743cde9",
+      "components/icons/icons-manifest.json": "12c48af6d1dc59d50b76046bb0507005f565aa4224a6d8056ce4eaaf8050c43e",
+      "components/icons/mastergo-library/系统Icon/1634-37848.svg": "1815c86c630ee121a42e126e2cdc2c8cd98fd75abe2ea86f8e21aad947a3c00a",
+      "components/icons/mastergo-library/系统Icon/1673-49930.svg": "a967c41357f8b311134dbfce13f253fc270ab85c3285654d4b16dca7061ce40d",
+      "components/icons/mastergo-library/通用Icon/33189-59138.svg": "9e2954f09190888b8e4a8cc7583513ca7ec6d8311f3a7bee7c7653f73b2bfa5f",
+      "components/preview/reference-live.js": "4839383529a3ee82df1d8efe675d430567abc1986034499107aa429d21a18ea6",
+      "components/reference-policy.json": "4ae8f51f623386417e38d497caafb8bda4417c929159002a7ac088e6e526b482",
+      "components/sources/button/design-inventory.json": "5c4b7355ebdb7b78ab234742a7feb49c5d988c2f6cd09d97ace2f41031141791",
+      "components/sources/button/leading-icon-source-1019.json": "ebc0e8dd03b00543e2c9ac75c1622aa8069f5557ea2fb4aa353a35b6b4dc850a",
+      "components/sources/button/loading-contour-review-1012.json": "28f5e250f142fc8d55a1fa715fa4e750608064e0b91e7da676d5784e1f915903",
+      "components/sources/button/loading-mother-official-1015.svg": "1815c86c630ee121a42e126e2cdc2c8cd98fd75abe2ea86f8e21aad947a3c00a",
+      "components/sources/button/loading-user-export-1012.svg": "d2ab9f71db7be72c4585bc65324c4e488279025e9a58e2724018f7e6d0d89887",
+      "components/sources/button/loading12-official-1015.svg": "41991f69e1cf21d17e2668821c0bbcb7bc1504a83811b1d26361dd60b40d68cc",
+      "components/sources/button/loading12-source-review-1015.json": "722a019dac77fd500f6b8d00130b1c8c00a7700bbadfc98a249488dc0b5b8f1e",
+      "components/sources/button/local-rule-review-20261113.json": "cee91fa54f0c5e883411e5183a45f2e6ea549730470e9efc3565a0f0c2a62b06",
+      "components/sources/button/mg-rule-review-20261113.json": "dea502e0a628e4804971ce9b677ba4811f2d2b3d339353fa416ec86220c7c4bd",
+      "components/sources/button/native-processing-review-1012.json": "590496c0210c56376be45d95371b23e041cc29c29fa791383f65665192ffb133",
+      "components/sources/button/red-xl-bold-processing-review-1013.json": "3a54fb0cc91534d57d1ee305a5e27974945d67b423790b0069c3e556273fe75d",
+      "components/sources/button/specification-index.json": "04d17ff66f36bfae9f6acc9f5633275393a2a52f4bc27475a0f06a80425f1b9e",
+      "components/sources/button/xl-bold-loading-identity-1015.json": "ec110a615034c9d2f655b2c85343c267538a3dded0ece443d62c9e478e9ef3f1",
+      "components/sources/card/cart-dependency-source-1014.json": "5b489f0b93fad1c5d896bfc892aebe621139ba0a9594a660a6d29e3d1163b68d",
+      "components/sources/card/cart-icon-original-1014.svg": "d82ec09fa66e10017004d5de93827524612793d6b90602bbb63e7f8e7d451d73",
+      "components/sources/five-variants-20261115/review.json": "821baac5e00e60f1a796ae8d0a1881ae122da740e477666a54b3e94a13a7556f",
+      "components/sources/maintenance/j4858d-required-source-read-1016/button-rules-read-1019.json": "ae4a7f910f0906cc9c73db88a5553337a18ab2964b6a6f7f67ef97c2b743f5f3",
+      "components/sources/maintenance/j4858d-required-source-read-1016/exports/button-slot-black/asset/icons/svg_62428f83.svg": "1b7692468dad3f29781c3994b44676aa08f800650a4a63c94a4e172dffadd94f",
+      "components/sources/maintenance/j4858d-required-source-read-1016/exports/button-slot-black/asset/icons/svg_df1a2ad5.svg": "a967c41357f8b311134dbfce13f253fc270ab85c3285654d4b16dca7061ce40d",
+      "components/sources/maintenance/j4858d-required-source-read-1016/exports/cart-dark-slot/Icon-通用Icon-Cart-2-加购.json": "da1b4c40f2e374ab9de4493f164b97b0fe774d08403c85767aef782ebab0cee5",
+      "components/sources/maintenance/j4858d-required-source-read-1016/exports/cart-dark-slot/asset/icons/svg_27631d6e.svg": "0fbb2e15f8d295ebd48a7f5006db258a0e7c9dbfc98f4a1ff63e0d9da365d38b",
+      "components/sources/maintenance/j4858d-required-source-read-1016/mgHiddenButton.json": "495a17448e04ca85e56c369565b05346e4e47dc0dc426988e97117960b8df330",
+      "components/sources/maintenance/j4858d-required-source-read-1016/mgIconSpec.json": "c84bd46ce73aa666bc19830515123caae1b1049e1d659a34ea05304392fdb4f3",
+      "components/sources/maintenance/j4858d-required-source-read-1016/mgShape.json": "b1bf097373b99fae96e2fba60cafe30c3001d1ad34f9c572800c8e4d5d76ef68",
+      "components/sources/maintenance/j4858d-required-source-read-1016/screenshots/card-purchase-visual-1019.png": "2c91316cfdb856c172508ea8d375aa12d13d288039117a31b2af3b3afd5cc400",
+      "components/sources/maintenance/j4858d-required-source-read-1016/screenshots/cart-dark-24-1019.png": "daf3554076e867ddac30cad54d1fb5dd128c28f2480cbf2736b260b12350d6da",
+      "components/sources/maintenance/j4858d-required-source-read-1016/screenshots/download-black-16-1019.png": "ba3f32890f6a5d11da551e85fdb33a5d8f87fc63c4605145f8f1d8c97326749a",
+      "components/sources/maintenance/j4858d-required-source-read-1016/screenshots/quotes-black-16-1019.png": "ddac1c997ba21603935bdd866a631161d1015d9a6927c612ee37bc177e0a8212",
+      "components/sources/text-button/collapse-edit-current-1115.html": "dbea123d730d8495e2b43599a02f384d81b9a60a30192f12d08801958aa2df0c",
+      "components/token-specs/border-radius.json": "b01e4c23fbc7e19983d9592b59b0303155b79d66c52459356eda0ea9f4ca74b5",
+      "components/token-specs/border.json": "d286ee4681deda1c7702c310b065c86f824539b3a8797efba05b24bc225ab322",
+      "components/token-specs/colors.json": "5267d59fdc687b54496977280c00c97f0beb6ffce013f87853504f5b736d3389",
+      "components/token-specs/opacity.json": "226088dc556be35b2b51766287a7d54f95eebd348cb80f6d8313e525cf2b70b7",
+      "components/token-specs/spacing.json": "351b14cfce4411248ad41e00eaaf2b1cab9b705997980dfed1fc65693740e65c",
+      "components/token-specs/typography.json": "93b7dc07547218a33c075b7cdcd942f89094353a7847d483d8378b8883327e16",
+      "components/tokens.css": "f63f3c8fea511d8029902bc3905b01853ac5e92049c1b18ca35ebc9a680c3e69",
+      "components/variants/anchor-nav.html": "282697e00276374bc69a002eb676da156eb4d2e1da1ebc0fc36a7da0c929f9dd",
+      "components/variants/banner.html": "fa9af2a1b48a9b7fe7f8720a6935613bcd52aebb44313a77dbfd94f2f273c6e6",
+      "components/variants/button.html": "6b6715b66e6c0b684c072dcdcbf7170aeb9f49a31bb32ca5b8986644d626cfe6",
+      "components/variants/card.html": "b43e27ebba1815709741d779b54961fa6b11cf71f5d3235d578a4b2047aa1cd4",
+      "components/variants/collapse.html": "26f87a715552789e80ed66e1a7428719beddfaba67be4e165f5eb40b22c1e45c",
+      "components/variants/comment.html": "e0d983eb8704ddc84c51eb162cc7683d4aaca8ff6d94a6ca3ddcfa481b751e59",
+      "components/variants/dialog.html": "40132b51264249e10a92ea5f24730d989ca1415daa62f9ef42d391aadff7f21f",
+      "components/variants/dropdown.html": "44354e67c711c48da210aa5e5abe899eb15bfbf49688fdf485090caee0b07ce5",
+      "components/variants/form.html": "25d31960a440684ed7015f9dc5e628875090709d5001bffebd5972232e48d489",
+      "components/variants/input.html": "d34e9585cb00f4293912c199391e0b8328b13fe8db16ac4b4ea4b05b596d10c1",
+      "components/variants/list.html": "51f7f184f06b1e0a334887d65cf352e2c89a43a5ac72358b88bf405500f0d98e",
+      "components/variants/navigation.html": "300042ed2992013e57983a3895b164ae4499712707e8aa5a5bffe67ac0660081",
+      "components/variants/select.html": "0042deb9a302606c3a82505cafbd807753c3c6eb31e8b107e3ecb0fe0538bf7f",
+      "components/variants/text-button.html": "6295056d973b26231a68158bd758ebde321d8a105326a740f159006a1a7bd2f8",
+      "docs/handoff/archives/2026-10-09-overnight/mastergo/button-shape-component-set.json": "97baa8363f81381597e5e8874efcfe0897017be8cab528e21ff712e45cf5b925",
+      "docs/handoff/archives/2026-10-09-overnight/mastergo/button-spec-document.json": "b1b383121a492fb6efbf4daa4eeec51461d1be176a9b2b027bfeced0a23bd120"
+    },
+    "graphFingerprint": "228968cfee1908622ab5f9783db746adfd762dc21e18a04177dfb360bac13d0e",
+    "note": "从本地源文件生成；不是 MasterGo 在线实时状态。"
+  },
+  "readScope": {
+    "variant": "cart-product-card",
+    "note": "只展开当前已选变体；其他变体没有被声明为不可用。尺寸继续按真实 sizeOptions 选择。"
+  }
+}

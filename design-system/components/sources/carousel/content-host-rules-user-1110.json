@@ -1,0 +1,46 @@
+{
+  "schemaVersion": "fs-user-host-guidance/1",
+  "recordedAt": "2026-11-10T11:19:12.096197+08:00",
+  "sourceType": "user-correction-plus-saved-native-specification",
+  "userText": "轮播的还有一个规则，没有悬浮到焦点区域的时候，是隐藏的，图中下面的轮播点不是规范的",
+  "screenshot": {
+    "file": "page-reviews/workflow-xtool-donation-cold-20261109/audit/hover-pagination/user-page-reference.png",
+    "sha256": "efd8517fc31bb18facc54ac6ddc7d7433b49dd696696c0e14ccdc4fdf81b37b3",
+    "viewport": "unknown, cropped user screenshot; not formal1920x1000 evidence",
+    "observation": "Controls are visible at either side of the quotation card in this captured state. Hover/focus state and CSS dimensions cannot be inferred."
+  },
+  "regularArrowVisibility": {
+    "idle": "hidden by page host, no layout shift",
+    "hoverRegion": "quotation carousel area including panel, controls and pagination; heading excluded",
+    "keyboard": "show while native keyboard focus-visible is within controls; retain native Tab/Enter/Space, no extra focus stop",
+    "restore": "hide on mouse leave once no keyboard focus-visible remains",
+    "notCovered": "Homepage Banner may retain always-visible arrows under its own original; static Preview state matrices remain visible."
+  },
+  "savedEvidence": [
+    {
+      "file": "components/sources/carousel/native-specification-review-1011.json",
+      "sha256": "638a6cb36e6e5b61a096ad5f779edff7b8f6e4b0383c1918b6db62fd70a09af2"
+    },
+    {
+      "file": "components/sources/carousel/native-pagination-review-1011.json",
+      "sha256": "17a8c97517b989afbd2538b72bc6c9242e89b3bcf3404be0233b589795e6ab9e"
+    }
+  ],
+  "pagination": {
+    "defaultSize": [
+      8,
+      8
+    ],
+    "defaultColor": "#707070 at40%",
+    "activeSize": [
+      20,
+      8
+    ],
+    "activeColor": "#707070 at100%",
+    "gap": 10,
+    "belowPanelGap": 20,
+    "count": "two actual quotations, no fabricated third entry",
+    "implementation": "Page-owned decorative indicators based on saved FS geometry; not a new published2-item pagination component. No dot click behavior invented."
+  },
+  "permissions": "User answered unsure; no restoration evidence, no target browser retry."
+}

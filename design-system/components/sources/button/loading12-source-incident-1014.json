@@ -1,0 +1,56 @@
+{
+  "scope": "Loading12来源读取时菜单方向键被画布处理",
+  "source": {
+    "file": "143880409387753",
+    "page": "3752:3993",
+    "parent": "64858:84659",
+    "child": "64858:84660"
+  },
+  "before": {
+    "parentXY": [
+      597,
+      190
+    ],
+    "parentSize": [
+      120,
+      36
+    ],
+    "childXY": [
+      54,
+      12
+    ],
+    "childSize": [
+      12,
+      12
+    ]
+  },
+  "incident": {
+    "action": "上下文复制子菜单未展开时Right被画布处理",
+    "observedParentX": 598,
+    "delta": 1
+  },
+  "restoration": {
+    "method": "原生Edit撤销/快捷键未恢复，随后按操作前记录精确恢复X属性597",
+    "actualParentXY": [
+      597,
+      190
+    ],
+    "actualParentSize": [
+      120,
+      36
+    ],
+    "actualChildXY": [
+      54,
+      12
+    ],
+    "actualChildSize": [
+      12,
+      12
+    ],
+    "actualChildWhite": true,
+    "rootEvidence": "components/sources/button/loading12-source-restored-native-1014.txt",
+    "childEvidence": "components/sources/button/loading12-child-final-native-1014.txt"
+  },
+  "correctiveRule": "原生菜单只有有实际展开项才使用其入口；不向画布发送方向键探索菜单",
+  "notClaimed": "不把恢复后的样式状态宣称MasterGo没有发生过编辑历史"
+}

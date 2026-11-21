@@ -1,0 +1,79 @@
+
+    // Tab click and keyboard switching
+    document.querySelectorAll('[data-tab-group]').forEach(function(group) {
+      var items = Array.from(group.querySelectorAll('[data-tab-item]'));
+      group.setAttribute('role', 'tablist');
+
+      function ensureInner(item) {
+        var inner = item.querySelector('.ds-tab__item-inner');
+        if (!inner) {
+          inner = document.createElement('div');
+          inner.className = 'ds-tab__item-inner';
+          var text = item.querySelector('.ds-tab__item-text');
+          if (text) {
+            item.removeChild(text);
+            inner.appendChild(text);
+          }
+          item.appendChild(inner);
+        }
+        return inner;
+      }
+
+      function selectItem(selectedItem, moveFocus) {
+        items.forEach(function(item) {
+          var isSelected = item === selectedItem;
+          item.classList.toggle('ds-tab__item--active', isSelected);
+          item.setAttribute('aria-selected', String(isSelected));
+          item.setAttribute('tabindex', isSelected ? '0' : '-1');
+          item.querySelectorAll('.ds-tab__indicator').forEach(function(indicator) {
+            indicator.remove();
+          });
+        });
+
+        var indicator = document.createElement('div');
+        indicator.className = 'ds-tab__indicator';
+        ensureInner(selectedItem).appendChild(indicator);
+        if (moveFocus) selectedItem.focus();
+      }
+
+      items.forEach(function(item, index) {
+        item.setAttribute('role', 'tab');
+        item.addEventListener('click', function() {
+          selectItem(item, false);
+        });
+        item.addEventListener('keydown', function(event) {
+          var targetIndex = index;
+          if (event.key === 'ArrowRight') targetIndex = (index + 1) % items.length;
+          if (event.key === 'ArrowLeft') targetIndex = (index - 1 + items.length) % items.length;
+          if (event.key === 'Home') targetIndex = 0;
+          if (event.key === 'End') targetIndex = items.length - 1;
+          if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            selectItem(item, true);
+            return;
+          }
+          if (targetIndex !== index) {
+            event.preventDefault();
+            selectItem(items[targetIndex], true);
+          }
+        });
+      });
+
+      selectItem(items.find(function(item) {
+        return item.classList.contains('ds-tab__item--active');
+      }) || items[0], false);
+    });
+    // All dropdown toggle
+    document.querySelectorAll('[data-all-toggle]').forEach(function(btn) {
+      btn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        var dd = btn.parentElement.querySelector('[data-all-dropdown]');
+        dd.classList.toggle('ds-tab__all-dropdown--open');
+      });
+    });
+    document.addEventListener('click', function() {
+      document.querySelectorAll('.ds-tab__all-dropdown--open').forEach(function(d) {
+        d.classList.remove('ds-tab__all-dropdown--open');
+      });
+    });
+  

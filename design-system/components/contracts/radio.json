@@ -1,0 +1,1286 @@
+{
+  "id": "comp_radio_001",
+  "name": "Radio",
+  "chineseName": "单选框",
+  "version": "v1.2.2510B",
+  "description": "在一组相关且互斥的选项中只允许选择一个选项。由原生 input[type=radio]、圆形状态图和右侧文本标签组成；支持常规大/小号、紧凑带边框和结算详情带边框四种形态。",
+  "category": "数据录入 Data Entry",
+  "variants": [
+    {
+      "name": "regular-lg",
+      "chineseName": "常规大号",
+      "whenToUse": "同组≥2；商品详情页解决方案产品筛选等 PC 宽松区域；18×18px 状态图与 14px/22px 标签。",
+      "cssClass": "ds-radio",
+      "isComplete": true,
+      "pendingParts": [],
+      "styleProperties": {
+        "indicatorSize": "18×18px",
+        "typography": "14px/22px Regular",
+        "gap": "8px",
+        "groupGap": "横排与竖排均为 16px"
+      },
+      "requiredChildren": [
+        "input.ds-radio__input",
+        "span.ds-radio__indicator",
+        "span.ds-radio__content",
+        "span.ds-radio__label"
+      ],
+      "selectionDecisionType": "常规大号 regular-lg",
+      "whenNotToUse": "下拉、表单等密集区域使用 regular-sm；需要容器时使用对应带边框变体。"
+    },
+    {
+      "name": "regular-sm",
+      "chineseName": "常规小号",
+      "whenToUse": "同组≥2；下拉菜单、常规表单、筛选抽屉等密集互斥列表；14×14px 状态图与 13px/20px 标签。",
+      "cssClass": "ds-radio ds-radio--sm",
+      "isComplete": true,
+      "pendingParts": [],
+      "styleProperties": {
+        "indicatorSize": "14×14px",
+        "typography": "13px/20px Regular",
+        "gap": "8px",
+        "groupGap": "PC 横排 16px；竖排按场景为 8px 或 4px；规范图记录 M 端竖排为 12px"
+      },
+      "requiredChildren": [
+        "input.ds-radio__input",
+        "span.ds-radio__indicator",
+        "span.ds-radio__content",
+        "span.ds-radio__label"
+      ],
+      "selectionDecisionType": "常规小号 regular-sm",
+      "whenNotToUse": "PC 宽松区域优先 regular-lg；需要整体描边时使用 bordered-compact。"
+    },
+    {
+      "name": "bordered-compact",
+      "chineseName": "①带边框",
+      "whenToUse": "同组≥2；表单中需要 30px 高、4px 圆角和 8px 水平内边距的紧凑描边单选项。",
+      "cssClass": "ds-radio ds-radio--bordered-compact",
+      "isComplete": true,
+      "pendingParts": [],
+      "styleProperties": {
+        "indicatorSize": "14×14px",
+        "height": "30px",
+        "padding": "0 8px",
+        "radius": "4px",
+        "gap": "8px",
+        "groupGap": "12px"
+      },
+      "requiredChildren": [
+        "input.ds-radio__input",
+        "span.ds-radio__indicator",
+        "span.ds-radio__content",
+        "span.ds-radio__label"
+      ],
+      "selectionDecisionType": "①带边框 bordered-compact",
+      "whenNotToUse": "无容器的普通选项使用 regular；结算主副文本选项使用 bordered-detail。"
+    },
+    {
+      "name": "bordered-detail",
+      "chineseName": "②带边框",
+      "whenToUse": "同组≥2；仅结算页收货地址、账单地址、配送方式和支付方式等需要主副文本或业务插槽的互斥选择。",
+      "cssClass": "ds-radio ds-radio--bordered-detail",
+      "isComplete": true,
+      "pendingParts": [],
+      "styleProperties": {
+        "indicatorSize": "14×14px",
+        "padding": "8px 16px",
+        "radius": "8px",
+        "gap": "8px",
+        "groupGap": "8px",
+        "titleTypography": "14px/22px Regular",
+        "descriptionTypography": "12px/20px Regular",
+        "indicatorAlignment": "正文块垂直居中，默认42px正文内14px指示器；非普通常规单选的首行对齐",
+        "minimumHeight": "58px；内描边不占布局高度"
+      },
+      "requiredChildren": [
+        "input.ds-radio__input",
+        "span.ds-radio__indicator",
+        "span.ds-radio__content",
+        "span.ds-radio__label",
+        "span.ds-radio__description"
+      ],
+      "selectionDecisionType": "②带边框 bordered-detail",
+      "whenNotToUse": "媒体、色块、SKU、价格或品牌内容本身构成选择项时使用 OptionSelector；普通表单使用 regular 或 bordered-compact。"
+    }
+  ],
+  "states": [
+    {
+      "name": "default",
+      "chineseName": "默认未选",
+      "styleOverrides": {
+        "indicator": "白底；#19191A 30% 描边",
+        "label": "#19191A",
+        "compactContainer": "#FFFFFF；1px #EEEEEE",
+        "detailContainer": "#FFFFFF；1px #EEEEEE"
+      }
+    },
+    {
+      "name": "hover",
+      "chineseName": "悬停",
+      "styleOverrides": {
+        "indicator": "白底；#707070 描边",
+        "label": "保持不变",
+        "compactContainer": "1px #707070",
+        "detailContainer": "#FAFAFB；1px #EEEEEE"
+      }
+    },
+    {
+      "name": "checked",
+      "chineseName": "选中（规范图 Press）",
+      "styleOverrides": {
+        "indicator": "#707070 描边与内部圆点",
+        "label": "保持不变",
+        "compactContainer": "#F2F2F2；1px #707070",
+        "detailContainer": "#FAFAFB；1px #EEEEEE"
+      }
+    },
+    {
+      "name": "disabled-unchecked",
+      "chineseName": "禁用未选中",
+      "styleOverrides": {
+        "indicator": "#F6F6F8 底；#19191A 30% 描边",
+        "label": "#19191A 30%",
+        "interaction": "不可点击，不参与同组切换"
+      }
+    },
+    {
+      "name": "disabled-checked",
+      "chineseName": "禁用已选中",
+      "styleOverrides": {
+        "indicator": "#19191A 30% 描边与内部圆点",
+        "label": "#19191A 30%",
+        "detailText": "主文本 #4B4B4D 30%；副文本 #707070 30%",
+        "interaction": "保留已选中状态但不可操作"
+      }
+    }
+  ],
+  "contentSlots": {
+    "indicator": {
+      "required": true,
+      "description": "由 input 状态驱动的本地 icon-radio-* SVG，不接受远程图标或业务图片。"
+    },
+    "label": {
+      "required": true,
+      "description": "始终位于圆形状态图右侧；regular-lg 和 bordered-detail 主文本使用 14px/22px，regular-sm 与 bordered-compact 使用 13px/20px。"
+    },
+    "description": {
+      "required": false,
+      "description": "仅 bordered-detail 使用的副文本，12px/20px、#707070。"
+    },
+    "extra": {
+      "required": false,
+      "description": "仅 bordered-detail 的业务插槽；不得替代 Radio 状态图、主文本或原生 input 语义。"
+    }
+  },
+  "commonProperties": {
+    "element": "label > input[type=radio] + .ds-radio__indicator + .ds-radio__content",
+    "group": "同一互斥组至少两个 input，共享 name，由浏览器保证唯一 checked",
+    "labelPosition": "圆形状态图右侧",
+    "gap": "8px",
+    "fontFamily": "Open Sans",
+    "interaction": "点击标签或容器选中；原生 Tab、方向键与 Space 行为；disabled 不可操作",
+    "hover": "仅状态图变化，文本标签不变"
+  },
+  "usageGuidelines": "同组数量必须大于等于 2，且组内选项互斥。普通文字选项使用 regular-lg/regular-sm；30px 紧凑描边表单项使用 bordered-compact；结算页地址、配送与支付等主副文本选项使用 bordered-detail。只有一个确认项时使用 Checkbox；媒体、颜色、商品、价格或品牌内容本身构成可视化选择项时使用 OptionSelector。 结算详情须区分具体场景：快递示例无外描边，支付方式的Hover/选中圆点为#19191A且选中文字加粗；这些专属形态未建立精确调用前，不冒称现有通用bordered-detail已覆盖。下拉菜单宿主的交互优先遵循Dropdown规范，圆形原子与标签遵循Radio规范。",
+  "responsiveRules": [
+    "组件宽度由内容或父容器决定，不保留投喂 HTML 的 104px、95px、111px、378px 画板宽度。",
+    "PC 横排常规选项间距为 16px；regular-lg 竖排为 16px，regular-sm 竖排可按已核实场景使用 8px 或 4px。",
+    "bordered-compact 组间距为 12px；bordered-detail 竖排组间距为 8px。",
+    "规范图记录 regular-sm 在 M 端竖排间距为 12px；本仓库页面生成只验收 desktop，不生成移动端媒体查询。"
+  ],
+  "tokenReferences": [
+    "color.gray-1",
+    "color.gray-2",
+    "color.gray-3",
+    "color.gray-7",
+    "color.white",
+    "color.text-disabled",
+    "color.option-border",
+    "typography.font-family-base",
+    "typography.font-size-md",
+    "typography.font-size-h8",
+    "typography.font-size-sm",
+    "typography.font-weight-regular",
+    "typography.h7-regular",
+    "typography.h8-regular",
+    "typography.h9-regular",
+    "spacing.2",
+    "spacing.3",
+    "spacing.xs",
+    "spacing.sm",
+    "spacing.md",
+    "spacing.lg",
+    "border.width.default",
+    "border.style.default",
+    "border.color.option",
+    "border.color.strong",
+    "border-radius.md",
+    "border-radius.lg",
+    "border-radius.full"
+  ],
+  "constraints": {
+    "allowedChildren": [
+      "Text",
+      "BusinessContentSlot"
+    ],
+    "requiredProperties": [
+      "name",
+      "value"
+    ],
+    "forbiddenCombinations": [
+      [
+        "disabled-unchecked",
+        "checked"
+      ]
+    ]
+  },
+  "relations": {
+    "variantDecisionsDescription": "按原规范的具体场景逐项判断，先排除禁用条件，再在候选中核对宿主、内容与调用范围；资料不足保留待确认。设计参考不开放调用。展示与本地AI索引使用同一份规则。",
+    "variantDecisions": [
+      {
+        "type": "常规大号 regular-lg",
+        "className": "ds-radio",
+        "whenToUse": "同组≥2；商品详情页解决方案产品筛选等 PC 宽松区域；18×18px 状态图与 14px/22px 标签。",
+        "whenNotToUse": "下拉、表单等密集区域使用 regular-sm；需要容器时使用对应带边框变体。",
+        "nestedComponents": [],
+        "status": "当前调用资格与限制读取同版catalog；原来源核对记录保留，视觉确认由设计负责人独立维护。",
+        "variant": "regular-lg",
+        "selectionCases": [
+          {
+            "id": "radio.regular-lg.use",
+            "kind": "use",
+            "condition": "同组≥2；商品详情页解决方案产品筛选等 PC 宽松区域；18×18px 状态图与 14px/22px 标签。",
+            "result": "按登记接口调用。",
+            "targetVariant": "regular-lg"
+          },
+          {
+            "id": "radio.regular-lg.avoid",
+            "kind": "avoid",
+            "condition": "下拉、表单等密集区域使用 regular-sm；需要容器时使用对应带边框变体。",
+            "result": "不用此变体。",
+            "targetVariant": "regular-lg"
+          }
+        ],
+        "evidence": {
+          "review": "components/sources/foundation-mg-20261114/radio-review.json",
+          "nodes": [
+            "3:206459",
+            "3:207590"
+          ]
+        }
+      },
+      {
+        "type": "常规小号 regular-sm",
+        "className": "ds-radio ds-radio--sm",
+        "whenToUse": "同组≥2；下拉菜单、常规表单、筛选抽屉等密集互斥列表；14×14px 状态图与 13px/20px 标签。",
+        "whenNotToUse": "PC 宽松区域优先 regular-lg；需要整体描边时使用 bordered-compact。",
+        "nestedComponents": [],
+        "status": "当前调用资格与限制读取同版catalog；原来源核对记录保留，视觉确认由设计负责人独立维护。",
+        "variant": "regular-sm",
+        "selectionCases": [
+          {
+            "id": "radio.regular-sm.use",
+            "kind": "use",
+            "condition": "同组≥2；下拉菜单、常规表单、筛选抽屉等密集互斥列表；14×14px 状态图与 13px/20px 标签。",
+            "result": "按登记接口调用。",
+            "targetVariant": "regular-sm"
+          },
+          {
+            "id": "radio.regular-sm.avoid",
+            "kind": "avoid",
+            "condition": "PC 宽松区域优先 regular-lg；需要整体描边时使用 bordered-compact。",
+            "result": "不用此变体。",
+            "targetVariant": "regular-sm"
+          }
+        ],
+        "evidence": {
+          "review": "components/sources/foundation-mg-20261114/radio-review.json",
+          "nodes": [
+            "3:206459",
+            "3:207590"
+          ]
+        }
+      },
+      {
+        "type": "①带边框 bordered-compact",
+        "className": "ds-radio ds-radio--bordered-compact",
+        "whenToUse": "同组≥2；表单中需要 30px 高、4px 圆角和 8px 水平内边距的紧凑描边单选项。",
+        "whenNotToUse": "无容器的普通选项使用 regular；结算主副文本选项使用 bordered-detail。",
+        "nestedComponents": [],
+        "status": "当前调用资格与限制读取同版catalog；原来源核对记录保留，视觉确认由设计负责人独立维护。",
+        "variant": "bordered-compact",
+        "selectionCases": [
+          {
+            "id": "radio.bordered-compact.use",
+            "kind": "use",
+            "condition": "同组≥2；表单中需要 30px 高、4px 圆角和 8px 水平内边距的紧凑描边单选项。",
+            "result": "按登记接口调用。",
+            "targetVariant": "bordered-compact"
+          },
+          {
+            "id": "radio.bordered-compact.avoid",
+            "kind": "avoid",
+            "condition": "无容器的普通选项使用 regular；结算主副文本选项使用 bordered-detail。",
+            "result": "不用此变体。",
+            "targetVariant": "bordered-compact"
+          }
+        ],
+        "evidence": {
+          "review": "components/sources/foundation-mg-20261114/radio-review.json",
+          "nodes": [
+            "3:206459",
+            "3:207590"
+          ]
+        }
+      },
+      {
+        "type": "②带边框 bordered-detail",
+        "className": "ds-radio ds-radio--bordered-detail",
+        "whenToUse": "同组≥2；仅结算页收货地址、账单地址、配送方式和支付方式等需要主副文本或业务插槽的互斥选择。",
+        "whenNotToUse": "媒体、色块、SKU、价格或品牌内容本身构成选择项时使用 OptionSelector；普通表单使用 regular 或 bordered-compact。",
+        "nestedComponents": [],
+        "status": "当前调用资格与限制读取同版catalog；原来源核对记录保留，视觉确认由设计负责人独立维护。",
+        "variant": "bordered-detail",
+        "selectionCases": [
+          {
+            "id": "radio.bordered-detail.use",
+            "kind": "use",
+            "condition": "同组≥2；仅结算页收货地址、账单地址、配送方式和支付方式等需要主副文本或业务插槽的互斥选择。",
+            "result": "按登记接口调用。",
+            "targetVariant": "bordered-detail"
+          },
+          {
+            "id": "radio.bordered-detail.avoid",
+            "kind": "avoid",
+            "condition": "媒体、色块、SKU、价格或品牌内容本身构成选择项时使用 OptionSelector；普通表单使用 regular 或 bordered-compact。",
+            "result": "不用此变体。",
+            "targetVariant": "bordered-detail"
+          }
+        ],
+        "evidence": {
+          "review": "components/sources/foundation-mg-20261114/radio-review.json",
+          "nodes": [
+            "3:206459",
+            "3:206576"
+          ]
+        }
+      }
+    ],
+    "fontSizeDependencies": [
+      {
+        "token": "typography.font-size-md",
+        "value": "14px",
+        "usage": "regular-lg 标签与 bordered-detail 主文本",
+        "appliesTo": [
+          "regular-lg",
+          "bordered-detail"
+        ]
+      },
+      {
+        "token": "typography.font-size-h8",
+        "value": "13px",
+        "usage": "regular-sm 与 bordered-compact 标签",
+        "appliesTo": [
+          "regular-sm",
+          "bordered-compact"
+        ]
+      },
+      {
+        "token": "typography.font-size-sm",
+        "value": "12px",
+        "usage": "bordered-detail 副文本",
+        "appliesTo": [
+          "bordered-detail"
+        ]
+      }
+    ],
+    "fontWeightDependencies": [
+      {
+        "token": "typography.font-weight-regular",
+        "value": "400",
+        "usage": "全部 Radio 标签和说明文字",
+        "appliesTo": [
+          "regular-lg",
+          "regular-sm",
+          "bordered-compact",
+          "bordered-detail"
+        ],
+        "properties": [
+          "font-weight"
+        ],
+        "selectors": [
+          ".ds-radio"
+        ]
+      }
+    ],
+    "typographyDependencies": [
+      {
+        "token": "typography.h7-regular",
+        "fontSizeToken": "typography.font-size-md",
+        "fontSizeValue": "14px",
+        "fontWeightToken": "typography.font-weight-regular",
+        "fontWeightValue": "400",
+        "weightEvidence": "explicit-css",
+        "usage": "regular-lg 标签与 bordered-detail 主文本",
+        "appliesTo": [
+          "regular-lg",
+          "bordered-detail"
+        ]
+      },
+      {
+        "token": "typography.h8-regular",
+        "fontSizeToken": "typography.font-size-h8",
+        "fontSizeValue": "13px",
+        "fontWeightToken": "typography.font-weight-regular",
+        "fontWeightValue": "400",
+        "weightEvidence": "explicit-css",
+        "usage": "regular-sm 与 bordered-compact 标签",
+        "appliesTo": [
+          "regular-sm",
+          "bordered-compact"
+        ]
+      },
+      {
+        "token": "typography.h9-regular",
+        "fontSizeToken": "typography.font-size-sm",
+        "fontSizeValue": "12px",
+        "fontWeightToken": "typography.font-weight-regular",
+        "fontWeightValue": "400",
+        "weightEvidence": "explicit-css",
+        "usage": "bordered-detail 副文本",
+        "appliesTo": [
+          "bordered-detail"
+        ]
+      }
+    ],
+    "colorDependencies": [
+      {
+        "token": "color.gray-1",
+        "value": "#19191A",
+        "usage": "默认主文本",
+        "appliesTo": [
+          "regular-lg",
+          "regular-sm",
+          "bordered-compact",
+          "bordered-detail"
+        ]
+      },
+      {
+        "token": "color.gray-2",
+        "value": "#4B4B4D",
+        "usage": "bordered-detail 禁用已选中主文本在 30% 内容透明度前的基色",
+        "appliesTo": [
+          "bordered-detail"
+        ]
+      },
+      {
+        "token": "color.gray-3",
+        "value": "#707070",
+        "usage": "bordered-detail 副文本",
+        "appliesTo": [
+          "bordered-detail"
+        ]
+      },
+      {
+        "token": "color.gray-7",
+        "value": "#F2F2F2",
+        "usage": "bordered-compact 选中背景",
+        "appliesTo": [
+          "bordered-compact"
+        ]
+      },
+      {
+        "token": "/",
+        "value": "#FAFAFB",
+        "usage": "bordered-detail Hover 与 Checked 背景；规范原始值暂无语义 Token",
+        "appliesTo": [
+          "bordered-detail"
+        ]
+      },
+      {
+        "token": "color.white",
+        "value": "#FFFFFF",
+        "usage": "带边框形态默认与禁用背景",
+        "appliesTo": [
+          "bordered-compact",
+          "bordered-detail"
+        ]
+      },
+      {
+        "token": "color.text-disabled",
+        "value": "rgba(25,25,26,0.3)",
+        "usage": "常规与紧凑带边框禁用标签",
+        "appliesTo": [
+          "regular-lg",
+          "regular-sm",
+          "bordered-compact"
+        ]
+      },
+      {
+        "token": "color.option-border",
+        "value": "#EEEEEE",
+        "usage": "带边框形态默认、详情 Hover/Checked 与全部禁用容器描边",
+        "appliesTo": [
+          "bordered-compact",
+          "bordered-detail"
+        ]
+      }
+    ],
+    "spacingDependencies": [
+      {
+        "token": "spacing.2",
+        "value": "2px",
+        "usage": "regular-lg 状态图与首行 14px/22px 标签垂直居中",
+        "properties": [
+          "margin-top"
+        ],
+        "selectors": [
+          ".ds-radio__indicator"
+        ],
+        "appliesTo": [
+          "regular-lg"
+        ]
+      },
+      {
+        "token": "spacing.3",
+        "value": "3px",
+        "usage": "regular-sm 状态图与首行 13px/20px 标签垂直居中",
+        "properties": [
+          "margin-top"
+        ],
+        "selectors": [
+          ".ds-radio--sm .ds-radio__indicator"
+        ],
+        "appliesTo": [
+          "regular-sm"
+        ]
+      },
+      {
+        "token": "spacing.xs",
+        "value": "4px",
+        "usage": "regular-sm 密集竖排组间距与 bordered-detail 状态图对齐首行主文本",
+        "properties": [
+          "gap",
+          "margin-top"
+        ],
+        "selectors": [
+          ".ds-radio-group--vertical-dense",
+          ".ds-radio--bordered-detail .ds-radio__indicator"
+        ],
+        "appliesTo": [
+          "regular-sm",
+          "bordered-detail"
+        ]
+      },
+      {
+        "token": "spacing.sm",
+        "value": "8px",
+        "usage": "状态图与文本间距、bordered-compact 水平内边距、bordered-detail 垂直内边距及常规竖排组间距",
+        "properties": [
+          "gap",
+          "padding"
+        ],
+        "selectors": [
+          ".ds-radio",
+          ".ds-radio--bordered-compact",
+          ".ds-radio--bordered-detail",
+          ".ds-radio-group--vertical-sm",
+          ".ds-radio-group--detail"
+        ],
+        "appliesTo": [
+          "regular-lg",
+          "regular-sm",
+          "bordered-compact",
+          "bordered-detail"
+        ]
+      },
+      {
+        "token": "spacing.md",
+        "value": "12px",
+        "usage": "bordered-compact 选项组间距",
+        "properties": [
+          "gap"
+        ],
+        "selectors": [
+          ".ds-radio-group--compact"
+        ],
+        "appliesTo": [
+          "bordered-compact"
+        ]
+      },
+      {
+        "token": "spacing.lg",
+        "value": "16px",
+        "usage": "常规横排/大号竖排组间距与 bordered-detail 水平内边距",
+        "properties": [
+          "gap",
+          "padding"
+        ],
+        "selectors": [
+          ".ds-radio-group",
+          ".ds-radio-group--vertical-lg",
+          ".ds-radio--bordered-detail"
+        ],
+        "appliesTo": [
+          "regular-lg",
+          "regular-sm",
+          "bordered-detail"
+        ]
+      }
+    ],
+    "borderDependencies": [
+      {
+        "token": "border.width.default",
+        "value": "1px",
+        "usage": "两种带边框形态全部状态的描边宽度",
+        "aspect": "width",
+        "properties": [
+          "border"
+        ],
+        "selectors": [
+          ".ds-radio--bordered-compact",
+          ".ds-radio--bordered-detail"
+        ],
+        "appliesTo": [
+          "bordered-compact",
+          "bordered-detail"
+        ]
+      },
+      {
+        "token": "border.style.default",
+        "value": "solid",
+        "usage": "两种带边框形态全部状态的描边样式",
+        "aspect": "style",
+        "properties": [
+          "border"
+        ],
+        "selectors": [
+          ".ds-radio--bordered-compact",
+          ".ds-radio--bordered-detail"
+        ],
+        "appliesTo": [
+          "bordered-compact",
+          "bordered-detail"
+        ]
+      },
+      {
+        "token": "border.color.option",
+        "value": "var(--color-option-border)",
+        "usage": "两种带边框形态默认与禁用描边，以及 bordered-detail 全状态描边",
+        "aspect": "color",
+        "properties": [
+          "border"
+        ],
+        "selectors": [
+          ".ds-radio--bordered-compact",
+          ".ds-radio--bordered-detail"
+        ],
+        "appliesTo": [
+          "bordered-compact",
+          "bordered-detail"
+        ]
+      },
+      {
+        "token": "border.color.strong",
+        "value": "var(--color-gray-3)",
+        "usage": "bordered-compact Hover 与 Checked 描边",
+        "aspect": "color",
+        "properties": [
+          "border-color"
+        ],
+        "selectors": [
+          ".ds-radio--bordered-compact:hover:not(:has(.ds-radio__input:disabled))",
+          ".ds-radio--bordered-compact:has(.ds-radio__input:checked)"
+        ],
+        "appliesTo": [
+          "bordered-compact"
+        ]
+      }
+    ],
+    "radiusDependencies": [
+      {
+        "token": "border-radius.md",
+        "value": "4px",
+        "usage": "bordered-compact 容器圆角",
+        "appliesTo": [
+          "bordered-compact"
+        ]
+      },
+      {
+        "token": "border-radius.lg",
+        "value": "8px",
+        "usage": "bordered-detail 容器圆角",
+        "appliesTo": [
+          "bordered-detail"
+        ]
+      },
+      {
+        "token": "border-radius.full",
+        "value": "9999px",
+        "usage": "圆形状态图键盘 focus-visible 外框",
+        "appliesTo": [
+          "regular-lg",
+          "regular-sm",
+          "bordered-compact",
+          "bordered-detail"
+        ]
+      }
+    ],
+    "shadowDependencies": [],
+    "componentDependencies": [],
+    "iconDependencies": [
+      {
+        "icon": "icon-radio-default-current-18",
+        "usage": "regular-lg 默认未选",
+        "required": true,
+        "appliesTo": [
+          "regular-lg"
+        ]
+      },
+      {
+        "icon": "icon-radio-hover-current-18",
+        "usage": "regular-lg 悬停未选",
+        "required": true,
+        "appliesTo": [
+          "regular-lg"
+        ]
+      },
+      {
+        "icon": "icon-radio-checked-current-18",
+        "usage": "regular-lg 已选",
+        "required": true,
+        "appliesTo": [
+          "regular-lg"
+        ]
+      },
+      {
+        "icon": "icon-radio-disabled-current-18",
+        "usage": "regular-lg 禁用未选",
+        "required": true,
+        "appliesTo": [
+          "regular-lg"
+        ]
+      },
+      {
+        "icon": "icon-radio-disabled-checked-current-18",
+        "usage": "regular-lg 禁用已选",
+        "required": true,
+        "appliesTo": [
+          "regular-lg"
+        ]
+      },
+      {
+        "icon": "icon-radio-default-current-14",
+        "usage": "14px 形态默认未选",
+        "required": true,
+        "appliesTo": [
+          "regular-sm",
+          "bordered-compact",
+          "bordered-detail"
+        ]
+      },
+      {
+        "icon": "icon-radio-hover-current-14",
+        "usage": "14px 形态悬停未选",
+        "required": true,
+        "appliesTo": [
+          "regular-sm",
+          "bordered-compact",
+          "bordered-detail"
+        ]
+      },
+      {
+        "icon": "icon-radio-checked-current-14",
+        "usage": "14px 形态已选",
+        "required": true,
+        "appliesTo": [
+          "regular-sm",
+          "bordered-compact",
+          "bordered-detail"
+        ]
+      },
+      {
+        "icon": "icon-radio-disabled-current-14",
+        "usage": "14px 形态禁用未选",
+        "required": true,
+        "appliesTo": [
+          "regular-sm",
+          "bordered-compact",
+          "bordered-detail"
+        ]
+      },
+      {
+        "icon": "icon-radio-disabled-checked-current-14",
+        "usage": "14px 形态禁用已选",
+        "required": true,
+        "appliesTo": [
+          "regular-sm",
+          "bordered-compact",
+          "bordered-detail"
+        ]
+      }
+    ],
+    "variantSelectionRules": [
+      "只有一个确认项时禁止使用 Radio，必须使用 Checkbox；Radio 同组数量必须大于等于 2 且选项互斥。",
+      "圆形状态图加单行文字、PC 宽松区域 → regular-lg；下拉、表单或筛选抽屉等密集区域 → regular-sm。",
+      "表单中的 30px 紧凑描边项 → bordered-compact；结算页地址、配送、支付等主副文本项 → bordered-detail。",
+      "媒体、色块、SKU、价格或品牌内容本身构成可视化选择项 → OptionSelector，不得用 Radio 模拟复杂选择卡。",
+      "同一组内尺寸和形态必须统一；文本标签始终位于状态图右侧，间距固定为 8px。",
+      "Hover 只改变圆形状态图；bordered-compact 可同时改变外框，bordered-detail 可同时改变背景；普通文本标签不得因 Hover 改色。",
+      "Checked 对应规范图中的 Press；disabled 优先于 Hover/Checked。bordered-detail 禁用态按用户决定保留已选中圆点。",
+      "104px、95px、111px、378px 仅为 Preview specimen 宽度，禁止写入共享组件宽度。"
+    ],
+    "mutuallyExclusiveWith": [
+      {
+        "component": "Checkbox",
+        "reason": "Checkbox 用于单个确认项或可独立多选；Radio 仅用于至少两个互斥选项。"
+      },
+      {
+        "component": "OptionSelector",
+        "reason": "OptionSelector 用于媒体、颜色、商品、价格或品牌内容构成的复合可视选择；Radio 只承载圆形状态图和文字/说明。"
+      }
+    ],
+    "hardRules": [
+      {
+        "title": "至少两个互斥选项，标签在右且 Hover 不改文字",
+        "description": "基础语义、结构和状态反馈必须同时满足。",
+        "ruleContent": "<strong>Radio 同组数量必须 ≥2 且选项互斥；只有一个确认项时使用 Checkbox。</strong>文本标签必须位于圆形状态图右侧并保持 8px 间距。Hover 只改变圆形状态图；带边框形态可按契约改变容器边框或背景，但普通标签不得改色。",
+        "aiParse": "group.minItems = 2\ngroup.selection = \"single\"\nstructure = \"label > input[type=radio] + indicator + content\"\nlabelPosition = \"right\"\ngap = \"8px\"\nhover.labelColorChange = false",
+        "enforcement": "原生 input[name] 保证组选中唯一；图标、结构、尺寸与 Token 由 check-contracts.js 和 Preview 核对。"
+      },
+      {
+        "title": "复杂可视内容必须改用 OptionSelector",
+        "description": "避免基础 Radio 与业务选择器职责重叠。",
+        "ruleContent": "圆形状态图加文字或结算说明使用 Radio；媒体、色块、SKU、价格或品牌内容本身构成选择项时必须使用 <code>OptionSelector</code>。",
+        "aiParse": "simpleIndicatorAndText = \"Radio\"\ncheckoutLabelAndDescription = \"Radio/bordered-detail\"\nmediaColorSkuPriceBrand = \"OptionSelector\"",
+        "enforcement": "契约 variantSelectionRules 与 mutuallyExclusiveWith 约束；当前无页面级机械判型。"
+      }
+    ],
+    "notes": "规范图版本 v1.2.2510B，更新日期 2025-10-16。投喂 HTML 的绝对坐标、固定 specimen 宽度、紫色虚线画板和鼠标标注 SVG 均为设计导出辅助信息，不进入组件实现。规范图记录 M 端间距，但本项目页面只面向 desktop。",
+    "enforcementStatus": {
+      "iconDependencies.radio-icons-exist": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 校验 10 个 icon-radio-* 本地 SVG 均存在"
+      },
+      "interaction.native-radio": {
+        "enforced": true,
+        "mechanism": "Preview 和正式 DOM 使用原生 input[type=radio]、共享 name 与 label 点击语义"
+      },
+      "interaction.group-min-items": {
+        "enforced": false,
+        "mechanism": "无",
+        "note": "当前仅由 usageGuidelines、hardRules 与页面生成选型约束，尚无页面级 Radio 组数量检查"
+      },
+      "state.disabled-precedence": {
+        "enforced": true,
+        "mechanism": "components.css 的 input:disabled 规则位于 Hover/Checked 之后，并分别切换禁用未选/已选 SVG"
+      },
+      "variantSelectionRules.radio-vs-option-selector": {
+        "enforced": false,
+        "mechanism": "无",
+        "note": "组件契约已写明边界，页面级内容判型仍需依据 Page Plan 证据"
+      },
+      "spacingDependencies.tokens-and-css-closure": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 校验 spacingDependencies 与组件 CSS 双向闭环"
+      },
+      "borderDependencies.tokens-and-css-closure": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 校验 borderDependencies 与组件 CSS 双向闭环"
+      },
+      "fontWeightDependencies.tokens-and-css-closure": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 校验 Radio 仅使用 typography.font-weight-regular"
+      },
+      "typographyDependencies.size-weight-pairing": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 校验 h7/h8/h9 composite typography 与 CSS 字号、行高和字重证据"
+      }
+    }
+  },
+  "searchIntents": [
+    "单选框",
+    "单选项",
+    "Radio",
+    "互斥选择",
+    "地址选择",
+    "配送方式选择",
+    "支付方式单选",
+    "带边框单选",
+    "表单单选"
+  ],
+  "history": [
+    {
+      "date": "2026-09-01",
+      "author": "Kiro",
+      "change": "依据 Radio v1.2.2510B 规范图、三类投喂 HTML 与用户决定新增正式组件；使用原生 input radio 语义，补齐 18px 和禁用已选中 SVG，并明确与 Checkbox、OptionSelector 的职责边界。"
+    },
+    {
+      "date": "2026-10-09",
+      "author": "Codex",
+      "change": "统一规范维护质量标准：登记真实实现与选型规则入口、源变更重新验收、父子影响检查及历史页面隔离；不推断可编辑槽位或视觉批准。"
+    },
+    {
+      "date": "2026-10-10",
+      "author": "Codex",
+      "change": "四种现有默认radio补精确实例、原生属性与文字槽，禁止伪造图标或状态JS；记录组装时至少2项、name/value与初始checked约束。来源、实际浏览器及整组验收仍待完成，未改CSS/JS或历史页面。"
+    }
+  ],
+  "isComplete": true,
+  "pendingParts": [],
+  "qualityProfile": {
+    "schemaVersion": "1.0.0",
+    "standard": "docs/component-quality-standard.md",
+    "implementation": "components/variants/radio.html",
+    "selection": {
+      "mappingSource": "components/selection-mvp-policy.json",
+      "mappingPointer": "components.radio.variantDecisionTypes",
+      "rulesPointer": "relations.variantDecisions"
+    },
+    "maintenance": {
+      "authority": "contract-preview-runtime-token-icon",
+      "generatedOnly": [
+        "preview-reference-tables",
+        "component-index",
+        "selection-catalog",
+        "design-reading-view",
+        "ai-reference"
+      ],
+      "changePolicy": "记录来源差异、兼容性与受影响父子组件；源文件变化后旧工程验收失效。",
+      "historicalPages": "不自动升级；新页面锁定本地组件运行资源版本。"
+    },
+    "acceptance": {
+      "report": "components/quality/report.json",
+      "proof": "components/quality/acceptance.json",
+      "declarationIsNotProof": true
+    }
+  },
+  "editable": [
+    "label",
+    "description",
+    "name",
+    "value",
+    "checked",
+    "disabled",
+    "changeCallback"
+  ],
+  "integration": {
+    "styles": [
+      "components/tokens.css",
+      "components/components.css",
+      "components/radio-current.css"
+    ],
+    "scripts": [],
+    "fontStylesheets": [
+      "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+    ],
+    "fontFallback": "沿用Open Sans字体栈；实际字体和浏览器视觉仍待验证。"
+  },
+  "aiContract": {
+    "schemaVersion": "1.0.0",
+    "rootTag": "label",
+    "scope": "existing-desktop-radio-four-default-native-options",
+    "supported": [
+      "regular-lg",
+      "regular-sm",
+      "bordered-compact",
+      "bordered-detail"
+    ],
+    "unsupported": [
+      "single-option-confirmation",
+      "media-option",
+      "business-extra-slot",
+      "indeterminate",
+      "forced-hover-state",
+      "mobile"
+    ],
+    "reviewStatus": {
+      "engineering": "pending",
+      "visual": "pending",
+      "familyCoverage": "partial"
+    },
+    "previewAssets": [
+      "components/preview/reference-live.js"
+    ],
+    "selectionPolicy": "普通文字互斥组至少2项；宽松用regular-lg、密集用regular-sm、紧凑描边用bordered-compact，bordered-detail只用于结算地址/账单/交货/支付共性框架。同组name相同、value唯一且至多一个checked；单项确认用Checkbox。结算品牌/价格/操作可为源稿插槽，当前精确调用只开放已登记主副文本，不冒充独立OptionSelector。",
+    "identity": {
+      "rule": "原生label包含唯一radio input，无需虚构ID或额外JS。同一互斥组至少两项共享非空name且value唯一，不同业务组更换name；每组最多一个checked。",
+      "labelRule": "保留图标在前、文字在后；detail必须保留主副文字结构。",
+      "currentDetail": "bordered-detail必须data-radio-current=detail-framework并加载radio-current.css；历史无标记实例不升级。",
+      "currentDefault14": "三个14px有限调用必须data-radio-source-default14=official；仅未选中、可用、非Hover的Default使用14px原件透明环，不跨尺寸使用。",
+      "currentDefault18": "regular-lg必须data-radio-source-default18=official；仅未选中、可用、非Hover的Default使用18px原件透明环，历史无标记实例不升级。",
+      "currentHover": "沿用各尺寸data-radio-source-default14/18=official来源标记；未选中且可用的真实/强制Hover使用对应当前Hover透明环，不改变checked/disabled或历史资源。",
+      "currentPress": "沿用各尺寸data-radio-source-default14/18=official来源标记；可用checked使用当前Press灰环/圆点原件，Hover不改变，disabled和历史资源不升级。",
+      "currentDisabled": "各尺寸既有来源标记的disabled使用对应未选/选中原件，颜色已包含30%；未选保留Gray8底色，选中保留透明间隙。标签样式与原生禁用行为不变，历史不升级。"
+    },
+    "locked": [
+      "label > radio input + indicator + content",
+      "准确根变体、图标和CSS",
+      "原生radio语义与组互斥",
+      "内容层级与detail说明",
+      "不添加自写状态JS或内联绘图",
+      "14px Default当前资源标记与透明环资产",
+      "18px Default当前资源标记与透明环资产",
+      "14/18px当前Hover透明环资产及checked/disabled隔离",
+      "14/18px当前Press原件及Disabled选中隔离",
+      "14/18px当前两种Disabled原件及历史边界"
+    ],
+    "behavior": {
+      "native": "使用原生radio及change事件；checked/disabled为原生布尔属性，CSS由原生状态决定。",
+      "groups": "同一表单或文档作用域内，相同name由浏览器互斥；独立业务组必须不同name，同组value不能重复。",
+      "keyboard": "键盘与焦点使用浏览器原生行为；本轮模拟DOM没有验证实际键盘、焦点环或几何。",
+      "content": "detail仅替换主副文字，本批不开放业务extra区域。",
+      "assembly": "精确清单提供单项结构，不能把单项示例当成完整组验收；最终组数量/命名/初始checked仍需装配检查。"
+    },
+    "evidence": {
+      "localImplementation": "components/variants/radio.html",
+      "comparison": "components/sources/radio/local-structure-review.json",
+      "nativeSpecification": "components/sources/radio/native-specification-review-1011.json",
+      "nativeComponent": "components/sources/radio/native-component-review-1011.json",
+      "currentSmallRootMode": "components/sources/radio/small-default-root-mode-review-1014.json",
+      "currentLargeRootMode": "components/sources/radio/large-default-root-mode-review-1014.json",
+      "currentMgReview": "components/sources/foundation-mg-20261114/radio-review.json"
+    },
+    "variants": {
+      "regular-lg": {
+        "purpose": "native-radio-regular-lg",
+        "exampleSelector": "[data-ai-example=\"ai-radio-regular-lg\"]",
+        "allowedEdits": [
+          "label",
+          "name",
+          "value",
+          "checked",
+          "disabled",
+          "changeCallback"
+        ],
+        "slots": {
+          "label": {
+            "selector": "span.ds-radio__label",
+            "mode": "text",
+            "required": true
+          }
+        },
+        "bindings": {
+          "name": {
+            "mode": "native-attribute",
+            "target": "input.ds-radio__input",
+            "attribute": "name",
+            "valueType": "nonempty-string"
+          },
+          "value": {
+            "mode": "native-attribute",
+            "target": "input.ds-radio__input",
+            "attribute": "value",
+            "valueType": "nonempty-string"
+          },
+          "checked": {
+            "mode": "native-attribute",
+            "target": "input.ds-radio__input",
+            "attribute": "checked",
+            "values": [
+              false,
+              true
+            ],
+            "default": false
+          },
+          "disabled": {
+            "mode": "native-attribute",
+            "target": "input.ds-radio__input",
+            "attribute": "disabled",
+            "values": [
+              false,
+              true
+            ],
+            "default": false
+          },
+          "changeCallback": {
+            "mode": "event-handler",
+            "target": "root",
+            "event": "change"
+          }
+        }
+      },
+      "regular-sm": {
+        "purpose": "native-radio-regular-sm",
+        "exampleSelector": "[data-ai-example=\"ai-radio-regular-sm\"]",
+        "allowedEdits": [
+          "label",
+          "name",
+          "value",
+          "checked",
+          "disabled",
+          "changeCallback"
+        ],
+        "slots": {
+          "label": {
+            "selector": "span.ds-radio__label",
+            "mode": "text",
+            "required": true
+          }
+        },
+        "bindings": {
+          "name": {
+            "mode": "native-attribute",
+            "target": "input.ds-radio__input",
+            "attribute": "name",
+            "valueType": "nonempty-string"
+          },
+          "value": {
+            "mode": "native-attribute",
+            "target": "input.ds-radio__input",
+            "attribute": "value",
+            "valueType": "nonempty-string"
+          },
+          "checked": {
+            "mode": "native-attribute",
+            "target": "input.ds-radio__input",
+            "attribute": "checked",
+            "values": [
+              false,
+              true
+            ],
+            "default": false
+          },
+          "disabled": {
+            "mode": "native-attribute",
+            "target": "input.ds-radio__input",
+            "attribute": "disabled",
+            "values": [
+              false,
+              true
+            ],
+            "default": false
+          },
+          "changeCallback": {
+            "mode": "event-handler",
+            "target": "root",
+            "event": "change"
+          }
+        }
+      },
+      "bordered-compact": {
+        "purpose": "native-radio-bordered-compact",
+        "exampleSelector": "[data-ai-example=\"ai-radio-bordered-compact\"]",
+        "allowedEdits": [
+          "label",
+          "name",
+          "value",
+          "checked",
+          "disabled",
+          "changeCallback"
+        ],
+        "slots": {
+          "label": {
+            "selector": "span.ds-radio__label",
+            "mode": "text",
+            "required": true
+          }
+        },
+        "bindings": {
+          "name": {
+            "mode": "native-attribute",
+            "target": "input.ds-radio__input",
+            "attribute": "name",
+            "valueType": "nonempty-string"
+          },
+          "value": {
+            "mode": "native-attribute",
+            "target": "input.ds-radio__input",
+            "attribute": "value",
+            "valueType": "nonempty-string"
+          },
+          "checked": {
+            "mode": "native-attribute",
+            "target": "input.ds-radio__input",
+            "attribute": "checked",
+            "values": [
+              false,
+              true
+            ],
+            "default": false
+          },
+          "disabled": {
+            "mode": "native-attribute",
+            "target": "input.ds-radio__input",
+            "attribute": "disabled",
+            "values": [
+              false,
+              true
+            ],
+            "default": false
+          },
+          "changeCallback": {
+            "mode": "event-handler",
+            "target": "root",
+            "event": "change"
+          }
+        }
+      },
+      "bordered-detail": {
+        "purpose": "native-radio-bordered-detail",
+        "exampleSelector": "[data-ai-example=\"ai-radio-bordered-detail\"]",
+        "allowedEdits": [
+          "label",
+          "description",
+          "name",
+          "value",
+          "checked",
+          "disabled",
+          "changeCallback"
+        ],
+        "slots": {
+          "label": {
+            "selector": "span.ds-radio__label",
+            "mode": "text",
+            "required": true
+          },
+          "description": {
+            "selector": "span.ds-radio__description",
+            "mode": "text",
+            "required": true
+          }
+        },
+        "bindings": {
+          "name": {
+            "mode": "native-attribute",
+            "target": "input.ds-radio__input",
+            "attribute": "name",
+            "valueType": "nonempty-string"
+          },
+          "value": {
+            "mode": "native-attribute",
+            "target": "input.ds-radio__input",
+            "attribute": "value",
+            "valueType": "nonempty-string"
+          },
+          "checked": {
+            "mode": "native-attribute",
+            "target": "input.ds-radio__input",
+            "attribute": "checked",
+            "values": [
+              false,
+              true
+            ],
+            "default": false
+          },
+          "disabled": {
+            "mode": "native-attribute",
+            "target": "input.ds-radio__input",
+            "attribute": "disabled",
+            "values": [
+              false,
+              true
+            ],
+            "default": false
+          },
+          "changeCallback": {
+            "mode": "event-handler",
+            "target": "root",
+            "event": "change"
+          }
+        }
+      }
+    }
+  },
+  "updatedAt": "2026-10-10T01:25:00+08:00"
+}

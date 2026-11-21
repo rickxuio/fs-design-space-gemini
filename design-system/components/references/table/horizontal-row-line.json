@@ -1,0 +1,454 @@
+{
+  "schemaVersion": "fs-component-reference/1.0.0",
+  "component": {
+    "id": "table",
+    "name": "Table",
+    "scope": "eight-finite-native-table-shapes",
+    "reviewStatus": {
+      "engineering": "pending",
+      "visual": "pending",
+      "familyCoverage": "partial"
+    }
+  },
+  "selection": {
+    "policy": "Six finite static shapes plus two six-column PC/LTR matrices with 1–6 complete body rows. Compact GPT/row-line keep local authorized-fill provenance. No sorting, filtering, cell links or >6-row disclosure. Matrices retain exact native scroll controls and product media wrappers. 按relations.variantDecisions的具体场景选型；最终资格读同版catalog，未开放项不自动调用。当前MG核对状态见prototypeRollout，不将既有来源冒称本次在线核对。",
+    "supported": [
+      "vertical-double",
+      "vertical-single",
+      "horizontal-zebra",
+      "horizontal-grid-13",
+      "horizontal-grid-12-gpt",
+      "horizontal-row-line",
+      "matrix-products",
+      "matrix-plain"
+    ],
+    "unsupported": [
+      "more-than-six-rows",
+      "colspan-rowspan",
+      "cell-links-controls",
+      "mobile",
+      "business-sorting-filtering",
+      "horizontal-row-line-more-than-six-rows",
+      "rtl",
+      "dynamic-inserted-matrices"
+    ]
+  },
+  "runtime": {
+    "styles": [
+      "components/tokens.css",
+      "components/components.css",
+      "components/table-current.css"
+    ],
+    "scripts": [
+      "components/table-current.js"
+    ],
+    "fontStylesheets": [
+      "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+    ]
+  },
+  "identity": {
+    "rule": "Full root > scroll > native table with correct scopes and complete columns. Matrix roots also retain current marker and two safe locked registered-arrow controls outside editable table; first data cell is a row header. Canonical controls hidden/disabled until measured initialization.",
+    "dataRule": "Replace plaintext headers/cells; vary one to six complete rows. 13px default versus locked 12px GPT CSS stays variant-owned. No editing classes to simulate density."
+  },
+  "locked": [
+    "Native table/header scopes and consistent columns",
+    "Existing shared CSS, including ds-table [hidden] display rule",
+    "Static shapes without invented controls; matrix safe scroll controls outside data slot",
+    "Six-column matrix media wrappers and registered scroll arrow assets",
+    "Current product-matrix control size/shape from Table-owned group; no host overrides of an IconButton atom",
+    "Current product-heading atom140px with0/8/16/8 padding; current control vertical centering/right20px stays Table-owned.",
+    "当前matrix-products可用非Hover的next使用20px原件路径；不推及Prev、Hover、Disabled、无图或历史实例"
+  ],
+  "behavior": {
+    "static": "Static table data has no sort/filter/selection. table-current.js ignores non-matrix/unmarked roots; six static shapes require no binding.",
+    "limits": "More than six rows is excluded from finite call until disclosure structure/dependency is separately confirmed. No automatic sort/filter or new actions.",
+    "dependency": "TextButton host adaptation applies only to >6-row row-line tables, not the finite ≤6-row static call. Disclosure remains unsupported. Native specification example 68908:260501 is blue 13px Default with a down arrow; previous user-directed black Disclosure remains the local row-line decision. Record scope/color difference instead of claiming source equivalence.",
+    "matrix": "Opt-in current LTR controls appear only when measured overflow >1px; prev/next clamp to measured endpoints, resize/scroll synchronize state, disabled fieldset and hidden controls reject synthetic click. Document/root guards prevent duplicate listeners/observers. Legacy table.js unchanged.",
+    "geometry": "Node tests use explicit scroll/client width inputs only, not browser layout. PC width, grid/row alignment, real overflow, ResizeObserver scheduling, imagery and computed styles still pending. No three-device expansion. Native component yes/pc68908:036227 and its header atom200×36 confirm canonical200px columns. Spec3.3 product-detail application example184px is recorded separately, not a generic atom override. Canonical product-heading source68908:016303 is200×140 with0/8/16/8 padding and4px gap; current resource replaces generic body-cell padding and160px inner height with this header assembly. Preview3rows implies248px target, actual browser geometry pending.",
+    "controlSource": "Native canonical product matrix68908:036227 contains next arrow instance68908:03623020×20 inside40×40 Table-owned group at1140/122 of1200×284; vertical-center constraint/right20 inset source current CSS. Norm application sample68908:259667 is distinct. No IconButton identity invented. Shadow, contours/arrow color, prev/end states and plain-matrix control remain pending."
+  },
+  "examples": [
+    {
+      "name": "horizontal-row-line",
+      "publication": {
+        "key": "table/horizontal-row-line",
+        "disposition": "restricted",
+        "newPages": true,
+        "reason": "Only six static PC shapes with1..6 complete body rows; no matrix/sort/filter/cell links/disclosure. GPT/row-line retain authorized-fill provenance.",
+        "constraints": [
+          "Only six static PC shapes with1..6 complete body rows; no matrix/sort/filter/cell links/disclosure. GPT/row-line retain authorized-fill provenance."
+        ],
+        "contractPolicy": "Six finite static shapes plus two six-column PC/LTR matrices with 1–6 complete body rows. Compact GPT/row-line keep local authorized-fill provenance. No sorting, filtering, cell links or >6-row disclosure. Matrices retain exact native scroll controls and product media wrappers.",
+        "use": "finite-new-page-candidate",
+        "evidence": "components/contracts/table.json#aiContract/evidence",
+        "requiresCurrentEngineering": true,
+        "visualApproval": "separate-not-granted"
+      },
+      "rootTag": "div",
+      "type": "horizontal",
+      "sizeOptions": [],
+      "dataShape": {
+        "bodyRowCount": 6,
+        "maxBodyRows": 6,
+        "static": true
+      },
+      "purpose": "horizontal-row-line-static-table",
+      "whenToUse": "按行阅读、不强调列边界的静态表。",
+      "whenNotToUse": "超过六行需展开或要求列内复杂控件。",
+      "rootClasses": "ds-table ds-table--horizontal ds-table--row-line",
+      "requiredStructure": [
+        "div.ds-table__scroll",
+        "table.ds-table__table",
+        "thead",
+        "tbody",
+        "tr",
+        "th",
+        "td"
+      ],
+      "slots": {
+        "data": {
+          "selector": "table.ds-table__table",
+          "mode": "structured-content",
+          "required": true,
+          "preserve": [
+            "tbody",
+            "tr",
+            "th",
+            "td"
+          ],
+          "rule": "Keep native headers/scopes and matching columns. Plaintext only; 1–6 complete body rows. No merged cells, actions or other styles."
+        }
+      },
+      "allowedEdits": [
+        "data"
+      ],
+      "exampleHtml": "<div class=\"ds-table ds-table--horizontal ds-table--row-line\" data-ai-example=\"ai-table-horizontal-row-line\"><div class=\"ds-table__scroll\"><table class=\"ds-table__table\"><thead><tr><th scope=\"col\">Order</th><th scope=\"col\">Status</th></tr></thead><tbody><tr><td>FS10001</td><td>Completed</td></tr><tr><td>FS10002</td><td>Completed</td></tr><tr><td>FS10003</td><td>Processing</td></tr><tr><td>FS10004</td><td>Completed</td></tr><tr><td>FS10005</td><td>Processing</td></tr><tr><td>FS10006</td><td>Completed</td></tr></tbody></table></div></div>"
+    }
+  ],
+  "relationships": {
+    "children": [],
+    "parents": [],
+    "parentStatus": "no-declared-hosts",
+    "icons": [],
+    "tokens": [
+      {
+        "name": "color.gray-1",
+        "value": "#19191A",
+        "unit": null,
+        "cssVar": "--color-gray-1",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.white",
+        "value": "#FFFFFF",
+        "unit": null,
+        "cssVar": "--color-white",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.table-header-bg",
+        "value": "rgba(64,128,255,0.06)",
+        "unit": null,
+        "cssVar": "--color-table-header-bg",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.table-divider",
+        "value": "#EEEEEE",
+        "unit": null,
+        "cssVar": "--color-table-divider",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "spacing.xs",
+        "value": 4,
+        "unit": "px",
+        "cssVar": "--spacing-xs",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.sm",
+        "value": 8,
+        "unit": "px",
+        "cssVar": "--spacing-sm",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.10",
+        "value": 10,
+        "unit": "px",
+        "cssVar": "--spacing-10",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "border.width.default",
+        "value": 1,
+        "unit": "px",
+        "cssVar": "--border-width-default",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.width.strong",
+        "value": 2,
+        "unit": "px",
+        "cssVar": "--border-width-strong",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.style.default",
+        "value": "solid",
+        "unit": null,
+        "cssVar": "--border-style-default",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.style.none",
+        "value": "none",
+        "unit": null,
+        "cssVar": "--border-style-none",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.transparent",
+        "value": "transparent",
+        "unit": null,
+        "cssVar": "--border-color-transparent",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.table-divider",
+        "value": "var(--color-table-divider)",
+        "unit": null,
+        "cssVar": "--border-color-table-divider",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "typography.font-family-base",
+        "value": "Open Sans",
+        "unit": null,
+        "cssVar": "--font-family-base",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-size-h8",
+        "value": 13,
+        "unit": "px",
+        "cssVar": "--font-size-h8",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-size-sm",
+        "value": 12,
+        "unit": "px",
+        "cssVar": "--font-size-sm",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-weight-regular",
+        "value": 400,
+        "unit": null,
+        "cssVar": "--font-weight-regular",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-weight-semibold",
+        "value": 600,
+        "unit": null,
+        "cssVar": "--font-weight-semibold",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.h8-regular",
+        "value": {
+          "fontSize": "13px",
+          "lineHeight": "20px",
+          "fontWeight": 400
+        },
+        "unit": null,
+        "cssVar": null,
+        "primitiveReferences": {
+          "fontSize": "typography.font-size-h8",
+          "fontWeight": "typography.font-weight-regular"
+        },
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.h8-semibold",
+        "value": {
+          "fontSize": "13px",
+          "lineHeight": "20px",
+          "fontWeight": 600
+        },
+        "unit": null,
+        "cssVar": null,
+        "primitiveReferences": {
+          "fontSize": "typography.font-size-h8",
+          "fontWeight": "typography.font-weight-semibold"
+        },
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.h9-regular",
+        "value": {
+          "fontSize": "12px",
+          "lineHeight": "20px",
+          "fontWeight": 400
+        },
+        "unit": null,
+        "cssVar": null,
+        "primitiveReferences": {
+          "fontSize": "typography.font-size-sm",
+          "fontWeight": "typography.font-weight-regular"
+        },
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "color.gray-5",
+        "value": "#DEE0E3",
+        "unit": null,
+        "cssVar": "--color-gray-5",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "border.color.table-header",
+        "value": "var(--color-table-header-bg)",
+        "unit": null,
+        "cssVar": "--border-color-table-header",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border-radius.sm",
+        "value": 2,
+        "unit": "px",
+        "cssVar": "--border-radius-sm",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border-radius.json"
+      },
+      {
+        "name": "opacity.disabled",
+        "value": 0.3,
+        "unit": null,
+        "cssVar": "--opacity-disabled",
+        "primitiveReferences": null,
+        "source": "components/token-specs/opacity.json"
+      },
+      {
+        "name": "border-radius.full",
+        "value": 9999,
+        "unit": "px",
+        "cssVar": "--border-radius-full",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border-radius.json"
+      },
+      {
+        "name": "spacing.20",
+        "value": 20,
+        "unit": "px",
+        "cssVar": "--spacing-20",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.lg",
+        "value": 16,
+        "unit": "px",
+        "cssVar": "--spacing-lg",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      }
+    ]
+  },
+  "evidence": {
+    "localImplementation": "components/variants/table.html",
+    "comparison": "components/sources/table/local-structure-review.json",
+    "nativeSpecificationReview": "components/sources/table/native-specification-review-1011.json",
+    "productMatrixControlBoundary1015": "components/sources/table/product-matrix-control-boundary-1015.json",
+    "currentMgReview": "components/sources/remaining-prototypes-mg-20261115/table-review.json"
+  },
+  "sourceValidation": {
+    "componentIdentity": {
+      "status": "not-established",
+      "files": []
+    },
+    "specificationBody": {
+      "status": "not-established",
+      "files": []
+    },
+    "originalOnlineFrontendCode": false,
+    "browserComputedStyles": false,
+    "completeSpecificationCoverage": false,
+    "otherAtomNesting": {
+      "TextButton": {
+        "scope": "finite-canonical-TextButton-default-calls",
+        "checked": [],
+        "inactive": [
+          {
+            "variant": "horizontal-row-line",
+            "reason": "declared row-count condition not met",
+            "bodyRowCount": 6
+          }
+        ],
+        "browserVerified": false,
+        "hostStyleCascadeVerified": false
+      }
+    }
+  },
+  "freshness": {
+    "fingerprints": {
+      "components/components.css": "a08b4fe2790b5ff2b784c6362a90f1b94e7535a03e863232ce6d620a52e85f73",
+      "components/contracts/table.json": "5d838432377a4c45748899a0bbb7e92d9bc4c959d7d718ab5c294e9ad5fd40f8",
+      "components/contracts/text-button.json": "323301e3a3438778dd29d5d6c32fd7e661846707ce711b5c0ec82d11fea12fc5",
+      "components/icons/icon-carousel-next.svg": "32bc4993a22bc4fe94406f10692227843f334f71f804a000cdce30e5e94235fe",
+      "components/icons/icon-carousel-prev.svg": "0c3e3035fa72509b40f45298e7194eee211adb0b3a8c51730149d8363f3f55ba",
+      "components/icons/icon-chevron-down.svg": "fe5df03acb1cb4b8a38a928357775416656fbf97cc54f3c6a5b7d0e4906f3e91",
+      "components/icons/icon-table-matrix-next-current-20.svg": "3434342994a94d3553dcc70689541b2d9d20216ddcb1f1004867fc3ceaee8b8e",
+      "components/icons/icons-manifest.json": "12c48af6d1dc59d50b76046bb0507005f565aa4224a6d8056ce4eaaf8050c43e",
+      "components/preview/reference-live.js": "4839383529a3ee82df1d8efe675d430567abc1986034499107aa429d21a18ea6",
+      "components/preview/table-legacy-adapter.js": "78b5c5af9bbddccd467e763833788425fd0372b0bd7d7ebe5a0be06ee7ea3069",
+      "components/reference-policy.json": "4ae8f51f623386417e38d497caafb8bda4417c929159002a7ac088e6e526b482",
+      "components/sources/remaining-prototypes-mg-20261115/table-review.json": "2191eac8e7a17992179871e7d9a867403a9a8ef935c80056e25996c048469310",
+      "components/sources/table/local-structure-review.json": "5b58fdf30ece631ca06b0ce4b2e69e90c74d6025646f29e5ed1c4d64aaa3a3f8",
+      "components/sources/table/native-specification-review-1011.json": "05e1a47cc122ef90b37a6d007adb6c58de7792d7f1c6755ccf35dbcc94a3df7d",
+      "components/sources/table/product-matrix-control-boundary-1015.json": "b4e5205861c2e68190a76602946512259ae79a93f5410beec44382cad17c691c",
+      "components/table-current.css": "31564acf8759e8f232a655dc2070ef40e2999a9cfa3512a582fa8cb7af5ba6e1",
+      "components/table-current.js": "8718625c43d7bd168df132cb47bb25fba9e736a898be609bdb0e8412ca88d665",
+      "components/text-button-current.css": "b38b1b1ad0099d580f7676be7cb2def987753a8eaebd86348ab965768696eb1d",
+      "components/token-specs/border-radius.json": "b01e4c23fbc7e19983d9592b59b0303155b79d66c52459356eda0ea9f4ca74b5",
+      "components/token-specs/border.json": "d286ee4681deda1c7702c310b065c86f824539b3a8797efba05b24bc225ab322",
+      "components/token-specs/colors.json": "5267d59fdc687b54496977280c00c97f0beb6ffce013f87853504f5b736d3389",
+      "components/token-specs/opacity.json": "226088dc556be35b2b51766287a7d54f95eebd348cb80f6d8313e525cf2b70b7",
+      "components/token-specs/spacing.json": "351b14cfce4411248ad41e00eaaf2b1cab9b705997980dfed1fc65693740e65c",
+      "components/token-specs/typography.json": "93b7dc07547218a33c075b7cdcd942f89094353a7847d483d8378b8883327e16",
+      "components/tokens.css": "f63f3c8fea511d8029902bc3905b01853ac5e92049c1b18ca35ebc9a680c3e69",
+      "components/variants/table.html": "34888108f0ccbb34ca658483909defb7921de3c5d984f36e6af87fa0a697f3e6",
+      "components/variants/text-button.html": "6295056d973b26231a68158bd758ebde321d8a105326a740f159006a1a7bd2f8",
+      "docs/assets/20250901105611h7ydr7.jpg.webp": "59bd259e8bbfd62b028d5612f4de1333f571e1cf12ee18d4b783ea1aa323b50f"
+    },
+    "graphFingerprint": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "note": "从本地源文件生成；不是 MasterGo 在线实时状态。"
+  },
+  "readScope": {
+    "variant": "horizontal-row-line",
+    "note": "只展开当前已选变体；其他变体没有被声明为不可用。尺寸继续按真实 sizeOptions 选择。"
+  }
+}

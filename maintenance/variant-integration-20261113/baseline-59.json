@@ -1,0 +1,2896 @@
+{
+  "snapshotAt": "2026-11-13T04:29:18.060Z",
+  "previousRelease": "e517b36dbf235d0e9b4616a9a27d9188085ccffa963a1b1ee8c28dde20e49d7d",
+  "previousSummary": {
+    "components": 30,
+    "integrated": 8,
+    "specificationOnly": 22,
+    "gaps": 0,
+    "callableFragments": 31
+  },
+  "variants": [
+    {
+      "id": "badge",
+      "key": "library-badge",
+      "name": "dot",
+      "fragment": "dot",
+      "slots": {
+        "statusText": {
+          "selector": "span.ds-badge-status__text",
+          "mode": "text",
+          "required": true
+        }
+      },
+      "allowedEdits": [
+        "statusText"
+      ],
+      "exampleHtml": "<span class=\"ds-badge-status\" data-ai-example=\"ai-badge-dot\"><span class=\"ds-badge-dot ds-badge-dot--success\"></span><span class=\"ds-badge-status__text\">Completed</span></span>",
+      "runtime": {
+        "styles": [
+          "components/tokens.css",
+          "components/components.css",
+          "components/badge-current.css"
+        ],
+        "scripts": [],
+        "fontStylesheets": [
+          "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+        ],
+        "fontFallback": "沿用Open Sans字体栈；实际字体与浏览器视觉待验。"
+      }
+    },
+    {
+      "id": "badge",
+      "key": "library-badge",
+      "name": "count",
+      "fragment": "count",
+      "slots": {
+        "displayCount": {
+          "selector": ":scope",
+          "mode": "text",
+          "required": true,
+          "format": "0..99 or 99+",
+          "derivedClass": {
+            "rule": "Use ds-badge-count--max if and only if displayCount is exactly 99+; no other class edits.",
+            "when": "99+",
+            "class": "ds-badge-count--max",
+            "otherwise": "remove"
+          }
+        }
+      },
+      "allowedEdits": [
+        "displayCount"
+      ],
+      "exampleHtml": "<span class=\"ds-badge-count\" data-badge-current data-ai-example=\"ai-badge-count\">1</span>",
+      "runtime": {
+        "styles": [
+          "components/tokens.css",
+          "components/components.css",
+          "components/badge-current.css"
+        ],
+        "scripts": [],
+        "fontStylesheets": [
+          "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+        ],
+        "fontFallback": "沿用Open Sans字体栈；实际字体与浏览器视觉待验。"
+      }
+    },
+    {
+      "id": "badge",
+      "key": "library-badge",
+      "name": "icon",
+      "fragment": "icon",
+      "slots": {},
+      "bindings": {
+        "iconAlt": {
+          "mode": "native-attribute",
+          "target": "img",
+          "attribute": "alt",
+          "valueType": "string"
+        }
+      },
+      "allowedEdits": [
+        "iconAlt"
+      ],
+      "exampleHtml": "<span class=\"ds-badge-icon\" data-ai-example=\"ai-badge-icon\"><img src=\"../icons/icon-badge-logged-in-pc.svg\" alt=\"\"></span>",
+      "runtime": {
+        "styles": [
+          "components/tokens.css",
+          "components/components.css",
+          "components/badge-current.css"
+        ],
+        "scripts": [],
+        "fontStylesheets": [
+          "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+        ],
+        "fontFallback": "沿用Open Sans字体栈；实际字体与浏览器视觉待验。"
+      }
+    },
+    {
+      "id": "breadcrumb",
+      "key": "library-breadcrumb",
+      "name": "default",
+      "fragment": "default",
+      "slots": {
+        "items": {
+          "selector": ":scope",
+          "mode": "structured-content",
+          "required": true,
+          "preserve": [
+            "div.ds-breadcrumb__item",
+            "a.ds-breadcrumb__link",
+            "span.ds-breadcrumb__separator",
+            "span.ds-breadcrumb__current"
+          ],
+          "fields": [
+            "linkText",
+            "hrefOrDisplayOnly",
+            "currentText"
+          ],
+          "rule": "至少两层；每个前置item为anchor + /；最后一个item为current。"
+        }
+      },
+      "allowedEdits": [
+        "items"
+      ],
+      "exampleHtml": "<nav class=\"ds-breadcrumb\" aria-label=\"Breadcrumb\" data-breadcrumb-current data-ai-example=\"ai-breadcrumb-default\">\n      <div class=\"ds-breadcrumb__item\">\n        <a href=\"#\" class=\"ds-breadcrumb__link\">Home</a>\n        <span class=\"ds-breadcrumb__separator\" aria-hidden=\"true\">/</span>\n      </div>\n      <div class=\"ds-breadcrumb__item\">\n        <a href=\"#\" class=\"ds-breadcrumb__link\">Page A</a>\n        <span class=\"ds-breadcrumb__separator\" aria-hidden=\"true\">/</span>\n      </div>\n      <div class=\"ds-breadcrumb__item\">\n        <span class=\"ds-breadcrumb__current\">Current Page</span>\n      </div>\n    </nav>",
+      "runtime": {
+        "styles": [
+          "components/tokens.css",
+          "components/components.css",
+          "components/breadcrumb-current.css"
+        ],
+        "scripts": [],
+        "fontStylesheets": [
+          "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+        ],
+        "fontFallback": "沿用Open Sans；实际字体待浏览器确认。"
+      }
+    },
+    {
+      "id": "breadcrumb",
+      "key": "library-breadcrumb",
+      "name": "dark",
+      "fragment": "dark",
+      "slots": {
+        "items": {
+          "selector": ":scope",
+          "mode": "structured-content",
+          "required": true,
+          "preserve": [
+            "div.ds-breadcrumb__item",
+            "a.ds-breadcrumb__link",
+            "span.ds-breadcrumb__separator",
+            "span.ds-breadcrumb__current"
+          ],
+          "fields": [
+            "linkText",
+            "hrefOrDisplayOnly",
+            "currentText"
+          ],
+          "rule": "至少两层；每个前置item为anchor + /；最后一个item为current。"
+        }
+      },
+      "allowedEdits": [
+        "items"
+      ],
+      "exampleHtml": "<nav class=\"ds-breadcrumb ds-breadcrumb--dark\" aria-label=\"Breadcrumb\" data-breadcrumb-current data-ai-example=\"ai-breadcrumb-dark\">\n        <div class=\"ds-breadcrumb__item\">\n          <a href=\"#\" class=\"ds-breadcrumb__link\">Home</a>\n          <span class=\"ds-breadcrumb__separator\" aria-hidden=\"true\">/</span>\n        </div>\n        <div class=\"ds-breadcrumb__item\">\n          <a href=\"#\" class=\"ds-breadcrumb__link\">Page A</a>\n          <span class=\"ds-breadcrumb__separator\" aria-hidden=\"true\">/</span>\n        </div>\n        <div class=\"ds-breadcrumb__item\">\n          <span class=\"ds-breadcrumb__current\">Current Page</span>\n        </div>\n      </nav>",
+      "runtime": {
+        "styles": [
+          "components/tokens.css",
+          "components/components.css",
+          "components/breadcrumb-current.css"
+        ],
+        "scripts": [],
+        "fontStylesheets": [
+          "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+        ],
+        "fontFallback": "沿用Open Sans；实际字体待浏览器确认。"
+      }
+    },
+    {
+      "id": "breadcrumb",
+      "key": "library-breadcrumb",
+      "name": "full-width-light",
+      "fragment": "full-width-light",
+      "slots": {
+        "items": {
+          "selector": "nav.ds-breadcrumb",
+          "mode": "structured-content",
+          "required": true,
+          "preserve": [
+            "div.ds-breadcrumb__item",
+            "a.ds-breadcrumb__link",
+            "span.ds-breadcrumb__separator",
+            "span.ds-breadcrumb__current"
+          ],
+          "fields": [
+            "linkText",
+            "hrefOrDisplayOnly",
+            "currentText"
+          ],
+          "rule": "至少两层；每个前置item为anchor + /；最后一个item为current。"
+        }
+      },
+      "allowedEdits": [
+        "items"
+      ],
+      "exampleHtml": "<div class=\"ds-breadcrumb-source-full-width\" data-breadcrumb-source-container=\"light\" data-ai-example=\"ai-breadcrumb-full-width-light\"><nav class=\"ds-breadcrumb\" aria-label=\"Breadcrumb\" data-breadcrumb-current>\n      <div class=\"ds-breadcrumb__item\">\n        <a href=\"#\" class=\"ds-breadcrumb__link\">Home</a>\n        <span class=\"ds-breadcrumb__separator\" aria-hidden=\"true\">/</span>\n      </div>\n      <div class=\"ds-breadcrumb__item\">\n        <a href=\"#\" class=\"ds-breadcrumb__link\">Page A</a>\n        <span class=\"ds-breadcrumb__separator\" aria-hidden=\"true\">/</span>\n      </div>\n      <div class=\"ds-breadcrumb__item\">\n        <span class=\"ds-breadcrumb__current\">Current Page</span>\n      </div>\n    </nav></div>",
+      "runtime": {
+        "styles": [
+          "components/tokens.css",
+          "components/components.css",
+          "components/breadcrumb-current.css"
+        ],
+        "scripts": [],
+        "fontStylesheets": [
+          "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+        ],
+        "fontFallback": "沿用Open Sans；实际字体待浏览器确认。"
+      }
+    },
+    {
+      "id": "breadcrumb",
+      "key": "library-breadcrumb",
+      "name": "full-width-dark",
+      "fragment": "full-width-dark",
+      "slots": {
+        "items": {
+          "selector": "nav.ds-breadcrumb",
+          "mode": "structured-content",
+          "required": true,
+          "preserve": [
+            "div.ds-breadcrumb__item",
+            "a.ds-breadcrumb__link",
+            "span.ds-breadcrumb__separator",
+            "span.ds-breadcrumb__current"
+          ],
+          "fields": [
+            "linkText",
+            "hrefOrDisplayOnly",
+            "currentText"
+          ],
+          "rule": "至少两层；每个前置item为anchor + /；最后一个item为current。"
+        }
+      },
+      "allowedEdits": [
+        "items"
+      ],
+      "exampleHtml": "<div class=\"ds-breadcrumb-source-full-width\" data-breadcrumb-source-container=\"dark\" data-ai-example=\"ai-breadcrumb-full-width-dark\"><nav class=\"ds-breadcrumb ds-breadcrumb--dark\" aria-label=\"Breadcrumb\" data-breadcrumb-current>\n        <div class=\"ds-breadcrumb__item\">\n          <a href=\"#\" class=\"ds-breadcrumb__link\">Home</a>\n          <span class=\"ds-breadcrumb__separator\" aria-hidden=\"true\">/</span>\n        </div>\n        <div class=\"ds-breadcrumb__item\">\n          <a href=\"#\" class=\"ds-breadcrumb__link\">Page A</a>\n          <span class=\"ds-breadcrumb__separator\" aria-hidden=\"true\">/</span>\n        </div>\n        <div class=\"ds-breadcrumb__item\">\n          <span class=\"ds-breadcrumb__current\">Current Page</span>\n        </div>\n      </nav></div>",
+      "runtime": {
+        "styles": [
+          "components/tokens.css",
+          "components/components.css",
+          "components/breadcrumb-current.css"
+        ],
+        "scripts": [],
+        "fontStylesheets": [
+          "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+        ],
+        "fontFallback": "沿用Open Sans；实际字体待浏览器确认。"
+      }
+    },
+    {
+      "id": "checkbox",
+      "key": "library-checkbox",
+      "name": "lg",
+      "fragment": "lg",
+      "slots": {
+        "label": {
+          "selector": "span.ds-checkbox__label",
+          "mode": "text",
+          "required": true
+        }
+      },
+      "bindings": {
+        "name": {
+          "mode": "native-attribute",
+          "target": "input.ds-checkbox__input",
+          "attribute": "name",
+          "valueType": "nonempty-string"
+        },
+        "value": {
+          "mode": "native-attribute",
+          "target": "input.ds-checkbox__input",
+          "attribute": "value",
+          "valueType": "nonempty-string"
+        },
+        "checked": {
+          "mode": "native-attribute",
+          "target": "input.ds-checkbox__input",
+          "attribute": "checked",
+          "values": [
+            false,
+            true
+          ],
+          "default": false
+        },
+        "disabled": {
+          "mode": "native-attribute",
+          "target": "input.ds-checkbox__input",
+          "attribute": "disabled",
+          "values": [
+            false,
+            true
+          ],
+          "default": false
+        },
+        "changeCallback": {
+          "mode": "event-handler",
+          "target": "root",
+          "event": "change"
+        }
+      },
+      "allowedEdits": [
+        "label",
+        "name",
+        "value",
+        "checked",
+        "disabled",
+        "changeCallback"
+      ],
+      "exampleHtml": "<label class=\"ds-checkbox\" data-ai-example=\"ai-checkbox-lg\" data-checkbox-current data-checkbox-control><input class=\"ds-checkbox__input\" type=\"checkbox\" name=\"checkbox-lg\" value=\"option-a\"><span class=\"ds-checkbox__box\" aria-hidden=\"true\"></span><span class=\"ds-checkbox__label\">Options-A</span></label>",
+      "runtime": {
+        "styles": [
+          "components/tokens.css",
+          "components/components.css",
+          "components/checkbox-current.css"
+        ],
+        "scripts": [
+          "components/checkbox-current.js"
+        ],
+        "fontStylesheets": [
+          "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+        ],
+        "fontFallback": "沿用现有Open Sans字体栈；远端字体不可用时回退，不宣称离线视觉一致。"
+      }
+    },
+    {
+      "id": "checkbox",
+      "key": "library-checkbox",
+      "name": "sm",
+      "fragment": "sm",
+      "slots": {
+        "label": {
+          "selector": "span.ds-checkbox__label",
+          "mode": "text",
+          "required": true
+        }
+      },
+      "bindings": {
+        "name": {
+          "mode": "native-attribute",
+          "target": "input.ds-checkbox__input",
+          "attribute": "name",
+          "valueType": "nonempty-string"
+        },
+        "value": {
+          "mode": "native-attribute",
+          "target": "input.ds-checkbox__input",
+          "attribute": "value",
+          "valueType": "nonempty-string"
+        },
+        "checked": {
+          "mode": "native-attribute",
+          "target": "input.ds-checkbox__input",
+          "attribute": "checked",
+          "values": [
+            false,
+            true
+          ],
+          "default": false
+        },
+        "disabled": {
+          "mode": "native-attribute",
+          "target": "input.ds-checkbox__input",
+          "attribute": "disabled",
+          "values": [
+            false,
+            true
+          ],
+          "default": false
+        },
+        "changeCallback": {
+          "mode": "event-handler",
+          "target": "root",
+          "event": "change"
+        }
+      },
+      "allowedEdits": [
+        "label",
+        "name",
+        "value",
+        "checked",
+        "disabled",
+        "changeCallback"
+      ],
+      "exampleHtml": "<label class=\"ds-checkbox ds-checkbox--sm\" data-ai-example=\"ai-checkbox-sm\" data-checkbox-current data-checkbox-control><input class=\"ds-checkbox__input\" type=\"checkbox\" name=\"checkbox-sm\" value=\"option-a\"><span class=\"ds-checkbox__box\" aria-hidden=\"true\"></span><span class=\"ds-checkbox__label\">Options-A</span></label>",
+      "runtime": {
+        "styles": [
+          "components/tokens.css",
+          "components/components.css",
+          "components/checkbox-current.css"
+        ],
+        "scripts": [
+          "components/checkbox-current.js"
+        ],
+        "fontStylesheets": [
+          "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+        ],
+        "fontFallback": "沿用现有Open Sans字体栈；远端字体不可用时回退，不宣称离线视觉一致。"
+      }
+    },
+    {
+      "id": "dialog",
+      "key": "library-dialog",
+      "name": "information",
+      "fragment": "information",
+      "slots": {
+        "title": {
+          "selector": ".ds-dialog__title",
+          "mode": "text",
+          "required": true
+        },
+        "body": {
+          "selector": ".ds-dialog__body",
+          "mode": "structured-content",
+          "required": true,
+          "preserve": [
+            ".ds-dialog__section",
+            ".ds-dialog__subtitle",
+            ".ds-dialog__content"
+          ]
+        }
+      },
+      "allowedEdits": [
+        "title",
+        "body"
+      ],
+      "exampleHtml": "<dialog id=\"dialog-info\" class=\"ds-dialog ds-dialog--information\" aria-labelledby=\"dialog-info-title\"><header class=\"ds-dialog__header\"><h2 id=\"dialog-info-title\" class=\"ds-dialog__title\">Pay with eCheck/Check</h2><button class=\"ds-dialog__close-position ds-icon-btn ds-icon-btn--plain ds-icon-btn--l\" type=\"button\" aria-label=\"Close\" data-dialog-close><img class=\"ds-icon-btn__icon\" src=\"../icons/icon-close.svg\" alt=\"\"></button></header><div class=\"ds-dialog__body\"><p>We accept eCheck or Check as the payment to make the purchase convenient for you at any time.</p><div class=\"ds-dialog__section\"><h3 class=\"ds-dialog__subtitle\">Pay with eCheck</h3><div class=\"ds-dialog__content\"><p>Only U.S. bank accounts are accepted for payment by eCheck. To use your Check account as a payment option, please provide the following at Checkout page:</p><ul><li>Your bank routing number</li><li>Your bank account number (typically a checking account)</li><li>The name on your bank account</li></ul></div></div><div class=\"ds-dialog__section\"><h3 class=\"ds-dialog__subtitle\">Pay with Check</h3><div class=\"ds-dialog__content\"><p>Please send your Check to the following address:</p><p>FS.COM Inc.<br>380 Centerpoint Blvd<br>New Castle, DE 19720<br>United States.</p></div></div></div></dialog>",
+      "runtime": {
+        "styles": [
+          "components/tokens.css",
+          "components/components.css",
+          "components/icon-button-current.css",
+          "components/dialog-current.css",
+          "components/button-current.css"
+        ],
+        "scripts": [
+          "components/dialog-current.js"
+        ],
+        "trigger": "button[data-dialog-open=\"<dialog-id>\"]",
+        "close": "[data-dialog-close]",
+        "confirm": "[data-dialog-confirm] → cancelable fs-dialog-confirm event",
+        "backdropDismiss": "默认开启；data-dialog-backdrop=\"false\" 可关闭",
+        "businessBoundary": "接入方负责业务动作；组件本身不删除、不保存数据。",
+        "fontStylesheets": [
+          "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+        ],
+        "fontFallback": "在线字体不可用时使用 tokens.css 已声明的系统字体回退；精确视觉审阅需确认 Open Sans 实际加载。"
+      }
+    },
+    {
+      "id": "dialog",
+      "key": "library-dialog",
+      "name": "confirmation",
+      "fragment": "confirmation",
+      "slots": {
+        "title": {
+          "selector": ".ds-dialog__title",
+          "mode": "text",
+          "required": true
+        },
+        "body": {
+          "selector": ".ds-dialog__body",
+          "mode": "structured-content",
+          "required": true
+        },
+        "footer.cancelLabel": {
+          "selector": ".ds-dialog__footer [data-dialog-close] .ds-btn__text",
+          "mode": "text",
+          "required": true
+        },
+        "footer.confirmLabel": {
+          "selector": ".ds-dialog__footer [data-dialog-confirm] .ds-btn__text",
+          "mode": "text",
+          "required": true
+        }
+      },
+      "bindings": {
+        "confirmCallback": {
+          "mode": "event-handler",
+          "event": "fs-dialog-confirm",
+          "target": "root"
+        }
+      },
+      "allowedEdits": [
+        "title",
+        "body",
+        "footer.cancelLabel",
+        "footer.confirmLabel",
+        "confirmCallback"
+      ],
+      "exampleHtml": "<dialog id=\"dialog-confirm\" class=\"ds-dialog ds-dialog--confirmation\" aria-labelledby=\"dialog-confirm-title\"><header class=\"ds-dialog__header\"><h2 id=\"dialog-confirm-title\" class=\"ds-dialog__title\">Confirmation</h2><button class=\"ds-dialog__close-position ds-icon-btn ds-icon-btn--plain ds-icon-btn--l\" type=\"button\" aria-label=\"Close\" data-dialog-close><img class=\"ds-icon-btn__icon\" src=\"../icons/icon-close.svg\" alt=\"\"></button></header><div class=\"ds-dialog__body\"><p>Delete all products？</p></div><footer class=\"ds-dialog__footer\"><button type=\"button\" class=\"ds-btn ds-btn--filled-gray ds-btn--xl-regular\" data-dialog-close autofocus aria-label=\"Cancel\"><span class=\"ds-btn__text\">Button</span></button><button type=\"button\" class=\"ds-btn ds-btn--filled-red ds-btn--xl-regular\" data-dialog-confirm aria-label=\"Confirm\"><span class=\"ds-btn__text\">Button</span></button></footer></dialog>",
+      "runtime": {
+        "styles": [
+          "components/tokens.css",
+          "components/components.css",
+          "components/icon-button-current.css",
+          "components/dialog-current.css",
+          "components/button-current.css"
+        ],
+        "scripts": [
+          "components/dialog-current.js"
+        ],
+        "trigger": "button[data-dialog-open=\"<dialog-id>\"]",
+        "close": "[data-dialog-close]",
+        "confirm": "[data-dialog-confirm] → cancelable fs-dialog-confirm event",
+        "backdropDismiss": "默认开启；data-dialog-backdrop=\"false\" 可关闭",
+        "businessBoundary": "接入方负责业务动作；组件本身不删除、不保存数据。",
+        "fontStylesheets": [
+          "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+        ],
+        "fontFallback": "在线字体不可用时使用 tokens.css 已声明的系统字体回退；精确视觉审阅需确认 Open Sans 实际加载。"
+      }
+    },
+    {
+      "id": "form",
+      "key": "library-form",
+      "name": "gray",
+      "fragment": "gray",
+      "slots": {
+        "title": {
+          "selector": "p.ds-form__title",
+          "mode": "text",
+          "required": false
+        },
+        "description": {
+          "selector": "p.ds-form__desc",
+          "mode": "text",
+          "required": false
+        },
+        "fieldContent": {
+          "selector": ":scope",
+          "mode": "structured-content",
+          "required": true,
+          "preserve": [
+            "input.ds-input-field__input",
+            "textarea.ds-input-field__input",
+            "label.ds-form__consent",
+            "button.ds-btn",
+            "input.ds-input-field__input"
+          ],
+          "rule": "Source-bound initial field composition from existing native Input/textarea slots and separately confirmed Select; keep exact child anatomy, source order, paired ordinary rows and full-width textareas. No invented business field, consent, option or custom state paint. Canonical Preview remains one full example, not a fixed business schema."
+        },
+        "submitLabel": {
+          "selector": "span.ds-btn__text",
+          "mode": "text",
+          "required": true
+        }
+      },
+      "bindings": {
+        "submitCallback": {
+          "mode": "event-handler",
+          "target": "root",
+          "event": "ds:form-submit"
+        }
+      },
+      "allowedEdits": [
+        "title",
+        "description",
+        "fieldContent",
+        "submitLabel",
+        "submitCallback"
+      ],
+      "exampleHtml": "<form class=\"ds-form\" data-form-current=\"\" data-ai-example=\"ai-form-gray-current\">\n        <p class=\"ds-form__title\">Product and Project Inquiry</p>\n        <p class=\"ds-form__desc\">Have a question about purchasing a product or solution that you are interested in? Fill in the form and we'll respond in 1 working day.</p>\n        <div class=\"ds-form__row\">\n          <div class=\"ds-form__field\"><div class=\"ds-input-field\" data-input-current=\"\" data-input-layout=\"fill\"><label class=\"ds-input-field__label\" for=\"form-native-example-1\">Label</label><input class=\"ds-input-field__input ds-input-field__input--gray\" placeholder=\"Please enter text\" id=\"form-native-example-1\" type=\"text\" name=\"fieldOne\"><div class=\"ds-input-field__error\" id=\"form-native-example-1-error\" hidden><span class=\"ds-input-field__error-icon\" aria-hidden=\"true\"></span><span class=\"ds-input-field__error-text\">Please enter text.</span></div></div></div>\n          <div class=\"ds-form__field\"><div class=\"ds-input-field\" data-input-current=\"\" data-input-layout=\"fill\"><label class=\"ds-input-field__label\" for=\"form-native-example-2\">Label</label><input class=\"ds-input-field__input ds-input-field__input--gray\" placeholder=\"Please enter text\" id=\"form-native-example-2\" type=\"text\" name=\"fieldTwo\"><div class=\"ds-input-field__error\" id=\"form-native-example-2-error\" hidden><span class=\"ds-input-field__error-icon\" aria-hidden=\"true\"></span><span class=\"ds-input-field__error-text\">Please enter text.</span></div></div></div>\n        </div>\n        <div class=\"ds-form__row\">\n          <div class=\"ds-form__field\"><div class=\"ds-input-field\" data-input-current=\"\" data-input-layout=\"fill\"><label class=\"ds-input-field__label\" for=\"form-native-example-3\">Label</label><input class=\"ds-input-field__input ds-input-field__input--gray\" placeholder=\"Please enter text\" id=\"form-native-example-3\" type=\"text\" name=\"fieldThree\"><div class=\"ds-input-field__error\" id=\"form-native-example-3-error\" hidden><span class=\"ds-input-field__error-icon\" aria-hidden=\"true\"></span><span class=\"ds-input-field__error-text\">Please enter text.</span></div></div></div>\n          <div class=\"ds-form__field\">\n            <label class=\"ds-input-field__label\" data-input-current for=\"form-native-example-4\">Phone Number</label>\n            <div class=\"ds-form__phone-row\">\n              <div class=\"ds-input-prefix\" data-input-current data-input-prefix=\"static\" data-input-color=\"gray\" aria-label=\"Country code +1\"><span>+1</span><img src=\"../icons/icon-input-down.svg\" alt=\"\"></div>\n              <div class=\"ds-input-field\" data-input-current data-input-layout=\"fill\" data-input-label=\"external\" data-input-join=\"start\">\n                <input class=\"ds-input-field__input ds-input-field__input--gray\" placeholder=\"\" id=\"form-native-example-4\" type=\"text\" name=\"phone\">\n                <div class=\"ds-input-field__error\" id=\"form-native-example-4-error\" hidden><span class=\"ds-input-field__error-icon\" aria-hidden=\"true\"></span><span class=\"ds-input-field__error-text\">Please check this value.</span></div>\n              </div>\n            </div>\n          </div>\n        </div>\n        <div class=\"ds-form__row\">\n          <div class=\"ds-form__field\"><div class=\"ds-input-field\" data-input-current data-input-layout=\"fill\" data-input-arrow=\"down\"><label class=\"ds-input-field__label\" for=\"form-current-choice-input\">Lable</label><input class=\"ds-input-field__input ds-input-field__input--gray\" placeholder=\"Please enter text\" id=\"form-current-choice-input\" type=\"text\" name=\"choice\"><div class=\"ds-input-field__error\" id=\"form-current-choice-input-error\" hidden><span class=\"ds-input-field__error-icon\" aria-hidden=\"true\"></span><span class=\"ds-input-field__error-text\">Please check this value.</span></div></div></div>\n          <div class=\"ds-form__field\"><div class=\"ds-input-field\" data-input-current data-input-layout=\"fill\" data-input-arrow=\"down\"><label class=\"ds-input-field__label\" for=\"form-native-example-5\">Label</label><input class=\"ds-input-field__input ds-input-field__input--gray\" placeholder=\"Please enter text\" id=\"form-native-example-5\" type=\"text\" name=\"fieldFour\"><div class=\"ds-input-field__error\" id=\"form-native-example-5-error\" hidden><span class=\"ds-input-field__error-icon\" aria-hidden=\"true\"></span><span class=\"ds-input-field__error-text\">Please check this value.</span></div></div></div>\n        </div>\n        <div class=\"ds-form__field\">\n          <div class=\"ds-input-field\" data-input-current=\"\" data-input-layout=\"fill\" data-input-kind=\"textarea\">\n            <div class=\"ds-input-field__header\"><label class=\"ds-input-field__label\" for=\"form-native-example-6\">Comments</label><span class=\"ds-input-field__count\" id=\"form-current-comments-count\">0/5000</span></div>\n            <textarea class=\"ds-input-field__input ds-input-field__input--gray\" placeholder=\"Your comments will help FS respond more quickly.\" id=\"form-native-example-6\" name=\"comments\" maxlength=\"5000\" aria-describedby=\"form-current-comments-count\"></textarea>\n          </div>\n        </div>\n        <div class=\"ds-form__field\"><span class=\"ds-form__label\">How would you like us to contact you?</span>\n          <div class=\"ds-form__radio-group\">\n            <label class=\"ds-checkbox ds-checkbox--sm\" data-checkbox-current=\"\" data-checkbox-control=\"\"><input class=\"ds-checkbox__input\" type=\"checkbox\" checked=\"\" name=\"contactMethods\" value=\"email\"><span class=\"ds-checkbox__box\" aria-hidden=\"true\"></span><span class=\"ds-checkbox__label\">Email</span></label>\n            <label class=\"ds-checkbox ds-checkbox--sm\" data-checkbox-current=\"\" data-checkbox-control=\"\"><input class=\"ds-checkbox__input\" type=\"checkbox\" name=\"contactMethods\" value=\"phone\"><span class=\"ds-checkbox__box\" aria-hidden=\"true\"></span><span class=\"ds-checkbox__label\">Phone</span></label>\n          </div>\n        </div>\n        <label class=\"ds-form__consent\"><span class=\"ds-checkbox ds-checkbox--sm\" data-checkbox-current=\"\" data-checkbox-control=\"\"><input class=\"ds-checkbox__input\" type=\"checkbox\" name=\"consent\" value=\"agreed\"><span class=\"ds-checkbox__box\" aria-hidden=\"true\"></span></span><span class=\"ds-form__consent-copy\">I have read and agree to the FS.COM <a aria-disabled=\"true\" role=\"link\">Terms and Conditions</a> and acknowledge the <a aria-disabled=\"true\" role=\"link\">Privacy Policy and Notice at Collection</a>.</span></label>\n        <div><button class=\"ds-btn ds-btn--filled-red ds-btn--xl-regular\" type=\"submit\"><span class=\"ds-btn__text\">Submit</span></button></div>\n      </form>",
+      "runtime": {
+        "styles": [
+          "components/tokens.css",
+          "components/components.css",
+          "components/form-current.css",
+          "components/button-current.css",
+          "components/input-current.css",
+          "components/checkbox-current.css"
+        ],
+        "scripts": [
+          "components/input-current.js",
+          "components/checkbox-current.js",
+          "components/form-current.js"
+        ],
+        "fontStylesheets": [
+          "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+        ]
+      }
+    },
+    {
+      "id": "form",
+      "key": "library-form",
+      "name": "white",
+      "fragment": "white",
+      "slots": {
+        "title": {
+          "selector": "p.ds-form__title",
+          "mode": "text",
+          "required": false
+        },
+        "description": {
+          "selector": "p.ds-form__desc",
+          "mode": "text",
+          "required": false
+        },
+        "fieldContent": {
+          "selector": ":scope",
+          "mode": "structured-content",
+          "required": true,
+          "preserve": [
+            "input.ds-input-field__input",
+            "textarea.ds-input-field__input",
+            "label.ds-form__consent",
+            "button.ds-btn",
+            "input.ds-input-field__input"
+          ],
+          "rule": "Source-bound initial field composition from existing native Input/textarea slots and separately confirmed Select; keep exact child anatomy, source order, paired ordinary rows and full-width textareas. No invented business field, consent, option or custom state paint. Canonical Preview remains one full example, not a fixed business schema."
+        },
+        "submitLabel": {
+          "selector": "span.ds-btn__text",
+          "mode": "text",
+          "required": true
+        }
+      },
+      "bindings": {
+        "submitCallback": {
+          "mode": "event-handler",
+          "target": "root",
+          "event": "ds:form-submit"
+        }
+      },
+      "allowedEdits": [
+        "title",
+        "description",
+        "fieldContent",
+        "submitLabel",
+        "submitCallback"
+      ],
+      "exampleHtml": "<form class=\"ds-form\" data-form-current=\"white\" data-ai-example=\"ai-form-white-current\">\n        <p class=\"ds-form__title\">Product and Project Inquiry</p>\n        <p class=\"ds-form__desc\">Have a question about purchasing a product or solution that you are interested in? Fill in the form and we'll respond in 1 working day.</p>\n        <div class=\"ds-form__row\">\n          <div class=\"ds-form__field\"><div class=\"ds-input-field\" data-input-current=\"\" data-input-layout=\"fill\"><label class=\"ds-input-field__label\" for=\"white-form-native-example-1\">Label</label><input class=\"ds-input-field__input ds-input-field__input--white\" placeholder=\"Please enter text\" id=\"white-form-native-example-1\" type=\"text\" name=\"fieldOne\"><div class=\"ds-input-field__error\" id=\"white-form-native-example-1-error\" hidden><span class=\"ds-input-field__error-icon\" aria-hidden=\"true\"></span><span class=\"ds-input-field__error-text\">Please enter text.</span></div></div></div>\n          <div class=\"ds-form__field\"><div class=\"ds-input-field\" data-input-current=\"\" data-input-layout=\"fill\"><label class=\"ds-input-field__label\" for=\"white-form-native-example-2\">Label</label><input class=\"ds-input-field__input ds-input-field__input--white\" placeholder=\"Please enter text\" id=\"white-form-native-example-2\" type=\"text\" name=\"fieldTwo\"><div class=\"ds-input-field__error\" id=\"white-form-native-example-2-error\" hidden><span class=\"ds-input-field__error-icon\" aria-hidden=\"true\"></span><span class=\"ds-input-field__error-text\">Please enter text.</span></div></div></div>\n        </div>\n        <div class=\"ds-form__row\">\n          <div class=\"ds-form__field\"><div class=\"ds-input-field\" data-input-current=\"\" data-input-layout=\"fill\"><label class=\"ds-input-field__label\" for=\"white-form-native-example-3\">Label</label><input class=\"ds-input-field__input ds-input-field__input--white\" placeholder=\"Please enter text\" id=\"white-form-native-example-3\" type=\"text\" name=\"fieldThree\"><div class=\"ds-input-field__error\" id=\"white-form-native-example-3-error\" hidden><span class=\"ds-input-field__error-icon\" aria-hidden=\"true\"></span><span class=\"ds-input-field__error-text\">Please enter text.</span></div></div></div>\n          <div class=\"ds-form__field\">\n            <label class=\"ds-input-field__label\" data-input-current for=\"white-form-native-example-4\">Phone Number</label>\n            <div class=\"ds-form__phone-row\">\n              <div class=\"ds-input-prefix\" data-input-current data-input-prefix=\"static\" data-input-color=\"white\" aria-label=\"Country code +1\"><span>+1</span><img src=\"../icons/icon-input-down.svg\" alt=\"\"></div>\n              <div class=\"ds-input-field\" data-input-current data-input-layout=\"fill\" data-input-label=\"external\" data-input-join=\"start\">\n                <input class=\"ds-input-field__input ds-input-field__input--white\" placeholder=\"\" id=\"white-form-native-example-4\" type=\"text\" name=\"phone\">\n                <div class=\"ds-input-field__error\" id=\"white-form-native-example-4-error\" hidden><span class=\"ds-input-field__error-icon\" aria-hidden=\"true\"></span><span class=\"ds-input-field__error-text\">Please check this value.</span></div>\n              </div>\n            </div>\n          </div>\n        </div>\n        <div class=\"ds-form__row\">\n          <div class=\"ds-form__field\"><div class=\"ds-input-field\" data-input-current data-input-layout=\"fill\" data-input-arrow=\"down\"><label class=\"ds-input-field__label\" for=\"white-form-current-choice-input\">Lable</label><input class=\"ds-input-field__input ds-input-field__input--white\" placeholder=\"Please enter text\" id=\"white-form-current-choice-input\" type=\"text\" name=\"choice\"><div class=\"ds-input-field__error\" id=\"white-form-current-choice-input-error\" hidden><span class=\"ds-input-field__error-icon\" aria-hidden=\"true\"></span><span class=\"ds-input-field__error-text\">Please check this value.</span></div></div></div>\n          <div class=\"ds-form__field\"><div class=\"ds-input-field\" data-input-current data-input-layout=\"fill\"><label class=\"ds-input-field__label\" for=\"white-form-native-example-5\">Label</label><input class=\"ds-input-field__input ds-input-field__input--white\" placeholder=\"Please enter text\" id=\"white-form-native-example-5\" type=\"text\" name=\"fieldFour\"><div class=\"ds-input-field__error\" id=\"white-form-native-example-5-error\" hidden><span class=\"ds-input-field__error-icon\" aria-hidden=\"true\"></span><span class=\"ds-input-field__error-text\">Please check this value.</span></div></div></div>\n        </div>\n        <div class=\"ds-form__field\">\n          <div class=\"ds-input-field\" data-input-current=\"\" data-input-layout=\"fill\" data-input-kind=\"textarea\">\n            <div class=\"ds-input-field__header\"><label class=\"ds-input-field__label\" for=\"white-form-native-example-6\">Comments</label><span class=\"ds-input-field__count\" id=\"white-form-current-comments-count\">0/5000</span></div>\n            <textarea class=\"ds-input-field__input ds-input-field__input--white\" placeholder=\"Your comments will help FS respond more quickly.\" id=\"white-form-native-example-6\" name=\"comments\" maxlength=\"5000\" aria-describedby=\"white-form-current-comments-count\"></textarea>\n          </div>\n        </div>\n        <div class=\"ds-form__field\"><span class=\"ds-form__label\">How would you like us to contact you?</span>\n          <div class=\"ds-form__radio-group\">\n            <label class=\"ds-checkbox ds-checkbox--sm\" data-checkbox-current=\"\" data-checkbox-control=\"\"><input class=\"ds-checkbox__input\" type=\"checkbox\" checked=\"\" name=\"contactMethods\" value=\"email\"><span class=\"ds-checkbox__box\" aria-hidden=\"true\"></span><span class=\"ds-checkbox__label\">Email</span></label>\n            <label class=\"ds-checkbox ds-checkbox--sm\" data-checkbox-current=\"\" data-checkbox-control=\"\"><input class=\"ds-checkbox__input\" type=\"checkbox\" name=\"contactMethods\" value=\"phone\"><span class=\"ds-checkbox__box\" aria-hidden=\"true\"></span><span class=\"ds-checkbox__label\">Phone</span></label>\n          </div>\n        </div>\n        <label class=\"ds-form__consent\"><span class=\"ds-checkbox ds-checkbox--sm\" data-checkbox-current=\"\" data-checkbox-control=\"\"><input class=\"ds-checkbox__input\" type=\"checkbox\" name=\"consent\" value=\"agreed\"><span class=\"ds-checkbox__box\" aria-hidden=\"true\"></span></span><span class=\"ds-form__consent-copy\">I have read and agree to the FS.COM <a aria-disabled=\"true\" role=\"link\">Terms and Conditions</a> and acknowledge the <a aria-disabled=\"true\" role=\"link\">Privacy Policy and Notice at Collection</a>.</span></label>\n        <div><button class=\"ds-btn ds-btn--filled-red ds-btn--xl-regular\" type=\"submit\"><span class=\"ds-btn__text\">Submit</span></button></div>\n      </form>",
+      "runtime": {
+        "styles": [
+          "components/tokens.css",
+          "components/components.css",
+          "components/form-current.css",
+          "components/button-current.css",
+          "components/input-current.css",
+          "components/checkbox-current.css"
+        ],
+        "scripts": [
+          "components/input-current.js",
+          "components/checkbox-current.js",
+          "components/form-current.js"
+        ],
+        "fontStylesheets": [
+          "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+        ]
+      }
+    },
+    {
+      "id": "icon-button",
+      "key": "library-icon-button",
+      "name": "plain-l",
+      "fragment": "plain-l",
+      "slots": {},
+      "bindings": {
+        "icon": {
+          "mode": "registered-icon",
+          "target": ".ds-icon-btn__icon",
+          "attribute": "src",
+          "values": [
+            "components/icons/icon-grid-view.svg",
+            "components/icons/icon-list-view.svg",
+            "components/icons/icon-close.svg"
+          ]
+        },
+        "accessibleLabel": {
+          "mode": "accessible-label",
+          "target": "root",
+          "attribute": "aria-label",
+          "nonEmpty": true
+        },
+        "actionCallback": {
+          "mode": "event-handler",
+          "target": "root",
+          "event": "click"
+        }
+      },
+      "allowedEdits": [
+        "icon",
+        "accessibleLabel",
+        "actionCallback"
+      ],
+      "exampleHtml": "<button id=\"icon-usage-icon-grid-view\" class=\"ds-icon-btn ds-icon-btn--plain ds-icon-btn--l\" type=\"button\" aria-label=\"宫格视图\" style=\"scroll-margin-top: 40px;\" data-ai-example=\"ai-icon-button-plain-l\">\n        <img class=\"ds-icon-btn__icon\" src=\"../icons/icon-grid-view.svg\" alt=\"\">\n      </button>",
+      "runtime": {
+        "styles": [
+          "components/tokens.css",
+          "components/components.css",
+          "components/icon-button-current.css"
+        ],
+        "scripts": [],
+        "businessBoundary": "宿主绑定 click；默认 type=button 不提交表单。",
+        "fontStylesheets": [],
+        "fontFallback": "无可见文字，图标为本地 SVG。"
+      }
+    },
+    {
+      "id": "icon-button",
+      "key": "library-icon-button",
+      "name": "plain-m",
+      "fragment": "plain-m",
+      "slots": {},
+      "bindings": {
+        "icon": {
+          "mode": "registered-icon",
+          "target": ".ds-icon-btn__icon",
+          "attribute": "src",
+          "values": [
+            "components/icons/icon-download.svg",
+            "components/icons/icon-delete.svg",
+            "components/icons/icon-close.svg",
+            "components/icons/icon-button-search-m-default.svg",
+            "components/icons/icon-eye.svg",
+            "components/icons/icon-eye-off.svg",
+            "components/icons/icon-more.svg"
+          ]
+        },
+        "accessibleLabel": {
+          "mode": "accessible-label",
+          "target": "root",
+          "attribute": "aria-label",
+          "nonEmpty": true
+        },
+        "actionCallback": {
+          "mode": "event-handler",
+          "target": "root",
+          "event": "click"
+        }
+      },
+      "allowedEdits": [
+        "icon",
+        "accessibleLabel",
+        "actionCallback"
+      ],
+      "exampleHtml": "<button id=\"icon-usage-icon-download\" class=\"ds-icon-btn ds-icon-btn--plain ds-icon-btn--m\" type=\"button\" aria-label=\"下载\" style=\"scroll-margin-top: 40px;\" data-ai-example=\"ai-icon-button-plain-m\">\n        <img class=\"ds-icon-btn__icon\" src=\"../icons/icon-download.svg\" alt=\"\">\n      </button>",
+      "runtime": {
+        "styles": [
+          "components/tokens.css",
+          "components/components.css",
+          "components/icon-button-current.css"
+        ],
+        "scripts": [],
+        "businessBoundary": "宿主绑定 click；默认 type=button 不提交表单。",
+        "fontStylesheets": [],
+        "fontFallback": "无可见文字，图标为本地 SVG。"
+      }
+    },
+    {
+      "id": "icon-button",
+      "key": "library-icon-button",
+      "name": "plain-s",
+      "fragment": "plain-s",
+      "slots": {},
+      "bindings": {
+        "icon": {
+          "mode": "registered-icon",
+          "target": ".ds-icon-btn__icon",
+          "attribute": "src",
+          "values": [
+            "components/icons/icon-button-close-s.svg",
+            "components/icons/icon-search.svg"
+          ]
+        },
+        "accessibleLabel": {
+          "mode": "accessible-label",
+          "target": "root",
+          "attribute": "aria-label",
+          "nonEmpty": true
+        },
+        "actionCallback": {
+          "mode": "event-handler",
+          "target": "root",
+          "event": "click"
+        }
+      },
+      "allowedEdits": [
+        "icon",
+        "accessibleLabel",
+        "actionCallback"
+      ],
+      "exampleHtml": "<button class=\"ds-icon-btn ds-icon-btn--plain ds-icon-btn--s\" type=\"button\" aria-label=\"关闭\" data-ai-example=\"ai-icon-button-plain-s\">\n        <img class=\"ds-icon-btn__icon\" src=\"../icons/icon-button-close-s.svg\" alt=\"\">\n      </button>",
+      "runtime": {
+        "styles": [
+          "components/tokens.css",
+          "components/components.css",
+          "components/icon-button-current.css"
+        ],
+        "scripts": [],
+        "businessBoundary": "宿主绑定 click；默认 type=button 不提交表单。",
+        "fontStylesheets": [],
+        "fontFallback": "无可见文字，图标为本地 SVG。"
+      }
+    },
+    {
+      "id": "icon-button",
+      "key": "library-icon-button",
+      "name": "plain-xs",
+      "fragment": "plain-xs",
+      "slots": {},
+      "bindings": {
+        "icon": {
+          "mode": "registered-icon",
+          "target": ".ds-icon-btn__icon",
+          "attribute": "src",
+          "values": [
+            "components/icons/icon-edit.svg"
+          ]
+        },
+        "accessibleLabel": {
+          "mode": "accessible-label",
+          "target": "root",
+          "attribute": "aria-label",
+          "nonEmpty": true
+        },
+        "actionCallback": {
+          "mode": "event-handler",
+          "target": "root",
+          "event": "click"
+        }
+      },
+      "allowedEdits": [
+        "icon",
+        "accessibleLabel",
+        "actionCallback"
+      ],
+      "exampleHtml": "<button id=\"icon-usage-icon-edit\" class=\"ds-icon-btn ds-icon-btn--plain ds-icon-btn--xs\" type=\"button\" aria-label=\"编辑\" data-ai-example=\"ai-icon-button-plain-xs\">\n        <img class=\"ds-icon-btn__icon\" src=\"../icons/icon-edit.svg\" alt=\"\">\n      </button>",
+      "runtime": {
+        "styles": [
+          "components/tokens.css",
+          "components/components.css",
+          "components/icon-button-current.css"
+        ],
+        "scripts": [],
+        "businessBoundary": "宿主绑定 click；默认 type=button 不提交表单。",
+        "fontStylesheets": [],
+        "fontFallback": "无可见文字，图标为本地 SVG。"
+      }
+    },
+    {
+      "id": "input-number",
+      "key": "library-input-number",
+      "name": "outline-sm",
+      "fragment": "outline-sm",
+      "slots": {},
+      "bindings": {
+        "min": {
+          "mode": "native-attribute",
+          "target": "root",
+          "attribute": "data-min",
+          "valueType": "positive-integer"
+        },
+        "max": {
+          "mode": "native-attribute",
+          "target": "root",
+          "attribute": "data-max",
+          "valueType": "positive-integer"
+        },
+        "step": {
+          "mode": "native-attribute",
+          "target": "root",
+          "attribute": "data-step",
+          "valueType": "positive-integer"
+        },
+        "value": {
+          "mode": "native-attribute",
+          "target": "input.ds-input-number__input",
+          "attribute": "value",
+          "valueType": "positive-integer"
+        },
+        "name": {
+          "mode": "native-attribute",
+          "target": "input.ds-input-number__input",
+          "attribute": "name",
+          "valueType": "string"
+        },
+        "accessibleLabel": {
+          "mode": "native-attribute",
+          "target": "input.ds-input-number__input",
+          "attribute": "aria-label",
+          "valueType": "nonempty-string"
+        },
+        "inputCallback": {
+          "mode": "event-handler",
+          "target": "root",
+          "event": "input"
+        },
+        "changeCallback": {
+          "mode": "event-handler",
+          "target": "root",
+          "event": "change"
+        }
+      },
+      "allowedEdits": [
+        "value",
+        "min",
+        "max",
+        "step",
+        "name",
+        "accessibleLabel",
+        "inputCallback",
+        "changeCallback"
+      ],
+      "exampleHtml": "<div class=\"ds-input-number ds-input-number--outline ds-input-number--sm\" data-input-number data-min=\"1\" data-max=\"9999\" aria-label=\"Cart quantity\" data-ai-example=\"ai-input-number-outline-sm\" data-input-number-current>\n          <button class=\"ds-input-number__button ds-input-number__button--decrement\" type=\"button\" data-input-number-decrement></button>\n          <input class=\"ds-input-number__input\" type=\"text\" value=\"1\" aria-label=\"Cart quantity\">\n          <button class=\"ds-input-number__button ds-input-number__button--increment\" type=\"button\" data-input-number-increment></button>\n        </div>",
+      "runtime": {
+        "styles": [
+          "components/tokens.css",
+          "components/components.css",
+          "components/input-number-current.css"
+        ],
+        "scripts": [
+          "components/input-number-current.js"
+        ],
+        "fontStylesheets": [
+          "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+        ],
+        "fontFallback": "沿用现有Open Sans字体栈；未验证离线字体一致。"
+      }
+    },
+    {
+      "id": "input-number",
+      "key": "library-input-number",
+      "name": "outline-lg",
+      "fragment": "outline-lg",
+      "slots": {},
+      "bindings": {
+        "min": {
+          "mode": "native-attribute",
+          "target": "root",
+          "attribute": "data-min",
+          "valueType": "positive-integer"
+        },
+        "max": {
+          "mode": "native-attribute",
+          "target": "root",
+          "attribute": "data-max",
+          "valueType": "positive-integer"
+        },
+        "step": {
+          "mode": "native-attribute",
+          "target": "root",
+          "attribute": "data-step",
+          "valueType": "positive-integer"
+        },
+        "value": {
+          "mode": "native-attribute",
+          "target": "input.ds-input-number__input",
+          "attribute": "value",
+          "valueType": "positive-integer"
+        },
+        "name": {
+          "mode": "native-attribute",
+          "target": "input.ds-input-number__input",
+          "attribute": "name",
+          "valueType": "string"
+        },
+        "accessibleLabel": {
+          "mode": "native-attribute",
+          "target": "input.ds-input-number__input",
+          "attribute": "aria-label",
+          "valueType": "nonempty-string"
+        },
+        "inputCallback": {
+          "mode": "event-handler",
+          "target": "root",
+          "event": "input"
+        },
+        "changeCallback": {
+          "mode": "event-handler",
+          "target": "root",
+          "event": "change"
+        }
+      },
+      "allowedEdits": [
+        "value",
+        "min",
+        "max",
+        "step",
+        "name",
+        "accessibleLabel",
+        "inputCallback",
+        "changeCallback"
+      ],
+      "exampleHtml": "<div class=\"ds-input-number ds-input-number--outline\" data-input-number data-min=\"1\" data-max=\"20\" aria-label=\"Product quantity\" data-ai-example=\"ai-input-number-outline-lg\" data-input-number-current>\n          <button class=\"ds-input-number__button ds-input-number__button--decrement\" type=\"button\" data-input-number-decrement></button>\n          <input class=\"ds-input-number__input\" type=\"text\" value=\"7\" aria-label=\"Product quantity\">\n          <button class=\"ds-input-number__button ds-input-number__button--increment\" type=\"button\" data-input-number-increment></button>\n        </div>",
+      "runtime": {
+        "styles": [
+          "components/tokens.css",
+          "components/components.css",
+          "components/input-number-current.css"
+        ],
+        "scripts": [
+          "components/input-number-current.js"
+        ],
+        "fontStylesheets": [
+          "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+        ],
+        "fontFallback": "沿用现有Open Sans字体栈；未验证离线字体一致。"
+      }
+    },
+    {
+      "id": "input-number",
+      "key": "library-input-number",
+      "name": "filled-lg",
+      "fragment": "filled-lg",
+      "slots": {},
+      "bindings": {
+        "min": {
+          "mode": "native-attribute",
+          "target": "root",
+          "attribute": "data-min",
+          "valueType": "positive-integer"
+        },
+        "max": {
+          "mode": "native-attribute",
+          "target": "root",
+          "attribute": "data-max",
+          "valueType": "positive-integer"
+        },
+        "step": {
+          "mode": "native-attribute",
+          "target": "root",
+          "attribute": "data-step",
+          "valueType": "positive-integer"
+        },
+        "value": {
+          "mode": "native-attribute",
+          "target": "input.ds-input-number__input",
+          "attribute": "value",
+          "valueType": "positive-integer"
+        },
+        "name": {
+          "mode": "native-attribute",
+          "target": "input.ds-input-number__input",
+          "attribute": "name",
+          "valueType": "string"
+        },
+        "accessibleLabel": {
+          "mode": "native-attribute",
+          "target": "input.ds-input-number__input",
+          "attribute": "aria-label",
+          "valueType": "nonempty-string"
+        },
+        "inputCallback": {
+          "mode": "event-handler",
+          "target": "root",
+          "event": "input"
+        },
+        "changeCallback": {
+          "mode": "event-handler",
+          "target": "root",
+          "event": "change"
+        }
+      },
+      "allowedEdits": [
+        "value",
+        "min",
+        "max",
+        "step",
+        "name",
+        "accessibleLabel",
+        "inputCallback",
+        "changeCallback"
+      ],
+      "exampleHtml": "<div class=\"ds-input-number ds-input-number--filled\" data-input-number data-min=\"1\" data-max=\"20\" aria-label=\"Form quantity\" data-ai-example=\"ai-input-number-filled-lg\" data-input-number-current>\n          <button class=\"ds-input-number__button ds-input-number__button--decrement\" type=\"button\" data-input-number-decrement></button>\n          <input class=\"ds-input-number__input\" type=\"text\" value=\"7\" aria-label=\"Form quantity\">\n          <button class=\"ds-input-number__button ds-input-number__button--increment\" type=\"button\" data-input-number-increment></button>\n        </div>",
+      "runtime": {
+        "styles": [
+          "components/tokens.css",
+          "components/components.css",
+          "components/input-number-current.css"
+        ],
+        "scripts": [
+          "components/input-number-current.js"
+        ],
+        "fontStylesheets": [
+          "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+        ],
+        "fontFallback": "沿用现有Open Sans字体栈；未验证离线字体一致。"
+      }
+    },
+    {
+      "id": "input",
+      "key": "library-input",
+      "name": "gray",
+      "fragment": "gray",
+      "slots": {
+        "label": {
+          "selector": ".ds-input-field__label",
+          "mode": "text",
+          "required": true
+        },
+        "errorMessage": {
+          "selector": ".ds-input-field__error-text",
+          "mode": "text",
+          "required": true
+        }
+      },
+      "bindings": {
+        "placeholder": {
+          "mode": "native-attribute",
+          "target": "input.ds-input-field__input",
+          "attribute": "placeholder",
+          "valueType": "string"
+        },
+        "value": {
+          "mode": "native-attribute",
+          "target": "input.ds-input-field__input",
+          "attribute": "value",
+          "valueType": "string"
+        },
+        "name": {
+          "mode": "native-attribute",
+          "target": "input.ds-input-field__input",
+          "attribute": "name",
+          "valueType": "string"
+        },
+        "disabled": {
+          "mode": "native-attribute",
+          "target": "input.ds-input-field__input",
+          "attribute": "disabled",
+          "values": [
+            false,
+            true
+          ],
+          "default": false
+        },
+        "inputCallback": {
+          "mode": "event-handler",
+          "target": "root",
+          "event": "input"
+        },
+        "changeCallback": {
+          "mode": "event-handler",
+          "target": "root",
+          "event": "change"
+        },
+        "aria-invalid": {
+          "mode": "native-attribute",
+          "target": "input.ds-input-field__input",
+          "attribute": "aria-invalid",
+          "values": [
+            "false",
+            "true"
+          ],
+          "default": "false"
+        }
+      },
+      "allowedEdits": [
+        "label",
+        "placeholder",
+        "value",
+        "name",
+        "disabled",
+        "errorMessage",
+        "inputCallback",
+        "changeCallback",
+        "aria-invalid"
+      ],
+      "exampleHtml": "<div class=\"ds-input-field\" data-input-current data-ai-example=\"ai-input-gray\">\n<label class=\"ds-input-field__label\" for=\"input-gray-default\">Lable</label>\n<input id=\"input-gray-default\" class=\"ds-input-field__input ds-input-field__input--gray\" type=\"text\" placeholder=\"Please enter text\">\n<div class=\"ds-input-field__error\" id=\"input-gray-default-error\" hidden>\n<span class=\"ds-input-field__error-icon\" aria-hidden=\"true\">\n</span>\n<span class=\"ds-input-field__error-text\">Please enter Prompt word.</span>\n</div>\n</div>",
+      "runtime": {
+        "styles": [
+          "components/tokens.css",
+          "components/components.css",
+          "components/input-current.css"
+        ],
+        "scripts": [
+          "components/input-current.js"
+        ],
+        "fontStylesheets": [
+          "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+        ],
+        "fontFallback": "Open Sans 来自已有项目字体规则；远端字体不可用时按项目字体栈回退，不宣称完全离线。"
+      }
+    },
+    {
+      "id": "input",
+      "key": "library-input",
+      "name": "white",
+      "fragment": "white",
+      "slots": {
+        "label": {
+          "selector": ".ds-input-field__label",
+          "mode": "text",
+          "required": true
+        },
+        "errorMessage": {
+          "selector": ".ds-input-field__error-text",
+          "mode": "text",
+          "required": true
+        }
+      },
+      "bindings": {
+        "placeholder": {
+          "mode": "native-attribute",
+          "target": "input.ds-input-field__input",
+          "attribute": "placeholder",
+          "valueType": "string"
+        },
+        "value": {
+          "mode": "native-attribute",
+          "target": "input.ds-input-field__input",
+          "attribute": "value",
+          "valueType": "string"
+        },
+        "name": {
+          "mode": "native-attribute",
+          "target": "input.ds-input-field__input",
+          "attribute": "name",
+          "valueType": "string"
+        },
+        "disabled": {
+          "mode": "native-attribute",
+          "target": "input.ds-input-field__input",
+          "attribute": "disabled",
+          "values": [
+            false,
+            true
+          ],
+          "default": false
+        },
+        "inputCallback": {
+          "mode": "event-handler",
+          "target": "root",
+          "event": "input"
+        },
+        "changeCallback": {
+          "mode": "event-handler",
+          "target": "root",
+          "event": "change"
+        },
+        "aria-invalid": {
+          "mode": "native-attribute",
+          "target": "input.ds-input-field__input",
+          "attribute": "aria-invalid",
+          "values": [
+            "false",
+            "true"
+          ],
+          "default": "false"
+        }
+      },
+      "allowedEdits": [
+        "label",
+        "placeholder",
+        "value",
+        "name",
+        "disabled",
+        "errorMessage",
+        "inputCallback",
+        "changeCallback",
+        "aria-invalid"
+      ],
+      "exampleHtml": "<div class=\"ds-input-field\" data-input-current data-ai-example=\"ai-input-white\">\n<label class=\"ds-input-field__label\" for=\"input-white-default\">Lable</label>\n<input id=\"input-white-default\" class=\"ds-input-field__input ds-input-field__input--white\" type=\"text\" placeholder=\"Please enter text\">\n<div class=\"ds-input-field__error\" id=\"input-white-default-error\" hidden>\n<span class=\"ds-input-field__error-icon\" aria-hidden=\"true\">\n</span>\n<span class=\"ds-input-field__error-text\">Please enter Prompt word.</span>\n</div>\n</div>",
+      "runtime": {
+        "styles": [
+          "components/tokens.css",
+          "components/components.css",
+          "components/input-current.css"
+        ],
+        "scripts": [
+          "components/input-current.js"
+        ],
+        "fontStylesheets": [
+          "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+        ],
+        "fontFallback": "Open Sans 来自已有项目字体规则；远端字体不可用时按项目字体栈回退，不宣称完全离线。"
+      }
+    },
+    {
+      "id": "list",
+      "key": "library-list",
+      "name": "structured-data",
+      "fragment": "structured-data",
+      "slots": {
+        "items": {
+          "selector": ":scope",
+          "mode": "structured-content",
+          "required": true,
+          "preserve": [
+            "div.ds-list__head",
+            "div.ds-list__row",
+            "span.ds-list__status",
+            "span.ds-list__action"
+          ],
+          "rule": "Keep complete canonical structure; text and item count only. No new navigation, controls or initialized state. Structured action labels remain Edit/Delete."
+        }
+      },
+      "allowedEdits": [
+        "items"
+      ],
+      "exampleHtml": "<div class=\"ds-list ds-list--structured\" data-ai-example=\"ai-list-structured-data\" data-list-current=\"structured\">\n          <div class=\"ds-list__head ds-list__structured-grid\"><span>Title</span><span>Status</span><span>Created At</span><span>Action</span></div>\n          <div class=\"ds-list__row ds-list__structured-grid\"><span>S5850-48B4c</span><span class=\"ds-list__status\"><span class=\"ds-list__status-dot ds-list__status-dot--pending\"></span>Pending Activation</span><span>2024-08-01 16:58:12</span><span class=\"ds-list__action\">Delete</span></div>\n          <div class=\"ds-list__row ds-list__structured-grid\"><span>Test 123</span><span class=\"ds-list__status\"><span class=\"ds-list__status-dot ds-list__status-dot--text\"></span>Text</span><span>2024-08-01 16:58:12</span><span class=\"ds-list__action\"><span>Edit</span><span>Delete</span></span></div>\n        </div>",
+      "runtime": {
+        "styles": [
+          "components/tokens.css",
+          "components/components.css",
+          "components/checkbox-current.css",
+          "components/button-current.css",
+          "components/list-operations-current.css",
+          "components/icon-button-current.css",
+          "components/input-number-current.css",
+          "components/list-unordered-current.css"
+        ],
+        "scripts": [
+          "components/checkbox-current.js",
+          "components/input-number-current.js",
+          "components/list-current.js",
+          "components/list-operations-current.js",
+          "components/list-products-current.js"
+        ],
+        "fontStylesheets": [
+          "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+        ],
+        "fontFallback": "Open Sans stack; actual browser proof pending."
+      }
+    },
+    {
+      "id": "list",
+      "key": "library-list",
+      "name": "content-stream",
+      "fragment": "content-stream",
+      "slots": {
+        "items": {
+          "selector": ":scope",
+          "mode": "structured-content",
+          "required": true,
+          "preserve": [
+            "article.ds-list__stream-source-item",
+            "h3.ds-list__stream-source-title",
+            "p.ds-list__stream-source-summary",
+            "div.ds-list__stream-source-meta",
+            "time"
+          ],
+          "rule": "Keep complete canonical structure; text and item count only. No new navigation, controls or initialized state. Structured action labels remain Edit/Delete."
+        }
+      },
+      "allowedEdits": [
+        "items"
+      ],
+      "exampleHtml": "<div class=\"ds-list ds-list--stream\" data-ai-example=\"ai-list-content-stream\">\n          <article class=\"ds-list__stream-source-item\"><h3 class=\"ds-list__stream-source-title\">What is MLAG and How to Configure MLAG on PicOS® Switches</h3><p class=\"ds-list__stream-source-summary\">In modern enterprise and data center networks, the demand for higher reliability, better bandwidth utilization, and non-stop service has driven the need for technologies that go beyond traditional link aggregation. One of these technologies is Multi-Chassis Link Aggregation Group (MLAG).</p><div class=\"ds-list__stream-source-meta\"><div class=\"ds-list__stream-source-tags\"><span>Hardware</span><span class=\"ds-list__stream-source-separator\" data-source-asset=\"svg_e7f98577.svg\"></span><span>Enterprise Network</span><span class=\"ds-list__stream-source-separator\" data-source-asset=\"svg_e7f98577.svg\"></span><span>Blog</span></div><time>May 06, 2025</time></div></article>\n          <div class=\"ds-list__stream-source-divider\"></div>\n          <article class=\"ds-list__stream-source-item\"><h3 class=\"ds-list__stream-source-title\">PicOS® 4.5.0M Released: Enhanced Features to Improve Network Stability and Efficiency</h3><p class=\"ds-list__stream-source-summary is-clamped\">New Castle, Delaware - April 24th, 2025 - FS, a trusted provider of ICT products and solutions, has officially launched PICOS 4.5.0M, the latest advanced version of FS PicOS® switch operating system, offering resilient and efficient network operations for campus and data center networks. This update comes with enhanced features that boost network reliability, security, and scalability, such as DHCP ZTP, ECN, PFC, DLB, etc. The PICOS 4.5.0M version has been extensively tested, addressing several bugs and improving stability to assist customers in managing complex network environments.</p><div class=\"ds-list__stream-source-meta\"><div class=\"ds-list__stream-source-tags\"><span>Newsroom</span><span class=\"ds-list__stream-source-separator\" data-source-asset=\"svg_e7f98577.svg\"></span><span>News</span></div><time>Apr 24, 2025</time></div></article>\n          <div class=\"ds-list__stream-source-divider\"></div>\n          <article class=\"ds-list__stream-source-item\"><h3 class=\"ds-list__stream-source-title\">FS S3270-24TM-P: A Versatile PoE+ PicOS® Switch for Enterprise Networks</h3><p class=\"ds-list__stream-source-summary\">As businesses increasingly rely on cloud applications, IoT devices, and remote workforces, the demand for scalable, high-performance, and secure networks has never been greater. Enterprises need switches that seamlessly handle growing data traffic, ensure uninterrupted connectivity, and simplify network management—all while keeping costs under control.</p><div class=\"ds-list__stream-source-meta\"><div class=\"ds-list__stream-source-tags\"><span>Enterprise Network</span><span class=\"ds-list__stream-source-separator\" data-source-asset=\"svg_e7f98577.svg\"></span><span>Software</span><span class=\"ds-list__stream-source-separator\" data-source-asset=\"svg_e7f98577.svg\"></span><span>Hardware</span><span class=\"ds-list__stream-source-separator\" data-source-asset=\"svg_e7f98577.svg\"></span><span>Blog</span></div><time>Apr 14, 2025</time></div></article>\n          <article class=\"ds-list__stream-source-item\"><h3 class=\"ds-list__stream-source-title\">FS S3270-24TM-P: A Versatile PoE+ PicOS® Switch for Enterprise Networks</h3><p class=\"ds-list__stream-source-summary\">As businesses increasingly rely on cloud applications, IoT devices, and remote workforces, the demand for scalable, high-performance, and secure networks has never been greater. Enterprises need switches that seamlessly handle growing data traffic, ensure uninterrupted connectivity, and simplify network management—all while keeping costs under control.</p><div class=\"ds-list__stream-source-meta\"><div class=\"ds-list__stream-source-tags\"><span>Enterprise Network</span><span class=\"ds-list__stream-source-separator\" data-source-asset=\"svg_e7f98577.svg\"></span><span>Software</span><span class=\"ds-list__stream-source-separator\" data-source-asset=\"svg_e7f98577.svg\"></span><span>Hardware</span><span class=\"ds-list__stream-source-separator\" data-source-asset=\"svg_e7f98577.svg\"></span><span>Blog</span></div><time>Apr 14, 2025</time></div></article>\n        </div>",
+      "runtime": {
+        "styles": [
+          "components/tokens.css",
+          "components/components.css",
+          "components/checkbox-current.css",
+          "components/button-current.css",
+          "components/list-operations-current.css",
+          "components/icon-button-current.css",
+          "components/input-number-current.css",
+          "components/list-unordered-current.css"
+        ],
+        "scripts": [
+          "components/checkbox-current.js",
+          "components/input-number-current.js",
+          "components/list-current.js",
+          "components/list-operations-current.js",
+          "components/list-products-current.js"
+        ],
+        "fontStylesheets": [
+          "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+        ],
+        "fontFallback": "Open Sans stack; actual browser proof pending."
+      }
+    },
+    {
+      "id": "list",
+      "key": "library-list",
+      "name": "unordered-12",
+      "fragment": "unordered-12",
+      "slots": {
+        "items": {
+          "selector": ":scope",
+          "mode": "structured-content",
+          "required": true,
+          "preserve": [
+            "div.ds-list__unordered-item",
+            "span.ds-list__unordered-dot",
+            "p.ds-list__unordered-text"
+          ],
+          "rule": "保持每条圆点和正文结构；只替换条目数量/原文。没有链接、状态、编辑或业务事件。原件空白尾槽不编造条目。"
+        }
+      },
+      "allowedEdits": [
+        "items"
+      ],
+      "exampleHtml": "<div class=\"ds-list ds-list--unordered-12\" data-list-current=\"unordered\" data-list-source=\"legacy-fixed\" data-ai-example=\"ai-list-unordered-12\"><div class=\"ds-list__unordered-item\"><span class=\"ds-list__unordered-dot\" aria-hidden=\"true\"></span><p class=\"ds-list__unordered-text\">2x 2nd Gen Intel Xeon Scalable CPUs</p></div><div class=\"ds-list__unordered-item\"><span class=\"ds-list__unordered-dot\" aria-hidden=\"true\"></span><p class=\"ds-list__unordered-text\">2x 2nd Gen Intel Xeon Scalable CPUs</p></div><div class=\"ds-list__unordered-item\"><span class=\"ds-list__unordered-dot\" aria-hidden=\"true\"></span><p class=\"ds-list__unordered-text\">2x 2nd Gen Intel Xeon Scalable CPUs</p></div></div>",
+      "runtime": {
+        "styles": [
+          "components/tokens.css",
+          "components/components.css",
+          "components/checkbox-current.css",
+          "components/button-current.css",
+          "components/list-operations-current.css",
+          "components/icon-button-current.css",
+          "components/input-number-current.css",
+          "components/list-unordered-current.css"
+        ],
+        "scripts": [
+          "components/checkbox-current.js",
+          "components/input-number-current.js",
+          "components/list-current.js",
+          "components/list-operations-current.js",
+          "components/list-products-current.js"
+        ],
+        "fontStylesheets": [
+          "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+        ],
+        "fontFallback": "Open Sans stack; actual browser proof pending."
+      }
+    },
+    {
+      "id": "list",
+      "key": "library-list",
+      "name": "unordered-14",
+      "fragment": "unordered-14",
+      "slots": {
+        "items": {
+          "selector": ":scope",
+          "mode": "structured-content",
+          "required": true,
+          "preserve": [
+            "div.ds-list__unordered-item",
+            "span.ds-list__unordered-dot",
+            "p.ds-list__unordered-text"
+          ],
+          "rule": "保持每条圆点和正文结构；只替换条目数量/原文。没有链接、状态、编辑或业务事件。原件空白尾槽不编造条目。"
+        }
+      },
+      "allowedEdits": [
+        "items"
+      ],
+      "exampleHtml": "<div class=\"ds-list ds-list--unordered-14\" data-list-current=\"unordered\" data-list-source=\"legacy-fixed\" data-ai-example=\"ai-list-unordered-14\"><div class=\"ds-list__unordered-item\"><span class=\"ds-list__unordered-dot\" aria-hidden=\"true\"></span><p class=\"ds-list__unordered-text\">2x 2nd Gen Intel Xeon Scalable CPUs</p></div><div class=\"ds-list__unordered-item\"><span class=\"ds-list__unordered-dot\" aria-hidden=\"true\"></span><p class=\"ds-list__unordered-text\">2x 2nd Gen Intel Xeon Scalable CPUs</p></div><div class=\"ds-list__unordered-item\"><span class=\"ds-list__unordered-dot\" aria-hidden=\"true\"></span><p class=\"ds-list__unordered-text\">2x 2nd Gen Intel Xeon Scalable CPUs</p></div></div>",
+      "runtime": {
+        "styles": [
+          "components/tokens.css",
+          "components/components.css",
+          "components/checkbox-current.css",
+          "components/button-current.css",
+          "components/list-operations-current.css",
+          "components/icon-button-current.css",
+          "components/input-number-current.css",
+          "components/list-unordered-current.css"
+        ],
+        "scripts": [
+          "components/checkbox-current.js",
+          "components/input-number-current.js",
+          "components/list-current.js",
+          "components/list-operations-current.js",
+          "components/list-products-current.js"
+        ],
+        "fontStylesheets": [
+          "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+        ],
+        "fontFallback": "Open Sans stack; actual browser proof pending."
+      }
+    },
+    {
+      "id": "menu-navigation",
+      "key": "library-menu-navigation",
+      "name": "single-level",
+      "fragment": "single-level",
+      "slots": {
+        "menuContent": {
+          "selector": ":scope",
+          "mode": "structured-content",
+          "required": true,
+          "preserve": [
+            "ul.ds-menu-navigation__list",
+            "button.ds-menu-navigation__item",
+            "span.ds-menu-navigation__item-label"
+          ],
+          "rule": "Retain exact native item structure, states and paired IDs; label/value text only, optional title, search metadata where present. No extra levels or source-less controls."
+        }
+      },
+      "bindings": {
+        "changeCallback": {
+          "mode": "event-handler",
+          "target": "root",
+          "event": "ds:menu-navigation-change"
+        }
+      },
+      "allowedEdits": [
+        "menuContent",
+        "changeCallback"
+      ],
+      "exampleHtml": "<nav class=\"ds-menu-navigation ds-menu-navigation--single-level ds-menu-navigation--width-250\" data-menu-navigation-current=\"menu-atom\" data-menu-navigation data-ai-example=\"ai-menu-single-level\" aria-label=\"Compact single-level product menu\">\n          <ul class=\"ds-menu-navigation__list\">\n            <li><button class=\"ds-menu-navigation__item ds-menu-navigation__item--selected\" type=\"button\" data-value=\"fiber-optic-cables\" aria-pressed=\"true\"><span class=\"ds-menu-navigation__item-label\">Fiber Optic Cables</span></button></li>\n            <li><button class=\"ds-menu-navigation__item\" type=\"button\" data-value=\"panels-enclosures-racks\"><span class=\"ds-menu-navigation__item-label\">Panels, Enclosures &amp; Racks</span></button></li>\n            <li><button class=\"ds-menu-navigation__item\" type=\"button\" data-value=\"testers-tools\"><span class=\"ds-menu-navigation__item-label\">Testers &amp; Tools</span></button></li>\n          </ul>\n        </nav>",
+      "runtime": {
+        "styles": [
+          "components/tokens.css",
+          "components/components.css",
+          "components/menu-navigation-current.css"
+        ],
+        "scripts": [
+          "components/menu-navigation-current.js"
+        ],
+        "fontStylesheets": [
+          "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+        ],
+        "fontFallback": "Open Sans stack; actual browser native keyboard and visual proof pending."
+      }
+    },
+    {
+      "id": "menu-navigation",
+      "key": "library-menu-navigation",
+      "name": "multi-level",
+      "fragment": "multi-level",
+      "slots": {
+        "menuContent": {
+          "selector": ":scope",
+          "mode": "structured-content",
+          "required": true,
+          "preserve": [
+            "ul.ds-menu-navigation__list",
+            "button.ds-menu-navigation__item",
+            "span.ds-menu-navigation__item-label",
+            "ul.ds-menu-navigation__panel",
+            "img.ds-menu-navigation__chevron"
+          ],
+          "rule": "Retain exact native item structure, states and paired IDs; label/value text only, optional title, search metadata where present. No extra levels or source-less controls."
+        }
+      },
+      "bindings": {
+        "changeCallback": {
+          "mode": "event-handler",
+          "target": "root",
+          "event": "ds:menu-navigation-change"
+        },
+        "toggleCallback": {
+          "mode": "event-handler",
+          "target": "root",
+          "event": "ds:menu-navigation-toggle"
+        }
+      },
+      "allowedEdits": [
+        "menuContent",
+        "changeCallback",
+        "toggleCallback"
+      ],
+      "exampleHtml": "<nav class=\"ds-menu-navigation ds-menu-navigation--multi-level ds-menu-navigation--width-288\" data-menu-navigation-current=\"menu-atom\" data-menu-navigation data-ai-example=\"ai-menu-multi-level\" aria-label=\"Multi-level product menu\">\n        <div class=\"ds-menu-navigation__title\">Products</div>\n        <ul class=\"ds-menu-navigation__list\">\n          <li>\n            <button class=\"ds-menu-navigation__item\" type=\"button\" data-value=\"networking\" aria-expanded=\"true\" aria-controls=\"menu-networking-panel\">\n              <span class=\"ds-menu-navigation__item-label\">Networking</span>\n              <img class=\"ds-menu-navigation__chevron\" src=\"../icons/icon-chevron-down.svg\" alt=\"\">\n            </button>\n            <ul class=\"ds-menu-navigation__panel\" id=\"menu-networking-panel\">\n              <li><button class=\"ds-menu-navigation__item ds-menu-navigation__item--selected\" type=\"button\" data-value=\"optical-networking\" aria-pressed=\"true\"><span class=\"ds-menu-navigation__item-label\">Optical Networking</span></button></li>\n              <li><button class=\"ds-menu-navigation__item\" type=\"button\" data-value=\"copper-systems\"><span class=\"ds-menu-navigation__item-label\">Copper Systems</span></button></li>\n            </ul>\n          </li>\n          <li>\n            <button class=\"ds-menu-navigation__item\" type=\"button\" data-value=\"tools\" aria-expanded=\"false\" aria-controls=\"menu-tools-panel\">\n              <span class=\"ds-menu-navigation__item-label\">Testers &amp; Tools</span>\n              <img class=\"ds-menu-navigation__chevron\" src=\"../icons/icon-chevron-down.svg\" alt=\"\">\n            </button>\n            <ul class=\"ds-menu-navigation__panel\" id=\"menu-tools-panel\" hidden>\n              <li><button class=\"ds-menu-navigation__item\" type=\"button\" data-value=\"switches\"><span class=\"ds-menu-navigation__item-label\">Switches</span></button></li>\n            </ul>\n          </li>\n        </ul>\n      </nav>",
+      "runtime": {
+        "styles": [
+          "components/tokens.css",
+          "components/components.css",
+          "components/menu-navigation-current.css"
+        ],
+        "scripts": [
+          "components/menu-navigation-current.js"
+        ],
+        "fontStylesheets": [
+          "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+        ],
+        "fontFallback": "Open Sans stack; actual browser native keyboard and visual proof pending."
+      }
+    },
+    {
+      "id": "radio",
+      "key": "library-radio",
+      "name": "regular-lg",
+      "fragment": "regular-lg",
+      "slots": {
+        "label": {
+          "selector": "span.ds-radio__label",
+          "mode": "text",
+          "required": true
+        }
+      },
+      "bindings": {
+        "name": {
+          "mode": "native-attribute",
+          "target": "input.ds-radio__input",
+          "attribute": "name",
+          "valueType": "nonempty-string"
+        },
+        "value": {
+          "mode": "native-attribute",
+          "target": "input.ds-radio__input",
+          "attribute": "value",
+          "valueType": "nonempty-string"
+        },
+        "checked": {
+          "mode": "native-attribute",
+          "target": "input.ds-radio__input",
+          "attribute": "checked",
+          "values": [
+            false,
+            true
+          ],
+          "default": false
+        },
+        "disabled": {
+          "mode": "native-attribute",
+          "target": "input.ds-radio__input",
+          "attribute": "disabled",
+          "values": [
+            false,
+            true
+          ],
+          "default": false
+        },
+        "changeCallback": {
+          "mode": "event-handler",
+          "target": "root",
+          "event": "change"
+        }
+      },
+      "allowedEdits": [
+        "label",
+        "name",
+        "value",
+        "checked",
+        "disabled",
+        "changeCallback"
+      ],
+      "exampleHtml": "<label class=\"ds-radio\" data-radio-source-default18=\"official\" data-ai-example=\"ai-radio-regular-lg\"><input class=\"ds-radio__input\" type=\"radio\" name=\"lg-default\" value=\"a\"><span class=\"ds-radio__indicator\" aria-hidden=\"true\"></span><span class=\"ds-radio__content\"><span class=\"ds-radio__label\">Options-A</span></span></label>",
+      "runtime": {
+        "styles": [
+          "components/tokens.css",
+          "components/components.css",
+          "components/radio-current.css"
+        ],
+        "scripts": [],
+        "fontStylesheets": [
+          "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+        ],
+        "fontFallback": "沿用Open Sans字体栈；实际字体和浏览器视觉仍待验证。"
+      }
+    },
+    {
+      "id": "radio",
+      "key": "library-radio",
+      "name": "regular-sm",
+      "fragment": "regular-sm",
+      "slots": {
+        "label": {
+          "selector": "span.ds-radio__label",
+          "mode": "text",
+          "required": true
+        }
+      },
+      "bindings": {
+        "name": {
+          "mode": "native-attribute",
+          "target": "input.ds-radio__input",
+          "attribute": "name",
+          "valueType": "nonempty-string"
+        },
+        "value": {
+          "mode": "native-attribute",
+          "target": "input.ds-radio__input",
+          "attribute": "value",
+          "valueType": "nonempty-string"
+        },
+        "checked": {
+          "mode": "native-attribute",
+          "target": "input.ds-radio__input",
+          "attribute": "checked",
+          "values": [
+            false,
+            true
+          ],
+          "default": false
+        },
+        "disabled": {
+          "mode": "native-attribute",
+          "target": "input.ds-radio__input",
+          "attribute": "disabled",
+          "values": [
+            false,
+            true
+          ],
+          "default": false
+        },
+        "changeCallback": {
+          "mode": "event-handler",
+          "target": "root",
+          "event": "change"
+        }
+      },
+      "allowedEdits": [
+        "label",
+        "name",
+        "value",
+        "checked",
+        "disabled",
+        "changeCallback"
+      ],
+      "exampleHtml": "<label class=\"ds-radio ds-radio--sm\" data-radio-source-default14=\"official\" data-ai-example=\"ai-radio-regular-sm\"><input class=\"ds-radio__input\" type=\"radio\" name=\"sm-default\" value=\"a\"><span class=\"ds-radio__indicator\" aria-hidden=\"true\"></span><span class=\"ds-radio__content\"><span class=\"ds-radio__label\">Options-A</span></span></label>",
+      "runtime": {
+        "styles": [
+          "components/tokens.css",
+          "components/components.css",
+          "components/radio-current.css"
+        ],
+        "scripts": [],
+        "fontStylesheets": [
+          "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+        ],
+        "fontFallback": "沿用Open Sans字体栈；实际字体和浏览器视觉仍待验证。"
+      }
+    },
+    {
+      "id": "radio",
+      "key": "library-radio",
+      "name": "bordered-compact",
+      "fragment": "bordered-compact",
+      "slots": {
+        "label": {
+          "selector": "span.ds-radio__label",
+          "mode": "text",
+          "required": true
+        }
+      },
+      "bindings": {
+        "name": {
+          "mode": "native-attribute",
+          "target": "input.ds-radio__input",
+          "attribute": "name",
+          "valueType": "nonempty-string"
+        },
+        "value": {
+          "mode": "native-attribute",
+          "target": "input.ds-radio__input",
+          "attribute": "value",
+          "valueType": "nonempty-string"
+        },
+        "checked": {
+          "mode": "native-attribute",
+          "target": "input.ds-radio__input",
+          "attribute": "checked",
+          "values": [
+            false,
+            true
+          ],
+          "default": false
+        },
+        "disabled": {
+          "mode": "native-attribute",
+          "target": "input.ds-radio__input",
+          "attribute": "disabled",
+          "values": [
+            false,
+            true
+          ],
+          "default": false
+        },
+        "changeCallback": {
+          "mode": "event-handler",
+          "target": "root",
+          "event": "change"
+        }
+      },
+      "allowedEdits": [
+        "label",
+        "name",
+        "value",
+        "checked",
+        "disabled",
+        "changeCallback"
+      ],
+      "exampleHtml": "<label class=\"ds-radio ds-radio--bordered-compact\" data-radio-source-default14=\"official\" data-ai-example=\"ai-radio-bordered-compact\"><input class=\"ds-radio__input\" type=\"radio\" name=\"compact-default\" value=\"a\"><span class=\"ds-radio__indicator\" aria-hidden=\"true\"></span><span class=\"ds-radio__content\"><span class=\"ds-radio__label\">100 QSFP28</span></span></label>",
+      "runtime": {
+        "styles": [
+          "components/tokens.css",
+          "components/components.css",
+          "components/radio-current.css"
+        ],
+        "scripts": [],
+        "fontStylesheets": [
+          "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+        ],
+        "fontFallback": "沿用Open Sans字体栈；实际字体和浏览器视觉仍待验证。"
+      }
+    },
+    {
+      "id": "rate",
+      "key": "library-rate",
+      "name": "display",
+      "fragment": "display",
+      "slots": {
+        "ratingContent": {
+          "selector": ":scope",
+          "mode": "structured-content",
+          "required": true,
+          "preserve": [
+            "span.ds-rate__stars",
+            "img.ds-rate__star"
+          ],
+          "rule": "Five stars, selected size, synchronized aria-label, on/off sequence and optional existing label. No interaction or half-star."
+        }
+      },
+      "allowedEdits": [
+        "ratingContent"
+      ],
+      "exampleHtml": "<div class=\"ds-rate ds-rate--display ds-rate--sm\" data-ai-example=\"ai-rate-display-sm\" role=\"img\" aria-label=\"5 out of 5 stars\">\n          <span class=\"ds-rate__stars\" aria-hidden=\"true\">\n            <img class=\"ds-rate__star\" src=\"../icons/icon-rate-on-16.svg\" alt=\"\">\n            <img class=\"ds-rate__star\" src=\"../icons/icon-rate-on-16.svg\" alt=\"\">\n            <img class=\"ds-rate__star\" src=\"../icons/icon-rate-on-16.svg\" alt=\"\">\n            <img class=\"ds-rate__star\" src=\"../icons/icon-rate-on-16.svg\" alt=\"\">\n            <img class=\"ds-rate__star\" src=\"../icons/icon-rate-on-16.svg\" alt=\"\">\n          </span>\n          <span class=\"ds-rate__label ds-rate__label--muted\">5.0</span>\n        </div>",
+      "runtime": {
+        "styles": [
+          "components/tokens.css",
+          "components/components.css"
+        ],
+        "scripts": [
+          "components/rate-current.js"
+        ],
+        "fontStylesheets": [
+          "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+        ],
+        "fontFallback": "Open Sans stack; actual browser font/visual verification pending."
+      }
+    },
+    {
+      "id": "rate",
+      "key": "library-rate",
+      "name": "input",
+      "fragment": "input",
+      "slots": {},
+      "bindings": {
+        "value": {
+          "mode": "native-attribute",
+          "target": "root",
+          "attribute": "data-value",
+          "valueType": "integer",
+          "min": 0,
+          "max": 5
+        },
+        "labels": {
+          "mode": "native-attribute",
+          "target": "root",
+          "attribute": "data-rate-labels",
+          "valueType": "json-string-array",
+          "length": 5
+        },
+        "groupLabel": {
+          "mode": "native-attribute",
+          "target": "div.ds-rate__control",
+          "attribute": "aria-label",
+          "valueType": "nonempty-string"
+        },
+        "changeCallback": {
+          "mode": "event-handler",
+          "target": "root",
+          "event": "ds:rate-change"
+        }
+      },
+      "allowedEdits": [
+        "value",
+        "labels",
+        "groupLabel",
+        "changeCallback"
+      ],
+      "exampleHtml": "<div class=\"ds-rate ds-rate--input ds-rate--md\" data-ai-example=\"ai-rate-input-md\" data-rate-clear-only=\"\" data-rate-current=\"\" data-rate=\"\" data-value=\"5\" data-rate-labels=\"[&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;Excellent&quot;]\" aria-disabled=\"false\">\n          <div class=\"ds-rate__control\" role=\"radiogroup\" aria-label=\"Product rating\">\n            <button class=\"ds-rate__star-button\" type=\"button\" role=\"radio\" aria-checked=\"false\" data-value=\"1\" aria-label=\"1 star\"><img class=\"ds-rate__star\" src=\"../icons/icon-rate-on-20.svg\" alt=\"\"></button>\n            <button class=\"ds-rate__star-button\" type=\"button\" role=\"radio\" aria-checked=\"false\" data-value=\"2\" aria-label=\"2 stars\"><img class=\"ds-rate__star\" src=\"../icons/icon-rate-on-20.svg\" alt=\"\"></button>\n            <button class=\"ds-rate__star-button\" type=\"button\" role=\"radio\" aria-checked=\"false\" data-value=\"3\" aria-label=\"3 stars\"><img class=\"ds-rate__star\" src=\"../icons/icon-rate-on-20.svg\" alt=\"\"></button>\n            <button class=\"ds-rate__star-button\" type=\"button\" role=\"radio\" aria-checked=\"false\" data-value=\"4\" aria-label=\"4 stars\"><img class=\"ds-rate__star\" src=\"../icons/icon-rate-on-20.svg\" alt=\"\"></button>\n            <button class=\"ds-rate__star-button\" type=\"button\" role=\"radio\" aria-checked=\"true\" data-value=\"5\" aria-label=\"5 stars\"><img class=\"ds-rate__star\" src=\"../icons/icon-rate-on-20.svg\" alt=\"\"></button>\n          </div>\n          <span class=\"ds-rate__label\" data-rate-output=\"\" hidden=\"\">Excellent</span>\n          <button class=\"ds-rate__clear\" type=\"button\">Clear</button>\n        </div>",
+      "runtime": {
+        "styles": [
+          "components/tokens.css",
+          "components/components.css"
+        ],
+        "scripts": [
+          "components/rate-current.js"
+        ],
+        "fontStylesheets": [
+          "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+        ],
+        "fontFallback": "Open Sans stack; actual browser font/visual verification pending."
+      }
+    },
+    {
+      "id": "select",
+      "key": "library-select",
+      "name": "single-basic",
+      "fragment": "single-basic",
+      "slots": {
+        "options": {
+          "selector": ".ds-select__list",
+          "mode": "structured-content",
+          "required": true,
+          "preserve": [
+            ".ds-select__option-label"
+          ],
+          "boundary": "只替换原选项列表；每项保留role=option、aria-selected及当前变体的标记/组结构。有data-value则按宿主内容绑定保留；未提供时现有脚本以标签文字作为值，不把缺失值推断为业务编码。不改触发器、搜索框或页脚。"
+        }
+      },
+      "bindings": {
+        "changeCallback": {
+          "mode": "event-handler",
+          "target": "root",
+          "event": "ds:select-change"
+        },
+        "layout": {
+          "mode": "native-attribute",
+          "target": "root",
+          "attribute": "data-select-layout",
+          "values": [
+            "fill"
+          ],
+          "sourceProperty": "crossSizing:auto"
+        }
+      },
+      "allowedEdits": [
+        "options",
+        "changeCallback",
+        "layout"
+      ],
+      "exampleHtml": "<div class=\"ds-select ds-select--single-basic\" data-select-mode=\"single\" data-ai-example=\"ai-select-single-basic\" id=\"ai-select-single-basic\">\n            <button class=\"ds-select__trigger\" type=\"button\" role=\"combobox\" aria-haspopup=\"listbox\" aria-expanded=\"false\" aria-controls=\"ai-select-single-basic-panel\" id=\"ai-select-single-basic-trigger\"><span class=\"ds-select__value\" data-placeholder=\"Select\">Select</span><img class=\"ds-select__arrow\" src=\"../icons/icon-select-down.svg\" alt=\"\"></button>\n            <div class=\"ds-select__panel\" role=\"listbox\" hidden=\"\" id=\"ai-select-single-basic-panel\" aria-labelledby=\"ai-select-single-basic-trigger\">\n              <div class=\"ds-select__list\">\n                <div class=\"ds-select__option\" role=\"option\" aria-selected=\"false\" data-value=\"1\" id=\"ai-select-single-basic-option-0\"><span class=\"ds-select__option-label\">1st item</span></div>\n                <div class=\"ds-select__option\" role=\"option\" aria-selected=\"true\" data-value=\"2\" id=\"ai-select-single-basic-option-1\"><span class=\"ds-select__option-label\">2nd item</span></div>\n                <div class=\"ds-select__option\" role=\"option\" aria-selected=\"false\" data-value=\"3\" id=\"ai-select-single-basic-option-2\"><span class=\"ds-select__option-label\">3rd item</span></div>\n                <div class=\"ds-select__option\" role=\"option\" aria-selected=\"false\" data-value=\"4\" id=\"ai-select-single-basic-option-3\"><span class=\"ds-select__option-label\">4th item</span></div>\n                <div class=\"ds-select__option\" role=\"option\" aria-selected=\"false\" data-value=\"5\" id=\"ai-select-single-basic-option-4\"><span class=\"ds-select__option-label\">5th item</span></div>\n              </div>\n            </div>\n          </div>",
+      "runtime": {
+        "styles": [
+          "components/tokens.css",
+          "components/components.css",
+          "components/button-current.css",
+          "components/checkbox-current.css",
+          "components/select-current.css"
+        ],
+        "scripts": [
+          "components/select-current.js"
+        ],
+        "businessBoundary": "ds:select-change回传值；确认型多选面板内为草稿，关闭后清除是立即动作。宿主负责业务提交，组件不生成字段名或请求。"
+      }
+    },
+    {
+      "id": "select",
+      "key": "library-select",
+      "name": "multi-basic",
+      "fragment": "multi-basic",
+      "slots": {
+        "options": {
+          "selector": ".ds-select__list",
+          "mode": "structured-content",
+          "required": true,
+          "preserve": [
+            ".ds-select__option-label"
+          ],
+          "boundary": "只替换原选项列表；每项保留role=option、aria-selected及当前变体的标记/组结构。有data-value则按宿主内容绑定保留；未提供时现有脚本以标签文字作为值，不把缺失值推断为业务编码。不改触发器、搜索框或页脚。"
+        }
+      },
+      "bindings": {
+        "changeCallback": {
+          "mode": "event-handler",
+          "target": "root",
+          "event": "ds:select-change"
+        }
+      },
+      "allowedEdits": [
+        "options",
+        "changeCallback"
+      ],
+      "exampleHtml": "<div class=\"ds-select ds-select--multi-basic\" data-select-mode=\"multiple\" data-ai-example=\"ai-select-multi-basic\" data-select-source-multi-down=\"gray\" id=\"ai-select-multi-basic\">\n            <div class=\"ds-select__control\">\n              <div class=\"ds-select__tags\" aria-label=\"Selected options\"><button class=\"ds-select__tag\" type=\"button\"><span class=\"ds-select__tag-label\">Item 1</span><span class=\"ds-select__tag-close\" aria-hidden=\"true\"></span></button></div>\n              <span class=\"ds-select__value\" data-placeholder=\"Select\">Select</span>\n              <button class=\"ds-select__clear\" type=\"button\" data-select-clear=\"\" aria-label=\"Clear all selected options\" hidden=\"\"><img src=\"../icons/icon-close.svg\" alt=\"\"></button>\n              <span class=\"ds-select__control-divider\"></span>\n              <button class=\"ds-select__trigger\" type=\"button\" role=\"combobox\" aria-haspopup=\"listbox\" aria-expanded=\"false\" aria-controls=\"ai-select-multi-basic-panel\" id=\"ai-select-multi-basic-trigger\"><img class=\"ds-select__arrow\" src=\"../icons/icon-chevron-down.svg\" alt=\"\"></button>\n            </div>\n            <div class=\"ds-select__panel\" role=\"listbox\" aria-multiselectable=\"true\" hidden=\"\" id=\"ai-select-multi-basic-panel\" aria-labelledby=\"ai-select-multi-basic-trigger\"><div class=\"ds-select__list\">\n              <div class=\"ds-select__option\" role=\"option\" aria-selected=\"true\" id=\"ai-select-multi-basic-option-0\"><span class=\"ds-select__option-label\">Item 1</span></div>\n              <div class=\"ds-select__option\" role=\"option\" aria-selected=\"true\" id=\"ai-select-multi-basic-option-1\"><span class=\"ds-select__option-label\">Item 2</span></div>\n              <div class=\"ds-select__option\" role=\"option\" aria-selected=\"false\" id=\"ai-select-multi-basic-option-2\"><span class=\"ds-select__option-label\">Item 3</span></div>\n              <div class=\"ds-select__option\" role=\"option\" aria-selected=\"false\" id=\"ai-select-multi-basic-option-3\"><span class=\"ds-select__option-label\">Item 4</span></div>\n            </div></div>\n          </div>",
+      "runtime": {
+        "styles": [
+          "components/tokens.css",
+          "components/components.css",
+          "components/button-current.css",
+          "components/checkbox-current.css",
+          "components/select-current.css"
+        ],
+        "scripts": [
+          "components/select-current.js"
+        ],
+        "businessBoundary": "ds:select-change回传值；确认型多选面板内为草稿，关闭后清除是立即动作。宿主负责业务提交，组件不生成字段名或请求。"
+      }
+    },
+    {
+      "id": "stepper",
+      "key": "library-stepper",
+      "name": "icon-divider",
+      "fragment": "icon-divider",
+      "slots": {
+        "steps": {
+          "selector": ":scope",
+          "mode": "structured-content",
+          "required": true,
+          "preserve": [
+            "div.ds-stepper__item",
+            "div.ds-stepper__body",
+            "div.ds-stepper__title",
+            "img.ds-stepper__placeholder",
+            "p.ds-stepper__description",
+            "span.ds-stepper__divider",
+            "img.ds-stepper__divider-icon",
+            "img.ds-text-btn__icon",
+            "a.ds-text-btn",
+            "span.ds-text-btn__text"
+          ],
+          "rule": "Edit genuine TextButton .ds-text-btn__text and existing description text only; retain atom structure, passive no-href boundary and all four stages/assets."
+        }
+      },
+      "allowedEdits": [
+        "steps"
+      ],
+      "exampleHtml": "<div class=\"ds-stepper ds-stepper--icon-divider\" data-ai-example=\"ai-stepper-icon-divider\" data-stepper-current=\"divider-text-atom\" data-stepper-source-icon68=\"official\">\n      <div class=\"ds-stepper__item\"><img class=\"ds-stepper__placeholder\" src=\"../icons/icon-demo-report-current-68.svg\" alt=\"\"><div class=\"ds-stepper__body\"><div class=\"ds-stepper__title\"><a class=\"ds-text-btn ds-text-btn--inline ds-text-btn--black-bold ds-text-btn--l\" aria-disabled=\"true\"><span class=\"ds-text-btn__text\">TitleTitle TitleTitle</span><img class=\"ds-text-btn__icon\" src=\"../icons/icon-text-button-arrow-right-bold.svg\" alt=\"\"></a></div><p class=\"ds-stepper__description\">This text is used to show a description, This text is used to show a description,This text is used to show a description,This text is used to show a description.</p></div></div>\n      <span class=\"ds-stepper__divider\" aria-hidden=\"true\"><i></i><img class=\"ds-stepper__divider-icon\" src=\"../icons/icon-stepper-divider-next.svg?v=2e67be0d1a01\" alt=\"\"></span>\n      <div class=\"ds-stepper__item\"><img class=\"ds-stepper__placeholder\" src=\"../icons/icon-demo-report-current-68.svg\" alt=\"\"><div class=\"ds-stepper__body\"><div class=\"ds-stepper__title\"><a class=\"ds-text-btn ds-text-btn--inline ds-text-btn--black-bold ds-text-btn--l\" aria-disabled=\"true\"><span class=\"ds-text-btn__text\">TitleTitle TitleTitle</span><img class=\"ds-text-btn__icon\" src=\"../icons/icon-text-button-arrow-right-bold.svg\" alt=\"\"></a></div><p class=\"ds-stepper__description\">This text is used to show a description, This text is used to show a description,This text is used to show a description,This text is used to show a description.</p></div></div>\n      <span class=\"ds-stepper__divider\" aria-hidden=\"true\"><i></i><img class=\"ds-stepper__divider-icon\" src=\"../icons/icon-stepper-divider-next.svg?v=2e67be0d1a01\" alt=\"\"></span>\n      <div class=\"ds-stepper__item\"><img class=\"ds-stepper__placeholder\" src=\"../icons/icon-demo-report-current-68.svg\" alt=\"\"><div class=\"ds-stepper__body\"><div class=\"ds-stepper__title\"><a class=\"ds-text-btn ds-text-btn--inline ds-text-btn--black-bold ds-text-btn--l\" aria-disabled=\"true\"><span class=\"ds-text-btn__text\">TitleTitle TitleTitle</span><img class=\"ds-text-btn__icon\" src=\"../icons/icon-text-button-arrow-right-bold.svg\" alt=\"\"></a></div><p class=\"ds-stepper__description\">This text is used to show a description, This text is used to show a description,This text is used to show a description,This text is used to show a description.</p></div></div>\n      <span class=\"ds-stepper__divider\" aria-hidden=\"true\"><i></i><img class=\"ds-stepper__divider-icon\" src=\"../icons/icon-stepper-divider-next.svg?v=2e67be0d1a01\" alt=\"\"></span>\n      <div class=\"ds-stepper__item\"><img class=\"ds-stepper__placeholder\" src=\"../icons/icon-demo-report-current-68.svg\" alt=\"\"><div class=\"ds-stepper__body\"><div class=\"ds-stepper__title\"><a class=\"ds-text-btn ds-text-btn--inline ds-text-btn--black-bold ds-text-btn--l\" aria-disabled=\"true\"><span class=\"ds-text-btn__text\">TitleTitle TitleTitle</span><img class=\"ds-text-btn__icon\" src=\"../icons/icon-text-button-arrow-right-bold.svg\" alt=\"\"></a></div><p class=\"ds-stepper__description\">This text is used to show a description, This text is used to show a description,This text is used to show a description,This text is used to show a description.</p></div></div>\n    </div>",
+      "runtime": {
+        "styles": [
+          "components/tokens.css",
+          "components/components.css",
+          "components/stepper-current.css",
+          "components/text-button-current.css"
+        ],
+        "scripts": [
+          "components/stepper-current.js"
+        ],
+        "fontStylesheets": [
+          "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+        ],
+        "fontFallback": "Open Sans stack; actual browser geometry/font proof pending."
+      }
+    },
+    {
+      "id": "tab",
+      "key": "library-tab",
+      "name": "capsule",
+      "fragment": "capsule",
+      "slots": {
+        "items": {
+          "selector": ":scope",
+          "mode": "structured-content",
+          "required": true,
+          "preserve": [
+            "div.ds-tab__item",
+            "div.ds-tab__item-inner",
+            "span.ds-tab__item-text",
+            "div.ds-tab__indicator"
+          ],
+          "rule": "At least two complete item/inner/text nodes, first active with sole indicator; product wrappers/assets preserved. Visible labels and count only."
+        }
+      },
+      "allowedEdits": [
+        "items"
+      ],
+      "exampleHtml": "<div class=\"ds-tab ds-tab--capsule\" data-tab-current=\"capsule-atom\" data-tab-group=\"\" data-ai-example=\"ai-tab-capsule\">\n        <div class=\"ds-tab__item ds-tab__item--active\" data-tab-item=\"\">\n          <div class=\"ds-tab__item-inner\">\n            <span class=\"ds-tab__item-text\">Title option A</span>\n            <div class=\"ds-tab__indicator\"></div>\n          </div>\n        </div>\n        <div class=\"ds-tab__item\" data-tab-item=\"\"><div class=\"ds-tab__item-inner\"><span class=\"ds-tab__item-text\">Title option B</span></div></div>\n        <div class=\"ds-tab__item\" data-tab-item=\"\"><div class=\"ds-tab__item-inner\"><span class=\"ds-tab__item-text\">Title option C</span></div></div>\n        <div class=\"ds-tab__item\" data-tab-item=\"\"><div class=\"ds-tab__item-inner\"><span class=\"ds-tab__item-text\">Title option D</span></div></div>\n        <div class=\"ds-tab__item\" data-tab-item=\"\"><div class=\"ds-tab__item-inner\"><span class=\"ds-tab__item-text\">Title option E</span></div></div>\n        <div class=\"ds-tab__item\" data-tab-item=\"\"><div class=\"ds-tab__item-inner\"><span class=\"ds-tab__item-text\">Title option F</span></div></div>\n        <div class=\"ds-tab__item\" data-tab-item=\"\"><div class=\"ds-tab__item-inner\"><span class=\"ds-tab__item-text\">Title option G</span></div></div>\n        <div class=\"ds-tab__item\" data-tab-item=\"\"><div class=\"ds-tab__item-inner\"><span class=\"ds-tab__item-text\">Title option H</span></div></div>\n        <div class=\"ds-tab__item\" data-tab-item=\"\"><div class=\"ds-tab__item-inner\"><span class=\"ds-tab__item-text\">Title option I</span></div></div>\n      </div>",
+      "runtime": {
+        "styles": [
+          "components/tokens.css",
+          "components/components.css",
+          "components/tab-current.css"
+        ],
+        "scripts": [
+          "components/tab.js"
+        ],
+        "fontStylesheets": [
+          "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+        ],
+        "fontFallback": "Open Sans stack; actual browser layout/focus/scroll pending."
+      }
+    },
+    {
+      "id": "tab",
+      "key": "library-tab",
+      "name": "standard",
+      "fragment": "standard",
+      "slots": {
+        "items": {
+          "selector": ":scope",
+          "mode": "structured-content",
+          "required": true,
+          "preserve": [
+            "div.ds-tab__item",
+            "div.ds-tab__item-inner",
+            "span.ds-tab__item-text",
+            "div.ds-tab__indicator"
+          ],
+          "rule": "At least two complete item/inner/text nodes, first active with sole indicator; product wrappers/assets preserved. Visible labels and count only."
+        }
+      },
+      "allowedEdits": [
+        "items"
+      ],
+      "exampleHtml": "<div class=\"ds-tab ds-tab--standard\" data-tab-current=\"regular-atom\" data-tab-group=\"\" data-ai-example=\"ai-tab-standard-default\" data-tab-source-pc-default=\"official\">\n        <div class=\"ds-tab__item ds-tab__item--active\" data-tab-item=\"\">\n          <div class=\"ds-tab__item-inner\"><span class=\"ds-tab__item-text\">Option</span><div class=\"ds-tab__indicator\"></div></div>\n        </div>\n        <div class=\"ds-tab__item\" data-tab-item=\"\">\n          <div class=\"ds-tab__item-inner\"><span class=\"ds-tab__item-text\">Option</span></div>\n        </div>\n        <div class=\"ds-tab__item\" data-tab-item=\"\">\n          <div class=\"ds-tab__item-inner\"><span class=\"ds-tab__item-text\">Option</span></div>\n        </div>\n      </div>",
+      "runtime": {
+        "styles": [
+          "components/tokens.css",
+          "components/components.css",
+          "components/tab-current.css"
+        ],
+        "scripts": [
+          "components/tab.js"
+        ],
+        "fontStylesheets": [
+          "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+        ],
+        "fontFallback": "Open Sans stack; actual browser layout/focus/scroll pending."
+      }
+    },
+    {
+      "id": "tab",
+      "key": "library-tab",
+      "name": "product",
+      "fragment": "product",
+      "slots": {
+        "items": {
+          "selector": ":scope",
+          "mode": "structured-content",
+          "required": true,
+          "preserve": [
+            "div.ds-tab__item",
+            "div.ds-tab__item-inner",
+            "span.ds-tab__item-text",
+            "div.ds-tab__indicator",
+            "div.ds-tab__item-icon",
+            "img"
+          ],
+          "rule": "At least two complete item/inner/text nodes, first active with sole indicator; product wrappers/assets preserved. Visible labels and count only."
+        }
+      },
+      "allowedEdits": [
+        "items"
+      ],
+      "exampleHtml": "<div class=\"ds-tab ds-tab--product\" data-tab-group=\"\" data-ai-example=\"ai-tab-product\">\n        <div class=\"ds-tab__item ds-tab__item--active\" data-tab-item=\"\">\n          <div class=\"ds-tab__item-icon\"><img src=\"../icons/icon-placeholder-switch.svg\" alt=\"\"></div>\n          <div class=\"ds-tab__item-inner\"><span class=\"ds-tab__item-text\">Title A</span><div class=\"ds-tab__indicator\"></div></div>\n        </div>\n        <div class=\"ds-tab__item\" data-tab-item=\"\">\n          <div class=\"ds-tab__item-icon\"><img src=\"../icons/icon-placeholder-switch.svg\" alt=\"\"></div>\n          <div class=\"ds-tab__item-inner\"><span class=\"ds-tab__item-text\">Title A</span></div>\n        </div>\n        <div class=\"ds-tab__item\" data-tab-item=\"\">\n          <div class=\"ds-tab__item-icon\"><img src=\"../icons/icon-placeholder-switch.svg\" alt=\"\"></div>\n          <div class=\"ds-tab__item-inner\"><span class=\"ds-tab__item-text\">Title A</span></div>\n        </div>\n        <div class=\"ds-tab__item\" data-tab-item=\"\">\n          <div class=\"ds-tab__item-icon\"><img src=\"../icons/icon-placeholder-switch.svg\" alt=\"\"></div>\n          <div class=\"ds-tab__item-inner\"><span class=\"ds-tab__item-text\">Title C</span></div>\n        </div>\n        <div class=\"ds-tab__item\" data-tab-item=\"\">\n          <div class=\"ds-tab__item-icon\"><img src=\"../icons/icon-placeholder-switch.svg\" alt=\"\"></div>\n          <div class=\"ds-tab__item-inner\"><span class=\"ds-tab__item-text\">Title A</span></div>\n        </div>\n        <div class=\"ds-tab__item\" data-tab-item=\"\">\n          <div class=\"ds-tab__item-icon\"><img src=\"../icons/icon-placeholder-switch.svg\" alt=\"\"></div>\n          <div class=\"ds-tab__item-inner\"><span class=\"ds-tab__item-text\">Title A</span></div>\n        </div>\n        <div class=\"ds-tab__item\" data-tab-item=\"\">\n          <div class=\"ds-tab__item-icon\"><img src=\"../icons/icon-placeholder-switch.svg\" alt=\"\"></div>\n          <div class=\"ds-tab__item-inner\"><span class=\"ds-tab__item-text\">Title A</span></div>\n        </div>\n        <div class=\"ds-tab__item\" data-tab-item=\"\">\n          <div class=\"ds-tab__item-icon\"><img src=\"../icons/icon-placeholder-switch.svg\" alt=\"\"></div>\n          <div class=\"ds-tab__item-inner\"><span class=\"ds-tab__item-text\">Title A</span></div>\n        </div>\n      </div>",
+      "runtime": {
+        "styles": [
+          "components/tokens.css",
+          "components/components.css",
+          "components/tab-current.css"
+        ],
+        "scripts": [
+          "components/tab.js"
+        ],
+        "fontStylesheets": [
+          "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+        ],
+        "fontFallback": "Open Sans stack; actual browser layout/focus/scroll pending."
+      }
+    },
+    {
+      "id": "tab",
+      "key": "library-tab",
+      "name": "standard-center",
+      "fragment": "standard-center",
+      "slots": {
+        "items": {
+          "selector": ":scope",
+          "mode": "structured-content",
+          "required": true,
+          "preserve": [
+            "div.ds-tab__item",
+            "div.ds-tab__item-inner",
+            "span.ds-tab__item-text",
+            "div.ds-tab__indicator"
+          ],
+          "rule": "At least two complete item/inner/text nodes, first active with sole indicator; product wrappers/assets preserved. Visible labels and count only."
+        }
+      },
+      "allowedEdits": [
+        "items"
+      ],
+      "exampleHtml": "<div class=\"ds-tab ds-tab--standard ds-tab--center\" data-tab-source-pc-center-default=\"official\" data-tab-current=\"regular-atom\" data-tab-group=\"\" data-ai-example=\"ai-tab-standard-center-default\">\n        <div class=\"ds-tab__item ds-tab__item--active\" data-tab-item=\"\">\n          <div class=\"ds-tab__item-inner\"><span class=\"ds-tab__item-text\">Option</span><div class=\"ds-tab__indicator\"></div></div>\n        </div>\n        <div class=\"ds-tab__item\" data-tab-item=\"\">\n          <div class=\"ds-tab__item-inner\"><span class=\"ds-tab__item-text\">Option</span></div>\n        </div>\n        <div class=\"ds-tab__item\" data-tab-item=\"\">\n          <div class=\"ds-tab__item-inner\"><span class=\"ds-tab__item-text\">Option</span></div>\n        </div>\n      </div>",
+      "runtime": {
+        "styles": [
+          "components/tokens.css",
+          "components/components.css",
+          "components/tab-current.css"
+        ],
+        "scripts": [
+          "components/tab.js"
+        ],
+        "fontStylesheets": [
+          "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+        ],
+        "fontFallback": "Open Sans stack; actual browser layout/focus/scroll pending."
+      }
+    },
+    {
+      "id": "table",
+      "key": "library-table",
+      "name": "vertical-double",
+      "fragment": "vertical-double",
+      "slots": {
+        "data": {
+          "selector": "table.ds-table__table",
+          "mode": "structured-content",
+          "required": true,
+          "preserve": [
+            "tbody",
+            "tr",
+            "th",
+            "td"
+          ],
+          "rule": "Keep native headers/scopes and matching columns. Plaintext only; 1–6 complete body rows. No merged cells, actions or other styles."
+        }
+      },
+      "allowedEdits": [
+        "data"
+      ],
+      "exampleHtml": "<div class=\"ds-table ds-table--vertical ds-table--vertical-double\" data-ai-example=\"ai-table-vertical-double\"><div class=\"ds-table__scroll\"><table class=\"ds-table__table\"><tbody><tr><th class=\"ds-table__row-header\" scope=\"row\">Ports</th><td>64x 100G QSFP28</td><th class=\"ds-table__row-header\" scope=\"row\">Ports</th><td>64x 100G QSFP28</td></tr><tr><th class=\"ds-table__row-header\" scope=\"row\">Ports</th><td>64x 100G QSFP28</td><th class=\"ds-table__row-header\" scope=\"row\">Ports</th><td>64x 100G QSFP28</td></tr></tbody></table></div></div>",
+      "runtime": {
+        "styles": [
+          "components/tokens.css",
+          "components/components.css",
+          "components/table-current.css"
+        ],
+        "scripts": [
+          "components/table-current.js"
+        ],
+        "fontStylesheets": [
+          "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+        ]
+      }
+    },
+    {
+      "id": "table",
+      "key": "library-table",
+      "name": "vertical-single",
+      "fragment": "vertical-single",
+      "slots": {
+        "data": {
+          "selector": "table.ds-table__table",
+          "mode": "structured-content",
+          "required": true,
+          "preserve": [
+            "tbody",
+            "tr",
+            "th",
+            "td"
+          ],
+          "rule": "Keep native headers/scopes and matching columns. Plaintext only; 1–6 complete body rows. No merged cells, actions or other styles."
+        }
+      },
+      "allowedEdits": [
+        "data"
+      ],
+      "exampleHtml": "<div class=\"ds-table ds-table--vertical ds-table--vertical-single\" data-ai-example=\"ai-table-vertical-single\"><div class=\"ds-table__scroll\"><table class=\"ds-table__table\"><tbody><tr><th class=\"ds-table__row-header\" scope=\"row\">Ports</th><td>64x 100G QSFP28</td></tr><tr><th class=\"ds-table__row-header\" scope=\"row\">Ports</th><td>64x 100G QSFP28</td></tr></tbody></table></div></div>",
+      "runtime": {
+        "styles": [
+          "components/tokens.css",
+          "components/components.css",
+          "components/table-current.css"
+        ],
+        "scripts": [
+          "components/table-current.js"
+        ],
+        "fontStylesheets": [
+          "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+        ]
+      }
+    },
+    {
+      "id": "table",
+      "key": "library-table",
+      "name": "horizontal-zebra",
+      "fragment": "horizontal-zebra",
+      "slots": {
+        "data": {
+          "selector": "table.ds-table__table",
+          "mode": "structured-content",
+          "required": true,
+          "preserve": [
+            "tbody",
+            "tr",
+            "th",
+            "td"
+          ],
+          "rule": "Keep native headers/scopes and matching columns. Plaintext only; 1–6 complete body rows. No merged cells, actions or other styles."
+        }
+      },
+      "allowedEdits": [
+        "data"
+      ],
+      "exampleHtml": "<div class=\"ds-table ds-table--horizontal\" data-ai-example=\"ai-table-horizontal-zebra\"><div class=\"ds-table__scroll\"><table class=\"ds-table__table\"><thead><tr><th scope=\"col\">Model</th><th scope=\"col\">Ports</th></tr></thead><tbody><tr><td>S3900-24T4S</td><td>24 × RJ45</td></tr><tr><td>S3900-48T6S</td><td>48 × RJ45</td></tr><tr><td>S5860-20SQ</td><td>20 × SFP+</td></tr></tbody></table></div></div>",
+      "runtime": {
+        "styles": [
+          "components/tokens.css",
+          "components/components.css",
+          "components/table-current.css"
+        ],
+        "scripts": [
+          "components/table-current.js"
+        ],
+        "fontStylesheets": [
+          "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+        ]
+      }
+    },
+    {
+      "id": "table",
+      "key": "library-table",
+      "name": "horizontal-grid-13",
+      "fragment": "horizontal-grid-13",
+      "slots": {
+        "data": {
+          "selector": "table.ds-table__table",
+          "mode": "structured-content",
+          "required": true,
+          "preserve": [
+            "tbody",
+            "tr",
+            "th",
+            "td"
+          ],
+          "rule": "Keep native headers/scopes and matching columns. Plaintext only; 1–6 complete body rows. No merged cells, actions or other styles."
+        }
+      },
+      "allowedEdits": [
+        "data"
+      ],
+      "exampleHtml": "<div class=\"ds-table ds-table--horizontal ds-table--grid\" data-ai-example=\"ai-table-horizontal-grid-13\"><div class=\"ds-table__scroll\"><table class=\"ds-table__table\"><thead><tr><th scope=\"col\">Item</th><th scope=\"col\">Value</th></tr></thead><tbody><tr><td>Latency</td><td>1.2 ms</td></tr><tr><td>Throughput</td><td>980 Mbps</td></tr><tr><td>Availability</td><td>99.99%</td></tr></tbody></table></div></div>",
+      "runtime": {
+        "styles": [
+          "components/tokens.css",
+          "components/components.css",
+          "components/table-current.css"
+        ],
+        "scripts": [
+          "components/table-current.js"
+        ],
+        "fontStylesheets": [
+          "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+        ]
+      }
+    },
+    {
+      "id": "table",
+      "key": "library-table",
+      "name": "horizontal-grid-12-gpt",
+      "fragment": "horizontal-grid-12-gpt",
+      "slots": {
+        "data": {
+          "selector": "table.ds-table__table",
+          "mode": "structured-content",
+          "required": true,
+          "preserve": [
+            "tbody",
+            "tr",
+            "th",
+            "td"
+          ],
+          "rule": "Keep native headers/scopes and matching columns. Plaintext only; 1–6 complete body rows. No merged cells, actions or other styles."
+        }
+      },
+      "allowedEdits": [
+        "data"
+      ],
+      "exampleHtml": "<div class=\"ds-table ds-table--horizontal ds-table--grid ds-table--grid-compact\" data-ai-example=\"ai-table-horizontal-grid-12-gpt\"><div class=\"ds-table__scroll\"><table class=\"ds-table__table\"><thead><tr><th scope=\"col\">Prompt</th><th scope=\"col\">Result</th></tr></thead><tbody><tr><td>Network audit</td><td>Completed</td></tr><tr><td>Config review</td><td>Completed</td></tr><tr><td>Port analysis</td><td>Completed</td></tr></tbody></table></div></div>",
+      "runtime": {
+        "styles": [
+          "components/tokens.css",
+          "components/components.css",
+          "components/table-current.css"
+        ],
+        "scripts": [
+          "components/table-current.js"
+        ],
+        "fontStylesheets": [
+          "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+        ]
+      }
+    },
+    {
+      "id": "table",
+      "key": "library-table",
+      "name": "horizontal-row-line",
+      "fragment": "horizontal-row-line",
+      "slots": {
+        "data": {
+          "selector": "table.ds-table__table",
+          "mode": "structured-content",
+          "required": true,
+          "preserve": [
+            "tbody",
+            "tr",
+            "th",
+            "td"
+          ],
+          "rule": "Keep native headers/scopes and matching columns. Plaintext only; 1–6 complete body rows. No merged cells, actions or other styles."
+        }
+      },
+      "allowedEdits": [
+        "data"
+      ],
+      "exampleHtml": "<div class=\"ds-table ds-table--horizontal ds-table--row-line\" data-ai-example=\"ai-table-horizontal-row-line\"><div class=\"ds-table__scroll\"><table class=\"ds-table__table\"><thead><tr><th scope=\"col\">Order</th><th scope=\"col\">Status</th></tr></thead><tbody><tr><td>FS10001</td><td>Completed</td></tr><tr><td>FS10002</td><td>Completed</td></tr><tr><td>FS10003</td><td>Processing</td></tr><tr><td>FS10004</td><td>Completed</td></tr><tr><td>FS10005</td><td>Processing</td></tr><tr><td>FS10006</td><td>Completed</td></tr></tbody></table></div></div>",
+      "runtime": {
+        "styles": [
+          "components/tokens.css",
+          "components/components.css",
+          "components/table-current.css"
+        ],
+        "scripts": [
+          "components/table-current.js"
+        ],
+        "fontStylesheets": [
+          "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+        ]
+      }
+    },
+    {
+      "id": "tag",
+      "key": "library-tag",
+      "name": "selectable",
+      "fragment": "selectable",
+      "slots": {
+        "label": {
+          "selector": "span.ds-tag__label",
+          "mode": "text",
+          "required": true
+        }
+      },
+      "bindings": {
+        "changeCallback": {
+          "mode": "event-handler",
+          "target": "root",
+          "event": "ds:tag-change"
+        }
+      },
+      "allowedEdits": [
+        "label",
+        "changeCallback"
+      ],
+      "exampleHtml": "<button class=\"ds-tag ds-tag--selectable\" type=\"button\" aria-pressed=\"false\" data-ai-example=\"ai-tag-selectable\" data-tag-current=\"\"><span class=\"ds-tag__label\">Router</span></button>",
+      "runtime": {
+        "styles": [
+          "components/tokens.css",
+          "components/components.css",
+          "components/tag-current.css",
+          "components/tag-product-current.css"
+        ],
+        "scripts": [
+          "components/tag-current.js",
+          "components/tag-product-current.js"
+        ],
+        "fontStylesheets": [
+          "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+        ],
+        "fontFallback": "沿用Open Sans字体栈；远端字体不可用时回退。"
+      }
+    },
+    {
+      "id": "tag",
+      "key": "library-tag",
+      "name": "filter",
+      "fragment": "filter",
+      "slots": {
+        "prefix": {
+          "selector": "span.ds-tag__prefix",
+          "mode": "text",
+          "required": true
+        },
+        "value": {
+          "selector": "span.ds-tag__value",
+          "mode": "text",
+          "required": true
+        }
+      },
+      "bindings": {
+        "changeCallback": {
+          "mode": "event-handler",
+          "target": "root",
+          "event": "ds:tag-change"
+        },
+        "closeCallback": {
+          "mode": "event-handler",
+          "target": "root",
+          "event": "ds:tag-close"
+        }
+      },
+      "allowedEdits": [
+        "prefix",
+        "value",
+        "changeCallback",
+        "closeCallback"
+      ],
+      "exampleHtml": "<button class=\"ds-tag ds-tag--selectable ds-tag--filter\" type=\"button\" aria-pressed=\"false\" data-tag-current=\"\" data-tag-close=\"event\" aria-keyshortcuts=\"Delete Backspace\" aria-description=\"按 Delete 或 Backspace 删除此标签\" data-ai-example=\"ai-tag-filter\">\n          <span class=\"ds-tag__label\"><span class=\"ds-tag__prefix\">Industry:</span> <span class=\"ds-tag__value\">K-12 Education</span></span>\n          <img class=\"ds-tag__close\" src=\"../icons/icon-close.svg\" alt=\"\">\n        </button>",
+      "runtime": {
+        "styles": [
+          "components/tokens.css",
+          "components/components.css",
+          "components/tag-current.css",
+          "components/tag-product-current.css"
+        ],
+        "scripts": [
+          "components/tag-current.js",
+          "components/tag-product-current.js"
+        ],
+        "fontStylesheets": [
+          "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+        ],
+        "fontFallback": "沿用Open Sans字体栈；远端字体不可用时回退。"
+      }
+    },
+    {
+      "id": "tag",
+      "key": "library-tag",
+      "name": "status-text",
+      "fragment": "status-text",
+      "slots": {
+        "label": {
+          "selector": ":scope",
+          "mode": "text",
+          "required": true
+        }
+      },
+      "bindings": {},
+      "allowedEdits": [
+        "label"
+      ],
+      "exampleHtml": "<span class=\"ds-tag ds-tag--status-text ds-tag--success\" data-ai-example=\"ai-tag-status-text\">New</span>",
+      "runtime": {
+        "styles": [
+          "components/tokens.css",
+          "components/components.css",
+          "components/tag-current.css",
+          "components/tag-product-current.css"
+        ],
+        "scripts": [
+          "components/tag-current.js",
+          "components/tag-product-current.js"
+        ],
+        "fontStylesheets": [
+          "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+        ],
+        "fontFallback": "沿用Open Sans字体栈；远端字体不可用时回退。"
+      }
+    },
+    {
+      "id": "tag",
+      "key": "library-tag",
+      "name": "metadata",
+      "fragment": "metadata",
+      "slots": {
+        "metadata.firstLabel": {
+          "selector": "span[data-tag-value=\"first\"]",
+          "mode": "text",
+          "required": true
+        },
+        "metadata.secondLabel": {
+          "selector": "span[data-tag-value=\"second\"]",
+          "mode": "text",
+          "required": true
+        }
+      },
+      "bindings": {},
+      "allowedEdits": [
+        "metadata.firstLabel",
+        "metadata.secondLabel"
+      ],
+      "exampleHtml": "<span class=\"ds-tag-meta\" data-tag-source-metadata=\"dual\" data-ai-example=\"ai-tag-metadata\">\n      <span data-tag-value=\"first\">Education</span>\n      <span class=\"ds-tag-meta__divider\" aria-hidden=\"true\"></span>\n      <span data-tag-value=\"second\">United States</span>\n    </span>",
+      "runtime": {
+        "styles": [
+          "components/tokens.css",
+          "components/components.css",
+          "components/tag-current.css",
+          "components/tag-product-current.css"
+        ],
+        "scripts": [
+          "components/tag-current.js",
+          "components/tag-product-current.js"
+        ],
+        "fontStylesheets": [
+          "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+        ],
+        "fontFallback": "沿用Open Sans字体栈；远端字体不可用时回退。"
+      }
+    },
+    {
+      "id": "tag",
+      "key": "library-tag",
+      "name": "metadata-single",
+      "fragment": "metadata-single",
+      "slots": {
+        "metadata.firstLabel": {
+          "selector": "span[data-tag-value=\"first\"]",
+          "mode": "text",
+          "required": true
+        }
+      },
+      "bindings": {},
+      "allowedEdits": [
+        "metadata.firstLabel"
+      ],
+      "exampleHtml": "<span class=\"ds-tag-meta ds-tag-meta--single\" data-tag-source-metadata=\"single\" data-ai-example=\"ai-tag-metadata-single\"><span data-tag-value=\"first\">Education</span></span>",
+      "runtime": {
+        "styles": [
+          "components/tokens.css",
+          "components/components.css",
+          "components/tag-current.css",
+          "components/tag-product-current.css"
+        ],
+        "scripts": [
+          "components/tag-current.js",
+          "components/tag-product-current.js"
+        ],
+        "fontStylesheets": [
+          "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+        ],
+        "fontFallback": "沿用Open Sans字体栈；远端字体不可用时回退。"
+      }
+    },
+    {
+      "id": "tag",
+      "key": "library-tag",
+      "name": "semantic",
+      "fragment": "semantic",
+      "slots": {},
+      "bindings": {},
+      "allowedEdits": [],
+      "exampleHtml": "<span class=\"ds-tag ds-tag--semantic ds-tag--neutral\" data-tag-source-individual-info=\"official\" data-ai-example=\"ai-tag-semantic\"><span class=\"ds-tag__label\">Individual</span><span class=\"ds-tag__icon ds-tag__icon--info\" aria-hidden=\"true\"></span></span>",
+      "runtime": {
+        "styles": [
+          "components/tokens.css",
+          "components/components.css",
+          "components/tag-current.css",
+          "components/tag-product-current.css"
+        ],
+        "scripts": [
+          "components/tag-current.js",
+          "components/tag-product-current.js"
+        ],
+        "fontStylesheets": [
+          "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+        ],
+        "fontFallback": "沿用Open Sans字体栈；远端字体不可用时回退。"
+      }
+    },
+    {
+      "id": "tag",
+      "key": "library-tag",
+      "name": "featured",
+      "fragment": "featured",
+      "slots": {},
+      "bindings": {},
+      "allowedEdits": [],
+      "exampleHtml": "<span class=\"ds-tag ds-tag--featured\" data-tag-source-featured=\"official\" data-ai-example=\"ai-tag-featured\">\n      <img class=\"ds-tag__icon\" src=\"../icons/icon-featured-star.svg\" alt=\"\">\n      <span class=\"ds-tag__label\">FEATURED</span>\n    </span>",
+      "runtime": {
+        "styles": [
+          "components/tokens.css",
+          "components/components.css",
+          "components/tag-current.css",
+          "components/tag-product-current.css"
+        ],
+        "scripts": [
+          "components/tag-current.js",
+          "components/tag-product-current.js"
+        ],
+        "fontStylesheets": [
+          "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+        ],
+        "fontFallback": "沿用Open Sans字体栈；远端字体不可用时回退。"
+      }
+    },
+    {
+      "id": "tag",
+      "key": "library-tag",
+      "name": "semantic-new",
+      "fragment": "semantic-new",
+      "slots": {},
+      "bindings": {},
+      "allowedEdits": [],
+      "exampleHtml": "<span class=\"ds-tag ds-tag--semantic ds-tag--new ds-tag--emphasis\" data-tag-source-new=\"official\" data-ai-example=\"ai-tag-semantic-new\"><span class=\"ds-tag__label\">New</span></span>",
+      "runtime": {
+        "styles": [
+          "components/tokens.css",
+          "components/components.css",
+          "components/tag-current.css",
+          "components/tag-product-current.css"
+        ],
+        "scripts": [
+          "components/tag-current.js",
+          "components/tag-product-current.js"
+        ],
+        "fontStylesheets": [
+          "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+        ],
+        "fontFallback": "沿用Open Sans字体栈；远端字体不可用时回退。"
+      }
+    },
+    {
+      "id": "tag",
+      "key": "library-tag",
+      "name": "product-regular-small",
+      "fragment": "product-regular-small",
+      "slots": {
+        "label": {
+          "selector": "span.ds-tag__product-label",
+          "mode": "text",
+          "required": true
+        }
+      },
+      "bindings": {
+        "changeCallback": {
+          "mode": "event-handler",
+          "target": "root",
+          "event": "ds:tag-change"
+        }
+      },
+      "allowedEdits": [
+        "label",
+        "changeCallback"
+      ],
+      "exampleHtml": "<button class=\"ds-tag ds-tag--product-small\" type=\"button\" aria-pressed=\"false\" data-tag-product=\"current\" data-ai-example=\"ai-tag-product-regular-small\" data-tag-image=\"false\"><span class=\"ds-tag__product-label\">Cisco</span></button>",
+      "runtime": {
+        "styles": [
+          "components/tokens.css",
+          "components/components.css",
+          "components/tag-current.css",
+          "components/tag-product-current.css"
+        ],
+        "scripts": [
+          "components/tag-current.js",
+          "components/tag-product-current.js"
+        ],
+        "fontStylesheets": [
+          "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+        ],
+        "fontFallback": "沿用Open Sans字体栈；远端字体不可用时回退。"
+      }
+    },
+    {
+      "id": "tag",
+      "key": "library-tag",
+      "name": "product-custom-small",
+      "fragment": "product-custom-small",
+      "slots": {},
+      "bindings": {
+        "actionCallback": {
+          "mode": "event-handler",
+          "target": "root",
+          "event": "ds:tag-activate"
+        }
+      },
+      "allowedEdits": [
+        "actionCallback"
+      ],
+      "exampleHtml": "<button class=\"ds-tag ds-tag--product-small ds-tag--product-custom\" type=\"button\" aria-pressed=\"false\" data-tag-product=\"current\" data-ai-example=\"ai-tag-product-custom-small\" data-tag-image=\"false\"><span class=\"ds-tag__product-label\">Customized</span></button>",
+      "runtime": {
+        "styles": [
+          "components/tokens.css",
+          "components/components.css",
+          "components/tag-current.css",
+          "components/tag-product-current.css"
+        ],
+        "scripts": [
+          "components/tag-current.js",
+          "components/tag-product-current.js"
+        ],
+        "fontStylesheets": [
+          "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+        ],
+        "fontFallback": "沿用Open Sans字体栈；远端字体不可用时回退。"
+      }
+    },
+    {
+      "id": "tag",
+      "key": "library-tag",
+      "name": "product-color-small",
+      "fragment": "product-color-small",
+      "slots": {},
+      "bindings": {
+        "changeCallback": {
+          "mode": "event-handler",
+          "target": "root",
+          "event": "ds:tag-change"
+        },
+        "color": {
+          "mode": "native-attribute",
+          "target": "root",
+          "attribute": "data-tag-color",
+          "valueType": "hex-color",
+          "pattern": "^#[0-9a-fA-F]{6}$",
+          "default": "#5A82F7",
+          "sourceRole": "product-option-content"
+        },
+        "accessibleLabel": {
+          "mode": "accessible-label",
+          "target": "root",
+          "attribute": "aria-label",
+          "nonEmpty": true
+        }
+      },
+      "allowedEdits": [
+        "color",
+        "accessibleLabel",
+        "changeCallback"
+      ],
+      "exampleHtml": "<button class=\"ds-tag ds-tag--product-small ds-tag--product-color\" type=\"button\" aria-pressed=\"false\" data-tag-product=\"current\" data-ai-example=\"ai-tag-product-color-small\" data-tag-color=\"#5A82F7\" aria-label=\"蓝色\"><span class=\"ds-tag__product-chip\" aria-hidden=\"true\"></span></button>",
+      "runtime": {
+        "styles": [
+          "components/tokens.css",
+          "components/components.css",
+          "components/tag-current.css",
+          "components/tag-product-current.css"
+        ],
+        "scripts": [
+          "components/tag-current.js",
+          "components/tag-product-current.js"
+        ],
+        "fontStylesheets": [
+          "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+        ],
+        "fontFallback": "沿用Open Sans字体栈；远端字体不可用时回退。"
+      }
+    },
+    {
+      "id": "video-button",
+      "key": "library-video-button",
+      "name": "dark",
+      "fragment": "dark",
+      "slots": {
+        "duration": {
+          "selector": "span.ds-video-btn__text",
+          "mode": "text",
+          "required": true,
+          "format": "m:ss, seconds 00..59"
+        }
+      },
+      "bindings": {
+        "accessibleLabel": {
+          "mode": "accessible-label",
+          "target": "root",
+          "attribute": "aria-label",
+          "nonEmpty": true
+        },
+        "actionCallback": {
+          "mode": "event-handler",
+          "target": "root",
+          "event": "click"
+        }
+      },
+      "allowedEdits": [
+        "duration",
+        "accessibleLabel",
+        "actionCallback"
+      ],
+      "exampleHtml": "<button class=\"ds-video-btn ds-video-btn--dark ds-video-btn--s\" data-ai-example=\"ai-video-dark-s\" type=\"button\" aria-label=\"Play video\">\n            <img class=\"ds-video-btn__icon\" src=\"../icons/icon-play.svg\" alt=\"\">\n            <span class=\"ds-video-btn__text\">03:52</span>\n          </button>",
+      "runtime": {
+        "styles": [
+          "components/tokens.css",
+          "components/components.css",
+          "components/video-button-current.css"
+        ],
+        "scripts": [],
+        "fontStylesheets": [
+          "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+        ],
+        "fontFallback": "Open Sans stack; actual browser visual verification pending."
+      }
+    },
+    {
+      "id": "video-button",
+      "key": "library-video-button",
+      "name": "light",
+      "fragment": "light",
+      "slots": {
+        "duration": {
+          "selector": "span.ds-video-btn__text",
+          "mode": "text",
+          "required": true,
+          "format": "m:ss, seconds 00..59"
+        }
+      },
+      "bindings": {
+        "accessibleLabel": {
+          "mode": "accessible-label",
+          "target": "root",
+          "attribute": "aria-label",
+          "nonEmpty": true
+        },
+        "actionCallback": {
+          "mode": "event-handler",
+          "target": "root",
+          "event": "click"
+        }
+      },
+      "allowedEdits": [
+        "duration",
+        "accessibleLabel",
+        "actionCallback"
+      ],
+      "exampleHtml": "<button class=\"ds-video-btn ds-video-btn--light ds-video-btn--s\" data-ai-example=\"ai-video-light-s\" type=\"button\" aria-label=\"Play video\">\n            <img class=\"ds-video-btn__icon\" src=\"../icons/icon-play.svg\" alt=\"\">\n            <span class=\"ds-video-btn__text\">03:52</span>\n          </button>",
+      "runtime": {
+        "styles": [
+          "components/tokens.css",
+          "components/components.css",
+          "components/video-button-current.css"
+        ],
+        "scripts": [],
+        "fontStylesheets": [
+          "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+        ],
+        "fontFallback": "Open Sans stack; actual browser visual verification pending."
+      }
+    }
+  ]
+}

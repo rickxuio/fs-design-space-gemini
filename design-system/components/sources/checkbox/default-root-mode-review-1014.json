@@ -1,0 +1,45 @@
+{
+  "date": "2026-10-14",
+  "source": {
+    "file": "143880409387753",
+    "page": "3752:4102",
+    "method": "当前Native侧栏主组件选择与自身属性面板，只读，不修改设计值",
+    "remoteRevision": null
+  },
+  "items": [
+    {
+      "size": "lg",
+      "node": "67746:094219",
+      "state": "Default",
+      "sampleSize": [
+        104,
+        22
+      ],
+      "widthMode": "适应",
+      "heightMode": "适应",
+      "evidence": "components/sources/checkbox/large-default-root-mode-native-1014.txt",
+      "sha256": "2d57adcd321274a698e310ccd81a005daffcfa6ce51e664d8865b39e67c72c2b"
+    },
+    {
+      "size": "sm",
+      "node": "67746:093625",
+      "state": "Default",
+      "sampleSize": [
+        95,
+        20
+      ],
+      "widthMode": "适应",
+      "heightMode": "适应",
+      "evidence": "components/sources/checkbox/small-default-root-mode-native-1014.txt",
+      "sha256": "8abca1d3c103e337a5e0843115b378ef6889d23058509d65f79e70e2af7a7a9b"
+    }
+  ],
+  "before": "既有browser-states-1014.json两独立native根受父列stretch，均600px；图标与文本间距未变",
+  "decision": "原子current native root按内容适应宽，max-width100%保持已有长文案可换行；不硬编码原件示例104/95，不改变字段语义/新建状态",
+  "limits": [
+    "仅两尺寸当前Default主根WidthMode，其他完整宿主主引用/业务热区/状态不能外推",
+    "已有禁用/半选静态示例不能代替原生操作验收",
+    "只变current资源，历史冻结页面不升级",
+    "104/95是原件主根示例宽；本地Options-A为调用文案，不固定该宽。本次只核自身宽高模式，未以未居中的画布文字推断主组件新文案。"
+  ]
+}

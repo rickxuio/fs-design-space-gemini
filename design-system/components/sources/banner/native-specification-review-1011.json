@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "fs-native-specification-review/1.0.0",
+  "status": "partial-visible-pc-specification-not-component-acceptance",
+  "source": {
+    "fileId": "143880409387753",
+    "pageId": "68908:093271",
+    "documentNode": "68908:293212",
+    "sceneTableNode": "68908:293865",
+    "readDate": "2026-10-11",
+    "method": "Logged-in native Chrome visible canvas and properties only",
+    "windowPixels": [1920, 960],
+    "sceneTableZoom": "127%",
+    "headerVersion": "v2.5.2605A",
+    "layerVersion": "v2.4.2605A",
+    "changeLogVersion": "v2.4.2605A",
+    "changeLogDate": "2026-05-11",
+    "remoteRevision": null
+  },
+  "pcScenes": [
+    {"size": [1920,420], "alignment": "left", "scenes": ["平台首页"], "nested": ["走马灯","轮播","按钮"]},
+    {"size": [1920,320], "alignment": "left", "scenes": ["专题页","解决方案聚合页","解决方案详情页"], "nested": ["面包屑","播放按钮"]},
+    {"size": [1920,320], "alignment": "center", "scenes": ["Case Studies","知识库"], "nested": ["搜索框","按钮"]},
+    {"size": [1920,200], "alignment": "center", "scenes": ["一级分类页","政策页（Contact Us & Service）","专题页"], "nested": []},
+    {"size": [1200,120], "alignment": "left", "scenes": ["商品详情页"], "nested": ["轮播"]}
+  ],
+  "pcTypography": {
+    "platformHome": {"title": "36px / Semi Bold", "titleDescriptionGap": 20, "description": "16px / Regular", "descriptionButtonGap": 20, "button": "14px / Semibold"},
+    "otherFullWidth": {"title": "32px / Semi Bold", "titleDescriptionGap": 16, "description": "16px / Regular", "descriptionSearchGap": 24, "note": "200px-height banner has no description by default; description value is reference only"},
+    "productDetail": {"title": "16px / Semibold; title is button", "titleDescriptionGap": 4, "descriptionInTable": "12px / Regular", "descriptionColor": "same as title", "descriptionTextButtonGap": 4, "textButton": "13px / Regular; blue without arrow"}
+  },
+  "colors": {"dark": {"title": "#FFFFFF", "description": "#FFFFFF"}, "light": {"title": "#19191A", "description": "#707070"}},
+  "scopeExceptions": ["Open API","Glossary","Audio & Video"],
+  "changeLog": ["PC & Pad product-detail waterfall description changed to 13px", "Product-detail waterfall adds marquee switch effect", "Product-detail waterfall left/right switch buttons deleted"],
+  "conflicts": [
+    {"object": "document version", "evidence": "Header v2.5.2605A versus layer/log v2.4.2605A", "resolution": "Record both; do not infer remote latest revision"},
+    {"object": "PC product-detail description", "evidence": "Change log says 13px; visible typography table says 12px", "resolution": "Pending actual original component properties; no style change from this discrepancy alone"}
+  ],
+  "boundaries": ["Original Banner component identities and nested search/mini atoms not yet confirmed", "No Pad/M adaptation acceptance", "No local Preview actual browser or complete interaction acceptance", "Native screenshots displayed inline; no screenshot files fabricated"],
+  "nextAction": "Locate actual Banner components and confirm search/mini node types, exact children and current dimensions before implementation."
+}

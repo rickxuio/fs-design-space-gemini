@@ -1,0 +1,45 @@
+{
+  "mainComponent": "Card",
+  "scope": "有限Card/TextButton工程证明的无关Select文件耦合",
+  "status": "finite-engineering-passed",
+  "evidence": {
+    "actualStaleTools": [
+      "components/preview/select.html"
+    ],
+    "cardSourceFresh": true,
+    "textButtonSourceFresh": true
+  },
+  "completionConditions": [
+    "源码真实依赖仍由freshness指纹绑定",
+    "有限证明保留所有验证工具指纹，不把无关组件源文件当验证工具",
+    "负例真实依赖或验证工具改变仍失效"
+  ],
+  "remaining": [
+    "用户视觉批准及其他家族来源；本批不扩验"
+  ],
+  "necessaryRelations": [
+    "TextButton为Card真实子组件，保留其独立有限证明"
+  ],
+  "directionalChecks": [
+    "Card25项和TextButton11项实际必要检查",
+    "真实pack存在当前样式指纹"
+  ],
+  "sourceRange": [
+    "现有buildReference freshness与acceptanceStatus实现"
+  ],
+  "engineering": {
+    "bindingTests": 3,
+    "cardTests": 25,
+    "textButtonTests": 11,
+    "actualFreshnessStatus": {
+      "card": "current",
+      "text-button": "current"
+    },
+    "logs": [
+      "components/sources/card/proof-dependency-tests-1014.log",
+      "components/sources/card/proof-dependency-card-1014.log",
+      "components/sources/card/proof-dependency-text-button-1014.log"
+    ],
+    "negative": "既有真实来源freshness与验证工具变化仍失效；只从有限Card/TextButton的tools清单移出组件源文件，真实源继续由pack绑定"
+  }
+}

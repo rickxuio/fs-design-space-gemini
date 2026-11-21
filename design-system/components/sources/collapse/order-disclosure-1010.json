@@ -1,0 +1,43 @@
+{
+  "schemaVersion": "fs-finite-order-disclosure-review/1.0.0",
+  "source": {
+    "fileId": "143880409387753",
+    "pageId": "68908:251135",
+    "collectionId": "69424:120682",
+    "name": "折叠面板/数据预览型",
+    "geometry": [
+      2447,
+      602
+    ],
+    "visibleProperties": {
+      "标签": [
+        "yes",
+        "no"
+      ],
+      "状态": [
+        "收起",
+        "展开"
+      ]
+    },
+    "normativeVersion": "v3.0",
+    "method": "原生Chrome可见组件属性；不是完整DSL或原型运行"
+  },
+  "implemented": [
+    "两种旧订单示例增加独立原生展开button",
+    "唯一aria-controls指向body，hidden/aria-hidden/expanded与原有箭头旋转同步",
+    "仅显式展开button切换，View Order/info/more与普通行区域不误触",
+    "原生disabled及hidden/ARIA-disabled祖先拒绝合成点击"
+  ],
+  "scope": "preview-only-explicit-arrow-disclosure",
+  "pending": [
+    "整行点击热区",
+    "真实键盘与视觉验收",
+    "真实商品素材与完整原稿布局",
+    "原始组件全部状态和结构",
+    "AI data-preview调用仍未开放"
+  ],
+  "offlineTests": 10,
+  "browserVerified": false,
+  "supportedVariantsExpanded": false,
+  "before": "components/sources/collapse/order-disclosure-before-1010.html"
+}

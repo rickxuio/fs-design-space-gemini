@@ -1,0 +1,384 @@
+<!doctype html>
+<html data-fs-library="933a6b6faee4d0de370bf96ae6424cbc1f2690705676abc48b314c4897c7df6a" lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tab · FS组件规范</title>
+<meta name="fs-document-template" content="component-spec-v1">
+<style data-component-doc-theme>/* Shared specification-page presentation. Never override ds-* or component tokens.
+   Edit here once, then npm run docs:build. Existing component:sync also rebuilds these views. */
+body{margin:0;font-family:var(--font-family-base);color:#19191A}
+.fs-spec-doc{--doc-title-size:32px;--doc-heading-size:24px;--doc-copy-size:14px;--doc-text:#19191A;--doc-muted:#707070;--doc-border:#DEE0E3;--doc-surface:#FAFBFB;--doc-section-space:40px;--doc-table-padding:14px;color:var(--doc-text)}
+.fs-spec-doc .container{max-width:1200px;width:calc(100% - 40px);padding:0;margin:0 auto}
+.fs-spec-doc .page-section{padding:var(--doc-section-space) 0}
+.fs-spec-doc .page-section--gray{background:var(--doc-surface)}
+.spec-doc-title{font-size:var(--doc-title-size);line-height:40px;font-weight:600;margin:0 0 12px}
+.spec-doc-heading{font-size:var(--doc-heading-size);line-height:32px;font-weight:600;margin:0 0 24px}
+.spec-doc-subheading{font-size:18px;line-height:26px;font-weight:600;margin:24px 0 12px}
+.spec-doc-copy{font-size:var(--doc-copy-size);line-height:24px}
+.spec-doc-navigation{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:14px;line-height:24px}
+.spec-doc-table-scroll{max-width:100%;overflow-x:auto}
+.spec-doc-table{border-collapse:collapse;width:100%;font-size:14px;line-height:22px}
+.spec-doc-cell{padding:var(--doc-table-padding);text-align:left;vertical-align:top;border:1px solid var(--doc-border)}
+.spec-doc-small{display:block;font-size:12px;line-height:20px;color:var(--doc-muted)}
+.fs-spec-doc .dark,.fs-spec-doc .state-cell--dark{background:#19191A}
+.fs-spec-doc .state-cell--dark{padding:12px}
+.fs-spec-doc .availability-note,.fs-spec-doc .unavailable{font-size:12px;color:var(--doc-muted)}
+.fs-spec-doc .dependency-token{display:block;font-size:11px;color:var(--doc-muted)}
+</style>
+<style data-component-doc-specific>.spec-doc-demo-trigger{font:inherit;padding:10px 20px;border:1px solid #19191A;border-radius:3px;background:#FFFFFF;color:#19191A;cursor:pointer}.spec-doc-demo-trigger:focus-visible{outline:2px solid #0060BF;outline-offset:3px}.spec-preview-light-gray{background:#FAFBFB;padding:20px}.spec-preview-dark{background:#19191A;padding:20px;min-height:48px}.spec-external-example{margin:32px 0;overflow:visible}.spec-carousel-atom{position:relative;display:inline-block;width:48px;height:48px}.spec-carousel-atom--outlined{width:28px;height:28px}.foundation-group{border:0;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:20px}.spec-card-example{margin:24px 0;overflow:auto}.spec-card-example>h3{margin:0 0 12px}.foundation-tab-dep-0{margin-bottom: 0; padding: 24px; background: #FAFBFC; border: 1px solid var(--color-gray-5); border-radius: 8px;}
+.foundation-tab-dep-1{font-size: 14px; font-weight: 600; margin-bottom: 4px;}
+.foundation-tab-dep-2{font-size: 12px; color: #707070; margin-bottom: 12px;}
+.foundation-tab-dep-3{display:inline-block;font-size:11px;line-height:16px;padding:0 5px;border-radius:3px;background:#EAF2FF;color:#0060BF;}
+.foundation-tab-dep-4{display:inline-block;font-size:11px;line-height:16px;padding:0 5px;border-radius:3px;background:#F3EEFA;color:#512971;}
+.foundation-tab-dep-5{display:inline-block;font-size:11px;line-height:16px;padding:0 5px;border-radius:3px;background:#FFF3E0;color:#A65300;}
+.foundation-tab-dep-6{grid-template-columns:minmax(max-content, auto) repeat(8, minmax(max-content, 1fr));}
+.foundation-tab-dep-7{display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;}
+.foundation-tab-dep-8{display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#19191A;vertical-align:-3px;margin-right:8px;flex:0 0 auto;}
+.foundation-tab-dep-9{color:#0060BF;text-decoration:underline;}
+.foundation-tab-dep-10{display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#707070;vertical-align:-3px;margin-right:8px;flex:0 0 auto;}
+.foundation-tab-dep-11{display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#F6F6F8;vertical-align:-3px;margin-right:8px;flex:0 0 auto;}
+.foundation-tab-dep-12{display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#FAFBFB;vertical-align:-3px;margin-right:8px;flex:0 0 auto;}
+.foundation-tab-dep-13{display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#FFFFFF;vertical-align:-3px;margin-right:8px;flex:0 0 auto;}
+.foundation-tab-dep-14{display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:rgba(255,255,255,0.6);vertical-align:-3px;margin-right:8px;flex:0 0 auto;}
+.foundation-tab-dep-15{color:#707070;}
+.foundation-tab-dep-16{display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;}
+.foundation-tab-dep-17{display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;color:#A6A6A6;font-size:11px;margin-right:8px;vertical-align:-3px;flex:0 0 auto;}
+.foundation-tab-dep-18{display:inline-block;width:16px;height:16px;background:#FFFFFF;border:1px solid #F0F0F0;box-shadow:0px 2px 8px rgba(0,0,0,0.1);margin-right:8px;vertical-align:-3px;flex:0 0 auto;}
+.foundation-tab-dep-19{display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;}
+.foundation-tab-dep-20{color:#A6A6A6;}
+.foundation-tab-dep-21{display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#DEE0E3;vertical-align:-3px;margin-right:8px;flex:0 0 auto;}
+.foundation-tab-dep-22{display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#C00000;vertical-align:-3px;margin-right:8px;flex:0 0 auto;}
+.foundation-tab-dep-23{display:inline-block;width:16px;height:1px;background:#707070;margin-right:8px;vertical-align:middle;flex:0 0 auto;}
+.foundation-tab-dep-24{display:inline-block;width:16px;height:0;border-top:2px solid #707070;margin-right:8px;vertical-align:middle;flex:0 0 auto;}
+.foundation-tab-dep-25{display:inline-block;width:16px;height:16px;box-sizing:border-box;border:2px solid var(--color-gray-5);background:transparent;margin-right:8px;vertical-align:-3px;flex:0 0 auto;}</style>
+<link rel="stylesheet" data-library-resource="933a6b6faee4d0de370bf96ae6424cbc1f2690705676abc48b314c4897c7df6a" href="../../fs-components/component-specs/library/releases/933a6b6faee4d0de370bf96ae6424cbc1f2690705676abc48b314c4897c7df6a/components/tokens.css">
+<link rel="stylesheet" data-library-resource="933a6b6faee4d0de370bf96ae6424cbc1f2690705676abc48b314c4897c7df6a" href="../../fs-components/component-specs/library/releases/933a6b6faee4d0de370bf96ae6424cbc1f2690705676abc48b314c4897c7df6a/components/components.css">
+<link rel="stylesheet" data-library-resource="933a6b6faee4d0de370bf96ae6424cbc1f2690705676abc48b314c4897c7df6a" href="../../fs-components/component-specs/library/releases/933a6b6faee4d0de370bf96ae6424cbc1f2690705676abc48b314c4897c7df6a/components/navigation-current.css">
+<link rel="stylesheet" data-library-resource="933a6b6faee4d0de370bf96ae6424cbc1f2690705676abc48b314c4897c7df6a" href="../../fs-components/component-specs/library/releases/933a6b6faee4d0de370bf96ae6424cbc1f2690705676abc48b314c4897c7df6a/components/tab-current.css">
+<link rel="stylesheet" data-library-resource="933a6b6faee4d0de370bf96ae6424cbc1f2690705676abc48b314c4897c7df6a" href="../../fs-components/component-specs/library/releases/933a6b6faee4d0de370bf96ae6424cbc1f2690705676abc48b314c4897c7df6a/components/navigation-header-web-atom.css">
+<link rel="stylesheet" data-library-resource="933a6b6faee4d0de370bf96ae6424cbc1f2690705676abc48b314c4897c7df6a" href="../../fs-components/component-specs/library/releases/933a6b6faee4d0de370bf96ae6424cbc1f2690705676abc48b314c4897c7df6a/components/button-current.css">
+<link rel="stylesheet" data-library-resource="933a6b6faee4d0de370bf96ae6424cbc1f2690705676abc48b314c4897c7df6a" href="../../fs-components/component-specs/library/releases/933a6b6faee4d0de370bf96ae6424cbc1f2690705676abc48b314c4897c7df6a/components/button-runtime-current.css">
+<link rel="stylesheet" data-library-resource="933a6b6faee4d0de370bf96ae6424cbc1f2690705676abc48b314c4897c7df6a" href="../../fs-components/component-specs/library/releases/933a6b6faee4d0de370bf96ae6424cbc1f2690705676abc48b314c4897c7df6a/components/input-footer-source.css">
+<link rel="stylesheet" data-library-resource="933a6b6faee4d0de370bf96ae6424cbc1f2690705676abc48b314c4897c7df6a" href="../../fs-components/component-specs/library/releases/933a6b6faee4d0de370bf96ae6424cbc1f2690705676abc48b314c4897c7df6a/components/navigation-footer-current.css">
+<link rel="stylesheet" data-library-resource="933a6b6faee4d0de370bf96ae6424cbc1f2690705676abc48b314c4897c7df6a" href="../../fs-components/component-specs/library/releases/933a6b6faee4d0de370bf96ae6424cbc1f2690705676abc48b314c4897c7df6a/components/navigation-header-action-atom.css">
+<link rel="stylesheet" data-library-resource="933a6b6faee4d0de370bf96ae6424cbc1f2690705676abc48b314c4897c7df6a" href="../../fs-components/component-specs/library/releases/933a6b6faee4d0de370bf96ae6424cbc1f2690705676abc48b314c4897c7df6a/components/menu-navigation-current.css">
+<link rel="stylesheet" data-library-resource="933a6b6faee4d0de370bf96ae6424cbc1f2690705676abc48b314c4897c7df6a" href="../../fs-components/component-specs/library/releases/933a6b6faee4d0de370bf96ae6424cbc1f2690705676abc48b314c4897c7df6a/components/navigation-products-current.css">
+<link rel="stylesheet" data-library-resource="933a6b6faee4d0de370bf96ae6424cbc1f2690705676abc48b314c4897c7df6a" href="../../fs-components/component-specs/library/releases/933a6b6faee4d0de370bf96ae6424cbc1f2690705676abc48b314c4897c7df6a/local-fonts.css">
+</head>
+<body><header class="ds-nav-header" data-fragment="header" data-ai-example="ai-navigation-fixed-header" data-header-products-current="pc" data-library-component="library-navigation" data-library-fragment="header" data-library-release="933a6b6faee4d0de370bf96ae6424cbc1f2690705676abc48b314c4897c7df6a" data-library-props="{}">
+    <div class="ds-nav-header__topbar">
+      <div class="ds-nav-header__topbar-inner">
+        <div class="ds-nav-header__topbar-left">
+          <span class="ds-nav-header__topbar-text">FS United States</span>
+          <span class="ds-nav-header__topbar-divider"></span>
+          <span class="ds-nav-header__topbar-text">FREE SHIPPING on Orders Over US$79</span>
+        </div>
+        <div class="ds-nav-header__topbar-right">
+          <a href="#" class="ds-nav-header__topbar-link">Contact Us</a>
+          <span class="ds-nav-header__topbar-divider"></span>
+          <a href="#" class="ds-nav-header__topbar-link">
+            United States / $ USD
+            <svg class="ds-nav-header__dropdown-icon" width="12" height="12" viewBox="0 0 12 12" fill="none">
+              <path d="M3 4.5L6 7.5L9 4.5" stroke="#707070" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <nav class="ds-nav-header__main">
+      <div class="ds-nav-header__main-inner">
+        <a id="library-instance-136-icon-usage-icon-logo-fs" href="#" class="ds-nav-header__logo" aria-label="FS.com Home" style="scroll-margin-top: 40px;">
+          <img src="../../fs-components/component-specs/library/releases/933a6b6faee4d0de370bf96ae6424cbc1f2690705676abc48b314c4897c7df6a/components/icons/icon-logo-fs.svg" alt="FS Logo" width="76" height="36">
+        </a>
+        <ul class="ds-nav-header__links">
+          <li class="ds-nav-header__link-item"><a href="#" class="ds-nav-header__link" data-header-products-trigger="" role="button" aria-haspopup="true" aria-expanded="false" aria-controls="library-instance-136-header-product-menu-panel">All Products</a></li>
+          <li class="ds-nav-header__link-item"><a href="#" class="ds-nav-header__link">Solutions</a></li>
+          <li class="ds-nav-header__link-item"><a href="#" class="ds-nav-header__link">Services</a></li>
+          <li class="ds-nav-header__link-item"><a href="#" class="ds-nav-header__link">Resources</a></li>
+          <li class="ds-nav-header__link-item"><a href="#" class="ds-nav-header__link">Contact Us</a></li>
+        </ul>
+        <div class="ds-nav-header__actions">
+          <button id="library-instance-136-icon-usage-icon-search" class="ds-nav-header__action-btn" type="button" aria-label="Search" style="scroll-margin-top: 40px;">
+            <img src="../../fs-components/component-specs/library/releases/933a6b6faee4d0de370bf96ae6424cbc1f2690705676abc48b314c4897c7df6a/components/icons/navigation-header-search-1013.png" alt="" width="24" height="24">
+          </button>
+          <button id="library-instance-136-icon-usage-icon-cart" class="ds-nav-header__action-btn" type="button" aria-label="Cart" style="scroll-margin-top: 40px;">
+            <img src="../../fs-components/component-specs/library/releases/933a6b6faee4d0de370bf96ae6424cbc1f2690705676abc48b314c4897c7df6a/components/icons/icon-cart.svg" alt="" width="24" height="24">
+          </button>
+          <button id="library-instance-136-icon-usage-icon-account" class="ds-nav-header__action-btn" type="button" aria-label="Account" style="scroll-margin-top: 40px;">
+            <img src="../../fs-components/component-specs/library/releases/933a6b6faee4d0de370bf96ae6424cbc1f2690705676abc48b314c4897c7df6a/components/icons/icon-account.svg" alt="" width="24" height="24">
+          </button>
+        </div>
+      </div>
+    </nav>
+  <div class="ds-nav-header__product-menu" id="library-instance-136-header-product-menu-panel" hidden=""><nav class="ds-menu-navigation ds-menu-navigation--public-header" data-menu-navigation="" aria-label="Public header product menu">
+        <ul class="ds-menu-navigation__list">
+          <li><button class="ds-menu-navigation__item ds-menu-navigation__item--selected" type="button" data-value="switches" aria-pressed="true"><img class="ds-menu-navigation__product-icon" src="../../fs-components/component-specs/library/releases/933a6b6faee4d0de370bf96ae6424cbc1f2690705676abc48b314c4897c7df6a/components/icons/icon-menu-switches.svg" alt=""><span class="ds-menu-navigation__item-label">Switches</span></button></li>
+          <li><button class="ds-menu-navigation__item" type="button" data-value="networking"><img class="ds-menu-navigation__product-icon" src="../../fs-components/component-specs/library/releases/933a6b6faee4d0de370bf96ae6424cbc1f2690705676abc48b314c4897c7df6a/components/icons/icon-menu-networking.svg" alt=""><span class="ds-menu-navigation__item-label">Networking</span></button></li>
+          <li><button class="ds-menu-navigation__item" type="button" data-value="optical-transceivers"><img class="ds-menu-navigation__product-icon" src="../../fs-components/component-specs/library/releases/933a6b6faee4d0de370bf96ae6424cbc1f2690705676abc48b314c4897c7df6a/components/icons/icon-menu-optical-transceivers.svg" alt=""><span class="ds-menu-navigation__item-label">Optical Transceivers</span></button></li>
+          <li><button class="ds-menu-navigation__item" type="button" data-value="fiber-optic-cables"><img class="ds-menu-navigation__product-icon" src="../../fs-components/component-specs/library/releases/933a6b6faee4d0de370bf96ae6424cbc1f2690705676abc48b314c4897c7df6a/components/icons/icon-menu-fiber-optic-cables.svg" alt=""><span class="ds-menu-navigation__item-label">Fiber Optic Cables</span></button></li>
+          <li><button class="ds-menu-navigation__item" type="button" data-value="panels-enclosures-racks"><img class="ds-menu-navigation__product-icon" src="../../fs-components/component-specs/library/releases/933a6b6faee4d0de370bf96ae6424cbc1f2690705676abc48b314c4897c7df6a/components/icons/icon-menu-panels-enclosures-racks.svg" alt=""><span class="ds-menu-navigation__item-label">Panels, Enclosures &amp; Racks</span></button></li>
+          <li><button class="ds-menu-navigation__item" type="button" data-value="optical-networking"><img class="ds-menu-navigation__product-icon" src="../../fs-components/component-specs/library/releases/933a6b6faee4d0de370bf96ae6424cbc1f2690705676abc48b314c4897c7df6a/components/icons/icon-menu-optical-networking.svg" alt=""><span class="ds-menu-navigation__item-label">Optical Networking</span></button></li>
+          <li><button class="ds-menu-navigation__item" type="button" data-value="copper-systems"><img class="ds-menu-navigation__product-icon" src="../../fs-components/component-specs/library/releases/933a6b6faee4d0de370bf96ae6424cbc1f2690705676abc48b314c4897c7df6a/components/icons/icon-menu-copper-systems.svg" alt=""><span class="ds-menu-navigation__item-label">Copper Systems</span></button></li>
+          <li><button class="ds-menu-navigation__item" type="button" data-value="testers-tools"><img class="ds-menu-navigation__product-icon" src="../../fs-components/component-specs/library/releases/933a6b6faee4d0de370bf96ae6424cbc1f2690705676abc48b314c4897c7df6a/components/icons/icon-menu-testers-tools.svg" alt=""><span class="ds-menu-navigation__item-label">Testers &amp; Tools</span></button></li>
+        </ul>
+      </nav></div></header><main class="fs-spec-doc"><section class="page-section page-section--gray"><div class="container"><h1 class="spec-doc-title">Tab 标签导航</h1><p class="spec-doc-copy">Tab 切换导航组件，三种变体：胶囊（内容筛选）、常规（页面内容分区）、产品导航（首页产品大类入口，带图标）</p><p class="spec-doc-copy spec-doc-navigation"><a href="#availability">样式与调用状态</a> · <a href="#variant-decisions">变体决策</a> · <a href="#dependencies">依赖与维护</a> · <a href="#boundaries">调用边界</a></p></div></section><section id="availability" class="page-section"><div class="container"><h2 class="spec-doc-heading">样式与调用状态</h2><p class="spec-doc-copy">固定版本：<code>933a6b6faee4</code>。当前可调用 4 个变体；工程状态 current。来源核对与视觉确认分别保留；调用范围以本版本登记为准，不增加视觉批准。</p><h3 class="spec-doc-subheading">MG 规则与结构核对</h3><p class="spec-doc-copy">来源：<a href="https://mastergo.com/file/209944605602401?page_id=M&amp;layer_id=3:98171">Tab导航规范v3.0.2604A（正文v2.3）</a>；部分核对；具体范围与待验证项见下方记录。视觉确认单独维护。</p><div class="spec-doc-table-scroll"><table class="spec-doc-table"><thead><tr><th class="spec-doc-cell">原稿事实</th><th class="spec-doc-cell">本次处理</th></tr></thead><tbody><tr><td class="spec-doc-cell">胶囊型目前仅覆盖商品详情页；全部展示居中，超宽使用隐藏选项菜单。</td><td class="spec-doc-cell">纠正通用筛选外推，菜单能力单独标记为未闭环。</td></tr><tr><td class="spec-doc-cell">常规居中底线随选项宽度；原稿允许悬停即切换或悬停后点击。</td><td class="spec-doc-cell">保留左右/居中原件区分；当前运行时仅点击和键盘，不冒充悬停即切换。</td></tr><tr><td class="spec-doc-cell">隐藏图标、二级标题、箭头菜单和分段溢出均有具体来源。</td><td class="spec-doc-cell">原稿事实保留为参考，不以旧接口支持全部插槽。</td></tr></tbody></table></div><details><summary>核对范围与来源记录</summary><p class="spec-doc-copy">首页product原件未包含在本次独立规范中；现有登记素材、实现及历史证据保留。；All溢出、悬停即切换、二级标题和分段按钮未开放。</p><p class="spec-doc-copy"><a href="../../design-system/components/sources/tab-collapse-mg-20261114/tab-review.json">查看节点与核对证据</a></p></details><div class="spec-doc-table-scroll"><table class="spec-doc-table"><thead><tr><th class="spec-doc-cell">规范名称</th><th class="spec-doc-cell">调用状态</th><th class="spec-doc-cell">当前真实示例</th></tr></thead><tbody><tr><th class="spec-doc-cell">胶囊<small class="spec-doc-small">capsule</small></th><td class="spec-doc-cell">可调用 · 按当前登记范围</td><td class="spec-doc-cell"><div class="ds-tab ds-tab--capsule" data-tab-current="capsule-atom" data-tab-group="" data-ai-example="ai-tab-capsule" data-fragment="capsule" data-library-component="library-tab" data-library-fragment="capsule" data-library-release="933a6b6faee4d0de370bf96ae6424cbc1f2690705676abc48b314c4897c7df6a" data-library-props="{}">
+        <div class="ds-tab__item ds-tab__item--active" data-tab-item="">
+          <div class="ds-tab__item-inner">
+            <span class="ds-tab__item-text">Title option A</span>
+            <div class="ds-tab__indicator"></div>
+          </div>
+        </div>
+        <div class="ds-tab__item" data-tab-item=""><div class="ds-tab__item-inner"><span class="ds-tab__item-text">Title option B</span></div></div>
+        <div class="ds-tab__item" data-tab-item=""><div class="ds-tab__item-inner"><span class="ds-tab__item-text">Title option C</span></div></div>
+        <div class="ds-tab__item" data-tab-item=""><div class="ds-tab__item-inner"><span class="ds-tab__item-text">Title option D</span></div></div>
+        <div class="ds-tab__item" data-tab-item=""><div class="ds-tab__item-inner"><span class="ds-tab__item-text">Title option E</span></div></div>
+        <div class="ds-tab__item" data-tab-item=""><div class="ds-tab__item-inner"><span class="ds-tab__item-text">Title option F</span></div></div>
+        <div class="ds-tab__item" data-tab-item=""><div class="ds-tab__item-inner"><span class="ds-tab__item-text">Title option G</span></div></div>
+        <div class="ds-tab__item" data-tab-item=""><div class="ds-tab__item-inner"><span class="ds-tab__item-text">Title option H</span></div></div>
+        <div class="ds-tab__item" data-tab-item=""><div class="ds-tab__item-inner"><span class="ds-tab__item-text">Title option I</span></div></div>
+      </div></td></tr><tr><th class="spec-doc-cell">常规<small class="spec-doc-small">standard</small></th><td class="spec-doc-cell">可调用 · 按当前登记范围</td><td class="spec-doc-cell"><p class="spec-doc-copy">default</p><div class="ds-tab ds-tab--standard" data-tab-current="regular-atom" data-tab-group="" data-ai-example="ai-tab-standard-default" data-tab-source-pc-default="official" data-fragment="standard" data-library-component="library-tab" data-library-fragment="standard" data-library-release="933a6b6faee4d0de370bf96ae6424cbc1f2690705676abc48b314c4897c7df6a" data-library-props="{&quot;size&quot;:&quot;default&quot;}">
+        <div class="ds-tab__item ds-tab__item--active" data-tab-item="">
+          <div class="ds-tab__item-inner"><span class="ds-tab__item-text">Option</span><div class="ds-tab__indicator"></div></div>
+        </div>
+        <div class="ds-tab__item" data-tab-item="">
+          <div class="ds-tab__item-inner"><span class="ds-tab__item-text">Option</span></div>
+        </div>
+        <div class="ds-tab__item" data-tab-item="">
+          <div class="ds-tab__item-inner"><span class="ds-tab__item-text">Option</span></div>
+        </div>
+      </div><p class="spec-doc-copy">large</p><div class="ds-tab ds-tab--standard ds-tab--standard-lg" data-tab-current="regular-atom" data-tab-group="" data-ai-example="ai-tab-standard-large" data-tab-source-pc-large="official" data-fragment="standard" data-library-component="library-tab" data-library-fragment="standard" data-library-release="933a6b6faee4d0de370bf96ae6424cbc1f2690705676abc48b314c4897c7df6a" data-library-props="{&quot;size&quot;:&quot;large&quot;}">
+        <div class="ds-tab__item ds-tab__item--active" data-tab-item="">
+          <div class="ds-tab__item-inner"><span class="ds-tab__item-text">Option</span><div class="ds-tab__indicator"></div></div>
+        </div>
+        <div class="ds-tab__item" data-tab-item="">
+          <div class="ds-tab__item-inner"><span class="ds-tab__item-text">Option</span></div>
+        </div>
+        <div class="ds-tab__item" data-tab-item="">
+          <div class="ds-tab__item-inner"><span class="ds-tab__item-text">Option</span></div>
+        </div>
+      </div></td></tr><tr><th class="spec-doc-cell">产品导航<small class="spec-doc-small">product</small></th><td class="spec-doc-cell">可调用 · 按当前登记范围</td><td class="spec-doc-cell"><div class="ds-tab ds-tab--product" data-tab-group="" data-ai-example="ai-tab-product" data-fragment="product" data-library-component="library-tab" data-library-fragment="product" data-library-release="933a6b6faee4d0de370bf96ae6424cbc1f2690705676abc48b314c4897c7df6a" data-library-props="{}">
+        <div class="ds-tab__item ds-tab__item--active" data-tab-item="">
+          <div class="ds-tab__item-icon"><img src="../../fs-components/component-specs/library/releases/933a6b6faee4d0de370bf96ae6424cbc1f2690705676abc48b314c4897c7df6a/components/icons/icon-placeholder-switch.svg" alt=""></div>
+          <div class="ds-tab__item-inner"><span class="ds-tab__item-text">Title A</span><div class="ds-tab__indicator"></div></div>
+        </div>
+        <div class="ds-tab__item" data-tab-item="">
+          <div class="ds-tab__item-icon"><img src="../../fs-components/component-specs/library/releases/933a6b6faee4d0de370bf96ae6424cbc1f2690705676abc48b314c4897c7df6a/components/icons/icon-placeholder-switch.svg" alt=""></div>
+          <div class="ds-tab__item-inner"><span class="ds-tab__item-text">Title A</span></div>
+        </div>
+        <div class="ds-tab__item" data-tab-item="">
+          <div class="ds-tab__item-icon"><img src="../../fs-components/component-specs/library/releases/933a6b6faee4d0de370bf96ae6424cbc1f2690705676abc48b314c4897c7df6a/components/icons/icon-placeholder-switch.svg" alt=""></div>
+          <div class="ds-tab__item-inner"><span class="ds-tab__item-text">Title A</span></div>
+        </div>
+        <div class="ds-tab__item" data-tab-item="">
+          <div class="ds-tab__item-icon"><img src="../../fs-components/component-specs/library/releases/933a6b6faee4d0de370bf96ae6424cbc1f2690705676abc48b314c4897c7df6a/components/icons/icon-placeholder-switch.svg" alt=""></div>
+          <div class="ds-tab__item-inner"><span class="ds-tab__item-text">Title C</span></div>
+        </div>
+        <div class="ds-tab__item" data-tab-item="">
+          <div class="ds-tab__item-icon"><img src="../../fs-components/component-specs/library/releases/933a6b6faee4d0de370bf96ae6424cbc1f2690705676abc48b314c4897c7df6a/components/icons/icon-placeholder-switch.svg" alt=""></div>
+          <div class="ds-tab__item-inner"><span class="ds-tab__item-text">Title A</span></div>
+        </div>
+        <div class="ds-tab__item" data-tab-item="">
+          <div class="ds-tab__item-icon"><img src="../../fs-components/component-specs/library/releases/933a6b6faee4d0de370bf96ae6424cbc1f2690705676abc48b314c4897c7df6a/components/icons/icon-placeholder-switch.svg" alt=""></div>
+          <div class="ds-tab__item-inner"><span class="ds-tab__item-text">Title A</span></div>
+        </div>
+        <div class="ds-tab__item" data-tab-item="">
+          <div class="ds-tab__item-icon"><img src="../../fs-components/component-specs/library/releases/933a6b6faee4d0de370bf96ae6424cbc1f2690705676abc48b314c4897c7df6a/components/icons/icon-placeholder-switch.svg" alt=""></div>
+          <div class="ds-tab__item-inner"><span class="ds-tab__item-text">Title A</span></div>
+        </div>
+        <div class="ds-tab__item" data-tab-item="">
+          <div class="ds-tab__item-icon"><img src="../../fs-components/component-specs/library/releases/933a6b6faee4d0de370bf96ae6424cbc1f2690705676abc48b314c4897c7df6a/components/icons/icon-placeholder-switch.svg" alt=""></div>
+          <div class="ds-tab__item-inner"><span class="ds-tab__item-text">Title A</span></div>
+        </div>
+      </div></td></tr><tr><th class="spec-doc-cell">常规·居中<small class="spec-doc-small">standard-center</small></th><td class="spec-doc-cell">可调用 · 按当前登记范围</td><td class="spec-doc-cell"><p class="spec-doc-copy">default</p><div class="ds-tab ds-tab--standard ds-tab--center" data-tab-source-pc-center-default="official" data-tab-current="regular-atom" data-tab-group="" data-ai-example="ai-tab-standard-center-default" data-fragment="standard-center" data-library-component="library-tab" data-library-fragment="standard-center" data-library-release="933a6b6faee4d0de370bf96ae6424cbc1f2690705676abc48b314c4897c7df6a" data-library-props="{&quot;size&quot;:&quot;default&quot;}">
+        <div class="ds-tab__item ds-tab__item--active" data-tab-item="">
+          <div class="ds-tab__item-inner"><span class="ds-tab__item-text">Option</span><div class="ds-tab__indicator"></div></div>
+        </div>
+        <div class="ds-tab__item" data-tab-item="">
+          <div class="ds-tab__item-inner"><span class="ds-tab__item-text">Option</span></div>
+        </div>
+        <div class="ds-tab__item" data-tab-item="">
+          <div class="ds-tab__item-inner"><span class="ds-tab__item-text">Option</span></div>
+        </div>
+      </div><p class="spec-doc-copy">large</p><div class="ds-tab ds-tab--standard ds-tab--standard-lg ds-tab--center" data-tab-source-pc-center-large="official" data-tab-current="regular-atom" data-tab-group="" data-ai-example="ai-tab-standard-center-large" data-fragment="standard-center" data-library-component="library-tab" data-library-fragment="standard-center" data-library-release="933a6b6faee4d0de370bf96ae6424cbc1f2690705676abc48b314c4897c7df6a" data-library-props="{&quot;size&quot;:&quot;large&quot;}">
+        <div class="ds-tab__item ds-tab__item--active" data-tab-item="">
+          <div class="ds-tab__item-inner"><span class="ds-tab__item-text">Option</span><div class="ds-tab__indicator"></div></div>
+        </div>
+        <div class="ds-tab__item" data-tab-item="">
+          <div class="ds-tab__item-inner"><span class="ds-tab__item-text">Option</span></div>
+        </div>
+        <div class="ds-tab__item" data-tab-item="">
+          <div class="ds-tab__item-inner"><span class="ds-tab__item-text">Option</span></div>
+        </div>
+      </div></td></tr></tbody></table></div></div></section><section id="variant-decisions" class="page-section page-section--gray"><div class="container"><h2 class="spec-doc-heading">变体决策</h2><p class="spec-doc-copy">先核对具体场景与原件，再排除不适用条件；候选只映射当前可调用变体，设计参考不开放调用。页面展示与 AI 读取同一份规则。</p><div class="spec-doc-table-scroll"><table class="spec-doc-table"><thead><tr><th class="spec-doc-cell">变体</th><th class="spec-doc-cell">匹配条件</th><th class="spec-doc-cell">结论与限制</th><th class="spec-doc-cell">真实调用对应</th></tr></thead><tbody><tr data-decision-id="t1"><th class="spec-doc-cell">Capsule 胶囊</th><td class="spec-doc-cell">商品详情页，选项全部可见。</td><td class="spec-doc-cell">候选 · 宿主切内容。</td><td class="spec-doc-cell">capsule<small class="spec-doc-small">可调用；仍须匹配场景</small></td></tr><tr data-decision-id="t2"><th class="spec-doc-cell"></th><td class="spec-doc-cell">仅因分类筛选或用于普通专题。</td><td class="spec-doc-cell">不用 · 不能据此外推胶囊场景。</td><td class="spec-doc-cell">capsule<small class="spec-doc-small">此场景不用该变体</small></td></tr><tr data-decision-id="t3"><th class="spec-doc-cell"></th><td class="spec-doc-cell">需要All菜单、隐藏数量。</td><td class="spec-doc-cell">设计参考 · 仅参考；未开放。</td><td class="spec-doc-cell">capsule<small class="spec-doc-small">设计参考；不自动调用</small></td></tr><tr data-decision-id="t4"><th class="spec-doc-cell">Standard 常规</th><td class="spec-doc-cell">居左常规分区，选项全部可见。</td><td class="spec-doc-cell">候选 · 尺寸按来源。</td><td class="spec-doc-cell">standard<small class="spec-doc-small">可调用；仍须匹配场景</small></td></tr><tr data-decision-id="t5"><th class="spec-doc-cell"></th><td class="spec-doc-cell">来源为居中常规导航。</td><td class="spec-doc-cell">不用 · 核对standard-center。</td><td class="spec-doc-cell">standard<small class="spec-doc-small">此场景不用该变体</small></td></tr><tr data-decision-id="t6"><th class="spec-doc-cell"></th><td class="spec-doc-cell">每项需图标、二级标题或菜单。</td><td class="spec-doc-cell">不用 · 禁止手加未开放插槽。</td><td class="spec-doc-cell">standard<small class="spec-doc-small">此场景不用该变体</small></td></tr><tr data-decision-id="t7"><th class="spec-doc-cell"></th><td class="spec-doc-cell">需要滚动消隐、All或悬停即切换。</td><td class="spec-doc-cell">设计参考 · 仅参考；未开放。</td><td class="spec-doc-cell">standard<small class="spec-doc-small">设计参考；不自动调用</small></td></tr><tr data-decision-id="t8"><th class="spec-doc-cell">Product Nav 产品导航</th><td class="spec-doc-cell">首页产品大类，登记图标语义匹配。</td><td class="spec-doc-cell">候选 · 仅登记图标。</td><td class="spec-doc-cell">product<small class="spec-doc-small">可调用；仍须匹配场景</small></td></tr><tr data-decision-id="t9"><th class="spec-doc-cell"></th><td class="spec-doc-cell">普通图标Tab或无匹配素材。</td><td class="spec-doc-cell">不用 · 不用首页产品导航。</td><td class="spec-doc-cell">product<small class="spec-doc-small">此场景不用该变体</small></td></tr><tr data-decision-id="t10"><th class="spec-doc-cell">Standard常规·居中</th><td class="spec-doc-cell">居中常规分区，选项全部可见。</td><td class="spec-doc-cell">候选 · 底线适应内容。</td><td class="spec-doc-cell">standard-center<small class="spec-doc-small">可调用；仍须匹配场景</small></td></tr><tr data-decision-id="t11"><th class="spec-doc-cell"></th><td class="spec-doc-cell">居左来源或通栏等宽导航。</td><td class="spec-doc-cell">不用 · 不改类替代。</td><td class="spec-doc-cell">standard-center<small class="spec-doc-small">此场景不用该变体</small></td></tr><tr data-decision-id="t12"><th class="spec-doc-cell"></th><td class="spec-doc-cell">注册、表单、分段或带菜单导航。</td><td class="spec-doc-cell">设计参考 · 仅参考；未开放。</td><td class="spec-doc-cell">standard-center<small class="spec-doc-small">设计参考；不自动调用</small></td></tr></tbody></table></div></div></section><section id="dependencies" class="page-section"><div class="container"><h2 class="spec-doc-heading">依赖汇总与维护</h2><p class="spec-doc-copy">沿用原完整依赖表，集中展示规范名称、具体值、图标与使用方。声明、类名线索和实际验证按原状态区分；未调用的参考变体也保留其依赖。</p>
+    <div class="foundation-tab-dep-0">
+      <p class="foundation-tab-dep-1 spec-doc-copy">依赖汇总表</p>
+      <p class="foundation-tab-dep-2 spec-doc-copy">按组件类型汇总组件关系、颜色、字体、间距、描边、圆角、阴影和图标依赖；未填写 <code>appliesTo</code> 的组件级依赖不猜测变体归属，不参与本表归类。「组件关系」列用标签区分：<span class="foundation-tab-dep-3">子组件</span> = 嵌入本组件内部；<span class="foundation-tab-dep-4">父组件·类名证据／仅声明</span> = 从宿主 <code>componentDependencies</code> 自动推导；类名出现不等于具体变体、尺寸、必需结构或交互已验证，链接仅供打开 Preview 复核；<span class="foundation-tab-dep-5">参考·未验证</span> = 仅保留设计意图，宿主 preview 尚无真实结构，不可作为已实现依赖。</p>
+      <div class="dep-summary-scroll">
+        <div class="dep-summary-grid foundation-tab-dep-6">
+          <div class="dep-cell dep-cell--sticky dep-cell--head" role="columnheader">组件类型</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">颜色</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">字体</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">间距</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">描边</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">圆角</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">阴影</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">图标</div>
+          <div class="dep-cell dep-cell--head dep-cell--right-edge" role="columnheader">组件关系</div>
+          <div class="dep-cell dep-cell--sticky" role="rowheader"><strong>胶囊</strong><br><code>capsule</code></div>
+          <div class="dep-cell" role="cell"><span class="foundation-tab-dep-7"><span class="foundation-tab-dep-8"></span><a href="../../design-system/components/preview/color.html#tok-color-gray-1" class="foundation-tab-dep-9">标题/深色文字  · #19191A<small class="spec-doc-small">color.gray-1</small></a></span><br><span class="foundation-tab-dep-7"><span class="foundation-tab-dep-10"></span><a href="../../design-system/components/preview/color.html#tok-color-gray-3" class="foundation-tab-dep-9">次要/辅助文字  · #707070<small class="spec-doc-small">color.gray-3</small></a></span><br><span class="foundation-tab-dep-7"><span class="foundation-tab-dep-11"></span><a href="../../design-system/components/preview/color.html#tok-color-gray-8" class="foundation-tab-dep-9">输入框/下拉/图标按钮等表单类灰底 · #F6F6F8<small class="spec-doc-small">color.gray-8</small></a></span><br><span class="foundation-tab-dep-7"><span class="foundation-tab-dep-12"></span><a href="../../design-system/components/preview/color.html#tok-color-gray-9" class="foundation-tab-dep-9">最浅灰背景 · #FAFBFB<small class="spec-doc-small">color.gray-9</small></a></span><br><span class="foundation-tab-dep-7"><span class="foundation-tab-dep-13"></span><a href="../../design-system/components/preview/color.html#tok-color-white" class="foundation-tab-dep-9">白色  · #FFFFFF<small class="spec-doc-small">color.white</small></a></span><br><span class="foundation-tab-dep-7"><span class="foundation-tab-dep-14"></span>rgba(255,255,255,0.6) <span class="foundation-tab-dep-15">（未 token 化）</span></span></div>
+          <div class="dep-cell" role="cell"><span class="foundation-tab-dep-7"><span class="foundation-tab-dep-16">14px · md · Regular 400</span><a href="../../design-system/components/preview/font.html#tok-typography-h7-regular" class="foundation-tab-dep-9"><code>typography.h7-regular</code></a></span><br><span class="foundation-tab-dep-7"><span class="foundation-tab-dep-16">13px · H8 · Regular 400</span><a href="../../design-system/components/preview/font.html#tok-typography-h8-regular" class="foundation-tab-dep-9"><code>typography.h8-regular</code></a></span></div>
+          <div class="dep-cell" role="cell"><span class="foundation-tab-dep-7"><span class="foundation-tab-dep-16">4px</span><a href="../../design-system/components/preview/spacing.html#tok-spacing-xs" class="foundation-tab-dep-9">超小间距 · 4px<small class="spec-doc-small">spacing.xs</small></a></span><br><span class="foundation-tab-dep-7"><span class="foundation-tab-dep-16">6px</span><a href="../../design-system/components/preview/spacing.html#tok-spacing-6" class="foundation-tab-dep-9">紧凑间距 · 6px<small class="spec-doc-small">spacing.6</small></a></span><br><span class="foundation-tab-dep-7"><span class="foundation-tab-dep-16">8px</span><a href="../../design-system/components/preview/spacing.html#tok-spacing-sm" class="foundation-tab-dep-9">小间距 - S 按钮水平内边距 · 8px<small class="spec-doc-small">spacing.sm</small></a></span><br><span class="foundation-tab-dep-7"><span class="foundation-tab-dep-16">16px</span><a href="../../design-system/components/preview/spacing.html#tok-spacing-lg" class="foundation-tab-dep-9">大间距 - L 按钮水平内边距 · 16px<small class="spec-doc-small">spacing.lg</small></a></span><br><span class="foundation-tab-dep-7"><span class="foundation-tab-dep-16">12px</span><a href="../../design-system/components/preview/spacing.html#tok-spacing-md" class="foundation-tab-dep-9">中间距 - M 按钮水平内边距 · 12px<small class="spec-doc-small">spacing.md</small></a></span></div>
+          <div class="dep-cell" role="cell"><span class="foundation-tab-dep-7"><span class="foundation-tab-dep-17">∅</span><a href="../../design-system/components/preview/stroke.html#tok-border-style-none" class="foundation-tab-dep-9">明确移除描边 · none<small class="spec-doc-small">border.style.none</small></a></span></div>
+          <div class="dep-cell" role="cell"><span class="foundation-tab-dep-7"><span class="foundation-tab-dep-16">4px</span><a href="../../design-system/components/preview/radius.html#tok-border-radius-md" class="foundation-tab-dep-9">中圆角 - 按钮默认圆角 · 4px<small class="spec-doc-small">border-radius.md</small></a></span><br><span class="foundation-tab-dep-7">30px <span class="foundation-tab-dep-15">（未 token 化）</span></span><br><span class="foundation-tab-dep-7">40px <span class="foundation-tab-dep-15">（未 token 化）</span></span></div>
+          <div class="dep-cell" role="cell"><span class="foundation-tab-dep-7"><span class="foundation-tab-dep-18"></span>0px 2px 8px rgba(0,0,0,0.1) <span class="foundation-tab-dep-15">（未 token 化）</span></span></div>
+          <div class="dep-cell" role="cell"><span class="foundation-tab-dep-7"><img src="../../design-system/components/icons/icon-chevron-down.svg?v=fe5df03acb1c" alt="" class="foundation-tab-dep-19"><a href="../../design-system/components/preview/icon-map.html#icon-chevron-down" class="foundation-tab-dep-9"><code>icon-chevron-down.svg</code></a></span></div>
+          <div class="dep-cell dep-cell--right-edge" role="cell"><span class="foundation-tab-dep-20">—</span></div>
+          <div class="dep-cell dep-cell--sticky" role="rowheader"><strong>常规</strong><br><code>standard</code></div>
+          <div class="dep-cell" role="cell"><span class="foundation-tab-dep-7"><span class="foundation-tab-dep-8"></span><a href="../../design-system/components/preview/color.html#tok-color-gray-1" class="foundation-tab-dep-9">标题/深色文字  · #19191A<small class="spec-doc-small">color.gray-1</small></a></span><br><span class="foundation-tab-dep-7"><span class="foundation-tab-dep-10"></span><a href="../../design-system/components/preview/color.html#tok-color-gray-3" class="foundation-tab-dep-9">次要/辅助文字  · #707070<small class="spec-doc-small">color.gray-3</small></a></span><br><span class="foundation-tab-dep-7"><span class="foundation-tab-dep-21"></span><a href="../../design-system/components/preview/color.html#tok-color-gray-5" class="foundation-tab-dep-9">边框色 / 菜单项禁用色 · #DEE0E3<small class="spec-doc-small">color.gray-5</small></a></span><br><span class="foundation-tab-dep-7"><span class="foundation-tab-dep-22"></span><a href="../../design-system/components/preview/color.html#tok-color-brand-red" class="foundation-tab-dep-9">品牌红色，主操作按钮背景色 · #C00000<small class="spec-doc-small">color.brand-red</small></a></span></div>
+          <div class="dep-cell" role="cell"><span class="foundation-tab-dep-7"><span class="foundation-tab-dep-16">14px · md · Regular 400</span><a href="../../design-system/components/preview/font.html#tok-typography-h7-regular" class="foundation-tab-dep-9"><code>typography.h7-regular</code></a></span><br><span class="foundation-tab-dep-7"><span class="foundation-tab-dep-16">16px · Regular 400</span><a href="../../design-system/components/preview/font.html#tok-typography-h6-regular" class="foundation-tab-dep-9"><code>typography.h6-regular</code></a></span></div>
+          <div class="dep-cell" role="cell"><span class="foundation-tab-dep-7"><span class="foundation-tab-dep-16">6px</span><a href="../../design-system/components/preview/spacing.html#tok-spacing-6" class="foundation-tab-dep-9">紧凑间距 · 6px<small class="spec-doc-small">spacing.6</small></a></span><br><span class="foundation-tab-dep-7"><span class="foundation-tab-dep-16">16px</span><a href="../../design-system/components/preview/spacing.html#tok-spacing-lg" class="foundation-tab-dep-9">大间距 - L 按钮水平内边距 · 16px<small class="spec-doc-small">spacing.lg</small></a></span><br><span class="foundation-tab-dep-7"><span class="foundation-tab-dep-16">10px</span><a href="../../design-system/components/preview/spacing.html#tok-spacing-10" class="foundation-tab-dep-9">紧凑增强间距 · 10px<small class="spec-doc-small">spacing.10</small></a></span><br><span class="foundation-tab-dep-7"><span class="foundation-tab-dep-16">14px</span><a href="../../design-system/components/preview/spacing.html#tok-spacing-14" class="foundation-tab-dep-9">标准与大间距之间的过渡值 · 14px<small class="spec-doc-small">spacing.14</small></a></span></div>
+          <div class="dep-cell" role="cell"><span class="foundation-tab-dep-7"><span class="foundation-tab-dep-23"></span><a href="../../design-system/components/preview/stroke.html#tok-border-width-default" class="foundation-tab-dep-9">默认描边宽度 · 1px<small class="spec-doc-small">border.width.default</small></a></span><br><span class="foundation-tab-dep-7"><span class="foundation-tab-dep-24"></span><a href="../../design-system/components/preview/stroke.html#tok-border-style-default" class="foundation-tab-dep-9">默认描边样式 · solid<small class="spec-doc-small">border.style.default</small></a></span><br><span class="foundation-tab-dep-7"><span class="foundation-tab-dep-25"></span><a href="../../design-system/components/preview/stroke.html#tok-border-color-default" class="foundation-tab-dep-9">默认组件描边，复用 color.gray-5 · #DEE0E3<small class="spec-doc-small">border.color.default</small></a></span><br><span class="foundation-tab-dep-7"><span class="foundation-tab-dep-17">∅</span><a href="../../design-system/components/preview/stroke.html#tok-border-style-none" class="foundation-tab-dep-9">明确移除描边 · none<small class="spec-doc-small">border.style.none</small></a></span></div>
+          <div class="dep-cell" role="cell"><span class="foundation-tab-dep-7"><span class="foundation-tab-dep-16">4px</span><a href="../../design-system/components/preview/radius.html#tok-border-radius-md" class="foundation-tab-dep-9">中圆角 - 按钮默认圆角 · 4px<small class="spec-doc-small">border-radius.md</small></a></span></div>
+          <div class="dep-cell" role="cell"><span class="foundation-tab-dep-20">—</span></div>
+          <div class="dep-cell" role="cell"><span class="foundation-tab-dep-20">—</span></div>
+          <div class="dep-cell dep-cell--right-edge" role="cell"><span class="foundation-tab-dep-20">—</span></div>
+          <div class="dep-cell dep-cell--sticky" role="rowheader"><strong>产品导航</strong><br><code>product</code></div>
+          <div class="dep-cell" role="cell"><span class="foundation-tab-dep-7"><span class="foundation-tab-dep-8"></span><a href="../../design-system/components/preview/color.html#tok-color-gray-1" class="foundation-tab-dep-9">标题/深色文字  · #19191A<small class="spec-doc-small">color.gray-1</small></a></span><br><span class="foundation-tab-dep-7"><span class="foundation-tab-dep-10"></span><a href="../../design-system/components/preview/color.html#tok-color-gray-3" class="foundation-tab-dep-9">次要/辅助文字  · #707070<small class="spec-doc-small">color.gray-3</small></a></span></div>
+          <div class="dep-cell" role="cell"><span class="foundation-tab-dep-7"><span class="foundation-tab-dep-16">16px · Regular 400</span><a href="../../design-system/components/preview/font.html#tok-typography-h6-regular" class="foundation-tab-dep-9"><code>typography.h6-regular</code></a></span></div>
+          <div class="dep-cell" role="cell"><span class="foundation-tab-dep-7"><span class="foundation-tab-dep-16">12px</span><a href="../../design-system/components/preview/spacing.html#tok-spacing-md" class="foundation-tab-dep-9">中间距 - M 按钮水平内边距 · 12px<small class="spec-doc-small">spacing.md</small></a></span></div>
+          <div class="dep-cell" role="cell"><span class="foundation-tab-dep-7"><span class="foundation-tab-dep-23"></span><a href="../../design-system/components/preview/stroke.html#tok-border-width-default" class="foundation-tab-dep-9">默认描边宽度 · 1px<small class="spec-doc-small">border.width.default</small></a></span><br><span class="foundation-tab-dep-7"><span class="foundation-tab-dep-24"></span><a href="../../design-system/components/preview/stroke.html#tok-border-style-default" class="foundation-tab-dep-9">默认描边样式 · solid<small class="spec-doc-small">border.style.default</small></a></span><br><span class="foundation-tab-dep-7"><span class="foundation-tab-dep-25"></span><a href="../../design-system/components/preview/stroke.html#tok-border-color-default" class="foundation-tab-dep-9">默认组件描边，复用 color.gray-5 · #DEE0E3<small class="spec-doc-small">border.color.default</small></a></span><br><span class="foundation-tab-dep-7"><span class="foundation-tab-dep-17">∅</span><a href="../../design-system/components/preview/stroke.html#tok-border-style-none" class="foundation-tab-dep-9">明确移除描边 · none<small class="spec-doc-small">border.style.none</small></a></span></div>
+          <div class="dep-cell" role="cell"><span class="foundation-tab-dep-20">—</span></div>
+          <div class="dep-cell" role="cell"><span class="foundation-tab-dep-20">—</span></div>
+          <div class="dep-cell" role="cell"><span class="foundation-tab-dep-7"><img src="../../design-system/components/icons/icon-placeholder-switch.svg?v=0f52c5a67544" alt="" class="foundation-tab-dep-19"><a href="../../design-system/components/preview/icon-map.html#icon-placeholder-switch" class="foundation-tab-dep-9"><code>icon-placeholder-switch.svg</code></a></span></div>
+          <div class="dep-cell dep-cell--right-edge" role="cell"><span class="foundation-tab-dep-20">—</span></div>
+          <div class="dep-cell dep-cell--sticky dep-cell--bottom-edge" role="rowheader"><strong>常规·居中</strong><br><code>standard-center</code></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span class="foundation-tab-dep-7"><span class="foundation-tab-dep-8"></span><a href="../../design-system/components/preview/color.html#tok-color-gray-1" class="foundation-tab-dep-9">标题/深色文字  · #19191A<small class="spec-doc-small">color.gray-1</small></a></span><br><span class="foundation-tab-dep-7"><span class="foundation-tab-dep-10"></span><a href="../../design-system/components/preview/color.html#tok-color-gray-3" class="foundation-tab-dep-9">次要/辅助文字  · #707070<small class="spec-doc-small">color.gray-3</small></a></span><br><span class="foundation-tab-dep-7"><span class="foundation-tab-dep-21"></span><a href="../../design-system/components/preview/color.html#tok-color-gray-5" class="foundation-tab-dep-9">边框色 / 菜单项禁用色 · #DEE0E3<small class="spec-doc-small">color.gray-5</small></a></span><br><span class="foundation-tab-dep-7"><span class="foundation-tab-dep-22"></span><a href="../../design-system/components/preview/color.html#tok-color-brand-red" class="foundation-tab-dep-9">品牌红色，主操作按钮背景色 · #C00000<small class="spec-doc-small">color.brand-red</small></a></span></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span class="foundation-tab-dep-7"><span class="foundation-tab-dep-16">14px · md · Regular 400</span><a href="../../design-system/components/preview/font.html#tok-typography-h7-regular" class="foundation-tab-dep-9"><code>typography.h7-regular</code></a></span><br><span class="foundation-tab-dep-7"><span class="foundation-tab-dep-16">16px · Regular 400</span><a href="../../design-system/components/preview/font.html#tok-typography-h6-regular" class="foundation-tab-dep-9"><code>typography.h6-regular</code></a></span></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span class="foundation-tab-dep-7"><span class="foundation-tab-dep-16">6px</span><a href="../../design-system/components/preview/spacing.html#tok-spacing-6" class="foundation-tab-dep-9">紧凑间距 · 6px<small class="spec-doc-small">spacing.6</small></a></span><br><span class="foundation-tab-dep-7"><span class="foundation-tab-dep-16">16px</span><a href="../../design-system/components/preview/spacing.html#tok-spacing-lg" class="foundation-tab-dep-9">大间距 - L 按钮水平内边距 · 16px<small class="spec-doc-small">spacing.lg</small></a></span><br><span class="foundation-tab-dep-7"><span class="foundation-tab-dep-16">10px</span><a href="../../design-system/components/preview/spacing.html#tok-spacing-10" class="foundation-tab-dep-9">紧凑增强间距 · 10px<small class="spec-doc-small">spacing.10</small></a></span><br><span class="foundation-tab-dep-7"><span class="foundation-tab-dep-16">14px</span><a href="../../design-system/components/preview/spacing.html#tok-spacing-14" class="foundation-tab-dep-9">标准与大间距之间的过渡值 · 14px<small class="spec-doc-small">spacing.14</small></a></span></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span class="foundation-tab-dep-7"><span class="foundation-tab-dep-23"></span><a href="../../design-system/components/preview/stroke.html#tok-border-width-default" class="foundation-tab-dep-9">默认描边宽度 · 1px<small class="spec-doc-small">border.width.default</small></a></span><br><span class="foundation-tab-dep-7"><span class="foundation-tab-dep-24"></span><a href="../../design-system/components/preview/stroke.html#tok-border-style-default" class="foundation-tab-dep-9">默认描边样式 · solid<small class="spec-doc-small">border.style.default</small></a></span><br><span class="foundation-tab-dep-7"><span class="foundation-tab-dep-25"></span><a href="../../design-system/components/preview/stroke.html#tok-border-color-default" class="foundation-tab-dep-9">默认组件描边，复用 color.gray-5 · #DEE0E3<small class="spec-doc-small">border.color.default</small></a></span><br><span class="foundation-tab-dep-7"><span class="foundation-tab-dep-17">∅</span><a href="../../design-system/components/preview/stroke.html#tok-border-style-none" class="foundation-tab-dep-9">明确移除描边 · none<small class="spec-doc-small">border.style.none</small></a></span></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span class="foundation-tab-dep-7"><span class="foundation-tab-dep-16">4px</span><a href="../../design-system/components/preview/radius.html#tok-border-radius-md" class="foundation-tab-dep-9">中圆角 - 按钮默认圆角 · 4px<small class="spec-doc-small">border-radius.md</small></a></span></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span class="foundation-tab-dep-20">—</span></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span class="foundation-tab-dep-20">—</span></div>
+          <div class="dep-cell dep-cell--right-edge dep-cell--bottom-edge" role="cell"><span class="foundation-tab-dep-20">—</span></div>
+        </div>
+      </div>
+    </div>
+    <h3 class="spec-doc-subheading">修改后如何同步</h3><ol><li class="spec-doc-copy">在原规范 HTML 维护，由 AI 理解差异并协调原契约及共享实现。</li><li class="spec-doc-copy">继续原 component:sync / component:watch，同步调用、选型、依赖和本页。</li><li class="spec-doc-copy">检查受影响的真实父组件；已交付页面继续使用固定版本。</li></ol><p class="spec-doc-copy">影响范围：<code>npm run impact -- tab</code></p></div></section><section id="boundaries" class="page-section page-section--gray"><div class="container"><h2 class="spec-doc-heading">调用边界</h2><p class="spec-doc-copy">按来源区分商品详情胶囊、居左/居中常规和首页产品图标导航。只调用 catalog 中 callable 的具体变体；内容切换由宿主负责，不把本地选中态当成内容/菜单联动。不得以图标需求或通用筛选外推原稿场景。</p><p class="spec-doc-copy">当前未开放：all-dropdown、disabled-canonical-call、built-in-content-panels、dedicated-change-event、dynamic-insertion-api、mobile、unregistered-product-icons</p><h3 class="spec-doc-subheading">交互与装配规则</h3><div class="spec-doc-table-scroll"><table class="spec-doc-table"><thead><tr><th class="spec-doc-cell">事项</th><th class="spec-doc-cell">执行规则</th><th class="spec-doc-cell">负责位置</th></tr></thead><tbody><tr><th class="spec-doc-cell">选中与键盘</th><td class="spec-doc-cell">点击及方向键/Home/End/Enter/Space改变唯一选中项；不可用项跳过。</td><td class="spec-doc-cell">Tab 运行时</td></tr><tr><th class="spec-doc-cell">内容切换</th><td class="spec-doc-cell">Tab 本身只维护选中态；内容面板、筛选或导航须按页面事实绑定。</td><td class="spec-doc-cell">页面宿主</td></tr><tr><th class="spec-doc-cell">图标</th><td class="spec-doc-cell">product 保留图标容器及已登记素材；先核对含义，禁止按项序循环套图。</td><td class="spec-doc-cell">原图标资源与契约</td></tr><tr><th class="spec-doc-cell">溢出与其他形态</th><td class="spec-doc-cell">All 菜单、滚动消隐、分段按钮、二级标题不在当前精确调用内。</td><td class="spec-doc-cell">仅规范参考</td></tr></tbody></table></div><details><summary>开发调用字段</summary><div class="spec-doc-table-scroll"><table class="spec-doc-table"><thead><tr><th class="spec-doc-cell">变体</th><th class="spec-doc-cell">允许编辑</th><th class="spec-doc-cell">已声明取值限制</th></tr></thead><tbody><tr><th class="spec-doc-cell">capsule</th><td class="spec-doc-cell">items</td><td class="spec-doc-cell"></td></tr><tr><th class="spec-doc-cell">standard</th><td class="spec-doc-cell">items、size</td><td class="spec-doc-cell">size ∈ ["default","large"]</td></tr><tr><th class="spec-doc-cell">product</th><td class="spec-doc-cell">items</td><td class="spec-doc-cell"></td></tr><tr><th class="spec-doc-cell">standard-center</th><td class="spec-doc-cell">items、size</td><td class="spec-doc-cell">size ∈ ["default","large"]</td></tr></tbody></table></div></details></div></section></main><footer class="ds-nav-footer" data-fragment="footer" data-footer-pc-current="" data-ai-example="ai-navigation-fixed-footer" data-library-component="library-navigation" data-library-fragment="footer" data-library-release="933a6b6faee4d0de370bf96ae6424cbc1f2690705676abc48b314c4897c7df6a" data-library-props="{}">
+    <div class="ds-nav-footer__inner">
+      <div class="ds-nav-footer__columns">
+        <div class="ds-nav-footer__col">
+          <h4 class="ds-nav-footer__col-title">About Us</h4>
+          <ul class="ds-nav-footer__col-links">
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Overview</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Global Warehouse</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Advanced R&amp;D Center</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Quality Control</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Compliance Center</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Test Center</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="ds-nav-footer__col ds-nav-footer__col--service">
+          <h4 class="ds-nav-footer__col-title">Service</h4>
+          <ul class="ds-nav-footer__col-links">
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Payment Methods</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Shipping Guide</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Business Account</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Net Terms</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Return Policy</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Product Warranty</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Give us your Feedback</a></li>
+          </ul>
+        </div>
+        <div class="ds-nav-footer__col">
+          <h4 class="ds-nav-footer__col-title">Resource</h4>
+          <ul class="ds-nav-footer__col-links">
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Documentation</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Glossary</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Audio &amp; Video</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">FS Blog</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Case Studies</a></li>
+          </ul>
+        </div>
+        <div class="ds-nav-footer__col">
+          <h4 class="ds-nav-footer__col-title">Support</h4>
+          <ul class="ds-nav-footer__col-links">
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">FAQ &amp; Help Center</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Solution Support</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Query Tool</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">WDM Tranceiver Stock List</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Products Verification</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Track My Order</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">RMA Checklist</a></li>
+          </ul>
+        </div>
+        <div class="ds-nav-footer__sidebar">
+          <div class="ds-nav-footer__subscribe">
+            <h4 class="ds-nav-footer__col-title">Stay in Touch</h4>
+            <div class="ds-nav-footer__subscribe-form">
+              <input type="email" class="ds-input-footer-source" placeholder="Email" aria-label="Email" data-footer-input-retained-source="">
+              <button class="ds-btn ds-btn--filled-red ds-btn--s" type="button" data-footer-button-current=""><span class="ds-btn__text">Subscribe</span></button>
+            </div>
+          </div>
+          <div class="ds-nav-footer__app">
+            <h4 class="ds-nav-footer__col-title">Download FS APP</h4>
+            <div class="ds-nav-footer__app-badges"><a id="library-instance-143-icon-usage-img-google-play" aria-label="Get it on Google Play" style="scroll-margin-top: 40px;" aria-disabled="true"><img src="../../fs-components/component-specs/library/releases/933a6b6faee4d0de370bf96ae6424cbc1f2690705676abc48b314c4897c7df6a/components/sources/navigation/footer-assets-1013/68908-047170.png" alt="Google Play" height="28" style="width: 88px;"></a>
+              <a id="library-instance-143-icon-usage-img-app-store" aria-label="Download on the App Store" style="scroll-margin-top: 40px;" aria-disabled="true"><img src="../../fs-components/component-specs/library/releases/933a6b6faee4d0de370bf96ae6424cbc1f2690705676abc48b314c4897c7df6a/components/sources/navigation/footer-assets-1013/68908-047171.png" alt="App Store" height="28" style="width: 87.73px;"></a>
+              
+            </div>
+          </div>
+          <div class="ds-nav-footer__social"><img src="../../fs-components/component-specs/library/releases/933a6b6faee4d0de370bf96ae6424cbc1f2690705676abc48b314c4897c7df6a/components/sources/navigation/footer-assets-1013/68908-047164.png" alt="LinkedIn, YouTube, Facebook, X, Instagram, Reddit" data-footer-source-social=""></div>
+        </div>
+      </div>
+
+      <div class="ds-nav-footer__badges">
+        <div class="ds-nav-footer__badges-left">
+          <img src="../../fs-components/component-specs/library/releases/933a6b6faee4d0de370bf96ae6424cbc1f2690705676abc48b314c4897c7df6a/components/sources/navigation/footer-assets-1013/68908-047076.png" alt="DigiCert" height="28" style="scroll-margin-top: 40px; width: 59px;">
+          <img src="../../fs-components/component-specs/library/releases/933a6b6faee4d0de370bf96ae6424cbc1f2690705676abc48b314c4897c7df6a/components/sources/navigation/footer-assets-1013/68908-047074.png" alt="TrustedSite" height="28" style="scroll-margin-top: 40px; width: 58px;">
+          <img src="../../fs-components/component-specs/library/releases/933a6b6faee4d0de370bf96ae6424cbc1f2690705676abc48b314c4897c7df6a/components/sources/navigation/footer-assets-1013/68908-047075.png" alt="BBB" height="28" style="scroll-margin-top: 40px; width: 58px;">
+          <img src="../../fs-components/component-specs/library/releases/933a6b6faee4d0de370bf96ae6424cbc1f2690705676abc48b314c4897c7df6a/components/sources/navigation/footer-assets-1013/68908-047073.png" alt="Google Reviews" height="28" style="scroll-margin-top: 40px; width: 74px;">
+        </div>
+        <div class="ds-nav-footer__badges-right">
+          <a class="ds-nav-footer__region-link" aria-disabled="true">
+            United States / $ USD
+            <svg class="ds-nav-footer__dropdown-icon" width="12" height="12" viewBox="0 0 12 12" fill="none">
+              <path d="M3 4.5L6 7.5L9 4.5" stroke="#707070" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <hr class="ds-nav-footer__divider">
+
+      <div class="ds-nav-footer__legal">
+        <div class="ds-nav-footer__legal-links">
+          <a class="ds-nav-footer__legal-link" aria-disabled="true">Site Map</a>
+          <span class="ds-nav-footer__legal-divider"></span>
+          <a class="ds-nav-footer__legal-link" aria-disabled="true">Accessibility</a>
+          <span class="ds-nav-footer__legal-divider"></span>
+          <a class="ds-nav-footer__legal-link" aria-disabled="true">Privacy Policy and Notice at Collection</a>
+          <span class="ds-nav-footer__legal-divider"></span>
+          <a class="ds-nav-footer__legal-link" aria-disabled="true">Cookies Notice</a>
+          <span class="ds-nav-footer__legal-divider"></span>
+          <a class="ds-nav-footer__legal-link" aria-disabled="true">Terms and Conditions</a>
+          <span class="ds-nav-footer__legal-divider"></span>
+          <a class="ds-nav-footer__legal-link" aria-disabled="true">Report a Vulnerability</a>
+          <span class="ds-nav-footer__legal-divider"></span>
+          <a class="ds-nav-footer__legal-link" aria-disabled="true">Do Not Sell or Share My Personal Information</a>
+          <span class="ds-nav-footer__legal-divider"></span>
+          <a class="ds-nav-footer__legal-link" aria-disabled="true">Company Policies</a>
+          <span class="ds-nav-footer__legal-divider"></span>
+          <a class="ds-nav-footer__legal-link" aria-disabled="true">Cookie Settings</a>
+        </div>
+        <div class="ds-nav-footer__copyright">
+          Copyright © 2009-2026 FS.COM INC. All Rights Reserved.
+        </div>
+      </div>
+    
+  </div>
+  </footer><script data-library-resource="933a6b6faee4d0de370bf96ae6424cbc1f2690705676abc48b314c4897c7df6a" src="../../fs-components/component-specs/library/releases/933a6b6faee4d0de370bf96ae6424cbc1f2690705676abc48b314c4897c7df6a/components/menu-navigation-current.js"></script>
+<script data-library-resource="933a6b6faee4d0de370bf96ae6424cbc1f2690705676abc48b314c4897c7df6a" src="../../fs-components/component-specs/library/releases/933a6b6faee4d0de370bf96ae6424cbc1f2690705676abc48b314c4897c7df6a/components/tab.js"></script>
+<script data-library-resource="933a6b6faee4d0de370bf96ae6424cbc1f2690705676abc48b314c4897c7df6a" src="../../fs-components/component-specs/library/releases/933a6b6faee4d0de370bf96ae6424cbc1f2690705676abc48b314c4897c7df6a/components/navigation-products-current.js"></script>
+</body>
+</html>

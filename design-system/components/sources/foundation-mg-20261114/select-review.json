@@ -1,0 +1,70 @@
+{
+  "schemaVersion": "fs-component-source-review/1.0.0",
+  "component": "select",
+  "status": "verified-rules-and-structure",
+  "source": {
+    "root": "3:286583",
+    "title": "✅【选择器】设计规范v2.0.2605A",
+    "file": "components/sources/foundation-mg-20261114/select.txt",
+    "fileId": "209944605602401",
+    "sha256": "284cc1f31884e3131f003e4b696b243defc16b4cb073df5af8b9a835408f908b",
+    "recordedAt": "2026-11-14T05:25:33.960Z",
+    "method": "MasterGo get_selection_node; explicit current-file node read",
+    "url": "https://mastergo.com/file/209944605602401?page_id=M&layer_id=3:286583"
+  },
+  "scope": "Current admitted desktop calls: scene rules, declared states and actual source relationships; not pixel or whole-family visual approval",
+  "findings": [
+    {
+      "id": "scene-gate",
+      "nodes": [
+        "3:286872",
+        "3:286878"
+      ],
+      "sourceFact": "Select用于表单预设值，禁用动作/导航及≤5个选项。",
+      "correction": "修正短列表单选决策；已交付旧页保持固定版本，新测试数据遵守>5。"
+    },
+    {
+      "id": "configuration-not-new-families",
+      "nodes": [
+        "3:286831"
+      ],
+      "sourceFact": "搜索/区号/分组属于Select配置升级。",
+      "correction": "保留九个有限映射，不增加组件族或任意组合接口。"
+    },
+    {
+      "id": "input-parent-link",
+      "nodes": [
+        "3:290005",
+        "3:290064"
+      ],
+      "sourceFact": "选择框实际嵌套无标签、无占位的基础Input。",
+      "correction": "九个现有调用接入Input受控面部与共享状态；保留原combobox、多值标签及动作，宿主只分配布局。"
+    },
+    {
+      "id": "footer-parent-link",
+      "nodes": [
+        "3:289812",
+        "3:289808"
+      ],
+      "sourceFact": "Cancel/OK为42px描边灰/黑Button原子。",
+      "correction": "保留现有XL真实引用，更新当前来源节点。"
+    },
+    {
+      "id": "viewport-placement",
+      "nodes": [
+        "3:286645"
+      ],
+      "sourceFact": "常规列表232px，双列428px；空间不足自动适配，视口安全距离20px。",
+      "correction": "补面板高度约束与上/下避让、滚动和窗口变化时重算。"
+    }
+  ],
+  "unverified": [
+    "General width text recommends212–320px while existing double-column specimen is340px; fixed specimen widths are removed from scene decisions, final visual widths remain separately reviewable.",
+    "Source row masters use Radio/Checkbox icon atoms, not independent labeled native inputs; single-radio retains shared official glyph resources, not a fabricated whole-Radio parent reference."
+  ],
+  "ruleDigest": "97316ac160910a3b3dd6e6b748b21f8d93190086454869bc022a8fec5ff8b0f4",
+  "listOptionSource": {
+    "review": "components/sources/list-option-mg-20261115/review.json",
+    "current": "Finite PC source-backed calls and List source referral; previous findings retained as historical scope."
+  }
+}

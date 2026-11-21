@@ -1,0 +1,55 @@
+{
+  "date": "2026-10-11",
+  "scope": "既有下拉菜单/标签页取消事件及PC灰白表单真实宿主联动",
+  "changes": [
+    {
+      "id": "dropdown",
+      "name": "下拉菜单",
+      "fix": "本地事件取消保护已补：宿主取消触发/选项点击或键盘操作后，不打开、不选择、不移动焦点；搜索Enter/Escape亦尊重取消。正常选择及表单值同步已定向验证。"
+    },
+    {
+      "id": "tab",
+      "name": "标签页",
+      "fix": "本地事件取消保护已补：宿主取消标签点击/键盘操作后保留选择和焦点；正常切换及另一实例隔离已定向验证。"
+    }
+  ],
+  "affectedHost": {
+    "id": "form",
+    "name": "表单",
+    "verification": "本批复核灰白两种现有表单中的真实Dropdown：取消选项点击不改choice、不发change；正常选择仍同步FormData。"
+  },
+  "verification": {
+    "redCasesReproduced": 3,
+    "offlinePassed": 33,
+    "componentChecks": 29,
+    "hostChecks": 4,
+    "syncPassed": true,
+    "healthPassed": true,
+    "healthErrors": 0,
+    "existingWarnings": 2,
+    "logs": [
+      "/tmp/fs-dropdown-tab-cancel-before.log",
+      "/tmp/fs-dropdown-tab-cancel-final-test.log",
+      "/tmp/fs-dropdown-tab-form-host-test.log",
+      "/tmp/fs-dropdown-tab-cancel-sync.log",
+      "/tmp/fs-dropdown-tab-cancel-health.log"
+    ]
+  },
+  "fingerprints": {
+    "components/dropdown-current.js": "e2627ba0de10f0f937f522bc7734c8672d1be5ddf87789af0db898ae2f5b38ab",
+    "components/tab.js": "554cadf5dcfcf136d2996e326f38bbcafe27fcca5344a75ab7532fe9acc0b546",
+    "scripts/dropdown-reference.test.js": "dc0715363a907e99cd2bd11bbcac5740ee0aea9aaf49637d6884a90281c7b6ed",
+    "scripts/tab-reference.test.js": "88aaf17ce2d2cf4e498f9e7cc918d8d26a30001c1866041cb8a024d6c2b52bfb",
+    "scripts/form-reference.test.js": "8cab69f9f1006b9a76b99d9924cc3717278ec2de99ce4ac45949f31c9b3fffa0"
+  },
+  "boundaries": {
+    "mastergoVerified": false,
+    "browserVerified": false,
+    "visualVerified": false,
+    "familyComplete": false,
+    "frozenPagesChanged": false,
+    "newCanonicalAdmission": false,
+    "legacyDropdownFamiliesChanged": false,
+    "previewAllToggleChanged": false
+  }
+}

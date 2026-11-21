@@ -1,0 +1,435 @@
+{
+  "schemaVersion": "fs-component-reference/1.0.0",
+  "component": {
+    "id": "tab",
+    "name": "Tab",
+    "scope": "existing-desktop-capsule-product-and-standard-two-size-tabs",
+    "reviewStatus": {
+      "engineering": "pending",
+      "visual": "pending",
+      "familyCoverage": "partial"
+    }
+  },
+  "selection": {
+    "policy": "按来源区分商品详情胶囊、居左/居中常规和首页产品图标导航。只调用 catalog 中 callable 的具体变体；内容切换由宿主负责，不把本地选中态当成内容/菜单联动。不得以图标需求或通用筛选外推原稿场景。",
+    "supported": [
+      "capsule",
+      "standard",
+      "product",
+      "standard-center"
+    ],
+    "unsupported": [
+      "all-dropdown",
+      "disabled-canonical-call",
+      "built-in-content-panels",
+      "dedicated-change-event",
+      "dynamic-insertion-api",
+      "mobile",
+      "unregistered-product-icons"
+    ]
+  },
+  "runtime": {
+    "styles": [
+      "components/tokens.css",
+      "components/components.css",
+      "components/tab-current.css"
+    ],
+    "scripts": [
+      "components/tab.js"
+    ],
+    "fontStylesheets": [
+      "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+    ],
+    "fontFallback": "Open Sans stack; actual browser layout/focus/scroll pending."
+  },
+  "identity": {
+    "rule": "Authored first active item plus one indicator; each item keeps complete inner/text structure. Runtime creates tablist/tab, unique aria-selected and roving tabindex. Do not copy data-tab-ready or initialized roles/tabindex.",
+    "labelRule": "items replaces existing visible labels and item count, min two; retain product icon wrappers and locked local example assets. Source-specific content targets and panels are page integration.",
+    "registeredSizes": "standard/standard-center仅接受已登记default/large，从对应真实Preview提取；capsule/product不开放size，禁止任意改类。"
+  },
+  "locked": [
+    "Real div item/inner/text and active indicator",
+    "Product icon wrapper and existing registered asset",
+    "Standard size and default left alignment",
+    "Shared CSS and current tab.js",
+    "No built-in panel bindings, URLs or callbacks",
+    "Current standard roots retain data-tab-current=regular-atom; native atom horizontal padding16 including first item.",
+    "Current capsule selection roots retain data-tab-current=capsule-atom; every item height30, active vertical padding0 around inner top4."
+  ],
+  "behavior": {
+    "selection": "Click selects exactly one active/aria-selected item and one indicator; per-group state independent. No dedicated change event.",
+    "keyboard": "Arrows wrap enabled visible items only; Home/End choose enabled boundaries and Enter/Space consume normal native default. Composition keys and unavailable items do nothing. Focus requests preventScroll=true; real browser scroll/focus remains pending.",
+    "initialization": "Document/root guards prevent repeated binding; no public dynamic insertion API. Existing All display remains finite Preview behavior only.",
+    "structureCorrection": "All items get full inner wrapper, including inactive capsule labels. Canonical Preview authored markup normalized to same required structure.",
+    "all": "Existing Preview dropdown display toggle retained, but overflow selection, menu ARIA and keyboard are not part of finite call scope.",
+    "business": "Local state only; the local page workflow must implement evidenced content/filter integration. No source-less panel or navigation.",
+    "availability": "Hidden/native fieldset/ARIA-disabled item or ancestor blocks synthetic actions; tabstop synchronizes without clearing selected state.",
+    "currentDefaultBottom": "当前Default居左有限样例灰色1px底线来自049853容器的外部底描边，采用不占布局高度的外绘制；标记必需，不外推Large/居中/其他形态。",
+    "currentLargeCenterBottom": "已独立读取Large居左049804/内层049817、居中默认049539与居中大号049509的Gray4底部1px外描边；仅当前有限来源标记外绘制，Large调用保留独立来源标记。居中自适应宽度映射及视觉待验证，当前居中调用资格读取同版catalog，视觉批准独立记录。 当前本地通过受控size参数选择对应default/large原件，不通过样式类覆盖。"
+  },
+  "examples": [
+    {
+      "name": "product",
+      "publication": {
+        "key": "tab/product",
+        "disposition": "restricted",
+        "newPages": true,
+        "reason": "standard and center use registered sizes. capsule/product only current local selection; no overflow menu/content-panel/business filtering.",
+        "constraints": [
+          "standard and center use registered sizes. capsule/product only current local selection; no overflow menu/content-panel/business filtering."
+        ],
+        "contractPolicy": "Capsule filters, standard partitions, product categories. Use exact full inner structures; standard default/large from separate examples. Items switch local active state only, never infer content panels or navigation. 常规居左standard与居中standard-center按对应来源选择；居中有default/large两原件尺寸，宽度随内容而非372/390固定值。",
+        "use": "finite-new-page-candidate",
+        "evidence": "components/contracts/tab.json#aiContract/evidence",
+        "requiresCurrentEngineering": true,
+        "visualApproval": "separate-not-granted"
+      },
+      "rootTag": "div",
+      "sizeOptions": [],
+      "purpose": "product-local-selection-tabs",
+      "whenToUse": "首页产品大类，登记图标语义匹配。",
+      "whenNotToUse": "普通图标Tab或无匹配素材。",
+      "rootClasses": "ds-tab ds-tab--product",
+      "requiredStructure": [
+        "div.ds-tab__item",
+        "div.ds-tab__item-inner",
+        "span.ds-tab__item-text",
+        "div.ds-tab__indicator",
+        "div.ds-tab__item-icon",
+        "img"
+      ],
+      "slots": {
+        "items": {
+          "selector": ":scope",
+          "mode": "structured-content",
+          "required": true,
+          "preserve": [
+            "div.ds-tab__item",
+            "div.ds-tab__item-inner",
+            "span.ds-tab__item-text",
+            "div.ds-tab__indicator",
+            "div.ds-tab__item-icon",
+            "img"
+          ],
+          "rule": "Preserve every native item, icon wrapper, image, inner/text and sole initial indicator. Labels/count and the finite registered icon list may change; do not reuse sample icons by item position. Icon meanings must be recorded separately from graphic provenance.",
+          "registeredIcons": {
+            "selector": ".ds-tab__item-icon > img",
+            "values": [
+              "components/icons/mastergo-library/定制Icon/67934-114409.svg",
+              "components/icons/mastergo-library/定制Icon/67934-124368.svg",
+              "components/icons/mastergo-library/定制Icon/67934-115143.svg",
+              "components/icons/mastergo-library/定制Icon/67934-118847.svg",
+              "components/icons/mastergo-library/定制Icon/67934-126731.svg"
+            ]
+          }
+        }
+      },
+      "allowedEdits": [
+        "items"
+      ],
+      "exampleHtml": "<div class=\"ds-tab ds-tab--product\" data-tab-group=\"\" data-ai-example=\"ai-tab-product\">\n        <div class=\"ds-tab__item ds-tab__item--active\" data-tab-item=\"\">\n          <div class=\"ds-tab__item-icon\"><img src=\"../icons/icon-placeholder-switch.svg\" alt=\"\"></div>\n          <div class=\"ds-tab__item-inner\"><span class=\"ds-tab__item-text\">Title A</span><div class=\"ds-tab__indicator\"></div></div>\n        </div>\n        <div class=\"ds-tab__item\" data-tab-item=\"\">\n          <div class=\"ds-tab__item-icon\"><img src=\"../icons/icon-placeholder-switch.svg\" alt=\"\"></div>\n          <div class=\"ds-tab__item-inner\"><span class=\"ds-tab__item-text\">Title A</span></div>\n        </div>\n        <div class=\"ds-tab__item\" data-tab-item=\"\">\n          <div class=\"ds-tab__item-icon\"><img src=\"../icons/icon-placeholder-switch.svg\" alt=\"\"></div>\n          <div class=\"ds-tab__item-inner\"><span class=\"ds-tab__item-text\">Title A</span></div>\n        </div>\n        <div class=\"ds-tab__item\" data-tab-item=\"\">\n          <div class=\"ds-tab__item-icon\"><img src=\"../icons/icon-placeholder-switch.svg\" alt=\"\"></div>\n          <div class=\"ds-tab__item-inner\"><span class=\"ds-tab__item-text\">Title C</span></div>\n        </div>\n        <div class=\"ds-tab__item\" data-tab-item=\"\">\n          <div class=\"ds-tab__item-icon\"><img src=\"../icons/icon-placeholder-switch.svg\" alt=\"\"></div>\n          <div class=\"ds-tab__item-inner\"><span class=\"ds-tab__item-text\">Title A</span></div>\n        </div>\n        <div class=\"ds-tab__item\" data-tab-item=\"\">\n          <div class=\"ds-tab__item-icon\"><img src=\"../icons/icon-placeholder-switch.svg\" alt=\"\"></div>\n          <div class=\"ds-tab__item-inner\"><span class=\"ds-tab__item-text\">Title A</span></div>\n        </div>\n        <div class=\"ds-tab__item\" data-tab-item=\"\">\n          <div class=\"ds-tab__item-icon\"><img src=\"../icons/icon-placeholder-switch.svg\" alt=\"\"></div>\n          <div class=\"ds-tab__item-inner\"><span class=\"ds-tab__item-text\">Title A</span></div>\n        </div>\n        <div class=\"ds-tab__item\" data-tab-item=\"\">\n          <div class=\"ds-tab__item-icon\"><img src=\"../icons/icon-placeholder-switch.svg\" alt=\"\"></div>\n          <div class=\"ds-tab__item-inner\"><span class=\"ds-tab__item-text\">Title A</span></div>\n        </div>\n      </div>"
+    }
+  ],
+  "relationships": {
+    "children": [],
+    "parents": [],
+    "parentStatus": "no-declared-hosts",
+    "icons": [
+      {
+        "file": "components/icons/icon-placeholder-switch.svg",
+        "registry": "components/icons/icons-manifest.json",
+        "appliesTo": [
+          "product"
+        ],
+        "usage": "product 变体默认图标；仅说明现有素材，不证明业务语义匹配，禁止按选项序号循环调用。"
+      }
+    ],
+    "tokens": [
+      {
+        "name": "color.gray-1",
+        "value": "#19191A",
+        "unit": null,
+        "cssVar": "--color-gray-1",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.gray-3",
+        "value": "#707070",
+        "unit": null,
+        "cssVar": "--color-gray-3",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.gray-5",
+        "value": "#DEE0E3",
+        "unit": null,
+        "cssVar": "--color-gray-5",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.gray-8",
+        "value": "#F6F6F8",
+        "unit": null,
+        "cssVar": "--color-gray-8",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.gray-9",
+        "value": "#FAFBFB",
+        "unit": null,
+        "cssVar": "--color-gray-9",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.brand-red",
+        "value": "#C00000",
+        "unit": null,
+        "cssVar": "--brand-red",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "typography.font-family-base",
+        "value": "Open Sans",
+        "unit": null,
+        "cssVar": "--font-family-base",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-size-h8",
+        "value": 13,
+        "unit": "px",
+        "cssVar": "--font-size-h8",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "spacing.xs",
+        "value": 4,
+        "unit": "px",
+        "cssVar": "--spacing-xs",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.6",
+        "value": 6,
+        "unit": "px",
+        "cssVar": "--spacing-6",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.sm",
+        "value": 8,
+        "unit": "px",
+        "cssVar": "--spacing-sm",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.lg",
+        "value": 16,
+        "unit": "px",
+        "cssVar": "--spacing-lg",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.10",
+        "value": 10,
+        "unit": "px",
+        "cssVar": "--spacing-10",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.14",
+        "value": 14,
+        "unit": "px",
+        "cssVar": "--spacing-14",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.md",
+        "value": 12,
+        "unit": "px",
+        "cssVar": "--spacing-md",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "border.width.default",
+        "value": 1,
+        "unit": "px",
+        "cssVar": "--border-width-default",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.style.default",
+        "value": "solid",
+        "unit": null,
+        "cssVar": "--border-style-default",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.default",
+        "value": "var(--color-gray-5)",
+        "unit": null,
+        "cssVar": "--border-color-default",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.style.none",
+        "value": "none",
+        "unit": null,
+        "cssVar": "--border-style-none",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "typography.font-size-md",
+        "value": 14,
+        "unit": "px",
+        "cssVar": "--font-size-md",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-weight-regular",
+        "value": 400,
+        "unit": null,
+        "cssVar": "--font-weight-regular",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.h7-regular",
+        "value": {
+          "fontSize": "14px",
+          "lineHeight": "22px",
+          "fontWeight": 400
+        },
+        "unit": null,
+        "cssVar": null,
+        "primitiveReferences": {
+          "fontSize": "typography.font-size-md",
+          "fontWeight": "typography.font-weight-regular"
+        },
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.h8-regular",
+        "value": {
+          "fontSize": "13px",
+          "lineHeight": "20px",
+          "fontWeight": 400
+        },
+        "unit": null,
+        "cssVar": null,
+        "primitiveReferences": {
+          "fontSize": "typography.font-size-h8",
+          "fontWeight": "typography.font-weight-regular"
+        },
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.h6-regular",
+        "value": {
+          "fontSize": "16px",
+          "lineHeight": "24px",
+          "fontWeight": 400
+        },
+        "unit": null,
+        "cssVar": null,
+        "primitiveReferences": {
+          "fontSize": "typography.font-size-h6",
+          "fontWeight": "typography.font-weight-regular"
+        },
+        "source": "components/token-specs/typography.json"
+      }
+    ]
+  },
+  "evidence": {
+    "localImplementation": "components/variants/tab.html",
+    "comparison": "components/sources/tab/local-structure-review.json",
+    "previousInlineRuntime": "components/sources/tab/preview-inline-runtime-before.txt",
+    "nativeSpecification": "components/sources/tab/native-specification-review-1011.json",
+    "nativeComponent": "components/sources/tab/native-component-review-1011.json",
+    "nativeRegularGapBottomCurrent": "components/sources/tab/pc-regular-gap-bottom-review-1013.json",
+    "nativeDropdownDefaultCurrent": "components/sources/tab/drop-item-default-review-1013.json",
+    "nativeLargeCenterBottomCurrent": "components/sources/tab/pc-large-center-bottom-review-1013.json",
+    "nativeCenterFullCurrent": "components/sources/tab/pc-center-full-source-1014.json",
+    "currentMgReview": "components/sources/tab-collapse-mg-20261114/tab-review.json"
+  },
+  "sourceValidation": {
+    "componentIdentity": {
+      "status": "not-established",
+      "files": []
+    },
+    "specificationBody": {
+      "status": "not-established",
+      "files": []
+    },
+    "originalOnlineFrontendCode": false,
+    "browserComputedStyles": false,
+    "completeSpecificationCoverage": false,
+    "center": {
+      "source": "components/sources/tab/pc-center-full-source-1014.json",
+      "nodes": [
+        "68908:049539",
+        "68908:049509"
+      ],
+      "scope": "PC default/large centered regular only"
+    }
+  },
+  "freshness": {
+    "fingerprints": {
+      "components/components.css": "a08b4fe2790b5ff2b784c6362a90f1b94e7535a03e863232ce6d620a52e85f73",
+      "components/contracts/tab.json": "518112305847fcb26bd16afa2f49fc14f9ad03c4ff7ef81c7c79fc7807fd9b89",
+      "components/icons/icon-chevron-down.svg": "fe5df03acb1cb4b8a38a928357775416656fbf97cc54f3c6a5b7d0e4906f3e91",
+      "components/icons/icon-placeholder-switch.svg": "0f52c5a675441071196593d5d90c3f97f29b0b43719170d8a7df7ac9a974b5d5",
+      "components/icons/icons-manifest.json": "12c48af6d1dc59d50b76046bb0507005f565aa4224a6d8056ce4eaaf8050c43e",
+      "components/icons/mastergo-library/定制Icon/67934-114409.svg": "acfbe825c77b145096bd69000ba344a51ada8eff0df7b1b81778edd3ac0949e3",
+      "components/icons/mastergo-library/定制Icon/67934-115143.svg": "a15194b843351b1057a1f9a73fba768ef7c02261e88837db2301037a67eb5246",
+      "components/icons/mastergo-library/定制Icon/67934-118847.svg": "62d07ed4e8086f8af5645cf76fcd163b6f5d23887b10dad6b42b36173f276e90",
+      "components/icons/mastergo-library/定制Icon/67934-124368.svg": "1db9b26d9f81787d0f40ee8118b501f5214719e6571b5d30f6e4079dae5f0437",
+      "components/icons/mastergo-library/定制Icon/67934-126731.svg": "f431560952ccd0a6b0339f030a9116ee04a95676621e4c8e068254489c46750f",
+      "components/preview/reference-live.js": "4839383529a3ee82df1d8efe675d430567abc1986034499107aa429d21a18ea6",
+      "components/reference-policy.json": "4ae8f51f623386417e38d497caafb8bda4417c929159002a7ac088e6e526b482",
+      "components/sources/tab-collapse-mg-20261114/tab-review.json": "417f1f9e7b046aca40392496614ff4e1856a1617b7ac702184da6a33ff795c26",
+      "components/sources/tab/drop-item-default-review-1013.json": "53fea3574fcf6e1b5f28912985af3399b86b66ed3552c6b5d6d598c2d086200b",
+      "components/sources/tab/local-structure-review.json": "260727cb781501914c52644c8e65edeb15ed33a474f674730471347f0d29892e",
+      "components/sources/tab/native-component-review-1011.json": "05014ab772f24e291792f27c2518df6b9f0afc134a7b0ad73cea7b22c106c835",
+      "components/sources/tab/native-specification-review-1011.json": "a853daf9c0a91c18af278496344d677596e7716089132deec2f63caca9e2c9cf",
+      "components/sources/tab/pc-center-full-source-1014.json": "a37c697a75829f8b0132a3e6d1873d185116939dd4a241a9eb44ef864c07938e",
+      "components/sources/tab/pc-large-center-bottom-review-1013.json": "23d2c40531da591965af8dd32da6434c8c971458c89efd48e342531a158b523d",
+      "components/sources/tab/pc-regular-gap-bottom-review-1013.json": "e988b708a158f9b68f4a5a5e3abec6ccc22a58845a73b7b2e0cc97104d538094",
+      "components/sources/tab/preview-inline-runtime-before.txt": "76a52880278a02b0ba6970968cc146290701c5169ef985d9fb2fd143e2857e3b",
+      "components/tab-current.css": "a16321feddf39487a2b6a7c6acffc75ab3ab23a447bf91c4f739c442f6fe000d",
+      "components/tab.js": "554cadf5dcfcf136d2996e326f38bbcafe27fcca5344a75ab7532fe9acc0b546",
+      "components/token-specs/border.json": "d286ee4681deda1c7702c310b065c86f824539b3a8797efba05b24bc225ab322",
+      "components/token-specs/colors.json": "5267d59fdc687b54496977280c00c97f0beb6ffce013f87853504f5b736d3389",
+      "components/token-specs/spacing.json": "351b14cfce4411248ad41e00eaaf2b1cab9b705997980dfed1fc65693740e65c",
+      "components/token-specs/typography.json": "93b7dc07547218a33c075b7cdcd942f89094353a7847d483d8378b8883327e16",
+      "components/tokens.css": "f63f3c8fea511d8029902bc3905b01853ac5e92049c1b18ca35ebc9a680c3e69",
+      "components/variants/tab.html": "1599b36b2c3b1ad41f91dade86d87486f0f2206d1c444026bacb456534474aed"
+    },
+    "graphFingerprint": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "note": "从本地源文件生成；不是 MasterGo 在线实时状态。"
+  },
+  "readScope": {
+    "variant": "product",
+    "note": "只展开当前已选变体；其他变体没有被声明为不可用。尺寸继续按真实 sizeOptions 选择。"
+  }
+}

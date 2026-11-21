@@ -1,0 +1,1214 @@
+{
+  "schemaVersion": "fs-component-reference/1.0.0",
+  "component": {
+    "id": "banner",
+    "name": "Banner",
+    "scope": "five-finite-PC-banner-calls-including-owned-search",
+    "reviewStatus": {
+      "engineering": "pending",
+      "visual": "pending",
+      "familyCoverage": "partial"
+    }
+  },
+  "selection": {
+    "policy": "按来源内容选Hero、Sub、Search、Title-only或Mini，再查当前catalog。Search已接真实42px Input私有部件、IconButton和官方FS GPT资源；本地纯白表面及GPT导出图在28px槽内的位置单列待视觉确认。Mini现有120px PC原件使用真实三位分页和手动切换；不代表整套首页轮播或自动播放。Hero单CTA、Sub深色Breadcrumb、Title-only仅标题等原边界保持；不把本地响应式当MG移动原件。 Current five-variant closure 20261115: only supported exact source examples and publication decisions permit local calls. Earlier preview-only or placeholder descriptions are historical; PC geometry and host boundaries remain explicit.",
+    "supported": [
+      "hero-responsive",
+      "sub",
+      "title-only",
+      "hero",
+      "search",
+      "mini"
+    ],
+    "unsupported": [
+      "image-gradient-background-canonical",
+      "breadcrumb-canonical",
+      "multiple-cta-canonical",
+      "mobile-tablet-acceptance"
+    ]
+  },
+  "runtime": {
+    "styles": [
+      "components/tokens.css",
+      "components/components.css",
+      "components/banner-responsive.css",
+      "components/banner-current.css",
+      "components/button-current.css",
+      "components/button-runtime-current.css",
+      "components/breadcrumb-current.css",
+      "components/text-button-current.css",
+      "components/carousel-current.css",
+      "components/icon-button-current.css",
+      "components/input-search-current.css",
+      "components/banner-search-current.css",
+      "components/banner-mini-current.css"
+    ],
+    "scripts": [
+      "components/input-search-current.js",
+      "components/banner-search-current.js",
+      "components/carousel-current.js"
+    ],
+    "fontStylesheets": [
+      "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+    ]
+  },
+  "identity": {
+    "rule": "For hero take the complete native single-action root with data-banner-native-hero. Other finite roots retain their prior declared identities and withheld admission.",
+    "boundary": "Each finite root owns its solid FS Token surface. Hero-responsive alone uses existing layout corrections; other roots keep their original PC layout. Image/gradient backgrounds and source-less omissions remain excluded."
+  },
+  "locked": [
+    "Real Hero inner/title/description/actions structure",
+    "Component-owned layout correction and solid Token surface",
+    "Real Button outline-white/XL ds-btn__text",
+    "No Carousel control-inset formula in Banner content",
+    "Existing responsive CSS spacing.56 remains equal to old 56px; no new breakpoint or Pad/M acceptance",
+    "Existing PC Sub/Title-only layout; solid-dark Token surface",
+    "Native hero1920x420,404px inset and20px gaps; single genuine outline-white/XL Button atom400",
+    "Dark source-bound parent image/color surface; no inline component style or extra CTA/Breadcrumb in hero",
+    "Sub dark Breadcrumb structure and Title-only no extra content"
+  ],
+  "behavior": {
+    "action": "Native Button click callback supplied by page; no built-in navigation or business result.",
+    "location": "Banner only first/second content module after Header. Full-copy Hero keeps title/description/actions; Sub title/description; Title-only just title. Never infer absent source slots.",
+    "source": "Desktop home Hero original COMPONENT and Button reference now established by native-hero-review-1028; other variants retain their prior source limitations.",
+    "geometry": "Existing 1200px inner and desktop type styles retained; actual browser centering/geometry/contrast remains pending. This does not approve new Pad/M behavior.",
+    "sub": "Existing 320px Sub layout and component content inset with complete dark Breadcrumb; no CTA in canonical call. Child default/dark family relation remains source-scoped, no arbitrary cross-surface styling.",
+    "titleOnly": "Existing 200px centered-title layout with no other content in finite call; Breadcrumb optional at family level, omitted here to keep one exact title-only assembly.",
+    "visual": "Only authored structures and local Token CSS proven. Actual 320/200px geometry, 1200 inset, centered 960 title and color contrast still require allowed PC browser proof.",
+    "hero": "Native1920 desktop single-image home Hero. Parent supplies evidence-backed image and applicable FS scrim or dark FS surface. Title/description/one real outline-white42px Button; callback binds native click. Source dots are excluded from this finite single-image use, not migrated as invented Banner pagination.",
+    "search": "Input负责原生搜索字段及Enter/搜索按钮；Banner发出搜索/GPT意图，不提供后端搜索或AI回答。",
+    "mini": "Source three-position PC120px Mini. Actual slide content, original TextButton and Carousel pagination; manual click/Arrow/Home/End, hidden/inert inactive content,600ms horizontal content motion with reduced-motion support. No inferred autoplay."
+  },
+  "examples": [
+    {
+      "name": "hero-responsive",
+      "runtime": {
+        "styles": [
+          "components/tokens.css",
+          "components/components.css",
+          "components/banner-responsive.css",
+          "components/banner-current.css",
+          "components/button-current.css",
+          "components/button-runtime-current.css",
+          "components/breadcrumb-current.css",
+          "components/text-button-current.css",
+          "components/carousel-current.css"
+        ],
+        "scripts": []
+      },
+      "publication": {
+        "key": "banner/hero-responsive",
+        "disposition": "restricted",
+        "newPages": true,
+        "reason": "Local normative Preview, typed contract and actual shared dependencies reviewed; finite PC call requires current browser engineering proof. No claim of independent latest MG/whole-family acceptance.",
+        "constraints": [
+          "对应当前PC有限形态：hero-responsive为完整标题/描述和单个outline-white XL动作；sub为标题/描述及完整dark Breadcrumb。保留原布局/纯色表面；不据此开放其他图片组合、Pad或手机。",
+          "只允许契约列明的内容参数；工程验证必须当前有效，原规范视觉、子组件结构与资源版本保持。"
+        ],
+        "contractPolicy": "对应当前PC有限形态：hero-responsive为完整标题/描述和单个outline-white XL动作；sub为标题/描述及完整dark Breadcrumb。保留原布局/纯色表面；不据此开放其他图片组合、Pad或手机。",
+        "use": "withheld",
+        "evidence": "components/contracts/banner.json#aiContract/evidence",
+        "requiresCurrentEngineering": true,
+        "visualApproval": "separate-not-granted"
+      },
+      "rootTag": "div",
+      "sizeOptions": [],
+      "bindings": {
+        "actionCallback": {
+          "mode": "event-handler",
+          "target": "button.ds-btn",
+          "event": "click"
+        },
+        "surface": {
+          "mode": "native-attribute",
+          "target": "root",
+          "attribute": "data-banner-surface",
+          "values": [
+            "image"
+          ],
+          "sourceProperty": "Existing dark background image and mandatory host overlay"
+        }
+      },
+      "purpose": "desktop-full-copy-solid-dark-hero-one-outline-white-action",
+      "whenToUse": "来源标题、描述与单CTA均需完整保留的信息页，使用既有本地响应式实现。",
+      "whenNotToUse": "按MG首页M233原件原样还原，或缺少必需描述/CTA。",
+      "rootClasses": "ds-banner ds-banner--hero ds-banner--hero-responsive",
+      "requiredStructure": [
+        "div.ds-banner__responsive-inner",
+        "p.ds-banner__title",
+        "p.ds-banner__desc",
+        "div.ds-banner__actions",
+        "button.ds-btn",
+        "span.ds-btn__text"
+      ],
+      "slots": {
+        "title": {
+          "selector": "p.ds-banner__title",
+          "mode": "text",
+          "required": true
+        },
+        "description": {
+          "selector": "p.ds-banner__desc",
+          "mode": "text",
+          "required": true
+        },
+        "actionLabel": {
+          "selector": "span.ds-btn__text",
+          "mode": "text",
+          "required": true
+        }
+      },
+      "allowedEdits": [
+        "title",
+        "description",
+        "actionLabel",
+        "actionCallback",
+        "surface"
+      ],
+      "exampleHtml": "<div class=\"ds-banner ds-banner--hero ds-banner--hero-responsive\" data-preview-skeleton=\"hero-responsive\" data-banner-current=\"\" data-ai-example=\"ai-banner-hero-current\"><div class=\"ds-banner__responsive-inner\"><p class=\"ds-banner__title\">This is a banner title</p><p class=\"ds-banner__desc\">This is a Banner description text</p><div class=\"ds-banner__actions\"><button type=\"button\" class=\"ds-btn ds-btn--outline-white ds-btn--xl\"><span class=\"ds-btn__text\">Primary action</span></button></div></div></div>"
+    },
+    {
+      "name": "sub",
+      "runtime": {
+        "styles": [
+          "components/tokens.css",
+          "components/components.css",
+          "components/banner-responsive.css",
+          "components/banner-current.css",
+          "components/button-current.css",
+          "components/button-runtime-current.css",
+          "components/breadcrumb-current.css",
+          "components/text-button-current.css",
+          "components/carousel-current.css"
+        ],
+        "scripts": []
+      },
+      "publication": {
+        "key": "banner/sub",
+        "disposition": "restricted",
+        "newPages": true,
+        "reason": "Local normative Preview, typed contract and actual shared dependencies reviewed; finite PC call requires current browser engineering proof. No claim of independent latest MG/whole-family acceptance.",
+        "constraints": [
+          "对应当前PC有限形态：hero-responsive为完整标题/描述和单个outline-white XL动作；sub为标题/描述及完整dark Breadcrumb。保留原布局/纯色表面；不据此开放其他图片组合、Pad或手机。",
+          "只允许契约列明的内容参数；工程验证必须当前有效，原规范视觉、子组件结构与资源版本保持。"
+        ],
+        "contractPolicy": "对应当前PC有限形态：hero-responsive为完整标题/描述和单个outline-white XL动作；sub为标题/描述及完整dark Breadcrumb。保留原布局/纯色表面；不据此开放其他图片组合、Pad或手机。",
+        "use": "withheld",
+        "evidence": "components/contracts/banner.json#aiContract/evidence",
+        "requiresCurrentEngineering": true,
+        "visualApproval": "separate-not-granted"
+      },
+      "rootTag": "div",
+      "sizeOptions": [],
+      "purpose": "finite-sub-solid-dark-static",
+      "whenToUse": "1920px解决方案页标题、描述与当前模板的深色面包屑。",
+      "whenNotToUse": "需要搜索、首页单CTA，或需要删除当前固定面包屑。",
+      "rootClasses": "ds-banner ds-banner--sub",
+      "requiredStructure": [
+        "p.ds-banner__title",
+        "nav.ds-breadcrumb",
+        "p.ds-banner__desc"
+      ],
+      "slots": {
+        "title": {
+          "selector": "p.ds-banner__title",
+          "mode": "text",
+          "required": true
+        },
+        "description": {
+          "selector": "p.ds-banner__desc",
+          "mode": "text",
+          "required": true
+        },
+        "breadcrumb": {
+          "selector": "nav.ds-breadcrumb",
+          "mode": "structured-content",
+          "required": true,
+          "preserve": [
+            "div.ds-breadcrumb__item",
+            "a.ds-breadcrumb__link",
+            "span.ds-breadcrumb__separator",
+            "span.ds-breadcrumb__current"
+          ],
+          "rule": "Complete dark Breadcrumb; plaintext labels and safe href or display-only disabled anchors. Final item current, slash separators and aria label locked."
+        }
+      },
+      "allowedEdits": [
+        "title",
+        "description",
+        "breadcrumb"
+      ],
+      "exampleHtml": "<div class=\"ds-banner ds-banner--sub\" data-banner-static=\"\" data-ai-example=\"ai-banner-sub-static\"><nav class=\"ds-breadcrumb ds-breadcrumb--dark\" data-breadcrumb-current aria-label=\"Breadcrumb\">\n        <div class=\"ds-breadcrumb__item\">\n          <a href=\"#\" class=\"ds-breadcrumb__link\">Home</a>\n          <span class=\"ds-breadcrumb__separator\" aria-hidden=\"true\">/</span>\n        </div>\n        <div class=\"ds-breadcrumb__item\">\n          <a href=\"#\" class=\"ds-breadcrumb__link\">Page A</a>\n          <span class=\"ds-breadcrumb__separator\" aria-hidden=\"true\">/</span>\n        </div>\n        <div class=\"ds-breadcrumb__item\">\n          <span class=\"ds-breadcrumb__current\">Current Page</span>\n        </div>\n      </nav><p class=\"ds-banner__title\">This is a banner title</p><p class=\"ds-banner__desc\">This is a Banner description text</p></div>"
+    },
+    {
+      "name": "title-only",
+      "runtime": {
+        "styles": [
+          "components/tokens.css",
+          "components/components.css",
+          "components/banner-responsive.css",
+          "components/banner-current.css",
+          "components/button-current.css",
+          "components/button-runtime-current.css",
+          "components/breadcrumb-current.css",
+          "components/text-button-current.css",
+          "components/carousel-current.css"
+        ],
+        "scripts": []
+      },
+      "publication": {
+        "key": "banner/title-only",
+        "disposition": "restricted",
+        "newPages": true,
+        "reason": "Saved native component/specification matched to finite local Preview; current engineering proof still required.",
+        "constraints": [
+          "PC finite exact call only; preserve original style and real child dependencies.",
+          "Safe source labels/targets only; no other variants or responsive behavior inferred."
+        ],
+        "requiresCurrentEngineering": true,
+        "visualApproval": "separate-not-granted"
+      },
+      "rootTag": "div",
+      "sizeOptions": [],
+      "purpose": "finite-title-only-solid-dark-static",
+      "whenToUse": "1920×200专题/外围/分类页，核心内容只有标题。",
+      "whenNotToUse": "有描述、CTA或搜索输入，需要保留完整内容。",
+      "rootClasses": "ds-banner ds-banner--title-only",
+      "requiredStructure": [
+        "p.ds-banner__title"
+      ],
+      "slots": {
+        "title": {
+          "selector": "p.ds-banner__title",
+          "mode": "text",
+          "required": true
+        }
+      },
+      "allowedEdits": [
+        "title"
+      ],
+      "exampleHtml": "<div class=\"ds-banner ds-banner--title-only\" data-banner-static=\"\" data-ai-example=\"ai-banner-title-only-static\"><p class=\"ds-banner__title\">This is a banner title</p></div>"
+    },
+    {
+      "name": "hero",
+      "runtime": {
+        "styles": [
+          "components/tokens.css",
+          "components/components.css",
+          "components/banner-responsive.css",
+          "components/banner-current.css",
+          "components/button-current.css",
+          "components/button-runtime-current.css",
+          "components/breadcrumb-current.css",
+          "components/text-button-current.css",
+          "components/carousel-current.css"
+        ],
+        "scripts": []
+      },
+      "publication": {
+        "key": "banner/hero",
+        "disposition": "restricted",
+        "newPages": true,
+        "reason": "Native desktop home Hero source, genuine white42 Button and actual1920 geometry/default-hover verified; current engineering proof required.",
+        "constraints": [
+          "Only1920px single-image desktop Hero after Header; native404px inset,20px gaps, title/description/one outline-whiteXL regular Button. Source-backed dark image/color parent is pageLevelContent. No inline component overrides, extra CTA, Breadcrumb, Carousel or Pad/M approval."
+        ],
+        "contractPolicy": "Hero alone: source1920x420 single-image desktop home header, one real outline-white/XL regular Button, native404px content inset and20px gaps. Requires dark image/color parent surface; page background image is external pageLevelContent, not a Banner editable field. No Breadcrumb, extra CTA or slide controls in this finite call. Existing hero-responsive/Sub/Title-only declarations remain inspectable but withheld; no Pad/M approval.",
+        "use": "finite-new-page-candidate",
+        "evidence": "components/sources/banner/native-hero-review-1028.json",
+        "requiresCurrentEngineering": true,
+        "viewportWidth": 1920,
+        "visualApproval": "separate-not-granted"
+      },
+      "rootTag": "div",
+      "sizeOptions": [],
+      "bindings": {
+        "actionCallback": {
+          "mode": "event-handler",
+          "target": "button.ds-btn",
+          "event": "click"
+        }
+      },
+      "purpose": "native-desktop-home-hero-single-outline-white-action",
+      "whenToUse": "仅1920桌面首页，完整标题、描述和一个白色描边XL按钮。",
+      "whenNotToUse": "需要搜索、无描述/按钮、图文并列内容卡或窄窗口。",
+      "rootClasses": "ds-banner ds-banner--hero",
+      "requiredStructure": [
+        "p.ds-banner__title",
+        "p.ds-banner__desc",
+        "div.ds-banner__actions",
+        "button.ds-btn",
+        "span.ds-btn__text"
+      ],
+      "slots": {
+        "title": {
+          "selector": "p.ds-banner__title",
+          "mode": "text",
+          "required": true
+        },
+        "description": {
+          "selector": "p.ds-banner__desc",
+          "mode": "text",
+          "required": true
+        },
+        "actionLabel": {
+          "selector": "span.ds-btn__text",
+          "mode": "text",
+          "required": true
+        }
+      },
+      "allowedEdits": [
+        "title",
+        "description",
+        "actionLabel",
+        "actionCallback"
+      ],
+      "exampleHtml": "<div class=\"ds-banner ds-banner--hero\" data-banner-native-hero=\"\" data-ai-example=\"ai-banner-hero-static\"><p class=\"ds-banner__title\">This is a banner title</p><p class=\"ds-banner__desc\">This is a Banner description text</p><div class=\"ds-banner__actions\"><button type=\"button\" class=\"ds-btn ds-btn--outline-white ds-btn--xl\"><span class=\"ds-btn__text\">Button Name</span></button></div></div>"
+    },
+    {
+      "name": "search",
+      "publication": {
+        "key": "banner/search",
+        "disposition": "restricted",
+        "newPages": true,
+        "reason": "Real source shape, owned child parts and finite local runtime; caller owns business requests.",
+        "constraints": [
+          "知识库或案例页的关键词搜索顶部，42px真实搜索输入与FS GPT宿主入口。",
+          "普通产品选择、自动搜索结果、已接入AI回答或手机布局。",
+          "Only allowedEdits; real current dependencies and runtime required; visual approval separate."
+        ],
+        "evidence": "components/contracts/banner.json#aiContract/evidence",
+        "requiresCurrentEngineering": true,
+        "visualApproval": "separate-not-granted"
+      },
+      "rootTag": "div",
+      "sizeOptions": [],
+      "bindings": {
+        "placeholder": {
+          "mode": "native-attribute",
+          "target": "input.ds-input-search__field",
+          "attribute": "placeholder",
+          "valueType": "nonempty-string",
+          "sourceProperty": "Search placeholder content"
+        },
+        "searchLabel": {
+          "mode": "native-attribute",
+          "target": "input.ds-input-search__field",
+          "attribute": "aria-label",
+          "valueType": "nonempty-string",
+          "sourceProperty": "Search accessible name"
+        },
+        "searchCallback": {
+          "mode": "event-handler",
+          "target": "root",
+          "event": "ds:banner-search"
+        },
+        "gptCallback": {
+          "mode": "event-handler",
+          "target": "root",
+          "event": "ds:banner-gpt"
+        }
+      },
+      "purpose": "source-pc200-search42-and-gpt-intents-solid-local-surface",
+      "whenToUse": "知识库或案例页的关键词搜索顶部，42px真实搜索输入与FS GPT宿主入口。",
+      "whenNotToUse": "普通产品选择、自动搜索结果、已接入AI回答或手机布局。",
+      "rootClasses": "ds-banner ds-banner--search",
+      "requiredStructure": [
+        ".ds-banner__title",
+        ".ds-banner__desc",
+        "form.ds-input-search",
+        ".ds-banner__gpt"
+      ],
+      "slots": {
+        "title": {
+          "selector": "p.ds-banner__title",
+          "mode": "text",
+          "required": true
+        },
+        "description": {
+          "selector": "p.ds-banner__desc",
+          "mode": "text",
+          "required": true
+        }
+      },
+      "allowedEdits": [
+        "title",
+        "description",
+        "placeholder",
+        "searchLabel",
+        "searchCallback",
+        "gptCallback"
+      ],
+      "exampleHtml": "<div class=\"ds-banner ds-banner--search\" data-banner-search-current data-ai-example=\"ai-banner-search-current\"><div class=\"ds-banner__search-copy\"><p class=\"ds-banner__title\">This is a banner title</p><p class=\"ds-banner__desc\">This is a Banner description text</p></div><div class=\"ds-banner__search-row\"><form class=\"ds-input-search\" data-input-part=\"banner-search42\" data-input-search-surface=\"gray\" role=\"search\"><input class=\"ds-input-search__field\" type=\"search\" placeholder=\"Search all Case Studies\" aria-label=\"Search\"><button class=\"ds-icon-btn ds-icon-btn--plain ds-icon-btn--m\" type=\"button\" aria-label=\"Search\"><img class=\"ds-icon-btn__icon\" src=\"../icons/icon-button-search-m-default.svg\" alt=\"\"></button></form><button class=\"ds-banner__gpt\" type=\"button\"><span class=\"ds-banner__gpt-slot\"><img src=\"../sources/banner/gpt28-native-official-1015.svg\" alt=\"\"></span><span class=\"ds-banner__gpt-label\">FS GPT</span><img class=\"ds-banner__gpt-arrow\" src=\"../icons/mastergo-library/通用Icon/33189-59138.svg\" alt=\"\"></button></div></div>"
+    },
+    {
+      "name": "mini",
+      "runtime": {
+        "styles": [
+          "components/tokens.css",
+          "components/components.css",
+          "components/banner-responsive.css",
+          "components/banner-current.css",
+          "components/button-current.css",
+          "components/button-runtime-current.css",
+          "components/breadcrumb-current.css",
+          "components/text-button-current.css",
+          "components/carousel-current.css",
+          "components/icon-button-current.css",
+          "components/input-search-current.css",
+          "components/banner-search-current.css",
+          "components/banner-mini-current.css"
+        ],
+        "scripts": [
+          "components/carousel-current.js"
+        ]
+      },
+      "publication": {
+        "key": "banner/mini",
+        "disposition": "restricted",
+        "newPages": true,
+        "reason": "Source-backed PC finite composition with actual nested atoms and current local engineering required.",
+        "constraints": [
+          "Exact scene and allowed content only",
+          "Existing local workflow; no M/Pad or backend approval"
+        ],
+        "requiresCurrentEngineering": true,
+        "visualApproval": "separate-not-granted"
+      },
+      "rootTag": "div",
+      "sizeOptions": [],
+      "bindings": {},
+      "purpose": "source-product-mini-three-position-carousel",
+      "whenToUse": "PC商品详情内容中的120px窄幅信息，需真实三项分页切换。",
+      "whenNotToUse": "首页Hero、自动播放大图或未核对的M/Pad形态。",
+      "rootClasses": "ds-banner ds-banner--mini",
+      "requiredStructure": [
+        "div.ds-banner__mini-slides",
+        "div.ds-banner__mini-slide",
+        "div.ds-carousel__dots"
+      ],
+      "slots": {
+        "slides": {
+          "selector": ".ds-banner__mini-slides",
+          "mode": "structured-content",
+          "required": true,
+          "preserve": [
+            "div.ds-banner__mini-slide",
+            "p.ds-banner__title",
+            "p.ds-banner__desc",
+            "a.ds-text-btn"
+          ],
+          "rule": "Exactly3 complete slides, unique paired IDs and declared initial hidden/inert; content image/title/description/href only. No invented shape, classes, autoplay or number of positions."
+        }
+      },
+      "allowedEdits": [
+        "slides"
+      ],
+      "exampleHtml": "<div class=\"ds-banner ds-banner--mini\" data-banner-mini-runtime=\"source-three\" data-ai-example=\"ai-banner-mini-current\" role=\"region\" aria-roledescription=\"carousel\" aria-label=\"Product information\"><div class=\"ds-banner__mini-slides\"><div class=\"ds-banner__mini-slide\" id=\"mini-slide-0\" aria-hidden=\"false\"><img class=\"ds-banner__mini-image\" src=\"../../docs/assets/20250901105611h7ydr7.jpg.webp\" alt=\"\"><div class=\"ds-banner__mini-content\"><p class=\"ds-banner__title\">Optical Transceivers Testing</p><p class=\"ds-banner__desc\">Take a look at our test program to get the reliable and high-performaance optical transceivers</p><a class=\"ds-text-btn ds-text-btn--inline ds-text-btn--blue-link ds-text-btn--m\" href=\"#\"><span class=\"ds-text-btn__text\">Learn more</span><img class=\"ds-text-btn__icon\" src=\"../icons/icon-text-button-arrow-right-blue-s.svg\" alt=\"\"></a></div></div><div class=\"ds-banner__mini-slide\" id=\"mini-slide-1\" hidden aria-hidden=\"true\" inert><img class=\"ds-banner__mini-image\" src=\"../../docs/assets/20250901105611h7ydr7.jpg.webp\" alt=\"\"><div class=\"ds-banner__mini-content\"><p class=\"ds-banner__title\">Find Technical Support</p><p class=\"ds-banner__desc\">Find technical support and product resources.</p><a class=\"ds-text-btn ds-text-btn--inline ds-text-btn--blue-link ds-text-btn--m\" href=\"#\"><span class=\"ds-text-btn__text\">Learn more</span><img class=\"ds-text-btn__icon\" src=\"../icons/icon-text-button-arrow-right-blue-s.svg\" alt=\"\"></a></div></div><div class=\"ds-banner__mini-slide\" id=\"mini-slide-2\" hidden aria-hidden=\"true\" inert><img class=\"ds-banner__mini-image\" src=\"../../docs/assets/20250901105611h7ydr7.jpg.webp\" alt=\"\"><div class=\"ds-banner__mini-content\"><p class=\"ds-banner__title\">Warranty and Returns</p><p class=\"ds-banner__desc\">Warranty and returns information.</p><a class=\"ds-text-btn ds-text-btn--inline ds-text-btn--blue-link ds-text-btn--m\" href=\"#\"><span class=\"ds-text-btn__text\">Learn more</span><img class=\"ds-text-btn__icon\" src=\"../icons/icon-text-button-arrow-right-blue-s.svg\" alt=\"\"></a></div></div></div><div class=\"ds-banner__mini-pagination\"><div class=\"ds-carousel__dots\" data-carousel-mini-pagination aria-label=\"Banner positions\"><button class=\"ds-carousel__dot ds-carousel__dot--active\" type=\"button\" aria-label=\"Slide 1\" aria-controls=\"mini-slide-0\" aria-current=\"true\"></button><button class=\"ds-carousel__dot\" type=\"button\" aria-label=\"Slide 2\" aria-controls=\"mini-slide-1\"></button><button class=\"ds-carousel__dot\" type=\"button\" aria-label=\"Slide 3\" aria-controls=\"mini-slide-2\"></button></div></div></div>"
+    }
+  ],
+  "relationships": {
+    "children": [
+      {
+        "id": "button",
+        "contract": "components/contracts/button.json",
+        "variants": [
+          "outline-white"
+        ],
+        "sizes": [
+          {
+            "variant": "outline-white",
+            "size": "xl"
+          }
+        ],
+        "appliesTo": [
+          "hero"
+        ],
+        "slot": "button",
+        "finiteAppliesTo": [
+          "hero-responsive",
+          "hero"
+        ],
+        "preview": "components/variants/button.html"
+      },
+      {
+        "id": "button",
+        "contract": "components/contracts/button.json",
+        "variants": [
+          "outline-white"
+        ],
+        "sizes": [
+          {
+            "variant": "outline-white",
+            "size": "xl"
+          }
+        ],
+        "appliesTo": [
+          "hero-responsive"
+        ],
+        "slot": "button",
+        "finiteAppliesTo": [
+          "hero-responsive",
+          "hero"
+        ],
+        "preview": "components/variants/button.html"
+      },
+      {
+        "id": "breadcrumb",
+        "contract": "components/contracts/breadcrumb.json",
+        "variants": [
+          "dark"
+        ],
+        "appliesTo": [
+          "hero",
+          "sub",
+          "search",
+          "title-only"
+        ],
+        "slot": "breadcrumb",
+        "finiteAppliesTo": [
+          "sub"
+        ],
+        "preview": "components/variants/breadcrumb.html"
+      },
+      {
+        "id": "text-button",
+        "contract": "components/contracts/text-button.json",
+        "variants": [
+          "inline-blue-link"
+        ],
+        "sizes": [
+          {
+            "variant": "inline-blue-link",
+            "size": "m"
+          }
+        ],
+        "appliesTo": [
+          "mini"
+        ],
+        "slot": "mini-action",
+        "preview": "components/variants/text-button.html"
+      },
+      {
+        "id": "carousel",
+        "contract": "components/contracts/carousel.json",
+        "part": "banner-mini-pagination",
+        "scope": "Existing current Mini3-position normal pagination; Carousel controller owns switching, no autoplay or full homepage carousel admission.",
+        "variants": [
+          "light"
+        ],
+        "appliesTo": [
+          "mini"
+        ],
+        "slot": "mini-pagination",
+        "preview": "components/variants/carousel.html"
+      },
+      {
+        "id": "input",
+        "contract": "components/contracts/input.json",
+        "part": "banner-search42",
+        "scope": "Source42px search field, keyboard/IME-aware submit intent, official current Search IconButton. Host-owned no labels adaptation; not a standalone new Input family.",
+        "variants": [
+          "gray"
+        ],
+        "appliesTo": [
+          "search"
+        ],
+        "slot": "search",
+        "preview": "components/variants/input.html"
+      },
+      {
+        "id": "icon-button",
+        "contract": "components/contracts/icon-button.json",
+        "variants": [
+          "plain-m"
+        ],
+        "appliesTo": [
+          "search"
+        ],
+        "slot": "search-submit",
+        "preview": "components/variants/icon-button.html"
+      }
+    ],
+    "parents": [],
+    "parentStatus": "no-declared-hosts",
+    "icons": [
+      {
+        "file": "components/icons/icon-search.svg",
+        "registry": "components/icons/icons-manifest.json",
+        "appliesTo": [
+          "search"
+        ],
+        "usage": "search 变体搜索按钮"
+      },
+      {
+        "file": "components/icons/icon-text-button-arrow-right-blue-s.svg",
+        "registry": "components/icons/icons-manifest.json",
+        "appliesTo": [
+          "mini"
+        ],
+        "usage": "Mini当前嵌套TextButton inline-blue-link/m真实原子箭头；不表示Mini完整可调用或视觉通过。"
+      }
+    ],
+    "tokens": [
+      {
+        "name": "color.white",
+        "value": "#FFFFFF",
+        "unit": null,
+        "cssVar": "--color-white",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.gray-1",
+        "value": "#19191A",
+        "unit": null,
+        "cssVar": "--color-gray-1",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.gray-3",
+        "value": "#707070",
+        "unit": null,
+        "cssVar": "--color-gray-3",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.gray-9",
+        "value": "#FAFBFB",
+        "unit": null,
+        "cssVar": "--color-gray-9",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "typography.font-family-base",
+        "value": "Open Sans",
+        "unit": null,
+        "cssVar": "--font-family-base",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-size-h8",
+        "value": 13,
+        "unit": "px",
+        "cssVar": "--font-size-h8",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "border-radius.md",
+        "value": 4,
+        "unit": "px",
+        "cssVar": "--border-radius-md",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border-radius.json"
+      },
+      {
+        "name": "spacing.banner-hero-inset",
+        "value": 404,
+        "unit": "px",
+        "cssVar": "--spacing-banner-hero-inset",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.20",
+        "value": 20,
+        "unit": "px",
+        "cssVar": "--spacing-20",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.banner-content-inset",
+        "value": 360,
+        "unit": "px",
+        "cssVar": "--spacing-banner-content-inset",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.lg",
+        "value": 16,
+        "unit": "px",
+        "cssVar": "--spacing-lg",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.xl",
+        "value": 24,
+        "unit": "px",
+        "cssVar": "--spacing-xl",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.xs",
+        "value": 4,
+        "unit": "px",
+        "cssVar": "--spacing-xs",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.sm",
+        "value": 8,
+        "unit": "px",
+        "cssVar": "--spacing-sm",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.md",
+        "value": 12,
+        "unit": "px",
+        "cssVar": "--spacing-md",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.6",
+        "value": 6,
+        "unit": "px",
+        "cssVar": "--spacing-6",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "border.style.none",
+        "value": "none",
+        "unit": null,
+        "cssVar": "--border-style-none",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "typography.font-weight-semibold",
+        "value": 600,
+        "unit": null,
+        "cssVar": "--font-weight-semibold",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-weight-regular",
+        "value": 400,
+        "unit": null,
+        "cssVar": "--font-weight-regular",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-size-sm",
+        "value": 12,
+        "unit": "px",
+        "cssVar": "--font-size-sm",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-size-md",
+        "value": 14,
+        "unit": "px",
+        "cssVar": "--font-size-md",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.h1-semibold",
+        "value": {
+          "fontSize": "36px",
+          "lineHeight": "48px",
+          "fontWeight": 600
+        },
+        "unit": null,
+        "cssVar": null,
+        "primitiveReferences": {
+          "fontSize": "typography.font-size-h1",
+          "fontWeight": "typography.font-weight-semibold"
+        },
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.h2-semibold",
+        "value": {
+          "fontSize": "32px",
+          "lineHeight": "40px",
+          "fontWeight": 600
+        },
+        "unit": null,
+        "cssVar": null,
+        "primitiveReferences": {
+          "fontSize": "typography.font-size-h2",
+          "fontWeight": "typography.font-weight-semibold"
+        },
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.h6-regular",
+        "value": {
+          "fontSize": "16px",
+          "lineHeight": "24px",
+          "fontWeight": 400
+        },
+        "unit": null,
+        "cssVar": null,
+        "primitiveReferences": {
+          "fontSize": "typography.font-size-h6",
+          "fontWeight": "typography.font-weight-regular"
+        },
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.h9-regular",
+        "value": {
+          "fontSize": "12px",
+          "lineHeight": "20px",
+          "fontWeight": 400
+        },
+        "unit": null,
+        "cssVar": null,
+        "primitiveReferences": {
+          "fontSize": "typography.font-size-sm",
+          "fontWeight": "typography.font-weight-regular"
+        },
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.h8-regular",
+        "value": {
+          "fontSize": "13px",
+          "lineHeight": "20px",
+          "fontWeight": 400
+        },
+        "unit": null,
+        "cssVar": null,
+        "primitiveReferences": {
+          "fontSize": "typography.font-size-h8",
+          "fontWeight": "typography.font-weight-regular"
+        },
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.h7-regular",
+        "value": {
+          "fontSize": "14px",
+          "lineHeight": "22px",
+          "fontWeight": 400
+        },
+        "unit": null,
+        "cssVar": null,
+        "primitiveReferences": {
+          "fontSize": "typography.font-size-md",
+          "fontWeight": "typography.font-weight-regular"
+        },
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "spacing.2xl",
+        "value": 32,
+        "unit": "px",
+        "cssVar": "--spacing-2xl",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.56",
+        "value": 56,
+        "unit": "px",
+        "cssVar": "--spacing-56",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.2",
+        "value": 2,
+        "unit": "px",
+        "cssVar": "--spacing-2",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "color.gray-2",
+        "value": "#4B4B4D",
+        "unit": null,
+        "cssVar": "--color-gray-2",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.gray-5",
+        "value": "#DEE0E3",
+        "unit": null,
+        "cssVar": "--color-gray-5",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.gray-8",
+        "value": "#F6F6F8",
+        "unit": null,
+        "cssVar": "--color-gray-8",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.blue",
+        "value": "#0060BF",
+        "unit": null,
+        "cssVar": "--color-blue",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "spacing.3",
+        "value": 3,
+        "unit": "px",
+        "cssVar": "--spacing-3",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "border.width.default",
+        "value": 1,
+        "unit": "px",
+        "cssVar": "--border-width-default",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.style.default",
+        "value": "solid",
+        "unit": null,
+        "cssVar": "--border-style-default",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.default",
+        "value": "var(--color-gray-5)",
+        "unit": null,
+        "cssVar": "--border-color-default",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.emphasis",
+        "value": "var(--color-gray-1)",
+        "unit": null,
+        "cssVar": "--border-color-emphasis",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      }
+    ]
+  },
+  "evidence": {
+    "localImplementation": "components/variants/banner.html",
+    "comparison": "components/sources/banner/local-structure-review.json",
+    "exportIndex": "components/sources/banner/source-index.json",
+    "specificationReview": "components/sources/banner/native-specification-review-1011.json",
+    "originalComponentReview": "components/sources/banner/native-component-review-1011.json",
+    "sourceDifferenceReconciliation": "components/sources/banner/source-difference-reconciliation-1013.json",
+    "nativeHeroReview": "components/sources/banner/native-hero-review-1028.json",
+    "nativeHeroBrowser": "components/sources/banner/hero-browser-1028/result.json",
+    "nativeTitleOnlyReview": "components/sources/banner/native-title-only-review-1113.json",
+    "currentMgReview": "components/sources/banner-navigation-mg-20261114/banner-review.json",
+    "fiveVariantSource": "components/sources/five-variants-20261115/review.json"
+  },
+  "sourceValidation": {
+    "componentIdentity": {
+      "status": "saved-typed-nodes-checked",
+      "scope": "desktop-home-Hero-only",
+      "variants": [
+        "hero"
+      ],
+      "files": [
+        "components/sources/banner/native-hero-review-1028.json"
+      ],
+      "basis": "Saved COMPONENT root and genuine Button instance reference; other Banner calls remain source-limited."
+    },
+    "specificationBody": {
+      "status": "selected-saved-body-texts-checked",
+      "scope": "desktop-home-Hero selected specification sections only",
+      "files": [
+        "components/sources/banner/native-hero-review-1028.json"
+      ]
+    },
+    "originalOnlineFrontendCode": false,
+    "browserComputedStyles": false,
+    "completeSpecificationCoverage": false,
+    "buttonNesting": {
+      "scope": "finite-authored-button-nesting-only",
+      "checked": [
+        {
+          "variant": "hero-responsive",
+          "buttons": [
+            {
+              "variant": "outline-white",
+              "size": "xl",
+              "type": "button"
+            }
+          ]
+        },
+        {
+          "variant": "hero",
+          "buttons": [
+            {
+              "variant": "outline-white",
+              "size": "xl",
+              "type": "button"
+            }
+          ]
+        }
+      ],
+      "pending": [],
+      "browserVerified": false
+    },
+    "nativeHero": {
+      "scope": "1920px desktop single-image home Hero; not other variants or responsive approval",
+      "componentNode": "68908:043035",
+      "width": 1920,
+      "height": 420,
+      "inset": 404,
+      "title": [
+        36,
+        48,
+        600
+      ],
+      "description": [
+        16,
+        24,
+        400
+      ],
+      "gap": 20,
+      "button": {
+        "component": "64858:84998",
+        "height": 42,
+        "font": [
+          14,
+          22,
+          400
+        ],
+        "resolution": "Atom400 takes precedence over native host/spec600 override"
+      },
+      "background": {
+        "url": "https://image-resource.mastergo.com/120872800192464/125574304156139/c476cf8b2d73f85c44782ffb42ffe1cb.png",
+        "file": "components/sources/banner/assets/home-hero-original-1028.png",
+        "sha256": "60a986947d346db5716f03f147c874c0f92ed807da5ec0fbfafc34d6d602fca4",
+        "role": "Original component background image fill; page background replacement belongs to page composition, not a second Banner family"
+      },
+      "source": "components/sources/banner/native-hero-review-1028.json"
+    },
+    "otherAtomNesting": {
+      "TextButton": {
+        "scope": "finite-canonical-TextButton-default-calls",
+        "checked": [
+          {
+            "variant": "mini",
+            "children": [
+              {
+                "variant": "inline-blue-link",
+                "size": "m"
+              },
+              {
+                "variant": "inline-blue-link",
+                "size": "m"
+              },
+              {
+                "variant": "inline-blue-link",
+                "size": "m"
+              }
+            ]
+          }
+        ],
+        "inactive": [],
+        "browserVerified": false,
+        "hostStyleCascadeVerified": false
+      },
+      "IconButton": {
+        "scope": "finite-canonical-IconButton-default-calls",
+        "checked": [
+          {
+            "variant": "search",
+            "children": [
+              {
+                "variant": "plain-m"
+              }
+            ]
+          }
+        ],
+        "inactive": [],
+        "browserVerified": false,
+        "hostStyleCascadeVerified": false
+      }
+    }
+  },
+  "freshness": {
+    "fingerprints": {
+      "components/banner-current.css": "9145b2d41c3e2073992ddf1a02a7fb7b785c03e078a0f5e90343bc267d7ae3a2",
+      "components/banner-mini-current.css": "2c4a32456162d8636f1a3f15e35e8e9f1b368b2ccb30498385b656ebe1d92ddb",
+      "components/banner-responsive.css": "17a86352a4941c80c734a8c2e64a235f7e4321b5dcb1db821803255e6b0fc908",
+      "components/banner-search-current.css": "5bb04bd1fddaac2ab66367b234c67010b5450783f4a4d8412412fa73c0eec4c4",
+      "components/banner-search-current.js": "136ae78abb854a979719c40239c6fb768eade8385d76931cdbacba0ebdbfcb87",
+      "components/breadcrumb-current.css": "965e27a7afa3abc650157452e1c01c4384f80ec5718595ef2ca5be2b0e4b52ee",
+      "components/button-current.css": "45e94e48ec97a34b4883ecc4f11b33301cdd6679445a3970cb16a2a87c6d8c9e",
+      "components/button-runtime-current.css": "caaa9b65a8d2fbebfa487ca3e0cf0c67d36e0219ffc55d4b0d801371a02da76c",
+      "components/carousel-current.css": "4dd5f75c1919c1b3c1d23be7e63c421297861594dddd0cc93ab6baded463fc8f",
+      "components/carousel-current.js": "2f69a2a79d74031857613e1396a7cbc9f05bfa304cb0d9d6e23657192663ac88",
+      "components/components.css": "a08b4fe2790b5ff2b784c6362a90f1b94e7535a03e863232ce6d620a52e85f73",
+      "components/contracts/banner.json": "7959737c5d5e6c3b1e8d4c48ed34dc874de02580a24688ddea22203802a6ddf9",
+      "components/contracts/breadcrumb.json": "6280fc547d11b5da94b1ae6269f4cbe587e8d9b2c1fcd3c777fe74ed574481a4",
+      "components/contracts/button.json": "1f3092d74e19c1a840fbf2e8b8ecaf6115976b2941cc5484e4cda824025b1f73",
+      "components/contracts/carousel.json": "60056f1f93799cac2ddd3154e9379f88a51368a454a104eb884b7d7bd09ceea8",
+      "components/contracts/icon-button.json": "19f3ce860f24650fba7fbc0b43b59c80255feae164b8d24d9ed71cb4d39d782d",
+      "components/contracts/input.json": "b367155c40d99807834add264130f574d150f95f09836fe70e84e3bf37a174d1",
+      "components/contracts/text-button.json": "323301e3a3438778dd29d5d6c32fd7e661846707ce711b5c0ec82d11fea12fc5",
+      "components/icon-button-current.css": "5a4d55cf3817c9491473c1db1df6690cd9a06faf89663a7116e4b044ac5bbd2d",
+      "components/icons/icon-search.svg": "11e01599b008320c723773284b56944f810762688a2928b37e6cb228fc9a3347",
+      "components/icons/icon-text-button-arrow-right-blue-s.svg": "9d863376000d36708cf56ac52e6422ffd42dc27b9bf22bca66590e255ee1750c",
+      "components/icons/icons-manifest.json": "12c48af6d1dc59d50b76046bb0507005f565aa4224a6d8056ce4eaaf8050c43e",
+      "components/input-search-current.css": "82949f58ed7c4632a3de64b4bf34c90152b00883bd8fe916adfbc35104018823",
+      "components/input-search-current.js": "438521858276ac565ac41871676f62707f048f2d18c9a483cca465f4cf6e7c92",
+      "components/preview/reference-live.js": "4839383529a3ee82df1d8efe675d430567abc1986034499107aa429d21a18ea6",
+      "components/reference-policy.json": "4ae8f51f623386417e38d497caafb8bda4417c929159002a7ac088e6e526b482",
+      "components/sources/banner-navigation-mg-20261114/banner-review.json": "504b6fb8a45c6b6b4920234f3644990782c354f3c446a0ea6ad198a8c7415103",
+      "components/sources/banner/assets/home-hero-original-1028.png": "60a986947d346db5716f03f147c874c0f92ed807da5ec0fbfafc34d6d602fca4",
+      "components/sources/banner/hero-browser-1028/default.png": "25c096da6413ee35c2c144c0a835adfb896b6678de47635eb4ff51e8276f92e6",
+      "components/sources/banner/hero-browser-1028/hover.png": "b997ac10be080f898b2b4aec8bf70fc49d7d739810079e0555a1d3a1be6e6c6c",
+      "components/sources/banner/hero-browser-1028/result.json": "a46f0cee00ee88e1867b2497aae9e05bcbd65bea1a2912c4652e9451599db7c3",
+      "components/sources/banner/local-structure-review.json": "48d84ce28e35b0117a73535003f44f05937868a5757dc92e58d7b591d6e77d48",
+      "components/sources/banner/native-component-review-1011.json": "c00ff95a9fe1efe9eaa083faa148de117aa4a72057704f978096d477e981e543",
+      "components/sources/banner/native-hero-review-1028.json": "09fe5637559e19e022860d23e565faf179a672a35b613a4de7bab2637391e2f5",
+      "components/sources/banner/native-specification-review-1011.json": "d87da5826b1d21a6065b0b3b6e85a975dd4603515dce0e681318bb5aa7f7a87c",
+      "components/sources/banner/native-title-only-review-1113.json": "1b7bb08722ae4788b9450e30e0eb59567563dba55b95e96ddda4a5c96bbf25e1",
+      "components/sources/banner/search42-gpt-nested-source-1015.json": "1b00c6cdece269182e08903d90404a2d14b23a4da17fa8184fd2318c27b37fa7",
+      "components/sources/banner/source-difference-reconciliation-1013.json": "ce4dfe4e53d3e86a0d583f887dde48f8f4d7b3d1f7e6a838c10f722c2dfbfe0c",
+      "components/sources/banner/source-index.json": "a64948b5db13cc77d1ae200df7e33bc74116bad9db4cee5d193f358d4299f9e6",
+      "components/sources/carousel/banner-mini-pagination-1115.html": "a753e624e067a0fb9ae030ed5357a8cc18d68ccc6adafaa747f26bc867e73830",
+      "components/sources/five-variants-20261115/review.json": "821baac5e00e60f1a796ae8d0a1881ae122da740e477666a54b3e94a13a7556f",
+      "components/sources/input/banner-search42-current.html": "d04d68f5611e3e068bb6a96cb2e38d6cbbb1320bd1d2e9cf18c6cc71e201a3a0",
+      "components/text-button-current.css": "b38b1b1ad0099d580f7676be7cb2def987753a8eaebd86348ab965768696eb1d",
+      "components/token-specs/border-radius.json": "b01e4c23fbc7e19983d9592b59b0303155b79d66c52459356eda0ea9f4ca74b5",
+      "components/token-specs/border.json": "d286ee4681deda1c7702c310b065c86f824539b3a8797efba05b24bc225ab322",
+      "components/token-specs/colors.json": "5267d59fdc687b54496977280c00c97f0beb6ffce013f87853504f5b736d3389",
+      "components/token-specs/spacing.json": "351b14cfce4411248ad41e00eaaf2b1cab9b705997980dfed1fc65693740e65c",
+      "components/token-specs/typography.json": "93b7dc07547218a33c075b7cdcd942f89094353a7847d483d8378b8883327e16",
+      "components/tokens.css": "f63f3c8fea511d8029902bc3905b01853ac5e92049c1b18ca35ebc9a680c3e69",
+      "components/variants/banner.html": "fa9af2a1b48a9b7fe7f8720a6935613bcd52aebb44313a77dbfd94f2f273c6e6",
+      "components/variants/breadcrumb.html": "924dc5e6ca92138ffaacf80e212f73abcf04fd16fffcbe0b9aa80ea88c5af9b0",
+      "components/variants/button.html": "6b6715b66e6c0b684c072dcdcbf7170aeb9f49a31bb32ca5b8986644d626cfe6",
+      "components/variants/carousel.html": "96c79a0f343f6e7e6f26efcce99a2a8d7f7ebdd3fc3fa7bc9349155c6c0cc6ed",
+      "components/variants/icon-button.html": "91c84e01916ffb0fb58a102a83123aa24b16263a9d3a744dc0316ec19f2f317f",
+      "components/variants/input.html": "d34e9585cb00f4293912c199391e0b8328b13fe8db16ac4b4ea4b05b596d10c1",
+      "components/variants/text-button.html": "6295056d973b26231a68158bd758ebde321d8a105326a740f159006a1a7bd2f8",
+      "page-inputs/bdcom-oem-m2/component-sources/banner.json": "b894f09cb1ed630b06adc01cb0c11eae59258945d7a4fdbb0207911deebcae36"
+    },
+    "graphFingerprint": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "note": "从本地源文件生成；不是 MasterGo 在线实时状态。"
+  }
+}

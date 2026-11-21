@@ -1,0 +1,716 @@
+{
+  "schemaVersion": "fs-component-reference/1.0.0",
+  "component": {
+    "id": "checkbox",
+    "name": "Checkbox",
+    "scope": "desktop-native-checkbox-two-sizes",
+    "reviewStatus": {
+      "engineering": "pending",
+      "visual": "pending",
+      "familyCoverage": "partial"
+    }
+  },
+  "selection": {
+    "policy": "普通同组复选应≥2且不互斥；协议/记住密码/保持登录等明确布尔开关可单项。按宿主来源选lg18/14文字或sm14/13文字。保留原生input，不复制宿主受控标记为独立Checkbox。",
+    "supported": [
+      "lg",
+      "sm"
+    ],
+    "unsupported": [
+      "host-marker-without-label",
+      "indeterminate-state-edit",
+      "disabled-indeterminate",
+      "mobile",
+      "browser-keyboard-acceptance-pending",
+      "linked-text-slot"
+    ]
+  },
+  "runtime": {
+    "styles": [
+      "components/tokens.css",
+      "components/components.css",
+      "components/checkbox-current.css"
+    ],
+    "scripts": [
+      "components/checkbox-current.js"
+    ],
+    "fontStylesheets": [
+      "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+    ],
+    "fontFallback": "沿用现有Open Sans字体栈；远端字体不可用时回退，不宣称离线视觉一致。"
+  },
+  "identity": {
+    "rule": "默认规范实例为未选且启用的原生input，必须保留两个当前标记、input类型和name/value；编辑状态限声明bindings。",
+    "labelRule": "根节点保留input、aria-hidden方块与唯一纯文字槽。"
+  },
+  "locked": [
+    "label根节点与尺寸类",
+    "直接子节点input、box、label及其顺序",
+    "原生checkbox类型与背景图资源",
+    "共享CSS与图标文件",
+    "data-checkbox-current及data-checkbox-control",
+    "历史资源不自动升级",
+    "Current native root hugs content width with max-width100%; no parent stretch or fixed104/95px specimen width."
+  ],
+  "behavior": {
+    "default": "规范实例默认未选且启用。",
+    "interaction": "原生input负责点击、checked、disabled和表单取值，change事件原生冒泡；不模拟Space。当前JS仅初始化半选并在非取消reset后恢复初始半选。",
+    "hosts": "Select/Dropdown省略input的受控标记由宿主管理选择。OptionSelector服务span根input+box、List toolbar label根input+box省略caption，沿实际来源保留原子22/lg或20/sm首行wrapper高度与top2/3偏移；外层业务label或input可访问名称供名。List PC行保留完整原子标题；M历史适配未验收。",
+    "states": "checked/disabled可通过声明binding配置。半选可由input.indeterminate设置，当前初始化标记只在专用演示中使用，未开放AI binding。disabled+indeterminate未取得源规范。保留原子F6F6F8与规范F6F6F6冲突；浏览器视觉和真实键盘待验证。"
+  },
+  "examples": [
+    {
+      "name": "sm",
+      "publication": {
+        "key": "checkbox/sm",
+        "disposition": "retain",
+        "newPages": true,
+        "reason": "Retain existing finite exact contract only.",
+        "constraints": [
+          "默认lg，密集选项sm；采用真实原生input结构。JSDOM行为测试不代表浏览器键盘与视觉验收。"
+        ],
+        "contractPolicy": "默认lg，密集选项sm；采用真实原生input结构。JSDOM行为测试不代表浏览器键盘与视觉验收。",
+        "use": "finite-new-page-candidate",
+        "evidence": "components/contracts/checkbox.json#aiContract/evidence",
+        "requiresCurrentEngineering": true,
+        "visualApproval": "separate-not-granted"
+      },
+      "rootTag": "label",
+      "sizeOptions": [],
+      "bindings": {
+        "name": {
+          "mode": "native-attribute",
+          "target": "input.ds-checkbox__input",
+          "attribute": "name",
+          "valueType": "nonempty-string"
+        },
+        "value": {
+          "mode": "native-attribute",
+          "target": "input.ds-checkbox__input",
+          "attribute": "value",
+          "valueType": "nonempty-string"
+        },
+        "checked": {
+          "mode": "native-attribute",
+          "target": "input.ds-checkbox__input",
+          "attribute": "checked",
+          "values": [
+            false,
+            true
+          ],
+          "default": false
+        },
+        "disabled": {
+          "mode": "native-attribute",
+          "target": "input.ds-checkbox__input",
+          "attribute": "disabled",
+          "values": [
+            false,
+            true
+          ],
+          "default": false
+        },
+        "changeCallback": {
+          "mode": "event-handler",
+          "target": "root",
+          "event": "change"
+        }
+      },
+      "purpose": "default-checkbox-visual-dense",
+      "whenToUse": "密集14px选项或已核实的表单/协议宿主；普通多选同组≥2，协议等布尔开关可单项。",
+      "whenNotToUse": "来源明确18px的商品/其他选项行；不得为压缩空间擅自改小。",
+      "rootClasses": "ds-checkbox ds-checkbox--sm",
+      "requiredStructure": [
+        "input.ds-checkbox__input",
+        "span.ds-checkbox__box",
+        "span.ds-checkbox__label"
+      ],
+      "slots": {
+        "label": {
+          "selector": "span.ds-checkbox__label",
+          "mode": "text",
+          "required": true
+        }
+      },
+      "allowedEdits": [
+        "label",
+        "name",
+        "value",
+        "checked",
+        "disabled",
+        "changeCallback"
+      ],
+      "exampleHtml": "<label class=\"ds-checkbox ds-checkbox--sm\" data-ai-example=\"ai-checkbox-sm\" data-checkbox-current data-checkbox-control><input class=\"ds-checkbox__input\" type=\"checkbox\" name=\"checkbox-sm\" value=\"option-a\"><span class=\"ds-checkbox__box\" aria-hidden=\"true\"></span><span class=\"ds-checkbox__label\">Options-A</span></label>"
+    }
+  ],
+  "relationships": {
+    "children": [],
+    "parents": [
+      {
+        "id": "dialog",
+        "contract": "components/contracts/dialog.json",
+        "preview": "components/variants/dialog.html",
+        "status": "preview-class-evidence-only",
+        "evidence": {
+          "status": "preview-class-evidence-only",
+          "verified": false,
+          "previewExists": true,
+          "classEvidence": true,
+          "declaredClasses": [
+            "ds-checkbox",
+            "ds-checkbox__input",
+            "ds-checkbox__box",
+            "ds-checkbox__label"
+          ],
+          "missingClasses": [],
+          "exactStructure": "not-established",
+          "browserEvidence": "not-established",
+          "note": "宿主依赖声明及离线类名盘点；未证明具体变体、尺寸、必需子结构、宿主适配或浏览器行为。"
+        },
+        "usage": [
+          {
+            "component": "Checkbox",
+            "slot": "form-manager-checkbox",
+            "requiredVariants": [
+              "lg"
+            ],
+            "implementationClasses": [
+              "ds-checkbox",
+              "ds-checkbox__input",
+              "ds-checkbox__box",
+              "ds-checkbox__label"
+            ],
+            "appliesTo": [
+              "form"
+            ],
+            "usage": "MG18px复选框直接使用Checkbox/lg，不用表单旧sm冒充。"
+          }
+        ]
+      },
+      {
+        "id": "dropdown",
+        "contract": "components/contracts/dropdown.json",
+        "preview": "components/variants/dropdown.html",
+        "status": "preview-class-evidence-only",
+        "evidence": {
+          "status": "preview-class-evidence-only",
+          "verified": false,
+          "previewExists": true,
+          "classEvidence": true,
+          "declaredClasses": [
+            "ds-checkbox",
+            "ds-checkbox--sm",
+            "ds-checkbox__box",
+            "ds-checkbox__label"
+          ],
+          "missingClasses": [],
+          "exactStructure": "not-established",
+          "browserEvidence": "not-established",
+          "note": "宿主依赖声明及离线类名盘点；未证明具体变体、尺寸、必需子结构、宿主适配或浏览器行为。"
+        },
+        "usage": [
+          {
+            "component": "Checkbox",
+            "usage": "Checkbox(sm)受控标记适配：省略独立input与data-checkbox-control，保留data-checkbox-current、box和label及原子状态资源。宿主管理role=option、选择事件与checked/disabled类同步；不得叠加原生input事件或复制样式。实际浏览器验收待验证。",
+            "slot": "list-item",
+            "requiredVariants": [
+              "sm"
+            ],
+            "implementationClasses": [
+              "ds-checkbox",
+              "ds-checkbox--sm",
+              "ds-checkbox__box",
+              "ds-checkbox__label"
+            ],
+            "appliesTo": [
+              "multi-select-checkbox",
+              "grouped",
+              "filter"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "form",
+        "contract": "components/contracts/form.json",
+        "preview": "components/variants/form.html",
+        "status": "preview-class-evidence-only",
+        "evidence": {
+          "status": "preview-class-evidence-only",
+          "verified": false,
+          "previewExists": true,
+          "classEvidence": true,
+          "declaredClasses": [
+            "ds-checkbox",
+            "ds-checkbox--sm"
+          ],
+          "missingClasses": [],
+          "exactStructure": "not-established",
+          "browserEvidence": "not-established",
+          "note": "宿主依赖声明及离线类名盘点；未证明具体变体、尺寸、必需子结构、宿主适配或浏览器行为。"
+        },
+        "usage": [
+          {
+            "component": "Checkbox",
+            "slot": "contactMethods",
+            "requiredVariants": [
+              "sm"
+            ],
+            "implementationClasses": [
+              "ds-checkbox",
+              "ds-checkbox--sm"
+            ],
+            "appliesTo": [
+              "gray",
+              "white"
+            ],
+            "usage": "Actual gray056961 and white055850 reference Email192450 Press andPhone192445 Default. Size14px is box size; own gray Email text Open Sans/13px-Regular,34x20 at22,0. Canonical sm14px box/13px label owns paint."
+          },
+          {
+            "component": "Checkbox",
+            "slot": "consent",
+            "requiredVariants": [
+              "sm"
+            ],
+            "implementationClasses": [
+              "ds-checkbox",
+              "ds-checkbox--sm"
+            ],
+            "appliesTo": [
+              "gray",
+              "white"
+            ],
+            "usage": "Actual PC gray056996 and white202530 reference031020 Default14px; caption omitted for source-specific mixed prose and legal links, outer native label associates input; link click excluded from toggle.",
+            "adaptation": {
+              "omittedSlots": [
+                "caption"
+              ],
+              "retainedStructure": [
+                "native input",
+                "atomic box",
+                "current/control marker"
+              ],
+              "pageLevelContent": [
+                "source-specific privacy text and two display-only legal links"
+              ],
+              "reason": "Both PC consent source text uses named12px Regular/mixedGray3 Blue instead of canonical sm13px caption; preserve in host prose while atom owns box states.",
+              "risk": "Mixed-run overrides/full focus and disabled visual approval pending"
+            }
+          },
+          {
+            "component": "Checkbox",
+            "slot": "mobileContactSourceSlots",
+            "usage": "Gray381/white382 contact groups each genuinely call sm Checkbox; Email checked/Press and Phone unchecked/Default, own source paths verified.",
+            "requiredVariants": [
+              "sm"
+            ],
+            "implementationClasses": [
+              "ds-checkbox",
+              "ds-checkbox--sm"
+            ],
+            "appliesTo": [
+              "mobile-source-slots",
+              "mobile-integrated"
+            ]
+          },
+          {
+            "component": "Checkbox",
+            "slot": "mobileConsentCaption",
+            "usage": "Two source-owned M consent captions use controlled native sm atom with prose/legal links; ordinary caption unchanged.",
+            "requiredVariants": [
+              "sm"
+            ],
+            "implementationClasses": [
+              "ds-checkbox",
+              "ds-checkbox--sm"
+            ],
+            "appliesTo": [
+              "mobile-integrated"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "list",
+        "contract": "components/contracts/list.json",
+        "preview": "components/variants/list.html",
+        "status": "preview-class-evidence-only",
+        "evidence": {
+          "status": "preview-class-evidence-only",
+          "verified": false,
+          "previewExists": true,
+          "classEvidence": true,
+          "declaredClasses": [
+            "ds-checkbox",
+            "ds-checkbox__input",
+            "ds-checkbox__box",
+            "ds-checkbox__label"
+          ],
+          "missingClasses": [],
+          "exactStructure": "not-established",
+          "browserEvidence": "not-established",
+          "note": "宿主依赖声明及离线类名盘点；未证明具体变体、尺寸、必需子结构、宿主适配或浏览器行为。"
+        },
+        "usage": [
+          {
+            "component": "Checkbox",
+            "usage": "当前PC操作列表保留完整原生Checkbox(lg)的input/box/标题label；toolbar为省略文字槽的有名称全选原子。原生checked/indeterminate由宿主协调，不复制原子样式。M仍历史box-only适配、暂不升级。",
+            "slot": "toolbar/list-item",
+            "appliesTo": [
+              "operation-intensive"
+            ],
+            "requiredVariants": [
+              "lg"
+            ],
+            "implementationClasses": [
+              "ds-checkbox",
+              "ds-checkbox__input",
+              "ds-checkbox__box",
+              "ds-checkbox__label"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "option-selector",
+        "contract": "components/contracts/option-selector.json",
+        "preview": "components/variants/option-selector.html",
+        "status": "preview-class-evidence-only",
+        "evidence": {
+          "status": "preview-class-evidence-only",
+          "verified": false,
+          "previewExists": true,
+          "classEvidence": true,
+          "declaredClasses": [
+            "ds-checkbox",
+            "ds-checkbox--sm",
+            "ds-checkbox__input",
+            "ds-checkbox__box"
+          ],
+          "missingClasses": [],
+          "exactStructure": "not-established",
+          "browserEvidence": "not-established",
+          "note": "宿主依赖声明及离线类名盘点；未证明具体变体、尺寸、必需子结构、宿主适配或浏览器行为。"
+        },
+        "usage": [
+          {
+            "component": "Checkbox",
+            "usage": "service当前受控适配真实Checkbox(sm)：span根保留原生input+box，省略原子文字槽；外层宿主label与业务标题/价格提供可访问名称和整卡点击。原子管理方块尺寸、首行偏移、状态SVG及focus，宿主只装配。服务来源/禁用业务文字视觉待验证。",
+            "slot": "check",
+            "requiredVariants": [
+              "sm"
+            ],
+            "implementationClasses": [
+              "ds-checkbox",
+              "ds-checkbox--sm",
+              "ds-checkbox__input",
+              "ds-checkbox__box"
+            ],
+            "appliesTo": [
+              "service"
+            ],
+            "required": true
+          }
+        ]
+      },
+      {
+        "id": "select",
+        "contract": "components/contracts/select.json",
+        "preview": "components/variants/select.html",
+        "status": "preview-class-evidence-only",
+        "evidence": {
+          "status": "preview-class-evidence-only",
+          "verified": false,
+          "previewExists": true,
+          "classEvidence": true,
+          "declaredClasses": [
+            "ds-checkbox",
+            "ds-checkbox--sm"
+          ],
+          "missingClasses": [],
+          "exactStructure": "not-established",
+          "browserEvidence": "not-established",
+          "note": "宿主依赖声明及离线类名盘点；未证明具体变体、尺寸、必需子结构、宿主适配或浏览器行为。"
+        },
+        "usage": [
+          {
+            "component": "Checkbox",
+            "usage": "Checkbox(sm)受控标记适配：省略独立input与data-checkbox-control，保留data-checkbox-current、box和label及原子状态资源。宿主管理role=option、选择事件与checked/disabled类同步；不得叠加原生input事件或复制样式。实际浏览器验收待验证。",
+            "slot": "option-marker",
+            "appliesTo": [
+              "multi-checkbox",
+              "two-column",
+              "grouped-combination"
+            ],
+            "requiredVariants": [
+              "sm"
+            ],
+            "implementationClasses": [
+              "ds-checkbox",
+              "ds-checkbox--sm"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "tag",
+        "contract": "components/contracts/tag.json",
+        "preview": "components/variants/tag.html",
+        "status": "preview-class-evidence-only",
+        "evidence": {
+          "status": "preview-class-evidence-only",
+          "verified": false,
+          "previewExists": true,
+          "classEvidence": true,
+          "declaredClasses": [
+            "ds-checkbox",
+            "ds-checkbox--sm",
+            "ds-checkbox__input",
+            "ds-checkbox__box"
+          ],
+          "missingClasses": [],
+          "exactStructure": "not-established",
+          "browserEvidence": "not-established",
+          "note": "宿主依赖声明及离线类名盘点；未证明具体变体、尺寸、必需子结构、宿主适配或浏览器行为。"
+        },
+        "usage": [
+          {
+            "component": "Checkbox",
+            "slot": "source-accessory-part",
+            "requiredVariants": [
+              "sm"
+            ],
+            "implementationClasses": [
+              "ds-checkbox",
+              "ds-checkbox--sm",
+              "ds-checkbox__input",
+              "ds-checkbox__box"
+            ],
+            "appliesTo": [
+              "product-accessory-source-part"
+            ],
+            "usage": "仅configuration-service私有来源部件使用；OptionSelector实际调用保留同一Checkbox依赖和原生语义。"
+          }
+        ]
+      }
+    ],
+    "parentStatus": "declared-hosts",
+    "icons": [],
+    "tokens": [
+      {
+        "name": "color.gray-1",
+        "value": "#19191A",
+        "unit": null,
+        "cssVar": "--color-gray-1",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.gray-3",
+        "value": "#707070",
+        "unit": null,
+        "cssVar": "--color-gray-3",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.gray-9",
+        "value": "#FAFBFB",
+        "unit": null,
+        "cssVar": "--color-gray-9",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.white",
+        "value": "#FFFFFF",
+        "unit": null,
+        "cssVar": "--color-white",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "opacity.disabled",
+        "value": 0.3,
+        "unit": null,
+        "cssVar": "--opacity-disabled",
+        "primitiveReferences": null,
+        "source": "components/token-specs/opacity.json"
+      },
+      {
+        "name": "typography.font-family-base",
+        "value": "Open Sans",
+        "unit": null,
+        "cssVar": "--font-family-base",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-size-h8",
+        "value": 13,
+        "unit": "px",
+        "cssVar": "--font-size-h8",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "spacing.sm",
+        "value": 8,
+        "unit": "px",
+        "cssVar": "--spacing-sm",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "typography.font-size-md",
+        "value": 14,
+        "unit": "px",
+        "cssVar": "--font-size-md",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-weight-regular",
+        "value": 400,
+        "unit": null,
+        "cssVar": "--font-weight-regular",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.h7-regular",
+        "value": {
+          "fontSize": "14px",
+          "lineHeight": "22px",
+          "fontWeight": 400
+        },
+        "unit": null,
+        "cssVar": null,
+        "primitiveReferences": {
+          "fontSize": "typography.font-size-md",
+          "fontWeight": "typography.font-weight-regular"
+        },
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.h8-regular",
+        "value": {
+          "fontSize": "13px",
+          "lineHeight": "20px",
+          "fontWeight": 400
+        },
+        "unit": null,
+        "cssVar": null,
+        "primitiveReferences": {
+          "fontSize": "typography.font-size-h8",
+          "fontWeight": "typography.font-weight-regular"
+        },
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "spacing.2",
+        "value": 2,
+        "unit": "px",
+        "cssVar": "--spacing-2",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.3",
+        "value": 3,
+        "unit": "px",
+        "cssVar": "--spacing-3",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      }
+    ]
+  },
+  "evidence": {
+    "localImplementation": "components/variants/checkbox.html",
+    "comparison": "components/sources/checkbox/local-structure-review.json",
+    "specificationReview": "components/sources/checkbox/native-specification-review-1011.json",
+    "default14Glyph": "components/sources/checkbox/default14-property-review-1013.json",
+    "remaining14Glyphs": "components/sources/checkbox/remaining14-glyph-review-1013.json",
+    "currentDefaultRootMode": "components/sources/checkbox/default-root-mode-review-1014.json",
+    "currentMgReview": "components/sources/foundation-mg-20261114/checkbox-review.json"
+  },
+  "sourceValidation": {
+    "componentIdentity": {
+      "status": "not-established",
+      "files": []
+    },
+    "specificationBody": {
+      "status": "not-established",
+      "files": []
+    },
+    "originalOnlineFrontendCode": false,
+    "browserComputedStyles": false,
+    "completeSpecificationCoverage": false,
+    "currentRootLayout": [
+      {
+        "size": "lg",
+        "width": "fit-content",
+        "min-width": "initial",
+        "max-width": "100%",
+        "align-self": "flex-start"
+      },
+      {
+        "size": "sm",
+        "width": "fit-content",
+        "min-width": "initial",
+        "max-width": "100%",
+        "align-self": "flex-start"
+      }
+    ]
+  },
+  "freshness": {
+    "fingerprints": {
+      "components/checkbox-current.css": "81bace454b5f7612b84fd778d5596605dbce94f2bdc1784ba2636140622b168e",
+      "components/checkbox-current.js": "742518c24ba917376a24e0338be88cc6d8d9ae65e74f8c1c1ee215abb1088eee",
+      "components/components.css": "a08b4fe2790b5ff2b784c6362a90f1b94e7535a03e863232ce6d620a52e85f73",
+      "components/contracts/checkbox.json": "ea3c1e3a082df421cafa2729384e7a7849e67048f51c3fde0979c0c3b0c94d63",
+      "components/icons/icon-checkbox-checked-14.svg": "f83d910808d0bca0125c75639d4256daab143d1db8fe44bd86805405c5c2f3b4",
+      "components/icons/icon-checkbox-checked-18.svg": "59290914956ef1e69bf45754e5cf944d11366d7916c2cf7e28a98af349dffc7b",
+      "components/icons/icon-checkbox-default-14.svg": "e610d5b12893e274c8ac42f93263adbd46e1f3ec846463727fcf7b6166dae1b5",
+      "components/icons/icon-checkbox-default-18.svg": "a2b81f44fd5fb1c4813cbb634411ea81da4da0b11bf26114b00db201ddeef0fa",
+      "components/icons/icon-checkbox-disabled-14.svg": "9aaf4fac0c5321c5141c62eb7f3e8691499c4b88cb01eed5360f716440af2b81",
+      "components/icons/icon-checkbox-disabled-18.svg": "286231edd6d0119ec4c5f1ba94a6c0c6b279e8ee555bc445a2f6e6c83305cce8",
+      "components/icons/icon-checkbox-disabled-checked-14.svg": "0ff37fbf929e724af3a57c1c51bdeff91b7c6b0c25223282b2ec4b561d790ba0",
+      "components/icons/icon-checkbox-disabled-checked-18.svg": "89b87ec42edbc025868e42ec520274e6d4985c66af65d85afbd6b2683bf57203",
+      "components/icons/icon-checkbox-hover-14.svg": "5c9ebcc0364f5c73f07e9c2a6f8a9b2f2e7a8125d25f88924e65e519d69dbfb6",
+      "components/icons/icon-checkbox-hover-18.svg": "10e14bfe6f2c62f187f056d3dbc57701646c317b857167240280df4d159b3c47",
+      "components/icons/icon-checkbox-indeterminate-14.svg": "82735709fabeb13f65855162414b848d3b0f3b98e75b2402882366bcacc95c69",
+      "components/icons/icon-checkbox-indeterminate-18.svg": "c5dd19bb29005cb79ac15e823882fc9efaf9c32d15409c1859c0fed09f59bc4f",
+      "components/icons/icons-manifest.json": "12c48af6d1dc59d50b76046bb0507005f565aa4224a6d8056ce4eaaf8050c43e",
+      "components/preview/reference-live.js": "4839383529a3ee82df1d8efe675d430567abc1986034499107aa429d21a18ea6",
+      "components/reference-policy.json": "4ae8f51f623386417e38d497caafb8bda4417c929159002a7ac088e6e526b482",
+      "components/sources/checkbox/default-root-mode-review-1014.json": "64fb173a954f661953d196f938758140c37601ba998d54010dd914375d6ade44",
+      "components/sources/checkbox/default14-property-review-1013.json": "76283decc24515764121eca422da61a6efc0753b599082eeba211bbcbd1702f2",
+      "components/sources/checkbox/large-default-root-mode-native-1014.txt": "2d57adcd321274a698e310ccd81a005daffcfa6ce51e664d8865b39e67c72c2b",
+      "components/sources/checkbox/local-structure-review.json": "fc49da30ee6897f3d3725be4af3526095ac0fb2ee95415eb5d53b86cbe1a3840",
+      "components/sources/checkbox/native-specification-review-1011.json": "d5fa6bf557919c70f86d5a8913922308a32fc062b4de3b586741163df5892834",
+      "components/sources/checkbox/remaining14-glyph-review-1013.json": "612d89bccb446ee790a2a782333e70ff20723c66d14ca597d7240a6db97bd659",
+      "components/sources/checkbox/small-default-root-mode-native-1014.txt": "8abca1d3c103e337a5e0843115b378ef6889d23058509d65f79e70e2af7a7a9b",
+      "components/sources/foundation-mg-20261114/checkbox-review.json": "cd9db56dfaf015a7b2cc51ee80ca24a37763712a9b0044759a37ebb84d0e0d3b",
+      "components/token-specs/colors.json": "5267d59fdc687b54496977280c00c97f0beb6ffce013f87853504f5b736d3389",
+      "components/token-specs/opacity.json": "226088dc556be35b2b51766287a7d54f95eebd348cb80f6d8313e525cf2b70b7",
+      "components/token-specs/spacing.json": "351b14cfce4411248ad41e00eaaf2b1cab9b705997980dfed1fc65693740e65c",
+      "components/token-specs/typography.json": "93b7dc07547218a33c075b7cdcd942f89094353a7847d483d8378b8883327e16",
+      "components/tokens.css": "f63f3c8fea511d8029902bc3905b01853ac5e92049c1b18ca35ebc9a680c3e69",
+      "components/variants/checkbox.html": "7d99c4b8d7b3c89433a31d6a9205f89607c5cbd398abd76824ae7c92bbdf83f6",
+      "components/variants/dialog.html": "40132b51264249e10a92ea5f24730d989ca1415daa62f9ef42d391aadff7f21f",
+      "components/variants/dropdown.html": "44354e67c711c48da210aa5e5abe899eb15bfbf49688fdf485090caee0b07ce5",
+      "components/variants/form.html": "25d31960a440684ed7015f9dc5e628875090709d5001bffebd5972232e48d489",
+      "components/variants/list.html": "51f7f184f06b1e0a334887d65cf352e2c89a43a5ac72358b88bf405500f0d98e",
+      "components/variants/option-selector.html": "e2afba24d5b67c306f264762dfea9b0d7ffd7c9db132feac6b6a29214cf1196e",
+      "components/variants/select.html": "0042deb9a302606c3a82505cafbd807753c3c6eb31e8b107e3ecb0fe0538bf7f",
+      "components/variants/tag.html": "fcafd08ba11ca6faf2d41e185fc69099175769db0fa030ae9e9fa0ae7e410a04"
+    },
+    "graphFingerprint": "6855cefc0dd0cbe344344e213635c0a9a3845fac20d85b16ca9e97fc255c3597",
+    "note": "从本地源文件生成；不是 MasterGo 在线实时状态。"
+  },
+  "readScope": {
+    "variant": "sm",
+    "note": "只展开当前已选变体；其他变体没有被声明为不可用。尺寸继续按真实 sizeOptions 选择。"
+  }
+}

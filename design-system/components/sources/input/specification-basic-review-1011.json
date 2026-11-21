@@ -1,0 +1,74 @@
+{
+  "date": "2026-10-11",
+  "source": {
+    "fileId": "143880409387753",
+    "pageId": "68908:290576",
+    "specificationNodeId": "68908:317165",
+    "layerName": "【输入框】设计规范v2.5.2608C",
+    "visibleTitleVersion": "v2.4.2608C",
+    "visibleUpdateDate": "2026-08-20",
+    "updateLogInstanceChild": "68908:325277/68446:76800",
+    "remoteRevision": null,
+    "mode": "native-visible-canvas-at-63-percent"
+  },
+  "versionConflict": {
+    "status": "recorded-not-resolved",
+    "description": "外层图层名v2.5与正文标题/更新日志v2.4不一致；只引用已读基础条目，不把高版本图层名当作完整规范批准。"
+  },
+  "facts": [
+    {
+      "section": "1.1 基础输入框",
+      "scope": "basic-only",
+      "states": [
+        "Default",
+        "Hover",
+        "Activated",
+        "Inputting",
+        "Input complete",
+        "Disabled",
+        "Error"
+      ],
+      "errorInteraction": "Error 状态下的 hover，鼠标指针变化，描边颜色不变，点击则进入 Activated 态；Disabled 状态下的 hover，鼠标指针变化，鼠标“禁用”。",
+      "textOverflow": "输入文字达到输入框右边缘时，超出区域的文本自动向左滚动。"
+    },
+    {
+      "section": "更新日志/基础状态示例",
+      "label": {
+        "fontSize": 14,
+        "lineHeight": 22,
+        "weight": 400,
+        "color": "#707070",
+        "gapToField": 4
+      },
+      "field": {
+        "radius": 4,
+        "textSize": 13,
+        "textLineHeight": 20,
+        "textColor": "#19191A"
+      },
+      "errorMessage": {
+        "size": 13,
+        "weight": 400,
+        "color": "#C00000"
+      },
+      "errorHoverLimit": "文字只明确描边颜色不变，未取得错误态hover背景不变的明确要求，不据此重写hover背景。"
+    }
+  ],
+  "implementation": {
+    "before": "aria-invalid=true时data-input-state优先error，即使原生输入已聚焦且CSS显示Activated/Inputting。",
+    "after": "disabled优先，其次按焦点与输入值记录Activated/Inputting，失焦后仍有aria-invalid时恢复Error。",
+    "validationBoundary": "聚焦/输入不自动移除宿主aria-invalid或隐藏错误消息；保留aria-describedby宿主其他描述。宿主自行负责业务校验。",
+    "unchanged": "原子CSS、尺寸、颜色、错误消息结构、历史冻结页面未变。"
+  },
+  "verification": {
+    "offlineTests": "scripts/input-quality.test.js 的两个背景/错误聚焦/输入/失焦/fieldset禁用/多实例隔离用例",
+    "browser": false,
+    "visualApproval": false
+  },
+  "limits": [
+    "定向读取基础输入框，不是完整Input家族或全文规范验收。",
+    "原生截图只在工具内联查看，没有保存原图。",
+    "版本冲突不影响一致条目的有限修正；完整规范版本归属仍待确认。",
+    "本地实际鼠标/键盘/视觉受既有浏览器审批边界限制，未绕过。"
+  ]
+}

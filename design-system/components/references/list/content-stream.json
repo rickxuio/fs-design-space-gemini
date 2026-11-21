@@ -1,0 +1,1272 @@
+{
+  "schemaVersion": "fs-component-reference/1.0.0",
+  "component": {
+    "id": "list",
+    "name": "List",
+    "scope": "seven-finite-PC-list-calls-and-source-locked-private-parts",
+    "reviewStatus": {
+      "engineering": "pending",
+      "visual": "pending",
+      "familyCoverage": "partial"
+    }
+  },
+  "selection": {
+    "policy": "按结构化数据、操作密集、商品内容、资料属性或信息流区分；属性键值PC已提供照片/认证/编辑意图，实际保存归宿主。12/14无序正文沿原获准来源；IconCard蓝色链接是限宿主私有覆盖，不是通用母组件变体。折叠详情仍缺实际源码，不借FAQ替代。",
+    "supported": [
+      "structured-data",
+      "content-stream",
+      "unordered-12",
+      "unordered-14",
+      "operation-intensive",
+      "product-content",
+      "attribute-key-value"
+    ],
+    "unsupported": [
+      "collapsible-detail",
+      "mobile",
+      "localized-action-routing",
+      "dynamic-insertion-api",
+      "business-persistence"
+    ]
+  },
+  "runtime": {
+    "styles": [
+      "components/tokens.css",
+      "components/components.css",
+      "components/checkbox-current.css",
+      "components/button-current.css",
+      "components/button-runtime-current.css",
+      "components/list-operations-current.css",
+      "components/icon-button-current.css",
+      "components/input-number-current.css",
+      "components/list-unordered-current.css",
+      "components/list-dialog-cart.css",
+      "components/list-links-current.css",
+      "components/list-profile-current.css"
+    ],
+    "scripts": [
+      "components/checkbox-current.js",
+      "components/input-number-current.js",
+      "components/list-current.js",
+      "components/list-operations-current.js",
+      "components/list-products-current.js",
+      "components/list-profile-current.js"
+    ],
+    "fontStylesheets": [
+      "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+    ],
+    "fontFallback": "Open Sans stack; actual browser proof pending."
+  },
+  "identity": {
+    "rule": "Full desktop div root, authored columns or article/meta/tag hierarchy. No initialized role/tabindex/contentEditable/data-list-interactive; action literals Edit/Delete are runtime routing keys. Structured canonical has data-list-current=structured; other generated state remains forbidden. 无序正文列表限定div.ds-list.ds-list--unordered-12或-14、data-list-current=unordered和data-list-source=legacy-fixed；圆点/正文逐条保留。",
+    "labelRule": "items replaces visible data and count within the existing complete structures; preserve action semantics, status modifier and stream separators."
+  },
+  "locked": [
+    "Actual four-column or article structure",
+    "Edit/Delete action routing literals",
+    "Status-dot and stream-clamp classes",
+    "Marker-only list-current.js and shared CSS",
+    "No backend, callback or invented navigation"
+  ],
+  "behavior": {
+    "structured": "Marker-only current runtime turns existing Edit/Delete spans into keyboard controls. Enter/Save commits local text; Escape restores original and announces cancellation. Composition Enter does not save. Delete removes only its own row. No request or custom persistence event.",
+    "initialization": "Document and root guards prevent duplicate loading; only marked structured roots initialize. Legacy Preview adapter preserves unmarked examples, is excluded from AI runtime. No dynamic insertion API.",
+    "announcements": "Root-scoped polite live region and one replaceable delayed timer. Disabled or hidden control/ancestor suspends actions, cancels current edit to original, and removes its tabstop; re-enable restores access.",
+    "stream": "Read-only article content. Source-less URLs and actions are absent.",
+    "dependencies": "Excluded operation family current PC Checkbox/Button and product family3 current PC InputNumber are real atoms; M historical unchanged. Product delete confirmed IconButton plain-m; operation hotspots and finite AI contracts remain pending.",
+    "composition": "The existing structured editor tracks compositionstart/end per edit session. Enter/Escape and keyboard Save do not commit or cancel while composition is active, even without isComposing. End does not save automatically. Finish removes composition listeners; hidden/disabled cancellation restores the original and a later edit starts fresh. Native browser contentEditable/IME behavior remains pending.",
+    "operationAtoms": "PC有限调用保留原生Checkbox lg及全选标题省略适配、Button outline-black/XL；宿主负责全选/半选和本地读/删动作。M及后台持久化不在此范围。",
+    "productAtoms": "PC有限调用保留InputNumber outline-sm、IconButton plain-m及真实商品行；数量变更/blur由原子归一化后更新本地总价，删除仅作用本行。无动态插入或后台提交。",
+    "unordered": "只读原子；无操作、链接、选中、编辑、初始化或业务回调。12px首行圆点y8，14px首行y9；长文圆点跟随首行，不按整段高度居中。",
+    "finiteNewCalls": "PC操作型和商品型从原有真实示例提取，使用当前Checkbox/Button/InputNumber/IconButton与其原运行脚本；默认内容与受控条目编辑，操作仅本地，不增加后台接口。"
+  },
+  "examples": [
+    {
+      "name": "content-stream",
+      "runtime": {
+        "styles": [
+          "components/tokens.css",
+          "components/components.css",
+          "components/checkbox-current.css",
+          "components/button-current.css",
+          "components/button-runtime-current.css",
+          "components/list-operations-current.css",
+          "components/icon-button-current.css",
+          "components/input-number-current.css",
+          "components/list-unordered-current.css",
+          "components/list-dialog-cart.css"
+        ],
+        "scripts": [
+          "components/checkbox-current.js",
+          "components/input-number-current.js",
+          "components/list-current.js",
+          "components/list-operations-current.js",
+          "components/list-products-current.js"
+        ]
+      },
+      "publication": {
+        "key": "list/content-stream",
+        "disposition": "restricted",
+        "newPages": true,
+        "reason": "unordered-12/14 are user-approved fixed-source Card-only parts; never use for IconCard blue lists. structured-data is four-column local editing; stream is read-only.",
+        "constraints": [
+          "unordered-12/14 are user-approved fixed-source Card-only parts; never use for IconCard blue lists. structured-data is four-column local editing; stream is read-only."
+        ],
+        "contractPolicy": "Structured data keeps four aligned columns and optional Edit/Delete controls. Content stream is read-only authored articles; no inferred links. Other host types require separate dependency/source review.",
+        "use": "finite-new-page-candidate",
+        "evidence": "components/contracts/list.json#aiContract/evidence",
+        "requiresCurrentEngineering": true,
+        "visualApproval": "separate-not-granted"
+      },
+      "rootTag": "div",
+      "sizeOptions": [],
+      "purpose": "read-only-title-summary-meta-stream",
+      "whenToUse": "只读文章、搜索结果长摘要与元信息。",
+      "whenNotToUse": "严格列对齐、批量操作或推断链接。",
+      "rootClasses": "ds-list ds-list--stream",
+      "requiredStructure": [
+        "article.ds-list__stream-source-item",
+        "h3.ds-list__stream-source-title",
+        "p.ds-list__stream-source-summary",
+        "div.ds-list__stream-source-meta",
+        "time"
+      ],
+      "slots": {
+        "items": {
+          "selector": ":scope",
+          "mode": "structured-content",
+          "required": true,
+          "preserve": [
+            "article.ds-list__stream-source-item",
+            "h3.ds-list__stream-source-title",
+            "p.ds-list__stream-source-summary",
+            "div.ds-list__stream-source-meta",
+            "time"
+          ],
+          "rule": "Keep complete canonical structure; text and item count only. No new navigation, controls or initialized state. Structured action labels remain Edit/Delete."
+        }
+      },
+      "allowedEdits": [
+        "items"
+      ],
+      "exampleHtml": "<div class=\"ds-list ds-list--stream\" data-ai-example=\"ai-list-content-stream\">\n          <article class=\"ds-list__stream-source-item\"><h3 class=\"ds-list__stream-source-title\">What is MLAG and How to Configure MLAG on PicOS® Switches</h3><p class=\"ds-list__stream-source-summary\">In modern enterprise and data center networks, the demand for higher reliability, better bandwidth utilization, and non-stop service has driven the need for technologies that go beyond traditional link aggregation. One of these technologies is&nbsp;Multi-Chassis Link Aggregation Group (MLAG).</p><div class=\"ds-list__stream-source-meta\"><div class=\"ds-list__stream-source-tags\"><span>Hardware</span><span class=\"ds-list__stream-source-separator\" data-source-asset=\"svg_e7f98577.svg\"></span><span>Enterprise Network</span><span class=\"ds-list__stream-source-separator\" data-source-asset=\"svg_e7f98577.svg\"></span><span>Blog</span></div><time>May 06, 2025</time></div></article>\n          <div class=\"ds-list__stream-source-divider\"></div>\n          <article class=\"ds-list__stream-source-item\"><h3 class=\"ds-list__stream-source-title\">PicOS® 4.5.0M Released: Enhanced Features to Improve Network Stability and Efficiency</h3><p class=\"ds-list__stream-source-summary is-clamped\">New Castle, Delaware - April 24th, 2025 - FS, a trusted provider of ICT products and solutions, has officially launched PICOS 4.5.0M, the latest advanced version of FS PicOS® switch operating system, offering resilient and efficient network operations for campus and data center networks. This update comes with enhanced features that boost network reliability, security, and scalability, such as DHCP ZTP, ECN, PFC, DLB, etc. The PICOS 4.5.0M version has been extensively tested, addressing several bugs and improving stability to assist customers in managing complex network environments.</p><div class=\"ds-list__stream-source-meta\"><div class=\"ds-list__stream-source-tags\"><span>Newsroom</span><span class=\"ds-list__stream-source-separator\" data-source-asset=\"svg_e7f98577.svg\"></span><span>News</span></div><time>Apr 24, 2025</time></div></article>\n          <div class=\"ds-list__stream-source-divider\"></div>\n          <article class=\"ds-list__stream-source-item\"><h3 class=\"ds-list__stream-source-title\">FS S3270-24TM-P: A Versatile PoE+ PicOS® Switch for Enterprise Networks</h3><p class=\"ds-list__stream-source-summary\">As businesses increasingly rely on cloud applications, IoT devices, and remote workforces, the demand for scalable, high-performance, and secure networks has never been greater. Enterprises need switches that seamlessly handle growing data traffic, ensure uninterrupted connectivity, and simplify network management—all while keeping costs under control.</p><div class=\"ds-list__stream-source-meta\"><div class=\"ds-list__stream-source-tags\"><span>Enterprise Network</span><span class=\"ds-list__stream-source-separator\" data-source-asset=\"svg_e7f98577.svg\"></span><span>Software</span><span class=\"ds-list__stream-source-separator\" data-source-asset=\"svg_e7f98577.svg\"></span><span>Hardware</span><span class=\"ds-list__stream-source-separator\" data-source-asset=\"svg_e7f98577.svg\"></span><span>Blog</span></div><time>Apr 14, 2025</time></div></article>\n          <article class=\"ds-list__stream-source-item\"><h3 class=\"ds-list__stream-source-title\">FS S3270-24TM-P: A Versatile PoE+ PicOS® Switch for Enterprise Networks</h3><p class=\"ds-list__stream-source-summary\">As businesses increasingly rely on cloud applications, IoT devices, and remote workforces, the demand for scalable, high-performance, and secure networks has never been greater. Enterprises need switches that seamlessly handle growing data traffic, ensure uninterrupted connectivity, and simplify network management—all while keeping costs under control.</p><div class=\"ds-list__stream-source-meta\"><div class=\"ds-list__stream-source-tags\"><span>Enterprise Network</span><span class=\"ds-list__stream-source-separator\" data-source-asset=\"svg_e7f98577.svg\"></span><span>Software</span><span class=\"ds-list__stream-source-separator\" data-source-asset=\"svg_e7f98577.svg\"></span><span>Hardware</span><span class=\"ds-list__stream-source-separator\" data-source-asset=\"svg_e7f98577.svg\"></span><span>Blog</span></div><time>Apr 14, 2025</time></div></article>\n        </div>"
+    }
+  ],
+  "relationships": {
+    "children": [],
+    "parents": [
+      {
+        "id": "card",
+        "contract": "components/contracts/card.json",
+        "preview": "components/variants/card.html",
+        "status": "preview-class-evidence-only",
+        "evidence": {
+          "status": "preview-class-evidence-only",
+          "verified": false,
+          "previewExists": true,
+          "classEvidence": true,
+          "declaredClasses": [
+            "ds-list",
+            "ds-list--unordered-12",
+            "ds-list__unordered-item",
+            "ds-list__unordered-dot",
+            "ds-list__unordered-text",
+            "ds-list--unordered-14"
+          ],
+          "missingClasses": [],
+          "exactStructure": "not-established",
+          "browserEvidence": "not-established",
+          "note": "宿主依赖声明及离线类名盘点；未证明具体变体、尺寸、必需子结构、宿主适配或浏览器行为。"
+        },
+        "usage": [
+          {
+            "component": "List",
+            "usage": "当前Card正式预览中两个embedded.product-detail宿主真实调用用户允许旧库固定无序List12；不开放整个宿主自动调用。 通栏描边图左文右来源展示也调用同一List12，保留宿主四行；滚动及视觉待核，不开放自动调用。 已核镜像051833也保留四行真实调用，左右形态共2个通栏描边正式宿主。；PC051801侧边栏描边来源展示使用四行List12。；镜像PC051860单独核实并接入。；四种单事件上下结构来源展示各三行List12，12px上距由宿主管理。；定制服务器Default/Hover各四行List12。",
+            "slot": "bullets",
+            "requiredVariants": [
+              "unordered-12"
+            ],
+            "implementationClasses": [
+              "ds-list",
+              "ds-list--unordered-12",
+              "ds-list__unordered-item",
+              "ds-list__unordered-dot",
+              "ds-list__unordered-text"
+            ],
+            "appliesTo": [
+              "embedded.product-detail",
+              "spliced.horizontal.full-width.bordered-background",
+              "spliced.horizontal.with-sidebar.bordered-background",
+              "spliced.vertical.single-event",
+              "embedded.product-full"
+            ],
+            "sourceEvidence": {
+              "fixedSource": "components/sources/list/card-unordered12-fixed-source-1014.json",
+              "hostSource": "components/sources/card/embedded-detail-source-1014.json",
+              "borderedHostSource": "components/sources/card/layout-one-list-host-review-1015.json",
+              "reverseBorderedHostSource": "components/sources/card/layout-one-reverse-list-host-review-1015.json",
+              "borderedSidebarSource": "components/sources/card/bordered-sidebar-list-host-review-1015.json",
+              "reverseBorderedSidebarSource": "components/sources/card/reverse-bordered-sidebar-list-host-review-1015.json",
+              "verticalHostSource": "components/sources/card/vertical-list-host-review-1015.json",
+              "serverProductHostSource": "components/sources/card/server-product-list-host-review-1015.json"
+            }
+          },
+          {
+            "component": "List",
+            "usage": "当前Card正式预览中两个spliced.horizontal.with-sidebar宿主真实调用用户允许旧库固定无序List14；不开放整个宿主自动调用。；PC052289无描边通栏左图右文亦使用四行真实List14，仅正式来源展示。；镜像PC052191单独来源核实并接入。",
+            "slot": "bullets",
+            "requiredVariants": [
+              "unordered-14"
+            ],
+            "implementationClasses": [
+              "ds-list",
+              "ds-list--unordered-14",
+              "ds-list__unordered-item",
+              "ds-list__unordered-dot",
+              "ds-list__unordered-text"
+            ],
+            "appliesTo": [
+              "spliced.horizontal.with-sidebar",
+              "spliced.horizontal.full-width"
+            ],
+            "sourceEvidence": {
+              "fixedSource": "components/sources/list/card-unordered14-fixed-source-1014.json",
+              "hostSource": "components/sources/card/sidebar-dependency-source-1014.json",
+              "unborderedHostSource": "components/sources/card/unbordered-list-host-review-1015.json",
+              "reverseUnborderedHostSource": "components/sources/card/reverse-unbordered-list-host-review-1015.json"
+            }
+          }
+        ]
+      },
+      {
+        "id": "dialog",
+        "contract": "components/contracts/dialog.json",
+        "preview": "components/variants/dialog.html",
+        "status": "preview-class-evidence-only",
+        "evidence": {
+          "status": "preview-class-evidence-only",
+          "verified": false,
+          "previewExists": true,
+          "classEvidence": true,
+          "declaredClasses": [
+            "ds-list",
+            "ds-list--products",
+            "ds-input-number"
+          ],
+          "missingClasses": [],
+          "exactStructure": "not-established",
+          "browserEvidence": "not-established",
+          "note": "宿主依赖声明及离线类名盘点；未证明具体变体、尺寸、必需子结构、宿主适配或浏览器行为。"
+        },
+        "usage": [
+          {
+            "component": "List",
+            "part": "dialog-cart-products",
+            "slot": "cart-body",
+            "requiredVariants": [
+              "product-content"
+            ],
+            "appliesTo": [
+              "cart"
+            ],
+            "implementationClasses": [
+              "ds-list",
+              "ds-list--products",
+              "ds-input-number"
+            ],
+            "usage": "List-owned750px商品槽；真实InputNumber归一化后复用List金额联动，源无删除操作。"
+          }
+        ]
+      },
+      {
+        "id": "icon-card",
+        "contract": "components/contracts/icon-card.json",
+        "preview": "components/variants/icon-card.html",
+        "status": "preview-class-evidence-only",
+        "evidence": {
+          "status": "preview-class-evidence-only",
+          "verified": false,
+          "previewExists": true,
+          "classEvidence": true,
+          "declaredClasses": [
+            "ds-list",
+            "ds-list__unordered-item",
+            "ds-list__unordered-link",
+            "ds-list__unordered-text"
+          ],
+          "missingClasses": [],
+          "exactStructure": "not-established",
+          "browserEvidence": "not-established",
+          "note": "宿主依赖声明及离线类名盘点；未证明具体变体、尺寸、必需子结构、宿主适配或浏览器行为。"
+        },
+        "usage": [
+          {
+            "component": "List",
+            "slot": "multiple-links",
+            "part": "icon-card-links-12",
+            "appliesTo": [
+              "left.jump-type"
+            ],
+            "requiredVariants": [
+              "unordered-12"
+            ],
+            "implementationClasses": [
+              "ds-list",
+              "ds-list__unordered-item",
+              "ds-list__unordered-link"
+            ],
+            "usage": "来源锁定的12px蓝色List宿主覆盖；不开放独立母体调用。"
+          },
+          {
+            "component": "List",
+            "slot": "disclosure-content",
+            "appliesTo": [
+              "center.multi-event-expandable",
+              "left.multi-event-expandable"
+            ],
+            "requiredVariants": [
+              "unordered-12"
+            ],
+            "implementationClasses": [
+              "ds-list",
+              "ds-list__unordered-item",
+              "ds-list__unordered-text"
+            ],
+            "usage": "真实12px无序列表原子正文。"
+          }
+        ]
+      }
+    ],
+    "parentStatus": "declared-hosts",
+    "icons": [],
+    "tokens": [
+      {
+        "name": "color.gray-1",
+        "value": "#19191A",
+        "unit": null,
+        "cssVar": "--color-gray-1",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.gray-2",
+        "value": "#4B4B4D",
+        "unit": null,
+        "cssVar": "--color-gray-2",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.gray-3",
+        "value": "#707070",
+        "unit": null,
+        "cssVar": "--color-gray-3",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.gray-4",
+        "value": "#646466",
+        "unit": null,
+        "cssVar": "--color-gray-4",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.gray-5",
+        "value": "#DEE0E3",
+        "unit": null,
+        "cssVar": "--color-gray-5",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.gray-7",
+        "value": "#F2F2F2",
+        "unit": null,
+        "cssVar": "--color-gray-7",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.white",
+        "value": "#FFFFFF",
+        "unit": null,
+        "cssVar": "--color-white",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.blue",
+        "value": "#0060BF",
+        "unit": null,
+        "cssVar": "--color-blue",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.brand-red",
+        "value": "#C00000",
+        "unit": null,
+        "cssVar": "--brand-red",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.warning",
+        "value": "#F56300",
+        "unit": null,
+        "cssVar": "--color-warning",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.list-hover-bg",
+        "value": "#F6F7F8",
+        "unit": null,
+        "cssVar": "--color-list-hover-bg",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.list-header-bg",
+        "value": "#F7F7F7",
+        "unit": null,
+        "cssVar": "--color-list-header-bg",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.list-state-bg",
+        "value": "#F6F6F8",
+        "unit": null,
+        "cssVar": "--color-list-state-bg",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.list-item-divider",
+        "value": "#E5E5E5",
+        "unit": null,
+        "cssVar": "--color-list-item-divider",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.list-product-divider",
+        "value": "#EEEEEE",
+        "unit": null,
+        "cssVar": "--color-list-product-divider",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.table-divider",
+        "value": "#EEEEEE",
+        "unit": null,
+        "cssVar": "--color-table-divider",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.hover-overlay-light",
+        "value": "rgba(25,25,26,0.04)",
+        "unit": null,
+        "cssVar": "--color-hover-overlay-light",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.success",
+        "value": "#10A300",
+        "unit": null,
+        "cssVar": "--color-success",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.success-bg",
+        "value": "rgba(16,163,0,0.1)",
+        "unit": null,
+        "cssVar": "--color-success-bg",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "typography.font-family-base",
+        "value": "Open Sans",
+        "unit": null,
+        "cssVar": "--font-family-base",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-size-md",
+        "value": 14,
+        "unit": "px",
+        "cssVar": "--font-size-md",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-size-sm",
+        "value": 12,
+        "unit": "px",
+        "cssVar": "--font-size-sm",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-size-h6",
+        "value": 16,
+        "unit": "px",
+        "cssVar": "--font-size-h6",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-size-h8",
+        "value": 13,
+        "unit": "px",
+        "cssVar": "--font-size-h8",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-weight-regular",
+        "value": 400,
+        "unit": null,
+        "cssVar": "--font-weight-regular",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-weight-semibold",
+        "value": 600,
+        "unit": null,
+        "cssVar": "--font-weight-semibold",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.h7-regular",
+        "value": {
+          "fontSize": "14px",
+          "lineHeight": "22px",
+          "fontWeight": 400
+        },
+        "unit": null,
+        "cssVar": null,
+        "primitiveReferences": {
+          "fontSize": "typography.font-size-md",
+          "fontWeight": "typography.font-weight-regular"
+        },
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.h7-semibold",
+        "value": {
+          "fontSize": "14px",
+          "lineHeight": "22px",
+          "fontWeight": 600
+        },
+        "unit": null,
+        "cssVar": null,
+        "primitiveReferences": {
+          "fontSize": "typography.font-size-md",
+          "fontWeight": "typography.font-weight-semibold"
+        },
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.h6-semibold",
+        "value": {
+          "fontSize": "16px",
+          "lineHeight": "24px",
+          "fontWeight": 600
+        },
+        "unit": null,
+        "cssVar": null,
+        "primitiveReferences": {
+          "fontSize": "typography.font-size-h6",
+          "fontWeight": "typography.font-weight-semibold"
+        },
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.h8-regular",
+        "value": {
+          "fontSize": "13px",
+          "lineHeight": "20px",
+          "fontWeight": 400
+        },
+        "unit": null,
+        "cssVar": null,
+        "primitiveReferences": {
+          "fontSize": "typography.font-size-h8",
+          "fontWeight": "typography.font-weight-regular"
+        },
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.h9-regular",
+        "value": {
+          "fontSize": "12px",
+          "lineHeight": "20px",
+          "fontWeight": 400
+        },
+        "unit": null,
+        "cssVar": null,
+        "primitiveReferences": {
+          "fontSize": "typography.font-size-sm",
+          "fontWeight": "typography.font-weight-regular"
+        },
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "spacing.xs",
+        "value": 4,
+        "unit": "px",
+        "cssVar": "--spacing-xs",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.3",
+        "value": 3,
+        "unit": "px",
+        "cssVar": "--spacing-3",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.6",
+        "value": 6,
+        "unit": "px",
+        "cssVar": "--spacing-6",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.10",
+        "value": 10,
+        "unit": "px",
+        "cssVar": "--spacing-10",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.sm",
+        "value": 8,
+        "unit": "px",
+        "cssVar": "--spacing-sm",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.md",
+        "value": 12,
+        "unit": "px",
+        "cssVar": "--spacing-md",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.lg",
+        "value": 16,
+        "unit": "px",
+        "cssVar": "--spacing-lg",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.20",
+        "value": 20,
+        "unit": "px",
+        "cssVar": "--spacing-20",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.26",
+        "value": 26,
+        "unit": "px",
+        "cssVar": "--spacing-26",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.xl",
+        "value": 24,
+        "unit": "px",
+        "cssVar": "--spacing-xl",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.40",
+        "value": 40,
+        "unit": "px",
+        "cssVar": "--spacing-40",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.80",
+        "value": 80,
+        "unit": "px",
+        "cssVar": "--spacing-80",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "border.width.default",
+        "value": 1,
+        "unit": "px",
+        "cssVar": "--border-width-default",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.style.default",
+        "value": "solid",
+        "unit": null,
+        "cssVar": "--border-style-default",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.default",
+        "value": "var(--color-gray-5)",
+        "unit": null,
+        "cssVar": "--border-color-default",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.emphasis",
+        "value": "var(--color-gray-1)",
+        "unit": null,
+        "cssVar": "--border-color-emphasis",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.table-divider",
+        "value": "var(--color-table-divider)",
+        "unit": null,
+        "cssVar": "--border-color-table-divider",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.list-product-divider",
+        "value": "var(--color-list-product-divider)",
+        "unit": null,
+        "cssVar": "--border-color-list-product-divider",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.list-item-divider",
+        "value": "var(--color-list-item-divider)",
+        "unit": null,
+        "cssVar": "--border-color-list-item-divider",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border-radius.md",
+        "value": 4,
+        "unit": "px",
+        "cssVar": "--border-radius-md",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border-radius.json"
+      },
+      {
+        "name": "border-radius.lg",
+        "value": 8,
+        "unit": "px",
+        "cssVar": "--border-radius-lg",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border-radius.json"
+      },
+      {
+        "name": "border-radius.full",
+        "value": 9999,
+        "unit": "px",
+        "cssVar": "--border-radius-full",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border-radius.json"
+      },
+      {
+        "name": "border-radius.avatar",
+        "value": 48,
+        "unit": "px",
+        "cssVar": "--border-radius-avatar",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border-radius.json"
+      },
+      {
+        "name": "shadow.sm",
+        "value": "0 1px 2px rgba(0, 0, 0, 0.05)",
+        "unit": null,
+        "cssVar": "--shadow-sm",
+        "primitiveReferences": null,
+        "source": "components/token-specs/shadows.json"
+      },
+      {
+        "name": "shadow.list-panel",
+        "value": "0 2px 8px rgba(0, 0, 0, 0.1)",
+        "unit": null,
+        "cssVar": "--shadow-list-panel",
+        "primitiveReferences": null,
+        "source": "components/token-specs/shadows.json"
+      },
+      {
+        "name": "spacing.2",
+        "value": 2,
+        "unit": "px",
+        "cssVar": "--spacing-2",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.25",
+        "value": 25,
+        "unit": "px",
+        "cssVar": "--spacing-25",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.48",
+        "value": 48,
+        "unit": "px",
+        "cssVar": "--spacing-48",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.2xl",
+        "value": 32,
+        "unit": "px",
+        "cssVar": "--spacing-2xl",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.14",
+        "value": 14,
+        "unit": "px",
+        "cssVar": "--spacing-14",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.banner-hero-inset",
+        "value": 404,
+        "unit": "px",
+        "cssVar": "--spacing-banner-hero-inset",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.banner-content-inset",
+        "value": 360,
+        "unit": "px",
+        "cssVar": "--spacing-banner-content-inset",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.5",
+        "value": 5,
+        "unit": "px",
+        "cssVar": "--spacing-5",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.collapse-status-indent",
+        "value": 42,
+        "unit": "px",
+        "cssVar": "--spacing-collapse-status-indent",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.36",
+        "value": 36,
+        "unit": "px",
+        "cssVar": "--spacing-36",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.9",
+        "value": 9,
+        "unit": "px",
+        "cssVar": "--spacing-9",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.collapse-body-indent",
+        "value": 52,
+        "unit": "px",
+        "cssVar": "--spacing-collapse-body-indent",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.68",
+        "value": 68,
+        "unit": "px",
+        "cssVar": "--spacing-68",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.menu-navigation-left-gutter",
+        "value": 15,
+        "unit": "px",
+        "cssVar": "--spacing-menu-navigation-left-gutter",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "border.style.none",
+        "value": "none",
+        "unit": null,
+        "cssVar": "--border-style-none",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.inverse",
+        "value": "var(--color-white)",
+        "unit": null,
+        "cssVar": "--border-color-inverse",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.focus",
+        "value": "var(--color-blue)",
+        "unit": null,
+        "cssVar": "--border-color-focus",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.subtle",
+        "value": "var(--color-gray-6)",
+        "unit": null,
+        "cssVar": "--border-color-subtle",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.width.strong",
+        "value": 2,
+        "unit": "px",
+        "cssVar": "--border-width-strong",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.strong",
+        "value": "var(--color-gray-3)",
+        "unit": null,
+        "cssVar": "--border-color-strong",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.transparent",
+        "value": "transparent",
+        "unit": null,
+        "cssVar": "--border-color-transparent",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.brand",
+        "value": "var(--brand-red)",
+        "unit": null,
+        "cssVar": "--border-color-brand",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.option",
+        "value": "var(--color-option-border)",
+        "unit": null,
+        "cssVar": "--border-color-option",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.tag",
+        "value": "var(--color-tag-border)",
+        "unit": null,
+        "cssVar": "--border-color-tag",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.table-header",
+        "value": "var(--color-table-header-bg)",
+        "unit": null,
+        "cssVar": "--border-color-table-header",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.comment-divider",
+        "value": "var(--color-comment-divider)",
+        "unit": null,
+        "cssVar": "--border-color-comment-divider",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "color.text-disabled",
+        "value": "rgba(25,25,26,0.3)",
+        "unit": null,
+        "cssVar": "--color-text-disabled",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      }
+    ]
+  },
+  "evidence": {
+    "localImplementation": "components/variants/list.html",
+    "comparison": "components/sources/list/local-structure-review.json",
+    "specificationReview": "components/sources/list/native-operation-review-1011.json",
+    "unordered12FixedSource": "components/sources/list/card-unordered12-fixed-source-1014.json",
+    "unordered14FixedSource": "components/sources/list/card-unordered14-fixed-source-1014.json",
+    "currentMgReview": "components/sources/form-stepper-list-mg-20261115/list-review.json",
+    "dialogPartSource": "components/sources/dialog-mg-20261115/review.json",
+    "capabilityCompletion": "components/sources/capability-completion-20261115/first.json",
+    "listOptionSource": "components/sources/list-option-mg-20261115/review.json"
+  },
+  "sourceValidation": {
+    "componentIdentity": {
+      "status": "not-established",
+      "files": []
+    },
+    "specificationBody": {
+      "status": "not-established",
+      "files": []
+    },
+    "originalOnlineFrontendCode": false,
+    "browserComputedStyles": false,
+    "completeSpecificationCoverage": false,
+    "buttonNesting": {
+      "scope": "finite-authored-button-nesting-only",
+      "checked": [
+        {
+          "variant": "operation-intensive",
+          "buttons": [
+            {
+              "variant": "outline-black",
+              "size": "xl",
+              "type": "button"
+            },
+            {
+              "variant": "outline-black",
+              "size": "xl",
+              "type": "button"
+            },
+            {
+              "variant": "outline-black",
+              "size": "xl",
+              "type": "button"
+            },
+            {
+              "variant": "outline-black",
+              "size": "xl",
+              "type": "button"
+            }
+          ]
+        }
+      ],
+      "pending": [],
+      "browserVerified": false
+    },
+    "otherAtomNesting": {
+      "IconButton": {
+        "scope": "finite-canonical-IconButton-default-calls",
+        "checked": [
+          {
+            "variant": "product-content",
+            "children": [
+              {
+                "variant": "plain-m"
+              },
+              {
+                "variant": "plain-m"
+              },
+              {
+                "variant": "plain-m"
+              }
+            ]
+          }
+        ],
+        "inactive": [],
+        "browserVerified": false,
+        "hostStyleCascadeVerified": false
+      },
+      "Checkbox": {
+        "scope": "local-finite-Checkbox-host-assemblies-including-legacy-Dropdown-markers",
+        "checked": [
+          {
+            "variant": "operation-intensive",
+            "mode": "native-list",
+            "count": 11
+          },
+          {
+            "variant": "operation-intensive",
+            "exampleIndex": 0,
+            "mode": "native-list",
+            "count": 11
+          }
+        ],
+        "pending": [],
+        "browserVerified": false,
+        "mastergoVerified": false,
+        "hostStyleCascadeVerified": false
+      },
+      "productDependencies": {
+        "scope": "current-PC-List-product-finite-native-call",
+        "checked": [
+          {
+            "variant": "product-content",
+            "exampleIndex": 0,
+            "InputNumber": 3,
+            "IconButton": 3
+          },
+          {
+            "variant": "product-content",
+            "part": "dialog-cart-products",
+            "exampleIndex": 1,
+            "InputNumber": 1,
+            "IconButton": 0
+          }
+        ],
+        "browserVerified": false,
+        "mastergoVerified": false,
+        "hostStyleCascadeVerified": false
+      },
+      "toolbarDependencies": {
+        "scope": "current-PC-List-operation-toolbar-Preview-only",
+        "checked": [
+          {
+            "variant": "operation-intensive",
+            "buttons": [
+              {
+                "variant": "outline-black",
+                "size": "xl",
+                "type": "button"
+              },
+              {
+                "variant": "outline-black",
+                "size": "xl",
+                "type": "button"
+              },
+              {
+                "variant": "outline-black",
+                "size": "xl",
+                "type": "button"
+              },
+              {
+                "variant": "outline-black",
+                "size": "xl",
+                "type": "button"
+              }
+            ]
+          }
+        ],
+        "pending": [],
+        "browserVerified": false,
+        "hostStyleCascadeVerified": false,
+        "mastergoVerified": false
+      }
+    }
+  },
+  "freshness": {
+    "fingerprints": {
+      "components/button-current.css": "45e94e48ec97a34b4883ecc4f11b33301cdd6679445a3970cb16a2a87c6d8c9e",
+      "components/button-runtime-current.css": "caaa9b65a8d2fbebfa487ca3e0cf0c67d36e0219ffc55d4b0d801371a02da76c",
+      "components/checkbox-current.css": "81bace454b5f7612b84fd778d5596605dbce94f2bdc1784ba2636140622b168e",
+      "components/checkbox-current.js": "742518c24ba917376a24e0338be88cc6d8d9ae65e74f8c1c1ee215abb1088eee",
+      "components/components.css": "a08b4fe2790b5ff2b784c6362a90f1b94e7535a03e863232ce6d620a52e85f73",
+      "components/contracts/button.json": "1f3092d74e19c1a840fbf2e8b8ecaf6115976b2941cc5484e4cda824025b1f73",
+      "components/contracts/card.json": "7ebea9bece316a42a11dd5643e103bde1211914519164cd973fb5954652d2cc1",
+      "components/contracts/checkbox.json": "ea3c1e3a082df421cafa2729384e7a7849e67048f51c3fde0979c0c3b0c94d63",
+      "components/contracts/icon-button.json": "19f3ce860f24650fba7fbc0b43b59c80255feae164b8d24d9ed71cb4d39d782d",
+      "components/contracts/input-number.json": "7669303c1c7d43d01f368efc105b316bfc8b7f831fbfebf8332f6d483ffca4f4",
+      "components/contracts/list.json": "42201beb4d1d142d5192f5397169e408632eedbbcb641c53b7840e31c9446162",
+      "components/contracts/menu-navigation.json": "44245628e9fe977355b231a6126fd3af379ddf7a0676f10358f6410a098c1b72",
+      "components/icon-button-current.css": "5a4d55cf3817c9491473c1db1df6690cd9a06faf89663a7116e4b044ac5bbd2d",
+      "components/icons/goods-包裹.svg": "a821cf30c7f6b99b079f8d4fdbba34e69f47f58883b6ec5bfbecf6665d0775e2",
+      "components/icons/icon-arrow-right.svg": "f14aa7f363b6e2ffe83389f0fc2b01a96bbc2e4cae9d29fa42203d408f9eb3b8",
+      "components/icons/icon-checkbox-checked-18.svg": "59290914956ef1e69bf45754e5cf944d11366d7916c2cf7e28a98af349dffc7b",
+      "components/icons/icon-checkbox-default-18.svg": "a2b81f44fd5fb1c4813cbb634411ea81da4da0b11bf26114b00db201ddeef0fa",
+      "components/icons/icon-delete.svg": "3b8807c395d1d4b94ceeb14e6c8318b5128880bc4d2c9350e60411b8377c9fa5",
+      "components/icons/icon-edit.svg": "c6076863bfb71113c79317b5218b7d6e17a547c00c7c87e8e9baea3be11b8f6b",
+      "components/icons/icon-more.svg": "20f6e039a56fa1b3decd4430ce56186f85fd7190416eef9d4c434a5cab4332c8",
+      "components/icons/icons-manifest.json": "12c48af6d1dc59d50b76046bb0507005f565aa4224a6d8056ce4eaaf8050c43e",
+      "components/input-number-current.css": "d5e8da28b2c83edcd9ef96d811fc24ed6070fd0682084733be46075d05adedd7",
+      "components/input-number-current.js": "ba986d5c4796d86ea1097610caa593bed1039996b4dd43a75a4cb8db15d482df",
+      "components/list-current.js": "a277e40415f231b39883183a152a9c6045981f7b94cb1c1f33868d51d8e3fdd7",
+      "components/list-dialog-cart.css": "b8dc9d8d45138db25775db56263c3fc307406fbe6e923c00a499163d54b6c001",
+      "components/list-links-current.css": "3c4e5b765d99414b38e758c7419dee8b1affcab214b06fa0a8a5d53e3a85b649",
+      "components/list-operations-current.css": "41b00c24c29c54c016d6749493389f84faafe59c65ebbe4729df24a6c008d82d",
+      "components/list-operations-current.js": "bb5e4e40c682e7744e4864ffcfe82eb3625556141f58b2049192e37c9bef287e",
+      "components/list-products-current.js": "acccca5b32fd6823c3db3b9921668ed4f66a10ffade9ff75a7725b014e5797a3",
+      "components/list-profile-current.css": "b0cf39c98b8ec1e3b4196c74f7d1d86317ee08355635b91707bd66c1b059ca1e",
+      "components/list-profile-current.js": "6566704df9c8741631bc71de464787b2fe27e477c8cbf75249513bd653d96575",
+      "components/list-unordered-current.css": "4b257420500aab077912b1687d45246d29f959dd05f36ef8a92115306c984e8c",
+      "components/preview/list-legacy-adapter.js": "48383905bdbdb83c4f344876050bbc8c2931b408dcaf3d3c4992657dbd25793d",
+      "components/preview/reference-live.js": "4839383529a3ee82df1d8efe675d430567abc1986034499107aa429d21a18ea6",
+      "components/reference-policy.json": "4ae8f51f623386417e38d497caafb8bda4417c929159002a7ac088e6e526b482",
+      "components/sources/capability-completion-20261115/first.json": "02e23097b721152443417c08cafae86dab324acd607b0a5acd8aca2256c637a0",
+      "components/sources/dialog-mg-20261115/review.json": "ea3311dc815cb0fda4b71ceccb1d64900700e2460a706a8847a5a5e95ae127b7",
+      "components/sources/five-variants-20261115/review.json": "821baac5e00e60f1a796ae8d0a1881ae122da740e477666a54b3e94a13a7556f",
+      "components/sources/form-stepper-list-mg-20261115/list-review.json": "9c53fb9030146a1ea15199e00989e230c4bd3bd55fb903475f8eb4f66ae69e55",
+      "components/sources/list-option-mg-20261115/review.json": "e8d424ddcef3f8c44413851d17943317e386c0f9cd8f8eaeec964ab3192194ae",
+      "components/sources/list/card-unordered12-fixed-source-1014.json": "28fddbc9c8e2891a0d16e90d6dde074387d5e5c53968f399e3ce7fddc5cfd26e",
+      "components/sources/list/card-unordered14-fixed-source-1014.json": "23dfe6d303e1cc746e853a3e7d6b6c6f9623e757414ee99fef5cc597c9f765b6",
+      "components/sources/list/current-mother-instance-tree-review-1015.json": "e3891cb82e44c84e359f41b18f59601a7fad7aeae291b934769e93e62c04a356",
+      "components/sources/list/local-structure-review.json": "adcd857172aadae75d97e91f9427113b140ff2f803ed8481d2196dce0988eb37",
+      "components/sources/list/native-operation-review-1011.json": "34d55a9606f238a60aa124b143be05b43996149dcc27144ed65dba2e1157f54d",
+      "components/sources/menu-navigation/card-sidebar-288-1115.html": "7334274f9f489d5f756ce038e6607fbccdda77c664d91455cb2fdfb67abb6c85",
+      "components/token-specs/border-radius.json": "b01e4c23fbc7e19983d9592b59b0303155b79d66c52459356eda0ea9f4ca74b5",
+      "components/token-specs/border.json": "d286ee4681deda1c7702c310b065c86f824539b3a8797efba05b24bc225ab322",
+      "components/token-specs/colors.json": "5267d59fdc687b54496977280c00c97f0beb6ffce013f87853504f5b736d3389",
+      "components/token-specs/shadows.json": "fe73ecce057e1219e0ea69a898f0610f78b9e623556d6be457dd3c2c8701eaf5",
+      "components/token-specs/spacing.json": "351b14cfce4411248ad41e00eaaf2b1cab9b705997980dfed1fc65693740e65c",
+      "components/token-specs/typography.json": "93b7dc07547218a33c075b7cdcd942f89094353a7847d483d8378b8883327e16",
+      "components/tokens.css": "f63f3c8fea511d8029902bc3905b01853ac5e92049c1b18ca35ebc9a680c3e69",
+      "components/variants/button.html": "6b6715b66e6c0b684c072dcdcbf7170aeb9f49a31bb32ca5b8986644d626cfe6",
+      "components/variants/card-call-checks.html": "616c3a4b805d7d9921ef3756141087546ff08473907fa0563e00bb69da6fbc03",
+      "components/variants/card.html": "b43e27ebba1815709741d779b54961fa6b11cf71f5d3235d578a4b2047aa1cd4",
+      "components/variants/checkbox.html": "7d99c4b8d7b3c89433a31d6a9205f89607c5cbd398abd76824ae7c92bbdf83f6",
+      "components/variants/dialog.html": "40132b51264249e10a92ea5f24730d989ca1415daa62f9ef42d391aadff7f21f",
+      "components/variants/icon-button.html": "91c84e01916ffb0fb58a102a83123aa24b16263a9d3a744dc0316ec19f2f317f",
+      "components/variants/icon-card.html": "2e837261adda417d216df7d113785c5c74ad0c5b085c5d7206e1c78fa306171a",
+      "components/variants/input-number.html": "502b6b905d7f911bd7ae924d104b45a8aa23409749f94ae634a27fbb3c73ef81",
+      "components/variants/list.html": "51f7f184f06b1e0a334887d65cf352e2c89a43a5ac72358b88bf405500f0d98e",
+      "components/variants/menu-navigation.html": "6238b924e7c62295141a5dba9b8900cd5eb39779a19ce00fb307aac928900462"
+    },
+    "graphFingerprint": "a581200b002411f009b55cbec7e8bee77108adf069264736d1cff38c754251f7",
+    "note": "从本地源文件生成；不是 MasterGo 在线实时状态。"
+  },
+  "readScope": {
+    "variant": "content-stream",
+    "note": "只展开当前已选变体；其他变体没有被声明为不可用。尺寸继续按真实 sizeOptions 选择。"
+  }
+}

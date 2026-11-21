@@ -1,0 +1,325 @@
+<!-- INTERNAL VARIANT SOURCE: for compile/sync scripts only. Human-facing spec: maintenance/foundation-prototypes-20261114/video-button.html -->
+<!DOCTYPE html>
+<html data-component-reference="video-button" lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VideoButton 视频播放按钮 - 组件预览</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../tokens.css">
+  <link rel="stylesheet" href="../components.css">
+  <link rel="stylesheet" href="../video-button-current.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: var(--font-family-base);
+      padding: 40px;
+      background: #FFFFFF;
+      color: var(--color-gray-1);
+    }
+    h1 { font-size: 24px; font-weight: 600; margin-bottom: 8px; }
+    .subtitle { font-size: 14px; color: var(--color-gray-3); margin-bottom: 40px; }
+
+    /* 关联关系表：与依赖表统一表头浅灰底 + 方格描边 */
+    .rel-table { width: 100%; border-collapse: collapse; }
+    .rel-table th { background: #F6F6F8; font-size: 12px; font-weight: 600; text-align: left; padding: 8px 10px; border: 1px solid #DEE0E3; vertical-align: top; }
+    .rel-table td { font-size: 12px; padding: 8px 10px; border: 1px solid #DEE0E3; vertical-align: top; }
+
+    /* Category Badge（分类与左侧导航栏保持一致） */
+    .cat-badge { display: inline-flex; align-items: center; height: 22px; padding: 0 10px; border-radius: 11px; font-size: 11px; font-weight: 700; margin-bottom: 10px; }
+
+    .section { margin-bottom: 48px; }
+    .section-title {
+      font-size: 18px; font-weight: 600; margin-bottom: 24px;
+      padding-bottom: 8px; border-bottom: 1px solid var(--color-gray-5);
+    }
+
+    /* Grid layout for state columns */
+    .state-header {
+      display: grid;
+      grid-template-columns: 120px repeat(2, 1fr);
+      gap: 16px;
+      margin-bottom: 12px;
+      padding: 0 24px;
+    }
+    .state-header span {
+      font-size: 12px;
+      color: rgba(255,255,255,0.5);
+      text-align: center;
+    }
+    .state-header span:first-child { text-align: left; }
+
+    .btn-row {
+      display: grid;
+      grid-template-columns: 120px repeat(2, 1fr);
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 16px;
+      padding: 0 24px;
+    }
+    .btn-row .label {
+      font-size: 12px;
+      color: rgba(255,255,255,0.5);
+    }
+    .btn-row .cell {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Dark background container */
+    .dark-bg {
+      background: #4B4B4D;
+      border-radius: 8px;
+      padding: 24px 0;
+    }
+
+  </style>
+</head>
+<body>
+  <span class="cat-badge" style="background:#EEE8F3;color:#512971;">通用 General</span>
+  <h1>VideoButton 视频播放按钮 <span class="version-badge" style="font-size:18px;font-weight:600;color:#707070;vertical-align:middle;margin-left:10px;">v1.0</span></h1>
+  <p class="subtitle">视频播放控制按钮 — 用于深色背景，支持时间标签 (S/L) 和播放按钮 (XL) 两种形态，黑色与反白两种配色</p>
+
+    <div style="height:24px;"></div>
+    <!-- 变体决策 + 关联关系表 -->
+  <div style="margin-bottom: 0; padding: 24px; background: #FAFBFC; border: 1px solid var(--color-gray-5); border-radius: 8px;">
+    <!-- AUTO-GENERATED-DECISION-TABLE:START -->
+    <p style="font-size:14px;font-weight:600;margin-bottom:4px;">变体决策</p>
+    <p style="font-size:12px;color:#707070;margin-bottom:12px;">按内容与交互选具体变体，再核对同版调用资格。候选、不用、参考同时用于规范展示与AI；既有来源、当前MG核对、工程与视觉批准分开记录。</p>
+    <table style="width:100%;border-collapse:collapse;table-layout:fixed;">
+      <colgroup><col style="width:18%"><col style="width:38%"><col style="width:44%"></colgroup>
+      <thead><tr><th scope="col" style="background:#F6F6F8;font-size:12px;font-weight:600;text-align:left;padding:8px 10px;border:1px solid #DEE0E3;">变体</th><th scope="col" style="background:#F6F6F8;font-size:12px;font-weight:600;text-align:left;padding:8px 10px;border:1px solid #DEE0E3;">匹配条件</th><th scope="col" style="background:#F6F6F8;font-size:12px;font-weight:600;text-align:left;padding:8px 10px;border:1px solid #DEE0E3;">选型结论</th></tr></thead>
+<tbody><tr><th scope="rowgroup" rowspan="2" style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">深色遮罩</th><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">亮色视频封面上的深色S时长标签。</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>候选 · </strong>调用dark；当前固定S；duration为时长内容，action归宿主。</td></tr>
+<tr><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">纯播放XL、播放暂停状态或内建播放器。</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>不用 · </strong>不使用此变体；先核对相邻组件和实际调用范围。</td></tr></tbody>
+<tbody><tr><th scope="rowgroup" rowspan="2" style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">浅色反白</th><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">深色视频封面上的反白S时长标签。</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>候选 · </strong>调用light；当前固定S；使用原播放图标。</td></tr>
+<tr><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">亮底对比不足、任意尺寸或播放状态。</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>不用 · </strong>不使用此变体；先核对相邻组件和实际调用范围。</td></tr></tbody>
+<tbody><tr><th scope="rowgroup" rowspan="1" style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">时间标签</th><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">视频封面上需展示播放时长，选 S 或 L。</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>设计参考 · </strong>S/L完整尺寸矩阵与XL仅保留原规范；当前两个调用固定S。</td></tr></tbody>
+<tbody><tr><th scope="rowgroup" rowspan="1" style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">播放按钮</th><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">视频封面或 Hero 的纯播放入口；XL 仅显示播放图标。</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>设计参考 · </strong>S/L完整尺寸矩阵与XL仅保留原规范；当前两个调用固定S。</td></tr></tbody>
+    </table>
+    <!-- AUTO-GENERATED-DECISION-TABLE:END -->
+  </div>
+
+    <!-- DEPENDENCY-SUMMARY-SPACING -->
+    <div style="height:24px;"></div>
+    <!-- AUTO-GENERATED-DEPENDENCY-SUMMARY-TABLE:START -->
+    <div style="margin-bottom: 0; padding: 24px; background: #FAFBFC; border: 1px solid var(--color-gray-5); border-radius: 8px;">
+      <p style="font-size: 14px; font-weight: 600; margin-bottom: 4px;">依赖汇总表</p>
+      <p style="font-size: 12px; color: #707070; margin-bottom: 12px;">按组件类型汇总组件关系、颜色、字体、间距、描边、圆角、阴影和图标依赖；未填写 <code>appliesTo</code> 的组件级依赖不猜测变体归属，不参与本表归类。「组件关系」列用标签区分：<span style="display:inline-block;font-size:11px;line-height:16px;padding:0 5px;border-radius:3px;background:#EAF2FF;color:#0060BF;">子组件</span> = 嵌入本组件内部；<span style="display:inline-block;font-size:11px;line-height:16px;padding:0 5px;border-radius:3px;background:#F3EEFA;color:#512971;">父组件·类名证据／仅声明</span> = 从宿主 <code>componentDependencies</code> 自动推导；类名出现不等于具体变体、尺寸、必需结构或交互已验证，链接仅供打开 Preview 复核；<span style="display:inline-block;font-size:11px;line-height:16px;padding:0 5px;border-radius:3px;background:#FFF3E0;color:#A65300;">参考·未验证</span> = 仅保留设计意图，宿主 preview 尚无真实结构，不可作为已实现依赖。</p>
+      <div class="dep-summary-scroll">
+        <div class="dep-summary-grid" style="grid-template-columns:minmax(max-content, auto) repeat(8, minmax(max-content, 1fr));">
+          <div class="dep-cell dep-cell--sticky dep-cell--head" role="columnheader">组件类型</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">颜色</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">字体</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">间距</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">描边</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">圆角</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">阴影</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">图标</div>
+          <div class="dep-cell dep-cell--head dep-cell--right-edge" role="columnheader">组件关系</div>
+          <div class="dep-cell dep-cell--sticky" role="rowheader"><strong>时间标签</strong><br><code>time-tag</code></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#FFFFFF;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-white" style="color:#0060BF;text-decoration:underline;"><code>color.white</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:rgba(255,255,255,0.1);vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-white-translucent" style="color:#0060BF;text-decoration:underline;"><code>color.white-translucent</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:rgba(25,25,26,0.6);vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-video-dark-surface" style="color:#0060BF;text-decoration:underline;"><code>color.video-dark-surface</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:rgba(25,25,26,0.8);vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-video-dark-hover-surface" style="color:#0060BF;text-decoration:underline;"><code>color.video-dark-hover-surface</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:rgba(255,255,255,0.3);vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-video-light-hover-surface" style="color:#0060BF;text-decoration:underline;"><code>color.video-light-hover-surface</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">14px · md · Regular 400</span><a href="font.html#tok-typography-h7-regular" style="color:#0060BF;text-decoration:underline;"><code>typography.h7-regular</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">12px · sm · Regular 400</span><a href="font.html#tok-typography-h9-regular" style="color:#0060BF;text-decoration:underline;"><code>typography.h9-regular</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">8px</span><a href="spacing.html#tok-spacing-sm" style="color:#0060BF;text-decoration:underline;"><code>spacing.sm</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">4px</span><a href="spacing.html#tok-spacing-xs" style="color:#0060BF;text-decoration:underline;"><code>spacing.xs</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">16px</span><a href="spacing.html#tok-spacing-lg" style="color:#0060BF;text-decoration:underline;"><code>spacing.lg</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;color:#A6A6A6;font-size:11px;margin-right:8px;vertical-align:-3px;flex:0 0 auto;">∅</span><a href="stroke.html#tok-border-style-none" style="color:#0060BF;text-decoration:underline;"><code>border.style.none</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">4px</span><a href="radius.html#tok-border-radius-md" style="color:#0060BF;text-decoration:underline;"><code>border-radius.md</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><img src="../icons/icon-play.svg?v=e0816bc18438" alt="" style="display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;"><a href="icon-map.html#icon-play" style="color:#0060BF;text-decoration:underline;"><code>icon-play.svg</code></a></span></div>
+          <div class="dep-cell dep-cell--right-edge" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:normal;overflow-wrap:anywhere;"><span style="display:inline-block;flex-shrink:0;font-size:11px;line-height:16px;padding:0 5px;margin-right:6px;border-radius:3px;background:#FFF3E0;color:#A65300;">参考·未验证</span><span style="color:#19191A;" title="2026-07-17 核查：card.html preview 里没有 ds-video-btn 真实结构，card.json 也未声明依赖 VideoButton。此条为设计意图/未来参考用法（视频封面型卡片出现时才用），保留手写。">Card</span></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:normal;overflow-wrap:anywhere;"><span style="display:inline-block;flex-shrink:0;font-size:11px;line-height:16px;padding:0 5px;margin-right:6px;border-radius:3px;background:#FFF3E0;color:#A65300;">参考·未验证</span><span style="color:#19191A;" title="2026-07-17 核查：banner.html preview 里没有 ds-video-btn 真实结构，banner.json 也未声明依赖 VideoButton。此条为设计意图/未来参考用法，保留手写。">Banner</span></span></div>
+          <div class="dep-cell dep-cell--sticky dep-cell--bottom-edge" role="rowheader"><strong>播放按钮</strong><br><code>play-button</code></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#FFFFFF;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-white" style="color:#0060BF;text-decoration:underline;"><code>color.white</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:rgba(255,255,255,0.1);vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-white-translucent" style="color:#0060BF;text-decoration:underline;"><code>color.white-translucent</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:rgba(25,25,26,0.6);vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-video-dark-surface" style="color:#0060BF;text-decoration:underline;"><code>color.video-dark-surface</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:rgba(25,25,26,0.8);vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-video-dark-hover-surface" style="color:#0060BF;text-decoration:underline;"><code>color.video-dark-hover-surface</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:rgba(255,255,255,0.3);vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-video-light-hover-surface" style="color:#0060BF;text-decoration:underline;"><code>color.video-light-hover-surface</code></a></span></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">8px</span><a href="spacing.html#tok-spacing-sm" style="color:#0060BF;text-decoration:underline;"><code>spacing.sm</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">12px</span><a href="spacing.html#tok-spacing-md" style="color:#0060BF;text-decoration:underline;"><code>spacing.md</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">25px</span><a href="spacing.html#tok-spacing-25" style="color:#0060BF;text-decoration:underline;"><code>spacing.25</code></a></span></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;color:#A6A6A6;font-size:11px;margin-right:8px;vertical-align:-3px;flex:0 0 auto;">∅</span><a href="stroke.html#tok-border-style-none" style="color:#0060BF;text-decoration:underline;"><code>border.style.none</code></a></span></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">4px</span><a href="radius.html#tok-border-radius-md" style="color:#0060BF;text-decoration:underline;"><code>border-radius.md</code></a></span></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><img src="../icons/icon-play.svg?v=e0816bc18438" alt="" style="display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;"><a href="icon-map.html#icon-play" style="color:#0060BF;text-decoration:underline;"><code>icon-play.svg</code></a></span></div>
+          <div class="dep-cell dep-cell--right-edge dep-cell--bottom-edge" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:normal;overflow-wrap:anywhere;"><span style="display:inline-block;flex-shrink:0;font-size:11px;line-height:16px;padding:0 5px;margin-right:6px;border-radius:3px;background:#FFF3E0;color:#A65300;">参考·未验证</span><span style="color:#19191A;" title="2026-07-17 核查：card.html preview 里没有 ds-video-btn 真实结构，card.json 也未声明依赖 VideoButton。此条为设计意图/未来参考用法（视频封面型卡片出现时才用），保留手写。">Card</span></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:normal;overflow-wrap:anywhere;"><span style="display:inline-block;flex-shrink:0;font-size:11px;line-height:16px;padding:0 5px;margin-right:6px;border-radius:3px;background:#FFF3E0;color:#A65300;">参考·未验证</span><span style="color:#19191A;" title="2026-07-17 核查：banner.html preview 里没有 ds-video-btn 真实结构，banner.json 也未声明依赖 VideoButton。此条为设计意图/未来参考用法，保留手写。">Banner</span></span></div>
+        </div>
+      </div>
+    </div>
+    <!-- AUTO-GENERATED-DEPENDENCY-SUMMARY-TABLE:END -->
+
+  <!-- TEMPLATE-DEMO-SPACING -->
+  <div style="height:24px;"></div>
+
+
+
+<!-- ============================================
+       SECTION 1: 黑色 Dark
+       ============================================ -->
+  <div class="section">
+    <div class="section-title">黑色 (Dark) — background rgba(25,25,26,0.6)</div>
+    <div class="dark-bg">
+      <div class="state-header">
+        <span>尺寸</span>
+        <span>默认 Default</span>
+        <span>悬停 Hover</span>
+      </div>
+
+      <!-- S -->
+      <div class="btn-row">
+        <span class="label">S (Time Tag)</span>
+        <div class="cell" id="icon-usage-icon-play" style="scroll-margin-top: 40px;">
+          <button class="ds-video-btn ds-video-btn--dark ds-video-btn--s" data-ai-example="ai-video-dark-s" type="button" aria-label="Play video">
+            <img class="ds-video-btn__icon" src="../icons/icon-play.svg" alt="">
+            <span class="ds-video-btn__text">03:52</span>
+          </button>
+        </div>
+        <div class="cell">
+          <button class="ds-video-btn ds-video-btn--dark ds-video-btn--s ds-video-btn--hover">
+            <img class="ds-video-btn__icon" src="../icons/icon-play.svg" alt="play">
+            <span class="ds-video-btn__text">03:52</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- L -->
+      <div class="btn-row">
+        <span class="label">L (Time Tag)</span>
+        <div class="cell">
+          <button class="ds-video-btn ds-video-btn--dark ds-video-btn--l" data-ai-example="ai-video-dark-l" type="button" aria-label="Play video">
+            <img class="ds-video-btn__icon" src="../icons/icon-play.svg" alt="">
+            <span class="ds-video-btn__text">00:28</span>
+          </button>
+        </div>
+        <div class="cell">
+          <button class="ds-video-btn ds-video-btn--dark ds-video-btn--l ds-video-btn--hover">
+            <img class="ds-video-btn__icon" src="../icons/icon-play.svg" alt="play">
+            <span class="ds-video-btn__text">00:28</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- XL -->
+      <div class="btn-row">
+        <span class="label">XL (Play Button)</span>
+        <div class="cell">
+          <button class="ds-video-btn ds-video-btn--dark ds-video-btn--xl">
+            <img class="ds-video-btn__icon" src="../icons/icon-play.svg" alt="play">
+          </button>
+        </div>
+        <div class="cell">
+          <button class="ds-video-btn ds-video-btn--dark ds-video-btn--xl ds-video-btn--hover">
+            <img class="ds-video-btn__icon" src="../icons/icon-play.svg" alt="play">
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================
+       SECTION 2: 反白 Light
+       ============================================ -->
+  <div class="section">
+    <div class="section-title">反白 (Light) — background rgba(255,255,255,0.1)</div>
+    <div class="dark-bg">
+      <div class="state-header">
+        <span>尺寸</span>
+        <span>默认 Default</span>
+        <span>悬停 Hover</span>
+      </div>
+
+      <!-- S -->
+      <div class="btn-row">
+        <span class="label">S (Time Tag)</span>
+        <div class="cell">
+          <button class="ds-video-btn ds-video-btn--light ds-video-btn--s" data-ai-example="ai-video-light-s" type="button" aria-label="Play video">
+            <img class="ds-video-btn__icon" src="../icons/icon-play.svg" alt="">
+            <span class="ds-video-btn__text">03:52</span>
+          </button>
+        </div>
+        <div class="cell">
+          <button class="ds-video-btn ds-video-btn--light ds-video-btn--s ds-video-btn--hover">
+            <img class="ds-video-btn__icon" src="../icons/icon-play.svg" alt="play">
+            <span class="ds-video-btn__text">03:52</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- L -->
+      <div class="btn-row">
+        <span class="label">L (Time Tag)</span>
+        <div class="cell">
+          <button class="ds-video-btn ds-video-btn--light ds-video-btn--l" data-ai-example="ai-video-light-l" type="button" aria-label="Play video">
+            <img class="ds-video-btn__icon" src="../icons/icon-play.svg" alt="">
+            <span class="ds-video-btn__text">00:28</span>
+          </button>
+        </div>
+        <div class="cell">
+          <button class="ds-video-btn ds-video-btn--light ds-video-btn--l ds-video-btn--hover">
+            <img class="ds-video-btn__icon" src="../icons/icon-play.svg" alt="play">
+            <span class="ds-video-btn__text">00:28</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- XL -->
+      <div class="btn-row">
+        <span class="label">XL (Play Button)</span>
+        <div class="cell">
+          <button class="ds-video-btn ds-video-btn--light ds-video-btn--xl">
+            <img class="ds-video-btn__icon" src="../icons/icon-play.svg" alt="play">
+          </button>
+        </div>
+        <div class="cell">
+          <button class="ds-video-btn ds-video-btn--light ds-video-btn--xl ds-video-btn--hover">
+            <img class="ds-video-btn__icon" src="../icons/icon-play.svg" alt="play">
+          </button>
+        </div>
+      </div>
+    </div>
+  
+  </div>
+
+  <!-- DS_PREVIEW_AUTOHEIGHT: 供 component-library.html 堆叠合并视图自撑高，勿删 -->
+  <script>
+    (function () {
+      // 嵌入组件库 iframe 时，关闭自身竖向滚动条：高度由父页按内容精确设定，
+      // 避免出现「父页滚动条 + iframe 自身滚动条」两条滚动条。
+      if (window.parent !== window && document.documentElement) {
+        document.documentElement.style.overflow = 'hidden';
+      }
+      // 用 body 最后一个可视元素的 bottom 作为高度，去掉 body padding-bottom / 尾部 section
+      // margin-bottom 等空白，避免合并视图（stage--stacked）里两个 iframe 之间出现过大间隙。
+      // rAF 节流合并 ResizeObserver 抖动，减少视觉上的高度反复变化。
+      var reportPending = false;
+      function measure() {
+        var last = null;
+        if (document.body) {
+          for (var i = document.body.children.length - 1; i >= 0; i--) {
+            var c = document.body.children[i];
+            if (c.tagName === 'SCRIPT' || c.tagName === 'STYLE') continue;
+            last = c;
+            break;
+          }
+        }
+        if (last) {
+          var rect = last.getBoundingClientRect();
+          var scrollY = window.scrollY || window.pageYOffset || 0;
+          return Math.ceil(rect.bottom + scrollY);
+        }
+        return Math.max(document.body ? document.body.scrollHeight : 0, document.documentElement.scrollHeight);
+      }
+      function report() {
+        parent.postMessage({ __dsPreviewHeight: measure(), __dsUrl: location.href }, '*');
+      }
+      function scheduleReport() {
+        if (reportPending) return;
+        reportPending = true;
+        requestAnimationFrame(function () { reportPending = false; report(); });
+      }
+      window.addEventListener('load', scheduleReport);
+      window.addEventListener('resize', scheduleReport);
+      setTimeout(report, 300);
+      if (window.ResizeObserver && document.body) {
+        new ResizeObserver(scheduleReport).observe(document.body);
+      }
+    })();
+  </script>
+  <script src="../preview/preview-link.js"></script>
+  <script src="../preview/reference-live.js"></script>
+</body>
+</html>

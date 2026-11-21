@@ -1,0 +1,36 @@
+{
+  "schemaVersion": "fs-component-source-review/1.0.0",
+  "component": "video-button",
+  "status": "partial-source-scope",
+  "source": {
+    "file": "components/sources/remaining-prototypes-mg-20261115/video-button.txt",
+    "fileId": "209944605602401",
+    "root": "3:11394",
+    "title": "【按钮】设计规范V2.0.2610A",
+    "sha256": "7f237572b04d990b4dd3ccfefc84706b4f7ea0eaaf7d0ba78234601e3675b504",
+    "url": "https://mastergo.com/file/209944605602401?page_id=M&layer_id=3:11394",
+    "method": "Fresh read-only local MasterGo bridge /api/getSelectionNode, exact file identity and main-component ancestry verified; no canvas changes"
+  },
+  "scope": "当前文件规范及原件与现有有限调用的选型、父子结构和交互边界核对；不包含全族尺寸状态、业务运行及视觉批准。",
+  "findings": [
+    {
+      "nodes": [
+        "3:18739"
+      ],
+      "sourceFact": "当前按钮规范包含视频播放按钮主组件，含黑色/反白和时长标签、纯播放原件。",
+      "correction": "两个本地调用固定默认S，时长与可访问名称可编辑；L/XL等源尺寸不等于当前本地size参数。"
+    },
+    {
+      "nodes": [
+        "3:18739"
+      ],
+      "sourceFact": "视频入口原件不是播放器业务状态机。",
+      "correction": "播放动作交给宿主click回调，不增加播放器、暂停/加载或其他状态。"
+    }
+  ],
+  "unverified": [
+    "未开放的组合、设备、尺寸和业务状态继续保留参考，不改变发布资格。",
+    "未进行全族逐像素视觉确认；原CSS/JS及原子、父子维护链保持。"
+  ],
+  "ruleDigest": "584c28f6f943437e1121f5819cabcabbb7be14ba616c48067e1b3a4b42bf6d95"
+}

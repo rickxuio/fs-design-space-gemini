@@ -1,0 +1,664 @@
+{
+  "schemaVersion": "fs-component-reference/1.0.0",
+  "component": {
+    "id": "navigation",
+    "name": "Navigation",
+    "scope": "fixed-desktop-header-footer-default",
+    "reviewStatus": {
+      "engineering": "pending",
+      "visual": "pending",
+      "familyCoverage": "partial"
+    }
+  },
+  "selection": {
+    "policy": "仅使用同版US英文PC固定header/footer Default，零内容编辑。新文件87058/84947已核对；不新增其他国家/语言或Pad/M。主导航Hover沿用用户确认的400字重、独立2px红色标记及无位移规则；新MG原子Hover600列为视觉差异，不直接覆盖。Footer复用原Button红色S32px/12px，Input仍锁定已闭合的专属保留Default32px实例，不升级基础42px Input；订阅/搜索/账户/购物车生产业务不在本调用范围。",
+    "supported": [
+      "header",
+      "footer"
+    ],
+    "unsupported": [
+      "header-responsive",
+      "footer-responsive",
+      "editable-fixed-shell",
+      "live-site-navigation",
+      "production-search-account-cart",
+      "other-footer-sites",
+      "live-input-master",
+      "input-non-default-source-approval"
+    ]
+  },
+  "runtime": {
+    "styles": [
+      "components/tokens.css",
+      "components/components.css",
+      "components/navigation-current.css",
+      "components/navigation-header-web-atom.css",
+      "components/button-current.css",
+      "components/button-runtime-current.css",
+      "components/input-footer-source.css",
+      "components/navigation-footer-current.css",
+      "components/navigation-header-action-atom.css",
+      "components/menu-navigation-current.css",
+      "components/navigation-products-current.css"
+    ],
+    "scripts": [
+      "components/menu-navigation-current.js",
+      "components/navigation-products-current.js"
+    ],
+    "fontStylesheets": [
+      "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+    ]
+  },
+  "identity": {
+    "rule": "Frozen authored native Header literal, including actual logo/link/action hierarchy. No rewrite, wrapper div or custom labels. data-ai-example is only reference metadata. New fixed header includes the source public product menu; source shell is separately hashed so synchronizing the child cannot approve unrelated shell changes.",
+    "authoredSha256": "4d7b286d27e9abd3b45940b2a2b9e98e25d6b4d5ccbe0316bf26bc8fa6e65545",
+    "footerAuthoredSha256": "3a45da8726c6ed5ca25221ba8af0fd8ba983f6084d7c83d682b7cb2e8470065a",
+    "footerSource": "source-locked US047031 Default with retained Input047152; not a live generic Input master",
+    "previousHeaderAuthoredSha256": "148183118db34baf6fb0b1297207b389c59c696f31873f0864cbe064e8a8c4a1",
+    "headerSource": "US036747 host Default source reviewed; opaque nested atom internals and states pending",
+    "headerProductsShellSha256": "88c2161edd698f2c67f02cc4cb1cc77e8da9d3301c9eddebca8620121083e23c"
+  },
+  "locked": [
+    "Entire fixed Header authored DOM/text/attributes",
+    "Existing 32px topbar / 68px nav / 1200px layout",
+    "Existing inline icon export and navigation placeholders",
+    "No content edits or new search/account/cart behavior"
+  ],
+  "behavior": {
+    "fixedShell": "Zero editable fields; preserve Rule 0. DOM changes require separately reviewed source, never a page CSS override.",
+    "links": "Existing href=# values are legacy Preview placeholders, not live-site target proof; this literal has no new destination or business implementation.",
+    "footer": "US Footer来源锁定Default精确片段：Input047152/022380、022382内部已读取并作为独立源锁定子部件。旧母组件仍删除，非Default输入状态未批准；不得当成当前42px基础Input或通用32px变体。",
+    "source": "2026-10-13 PC/Web US Header036747及Footer047031宿主完整节点已读取；Header嵌套原子内部与状态未闭合。Footer保留输入Default子部件已闭合，旧母组件及其他状态仍待。",
+    "productMenu": "All Products click/hover/ArrowDown opens source240px child; hoverable trigger+panel region, outside click/focus exit closes, Escape closes and restores trigger. Leaf emits existing ds:menu-navigation-change. No hidden source routing or backend assumed."
+  },
+  "examples": [
+    {
+      "name": "footer",
+      "publication": {
+        "key": "navigation/footer",
+        "disposition": "restricted",
+        "newPages": true,
+        "reason": "Fixed US PC Header/Footer, zero editable content; retained Footer Default input subpart only; no alternate country/input-state/subscription implementation.",
+        "constraints": [
+          "Fixed US PC Header/Footer, zero editable content; retained Footer Default input subpart only; no alternate country/input-state/subscription implementation."
+        ],
+        "contractPolicy": "固定PC Header与US Footer Default零内容编辑。Footer输入部分锁定当前保留实例来源，不升级42px基础Input；其他国家、Pad/M、输入框其他状态、业务订阅不在本调用范围。精确调用工程验收以当前证明为准，视觉批准仍待。",
+        "use": "finite-new-page-candidate",
+        "evidence": "components/contracts/navigation.json#aiContract/evidence",
+        "requiresCurrentEngineering": true,
+        "visualApproval": "separate-not-granted"
+      },
+      "rootTag": "footer",
+      "sizeOptions": [],
+      "bindings": {},
+      "purpose": "fixed-source-locked-us-footer-default",
+      "whenToUse": "同版US英文PC固定Footer Default。",
+      "whenNotToUse": "内容区链接组、其他站点/语言或订阅业务。",
+      "rootClasses": "ds-nav-footer",
+      "requiredStructure": [
+        "div.ds-nav-footer__inner",
+        "div.ds-nav-footer__columns",
+        "div.ds-nav-footer__sidebar",
+        "div.ds-nav-footer__badges",
+        "div.ds-nav-footer__legal"
+      ],
+      "slots": {},
+      "allowedEdits": [],
+      "exampleHtml": "<footer class=\"ds-nav-footer\" data-fragment=\"footer\" data-footer-pc-current=\"\" data-ai-example=\"ai-navigation-fixed-footer\">\n    <div class=\"ds-nav-footer__inner\">\n      <div class=\"ds-nav-footer__columns\">\n        <div class=\"ds-nav-footer__col\">\n          <h4 class=\"ds-nav-footer__col-title\">About Us</h4>\n          <ul class=\"ds-nav-footer__col-links\">\n            <li><a class=\"ds-nav-footer__col-link\" aria-disabled=\"true\">Overview</a></li>\n            <li><a class=\"ds-nav-footer__col-link\" aria-disabled=\"true\">Global Warehouse</a></li>\n            <li><a class=\"ds-nav-footer__col-link\" aria-disabled=\"true\">Advanced R&amp;D Center</a></li>\n            <li><a class=\"ds-nav-footer__col-link\" aria-disabled=\"true\">Quality Control</a></li>\n            <li><a class=\"ds-nav-footer__col-link\" aria-disabled=\"true\">Compliance Center</a></li>\n            <li><a class=\"ds-nav-footer__col-link\" aria-disabled=\"true\">Test Center</a></li>\n            <li><a class=\"ds-nav-footer__col-link\" aria-disabled=\"true\">Contact Us</a></li>\n          </ul>\n        </div>\n        <div class=\"ds-nav-footer__col ds-nav-footer__col--service\">\n          <h4 class=\"ds-nav-footer__col-title\">Service</h4>\n          <ul class=\"ds-nav-footer__col-links\">\n            <li><a class=\"ds-nav-footer__col-link\" aria-disabled=\"true\">Payment Methods</a></li>\n            <li><a class=\"ds-nav-footer__col-link\" aria-disabled=\"true\">Shipping Guide</a></li>\n            <li><a class=\"ds-nav-footer__col-link\" aria-disabled=\"true\">Business Account</a></li>\n            <li><a class=\"ds-nav-footer__col-link\" aria-disabled=\"true\">Net Terms</a></li>\n            <li><a class=\"ds-nav-footer__col-link\" aria-disabled=\"true\">Return Policy</a></li>\n            <li><a class=\"ds-nav-footer__col-link\" aria-disabled=\"true\">Product Warranty</a></li>\n            <li><a class=\"ds-nav-footer__col-link\" aria-disabled=\"true\">Give us your Feedback</a></li>\n          </ul>\n        </div>\n        <div class=\"ds-nav-footer__col\">\n          <h4 class=\"ds-nav-footer__col-title\">Resource</h4>\n          <ul class=\"ds-nav-footer__col-links\">\n            <li><a class=\"ds-nav-footer__col-link\" aria-disabled=\"true\">Documentation</a></li>\n            <li><a class=\"ds-nav-footer__col-link\" aria-disabled=\"true\">Glossary</a></li>\n            <li><a class=\"ds-nav-footer__col-link\" aria-disabled=\"true\">Audio &amp; Video</a></li>\n            <li><a class=\"ds-nav-footer__col-link\" aria-disabled=\"true\">FS Blog</a></li>\n            <li><a class=\"ds-nav-footer__col-link\" aria-disabled=\"true\">Case Studies</a></li>\n          </ul>\n        </div>\n        <div class=\"ds-nav-footer__col\">\n          <h4 class=\"ds-nav-footer__col-title\">Support</h4>\n          <ul class=\"ds-nav-footer__col-links\">\n            <li><a class=\"ds-nav-footer__col-link\" aria-disabled=\"true\">FAQ &amp; Help Center</a></li>\n            <li><a class=\"ds-nav-footer__col-link\" aria-disabled=\"true\">Solution Support</a></li>\n            <li><a class=\"ds-nav-footer__col-link\" aria-disabled=\"true\">Query Tool</a></li>\n            <li><a class=\"ds-nav-footer__col-link\" aria-disabled=\"true\">WDM Tranceiver Stock List</a></li>\n            <li><a class=\"ds-nav-footer__col-link\" aria-disabled=\"true\">Products Verification</a></li>\n            <li><a class=\"ds-nav-footer__col-link\" aria-disabled=\"true\">Track My Order</a></li>\n            <li><a class=\"ds-nav-footer__col-link\" aria-disabled=\"true\">RMA Checklist</a></li>\n          </ul>\n        </div>\n        <div class=\"ds-nav-footer__sidebar\">\n          <div class=\"ds-nav-footer__subscribe\">\n            <h4 class=\"ds-nav-footer__col-title\">Stay in Touch</h4>\n            <div class=\"ds-nav-footer__subscribe-form\">\n              <input type=\"email\" class=\"ds-input-footer-source\" placeholder=\"Email\" aria-label=\"Email\" data-footer-input-retained-source=\"\">\n              <button class=\"ds-btn ds-btn--filled-red ds-btn--s\" type=\"button\" data-footer-button-current=\"\"><span class=\"ds-btn__text\">Subscribe</span></button>\n            </div>\n          </div>\n          <div class=\"ds-nav-footer__app\">\n            <h4 class=\"ds-nav-footer__col-title\">Download FS APP</h4>\n            <div class=\"ds-nav-footer__app-badges\"><a id=\"icon-usage-img-google-play\" aria-label=\"Get it on Google Play\" style=\"scroll-margin-top: 40px;\" aria-disabled=\"true\"><img src=\"../sources/navigation/footer-assets-1013/68908-047170.png\" alt=\"Google Play\" height=\"28\" style=\"width: 88px;\"></a>\n              <a id=\"icon-usage-img-app-store\" aria-label=\"Download on the App Store\" style=\"scroll-margin-top: 40px;\" aria-disabled=\"true\"><img src=\"../sources/navigation/footer-assets-1013/68908-047171.png\" alt=\"App Store\" height=\"28\" style=\"width: 87.73px;\"></a>\n              \n            </div>\n          </div>\n          <div class=\"ds-nav-footer__social\"><img src=\"../sources/navigation/footer-assets-1013/68908-047164.png\" alt=\"LinkedIn, YouTube, Facebook, X, Instagram, Reddit\" data-footer-source-social=\"\"></div>\n        </div>\n      </div>\n\n      <div class=\"ds-nav-footer__badges\">\n        <div class=\"ds-nav-footer__badges-left\">\n          <img src=\"../sources/navigation/footer-assets-1013/68908-047076.png\" alt=\"DigiCert\" height=\"28\" style=\"scroll-margin-top: 40px; width: 59px;\">\n          <img src=\"../sources/navigation/footer-assets-1013/68908-047074.png\" alt=\"TrustedSite\" height=\"28\" style=\"scroll-margin-top: 40px; width: 58px;\">\n          <img src=\"../sources/navigation/footer-assets-1013/68908-047075.png\" alt=\"BBB\" height=\"28\" style=\"scroll-margin-top: 40px; width: 58px;\">\n          <img src=\"../sources/navigation/footer-assets-1013/68908-047073.png\" alt=\"Google Reviews\" height=\"28\" style=\"scroll-margin-top: 40px; width: 74px;\">\n        </div>\n        <div class=\"ds-nav-footer__badges-right\">\n          <a class=\"ds-nav-footer__region-link\" aria-disabled=\"true\">\n            United States / $ USD\n            <svg class=\"ds-nav-footer__dropdown-icon\" width=\"12\" height=\"12\" viewBox=\"0 0 12 12\" fill=\"none\">\n              <path d=\"M3 4.5L6 7.5L9 4.5\" stroke=\"#707070\" stroke-width=\"1.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n            </svg>\n          </a>\n        </div>\n      </div>\n\n      <hr class=\"ds-nav-footer__divider\">\n\n      <div class=\"ds-nav-footer__legal\">\n        <div class=\"ds-nav-footer__legal-links\">\n          <a class=\"ds-nav-footer__legal-link\" aria-disabled=\"true\">Site Map</a>\n          <span class=\"ds-nav-footer__legal-divider\"></span>\n          <a class=\"ds-nav-footer__legal-link\" aria-disabled=\"true\">Accessibility</a>\n          <span class=\"ds-nav-footer__legal-divider\"></span>\n          <a class=\"ds-nav-footer__legal-link\" aria-disabled=\"true\">Privacy Policy and Notice at Collection</a>\n          <span class=\"ds-nav-footer__legal-divider\"></span>\n          <a class=\"ds-nav-footer__legal-link\" aria-disabled=\"true\">Cookies Notice</a>\n          <span class=\"ds-nav-footer__legal-divider\"></span>\n          <a class=\"ds-nav-footer__legal-link\" aria-disabled=\"true\">Terms and Conditions</a>\n          <span class=\"ds-nav-footer__legal-divider\"></span>\n          <a class=\"ds-nav-footer__legal-link\" aria-disabled=\"true\">Report a Vulnerability</a>\n          <span class=\"ds-nav-footer__legal-divider\"></span>\n          <a class=\"ds-nav-footer__legal-link\" aria-disabled=\"true\">Do Not Sell or Share My Personal Information</a>\n          <span class=\"ds-nav-footer__legal-divider\"></span>\n          <a class=\"ds-nav-footer__legal-link\" aria-disabled=\"true\">Company Policies</a>\n          <span class=\"ds-nav-footer__legal-divider\"></span>\n          <a class=\"ds-nav-footer__legal-link\" aria-disabled=\"true\">Cookie Settings</a>\n        </div>\n        <div class=\"ds-nav-footer__copyright\">\n          Copyright © 2009-2026 FS.COM INC. All Rights Reserved.\n        </div>\n      </div>\n    \n  </div>\n  </footer>"
+    }
+  ],
+  "relationships": {
+    "children": [
+      {
+        "id": "button",
+        "contract": "components/contracts/button.json",
+        "variants": [
+          "filled-red"
+        ],
+        "sizes": [
+          {
+            "variant": "filled-red",
+            "size": "s"
+          }
+        ],
+        "appliesTo": [
+          "footer"
+        ],
+        "slot": "footer.subscribe",
+        "preview": "components/variants/button.html"
+      },
+      {
+        "id": "input",
+        "contract": "components/contracts/input.json",
+        "part": "navigation-us-retained-default",
+        "scope": "source-locked Default subpart of existing Navigation US Footer047152 only; not current42px Basic Input",
+        "variants": [
+          "gray"
+        ],
+        "appliesTo": [
+          "footer"
+        ],
+        "slot": "footer.subscribeInput",
+        "preview": "components/variants/input.html"
+      }
+    ],
+    "parents": [],
+    "parentStatus": "no-declared-hosts",
+    "icons": [
+      {
+        "file": "components/icons/icon-social-facebook.svg",
+        "registry": "components/icons/icons-manifest.json",
+        "appliesTo": [
+          "footer"
+        ],
+        "usage": "底部社交媒体链接 — Facebook"
+      },
+      {
+        "file": "components/icons/icon-social-x.svg",
+        "registry": "components/icons/icons-manifest.json",
+        "appliesTo": [
+          "footer"
+        ],
+        "usage": "底部社交媒体链接 — X"
+      },
+      {
+        "file": "components/icons/icon-social-instagram.svg",
+        "registry": "components/icons/icons-manifest.json",
+        "appliesTo": [
+          "footer"
+        ],
+        "usage": "底部社交媒体链接 — Instagram"
+      },
+      {
+        "file": "components/icons/icon-social-linkedin.svg",
+        "registry": "components/icons/icons-manifest.json",
+        "appliesTo": [
+          "footer"
+        ],
+        "usage": "底部社交媒体链接 — LinkedIn"
+      },
+      {
+        "file": "components/icons/icon-social-reddit.svg",
+        "registry": "components/icons/icons-manifest.json",
+        "appliesTo": [
+          "footer"
+        ],
+        "usage": "底部社交媒体链接 — Reddit"
+      },
+      {
+        "file": "components/icons/icon-social-youtube.svg",
+        "registry": "components/icons/icons-manifest.json",
+        "appliesTo": [
+          "footer"
+        ],
+        "usage": "底部社交媒体链接 — YouTube"
+      },
+      {
+        "file": "components/icons/img-app-store.svg",
+        "registry": "components/icons/icons-manifest.json",
+        "appliesTo": [
+          "footer"
+        ],
+        "usage": "底部 App 下载徽章 — App Store"
+      },
+      {
+        "file": "components/icons/img-google-play.svg",
+        "registry": "components/icons/icons-manifest.json",
+        "appliesTo": [
+          "footer"
+        ],
+        "usage": "底部 App 下载徽章 — Google Play"
+      },
+      {
+        "file": "components/icons/img-badge-trustpilot.svg",
+        "registry": "components/icons/icons-manifest.json",
+        "appliesTo": [
+          "footer"
+        ],
+        "usage": "底部认证徽章 — Trustpilot"
+      },
+      {
+        "file": "components/icons/img-badge-trustedsite.svg",
+        "registry": "components/icons/icons-manifest.json",
+        "appliesTo": [
+          "footer"
+        ],
+        "usage": "底部认证徽章 — TrustedSite"
+      },
+      {
+        "file": "components/icons/img-badge-bbb.svg",
+        "registry": "components/icons/icons-manifest.json",
+        "appliesTo": [
+          "footer"
+        ],
+        "usage": "底部认证徽章 — BBB"
+      },
+      {
+        "file": "components/icons/img-badge-google.svg",
+        "registry": "components/icons/icons-manifest.json",
+        "appliesTo": [
+          "footer"
+        ],
+        "usage": "底部认证徽章 — Google Reviews"
+      }
+    ],
+    "tokens": [
+      {
+        "name": "color.brand-red",
+        "value": "#C00000",
+        "unit": null,
+        "cssVar": "--brand-red",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.blue",
+        "value": "#0060BF",
+        "unit": null,
+        "cssVar": "--color-blue",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.gray-1",
+        "value": "#19191A",
+        "unit": null,
+        "cssVar": "--color-gray-1",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.gray-3",
+        "value": "#707070",
+        "unit": null,
+        "cssVar": "--color-gray-3",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.gray-5",
+        "value": "#DEE0E3",
+        "unit": null,
+        "cssVar": "--color-gray-5",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.gray-9",
+        "value": "#FAFBFB",
+        "unit": null,
+        "cssVar": "--color-gray-9",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.white",
+        "value": "#FFFFFF",
+        "unit": null,
+        "cssVar": "--color-white",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.hover-overlay-light",
+        "value": "rgba(25,25,26,0.04)",
+        "unit": null,
+        "cssVar": "--color-hover-overlay-light",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "border-radius.sm",
+        "value": 2,
+        "unit": "px",
+        "cssVar": "--border-radius-sm",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border-radius.json"
+      },
+      {
+        "name": "border-radius.md",
+        "value": 4,
+        "unit": "px",
+        "cssVar": "--border-radius-md",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border-radius.json"
+      },
+      {
+        "name": "typography.font-family-base",
+        "value": "Open Sans",
+        "unit": null,
+        "cssVar": "--font-family-base",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "spacing.sm",
+        "value": 8,
+        "unit": "px",
+        "cssVar": "--spacing-sm",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.md",
+        "value": 12,
+        "unit": "px",
+        "cssVar": "--spacing-md",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.lg",
+        "value": 16,
+        "unit": "px",
+        "cssVar": "--spacing-lg",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.xl",
+        "value": 24,
+        "unit": "px",
+        "cssVar": "--spacing-xl",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.2xl",
+        "value": 32,
+        "unit": "px",
+        "cssVar": "--spacing-2xl",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.xs",
+        "value": 4,
+        "unit": "px",
+        "cssVar": "--spacing-xs",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.48",
+        "value": 48,
+        "unit": "px",
+        "cssVar": "--spacing-48",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.20",
+        "value": 20,
+        "unit": "px",
+        "cssVar": "--spacing-20",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "border.width.default",
+        "value": 1,
+        "unit": "px",
+        "cssVar": "--border-width-default",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.style.default",
+        "value": "solid",
+        "unit": null,
+        "cssVar": "--border-style-default",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.default",
+        "value": "var(--color-gray-5)",
+        "unit": null,
+        "cssVar": "--border-color-default",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.style.none",
+        "value": "none",
+        "unit": null,
+        "cssVar": "--border-style-none",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "typography.font-weight-regular",
+        "value": 400,
+        "unit": null,
+        "cssVar": "--font-weight-regular",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-weight-semibold",
+        "value": 600,
+        "unit": null,
+        "cssVar": "--font-weight-semibold",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-size-md",
+        "value": 14,
+        "unit": "px",
+        "cssVar": "--font-size-md",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-size-sm",
+        "value": 12,
+        "unit": "px",
+        "cssVar": "--font-size-sm",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.h7-regular",
+        "value": {
+          "fontSize": "14px",
+          "lineHeight": "22px",
+          "fontWeight": 400
+        },
+        "unit": null,
+        "cssVar": null,
+        "primitiveReferences": {
+          "fontSize": "typography.font-size-md",
+          "fontWeight": "typography.font-weight-regular"
+        },
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.h7-semibold",
+        "value": {
+          "fontSize": "14px",
+          "lineHeight": "22px",
+          "fontWeight": 600
+        },
+        "unit": null,
+        "cssVar": null,
+        "primitiveReferences": {
+          "fontSize": "typography.font-size-md",
+          "fontWeight": "typography.font-weight-semibold"
+        },
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.h9-regular",
+        "value": {
+          "fontSize": "12px",
+          "lineHeight": "20px",
+          "fontWeight": 400
+        },
+        "unit": null,
+        "cssVar": null,
+        "primitiveReferences": {
+          "fontSize": "typography.font-size-sm",
+          "fontWeight": "typography.font-weight-regular"
+        },
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "color.gray-8",
+        "value": "#F6F6F8",
+        "unit": null,
+        "cssVar": "--color-gray-8",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "spacing.2",
+        "value": 2,
+        "unit": "px",
+        "cssVar": "--spacing-2",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      }
+    ]
+  },
+  "evidence": {
+    "localImplementation": "components/variants/navigation.html",
+    "comparison": "components/sources/navigation/local-structure-review.json",
+    "baseline": "components/sources/navigation/fixed-header-baseline.html",
+    "exportIndex": "components/sources/navigation/source-index.json",
+    "nativeUsFooterOverviewCurrent": "components/sources/navigation/pc-us-footer-overview-review-1013.json",
+    "fixedHeaderHttp": "components/sources/navigation/header-http-review-1013.json",
+    "currentUsFooter": "components/sources/navigation/pc-us-footer-full-node-1013.json",
+    "footerInputReference": "components/sources/navigation/footer-input-reference-1013.json",
+    "footerCurrentInputComparison": "components/sources/navigation/footer-current-input-comparison-1013.json",
+    "footerPcChanges": "components/sources/navigation/pc-footer-implementation-review-1013.json",
+    "footerRetainedInput": "components/sources/navigation/footer-retained-input-default-1013.json",
+    "fixedFooterBaseline": "components/sources/navigation/fixed-footer-baseline.html",
+    "currentUsHeader": "components/sources/navigation/pc-us-header-full-node-1013.json",
+    "headerHostReview": "components/sources/navigation/pc-header-host-review-1013.json",
+    "headerWebAtom": "components/sources/navigation/header-web-atom-review-1013.json",
+    "headerWebHoverRaster": "components/sources/navigation/header-web-hover-mastergo-1013.png",
+    "headerActionAtoms": "components/sources/navigation/header-action-atoms-review-1013.json",
+    "headerSearchRaster": "components/icons/navigation-header-search-1013.png",
+    "currentMgReview": "components/sources/navigation-us-mg-20261115/review.json",
+    "fiveVariantSource": "components/sources/five-variants-20261115/review.json"
+  },
+  "sourceValidation": {
+    "componentIdentity": {
+      "status": "not-established",
+      "files": []
+    },
+    "specificationBody": {
+      "status": "not-established",
+      "files": []
+    },
+    "originalOnlineFrontendCode": false,
+    "browserComputedStyles": false,
+    "completeSpecificationCoverage": false,
+    "buttonNesting": {
+      "scope": "finite-authored-button-nesting-only",
+      "checked": [
+        {
+          "variant": "footer",
+          "buttons": [
+            {
+              "variant": "filled-red",
+              "size": "s",
+              "type": "button"
+            }
+          ]
+        }
+      ],
+      "pending": [],
+      "browserVerified": false
+    },
+    "otherAtomNesting": {
+      "TextButton": {
+        "scope": "finite-canonical-TextButton-default-calls",
+        "checked": [],
+        "inactive": [],
+        "browserVerified": false,
+        "hostStyleCascadeVerified": false
+      }
+    }
+  },
+  "freshness": {
+    "fingerprints": {
+      "components/button-current.css": "45e94e48ec97a34b4883ecc4f11b33301cdd6679445a3970cb16a2a87c6d8c9e",
+      "components/button-runtime-current.css": "caaa9b65a8d2fbebfa487ca3e0cf0c67d36e0219ffc55d4b0d801371a02da76c",
+      "components/components.css": "a08b4fe2790b5ff2b784c6362a90f1b94e7535a03e863232ce6d620a52e85f73",
+      "components/contracts/button.json": "1f3092d74e19c1a840fbf2e8b8ecaf6115976b2941cc5484e4cda824025b1f73",
+      "components/contracts/input.json": "b367155c40d99807834add264130f574d150f95f09836fe70e84e3bf37a174d1",
+      "components/contracts/menu-navigation.json": "44245628e9fe977355b231a6126fd3af379ddf7a0676f10358f6410a098c1b72",
+      "components/contracts/navigation.json": "71339b624eade6758958b1d75f2bd7c04cf31dcc0cb75114dad0bfb79c82ef66",
+      "components/contracts/text-button.json": "323301e3a3438778dd29d5d6c32fd7e661846707ce711b5c0ec82d11fea12fc5",
+      "components/icons/icon-account.svg": "66168fc8ec0493c9775fbfaf182f6ac3314eb7e2b9104e0db092ec3d1d4d8cf1",
+      "components/icons/icon-cart.svg": "b86811904a2144428d62db5374820e8f76a06e2f120c03e1ec87ca35c90753db",
+      "components/icons/icon-logo-fs.svg": "1bb8085713718c9ad56a52665f382944a844266155f6d33476a02f4ace76ff4e",
+      "components/icons/icon-search.svg": "11e01599b008320c723773284b56944f810762688a2928b37e6cb228fc9a3347",
+      "components/icons/icon-social-facebook.svg": "fc0eb42dd7f748704e846d2ffdd182e24fab3f51aaf7c7aa7ab857ca6274a716",
+      "components/icons/icon-social-instagram.svg": "f89366d1630e936492a156f1becc215103876b4d28418ad149d1568f88973903",
+      "components/icons/icon-social-linkedin.svg": "b731a14e60fc99c1c800e73a231449efdaed1c7120ff74d50dcc6cce2d801b58",
+      "components/icons/icon-social-reddit.svg": "84c32e869fa0e3aec2c929fe61c30178014b35c7dc23532f6fdf34720d91cdd9",
+      "components/icons/icon-social-x.svg": "0ce4cc2b9491e46b1307f23f4b82ccab8f5eddce45e8b40017fc410301331c39",
+      "components/icons/icon-social-youtube.svg": "e0c4a5232f15fea93023aca6cf2bbe22fe2e922491bcd288654e0e798e97d7e2",
+      "components/icons/icons-manifest.json": "12c48af6d1dc59d50b76046bb0507005f565aa4224a6d8056ce4eaaf8050c43e",
+      "components/icons/img-app-store.svg": "77ab4f618b0103bc358a6805e395e5b821c4d476631fa8d7ff37fdad2dccfd5c",
+      "components/icons/img-badge-bbb.svg": "f3742db8a6001357bc358d521f56743316b33e5791274b1b51aa165b382a4d83",
+      "components/icons/img-badge-google.svg": "18bf48be483753df8eabe6d3c15afe8f241a411a47c6616d3a7196f5ece65601",
+      "components/icons/img-badge-trustedsite.svg": "9718228016716b43f3e4cdc648d19f4a62d69fdedb321d44563c4efa6fee5d48",
+      "components/icons/img-badge-trustpilot.svg": "76e5eaca52379eade966e9b80db8d31a70e4ab8f8efe3a287530b7512e8e426b",
+      "components/icons/img-google-play.svg": "a344c8d5149a7944620d850ea019803e3f890be50ef88ac90bb541d2e782a1cb",
+      "components/icons/navigation-header-search-1013.png": "eed580b7f2ac40f414bd809ce870c303a1387d236f954e9ed3f87e172cb23ddc",
+      "components/input-footer-source.css": "d2b0747530794b3fcba5e8db98a360b98192aa2b295cdc66e8f77c482be1e64c",
+      "components/menu-navigation-current.css": "4c0bd3fe77d5dfe7b48de489878dc574cbe7ff91fa78b6f875cb15f4733c146e",
+      "components/menu-navigation-current.js": "512de10798b244da08f7f8d34a0c2de06cb333e0d508952b896c6eefd202b115",
+      "components/navigation-current.css": "ad6bb2f9e2f313094a52fe879ab1337d1cfe8902f4929cb9919f82c72012d9c3",
+      "components/navigation-footer-current.css": "862bdcaefde34d94faa0dedac89d4f0254eae7c5fc6e2fb4bd417ff59c06de26",
+      "components/navigation-header-action-atom.css": "5d559688f9bbcedd42f24c89d97cb2fe48328d69e023a1d5f88edafad4933515",
+      "components/navigation-header-web-atom.css": "6c3bdd2fc6499e53679cb8dae300b3665c42c3cdc9f4c13c392b5f1b65d0d6a5",
+      "components/navigation-products-current.css": "0d728ddef54fdabb33be488b08882336dd2ad8ff8d2a4afd6649dc8a92dfa6d6",
+      "components/navigation-products-current.js": "c7906283373689ac97e00402990225f1718c9cf013d8039869fff385d54a3e9a",
+      "components/preview/reference-live.js": "4839383529a3ee82df1d8efe675d430567abc1986034499107aa429d21a18ea6",
+      "components/reference-policy.json": "4ae8f51f623386417e38d497caafb8bda4417c929159002a7ac088e6e526b482",
+      "components/sources/five-variants-20261115/review.json": "821baac5e00e60f1a796ae8d0a1881ae122da740e477666a54b3e94a13a7556f",
+      "components/sources/input/navigation-footer-retained-default.html": "134f2e33267e2169e57049fee49501cbcf26587e385fb69b1fc4329a67900a77",
+      "components/sources/navigation-us-mg-20261115/review.json": "0f5b608b7473c3d7ed3e93f250d36e9e01f5fe3cf050cb1ecd136c6a78479f9e",
+      "components/sources/navigation/fixed-footer-baseline.html": "33c56bb7c1f1c0a8a3812aaa61be64a9a929cf0e0312ad292ccc61c1b9eabbbe",
+      "components/sources/navigation/fixed-header-baseline.html": "cf0cac5a47f8623e4a6d998eb57d54f57aefe534866b7b53e9c99c7528cd5b93",
+      "components/sources/navigation/footer-current-input-comparison-1013.json": "f6f7ee0684be16c2817efb5713d12598943622b4014cfd6104f5d808a1e6d370",
+      "components/sources/navigation/footer-input-reference-1013.json": "a3ee4bbbd9fc7f0abb04dd380b83fbd2263a922ed97b5f80caafb4d06dc97cd3",
+      "components/sources/navigation/footer-retained-input-default-1013.json": "9b77e52f4aabb9194e9e3f24c39374b788879a4617d775c60edaf638b619193c",
+      "components/sources/navigation/header-action-atoms-review-1013.json": "f4527e41cc92bc3b6d5d5731fd3912f4aad60b0d7c87c29e2e0517f40b70dc89",
+      "components/sources/navigation/header-http-review-1013.json": "20c4344cf6818916609ff7268f0a84c94b22a67917904d0c8b8ff56c5afdbb9e",
+      "components/sources/navigation/header-web-atom-review-1013.json": "cb5cb00a10c86fe0bfdc1d26004e35dd68914667786e2308a7f038ecc6266c90",
+      "components/sources/navigation/header-web-hover-mastergo-1013.png": "a226133185199d63a3e8d43647a4a0d0aafa30449e8fc2a322726e43fee94d90",
+      "components/sources/navigation/local-structure-review.json": "27f2e6da4ed73a4d98c5343f821b6f8a5c5ccc6674909a495e86740b581ba60a",
+      "components/sources/navigation/pc-footer-implementation-review-1013.json": "40157b5d8197095f64cb8caafbde3cb4656d4b1d733557c634ff998f07f607d9",
+      "components/sources/navigation/pc-header-host-review-1013.json": "faa74a51fec7fbcc0c32f1c9bb797dcee7b6424f82c63815c21d552ee4b6d538",
+      "components/sources/navigation/pc-us-footer-full-node-1013.json": "cce432d78a5ca82e1b22820e3ff57744f1324667bcee8101dd169a846966a6c4",
+      "components/sources/navigation/pc-us-footer-overview-review-1013.json": "1bbc621b90ae5fbf2f37db4939076fb361a62a8d602689d0f1566b23e2263abf",
+      "components/sources/navigation/pc-us-header-full-node-1013.json": "1914468f3210a93090bc1c95428e419afa832255176a1e8f54fe94221d003f01",
+      "components/sources/navigation/source-index.json": "1def1cbba8dc5d0b110878c41f4db2e7c9c483a5f2f61ec7534b4b0221670441",
+      "components/token-specs/border-radius.json": "b01e4c23fbc7e19983d9592b59b0303155b79d66c52459356eda0ea9f4ca74b5",
+      "components/token-specs/border.json": "d286ee4681deda1c7702c310b065c86f824539b3a8797efba05b24bc225ab322",
+      "components/token-specs/colors.json": "5267d59fdc687b54496977280c00c97f0beb6ffce013f87853504f5b736d3389",
+      "components/token-specs/spacing.json": "351b14cfce4411248ad41e00eaaf2b1cab9b705997980dfed1fc65693740e65c",
+      "components/token-specs/typography.json": "93b7dc07547218a33c075b7cdcd942f89094353a7847d483d8378b8883327e16",
+      "components/tokens.css": "f63f3c8fea511d8029902bc3905b01853ac5e92049c1b18ca35ebc9a680c3e69",
+      "components/variants/button.html": "6b6715b66e6c0b684c072dcdcbf7170aeb9f49a31bb32ca5b8986644d626cfe6",
+      "components/variants/input.html": "d34e9585cb00f4293912c199391e0b8328b13fe8db16ac4b4ea4b05b596d10c1",
+      "components/variants/menu-navigation.html": "6238b924e7c62295141a5dba9b8900cd5eb39779a19ce00fb307aac928900462",
+      "components/variants/navigation.html": "300042ed2992013e57983a3895b164ae4499712707e8aa5a5bffe67ac0660081",
+      "components/variants/text-button.html": "6295056d973b26231a68158bd758ebde321d8a105326a740f159006a1a7bd2f8",
+      "page-inputs/bdcom-oem-m2/component-sources/navigation.json": "4b7460bf9a3f67c6f706304235bfb39f152ffefd827efe54d5493b0ac7d3e10a"
+    },
+    "graphFingerprint": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "note": "从本地源文件生成；不是 MasterGo 在线实时状态。"
+  },
+  "readScope": {
+    "variant": "footer",
+    "note": "只展开当前已选变体；其他变体没有被声明为不可用。尺寸继续按真实 sizeOptions 选择。"
+  }
+}

@@ -1,0 +1,185 @@
+{
+  "schemaVersion": "fs-native-specification-review/1.0.0",
+  "status": "partial-visible-source-review",
+  "reviewedAt": "2026-10-11",
+  "source": {
+    "fileId": "143880409387753",
+    "pageId": "3752:4056",
+    "url": "https://mastergo.com/file/143880409387753?fileOpenFrom=project&page_id=3752%3A4056",
+    "readMethod": "Native Chrome visible MasterGo canvas and property panel only",
+    "actualWindow": "1920x960",
+    "readingZoom": "77%",
+    "originalScreenshotFile": null,
+    "remoteRevision": null
+  },
+  "version": {
+    "outerLabel": "v1.0.2603A",
+    "visibleHeading": "v1.1.2603A",
+    "visibleUpdateLog": "v1.1.2603A",
+    "updateDate": "2026-03-17",
+    "boundary": "Outer label differs from visible normative heading/log; no inferred remote revision."
+  },
+  "readScope": [
+    "Update log",
+    "Component composition",
+    "Position usage overview",
+    "2.1 dot",
+    "2.2 dot with text status color table",
+    "2.3 count",
+    "2.4 icon introductory rules",
+    "3.1 position rule and diagram",
+    "3.2 status-text business typography boundary",
+    "3.3 icon login and live-chat right-dot examples",
+    "4.1 wrong top-left / correct top-right diagrams",
+    "4.2 oversized internal graphic / proper graphic diagrams"
+  ],
+  "facts": {
+    "updateLog": [
+      "Default gray changed #89898C to #707070",
+      "Added dot/text definition",
+      "Added pending #FFD748"
+    ],
+    "dot": {
+      "size": "8x8px",
+      "textGap": "6px",
+      "placement": "Usually left of text; right is a special case when existing left graphics prevent normal status placement. Top-right dot is reserved, currently unused on FS.COM."
+    },
+    "statusColors": {
+      "green": "#10A300",
+      "red": "#C00000",
+      "gray": "#707070",
+      "yellow": "#FFD748",
+      "orange": "#F56300"
+    },
+    "statusTextBoundary": "3.2明确只限定圆点尺寸/颜色/与文字间距；搭配图标/文字按相关规范或业务场景。当前组合原子14pxSemiBold/22为有限默认实例，并非所有场景文字强制值。",
+    "count": {
+      "pcPad": "Single and double digits 18x18px; 99+ 25x18px",
+      "typography": "12px Regular, white #FFFFFF, background #C00000, centered",
+      "max": "Usually 99+ according to scenario, not a universally enforced runtime formatter",
+      "mobileReferenceOnly": "Height12px, 10px Semibold; diagram single12x12 and 99+20x12. Adaptation testing remains deferred."
+    },
+    "icon": {
+      "purpose": "Display expanded rights/discount/promotion, online-avatar/ID surroundings",
+      "existingUsage": "Only M account logged-in status currently used",
+      "pcPad": "Container18x18px, internal graphic maximum9x9px; currently unused, reserved",
+      "mobileReferenceOnly": "Container12x12px, internal graphic maximum7x7px",
+      "boundary": "No evidence for the existing local standalone account SVG being the original internal graphic."
+    },
+    "position": "3.1：宿主容器右上角对角统一；沿X/Y轴各重叠一半。图标/文字视觉大小导致错乱或漂浮时允许沿轴适当偏移，但非默认改尺寸。4.1明示左上角错误、右上角正确。",
+    "specialCases": {
+      "3.3icon": "Only M account logged-in status currently used; PC variant is reserved canonical source.",
+      "3.3rightDot": "Only live-chat service state when existing left graphic prevents normal left-dot arrangement.",
+      "4.2": "Internal graphic must respect size limit; preserve originalPC/M SVG paths, do not scale fullcontainer down to internalgraphic size."
+    },
+    "positionImplementationBoundary": "Shared ds-badge-anchor with top0/right0 and translate(50%,-50%) matches base placement rule as stylesheet evidence; actual browser box/paint evidence remains pending."
+  },
+  "rejectedEvidence": [
+    {
+      "layerId": "19792:45916",
+      "label": "标注/遮罩",
+      "size": "18x18",
+      "reason": "Selected annotation overlay, not canonical count atom; must not use as component geometry proof."
+    }
+  ],
+  "implementationDifferences": [
+    {
+      "object": "icon graphic",
+      "current": "Shared CSS image18x18 PC /12x12 M",
+      "norm": "maximum9x9 PC /7x7 M",
+      "status": "PC and M wrong account silhouettes replaced with their distinct original18/12pxSVG. Shared account SVG/frozen pages unchanged, M AI and adaptation still excluded."
+    },
+    {
+      "object": "count width",
+      "current": "min-width18px with padding5 and content-driven width",
+      "norm": "Both one and two digits18x18, 99+25x18",
+      "status": "Current PC ordinary/99+ widths and text line box corrected from canonical atoms; actual local browser typography/geometry still pending."
+    }
+  ],
+  "pending": [
+    "Count one/two-digit and99+ actual browser dimensions",
+    "Actual local browser visual and host positioning evidence"
+  ],
+  "compatibility": "No shared CSS, SVG, runtime or frozen-page modifications; finite AI scope unchanged; no engineering/visual approval.",
+  "canonicalIcon": {
+    "setNode": "19792:46463",
+    "variantCount": 2,
+    "variants": "pc&pad, m",
+    "pcPadNode": "19792:46493",
+    "pcPadRoot": "18x18, radius40, background Red-#C00000, zero padding",
+    "graphic": "White rounded check; group1382 at x4.5/y5.98, 9x6.04; observed stroke1.2",
+    "graphicNodeId": null,
+    "boundary": "Original PC component is a red circular white check, not a standalone black account silhouette. Exact path/M child pending.",
+    "export": {
+      "originalFile": "components/sources/badge/pc&pad.svg",
+      "currentAsset": "components/icons/icon-badge-logged-in-pc.svg",
+      "sha256": "65f771d94bcbe0d5f443e18711674d5a5966051fc8ab8a7f6f64261e3c2d0486",
+      "bytes": 6125,
+      "method": "Native MasterGo visible export,1xSVG; Chrome completed download pc&pad.svg; Finder copied into source directory. File contents preserve node19792_46493 clip identity.",
+      "temporarySettings": "Added export setting and changed PNG toSVG, then two undo actions; selectedPC panel no export row after undo. Geometry/paint untouched.",
+      "boundary": "Exact original SVG acquired; actual local browser rendering remains pending."
+    },
+    "mobileExport": {
+      "node": "19792:46477",
+      "source": "components/sources/badge/m.svg",
+      "asset": "components/icons/icon-badge-logged-in-m.svg",
+      "size": "12x12",
+      "bytes": 5936,
+      "sha256": "dd0c742f47629dfd42b09ef2c0563384135702cfff87388afd077aa8604271b8",
+      "export": "Visible MasterGo1xSVG; Chrome download completed m.svg; Finder copied source file; temporary format/add-export settings undone.",
+      "boundary": "Distinct source paths preserved, not PC scaled down. Only source/asset correction; adaptation and actual local visual remain deferred/pending."
+    }
+  },
+  "canonicalCount": {
+    "setNode": "1673:52044",
+    "variants": "Min/Max x pc&pad/m端 =4",
+    "pcMin": {
+      "node": "1673:52030",
+      "size": "18x18",
+      "radius": 18,
+      "padding": "vertical4.5/5.5 (split UI), horizontal not fully expanded",
+      "gap": 10
+    },
+    "pcMax": {
+      "node": "1673:52035",
+      "size": "25x18",
+      "widthMode": "adapt",
+      "radius": 18,
+      "padding": "vertical0, horizontal2"
+    },
+    "pcMaxText": {
+      "node": null,
+      "text": "99+",
+      "size": "21x9",
+      "position": "2/4.5",
+      "font": "Open Sans12 Regular",
+      "lineHeight": 9,
+      "color": "White-#FFFFFF"
+    },
+    "implementation": "Marked current PC roots18/25 width and no extra padding; max class iff99+. No automatic count conversion or unmarked/M modification."
+  },
+  "canonicalStatusText": {
+    "setNode": "1673:52012",
+    "variants": 5,
+    "successNode": "1673:51996",
+    "sourceVariant": "In Transit",
+    "root": "44x22 for source Text, gap6, padding0, radius0",
+    "text": {
+      "node": null,
+      "style": "Open Sans/14px-SemiBold",
+      "size": "30x22",
+      "position": "14/0",
+      "paint": "Gray1-#19191A"
+    },
+    "dotInstance": {
+      "node": "1673:52104",
+      "component": "徽标数/状态点",
+      "state": "Green",
+      "size": "8x8",
+      "position": "0/7",
+      "radius": 8,
+      "paint": "Green-#10A300"
+    },
+    "boundary": "Finite success local style matches canonical assembly. Application table examples are distinct typography roles, not an override of the canonical atom."
+  },
+  "dotTextFollowup1013": "components/sources/badge/dot-text-property-review-1013.json"
+}

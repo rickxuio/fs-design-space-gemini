@@ -1,0 +1,127 @@
+{
+  "schemaVersion": "fs-local-component-review/1.0.0",
+  "status": "partial-original-source-reviewed",
+  "implementation": "components/preview/checkbox.html",
+  "scope": [
+    "lg/default",
+    "sm/default"
+  ],
+  "source": {
+    "originalDesignSnapshot": null,
+    "specDocument": "components/sources/checkbox/native-specification-review-1011.json",
+    "reason": "Current MasterGo source read now available; saved complete original snapshot remains missing.",
+    "labelProperties1013": [
+      "components/sources/checkbox/large-label-states-review-1013.json",
+      "components/sources/checkbox/small-label-states-review-1013.json"
+    ]
+  },
+  "observedStructure": {
+    "root": "label.ds-checkbox",
+    "children": [
+      "input.ds-checkbox__input",
+      "span.ds-checkbox__box",
+      "span.ds-checkbox__label"
+    ],
+    "nativeInput": true,
+    "standaloneRuntime": "components/checkbox-current.js"
+  },
+  "localCssFacts": {
+    "lg": {
+      "box": "18px",
+      "label": "14px/22px",
+      "gap": "spacing.sm"
+    },
+    "sm": {
+      "box": "14px",
+      "label": "13px/20px",
+      "gap": "spacing.sm"
+    },
+    "scope": "Declared local CSS, not computed browser measurement."
+  },
+  "hostBoundary": {
+    "hosts": [
+      "Select",
+      "Dropdown",
+      "OptionSelector",
+      "List"
+    ],
+    "selectDifference": "Current Select finite multi options now contain full label/box/label atom; Select owns role=option and selection events. Earlier box-only description is superseded by checkbox-nesting-1010.json.",
+    "decision": "Select/Dropdown受控标记适配明确省略独立input及control标记，保留完整box+label和当前原子资源；宿主管理role=option和状态事件。List/OptionSelector无标签适配仍待复核。",
+    "listBoundary": "List declares Checkbox(lg) for operation-intensive; Preview uses a span marker with box only and a caption outside the Checkbox root. Exact label-free adaptation remains unverified.",
+    "optionSelectorService": "Current six retained service specimens after1012 source-boundary cleanup now contain real span Checkbox(sm) root with direct native input+box; omitted atomic caption is supplied by owning outer service label. Host CSS only assembles grid and preserves disabled business media/content fade. Exact service source/browser verification pending."
+  },
+  "pending": [
+    "Canonical14/18六态标签声明属性已核；12态Regular字体Style已补，应用主引用、多行整体及实际视觉仍待",
+    "两尺寸Default/Hover/点击及Space已实测；完整宿主与用户视觉仍待",
+    "Label-free host adaptation and actual browser state verification",
+    "原生可用控件指针/Space已取得；完整焦点/禁用/半选及宿主边界仍待，静态矩阵不冒称交互通过",
+    "Disabled+indeterminate has no acquired source paint; AI binding not opened"
+  ],
+  "compatibility": "Current opted-in native controls share the same atomic paint; passive host marker mode remains available. Shared CSS and frozen historical resources unchanged.",
+  "sourceReview": "components/sources/checkbox/native-specification-review-1011.json",
+  "currentStateCorrection": {
+    "state": "disabled-checked",
+    "sizes": [
+      18,
+      14
+    ],
+    "source": "components/sources/checkbox/native-specification-review-1011.json",
+    "resource": "components/checkbox-current.css",
+    "boundary": "Static canonical Preview and current host resource synchronization, not native form interaction or browser acceptance",
+    "multiline": "Current marked atom flex-start with lg2px/sm3px top offset follows acquired source first line; actual browser geometry pending"
+  },
+  "nativeControlReview": {
+    "implementation": "components/checkbox-current.js",
+    "test": "scripts/checkbox-current.test.js",
+    "scope": "native click/disabled/FormData/reset/mixed initialization/dynamic insertion/duplicate runtime",
+    "browserAcceptance": "pending",
+    "aiEditable": [
+      "label",
+      "name",
+      "value",
+      "checked",
+      "disabled",
+      "changeCallback"
+    ],
+    "captionOmittedGeometry": "Registered native host adaptation retains source line wrapper min-height22/lg or20/sm, with existing top2/3 offset. Root without caption would otherwise shrink to icon+margin. Atom owns this rule; actual browser geometry pending.",
+    "fixture": "components/sources/maintenance/preview-source-cleanup-1012/preview-checkbox-engineering-fixture-1012.html",
+    "scopeBoundary": "工程form/Reset/自设文案已移出组件Preview；作为测试夹具保留，不作为原件/AI调用来源。"
+  },
+  "previewSourceCleanup1012": {
+    "source": "components/sources/maintenance/preview-source-cleanup-1012/checkbox-native-boundary-1012.txt",
+    "originalSet": "当前v1.2.2608C内复选框集合，14/18px × Default/Hover/Press/半选/Disable/Disable选中",
+    "removed": "额外原生form与Reset/业务文案演示",
+    "preserved": "真实原子矩阵、多行原件、lg/sm有限调用、Checkbox运行时/CSS及宿主原子样式",
+    "pending": "清理后实际视觉待用户；既有大尺寸/宿主未验收范围不扩大"
+  },
+  "labelSourceReview1013": {
+    "large": "components/sources/checkbox/large-label-states-review-1013.json",
+    "small": "components/sources/checkbox/small-label-states-review-1013.json",
+    "scope": "两尺寸六态标签字号/行高/颜色/gap；2026-10-14补齐12态显式Regular字体Style名，不冒称数字weight字段",
+    "result": "current-declared-properties-match",
+    "previousScope": "两尺寸六态标签字号、行高、颜色与gap；明确未输出字重，应用行不冒称原子尺寸",
+    "weightEvidence1014": {
+      "largeDefault": "components/sources/checkbox/large-default-label-weight-review-1014.json",
+      "largeOther": "components/sources/checkbox/large-other-label-weights-review-1014.json",
+      "small": "components/sources/checkbox/small-label-weights-review-1014.json"
+    }
+  },
+  "previewProseCorrection1013": {
+    "states": "12个既有root按每尺寸六态重新排列，明确Press与半选，不新增变体或演示",
+    "nativeSemantic": "禁止浏览器默认外观，不禁止原生input语义",
+    "assets": "SVG而非位图；12而非10",
+    "browser": "本轮没有实际浏览器截图；不尝试已拒绝路线"
+  },
+  "nativeRootModeReconciliation1014": {
+    "source": "default-root-mode-review-1014.json 两尺寸自身原件宽高适应",
+    "before": "既有独立native label根受父列stretch达到600px，无关空白形成热区",
+    "implementation": "current native root width fit-content/max-width100%/align-self flex-start，不硬编码104/95",
+    "guard": "checkbox-root-layout.js 真实CSS特定属性级联+原件AX指纹；A2编译绑定两源；旧遗漏/更强宽度/min-width/逻辑属性/flex/组合伪类负例",
+    "browser": [
+      "root-mode-browser-1014.json",
+      "root-mode-service-browser-1014.json",
+      "root-mode-list-browser-1014.json"
+    ],
+    "unverified": "Form/其他宿主受影响范围视觉失效并排队；禁用原生与完整标签业务规则、家族/用户批准仍待"
+  }
+}

@@ -1,0 +1,764 @@
+{
+  "schemaVersion": "fs-component-reference/1.0.0",
+  "component": {
+    "id": "rate",
+    "name": "Rate",
+    "scope": "finite-display-source-clear-input-and-count-derived-summary",
+    "reviewStatus": {
+      "engineering": "pending",
+      "visual": "pending",
+      "familyCoverage": "partial"
+    }
+  },
+  "selection": {
+    "policy": "单值只读用display；邀评输入用input；综合分值、评价总数和5至1星统计用summary。summary仅接受五项统计数量和筛选事件，固定16px官方图标、浅灰评分块及88px统计条。带图库和标签用Comment/rating-summary，它真实引用Rate/summary。原input尺寸与Clear限制保持；小数汇总只做显示适配，不开放半星输入或自由配色。",
+    "supported": [
+      "display",
+      "input",
+      "summary"
+    ],
+    "unsupported": [
+      "half-star",
+      "input-sm",
+      "disabled-canonical-call",
+      "dynamic-insertion-api",
+      "programmatic-set-api",
+      "native-form-value",
+      "mobile",
+      "summary-data-update-api",
+      "input-explanation-with-clear",
+      "universal-form-clear"
+    ]
+  },
+  "runtime": {
+    "styles": [
+      "components/tokens.css",
+      "components/components.css",
+      "components/rate-summary-current.css"
+    ],
+    "scripts": [
+      "components/rate-current.js",
+      "components/rate-summary-current.js"
+    ],
+    "fontStylesheets": [
+      "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+    ],
+    "fontFallback": "Open Sans stack; current source summary measured with local Open Sans400/600; whole-family visual approval remains pending."
+  },
+  "identity": {
+    "rule": "Display/input preserve five full stars; aggregate summary uses five official SVG layers with documented decimal display cropping. Display on/off sequence, aria-label and optional label agree. Canonical input retains group, five radio buttons, hidden machine output and Clear, with locked data-rate-clear-only. Clear-only does not display explanation alongside Clear.",
+    "labelRule": "Business grade words must be supplied, not invented. Input groupLabel is nonempty; labels is five strings, empty entries fall back to numeric value.",
+    "summary": "统计数量唯一驱动一位小数分值、官方星图显示、总数、分布及可访问标签；原件示例算术冲突保留在来源，不照抄成业务数据。"
+  },
+  "locked": [
+    "Five official stars and finite sizes; display/input integer-only, summary count-derived display",
+    "Noninteractive display role=img",
+    "Input radiogroup/radio and safe button types",
+    "Output and Clear structure",
+    "Shared CSS and actual rate.js behavior",
+    "data-rate-current marker on input specimens",
+    "Count-derived summary,official SVGs,source geometry,semantic progress and cancelable filter; decimal visual clipping is a documented display adaptation",
+    "Canonical clear-only marker and hidden machine output; no visible explanation/Clear combination"
+  ],
+  "behavior": {
+    "display": "No runtime display updater. Structured ratingContent must synchronize icons, aria-label and optional existing label.",
+    "initialization": "Current runtime has one document guard and MutationObserver reconciliation for current inputs; no public setValue API. Do not load legacy rate.js alongside it.",
+    "preview": "pointerover previews only icons while explanation/hidden state, data-value and aria-checked preserve the committed selection; pointerout restores committed stars.",
+    "commit": "Star click, Clear and keyboard emit ds:rate-change even for repeated same value; detail contains value/previousValue/label/source.",
+    "keyboard": "Arrows move from the focused button, Home/End select 1/5, Enter/Space commit current star; Clear selects 0 and focuses first star.",
+    "disabled": "Runtime initializes disabled class or aria-disabled. Enabled canonical calls do not expose state editing; changing class after initialization does not synchronize runtime state.",
+    "business": "No native form field or request. Host listens to the component event.",
+    "currentGuard": "Current document guard prevents duplicate event handlers; native disabled fieldsets/explicit custom disabled state update controls and tabstops. Legacy Comment host input without marker is not automatically upgraded.",
+    "summary": "Source-bound summary: gray score card,official16px on/off SVGs,88px progress; counts derive score,total and percentage. Hover/focus underline,Gray7 surface and white empty track;13px feedback; cancelable ds:rate-filter. Decimal star clipping is a documented display adaptation, not a new input variant or visual approval.",
+    "hover": "Preview stars only; preserve committed explanation text and hidden state until selection. Source v1.2.2604A2.1/4.2.",
+    "clearOnly": "Locked data-rate-clear-only keeps output hidden for initialization, hover, commits and Clear; callback data remains available. Unmarked generic input behavior unchanged."
+  },
+  "examples": [
+    {
+      "name": "display",
+      "publication": {
+        "key": "rate/display",
+        "disposition": "restricted",
+        "newPages": true,
+        "reason": "display only registered3 sizes; input only md/lg enabled Clear-only source. No summary/disabled-input/native-form binding.",
+        "constraints": [
+          "display only registered3 sizes; input only md/lg enabled Clear-only source. No summary/disabled-input/native-form binding."
+        ],
+        "contractPolicy": "Use the three actual display sizes and two enabled input sizes. Configure integer value 0..5 and five business-provided labels before initialization. Summary is excluded pending source/data review.",
+        "use": "finite-new-page-candidate",
+        "evidence": "components/contracts/rate.json#aiContract/evidence",
+        "requiresCurrentEngineering": true,
+        "visualApproval": "separate-not-granted"
+      },
+      "rootTag": "div",
+      "defaultSize": "sm",
+      "sizeOptions": [
+        {
+          "name": "sm",
+          "cssClass": "ds-rate--sm",
+          "styleProperties": {
+            "starSize": "16px"
+          },
+          "exampleHtml": "<div class=\"ds-rate ds-rate--display ds-rate--sm\" data-ai-example=\"ai-rate-display-sm\" role=\"img\" aria-label=\"5 out of 5 stars\">\n          <span class=\"ds-rate__stars\" aria-hidden=\"true\">\n            <img class=\"ds-rate__star\" src=\"../icons/icon-rate-on-16.svg\" alt=\"\">\n            <img class=\"ds-rate__star\" src=\"../icons/icon-rate-on-16.svg\" alt=\"\">\n            <img class=\"ds-rate__star\" src=\"../icons/icon-rate-on-16.svg\" alt=\"\">\n            <img class=\"ds-rate__star\" src=\"../icons/icon-rate-on-16.svg\" alt=\"\">\n            <img class=\"ds-rate__star\" src=\"../icons/icon-rate-on-16.svg\" alt=\"\">\n          </span>\n          <span class=\"ds-rate__label ds-rate__label--muted\">5.0</span>\n        </div>"
+        },
+        {
+          "name": "md",
+          "cssClass": "ds-rate--md",
+          "styleProperties": {
+            "starSize": "20px"
+          },
+          "exampleHtml": "<div class=\"ds-rate ds-rate--display ds-rate--md\" data-ai-example=\"ai-rate-display-md\" role=\"img\" aria-label=\"5 out of 5 stars, Excellent\">\n          <span class=\"ds-rate__stars\" aria-hidden=\"true\">\n            <img class=\"ds-rate__star\" src=\"../icons/icon-rate-on-20.svg\" alt=\"\">\n            <img class=\"ds-rate__star\" src=\"../icons/icon-rate-on-20.svg\" alt=\"\">\n            <img class=\"ds-rate__star\" src=\"../icons/icon-rate-on-20.svg\" alt=\"\">\n            <img class=\"ds-rate__star\" src=\"../icons/icon-rate-on-20.svg\" alt=\"\">\n            <img class=\"ds-rate__star\" src=\"../icons/icon-rate-on-20.svg\" alt=\"\">\n          </span>\n          <span class=\"ds-rate__label\">Excellent</span>\n        </div>"
+        },
+        {
+          "name": "lg",
+          "cssClass": "ds-rate--lg",
+          "styleProperties": {
+            "starSize": "24px"
+          },
+          "exampleHtml": "<div class=\"ds-rate ds-rate--display ds-rate--lg\" data-ai-example=\"ai-rate-display-lg\" role=\"img\" aria-label=\"4 out of 5 stars\">\n          <span class=\"ds-rate__stars\" aria-hidden=\"true\">\n            <img class=\"ds-rate__star\" src=\"../icons/icon-rate-on-24.svg\" alt=\"\">\n            <img class=\"ds-rate__star\" src=\"../icons/icon-rate-on-24.svg\" alt=\"\">\n            <img class=\"ds-rate__star\" src=\"../icons/icon-rate-on-24.svg\" alt=\"\">\n            <img class=\"ds-rate__star\" src=\"../icons/icon-rate-on-24.svg\" alt=\"\">\n            <img class=\"ds-rate__star\" src=\"../icons/icon-rate-off-24.svg\" alt=\"\">\n          </span>\n        </div>"
+        }
+      ],
+      "purpose": "readonly-full-star-rating",
+      "whenToUse": "既有单值评分的只读展示。",
+      "whenNotToUse": "用户要修改分值、半星或聚合评论。",
+      "rootClasses": "ds-rate ds-rate--display",
+      "requiredStructure": [
+        "span.ds-rate__stars",
+        "img.ds-rate__star"
+      ],
+      "slots": {
+        "ratingContent": {
+          "selector": ":scope",
+          "mode": "structured-content",
+          "required": true,
+          "preserve": [
+            "span.ds-rate__stars",
+            "img.ds-rate__star"
+          ],
+          "rule": "Five stars, selected size, synchronized aria-label, on/off sequence and optional existing label. No interaction or half-star."
+        }
+      },
+      "allowedEdits": [
+        "ratingContent"
+      ],
+      "exampleHtml": "<div class=\"ds-rate ds-rate--display ds-rate--sm\" data-ai-example=\"ai-rate-display-sm\" role=\"img\" aria-label=\"5 out of 5 stars\">\n          <span class=\"ds-rate__stars\" aria-hidden=\"true\">\n            <img class=\"ds-rate__star\" src=\"../icons/icon-rate-on-16.svg\" alt=\"\">\n            <img class=\"ds-rate__star\" src=\"../icons/icon-rate-on-16.svg\" alt=\"\">\n            <img class=\"ds-rate__star\" src=\"../icons/icon-rate-on-16.svg\" alt=\"\">\n            <img class=\"ds-rate__star\" src=\"../icons/icon-rate-on-16.svg\" alt=\"\">\n            <img class=\"ds-rate__star\" src=\"../icons/icon-rate-on-16.svg\" alt=\"\">\n          </span>\n          <span class=\"ds-rate__label ds-rate__label--muted\">5.0</span>\n        </div>"
+    },
+    {
+      "name": "input",
+      "publication": {
+        "key": "rate/input",
+        "disposition": "restricted",
+        "newPages": true,
+        "reason": "display only registered3 sizes; input only md/lg enabled Clear-only source. No summary/disabled-input/native-form binding.",
+        "constraints": [
+          "display only registered3 sizes; input only md/lg enabled Clear-only source. No summary/disabled-input/native-form binding."
+        ],
+        "contractPolicy": "Use the three actual display sizes and two enabled input sizes. Configure integer value 0..5 and five business-provided labels before initialization. Summary is excluded pending source/data review.",
+        "use": "finite-new-page-candidate",
+        "evidence": "components/contracts/rate.json#aiContract/evidence",
+        "requiresCurrentEngineering": true,
+        "visualApproval": "separate-not-granted"
+      },
+      "rootTag": "div",
+      "defaultSize": "md",
+      "sizeOptions": [
+        {
+          "name": "md",
+          "cssClass": "ds-rate--md",
+          "styleProperties": {
+            "starSize": "20px"
+          },
+          "exampleHtml": "<div class=\"ds-rate ds-rate--input ds-rate--md\" data-ai-example=\"ai-rate-input-md\" data-rate-clear-only=\"\" data-rate-current=\"\" data-rate=\"\" data-value=\"5\" data-rate-labels=\"[&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;Excellent&quot;]\" aria-disabled=\"false\">\n          <div class=\"ds-rate__control\" role=\"radiogroup\" aria-label=\"Product rating\">\n            <button class=\"ds-rate__star-button\" type=\"button\" role=\"radio\" aria-checked=\"false\" data-value=\"1\" aria-label=\"1 star\"><img class=\"ds-rate__star\" src=\"../icons/icon-rate-on-20.svg\" alt=\"\"></button>\n            <button class=\"ds-rate__star-button\" type=\"button\" role=\"radio\" aria-checked=\"false\" data-value=\"2\" aria-label=\"2 stars\"><img class=\"ds-rate__star\" src=\"../icons/icon-rate-on-20.svg\" alt=\"\"></button>\n            <button class=\"ds-rate__star-button\" type=\"button\" role=\"radio\" aria-checked=\"false\" data-value=\"3\" aria-label=\"3 stars\"><img class=\"ds-rate__star\" src=\"../icons/icon-rate-on-20.svg\" alt=\"\"></button>\n            <button class=\"ds-rate__star-button\" type=\"button\" role=\"radio\" aria-checked=\"false\" data-value=\"4\" aria-label=\"4 stars\"><img class=\"ds-rate__star\" src=\"../icons/icon-rate-on-20.svg\" alt=\"\"></button>\n            <button class=\"ds-rate__star-button\" type=\"button\" role=\"radio\" aria-checked=\"true\" data-value=\"5\" aria-label=\"5 stars\"><img class=\"ds-rate__star\" src=\"../icons/icon-rate-on-20.svg\" alt=\"\"></button>\n          </div>\n          <span class=\"ds-rate__label\" data-rate-output=\"\" hidden=\"\">Excellent</span>\n          <button class=\"ds-rate__clear\" type=\"button\">Clear</button>\n        </div>"
+        },
+        {
+          "name": "lg",
+          "cssClass": "ds-rate--lg",
+          "styleProperties": {
+            "starSize": "24px"
+          },
+          "exampleHtml": "<div class=\"ds-rate ds-rate--input ds-rate--lg\" data-ai-example=\"ai-rate-input-lg\" data-rate-clear-only=\"\" data-rate-current=\"\" data-rate=\"\" data-value=\"3\" aria-disabled=\"false\">\n          <div class=\"ds-rate__control\" role=\"radiogroup\" aria-label=\"Service rating\">\n            <button class=\"ds-rate__star-button\" type=\"button\" role=\"radio\" aria-checked=\"false\" data-value=\"1\" aria-label=\"1 star\"><img class=\"ds-rate__star\" src=\"../icons/icon-rate-on-24.svg\" alt=\"\"></button>\n            <button class=\"ds-rate__star-button\" type=\"button\" role=\"radio\" aria-checked=\"false\" data-value=\"2\" aria-label=\"2 stars\"><img class=\"ds-rate__star\" src=\"../icons/icon-rate-on-24.svg\" alt=\"\"></button>\n            <button class=\"ds-rate__star-button\" type=\"button\" role=\"radio\" aria-checked=\"true\" data-value=\"3\" aria-label=\"3 stars\"><img class=\"ds-rate__star\" src=\"../icons/icon-rate-on-24.svg\" alt=\"\"></button>\n            <button class=\"ds-rate__star-button\" type=\"button\" role=\"radio\" aria-checked=\"false\" data-value=\"4\" aria-label=\"4 stars\"><img class=\"ds-rate__star\" src=\"../icons/icon-rate-off-24.svg\" alt=\"\"></button>\n            <button class=\"ds-rate__star-button\" type=\"button\" role=\"radio\" aria-checked=\"false\" data-value=\"5\" aria-label=\"5 stars\"><img class=\"ds-rate__star\" src=\"../icons/icon-rate-off-24.svg\" alt=\"\"></button>\n          </div>\n          <span class=\"ds-rate__label\" data-rate-output=\"\" hidden=\"\">3.0</span>\n          <button class=\"ds-rate__clear\" type=\"button\">Clear</button>\n        </div>"
+        }
+      ],
+      "bindings": {
+        "value": {
+          "mode": "native-attribute",
+          "target": "root",
+          "attribute": "data-value",
+          "valueType": "integer",
+          "min": 0,
+          "max": 5
+        },
+        "labels": {
+          "mode": "native-attribute",
+          "target": "root",
+          "attribute": "data-rate-labels",
+          "valueType": "json-string-array",
+          "length": 5
+        },
+        "groupLabel": {
+          "mode": "native-attribute",
+          "target": "div.ds-rate__control",
+          "attribute": "aria-label",
+          "valueType": "nonempty-string"
+        },
+        "changeCallback": {
+          "mode": "event-handler",
+          "target": "root",
+          "event": "ds:rate-change"
+        }
+      },
+      "purpose": "interactive-full-star-rating",
+      "whenToUse": "邀评场景需要完整五星输入及现有Clear。",
+      "whenNotToUse": "其他反馈表单不应自动加Clear；半星或原生表单值。",
+      "rootClasses": "ds-rate ds-rate--input",
+      "requiredStructure": [
+        "div.ds-rate__control",
+        "button.ds-rate__star-button",
+        "img.ds-rate__star",
+        "span.ds-rate__label",
+        "button.ds-rate__clear"
+      ],
+      "slots": {},
+      "allowedEdits": [
+        "value",
+        "labels",
+        "groupLabel",
+        "changeCallback"
+      ],
+      "exampleHtml": "<div class=\"ds-rate ds-rate--input ds-rate--md\" data-ai-example=\"ai-rate-input-md\" data-rate-clear-only=\"\" data-rate-current=\"\" data-rate=\"\" data-value=\"5\" data-rate-labels=\"[&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;Excellent&quot;]\" aria-disabled=\"false\">\n          <div class=\"ds-rate__control\" role=\"radiogroup\" aria-label=\"Product rating\">\n            <button class=\"ds-rate__star-button\" type=\"button\" role=\"radio\" aria-checked=\"false\" data-value=\"1\" aria-label=\"1 star\"><img class=\"ds-rate__star\" src=\"../icons/icon-rate-on-20.svg\" alt=\"\"></button>\n            <button class=\"ds-rate__star-button\" type=\"button\" role=\"radio\" aria-checked=\"false\" data-value=\"2\" aria-label=\"2 stars\"><img class=\"ds-rate__star\" src=\"../icons/icon-rate-on-20.svg\" alt=\"\"></button>\n            <button class=\"ds-rate__star-button\" type=\"button\" role=\"radio\" aria-checked=\"false\" data-value=\"3\" aria-label=\"3 stars\"><img class=\"ds-rate__star\" src=\"../icons/icon-rate-on-20.svg\" alt=\"\"></button>\n            <button class=\"ds-rate__star-button\" type=\"button\" role=\"radio\" aria-checked=\"false\" data-value=\"4\" aria-label=\"4 stars\"><img class=\"ds-rate__star\" src=\"../icons/icon-rate-on-20.svg\" alt=\"\"></button>\n            <button class=\"ds-rate__star-button\" type=\"button\" role=\"radio\" aria-checked=\"true\" data-value=\"5\" aria-label=\"5 stars\"><img class=\"ds-rate__star\" src=\"../icons/icon-rate-on-20.svg\" alt=\"\"></button>\n          </div>\n          <span class=\"ds-rate__label\" data-rate-output=\"\" hidden=\"\">Excellent</span>\n          <button class=\"ds-rate__clear\" type=\"button\">Clear</button>\n        </div>"
+    },
+    {
+      "name": "summary",
+      "publication": {
+        "key": "rate/summary",
+        "disposition": "restricted",
+        "newPages": true,
+        "constraints": [
+          "MG69772:106234 bounded source; counts derive arithmetic; official16px glyphs;88px distribution; gray base; visual approval separate"
+        ],
+        "reason": "Source-backed summary with actual Comment child reuse; host handles filter intents.",
+        "visualApproval": "separate-not-granted"
+      },
+      "rootTag": "div",
+      "sizeOptions": [],
+      "bindings": {
+        "counts": {
+          "mode": "native-attribute",
+          "target": "root",
+          "attribute": "data-rate-summary-counts",
+          "valueType": "json-integer-array",
+          "length": 5,
+          "min": 0,
+          "max": 1000000
+        },
+        "filterCallback": {
+          "mode": "event-handler",
+          "target": "root",
+          "event": "ds:rate-filter"
+        }
+      },
+      "purpose": "count-derived-rating-summary",
+      "whenToUse": "产品综合评分、评价数量、5至1星占比及统计筛选。",
+      "whenNotToUse": "把输入评分或整套评论列表当汇总。",
+      "rootClasses": "ds-rate ds-rate--summary",
+      "requiredStructure": [
+        "div.ds-rate__score-card",
+        "span.ds-rate__stars",
+        "div.ds-rate__distribution",
+        "span.ds-rate__progress"
+      ],
+      "slots": {},
+      "allowedEdits": [
+        "counts",
+        "filterCallback"
+      ],
+      "exampleHtml": "<div class=\"ds-rate ds-rate--summary\" data-rate-summary-current=\"\" data-rate-summary-counts=\"[28,14,0,0,0]\" data-ai-example=\"ai-rate-summary-current\" aria-label=\"Rating summary: 4.7 out of 5 from 42 reviews\"><div class=\"ds-rate__score-card\"><span class=\"ds-rate__summary-score\">4.7</span><span class=\"ds-rate__stars\" role=\"img\" aria-label=\"4.7 out of 5 stars\"><span class=\"ds-rate__summary-star\"><img class=\"ds-rate__star\" src=\"../icons/icon-rate-off-16.svg\" alt=\"\"><span class=\"ds-rate__summary-star-fill\"><img class=\"ds-rate__star\" src=\"../icons/icon-rate-on-16.svg\" alt=\"\"></span></span><span class=\"ds-rate__summary-star\"><img class=\"ds-rate__star\" src=\"../icons/icon-rate-off-16.svg\" alt=\"\"><span class=\"ds-rate__summary-star-fill\"><img class=\"ds-rate__star\" src=\"../icons/icon-rate-on-16.svg\" alt=\"\"></span></span><span class=\"ds-rate__summary-star\"><img class=\"ds-rate__star\" src=\"../icons/icon-rate-off-16.svg\" alt=\"\"><span class=\"ds-rate__summary-star-fill\"><img class=\"ds-rate__star\" src=\"../icons/icon-rate-on-16.svg\" alt=\"\"></span></span><span class=\"ds-rate__summary-star\"><img class=\"ds-rate__star\" src=\"../icons/icon-rate-off-16.svg\" alt=\"\"><span class=\"ds-rate__summary-star-fill\"><img class=\"ds-rate__star\" src=\"../icons/icon-rate-on-16.svg\" alt=\"\"></span></span><span class=\"ds-rate__summary-star\"><img class=\"ds-rate__star\" src=\"../icons/icon-rate-off-16.svg\" alt=\"\"><span class=\"ds-rate__summary-star-fill\"><img class=\"ds-rate__star\" src=\"../icons/icon-rate-on-16.svg\" alt=\"\"></span></span></span><span class=\"ds-rate__review-count\">(42 reviews)</span></div><div class=\"ds-rate__distribution\" role=\"group\" aria-label=\"Rating distribution\"><button class=\"ds-rate__distribution-row\" type=\"button\" value=\"5\" aria-pressed=\"false\" aria-describedby=\"rate-summary-tooltip-5\"><span class=\"ds-rate__distribution-label\">5 stars</span><span class=\"ds-rate__progress\" role=\"progressbar\" aria-label=\"5 stars: 28 reviews\" aria-valuemin=\"0\" aria-valuemax=\"42\" aria-valuenow=\"28\"><span class=\"ds-rate__progress-fill\"></span></span><span class=\"ds-rate__distribution-count\">28</span><span class=\"ds-rate__summary-tooltip\" role=\"tooltip\" id=\"rate-summary-tooltip-5\" hidden=\"\">28 reviews</span></button><button class=\"ds-rate__distribution-row\" type=\"button\" value=\"4\" aria-pressed=\"false\" aria-describedby=\"rate-summary-tooltip-4\"><span class=\"ds-rate__distribution-label\">4 stars</span><span class=\"ds-rate__progress\" role=\"progressbar\" aria-label=\"4 stars: 14 reviews\" aria-valuemin=\"0\" aria-valuemax=\"42\" aria-valuenow=\"14\"><span class=\"ds-rate__progress-fill\"></span></span><span class=\"ds-rate__distribution-count\">14</span><span class=\"ds-rate__summary-tooltip\" role=\"tooltip\" id=\"rate-summary-tooltip-4\" hidden=\"\">14 reviews</span></button><button class=\"ds-rate__distribution-row\" type=\"button\" value=\"3\" aria-pressed=\"false\" aria-describedby=\"rate-summary-tooltip-3\" disabled=\"\"><span class=\"ds-rate__distribution-label\">3 stars</span><span class=\"ds-rate__progress\" role=\"progressbar\" aria-label=\"3 stars: 0 reviews\" aria-valuemin=\"0\" aria-valuemax=\"42\" aria-valuenow=\"0\"><span class=\"ds-rate__progress-fill\"></span></span><span class=\"ds-rate__distribution-count\">0</span><span class=\"ds-rate__summary-tooltip\" role=\"tooltip\" id=\"rate-summary-tooltip-3\" hidden=\"\">0 reviews</span></button><button class=\"ds-rate__distribution-row\" type=\"button\" value=\"2\" aria-pressed=\"false\" aria-describedby=\"rate-summary-tooltip-2\" disabled=\"\"><span class=\"ds-rate__distribution-label\">2 stars</span><span class=\"ds-rate__progress\" role=\"progressbar\" aria-label=\"2 stars: 0 reviews\" aria-valuemin=\"0\" aria-valuemax=\"42\" aria-valuenow=\"0\"><span class=\"ds-rate__progress-fill\"></span></span><span class=\"ds-rate__distribution-count\">0</span><span class=\"ds-rate__summary-tooltip\" role=\"tooltip\" id=\"rate-summary-tooltip-2\" hidden=\"\">0 reviews</span></button><button class=\"ds-rate__distribution-row\" type=\"button\" value=\"1\" aria-pressed=\"false\" aria-describedby=\"rate-summary-tooltip-1\" disabled=\"\"><span class=\"ds-rate__distribution-label\">1 star</span><span class=\"ds-rate__progress\" role=\"progressbar\" aria-label=\"1 star: 0 reviews\" aria-valuemin=\"0\" aria-valuemax=\"42\" aria-valuenow=\"0\"><span class=\"ds-rate__progress-fill\"></span></span><span class=\"ds-rate__distribution-count\">0</span><span class=\"ds-rate__summary-tooltip\" role=\"tooltip\" id=\"rate-summary-tooltip-1\" hidden=\"\">0 reviews</span></button></div></div>"
+    }
+  ],
+  "relationships": {
+    "children": [],
+    "parents": [
+      {
+        "id": "comment",
+        "contract": "components/contracts/comment.json",
+        "preview": "components/variants/comment.html",
+        "status": "preview-class-evidence-only",
+        "evidence": {
+          "status": "preview-class-evidence-only",
+          "verified": false,
+          "previewExists": true,
+          "classEvidence": true,
+          "declaredClasses": [
+            "ds-rate",
+            "ds-rate--display",
+            "ds-rate--sm",
+            "ds-rate__stars",
+            "ds-rate__star",
+            "ds-rate__label",
+            "ds-rate__label--muted",
+            "ds-rate--summary",
+            "ds-rate__score-card",
+            "ds-rate__distribution",
+            "ds-rate__progress"
+          ],
+          "missingClasses": [],
+          "exactStructure": "not-established",
+          "browserEvidence": "not-established",
+          "note": "宿主依赖声明及离线类名盘点；未证明具体变体、尺寸、必需子结构、宿主适配或浏览器行为。"
+        },
+        "usage": [
+          {
+            "component": "Rate",
+            "usage": "客户评论线程和客户画廊详情态中的 5.0 只读评分。",
+            "slot": "review/rating",
+            "hostPreviewAnchor": "comment-rating-summary",
+            "appliesTo": [
+              "review-thread",
+              "customer-gallery"
+            ],
+            "requiredVariants": [
+              "display"
+            ],
+            "implementationClasses": [
+              "ds-rate",
+              "ds-rate--display",
+              "ds-rate--sm",
+              "ds-rate__stars",
+              "ds-rate__star",
+              "ds-rate__label",
+              "ds-rate__label--muted"
+            ]
+          },
+          {
+            "component": "Rate",
+            "usage": "评分汇总的实际唯一子组件；星图、统计和交互由Rate维护。",
+            "slot": "rating-summary/aggregate",
+            "hostPreviewAnchor": "comment-rating-summary",
+            "appliesTo": [
+              "rating-summary"
+            ],
+            "requiredVariants": [
+              "summary"
+            ],
+            "implementationClasses": [
+              "ds-rate",
+              "ds-rate--summary",
+              "ds-rate__score-card",
+              "ds-rate__distribution",
+              "ds-rate__progress"
+            ]
+          }
+        ]
+      }
+    ],
+    "parentStatus": "declared-hosts",
+    "icons": [
+      {
+        "file": "components/icons/icon-rate-on-16.svg",
+        "registry": "components/icons/icons-manifest.json",
+        "appliesTo": [
+          "display",
+          "summary"
+        ],
+        "usage": "display sm 与 summary 的选中星"
+      },
+      {
+        "file": "components/icons/icon-rate-off-16.svg",
+        "registry": "components/icons/icons-manifest.json",
+        "appliesTo": [
+          "display",
+          "summary"
+        ],
+        "usage": "display sm 与 summary 的未选星"
+      },
+      {
+        "file": "components/icons/icon-rate-on-20.svg",
+        "registry": "components/icons/icons-manifest.json",
+        "appliesTo": [
+          "display",
+          "input"
+        ],
+        "usage": "display/input md 的选中星"
+      },
+      {
+        "file": "components/icons/icon-rate-off-20.svg",
+        "registry": "components/icons/icons-manifest.json",
+        "appliesTo": [
+          "display",
+          "input"
+        ],
+        "usage": "display/input md 的未选星"
+      },
+      {
+        "file": "components/icons/icon-rate-on-24.svg",
+        "registry": "components/icons/icons-manifest.json",
+        "appliesTo": [
+          "display",
+          "input"
+        ],
+        "usage": "display/input lg 的选中星"
+      },
+      {
+        "file": "components/icons/icon-rate-off-24.svg",
+        "registry": "components/icons/icons-manifest.json",
+        "appliesTo": [
+          "display",
+          "input"
+        ],
+        "usage": "display/input lg 的未选星"
+      }
+    ],
+    "tokens": [
+      {
+        "name": "color.gray-1",
+        "value": "#19191A",
+        "unit": null,
+        "cssVar": "--color-gray-1",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.gray-3",
+        "value": "#707070",
+        "unit": null,
+        "cssVar": "--color-gray-3",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.gray-8",
+        "value": "#F6F6F8",
+        "unit": null,
+        "cssVar": "--color-gray-8",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.blue",
+        "value": "#0060BF",
+        "unit": null,
+        "cssVar": "--color-blue",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.yellow",
+        "value": "#FFD748",
+        "unit": null,
+        "cssVar": "--color-yellow",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.comment-score-bg",
+        "value": "#FAFAFB",
+        "unit": null,
+        "cssVar": "--color-comment-score-bg",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "typography.font-family-base",
+        "value": "Open Sans",
+        "unit": null,
+        "cssVar": "--font-family-base",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-size-h3",
+        "value": 24,
+        "unit": "px",
+        "cssVar": "--font-size-h3",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-size-md",
+        "value": 14,
+        "unit": "px",
+        "cssVar": "--font-size-md",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-size-h8",
+        "value": 13,
+        "unit": "px",
+        "cssVar": "--font-size-h8",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-size-sm",
+        "value": 12,
+        "unit": "px",
+        "cssVar": "--font-size-sm",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-weight-regular",
+        "value": 400,
+        "unit": null,
+        "cssVar": "--font-weight-regular",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-weight-semibold",
+        "value": 600,
+        "unit": null,
+        "cssVar": "--font-weight-semibold",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.h3-semibold",
+        "value": {
+          "fontSize": "24px",
+          "lineHeight": "32px",
+          "fontWeight": 600
+        },
+        "unit": null,
+        "cssVar": null,
+        "primitiveReferences": {
+          "fontSize": "typography.font-size-h3",
+          "fontWeight": "typography.font-weight-semibold"
+        },
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.h7-regular",
+        "value": {
+          "fontSize": "14px",
+          "lineHeight": "22px",
+          "fontWeight": 400
+        },
+        "unit": null,
+        "cssVar": null,
+        "primitiveReferences": {
+          "fontSize": "typography.font-size-md",
+          "fontWeight": "typography.font-weight-regular"
+        },
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.h8-regular",
+        "value": {
+          "fontSize": "13px",
+          "lineHeight": "20px",
+          "fontWeight": 400
+        },
+        "unit": null,
+        "cssVar": null,
+        "primitiveReferences": {
+          "fontSize": "typography.font-size-h8",
+          "fontWeight": "typography.font-weight-regular"
+        },
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.h9-regular",
+        "value": {
+          "fontSize": "12px",
+          "lineHeight": "20px",
+          "fontWeight": 400
+        },
+        "unit": null,
+        "cssVar": null,
+        "primitiveReferences": {
+          "fontSize": "typography.font-size-sm",
+          "fontWeight": "typography.font-weight-regular"
+        },
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "spacing.2",
+        "value": 2,
+        "unit": "px",
+        "cssVar": "--spacing-2",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.xs",
+        "value": 4,
+        "unit": "px",
+        "cssVar": "--spacing-xs",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.sm",
+        "value": 8,
+        "unit": "px",
+        "cssVar": "--spacing-sm",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.10",
+        "value": 10,
+        "unit": "px",
+        "cssVar": "--spacing-10",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.md",
+        "value": 12,
+        "unit": "px",
+        "cssVar": "--spacing-md",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "border.style.none",
+        "value": "none",
+        "unit": null,
+        "cssVar": "--border-style-none",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border-radius.sm",
+        "value": 2,
+        "unit": "px",
+        "cssVar": "--border-radius-sm",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border-radius.json"
+      },
+      {
+        "name": "border-radius.lg",
+        "value": 8,
+        "unit": "px",
+        "cssVar": "--border-radius-lg",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border-radius.json"
+      },
+      {
+        "name": "border-radius.full",
+        "value": 9999,
+        "unit": "px",
+        "cssVar": "--border-radius-full",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border-radius.json"
+      },
+      {
+        "name": "color.gray-7",
+        "value": "#F2F2F2",
+        "unit": null,
+        "cssVar": "--color-gray-7",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.white",
+        "value": "#FFFFFF",
+        "unit": null,
+        "cssVar": "--color-white",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.rate-summary-track",
+        "value": "#EEEEEE",
+        "unit": null,
+        "cssVar": "--color-rate-summary-track",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "border.width.default",
+        "value": 1,
+        "unit": "px",
+        "cssVar": "--border-width-default",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.style.default",
+        "value": "solid",
+        "unit": null,
+        "cssVar": "--border-style-default",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.default",
+        "value": "var(--color-gray-5)",
+        "unit": null,
+        "cssVar": "--border-color-default",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "color.rate-summary-bg",
+        "value": "#FAFAFB",
+        "unit": null,
+        "cssVar": "--color-rate-summary-bg",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      }
+    ]
+  },
+  "evidence": {
+    "localImplementation": "components/variants/rate.html",
+    "comparison": "components/sources/rate/local-structure-review.json",
+    "nativeSpecification": "components/sources/rate/native-specification-review-1011.json",
+    "nativeComponent": "components/sources/rate/native-component-review-1011.json",
+    "compositionDisabledBoundary1015": "components/sources/rate/composition-disabled-boundary-1015.json",
+    "currentMgReview": "components/sources/remaining-prototypes-mg-20261115/rate-review.json",
+    "summaryIntegration": "components/sources/rate/summary-integration-20261115.json",
+    "summaryOriginal": "components/sources/rate/summary-native-20261115.html"
+  },
+  "sourceValidation": {
+    "componentIdentity": {
+      "status": "not-established",
+      "files": []
+    },
+    "specificationBody": {
+      "status": "not-established",
+      "files": []
+    },
+    "originalOnlineFrontendCode": false,
+    "browserComputedStyles": false,
+    "completeSpecificationCoverage": false
+  },
+  "freshness": {
+    "fingerprints": {
+      "components/components.css": "a08b4fe2790b5ff2b784c6362a90f1b94e7535a03e863232ce6d620a52e85f73",
+      "components/contracts/rate.json": "6f51f27f471884ee26e2aef7f7e173cbf87370173ee0a6468ccf03771cc3c854",
+      "components/icons/icon-rate-off-16.svg": "ccf5da29991937210e596efbe37dc2c1457e73d24a633e4dcba6bb670ad8a394",
+      "components/icons/icon-rate-off-20.svg": "c07d24ad2cebf14f592e7d6cf20dffaeaecb48d1678d51c5b5b8b54c859e1d88",
+      "components/icons/icon-rate-off-24.svg": "839e20904fb156a28e7289758e3c4804acd25813b4448fba206adbd25dd715d2",
+      "components/icons/icon-rate-on-16.svg": "192d611269aef39da046ebe7401f4c87de5981610e8d4e725b3931a3ac760e62",
+      "components/icons/icon-rate-on-20.svg": "7f07344b22ac664a0733f6bd53590e3cb0597733e8bfb4bab095e0b39be478ad",
+      "components/icons/icon-rate-on-24.svg": "cc3462b981e5705a88df6a942e34dbdd6a56704eeadf9078afb4dac158cf3550",
+      "components/icons/icons-manifest.json": "12c48af6d1dc59d50b76046bb0507005f565aa4224a6d8056ce4eaaf8050c43e",
+      "components/preview/reference-live.js": "4839383529a3ee82df1d8efe675d430567abc1986034499107aa429d21a18ea6",
+      "components/rate-current.js": "ed3bd4ebd26ae96483d8a480d2bf549b4a90f762ac8168a775556dda37586a66",
+      "components/rate-summary-current.css": "3c79bb0a53d154da7cb9cd12beee5729a203b2b3d71afa3a805fc1cd3cd5e579",
+      "components/rate-summary-current.js": "a3e8fce80337c7438cbd54920fc721a19855ad211640e63b0e03762601a711ec",
+      "components/reference-policy.json": "4ae8f51f623386417e38d497caafb8bda4417c929159002a7ac088e6e526b482",
+      "components/sources/rate/composition-disabled-boundary-1015.json": "bb39feae41f2e2ed61672a9701e35d20b0435f456a4b0edc4a3ddcdb8dc4f45b",
+      "components/sources/rate/local-structure-review.json": "dcd990ec20f5e2f6fd298cdfd0a8cd0b99c5d3456dc3eaa47f44529764f251ff",
+      "components/sources/rate/native-component-review-1011.json": "f45221f29a0345eb2c999fe4c02da25c477e348648ff9c76146e04367d5556bc",
+      "components/sources/rate/native-specification-review-1011.json": "c201aa6de11387449da53101bcf7734d11a562e611a1deb3c7d96994740b02e1",
+      "components/sources/rate/summary-integration-20261115.json": "95faf30ac8891cd524e75a370a1d714bbf228d3cee1c71d787850261451b1157",
+      "components/sources/rate/summary-native-20261115.html": "1f432ad1d409f11d0114f97f5c3c422fa514ba37fbbcefa83d64a521be09f039",
+      "components/sources/remaining-prototypes-mg-20261115/rate-review.json": "901b2a4c260980e63167107a7649e58ed5b05eaf2f37e57b865e37ea7e6709ac",
+      "components/token-specs/border-radius.json": "b01e4c23fbc7e19983d9592b59b0303155b79d66c52459356eda0ea9f4ca74b5",
+      "components/token-specs/border.json": "d286ee4681deda1c7702c310b065c86f824539b3a8797efba05b24bc225ab322",
+      "components/token-specs/colors.json": "5267d59fdc687b54496977280c00c97f0beb6ffce013f87853504f5b736d3389",
+      "components/token-specs/spacing.json": "351b14cfce4411248ad41e00eaaf2b1cab9b705997980dfed1fc65693740e65c",
+      "components/token-specs/typography.json": "93b7dc07547218a33c075b7cdcd942f89094353a7847d483d8378b8883327e16",
+      "components/tokens.css": "f63f3c8fea511d8029902bc3905b01853ac5e92049c1b18ca35ebc9a680c3e69",
+      "components/variants/comment.html": "e0d983eb8704ddc84c51eb162cc7683d4aaca8ff6d94a6ca3ddcfa481b751e59",
+      "components/variants/rate.html": "5b63d4c74b64e48afba2f8ec18415b35d6a2f8d0b5ea006e55bc7e3694dbc3fe"
+    },
+    "graphFingerprint": "5d33d9c35b9cd9baa27d6d7a256bf32e9e0728d042aa59dec78dd7d09ac4d4c9",
+    "note": "从本地源文件生成；不是 MasterGo 在线实时状态。"
+  }
+}

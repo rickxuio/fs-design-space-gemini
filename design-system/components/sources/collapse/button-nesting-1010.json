@@ -1,0 +1,79 @@
+{
+  "schemaVersion": "fs-finite-button-host-review/1.0.0",
+  "component": "collapse",
+  "status": "atom-assembly-corrected-source-and-browser-pending",
+  "basis": "用户已确认原子优先；当前 Button outline-black/filled-black 仅登记 XL，outline-gray 使用现有 XL。未新增原子尺寸或宿主样式覆盖。",
+  "changes": [
+    "旧 L 调用改为 XL，真实保留 button 与 ds-btn__text",
+    "登记每个宿主变体的具体原子变体和尺寸",
+    "已引入 Button current CSS，宿主只负责装配"
+  ],
+  "sourceMapping": "pending",
+  "browserVerified": false,
+  "visualApproved": false,
+  "pending": [
+    "原始宿主对应关系与规范全文",
+    "固定尺寸实际浏览器布局及全部交互状态",
+    "现有不受支持变体的 Input/Checkbox/Badge 真实调用"
+  ],
+  "before": "components/sources/collapse/button-nesting-before-1010.html",
+  "offlineValidation": {
+    "scope": "finite-authored-button-nesting-only",
+    "checked": [
+      {
+        "variant": "inline-edit",
+        "buttons": [
+          {
+            "variant": "outline-black",
+            "size": "xl",
+            "type": "button"
+          },
+          {
+            "variant": "filled-black",
+            "size": "xl",
+            "type": "button"
+          },
+          {
+            "variant": "outline-black",
+            "size": "xl",
+            "type": "button"
+          },
+          {
+            "variant": "filled-black",
+            "size": "xl",
+            "type": "button"
+          }
+        ]
+      },
+      {
+        "variant": "data-preview",
+        "buttons": [
+          {
+            "variant": "outline-black",
+            "size": "xl",
+            "type": "button"
+          }
+        ]
+      },
+      {
+        "variant": "data-preview",
+        "buttons": [
+          {
+            "variant": "outline-black",
+            "size": "xl",
+            "type": "button"
+          }
+        ]
+      }
+    ],
+    "pending": [],
+    "browserVerified": false,
+    "currentStatus": "superseded-for-inline-edit-disabled-save"
+  },
+  "latestStateBoundary": "Save现使用Button已登记disabled样式与native disabled；此前8处默认态结构记录是历史检查，当前不据此认证Save默认态。",
+  "latestReview": {
+    "date": "2026-10-11",
+    "source": "components/sources/collapse/inline-button-source-1010.json",
+    "correction": "inline-edit Cancel now outline-gray/XL; old offlineValidation below is historical before correction, not current mapping."
+  }
+}

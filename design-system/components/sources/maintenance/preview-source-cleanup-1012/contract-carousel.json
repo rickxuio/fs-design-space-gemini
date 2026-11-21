@@ -1,0 +1,934 @@
+{
+  "id": "comp_carousel_001",
+  "name": "Carousel",
+  "chineseName": "走马灯",
+  "description": "轮播组件，圆形实心导航按钮（Prev/Next）+ 分页指示器（Dots），浅色/深色两套配色，支持叠加、版心两侧及首页 Banner 场景",
+  "category": "数据展示 Data Display",
+  "variants": [
+    {
+      "name": "light",
+      "chineseName": "浅色背景导航按钮",
+      "styleProperties": {
+        "default": "rgba(25,25,26,0.3) 底+白色直角箭头",
+        "hover": "rgba(25,25,26,0.5)",
+        "disabled": "rgba(25,25,26,0.04)，cursor:not-allowed"
+      },
+      "cssClass": "ds-carousel",
+      "isComplete": true,
+      "pendingParts": [],
+      "requiredChildren": [
+        "div.ds-carousel__track",
+        "div.ds-carousel__slide",
+        "button.ds-carousel__btn--prev",
+        "button.ds-carousel__btn--next"
+      ]
+    },
+    {
+      "name": "dark",
+      "chineseName": "深色背景导航按钮",
+      "class": "ds-carousel__btn--dark",
+      "usage": "用于深色 Banner 背景",
+      "styleProperties": {
+        "default": "rgba(255,255,255,0.25) 底+白色箭头",
+        "hover": "rgba(255,255,255,0.45)",
+        "disabled": "rgba(255,255,255,0.1)"
+      },
+      "cssClass": "ds-carousel ds-carousel--homepage-banner",
+      "isComplete": true,
+      "pendingParts": [],
+      "requiredChildren": [
+        "div.ds-carousel__track",
+        "div.ds-carousel__slide",
+        "button.ds-carousel__btn--prev",
+        "button.ds-carousel__btn--next",
+        "div.ds-carousel__dots",
+        "button.ds-carousel__dot"
+      ]
+    }
+  ],
+  "buttonVariants": [
+    {
+      "name": "solid-xl",
+      "chineseName": "实心 · XL",
+      "className": "ds-carousel__btn--xl",
+      "buttonSize": "48×48px",
+      "iconSize": "28×28px",
+      "usage": "明确要求 48px 大型切换控制时使用；首页 Banner 固定使用该规格。"
+    },
+    {
+      "name": "solid-l",
+      "chineseName": "实心 · L",
+      "className": "ds-carousel__btn--l",
+      "buttonSize": "36×36px",
+      "iconSize": "20×20px",
+      "usage": "明确要求 36px 标准切换控制时使用。"
+    },
+    {
+      "name": "solid-s",
+      "chineseName": "实心 · S",
+      "className": "ds-carousel__btn--s",
+      "buttonSize": "20×20px",
+      "iconSize": "12×12px",
+      "usage": "明确要求 20px 紧凑切换控制时使用。"
+    },
+    {
+      "name": "outlined-m",
+      "chineseName": "描边 · M",
+      "className": "ds-carousel__btn--outlined-m",
+      "buttonSize": "28×28px",
+      "iconSize": "16×16px",
+      "usage": "明确要求白底描边切换控制时使用；Default/Hover 箭头使用 color.gray-2（#4B4B4D），Default 白底、Hover #F2F2F2、Disabled 整体 30% 不透明度。"
+    }
+  ],
+  "buttonLayouts": {
+    "overlaid": {
+      "name": "叠加布局",
+      "description": "按钮绝对定位叠加在幻灯片两侧",
+      "styleProperties": {
+        "position": "absolute",
+        "top": "50%",
+        "transform": "translateY(-50%)",
+        "prevLeft": "12px",
+        "nextRight": "12px"
+      }
+    },
+    "container-flanking": {
+      "name": "版心两侧布局",
+      "description": "当走马灯内容铺满 1200px 版心时，Prev/Next 移到版心外侧两边",
+      "hardConstraint": "按钮内边缘距版心左右边缘固定 32px；外层 offset = 32px + 所选按钮宽度（XL 80px、L 68px、S 52px、描边 M 60px）",
+      "verticalAlign": "top:50%; transform:translateY(-50%)",
+      "clippingWarning": "按钮必须置于 .ds-carousel 的 overflow:hidden 范围之外，否则会被裁掉；此项由 verify.js CAROUSEL_BTN 几何校验自动检测"
+    },
+    "homepage-banner": {
+      "name": "首页 Banner 场景",
+      "description": "首页 Banner 中的深色叠加型走马灯，固定 1920×420px 设计基准，沿用 Dark 配色与叠加布局；左右切换按钮按基准宽度内缩并放大，分页指示器叠加在 Banner 底部，激活项使用分段进度轨视觉",
+      "rootClass": "ds-carousel--homepage-banner",
+      "requiredCombination": [
+        "dark",
+        "overlaid"
+      ],
+      "styleProperties": {
+        "designBaseline": "1920×420px；运行宽度 100%，场景高度 420px",
+        "buttonSize": "48×48px",
+        "buttonPosition": "1920px 基准下 Prev x=252px、Next x=1620px；响应式按左右 13.125% 定位",
+        "iconSize": "28×28px",
+        "dots": "激活项为 56×8px 灰色圆角轨道，内部左侧 28×8px 白色短段；其余 6 项为 8×8px 灰点；间距 10px，共 7 项",
+        "dotsPosition": "Banner 内底部 20px 水平居中"
+      },
+      "whenNotToUse": "普通内容轮播必须按输入证据选择 solid-xl / solid-l / solid-s / outlined-m，不再使用旧 44px 规格；浅色背景不得使用该场景修饰"
+    }
+  },
+  "dotsSpec": {
+    "default": {
+      "size": "8×8px 圆形",
+      "fill": "rgba(112,112,112,0.4)",
+      "light变体": true
+    },
+    "active": {
+      "size": "20×8px 胶囊（border-radius:4px)",
+      "fill": "#707070"
+    },
+    "wideActive": {
+      "class": "ds-carousel__dots--wide-active",
+      "size": "激活 56×8px，默认 8×8px",
+      "count": "7 项（1 个激活项 + 6 个默认项）",
+      "usage": "用于明确要求长条激活态的分页指示器；可与 Light/Dark 配色组合，普通走马灯继续使用 20×8px 激活态；首页 Banner 使用 homepageBanner 专属分段进度轨覆盖"
+    },
+    "homepageBanner": {
+      "rootClass": "ds-carousel--homepage-banner",
+      "track": "56×8px 灰色圆角轨道，fill rgba(255,255,255,0.4)，border-radius 4px",
+      "segment": "左侧 28×8px 白色短段，fill #FFFFFF，border-radius 4px",
+      "defaultDots": "其余 6 项为 8×8px 灰点，fill rgba(255,255,255,0.4)",
+      "count": "7 项",
+      "gap": "10px",
+      "behavior": "active class 切换时，分段进度轨随当前项移动"
+    },
+    "hover": {
+      "fill": "rgba(112,112,112,0.7)"
+    },
+    "darkVariant": {
+      "class": "ds-carousel__dots--dark",
+      "default": "rgba(255,255,255,0.4)",
+      "active": "#FFFFFF（普通 Dark）；首页 Banner 按 homepageBanner 分段进度轨覆盖",
+      "hover": "rgba(255,255,255,0.7)"
+    },
+    "gap": "10px",
+    "position": "轮播下方居中，padding-top:20px"
+  },
+  "states": [
+    {
+      "name": "default",
+      "chineseName": "默认",
+      "styleOverrides": {},
+      "description": "静态展示"
+    },
+    {
+      "name": "hover",
+      "chineseName": "悬停",
+      "styleOverrides": {},
+      "description": "按钮/圆点 hover 态加深不透明度"
+    },
+    {
+      "name": "disabled",
+      "chineseName": "首末张禁用",
+      "styleOverrides": {},
+      "description": "第一张幻灯片时 Prev 禁用，最后一张时 Next 禁用"
+    }
+  ],
+  "contentSlots": {
+    "track": {
+      "required": true,
+      "description": "幻灯片轨道容器，ds-carousel__track"
+    },
+    "slides": {
+      "required": true,
+      "description": "单张幻灯片，ds-carousel__slide"
+    },
+    "prevButton": {
+      "required": true,
+      "description": "上一张按钮"
+    },
+    "nextButton": {
+      "required": true,
+      "description": "下一张按钮"
+    },
+    "dots": {
+      "required": false,
+      "description": "分页指示器，非必须但常见"
+    }
+  },
+  "relations": {
+    "variantDecisionsDescription": "Carousel 含四个切换按钮规格（实心 XL/L/S、描边 M）、Light/Dark 配色、标准/长条激活分页、叠加/版心两侧布局及首页 Banner；首页场景固定 Dark + solid-xl + 首页专属分段进度轨 + 叠加。",
+    "variantDecisions": [
+      {
+        "type": "配色 · Light（浅色）",
+        "className": "ds-carousel--light（rgba(25,25,26,0.3) 底 + 白色直角箭头）",
+        "whenToUse": "浅色/白色背景上的轮播。",
+        "whenNotToUse": "深色 Banner 背景 → 用 Dark 变体。",
+        "nestedComponents": [],
+        "status": "已核实"
+      },
+      {
+        "type": "配色 · Dark（深色）",
+        "className": "ds-carousel--dark（rgba(255,255,255,0.25) 底 + 白色箭头）",
+        "whenToUse": "深色 Banner 背景上的轮播。",
+        "whenNotToUse": "浅色背景 → 用 Light 变体。",
+        "nestedComponents": [],
+        "status": "已核实"
+      },
+      {
+        "type": "尺寸/外观 · 实心 XL",
+        "className": "ds-carousel__btn--xl（48×48px / icon 28×28px）",
+        "whenToUse": "输入证据明确要求 48px 大型切换按钮；首页 Banner 固定使用。",
+        "whenNotToUse": "36px、20px 或白底描边规格 → 选择对应变体。",
+        "nestedComponents": [],
+        "status": "已核实"
+      },
+      {
+        "type": "尺寸/外观 · 实心 L",
+        "className": "ds-carousel__btn--l（36×36px / icon 20×20px）",
+        "whenToUse": "输入证据明确要求 36px 切换按钮。",
+        "whenNotToUse": "不得仅凭视觉近似替代其他三个规格。",
+        "nestedComponents": [],
+        "status": "已核实"
+      },
+      {
+        "type": "尺寸/外观 · 实心 S",
+        "className": "ds-carousel__btn--s（20×20px / icon 12×12px）",
+        "whenToUse": "输入证据明确要求 20px 紧凑切换按钮。",
+        "whenNotToUse": "常规或大型控制使用 L/XL；白底描边使用 outlined-m。",
+        "nestedComponents": [],
+        "status": "已核实"
+      },
+      {
+        "type": "尺寸/外观 · 描边 M",
+        "className": "ds-carousel__btn--outlined-m（28×28px / icon 16×16px）",
+        "whenToUse": "输入证据明确要求 28px 白底描边切换按钮；Default/Hover 的 16px 箭头固定使用 color.gray-2（#4B4B4D）。",
+        "whenNotToUse": "实心圆形控制使用 XL/L/S。",
+        "nestedComponents": [],
+        "status": "已核实"
+      },
+      {
+        "type": "分页 · 长条激活",
+        "className": "ds-carousel__dots--wide-active（56×8px / 8×8px，间距 10px）",
+        "whenToUse": "明确要求长条激活分页；7 项为 1 条 + 6 点。",
+        "whenNotToUse": "普通轮播（激活态 20×8px）。",
+        "nestedComponents": [],
+        "status": "已核实"
+      },
+      {
+        "type": "布局 · 叠加型",
+        "className": "ds-carousel__btn--overlay（按钮在轮播内绝对定位左右两侧）",
+        "whenToUse": "按钮直接叠加在轮播主体上，浮在图片左右边缘。",
+        "whenNotToUse": "需要按钮位于轮播外部的版心两侧 → 用版心两侧型。",
+        "nestedComponents": [],
+        "status": "已核实"
+      },
+      {
+        "type": "布局 · 版心两侧",
+        "className": "container-flanking（按钮在 .ds-carousel 的 overflow:hidden 之外，距版心左右各 32px）",
+        "whenToUse": "版心 1200px 内容配左右外侧按钮，视觉不被轮播主体遮挡。",
+        "whenNotToUse": "按钮要贴在轮播主体上 → 用叠加型。",
+        "nestedComponents": [],
+        "status": "已核实"
+      },
+      {
+        "type": "场景 · 首页 Banner",
+        "className": "ds-carousel--homepage-banner（1920×420；Dark + 叠加型；48px 按钮；8/56px 分页）",
+        "whenToUse": "首页多内容 Banner 有真实切换时，使用 13.125% 按钮边距与底部分页。",
+        "whenNotToUse": "静态 Banner、浅色背景或普通内容轮播。",
+        "nestedComponents": [],
+        "status": "已核实"
+      }
+    ],
+    "radiusDependencies": [
+      {
+        "token": "border-radius.md",
+        "value": "4px",
+        "usage": "中圆角 - 按钮默认圆角",
+        "appliesTo": [
+          "light",
+          "dark"
+        ]
+      },
+      {
+        "token": "/",
+        "value": "50%",
+        "usage": "未 token 化的圆角值，白名单登记",
+        "appliesTo": [
+          "light",
+          "dark"
+        ]
+      },
+      {
+        "token": "border-radius.lg",
+        "value": "8px",
+        "usage": "Existing light viewport corner",
+        "appliesTo": [
+          "light"
+        ]
+      }
+    ],
+    "colorDependencies": [
+      {
+        "token": "color.gray-3",
+        "value": "#707070",
+        "usage": "次要/辅助文字 (Secondary/auxiliary text)",
+        "appliesTo": [
+          "light"
+        ]
+      },
+      {
+        "token": "color.gray-2",
+        "value": "#4B4B4D",
+        "usage": "描边 M 导航按钮 Default/Hover 的 Prev/Next 箭头",
+        "appliesTo": [
+          "light"
+        ]
+      },
+      {
+        "token": "color.hover-overlay-light",
+        "value": "rgba(25,25,26,0.04)",
+        "usage": "实心 XL/L/S 导航按钮 Disabled 低对比背景",
+        "appliesTo": [
+          "light"
+        ]
+      },
+      {
+        "token": "color.text-disabled",
+        "value": "rgba(25,25,26,0.3)",
+        "usage": "实心 XL/L/S 导航按钮 Default 30% 背景",
+        "appliesTo": [
+          "light"
+        ]
+      },
+      {
+        "token": "color.gray-7",
+        "value": "#F2F2F2",
+        "usage": "描边 M 导航按钮 Hover 背景",
+        "appliesTo": [
+          "light"
+        ]
+      },
+      {
+        "token": "color.white",
+        "value": "#FFFFFF",
+        "usage": "深色背景文字与描边 M 导航按钮 Default/Disabled 背景",
+        "appliesTo": [
+          "light",
+          "dark"
+        ]
+      },
+      {
+        "token": "color.white-translucent",
+        "value": "rgba(255,255,255,0.1)",
+        "usage": "白色描边按钮背景",
+        "appliesTo": [
+          "dark"
+        ]
+      },
+      {
+        "token": "/",
+        "value": "rgba(112,112,112,0.4)",
+        "usage": "一次性遮罩/渐变停靠色，未 token 化，白名单登记",
+        "appliesTo": [
+          "light"
+        ]
+      },
+      {
+        "token": "/",
+        "value": "rgba(112,112,112,0.7)",
+        "usage": "一次性遮罩/渐变停靠色，未 token 化，白名单登记",
+        "appliesTo": [
+          "light"
+        ]
+      },
+      {
+        "token": "/",
+        "value": "rgba(25,25,26,0.5)",
+        "usage": "一次性遮罩/渐变停靠色，未 token 化，白名单登记",
+        "appliesTo": [
+          "light"
+        ]
+      },
+      {
+        "token": "/",
+        "value": "rgba(255,255,255,0.25)",
+        "usage": "一次性遮罩/渐变停靠色，未 token 化，白名单登记",
+        "appliesTo": [
+          "dark"
+        ]
+      },
+      {
+        "token": "/",
+        "value": "rgba(255,255,255,0.4)",
+        "usage": "一次性遮罩/渐变停靠色，未 token 化，白名单登记",
+        "appliesTo": [
+          "dark"
+        ]
+      },
+      {
+        "token": "/",
+        "value": "rgba(255,255,255,0.45)",
+        "usage": "一次性遮罩/渐变停靠色，未 token 化，白名单登记",
+        "appliesTo": [
+          "dark"
+        ]
+      },
+      {
+        "token": "/",
+        "value": "rgba(255,255,255,0.7)",
+        "usage": "一次性遮罩/渐变停靠色，未 token 化，白名单登记",
+        "appliesTo": [
+          "dark"
+        ]
+      }
+    ],
+    "componentDependencies": [],
+    "iconDependencies": [
+      {
+        "icon": "icon-carousel-prev",
+        "usage": "上一张直角箭头；按变体显示为 28/20/12/16px；描边 M 可用态 SVG stroke 为 color.gray-2（#4B4B4D），Disabled 叠加整体 30% 不透明度",
+        "required": true,
+        "appliesTo": [
+          "light",
+          "dark"
+        ]
+      },
+      {
+        "icon": "icon-carousel-next",
+        "usage": "下一张直角箭头；按变体显示为 28/20/12/16px；描边 M 可用态 SVG stroke 为 color.gray-2（#4B4B4D），Disabled 叠加整体 30% 不透明度",
+        "required": true,
+        "appliesTo": [
+          "light",
+          "dark"
+        ]
+      }
+    ],
+    "colorConstraint": {
+      "rule": "走马灯导航按钮和圆点永远不使用红色（brand-red）",
+      "severity": "硬约束，validate.js 目前未对此单独机械校验，靠 design-spec 文档约束"
+    },
+    "variantContextRule": {
+      "rule": "dark 变体（按钮+dots）只能用在深色 Banner 背景上；浅色/白色背景一律用 light 变体",
+      "appliesTo": [
+        "light",
+        "dark"
+      ]
+    },
+    "geometryVerification": {
+      "tool": "verify.js",
+      "checks": [
+        "CAROUSEL_BTN：按钮可见性（width/height>0）",
+        "按钮垂直居中（与轮播中心误差<4px）",
+        "按钮未被 overflow:hidden 裁剪",
+        "按钮未跑出视口"
+      ]
+    },
+    "notes": "走马灯只有在源页面确实展示轮播交互行为时才使用；不要为了'填满一个网格视觉'而人为加走马灯（steering 文档 Step 4.1 审计表明确列出此项误用场景）。",
+    "enforcementStatus": {
+      "colorDependencies.tokens-exist": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 2b：colorDependencies 引用的 color.* token 必须存在于 token-specs/colors.json（缺失即 error）；token 为 / 表示无对应 token 的白名单裸值；双源值一致由 validate-tokens.js 全量保证；Guard C 保证声明了就必须有颜色依赖表"
+      },
+      "colorDependencies.css-uses-var": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 2c：切出组件样式段，校验用到的 var(--color-*) 都在 colorDependencies 声明过，且无未声明裸色值（box-shadow/注释除外），违反即 error —— 保证颜色映射闭环"
+      },
+      "radiusDependencies.tokens-exist": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 3a：radiusDependencies 引用的 border-radius.* token 必须存在于 token-specs/border-radius.json（缺失即 error）；token 为 / 表示白名单裸值；Guard D 保证声明了就必须有圆角依赖表"
+      },
+      "radiusDependencies.css-uses-var": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 3b：校验 border-radius 用到的 var(--border-radius-*) 都在 radiusDependencies 声明过，且无未声明裸圆角值（0 除外），违反即 error —— 保证圆角映射闭环"
+      },
+      "fontSizeDependencies": {
+        "enforced": true,
+        "mechanism": "/",
+        "note": "本组件段内无 font-size，无 fontSizeDependencies"
+      },
+      "shadowDependencies": {
+        "enforced": true,
+        "mechanism": "/",
+        "note": "本组件无 box-shadow，无 shadowDependencies"
+      },
+      "geometryVerification": {
+        "enforced": true,
+        "mechanism": "verify.js: pageProbe CAROUSEL_BTN（按钮可见性/居中/是否被裁/是否出视口）"
+      },
+      "colorConstraint.no-brand-red": {
+        "enforced": true,
+        "mechanism": "verify.js: pageProbe CAROUSEL_RED（2026-07-16 新增）——.ds-carousel 内出现 ds-btn--filled-red 即 error；导航按钮固定用 ds-carousel__btn 的 light/dark 配色。"
+      },
+      "misuseAsGridFiller": {
+        "enforced": false,
+        "mechanism": "无",
+        "note": "'是否该用走马灯'是语义选型判断，无法机械检查"
+      },
+      "spacingDependencies.tokens-and-css-closure": {
+        "enforced": true,
+        "mechanism": "check-contracts.js: spacingDependencies token/value/selector/property 与组件 CSS 双向闭环校验"
+      },
+      "borderDependencies.tokens-and-css-closure": {
+        "enforced": true,
+        "mechanism": "check-contracts.js: borderDependencies token/value/aspect/selector/property 与组件 CSS 双向闭环校验"
+      },
+      "fontWeightDependencies.tokens-and-css-closure": {
+        "enforced": true,
+        "mechanism": "check-contracts.js: fontWeightDependencies token/value/selector/property 与组件 CSS 双向闭环校验；仅允许 Regular 400 / SemiBold 600，禁止裸字重值"
+      },
+      "typographyDependencies.size-weight-pairing": {
+        "enforced": true,
+        "mechanism": "check-contracts.js: typographyDependencies 强制字号 token/value 与字重 token/value 成对，并核对同类型 fontSizeDependencies、显式 CSS 字重证据或 inherited-regular 来源"
+      }
+    },
+    "spacingDependencies": [
+      {
+        "token": "spacing.10",
+        "value": "10px",
+        "usage": "gap：.ds-carousel__dots",
+        "properties": [
+          "gap"
+        ],
+        "selectors": [
+          ".ds-carousel__dots"
+        ],
+        "appliesTo": [
+          "light",
+          "dark"
+        ]
+      },
+      {
+        "token": "spacing.20",
+        "value": "20px",
+        "usage": "padding-top：.ds-carousel__dots",
+        "properties": [
+          "padding-top"
+        ],
+        "selectors": [
+          ".ds-carousel__dots"
+        ],
+        "appliesTo": [
+          "light",
+          "dark"
+        ]
+      },
+      {
+        "token": "spacing.lg",
+        "value": "16px",
+        "usage": "Existing light controls inset moved from inline Preview to component-owned CSS",
+        "properties": [
+          "left",
+          "right"
+        ],
+        "selectors": [
+          ".ds-carousel[data-carousel-current=\"light-five\"] > .ds-carousel__btn--prev",
+          ".ds-carousel[data-carousel-current=\"light-five\"] > .ds-carousel__btn--next"
+        ],
+        "appliesTo": [
+          "light"
+        ]
+      }
+    ],
+    "borderDependencies": [
+      {
+        "token": "border.style.none",
+        "value": "none",
+        "usage": "border：.ds-carousel__btn、.ds-carousel__btn--dark、.ds-carousel__dot",
+        "aspect": "style",
+        "properties": [
+          "border"
+        ],
+        "selectors": [
+          ".ds-carousel__btn",
+          ".ds-carousel__btn--dark",
+          ".ds-carousel__dot"
+        ],
+        "appliesTo": [
+          "light",
+          "dark"
+        ]
+      },
+      {
+        "token": "border.width.default",
+        "value": "1px",
+        "usage": "描边 M 切换按钮 1px 边框",
+        "aspect": "width",
+        "properties": [
+          "border"
+        ],
+        "selectors": [
+          ".ds-carousel__btn--outlined-m"
+        ],
+        "appliesTo": [
+          "light"
+        ]
+      },
+      {
+        "token": "border.style.default",
+        "value": "solid",
+        "usage": "描边 M 切换按钮实线边框",
+        "aspect": "style",
+        "properties": [
+          "border"
+        ],
+        "selectors": [
+          ".ds-carousel__btn--outlined-m"
+        ],
+        "appliesTo": [
+          "light"
+        ]
+      },
+      {
+        "token": "border.color.default",
+        "value": "var(--color-gray-5)",
+        "usage": "描边 M 切换按钮 #DEE0E3 边框",
+        "aspect": "color",
+        "properties": [
+          "border"
+        ],
+        "selectors": [
+          ".ds-carousel__btn--outlined-m"
+        ],
+        "appliesTo": [
+          "light"
+        ]
+      }
+    ],
+    "hardRules": [
+      {
+        "title": "版心两侧布局按钮距版心 32px + 不被裁剪",
+        "ruleContent": "<strong>版心两侧布局时，Prev/Next 按钮放在版心外侧两边，按钮内边缘距版心左右边缘固定 32px，垂直居中。</strong>按钮必须在 <code>.ds-carousel</code> 的 <code>overflow: hidden</code> 之外，否则会被裁掉。",
+        "aiParse": "buttonLayouts[\"container-flanking\"] = {\n  hardConstraint: \"按钮内边缘距版心左右边缘固定 32px；外层 offset = 32px + 所选按钮宽度（XL 80px、L 68px、S 52px、描边 M 60px）\",\n  verticalAlign: \"top:50%; transform:translateY(-50%)\",\n  clippingWarning: \"按钮必须置于 .ds-carousel 的 overflow:hidden 范围之外，否则会被裁掉；此项由 verify.js CAROUSEL_BTN 几何校验自动检测\"\n}",
+        "enforcement": "强制规则（<code>verify.js: CAROUSEL_BTN</code> 几何检查）：按钮可见性（width/height>0）、垂直居中、未被裁剪、未出视口。违反判 <strong style=\"color:#C00000;\">error</strong>。"
+      },
+      {
+        "title": "首页 Banner 场景固定使用 1920×420 基准与专属切换样式",
+        "ruleContent": "<strong>首页 Banner 轮播必须在 <code>.ds-carousel</code> 根节点添加 <code>ds-carousel--homepage-banner</code>，并组合 Dark + solid-xl + 叠加型。</strong>场景高度固定 420px；左右切换按钮固定 48×48px、箭头 28×28px，并按 1920px 设计基准的左右 13.125% 定位；分页默认 8×8px、激活 56×8px，示例的 7 张幻灯片必须与 7 个分页按钮一一对应。普通内容轮播必须按输入证据选择四个正式按钮规格。",
+        "aiParse": "buttonLayouts[\"homepage-banner\"] = {\n  rootClass: \"ds-carousel--homepage-banner\",\n  requiredCombination: [\"dark\", \"overlaid\"],\n  styleProperties: { designBaseline: \"1920×420px\", buttonSize: \"48×48px\", buttonInset: \"13.125%\", dots: \"8×8px / active 56×8px\", exampleCount: 7 }\n}",
+        "enforcement": "由组件样式断言与 Preview 真实结构共同校验；页面几何继续由 <code>verify.js: CAROUSEL_BTN</code> 兜底。"
+      },
+      {
+        "title": "首页 Banner 文案内缩不得复用 Carousel 控件内缩",
+        "ruleContent": "<strong>Homepage Carousel 的 <code>13.125%</code> 仅用于左右切换按钮等 Carousel 控件定位。</strong>组件 Preview 中 <code>.homepage-banner-demo__slide</code> 的内容内缩只属于演示布局，不能直接套用到真实页面 Banner 文案；Banner 文案位置必须依据 Banner 自身版心和参考页面内容容器单独确定。",
+        "aiParse": "homepageBanner.geometry = {\n  controlInset: \"13.125%\",\n  contentInset: \"independent\",\n  previewContentPadding: \"demo-only; not a live Banner content-position contract\"\n}",
+        "enforcement": "A2/A4/A5 规则检查：分别确认 Banner 文案左边缘与 Carousel 控件位置，不得复用同一套内缩公式；不新增运行时检查。"
+      },
+      {
+        "title": "走马灯按钮/圆点永不使用红色",
+        "ruleContent": "<strong>走马灯导航按钮和分页指示器圆点永远不使用红色（brand-red #C00000）。</strong>实心 XL/L/S 默认使用 rgba(25,25,26,0.3)，Hover 使用 rgba(25,25,26,0.5)，Disabled 使用 rgba(25,25,26,0.04) 并保留 not-allowed 光标；描边 M 使用白底、#DEE0E3 描边和 #F2F2F2 Hover。",
+        "aiParse": "relations.colorConstraint = {\n  rule: \"走马灯导航按钮和圆点永远不使用红色（brand-red）\",\n  severity: \"硬约束，validate.js 目前未对此单独机械校验，靠 design-spec 文档约束\"\n}",
+        "enforcement": "设计规范硬约束。目前无独立机械检查，靠设计文档约束。"
+      }
+    ],
+    "fontWeightDependencies": [],
+    "typographyDependencies": []
+  },
+  "searchIntents": [
+    "走马灯",
+    "轮播图",
+    "轮播组件",
+    "图片轮播",
+    "内容轮播",
+    "Carousel",
+    "幻灯片切换"
+  ],
+  "tokenReferences": [
+    "color.gray-1",
+    "color.gray-2",
+    "color.gray-3",
+    "color.gray-5",
+    "opacity.disabled",
+    "border-radius.md",
+    "spacing.10",
+    "spacing.20",
+    "border.width.default",
+    "border.style.default",
+    "border.color.default",
+    "border.style.none",
+    "spacing.lg",
+    "border-radius.lg"
+  ],
+  "constraints": {
+    "allowedChildren": [
+      "Icon",
+      "Image/Content slide"
+    ],
+    "requiredProperties": [
+      "colorVariant",
+      "buttonLayout"
+    ],
+    "forbiddenCombinations": [
+      [
+        "brand-red",
+        "任意走马灯元素"
+      ]
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-09-18",
+      "change": "按已确认规则移除轮播下方的内联 controls 布局及 ds-carousel__controls wrapper；普通 Carousel 控制器仅可使用轮播内左右叠加或版心外侧两侧布局。同步删除内联样式和 Preview 示例。",
+      "author": "Codex"
+    },
+    {
+      "date": "2026-08-26",
+      "change": "依据图片规范将图片轮播描边 M 的 Prev/Next 可用态箭头从纯黑 #19191A 调整为 color.gray-2（#4B4B4D）；Default/Hover 共用该色，Disabled 继续叠加整体 30% 不透明度，实心与 Dark 变体仍由滤镜反白。",
+      "author": "Kiro"
+    },
+    {
+      "date": "2026-08-26",
+      "change": "依据默认态视觉参考优化基础切换按钮：尺寸由 40×40px 调整为 44×44px，默认背景改为 #19191A，20×20px 左右 chevron 扩大有效路径并加粗至 2px；Hover/Disabled 配色和首页 Banner 48×48px 专属规格保持不变。",
+      "author": "Kiro"
+    },
+    {
+      "date": "2026-08-26",
+      "change": "新增长条激活分页形态：ds-carousel__dots--wide-active 使用 56×8px 激活条、8×8px 默认圆点与 10px 间距；Preview 按设计输入展示 7 项，204×76 仅作为规格画框。",
+      "author": "Kiro"
+    },
+    {
+      "date": "2026-08-26",
+      "change": "更新首页 Banner 场景参考：采用 1920×420px 设计基准与 420px 场景高度；48×48px 左右切换按钮按 13.125% 边距定位；分页改为默认 8×8px、激活 56×8px，并以 7 张幻灯片和 7 个分页按钮展示真实切换。普通 Carousel 规格保持不变。",
+      "author": "Kiro"
+    },
+    {
+      "date": "2026-08-26",
+      "change": "新增首页 Banner 场景修饰：固定组合 Dark + 叠加型，左右切换按钮 48×48px，分页沿用 8×8/20×8 深色规则并叠加在 Banner 底部。同步修正 dotsSpec 激活宽度为实现一致的 20px。",
+      "author": "Kiro"
+    },
+    {
+      "date": "2026-07-22",
+      "change": "新增 typographyDependencies 成对字体依赖：每条记录明确绑定字号与字重，依赖汇总表按“字号 · 层级 · 字重”整体展示，禁止拆列后猜测组合。",
+      "author": "Kiro"
+    },
+    {
+      "date": "2026-07-22",
+      "change": "新增 fontWeightDependencies：按组件 CSS 显式 font-weight 证据登记 Regular 400 / SemiBold 600；无显式声明的组件保留空数组，并纳入 token/value/selector/property 双向闭环校验。",
+      "author": "Kiro"
+    },
+    {
+      "date": "2026-07-20",
+      "change": "父子依赖治理：Banner→Carousel(dark) 已实现关系改由宿主 componentDependencies 自动反向推导，删除子组件侧重复手写声明。",
+      "author": "Kiro"
+    },
+    {
+      "date": "2026-06-30",
+      "change": "新建档案，记录三种按钮布局的结构性差异、verify.js 几何校验覆盖范围、走马灯误用场景约束",
+      "author": "TBD"
+    },
+    {
+      "date": "2026-07-14",
+      "change": "增加间距与描边 token 依赖、CSS 选择器/属性证据及机械闭环校验映射",
+      "author": "Kiro"
+    },
+    {
+      "date": "2026-07-14",
+      "change": "依据契约语义、组件 CSS 选择器与预览结构，补齐全部现有依赖的 appliesTo 汇总行映射；仅使用真实 types/variants，不新增伪类型或不确定依赖",
+      "author": "Kiro"
+    },
+    {
+      "date": "2026-10-09",
+      "author": "Codex",
+      "change": "统一规范维护质量标准：登记真实实现与选型规则入口、源变更重新验收、父子影响检查及历史页面隔离；不推断可编辑槽位或视觉批准。"
+    }
+  ],
+  "isComplete": true,
+  "createdAt": "2026-06-30T00:00:00Z",
+  "updatedAt": "2026-09-18T00:00:00Z",
+  "qualityProfile": {
+    "schemaVersion": "1.0.0",
+    "standard": "docs/component-quality-standard.md",
+    "implementation": "components/preview/carousel.html",
+    "selection": {
+      "mappingSource": "components/selection-mvp-policy.json",
+      "mappingPointer": "components.carousel.variantDecisionTypes",
+      "rulesPointer": "relations.variantDecisions"
+    },
+    "maintenance": {
+      "authority": "contract-preview-runtime-token-icon",
+      "generatedOnly": [
+        "preview-reference-tables",
+        "component-index",
+        "selection-catalog",
+        "design-reading-view",
+        "ai-reference"
+      ],
+      "changePolicy": "记录来源差异、兼容性与受影响父子组件；源文件变化后旧工程验收失效。",
+      "historicalPages": "不自动升级；新页面锁定本地组件运行资源版本。"
+    },
+    "acceptance": {
+      "report": "components/quality/report.json",
+      "proof": "components/quality/acceptance.json",
+      "declarationIsNotProof": true
+    }
+  },
+  "editable": [
+    "slides"
+  ],
+  "integration": {
+    "styles": [
+      "components/tokens.css",
+      "components/components.css",
+      "components/carousel-current.css"
+    ],
+    "scripts": [
+      "components/carousel-current.js"
+    ],
+    "fontStylesheets": [
+      "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+    ]
+  },
+  "aiContract": {
+    "schemaVersion": "1.0.0",
+    "rootTag": "div",
+    "scope": "two-finite-static-desktop-carousel-scaffolds",
+    "supported": [
+      "dark",
+      "light"
+    ],
+    "unsupported": [
+      "other-dark-layouts",
+      "other-button-sizes",
+      "variable-slide-count",
+      "autoplay",
+      "swipe",
+      "keyboard-arrow-routing",
+      "interactive-slide-content",
+      "nested-carousel",
+      "mobile"
+    ],
+    "reviewStatus": {
+      "engineering": "pending",
+      "visual": "pending",
+      "familyCoverage": "partial"
+    },
+    "previewAssets": [
+      "components/preview/reference-live.js"
+    ],
+    "selectionPolicy": "Dark homepage seven slides/XL dark overlay with seven dots, or light five static slides/L overlay with no optional pagination. Exact registered calls only; slide bodies are page content, not implicit Banner.",
+    "identity": {
+      "rule": "Complete ID-free track with safe native previous/next arrows. Exact dark seven-slide/dot mapping or light five-slide/no-dot shape. Current marker separates canonical types; no ready/default inline state.",
+      "slideContentBoundary": "The scaffold owns track/slide wrappers only. Existing demo body classes are Preview-only page content; replacements require page-level FS content mapping. Interactive contents are excluded because aria-hidden does not remove their focusability."
+    },
+    "locked": [
+      "Homepage root and dark XL overlay controls",
+      "Seven complete slide wrappers and one-to-one dots",
+      "Registered arrows, safe buttons and initial state",
+      "Shared CSS and current runtime",
+      "No inference of Banner component from slide demo content",
+      "Light five wrappers and L overlay controls, 16px inset and 8px corner from existing specimen; no optional dots in this finite call"
+    ],
+    "behavior": {
+      "navigation": "Previous/next clamp at boundaries; dots switch to matching slide. Track transform, dot active/current, slide aria-hidden and disabled controls synchronize. No dedicated event, autoplay, gestures or business navigation.",
+      "initialization": "New current runtime scans opt-in data-carousel-current roots at load/DOMContentLoaded; per-root guard prevents duplicate binding. Original Preview inline runtime archived.",
+      "content": "Only noninteractive slide content is within finite scope. Hidden-slide focusability, source image content and page Banner composition require separate checks.",
+      "geometry": "13.125% homepage control inset belongs to Carousel; does not supply Banner text inset. Actual browser geometry and animation remain unverified.",
+      "nativeStateGuard": "Current next/previous/dot native buttons ignore synthetic clicks while disabled or inside a disabled fieldset; no external slide API or new variant.",
+      "availability": "Current controls ignore native-disabled fieldset, ARIA-disabled or hidden host synthetic clicks, preserving current index. No autoplay, swipe or arrow-key navigation API."
+    },
+    "evidence": {
+      "localImplementation": "components/preview/carousel.html",
+      "comparison": "components/sources/carousel/local-structure-review.json",
+      "previousInlineRuntime": "components/sources/carousel/preview-inline-runtime-before.txt",
+      "originalPaginationReview": "components/sources/carousel/native-pagination-review-1011.json",
+      "specificationReview": "components/sources/carousel/native-specification-review-1011.json",
+      "originalArrowReview": "components/sources/carousel/native-arrow-review-1011.json",
+      "originalHostReview": "components/sources/carousel/native-host-review-1011.json"
+    },
+    "variants": {
+      "dark": {
+        "purpose": "dark-homepage-seven-slide-xl-overlay-scaffold",
+        "exampleSelector": "[data-ai-example=\"ai-carousel-dark-homepage\"]",
+        "allowedEdits": [
+          "slides"
+        ],
+        "slots": {
+          "slides": {
+            "selector": "div.ds-carousel__track",
+            "mode": "structured-content",
+            "required": true,
+            "preserve": [
+              "div.ds-carousel__slide"
+            ],
+            "rule": "Seven complete wrappers in order. Replace page-owned noninteractive body content using FS page rules; no new controls or nested carousel. Preview demo classes are not Banner or component internals."
+          }
+        }
+      },
+      "light": {
+        "purpose": "light-five-static-slide-l-overlay-no-pagination",
+        "exampleSelector": "[data-ai-example=\"ai-carousel-light-five\"]",
+        "allowedEdits": [
+          "slides"
+        ],
+        "slots": {
+          "slides": {
+            "selector": "div.ds-carousel__track",
+            "mode": "structured-content",
+            "required": true,
+            "preserve": [
+              "div.ds-carousel__slide"
+            ],
+            "rule": "Five complete ordered wrappers. Replace only noninteractive page-owned body content via FS page mapping. No optional dots in this finite call, no nested carousel or controls."
+          }
+        }
+      }
+    }
+  },
+  "parts": {
+    "pagination": {
+      "previewSelector": ".dots-row > .ds-carousel__dots",
+      "colorVariants": [
+        "light",
+        "dark"
+      ],
+      "requiredClasses": [
+        "ds-carousel__dots",
+        "ds-carousel__dot"
+      ],
+      "scope": "Existing static pagination subpart; not a full Carousel AI variant. Host positions wrapper; atom owns sizes, colors, states and gap. No slide navigation/autoplay is implied.",
+      "source": "components/sources/carousel/native-pagination-review-1011.json",
+      "boundaries": "Static Preview-only subpart. Mini remains AI-unsupported; no slide content/callback is inferred from dots."
+    }
+  }
+}

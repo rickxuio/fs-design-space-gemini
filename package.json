@@ -10,7 +10,25 @@
     "build": "node build.js",
     "validate": "node validate.js",
     "verify": "node verify.js",
-    "check": "node validate.js && node verify.js"
+    "check": "node scripts/run-design-check.cjs",
+    "preview": "node scripts/local-preview.cjs",
+    "component:export": "node scripts/local-component-library.cjs",
+    "component:check": "node scripts/local-component-library.cjs --check",
+    "component:sync": "node scripts/local-component-maintenance.cjs",
+    "component:watch": "node scripts/local-component-maintenance.cjs --watch",
+    "impact": "node scripts/local-component-maintenance.cjs --impact",
+    "design:install": "npm --prefix design-system ci",
+    "design:preview": "node scripts/local-preview.cjs --page design-system/component-library.html",
+    "design:check": "node scripts/check-new-design-system.mjs",
+    "design:verify-workflow": "node --test scripts/local-workflow.test.cjs",
+    "test": "node --test scripts/local-workflow.test.cjs scripts/local-variant-integration.test.cjs scripts/local-restriction-review.test.cjs scripts/button-prototype-sync.test.cjs scripts/text-button-prototype-sync.test.cjs scripts/icon-button-prototype-sync.test.cjs scripts/foundation-prototype.test.cjs scripts/foundation-source-review.test.cjs scripts/tab-collapse-prototype.test.cjs scripts/card-carousel-prototype.test.cjs scripts/external-carousel.test.cjs scripts/donation-three.test.cjs scripts/banner-navigation-prototype.test.cjs scripts/form-stepper-list-prototype.test.cjs scripts/remaining-prototypes.test.cjs scripts/five-variant-current.test.cjs",
+    "test:sync": "node scripts/verify-local-sync.cjs",
+    "test:page-checks": "node --test scripts/page-acceptance.test.cjs",
+    "docs:build": "node scripts/build-component-docs.cjs",
+    "ingest": "node scripts/ingest-source-page.cjs",
+    "audit:page": "node scripts/audit-and-capture.cjs",
+    "page:upgrade": "node scripts/page-upgrade.cjs",
+    "release:prune": "node scripts/prune-releases.cjs"
   },
   "dependencies": {
     "puppeteer-core": "25.1.0"

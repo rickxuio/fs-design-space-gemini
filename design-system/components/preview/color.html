@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>颜色 Color — Preview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../tokens.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: var(--font-family-base); background: #fff; color: var(--color-gray-1); padding: 48px; max-width: 1200px; margin: 0 auto; -webkit-font-smoothing: antialiased; }
+    h1 { font-size: 24px; font-weight: 600; line-height: 32px; margin-bottom: 8px; }
+    .subtitle { font-size: 14px; color: var(--color-gray-3); line-height: 22px; margin-bottom: 48px; }
+  </style>
+</head>
+<body>
+  <h1>颜色 Color</h1>
+  <p class="subtitle">品牌 & 强调、灰阶、状态、表面背景、Hover 叠加、图片遮罩 — 数值实时读取自 tokens.css</p>
+  <div id="ds-colors"></div>
+  <script src="tokens-data.js"></script>
+  <script>DSTokens.renderColors('ds-colors'); DSTokens.flashHash();</script>
+  <script src="preview-link.js"></script>
+</body>
+</html>

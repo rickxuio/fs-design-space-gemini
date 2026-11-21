@@ -1,0 +1,39 @@
+✖ 固定Header的工程调用必须包含独立盒模型资源及新鲜的实际HTTP几何证据 (147.689125ms)
+✔ PC Web原子有真实主引用及实际Hover标记，不沿用旧静态正文 (76.948459ms)
+✔ Navigation exposes frozen Header and source-locked US Footer Default without admitting other source scopes (147.264084ms)
+✔ Navigation fixed literal rejects changed labels, logo, child structure, placeholder and behavior (486.391875ms)
+✔ Navigation rejects editable fixed Header and generic components cannot bypass required editable slots (91.102125ms)
+✔ Navigation child TextButton dependency is scoped to Footer and missing source export blocks (175.88475ms)
+✔ Retained Input source part rejects escaping to Header (89.346125ms)
+✔ Footer exact call rejects changed Input, content and Button structure (335.438167ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 7
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1708.930083
+
+✖ failing tests:
+
+test at scripts/navigation-header-quality.test.js:10:1
+✖ 固定Header的工程调用必须包含独立盒模型资源及新鲜的实际HTTP几何证据 (147.689125ms)
+  AssertionError [ERR_ASSERTION]: components/sources/navigation/fixed-header-baseline.html changed after browser measurement
+  + actual - expected
+  
+  + 'cf0cac5a47f8623e4a6d998eb57d54f57aefe534866b7b53e9c99c7528cd5b93'
+  - '79c9f383a5bd9bd0d2c39f672a8a5ff8739f2b617a67c3b5ccafa9b0be74feb3'
+  
+      at TestContext.<anonymous> (/Users/rick.xu/Library/Mobile Documents/com~apple~CloudDocs/FS 设计规范系统/scripts/navigation-header-quality.test.js:14:86)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1306:25)
+      at Test.start (node:internal/test_runner/test:1177:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'cf0cac5a47f8623e4a6d998eb57d54f57aefe534866b7b53e9c99c7528cd5b93',
+    expected: '79c9f383a5bd9bd0d2c39f672a8a5ff8739f2b617a67c3b5ccafa9b0be74feb3',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

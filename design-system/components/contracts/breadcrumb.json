@@ -1,0 +1,793 @@
+{
+  "id": "comp_breadcrumb_001",
+  "name": "Breadcrumb",
+  "chineseName": "面包屑",
+  "description": "面包屑导航，常规（浅色背景）/ 反白（深色背景）两种样式，分隔符为斜线 /，用于标注页面层级路径",
+  "category": "导航 Navigation",
+  "variants": [
+    {
+      "name": "default",
+      "chineseName": "常规（浅色背景）",
+      "styleProperties": {
+        "linkColor": "var(--color-gray-3)",
+        "linkTextDecoration": "current：none（hover变Gray1无下划线）；旧共享资源保留历史规则",
+        "separatorColor": "var(--color-gray-3)",
+        "currentColor": "var(--color-gray-1)"
+      },
+      "usage": "浅色背景的完整多级路径。",
+      "cssClass": "ds-breadcrumb",
+      "isComplete": true,
+      "requiredChildren": [
+        "div.ds-breadcrumb__item",
+        "a.ds-breadcrumb__link",
+        "span.ds-breadcrumb__separator",
+        "span.ds-breadcrumb__current"
+      ],
+      "selectionDecisionType": "常规（浅色背景）",
+      "whenToUse": "浅色背景的完整多级路径。",
+      "whenNotToUse": "深色背景、同页章节导航或分类下拉。"
+    },
+    {
+      "name": "dark",
+      "chineseName": "反白（深色背景）",
+      "class": "ds-breadcrumb--dark",
+      "styleProperties": {
+        "linkColor": "rgba(255,255,255,0.7)",
+        "separatorColor": "rgba(255,255,255,0.5)（仅显式current原始图形；旧共享资源保留0.7）",
+        "currentColor": "#FFFFFF"
+      },
+      "usage": "深色背景上的完整多级路径。",
+      "cssClass": "ds-breadcrumb ds-breadcrumb--dark",
+      "isComplete": true,
+      "requiredChildren": [
+        "div.ds-breadcrumb__item",
+        "a.ds-breadcrumb__link",
+        "span.ds-breadcrumb__separator",
+        "span.ds-breadcrumb__current"
+      ],
+      "selectionDecisionType": "反白（深色背景）",
+      "whenToUse": "深色背景上的完整多级路径。",
+      "whenNotToUse": "浅色背景、改字色模拟其他状态或分类下拉。"
+    },
+    {
+      "name": "full-width-light",
+      "chineseName": "通栏（浅色）",
+      "cssClass": "ds-breadcrumb-source-full-width",
+      "styleProperties": {
+        "width": "1920px",
+        "padding": "20px 360px",
+        "gap": "4px",
+        "height": "60px"
+      },
+      "usage": "1920px浅色通栏容器中的常规路径。",
+      "isComplete": true,
+      "requiredChildren": [
+        "nav.ds-breadcrumb"
+      ],
+      "selectionDecisionType": "通栏（浅色）",
+      "whenToUse": "1920px浅色通栏容器中的常规路径。",
+      "whenNotToUse": "内联路径、窄窗口自适配、分类下拉或任意容器宽度。"
+    },
+    {
+      "name": "full-width-dark",
+      "chineseName": "通栏（反白）",
+      "cssClass": "ds-breadcrumb-source-full-width",
+      "styleProperties": {
+        "width": "1920px",
+        "padding": "20px 360px",
+        "gap": "4px",
+        "height": "60px"
+      },
+      "usage": "1920px深色通栏容器中的反白路径。",
+      "isComplete": true,
+      "requiredChildren": [
+        "nav.ds-breadcrumb"
+      ],
+      "selectionDecisionType": "通栏（反白）",
+      "whenToUse": "1920px深色通栏容器中的反白路径。",
+      "whenNotToUse": "浅色宿主、内联路径、窄窗口适配或分类下拉。"
+    }
+  ],
+  "states": [
+    {
+      "name": "default",
+      "chineseName": "默认",
+      "styleOverrides": {},
+      "description": "静态展示"
+    },
+    {
+      "name": "hover",
+      "chineseName": "链接悬停",
+      "styleOverrides": {
+        "color": "current：浅色Gray1；反白White100%",
+        "textDecoration": "current：none"
+      },
+      "description": "真实原子Hover通过颜色变化表达；仅current资源，历史共享hover下划线不升级。"
+    }
+  ],
+  "contentSlots": {
+    "items": {
+      "required": true,
+      "description": "路径层级项，除最后一项外都是可点击链接 ds-breadcrumb__link + 分隔符 ds-breadcrumb__separator"
+    },
+    "current": {
+      "required": true,
+      "description": "最后一项，当前页，不可点击，ds-breadcrumb__current"
+    }
+  },
+  "relations": {
+    "fontSizeDependencies": [
+      {
+        "token": "typography.font-size-sm",
+        "value": "12px",
+        "usage": "小号字体 - M/S 按钮",
+        "appliesTo": [
+          "default",
+          "dark"
+        ]
+      }
+    ],
+    "fontWeightDependencies": [],
+    "typographyDependencies": [
+      {
+        "token": "typography.h9-regular",
+        "fontSizeToken": "typography.font-size-sm",
+        "fontSizeValue": "12px",
+        "fontWeightToken": "typography.font-weight-regular",
+        "fontWeightValue": "400",
+        "weightEvidence": "inherited-regular",
+        "usage": "面包屑文字",
+        "appliesTo": [
+          "default",
+          "dark"
+        ]
+      }
+    ],
+    "colorDependencies": [
+      {
+        "token": "color.gray-1",
+        "value": "#19191A",
+        "usage": "标题/深色文字 (Primary text)",
+        "appliesTo": [
+          "default"
+        ]
+      },
+      {
+        "token": "color.gray-3",
+        "value": "#707070",
+        "usage": "次要/辅助文字 (Secondary/auxiliary text)",
+        "appliesTo": [
+          "default"
+        ]
+      },
+      {
+        "token": "color.white",
+        "value": "#FFFFFF",
+        "usage": "白色 (深色背景上的文字)",
+        "appliesTo": [
+          "dark"
+        ]
+      },
+      {
+        "token": "/",
+        "value": "rgba(255,255,255,0.7)",
+        "usage": "一次性遮罩/渐变停靠色，未 token 化，白名单登记",
+        "appliesTo": [
+          "dark"
+        ]
+      }
+    ],
+    "parentContext": {
+      "ds-banner--hero": {
+        "resultingVariant": "dark",
+        "positioning": "absolute; top:20px; left:max(24px, calc((100% - 1200px)/2))",
+        "reason": "Hero 使用深色背景或深色遮罩，面包屑按背景对比使用反白变体。"
+      },
+      "ds-banner--sub": {
+        "resultingVariant": "dark",
+        "positioning": "absolute; top:20px; left:max(24px, calc((100% - 1200px)/2))",
+        "reason": "Sub 默认使用深色背景，面包屑按背景对比使用反白变体。"
+      },
+      "ds-banner--search": {
+        "resultingVariant": "dark",
+        "positioning": "absolute; top:20px; left:max(24px, calc((100% - 1200px)/2))",
+        "reason": "Search 使用深色背景，面包屑按背景对比使用反白变体。"
+      },
+      "ds-banner--title-only": {
+        "resultingVariant": "dark",
+        "positioning": "absolute; top:20px; left:max(24px, calc((100% - 1200px)/2))",
+        "reason": "Title-only 使用深色背景，面包屑按背景对比使用反白变体。"
+      },
+      "ds-banner--mini": {
+        "resultingVariant": "default",
+        "positioning": "absolute; top:20px; left:max(24px, calc((100% - 1200px)/2))",
+        "reason": "Mini 使用浅色背景，面包屑使用常规变体；存在与否不影响 Banner 变体。"
+      }
+    },
+    "textFidelityRule": {
+      "rule": "面包屑文字必须与源页面完全一致，不允许缩写或省略层级",
+      "source": "docs/fs-design-system.md Breadcrumb 章节"
+    },
+    "variantDecisionsDescription": "先匹配具体场景，再区分候选、不用与设计参考；展示和AI读取同一规则。MG来源事实、当前本地接口和视觉批准分别记录，不扩展既有调用范围。",
+    "variantDecisions": [
+      {
+        "type": "常规（浅色背景）",
+        "className": "ds-breadcrumb",
+        "whenToUse": "浅色背景的完整多级路径。",
+        "whenNotToUse": "深色背景、同页章节导航或分类下拉。",
+        "nestedComponents": [],
+        "status": "当前MG规则与可见结构已核对；具体调用资格读同版catalog，参考不授权调用。",
+        "variant": "default",
+        "fragment": "default",
+        "selectionCases": [
+          {
+            "id": "bc11",
+            "kind": "use",
+            "condition": "浅色背景，至少两层完整路径。",
+            "result": "default；完整层级和文字，不缩写。",
+            "strength": "candidate",
+            "targetVariant": "default"
+          },
+          {
+            "id": "bc12",
+            "kind": "avoid",
+            "condition": "深色背景或单层当前页。",
+            "result": "深色用dark；单层不伪造父路径。",
+            "strength": "avoid",
+            "targetVariant": "default"
+          }
+        ]
+      },
+      {
+        "type": "反白（深色背景）",
+        "className": "ds-breadcrumb ds-breadcrumb--dark",
+        "whenToUse": "深色背景上的完整多级路径。",
+        "whenNotToUse": "浅色背景、改字色模拟其他状态或分类下拉。",
+        "nestedComponents": [],
+        "status": "当前MG规则与可见结构已核对；具体调用资格读同版catalog，参考不授权调用。",
+        "variant": "dark",
+        "fragment": "dark",
+        "selectionCases": [
+          {
+            "id": "bc21",
+            "kind": "use",
+            "condition": "深色背景中的完整路径。",
+            "result": "dark；使用原分隔符，不手画箭头。",
+            "strength": "candidate",
+            "targetVariant": "dark"
+          },
+          {
+            "id": "bc22",
+            "kind": "avoid",
+            "condition": "浅色背景上放反白路径。",
+            "result": "浅色用default，不用CSS改色。",
+            "strength": "avoid",
+            "targetVariant": "dark"
+          }
+        ]
+      },
+      {
+        "type": "通栏（浅色）",
+        "className": "ds-breadcrumb-source-full-width",
+        "whenToUse": "1920px浅色通栏容器中的常规路径。",
+        "whenNotToUse": "内联路径、窄窗口自适配、分类下拉或任意容器宽度。",
+        "nestedComponents": [],
+        "status": "当前MG规则与可见结构已核对；具体调用资格读同版catalog，参考不授权调用。",
+        "variant": "full-width-light",
+        "fragment": "full-width-light",
+        "selectionCases": [
+          {
+            "id": "bc31",
+            "kind": "use",
+            "condition": "明确使用1920浅色通栏原件。",
+            "result": "full-width-light；1920原容器+常规路径。",
+            "strength": "candidate",
+            "targetVariant": "full-width-light"
+          },
+          {
+            "id": "bc32",
+            "kind": "avoid",
+            "condition": "普通内联路径或窄窗口。",
+            "result": "普通路径用default，不缩放固定原件。",
+            "strength": "avoid",
+            "targetVariant": "full-width-light"
+          }
+        ]
+      },
+      {
+        "type": "通栏（反白）",
+        "className": "ds-breadcrumb-source-full-width",
+        "whenToUse": "1920px深色通栏容器中的反白路径。",
+        "whenNotToUse": "浅色宿主、内联路径、窄窗口适配或分类下拉。",
+        "nestedComponents": [],
+        "status": "当前MG规则与可见结构已核对；具体调用资格读同版catalog，参考不授权调用。",
+        "variant": "full-width-dark",
+        "fragment": "full-width-dark",
+        "selectionCases": [
+          {
+            "id": "bc41",
+            "kind": "use",
+            "condition": "明确使用1920深色通栏原件。",
+            "result": "full-width-dark；1920原容器+反白路径。",
+            "strength": "candidate",
+            "targetVariant": "full-width-dark"
+          },
+          {
+            "id": "bc42",
+            "kind": "avoid",
+            "condition": "只需要普通深色路径。",
+            "result": "普通深色路径用dark，不额外套固定容器。",
+            "strength": "avoid",
+            "targetVariant": "full-width-dark"
+          }
+        ]
+      }
+    ],
+    "notes": "Breadcrumb 可作为所有 Banner 变体的可选子组件，也可放在正文独立容器中。是否存在面包屑不决定 Banner 变体；其 default/dark 样式仅由实际背景明暗决定。Banner 内的面包屑由 Banner 组件定位在版心左上方。",
+    "enforcementStatus": {
+      "colorDependencies.tokens-exist": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 2b：colorDependencies 引用的 color.* token 必须存在于 token-specs/colors.json（缺失即 error）；token 为 / 表示无对应 token 的白名单裸值；双源值一致由 validate-tokens.js 全量保证；Guard C 保证声明了就必须有颜色依赖表"
+      },
+      "colorDependencies.css-uses-var": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 2c：切出组件样式段，校验用到的 var(--color-*) 都在 colorDependencies 声明过，且无未声明裸色值（box-shadow/注释除外），违反即 error —— 保证颜色映射闭环"
+      },
+      "radiusDependencies": {
+        "enforced": true,
+        "mechanism": "/",
+        "note": "本组件无圆角，无 radiusDependencies"
+      },
+      "fontSizeDependencies.tokens-exist": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 4a：fontSizeDependencies 引用的 typography.font-size-* token 必须存在于 token-specs/typography.json（缺失即 error）；token 为 / 表示无对应正式 token 的白名单值；Guard E 保证声明了就必须有字号依赖表"
+      },
+      "fontSizeDependencies.css-uses-var": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 4b：校验 font-size 用到的 var(--font-size-*) 都在 fontSizeDependencies 声明过，且无未声明裸字号值，违反即 error —— 保证字号映射闭环"
+      },
+      "shadowDependencies": {
+        "enforced": true,
+        "mechanism": "/",
+        "note": "本组件无 box-shadow，无 shadowDependencies"
+      },
+      "textFidelityRule": {
+        "enforced": false,
+        "mechanism": "无",
+        "note": "文字内容是否与源页面一致，无法机械校验"
+      },
+      "spacingDependencies.tokens-and-css-closure": {
+        "enforced": true,
+        "mechanism": "check-contracts.js: spacingDependencies token/value/selector/property 与组件 CSS 双向闭环校验"
+      },
+      "borderDependencies.tokens-and-css-closure": {
+        "enforced": true,
+        "mechanism": "check-contracts.js: borderDependencies token/value/aspect/selector/property 与组件 CSS 双向闭环校验"
+      },
+      "fontWeightDependencies.tokens-and-css-closure": {
+        "enforced": true,
+        "mechanism": "check-contracts.js: fontWeightDependencies token/value/selector/property 与组件 CSS 双向闭环校验；仅允许 Regular 400 / SemiBold 600，禁止裸字重值"
+      },
+      "typographyDependencies.size-weight-pairing": {
+        "enforced": true,
+        "mechanism": "check-contracts.js: typographyDependencies.token 必须引用 token-specs/typography.json 中真实 composite typography token；该 token 同时锁定 fontSize、lineHeight、fontWeight，并核对底层字号/字重 primitive 与 CSS 证据，依赖汇总表只输出一个 Token 链接"
+      },
+      "parentContext.banner-variant-background-contrast": {
+        "enforced": true,
+        "mechanism": "verify.js: BREADCRUMB_BANNER_SURFACE 根据 Banner variant 检查面包屑对比：hero/sub/search/title-only 用 dark，mini 用 default。面包屑仍为可选，不影响 Banner 变体判断。"
+      }
+    },
+    "spacingDependencies": [
+      {
+        "token": "spacing.xs",
+        "value": "4px",
+        "usage": "gap：.ds-breadcrumb、.ds-breadcrumb__item",
+        "properties": [
+          "gap"
+        ],
+        "selectors": [
+          ".ds-breadcrumb",
+          ".ds-breadcrumb__item"
+        ],
+        "appliesTo": [
+          "default",
+          "dark"
+        ]
+      },
+      {
+        "token": "spacing.20",
+        "value": "20px",
+        "usage": "仅1920px原件通栏来源展示容器的padding，不适用于常规原子",
+        "properties": [
+          "padding"
+        ],
+        "selectors": [
+          ".ds-breadcrumb-source-full-width"
+        ],
+        "appliesTo": [
+          "full-width-light",
+          "full-width-dark"
+        ]
+      },
+      {
+        "token": "spacing.banner-content-inset",
+        "value": "360px",
+        "usage": "仅1920px原件通栏来源展示容器的padding，不适用于常规原子",
+        "properties": [
+          "padding"
+        ],
+        "selectors": [
+          ".ds-breadcrumb-source-full-width"
+        ],
+        "appliesTo": [
+          "full-width-light",
+          "full-width-dark"
+        ]
+      }
+    ],
+    "borderDependencies": [],
+    "hardRules": [
+      {
+        "title": "Banner 内面包屑按背景明暗使用对应变体",
+        "description": "AI 生成页面时必须遵守。左边是描述原文，右边是 AI 解析后写入 <code>breadcrumb.json</code> 的字段值。",
+        "ruleContent": "<strong>面包屑在所有 Banner 变体中均为可选内容，不参与 Banner 变体判断。深色背景使用 <code>ds-breadcrumb ds-breadcrumb--dark</code>，浅色背景使用 <code>ds-breadcrumb</code>；Banner 内由组件定位在版心左上方。</strong>",
+        "aiParse": "relations.parentContext 按 Banner surface 记录 breadcrumb variant；presence is optional and is not a Banner variant discriminator.",
+        "enforcement": "设计规范硬约束。verify.js 的 <code>BREADCRUMB_BANNER_SURFACE</code> 按 Banner variant 检查明暗匹配，不要求 Breadcrumb 必须存在。"
+      },
+      {
+        "title": "面包屑文字必须与源页面完全一致",
+        "description": "AI 生成页面时必须遵守；来源：<code>docs/fs-design-system.md Breadcrumb 章节</code>。",
+        "ruleContent": "<strong>面包屑文字必须与源页面完全一致，不允许缩写或省略层级。</strong>层级、大小写和连接词均需保留；不允许缩写、翻译或调换顺序。",
+        "aiParse": "relations.textFidelityRule = {\n  rule: \"面包屑文字必须与源页面\n    完全一致，不允许缩写\n    或省略层级\",\n  source: \"docs/fs-design-system.md Breadcrumb 章节\"\n}",
+        "enforcement": "内容语义硬约束。<code>enforcementStatus.textFidelityRule</code> 标记为 <code>enforced: false</code>，理由：文字内容是否与源页面一致，无法机械校验，依赖 AI/人工审查。"
+      }
+    ],
+    "iconDependencies": [
+      {
+        "icon": "icon-breadcrumb-separator",
+        "required": true,
+        "appliesTo": [
+          "default",
+          "dark"
+        ],
+        "usage": "真实12×12路径型分隔线SVG，通过current原子CSS mask调用；深色白50%，不是文字字形或IconButton；未新增Divider库组件。"
+      }
+    ],
+    "interactionRules": [
+      {
+        "name": "路径与链接",
+        "rule": "完整保留来源路径，前置项按契约传安全链接或既有只读状态，末项为current。",
+        "owner": "来源内容与本地调用"
+      },
+      {
+        "name": "分隔符",
+        "rule": "保持原SVG mask及间距，不换成手写箭头或可点击按钮。",
+        "owner": "原共享资源"
+      },
+      {
+        "name": "背景与位置",
+        "rule": "明暗按实际父级表面；通栏与普通原子区分，父级定位不赋予新的设备能力。",
+        "owner": "原父级和组件契约"
+      }
+    ],
+    "prototypeRollout": {
+      "template": "docs/component-spec-template.html",
+      "source": "relations.variantDecisions",
+      "workflow": "existing-local-only",
+      "scope": "existing admitted calls; selection/dependency documentation only"
+    }
+  },
+  "searchIntents": [
+    "面包屑",
+    "路径导航",
+    "层级导航",
+    "Breadcrumb",
+    "位置导航"
+  ],
+  "tokenReferences": [
+    "color.gray-1",
+    "color.gray-3",
+    "typography.font-family-base",
+    "spacing.xs",
+    "typography.font-size-sm",
+    "typography.font-weight-regular",
+    "typography.h9-regular",
+    "spacing.20",
+    "spacing.banner-content-inset"
+  ],
+  "constraints": {
+    "allowedChildren": [
+      "Text",
+      "Link"
+    ],
+    "requiredProperties": [
+      "variant"
+    ],
+    "forbiddenCombinations": [
+      [
+        "default",
+        "深色背景叠加使用（应改用 dark 变体）"
+      ]
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-07-23",
+      "author": "Kiro",
+      "change": "将字号与字重配对提升为正式 composite typography token；组件依赖以单一 token 引用完整字号、行高、字重，primitive 字段仅保留作 CSS 证据。"
+    },
+    {
+      "date": "2026-07-22",
+      "change": "新增 typographyDependencies 成对字体依赖：每条记录明确绑定字号与字重，依赖汇总表按“字号 · 层级 · 字重”整体展示，禁止拆列后猜测组合。",
+      "author": "Kiro"
+    },
+    {
+      "date": "2026-07-22",
+      "change": "新增 fontWeightDependencies：按组件 CSS 显式 font-weight 证据登记 Regular 400 / SemiBold 600；无显式声明的组件保留空数组，并纳入 token/value/selector/property 双向闭环校验。",
+      "author": "Kiro"
+    },
+    {
+      "date": "2026-07-20",
+      "change": "父子依赖治理：Banner→Breadcrumb 已实现关系迁移为宿主 componentDependencies 自动反向推导，删除子组件侧重复手写声明。",
+      "author": "Kiro"
+    },
+    {
+      "date": "2026-06-30",
+      "change": "补建档案：一致性自检发现 Breadcrumb 被 Banner.sub 变体依赖但从未建档，也未纳入 component-registry.json，属于'黑户'组件，本次补齐",
+      "author": "TBD"
+    },
+    {
+      "date": "2026-07-14",
+      "change": "增加间距与描边 token 依赖、CSS 选择器/属性证据及机械闭环校验映射",
+      "author": "Kiro"
+    },
+    {
+      "date": "2026-07-14",
+      "change": "依据契约语义、组件 CSS 选择器与预览结构，补齐全部现有依赖的 appliesTo 汇总行映射；仅使用真实 types/variants，不新增伪类型或不确定依赖",
+      "author": "Kiro"
+    },
+    {
+      "date": "2026-10-09",
+      "author": "Codex",
+      "change": "统一规范维护质量标准：登记真实实现与选型规则入口、源变更重新验收、父子影响检查及历史页面隔离；不推断可编辑槽位或视觉批准。"
+    },
+    {
+      "date": "2026-10-10",
+      "author": "Codex",
+      "change": "为现有浅色/深色多级面包屑补精确nav结构、根内容槽和最后current闸门；原文/外部导航边界保留，模板#不是页面真实目标。未改CSS、宿主或历史页；来源及浏览器验收待完成。"
+    },
+    {
+      "date": "2026-10-11",
+      "author": "Codex",
+      "change": "按真实原子保留12/20 Regular，记录规范18冲突；current分隔符改用原始12px SVG mask，反白原子50%。仅当前调用资源，历史资源不升级；本地视觉仍待验。"
+    },
+    {
+      "date": "2026-10-11",
+      "author": "Codex",
+      "change": "可见六态原子确认Hover浅色Gray1/反白White100%且无下划线；修正current hover，宿主共享当前原子CSS。"
+    }
+  ],
+  "isComplete": true,
+  "createdAt": "2026-06-30T00:00:00Z",
+  "updatedAt": "2026-10-10T01:35:00+08:00",
+  "qualityProfile": {
+    "schemaVersion": "1.0.0",
+    "standard": "docs/component-quality-standard.md",
+    "implementation": "components/variants/breadcrumb.html",
+    "selection": {
+      "mappingSource": "components/selection-mvp-policy.json",
+      "mappingPointer": "components.breadcrumb.variantDecisionTypes",
+      "rulesPointer": "relations.variantDecisions"
+    },
+    "maintenance": {
+      "authority": "contract-preview-runtime-token-icon",
+      "generatedOnly": [
+        "preview-reference-tables",
+        "component-index",
+        "selection-catalog",
+        "design-reading-view",
+        "ai-reference"
+      ],
+      "changePolicy": "记录来源差异、兼容性与受影响父子组件；源文件变化后旧工程验收失效。",
+      "historicalPages": "不自动升级；新页面锁定本地组件运行资源版本。"
+    },
+    "acceptance": {
+      "report": "components/quality/report.json",
+      "proof": "components/quality/acceptance.json",
+      "declarationIsNotProof": true
+    }
+  },
+  "editable": [
+    "items"
+  ],
+  "integration": {
+    "styles": [
+      "components/tokens.css",
+      "components/components.css",
+      "components/breadcrumb-current.css"
+    ],
+    "scripts": [],
+    "fontStylesheets": [
+      "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+    ],
+    "fontFallback": "沿用Open Sans；实际字体待浏览器确认。"
+  },
+  "aiContract": {
+    "schemaVersion": "1.0.0",
+    "rootTag": "nav",
+    "scope": "existing-desktop-breadcrumb-light-dark-multilevel",
+    "supported": [
+      "default",
+      "dark",
+      "full-width-light",
+      "full-width-dark"
+    ],
+    "unsupported": [
+      "single-current-level",
+      "custom-separator",
+      "automatic-text-shortening",
+      "mobile",
+      "category-dropdown-arrow",
+      "automatic-sibling-page-menu"
+    ],
+    "reviewStatus": {
+      "engineering": "pending",
+      "visual": "pending",
+      "familyCoverage": "partial"
+    },
+    "previewAssets": [
+      "components/preview/reference-live.js"
+    ],
+    "selectionPolicy": "先按实际背景选择default/dark，再按确有固定1920通栏需求选择full-width-light/dark。四个现有调用均保留；普通路径至少两层，文字和层级完整。分类下拉、自动缩写和移动适配未开放；通栏不表示任意宽度适配。面包屑可选，不参与Banner变体判断，定位由当前父级负责。",
+    "identity": {
+      "rule": "保留nav及Breadcrumb可访问名称；只保留一个最后current，前面每层为真实anchor及分隔符。",
+      "labelRule": "原文顺序和大小写按来源；不要删级别。"
+    },
+    "locked": [
+      "nav根元素与明暗变体",
+      "每层item结构、最后current与斜杠分隔符",
+      "共享文字样式与宿主定位",
+      "不添加点击脚本或折叠菜单",
+      "data-breadcrumb-current及分隔符aria-hidden=true；准确SVG mask和原子透明度"
+    ],
+    "behavior": {
+      "navigation": "anchor采用原生导航；示例href=#仅为组件库展示。页面装配必须按Plan替换真实目标或声明仅展示，不保留导致跳页首的#占位。",
+      "external": "页面重构的外部导航边界仍按AGENTS执行：保留文字和样式，不补目标、不执行业务动作。",
+      "scope": "此处只验证本地结构和安全链接文本；没有实际导航或Banner定位验收。"
+    },
+    "evidence": {
+      "localImplementation": "components/variants/breadcrumb.html",
+      "comparison": "components/sources/breadcrumb/local-structure-review.json",
+      "specificationReview": "components/sources/breadcrumb/native-specification-review-1011.json",
+      "original": "components/sources/breadcrumb/分隔线.svg",
+      "fullWidthSource": "components/sources/breadcrumb/full-width-source-1014.json",
+      "currentMgReview": "components/sources/banner-navigation-mg-20261114/breadcrumb-review.json"
+    },
+    "variants": {
+      "default": {
+        "purpose": "multilevel-breadcrumb-light-surface",
+        "exampleSelector": "[data-ai-example=\"ai-breadcrumb-default\"]",
+        "allowedEdits": [
+          "items"
+        ],
+        "slots": {
+          "items": {
+            "selector": ":scope",
+            "mode": "structured-content",
+            "required": true,
+            "preserve": [
+              "div.ds-breadcrumb__item",
+              "a.ds-breadcrumb__link",
+              "span.ds-breadcrumb__separator",
+              "span.ds-breadcrumb__current"
+            ],
+            "fields": [
+              "linkText",
+              "hrefOrDisplayOnly",
+              "currentText"
+            ],
+            "rule": "至少两层；每个前置item为anchor + /；最后一个item为current。"
+          }
+        }
+      },
+      "dark": {
+        "purpose": "multilevel-breadcrumb-dark-surface",
+        "exampleSelector": "[data-ai-example=\"ai-breadcrumb-dark\"]",
+        "allowedEdits": [
+          "items"
+        ],
+        "slots": {
+          "items": {
+            "selector": ":scope",
+            "mode": "structured-content",
+            "required": true,
+            "preserve": [
+              "div.ds-breadcrumb__item",
+              "a.ds-breadcrumb__link",
+              "span.ds-breadcrumb__separator",
+              "span.ds-breadcrumb__current"
+            ],
+            "fields": [
+              "linkText",
+              "hrefOrDisplayOnly",
+              "currentText"
+            ],
+            "rule": "至少两层；每个前置item为anchor + /；最后一个item为current。"
+          }
+        }
+      },
+      "full-width-light": {
+        "rootTag": "div",
+        "purpose": "source-1920-full-width-light-breadcrumb",
+        "exampleSelector": "[data-ai-example=\"ai-breadcrumb-full-width-light\"]",
+        "allowedEdits": [
+          "items"
+        ],
+        "slots": {
+          "items": {
+            "selector": "nav.ds-breadcrumb",
+            "mode": "structured-content",
+            "required": true,
+            "preserve": [
+              "div.ds-breadcrumb__item",
+              "a.ds-breadcrumb__link",
+              "span.ds-breadcrumb__separator",
+              "span.ds-breadcrumb__current"
+            ],
+            "fields": [
+              "linkText",
+              "hrefOrDisplayOnly",
+              "currentText"
+            ],
+            "rule": "至少两层；每个前置item为anchor + /；最后一个item为current。"
+          }
+        }
+      },
+      "full-width-dark": {
+        "rootTag": "div",
+        "purpose": "source-1920-full-width-dark-breadcrumb",
+        "exampleSelector": "[data-ai-example=\"ai-breadcrumb-full-width-dark\"]",
+        "allowedEdits": [
+          "items"
+        ],
+        "slots": {
+          "items": {
+            "selector": "nav.ds-breadcrumb",
+            "mode": "structured-content",
+            "required": true,
+            "preserve": [
+              "div.ds-breadcrumb__item",
+              "a.ds-breadcrumb__link",
+              "span.ds-breadcrumb__separator",
+              "span.ds-breadcrumb__current"
+            ],
+            "fields": [
+              "linkText",
+              "hrefOrDisplayOnly",
+              "currentText"
+            ],
+            "rule": "至少两层；每个前置item为anchor + /；最后一个item为current。"
+          }
+        }
+      }
+    }
+  },
+  "sourceFullWidthContainer1014": {
+    "fileId": "143880409387753",
+    "members": {
+      "light": "10621:10128",
+      "dark": "62724:74229"
+    },
+    "geometry": {
+      "width": "1920px",
+      "paddingTop": "20px",
+      "paddingBottom": "20px",
+      "paddingLeft": "360px",
+      "paddingRight": "360px",
+      "gap": "4px"
+    },
+    "children": "真实常规面包屑浅色/反白，宿主只管理容器",
+    "generation": "四种有限调用：现有常规两种及1920px真实通栏两种；未开放适配。",
+    "adaptation": "deferred"
+  }
+}

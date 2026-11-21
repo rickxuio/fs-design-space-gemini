@@ -1,0 +1,57 @@
+{
+  "schemaVersion": "fs-local-component-review/1.0.0",
+  "status": "three-finite-gray-local-shapes",
+  "originalComponentSnapshot": null,
+  "independentSpecDocument": null,
+  "supported": [
+    "gray/center.single-event",
+    "gray/left.single-event",
+    "gray/left.jump-type"
+  ],
+  "hostGaps": [
+    {
+      "variants": [
+        "center.multi-event-expandable",
+        "left.multi-event-expandable"
+      ],
+      "issue": "Toggle button/down-chevron shape not covered by migrated anchor/right-arrow TextButton call."
+    }
+  ],
+  "changes": [
+    "Explicit exact child TextButton/inline-black/m and dependency scope",
+    "Preview loads declared current child CSS",
+    "Canonical redundant 36px inline icon style removed; existing shared icon CSS already 36px",
+    "Loaded child stylesheet regular font-weight dependency recorded with actual selectors; not a claim of new parent typography.",
+    "Jump p entries gain native anchor/display semantics, existing own 13px blue/no-arrow style retained without synthetic TextButton"
+  ],
+  "pending": [
+    "Original MG component/spec",
+    "White and optional-content canonical scope",
+    "Controlled TextButton disclosure adaptation",
+    "Actual browser equal-height/surface/hover/font proof",
+    "Original jump targets/complete spec and actual native-link focus/default/hover proof"
+  ],
+  "compatibility": "Original jump demos and base CSS/history pages preserved; opt-in component CSS adds native-anchor default decoration. Unfrozen current callers may be affected.",
+  "previewSourceCleanup1012": {
+    "source": "components/sources/icon-card/native-component-review-1011.json",
+    "currentLocator": "components/sources/maintenance/preview-source-cleanup-1012/icon-card-native-boundary-1012.txt",
+    "removed": [
+      "自行删减的最小内容演示",
+      "未匹配12px List原子的追加13px jump样例与其AI准入"
+    ],
+    "preserved": "center/left有限灰底单事件与14px-bold真实TextButton title；共享样式及冻结页面不变",
+    "boundary": "来源集合定位已刷新，复用已读真实节点/引用；未重新测完整集合或声称其余legacy展示通过"
+  },
+  "currentGrayProseReconciliation1014": {
+    "source": "center-parent-source-review-1013.json 原始042293 typed背景#FAFBFB",
+    "old": "parentContext.gray与hardRules仍强制白底，与原件和当前Preview矛盾",
+    "current": "有限gray center/left采用Gray9无描边；白色、jump及disclosure准入边界不扩大",
+    "guards": [
+      "scripts/icon-card-current-surface.js通过A2编译读取原件实际导出背景、token与契约一致性",
+      "scripts/page-mapping-review.js A2/A5拒绝white父级直接套finite gray调用"
+    ],
+    "negativeEvidence": "browser-gray-surface-tests-1014.log 旧白底规则/白token/white父级负例",
+    "browserEvidence": "browser-gray-atoms-states-1014.json",
+    "renderChange": false
+  }
+}

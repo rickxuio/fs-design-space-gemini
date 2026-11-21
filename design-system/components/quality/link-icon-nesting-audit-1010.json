@@ -1,0 +1,576 @@
+{
+  "schemaVersion": "fs-link-icon-nesting-audit/1.0.0",
+  "date": "2026-10-10",
+  "hosts": [
+    {
+      "id": "card",
+      "dependencies": [
+        {
+          "component": "TextButton",
+          "usage": "Learn more 使用 ds-text-btn--inline ds-text-btn--black ds-text-btn--m；多事件折叠面板可见时追加 ds-text-btn--hover ds-text-btn--expanded；285px嵌入式产品卡片固定使用inline-black / M跳转入口",
+          "slot": "link",
+          "requiredVariants": [
+            "inline-black"
+          ],
+          "implementationClasses": [
+            "ds-text-btn",
+            "ds-text-btn--inline",
+            "ds-text-btn--black",
+            "ds-text-btn--m",
+            "ds-text-btn--hover",
+            "ds-text-btn--expanded"
+          ],
+          "requiredSizes": [
+            {
+              "variant": "inline-black",
+              "size": "m"
+            }
+          ],
+          "appliesTo": [
+            "spliced.vertical.single-event",
+            "spliced.vertical.category-nav",
+            "spliced.horizontal.full-width",
+            "spliced.horizontal.full-width.bordered-background",
+            "spliced.horizontal.with-sidebar",
+            "spliced.horizontal.with-sidebar.bordered-background",
+            "embedded.product-small",
+            "embedded.product-standard",
+            "embedded.product-detail",
+            "embedded.product-full",
+            "spliced.horizontal.full-width.responsive"
+          ]
+        }
+      ],
+      "canonicalChecks": {
+        "TextButton": {
+          "scope": "finite-canonical-TextButton-default-calls",
+          "checked": [
+            {
+              "variant": "spliced.horizontal.full-width.responsive",
+              "children": [
+                {
+                  "variant": "inline-black",
+                  "size": "m"
+                }
+              ]
+            },
+            {
+              "variant": "spliced.horizontal.full-width",
+              "children": [
+                {
+                  "variant": "inline-black",
+                  "size": "m"
+                }
+              ]
+            },
+            {
+              "variant": "spliced.horizontal.full-width.bordered-background",
+              "children": [
+                {
+                  "variant": "inline-black",
+                  "size": "m"
+                }
+              ]
+            },
+            {
+              "variant": "spliced.vertical.single-event",
+              "children": [
+                {
+                  "variant": "inline-black",
+                  "size": "m"
+                }
+              ]
+            }
+          ],
+          "inactive": [],
+          "browserVerified": false,
+          "hostStyleCascadeVerified": false
+        }
+      },
+      "nonCanonicalPending": [
+        {
+          "component": "TextButton",
+          "variant": "spliced.vertical.category-nav",
+          "reason": "current exact host call not established"
+        },
+        {
+          "component": "TextButton",
+          "variant": "spliced.horizontal.with-sidebar",
+          "reason": "current exact host call not established"
+        },
+        {
+          "component": "TextButton",
+          "variant": "spliced.horizontal.with-sidebar.bordered-background",
+          "reason": "current exact host call not established"
+        },
+        {
+          "component": "TextButton",
+          "variant": "embedded.product-small",
+          "reason": "current exact host call not established"
+        },
+        {
+          "component": "TextButton",
+          "variant": "embedded.product-standard",
+          "reason": "current exact host call not established"
+        },
+        {
+          "component": "TextButton",
+          "variant": "embedded.product-detail",
+          "reason": "current exact host call not established"
+        },
+        {
+          "component": "TextButton",
+          "variant": "embedded.product-full",
+          "reason": "current exact host call not established"
+        }
+      ],
+      "sourceFingerprints": {
+        "components/card-responsive.css": "8db3d768860898ee87d0c07ab1c9f9e85d493243a3ebfe679a651ecd810feec7",
+        "components/components.css": "a08b4fe2790b5ff2b784c6362a90f1b94e7535a03e863232ce6d620a52e85f73",
+        "components/contracts/button.json": "fab0452634be29af67f30c913f487cb39a8a61e9a018518c885554ae67c2374a",
+        "components/contracts/card.json": "b30c6e6e2639b1d6d32b89f25e9aa95c963a7adf24260d05418826da1a1553ee",
+        "components/contracts/text-button.json": "05e3a009508bc216541aafa2615adc62859adc00ed85d488f18ad59bc4e12d66",
+        "components/icons/icon-bullet.svg": "d97e82725de89af391e3c14c5a14d541f8171b1cd714e57b2768edfcab773dbd",
+        "components/icons/icon-cart-add.svg": "ec9abb0e806f0d23db0e279cc5a8935bab0619d0c2c8b71d8b56b0945e3b8377",
+        "components/icons/icon-featured-star.svg": "3ff7625e9743df2f295b32dc8e7e12349839525ff1539d47c091b40d44188643",
+        "components/icons/icons-manifest.json": "07851a18214f0adc2f974c681ea193d8886d35ee780480dbab3315fc15da9cc4",
+        "components/preview/button.html": "3a50b30571727f6b03a6e7324ffed84f81dfd32208349c2cab33af30f1e76737",
+        "components/preview/card.html": "6ba412f7a8890fce15c9eb4229ebf407ee85e5f5e7932b9fda3fadd6b2cae4bb",
+        "components/preview/reference-live.js": "4839383529a3ee82df1d8efe675d430567abc1986034499107aa429d21a18ea6",
+        "components/preview/text-button.html": "10aabbe4321ea96d87a2d7d72a2b546b62956362925776721b549e231e2749f8",
+        "components/reference-policy.json": "9a2c54006968a27b3d04e03f0dac429a6e6c215e5e5936b7f65d66cfd9d5c660",
+        "components/sources/card/local-structure-review.json": "6defd5eb7adc26044c693ee2bc329b9cb8977f92a9aaf0d8db91e58f4754e42d",
+        "components/sources/card/source-index.json": "2d296d45eb0c9c4ed760fda8d756729346af0bd03071c6dfb99932fa2768251e",
+        "components/text-button-current.css": "662a90320af28ef4d38b2adf121972e7e380cc7c33fcdeb0597a5bfd36b218a9",
+        "components/token-specs/border.json": "d286ee4681deda1c7702c310b065c86f824539b3a8797efba05b24bc225ab322",
+        "components/token-specs/colors.json": "82cba8e4a6b3e1e5bc961e4039478b0dea4ba9b92a5291d579bb8d7a54db0d95",
+        "components/token-specs/spacing.json": "351b14cfce4411248ad41e00eaaf2b1cab9b705997980dfed1fc65693740e65c",
+        "components/token-specs/typography.json": "93b7dc07547218a33c075b7cdcd942f89094353a7847d483d8378b8883327e16",
+        "components/tokens.css": "2424558781ddfc12cad4d2b91e78451dc26fe5e126e6f24a3b9631753b644afa",
+        "page-inputs/bdcom-oem-m2/component-sources/card.json": "3da107a30840ec9f242a6d089c48b0b2dd09b8b7da94cd9d60af0bdef5c7a78e",
+        "pages/assets/bdcom-oem-pc-1009/product-engineering.jpg": "e0c3259bf5cadf9cb398864425f2dbc8c33af0c00add13264778275a0219758e"
+      }
+    },
+    {
+      "id": "comment",
+      "dependencies": [
+        {
+          "component": "IconButton",
+          "usage": "客户画廊网格态与详情态右上角 28px 关闭操作。",
+          "slot": "gallery/header",
+          "appliesTo": [
+            "customer-gallery"
+          ],
+          "requiredVariants": [
+            "plain-m"
+          ],
+          "implementationClasses": [
+            "ds-icon-btn",
+            "ds-icon-btn--plain",
+            "ds-icon-btn--m",
+            "ds-icon-btn__icon"
+          ]
+        }
+      ],
+      "canonicalChecks": {
+        "IconButton": {
+          "scope": "finite-canonical-IconButton-default-calls",
+          "checked": [],
+          "inactive": [],
+          "browserVerified": false,
+          "hostStyleCascadeVerified": false
+        }
+      },
+      "nonCanonicalPending": [
+        {
+          "component": "IconButton",
+          "variant": "customer-gallery",
+          "reason": "current exact host call not established"
+        }
+      ],
+      "sourceFingerprints": {
+        "components/comment-current.js": "2eb899017facc0c355357d7bd629bd363c19e99b010f61d0d0a6be6c12d8d67a",
+        "components/components.css": "a08b4fe2790b5ff2b784c6362a90f1b94e7535a03e863232ce6d620a52e85f73",
+        "components/contracts/button.json": "fab0452634be29af67f30c913f487cb39a8a61e9a018518c885554ae67c2374a",
+        "components/contracts/comment.json": "4a0257821cdec3881ac6df7508a568ea5e5d44e403ef122541e940c6069f4e1a",
+        "components/contracts/icon-button.json": "381b398f61a6c05e2e36f15f77242f69c817c92452cabaed68b9983fdd85c549",
+        "components/contracts/rate.json": "92058eb353653dbb69b3ec3e807923d59384196f293bd8e7421eeca6754f879c",
+        "components/contracts/tag.json": "785fedf7d78a48d2f03929a7b6cd14f6cd605984a620439c5bcfae1a1bcca42b",
+        "components/icons/icon-carousel-next.svg": "32bc4993a22bc4fe94406f10692227843f334f71f804a000cdce30e5e94235fe",
+        "components/icons/icon-carousel-prev.svg": "0c3e3035fa72509b40f45298e7194eee211adb0b3a8c51730149d8363f3f55ba",
+        "components/icons/icon-close.svg": "226867654d63f99f548f7e25b2f0286c19aa5786f5b9497905474f3959704424",
+        "components/icons/icon-comment-active.svg": "c6e32e6d2d14488ce89f66f2a4825c571bf17e503561c5eb66477e4e40a7d159",
+        "components/icons/icon-comment.svg": "d66bd06023440cbf3ed6b2d25d3853eba2f162a964984f88c2261ddd8b0e99c1",
+        "components/icons/icon-helpful-active.svg": "98c2421f8f280e022c172b29767da95dc81614708b0472a3e063b92a945aad05",
+        "components/icons/icon-helpful.svg": "423468d64fd1bf42c2cde5493ddba32d0d5ed5a40146551a5b63483dd8449409",
+        "components/icons/icon-rating-star.svg": "5bf0c005c95578d13ce31dd78ab7cb350a0e851a1e77ea38187de0baf1424763",
+        "components/icons/icon-verified.svg": "98f6480e2521c785b59f7ed36f491c647a65d56ff9d801b95f79943b8e6179c7",
+        "components/icons/icons-manifest.json": "07851a18214f0adc2f974c681ea193d8886d35ee780480dbab3315fc15da9cc4",
+        "components/preview/button.html": "3a50b30571727f6b03a6e7324ffed84f81dfd32208349c2cab33af30f1e76737",
+        "components/preview/comment.html": "58053d7b81f56ceb9088f71c707ff8a912ef68bf3103ba1db43c692715bd86ef",
+        "components/preview/icon-button.html": "38701b8e20e658ef45c162fcaa5d8b13b4a999c0d573afa05d8a6c60fc43f4b9",
+        "components/preview/rate.html": "f3d91ee86e36f4ab22ce8f39206dd27396a4fc4c78f532f9383a98ee3030e225",
+        "components/preview/reference-live.js": "4839383529a3ee82df1d8efe675d430567abc1986034499107aa429d21a18ea6",
+        "components/preview/tag.html": "52994ef5fe3f169dc3668acd90b0d2fb76485c06faa412884b7b88b71f8f15bc",
+        "components/reference-policy.json": "9a2c54006968a27b3d04e03f0dac429a6e6c215e5e5936b7f65d66cfd9d5c660",
+        "components/sources/comment/local-structure-review.json": "01ff69ce586ef52dd2ddbe72f3b111a79b90e7613740e7842629601d07c6e17d",
+        "components/token-specs/border-radius.json": "77d9245e2504b7c0c605288290e938b2453a79b27d4312448d14a58692290791",
+        "components/token-specs/border.json": "d286ee4681deda1c7702c310b065c86f824539b3a8797efba05b24bc225ab322",
+        "components/token-specs/colors.json": "82cba8e4a6b3e1e5bc961e4039478b0dea4ba9b92a5291d579bb8d7a54db0d95",
+        "components/token-specs/spacing.json": "351b14cfce4411248ad41e00eaaf2b1cab9b705997980dfed1fc65693740e65c",
+        "components/token-specs/typography.json": "93b7dc07547218a33c075b7cdcd942f89094353a7847d483d8378b8883327e16",
+        "components/tokens.css": "2424558781ddfc12cad4d2b91e78451dc26fe5e126e6f24a3b9631753b644afa"
+      }
+    },
+    {
+      "id": "dialog",
+      "dependencies": [
+        {
+          "component": "IconButton",
+          "usage": "两种Dialog头部关闭直接调用无边框L原子；宿主只定位和绑定关闭事件，不覆盖原子尺寸/圆角/悬停",
+          "requiredVariants": [
+            "plain-l"
+          ],
+          "implementationClasses": [
+            "ds-icon-btn",
+            "ds-icon-btn--plain",
+            "ds-icon-btn--l",
+            "ds-icon-btn__icon"
+          ],
+          "appliesTo": [
+            "information",
+            "confirmation"
+          ],
+          "slot": "header.close",
+          "hostPreviewAnchor": "demo-information",
+          "sourceEvidence": {
+            "componentId": "56279:012458",
+            "originalComponents": "components/sources/icon-button/mastergo-original-components.json",
+            "decision": "2026-10-10 用户确认以原子为主，嵌套关联关系优先；Dialog旧28px/3px覆盖不再采用"
+          }
+        }
+      ],
+      "canonicalChecks": {
+        "IconButton": {
+          "scope": "finite-canonical-IconButton-default-calls",
+          "checked": [
+            {
+              "variant": "information",
+              "children": [
+                {
+                  "variant": "plain-l"
+                }
+              ]
+            },
+            {
+              "variant": "confirmation",
+              "children": [
+                {
+                  "variant": "plain-l"
+                }
+              ]
+            }
+          ],
+          "inactive": [],
+          "browserVerified": false,
+          "hostStyleCascadeVerified": false
+        }
+      },
+      "nonCanonicalPending": [],
+      "sourceFingerprints": {
+        "components/components.css": "a08b4fe2790b5ff2b784c6362a90f1b94e7535a03e863232ce6d620a52e85f73",
+        "components/contracts/button.json": "fab0452634be29af67f30c913f487cb39a8a61e9a018518c885554ae67c2374a",
+        "components/contracts/dialog.json": "3a3ac5b34e45906e971950f4c36cb8f3ae7d9b4bc30c2f6c8bed631d8e8f6a3c",
+        "components/contracts/icon-button.json": "381b398f61a6c05e2e36f15f77242f69c817c92452cabaed68b9983fdd85c549",
+        "components/dialog-current.css": "d69386bcf39aa40c3c698c40d725b189c683f2d74b8e0f0ad4254bd7aac682b2",
+        "components/dialog-current.js": "a3807d4f9647411e602829a8382e9b33b4a9ef0ada7baa17b912876eba6aa441",
+        "components/icon-button-current.css": "445637d458e8d76ce8cc773020f319f683764846d8732c7170df3426073484dd",
+        "components/icons/icon-close.svg": "226867654d63f99f548f7e25b2f0286c19aa5786f5b9497905474f3959704424",
+        "components/icons/icons-manifest.json": "07851a18214f0adc2f974c681ea193d8886d35ee780480dbab3315fc15da9cc4",
+        "components/preview/button.html": "3a50b30571727f6b03a6e7324ffed84f81dfd32208349c2cab33af30f1e76737",
+        "components/preview/dialog.html": "06c921e0c24ddd41e2d76fcca022c9859ead62d954c17d95272970db745c327d",
+        "components/preview/icon-button.html": "38701b8e20e658ef45c162fcaa5d8b13b4a999c0d573afa05d8a6c60fc43f4b9",
+        "components/preview/reference-live.js": "4839383529a3ee82df1d8efe675d430567abc1986034499107aa429d21a18ea6",
+        "components/reference-policy.json": "9a2c54006968a27b3d04e03f0dac429a6e6c215e5e5936b7f65d66cfd9d5c660",
+        "components/sources/dialog/local-structure-review.json": "e87c24e0551f4572c08af5de84ac37f82970429756b0e08bfda22d2293bbcecb",
+        "components/sources/dialog/mastergo-components.json": "57c90ff018152f38def21661737415c245edb7c53e7ee5acebf21c0f77c143d1",
+        "components/sources/dialog/mastergo-spec.json": "4fadfa04db400a6b5e2166ee5672dc0cb6259ea67278e24a56b56be845fd4574",
+        "components/sources/dialog/source-inventory.json": "f587c02a211f0d141f571d3a5bd4bf6133e0e630ef827c6a67538df0a75e9b7c",
+        "components/sources/icon-button/mastergo-original-components.json": "825a7ab5731310b020c0dfe81d40056d5cc745544e4058ce719fd68c5aed19a7",
+        "components/token-specs/border-radius.json": "77d9245e2504b7c0c605288290e938b2453a79b27d4312448d14a58692290791",
+        "components/token-specs/border.json": "d286ee4681deda1c7702c310b065c86f824539b3a8797efba05b24bc225ab322",
+        "components/token-specs/colors.json": "82cba8e4a6b3e1e5bc961e4039478b0dea4ba9b92a5291d579bb8d7a54db0d95",
+        "components/token-specs/spacing.json": "351b14cfce4411248ad41e00eaaf2b1cab9b705997980dfed1fc65693740e65c",
+        "components/token-specs/typography.json": "93b7dc07547218a33c075b7cdcd942f89094353a7847d483d8378b8883327e16",
+        "components/tokens.css": "2424558781ddfc12cad4d2b91e78451dc26fe5e126e6f24a3b9631753b644afa",
+        "docs/handoff/archives/2026-10-09-overnight/mastergo/button-shape-component-set.json": "97baa8363f81381597e5e8874efcfe0897017be8cab528e21ff712e45cf5b925"
+      }
+    },
+    {
+      "id": "icon-card",
+      "dependencies": [
+        {
+          "component": "TextButton",
+          "usage": "居中/居左单事件卡片 Learn more 链接（inline-black / M）",
+          "slot": "link",
+          "requiredVariants": [
+            "inline-black"
+          ],
+          "implementationClasses": [
+            "ds-text-btn",
+            "ds-text-btn--inline",
+            "ds-text-btn--black",
+            "ds-text-btn--m"
+          ],
+          "appliesTo": [
+            "center.single-event",
+            "left.single-event"
+          ],
+          "requiredSizes": [
+            {
+              "variant": "inline-black",
+              "size": "m"
+            }
+          ]
+        },
+        {
+          "component": "TextButton",
+          "usage": "居中/居左多事件卡片 See more / See less 折叠触发器（inline-blue-link / M）",
+          "slot": "toggle",
+          "requiredVariants": [
+            "inline-blue-link"
+          ],
+          "implementationClasses": [
+            "ds-text-btn",
+            "ds-text-btn--inline",
+            "ds-text-btn--blue-link",
+            "ds-text-btn--m"
+          ],
+          "appliesTo": [
+            "center.multi-event-expandable",
+            "left.multi-event-expandable"
+          ],
+          "requiredSizes": [
+            {
+              "variant": "inline-blue-link",
+              "size": "m"
+            }
+          ]
+        }
+      ],
+      "canonicalChecks": {
+        "TextButton": {
+          "scope": "finite-canonical-TextButton-default-calls",
+          "checked": [
+            {
+              "variant": "center.single-event",
+              "children": [
+                {
+                  "variant": "inline-black",
+                  "size": "m"
+                }
+              ]
+            },
+            {
+              "variant": "left.single-event",
+              "children": [
+                {
+                  "variant": "inline-black",
+                  "size": "m"
+                }
+              ]
+            }
+          ],
+          "inactive": [],
+          "browserVerified": false,
+          "hostStyleCascadeVerified": false
+        }
+      },
+      "nonCanonicalPending": [
+        {
+          "component": "TextButton",
+          "variant": "center.multi-event-expandable",
+          "reason": "current exact host call not established"
+        },
+        {
+          "component": "TextButton",
+          "variant": "left.multi-event-expandable",
+          "reason": "current exact host call not established"
+        }
+      ],
+      "sourceFingerprints": {
+        "components/components.css": "a08b4fe2790b5ff2b784c6362a90f1b94e7535a03e863232ce6d620a52e85f73",
+        "components/contracts/icon-card.json": "67c3a2f64e1def9954665ea7419fa3501b88a61cee3ad803ccd7d409fa150b40",
+        "components/contracts/text-button.json": "05e3a009508bc216541aafa2615adc62859adc00ed85d488f18ad59bc4e12d66",
+        "components/icon-card-current.css": "a7490fff33f64275c1f4789b49506603b6e7cc2b364ab1003f9008f572b1f95e",
+        "components/icons/icon-arrow-right.svg": "f14aa7f363b6e2ffe83389f0fc2b01a96bbc2e4cae9d29fa42203d408f9eb3b8",
+        "components/icons/icon-benefit-development.svg": "76385f5a902547f68428e1810fc8d2c10c38d84c9e74b68c990adf0c669e8a73",
+        "components/icons/icon-bullet.svg": "d97e82725de89af391e3c14c5a14d541f8171b1cd714e57b2768edfcab773dbd",
+        "components/icons/icon-chevron-down.svg": "fe5df03acb1cb4b8a38a928357775416656fbf97cc54f3c6a5b7d0e4906f3e91",
+        "components/icons/icon-placeholder-switch.svg": "0f52c5a675441071196593d5d90c3f97f29b0b43719170d8a7df7ac9a974b5d5",
+        "components/icons/icons-manifest.json": "07851a18214f0adc2f974c681ea193d8886d35ee780480dbab3315fc15da9cc4",
+        "components/preview/icon-card.html": "625828f4d3db39a46f8be619c3769633ca0e58b67848a28569414857992cc430",
+        "components/preview/reference-live.js": "4839383529a3ee82df1d8efe675d430567abc1986034499107aa429d21a18ea6",
+        "components/preview/text-button.html": "10aabbe4321ea96d87a2d7d72a2b546b62956362925776721b549e231e2749f8",
+        "components/reference-policy.json": "9a2c54006968a27b3d04e03f0dac429a6e6c215e5e5936b7f65d66cfd9d5c660",
+        "components/sources/icon-card/local-structure-review.json": "ef407c33ea9a17f7f6131af364b190ed7745988820ac65492d201df5c7da9636",
+        "components/text-button-current.css": "662a90320af28ef4d38b2adf121972e7e380cc7c33fcdeb0597a5bfd36b218a9",
+        "components/token-specs/border-radius.json": "77d9245e2504b7c0c605288290e938b2453a79b27d4312448d14a58692290791",
+        "components/token-specs/border.json": "d286ee4681deda1c7702c310b065c86f824539b3a8797efba05b24bc225ab322",
+        "components/token-specs/colors.json": "82cba8e4a6b3e1e5bc961e4039478b0dea4ba9b92a5291d579bb8d7a54db0d95",
+        "components/token-specs/spacing.json": "351b14cfce4411248ad41e00eaaf2b1cab9b705997980dfed1fc65693740e65c",
+        "components/token-specs/typography.json": "93b7dc07547218a33c075b7cdcd942f89094353a7847d483d8378b8883327e16",
+        "components/tokens.css": "2424558781ddfc12cad4d2b91e78451dc26fe5e126e6f24a3b9631753b644afa"
+      }
+    },
+    {
+      "id": "navigation",
+      "dependencies": [
+        {
+          "component": "TextButton",
+          "usage": "历史footer列链接使用旧black/s、无箭头并覆盖gray-3；保留旧依赖记录，尚非当前TextButton精确调用。待对应原始宿主来源复核后迁移，不作为原子变体或新调用例外。",
+          "slot": "footer.linkColumns",
+          "requiredVariants": [
+            "inline-black"
+          ],
+          "implementationClasses": [
+            "ds-text-btn",
+            "ds-text-btn--inline",
+            "ds-text-btn--black",
+            "ds-text-btn--s"
+          ],
+          "appliesTo": [
+            "footer",
+            "footer-responsive"
+          ]
+        }
+      ],
+      "canonicalChecks": {
+        "TextButton": {
+          "scope": "finite-canonical-TextButton-default-calls",
+          "checked": [],
+          "inactive": [],
+          "browserVerified": false,
+          "hostStyleCascadeVerified": false
+        }
+      },
+      "nonCanonicalPending": [
+        {
+          "component": "TextButton",
+          "variant": "footer",
+          "reason": "current exact host call not established"
+        },
+        {
+          "component": "TextButton",
+          "variant": "footer-responsive",
+          "reason": "current exact host call not established"
+        }
+      ],
+      "sourceFingerprints": {
+        "components/components.css": "a08b4fe2790b5ff2b784c6362a90f1b94e7535a03e863232ce6d620a52e85f73",
+        "components/contracts/navigation.json": "4c7cd4e6171f1ccfe8f0c9d4ce044c15f00f1ff2e5e8e054746a47cb4d944d61",
+        "components/contracts/text-button.json": "05e3a009508bc216541aafa2615adc62859adc00ed85d488f18ad59bc4e12d66",
+        "components/icons/icon-account.svg": "66168fc8ec0493c9775fbfaf182f6ac3314eb7e2b9104e0db092ec3d1d4d8cf1",
+        "components/icons/icon-cart.svg": "b86811904a2144428d62db5374820e8f76a06e2f120c03e1ec87ca35c90753db",
+        "components/icons/icon-logo-fs.svg": "1bb8085713718c9ad56a52665f382944a844266155f6d33476a02f4ace76ff4e",
+        "components/icons/icon-search.svg": "11e01599b008320c723773284b56944f810762688a2928b37e6cb228fc9a3347",
+        "components/icons/icon-social-facebook.svg": "fc0eb42dd7f748704e846d2ffdd182e24fab3f51aaf7c7aa7ab857ca6274a716",
+        "components/icons/icon-social-instagram.svg": "f89366d1630e936492a156f1becc215103876b4d28418ad149d1568f88973903",
+        "components/icons/icon-social-linkedin.svg": "b731a14e60fc99c1c800e73a231449efdaed1c7120ff74d50dcc6cce2d801b58",
+        "components/icons/icon-social-reddit.svg": "84c32e869fa0e3aec2c929fe61c30178014b35c7dc23532f6fdf34720d91cdd9",
+        "components/icons/icon-social-x.svg": "0ce4cc2b9491e46b1307f23f4b82ccab8f5eddce45e8b40017fc410301331c39",
+        "components/icons/icon-social-youtube.svg": "e0c4a5232f15fea93023aca6cf2bbe22fe2e922491bcd288654e0e798e97d7e2",
+        "components/icons/icons-manifest.json": "07851a18214f0adc2f974c681ea193d8886d35ee780480dbab3315fc15da9cc4",
+        "components/icons/img-app-store.svg": "77ab4f618b0103bc358a6805e395e5b821c4d476631fa8d7ff37fdad2dccfd5c",
+        "components/icons/img-badge-bbb.svg": "f3742db8a6001357bc358d521f56743316b33e5791274b1b51aa165b382a4d83",
+        "components/icons/img-badge-google.svg": "18bf48be483753df8eabe6d3c15afe8f241a411a47c6616d3a7196f5ece65601",
+        "components/icons/img-badge-trustedsite.svg": "9718228016716b43f3e4cdc648d19f4a62d69fdedb321d44563c4efa6fee5d48",
+        "components/icons/img-badge-trustpilot.svg": "76e5eaca52379eade966e9b80db8d31a70e4ab8f8efe3a287530b7512e8e426b",
+        "components/icons/img-google-play.svg": "a344c8d5149a7944620d850ea019803e3f890be50ef88ac90bb541d2e782a1cb",
+        "components/preview/navigation.html": "d61467a9c7dcfa37e4cc6b5c70a97eb8140281cf71444b47ae1926404390a865",
+        "components/preview/reference-live.js": "4839383529a3ee82df1d8efe675d430567abc1986034499107aa429d21a18ea6",
+        "components/preview/text-button.html": "10aabbe4321ea96d87a2d7d72a2b546b62956362925776721b549e231e2749f8",
+        "components/reference-policy.json": "9a2c54006968a27b3d04e03f0dac429a6e6c215e5e5936b7f65d66cfd9d5c660",
+        "components/sources/navigation/fixed-header-baseline.html": "62db09fbc1a037b01d284e5c88655fe8ecbd3edaf251ff887c39dee5562b73ea",
+        "components/sources/navigation/local-structure-review.json": "04d8e569457c16d5d08cc2ed032b7e09fe37056ee2a8e68353c10774e4d4d8fc",
+        "components/sources/navigation/source-index.json": "1def1cbba8dc5d0b110878c41f4db2e7c9c483a5f2f61ec7534b4b0221670441",
+        "components/token-specs/border-radius.json": "77d9245e2504b7c0c605288290e938b2453a79b27d4312448d14a58692290791",
+        "components/token-specs/border.json": "d286ee4681deda1c7702c310b065c86f824539b3a8797efba05b24bc225ab322",
+        "components/token-specs/colors.json": "82cba8e4a6b3e1e5bc961e4039478b0dea4ba9b92a5291d579bb8d7a54db0d95",
+        "components/token-specs/spacing.json": "351b14cfce4411248ad41e00eaaf2b1cab9b705997980dfed1fc65693740e65c",
+        "components/token-specs/typography.json": "93b7dc07547218a33c075b7cdcd942f89094353a7847d483d8378b8883327e16",
+        "components/tokens.css": "2424558781ddfc12cad4d2b91e78451dc26fe5e126e6f24a3b9631753b644afa",
+        "page-inputs/bdcom-oem-m2/component-sources/navigation.json": "4b7460bf9a3f67c6f706304235bfb39f152ffefd827efe54d5493b0ac7d3e10a"
+      }
+    },
+    {
+      "id": "table",
+      "dependencies": [
+        {
+          "component": "TextButton",
+          "usage": "行线型超过六行时的 See more / See less disclosure 触发器；使用 Disclosure / M（inline-black / M），由 ds-table__toggle-row 在表格下方水平居中，展开时追加 ds-text-btn--hover ds-text-btn--expanded。",
+          "slot": "toggle",
+          "requiredVariants": [
+            "inline-black"
+          ],
+          "implementationClasses": [
+            "ds-text-btn",
+            "ds-text-btn--inline",
+            "ds-text-btn--black",
+            "ds-text-btn--m"
+          ],
+          "appliesTo": [
+            "horizontal-row-line"
+          ],
+          "requiredWhen": "body-row-count-over-six"
+        }
+      ],
+      "canonicalChecks": {
+        "TextButton": {
+          "scope": "finite-canonical-TextButton-default-calls",
+          "checked": [],
+          "inactive": [
+            {
+              "variant": "horizontal-row-line",
+              "reason": "declared row-count condition not met",
+              "bodyRowCount": 6
+            }
+          ],
+          "browserVerified": false,
+          "hostStyleCascadeVerified": false
+        }
+      },
+      "nonCanonicalPending": [],
+      "sourceFingerprints": {
+        "components/components.css": "a08b4fe2790b5ff2b784c6362a90f1b94e7535a03e863232ce6d620a52e85f73",
+        "components/contracts/table.json": "117f5d3d2c217aa53aadc12c2ff4852d6ee13f44e6f7c6043078134cc2ff0e25",
+        "components/contracts/text-button.json": "05e3a009508bc216541aafa2615adc62859adc00ed85d488f18ad59bc4e12d66",
+        "components/icons/icon-carousel-next.svg": "32bc4993a22bc4fe94406f10692227843f334f71f804a000cdce30e5e94235fe",
+        "components/icons/icon-carousel-prev.svg": "0c3e3035fa72509b40f45298e7194eee211adb0b3a8c51730149d8363f3f55ba",
+        "components/icons/icon-chevron-down.svg": "fe5df03acb1cb4b8a38a928357775416656fbf97cc54f3c6a5b7d0e4906f3e91",
+        "components/icons/icons-manifest.json": "07851a18214f0adc2f974c681ea193d8886d35ee780480dbab3315fc15da9cc4",
+        "components/preview/reference-live.js": "4839383529a3ee82df1d8efe675d430567abc1986034499107aa429d21a18ea6",
+        "components/preview/table-legacy-adapter.js": "a57a9d038f3802332ea4a23c6ff279b4c60c4276b3eae46f278fe08e3d57cf31",
+        "components/preview/table.html": "d9b3a1579b1c125823f444fbeccf13837d24e9c8b1da25c37e080e2b4dee39f9",
+        "components/preview/text-button.html": "10aabbe4321ea96d87a2d7d72a2b546b62956362925776721b549e231e2749f8",
+        "components/reference-policy.json": "9a2c54006968a27b3d04e03f0dac429a6e6c215e5e5936b7f65d66cfd9d5c660",
+        "components/sources/table/local-structure-review.json": "d6d65b1cc631aadf6a55e979cd9c9df6da55b2816022ac03cf438b18cad1db83",
+        "components/table-current.js": "cf4052650da0f8021d4b17f3688b6d4d84b269b8dfb0cbf77f1d1c9f70d93c8c",
+        "components/token-specs/border-radius.json": "77d9245e2504b7c0c605288290e938b2453a79b27d4312448d14a58692290791",
+        "components/token-specs/border.json": "d286ee4681deda1c7702c310b065c86f824539b3a8797efba05b24bc225ab322",
+        "components/token-specs/colors.json": "82cba8e4a6b3e1e5bc961e4039478b0dea4ba9b92a5291d579bb8d7a54db0d95",
+        "components/token-specs/opacity.json": "226088dc556be35b2b51766287a7d54f95eebd348cb80f6d8313e525cf2b70b7",
+        "components/token-specs/spacing.json": "351b14cfce4411248ad41e00eaaf2b1cab9b705997980dfed1fc65693740e65c",
+        "components/token-specs/typography.json": "93b7dc07547218a33c075b7cdcd942f89094353a7847d483d8378b8883327e16",
+        "components/tokens.css": "2424558781ddfc12cad4d2b91e78451dc26fe5e126e6f24a3b9631753b644afa",
+        "docs/assets/20250901105611h7ydr7.jpg.webp": "59bd259e8bbfd62b028d5612f4de1333f571e1cf12ee18d4b783ea1aa323b50f"
+      }
+    }
+  ],
+  "limits": [
+    "Finite default canonical anatomy and required variant/size/runtime resources only",
+    "No host CSS cascade, native geometry/state or full visual engineering acceptance",
+    "Footer old text-only color override, disclosure and historical Gallery close not migrated",
+    "Cart remains independent user-confirmed source target, not invented as generic Button variant"
+  ]
+}

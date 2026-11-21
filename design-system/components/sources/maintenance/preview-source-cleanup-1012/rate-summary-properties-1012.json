@@ -1,0 +1,149 @@
+{
+  "date": "2026-10-12",
+  "source": {
+    "file": "143880409387753",
+    "page": "3752:4106",
+    "rootNode": "69772:106234",
+    "method": "已登录原生MasterGo可见层级与属性；仅评分表子树",
+    "version": "英文站组件库 v2.27.2609B；团队库更新提示未应用，未获取独立修订号"
+  },
+  "scope": "只补本节点总宽、两列、条宽及必要样式；无实现修改、无其他状态扩展",
+  "properties": {
+    "root": {
+      "width": 284,
+      "height": 108,
+      "gap": 28,
+      "child": "评分 9",
+      "note": "外层28不是两列间距"
+    },
+    "inner": {
+      "name": "评分 9",
+      "width": 284,
+      "height": 108,
+      "columnGap": 12,
+      "padding": 0
+    },
+    "scoreCard": {
+      "name": "容器 11375",
+      "width": 112,
+      "height": 108,
+      "x": 0,
+      "y": 0,
+      "radius": 8,
+      "background": "Gray-FAFAFB",
+      "horizontalPadding": 12,
+      "outerGap": 0
+    },
+    "cardContent": {
+      "name": "容器 12277",
+      "width": 88,
+      "height": 72,
+      "x": 12,
+      "y": 18,
+      "gap": 4
+    },
+    "distribution": {
+      "name": "容器 478",
+      "width": 160,
+      "height": 108,
+      "x": 124,
+      "y": 0,
+      "rowGap": 2
+    },
+    "fourSlot": {
+      "name": "4 stars / 容器 1848",
+      "width": 88,
+      "height": 8,
+      "x": 49,
+      "y": 6,
+      "radius": 4,
+      "background": "Gray-EEEEEE"
+    },
+    "fiveFill": {
+      "width": 88,
+      "height": 8,
+      "radius": 4,
+      "fill": "#FCCB05",
+      "sizing": "固定"
+    },
+    "fourFill": {
+      "width": 60,
+      "height": 8,
+      "radius": 4,
+      "fill": "#FCCB05",
+      "sizing": "固定"
+    },
+    "label": {
+      "text": "4 stars",
+      "style": "Open Sans/13px-Regular",
+      "textBox": "41×20",
+      "color": "Black-19191A"
+    },
+    "score": {
+      "text": "4.0",
+      "style": "Open Sans/24px-SemiBold",
+      "textBox": "34×32",
+      "color": "Black-19191A"
+    },
+    "reviews": {
+      "text": "（42 reviews）",
+      "style": "Open Sans/12px-Regular",
+      "textBox": "84×20",
+      "color": "Black-19191A"
+    }
+  },
+  "evidence": {
+    "root": "rate-native-state-1012.txt",
+    "inner": "rate-inner-layout-1012.txt",
+    "distribution": "rate-column-left-1012.txt",
+    "scoreCard": "rate-score-card-1012.txt",
+    "fiveFill": "rate-fill-five-1012.txt",
+    "fourFill": "rate-fill-four-1012.txt",
+    "fourSlot": "rate-bar-slot-four-1012.txt",
+    "label": "rate-label-style-1012.txt",
+    "score": "rate-value-style-1012.txt",
+    "reviews": "rate-review-text-1012.txt",
+    "cardContent": "rate-card-content-1012.txt"
+  },
+  "evidenceNamingNote": "rate-column-left-1012.txt实际选中的是分布列（容器478），以其focused layer与属性为准；不是左列。中间定位记录保留但不作为属性依据。",
+  "corrections": [
+    "撤销此前两列间距28 vs12的差异判断：28属于外层，真实内层12。",
+    "撤销半角括号与全角括号差异：真实文本节点也是全角（42 reviews）。"
+  ],
+  "distributionAnalysis": {
+    "sameData": "原件与当前Preview均4.0/42/28,14,0,0,0；没有用14/14/14整数演示数据解释此差异",
+    "sourceSample": "固定几何：88px与60px。未见可证明动态公式的属性或规则。",
+    "localPreview": "HTML明确写66.67%与33.33%，88px槽下约58.67与29.33px；不依赖被撤掉的整数演示。",
+    "localRuntime": "rate-current.js 119–132在显式data-rate-summary标记、数据/整数均值验证通过后按count/total设置宽度。原评分表没有该标记，当前显示来自HTML内联百分比；runtime规则不能证明为MG规则。",
+    "conclusion": "本节点差异来自本地按总数比例构造长度，与原件固定样例不一致；不是同组数据改变导致。不能由两个固定宽度推断新通用归一化规则。"
+  },
+  "proposedCorrection": {
+    "readyScope": "仅评分表Default原样展示：5星填充88px、4星60px；summary填充#FCCB05，条槽#EEEEEE。先核对真实影响范围，再局部修改与必要同步；本批不执行。",
+    "preserve": [
+      "总宽284×108",
+      "112/160列宽与12px内层间距",
+      "现有字号字重、卡片底色/圆角/内容gap4声明",
+      "原始文案及数据"
+    ],
+    "excluded": [
+      "summary AI调用开放",
+      "动态分布公式/均值重算",
+      "星标精确素材",
+      "其他Rate状态与Comment宿主全面验收"
+    ]
+  },
+  "unknownOrBlocked": [
+    "通用分布条计算规则：静态设计节点没有给出公式，不能按数据推断；本批到此收尾。",
+    "字体样式名与文本框高度已读，但未展开样式定义确认独立行高；不把文本框高度称为行高。",
+    "未取得当前本地实际视口/截图，仍不是本地像素验收。"
+  ],
+  "sourceMutationIncident": "读取中方向键误触使root x20→21，立即撤销并核实x20恢复；其余读取仅选择/展开，不改变实现。",
+  "quota": {
+    "startLocal": "2026-10-12 22:25:48 +08:00",
+    "endLocal": "2026-10-12 22:40:54 +08:00",
+    "startUsedPercent": 36,
+    "endUsedPercent": 36,
+    "displayChangePercentagePoints": 0,
+    "note": "账户共享；整数显示未变化不代表零消耗，不能归为本批独立消耗。"
+  }
+}

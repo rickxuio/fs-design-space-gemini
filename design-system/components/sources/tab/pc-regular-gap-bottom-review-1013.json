@@ -1,0 +1,57 @@
+{
+  "fileId": "143880409387753",
+  "pageId": "68908:093269",
+  "readAt": "2026-10-13",
+  "scope": "新版插槽常规PC&Pad/居左/Default14px；实际检查只PC",
+  "host": {
+    "node": "68908:049852",
+    "size": [
+      1200,
+      40
+    ],
+    "outerGap": 4,
+    "padding": 0
+  },
+  "optionsGroup": {
+    "node": "68908:049858",
+    "size": [
+      372,
+      40
+    ],
+    "gap": 16,
+    "padding": 0,
+    "boundary": "含可替换插槽，372不是固定业务选项宽度"
+  },
+  "selectedAtomInstance": "68908:049864",
+  "bottomStroke": {
+    "node": "68908:049853",
+    "type": "内部导航容器描边，非独立Divider",
+    "size": [
+      1200,
+      40
+    ],
+    "alignment": "outside",
+    "sidesPx": {
+      "left": 0,
+      "top": 0,
+      "right": 0,
+      "bottom": 1
+    },
+    "color": "#DEE0E3"
+  },
+  "comparison": "选项间距16与当前CSS一致。源容器高40、底线外描边不占布局；当前CSS内占位border-bottom会参与自动高度。仅当前默认居左有限来源样例改用底部1px外绘制，不固定总高度。",
+  "implementation": "components/tab-current.css使用0 1px 0 Gray4 box-shadow和border-bottom:0；data-tab-source-pc-default=official只标记一个Default有限样例。历史、大号、居中、胶囊、product不外推。",
+  "evidence": [
+    "pc-regular-host-native-1013.txt",
+    "pc-regular-options-group-native-1013.txt",
+    "pc-regular-selected-instance-native-1013.txt",
+    "pc-regular-bottom-stroke-native-1013.txt"
+  ],
+  "remaining": [
+    "Large/居中宿主底线独立来源",
+    "实际浏览器底线/与邻接内容间距/状态视觉",
+    "溢出下拉及Radio原子来源",
+    "胶囊停用来源与行为尚未完整"
+  ],
+  "fullFamilyAcceptance": false
+}

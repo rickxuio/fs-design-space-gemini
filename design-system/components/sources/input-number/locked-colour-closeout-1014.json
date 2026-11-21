@@ -1,0 +1,19 @@
+{
+  "scope": "Current native readonly+disabled input colour precedence, own32 Disabled source and existing shared intent",
+  "cause": "Added readonly :has(input[readonly]) colour/caret selector has class specificity5; disabled selector4 lost despite appearing later. Earlier JSDOM opacity tests did not establish actual colour cascade.",
+  "implementation": "Removed redundant readonly input colour/caret override; base input already defines normal Gray1. Existing disabled colour now wins, avoiding selector weight escalation. Filled readonly-only0.7 retained.",
+  "generationGuard": "A2 binds own Disabled32 paint source and evaluates relevant matching CSS with specificity tuple/important/order. Only simple has/not arguments in finite model; matching unsupported functions/conditional rules reject.",
+  "negative": "Actual private A2 fixture restoring old CSS is rejected; stronger override, matching media and grouped:is also reject. JSDOM matches selectors but does not determine cascade order in this verifier.",
+  "engineering": "16 necessary colour/readonly/native reference cases passed; required sync passed.",
+  "browser": "Private6-case actual1920x1000: four disabled+readonly/fieldset inputs nowrgba25,25,26,.3 atlayer1; ordinary readonly filled0.7 and small1 retain normal colour. Before screenshot exposed black disabled values; inline after evidence and final computed check saved.",
+  "evidence": [
+    "components/sources/input-number/locked-colour-browser-1014.json",
+    "components/sources/input-number/locked-colour-final-browser-1014.json"
+  ],
+  "fixture": "page-reviews/component-stage-status-2026-10-11/fixtures/input-number-readonly-disabled-1014.html",
+  "fixtureBoundary": "Relevant private regression fixture only, not a new library variant, showcase or business page; source stored in project for reproducibility.",
+  "remaining": [
+    "Own42 authored Disabled source not approved by shared rule or private fixture",
+    "Focus/cursor and other states/hosts, user visual approval remain pending"
+  ]
+}

@@ -1,0 +1,123 @@
+<!-- INTERNAL VARIANT SOURCE: for compile/sync scripts only. Human-facing spec: maintenance/foundation-prototypes-20261114/anchor-nav.html -->
+<!DOCTYPE html>
+<html data-component-reference="anchor-nav" lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anchor Nav 锚点导航 - 组件预览</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../tokens.css">
+  <link rel="stylesheet" href="../components.css">
+  <link rel="stylesheet" href="../button-current.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: var(--font-family-base); padding: 40px; background: #FFF; color: var(--color-gray-1); }
+    h1 { font-size: 24px; font-weight: 600; margin-bottom: 8px; }
+    .subtitle { font-size: 14px; color: var(--color-gray-3); margin-bottom: 40px; }
+    .section { margin-bottom: 48px; }
+    .section-title { font-size: 18px; font-weight: 600; margin-bottom: 24px; padding-bottom: 8px; border-bottom: 1px solid var(--color-gray-5); }
+    .demo-label { font-size: 12px; color: var(--color-gray-3); margin-bottom: 8px; }
+    /* Demo 组件需要全宽以还原真实版心；文档区其余部分保持 40px 版心。 */
+    .ds-anchor-nav,
+    .placeholder { width: calc(100% + 80px); margin-left: -40px; margin-right: -40px; }
+    .placeholder { height: 1000px; background: var(--color-gray-9); display: flex; align-items: center; justify-content: center; color: var(--color-gray-3); font-size: 16px; font-weight: 600; }
+
+
+    /* Category Badge（分类与左侧导航栏保持一致） */
+    .cat-badge { display: inline-flex; align-items: center; height: 22px; padding: 0 10px; border-radius: 11px; font-size: 11px; font-weight: 700; margin: 0 0 10px; }
+  </style>
+</head>
+<body>
+  <span class="cat-badge" style="background:#FFF3E0;color:#F56300;">导航 Navigation</span>
+  <h1>Anchor Nav 锚点导航 <span class="version-badge" style="font-size:18px;font-weight:600;color:#707070;vertical-align:middle;margin-left:10px;">v1.0</span></h1>
+  <p class="subtitle">页面内锚点跳转导航条 — 固定在页面顶部，左侧 Tab 选项 + 右侧 CTA 按钮</p>
+
+  <!-- 变体决策 + 关联关系表 -->
+  <div style="margin-bottom: 0; padding: 24px; background: #FAFBFC; border: 1px solid var(--color-gray-5); border-radius: 8px;">
+    <!-- AUTO-GENERATED-PREVIEW:START -->
+<!-- 合并模式：硬规则已并入下方合并表 -->
+    <!-- AUTO-GENERATED-PREVIEW:END -->
+    <!-- AUTO-GENERATED-DECISION-TABLE:START -->
+    <p style="font-size:14px;font-weight:600;margin-bottom:4px;">变体决策</p>
+    <p style="font-size:12px;color:#707070;margin-bottom:12px;">先匹配具体场景，再区分候选、不用与设计参考；展示和AI读取同一规则。MG来源事实、当前本地接口和视觉批准分别记录，不扩展既有调用范围。</p>
+    <table style="width:100%;border-collapse:collapse;table-layout:fixed;">
+      <colgroup><col style="width:18%"><col style="width:38%"><col style="width:44%"></colgroup>
+      <thead><tr><th scope="col" style="background:#F6F6F8;font-size:12px;font-weight:600;text-align:left;padding:8px 10px;border:1px solid #DEE0E3;">变体</th><th scope="col" style="background:#F6F6F8;font-size:12px;font-weight:600;text-align:left;padding:8px 10px;border:1px solid #DEE0E3;">匹配条件</th><th scope="col" style="background:#F6F6F8;font-size:12px;font-weight:600;text-align:left;padding:8px 10px;border:1px solid #DEE0E3;">选型结论</th></tr></thead>
+<tbody><tr><th scope="rowgroup" rowspan="4" style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">标准锚点导航</th><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">同页多章节，横向入口无需溢出。</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>候选 · </strong>anchor-nav；至少两项、现有红色42px CTA；宿主接章节滚动。</td></tr>
+<tr><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">面板切换或跨页跳转。</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>不用 · </strong>面板切换查Tab，跨页查Navigation。</td></tr>
+<tr><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">需要溢出菜单、遮罩或自动居中。</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>设计参考 · </strong>溢出菜单、遮罩和自动居中未开放。</td></tr>
+<tr><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">需要纵向FAQ/RMA或M端。</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>设计参考 · </strong>不覆盖纵向、M端或原生Tab键盘。</td></tr></tbody>
+<tbody><tr><th colspan="3" style="background:#F6F6F8;font-size:12px;font-weight:600;text-align:left;padding:8px 10px;border:1px solid #DEE0E3;">⚠️ 硬规则：Tab 数量必须与页面 section 锚点数量一致</th></tr><tr><td colspan="2" style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>描述原文</strong><div><strong>AnchorNav 的 tab 项数量必须和页面实际的 section 锚点数量匹配。</strong>新增/删减页面 section 时要同步检查 AnchorNav 的 tab 列表。</div></td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>AI 解析（写入契约 JSON 的字段）</strong><pre style="white-space:pre-wrap;word-break:break-all;">relations.coOccursWith[0] = {
+  component: &quot;page-section&quot;,
+  reason: &quot;每个 tab 对应页面下方一个 page-section 的 id，用于锚点跳转；tab 数量与 section 数量应一致&quot;
+}</pre></td></tr></tbody>
+<tbody><tr><th colspan="3" style="background:#F6F6F8;font-size:12px;font-weight:600;text-align:left;padding:8px 10px;border:1px solid #DEE0E3;">⚠️ 硬规则：保留 Preview 的 div 标签并允许页面补充锚点跳转</th></tr><tr><td colspan="2" style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>描述原文</strong><div><strong>AnchorNav 的 tab 必须保留 Preview 的 div.ds-anchor-nav__tab 结构与组件样式。</strong>参考页面确有锚点跳转且 本地模块映射记录目标 section 时，页面 JS 可补充滚动定位与选中态同步，此用法仍算直接调用。不得将 tab 改为 a；文字不得出现浏览器默认下划线，激活态红色底边线必须保留。</div></td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>AI 解析（写入契约 JSON 的字段）</strong><pre style="white-space:pre-wrap;word-break:break-all;">保留 Preview 的 div.ds-anchor-nav__tab 与既有选中态；仅在来源有可见跳转证据且本地模块映射记录目标 section 时，允许页面 JS 补充滚动定位/选中态同步并标为直接调用；禁止 a 标签和文字默认下划线，保留激活态底边线。</pre></td></tr></tbody>
+<tbody><tr><th colspan="3" style="background:#F6F6F8;font-size:12px;font-weight:600;text-align:left;padding:8px 10px;border:1px solid #DEE0E3;">⚠️ 硬规则：滚动时必须吸顶并保持可见</th></tr><tr><td colspan="2" style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>描述原文</strong><div><strong>AnchorNav 在 Banner 之后、页面主内容区之前；页面向下滚动后必须以 position: sticky、top: 0 固定在视口顶部。</strong>导航需保持可见并位于页面内容之上；锚点跳转落点不得被 56px 导航遮挡。</div></td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>AI 解析（写入契约 JSON 的字段）</strong><pre style="white-space:pre-wrap;word-break:break-all;">ds-anchor-nav 必须由组件 CSS 实现 position: sticky; top: 0，并具有足够层级；页面滚动后导航顶边贴合视口顶边，锚点目标内容在导航下方可见。</pre></td></tr></tbody>
+    </table>
+    <!-- AUTO-GENERATED-DECISION-TABLE:END -->
+  </div>
+
+    <!-- DEPENDENCY-SUMMARY-SPACING -->
+    <div style="height:24px;"></div>
+    <!-- AUTO-GENERATED-DEPENDENCY-SUMMARY-TABLE:START -->
+    <div style="margin-bottom: 0; padding: 24px; background: #FAFBFC; border: 1px solid var(--color-gray-5); border-radius: 8px;">
+      <p style="font-size: 14px; font-weight: 600; margin-bottom: 4px;">依赖汇总表</p>
+      <p style="font-size: 12px; color: #707070; margin-bottom: 12px;">按组件类型汇总组件关系、颜色、字体、间距、描边、圆角、阴影和图标依赖；未填写 <code>appliesTo</code> 的组件级依赖不猜测变体归属，不参与本表归类。「组件关系」列用标签区分：<span style="display:inline-block;font-size:11px;line-height:16px;padding:0 5px;border-radius:3px;background:#EAF2FF;color:#0060BF;">子组件</span> = 嵌入本组件内部；<span style="display:inline-block;font-size:11px;line-height:16px;padding:0 5px;border-radius:3px;background:#F3EEFA;color:#512971;">父组件·类名证据／仅声明</span> = 从宿主 <code>componentDependencies</code> 自动推导；类名出现不等于具体变体、尺寸、必需结构或交互已验证，链接仅供打开 Preview 复核；<span style="display:inline-block;font-size:11px;line-height:16px;padding:0 5px;border-radius:3px;background:#FFF3E0;color:#A65300;">参考·未验证</span> = 仅保留设计意图，宿主 preview 尚无真实结构，不可作为已实现依赖。</p>
+      <div class="dep-summary-scroll">
+        <div class="dep-summary-grid" style="grid-template-columns:minmax(max-content, auto) repeat(8, minmax(max-content, 1fr));">
+          <div class="dep-cell dep-cell--sticky dep-cell--head" role="columnheader">组件类型</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">颜色</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">字体</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">间距</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">描边</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">圆角</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">阴影</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">图标</div>
+          <div class="dep-cell dep-cell--head dep-cell--right-edge" role="columnheader">组件关系</div>
+          <div class="dep-cell dep-cell--sticky dep-cell--bottom-edge" role="rowheader"><strong>标准锚点导航</strong><br><code>anchor-nav</code></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#19191A;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-1" style="color:#0060BF;text-decoration:underline;"><code>color.gray-1</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#707070;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-3" style="color:#0060BF;text-decoration:underline;"><code>color.gray-3</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#EDEDF0;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-6" style="color:#0060BF;text-decoration:underline;"><code>color.gray-6</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#C00000;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-brand-red" style="color:#0060BF;text-decoration:underline;"><code>color.brand-red</code></a></span></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">14px · md · SemiBold 600</span><a href="font.html#tok-typography-h7-semibold" style="color:#0060BF;text-decoration:underline;"><code>typography.h7-semibold</code></a></span></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">16px</span><a href="spacing.html#tok-spacing-lg" style="color:#0060BF;text-decoration:underline;"><code>spacing.lg</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">8px</span><a href="spacing.html#tok-spacing-sm" style="color:#0060BF;text-decoration:underline;"><code>spacing.sm</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">2px</span><a href="spacing.html#tok-spacing-2" style="color:#0060BF;text-decoration:underline;"><code>spacing.2</code></a></span></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:2px;background:#707070;margin-right:8px;vertical-align:middle;flex:0 0 auto;"></span><a href="stroke.html#tok-border-width-strong" style="color:#0060BF;text-decoration:underline;"><code>border.width.strong</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:0;border-top:2px solid #707070;margin-right:8px;vertical-align:middle;flex:0 0 auto;"></span><a href="stroke.html#tok-border-style-default" style="color:#0060BF;text-decoration:underline;"><code>border.style.default</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;box-sizing:border-box;border:2px solid #DEE0E3;background:transparent;margin-right:8px;vertical-align:-3px;flex:0 0 auto;"></span><a href="stroke.html#tok-border-color-transparent" style="color:#0060BF;text-decoration:underline;"><code>border.color.transparent</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;box-sizing:border-box;border:2px solid var(--brand-red);background:transparent;margin-right:8px;vertical-align:-3px;flex:0 0 auto;"></span><a href="stroke.html#tok-border-color-brand" style="color:#0060BF;text-decoration:underline;"><code>border.color.brand</code></a></span></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell dep-cell--right-edge dep-cell--bottom-edge" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:normal;overflow-wrap:anywhere;"><span style="display:inline-block;flex-shrink:0;font-size:11px;line-height:16px;padding:0 5px;margin-right:6px;border-radius:3px;background:#EAF2FF;color:#0060BF;">子组件</span><a href="button.html" style="color:#0060BF;text-decoration:underline;">Button（红色XL Regular，42px）</a></span></div>
+        </div>
+      </div>
+    </div>
+    <!-- AUTO-GENERATED-DEPENDENCY-SUMMARY-TABLE:END -->
+
+  <!-- TEMPLATE-DEMO-SPACING -->
+  <div style="height:24px;"></div>
+
+
+
+<div class="section">
+    <div class="section-title">锚点导航</div>
+    <div class="demo-label">全宽 1920px，灰底 #EEEEEE，高度 56px；向下滚动时固定在视口顶部</div>
+
+    <div class="ds-anchor-nav" data-anchor-group data-anchor-current data-fragment="anchor-nav" data-ai-example="ai-anchor-nav">
+      <div class="ds-anchor-nav__inner">
+        <div class="ds-anchor-nav__tabs">
+          <div class="ds-anchor-nav__tab ds-anchor-nav__tab--active" data-anchor-tab>Option</div>
+          <div class="ds-anchor-nav__tab" data-anchor-tab>Option</div>
+          <div class="ds-anchor-nav__tab" data-anchor-tab>Option</div>
+        </div>
+        <div class="ds-anchor-nav__action">
+          <button class="ds-btn ds-btn--filled-red ds-btn--xl-regular" type="button"><span class="ds-btn__text">Button Name</span></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="placeholder">Page Content Area</div>
+  
+  </div>
+
+  <script src="../anchor-nav-current.js"></script>
+  <script src="../preview/preview-link.js"></script>
+  <script src="../preview/reference-live.js"></script>
+</body>
+</html>

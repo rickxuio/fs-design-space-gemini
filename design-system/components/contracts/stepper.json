@@ -1,0 +1,1087 @@
+{
+  "id": "comp_stepper_001",
+  "name": "Stepper",
+  "chineseName": "步骤条",
+  "description": "步骤条设计规范 v2.3.2602D：圆标步骤条两类、图标步骤条两类，用于展示具有明确顺序的解决方案、订单状态与阶段说明。圆标居中方案型和订单型均支持本地四阶段交互。",
+  "category": "导航 Navigation",
+  "canonicalClassNames": {
+    "root": "ds-stepper",
+    "item": "ds-stepper__item",
+    "interactiveItem": "data-stepper-item（仅方案型可交互，订单型为只读状态节点）",
+    "marker": "ds-stepper__marker",
+    "connector": "ds-stepper__connector",
+    "orderBar": "ds-stepper__order-bar（仅 circle-centered-order：6px 顶部状态带）",
+    "title": "ds-stepper__title",
+    "description": "ds-stepper__description",
+    "placeholder": "ds-stepper__placeholder（68×68px 本地步骤图标）",
+    "divider": "ds-stepper__divider（25px 竖向分隔线）",
+    "dividerIcon": "ds-stepper__divider-icon（24×24px 圆形右向箭头）",
+    "titleIcon": "ds-stepper__title-icon（12×12px 标题尾部右向箭头）"
+  },
+  "variants": [
+    {
+      "name": "circle-centered-solution",
+      "chineseName": "圆标步骤条／居中型（方案）",
+      "type": "圆标步骤条",
+      "usage": "四阶段方案引导；仅当前和已完成阶段允许本地查看。",
+      "whenToUse": "四阶段方案引导；仅当前和已完成阶段允许本地查看。",
+      "cssClass": "ds-stepper ds-stepper--circle-centered",
+      "isComplete": true,
+      "requiredChildren": [
+        "div.ds-stepper__item",
+        "div.ds-stepper__body",
+        "p.ds-stepper__title",
+        "span.ds-stepper__marker",
+        "span.ds-stepper__connector"
+      ],
+      "selectionDecisionType": "①居中型（方案）",
+      "whenNotToUse": "任意点击待开始阶段、自动业务推进或更改阶段数量。"
+    },
+    {
+      "name": "circle-centered-order",
+      "chineseName": "圆标步骤条／居中型（订单）",
+      "type": "圆标步骤条",
+      "usage": "四阶段订单/RMA状态与日期的只读展示。",
+      "whenToUse": "四阶段订单/RMA状态与日期的只读展示。",
+      "cssClass": "ds-stepper ds-stepper--circle-order",
+      "isComplete": true,
+      "requiredChildren": [
+        "div.ds-stepper__item",
+        "div.ds-stepper__body",
+        "p.ds-stepper__title",
+        "span.ds-stepper__marker",
+        "span.ds-stepper__order-bar",
+        "p.ds-stepper__description"
+      ],
+      "selectionDecisionType": "②居中型（订单）",
+      "whenNotToUse": "点击切换状态、编辑订单或提交流程。"
+    },
+    {
+      "name": "icon-regular",
+      "chineseName": "图标步骤条／常规型",
+      "type": "图标步骤条",
+      "usage": "四步横向68px图标与顺序说明。",
+      "whenToUse": "四步横向68px图标与顺序说明。",
+      "cssClass": "ds-stepper ds-stepper--icon-regular",
+      "isComplete": true,
+      "requiredChildren": [
+        "div.ds-stepper__item",
+        "div.ds-stepper__body",
+        "p.ds-stepper__title",
+        "img.ds-stepper__placeholder",
+        "p.ds-stepper__description",
+        "span.ds-stepper__connector",
+        "svg.ds-stepper__connector-arrow-icon"
+      ],
+      "selectionDecisionType": "①常规型",
+      "whenNotToUse": "无顺序的并列优势，或任意图标/节点数量。"
+    },
+    {
+      "name": "icon-divider",
+      "chineseName": "图标步骤条／分隔线型",
+      "type": "图标步骤条",
+      "usage": "品牌信息中的四项图标分隔式阶段展示。",
+      "whenToUse": "品牌信息中的四项图标分隔式阶段展示。",
+      "cssClass": "ds-stepper ds-stepper--icon-divider",
+      "isComplete": true,
+      "requiredChildren": [
+        "div.ds-stepper__item",
+        "div.ds-stepper__body",
+        "div.ds-stepper__title",
+        "img.ds-stepper__placeholder",
+        "p.ds-stepper__description",
+        "span.ds-stepper__divider",
+        "img.ds-stepper__divider-icon",
+        "img.ds-text-btn__icon"
+      ],
+      "selectionDecisionType": "②分隔线型",
+      "whenNotToUse": "完整导航、动态流程或任意替换图标。"
+    }
+  ],
+  "states": [
+    {
+      "name": "pending",
+      "chineseName": "待处理",
+      "description": "订单型为灰色顶部状态带且不显示状态图标；方案型保留白色表面、灰色描边与灰色文字。",
+      "styleOverrides": {}
+    },
+    {
+      "name": "current",
+      "chineseName": "当前",
+      "description": "订单型使用实绿色状态带与 20px 实绿圆形白色对勾；方案型使用绿色实心编号。",
+      "styleOverrides": {}
+    },
+    {
+      "name": "completed",
+      "chineseName": "已完成",
+      "description": "订单型使用 50% 透明绿色状态带与 20px 实绿圆形白色对勾；方案型使用浅绿色圆标、绿色描边及本地 SVG 对勾。",
+      "styleOverrides": {}
+    },
+    {
+      "name": "item-hover",
+      "chineseName": "步骤项悬停",
+      "description": "仅方案型可用阶段显示指针；订单型仅展示，无交互。",
+      "styleOverrides": {
+        "cursor": "pointer"
+      }
+    },
+    {
+      "name": "item-focus-visible",
+      "chineseName": "步骤项键盘焦点",
+      "description": "仅可交互方案型可用阶段显示焦点轮廓。",
+      "styleOverrides": {}
+    }
+  ],
+  "contentSlots": {
+    "marker": {
+      "required": true,
+      "description": "编号、完成状态图标或本地步骤图标。订单型待处理项不显示此视觉标记。"
+    },
+    "title": {
+      "required": true,
+      "description": "步骤标题。"
+    },
+    "description": {
+      "required": false,
+      "description": "步骤说明或状态日期。"
+    },
+    "dividerIcon": {
+      "required": true,
+      "description": "仅 icon-divider：24×24px 本地圆形右向箭头。"
+    },
+    "titleIcon": {
+      "required": true,
+      "description": "仅 icon-divider：标题尾部的 12×12px 本地右向箭头。"
+    }
+  },
+  "relations": {
+    "variantDecisionsDescription": "按实际内容与交互选择具体变体，再核对同版调用资格；候选/不用/参考同源展示给设计师和AI，不把MG原件范围当成完整运行能力。",
+    "variantDecisions": [
+      {
+        "group": "【1】圆标步骤条",
+        "type": "①居中型（方案）",
+        "className": "ds-stepper--circle-centered",
+        "whenToUse": "四阶段方案引导；仅当前和已完成阶段允许本地查看。",
+        "whenNotToUse": "任意点击待开始阶段、自动业务推进或更改阶段数量。",
+        "nestedComponents": [],
+        "status": "当前MG规则/结构与有限本地调用分开记录；视觉待确认。",
+        "variant": "circle-centered-solution",
+        "fragment": "circle-centered-solution",
+        "selectionCases": [
+          {
+            "id": "sp11",
+            "kind": "use",
+            "condition": "四步方案，当前/完成/待处理状态明确。",
+            "result": "原PC初始四步；待开始禁点，不推断业务进度。",
+            "strength": "candidate",
+            "targetVariant": "circle-centered-solution"
+          },
+          {
+            "id": "sp12",
+            "kind": "avoid",
+            "condition": "任意选择待开始步骤或自动进入下一步。",
+            "result": "无阶段值/业务推进API，不模拟表单向导。",
+            "strength": "avoid",
+            "targetVariant": "circle-centered-solution"
+          },
+          {
+            "id": "sp13",
+            "kind": "reference",
+            "condition": "需要箭头、点状、竖向或Error步骤。",
+            "result": "MG另有原件，当前四个调用不覆盖。",
+            "strength": "reference",
+            "targetVariant": "circle-centered-solution"
+          }
+        ]
+      },
+      {
+        "group": "【1】圆标步骤条",
+        "type": "②居中型（订单）",
+        "className": "ds-stepper--circle-order",
+        "whenToUse": "四阶段订单/RMA状态与日期的只读展示。",
+        "whenNotToUse": "点击切换状态、编辑订单或提交流程。",
+        "nestedComponents": [],
+        "status": "当前MG规则/结构与有限本地调用分开记录；视觉待确认。",
+        "variant": "circle-centered-order",
+        "fragment": "circle-centered-order",
+        "selectionCases": [
+          {
+            "id": "sp21",
+            "kind": "use",
+            "condition": "订单状态、日期与顶部状态带。",
+            "result": "circle-centered-order；只读，标题无交互。",
+            "strength": "candidate",
+            "targetVariant": "circle-centered-order"
+          },
+          {
+            "id": "sp22",
+            "kind": "avoid",
+            "condition": "需要点击推进或可编辑订单阶段。",
+            "result": "不是业务状态机，不新增路由/提交。",
+            "strength": "avoid",
+            "targetVariant": "circle-centered-order"
+          }
+        ]
+      },
+      {
+        "group": "【2】图标步骤条",
+        "type": "①常规型",
+        "className": "ds-stepper--icon-regular",
+        "whenToUse": "四步横向68px图标与顺序说明。",
+        "whenNotToUse": "无顺序的并列优势，或任意图标/节点数量。",
+        "nestedComponents": [],
+        "status": "当前MG规则/结构与有限本地调用分开记录；视觉待确认。",
+        "variant": "icon-regular",
+        "fragment": "icon-regular",
+        "selectionCases": [
+          {
+            "id": "sp31",
+            "kind": "use",
+            "condition": "政策/服务有明确四阶段顺序。",
+            "result": "icon-regular；保留现有图标和连接箭头。",
+            "strength": "candidate",
+            "targetVariant": "icon-regular"
+          },
+          {
+            "id": "sp32",
+            "kind": "avoid",
+            "condition": "并列特性或普通图标卡片网格。",
+            "result": "核对IconCard，不给内容伪造顺序。",
+            "strength": "avoid",
+            "targetVariant": "icon-regular"
+          },
+          {
+            "id": "sp33",
+            "kind": "reference",
+            "condition": "MG建议最多5项或有其他图标原件。",
+            "result": "当前固定4项，不按建议上限擅自增项。",
+            "strength": "reference",
+            "targetVariant": "icon-regular"
+          }
+        ]
+      },
+      {
+        "group": "【2】图标步骤条",
+        "type": "②分隔线型",
+        "className": "ds-stepper--icon-divider",
+        "whenToUse": "品牌信息中的四项图标分隔式阶段展示。",
+        "whenNotToUse": "完整导航、动态流程或任意替换图标。",
+        "nestedComponents": [],
+        "status": "当前MG规则/结构与有限本地调用分开记录；视觉待确认。",
+        "variant": "icon-divider",
+        "fragment": "icon-divider",
+        "selectionCases": [
+          {
+            "id": "sp41",
+            "kind": "use",
+            "condition": "About类四阶段，分隔线与圆形箭头。",
+            "result": "icon-divider；静态展示，保留原子图标。",
+            "strength": "candidate",
+            "targetVariant": "icon-divider"
+          },
+          {
+            "id": "sp42",
+            "kind": "avoid",
+            "condition": "标题箭头需要实际跳转或改变业务进度。",
+            "result": "当前无跳转/推进接口，不把箭头当能力。",
+            "strength": "avoid",
+            "targetVariant": "icon-divider"
+          }
+        ]
+      }
+    ],
+    "variantSelectionRules": [
+      {
+        "condition": "可定位的解决方案四步流程",
+        "variant": "circle-centered-solution"
+      },
+      {
+        "condition": "订单详情或 RMA 状态，需要顶部状态带和阶段查看",
+        "variant": "circle-centered-order"
+      },
+      {
+        "condition": "政策、运输或服务流程说明",
+        "variant": "icon-regular"
+      },
+      {
+        "condition": "About Us 的分隔线阶段叙事",
+        "variant": "icon-divider"
+      }
+    ],
+    "interaction": {
+      "circle-centered-solution": {
+        "trigger": "当前 solution-completed-only 调用：仅已完成/当前可用阶段响应点击与键盘，未开始阶段禁点。",
+        "initialState": "第一步为当前；其余三步为待处理。",
+        "result": "保留已有本地状态选择模型；不提供推进业务完成的 API。原生浏览器及业务接入待验。",
+        "urlChanges": false,
+        "keyboard": "方向键、Home/End 只在可用阶段中切换；Enter/Space 不激活未开始阶段。"
+      },
+      "circle-centered-order": {
+        "trigger": "v2.3.2602D 3.1.1 明确仅样式展示，无任何交互。",
+        "initialState": "有限示例第一步当前，其余待处理。",
+        "result": "不注册点击或键盘切换；真实订单状态由宿主业务提供，未新增推进API。",
+        "urlChanges": false,
+        "keyboard": "无交互焦点。"
+      }
+    },
+    "componentDependencies": [
+      {
+        "component": "TextButton",
+        "usage": "当前图标分隔线型标题真实调用 inline-black-bold / L；无来源目标时仅展示。",
+        "slot": "title",
+        "requiredVariants": [
+          "inline-black-bold"
+        ],
+        "requiredSizes": [
+          {
+            "variant": "inline-black-bold",
+            "size": "l"
+          }
+        ],
+        "implementationClasses": [
+          "ds-text-btn",
+          "ds-text-btn--inline",
+          "ds-text-btn--black-bold",
+          "ds-text-btn--l",
+          "ds-text-btn__text",
+          "ds-text-btn__icon"
+        ],
+        "appliesTo": [
+          "icon-divider"
+        ],
+        "verified": true
+      }
+    ],
+    "mutuallyExclusiveWith": [
+      {
+        "component": "IconCard（网格排列表示顺序步骤）",
+        "reason": "有顺序的流程需要明确的阶段关系与状态，不能使用并列 IconCard 网格替代。"
+      },
+      {
+        "component": "Card（网格排列表示顺序步骤）",
+        "reason": "有顺序的流程应使用步骤条保留阶段关系，不应使用普通 Card 网格表达。"
+      }
+    ],
+    "colorDependencies": [
+      {
+        "token": "color.gray-1",
+        "value": "#19191A",
+        "usage": "当前步骤标题、图标步骤条标题与分隔线型标题尾部箭头",
+        "appliesTo": [
+          "circle-centered-solution",
+          "circle-centered-order",
+          "icon-regular",
+          "icon-divider"
+        ]
+      },
+      {
+        "token": "color.gray-3",
+        "value": "#707070",
+        "usage": "辅助说明、订单已完成标题与待处理状态",
+        "appliesTo": [
+          "circle-centered-solution",
+          "circle-centered-order",
+          "icon-regular",
+          "icon-divider"
+        ]
+      },
+      {
+        "token": "color.gray-5",
+        "value": "#DEE0E3",
+        "usage": "待处理连接线、订单状态带、描边与分隔线型圆形箭头底色",
+        "appliesTo": [
+          "circle-centered-solution",
+          "circle-centered-order",
+          "icon-regular",
+          "icon-divider"
+        ]
+      },
+      {
+        "token": "color.white",
+        "value": "#FFFFFF",
+        "usage": "待处理圆标、分隔线型圆形箭头与订单完成图标",
+        "appliesTo": [
+          "circle-centered-solution",
+          "circle-centered-order",
+          "icon-regular",
+          "icon-divider"
+        ]
+      },
+      {
+        "token": "color.success",
+        "value": "#10A300",
+        "usage": "当前圆标、订单当前和已完成状态带、完成图标与已完成连接线",
+        "appliesTo": [
+          "circle-centered-solution",
+          "circle-centered-order"
+        ]
+      },
+      {
+        "token": "color.success-bg",
+        "value": "rgba(16,163,0,0.1)",
+        "usage": "方案型已完成圆标浅绿背景",
+        "appliesTo": [
+          "circle-centered-solution"
+        ]
+      }
+    ],
+    "radiusDependencies": [
+      {
+        "token": "border-radius.md",
+        "value": "4px",
+        "usage": "订单顶部状态带首尾圆角",
+        "appliesTo": [
+          "circle-centered-order"
+        ]
+      },
+      {
+        "token": "border-radius.full",
+        "value": "9999px",
+        "usage": "圆形状态标记",
+        "appliesTo": [
+          "circle-centered-solution",
+          "circle-centered-order",
+          "icon-regular",
+          "icon-divider"
+        ]
+      }
+    ],
+    "fontSizeDependencies": [
+      {
+        "token": "typography.font-size-md",
+        "value": "14px",
+        "usage": "步骤标题",
+        "appliesTo": [
+          "circle-centered-solution",
+          "circle-centered-order",
+          "icon-regular",
+          "icon-divider"
+        ]
+      },
+      {
+        "token": "typography.font-size-sm",
+        "value": "12px",
+        "usage": "步骤说明、日期与状态",
+        "appliesTo": [
+          "circle-centered-solution",
+          "circle-centered-order",
+          "icon-regular",
+          "icon-divider"
+        ]
+      },
+      {
+        "token": "/",
+        "value": "28px",
+        "usage": "图标常规型箭头字号",
+        "appliesTo": [
+          "icon-regular"
+        ]
+      }
+    ],
+    "fontWeightDependencies": [
+      {
+        "token": "typography.font-weight-semibold",
+        "value": "600",
+        "usage": "当前步骤标题与通用步骤标题",
+        "appliesTo": [
+          "circle-centered-solution",
+          "circle-centered-order",
+          "icon-regular",
+          "icon-divider"
+        ],
+        "properties": [
+          "font-weight"
+        ],
+        "selectors": [
+          ".ds-stepper__title",
+          ".ds-stepper--circle-centered .ds-stepper__item--current .ds-stepper__title",
+          ".ds-stepper--circle-order .ds-stepper__item--current .ds-stepper__title"
+        ]
+      },
+      {
+        "token": "typography.font-weight-regular",
+        "value": "400",
+        "usage": "步骤说明、居中方案已完成和待处理标题，以及订单已完成和后续标题",
+        "appliesTo": [
+          "circle-centered-solution",
+          "circle-centered-order",
+          "icon-regular",
+          "icon-divider"
+        ],
+        "properties": [
+          "font-weight"
+        ],
+        "selectors": [
+          ".ds-stepper__description",
+          ".ds-stepper--circle-centered .ds-stepper__item--completed .ds-stepper__title",
+          ".ds-stepper--circle-centered .ds-stepper__item:not(.ds-stepper__item--completed):not(.ds-stepper__item--current) .ds-stepper__title",
+          ".ds-stepper--circle-order .ds-stepper__item--completed .ds-stepper__title",
+          ".ds-stepper--circle-order .ds-stepper__item:not(.ds-stepper__item--completed):not(.ds-stepper__item--current) .ds-stepper__title"
+        ]
+      }
+    ],
+    "typographyDependencies": [
+      {
+        "token": "typography.h7-semibold",
+        "fontSizeToken": "typography.font-size-md",
+        "fontSizeValue": "14px",
+        "fontWeightToken": "typography.font-weight-semibold",
+        "fontWeightValue": "600",
+        "weightEvidence": "explicit-css",
+        "usage": "当前及默认步骤标题",
+        "appliesTo": [
+          "circle-centered-solution",
+          "circle-centered-order",
+          "icon-regular",
+          "icon-divider"
+        ]
+      },
+      {
+        "token": "typography.h9-regular",
+        "fontSizeToken": "typography.font-size-sm",
+        "fontSizeValue": "12px",
+        "fontWeightToken": "typography.font-weight-regular",
+        "fontWeightValue": "400",
+        "weightEvidence": "explicit-css",
+        "usage": "步骤辅助说明与订单已完成标题",
+        "appliesTo": [
+          "circle-centered-solution",
+          "circle-centered-order",
+          "icon-regular",
+          "icon-divider"
+        ]
+      }
+    ],
+    "spacingDependencies": [
+      {
+        "token": "spacing.xs",
+        "value": "4px",
+        "usage": "订单状态段间距、状态项右内边距、正文间距与标题 hover 命中范围",
+        "properties": [
+          "gap",
+          "padding",
+          "margin",
+          "margin-left"
+        ],
+        "selectors": [
+          ".ds-stepper--circle-order",
+          ".ds-stepper--circle-order .ds-stepper__item",
+          ".ds-stepper--circle-order .ds-stepper__body",
+          ".ds-stepper__title",
+          ".ds-stepper__title-icon"
+        ],
+        "appliesTo": [
+          "circle-centered-solution",
+          "circle-centered-order"
+        ]
+      },
+      {
+        "token": "spacing.6",
+        "value": "6px",
+        "usage": "订单状态带高度与订单状态正文起始内边距",
+        "properties": [
+          "padding"
+        ],
+        "selectors": [
+          ".ds-stepper--circle-order .ds-stepper__item"
+        ],
+        "appliesTo": [
+          "circle-centered-order"
+        ]
+      },
+      {
+        "token": "spacing.sm",
+        "value": "8px",
+        "usage": "基础标记与正文、标题与说明间距",
+        "properties": [
+          "gap"
+        ],
+        "selectors": [
+          ".ds-stepper__item",
+          ".ds-stepper__body"
+        ],
+        "appliesTo": [
+          "circle-centered-solution",
+          "circle-centered-order",
+          "icon-regular",
+          "icon-divider"
+        ]
+      },
+      {
+        "token": "spacing.md",
+        "value": "12px",
+        "usage": "图标步骤项目间距",
+        "properties": [
+          "gap"
+        ],
+        "selectors": [
+          ".ds-stepper--icon-regular .ds-stepper__item"
+        ],
+        "appliesTo": [
+          "icon-regular",
+          "icon-divider"
+        ]
+      },
+      {
+        "token": "spacing.lg",
+        "value": "16px",
+        "usage": "订单色带与状态内容的垂直间距",
+        "properties": [
+          "padding"
+        ],
+        "selectors": [
+          ".ds-stepper--circle-order .ds-stepper__item"
+        ],
+        "appliesTo": [
+          "circle-centered-order"
+        ]
+      },
+      {
+        "token": "spacing.2xl",
+        "value": "32px",
+        "usage": "居中方案连接线端部内缩",
+        "properties": [
+          "padding"
+        ],
+        "selectors": [
+          ".ds-stepper--circle-centered"
+        ],
+        "appliesTo": [
+          "circle-centered-solution"
+        ]
+      }
+    ],
+    "borderDependencies": [],
+    "shadowDependencies": [],
+    "iconDependencies": [
+      {
+        "icon": "icon-stepper-completed",
+        "usage": "圆标步骤条已完成标记的本地对勾；订单型通过滤镜呈现为实绿圆内白色对勾",
+        "required": true,
+        "appliesTo": [
+          "circle-centered-solution",
+          "circle-centered-order"
+        ]
+      },
+      {
+        "icon": "icon-demo-report",
+        "usage": "图标常规型与分隔线型共用的 68px 步骤图标",
+        "required": true,
+        "appliesTo": [
+          "icon-regular",
+          "icon-divider"
+        ]
+      },
+      {
+        "icon": "icon-stepper-divider-next",
+        "usage": "分隔线型步骤间的 24×24px 灰色圆形右向箭头；圆内使用与标题同形的 12×12px、#FFFFFF 直角端点 chevron",
+        "required": true,
+        "appliesTo": [
+          "icon-divider"
+        ]
+      },
+      {
+        "icon": "icon-text-button-arrow-right-bold",
+        "usage": "Current icon-divider title calls TextButton black-bold/l and its official arrow; atom owns shape/color. Prior private title asset retained for historical resources.",
+        "required": true,
+        "appliesTo": [
+          "icon-divider"
+        ]
+      }
+    ],
+    "componentSelectionRule": {
+      "rule": "顺序流程、订单状态和流程说明使用 Stepper；没有阶段顺序的并列内容使用 Card 或 IconCard。",
+      "severity": "语义选型硬约束"
+    },
+    "hardRules": [
+      {
+        "title": "圆标居中方案型状态与标题范围",
+        "description": "用户已确认删除红色异常状态；标题可向左右半段连接线范围溢出。",
+        "ruleContent": "<strong>circle-centered-solution 仅允许 pending、current、completed。</strong>current 为绿色实心编号；completed 为浅绿底、绿色描边和本地 SVG 对勾；pending 为白底灰描边编号。不得输出异常/红色状态。<strong>标题短于可用范围时必须保持单行；只有超过“节点宽度 + 左右各半段连接线”的上限时才自动换行。</strong>",
+        "aiParse": "states = [pending, current, completed]\ninteractive currentIndex → 前序 completed / 当前 current / 后序 pending\ntitle.maxWidth = calc(200% - 32px) // 左右各半段连接线",
+        "enforcement": "components.css 删除 error 选择器；居中方案型标题采用 width:max-content 与 max-width:calc(200% - 32px)。"
+      },
+      {
+        "title": "圆标订单型状态带与交互",
+        "description": "原始规范明确订单型仅展示状态。",
+        "ruleContent": "订单型保留既有视觉状态，不提供点击或键盘切换。",
+        "aiParse": "order.interactive=false",
+        "enforcement": "stepper-current.js拒绝订单型初始化；当前调用order-static。"
+      },
+      {
+        "title": "圆标居中方案型可用阶段切换",
+        "description": "原始v2.3.2602D 3.1.1：已完成可悬浮/点击，未开始禁点；限定当前标记调用。",
+        "ruleContent": "当前 solution-completed-only 原子阻止未开始阶段的点击与键盘激活，仅可用阶段参与本地切换；不编造业务推进、校验或事件。URL保持不变。",
+        "aiParse": "interaction.circle-centered-solution = { urlChanges: false, keyboard: true }",
+        "enforcement": "components/stepper-current.js 与 stepper-current.css；历史stepper.js不改。"
+      },
+      {
+        "title": "分隔线型标题调用当前TextButton原子",
+        "description": "当前标题按用户确认的原子优先原则同步官方加粗箭头；分隔圆形节点保留自身来源。",
+        "ruleContent": "当前icon-divider标题真实调用TextButton黑色14px加粗原子，使用其官方icon-text-button-arrow-right-bold.svg，尺寸12×12、Gray1，保持原子DOM和current资源。分隔线圆形图标继续按自身来源调用icon-stepper-divider-next.svg，24×24、Gray4圆底和白色箭头。宿主只装配位置，不覆盖TextButton的路径、颜色或状态；历史锁定资源保留原版本。",
+        "aiParse": "title = genuine TextButton inline-black-bold/l, official atom arrow; divider = existing icon-stepper-divider-next; host paint overrides forbidden; frozen resources unchanged",
+        "enforcement": "Current atom contract, required size-specific asset, strict host anatomy and source fingerprints."
+      }
+    ],
+    "enforcementStatus": {
+      "variantSelection": {
+        "enforced": false,
+        "mechanism": "需要根据页面语义进行人工或 AI 审查。"
+      },
+      "tokenDependencies": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 校验颜色、圆角、字号、间距、描边和字重令牌闭环。"
+      },
+      "iconDividerAssets": {
+        "enforced": true,
+        "mechanism": "iconDependencies 与 preview DOM 记录分隔线型的本地图标资产。"
+      },
+      "circleCenteredInteractiveState": {
+        "enforced": false,
+        "mechanism": "无",
+        "note": "共享脚本已实现鼠标与键盘切换；需要浏览器行为验收确认四阶段状态和 URL 不变。"
+      },
+      "circleOrderInteractiveState": {
+        "enforced": false,
+        "mechanism": "无",
+        "note": "共享脚本已实现鼠标与键盘切换；需要浏览器行为验收确认四种订单状态带和 URL 不变。"
+      }
+    },
+    "prototypeRollout": {
+      "template": "docs/component-spec-template.html",
+      "source": "relations.variantDecisions",
+      "workflow": "existing-local-only",
+      "scope": "preserved calls; solution Stepper restriction reconciled with current MG"
+    },
+    "interactionRules": [
+      {
+        "name": "实际调用边界",
+        "rule": "先确认先后关系，非引导的纯流程状态按MG规则另核时间轴；当前订单示例是原稿的只读专用展示。circle-centered-solution仅原PC四步初始结构；可用阶段本地切换，待开始禁点，无阶段值绑定或业务推进API。order和两种图标步骤只读；保留4节点、状态和真实图标。箭头/点状/竖向、Error、任意数量、替换图标及移动适配未开放。",
+        "owner": "原契约与既有运行时"
+      },
+      {
+        "name": "父子维护",
+        "rule": "保留原依赖、共享实现和维护来源；原component:sync/watch更新调用、选型、依赖及规范页，旧页面不自动升级。",
+        "owner": "原维护入口"
+      }
+    ]
+  },
+  "searchIntents": [
+    "步骤条",
+    "流程步骤",
+    "订单状态步骤条",
+    "图标流程说明"
+  ],
+  "tokenReferences": [
+    "color.gray-1",
+    "color.gray-3",
+    "color.gray-5",
+    "color.white",
+    "color.success",
+    "color.success-bg",
+    "border-radius.md",
+    "border-radius.full",
+    "typography.font-size-md",
+    "typography.font-size-sm",
+    "typography.font-weight-regular",
+    "typography.font-weight-semibold",
+    "typography.h7-semibold",
+    "typography.h9-regular",
+    "spacing.xs",
+    "spacing.6",
+    "spacing.sm",
+    "spacing.md",
+    "spacing.lg",
+    "spacing.2xl"
+  ],
+  "constraints": {
+    "allowedChildren": [
+      "Text",
+      "Icon",
+      "Status marker"
+    ],
+    "requiredProperties": [
+      "variant",
+      "state"
+    ],
+    "forbiddenCombinations": [
+      "用 Card 或 IconCard 网格替代有明确顺序的流程"
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-10-11",
+      "author": "Codex",
+      "change": "原生回查3.1.1：方案未开始禁点、订单无交互。修正当前调用，历史stepper.js/冻结页面不改；浏览器验收待验证。"
+    },
+    {
+      "date": "2026-08-14",
+      "author": "黄彬林（Alen.huang）",
+      "change": "依据用户提供的四种订单状态视觉，为圆标居中订单型补齐阶段切换：已完成段 50% 绿色、当前段实绿色、后续段灰色；已完成与当前状态均为 20px 实绿圆内白色对勾，并支持鼠标、键盘和 ARIA 状态同步。"
+    },
+    {
+      "date": "2026-08-14",
+      "author": "黄彬林（Alen.huang）",
+      "change": "完成圆标居中方案型的最终状态合并：移除 error 状态与红色样式；新增本地绿色描边完成对勾；提供鼠标和键盘阶段切换，并同步已完成连接线、标题字重和 ARIA 当前步骤状态。"
+    },
+    {
+      "date": "2026-08-14",
+      "author": "黄彬林（Alen.huang）",
+      "change": "确认 ds-stepper__item 的整项悬停反馈：任意区域显示指针手型，并使其中步骤标题显示下划线；分隔箭头不参与该反馈。"
+    },
+    {
+      "date": "2026-08-14",
+      "author": "黄彬林（Alen.huang）",
+      "change": "确认分隔线型的四个步骤图标与常规型统一为 icon-demo-report.svg；两种图标步骤条均使用共享的 68×68px 图标规格，分隔线与圆形箭头保持不变。"
+    },
+    {
+      "date": "2026-08-14",
+      "author": "Kiro",
+      "change": "移除设备专用步骤条声明与断点覆盖，仅保留七类变体的统一组件布局。"
+    },
+    {
+      "date": "2026-08-14",
+      "author": "Kiro",
+      "change": "依据用户投喂完成步骤条设计规范 v2.3.2602D：合并圆标五类与图标两类，登记状态、临时橙色素材占位和结算卡片白色令牌映射。"
+    },
+    {
+      "date": "2026-08-14",
+      "author": "Kiro",
+      "change": "补全七个正式变体的依赖汇总映射，避免预览表中出现无依据的空白行。"
+    },
+    {
+      "date": "2026-08-14",
+      "author": "Kiro",
+      "change": "按用户提供的最终效果，将 icon-divider 从临时橙色标记升级为 24px 圆形右向箭头与标题尾部右向图标，并扩展为四步展示。"
+    },
+    {
+      "date": "2026-08-17",
+      "author": "Kiro",
+      "change": "按用户标注删除圆标垂直型、居左型与结算型；正式组件收敛为两种圆标居中型与两种图标型。"
+    },
+    {
+      "date": "2026-10-09",
+      "author": "Codex",
+      "change": "统一规范维护质量标准：登记真实实现与选型规则入口、源变更重新验收、父子影响检查及历史页面隔离；不推断可编辑槽位或视觉批准。"
+    }
+  ],
+  "isComplete": true,
+  "pendingParts": [],
+  "createdAt": "2026-06-30T00:00:00Z",
+  "updatedAt": "2026-10-13",
+  "qualityProfile": {
+    "schemaVersion": "1.0.0",
+    "standard": "docs/component-quality-standard.md",
+    "implementation": "components/variants/stepper.html",
+    "selection": {
+      "mappingSource": "components/selection-mvp-policy.json",
+      "mappingPointer": "components.stepper.variantDecisionTypes",
+      "rulesPointer": "relations.variantDecisions"
+    },
+    "maintenance": {
+      "authority": "contract-preview-runtime-token-icon",
+      "generatedOnly": [
+        "preview-reference-tables",
+        "component-index",
+        "selection-catalog",
+        "design-reading-view",
+        "ai-reference"
+      ],
+      "changePolicy": "记录来源差异、兼容性与受影响父子组件；源文件变化后旧工程验收失效。",
+      "historicalPages": "不自动升级；新页面锁定本地组件运行资源版本。"
+    },
+    "acceptance": {
+      "report": "components/quality/report.json",
+      "proof": "components/quality/acceptance.json",
+      "declarationIsNotProof": true
+    }
+  },
+  "editable": [
+    "steps"
+  ],
+  "integration": {
+    "styles": [
+      "components/tokens.css",
+      "components/components.css",
+      "components/stepper-current.css",
+      "components/text-button-current.css"
+    ],
+    "scripts": [
+      "components/stepper-current.js"
+    ],
+    "fontStylesheets": [
+      "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+    ],
+    "fontFallback": "Open Sans stack; actual browser geometry/font proof pending."
+  },
+  "aiContract": {
+    "schemaVersion": "1.0.0",
+    "rootTag": "div",
+    "scope": "existing-desktop-four-stage-circle-and-icon-specimens",
+    "supported": [
+      "circle-centered-solution",
+      "circle-centered-order",
+      "icon-regular",
+      "icon-divider"
+    ],
+    "unsupported": [
+      "non-four-stage-canonical-call",
+      "error-state",
+      "invented-change-event",
+      "native-form-step-value",
+      "dynamic-insertion-api",
+      "alternate-icon-assets",
+      "mobile"
+    ],
+    "reviewStatus": {
+      "engineering": "pending",
+      "visual": "pending",
+      "familyCoverage": "partial"
+    },
+    "previewAssets": [
+      "components/preview/reference-live.js"
+    ],
+    "selectionPolicy": "先确认先后关系，非引导的纯流程状态按MG规则另核时间轴；当前订单示例是原稿的只读专用展示。circle-centered-solution仅原PC四步初始结构；可用阶段本地切换，待开始禁点，无阶段值绑定或业务推进API。order和两种图标步骤只读；保留4节点、状态和真实图标。箭头/点状/竖向、Error、任意数量、替换图标及移动适配未开放。",
+    "identity": {
+      "rule": "Reuse authored four-stage DOM. Solution has empty data-stepper-interactive and solution-completed-only marker; order requires order-static and no interactive marker. No copied initialized DOM.",
+      "labelRule": "Edit text only: divider title uses genuine inline-black-bold/l TextButton text; no navigation destination evidenced. Other titles retain existing structure.",
+      "icon68Source": "icon-divider requires data-stepper-source-icon68=official and icon-demo-report-current-68.svg; old resource remains for icon-regular/history. No new states."
+    },
+    "locked": [
+      "Four-stage item ordering and required inner regions",
+      "Circle ordinal marker, solution connector and order bar",
+      "Existing static icons and divider geometry",
+      "Shared CSS, status mapping and current stepper-current.js",
+      "No fake event callback or business completion guard",
+      "Solution current marker solution-completed-only; pending stages blocked for click and keyboard, aria-disabled announced.",
+      "Order order-static, no data-stepper-interactive, button roles or keyboard handlers.",
+      "Divider current marker divider-text-atom and genuine TextButton title, no host paint override."
+    ],
+    "behavior": {
+      "initialization": "Current document/root guards initialize marked circle roots once. No public dynamic insertion API; do not co-load old and current scripts.",
+      "selection": "Solution rejects pending; completed/current local selection only. Order displays state without handlers; no business advance API.",
+      "keyboard": "Solution enabled visible stages only; order/icon have no interaction tabstop. Actual native focus remains pending.",
+      "events": "Existing runtime emits no dedicated stage-change event. Host requires separate page integration; no actionCallback advertised.",
+      "static": "Icon forms do not change progress. Divider title is genuine TextButton display-only aria-disabled without href; source target unverified.",
+      "visual": "Connector colors, order bars, pseudo-element checks and long-title line wrapping require actual browser proof; JSDOM state checks are not visual approval.",
+      "availability": "Hidden/native disabled fieldset/ARIA-disabled stage or ancestor blocks synthetic activation. Disable changes tabstops without changing current/completed state; re-enable restores access."
+    },
+    "evidence": {
+      "localImplementation": "components/variants/stepper.html",
+      "comparison": "components/sources/stepper/local-structure-review.json",
+      "nativeSpecification": "components/sources/stepper/native-specification-review-1011.json",
+      "nativeComponent": "components/sources/stepper/native-component-review-1011.json",
+      "icon68CurrentReview": "components/sources/stepper/icon68-property-review-1013.json",
+      "currentMgReview": "components/sources/form-stepper-list-mg-20261115/stepper-review.json"
+    },
+    "variants": {
+      "circle-centered-solution": {
+        "purpose": "four-stage-circle-centered-solution",
+        "exampleSelector": "[data-ai-example=\"ai-stepper-circle-centered-solution\"]",
+        "allowedEdits": [
+          "steps"
+        ],
+        "slots": {
+          "steps": {
+            "selector": ":scope",
+            "mode": "structured-content",
+            "required": true,
+            "preserve": [
+              "div.ds-stepper__item",
+              "div.ds-stepper__body",
+              "p.ds-stepper__title",
+              "span.ds-stepper__marker",
+              "span.ds-stepper__connector"
+            ],
+            "rule": "Edit only title and existing description text plus circle group aria-label; preserve four-item structure, authored default state, markers/connectors/assets. Existing shapes only."
+          }
+        }
+      },
+      "circle-centered-order": {
+        "purpose": "four-stage-circle-centered-order",
+        "exampleSelector": "[data-ai-example=\"ai-stepper-circle-centered-order\"]",
+        "allowedEdits": [
+          "steps"
+        ],
+        "slots": {
+          "steps": {
+            "selector": ":scope",
+            "mode": "structured-content",
+            "required": true,
+            "preserve": [
+              "div.ds-stepper__item",
+              "div.ds-stepper__body",
+              "p.ds-stepper__title",
+              "span.ds-stepper__marker",
+              "span.ds-stepper__order-bar",
+              "p.ds-stepper__description"
+            ],
+            "rule": "Edit only title and existing description text plus circle group aria-label; preserve four-item structure, authored default state, markers/connectors/assets. Existing shapes only."
+          }
+        }
+      },
+      "icon-regular": {
+        "purpose": "four-stage-icon-regular",
+        "exampleSelector": "[data-ai-example=\"ai-stepper-icon-regular\"]",
+        "allowedEdits": [
+          "steps"
+        ],
+        "slots": {
+          "steps": {
+            "selector": ":scope",
+            "mode": "structured-content",
+            "required": true,
+            "preserve": [
+              "div.ds-stepper__item",
+              "div.ds-stepper__body",
+              "p.ds-stepper__title",
+              "img.ds-stepper__placeholder",
+              "p.ds-stepper__description",
+              "span.ds-stepper__connector",
+              "svg.ds-stepper__connector-arrow-icon"
+            ],
+            "rule": "Edit only title and existing description text plus circle group aria-label; preserve four-item structure, authored default state, markers/connectors/assets. Existing shapes only."
+          }
+        }
+      },
+      "icon-divider": {
+        "purpose": "four-stage-icon-divider",
+        "exampleSelector": "[data-ai-example=\"ai-stepper-icon-divider\"]",
+        "allowedEdits": [
+          "steps"
+        ],
+        "slots": {
+          "steps": {
+            "selector": ":scope",
+            "mode": "structured-content",
+            "required": true,
+            "preserve": [
+              "div.ds-stepper__item",
+              "div.ds-stepper__body",
+              "div.ds-stepper__title",
+              "img.ds-stepper__placeholder",
+              "p.ds-stepper__description",
+              "span.ds-stepper__divider",
+              "img.ds-stepper__divider-icon",
+              "img.ds-text-btn__icon",
+              "a.ds-text-btn",
+              "span.ds-text-btn__text"
+            ],
+            "rule": "Edit genuine TextButton .ds-text-btn__text and existing description text only; retain atom structure, passive no-href boundary and all four stages/assets."
+          }
+        }
+      }
+    }
+  },
+  "maintenanceReview": {
+    "textButtonArrowSource1012": {
+      "source": "components/sources/text-button/native-arrow-weight-review-1012.json",
+      "decision": "Current atom follows exact official SVG; original private title rule superseded for current nested calls by user-confirmed atomic ownership; divider source unchanged."
+    },
+    "icon68Source1013": {
+      "source": "components/sources/stepper/icon68-property-review-1013.json",
+      "scope": "icon-divider/current only",
+      "visualApproved": false
+    }
+  }
+}

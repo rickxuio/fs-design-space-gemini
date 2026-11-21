@@ -1,0 +1,532 @@
+{
+  "schemaVersion": "fs-component-reference/1.0.0",
+  "component": {
+    "id": "radio",
+    "name": "Radio",
+    "scope": "existing-desktop-radio-four-default-native-options",
+    "reviewStatus": {
+      "engineering": "pending",
+      "visual": "pending",
+      "familyCoverage": "partial"
+    }
+  },
+  "selection": {
+    "policy": "普通文字互斥组至少2项；宽松用regular-lg、密集用regular-sm、紧凑描边用bordered-compact，bordered-detail只用于结算地址/账单/交货/支付共性框架。同组name相同、value唯一且至多一个checked；单项确认用Checkbox。结算品牌/价格/操作可为源稿插槽，当前精确调用只开放已登记主副文本，不冒充独立OptionSelector。",
+    "supported": [
+      "regular-lg",
+      "regular-sm",
+      "bordered-compact",
+      "bordered-detail"
+    ],
+    "unsupported": [
+      "single-option-confirmation",
+      "media-option",
+      "business-extra-slot",
+      "indeterminate",
+      "forced-hover-state",
+      "mobile"
+    ]
+  },
+  "runtime": {
+    "styles": [
+      "components/tokens.css",
+      "components/components.css",
+      "components/radio-current.css"
+    ],
+    "scripts": [],
+    "fontStylesheets": [
+      "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+    ],
+    "fontFallback": "沿用Open Sans字体栈；实际字体和浏览器视觉仍待验证。"
+  },
+  "identity": {
+    "rule": "原生label包含唯一radio input，无需虚构ID或额外JS。同一互斥组至少两项共享非空name且value唯一，不同业务组更换name；每组最多一个checked。",
+    "labelRule": "保留图标在前、文字在后；detail必须保留主副文字结构。",
+    "currentDetail": "bordered-detail必须data-radio-current=detail-framework并加载radio-current.css；历史无标记实例不升级。",
+    "currentDefault14": "三个14px有限调用必须data-radio-source-default14=official；仅未选中、可用、非Hover的Default使用14px原件透明环，不跨尺寸使用。",
+    "currentDefault18": "regular-lg必须data-radio-source-default18=official；仅未选中、可用、非Hover的Default使用18px原件透明环，历史无标记实例不升级。",
+    "currentHover": "沿用各尺寸data-radio-source-default14/18=official来源标记；未选中且可用的真实/强制Hover使用对应当前Hover透明环，不改变checked/disabled或历史资源。",
+    "currentPress": "沿用各尺寸data-radio-source-default14/18=official来源标记；可用checked使用当前Press灰环/圆点原件，Hover不改变，disabled和历史资源不升级。",
+    "currentDisabled": "各尺寸既有来源标记的disabled使用对应未选/选中原件，颜色已包含30%；未选保留Gray8底色，选中保留透明间隙。标签样式与原生禁用行为不变，历史不升级。"
+  },
+  "locked": [
+    "label > radio input + indicator + content",
+    "准确根变体、图标和CSS",
+    "原生radio语义与组互斥",
+    "内容层级与detail说明",
+    "不添加自写状态JS或内联绘图",
+    "14px Default当前资源标记与透明环资产",
+    "18px Default当前资源标记与透明环资产",
+    "14/18px当前Hover透明环资产及checked/disabled隔离",
+    "14/18px当前Press原件及Disabled选中隔离",
+    "14/18px当前两种Disabled原件及历史边界"
+  ],
+  "behavior": {
+    "native": "使用原生radio及change事件；checked/disabled为原生布尔属性，CSS由原生状态决定。",
+    "groups": "同一表单或文档作用域内，相同name由浏览器互斥；独立业务组必须不同name，同组value不能重复。",
+    "keyboard": "键盘与焦点使用浏览器原生行为；本轮模拟DOM没有验证实际键盘、焦点环或几何。",
+    "content": "detail仅替换主副文字，本批不开放业务extra区域。",
+    "assembly": "精确清单提供单项结构，不能把单项示例当成完整组验收；最终组数量/命名/初始checked仍需装配检查。"
+  },
+  "examples": [
+    {
+      "name": "regular-lg",
+      "publication": {
+        "key": "radio/regular-lg",
+        "disposition": "retain",
+        "newPages": true,
+        "reason": "Retain existing finite exact contract only.",
+        "constraints": [
+          "Regular native labels/groups; compact is14px indicator/30px shape; checkout detail withheld."
+        ],
+        "contractPolicy": "regular-lg为宽松普通文字、regular-sm为密集文字、bordered-compact为紧凑描边、bordered-detail仅为结算主副文字；使用各自完整默认label实例。同组至少2项，不套用媒体/价格选择内容。",
+        "use": "finite-new-page-candidate",
+        "evidence": "components/contracts/radio.json#aiContract/evidence",
+        "requiresCurrentEngineering": true,
+        "visualApproval": "separate-not-granted"
+      },
+      "rootTag": "label",
+      "sizeOptions": [],
+      "bindings": {
+        "name": {
+          "mode": "native-attribute",
+          "target": "input.ds-radio__input",
+          "attribute": "name",
+          "valueType": "nonempty-string"
+        },
+        "value": {
+          "mode": "native-attribute",
+          "target": "input.ds-radio__input",
+          "attribute": "value",
+          "valueType": "nonempty-string"
+        },
+        "checked": {
+          "mode": "native-attribute",
+          "target": "input.ds-radio__input",
+          "attribute": "checked",
+          "values": [
+            false,
+            true
+          ],
+          "default": false
+        },
+        "disabled": {
+          "mode": "native-attribute",
+          "target": "input.ds-radio__input",
+          "attribute": "disabled",
+          "values": [
+            false,
+            true
+          ],
+          "default": false
+        },
+        "changeCallback": {
+          "mode": "event-handler",
+          "target": "root",
+          "event": "change"
+        }
+      },
+      "purpose": "native-radio-regular-lg",
+      "whenToUse": "同组≥2；商品详情页解决方案产品筛选等 PC 宽松区域；18×18px 状态图与 14px/22px 标签。",
+      "whenNotToUse": "下拉、表单等密集区域使用 regular-sm；需要容器时使用对应带边框变体。",
+      "rootClasses": "ds-radio",
+      "requiredStructure": [
+        "input.ds-radio__input",
+        "span.ds-radio__indicator",
+        "span.ds-radio__content",
+        "span.ds-radio__label"
+      ],
+      "slots": {
+        "label": {
+          "selector": "span.ds-radio__label",
+          "mode": "text",
+          "required": true
+        }
+      },
+      "allowedEdits": [
+        "label",
+        "name",
+        "value",
+        "checked",
+        "disabled",
+        "changeCallback"
+      ],
+      "exampleHtml": "<label class=\"ds-radio\" data-radio-source-default18=\"official\" data-ai-example=\"ai-radio-regular-lg\"><input class=\"ds-radio__input\" type=\"radio\" name=\"lg-default\" value=\"a\"><span class=\"ds-radio__indicator\" aria-hidden=\"true\"></span><span class=\"ds-radio__content\"><span class=\"ds-radio__label\">Options-A</span></span></label>"
+    }
+  ],
+  "relationships": {
+    "children": [],
+    "parents": [],
+    "parentStatus": "no-declared-hosts",
+    "icons": [
+      {
+        "file": "components/icons/icon-radio-default-current-18.svg",
+        "registry": "components/icons/icons-manifest.json",
+        "appliesTo": [
+          "regular-lg"
+        ],
+        "usage": "regular-lg 默认未选"
+      },
+      {
+        "file": "components/icons/icon-radio-hover-current-18.svg",
+        "registry": "components/icons/icons-manifest.json",
+        "appliesTo": [
+          "regular-lg"
+        ],
+        "usage": "regular-lg 悬停未选"
+      },
+      {
+        "file": "components/icons/icon-radio-checked-current-18.svg",
+        "registry": "components/icons/icons-manifest.json",
+        "appliesTo": [
+          "regular-lg"
+        ],
+        "usage": "regular-lg 已选"
+      },
+      {
+        "file": "components/icons/icon-radio-disabled-current-18.svg",
+        "registry": "components/icons/icons-manifest.json",
+        "appliesTo": [
+          "regular-lg"
+        ],
+        "usage": "regular-lg 禁用未选"
+      },
+      {
+        "file": "components/icons/icon-radio-disabled-checked-current-18.svg",
+        "registry": "components/icons/icons-manifest.json",
+        "appliesTo": [
+          "regular-lg"
+        ],
+        "usage": "regular-lg 禁用已选"
+      }
+    ],
+    "tokens": [
+      {
+        "name": "color.gray-1",
+        "value": "#19191A",
+        "unit": null,
+        "cssVar": "--color-gray-1",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.gray-2",
+        "value": "#4B4B4D",
+        "unit": null,
+        "cssVar": "--color-gray-2",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.gray-3",
+        "value": "#707070",
+        "unit": null,
+        "cssVar": "--color-gray-3",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.gray-7",
+        "value": "#F2F2F2",
+        "unit": null,
+        "cssVar": "--color-gray-7",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.white",
+        "value": "#FFFFFF",
+        "unit": null,
+        "cssVar": "--color-white",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.text-disabled",
+        "value": "rgba(25,25,26,0.3)",
+        "unit": null,
+        "cssVar": "--color-text-disabled",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.option-border",
+        "value": "#EEEEEE",
+        "unit": null,
+        "cssVar": "--color-option-border",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "typography.font-family-base",
+        "value": "Open Sans",
+        "unit": null,
+        "cssVar": "--font-family-base",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-size-md",
+        "value": 14,
+        "unit": "px",
+        "cssVar": "--font-size-md",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-size-h8",
+        "value": 13,
+        "unit": "px",
+        "cssVar": "--font-size-h8",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-size-sm",
+        "value": 12,
+        "unit": "px",
+        "cssVar": "--font-size-sm",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-weight-regular",
+        "value": 400,
+        "unit": null,
+        "cssVar": "--font-weight-regular",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.h7-regular",
+        "value": {
+          "fontSize": "14px",
+          "lineHeight": "22px",
+          "fontWeight": 400
+        },
+        "unit": null,
+        "cssVar": null,
+        "primitiveReferences": {
+          "fontSize": "typography.font-size-md",
+          "fontWeight": "typography.font-weight-regular"
+        },
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.h8-regular",
+        "value": {
+          "fontSize": "13px",
+          "lineHeight": "20px",
+          "fontWeight": 400
+        },
+        "unit": null,
+        "cssVar": null,
+        "primitiveReferences": {
+          "fontSize": "typography.font-size-h8",
+          "fontWeight": "typography.font-weight-regular"
+        },
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.h9-regular",
+        "value": {
+          "fontSize": "12px",
+          "lineHeight": "20px",
+          "fontWeight": 400
+        },
+        "unit": null,
+        "cssVar": null,
+        "primitiveReferences": {
+          "fontSize": "typography.font-size-sm",
+          "fontWeight": "typography.font-weight-regular"
+        },
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "spacing.2",
+        "value": 2,
+        "unit": "px",
+        "cssVar": "--spacing-2",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.3",
+        "value": 3,
+        "unit": "px",
+        "cssVar": "--spacing-3",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.xs",
+        "value": 4,
+        "unit": "px",
+        "cssVar": "--spacing-xs",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.sm",
+        "value": 8,
+        "unit": "px",
+        "cssVar": "--spacing-sm",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.md",
+        "value": 12,
+        "unit": "px",
+        "cssVar": "--spacing-md",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.lg",
+        "value": 16,
+        "unit": "px",
+        "cssVar": "--spacing-lg",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "border.width.default",
+        "value": 1,
+        "unit": "px",
+        "cssVar": "--border-width-default",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.style.default",
+        "value": "solid",
+        "unit": null,
+        "cssVar": "--border-style-default",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.option",
+        "value": "var(--color-option-border)",
+        "unit": null,
+        "cssVar": "--border-color-option",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.strong",
+        "value": "var(--color-gray-3)",
+        "unit": null,
+        "cssVar": "--border-color-strong",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border-radius.md",
+        "value": 4,
+        "unit": "px",
+        "cssVar": "--border-radius-md",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border-radius.json"
+      },
+      {
+        "name": "border-radius.lg",
+        "value": 8,
+        "unit": "px",
+        "cssVar": "--border-radius-lg",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border-radius.json"
+      },
+      {
+        "name": "border-radius.full",
+        "value": 9999,
+        "unit": "px",
+        "cssVar": "--border-radius-full",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border-radius.json"
+      }
+    ]
+  },
+  "evidence": {
+    "localImplementation": "components/variants/radio.html",
+    "comparison": "components/sources/radio/local-structure-review.json",
+    "nativeSpecification": "components/sources/radio/native-specification-review-1011.json",
+    "nativeComponent": "components/sources/radio/native-component-review-1011.json",
+    "currentSmallRootMode": "components/sources/radio/small-default-root-mode-review-1014.json",
+    "currentLargeRootMode": "components/sources/radio/large-default-root-mode-review-1014.json",
+    "currentMgReview": "components/sources/foundation-mg-20261114/radio-review.json"
+  },
+  "sourceValidation": {
+    "componentIdentity": {
+      "status": "not-established",
+      "files": []
+    },
+    "specificationBody": {
+      "status": "not-established",
+      "files": []
+    },
+    "originalOnlineFrontendCode": false,
+    "browserComputedStyles": false,
+    "completeSpecificationCoverage": false,
+    "currentSmallRootLayout": [
+      {
+        "size": "sm",
+        "width": "fit-content",
+        "min-width": "initial",
+        "max-width": "100%",
+        "align-self": "flex-start"
+      }
+    ],
+    "currentLargeRootLayout": [
+      {
+        "size": "lg",
+        "width": "fit-content",
+        "min-width": "initial",
+        "max-width": "100%",
+        "align-self": "flex-start"
+      }
+    ]
+  },
+  "freshness": {
+    "fingerprints": {
+      "components/components.css": "a08b4fe2790b5ff2b784c6362a90f1b94e7535a03e863232ce6d620a52e85f73",
+      "components/contracts/radio.json": "e76e3014579fece947f80b72e89bcaeea2f47d8a567fae10457378b79b889326",
+      "components/icons/icon-radio-checked-current-14.svg": "7dac16c7e927514c4335e7bb6fefe2d3edeeaadba823a3d30fc34ff2f8a7f42f",
+      "components/icons/icon-radio-checked-current-18.svg": "704fcbce0b8b0af7521ee46d4ea3816c7001d01b0c2c64f30ea0624f62ae0d65",
+      "components/icons/icon-radio-default-current-14.svg": "389092f81cff28a3157d9855ff03c35652ca48f6ebefab8be06085ebf97c108e",
+      "components/icons/icon-radio-default-current-18.svg": "185062d80175a01a228eefb75be8f649872ce68366895523aaf61ba1a1677054",
+      "components/icons/icon-radio-disabled-checked-current-14.svg": "dd7b81aacc243a874313157059e9711e304ba0c3d326f3d17bc1e053926b21e1",
+      "components/icons/icon-radio-disabled-checked-current-18.svg": "d30ad92a9707fbd6fcf84ac148431fdca1e84947d92043b0bf3c6b06801f05a4",
+      "components/icons/icon-radio-disabled-current-14.svg": "cfd4799e2a98ad06ae4d319f4669a24f67901e9d09c05ff721a35eec45658a3c",
+      "components/icons/icon-radio-disabled-current-18.svg": "7e7be6f29766dfce02a133bce3f1d48f2d5afe62c003284e55c0770bf81c641d",
+      "components/icons/icon-radio-hover-current-14.svg": "3d9ae7dc195437ac3acdfc669328f32a1cb556eec8ad52a2e3025bc83a6d7fe0",
+      "components/icons/icon-radio-hover-current-18.svg": "705eac14443fc4bae828c5d0b26117faaf406608263a14f51b3d17f8de16995f",
+      "components/icons/icons-manifest.json": "12c48af6d1dc59d50b76046bb0507005f565aa4224a6d8056ce4eaaf8050c43e",
+      "components/preview/reference-live.js": "4839383529a3ee82df1d8efe675d430567abc1986034499107aa429d21a18ea6",
+      "components/radio-current.css": "44a4ff01145c03ab4ac940d39287159292ce6765e0d66adb9b897944ea390fe9",
+      "components/reference-policy.json": "4ae8f51f623386417e38d497caafb8bda4417c929159002a7ac088e6e526b482",
+      "components/sources/foundation-mg-20261114/radio-review.json": "d6e9ac0de2139c6e9e536392a6836fb221ead5cd4740a6964d7dff7c51ae797c",
+      "components/sources/radio/large-default-active-root-mode-native-1014.txt": "bf4469d700e890fc0f372d8ba696613e3935f3c2d1c187a7556a1e1daf44734a",
+      "components/sources/radio/large-default-root-mode-review-1014.json": "9a9222e182edbb3488b3a35d959a5865e597f70ba88d9aa7c940b5ab76e1fb91",
+      "components/sources/radio/local-structure-review.json": "ff5abc15e333a560abb7870a89b060db27013dedeb72727803bb4ed9a85b0f24",
+      "components/sources/radio/native-component-review-1011.json": "a2f08efc12092e47be222e9ead395d24cedc222afd234f10ad2f03d67b0fda0c",
+      "components/sources/radio/native-specification-review-1011.json": "72e66fac016845ae1fa6ea1f7e521d5a541c4cd0c1a06736ca76053b797e9086",
+      "components/sources/radio/small-default-root-mode-native-1014.txt": "17cf6530dc62581187e73c6ca56d44165fdf0066af9e2d25e8e913b7ccbf8381",
+      "components/sources/radio/small-default-root-mode-review-1014.json": "8fb7f6efdab1970f104de3dfcdfdcaad53e0d3e141b03e361412048bdd2c5e5f",
+      "components/token-specs/border-radius.json": "b01e4c23fbc7e19983d9592b59b0303155b79d66c52459356eda0ea9f4ca74b5",
+      "components/token-specs/border.json": "d286ee4681deda1c7702c310b065c86f824539b3a8797efba05b24bc225ab322",
+      "components/token-specs/colors.json": "5267d59fdc687b54496977280c00c97f0beb6ffce013f87853504f5b736d3389",
+      "components/token-specs/spacing.json": "351b14cfce4411248ad41e00eaaf2b1cab9b705997980dfed1fc65693740e65c",
+      "components/token-specs/typography.json": "93b7dc07547218a33c075b7cdcd942f89094353a7847d483d8378b8883327e16",
+      "components/tokens.css": "f63f3c8fea511d8029902bc3905b01853ac5e92049c1b18ca35ebc9a680c3e69",
+      "components/variants/radio.html": "2f8c96c6380e5975c1a97cff2156ae74046e711f3538e70fa5f5fef82694e199"
+    },
+    "graphFingerprint": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "note": "从本地源文件生成；不是 MasterGo 在线实时状态。"
+  },
+  "readScope": {
+    "variant": "regular-lg",
+    "note": "只展开当前已选变体；其他变体没有被声明为不可用。尺寸继续按真实 sizeOptions 选择。"
+  }
+}

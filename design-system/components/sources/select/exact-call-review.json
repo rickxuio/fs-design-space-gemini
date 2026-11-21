@@ -1,0 +1,51 @@
+{
+  "date": "2026-10-10",
+  "scope": "existing-desktop-select-nine-default-examples",
+  "classification": {
+    "componentRegion": "68961:089603",
+    "componentSets": 7,
+    "desktopCandidates": [
+      "68908:013378",
+      "68908:013372",
+      "68908:013376",
+      "68908:013420"
+    ],
+    "excluded": [
+      "68908:013379 slider",
+      "68908:013377 mobile",
+      "68908:013371 mobile"
+    ]
+  },
+  "changes": [
+    "AI exact examples copied from existing Preview",
+    "options list boundary and root ds:select-change binding",
+    "unique instance identity policy",
+    "per-variant single/multiple and confirmation semantics checked",
+    "Current runtime repeated initialization and disabled confirmation/search guards"
+  ],
+  "unchanged": [
+    "shared CSS",
+    "historical pages"
+  ],
+  "pending": [
+    "MG spec document comparison",
+    "actual browser geometry and full interaction",
+    "visual approval",
+    "other sizes and states exact instance coverage",
+    "Checkbox(sm) checked/disabled独立精确覆盖、宿主布局截断与真实浏览器复核"
+  ],
+  "engineering": "not-recorded",
+  "sourceInventory": "components/sources/select/source-inventory.json",
+  "sourceInventorySummary": {
+    "verifiedSets": 7,
+    "desktopSets": 4,
+    "desktopDesignInstances": 76,
+    "callableVariants": 9,
+    "equivalentCounts": false
+  },
+  "sourceFactsReview": "components/sources/select/source-facts-review.json",
+  "runtimeChangeScope": "select-current.js only; legacy select.js remains unchanged; no historical page file rewritten",
+  "compositionRuntimeReview": "Offline search/phone-search lifecycle preserves options, query, focus and open state during composition, then filters final query and resets state on close/reopen. Source/style correspondence and browser IME pending.",
+  "sourceLayerReview": "Typed root and immediate child declarations are preserved independently from tool inline styles. For basic Default 68908:021318 the root gap is 4px, while internal FRAME 68908:021319 uses row gap 8px/padding 0px 12px. These are distinct roles; no current nine-variant or inherited layout approval follows.",
+  "checkboxAnatomyReview": "components/sources/select/checkbox-nesting-1010.json"
+}

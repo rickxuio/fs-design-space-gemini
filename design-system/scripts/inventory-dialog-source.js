@@ -1,0 +1,29 @@
+#!/usr/bin/env node
+'use strict';
+// Saved design identities and selected normative text. No browser/frontend inference.
+const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto');
+const ROOT=path.resolve(__dirname,'..'),ORIGINAL='components/sources/dialog/mastergo-components.json',SPEC='components/sources/dialog/mastergo-spec.json',OUTPUT='components/sources/dialog/source-inventory.json';
+const targets=[{variant:'information',setId:'68908:014251',nodeId:'68908:048976',width:650,height:490},{variant:'confirmation',setId:'68908:014254',nodeId:'68908:052338',width:480,height:202}];
+const rules=[['70971:200523','所有类型的对话框圆角'],['70971:200234','对话框宽度根据内容不同'],['70971:200531','关闭按钮'],['70971:200404','对话框的内容区可包含'],['70971:200426','对话框的底部可包含'],['70971:202294/68908:205290','关闭 icon'],['70971:200670','ESC'],['70971:200663','黑色蒙层'],['70971:200128','需换行处理'],['70971:200175','最大高度'],['70971:200154','始终居中']];
+function inventory(root=ROOT){
+ function load(file){const bytes=fs.readFileSync(path.join(root,file)),saved=JSON.parse(bytes),dsl=JSON.parse(saved.content.find(c=>c.type==='text').text).dsl,all=[];function walk(nodes,parents=[]){for(const n of nodes||[]){all.push({node:n,parents});walk(n.children,[...parents,{id:n.id,type:n.type}]);}}walk(dsl.nodes);return {dsl,all,source:{file,sha256:crypto.createHash('sha256').update(bytes).digest('hex'),frontendSource:false,browserComputedStyles:false}};}
+ const original=load(ORIGINAL),spec=load(SPEC);
+ const unique=(saved,id,type)=>{const found=saved.all.filter(r=>r.node.id===id);if(found.length!==1||found[0].node.type!==type)throw Error('Dialog source type/identity mismatch '+id);return found[0];};
+ unique(original,'68908:469905','FRAME');unique(spec,'70971:200121','FRAME');
+ const matched=targets.map(t=>{
+  const set=unique(original,t.setId,'COMPONENT_SET'),r=unique(original,t.nodeId,'COMPONENT'),n=r.node;
+  if(r.parents.at(-1)?.id!==set.node.id||n.layoutStyle.width!==t.width||n.layoutStyle.height!==t.height||n.borderRadius!=='8px'||JSON.stringify(original.dsl.styles[n.fill]?.value)!=='["#FFFFFF"]')throw Error('Dialog saved desktop root declarations mismatch '+t.variant);
+  const header=(n.children||[]).filter(c=>c.type==='INSTANCE'&&c.componentId==='68908:030071');if(header.length!==1||header[0].layoutStyle.width!==t.width||header[0].layoutStyle.height!==74)throw Error('Dialog saved header INSTANCE mismatch');
+  const inheritedLayers=(header[0].children||[]).map(c=>({nodeId:c.id,type:c.type,dimensions:c.layoutStyle,componentId:c.componentId||null,positionResolved:false}));
+  const footer=(n.children||[]).filter(c=>c.type==='INSTANCE'&&c.componentId==='68908:041256');if(t.variant==='confirmation'&&(footer.length!==1||footer[0].layoutStyle.width!==480||footer[0].layoutStyle.height!==82))throw Error('Dialog saved footer INSTANCE mismatch');
+  return {...t,type:n.type,properties:n.componentInfo?.properties||{},radius:n.borderRadius,fill:original.dsl.styles[n.fill].value,header:{nodeId:header[0].id,type:header[0].type,componentId:header[0].componentId,dimensions:header[0].layoutStyle,inheritedLayers},footer:footer.map(c=>({nodeId:c.id,type:c.type,componentId:c.componentId,dimensions:c.layoutStyle})),notCompared:['current CSS declarations','inherited INSTANCE child positions','intrinsic text layout','browser geometry and top-layer','SVG contours','complete family and visual approval']};
+ });
+ const selectedRuleTexts=rules.map(([id,cue])=>{const r=unique(spec,id,'TEXT'),text=r.node.text.map(run=>run.text).join('');if(!text.includes(cue))throw Error('Dialog selected normative body missing '+id);return {nodeId:id,type:r.node.type,text,ancestors:r.parents,role:'selected-normative-body-text',interpretation:'Saved specification declaration only; not a component identity or automatic variant approval.'};});
+ const version=unique(spec,'70971:202299/72076:140339/68940:098356','TEXT').node.text.map(run=>run.text).join('');if(version!=='v2.3.2607A')throw Error('Dialog saved specification version changed; review required');
+ const layoutDeclarations=require('./dialog-layout-declarations').checkLayout(root,selectedRuleTexts);
+ const buttonDependencies=require('./dialog-button-dependencies').checkButtons(root,original);
+ const closeAtomDependencies=require('./dialog-icon-button-dependencies').checkCloseAtom(root,original);
+ return {schemaVersion:'fs-dialog-source-inventory/1.2.0',sources:{original:original.source,specification:spec.source,...layoutDeclarations.sources,...buttonDependencies.sources,...closeAtomDependencies.sources},componentMatches:matched,specification:{frameId:'70971:200121',version,selectedRuleTexts,completeSpecificationIndexed:false},layoutDeclarations,buttonDependencies,closeAtomDependencies,summary:{componentDefaults:2,selectedNormativeTexts:11,checkedLayoutSelectors:9},limits:['Actual COMPONENT_SET/COMPONENT types identify components; normative body identifies the selected specification fragment, not screen position or wrapper name.','Stored design DSL is not original frontend code or browser computed styles.','The confirmation header INSTANCE is 480px while some nested source layers retain 650px master coordinates. Their positions are not resolved rendering and cannot prove local close-button placement.','Saved normative close-icon/background declarations and source hit-area geometry are preserved separately; this index does not equate their roles.','Exact current CSS declaration comparisons do not establish DOM cascade, font loading, actual geometry, native modal behavior or visual approval.','Other source dialog families, mobile nodes, complete normative coverage, browser and current full engineering acceptance remain pending.']};
+}
+if(require.main===module){const i=inventory();fs.writeFileSync(path.join(ROOT,OUTPUT),JSON.stringify(i,null,2)+'\n');console.log(JSON.stringify(i.summary));}
+module.exports={inventory,ORIGINAL,SPEC,OUTPUT};

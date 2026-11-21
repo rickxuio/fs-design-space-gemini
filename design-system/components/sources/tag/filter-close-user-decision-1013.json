@@ -1,0 +1,14 @@
+{
+  "sourceGeometry": "filter-x-action-boundary-1013.json",
+  "decisionDate": "2026-10-13",
+  "directUserDecision": "点击之后，删除选择中的标签",
+  "precedence": "用户最新说明覆盖前一条选择“与文字一样切换选中”",
+  "scope": "当前独立filter Tag，X关闭当前已选条件标签；普通文字仍切换",
+  "implementation": "保留真实根button和12px X，data-tag-close=event明确关闭语义；组件发出可取消ds:tag-close，由宿主移除，不写通用业务删除；Delete/Backspace提供键盘等效关闭，Enter/Space文字切换保留",
+  "preview": "第5节三种既有状态只接同一个宿主关闭监听，移除当前标签并保留其他标签；不更改外观、不升级Select适配或冻结历史",
+  "remaining": [
+    "真实浏览器X/键盘/焦点及当前外观视觉确认",
+    "Info/star完整素材与其他家族来源"
+  ],
+  "fullFamilyAcceptance": false
+}

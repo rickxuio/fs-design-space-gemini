@@ -1,0 +1,18 @@
+/* Explicit source correction. MasterGo S default nodes 64858:84732 / 64858:84737. */
+.ds-video-btn--s { padding: var(--spacing-sm); }
+
+/* Existing XL source 100×50, Play20. Historical pages keep frozen CSS. */
+.ds-video-btn--xl {
+  width: 100px;
+  height: 50px;
+}
+.ds-video-btn--xl .ds-video-btn__icon {
+  width: 20px;
+  height: 20px;
+}
+/* Hover inner-frame insets from 64858:84546 / 64896:87475. */
+.ds-video-btn--xl:hover:not(.ds-video-btn--hover),
+.ds-video-btn--xl.ds-video-btn--hover {
+  padding: calc(var(--spacing-sm) * 1.6) calc(var(--spacing-sm) * 3.2);
+  gap: calc(var(--spacing-sm) * 1.6);
+}

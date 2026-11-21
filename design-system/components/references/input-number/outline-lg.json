@@ -1,0 +1,543 @@
+{
+  "schemaVersion": "fs-component-reference/1.0.0",
+  "component": {
+    "id": "input-number",
+    "name": "InputNumber",
+    "scope": "existing-desktop-positive-integer-three-default-controls",
+    "reviewStatus": {
+      "engineering": "pending",
+      "visual": "pending",
+      "familyCoverage": "partial"
+    }
+  },
+  "selection": {
+    "policy": "outline-sm用于紧凑数量，outline-lg用于白底常规数量，filled-lg用于灰底表单。取实际默认实例；仅在初始化前替换正整数配置，不通过新增CSS造尺寸。 按relations.variantDecisions的具体场景选型；最终资格读同版catalog，未开放项不自动调用。当前MG核对状态见prototypeRollout，不将既有来源冒称本次在线核对。",
+    "supported": [
+      "outline-sm",
+      "outline-lg",
+      "filled-lg"
+    ],
+    "unsupported": [
+      "negative",
+      "decimal",
+      "unbounded",
+      "dynamic-insertion",
+      "dynamic-range-change",
+      "business-price-recalculation",
+      "mobile"
+    ]
+  },
+  "runtime": {
+    "styles": [
+      "components/tokens.css",
+      "components/components.css",
+      "components/input-number-current.css"
+    ],
+    "scripts": [
+      "components/input-number-current.js"
+    ],
+    "fontStylesheets": [
+      "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+    ],
+    "fontFallback": "沿用现有Open Sans字体栈；未验证离线字体一致。"
+  },
+  "identity": {
+    "rule": "保留唯一text输入及左右button，输入必须有非空aria-label；增减按钮名称由现有运行代码提供。初始化前设置范围及初值，禁止复制data-input-number-ready。",
+    "labelRule": "accessibleLabel替换输入aria-label；若保留根节点同名aria-label，需同时同步。"
+  },
+  "locked": [
+    "根类、默认形态和子节点顺序",
+    "button类型与增减数据标记",
+    "text输入及数值模式由运行代码初始化",
+    "图标与共享CSS/JS",
+    "正整数范围和初始化时机",
+    "data-input-number-current opt-in marker"
+  ],
+  "behavior": {
+    "initialization": "首次DOMContentLoaded或脚本载入时扫描；初始化后绑定每个实例，未提供动态插入扫描API。",
+    "range": "初始化前min/max/step均为JS安全正整数，min<=value<=max；范围缺省运行值1-9999，step缺省1。初始化后更改data范围不会重新绑定。",
+    "adjust": "点击增减或ArrowUp/ArrowDown按step调整并限制到边界；变化时派发原生input与change，边界按钮禁用。",
+    "typing": "输入时删除非数字，可能暂时为空或超过范围；blur时回写范围内整数，不派发额外的change。不能视作完整业务验证。",
+    "readonly": "既有input.disabled/readOnly禁止调整；本批默认调用未开放状态编辑，其他状态仍按原Preview确认。",
+    "business": "不计算价格，不提交表单；宿主监听input/change并自行处理业务。",
+    "disabledContainer": "Native :disabled includes disabled fieldsets; synthetic adjustments/typing cannot change disabled or readonly values. Range remains captured once at initialization.",
+    "nativeStateGuard": "Current marker-only runtime observes native readonly/disabled and containing fieldsets to restore control state; no repeated document initialization, no dynamic range/insertion extension."
+  },
+  "examples": [
+    {
+      "name": "outline-lg",
+      "publication": {
+        "key": "input-number/outline-lg",
+        "disposition": "retain",
+        "newPages": true,
+        "reason": "Retain existing finite exact contract only.",
+        "constraints": [
+          "outline-sm用于紧凑数量，outline-lg用于白底常规数量，filled-lg用于灰底表单。取实际默认实例；仅在初始化前替换正整数配置，不通过新增CSS造尺寸。"
+        ],
+        "contractPolicy": "outline-sm用于紧凑数量，outline-lg用于白底常规数量，filled-lg用于灰底表单。取实际默认实例；仅在初始化前替换正整数配置，不通过新增CSS造尺寸。",
+        "use": "finite-new-page-candidate",
+        "evidence": "components/contracts/input-number.json#aiContract/evidence",
+        "requiresCurrentEngineering": true,
+        "visualApproval": "separate-not-granted"
+      },
+      "rootTag": "div",
+      "sizeOptions": [],
+      "bindings": {
+        "min": {
+          "mode": "native-attribute",
+          "target": "root",
+          "attribute": "data-min",
+          "valueType": "positive-integer"
+        },
+        "max": {
+          "mode": "native-attribute",
+          "target": "root",
+          "attribute": "data-max",
+          "valueType": "positive-integer"
+        },
+        "step": {
+          "mode": "native-attribute",
+          "target": "root",
+          "attribute": "data-step",
+          "valueType": "positive-integer"
+        },
+        "value": {
+          "mode": "native-attribute",
+          "target": "input.ds-input-number__input",
+          "attribute": "value",
+          "valueType": "positive-integer"
+        },
+        "name": {
+          "mode": "native-attribute",
+          "target": "input.ds-input-number__input",
+          "attribute": "name",
+          "valueType": "string"
+        },
+        "accessibleLabel": {
+          "mode": "native-attribute",
+          "target": "input.ds-input-number__input",
+          "attribute": "aria-label",
+          "valueType": "nonempty-string"
+        },
+        "inputCallback": {
+          "mode": "event-handler",
+          "target": "root",
+          "event": "input"
+        },
+        "changeCallback": {
+          "mode": "event-handler",
+          "target": "root",
+          "event": "change"
+        }
+      },
+      "purpose": "bounded-positive-quantity-outline-lg",
+      "whenToUse": "商品详情或白底表单的42px数量。",
+      "whenNotToUse": "紧凑购物车或灰底一体式控件。",
+      "rootClasses": "ds-input-number ds-input-number--outline",
+      "requiredStructure": [
+        "button.ds-input-number__button--decrement[data-input-number-decrement]",
+        "input.ds-input-number__input",
+        "button.ds-input-number__button--increment[data-input-number-increment]"
+      ],
+      "slots": {},
+      "allowedEdits": [
+        "value",
+        "min",
+        "max",
+        "step",
+        "name",
+        "accessibleLabel",
+        "inputCallback",
+        "changeCallback"
+      ],
+      "exampleHtml": "<div class=\"ds-input-number ds-input-number--outline\" data-input-number data-min=\"1\" data-max=\"20\" aria-label=\"Product quantity\" data-ai-example=\"ai-input-number-outline-lg\" data-input-number-current>\n          <button class=\"ds-input-number__button ds-input-number__button--decrement\" type=\"button\" data-input-number-decrement></button>\n          <input class=\"ds-input-number__input\" type=\"text\" value=\"7\" aria-label=\"Product quantity\">\n          <button class=\"ds-input-number__button ds-input-number__button--increment\" type=\"button\" data-input-number-increment></button>\n        </div>"
+    }
+  ],
+  "relationships": {
+    "children": [],
+    "parents": [
+      {
+        "id": "dialog",
+        "contract": "components/contracts/dialog.json",
+        "preview": "components/variants/dialog.html",
+        "status": "preview-class-evidence-only",
+        "evidence": {
+          "status": "preview-class-evidence-only",
+          "verified": false,
+          "previewExists": true,
+          "classEvidence": true,
+          "declaredClasses": [
+            "ds-input-number",
+            "ds-input-number--outline",
+            "ds-input-number--sm"
+          ],
+          "missingClasses": [],
+          "exactStructure": "not-established",
+          "browserEvidence": "not-established",
+          "note": "宿主依赖声明及离线类名盘点；未证明具体变体、尺寸、必需子结构、宿主适配或浏览器行为。"
+        },
+        "usage": [
+          {
+            "component": "InputNumber",
+            "slot": "cart-quantity",
+            "requiredVariants": [
+              "outline-sm"
+            ],
+            "implementationClasses": [
+              "ds-input-number",
+              "ds-input-number--outline",
+              "ds-input-number--sm"
+            ],
+            "appliesTo": [
+              "cart"
+            ],
+            "usage": "List-owned商品行的真实32px数量原子，宿主仅联动总价。"
+          }
+        ]
+      },
+      {
+        "id": "list",
+        "contract": "components/contracts/list.json",
+        "preview": "components/variants/list.html",
+        "status": "preview-class-evidence-only",
+        "evidence": {
+          "status": "preview-class-evidence-only",
+          "verified": false,
+          "previewExists": true,
+          "classEvidence": true,
+          "declaredClasses": [
+            "ds-input-number",
+            "ds-input-number--outline",
+            "ds-input-number--sm",
+            "ds-input-number__button",
+            "ds-input-number__input"
+          ],
+          "missingClasses": [],
+          "exactStructure": "not-established",
+          "browserEvidence": "not-established",
+          "note": "宿主依赖声明及离线类名盘点；未证明具体变体、尺寸、必需子结构、宿主适配或浏览器行为。"
+        },
+        "usage": [
+          {
+            "component": "InputNumber",
+            "usage": "商品PC数量真实current outline-sm原子，1–99为现有演示范围；宿主监听原子归一化后的change/blur联动总价。原稿root140、inner88与现行原子88差异按原子优先记录；M保持历史适配、未迁移。",
+            "slot": "product-item/quantity",
+            "hostPreviewAnchor": "list-product-content",
+            "appliesTo": [
+              "product-content"
+            ],
+            "requiredVariants": [
+              "outline-sm"
+            ],
+            "implementationClasses": [
+              "ds-input-number",
+              "ds-input-number--outline",
+              "ds-input-number--sm",
+              "ds-input-number__button",
+              "ds-input-number__input"
+            ]
+          }
+        ]
+      }
+    ],
+    "parentStatus": "declared-hosts",
+    "icons": [
+      {
+        "file": "components/icons/icon-collapse-minus.svg",
+        "registry": "components/icons/icons-manifest.json",
+        "appliesTo": [
+          "outline-sm",
+          "outline-lg",
+          "filled-lg"
+        ],
+        "usage": "减量按钮图形，复用既有减号资产"
+      },
+      {
+        "file": "components/icons/icon-collapse-plus.svg",
+        "registry": "components/icons/icons-manifest.json",
+        "appliesTo": [
+          "outline-sm",
+          "outline-lg",
+          "filled-lg"
+        ],
+        "usage": "增量按钮图形，复用既有加号资产"
+      }
+    ],
+    "tokens": [
+      {
+        "name": "color.gray-1",
+        "value": "#19191A",
+        "unit": null,
+        "cssVar": "--color-gray-1",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.gray-3",
+        "value": "#707070",
+        "unit": null,
+        "cssVar": "--color-gray-3",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.gray-8",
+        "value": "#F6F6F8",
+        "unit": null,
+        "cssVar": "--color-gray-8",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.white",
+        "value": "#FFFFFF",
+        "unit": null,
+        "cssVar": "--color-white",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.hover-overlay-light",
+        "value": "rgba(25,25,26,0.04)",
+        "unit": null,
+        "cssVar": "--color-hover-overlay-light",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.text-disabled",
+        "value": "rgba(25,25,26,0.3)",
+        "unit": null,
+        "cssVar": "--color-text-disabled",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "border-radius.md",
+        "value": 4,
+        "unit": "px",
+        "cssVar": "--border-radius-md",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border-radius.json"
+      },
+      {
+        "name": "border-radius.lg",
+        "value": 8,
+        "unit": "px",
+        "cssVar": "--border-radius-lg",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border-radius.json"
+      },
+      {
+        "name": "typography.font-size-md",
+        "value": 14,
+        "unit": "px",
+        "cssVar": "--font-size-md",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-weight-regular",
+        "value": 400,
+        "unit": null,
+        "cssVar": "--font-weight-regular",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.h7-regular",
+        "value": {
+          "fontSize": "14px",
+          "lineHeight": "22px",
+          "fontWeight": 400
+        },
+        "unit": null,
+        "cssVar": null,
+        "primitiveReferences": {
+          "fontSize": "typography.font-size-md",
+          "fontWeight": "typography.font-weight-regular"
+        },
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "spacing.xs",
+        "value": 4,
+        "unit": "px",
+        "cssVar": "--spacing-xs",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.sm",
+        "value": 8,
+        "unit": "px",
+        "cssVar": "--spacing-sm",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "border.width.default",
+        "value": 1,
+        "unit": "px",
+        "cssVar": "--border-width-default",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.style.default",
+        "value": "solid",
+        "unit": null,
+        "cssVar": "--border-style-default",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.style.none",
+        "value": "none",
+        "unit": null,
+        "cssVar": "--border-style-none",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.default",
+        "value": "var(--color-gray-5)",
+        "unit": null,
+        "cssVar": "--border-color-default",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.emphasis",
+        "value": "var(--color-gray-1)",
+        "unit": null,
+        "cssVar": "--border-color-emphasis",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      }
+    ]
+  },
+  "evidence": {
+    "localImplementation": "components/variants/input-number.html",
+    "comparison": "components/sources/input-number/local-structure-review.json",
+    "specificationReview": "components/sources/input-number/native-specification-review-1011.json",
+    "outline32HoverDisabledReview": "components/sources/input-number/outline32-hover-disabled-review-1013.json",
+    "outline32DisabledChildren": "components/sources/input-number/outline32-disabled-children-review-1013.json",
+    "readonly42": "components/sources/input-number/readonly42-source-review-1014.json",
+    "disabled42": "components/sources/input-number/disabled42-source-review-1014.json",
+    "hoverButton42": "components/sources/input-number/hover-button42-source-review-1014.json",
+    "currentMgReview": "components/sources/remaining-prototypes-mg-20261115/input-number-review.json"
+  },
+  "sourceValidation": {
+    "componentIdentity": {
+      "status": "not-established",
+      "files": []
+    },
+    "specificationBody": {
+      "status": "not-established",
+      "files": []
+    },
+    "originalOnlineFrontendCode": false,
+    "browserComputedStyles": false,
+    "completeSpecificationCoverage": false,
+    "currentLockedColour": {
+      "status": "finite-native-disabled-readonly-colour-checked",
+      "source": "components/sources/input-number/outline32-disabled-children-review-1013.json",
+      "cases": [
+        {
+          "nativeDisabledVia": "input",
+          "selector": ".ds-input-number[data-input-number-current][aria-disabled=\"true\"] .ds-input-number__input",
+          "specificity": [
+            0,
+            4,
+            0
+          ],
+          "colour": "rgba(25, 25, 26, 0.3)"
+        },
+        {
+          "nativeDisabledVia": "fieldset",
+          "selector": ".ds-input-number[data-input-number-current][aria-disabled=\"true\"] .ds-input-number__input",
+          "specificity": [
+            0,
+            4,
+            0
+          ],
+          "colour": "rgba(25, 25, 26, 0.3)"
+        }
+      ],
+      "browserVerified": false,
+      "scope": "Current small32 disabled paint precedence only; other authored states,42 own paint and full family not approved"
+    },
+    "currentHoverSurface": {
+      "source": "components/sources/input-number/hover-button42-source-review-1014.json",
+      "status": "finite-static-hover-surfaces-checked",
+      "cases": [
+        {
+          "shape": "outline",
+          "selector": "\n.ds-input-number__button--hover:not(:disabled)",
+          "value": "rgba(25, 25, 26, 0.04)",
+          "important": 0,
+          "specificity": [
+            0,
+            2,
+            0
+          ],
+          "order": 1
+        },
+        {
+          "shape": "filled",
+          "selector": "\n.ds-input-number--filled[data-input-number-current] .ds-input-number__button--hover:not(:disabled)",
+          "value": "transparent",
+          "important": 0,
+          "specificity": [
+            0,
+            4,
+            0
+          ],
+          "order": 2
+        }
+      ],
+      "browserVerified": false
+    }
+  },
+  "freshness": {
+    "fingerprints": {
+      "components/components.css": "a08b4fe2790b5ff2b784c6362a90f1b94e7535a03e863232ce6d620a52e85f73",
+      "components/contracts/input-number.json": "7669303c1c7d43d01f368efc105b316bfc8b7f831fbfebf8332f6d483ffca4f4",
+      "components/icons/icon-collapse-minus.svg": "3c8b4366c99b7dcea96fcb152eaf1a875e1928a5650931089017f736106a9e1c",
+      "components/icons/icon-collapse-plus.svg": "830e77b12afd6cc838afc23aa482437a0a5ae801874a98f2bc8a91b2b4251649",
+      "components/icons/icons-manifest.json": "12c48af6d1dc59d50b76046bb0507005f565aa4224a6d8056ce4eaaf8050c43e",
+      "components/input-number-current.css": "d5e8da28b2c83edcd9ef96d811fc24ed6070fd0682084733be46075d05adedd7",
+      "components/input-number-current.js": "ba986d5c4796d86ea1097610caa593bed1039996b4dd43a75a4cb8db15d482df",
+      "components/preview/reference-live.js": "4839383529a3ee82df1d8efe675d430567abc1986034499107aa429d21a18ea6",
+      "components/reference-policy.json": "4ae8f51f623386417e38d497caafb8bda4417c929159002a7ac088e6e526b482",
+      "components/sources/input-number/disabled42-move-official-1015.svg": "dfd1752e254287a79c71e0af2945381aa3a3a907a352bc6e65129f53ebb76211",
+      "components/sources/input-number/disabled42-source-review-1014.json": "7d8e6e4a0b97df96048326674f3d7b012de772aee66f96fa0ab6e2b2d8341194",
+      "components/sources/input-number/glyph42-comparison-1015.json": "f01fe5e824c07191a844e6d3c33548009d25c80563edc7dd3d69f9bd06fb504c",
+      "components/sources/input-number/glyph42-source-review-1015.json": "59c66695486bcba86fac1111698986f642cae985c5ada1fa0ea3cc15cf80ba7f",
+      "components/sources/input-number/hover-button42-source-review-1014.json": "f42027ddc4eb6b7a122167753f86f320db294f45699388bfad6e0d1bcfc640bb",
+      "components/sources/input-number/hover42-add-official-1015.svg": "0c3c38097c73fec832d905ed99e8fd34853403253ecaffc5ce43fa1e87400609",
+      "components/sources/input-number/local-structure-review.json": "491252900e3bbbffd8761bce9844cc452b9f3d933c4dccaa69a2cc7269afa75d",
+      "components/sources/input-number/native-specification-review-1011.json": "550b625f1f28e07e1c7e7ad5f202376027b8292a002c8b9eb012dda46104e7b5",
+      "components/sources/input-number/outline32-disabled-children-review-1013.json": "486942433833e627b2e23c408842c9c0a201741cd5281eb6830300f60de2b463",
+      "components/sources/input-number/outline32-hover-disabled-review-1013.json": "a5f5090ad38318a411c230c19116bf775ec4a4dc937b4210ab7e0941bd46f8cf",
+      "components/sources/input-number/readonly42-source-review-1014.json": "b340db5ccc77f220701d02a59fb40322a45036e272850618ddd42b02ee3c6723",
+      "components/sources/remaining-prototypes-mg-20261115/input-number-review.json": "c7919d3fe625909954146c8bcccb097e1c10449704307d4c3920bb25926d9ede",
+      "components/token-specs/border-radius.json": "b01e4c23fbc7e19983d9592b59b0303155b79d66c52459356eda0ea9f4ca74b5",
+      "components/token-specs/border.json": "d286ee4681deda1c7702c310b065c86f824539b3a8797efba05b24bc225ab322",
+      "components/token-specs/colors.json": "5267d59fdc687b54496977280c00c97f0beb6ffce013f87853504f5b736d3389",
+      "components/token-specs/spacing.json": "351b14cfce4411248ad41e00eaaf2b1cab9b705997980dfed1fc65693740e65c",
+      "components/token-specs/typography.json": "93b7dc07547218a33c075b7cdcd942f89094353a7847d483d8378b8883327e16",
+      "components/tokens.css": "f63f3c8fea511d8029902bc3905b01853ac5e92049c1b18ca35ebc9a680c3e69",
+      "components/variants/dialog.html": "40132b51264249e10a92ea5f24730d989ca1415daa62f9ef42d391aadff7f21f",
+      "components/variants/input-number.html": "502b6b905d7f911bd7ae924d104b45a8aa23409749f94ae634a27fbb3c73ef81",
+      "components/variants/list.html": "51f7f184f06b1e0a334887d65cf352e2c89a43a5ac72358b88bf405500f0d98e"
+    },
+    "graphFingerprint": "ac3dc3c344b6de0c1ea20633c33a824d64dbede29908137aee40a9647d59dd98",
+    "note": "从本地源文件生成；不是 MasterGo 在线实时状态。"
+  },
+  "readScope": {
+    "variant": "outline-lg",
+    "note": "只展开当前已选变体；其他变体没有被声明为不可用。尺寸继续按真实 sizeOptions 选择。"
+  }
+}

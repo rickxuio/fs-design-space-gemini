@@ -1,0 +1,82 @@
+{
+  "$schema": "../../schemas/token.schema.json",
+  "category": "typography",
+  "tokens": [
+    {
+      "id": "tok_typo_001",
+      "name": "typography.font-family-base",
+      "value": "Open Sans",
+      "cssVar": "--font-family-base",
+      "cssVarMatch": "prefix",
+      "description": "基础字体族（tokens.css 里是含 fallback 的完整字体栈，此处记录首选族名，校验用前缀匹配）",
+      "createdAt": "2025-01-15T10:00:00Z",
+      "updatedAt": "2025-01-15T10:00:00Z",
+      "history": []
+    },
+    {
+      "id": "tok_typo_002",
+      "name": "typography.font-size-sm",
+      "value": 12,
+      "unit": "px",
+      "cssVar": "--font-size-sm",
+      "description": "小号字体 - M/S 按钮",
+      "createdAt": "2025-01-15T10:00:00Z",
+      "updatedAt": "2025-01-15T10:00:00Z",
+      "history": []
+    },
+    {
+      "id": "tok_typo_003",
+      "name": "typography.font-size-md",
+      "value": 14,
+      "unit": "px",
+      "cssVar": "--font-size-md",
+      "description": "中号字体 - XL/L 按钮",
+      "createdAt": "2025-01-15T10:00:00Z",
+      "updatedAt": "2025-01-15T10:00:00Z",
+      "history": []
+    },
+    {
+      "id": "tok_typo_004",
+      "name": "typography.font-weight-regular",
+      "value": 400,
+      "cssVar": "--font-weight-regular",
+      "description": "常规字重",
+      "createdAt": "2025-01-15T10:00:00Z",
+      "updatedAt": "2025-01-15T10:00:00Z",
+      "history": []
+    },
+    {
+      "id": "tok_typo_005",
+      "name": "typography.font-weight-semibold",
+      "value": 600,
+      "cssVar": "--font-weight-semibold",
+      "description": "半粗字重",
+      "createdAt": "2025-01-15T10:00:00Z",
+      "updatedAt": "2025-01-15T10:00:00Z",
+      "history": []
+    },
+    { "id": "tok_typo_006", "name": "typography.font-size-h1", "value": 36, "unit": "px", "cssVar": "--font-size-h1", "description": "H1 页面主标题（36/48 SemiBold）", "createdAt": "2026-07-16T00:00:00Z", "updatedAt": "2026-07-16T00:00:00Z", "history": [] },
+    { "id": "tok_typo_007", "name": "typography.font-size-h2", "value": 32, "unit": "px", "cssVar": "--font-size-h2", "description": "H2 大标题（32/40 SemiBold）", "createdAt": "2026-07-16T00:00:00Z", "updatedAt": "2026-07-16T00:00:00Z", "history": [] },
+    { "id": "tok_typo_008", "name": "typography.font-size-h3", "value": 24, "unit": "px", "cssVar": "--font-size-h3", "description": "H3 section 主标题（24/32 SemiBold）— 页面 section-heading 标题标准字号", "createdAt": "2026-07-16T00:00:00Z", "updatedAt": "2026-07-16T00:00:00Z", "history": [] },
+    { "id": "tok_typo_009", "name": "typography.font-size-h4", "value": 20, "unit": "px", "cssVar": "--font-size-h4", "description": "H4 横向卡片标题（20/28 SemiBold）", "createdAt": "2026-07-16T00:00:00Z", "updatedAt": "2026-07-16T00:00:00Z", "history": [] },
+    { "id": "tok_typo_010", "name": "typography.font-size-h5", "value": 18, "unit": "px", "cssVar": "--font-size-h5", "description": "H5 子标题（18/26 SemiBold）", "createdAt": "2026-07-16T00:00:00Z", "updatedAt": "2026-07-16T00:00:00Z", "history": [] },
+    { "id": "tok_typo_011", "name": "typography.font-size-h6", "value": 16, "unit": "px", "cssVar": "--font-size-h6", "description": "H6 表单标题/小标题（16/24 SemiBold）", "createdAt": "2026-07-16T00:00:00Z", "updatedAt": "2026-07-16T00:00:00Z", "history": [] },
+    { "id": "tok_typo_012", "name": "typography.font-size-h8", "value": 13, "unit": "px", "cssVar": "--font-size-h8", "description": "H8 紧凑正文/组件文字（13/20 SemiBold 或 Regular）", "createdAt": "2026-07-22T00:00:00Z", "updatedAt": "2026-07-22T00:00:00Z", "history": [] }
+  ],
+  "compositeTokens": [
+    { "id": "tok_typo_comp_001", "name": "typography.h1-semibold", "type": "typography", "value": { "fontSize": "36px", "lineHeight": "48px", "fontWeight": 600 }, "primitiveReferences": { "fontSize": "typography.font-size-h1", "fontWeight": "typography.font-weight-semibold" }, "lineHeightCssVar": "--line-height-h1", "description": "H1 页面主标题完整字体样式" },
+    { "id": "tok_typo_comp_002", "name": "typography.h2-semibold", "type": "typography", "value": { "fontSize": "32px", "lineHeight": "40px", "fontWeight": 600 }, "primitiveReferences": { "fontSize": "typography.font-size-h2", "fontWeight": "typography.font-weight-semibold" }, "lineHeightCssVar": "--line-height-h2", "description": "H2 大标题完整字体样式" },
+    { "id": "tok_typo_comp_003", "name": "typography.h3-semibold", "type": "typography", "value": { "fontSize": "24px", "lineHeight": "32px", "fontWeight": 600 }, "primitiveReferences": { "fontSize": "typography.font-size-h3", "fontWeight": "typography.font-weight-semibold" }, "lineHeightCssVar": "--line-height-h3", "description": "H3 section 主标题完整字体样式" },
+    { "id": "tok_typo_comp_004", "name": "typography.h4-semibold", "type": "typography", "value": { "fontSize": "20px", "lineHeight": "28px", "fontWeight": 600 }, "primitiveReferences": { "fontSize": "typography.font-size-h4", "fontWeight": "typography.font-weight-semibold" }, "lineHeightCssVar": "--line-height-h4", "description": "H4 卡片标题完整字体样式" },
+    { "id": "tok_typo_comp_005", "name": "typography.h5-semibold", "type": "typography", "value": { "fontSize": "18px", "lineHeight": "26px", "fontWeight": 600 }, "primitiveReferences": { "fontSize": "typography.font-size-h5", "fontWeight": "typography.font-weight-semibold" }, "lineHeightCssVar": "--line-height-h5", "description": "H5 子标题完整字体样式" },
+    { "id": "tok_typo_comp_006", "name": "typography.h6-semibold", "type": "typography", "value": { "fontSize": "16px", "lineHeight": "24px", "fontWeight": 600 }, "primitiveReferences": { "fontSize": "typography.font-size-h6", "fontWeight": "typography.font-weight-semibold" }, "lineHeightCssVar": "--line-height-h6", "description": "H6 SemiBold 完整字体样式" },
+    { "id": "tok_typo_comp_007", "name": "typography.h6-regular", "type": "typography", "value": { "fontSize": "16px", "lineHeight": "24px", "fontWeight": 400 }, "primitiveReferences": { "fontSize": "typography.font-size-h6", "fontWeight": "typography.font-weight-regular" }, "lineHeightCssVar": "--line-height-h6", "description": "H6 Regular 完整字体样式" },
+    { "id": "tok_typo_comp_008", "name": "typography.h7-semibold", "type": "typography", "value": { "fontSize": "14px", "lineHeight": "22px", "fontWeight": 600 }, "primitiveReferences": { "fontSize": "typography.font-size-md", "fontWeight": "typography.font-weight-semibold" }, "lineHeightCssVar": "--line-height-h7", "description": "H7 SemiBold 完整字体样式" },
+    { "id": "tok_typo_comp_009", "name": "typography.h7-regular", "type": "typography", "value": { "fontSize": "14px", "lineHeight": "22px", "fontWeight": 400 }, "primitiveReferences": { "fontSize": "typography.font-size-md", "fontWeight": "typography.font-weight-regular" }, "lineHeightCssVar": "--line-height-h7", "description": "H7/Body Regular 完整字体样式" },
+    { "id": "tok_typo_comp_010", "name": "typography.h8-semibold", "type": "typography", "value": { "fontSize": "13px", "lineHeight": "20px", "fontWeight": 600 }, "primitiveReferences": { "fontSize": "typography.font-size-h8", "fontWeight": "typography.font-weight-semibold" }, "lineHeightCssVar": "--line-height-h8", "description": "H8 SemiBold 完整字体样式" },
+    { "id": "tok_typo_comp_011", "name": "typography.h8-regular", "type": "typography", "value": { "fontSize": "13px", "lineHeight": "20px", "fontWeight": 400 }, "primitiveReferences": { "fontSize": "typography.font-size-h8", "fontWeight": "typography.font-weight-regular" }, "lineHeightCssVar": "--line-height-h8", "description": "H8 Regular 完整字体样式" },
+    { "id": "tok_typo_comp_012", "name": "typography.h9-semibold", "type": "typography", "value": { "fontSize": "12px", "lineHeight": "20px", "fontWeight": 600 }, "primitiveReferences": { "fontSize": "typography.font-size-sm", "fontWeight": "typography.font-weight-semibold" }, "lineHeightCssVar": "--line-height-h9", "description": "H9 SemiBold 完整字体样式" },
+    { "id": "tok_typo_comp_013", "name": "typography.h9-regular", "type": "typography", "value": { "fontSize": "12px", "lineHeight": "20px", "fontWeight": 400 }, "primitiveReferences": { "fontSize": "typography.font-size-sm", "fontWeight": "typography.font-weight-regular" }, "lineHeightCssVar": "--line-height-h9", "description": "H9 Regular 完整字体样式" },
+    { "id": "tok_typo_comp_014", "name": "typography.10-semibold", "type": "typography", "value": { "fontSize": "10px", "lineHeight": "1", "fontWeight": 600 }, "primitiveReferences": { "fontWeight": "typography.font-weight-semibold" }, "description": "M 端数量徽标 10px SemiBold 完整字体样式；行高继承数量徽标基类的 unitless 1" }
+  ]
+}

@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Icon 图标总览 - 组件预览</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../tokens.css">
+  <link rel="stylesheet" href="../components.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: var(--font-family-base); padding: 40px; background: #FFF; color: var(--color-gray-1); }
+    h1 { font-size: 24px; font-weight: 600; margin-bottom: 8px; }
+    .subtitle { font-size: 14px; color: var(--color-gray-3); margin-bottom: 32px; }
+
+    /* 图标参考目录专用的页面内横向导航：锚点与下方七个真实分类 section 一一对应。 */
+    .icon-anchor-nav { position: sticky; top: 0; z-index: 10; width: calc(100% + 80px); margin: 0 -40px 40px; }
+    .icon-anchor-nav .ds-anchor-nav__inner { max-width: none; padding: 0; overflow-x: auto; }
+    .icon-anchor-nav .ds-anchor-nav__tabs { flex: 1; min-width: 0; gap: 0; }
+    .icon-anchor-nav .ds-anchor-nav__tab { flex: 1 1 0; min-width: 0; justify-content: center; padding: 0 8px; text-decoration: none; white-space: nowrap; }
+    @media (max-width: 720px) {
+      .icon-anchor-nav .ds-anchor-nav__tabs { min-width: 700px; }
+    }
+    .icon-anchor-nav .ds-anchor-nav__tab:focus-visible { outline: 2px solid var(--color-blue); outline-offset: -2px; }
+
+    .section { margin-bottom: 48px; scroll-margin-top: 72px; }
+    .section-title { font-size: 18px; font-weight: 600; margin-bottom: 6px; padding-bottom: 8px; border-bottom: 1px solid var(--color-gray-5); }
+    .section-desc { font-size: 12px; color: #707070; margin-bottom: 20px; }
+
+    .icon-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
+    .icon-card {
+      display: flex; flex-direction: column; gap: 10px;
+      padding: 16px; border: 1px solid #DEE0E3; border-radius: 8px;
+      background: #FFFFFF; scroll-margin-top: 90px;
+    }
+    .icon-card:target { border-color: #0060BF; box-shadow: 0 0 0 2px rgba(0,96,191,0.25); }
+    .icon-card__preview {
+      height: 64px; display: flex; align-items: center; justify-content: center;
+      background: #FAFBFC; border-radius: 6px;
+    }
+    .icon-card__preview img { max-width: 40px; max-height: 40px; }
+    .icon-card__preview--dark { background: #19191A; }
+    .icon-card__name { font-family: 'SF Mono', Consolas, monospace; font-size: 12px; font-weight: 600; word-break: break-all; }
+    .icon-card__name a { color: #19191A; text-decoration: none; }
+    .icon-card__name a:hover { color: #0060BF; text-decoration: underline; }
+    .icon-card__meta { font-size: 11px; color: #707070; line-height: 18px; }
+    .icon-card__usedby { font-size: 11px; color: #707070; }
+    .icon-card__usedby a { color: #0060BF; font-weight: 600; text-decoration: none; }
+    .icon-card__usedby a:hover { text-decoration: underline; }
+    .icon-card__usedby span.no-link { color: #19191A; font-weight: 600; }
+    .icon-card__actions { display: flex; gap: 10px; }
+    .icon-card__actions a { font-size: 11px; color: #0060BF; text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <h1>Icon 图标参考目录 <span style="font-size:18px;color:#707070;margin-left:10px;">Reference Catalog</span></h1>
+  <p class="subtitle">已核实图标资产的参考目录（数据来自 <code>../icons/icons-manifest.json</code>），不是正式组件页面。其他组件预览页里「依赖汇总表」的图标列会链接到这里的具体锚点，点开直接跳到对应图标卡片，不再直接跳源文件。</p>
+
+  <nav class="ds-anchor-nav icon-anchor-nav" aria-label="图标分类导航">
+    <div class="ds-anchor-nav__inner">
+      <div class="ds-anchor-nav__tabs">
+        <a class="ds-anchor-nav__tab ds-anchor-nav__tab--active" href="#cat-action" data-icon-anchor="cat-action">操作类 action</a>
+        <a class="ds-anchor-nav__tab" href="#cat-navigation" data-icon-anchor="cat-navigation">导航类 navigation</a>
+        <a class="ds-anchor-nav__tab" href="#cat-content" data-icon-anchor="cat-content">内容类 content</a>
+        <a class="ds-anchor-nav__tab" href="#cat-media" data-icon-anchor="cat-media">媒体类 media</a>
+        <a class="ds-anchor-nav__tab" href="#cat-social" data-icon-anchor="cat-social">社交类 social</a>
+        <a class="ds-anchor-nav__tab" href="#cat-badge" data-icon-anchor="cat-badge">认证徽章 badge</a>
+        <a class="ds-anchor-nav__tab" href="#cat-app" data-icon-anchor="cat-app">应用商店 app</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- action -->
+  <div class="section" id="cat-action">
+    <div class="section-title">操作类 action</div>
+    <div class="section-desc">操作类图标（按钮、交互）</div>
+    <div class="icon-grid">
+      <div class="icon-card" id="icon-loading">
+        <div class="icon-card__preview"><img src="../icons/icon-loading.svg" alt="icon-loading"></div>
+        <div class="icon-card__name"><a href="#icon-loading">icon-loading.svg</a></div>
+        <div class="icon-card__meta">16x16 · fill #19191A</div>
+        <div class="icon-card__meta">加载中旋转图标（开口圆弧）</div>
+        <div class="icon-card__usedby">用于 <a href="button.html#icon-usage-icon-loading">Button/processing</a></div>
+        <div class="icon-card__actions"><a href="../icons/icon-loading.svg" target="_blank">查看源文件</a></div>
+      </div>
+      <div class="icon-card" id="icon-arrow-right">
+        <div class="icon-card__preview"><img src="../icons/icon-arrow-right.svg" alt="icon-arrow-right"></div>
+        <div class="icon-card__name"><a href="#icon-arrow-right">icon-arrow-right.svg</a></div>
+        <div class="icon-card__meta">12x12 · fill #0060BF</div>
+        <div class="icon-card__meta">右箭头图标</div>
+        <div class="icon-card__usedby">用于 <a href="text-button.html#icon-usage-icon-arrow-right">TextButton</a>、<a href="card.html">Card/link</a>、<a href="list.html#list-attribute-key-value">List/attribute-key-value</a></div>
+        <div class="icon-card__actions"><a href="../icons/icon-arrow-right.svg" target="_blank">查看源文件</a></div>
+      </div>
+      <div class="icon-card" id="icon-stepper-title-chevron">
+        <div class="icon-card__preview"><img src="../icons/icon-stepper-title-chevron.svg" alt="icon-stepper-title-chevron"></div>
+        <div class="icon-card__name"><a href="#icon-stepper-title-chevron">icon-stepper-title-chevron.svg</a></div>
+        <div class="icon-card__meta">12x12 · fill #19191A</div>
+        <div class="icon-card__meta">步骤条标题右向 chevron（用户指定直角端点）</div>
+        <div class="icon-card__usedby">用于 <a href="stepper.html">Stepper/icon-divider title</a></div>
+        <div class="icon-card__actions"><a href="../icons/icon-stepper-title-chevron.svg" target="_blank">查看源文件</a></div>
+      </div>
+      <div class="icon-card" id="icon-close">
+        <div class="icon-card__preview"><img src="../icons/icon-close.svg" alt="icon-close"></div>
+        <div class="icon-card__name"><a href="#icon-close">icon-close.svg</a></div>
+        <div class="icon-card__meta">20x20 · fill #707070</div>
+        <div class="icon-card__meta">关闭/删除 ✕ 图标</div>
+        <div class="icon-card__usedby">用于 <a href="icon-button.html#icon-usage-icon-close">IconButton</a>、<a href="input.html">Input/clear</a></div>
+        <div class="icon-card__actions"><a href="../icons/icon-close.svg" target="_blank">查看源文件</a></div>
+      </div>
+      <div class="icon-card" id="icon-delete">
+        <div class="icon-card__preview"><img src="../icons/icon-delete.svg" alt="icon-delete"></div>
+        <div class="icon-card__name"><a href="#icon-delete">icon-delete.svg</a></div>
+        <div class="icon-card__meta">27.43x27.43 · fill #707070</div>
+        <div class="icon-card__meta">删除/移除商品的垃圾桶图标</div>
+        <div class="icon-card__usedby">用于 <a href="list.html#list-product-content">List/product-content</a></div>
+        <div class="icon-card__actions"><a href="../icons/icon-delete.svg" target="_blank">查看源文件</a></div>
+      </div>
+      <div class="icon-card" id="icon-cart-add">
+        <div class="icon-card__preview icon-card__preview--dark"><img src="../icons/icon-cart-add.svg" alt="icon-cart-add"></div>
+        <div class="icon-card__name"><a href="#icon-cart-add">icon-cart-add.svg</a></div>
+        <div class="icon-card__meta">14x14 · fill #FFFFFF</div>
+        <div class="icon-card__meta">加入购物车图标</div>
+        <div class="icon-card__usedby">用于 <a href="card.html">Card/embedded/add-btn</a></div>
+        <div class="icon-card__actions"><a href="../icons/icon-cart-add.svg" target="_blank">查看源文件</a></div>
+      </div>
+      <div class="icon-card" id="icon-upload">
+        <div class="icon-card__preview"><img src="../icons/icon-upload.svg" alt="icon-upload"></div>
+        <div class="icon-card__name"><a href="#icon-upload">icon-upload.svg</a></div>
+        <div class="icon-card__meta">12x12 · fill #707070</div>
+        <div class="icon-card__meta">上传箭头图标</div>
+        <div class="icon-card__usedby">用于 <a href="icon-button.html" title="原链接组合尚无 MG 原始组件证据，不能直接调用">IconButton</a></div>
+        <div class="icon-card__actions"><a href="../icons/icon-upload.svg" target="_blank">查看源文件</a></div>
+      </div>
+      <div class="icon-card" id="icon-download">
+        <div class="icon-card__preview"><img src="../icons/icon-download.svg" alt="icon-download"></div>
+        <div class="icon-card__name"><a href="#icon-download">icon-download.svg</a></div>
+        <div class="icon-card__meta">16x16 · fill #707070</div>
+        <div class="icon-card__meta">下载图标</div>
+        <div class="icon-card__usedby">用于 <a href="icon-button.html#icon-usage-icon-download">IconButton</a></div>
+        <div class="icon-card__actions"><a href="../icons/icon-download.svg" target="_blank">查看源文件</a></div>
+      </div>
+      <div class="icon-card" id="icon-edit">
+        <div class="icon-card__preview"><img src="../icons/icon-edit.svg" alt="icon-edit"></div>
+        <div class="icon-card__name"><a href="#icon-edit">icon-edit.svg</a></div>
+        <div class="icon-card__meta">12x12 · fill #707070</div>
+        <div class="icon-card__meta">编辑/铅笔图标</div>
+        <div class="icon-card__usedby">用于 <a href="icon-button.html#icon-usage-icon-edit">IconButton</a>、<a href="collapse.html">Collapse/inline-edit</a>、<a href="list.html#list-attribute-key-value">List/attribute-key-value</a></div>
+        <div class="icon-card__actions"><a href="../icons/icon-edit.svg" target="_blank">查看源文件</a></div>
+      </div>
+      <div class="icon-card" id="icon-eye">
+        <div class="icon-card__preview"><img src="../icons/icon-eye.svg" alt="icon-eye"></div>
+        <div class="icon-card__name"><a href="#icon-eye">icon-eye.svg</a></div>
+        <div class="icon-card__meta">16x16 · fill #707070</div>
+        <div class="icon-card__meta">查看/眼睛图标</div>
+        <div class="icon-card__usedby">用于 <a href="icon-button.html#icon-usage-icon-eye">IconButton</a></div>
+        <div class="icon-card__actions"><a href="../icons/icon-eye.svg" target="_blank">查看源文件</a></div>
+      </div>
+      <div class="icon-card" id="icon-eye-off">
+        <div class="icon-card__preview"><img src="../icons/icon-eye-off.svg" alt="icon-eye-off"></div>
+        <div class="icon-card__name"><a href="#icon-eye-off">icon-eye-off.svg</a></div>
+        <div class="icon-card__meta">16x16 · fill #707070</div>
+        <div class="icon-card__meta">隐藏/眼睛划线图标</div>
+        <div class="icon-card__usedby">用于 <a href="icon-button.html">IconButton</a>（<span style="color:#707070; font-weight: 400;">依赖已声明，预览页暂未渲染该状态</span>）</div>
+        <div class="icon-card__actions"><a href="../icons/icon-eye-off.svg" target="_blank">查看源文件</a></div>
+      </div>
+      <div class="icon-card" id="icon-more">
+        <div class="icon-card__preview"><img src="../icons/icon-more.svg" alt="icon-more"></div>
+        <div class="icon-card__name"><a href="#icon-more">icon-more.svg</a></div>
+        <div class="icon-card__meta">16x16 · fill #707070</div>
+        <div class="icon-card__meta">更多/三点省略图标</div>
+        <div class="icon-card__usedby">用于 <a href="icon-button.html#icon-usage-icon-more">IconButton</a>、<a href="collapse.html">Collapse/data-preview</a>、<a href="list.html#list-operation-intensive">List/operation-intensive</a></div>
+        <div class="icon-card__actions"><a href="../icons/icon-more.svg" target="_blank">查看源文件</a></div>
+      </div>
+      <div class="icon-card" id="icon-collapse-plus">
+        <div class="icon-card__preview"><img src="../icons/icon-collapse-plus.svg" alt="icon-collapse-plus"></div>
+        <div class="icon-card__name"><a href="#icon-collapse-plus">icon-collapse-plus.svg</a></div>
+        <div class="icon-card__meta">16x16 · fill #19191A</div>
+        <div class="icon-card__meta">折叠面板收起态指示器（加号 +）</div>
+        <div class="icon-card__usedby">用于 <a href="collapse.html">Collapse/split</a>、<a href="list.html#list-product-content">List/product-content 数量增加</a></div>
+        <div class="icon-card__actions"><a href="../icons/icon-collapse-plus.svg" target="_blank">查看源文件</a></div>
+      </div>
+      <div class="icon-card" id="icon-collapse-minus">
+        <div class="icon-card__preview"><img src="../icons/icon-collapse-minus.svg" alt="icon-collapse-minus"></div>
+        <div class="icon-card__name"><a href="#icon-collapse-minus">icon-collapse-minus.svg</a></div>
+        <div class="icon-card__meta">16x16 · fill #19191A</div>
+        <div class="icon-card__meta">折叠面板展开态指示器（减号 −）</div>
+        <div class="icon-card__usedby">用于 <a href="collapse.html">Collapse/split</a>、<a href="list.html#list-product-content">List/product-content 数量减少</a></div>
+        <div class="icon-card__actions"><a href="../icons/icon-collapse-minus.svg" target="_blank">查看源文件</a></div>
+      </div>
+      <div class="icon-card" id="icon-info">
+        <div class="icon-card__preview"><img src="../icons/icon-info.svg" alt="icon-info"></div>
+        <div class="icon-card__name"><a href="#icon-info">icon-info.svg</a></div>
+        <div class="icon-card__meta">16x16 · fill #19191A</div>
+        <div class="icon-card__meta">信息/说明提示图标（圆圈内小写 i）</div>
+        <div class="icon-card__usedby">用于 <a href="collapse.html">Collapse/data-preview</a>、<a href="tag.html">Tag/semantic</a></div>
+        <div class="icon-card__actions"><a href="../icons/icon-info.svg" target="_blank">查看源文件</a></div>
+      </div>
+      <div class="icon-card" id="icon-grid-view">
+        <div class="icon-card__preview"><img src="../icons/icon-grid-view.svg" alt="icon-grid-view"></div>
+        <div class="icon-card__name"><a href="#icon-grid-view">icon-grid-view.svg</a></div>
+        <div class="icon-card__meta">20x20 · fill #707070</div>
+        <div class="icon-card__meta">网格视图/四宫格图标</div>
+        <div class="icon-card__usedby">用于 <a href="icon-button.html#icon-usage-icon-grid-view">IconButton</a></div>
+        <div class="icon-card__actions"><a href="../icons/icon-grid-view.svg" target="_blank">查看源文件</a></div>
+      </div>
+      <div class="icon-card" id="icon-list-view">
+        <div class="icon-card__preview"><img src="../icons/icon-list-view.svg" alt="icon-list-view"></div>
+        <div class="icon-card__name"><a href="#icon-list-view">icon-list-view.svg</a></div>
+        <div class="icon-card__meta">20x20 · fill #707070</div>
+        <div class="icon-card__meta">列表视图图标</div>
+        <div class="icon-card__usedby">用于 <a href="icon-button.html#icon-usage-icon-list-view">IconButton</a></div>
+        <div class="icon-card__actions"><a href="../icons/icon-list-view.svg" target="_blank">查看源文件</a></div>
+      </div>
+      <div class="icon-card" id="icon-chevron-down">
+        <div class="icon-card__preview"><img src="../icons/icon-chevron-down.svg" alt="icon-chevron-down"></div>
+        <div class="icon-card__name"><a href="#icon-chevron-down">icon-chevron-down.svg</a></div>
+        <div class="icon-card__meta">12x12 · fill #707070</div>
+        <div class="icon-card__meta">下拉箭头（向下 V 形）</div>
+        <div class="icon-card__usedby">用于 <a href="dropdown.html#icon-usage-icon-chevron-down">Dropdown</a>、<a href="tab.html">Tab</a>、<a href="form.html#icon-usage-icon-chevron-down-form">Form</a>、<a href="navigation.html">Navigation</a></div>
+        <div class="icon-card__actions"><a href="../icons/icon-chevron-down.svg" target="_blank">查看源文件</a></div>
+      </div>
+      <div class="icon-card" id="icon-carousel-prev">
+        <div class="icon-card__preview icon-card__preview--dark"><img src="../icons/icon-carousel-prev.svg" alt="icon-carousel-prev"></div>
+        <div class="icon-card__name"><a href="#icon-carousel-prev">icon-carousel-prev.svg</a></div>
+        <div class="icon-card__meta">20x20 · fill #4B4B4D</div>
+        <div class="icon-card__meta">走马灯上一张箭头（向左 chevron）</div>
+        <div class="icon-card__usedby">用于 <a href="carousel.html#icon-usage-icon-carousel-prev">Carousel/btn-prev</a></div>
+        <div class="icon-card__actions"><a href="../icons/icon-carousel-prev.svg" target="_blank">查看源文件</a></div>
+      </div>
+      <div class="icon-card" id="icon-carousel-next">
+        <div class="icon-card__preview icon-card__preview--dark"><img src="../icons/icon-carousel-next.svg" alt="icon-carousel-next"></div>
+        <div class="icon-card__name"><a href="#icon-carousel-next">icon-carousel-next.svg</a></div>
+        <div class="icon-card__meta">20x20 · fill #4B4B4D</div>
+        <div class="icon-card__meta">走马灯下一张箭头（向右 chevron）</div>
+        <div class="icon-card__usedby">用于 <a href="carousel.html#icon-usage-icon-carousel-next">Carousel/btn-next</a></div>
+        <div class="icon-card__actions"><a href="../icons/icon-carousel-next.svg" target="_blank">查看源文件</a></div>
+      </div>
+      <div class="icon-card" id="icon-checkbox-default-18">
+        <div class="icon-card__preview"><img src="../icons/icon-checkbox-default-18.svg" alt="icon-checkbox-default-18"></div>
+        <div class="icon-card__name"><a href="#icon-checkbox-default-18">icon-checkbox-default-18.svg</a></div>
+        <div class="icon-card__meta">18x18 · fill #19191A</div>
+        <div class="icon-card__meta">复选框-默认未选（大号 18px 空框，边框 #19191A 30%）</div>
+        <div class="icon-card__usedby">用于 <a href="checkbox.html">Checkbox/lg/default</a>、<a href="list.html#list-operation-intensive">List/operation-intensive</a></div>
+        <div class="icon-card__actions"><a href="../icons/icon-checkbox-default-18.svg" target="_blank">查看源文件</a></div>
+      </div>
+      <div class="icon-card" id="icon-checkbox-default-14">
+        <div class="icon-card__preview"><img src="../icons/icon-checkbox-default-14.svg" alt="icon-checkbox-default-14"></div>
+        <div class="icon-card__name"><a href="#icon-checkbox-default-14">icon-checkbox-default-14.svg</a></div>
+        <div class="icon-card__meta">14x14 · fill #19191A</div>
+        <div class="icon-card__meta">复选框-默认未选（小号 14px 空框，边框 #19191A 30%）</div>
+        <div class="icon-card__usedby">用于 <a href="checkbox.html">Checkbox/sm/default</a></div>
+        <div class="icon-card__actions"><a href="../icons/icon-checkbox-default-14.svg" target="_blank">查看源文件</a></div>
+      </div>
+      <div class="icon-card" id="icon-checkbox-hover-18">
+        <div class="icon-card__preview"><img src="../icons/icon-checkbox-hover-18.svg" alt="icon-checkbox-hover-18"></div>
+        <div class="icon-card__name"><a href="#icon-checkbox-hover-18">icon-checkbox-hover-18.svg</a></div>
+        <div class="icon-card__meta">18x18 · fill #707070</div>
+        <div class="icon-card__meta">复选框-悬停未选（大号 18px 空框，边框加深 #707070）</div>
+        <div class="icon-card__usedby">用于 <a href="checkbox.html">Checkbox/lg/hover</a></div>
+        <div class="icon-card__actions"><a href="../icons/icon-checkbox-hover-18.svg" target="_blank">查看源文件</a></div>
+      </div>
+      <div class="icon-card" id="icon-checkbox-hover-14">
+        <div class="icon-card__preview"><img src="../icons/icon-checkbox-hover-14.svg" alt="icon-checkbox-hover-14"></div>
+        <div class="icon-card__name"><a href="#icon-checkbox-hover-14">icon-checkbox-hover-14.svg</a></div>
+        <div class="icon-card__meta">14x14 · fill #707070</div>
+        <div class="icon-card__meta">复选框-悬停未选（小号 14px 空框，边框加深 #707070）</div>
+        <div class="icon-card__usedby">用于 <a href="checkbox.html">Checkbox/sm/hover</a></div>
+        <div class="icon-card__actions"><a href="../icons/icon-checkbox-hover-14.svg" target="_blank">查看源文件</a></div>
+      </div>
+      <div class="icon-card" id="icon-checkbox-checked-18">
+        <div class="icon-card__preview"><img src="../icons/icon-checkbox-checked-18.svg" alt="icon-checkbox-checked-18"></div>
+        <div class="icon-card__name"><a href="#icon-checkbox-checked-18">icon-checkbox-checked-18.svg</a></div>
+        <div class="icon-card__meta">18x18 · fill #707070</div>
+        <div class="icon-card__meta">复选框-已选中（大号 18px 实心 #707070 + 白色对勾）</div>
+        <div class="icon-card__usedby">用于 <a href="checkbox.html">Checkbox/lg/checked</a>、<a href="list.html#list-operation-intensive">List/operation-intensive</a></div>
+        <div class="icon-card__actions"><a href="../icons/icon-checkbox-checked-18.svg" target="_blank">查看源文件</a></div>
+      </div>
+      <div class="icon-card" id="icon-checkbox-checked-14">
+        <div class="icon-card__preview"><img src="../icons/icon-checkbox-checked-14.svg" alt="icon-checkbox-checked-14"></div>
+        <div class="icon-card__name"><a href="#icon-checkbox-checked-14">icon-checkbox-checked-14.svg</a></div>
+        <div class="icon-card__meta">14x14 · fill #707070</div>
+        <div class="icon-card__meta">复选框-已选中（小号 14px 实心 #707070 + 白色对勾）</div>
+        <div class="icon-card__usedby">用于 <a href="checkbox.html">Checkbox/sm/checked</a></div>
+        <div class="icon-card__actions"><a href="../icons/icon-checkbox-checked-14.svg" target="_blank">查看源文件</a></div>
+      </div>
+      <div class="icon-card" id="icon-checkbox-indeterminate-18">
+        <div class="icon-card__preview"><img src="../icons/icon-checkbox-indeterminate-18.svg" alt="icon-checkbox-indeterminate-18"></div>
+        <div class="icon-card__name"><a href="#icon-checkbox-indeterminate-18">icon-checkbox-indeterminate-18.svg</a></div>
+        <div class="icon-card__meta">18x18 · fill #707070</div>
+        <div class="icon-card__meta">复选框-半选（大号 18px 空框 + 内部实心方块 #707070）</div>
+        <div class="icon-card__usedby">用于 <a href="checkbox.html">Checkbox/lg/indeterminate</a></div>
+        <div class="icon-card__actions"><a href="../icons/icon-checkbox-indeterminate-18.svg" target="_blank">查看源文件</a></div>
+      </div>
+      <div class="icon-card" id="icon-checkbox-indeterminate-14">
+        <div class="icon-card__preview"><img src="../icons/icon-checkbox-indeterminate-14.svg" alt="icon-checkbox-indeterminate-14"></div>
+        <div class="icon-card__name"><a href="#icon-checkbox-indeterminate-14">icon-checkbox-indeterminate-14.svg</a></div>
+        <div class="icon-card__meta">14x14 · fill #707070</div>
+        <div class="icon-card__meta">复选框-半选（小号 14px 空框 + 内部实心方块 #707070）</div>
+        <div class="icon-card__usedby">用于 <a href="checkbox.html">Checkbox/sm/indeterminate</a></div>
+        <div class="icon-card__actions"><a href="../icons/icon-checkbox-indeterminate-14.svg" target="_blank">查看源文件</a></div>
+      </div>
+      <div class="icon-card" id="icon-checkbox-disabled-18">
+        <div class="icon-card__preview"><img src="../icons/icon-checkbox-disabled-18.svg" alt="icon-checkbox-disabled-18"></div>
+        <div class="icon-card__name"><a href="#icon-checkbox-disabled-18">icon-checkbox-disabled-18.svg</a></div>
+        <div class="icon-card__meta">18x18 · fill #F6F6F8</div>
+        <div class="icon-card__meta">复选框-禁用（大号 18px 底 #F6F6F8 + 边框 #19191A 30%）</div>
+        <div class="icon-card__usedby">用于 <a href="checkbox.html">Checkbox/lg/disabled</a></div>
+        <div class="icon-card__actions"><a href="../icons/icon-checkbox-disabled-18.svg" target="_blank">查看源文件</a></div>
+      </div>
+      <div class="icon-card" id="icon-checkbox-disabled-14">
+        <div class="icon-card__preview"><img src="../icons/icon-checkbox-disabled-14.svg" alt="icon-checkbox-disabled-14"></div>
+        <div class="icon-card__name"><a href="#icon-checkbox-disabled-14">icon-checkbox-disabled-14.svg</a></div>
+        <div class="icon-card__meta">14x14 · fill #F6F6F8</div>
+        <div class="icon-card__meta">复选框-禁用（小号 14px 底 #F6F6F8 + 边框 #19191A 30%）</div>
+        <div class="icon-card__usedby">用于 <a href="checkbox.html">Checkbox/sm/disabled</a></div>
+        <div class="icon-card__actions"><a href="../icons/icon-checkbox-disabled-14.svg" target="_blank">查看源文件</a></div>
+      </div>
+      <div class="icon-card" id="icon-comment">
+        <div class="icon-card__preview"><img src="../icons/icon-comment.svg" alt="icon-comment"></div>
+        <div class="icon-card__name"><a href="#icon-comment">icon-comment.svg</a></div>
+        <div class="icon-card__meta">16x16 · fill #707070</div>
+        <div class="icon-card__meta">评论入口默认态三点对话框图标</div>
+        <div class="icon-card__usedby">用于 <a href="comment.html#comment-qa-thread">Comment/qa-thread</a>、<a href="comment.html#comment-review-thread">Comment/review-thread</a></div>
+        <div class="icon-card__actions"><a href="../icons/icon-comment.svg" target="_blank">查看源文件</a></div>
+      </div>
+      <div class="icon-card" id="icon-comment-active">
+        <div class="icon-card__preview"><img src="../icons/icon-comment-active.svg" alt="icon-comment-active"></div>
+        <div class="icon-card__name"><a href="#icon-comment-active">icon-comment-active.svg</a></div>
+        <div class="icon-card__meta">16x16 · fill #19191A</div>
+        <div class="icon-card__meta">评论入口展开态三点对话框图标</div>
+        <div class="icon-card__usedby">用于 <a href="comment.html#comment-qa-thread">Comment/qa-thread</a>、<a href="comment.html#comment-review-thread">Comment/review-thread</a></div>
+        <div class="icon-card__actions"><a href="../icons/icon-comment-active.svg" target="_blank">查看源文件</a></div>
+      </div>
+      <div class="icon-card" id="icon-helpful">
+        <div class="icon-card__preview"><img src="../icons/icon-helpful.svg" alt="icon-helpful"></div>
+        <div class="icon-card__name"><a href="#icon-helpful">icon-helpful.svg</a></div>
+        <div class="icon-card__meta">16x16 · fill #707070</div>
+        <div class="icon-card__meta">评论 Helpful 默认态线性点赞图标</div>
+        <div class="icon-card__usedby">用于 <a href="comment.html#comment-qa-thread">Comment/qa-thread</a>、<a href="comment.html#comment-review-thread">Comment/review-thread</a>、<a href="comment.html#comment-customer-gallery">Comment/customer-gallery</a></div>
+        <div class="icon-card__actions"><a href="../icons/icon-helpful.svg" target="_blank">查看源文件</a></div>
+      </div>
+      <div class="icon-card" id="icon-helpful-active">
+        <div class="icon-card__preview"><img src="../icons/icon-helpful-active.svg" alt="icon-helpful-active"></div>
+        <div class="icon-card__name"><a href="#icon-helpful-active">icon-helpful-active.svg</a></div>
+        <div class="icon-card__meta">16x16 · fill #19191A</div>
+        <div class="icon-card__meta">评论 Helpful 选中态实心点赞图标</div>
+        <div class="icon-card__usedby">用于 <a href="comment.html#comment-qa-thread">Comment/qa-thread</a>、<a href="comment.html#comment-review-thread">Comment/review-thread</a>、<a href="comment.html#comment-customer-gallery">Comment/customer-gallery</a></div>
+        <div class="icon-card__actions"><a href="../icons/icon-helpful-active.svg" target="_blank">查看源文件</a></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- navigation -->
+  <div class="section" id="cat-navigation">
+    <div class="section-title">导航类 navigation</div>
+    <div class="section-desc">导航类图标（header/footer 专用）</div>
+    <div class="icon-grid">
+      <div class="icon-card" id="icon-logo-fs">
+        <div class="icon-card__preview"><img src="../icons/icon-logo-fs.svg" alt="icon-logo-fs"></div>
+        <div class="icon-card__name"><a href="#icon-logo-fs">icon-logo-fs.svg</a></div>
+        <div class="icon-card__meta">76x36 · fill multicolor</div>
+        <div class="icon-card__meta">FS.com 品牌 Logo</div>
+        <div class="icon-card__usedby">用于 <a href="navigation.html#icon-usage-icon-logo-fs">Navigation/header</a></div>
+        <div class="icon-card__actions"><a href="../icons/icon-logo-fs.svg" target="_blank">查看源文件</a></div>
+      </div>
+      <div class="icon-card" id="icon-search">
+        <div class="icon-card__preview"><img src="../icons/icon-search.svg" alt="icon-search"></div>
+        <div class="icon-card__name"><a href="#icon-search">icon-search.svg</a></div>
+        <div class="icon-card__meta">14x14 · fill #707070</div>
+        <div class="icon-card__meta">搜索放大镜图标</div>
+        <div class="icon-card__usedby">用于 <a href="icon-button.html#icon-usage-icon-search">IconButton</a>、<a href="navigation.html#icon-usage-icon-search">Navigation/header</a>、<a href="dropdown.html">Dropdown/search</a></div>
+        <div class="icon-card__actions"><a href="../icons/icon-search.svg" target="_blank">查看源文件</a></div>
+      </div>
+      <div class="icon-card" id="icon-account">
+        <div class="icon-card__preview"><img src="../icons/icon-account.svg" alt="icon-account"></div>
+        <div class="icon-card__name"><a href="#icon-account">icon-account.svg</a></div>
+        <div class="icon-card__meta">24x24 · fill #707070</div>
+        <div class="icon-card__meta">用户账户图标</div>
+        <div class="icon-card__usedby">用于 <a href="navigation.html#icon-usage-icon-account">Navigation/header</a></div>
+        <div class="icon-card__actions"><a href="../icons/icon-account.svg" target="_blank">查看源文件</a></div>
+      </div>
+      <div class="icon-card" id="icon-cart">
+        <div class="icon-card__preview"><img src="../icons/icon-cart.svg" alt="icon-cart"></div>
+        <div class="icon-card__name"><a href="#icon-cart">icon-cart.svg</a></div>
+        <div class="icon-card__meta">24x24 · fill #707070</div>
+        <div class="icon-card__meta">购物车图标</div>
+        <div class="icon-card__usedby">用于 <a href="navigation.html#icon-usage-icon-cart">Navigation/header</a></div>
+        <div class="icon-card__actions"><a href="../icons/icon-cart.svg" target="_blank">查看源文件</a></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- content -->
+  <div class="section" id="cat-content">
+    <div class="section-title">内容类 content</div>
+    <div class="section-desc">内容类图标（卡片、列表）</div>
+    <div class="icon-grid">
+      <div class="icon-card" id="icon-fs-shipping-current-48" data-fs-source-icon="995:842">
+        <div class="icon-card__preview"><img src="../icons/icon-fs-shipping-current-48.svg" width="48" height="48" style="max-width:none;max-height:none" alt="运输配送；FS官方静态定制图标，限定原尺寸和语义。"></div>
+        <div class="icon-card__name"><a href="#icon-fs-shipping-current-48">icon-fs-shipping-current-48.svg</a></div>
+        <div class="icon-card__meta">48x48 · 原始SVG颜色 · 静态</div>
+        <div class="icon-card__meta">运输配送；FS官方静态定制图标，限定原尺寸和语义。</div>
+        <div class="icon-card__usedby">限定角色：delivery-shipping；未开放任何按钮组合。</div>
+        <div class="icon-card__actions"><a href="../sources/maintenance/j4858d-required-source-read-1016/screenshots/Icon-定制Icon-Shipping_995-842.png" target="_blank">原件截图 995:842</a><a href="../icons/icon-fs-shipping-current-48.svg" target="_blank">原SVG</a></div>
+      </div>
+      <div class="icon-card" id="icon-fs-easy-return-current-48" data-fs-source-icon="995:866">
+        <div class="icon-card__preview"><img src="../icons/icon-fs-easy-return-current-48.svg" width="48" height="48" style="max-width:none;max-height:none" alt="退货服务；FS官方静态定制图标，限定原尺寸和语义。"></div>
+        <div class="icon-card__name"><a href="#icon-fs-easy-return-current-48">icon-fs-easy-return-current-48.svg</a></div>
+        <div class="icon-card__meta">48x48 · 原始SVG颜色 · 静态</div>
+        <div class="icon-card__meta">退货服务；FS官方静态定制图标，限定原尺寸和语义。</div>
+        <div class="icon-card__usedby">限定角色：returns；未开放任何按钮组合。</div>
+        <div class="icon-card__actions"><a href="../sources/maintenance/j4858d-required-source-read-1016/screenshots/Icon-定制Icon-Easy-Return_995-866.png" target="_blank">原件截图 995:866</a><a href="../icons/icon-fs-easy-return-current-48.svg" target="_blank">原SVG</a></div>
+      </div>
+      <div class="icon-card" id="icon-fs-warranty-current-48" data-fs-source-icon="995:860">
+        <div class="icon-card__preview"><img src="../icons/icon-fs-warranty-current-48.svg" width="48" height="48" style="max-width:none;max-height:none" alt="保修服务；FS官方静态定制图标，限定原尺寸和语义。"></div>
+        <div class="icon-card__name"><a href="#icon-fs-warranty-current-48">icon-fs-warranty-current-48.svg</a></div>
+        <div class="icon-card__meta">48x48 · 原始SVG颜色 · 静态</div>
+        <div class="icon-card__meta">保修服务；FS官方静态定制图标，限定原尺寸和语义。</div>
+        <div class="icon-card__usedby">限定角色：warranty；未开放任何按钮组合。</div>
+        <div class="icon-card__actions"><a href="../sources/maintenance/j4858d-required-source-read-1016/screenshots/Icon-定制Icon-Warranty_995-860.png" target="_blank">原件截图 995:860</a><a href="../icons/icon-fs-warranty-current-48.svg" target="_blank">原SVG</a></div>
+      </div>
+      <div class="icon-card" id="icon-fs-technical-support-current-48" data-fs-source-icon="33189:58732">
+        <div class="icon-card__preview"><img src="../icons/icon-fs-technical-support-current-48.svg" width="48" height="48" style="max-width:none;max-height:none" alt="技术支持；FS官方静态定制图标，限定原尺寸和语义。"></div>
+        <div class="icon-card__name"><a href="#icon-fs-technical-support-current-48">icon-fs-technical-support-current-48.svg</a></div>
+        <div class="icon-card__meta">48x48 · 原始SVG颜色 · 静态</div>
+        <div class="icon-card__meta">技术支持；FS官方静态定制图标，限定原尺寸和语义。</div>
+        <div class="icon-card__usedby">限定角色：technical-support；未开放任何按钮组合。</div>
+        <div class="icon-card__actions"><a href="../sources/maintenance/j4858d-required-source-read-1016/screenshots/Icon-定制Icon-技术支持_33189-58732.png" target="_blank">原件截图 33189:58732</a><a href="../icons/icon-fs-technical-support-current-48.svg" target="_blank">原SVG</a></div>
+      </div>
+      <div class="icon-card" id="icon-fs-certification-current-48" data-fs-source-icon="33189:58768">
+        <div class="icon-card__preview"><img src="../icons/icon-fs-certification-current-48.svg" width="48" height="48" style="max-width:none;max-height:none" alt="认证；FS官方静态定制图标，限定原尺寸和语义。"></div>
+        <div class="icon-card__name"><a href="#icon-fs-certification-current-48">icon-fs-certification-current-48.svg</a></div>
+        <div class="icon-card__meta">48x48 · 原始SVG颜色 · 静态</div>
+        <div class="icon-card__meta">认证；FS官方静态定制图标，限定原尺寸和语义。</div>
+        <div class="icon-card__usedby">限定角色：certification；未开放任何按钮组合。</div>
+        <div class="icon-card__actions"><a href="../sources/maintenance/j4858d-required-source-read-1016/screenshots/Icon-定制Icon-认证_33189-58768.png" target="_blank">原件截图 33189:58768</a><a href="../icons/icon-fs-certification-current-48.svg" target="_blank">原SVG</a></div>
+      </div>
+      <div class="icon-card" id="icon-fs-phone-current-36" data-fs-source-icon="2632:3477">
+        <div class="icon-card__preview"><img src="../icons/icon-fs-phone-current-36.svg" width="36" height="36" style="max-width:none;max-height:none" alt="电话联系；FS官方静态定制图标，限定原尺寸和语义。"></div>
+        <div class="icon-card__name"><a href="#icon-fs-phone-current-36">icon-fs-phone-current-36.svg</a></div>
+        <div class="icon-card__meta">36x36 · 原始SVG颜色 · 静态</div>
+        <div class="icon-card__meta">电话联系；FS官方静态定制图标，限定原尺寸和语义。</div>
+        <div class="icon-card__usedby">限定角色：telephone-contact；未开放任何按钮组合。</div>
+        <div class="icon-card__actions"><a href="../sources/maintenance/j4858d-required-source-read-1016/screenshots/Icon-定制Icon-Phone_2632-3477.png" target="_blank">原件截图 2632:3477</a><a href="../icons/icon-fs-phone-current-36.svg" target="_blank">原SVG</a></div>
+      </div>
+      <div class="icon-card" id="icon-fs-professional-engineer-current-48" data-fs-source-icon="66567:76227">
+        <div class="icon-card__preview"><img src="../icons/icon-fs-professional-engineer-current-48.svg" width="48" height="48" style="max-width:none;max-height:none" alt="认证工程师；FS官方静态定制图标，限定原尺寸和语义。"></div>
+        <div class="icon-card__name"><a href="#icon-fs-professional-engineer-current-48">icon-fs-professional-engineer-current-48.svg</a></div>
+        <div class="icon-card__meta">48x48 · 原始SVG颜色 · 静态</div>
+        <div class="icon-card__meta">认证工程师；FS官方静态定制图标，限定原尺寸和语义。</div>
+        <div class="icon-card__usedby">限定角色：certified-engineer；未开放任何按钮组合。</div>
+        <div class="icon-card__actions"><a href="../sources/maintenance/j4858d-required-source-read-1016/screenshots/Icon-定制Icon-线面结合Icon-Professional-Engineer_66567-76227.png" target="_blank">原件截图 66567:76227</a><a href="../icons/icon-fs-professional-engineer-current-48.svg" target="_blank">原SVG</a></div>
+      </div>
+      <div class="icon-card" id="icon-fs-global-delivery-current-48" data-fs-source-icon="66567:75998">
+        <div class="icon-card__preview"><img src="../icons/icon-fs-global-delivery-current-48.svg" width="48" height="48" style="max-width:none;max-height:none" alt="全球配送；FS官方静态定制图标，限定原尺寸和语义。"></div>
+        <div class="icon-card__name"><a href="#icon-fs-global-delivery-current-48">icon-fs-global-delivery-current-48.svg</a></div>
+        <div class="icon-card__meta">48x48 · 原始SVG颜色 · 静态</div>
+        <div class="icon-card__meta">全球配送；FS官方静态定制图标，限定原尺寸和语义。</div>
+        <div class="icon-card__usedby">限定角色：global-delivery；未开放任何按钮组合。</div>
+        <div class="icon-card__actions"><a href="../sources/maintenance/j4858d-required-source-read-1016/screenshots/Icon-定制Icon-线面结合Icon-Global-Delivery-Excellence_66567-75998.png" target="_blank">原件截图 66567:75998</a><a href="../icons/icon-fs-global-delivery-current-48.svg" target="_blank">原SVG</a></div>
+      </div>
+      <div class="icon-card" id="icon-fs-certified-quality-current-48" data-fs-source-icon="66567:75763">
+        <div class="icon-card__preview"><img src="../icons/icon-fs-certified-quality-current-48.svg" width="48" height="48" style="max-width:none;max-height:none" alt="认证质量；FS官方静态定制图标，限定原尺寸和语义。"></div>
+        <div class="icon-card__name"><a href="#icon-fs-certified-quality-current-48">icon-fs-certified-quality-current-48.svg</a></div>
+        <div class="icon-card__meta">48x48 · 原始SVG颜色 · 静态</div>
+        <div class="icon-card__meta">认证质量；FS官方静态定制图标，限定原尺寸和语义。</div>
+        <div class="icon-card__usedby">限定角色：certified-quality；未开放任何按钮组合。</div>
+        <div class="icon-card__actions"><a href="../sources/maintenance/j4858d-required-source-read-1016/screenshots/Icon-定制Icon-线面结合Icon-Certified-Quality_66567-75763.png" target="_blank">原件截图 66567:75763</a><a href="../icons/icon-fs-certified-quality-current-48.svg" target="_blank">原SVG</a></div>
+      </div>
+      <div class="icon-card" id="icon-fs-online-chat-current-48" data-fs-source-icon="66567:76792">
+        <div class="icon-card__preview"><img src="../icons/icon-fs-online-chat-current-48.svg" width="48" height="48" style="max-width:none;max-height:none" alt="在线咨询；FS官方静态定制图标，限定原尺寸和语义。"></div>
+        <div class="icon-card__name"><a href="#icon-fs-online-chat-current-48">icon-fs-online-chat-current-48.svg</a></div>
+        <div class="icon-card__meta">48x48 · 原始SVG颜色 · 静态</div>
+        <div class="icon-card__meta">在线咨询；FS官方静态定制图标，限定原尺寸和语义。</div>
+        <div class="icon-card__usedby">限定角色：online-chat；未开放任何按钮组合。</div>
+        <div class="icon-card__actions"><a href="../sources/maintenance/j4858d-required-source-read-1016/screenshots/Icon-定制Icon-线面结合Icon-Online-Chat_66567-76792.png" target="_blank">原件截图 66567:76792</a><a href="../icons/icon-fs-online-chat-current-48.svg" target="_blank">原SVG</a></div>
+      </div>
+      <div class="icon-card" id="icon-fs-pdf-file-current-36" data-fs-source-icon="32436:58907">
+        <div class="icon-card__preview"><img src="../icons/icon-fs-pdf-file-current-36.svg" width="36" height="36" style="max-width:none;max-height:none" alt="PDF资源；FS官方静态定制图标，限定原尺寸和语义。"></div>
+        <div class="icon-card__name"><a href="#icon-fs-pdf-file-current-36">icon-fs-pdf-file-current-36.svg</a></div>
+        <div class="icon-card__meta">36x36 · 原始SVG颜色 · 静态</div>
+        <div class="icon-card__meta">PDF资源；FS官方静态定制图标，限定原尺寸和语义。</div>
+        <div class="icon-card__usedby">限定角色：pdf-resource；未开放任何按钮组合。</div>
+        <div class="icon-card__actions"><a href="../sources/maintenance/j4858d-required-source-read-1016/screenshots/Icon-定制Icon-资源Icon-PDF文件_32436-58907.png" target="_blank">原件截图 32436:58907</a><a href="../icons/icon-fs-pdf-file-current-36.svg" target="_blank">原SVG</a></div>
+      </div>
+      <div class="icon-card" id="icon-bullet">
+        <div class="icon-card__preview"><img src="../icons/icon-bullet.svg" alt="icon-bullet"></div>
+        <div class="icon-card__name"><a href="#icon-bullet">icon-bullet.svg</a></div>
+        <div class="icon-card__meta">4x4 · fill #707070</div>
+        <div class="icon-card__meta">无序列表圆点（灰色实心圆）</div>
+        <div class="icon-card__usedby">用于 <a href="card.html">Card/bullets</a>、<a href="icon-card.html#icon-usage-icon-bullet">IconCard/bullets</a></div>
+        <div class="icon-card__actions"><a href="../icons/icon-bullet.svg" target="_blank">查看源文件</a></div>
+      </div>
+      <div class="icon-card" id="icon-featured-star">
+        <div class="icon-card__preview"><img src="../icons/icon-featured-star.svg" alt="icon-featured-star"></div>
+        <div class="icon-card__name"><a href="#icon-featured-star">icon-featured-star.svg</a></div>
+        <div class="icon-card__meta">16x16 · fill #FFD748</div>
+        <div class="icon-card__meta">FEATURED 星标图标（黄色五角星）</div>
+        <div class="icon-card__usedby">用于 <a href="card.html">Card/meta</a></div>
+        <div class="icon-card__actions"><a href="../icons/icon-featured-star.svg" target="_blank">查看源文件</a></div>
+      </div>
+      <div class="icon-card" id="icon-placeholder-switch">
+        <div class="icon-card__preview"><img src="../icons/icon-placeholder-switch.svg" alt="icon-placeholder-switch"></div>
+        <div class="icon-card__name"><a href="#icon-placeholder-switch">icon-placeholder-switch.svg</a></div>
+        <div class="icon-card__meta">88x88 · fill #19191A</div>
+        <div class="icon-card__meta">交换机占位图标（图标卡片/服务卡片默认图标）</div>
+        <div class="icon-card__usedby">用于 <a href="icon-card.html#icon-usage-icon-placeholder-switch">IconCard</a>、<a href="tab.html#icon-usage-icon-placeholder-switch-tab">Tab/product</a>、<a href="stepper.html#icon-usage-icon-demo-report">Stepper</a></div>
+        <div class="icon-card__actions"><a href="../icons/icon-placeholder-switch.svg" target="_blank">查看源文件</a></div>
+      </div>
+      <div class="icon-card" id="icon-demo-report">
+        <div class="icon-card__preview"><img src="../icons/icon-demo-report.svg" alt="icon-demo-report"></div>
+        <div class="icon-card__name"><a href="#icon-demo-report">icon-demo-report.svg</a></div>
+        <div class="icon-card__meta">24x24 · fill #707070</div>
+        <div class="icon-card__meta">报告/文档演示图标</div>
+        <div class="icon-card__usedby">用于 <a href="stepper.html#icon-usage-icon-demo-report">Stepper</a></div>
+        <div class="icon-card__actions"><a href="../icons/icon-demo-report.svg" target="_blank">查看源文件</a></div>
+      </div>
+      <div class="icon-card" id="icon-stepper-document-display">
+        <div class="icon-card__preview"><img src="../icons/icon-stepper-document-display.svg" alt="icon-stepper-document-display"></div>
+        <div class="icon-card__name"><a href="#icon-stepper-document-display">icon-stepper-document-display.svg</a></div>
+        <div class="icon-card__meta">88x88 · multicolor</div>
+        <div class="icon-card__meta">步骤条文档展示图标（用户提供的视觉素材）</div>
+        <div class="icon-card__usedby">用于 <a href="stepper.html#icon-usage-icon-stepper-document-display">Stepper/icon-regular</a>、<a href="stepper.html#icon-usage-icon-stepper-document-display">Stepper/icon-divider</a></div>
+        <div class="icon-card__actions"><a href="../icons/icon-stepper-document-display.svg" target="_blank">查看源文件</a></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- media -->
+  <div class="section" id="cat-media">
+    <div class="section-title">媒体类 media</div>
+    <div class="section-desc">媒体类图标（播放、暂停）</div>
+    <div class="icon-grid">
+      <div class="icon-card" id="icon-play">
+        <div class="icon-card__preview icon-card__preview--dark"><img src="../icons/icon-play.svg" alt="icon-play"></div>
+        <div class="icon-card__name"><a href="#icon-play">icon-play.svg</a></div>
+        <div class="icon-card__meta">14x14 · fill #FFFFFF</div>
+        <div class="icon-card__meta">播放三角形图标</div>
+        <div class="icon-card__usedby">用于 <a href="video-button.html#icon-usage-icon-play">VideoButton</a></div>
+        <div class="icon-card__actions"><a href="../icons/icon-play.svg" target="_blank">查看源文件</a></div>
+      </div>
+      <div class="icon-card" id="icon-pause">
+        <div class="icon-card__preview icon-card__preview--dark"><img src="../icons/icon-pause.svg" alt="icon-pause"></div>
+        <div class="icon-card__name"><a href="#icon-pause">icon-pause.svg</a></div>
+        <div class="icon-card__meta">16x16 · fill #FFFFFF</div>
+        <div class="icon-card__meta">暂停图标（双竖条）</div>
+        <div class="icon-card__usedby">用于 <a href="video-button.html">VideoButton</a>（<span style="color:#707070; font-weight: 400;">依赖已声明，预览页暂未渲染暂停态</span>）</div>
+        <div class="icon-card__actions"><a href="../icons/icon-pause.svg" target="_blank">查看源文件</a></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- social -->
+  <div class="section" id="cat-social">
+    <div class="section-title">社交类 social</div>
+    <div class="section-desc">社交平台图标</div>
+    <div class="icon-grid">
+      <div class="icon-card" id="icon-social-facebook">
+        <div class="icon-card__preview"><img src="../icons/icon-social-facebook.svg" alt="icon-social-facebook"></div>
+        <div class="icon-card__name"><a href="#icon-social-facebook">icon-social-facebook.svg</a></div>
+        <div class="icon-card__meta">16x16 · fill #707070</div>
+        <div class="icon-card__meta">Facebook 社交图标</div>
+        <div class="icon-card__usedby">用于 <a href="navigation.html#icon-usage-icon-social-facebook">Navigation/footer</a></div>
+        <div class="icon-card__actions"><a href="../icons/icon-social-facebook.svg" target="_blank">查看源文件</a></div>
+      </div>
+      <div class="icon-card" id="icon-social-instagram">
+        <div class="icon-card__preview"><img src="../icons/icon-social-instagram.svg" alt="icon-social-instagram"></div>
+        <div class="icon-card__name"><a href="#icon-social-instagram">icon-social-instagram.svg</a></div>
+        <div class="icon-card__meta">16x16 · fill #707070</div>
+        <div class="icon-card__meta">Instagram 社交图标</div>
+        <div class="icon-card__usedby">用于 <a href="navigation.html#icon-usage-icon-social-instagram">Navigation/footer</a></div>
+        <div class="icon-card__actions"><a href="../icons/icon-social-instagram.svg" target="_blank">查看源文件</a></div>
+      </div>
+      <div class="icon-card" id="icon-social-linkedin">
+        <div class="icon-card__preview"><img src="../icons/icon-social-linkedin.svg" alt="icon-social-linkedin"></div>
+        <div class="icon-card__name"><a href="#icon-social-linkedin">icon-social-linkedin.svg</a></div>
+        <div class="icon-card__meta">16x16 · fill #707070</div>
+        <div class="icon-card__meta">LinkedIn 社交图标</div>
+        <div class="icon-card__usedby">用于 <a href="navigation.html#icon-usage-icon-social-linkedin">Navigation/footer</a></div>
+        <div class="icon-card__actions"><a href="../icons/icon-social-linkedin.svg" target="_blank">查看源文件</a></div>
+      </div>
+      <div class="icon-card" id="icon-social-reddit">
+        <div class="icon-card__preview"><img src="../icons/icon-social-reddit.svg" alt="icon-social-reddit"></div>
+        <div class="icon-card__name"><a href="#icon-social-reddit">icon-social-reddit.svg</a></div>
+        <div class="icon-card__meta">16x16 · fill #707070</div>
+        <div class="icon-card__meta">Reddit 社交图标</div>
+        <div class="icon-card__usedby">用于 <a href="navigation.html#icon-usage-icon-social-reddit">Navigation/footer</a></div>
+        <div class="icon-card__actions"><a href="../icons/icon-social-reddit.svg" target="_blank">查看源文件</a></div>
+      </div>
+      <div class="icon-card" id="icon-social-x">
+        <div class="icon-card__preview"><img src="../icons/icon-social-x.svg" alt="icon-social-x"></div>
+        <div class="icon-card__name"><a href="#icon-social-x">icon-social-x.svg</a></div>
+        <div class="icon-card__meta">16x16 · fill #707070</div>
+        <div class="icon-card__meta">X (Twitter) 社交图标</div>
+        <div class="icon-card__usedby">用于 <a href="navigation.html#icon-usage-icon-social-x">Navigation/footer</a></div>
+        <div class="icon-card__actions"><a href="../icons/icon-social-x.svg" target="_blank">查看源文件</a></div>
+      </div>
+      <div class="icon-card" id="icon-social-youtube">
+        <div class="icon-card__preview"><img src="../icons/icon-social-youtube.svg" alt="icon-social-youtube"></div>
+        <div class="icon-card__name"><a href="#icon-social-youtube">icon-social-youtube.svg</a></div>
+        <div class="icon-card__meta">16x16 · fill #707070</div>
+        <div class="icon-card__meta">YouTube 社交图标</div>
+        <div class="icon-card__usedby">用于 <a href="navigation.html#icon-usage-icon-social-youtube">Navigation/footer</a></div>
+        <div class="icon-card__actions"><a href="../icons/icon-social-youtube.svg" target="_blank">查看源文件</a></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- badge -->
+  <div class="section" id="cat-badge">
+    <div class="section-title">认证徽章 badge</div>
+    <div class="section-desc">认证徽章/品牌图片</div>
+    <div class="icon-grid">
+      <div class="icon-card" id="img-badge-trustpilot">
+        <div class="icon-card__preview"><img src="../icons/img-badge-trustpilot.svg" alt="img-badge-trustpilot"></div>
+        <div class="icon-card__name"><a href="#img-badge-trustpilot">img-badge-trustpilot.svg</a></div>
+        <div class="icon-card__meta">auto x 32 · fill multicolor</div>
+        <div class="icon-card__meta">Trustpilot 认证徽章</div>
+        <div class="icon-card__usedby">用于 <a href="navigation.html#icon-usage-img-badge-trustpilot">Navigation/footer</a></div>
+        <div class="icon-card__actions"><a href="../icons/img-badge-trustpilot.svg" target="_blank">查看源文件</a></div>
+      </div>
+      <div class="icon-card" id="img-badge-trustedsite">
+        <div class="icon-card__preview"><img src="../icons/img-badge-trustedsite.svg" alt="img-badge-trustedsite"></div>
+        <div class="icon-card__name"><a href="#img-badge-trustedsite">img-badge-trustedsite.svg</a></div>
+        <div class="icon-card__meta">auto x 32 · fill multicolor</div>
+        <div class="icon-card__meta">TrustedSite 认证徽章</div>
+        <div class="icon-card__usedby">用于 <a href="navigation.html#icon-usage-img-badge-trustedsite">Navigation/footer</a></div>
+        <div class="icon-card__actions"><a href="../icons/img-badge-trustedsite.svg" target="_blank">查看源文件</a></div>
+      </div>
+      <div class="icon-card" id="img-badge-bbb">
+        <div class="icon-card__preview"><img src="../icons/img-badge-bbb.svg" alt="img-badge-bbb"></div>
+        <div class="icon-card__name"><a href="#img-badge-bbb">img-badge-bbb.svg</a></div>
+        <div class="icon-card__meta">auto x 32 · fill multicolor</div>
+        <div class="icon-card__meta">BBB 认证徽章</div>
+        <div class="icon-card__usedby">用于 <a href="navigation.html#icon-usage-img-badge-bbb">Navigation/footer</a></div>
+        <div class="icon-card__actions"><a href="../icons/img-badge-bbb.svg" target="_blank">查看源文件</a></div>
+      </div>
+      <div class="icon-card" id="img-badge-google">
+        <div class="icon-card__preview"><img src="../icons/img-badge-google.svg" alt="img-badge-google"></div>
+        <div class="icon-card__name"><a href="#img-badge-google">img-badge-google.svg</a></div>
+        <div class="icon-card__meta">auto x 32 · fill multicolor</div>
+        <div class="icon-card__meta">Google Reviews 认证徽章</div>
+        <div class="icon-card__usedby">用于 <a href="navigation.html#icon-usage-img-badge-google">Navigation/footer</a></div>
+        <div class="icon-card__actions"><a href="../icons/img-badge-google.svg" target="_blank">查看源文件</a></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- app -->
+  <div class="section" id="cat-app">
+    <div class="section-title">应用商店 app</div>
+    <div class="section-desc">应用商店下载徽章</div>
+    <div class="icon-grid">
+      <div class="icon-card" id="img-app-store">
+        <div class="icon-card__preview"><img src="../icons/img-app-store.svg" alt="img-app-store"></div>
+        <div class="icon-card__name"><a href="#img-app-store">img-app-store.svg</a></div>
+        <div class="icon-card__meta">auto x 32 · fill multicolor</div>
+        <div class="icon-card__meta">Apple App Store 下载徽章</div>
+        <div class="icon-card__usedby">用于 <a href="navigation.html#icon-usage-img-app-store">Navigation/footer</a></div>
+        <div class="icon-card__actions"><a href="../icons/img-app-store.svg" target="_blank">查看源文件</a></div>
+      </div>
+      <div class="icon-card" id="img-google-play">
+        <div class="icon-card__preview"><img src="../icons/img-google-play.svg" alt="img-google-play"></div>
+        <div class="icon-card__name"><a href="#img-google-play">img-google-play.svg</a></div>
+        <div class="icon-card__meta">auto x 32 · fill multicolor</div>
+        <div class="icon-card__meta">Google Play 下载徽章</div>
+        <div class="icon-card__usedby">用于 <a href="navigation.html#icon-usage-img-google-play">Navigation/footer</a></div>
+        <div class="icon-card__actions"><a href="../icons/img-google-play.svg" target="_blank">查看源文件</a></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var tabs = Array.from(document.querySelectorAll('[data-icon-anchor]'));
+      var sections = tabs.map(function (tab) { return document.getElementById(tab.dataset.iconAnchor); }).filter(Boolean);
+
+      function setActive(id) {
+        tabs.forEach(function (tab) {
+          tab.classList.toggle('ds-anchor-nav__tab--active', tab.dataset.iconAnchor === id);
+        });
+      }
+
+      tabs.forEach(function (tab) {
+        tab.addEventListener('click', function () { setActive(tab.dataset.iconAnchor); });
+      });
+
+      if ('IntersectionObserver' in window) {
+        var observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) setActive(entry.target.id);
+          });
+        }, { rootMargin: '-64px 0px -65% 0px', threshold: 0 });
+        sections.forEach(function (section) { observer.observe(section); });
+      }
+
+      if (location.hash) setActive(location.hash.slice(1));
+      window.addEventListener('hashchange', function () { setActive(location.hash.slice(1)); });
+    })();
+  </script>
+  <script src="preview-link.js"></script>
+</body>
+</html>

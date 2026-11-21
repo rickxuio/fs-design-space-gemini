@@ -1,0 +1,1615 @@
+{
+  "id": "comp_dialog_001",
+  "name": "Dialog",
+  "chineseName": "对话框",
+  "description": "对话框v2.3.2607A：内容提示、删除确认、内容填写、加购提示和成功消息五个PC模板已接实际调用；移动端和未登记特殊状态独立保留。",
+  "category": "反馈 Feedback",
+  "variants": [
+    {
+      "name": "information",
+      "chineseName": "内容提示",
+      "whenToUse": "只读说明，采用650px原内容提示模板及既有分组结构。",
+      "whenNotToUse": "输入表单、加购提示、成功/警告消息、删除确认，或要求任意宽度/新增头底插槽。",
+      "isComplete": true,
+      "pendingParts": [],
+      "cssClass": "ds-dialog ds-dialog--information",
+      "selector": ".ds-dialog--information",
+      "type": "information",
+      "requiredChildren": [
+        "header.ds-dialog__header",
+        "h2.ds-dialog__title",
+        "button.ds-dialog__close-position.ds-icon-btn.ds-icon-btn--plain.ds-icon-btn--l[data-dialog-close]",
+        "button.ds-dialog__close-position.ds-icon-btn.ds-icon-btn--plain.ds-icon-btn--l img.ds-icon-btn__icon[src=\"../icons/icon-close.svg\"]",
+        "div.ds-dialog__body",
+        ".ds-dialog__section",
+        ".ds-dialog__content",
+        ".ds-dialog__subtitle"
+      ],
+      "selectionDecisionType": "内容提示",
+      "usage": "只读说明，采用650px原内容提示模板及既有分组结构。",
+      "currentMgSource": {
+        "fileId": "143880409387753",
+        "pageId": "68908:466555",
+        "specNode": "70971:200121",
+        "componentNode": "68908:048976"
+      }
+    },
+    {
+      "name": "confirmation",
+      "chineseName": "删除确认",
+      "whenToUse": "普通简短删除确认，采用480px原模板，提供取消与确认操作。",
+      "whenNotToUse": "表单提交、任意业务确认、成功反馈，或750px加购页删除等专用模板。",
+      "isComplete": true,
+      "pendingParts": [],
+      "cssClass": "ds-dialog ds-dialog--confirmation",
+      "selector": ".ds-dialog--confirmation",
+      "type": "confirmation",
+      "requiredChildren": [
+        "header.ds-dialog__header",
+        "h2.ds-dialog__title",
+        "button.ds-dialog__close-position.ds-icon-btn.ds-icon-btn--plain.ds-icon-btn--l[data-dialog-close]",
+        "button.ds-dialog__close-position.ds-icon-btn.ds-icon-btn--plain.ds-icon-btn--l img.ds-icon-btn__icon[src=\"../icons/icon-close.svg\"]",
+        "div.ds-dialog__body",
+        "footer.ds-dialog__footer",
+        "button[data-dialog-close].ds-btn--filled-gray",
+        "button[data-dialog-confirm].ds-btn--filled-red",
+        "button[data-dialog-close].ds-btn--xl-regular",
+        "button[data-dialog-confirm].ds-btn--xl-regular"
+      ],
+      "selectionDecisionType": "删除确认",
+      "usage": "普通简短删除确认，采用480px原模板，提供取消与确认操作。",
+      "currentMgSource": {
+        "fileId": "143880409387753",
+        "pageId": "68908:466555",
+        "specNode": "70971:200121",
+        "componentNode": "68908:052338"
+      }
+    },
+    {
+      "name": "form",
+      "chineseName": "内容填写",
+      "isComplete": true,
+      "pendingParts": [],
+      "cssClass": "ds-dialog ds-dialog--form",
+      "selector": ".ds-dialog--form",
+      "type": "form",
+      "selectionDecisionType": "内容填写",
+      "whenToUse": "需要在弹窗中填写资料；使用650px内容填写模板，校验与提交交给真实Form和宿主。",
+      "whenNotToUse": "只读说明、加购商品表格或成功消息；不自动保存、上传附件或调用后端。",
+      "requiredChildren": [
+        "header.ds-dialog__header",
+        ".ds-dialog__title",
+        ".ds-dialog__body",
+        "footer.ds-dialog__footer",
+        "form[data-form-part=\"dialog-content\"]"
+      ],
+      "currentMgSource": {
+        "fileId": "143880409387753",
+        "specNode": "70971:200121",
+        "componentNode": "68908:055416"
+      }
+    },
+    {
+      "name": "cart",
+      "chineseName": "加购提示",
+      "isComplete": true,
+      "pendingParts": [],
+      "cssClass": "ds-dialog ds-dialog--cart",
+      "selector": ".ds-dialog--cart",
+      "type": "cart",
+      "selectionDecisionType": "加购提示",
+      "whenToUse": "加购后展示商品、数量和金额，使用750px模板并交给宿主处理查看购物车动作。",
+      "whenNotToUse": "普通内容卡片、直接执行支付或伪造加购成功；不自动访问购物车接口。",
+      "requiredChildren": [
+        "header.ds-dialog__header",
+        ".ds-dialog__title",
+        ".ds-dialog__body",
+        "footer.ds-dialog__footer",
+        "div[data-list-part=\"dialog-cart-products\"]"
+      ],
+      "currentMgSource": {
+        "fileId": "143880409387753",
+        "specNode": "70971:200121",
+        "componentNode": "70971:200336"
+      }
+    },
+    {
+      "name": "message",
+      "chineseName": "消息提示",
+      "isComplete": true,
+      "pendingParts": [],
+      "cssClass": "ds-dialog ds-dialog--message",
+      "selector": ".ds-dialog--message",
+      "type": "message",
+      "selectionDecisionType": "消息提示",
+      "whenToUse": "提交结果已由宿主确认，需要480px成功消息提示。",
+      "whenNotToUse": "尚未成功就显示成功消息，或将成功图标用于错误/警告；其他状态图标需独立来源。",
+      "requiredChildren": [
+        ".ds-dialog__message-icon img",
+        ".ds-dialog__message-title",
+        ".ds-dialog__message-description",
+        "button.ds-dialog__close-position"
+      ],
+      "currentMgSource": {
+        "fileId": "143880409387753",
+        "specNode": "70971:200121",
+        "componentNode": "68908:037506"
+      }
+    }
+  ],
+  "states": [
+    {
+      "name": "closed",
+      "description": "未打开"
+    },
+    {
+      "name": "open",
+      "description": "居中模态层；关闭按钮、Esc、点击遮罩可关闭"
+    }
+  ],
+  "tokenReferences": [
+    "border-radius.lg",
+    "border-radius.md",
+    "border.style.none",
+    "color.blue",
+    "color.gray-1",
+    "color.gray-3",
+    "color.hover-overlay-light",
+    "color.white",
+    "spacing.20",
+    "spacing.2xl",
+    "spacing.lg",
+    "spacing.md",
+    "spacing.sm",
+    "spacing.xl",
+    "spacing.xs",
+    "typography.font-family-base",
+    "typography.font-size-h5",
+    "typography.font-size-h6",
+    "typography.font-size-md",
+    "typography.font-weight-regular",
+    "typography.font-weight-semibold",
+    "typography.h5-semibold",
+    "typography.h6-regular",
+    "typography.h7-regular",
+    "color.dialog-backdrop",
+    "spacing.3",
+    "spacing.6",
+    "border.color.emphasis",
+    "spacing.2",
+    "spacing.25",
+    "spacing.48",
+    "spacing.40",
+    "spacing.10",
+    "spacing.14",
+    "spacing.banner-hero-inset",
+    "spacing.banner-content-inset",
+    "spacing.5",
+    "spacing.collapse-status-indent",
+    "spacing.36",
+    "spacing.9",
+    "spacing.collapse-body-indent",
+    "spacing.26",
+    "spacing.80",
+    "spacing.68",
+    "spacing.menu-navigation-left-gutter",
+    "border.width.default",
+    "border.style.default",
+    "border.color.default",
+    "border.color.inverse",
+    "border.color.focus",
+    "border.color.subtle",
+    "border.width.strong",
+    "border.color.strong",
+    "border.color.transparent",
+    "border.color.brand",
+    "border.color.option",
+    "border.color.tag",
+    "border.color.table-header",
+    "border.color.table-divider",
+    "border.color.list-product-divider",
+    "border.color.list-item-divider",
+    "border.color.comment-divider",
+    "border.color.input-disabled"
+  ],
+  "isComplete": false,
+  "pendingParts": [
+    "移动端全屏/抽屉/浮层尚未实现",
+    "附件上传、错误/警告消息图标状态及其他特殊业务模板未开放",
+    "用户视觉确认待完成"
+  ],
+  "relations": {
+    "variantDecisions": [
+      {
+        "type": "内容提示",
+        "className": "ds-dialog ds-dialog--information",
+        "whenToUse": "只读说明，采用650px原内容提示模板及既有分组结构。",
+        "whenNotToUse": "输入表单、加购提示、成功/警告消息、删除确认，或要求任意宽度/新增头底插槽。",
+        "nestedComponents": [
+          {
+            "component": "IconButton",
+            "label": "IconButton · 无边框 L · 关闭",
+            "href": "icon-button.html#icon-usage-icon-close"
+          }
+        ],
+        "status": "已在线核对《英文站组件库 v2.32.2611A》的v2.3.2607A正文与原组件；仅保留两个PC调用，原子优先修正及视觉差异另列。",
+        "variant": "information",
+        "fragment": "information",
+        "selectionCases": [
+          {
+            "id": "dialog.information.1",
+            "kind": "use",
+            "condition": "只读说明，采用650px原内容提示模板及既有分组结构。",
+            "result": "调用information；保留关闭IconButton；内容按契约。",
+            "targetVariant": "information",
+            "strength": "candidate"
+          },
+          {
+            "id": "dialog.information.2",
+            "kind": "avoid",
+            "condition": "输入表单、加购提示、成功/警告消息、删除确认，或要求任意宽度/新增头底插槽。",
+            "result": "不使用此变体；先核对相邻组件和实际调用范围。",
+            "targetVariant": "information",
+            "strength": "avoid"
+          },
+          {
+            "id": "dialog.information.source-form",
+            "kind": "avoid",
+            "condition": "需要填写表单、提交、校验或保留未提交数据。",
+            "result": "使用Dialog/form真实内容填写模板；不能把information或原站表单当作录入模板。",
+            "targetVariant": "information",
+            "strength": "avoid"
+          },
+          {
+            "id": "dialog.information.source-cart-message",
+            "kind": "avoid",
+            "condition": "加购商品明细，或需要成功/警告图标的消息反馈。",
+            "result": "分别调用Dialog/cart或message；message只用于宿主已确认的成功结果。",
+            "targetVariant": "information",
+            "strength": "avoid"
+          },
+          {
+            "id": "dialog.information.source-mobile",
+            "kind": "reference",
+            "condition": "需要全屏、底部抽屉或移动浮层。",
+            "result": "MG按业务分别规定三种移动适配；仅作来源参考，PC示例缩窄不代表已实现移动端。",
+            "targetVariant": "information",
+            "strength": "reference"
+          }
+        ]
+      },
+      {
+        "type": "删除确认",
+        "className": "ds-dialog ds-dialog--confirmation",
+        "whenToUse": "普通简短删除确认，采用480px原模板，提供取消与确认操作。",
+        "whenNotToUse": "表单提交、任意业务确认、成功反馈，或750px加购页删除等专用模板。",
+        "nestedComponents": [
+          {
+            "component": "IconButton",
+            "label": "IconButton · 无边框 L · 关闭",
+            "href": "icon-button.html#icon-usage-icon-close"
+          },
+          {
+            "component": "Button",
+            "label": "Button · 灰色取消 / 红色确认 · 42px",
+            "href": "button.html"
+          }
+        ],
+        "status": "已在线核对《英文站组件库 v2.32.2611A》的v2.3.2607A正文与原组件；仅保留两个PC调用，原子优先修正及视觉差异另列。",
+        "variant": "confirmation",
+        "fragment": "confirmation",
+        "selectionCases": [
+          {
+            "id": "dialog.confirmation.1",
+            "kind": "use",
+            "condition": "普通简短删除确认，采用480px原模板，提供取消与确认操作。",
+            "result": "调用confirmation；确认仅派发可取消事件，业务删除归宿主。",
+            "targetVariant": "confirmation",
+            "strength": "candidate"
+          },
+          {
+            "id": "dialog.confirmation.2",
+            "kind": "avoid",
+            "condition": "表单提交、任意业务确认、成功反馈，或750px加购页删除等专用模板。",
+            "result": "不使用此变体；先核对相邻组件和实际调用范围。",
+            "targetVariant": "confirmation",
+            "strength": "avoid"
+          },
+          {
+            "id": "dialog.confirmation.source-cart-width",
+            "kind": "avoid",
+            "condition": "需要750px商品明细或加购页删除产品专用布局。",
+            "result": "通用宽度说明与现有480px删除原件分开记录；本地不开放width参数，不把480px模板任意放大。",
+            "targetVariant": "confirmation",
+            "strength": "avoid"
+          },
+          {
+            "id": "dialog.confirmation.host-business",
+            "kind": "use",
+            "condition": "宿主需要校验或异步完成删除，失败时保留对话框。",
+            "result": "仍选confirmation；由既有可取消fs-dialog-confirm事件阻止自动关闭，业务与结果由宿主负责。",
+            "targetVariant": "confirmation",
+            "strength": "candidate"
+          },
+          {
+            "id": "dialog.confirmation.dismiss",
+            "kind": "use",
+            "condition": "点击取消、关闭图标、Esc或允许的遮罩关闭。",
+            "result": "仅关闭并返回触发按钮，不执行确认或伪造删除成功；需阻止遮罩关闭时遵守原固定调用接口。",
+            "targetVariant": "confirmation",
+            "strength": "candidate"
+          }
+        ]
+      },
+      {
+        "type": "内容填写",
+        "variant": "form",
+        "fragment": "form",
+        "className": "ds-dialog ds-dialog--form",
+        "whenToUse": "需要在弹窗中填写资料；使用650px内容填写模板，校验与提交交给真实Form和宿主。",
+        "whenNotToUse": "只读说明、加购商品表格或成功消息；不自动保存、上传附件或调用后端。",
+        "status": "已有MG模板转为真实有限PC调用；依赖与交互已接入，视觉批准单列。",
+        "nestedComponents": [
+          {
+            "component": "Form",
+            "href": "form.html"
+          }
+        ],
+        "selectionCases": [
+          {
+            "id": "dialog.form.use",
+            "kind": "use",
+            "condition": "需要在弹窗中填写资料；使用650px内容填写模板，校验与提交交给真实Form和宿主。",
+            "result": "调用form，保持对应真实子组件及事件边界。",
+            "targetVariant": "form",
+            "strength": "candidate"
+          },
+          {
+            "id": "dialog.form.avoid",
+            "kind": "avoid",
+            "condition": "只读说明、加购商品表格或成功消息；不自动保存、上传附件或调用后端。",
+            "result": "不使用此模板冒充其他业务或状态。",
+            "targetVariant": "form",
+            "strength": "avoid"
+          }
+        ]
+      },
+      {
+        "type": "加购提示",
+        "variant": "cart",
+        "fragment": "cart",
+        "className": "ds-dialog ds-dialog--cart",
+        "whenToUse": "加购后展示商品、数量和金额，使用750px模板并交给宿主处理查看购物车动作。",
+        "whenNotToUse": "普通内容卡片、直接执行支付或伪造加购成功；不自动访问购物车接口。",
+        "status": "已有MG模板转为真实有限PC调用；依赖与交互已接入，视觉批准单列。",
+        "nestedComponents": [
+          {
+            "component": "List",
+            "href": "list.html"
+          }
+        ],
+        "selectionCases": [
+          {
+            "id": "dialog.cart.use",
+            "kind": "use",
+            "condition": "加购后展示商品、数量和金额，使用750px模板并交给宿主处理查看购物车动作。",
+            "result": "调用cart，保持对应真实子组件及事件边界。",
+            "targetVariant": "cart",
+            "strength": "candidate"
+          },
+          {
+            "id": "dialog.cart.avoid",
+            "kind": "avoid",
+            "condition": "普通内容卡片、直接执行支付或伪造加购成功；不自动访问购物车接口。",
+            "result": "不使用此模板冒充其他业务或状态。",
+            "targetVariant": "cart",
+            "strength": "avoid"
+          }
+        ]
+      },
+      {
+        "type": "消息提示",
+        "variant": "message",
+        "fragment": "message",
+        "className": "ds-dialog ds-dialog--message",
+        "whenToUse": "提交结果已由宿主确认，需要480px成功消息提示。",
+        "whenNotToUse": "尚未成功就显示成功消息，或将成功图标用于错误/警告；其他状态图标需独立来源。",
+        "status": "已有MG模板转为真实有限PC调用；依赖与交互已接入，视觉批准单列。",
+        "nestedComponents": [
+          {
+            "component": "IconButton",
+            "href": "icon-button.html"
+          }
+        ],
+        "selectionCases": [
+          {
+            "id": "dialog.message.use",
+            "kind": "use",
+            "condition": "提交结果已由宿主确认，需要480px成功消息提示。",
+            "result": "调用message，保持对应真实子组件及事件边界。",
+            "targetVariant": "message",
+            "strength": "candidate"
+          },
+          {
+            "id": "dialog.message.avoid",
+            "kind": "avoid",
+            "condition": "尚未成功就显示成功消息，或将成功图标用于错误/警告；其他状态图标需独立来源。",
+            "result": "不使用此模板冒充其他业务或状态。",
+            "targetVariant": "message",
+            "strength": "avoid"
+          }
+        ]
+      }
+    ],
+    "componentDependencies": [
+      {
+        "component": "Button",
+        "usage": "删除确认底部 42px 灰色取消按钮与红色确认按钮，直接使用现有按钮 DOM/CSS",
+        "requiredVariants": [
+          "filled-gray",
+          "filled-red"
+        ],
+        "implementationClasses": [
+          "ds-btn",
+          "ds-btn--filled-gray",
+          "ds-btn--filled-red",
+          "ds-btn--xl-regular"
+        ],
+        "appliesTo": [
+          "confirmation",
+          "form",
+          "cart"
+        ],
+        "slot": "footer",
+        "hostPreviewAnchor": "demo-confirmation",
+        "requiredSizes": [
+          {
+            "variant": "filled-gray",
+            "size": "xl-regular"
+          },
+          {
+            "variant": "filled-red",
+            "size": "xl-regular"
+          }
+        ],
+        "sourceEvidence": {
+          "inventory": "components/sources/dialog/source-inventory.json",
+          "scope": "saved-instance-component-reference-and-contract-size-only",
+          "instanceIds": [
+            "68908:052339/68908:041272",
+            "68908:052339/68908:041268"
+          ],
+          "componentIds": [
+            "hj66450:99105",
+            "hj66450:98573"
+          ],
+          "inheritedPositionsResolved": false
+        }
+      },
+      {
+        "component": "IconButton",
+        "usage": "两种Dialog头部关闭直接调用无边框L原子；宿主只定位和绑定关闭事件，不覆盖原子尺寸/圆角/悬停",
+        "requiredVariants": [
+          "plain-l"
+        ],
+        "implementationClasses": [
+          "ds-icon-btn",
+          "ds-icon-btn--plain",
+          "ds-icon-btn--l",
+          "ds-icon-btn__icon"
+        ],
+        "appliesTo": [
+          "information",
+          "confirmation",
+          "form",
+          "cart",
+          "message"
+        ],
+        "slot": "header.close",
+        "hostPreviewAnchor": "demo-information",
+        "sourceEvidence": {
+          "componentId": "56279:012458",
+          "originalComponents": "components/sources/icon-button/mastergo-original-components.json",
+          "decision": "2026-10-10 用户确认以原子为主，嵌套关联关系优先；Dialog旧28px/3px覆盖不再采用"
+        }
+      },
+      {
+        "component": "Form",
+        "part": "dialog-content",
+        "slot": "form-body",
+        "requiredVariants": [
+          "white"
+        ],
+        "appliesTo": [
+          "form"
+        ],
+        "implementationClasses": [
+          "ds-form",
+          "ds-input-field",
+          "ds-checkbox"
+        ],
+        "usage": "真实Form-owned Dialog子部件，Input/Checkbox/textarea各保留原子结构与运行样式。"
+      },
+      {
+        "component": "List",
+        "part": "dialog-cart-products",
+        "slot": "cart-body",
+        "requiredVariants": [
+          "product-content"
+        ],
+        "appliesTo": [
+          "cart"
+        ],
+        "implementationClasses": [
+          "ds-list",
+          "ds-list--products",
+          "ds-input-number"
+        ],
+        "usage": "List-owned750px商品槽；真实InputNumber归一化后复用List金额联动，源无删除操作。"
+      },
+      {
+        "component": "Input",
+        "slot": "form-inputs",
+        "requiredVariants": [
+          "white"
+        ],
+        "implementationClasses": [
+          "ds-input-field"
+        ],
+        "appliesTo": [
+          "form"
+        ],
+        "usage": "Form-owned Dialog部件真实白底Input与文本域，保持原子结构和资源。"
+      },
+      {
+        "component": "Checkbox",
+        "slot": "form-manager-checkbox",
+        "requiredVariants": [
+          "lg"
+        ],
+        "implementationClasses": [
+          "ds-checkbox",
+          "ds-checkbox__input",
+          "ds-checkbox__box",
+          "ds-checkbox__label"
+        ],
+        "appliesTo": [
+          "form"
+        ],
+        "usage": "MG18px复选框直接使用Checkbox/lg，不用表单旧sm冒充。"
+      },
+      {
+        "component": "InputNumber",
+        "slot": "cart-quantity",
+        "requiredVariants": [
+          "outline-sm"
+        ],
+        "implementationClasses": [
+          "ds-input-number",
+          "ds-input-number--outline",
+          "ds-input-number--sm"
+        ],
+        "appliesTo": [
+          "cart"
+        ],
+        "usage": "List-owned商品行的真实32px数量原子，宿主仅联动总价。"
+      }
+    ],
+    "iconDependencies": [
+      {
+        "icon": "icon-close",
+        "usage": "右上角必选关闭图标，20px；复用现有 SVG",
+        "required": true,
+        "appliesTo": [
+          "information",
+          "confirmation"
+        ]
+      }
+    ],
+    "colorDependencies": [
+      {
+        "token": "color.white",
+        "value": "#FFFFFF",
+        "usage": "对话框白底",
+        "appliesTo": [
+          "information",
+          "confirmation"
+        ]
+      },
+      {
+        "token": "color.gray-1",
+        "value": "#19191A",
+        "usage": "两种标题、信息提示小标题及删除确认正文",
+        "appliesTo": [
+          "information",
+          "confirmation"
+        ]
+      },
+      {
+        "token": "/",
+        "value": "rgba(0, 0, 0, 0.3)",
+        "usage": "规范指定黑色 30% 遮罩，当前无等值颜色 Token",
+        "appliesTo": [
+          "information",
+          "confirmation"
+        ]
+      },
+      {
+        "token": "color.gray-3",
+        "value": "#707070",
+        "usage": "信息提示正文",
+        "appliesTo": [
+          "information"
+        ]
+      },
+      {
+        "token": "color.dialog-backdrop",
+        "value": "rgba(0,0,0,0.3)",
+        "usage": "background",
+        "properties": [
+          "background"
+        ],
+        "selectors": [
+          ".ds-dialog::backdrop"
+        ],
+        "appliesTo": [
+          "information",
+          "confirmation"
+        ]
+      },
+      {
+        "token": "color.hover-overlay-light",
+        "value": "rgba(25, 25, 26, 0.04)",
+        "usage": "旧专用关闭样式保留；新调用由IconButton负责",
+        "appliesTo": [
+          "information",
+          "confirmation"
+        ]
+      },
+      {
+        "token": "color.blue",
+        "value": "#0060BF",
+        "usage": "旧专用关闭焦点样式保留",
+        "appliesTo": [
+          "information",
+          "confirmation"
+        ]
+      }
+    ],
+    "radiusDependencies": [
+      {
+        "token": "border-radius.lg",
+        "value": "8px",
+        "usage": "容器圆角",
+        "appliesTo": [
+          "information",
+          "confirmation"
+        ]
+      },
+      {
+        "token": "border-radius.md",
+        "value": "4px",
+        "usage": "旧专用关闭规则保留；新调用使用IconButton圆角",
+        "appliesTo": [
+          "information",
+          "confirmation"
+        ]
+      }
+    ],
+    "fontSizeDependencies": [
+      {
+        "token": "typography.font-size-h5",
+        "value": "18px",
+        "usage": "标题",
+        "appliesTo": [
+          "information",
+          "confirmation"
+        ]
+      },
+      {
+        "token": "typography.font-size-md",
+        "value": "14px",
+        "usage": "正文",
+        "appliesTo": [
+          "information",
+          "confirmation"
+        ]
+      },
+      {
+        "token": "typography.font-size-h6",
+        "value": "16px",
+        "usage": "信息提示小标题",
+        "appliesTo": [
+          "information"
+        ]
+      }
+    ],
+    "spacingDependencies": [
+      {
+        "token": "spacing.xl",
+        "value": "24px",
+        "usage": "padding",
+        "properties": [
+          "padding"
+        ],
+        "selectors": [
+          ".ds-dialog__header"
+        ],
+        "appliesTo": [
+          "information",
+          "confirmation"
+        ]
+      },
+      {
+        "token": "spacing.2xl",
+        "value": "32px",
+        "usage": "padding",
+        "properties": [
+          "padding"
+        ],
+        "selectors": [
+          ".ds-dialog__header"
+        ],
+        "appliesTo": [
+          "information",
+          "confirmation"
+        ]
+      },
+      {
+        "token": "spacing.xl",
+        "value": "24px",
+        "usage": "padding",
+        "properties": [
+          "padding"
+        ],
+        "selectors": [
+          ".ds-dialog__body"
+        ],
+        "appliesTo": [
+          "information",
+          "confirmation"
+        ]
+      },
+      {
+        "token": "spacing.xl",
+        "value": "24px",
+        "usage": "padding-left",
+        "properties": [
+          "padding-left"
+        ],
+        "selectors": [
+          ".ds-dialog__body ul"
+        ],
+        "appliesTo": [
+          "information"
+        ]
+      },
+      {
+        "token": "spacing.lg",
+        "value": "16px",
+        "usage": "gap",
+        "properties": [
+          "gap"
+        ],
+        "selectors": [
+          ".ds-dialog__footer"
+        ],
+        "appliesTo": [
+          "confirmation"
+        ]
+      },
+      {
+        "token": "spacing.lg",
+        "value": "16px",
+        "usage": "padding",
+        "properties": [
+          "padding"
+        ],
+        "selectors": [
+          ".ds-dialog__footer"
+        ],
+        "appliesTo": [
+          "confirmation"
+        ]
+      },
+      {
+        "token": "spacing.xl",
+        "value": "24px",
+        "usage": "padding",
+        "properties": [
+          "padding"
+        ],
+        "selectors": [
+          ".ds-dialog__footer"
+        ],
+        "appliesTo": [
+          "confirmation"
+        ]
+      },
+      {
+        "token": "spacing.20",
+        "value": "20px",
+        "usage": "信息内容分组间距",
+        "properties": [
+          "gap"
+        ],
+        "selectors": [
+          ".ds-dialog--information .ds-dialog__body"
+        ],
+        "appliesTo": [
+          "information"
+        ]
+      },
+      {
+        "token": "spacing.sm",
+        "value": "8px",
+        "usage": "信息内容分组间距",
+        "properties": [
+          "gap"
+        ],
+        "selectors": [
+          ".ds-dialog__section"
+        ],
+        "appliesTo": [
+          "information"
+        ]
+      },
+      {
+        "token": "spacing.md",
+        "value": "12px",
+        "usage": "信息内容分组间距",
+        "properties": [
+          "gap"
+        ],
+        "selectors": [
+          ".ds-dialog__content"
+        ],
+        "appliesTo": [
+          "information"
+        ]
+      },
+      {
+        "token": "spacing.xl",
+        "value": "24px",
+        "usage": "原子关闭按钮的宿主位置，保持首行图标中心",
+        "properties": [
+          "top"
+        ],
+        "selectors": [
+          ".ds-dialog__close-position"
+        ],
+        "appliesTo": [
+          "information",
+          "confirmation"
+        ]
+      },
+      {
+        "token": "spacing.3",
+        "value": "3px",
+        "usage": "原子关闭按钮的宿主位置，保持首行图标中心",
+        "properties": [
+          "top"
+        ],
+        "selectors": [
+          ".ds-dialog__close-position"
+        ],
+        "appliesTo": [
+          "information",
+          "confirmation"
+        ]
+      },
+      {
+        "token": "spacing.xl",
+        "value": "24px",
+        "usage": "原子关闭按钮的宿主位置，保持首行图标中心",
+        "properties": [
+          "right"
+        ],
+        "selectors": [
+          ".ds-dialog__close-position"
+        ],
+        "appliesTo": [
+          "information",
+          "confirmation"
+        ]
+      },
+      {
+        "token": "spacing.6",
+        "value": "6px",
+        "usage": "原子关闭按钮的宿主位置，保持首行图标中心",
+        "properties": [
+          "right"
+        ],
+        "selectors": [
+          ".ds-dialog__close-position"
+        ],
+        "appliesTo": [
+          "information",
+          "confirmation"
+        ]
+      },
+      {
+        "token": "spacing.xs",
+        "value": "4px",
+        "usage": "旧专用关闭padding保留",
+        "properties": [
+          "padding"
+        ],
+        "selectors": [
+          ".ds-dialog__close"
+        ],
+        "appliesTo": [
+          "information",
+          "confirmation"
+        ]
+      },
+      {
+        "token": "spacing.2",
+        "value": "2px",
+        "usage": "嵌套Button共享运行资源的可选左图标组内距；原子拥有，宿主不得覆盖。本宿主未新增可见图标调用。",
+        "appliesTo": [
+          "confirmation"
+        ]
+      },
+      {
+        "token": "spacing.10",
+        "value": "10px",
+        "usage": "新增实际调用及其真实子组件的共享规范依赖；由原同步机制追踪。",
+        "appliesTo": [
+          "form",
+          "cart"
+        ]
+      }
+    ],
+    "borderDependencies": [
+      {
+        "token": "border.style.none",
+        "value": "none",
+        "usage": "border",
+        "properties": [
+          "border"
+        ],
+        "selectors": [
+          ".ds-dialog"
+        ],
+        "aspect": "style",
+        "appliesTo": [
+          "information",
+          "confirmation"
+        ]
+      },
+      {
+        "token": "border.color.emphasis",
+        "value": "var(--color-gray-1)",
+        "usage": "嵌套IconButton运行样式资源的筛选规则；Dialog关闭不使用筛选变体",
+        "aspect": "color",
+        "properties": [
+          "border-color"
+        ],
+        "selectors": [
+          ".ds-icon-btn--bordered.ds-icon-btn--xl[aria-pressed=\"true\"]"
+        ],
+        "appliesTo": [
+          "information",
+          "confirmation"
+        ]
+      },
+      {
+        "token": "border.width.default",
+        "value": "1px",
+        "usage": "新增实际调用及其真实子组件的共享规范依赖；由原同步机制追踪。",
+        "aspect": "width",
+        "appliesTo": [
+          "form",
+          "cart"
+        ]
+      },
+      {
+        "token": "border.style.default",
+        "value": "solid",
+        "usage": "新增实际调用及其真实子组件的共享规范依赖；由原同步机制追踪。",
+        "aspect": "style",
+        "appliesTo": [
+          "form",
+          "cart"
+        ]
+      },
+      {
+        "token": "border.color.default",
+        "value": "var(--color-gray-5)",
+        "usage": "新增实际调用及其真实子组件的共享规范依赖；由原同步机制追踪。",
+        "aspect": "color",
+        "appliesTo": [
+          "form",
+          "cart"
+        ]
+      },
+      {
+        "token": "border.color.strong",
+        "value": "var(--color-gray-3)",
+        "usage": "新增实际调用及其真实子组件的共享规范依赖；由原同步机制追踪。",
+        "aspect": "color",
+        "appliesTo": [
+          "form",
+          "cart"
+        ]
+      },
+      {
+        "token": "border.color.input-disabled",
+        "value": "var(--color-input-disabled-border)",
+        "usage": "新增实际调用及其真实子组件的共享规范依赖；由原同步机制追踪。",
+        "aspect": "color",
+        "appliesTo": [
+          "form",
+          "cart"
+        ]
+      }
+    ],
+    "fontWeightDependencies": [
+      {
+        "token": "typography.font-weight-semibold",
+        "value": "600",
+        "usage": "font-weight",
+        "properties": [
+          "font-weight"
+        ],
+        "selectors": [
+          ".ds-dialog__title"
+        ],
+        "appliesTo": [
+          "information",
+          "confirmation"
+        ]
+      },
+      {
+        "token": "typography.font-weight-regular",
+        "value": "400",
+        "usage": "font-weight",
+        "properties": [
+          "font-weight"
+        ],
+        "selectors": [
+          ".ds-dialog__body"
+        ],
+        "appliesTo": [
+          "information",
+          "confirmation"
+        ]
+      },
+      {
+        "token": "typography.font-weight-regular",
+        "value": "400",
+        "usage": "信息提示小标题",
+        "properties": [
+          "font-weight"
+        ],
+        "selectors": [
+          ".ds-dialog__subtitle"
+        ],
+        "appliesTo": [
+          "information"
+        ]
+      }
+    ],
+    "typographyDependencies": [
+      {
+        "token": "typography.h5-semibold",
+        "usage": "对话框标题",
+        "appliesTo": [
+          "information",
+          "confirmation"
+        ],
+        "fontSizeToken": "typography.font-size-h5",
+        "fontSizeValue": "18px",
+        "fontWeightToken": "typography.font-weight-semibold",
+        "fontWeightValue": "600",
+        "weightEvidence": "explicit-css"
+      },
+      {
+        "token": "typography.h7-regular",
+        "usage": "对话框正文",
+        "appliesTo": [
+          "information",
+          "confirmation"
+        ],
+        "fontSizeToken": "typography.font-size-md",
+        "fontSizeValue": "14px",
+        "fontWeightToken": "typography.font-weight-regular",
+        "fontWeightValue": "400",
+        "weightEvidence": "explicit-css"
+      },
+      {
+        "token": "typography.h6-regular",
+        "fontSizeToken": "typography.font-size-h6",
+        "fontSizeValue": "16px",
+        "fontWeightToken": "typography.font-weight-regular",
+        "fontWeightValue": "400",
+        "weightEvidence": "explicit-css",
+        "usage": "信息提示小标题",
+        "appliesTo": [
+          "information"
+        ]
+      }
+    ],
+    "shadowDependencies": [],
+    "enforcementStatus": {
+      "source.separation": {
+        "enforced": true,
+        "mechanism": "scripts/inventory-dialog-source.js + scripts/dialog-button-dependencies.js",
+        "note": "Saved typed identity/inherited references remain distinct from the fresh online normative HTML read; current specified PC cases reviewed, full inherited placement and all family templates remain unverified."
+      },
+      "behavior": {
+        "enforced": false,
+        "mechanism": "scripts/local-canonical-component.test.js + components/sources/dialog-mg-20261115/browser-review.json",
+        "note": "Two canonical PC calls have finite actual Chrome checks for native modal scope, background focus exclusion, Escape/focus return, close/backdrop, cancelable confirm and body-only overflow. This is not an all-state/business/browser guarantee."
+      },
+      "aiContract": {
+        "enforced": true,
+        "mechanism": "scripts/compile-component-reference.js + scripts/component-reference.test.js",
+        "note": "Finite root/header/body/footer anatomy, direct Button label spans and safe default action types, slots, dependency declarations and source fingerprints; native rendering, source-wide semantics and visual approval remain pending."
+      }
+    },
+    "hardRules": [
+      {
+        "title": "始终居中，内容滚动，关闭必选",
+        "description": "MasterGo 规范 v2.3.2607A §2.3 / §3 / §4",
+        "ruleContent": "关闭按钮必须保留；标题超长时换行；上下至少 64px；头部和底部固定，仅内容区滚动。普通提示可点击遮罩关闭。确认行为交给宿主，不伪造业务成功。 信息录入不建议点击遮罩关闭；本轮现有只读/删除模板不能因此变成录入型。MG的380/480/650/750px为场景规格，不是本地自由width接口。",
+        "aiParse": "geometry: width 650 / 480; radius 8; viewportInsetY 64; header padding 24; footer 16 24 24; body 0 24 24",
+        "enforcement": "浏览器回归检查交互与关键尺寸；场景选型仍需人工确认。"
+      }
+    ],
+    "notes": "关闭控件直接调用IconButton/plain-l（32px控件、20px图标、4px圆角）；尺寸、内边距、悬停由原子负责。Dialog只用ds-dialog__close-position定位并绑定data-dialog-close。用户已确认原子优先，旧宿主28px/3px及文字背景18px的来源差异保留，不修改原始快照。",
+    "variantDecisionsDescription": "按内容与交互选具体变体，再核对同版调用资格。候选、不用、参考同时用于规范展示与AI；既有来源、当前MG核对、工程与视觉批准分开记录。",
+    "prototypeRollout": {
+      "template": "docs/component-spec-template.html",
+      "source": "relations.variantDecisions",
+      "workflow": "existing-local-only",
+      "scope": "Source-backed finite PC calls in current catalog; original local workflow and shared template retained; visual approval separate",
+      "currentMg": {
+        "status": "partial-source-scope",
+        "reason": "指定英文站组件库v2.3.2607A正文与原件支撑五个有限PC模板；原子优先关闭决定保留。Form/Cart真实共享子部件接入，不推断移动、全部特殊场景或视觉批准。"
+      },
+      "retainedEvidence": [
+        {
+          "name": "original",
+          "file": "components/sources/dialog/mastergo-components.json"
+        },
+        {
+          "name": "spec",
+          "file": "components/sources/dialog/mastergo-spec.json"
+        },
+        {
+          "name": "runtimeReview",
+          "file": "components/sources/dialog/local-structure-review.json"
+        },
+        {
+          "name": "pcHeaderCurrentReview",
+          "file": "components/sources/dialog/pc-header-current-review-1013.json"
+        },
+        {
+          "name": "tokenPreview",
+          "file": "components/preview/tokens-data.js"
+        }
+      ]
+    },
+    "interactionRules": [
+      {
+        "name": "实际调用",
+        "rule": "仅使用同版catalog的callable变体和allowedEdits；参考示例不授予调用资格，不用改类或自绘控件绕过。",
+        "owner": "原本地选型与调用入口"
+      },
+      {
+        "name": "父子与同步",
+        "rule": "沿用原componentDependencies及反向父关系；改原规范后协调契约/实现，继续component:sync/watch；已交付页保留固定版本。",
+        "owner": "既有维护机制"
+      },
+      {
+        "name": "交互与业务",
+        "rule": "五种PC模板分开选型。Form使用原Form/Input/Checkbox校验并保留草稿，提交只发fs-dialog-submit；Cart使用List/InputNumber联动总价，动作只发fs-dialog-cart-action；message仅成功型。关闭不伪造业务结果。",
+        "owner": "具体变体运行时与原页面宿主"
+      }
+    ]
+  },
+  "editable": [
+    "title",
+    "body",
+    "footer.cancelLabel",
+    "footer.confirmLabel",
+    "confirmCallback",
+    "contentSource",
+    "formFields",
+    "cancelLabel",
+    "actionLabel",
+    "submitCallback",
+    "products",
+    "actionCallback",
+    "description"
+  ],
+  "requiredStructure": [
+    "dialog.ds-dialog",
+    "header.ds-dialog__header",
+    "button.ds-dialog__close-position.ds-icon-btn.ds-icon-btn--plain.ds-icon-btn--l[data-dialog-close]",
+    "div.ds-dialog__body"
+  ],
+  "source": {
+    "fileId": "143880409387753",
+    "specLayerId": "70971:200121",
+    "originalSectionId": "68908:469905",
+    "informationComponentId": "68908:048976",
+    "confirmationComponentId": "68908:052338",
+    "specVersion": "v2.3.2607A",
+    "originalSectionLabel": "v2.1.2508A",
+    "versionNote": "原始区域标签较旧；本批两种组件的关键结构/尺寸与新规范一致。未验证其他模板。"
+  },
+  "history": [
+    {
+      "date": "2026-10-08",
+      "author": "Codex",
+      "change": "直接读取 MasterGo 原始组件与规范，新增首批桌面对话框试点。"
+    },
+    {
+      "date": "2026-10-08",
+      "author": "Codex",
+      "change": "联动与文字审查：补齐根类名、按钮入口与精确尺寸依赖，按变体收紧依赖范围，简化场景描述。"
+    },
+    {
+      "date": "2026-10-09",
+      "author": "Codex",
+      "change": "标杆复审：补足对子按钮 XL regular 精确尺寸的机器约束，解决 Button 全局红色范围与 Dialog 确认动作冲突。"
+    },
+    {
+      "date": "2026-10-09",
+      "author": "Codex",
+      "change": "统一规范维护质量标准：登记真实实现与选型规则入口、源变更重新验收、父子影响检查及历史页面隔离；不推断可编辑槽位或视觉批准。"
+    }
+  ],
+  "searchIntents": [
+    "对话框",
+    "弹窗",
+    "删除确认",
+    "内容提示",
+    "遮罩",
+    "模态窗口"
+  ],
+  "integration": {
+    "styles": [
+      "components/tokens.css",
+      "components/components.css",
+      "components/dialog-current.css",
+      "components/form-current.css",
+      "components/button-current.css",
+      "components/button-runtime-current.css",
+      "components/input-current.css",
+      "components/checkbox-current.css",
+      "components/icon-button-current.css",
+      "components/input-number-current.css",
+      "components/form-dialog-content.css",
+      "components/list-dialog-cart.css",
+      "components/dialog-templates-current.css"
+    ],
+    "scripts": [
+      "components/dialog-current.js",
+      "components/input-current.js",
+      "components/checkbox-current.js",
+      "components/form-current.js",
+      "components/input-number-current.js",
+      "components/list-products-current.js",
+      "components/dialog-templates-current.js"
+    ],
+    "trigger": "button[data-dialog-open=\"<dialog-id>\"]",
+    "close": "[data-dialog-close]",
+    "confirm": "[data-dialog-confirm] → cancelable fs-dialog-confirm event",
+    "backdropDismiss": "默认开启；data-dialog-backdrop=\"false\" 可关闭",
+    "businessBoundary": "接入方负责业务动作；组件本身不删除、不保存数据。",
+    "fontStylesheets": [
+      "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+    ],
+    "fontFallback": "在线字体不可用时使用 tokens.css 已声明的系统字体回退；精确视觉审阅需确认 Open Sans 实际加载。"
+  },
+  "contentSlots": {
+    "title": {
+      "required": true,
+      "description": "h2.ds-dialog__title：只替换文字，保持标题节点与对应 aria-labelledby。"
+    },
+    "body": {
+      "required": true,
+      "description": "div.ds-dialog__body：替换说明内容；信息提示保留 section/content 分组层级；确认提示保留正文。"
+    }
+  },
+  "aiContract": {
+    "schemaVersion": "1.0.0",
+    "scope": "five-source-backed-desktop-templates",
+    "reviewStatus": {
+      "engineering": "pending",
+      "visual": "pending",
+      "familyCoverage": "partial"
+    },
+    "supported": [
+      "information",
+      "confirmation",
+      "form",
+      "cart",
+      "message"
+    ],
+    "unsupported": [
+      "special-business",
+      "mobile",
+      "attachment-upload",
+      "message-error",
+      "message-warning"
+    ],
+    "selectionPolicy": "按内容任务选择information只读说明、confirmation简短删除、form资料填写、cart750px商品表格、message已确认成功消息；禁止通过改宽度/原站嵌入绕过。每种模板只编辑其登记字段，生产动作由宿主接事件，移动和未登记状态不自动开放。",
+    "locked": [
+      "dialog 根元素与变体类名",
+      "必需结构",
+      "组件 CSS / JS",
+      "按钮变体与尺寸",
+      "关闭图标路径与尺寸",
+      "data-dialog-* 行为属性",
+      "IconButton/plain-l真实嵌套结构与独立原子样式"
+    ],
+    "identity": {
+      "rule": "为每个实例生成唯一 id，标题 id 同步 aria-labelledby，触发按钮 data-dialog-open 指向实例 id。",
+      "attributes": [
+        "id",
+        "aria-labelledby",
+        "data-dialog-open"
+      ],
+      "labelRule": "替换底部按钮文案时，同步对应 aria-label；关闭图标必须保留可读的无障碍名称。"
+    },
+    "variants": {
+      "information": {
+        "exampleSelector": "#dialog-info",
+        "purpose": "read-information",
+        "slots": {
+          "title": {
+            "selector": ".ds-dialog__title",
+            "mode": "text",
+            "required": true
+          },
+          "body": {
+            "selector": ".ds-dialog__body",
+            "mode": "structured-content",
+            "required": true,
+            "preserve": [
+              ".ds-dialog__section",
+              ".ds-dialog__subtitle",
+              ".ds-dialog__content"
+            ]
+          }
+        },
+        "allowedEdits": [
+          "title",
+          "body",
+          "contentSource"
+        ],
+        "bindings": {
+          "contentSource": {
+            "mode": "native-attribute",
+            "target": "root",
+            "attribute": "data-dialog-content-source",
+            "valueType": "nonempty-string",
+            "sourceProperty": "Host-supplied content slot; child components retain their own canonical DOM"
+          }
+        },
+        "hostContentPolicy": "Optional page-owned DOM source id. The host may move an already rendered region of real child components/media into the existing body while open, then restore it on close. No remote HTML, scripts or component style overrides. Page resource closure must include those actual children. This does not change the default information Dialog design."
+      },
+      "confirmation": {
+        "exampleSelector": "#dialog-confirm",
+        "purpose": "confirm-deletion",
+        "slots": {
+          "title": {
+            "selector": ".ds-dialog__title",
+            "mode": "text",
+            "required": true
+          },
+          "body": {
+            "selector": ".ds-dialog__body",
+            "mode": "structured-content",
+            "required": true
+          },
+          "footer.cancelLabel": {
+            "selector": ".ds-dialog__footer [data-dialog-close] .ds-btn__text",
+            "mode": "text",
+            "required": true
+          },
+          "footer.confirmLabel": {
+            "selector": ".ds-dialog__footer [data-dialog-confirm] .ds-btn__text",
+            "mode": "text",
+            "required": true
+          }
+        },
+        "allowedEdits": [
+          "title",
+          "body",
+          "footer.cancelLabel",
+          "footer.confirmLabel",
+          "confirmCallback"
+        ],
+        "bindings": {
+          "confirmCallback": {
+            "mode": "event-handler",
+            "event": "fs-dialog-confirm",
+            "target": "root"
+          }
+        }
+      },
+      "form": {
+        "purpose": "data-entry-with-local-validation",
+        "exampleSelector": "#dialog-form",
+        "slots": {
+          "title": {
+            "selector": ".ds-dialog__title",
+            "mode": "text",
+            "required": true
+          },
+          "formFields": {
+            "selector": "[data-form-part=\"dialog-content\"]",
+            "mode": "structured-content",
+            "required": true,
+            "preserve": [
+              "input.ds-input-field__input",
+              "label.ds-checkbox",
+              "textarea.ds-input-field__input"
+            ],
+            "rule": "Canonical Form-owned Input/Checkbox/textarea anatomy; no raw form embed, script, upload or arbitrary style."
+          },
+          "cancelLabel": {
+            "selector": ".ds-dialog__footer [data-dialog-close] .ds-btn__text",
+            "mode": "text",
+            "required": true
+          },
+          "actionLabel": {
+            "selector": ".ds-dialog__footer [data-dialog-submit] .ds-btn__text",
+            "mode": "text",
+            "required": true
+          }
+        },
+        "bindings": {
+          "submitCallback": {
+            "mode": "event-handler",
+            "target": "root",
+            "event": "fs-dialog-submit"
+          }
+        },
+        "allowedEdits": [
+          "title",
+          "formFields",
+          "cancelLabel",
+          "actionLabel",
+          "submitCallback"
+        ]
+      },
+      "cart": {
+        "purpose": "cart-added-products-with-quantity-and-host-action",
+        "exampleSelector": "#dialog-cart",
+        "slots": {
+          "title": {
+            "selector": ".ds-dialog__title",
+            "mode": "text",
+            "required": true
+          },
+          "products": {
+            "selector": "[data-list-part=\"dialog-cart-products\"]",
+            "mode": "structured-content",
+            "required": true,
+            "preserve": [
+              ".ds-list__product-source-head",
+              ".ds-list__product-source-row",
+              "[data-input-number-current]"
+            ],
+            "rule": "1..6 complete List-owned cart rows; preserve quantity atom and consistent USD unit/total amounts."
+          },
+          "cancelLabel": {
+            "selector": ".ds-dialog__footer [data-dialog-close] .ds-btn__text",
+            "mode": "text",
+            "required": true
+          },
+          "actionLabel": {
+            "selector": ".ds-dialog__footer [data-dialog-cart-action] .ds-btn__text",
+            "mode": "text",
+            "required": true
+          }
+        },
+        "bindings": {
+          "actionCallback": {
+            "mode": "event-handler",
+            "target": "root",
+            "event": "fs-dialog-cart-action"
+          }
+        },
+        "allowedEdits": [
+          "title",
+          "products",
+          "cancelLabel",
+          "actionLabel",
+          "actionCallback"
+        ]
+      },
+      "message": {
+        "purpose": "read-success-message",
+        "exampleSelector": "#dialog-message",
+        "slots": {
+          "title": {
+            "selector": ".ds-dialog__message-title",
+            "mode": "text",
+            "required": true
+          },
+          "description": {
+            "selector": ".ds-dialog__message-description",
+            "mode": "structured-content",
+            "required": true,
+            "preserve": [
+              "p"
+            ],
+            "rule": "Preserve the native description paragraph/link structure; only content and safe link targets."
+          }
+        },
+        "bindings": {},
+        "allowedEdits": [
+          "title",
+          "description"
+        ]
+      }
+    },
+    "behavior": {
+      "open": "使用 data-dialog-open 指向唯一实例 id；调用原生 showModal。",
+      "cancel": "关闭、取消、Esc 与普通遮罩关闭均不执行确认动作。",
+      "confirm": "监听 fs-dialog-confirm；业务由宿主处理。异步或校验失败时 preventDefault，成功后由宿主 close。",
+      "focus": "打开时背景不可交互；关闭后焦点返回触发按钮。",
+      "overflow": "只让正文区滚动，不移动头部和底部。",
+      "engineeringStatus": "Engineering qualification is derived from components/quality/acceptance.json source/tool fingerprints; current finite browser observations are separate evidence, never a replacement for the original engineering suite or visual approval.",
+      "currentRuntime": "One document delegate set, including cancelled confirmations; native/ARIA disabled actions are guarded. Actual two-PC-instance modal/focus/Escape/backdrop/overflow observations are in currentBrowserReview; full business and browser coverage remains unverified. Do not co-load legacy dialog.js.",
+      "backdropGesture": "Each click consumes the outside-pointer-start state; pointercancel/close/reopen clear it. Only a fresh outside-start/outside-click closes the enabled backdrop. Actual default click-to-dismiss observed for both PC calls; exhaustive pointer gestures not claimed.",
+      "closeAtom": "头部关闭真实调用IconButton/plain-l；宿主仅定位与关闭路由，原子样式修改使Dialog引用过期，重新同步复核；冻结页面保持旧版。"
+    },
+    "evidence": {
+      "original": "components/sources/dialog/mastergo-components.json",
+      "spec": "components/sources/dialog/mastergo-spec.json",
+      "refresh": "MasterGo 为来源快照；重新读取后仍需核对差异，不自动覆盖已确认规范。",
+      "runtimeReview": "components/sources/dialog/local-structure-review.json",
+      "inventory": "components/sources/dialog/source-inventory.json",
+      "pcHeaderCurrentReview": "components/sources/dialog/pc-header-current-review-1013.json",
+      "tokenPreview": "components/preview/tokens-data.js",
+      "currentMgReview": "components/sources/dialog-mg-20261115/review.json",
+      "currentBrowserReview": "components/sources/dialog-mg-20261115/browser-review.json"
+    },
+    "rootTag": "dialog",
+    "previewAssets": [
+      "components/preview/reference-live.js"
+    ]
+  },
+  "qualityProfile": {
+    "schemaVersion": "1.0.0",
+    "standard": "docs/component-quality-standard.md",
+    "implementation": "components/variants/dialog.html",
+    "selection": {
+      "mappingSource": "components/selection-mvp-policy.json",
+      "mappingPointer": "components.dialog.variantDecisionTypes",
+      "rulesPointer": "relations.variantDecisions"
+    },
+    "maintenance": {
+      "authority": "contract-preview-runtime-token-icon",
+      "generatedOnly": [
+        "preview-reference-tables",
+        "component-index",
+        "selection-catalog",
+        "design-reading-view",
+        "ai-reference"
+      ],
+      "changePolicy": "记录来源差异、兼容性与受影响父子组件；源文件变化后旧工程验收失效。",
+      "historicalPages": "不自动升级；新页面锁定本地组件运行资源版本。"
+    },
+    "acceptance": {
+      "report": "components/quality/report.json",
+      "proof": "components/quality/acceptance.json",
+      "declarationIsNotProof": true
+    }
+  },
+  "changeHistory": [
+    {
+      "date": "2026-10-10",
+      "change": "用户确认以原子为主：Dialog关闭改为真实IconButton/plain-l，明确父子依赖，原始宿主尺寸差异保留。旧共享样式及历史页不升级。"
+    }
+  ]
+}

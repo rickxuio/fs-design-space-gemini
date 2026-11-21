@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "fs-local-component-review/1.0.0",
+  "status": "local-structure-and-runtime-only",
+  "scope": [
+    "selectable",
+    "filter",
+    "status-text",
+    "metadata",
+    "semantic",
+    "featured"
+  ],
+  "originalComponentSnapshot": null,
+  "independentSpecDocument": null,
+  "sourceBoundary": "No saved independent Tag source found; contract describes prior fed source, but no original design snapshot is reconstructed from it.",
+  "runtimeFacts": {
+    "root": "button",
+    "event": "ds:tag-change",
+    "detail": "checked:boolean",
+    "bubbles": true,
+    "cancelable": false,
+    "filterClose": "Same toggle, not removal",
+    "static": "Pure native spans; fixed Individual/FEATURED labels and decorative assets; no Tag events or keyboard/control semantics."
+  },
+  "selectHost": {
+    "source": "components/select-current.js:createTag",
+    "differences": [
+      "Removal instead of selection toggle",
+      "Adds ds-select__tag and data-select-remove",
+      "Adds a span close marker to the simple pill",
+      "Count tag may add tooltip and aria-describedby",
+      "Host CSS overrides appearance"
+    ],
+    "status": "adaptation-not-approved",
+    "mixedRuntime": "tag-current.js excludes host removal adapters and uses document guard; old tag.js remains unchanged and still reproduces accidental event."
+  },
+  "pending": [
+    "Original MG component and independent specification",
+    "Allowed actual browser geometry/style evidence",
+    "Select removal-tag source/style adaptation; current runtime interference resolved locally",
+    "Remaining static colors, large status, semantic iconless cases and metadata with more than two values"
+  ],
+  "compatibility": "New current script/opt-in markers only; legacy tag.js and shared CSS/historical pages unchanged. Legacy/current scripts are not intended for joint loading.",
+  "changes": [
+    "Current hidden/ARIA-disabled ancestors block synthetic operations and preserve state; InputNumber also defers sanitization and arrows during composition. Actual browser evidence remains pending."
+  ],
+  "previewSourceCleanup1014": {
+    "removed": [
+      "Live selectable/status技术演示",
+      "未取得对应原件的任意长Router文案/受限组合"
+    ],
+    "rule": "组件展示区只呈现有效来源真实组件/变体/状态，不混入自行能力演示",
+    "preserved": "六节原有canonical实际组件与第5节用户确认关闭宿主",
+    "backup": "components/sources/tag/preview-before-capability-cleanup-1014.html"
+  }
+}

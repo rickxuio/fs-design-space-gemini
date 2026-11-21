@@ -1,0 +1,39 @@
+{
+  "mainComponent": "Tab",
+  "scope": "既有四个PC常规宿主外底线、默认/Hover/点击状态；纠正来源颜色到本地Token的映射",
+  "status": "finite-color-mapping-and-tests-fixed-browser-closed-user-pending",
+  "sourceRange": [
+    "components/sources/tab/pc-regular-gap-bottom-review-1013.json",
+    "components/sources/tab/pc-large-center-bottom-review-1013.json"
+  ],
+  "reason": "已核原件底线#DEE0E3但当前CSS使用本地Gray4#646466；先取得实际浏览器影响再做四标记范围修正",
+  "necessaryRelations": [
+    "既有regular-atom，不改变居中auto-width准入或溢出Radio"
+  ],
+  "completionConditions": [
+    "1920×1000四真实宿主默认/Hover/点击实测",
+    "外底线保持不占位并匹配实际原件#DEE0E3",
+    "负例捕捉源头同名Gray4误映射",
+    "工程和实际浏览器分别记录，不声明居中宽度/全家族批准"
+  ],
+  "remaining": [
+    "用户视觉批准",
+    "居中auto-width完整映射",
+    "溢出/隐藏Radio、胶囊及其他宿主"
+  ],
+  "directionalChecks": [
+    "来源颜色按Hex，不按同名编号猜Token",
+    "四外描边来源标记限定影响，冻结页不升级"
+  ],
+  "result": "四个现有PC常规宿主外底线从误用本地Gray4(#646466)修为Gray5(#DEE0E3)，默认/大号实际高度40/56，底线1px外绘制不占位。旧测试把Gray4强行替换成预期色造成假通过，现改为解析真实tokens.css并加入错Token负例；16项定向检查通过。四组真实Hover/Click几何、URL、滚动均稳定；28次键盘操作唯一active/indicator/aria选中/tabstop均成立。",
+  "engineering": {
+    "status": "passed-scoped",
+    "scope": "四个既有PC常规宿主底线颜色与状态，未批准整个Tab家族",
+    "tests": 16,
+    "log": "components/sources/tab/browser-bottom-tests-1014.log",
+    "source": "components/sources/tab/browser-bottom-batch-1014.json",
+    "visual": "browser-measured-user-pending",
+    "fullFamilyAcceptance": false
+  },
+  "browser": "components/sources/tab/browser-bottom-states-1014.json"
+}

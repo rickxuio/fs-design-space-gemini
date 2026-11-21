@@ -1,0 +1,69 @@
+{
+  "date": "2026-10-11",
+  "scope": "Existing local Rate/Card/Comment host interactions",
+  "changes": [
+    {
+      "id": "rate",
+      "name": "评分",
+      "problem": "清除时仍尝试聚焦已禁用的第一颗星",
+      "fix": "回到第一颗可用星标，保持其他评分实例及事件数量",
+      "files": [
+        "components/rate-current.js",
+        "scripts/rate-reference.test.js"
+      ]
+    },
+    {
+      "id": "card",
+      "name": "卡片",
+      "problem": "父级禁用时仍向文字按钮添加悬停状态",
+      "fix": "宿主转发悬停前尊重子控件及祖先的禁用/隐藏状态",
+      "files": [
+        "components/card-current.js",
+        "scripts/card-current.test.js"
+      ]
+    },
+    {
+      "id": "comment",
+      "name": "评论",
+      "problem": "忽略宿主取消的提交事件，生成回答并清空草稿",
+      "fix": "尊重已取消提交，保留草稿；正常提交行为保留",
+      "files": [
+        "components/comment-current.js",
+        "scripts/comment-reference.test.js"
+      ]
+    }
+  ],
+  "verification": {
+    "redCasesReproduced": 3,
+    "offlinePassed": 33,
+    "logs": [
+      "/tmp/fs-rate-clear-focus-before.log",
+      "/tmp/fs-card-disabled-hover-before.log",
+      "/tmp/fs-comment-canceled-submit-before.log",
+      "/tmp/fs-rate-card-local-final-test.log",
+      "/tmp/fs-comment-canceled-submit-test.log",
+      "/tmp/fs-local-host-batch-next-sync.log",
+      "/tmp/fs-local-host-batch-next-health.log"
+    ],
+    "syncPassed": true,
+    "healthPassed": true,
+    "healthErrors": 0,
+    "existingWarnings": 2
+  },
+  "fingerprints": {
+    "components/rate-current.js": "eaf3e41c3c10216e29ed072b96c63f25d1d65f1bdb7e8b9d66ee2caa18fde02a",
+    "scripts/rate-reference.test.js": "180cfebe49a52adc0a7f05be55f102746bbf58171cbc2e8c492274f74ca88348",
+    "components/card-current.js": "94688fcda67bc0e0a3e67a9628b896fd849a7e2806b52ff203686f57115769f5",
+    "scripts/card-current.test.js": "d8dda3ab91e82d9af4cfed66e1652388a8894ceb68fdc94efc825a0bfc6635c5",
+    "components/comment-current.js": "001562a5f6cec532f0a9cdc27f889a873d842f24217c829fe57086e5c93ffe00",
+    "scripts/comment-reference.test.js": "0e60dc6b49cdff8e5838f141d982db82875b56f9fa575058f03daab7934e91fd"
+  },
+  "boundaries": {
+    "mastergoVerified": false,
+    "browserVerified": false,
+    "visualVerified": false,
+    "familyComplete": false,
+    "frozenPagesChanged": false,
+    "newComponentOrCanonicalAdmission": false
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "schemaVersion": "fs-component-source-review/1.0.0",
+  "component": "carousel",
+  "status": "partial-source-scope",
+  "source": {
+    "file": "components/sources/card-carousel-mg-20261114/carousel.txt",
+    "fileId": "209944605602401",
+    "root": "3:134431",
+    "title": "【图片轮播】设计规范v1.2.2608A",
+    "sha256": "b1eca1b4a4b385f0159e9cf33384924dc70e7b12dab297e918bc65f3301bb3ba",
+    "url": "https://mastergo.com/file/209944605602401?page_id=M&layer_id=3:134431",
+    "recordedAt": "2026-11-14T10:20:59.834Z",
+    "method": "MasterGo get_selection_node explicit layer; get_library_list confirmed current local-209944605602401"
+  },
+  "scope": "核对当前规范正文、原件、场景与交互边界；四个现有方向原子的本地调用单独复测，不宣称完整宿主或视觉批准。",
+  "findings": [
+    {
+      "nodes": [
+        "3:135608",
+        "3:134787",
+        "3:135944",
+        "3:135235",
+        "3:135893"
+      ],
+      "sourceFact": "外部多卡48排除详情和解决方案页；Recently Viewed/Videos/My order内部多图36，商品详情Banner内部单图20。",
+      "correction": "修正过宽的卡片48默认；具体场景写入同一份可展示和AI读取的决策。36/20仍参考，不以48替代。"
+    },
+    {
+      "nodes": [
+        "3:134936",
+        "3:135577",
+        "3:134816",
+        "3:134682"
+      ],
+      "sourceFact": "首页自动播放、箭头常驻、hover暂停；常规hover出现。左右按钮PC显示，Pad/M隐藏；PC分页点击不拖拽，Pad/M拖拽不点击分页。",
+      "correction": "分清宿主与按钮原子；当前有限调用没有整套自动播放、拖拽、分页和移动端接口，不虚报能力。"
+    },
+    {
+      "nodes": [
+        "3:134808",
+        "3:134791",
+        "3:134804",
+        "3:134859",
+        "3:134866",
+        "3:134870",
+        "3:134439",
+        "3:137668",
+        "3:137672"
+      ],
+      "sourceFact": "规范正文箭头24/18/10及黑20%/40%/5%，与同稿切换按钮原件及已登记运行值有差异。",
+      "correction": "保留原件身份和当前运行值，明确冲突待视觉确认；不凭文字覆盖原子，也不宣称视觉已对齐。"
+    },
+    {
+      "nodes": [
+        "3:135520",
+        "3:134823",
+        "3:134909",
+        "3:134925",
+        "3:134921"
+      ],
+      "sourceFact": "MG首页Banner48；分页文字8/20、间距10，各设备尺寸一致，M端外部多图分页按卡片交互处理；账户中心有排除条件。",
+      "correction": "用户此前Banner56要求优先保留，与MG48对照；首页历史56×8不是按钮依据。普通分页与首页历史实现区分，当前未发布完整分页能力。"
+    },
+    {
+      "nodes": [
+        "3:135608",
+        "3:134936",
+        "3:134816",
+        "3:134682"
+      ],
+      "sourceFact": "普通外部多卡48、hover显隐及PC/Pad/M交互已有规范。",
+      "correction": "按该范围补本地external-cards真实组合；以当前已批准的48按钮和真实Card/IconCard实现，不宣称MG提供可执行前端源码。"
+    }
+  ],
+  "unverified": [
+    "MG正文与切换原件的箭头尺寸/状态配色存在差异，待视觉负责人确认；当前运行值未改。",
+    "用户Banner56与当前MG48有冲突，未擅自采用48或缩放补齐。",
+    "当前另开放普通external-cards组合；首页/详情/解决方案、自动播放、36/20/56方向原子仍未开放。"
+  ],
+  "ruleDigest": "af6290724885b115e624e7498ae91a5e33b326954e094069210c2030d1e5b33a"
+}

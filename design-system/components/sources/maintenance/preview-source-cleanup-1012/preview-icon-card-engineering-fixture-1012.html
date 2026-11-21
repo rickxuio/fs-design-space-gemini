@@ -1,0 +1,673 @@
+<!DOCTYPE html><html data-component-reference="icon-card" lang="zh-CN"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IconCard 图标卡片 - 组件预览</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../tokens.css">
+  <link rel="stylesheet" href="../components.css"><link rel="stylesheet" href="../text-button-current.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: var(--font-family-base); padding: 40px; background: #FFF; color: var(--color-gray-1); }
+    h1 { font-size: 24px; font-weight: 600; margin-bottom: 8px; }
+    .subtitle { font-size: 14px; color: var(--color-gray-3); margin-bottom: 40px; }
+    .section { margin-bottom: 48px; }
+    .section-title { font-size: 18px; font-weight: 600; margin-bottom: 24px; padding-bottom: 8px; border-bottom: 1px solid var(--color-gray-5); }
+    .sub-title { font-size: 14px; font-weight: 600; color: var(--color-gray-2); margin-bottom: 12px; }
+    .card-row { display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 32px; }
+    .card-col { display: flex; flex-direction: column; gap: 8px; }
+    .card-col--icon-card-specimen { width: 386px; max-width: 100%; }
+    .state-label { font-size: 12px; color: var(--color-gray-3); margin-bottom: 4px; }
+
+
+    /* Category Badge（分类与左侧导航栏保持一致） */
+    .cat-badge { display: inline-flex; align-items: center; height: 22px; padding: 0 10px; border-radius: 11px; font-size: 11px; font-weight: 700; margin-bottom: 10px; }
+  </style>
+<link rel="stylesheet" href="../icon-card-current.css"></head>
+<body>
+  <span class="cat-badge" style="background:#FBEAEA;color:#C00000;">数据展示 Data Display</span>
+  <h1>IconCard 图标卡片 <span class="version-badge" style="font-size:18px;font-weight:600;color:#707070;vertical-align:middle;margin-left:10px;">v1.0</span></h1>
+  <p class="subtitle">以图标代替图片的卡片组件，支持居中/居左布局、白底/灰底、含描边/无描边、单事件/多事件/跳转型</p>
+
+  <!-- 变体决策 + 关联关系表 -->
+  <div style="margin-bottom: 0; padding: 24px; background: #FAFBFC; border: 1px solid var(--color-gray-5); border-radius: 8px;">
+    <!-- AUTO-GENERATED-PREVIEW:START -->
+<!-- 合并模式：硬规则已并入下方合并表 -->
+    <!-- AUTO-GENERATED-PREVIEW:END -->
+    <!-- AUTO-GENERATED-DECISION-TABLE:START -->
+    <p style="font-size: 14px; font-weight: 600; margin-bottom: 4px;">变体决策</p>
+    <p style="font-size: 12px; color: #707070; margin-bottom: 12px;">每种图标卡片类型：什么场景用 → 用了哪个子组件 → 这个依赖是否核实过。</p>
+    <table style="width:100%;border-collapse:collapse;table-layout:fixed;">
+      <colgroup>
+        <col style="width:50%;">
+        <col style="width:50%;">
+      </colgroup>
+      <tbody>
+        <tr>
+          <th style="background:#F6F6F8;font-size:12px;font-weight:600;text-align:left;padding:8px 10px;border:1px solid #DEE0E3;">类型</th>
+          <th style="background:#F6F6F8;font-size:12px;font-weight:600;text-align:left;padding:8px 10px;border:1px solid #DEE0E3;">变体决策（什么场景用）</th>
+        </tr>
+        <tr>
+          <td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;" rowspan="2">居中 · 单事件</td>
+          <td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>用：</strong>来源为居中布局；图标+标题即可，短描述、bullets 和普通操作链接按来源可选；bullets 在内容区左对齐。</td>
+        </tr>
+        <tr>
+          <td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong style="color:#707070;">不用：</strong>来源为图标居左 → 比较居左变体；有可见 bullets 折叠控件 → 比较居中折叠型；纯蓝色链接列表不属于此变体。</td>
+        </tr>
+        <tr>
+          <td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;" rowspan="2">居中 · 多事件折叠展开</td>
+          <td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>用：</strong>居中布局下 bullets 列表超长（超过容器高度），需要折叠+See more/See less 切换。</td>
+        </tr>
+        <tr>
+          <td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong style="color:#707070;">不用：</strong>来源没有可见展开/收起行为 → 用居中·单事件；不能仅按 bullets 数量新增折叠。</td>
+        </tr>
+        <tr>
+          <td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;" rowspan="2">居左 · 单事件</td>
+          <td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>用：</strong>来源为图标居左、内容居右；图标+标题必需，描述、bullets、普通操作链接按来源可选。</td>
+        </tr>
+        <tr>
+          <td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong style="color:#707070;">不用：</strong>只有标题+一组蓝色链接列表、无描述无bullets → 用居左·跳转型。</td>
+        </tr>
+        <tr>
+          <td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;" rowspan="2">居左 · 跳转型</td>
+          <td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>用：</strong>标题+一组蓝色链接列表（ds-icon-card__blue-links），无描述无bullets——纯跳转入口。</td>
+        </tr>
+        <tr>
+          <td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong style="color:#707070;">不用：</strong>只要出现描述/bullets → 用居左·单事件。</td>
+        </tr>
+        <tr>
+          <td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;" rowspan="2">居左 · 多事件折叠展开</td>
+          <td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>用：</strong>居左布局下 bullets 列表超长，需要折叠+See more/See less 切换。</td>
+        </tr>
+        <tr>
+          <td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong style="color:#707070;">不用：</strong>来源没有可见展开/收起行为 → 用居左·单事件；不能仅按 bullets 数量新增折叠。</td>
+        </tr>
+        <tr>
+          <td colspan="2" style="background:#FFF3E0;color:#F56300;font-size:12px;font-weight:600;padding:10px 12px;border:1px solid #DEE0E3;">⚠️ 硬规则： 图标卡片边框 ↔ Section 背景色</td>
+        </tr>
+        <tr>
+          <td style="border:1px solid #DEE0E3;padding:12px;font-size:12px;line-height:20px;vertical-align:top;word-break:break-word;">
+            <p style="font-size:11px;font-weight:600;color:#707070;margin-bottom:6px;">👤 描述原文</p>
+            <div><strong>图标卡片在白底 section 时，必须有描边；在灰底 section 时，不能有描边。</strong>背景色始终用 bg-white。图标直接暴露，不加圆形/圆角背景容器。宽度由父容器（grid/flex）控制，不手动设固定 width。</div>
+          </td>
+          <td style="border:1px solid #DEE0E3;padding:12px;font-size:12px;line-height:20px;vertical-align:top;word-break:break-word;">
+            <p style="font-size:11px;font-weight:600;color:#707070;margin-bottom:6px;">🤖 AI 解析（写入契约 JSON 的字段）</p>
+            <pre style="margin:0;font-family:'SF Mono',Consolas,monospace;font-size:11px;line-height:18px;white-space:pre-wrap;word-break:break-all;overflow-wrap:anywhere;color:#19191A;">relations.parentContext[
+  "page-section--white"
+].resultingClass
+  = "ds-icon-card--bg-white ds-icon-card--bordered"
+
+relations.parentContext[
+  "page-section--gray"
+].resultingClass
+  = "ds-icon-card--bg-white"</pre>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" style="background:#FFF3E0;color:#F56300;font-size:12px;font-weight:600;padding:10px 12px;border:1px solid #DEE0E3;">⚠️ 硬规则： 跳转型蓝色链接必须用 &lt;p&gt; 标签</td>
+        </tr>
+        <tr>
+          <td style="border:1px solid #DEE0E3;padding:12px;font-size:12px;line-height:20px;vertical-align:top;word-break:break-word;">
+            <p style="font-size:11px;font-weight:600;color:#707070;margin-bottom:6px;">👤 描述原文</p>
+            <div><strong>跳转型卡片的蓝色链接文字必须用 <code>&lt;p class="ds-icon-card__blue-link"&gt;</code>，不能用 <code>&lt;a&gt;</code> 或 <code>&lt;span&gt;</code>。</strong></div>
+          </td>
+          <td style="border:1px solid #DEE0E3;padding:12px;font-size:12px;line-height:20px;vertical-align:top;word-break:break-word;">
+            <p style="font-size:11px;font-weight:600;color:#707070;margin-bottom:6px;">🤖 AI 解析（写入契约 JSON 的字段）</p>
+            <pre style="margin:0;font-family:'SF Mono',Consolas,monospace;font-size:11px;line-height:18px;white-space:pre-wrap;word-break:break-all;overflow-wrap:anywhere;color:#19191A;">relations.mandatoryTagRule = {
+  cls: "ds-icon-card__blue-link",
+  requiredTag: "p"
+}</pre>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" style="background:#FFF3E0;color:#F56300;font-size:12px;font-weight:600;padding:10px 12px;border:1px solid #DEE0E3;">⚠️ 硬规则： 单事件图标卡片文字按钮必须保留完整 TextButton 结构</td>
+        </tr>
+        <tr>
+          <td style="border:1px solid #DEE0E3;padding:12px;font-size:12px;line-height:20px;vertical-align:top;word-break:break-word;">
+            <p style="font-size:11px;font-weight:600;color:#707070;margin-bottom:6px;">👤 描述原文</p>
+            <div><strong><code>ds-icon-card__link</code> 内必须使用真实 TextButton Preview DOM，并包含 <code>ds-text-btn__text</code> 与 inline 变体要求的 <code>ds-text-btn__icon</code>。</strong>禁止放入实心/描边 Button，也禁止用 span 或纯文字模拟文字按钮。</div>
+          </td>
+          <td style="border:1px solid #DEE0E3;padding:12px;font-size:12px;line-height:20px;vertical-align:top;word-break:break-word;">
+            <p style="font-size:11px;font-weight:600;color:#707070;margin-bottom:6px;">🤖 AI 解析（写入契约 JSON 的字段）</p>
+            <pre style="margin:0;font-family:'SF Mono',Consolas,monospace;font-size:11px;line-height:18px;white-space:pre-wrap;word-break:break-all;overflow-wrap:anywhere;color:#19191A;">relations.notes +=
+  "IconCard 的 link slot 必须复用 TextButton Preview 完整 DOM，不得简化嵌套子组件"</pre>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <!-- AUTO-GENERATED-DECISION-TABLE:END -->
+  </div>
+  <!-- DEPENDENCY-SUMMARY-SPACING -->
+
+    <!-- DEPENDENCY-SUMMARY-SPACING -->
+    <div style="height:24px;"></div>
+    <!-- AUTO-GENERATED-DEPENDENCY-SUMMARY-TABLE:START -->
+    <div style="margin-bottom: 0; padding: 24px; background: #FAFBFC; border: 1px solid var(--color-gray-5); border-radius: 8px;">
+      <p style="font-size: 14px; font-weight: 600; margin-bottom: 4px;">依赖汇总表</p>
+      <p style="font-size: 12px; color: #707070; margin-bottom: 12px;">按组件类型汇总组件关系、颜色、字体、间距、描边、圆角、阴影和图标依赖；未填写 <code>appliesTo</code> 的组件级依赖不猜测变体归属，不参与本表归类。「组件关系」列用标签区分：<span style="display:inline-block;font-size:11px;line-height:16px;padding:0 5px;border-radius:3px;background:#EAF2FF;color:#0060BF;">子组件</span> = 嵌入本组件内部；<span style="display:inline-block;font-size:11px;line-height:16px;padding:0 5px;border-radius:3px;background:#F3EEFA;color:#512971;">父组件·类名证据／仅声明</span> = 从宿主 <code>componentDependencies</code> 自动推导；类名出现不等于具体变体、尺寸、必需结构或交互已验证，链接仅供打开 Preview 复核；<span style="display:inline-block;font-size:11px;line-height:16px;padding:0 5px;border-radius:3px;background:#FFF3E0;color:#A65300;">参考·未验证</span> = 仅保留设计意图，宿主 preview 尚无真实结构，不可作为已实现依赖。</p>
+      <div class="dep-summary-scroll">
+        <div class="dep-summary-grid" style="grid-template-columns:minmax(max-content, auto) repeat(8, minmax(max-content, 1fr));">
+          <div class="dep-cell dep-cell--sticky dep-cell--head" role="columnheader">组件类型</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">颜色</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">字体</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">间距</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">描边</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">圆角</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">阴影</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">图标</div>
+          <div class="dep-cell dep-cell--head dep-cell--right-edge" role="columnheader">组件关系</div>
+          <div class="dep-cell dep-cell--sticky" role="rowheader"><strong>居中 · 单事件</strong><br><code>center.single-event</code></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#19191A;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-1" style="color:#0060BF;text-decoration:underline;"><code>color.gray-1</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#707070;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-3" style="color:#0060BF;text-decoration:underline;"><code>color.gray-3</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#DEE0E3;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-5" style="color:#0060BF;text-decoration:underline;"><code>color.gray-5</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#FAFBFB;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-9" style="color:#0060BF;text-decoration:underline;"><code>color.gray-9</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#FFFFFF;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-white" style="color:#0060BF;text-decoration:underline;"><code>color.white</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">14px · md · SemiBold 600</span><a href="font.html#tok-typography-h7-semibold" style="color:#0060BF;text-decoration:underline;"><code>typography.h7-semibold</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">12px · sm · Regular 400</span><a href="font.html#tok-typography-h9-regular" style="color:#0060BF;text-decoration:underline;"><code>typography.h9-regular</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">13px · H8 · Regular 400</span><a href="font.html#tok-typography-h8-regular" style="color:#0060BF;text-decoration:underline;"><code>typography.h8-regular</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">12px</span><a href="spacing.html#tok-spacing-md" style="color:#0060BF;text-decoration:underline;"><code>spacing.md</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">32px</span><a href="spacing.html#tok-spacing-2xl" style="color:#0060BF;text-decoration:underline;"><code>spacing.2xl</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">4px</span><a href="spacing.html#tok-spacing-xs" style="color:#0060BF;text-decoration:underline;"><code>spacing.xs</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">2px</span><a href="spacing.html#tok-spacing-2" style="color:#0060BF;text-decoration:underline;"><code>spacing.2</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">8px</span><a href="spacing.html#tok-spacing-sm" style="color:#0060BF;text-decoration:underline;"><code>spacing.sm</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:1px;background:#707070;margin-right:8px;vertical-align:middle;flex:0 0 auto;"></span><a href="stroke.html#tok-border-width-default" style="color:#0060BF;text-decoration:underline;"><code>border.width.default</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:0;border-top:2px solid #707070;margin-right:8px;vertical-align:middle;flex:0 0 auto;"></span><a href="stroke.html#tok-border-style-default" style="color:#0060BF;text-decoration:underline;"><code>border.style.default</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;box-sizing:border-box;border:2px solid var(--color-gray-5);background:transparent;margin-right:8px;vertical-align:-3px;flex:0 0 auto;"></span><a href="stroke.html#tok-border-color-default" style="color:#0060BF;text-decoration:underline;"><code>border.color.default</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">8px</span><a href="radius.html#tok-border-radius-lg" style="color:#0060BF;text-decoration:underline;"><code>border-radius.lg</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;background:#FFFFFF;border:1px solid #F0F0F0;box-shadow:0px 15px 15px -10px rgba(0, 0, 0, 0.1);margin-right:8px;vertical-align:-3px;flex:0 0 auto;"></span>0px 15px 15px -10px rgba(0, 0, 0, 0.1) <span style="color:#707070;">（未 token 化）</span></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><img src="../icons/icon-placeholder-switch.svg?v=0f52c5a67544" alt="" style="display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;"><a href="icon-map.html#icon-placeholder-switch" style="color:#0060BF;text-decoration:underline;"><code>icon-placeholder-switch.svg</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><img src="../icons/icon-bullet.svg?v=d97e82725de8" alt="" style="display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;"><a href="icon-map.html#icon-bullet" style="color:#0060BF;text-decoration:underline;"><code>icon-bullet.svg</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><img src="../icons/icon-arrow-right.svg?v=f14aa7f363b6" alt="" style="display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;"><a href="icon-map.html#icon-arrow-right" style="color:#0060BF;text-decoration:underline;"><code>icon-arrow-right.svg</code></a></span></div>
+          <div class="dep-cell dep-cell--right-edge" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:normal;overflow-wrap:anywhere;"><span style="display:inline-block;flex-shrink:0;font-size:11px;line-height:16px;padding:0 5px;margin-right:6px;border-radius:3px;background:#EAF2FF;color:#0060BF;">子组件</span><a href="text-button.html" style="color:#0060BF;text-decoration:underline;">TextButton (inline-black / M)</a></span></div>
+          <div class="dep-cell dep-cell--sticky" role="rowheader"><strong>居中 · 多事件折叠展开</strong><br><code>center.multi-event-expandable</code></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#0060BF;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-blue" style="color:#0060BF;text-decoration:underline;"><code>color.blue</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#19191A;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-1" style="color:#0060BF;text-decoration:underline;"><code>color.gray-1</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#707070;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-3" style="color:#0060BF;text-decoration:underline;"><code>color.gray-3</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#DEE0E3;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-5" style="color:#0060BF;text-decoration:underline;"><code>color.gray-5</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#FAFBFB;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-9" style="color:#0060BF;text-decoration:underline;"><code>color.gray-9</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#FFFFFF;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-white" style="color:#0060BF;text-decoration:underline;"><code>color.white</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:rgba(250,251,251,0);vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span>rgba(250,251,251,0) <span style="color:#707070;">（未 token 化）</span></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:rgba(255,255,255,0);vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span>rgba(255,255,255,0) <span style="color:#707070;">（未 token 化）</span></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">14px · md · SemiBold 600</span><a href="font.html#tok-typography-h7-semibold" style="color:#0060BF;text-decoration:underline;"><code>typography.h7-semibold</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">12px · sm · Regular 400</span><a href="font.html#tok-typography-h9-regular" style="color:#0060BF;text-decoration:underline;"><code>typography.h9-regular</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">13px · H8 · Regular 400</span><a href="font.html#tok-typography-h8-regular" style="color:#0060BF;text-decoration:underline;"><code>typography.h8-regular</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">12px</span><a href="spacing.html#tok-spacing-md" style="color:#0060BF;text-decoration:underline;"><code>spacing.md</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">32px</span><a href="spacing.html#tok-spacing-2xl" style="color:#0060BF;text-decoration:underline;"><code>spacing.2xl</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">4px</span><a href="spacing.html#tok-spacing-xs" style="color:#0060BF;text-decoration:underline;"><code>spacing.xs</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">2px</span><a href="spacing.html#tok-spacing-2" style="color:#0060BF;text-decoration:underline;"><code>spacing.2</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">8px</span><a href="spacing.html#tok-spacing-sm" style="color:#0060BF;text-decoration:underline;"><code>spacing.sm</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:1px;background:#707070;margin-right:8px;vertical-align:middle;flex:0 0 auto;"></span><a href="stroke.html#tok-border-width-default" style="color:#0060BF;text-decoration:underline;"><code>border.width.default</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:0;border-top:2px solid #707070;margin-right:8px;vertical-align:middle;flex:0 0 auto;"></span><a href="stroke.html#tok-border-style-default" style="color:#0060BF;text-decoration:underline;"><code>border.style.default</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;box-sizing:border-box;border:2px solid var(--color-gray-5);background:transparent;margin-right:8px;vertical-align:-3px;flex:0 0 auto;"></span><a href="stroke.html#tok-border-color-default" style="color:#0060BF;text-decoration:underline;"><code>border.color.default</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;color:#A6A6A6;font-size:11px;margin-right:8px;vertical-align:-3px;flex:0 0 auto;">∅</span><a href="stroke.html#tok-border-style-none" style="color:#0060BF;text-decoration:underline;"><code>border.style.none</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">8px</span><a href="radius.html#tok-border-radius-lg" style="color:#0060BF;text-decoration:underline;"><code>border-radius.lg</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;background:#FFFFFF;border:1px solid #F0F0F0;box-shadow:0px 15px 15px -10px rgba(0, 0, 0, 0.1);margin-right:8px;vertical-align:-3px;flex:0 0 auto;"></span>0px 15px 15px -10px rgba(0, 0, 0, 0.1) <span style="color:#707070;">（未 token 化）</span></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><img src="../icons/icon-benefit-development.svg?v=76385f5a9025" alt="" style="display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;"><a href="icon-map.html#icon-benefit-development" style="color:#0060BF;text-decoration:underline;"><code>icon-benefit-development.svg</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><img src="../icons/icon-bullet.svg?v=d97e82725de8" alt="" style="display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;"><a href="icon-map.html#icon-bullet" style="color:#0060BF;text-decoration:underline;"><code>icon-bullet.svg</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><img src="../icons/icon-chevron-down.svg?v=fe5df03acb1c" alt="" style="display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;"><a href="icon-map.html#icon-chevron-down" style="color:#0060BF;text-decoration:underline;"><code>icon-chevron-down.svg</code></a></span></div>
+          <div class="dep-cell dep-cell--right-edge" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:normal;overflow-wrap:anywhere;"><span style="display:inline-block;flex-shrink:0;font-size:11px;line-height:16px;padding:0 5px;margin-right:6px;border-radius:3px;background:#EAF2FF;color:#0060BF;">子组件</span><a href="text-button.html" style="color:#0060BF;text-decoration:underline;">TextButton (inline-blue-link / M)</a></span></div>
+          <div class="dep-cell dep-cell--sticky" role="rowheader"><strong>居左 · 单事件</strong><br><code>left.single-event</code></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#19191A;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-1" style="color:#0060BF;text-decoration:underline;"><code>color.gray-1</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#707070;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-3" style="color:#0060BF;text-decoration:underline;"><code>color.gray-3</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#DEE0E3;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-5" style="color:#0060BF;text-decoration:underline;"><code>color.gray-5</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#FAFBFB;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-9" style="color:#0060BF;text-decoration:underline;"><code>color.gray-9</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#FFFFFF;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-white" style="color:#0060BF;text-decoration:underline;"><code>color.white</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">14px · md · SemiBold 600</span><a href="font.html#tok-typography-h7-semibold" style="color:#0060BF;text-decoration:underline;"><code>typography.h7-semibold</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">12px · sm · Regular 400</span><a href="font.html#tok-typography-h9-regular" style="color:#0060BF;text-decoration:underline;"><code>typography.h9-regular</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">13px · H8 · Regular 400</span><a href="font.html#tok-typography-h8-regular" style="color:#0060BF;text-decoration:underline;"><code>typography.h8-regular</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">12px</span><a href="spacing.html#tok-spacing-md" style="color:#0060BF;text-decoration:underline;"><code>spacing.md</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">32px</span><a href="spacing.html#tok-spacing-2xl" style="color:#0060BF;text-decoration:underline;"><code>spacing.2xl</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">16px</span><a href="spacing.html#tok-spacing-lg" style="color:#0060BF;text-decoration:underline;"><code>spacing.lg</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">4px</span><a href="spacing.html#tok-spacing-xs" style="color:#0060BF;text-decoration:underline;"><code>spacing.xs</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">2px</span><a href="spacing.html#tok-spacing-2" style="color:#0060BF;text-decoration:underline;"><code>spacing.2</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">8px</span><a href="spacing.html#tok-spacing-sm" style="color:#0060BF;text-decoration:underline;"><code>spacing.sm</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:1px;background:#707070;margin-right:8px;vertical-align:middle;flex:0 0 auto;"></span><a href="stroke.html#tok-border-width-default" style="color:#0060BF;text-decoration:underline;"><code>border.width.default</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:0;border-top:2px solid #707070;margin-right:8px;vertical-align:middle;flex:0 0 auto;"></span><a href="stroke.html#tok-border-style-default" style="color:#0060BF;text-decoration:underline;"><code>border.style.default</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;box-sizing:border-box;border:2px solid var(--color-gray-5);background:transparent;margin-right:8px;vertical-align:-3px;flex:0 0 auto;"></span><a href="stroke.html#tok-border-color-default" style="color:#0060BF;text-decoration:underline;"><code>border.color.default</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">8px</span><a href="radius.html#tok-border-radius-lg" style="color:#0060BF;text-decoration:underline;"><code>border-radius.lg</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;background:#FFFFFF;border:1px solid #F0F0F0;box-shadow:0px 15px 15px -10px rgba(0, 0, 0, 0.1);margin-right:8px;vertical-align:-3px;flex:0 0 auto;"></span>0px 15px 15px -10px rgba(0, 0, 0, 0.1) <span style="color:#707070;">（未 token 化）</span></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><img src="../icons/icon-placeholder-switch.svg?v=0f52c5a67544" alt="" style="display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;"><a href="icon-map.html#icon-placeholder-switch" style="color:#0060BF;text-decoration:underline;"><code>icon-placeholder-switch.svg</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><img src="../icons/icon-bullet.svg?v=d97e82725de8" alt="" style="display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;"><a href="icon-map.html#icon-bullet" style="color:#0060BF;text-decoration:underline;"><code>icon-bullet.svg</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><img src="../icons/icon-arrow-right.svg?v=f14aa7f363b6" alt="" style="display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;"><a href="icon-map.html#icon-arrow-right" style="color:#0060BF;text-decoration:underline;"><code>icon-arrow-right.svg</code></a></span></div>
+          <div class="dep-cell dep-cell--right-edge" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:normal;overflow-wrap:anywhere;"><span style="display:inline-block;flex-shrink:0;font-size:11px;line-height:16px;padding:0 5px;margin-right:6px;border-radius:3px;background:#EAF2FF;color:#0060BF;">子组件</span><a href="text-button.html" style="color:#0060BF;text-decoration:underline;">TextButton (inline-black / M)</a></span></div>
+          <div class="dep-cell dep-cell--sticky" role="rowheader"><strong>居左 · 跳转型</strong><br><code>left.jump-type</code></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#0060BF;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-blue" style="color:#0060BF;text-decoration:underline;"><code>color.blue</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#19191A;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-1" style="color:#0060BF;text-decoration:underline;"><code>color.gray-1</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#DEE0E3;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-5" style="color:#0060BF;text-decoration:underline;"><code>color.gray-5</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#FAFBFB;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-9" style="color:#0060BF;text-decoration:underline;"><code>color.gray-9</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#FFFFFF;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-white" style="color:#0060BF;text-decoration:underline;"><code>color.white</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">14px · md · SemiBold 600</span><a href="font.html#tok-typography-h7-semibold" style="color:#0060BF;text-decoration:underline;"><code>typography.h7-semibold</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">12px · sm · Regular 400</span><a href="font.html#tok-typography-h9-regular" style="color:#0060BF;text-decoration:underline;"><code>typography.h9-regular</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">32px</span><a href="spacing.html#tok-spacing-2xl" style="color:#0060BF;text-decoration:underline;"><code>spacing.2xl</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">16px</span><a href="spacing.html#tok-spacing-lg" style="color:#0060BF;text-decoration:underline;"><code>spacing.lg</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">8px</span><a href="spacing.html#tok-spacing-sm" style="color:#0060BF;text-decoration:underline;"><code>spacing.sm</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:1px;background:#707070;margin-right:8px;vertical-align:middle;flex:0 0 auto;"></span><a href="stroke.html#tok-border-width-default" style="color:#0060BF;text-decoration:underline;"><code>border.width.default</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:0;border-top:2px solid #707070;margin-right:8px;vertical-align:middle;flex:0 0 auto;"></span><a href="stroke.html#tok-border-style-default" style="color:#0060BF;text-decoration:underline;"><code>border.style.default</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;box-sizing:border-box;border:2px solid var(--color-gray-5);background:transparent;margin-right:8px;vertical-align:-3px;flex:0 0 auto;"></span><a href="stroke.html#tok-border-color-default" style="color:#0060BF;text-decoration:underline;"><code>border.color.default</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">8px</span><a href="radius.html#tok-border-radius-lg" style="color:#0060BF;text-decoration:underline;"><code>border-radius.lg</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;background:#FFFFFF;border:1px solid #F0F0F0;box-shadow:0px 15px 15px -10px rgba(0, 0, 0, 0.1);margin-right:8px;vertical-align:-3px;flex:0 0 auto;"></span>0px 15px 15px -10px rgba(0, 0, 0, 0.1) <span style="color:#707070;">（未 token 化）</span></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><img src="../icons/icon-placeholder-switch.svg?v=0f52c5a67544" alt="" style="display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;"><a href="icon-map.html#icon-placeholder-switch" style="color:#0060BF;text-decoration:underline;"><code>icon-placeholder-switch.svg</code></a></span></div>
+          <div class="dep-cell dep-cell--right-edge" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell dep-cell--sticky dep-cell--bottom-edge" role="rowheader"><strong>居左 · 多事件折叠展开</strong><br><code>left.multi-event-expandable</code></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#0060BF;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-blue" style="color:#0060BF;text-decoration:underline;"><code>color.blue</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#19191A;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-1" style="color:#0060BF;text-decoration:underline;"><code>color.gray-1</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#707070;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-3" style="color:#0060BF;text-decoration:underline;"><code>color.gray-3</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#DEE0E3;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-5" style="color:#0060BF;text-decoration:underline;"><code>color.gray-5</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#FAFBFB;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-9" style="color:#0060BF;text-decoration:underline;"><code>color.gray-9</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#FFFFFF;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-white" style="color:#0060BF;text-decoration:underline;"><code>color.white</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:rgba(250,251,251,0);vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span>rgba(250,251,251,0) <span style="color:#707070;">（未 token 化）</span></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:rgba(255,255,255,0);vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span>rgba(255,255,255,0) <span style="color:#707070;">（未 token 化）</span></span></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">14px · md · SemiBold 600</span><a href="font.html#tok-typography-h7-semibold" style="color:#0060BF;text-decoration:underline;"><code>typography.h7-semibold</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">12px · sm · Regular 400</span><a href="font.html#tok-typography-h9-regular" style="color:#0060BF;text-decoration:underline;"><code>typography.h9-regular</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">13px · H8 · Regular 400</span><a href="font.html#tok-typography-h8-regular" style="color:#0060BF;text-decoration:underline;"><code>typography.h8-regular</code></a></span></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">12px</span><a href="spacing.html#tok-spacing-md" style="color:#0060BF;text-decoration:underline;"><code>spacing.md</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">32px</span><a href="spacing.html#tok-spacing-2xl" style="color:#0060BF;text-decoration:underline;"><code>spacing.2xl</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">16px</span><a href="spacing.html#tok-spacing-lg" style="color:#0060BF;text-decoration:underline;"><code>spacing.lg</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">4px</span><a href="spacing.html#tok-spacing-xs" style="color:#0060BF;text-decoration:underline;"><code>spacing.xs</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">2px</span><a href="spacing.html#tok-spacing-2" style="color:#0060BF;text-decoration:underline;"><code>spacing.2</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">8px</span><a href="spacing.html#tok-spacing-sm" style="color:#0060BF;text-decoration:underline;"><code>spacing.sm</code></a></span></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:1px;background:#707070;margin-right:8px;vertical-align:middle;flex:0 0 auto;"></span><a href="stroke.html#tok-border-width-default" style="color:#0060BF;text-decoration:underline;"><code>border.width.default</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:0;border-top:2px solid #707070;margin-right:8px;vertical-align:middle;flex:0 0 auto;"></span><a href="stroke.html#tok-border-style-default" style="color:#0060BF;text-decoration:underline;"><code>border.style.default</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;box-sizing:border-box;border:2px solid var(--color-gray-5);background:transparent;margin-right:8px;vertical-align:-3px;flex:0 0 auto;"></span><a href="stroke.html#tok-border-color-default" style="color:#0060BF;text-decoration:underline;"><code>border.color.default</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;color:#A6A6A6;font-size:11px;margin-right:8px;vertical-align:-3px;flex:0 0 auto;">∅</span><a href="stroke.html#tok-border-style-none" style="color:#0060BF;text-decoration:underline;"><code>border.style.none</code></a></span></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">8px</span><a href="radius.html#tok-border-radius-lg" style="color:#0060BF;text-decoration:underline;"><code>border-radius.lg</code></a></span></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;background:#FFFFFF;border:1px solid #F0F0F0;box-shadow:0px 15px 15px -10px rgba(0, 0, 0, 0.1);margin-right:8px;vertical-align:-3px;flex:0 0 auto;"></span>0px 15px 15px -10px rgba(0, 0, 0, 0.1) <span style="color:#707070;">（未 token 化）</span></span></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><img src="../icons/icon-benefit-development.svg?v=76385f5a9025" alt="" style="display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;"><a href="icon-map.html#icon-benefit-development" style="color:#0060BF;text-decoration:underline;"><code>icon-benefit-development.svg</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><img src="../icons/icon-bullet.svg?v=d97e82725de8" alt="" style="display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;"><a href="icon-map.html#icon-bullet" style="color:#0060BF;text-decoration:underline;"><code>icon-bullet.svg</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><img src="../icons/icon-chevron-down.svg?v=fe5df03acb1c" alt="" style="display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;"><a href="icon-map.html#icon-chevron-down" style="color:#0060BF;text-decoration:underline;"><code>icon-chevron-down.svg</code></a></span></div>
+          <div class="dep-cell dep-cell--right-edge dep-cell--bottom-edge" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:normal;overflow-wrap:anywhere;"><span style="display:inline-block;flex-shrink:0;font-size:11px;line-height:16px;padding:0 5px;margin-right:6px;border-radius:3px;background:#EAF2FF;color:#0060BF;">子组件</span><a href="text-button.html" style="color:#0060BF;text-decoration:underline;">TextButton (inline-blue-link / M)</a></span></div>
+        </div>
+      </div>
+    </div>
+    <!-- AUTO-GENERATED-DEPENDENCY-SUMMARY-TABLE:END -->
+
+  <!-- TEMPLATE-DEMO-SPACING -->
+  <div style="height:24px;"></div>
+
+
+
+<!-- SECTION 1: 居中布局 — 单事件 -->
+  <div class="section">
+    <div class="section-title">单事件最小内容：图标 + 标题</div>
+    <p class="section-desc">描述、bullets、普通操作链接按来源可选；来源没有时整块省略，不留空节点。组件 padding 和图标到正文间距保留。跳转型 blueLinks、折叠型必需区域不适用此删减。</p>
+    <div class="card-row">
+      <div class="ds-icon-card ds-icon-card--center ds-icon-card--bg-white ds-icon-card--bordered">
+        <img class="ds-icon-card__icon" src="../icons/icon-placeholder-switch.svg" alt="">
+        <div class="ds-icon-card__body"><p class="ds-icon-card__title">This is a card title</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">① 居中布局 — 单事件</div>
+    <div class="card-row">
+      <!-- 白底 + 含描边 -->
+      <div class="card-col">
+        <div class="state-label">白底 含描边</div>
+        <div class="ds-icon-card ds-icon-card--center ds-icon-card--bg-white ds-icon-card--bordered">
+          <img id="icon-usage-icon-placeholder-switch" class="ds-icon-card__icon" src="../icons/icon-placeholder-switch.svg" alt="" style="width: 36px; height: 36px; scroll-margin-top: 40px;">
+          <div class="ds-icon-card__body">
+            <p class="ds-icon-card__title">This is a card title</p>
+            <p class="ds-icon-card__desc">This is a card description. This is a card description. This is a card description.</p>
+            <div class="ds-icon-card__bullets">
+              <div class="ds-card__bullet-item"><img id="icon-usage-icon-bullet" class="ds-card__bullet-icon" src="../icons/icon-bullet.svg" alt="" style="scroll-margin-top: 40px;"><p class="ds-card__bullet-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div>
+              <div class="ds-card__bullet-item"><img class="ds-card__bullet-icon" src="../icons/icon-bullet.svg" alt=""><p class="ds-card__bullet-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div>
+              <div class="ds-card__bullet-item"><img class="ds-card__bullet-icon" src="../icons/icon-bullet.svg" alt=""><p class="ds-card__bullet-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div>
+            </div>
+            <div class="ds-icon-card__link">
+              <a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="#">
+                <span class="ds-text-btn__text">Learn more</span>
+                <img id="icon-usage-icon-arrow-right-iconcard" class="ds-text-btn__icon" src="../icons/icon-text-button-arrow-right-regular.svg" alt="" style="scroll-margin-top: 40px;">
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 灰底 无描边 -->
+      <div class="card-col">
+        <div class="state-label">灰底 无描边</div>
+        <div class="ds-icon-card ds-icon-card--center ds-icon-card--bg-gray" data-icon-card-current="center-atom" data-ai-example="ai-icon-card-center">
+          <img class="ds-icon-card__icon" src="../icons/icon-placeholder-switch.svg" alt="">
+          <div class="ds-icon-card__body">
+            <div class="ds-icon-card__title-slot"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--black-bold ds-text-btn--l" aria-disabled="true"><span class="ds-text-btn__text">This is a card title</span></a></div>
+            <p class="ds-icon-card__desc">This is a card description. This is a card description. This is a card description.</p>
+            <div class="ds-icon-card__bullets">
+              <div class="ds-card__bullet-item"><img class="ds-card__bullet-icon" src="../icons/icon-bullet.svg" alt=""><p class="ds-card__bullet-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div>
+              <div class="ds-card__bullet-item"><img class="ds-card__bullet-icon" src="../icons/icon-bullet.svg" alt=""><p class="ds-card__bullet-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div>
+              <div class="ds-card__bullet-item"><img class="ds-card__bullet-icon" src="../icons/icon-bullet.svg" alt=""><p class="ds-card__bullet-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div>
+            </div>
+            <div class="ds-icon-card__link">
+              <a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="#">
+                <span class="ds-text-btn__text">Learn more</span>
+                <img class="ds-text-btn__icon" src="../icons/icon-text-button-arrow-right-regular.svg" alt="">
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 2: 居左布局 — 单事件 + 跳转型 -->
+  <div class="section">
+    <div class="section-title">② 居左布局 — 单事件 + 跳转型</div>
+    <div class="card-row">
+      <!-- 白底 含描边 — 单事件 -->
+      <div class="card-col">
+        <div class="state-label">白底 含描边 — 单事件</div>
+        <div data-preview-skeleton="left-single-event" class="ds-icon-card ds-icon-card--left ds-icon-card--bg-white ds-icon-card--bordered">
+          <img class="ds-icon-card__icon" src="../icons/icon-placeholder-switch.svg" alt="" style="width: 36px; height: 36px;">
+          <div class="ds-icon-card__body">
+            <p class="ds-icon-card__title">This is a card title</p>
+            <p class="ds-icon-card__desc">This is a card description. This is a card description. This is a card description.</p>
+            <div class="ds-icon-card__bullets">
+              <div class="ds-card__bullet-item"><img class="ds-card__bullet-icon" src="../icons/icon-bullet.svg" alt=""><p class="ds-card__bullet-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div>
+              <div class="ds-card__bullet-item"><img class="ds-card__bullet-icon" src="../icons/icon-bullet.svg" alt=""><p class="ds-card__bullet-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div>
+              <div class="ds-card__bullet-item"><img class="ds-card__bullet-icon" src="../icons/icon-bullet.svg" alt=""><p class="ds-card__bullet-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div>
+            </div>
+            <div class="ds-icon-card__link">
+              <a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="#">
+                <span class="ds-text-btn__text">Learn more</span>
+                <img class="ds-text-btn__icon" src="../icons/icon-text-button-arrow-right-regular.svg" alt="">
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 白底 含描边 — 跳转型 (蓝色链接) -->
+      <div class="card-col">
+        <div class="state-label">白底 含描边 — 跳转型</div>
+        <div class="ds-icon-card ds-icon-card--left ds-icon-card--bg-white ds-icon-card--bordered">
+          <img class="ds-icon-card__icon" src="../icons/icon-placeholder-switch.svg" alt="" style="width: 36px; height: 36px;">
+          <div class="ds-icon-card__body">
+            <p class="ds-icon-card__title">This is a card title</p>
+            <div class="ds-icon-card__blue-links">
+              <p class="ds-icon-card__blue-link">This text is used to show a description</p>
+              <p class="ds-icon-card__blue-link">This text is used to show a description</p>
+              <p class="ds-icon-card__blue-link">This text is used to show a description</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-row">
+      <!-- 灰底 无描边 — 单事件 -->
+      <div class="card-col">
+        <div class="state-label">灰底 无描边 — 单事件</div>
+        <div class="ds-icon-card ds-icon-card--left ds-icon-card--bg-gray" data-icon-card-current="left-atom" data-ai-example="ai-icon-card-left">
+          <img class="ds-icon-card__icon" src="../icons/icon-placeholder-switch.svg" alt="">
+          <div class="ds-icon-card__body">
+            <div class="ds-icon-card__title-slot"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--black-bold ds-text-btn--l" aria-disabled="true"><span class="ds-text-btn__text">This is a card title</span></a></div>
+            <p class="ds-icon-card__desc">This is a card description. This is a card description. This is a card description.</p>
+            <div class="ds-icon-card__bullets">
+              <div class="ds-card__bullet-item"><img class="ds-card__bullet-icon" src="../icons/icon-bullet.svg" alt=""><p class="ds-card__bullet-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div>
+              <div class="ds-card__bullet-item"><img class="ds-card__bullet-icon" src="../icons/icon-bullet.svg" alt=""><p class="ds-card__bullet-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div>
+              <div class="ds-card__bullet-item"><img class="ds-card__bullet-icon" src="../icons/icon-bullet.svg" alt=""><p class="ds-card__bullet-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div>
+            </div>
+            <div class="ds-icon-card__link">
+              <a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="#">
+                <span class="ds-text-btn__text">Learn more</span>
+                <img class="ds-text-btn__icon" src="../icons/icon-text-button-arrow-right-regular.svg" alt="">
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 灰底 无描边 — 跳转型 -->
+      <div class="card-col">
+        <div class="state-label">灰底 无描边 — 跳转型</div>
+        <div class="ds-icon-card ds-icon-card--left ds-icon-card--bg-gray">
+          <img class="ds-icon-card__icon" src="../icons/icon-placeholder-switch.svg" alt="" style="width: 36px; height: 36px;">
+          <div class="ds-icon-card__body">
+            <p class="ds-icon-card__title">This is a card title</p>
+            <div class="ds-icon-card__blue-links">
+              <p class="ds-icon-card__blue-link">This text is used to show a description</p>
+              <p class="ds-icon-card__blue-link">This text is used to show a description</p>
+              <p class="ds-icon-card__blue-link">This text is used to show a description</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 3: 多事件 — 折叠/展开 -->
+  <div class="section">
+    <div class="section-title">③ 多事件 — 折叠 / 展开（See more / See less）</div>
+
+    <div class="sub-title">居中 — 白色 / 灰色背景</div>
+    <div class="card-row">
+      <div class="card-col card-col--icon-card-specimen">
+        <div class="state-label">白色背景 · 折叠态 (See more)</div>
+        <div class="ds-icon-card ds-icon-card--center ds-icon-card--bg-white ds-icon-card--bordered" data-expandable="">
+          <img class="ds-icon-card__icon" src="../icons/icon-benefit-development.svg" alt="">
+          <div class="ds-icon-card__body">
+            <p class="ds-icon-card__title">This is a card title</p>
+            <p class="ds-icon-card__desc">This is a card description. This is a card description. This is a card description.</p>
+            <div id="icon-card-center-white-collapsed-list" class="ds-icon-card__bullets ds-icon-card__bullets--collapsed">
+              <div class="ds-card__bullet-item"><img class="ds-card__bullet-icon" src="../icons/icon-bullet.svg" alt=""><p class="ds-card__bullet-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div>
+              <div class="ds-card__bullet-item"><img class="ds-card__bullet-icon" src="../icons/icon-bullet.svg" alt=""><p class="ds-card__bullet-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div>
+              <div class="ds-card__bullet-item"><img class="ds-card__bullet-icon" src="../icons/icon-bullet.svg" alt=""><p class="ds-card__bullet-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div>
+              <div class="ds-card__bullet-item"><img class="ds-card__bullet-icon" src="../icons/icon-bullet.svg" alt=""><p class="ds-card__bullet-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div>
+              <div class="ds-card__bullet-item"><img class="ds-card__bullet-icon" src="../icons/icon-bullet.svg" alt=""><p class="ds-card__bullet-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div>
+              <div class="ds-card__bullet-item"><img class="ds-card__bullet-icon" src="../icons/icon-bullet.svg" alt=""><p class="ds-card__bullet-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div>
+              <div class="ds-card__bullet-item"><img class="ds-card__bullet-icon" src="../icons/icon-bullet.svg" alt=""><p class="ds-card__bullet-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div>
+              <div class="ds-card__bullet-item"><img class="ds-card__bullet-icon" src="../icons/icon-bullet.svg" alt=""><p class="ds-card__bullet-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div>
+              <div class="ds-icon-card__fade"></div>
+            </div>
+            <div class="ds-icon-card__link">
+              <button type="button" class="ds-icon-card__toggle ds-text-btn ds-text-btn--inline ds-text-btn--blue-link ds-text-btn--m" data-toggle-btn="" aria-expanded="false" aria-controls="icon-card-center-white-collapsed-list">
+                <span class="ds-text-btn__text" data-toggle-text="">See more</span>
+                <img class="ds-text-btn__icon" src="../icons/icon-chevron-down.svg" alt="">
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-col card-col--icon-card-specimen">
+        <div class="state-label">白色背景 · 展开态 (See less)</div>
+        <div class="ds-icon-card ds-icon-card--center ds-icon-card--bg-white ds-icon-card--bordered" data-expandable="">
+          <img class="ds-icon-card__icon" src="../icons/icon-benefit-development.svg" alt="">
+          <div class="ds-icon-card__body">
+            <p class="ds-icon-card__title">This is a card title</p>
+            <p class="ds-icon-card__desc">This is a card description. This is a card description. This is a card description.</p>
+            <div id="icon-card-center-white-expanded-list" class="ds-icon-card__bullets ds-icon-card__bullets--expanded">
+              <div class="ds-card__bullet-item"><img class="ds-card__bullet-icon" src="../icons/icon-bullet.svg" alt=""><p class="ds-card__bullet-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div>
+              <div class="ds-card__bullet-item"><img class="ds-card__bullet-icon" src="../icons/icon-bullet.svg" alt=""><p class="ds-card__bullet-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div>
+              <div class="ds-card__bullet-item"><img class="ds-card__bullet-icon" src="../icons/icon-bullet.svg" alt=""><p class="ds-card__bullet-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div>
+              <div class="ds-card__bullet-item"><img class="ds-card__bullet-icon" src="../icons/icon-bullet.svg" alt=""><p class="ds-card__bullet-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div>
+              <div class="ds-card__bullet-item"><img class="ds-card__bullet-icon" src="../icons/icon-bullet.svg" alt=""><p class="ds-card__bullet-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div>
+              <div class="ds-card__bullet-item"><img class="ds-card__bullet-icon" src="../icons/icon-bullet.svg" alt=""><p class="ds-card__bullet-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div>
+              <div class="ds-card__bullet-item"><img class="ds-card__bullet-icon" src="../icons/icon-bullet.svg" alt=""><p class="ds-card__bullet-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div>
+              <div class="ds-card__bullet-item"><img class="ds-card__bullet-icon" src="../icons/icon-bullet.svg" alt=""><p class="ds-card__bullet-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div>
+              <div class="ds-icon-card__fade" hidden=""></div>
+            </div>
+            <div class="ds-icon-card__link">
+              <button type="button" class="ds-icon-card__toggle ds-text-btn ds-text-btn--inline ds-text-btn--blue-link ds-text-btn--m ds-text-btn--expanded" data-toggle-btn="" aria-expanded="true" aria-controls="icon-card-center-white-expanded-list">
+                <span class="ds-text-btn__text" data-toggle-text="">See less</span>
+                <img class="ds-text-btn__icon" src="../icons/icon-chevron-down.svg" alt="">
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-col card-col--icon-card-specimen">
+        <div class="state-label">灰色背景 · 折叠态 (See more)</div>
+        <div class="ds-icon-card ds-icon-card--center ds-icon-card--bg-gray" data-expandable="">
+          <img class="ds-icon-card__icon" src="../icons/icon-benefit-development.svg" alt="">
+          <div class="ds-icon-card__body">
+            <p class="ds-icon-card__title">This is a card title</p>
+            <p class="ds-icon-card__desc">This is a card description. This is a card description. This is a card description.</p>
+            <div id="icon-card-center-gray-collapsed-list" class="ds-icon-card__bullets ds-icon-card__bullets--collapsed">
+              <div class="ds-card__bullet-item"><img class="ds-card__bullet-icon" src="../icons/icon-bullet.svg" alt=""><p class="ds-card__bullet-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div>
+              <div class="ds-card__bullet-item"><img class="ds-card__bullet-icon" src="../icons/icon-bullet.svg" alt=""><p class="ds-card__bullet-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div>
+              <div class="ds-card__bullet-item"><img class="ds-card__bullet-icon" src="../icons/icon-bullet.svg" alt=""><p class="ds-card__bullet-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div>
+              <div class="ds-card__bullet-item"><img class="ds-card__bullet-icon" src="../icons/icon-bullet.svg" alt=""><p class="ds-card__bullet-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div>
+              <div class="ds-card__bullet-item"><img class="ds-card__bullet-icon" src="../icons/icon-bullet.svg" alt=""><p class="ds-card__bullet-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div>
+              <div class="ds-card__bullet-item"><img class="ds-card__bullet-icon" src="../icons/icon-bullet.svg" alt=""><p class="ds-card__bullet-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div>
+              <div class="ds-card__bullet-item"><img class="ds-card__bullet-icon" src="../icons/icon-bullet.svg" alt=""><p class="ds-card__bullet-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div>
+              <div class="ds-card__bullet-item"><img class="ds-card__bullet-icon" src="../icons/icon-bullet.svg" alt=""><p class="ds-card__bullet-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div>
+              <div class="ds-icon-card__fade"></div>
+            </div>
+            <div class="ds-icon-card__link">
+              <button type="button" class="ds-icon-card__toggle ds-text-btn ds-text-btn--inline ds-text-btn--blue-link ds-text-btn--m" data-toggle-btn="" aria-expanded="false" aria-controls="icon-card-center-gray-collapsed-list">
+                <span class="ds-text-btn__text" data-toggle-text="">See more</span>
+                <img class="ds-text-btn__icon" src="../icons/icon-chevron-down.svg" alt="">
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-col card-col--icon-card-specimen">
+        <div class="state-label">灰色背景 · 展开态 (See less)</div>
+        <div class="ds-icon-card ds-icon-card--center ds-icon-card--bg-gray" data-expandable="">
+          <img class="ds-icon-card__icon" src="../icons/icon-benefit-development.svg" alt="">
+          <div class="ds-icon-card__body">
+            <p class="ds-icon-card__title">This is a card title</p>
+            <p class="ds-icon-card__desc">This is a card description. This is a card description. This is a card description.</p>
+            <div id="icon-card-center-gray-expanded-list" class="ds-icon-card__bullets ds-icon-card__bullets--expanded">
+              <div class="ds-card__bullet-item"><img class="ds-card__bullet-icon" src="../icons/icon-bullet.svg" alt=""><p class="ds-card__bullet-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div>
+              <div class="ds-card__bullet-item"><img class="ds-card__bullet-icon" src="../icons/icon-bullet.svg" alt=""><p class="ds-card__bullet-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div>
+              <div class="ds-card__bullet-item"><img class="ds-card__bullet-icon" src="../icons/icon-bullet.svg" alt=""><p class="ds-card__bullet-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div>
+              <div class="ds-card__bullet-item"><img class="ds-card__bullet-icon" src="../icons/icon-bullet.svg" alt=""><p class="ds-card__bullet-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div>
+              <div class="ds-card__bullet-item"><img class="ds-card__bullet-icon" src="../icons/icon-bullet.svg" alt=""><p class="ds-card__bullet-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div>
+              <div class="ds-card__bullet-item"><img class="ds-card__bullet-icon" src="../icons/icon-bullet.svg" alt=""><p class="ds-card__bullet-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div>
+              <div class="ds-card__bullet-item"><img class="ds-card__bullet-icon" src="../icons/icon-bullet.svg" alt=""><p class="ds-card__bullet-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div>
+              <div class="ds-card__bullet-item"><img class="ds-card__bullet-icon" src="../icons/icon-bullet.svg" alt=""><p class="ds-card__bullet-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div>
+              <div class="ds-icon-card__fade" hidden=""></div>
+            </div>
+            <div class="ds-icon-card__link">
+              <button type="button" class="ds-icon-card__toggle ds-text-btn ds-text-btn--inline ds-text-btn--blue-link ds-text-btn--m ds-text-btn--expanded" data-toggle-btn="" aria-expanded="true" aria-controls="icon-card-center-gray-expanded-list">
+                <span class="ds-text-btn__text" data-toggle-text="">See less</span>
+                <img class="ds-text-btn__icon" src="../icons/icon-chevron-down.svg" alt="">
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sub-title">居左 — 白色 / 灰色背景</div>
+    <div class="card-row">
+      <div class="card-col card-col--icon-card-specimen">
+        <div class="state-label">白色背景 · 折叠态 (See more)</div>
+        <div class="ds-icon-card ds-icon-card--left ds-icon-card--bg-white ds-icon-card--bordered" data-expandable="">
+          <img class="ds-icon-card__icon" src="../icons/icon-benefit-development.svg" alt="">
+          <div class="ds-icon-card__body">
+            <p class="ds-icon-card__title">This is a card title</p>
+            <p class="ds-icon-card__desc">This is a card description. This is a card description. This is a card description.</p>
+            <div id="icon-card-left-white-collapsed-list" class="ds-icon-card__bullets ds-icon-card__bullets--collapsed">
+              <div class="ds-card__bullet-item"><img class="ds-card__bullet-icon" src="../icons/icon-bullet.svg" alt=""><p class="ds-card__bullet-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div>
+              <div class="ds-card__bullet-item"><img class="ds-card__bullet-icon" src="../icons/icon-bullet.svg" alt=""><p class="ds-card__bullet-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div>
+              <div class="ds-card__bullet-item"><img class="ds-card__bullet-icon" src="../icons/icon-bullet.svg" alt=""><p class="ds-card__bullet-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div>
+              <div class="ds-card__bullet-item"><img class="ds-card__bullet-icon" src="../icons/icon-bullet.svg" alt=""><p class="ds-card__bullet-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div>
+              <div class="ds-card__bullet-item"><img class="ds-card__bullet-icon" src="../icons/icon-bullet.svg" alt=""><p class="ds-card__bullet-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div>
+              <div class="ds-card__bullet-item"><img class="ds-card__bullet-icon" src="../icons/icon-bullet.svg" alt=""><p class="ds-card__bullet-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div>
+              <div class="ds-card__bullet-item"><img class="ds-card__bullet-icon" src="../icons/icon-bullet.svg" alt=""><p class="ds-card__bullet-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div>
+              <div class="ds-card__bullet-item"><img class="ds-card__bullet-icon" src="../icons/icon-bullet.svg" alt=""><p class="ds-card__bullet-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div>
+              <div class="ds-icon-card__fade"></div>
+            </div>
+            <div class="ds-icon-card__link">
+              <button type="button" class="ds-icon-card__toggle ds-text-btn ds-text-btn--inline ds-text-btn--blue-link ds-text-btn--m" data-toggle-btn="" aria-expanded="false" aria-controls="icon-card-left-white-collapsed-list">
+                <span class="ds-text-btn__text" data-toggle-text="">See more</span>
+                <img class="ds-text-btn__icon" src="../icons/icon-chevron-down.svg" alt="">
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-col card-col--icon-card-specimen">
+        <div class="state-label">白色背景 · 展开态 (See less)</div>
+        <div class="ds-icon-card ds-icon-card--left ds-icon-card--bg-white ds-icon-card--bordered" data-expandable="">
+          <img class="ds-icon-card__icon" src="../icons/icon-benefit-development.svg" alt="">
+          <div class="ds-icon-card__body">
+            <p class="ds-icon-card__title">This is a card title</p>
+            <p class="ds-icon-card__desc">This is a card description. This is a card description. This is a card description.</p>
+            <div id="icon-card-left-white-expanded-list" class="ds-icon-card__bullets ds-icon-card__bullets--expanded">
+              <div class="ds-card__bullet-item"><img class="ds-card__bullet-icon" src="../icons/icon-bullet.svg" alt=""><p class="ds-card__bullet-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div>
+              <div class="ds-card__bullet-item"><img class="ds-card__bullet-icon" src="../icons/icon-bullet.svg" alt=""><p class="ds-card__bullet-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div>
+              <div class="ds-card__bullet-item"><img class="ds-card__bullet-icon" src="../icons/icon-bullet.svg" alt=""><p class="ds-card__bullet-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div>
+              <div class="ds-card__bullet-item"><img class="ds-card__bullet-icon" src="../icons/icon-bullet.svg" alt=""><p class="ds-card__bullet-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div>
+              <div class="ds-card__bullet-item"><img class="ds-card__bullet-icon" src="../icons/icon-bullet.svg" alt=""><p class="ds-card__bullet-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div>
+              <div class="ds-card__bullet-item"><img class="ds-card__bullet-icon" src="../icons/icon-bullet.svg" alt=""><p class="ds-card__bullet-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div>
+              <div class="ds-card__bullet-item"><img class="ds-card__bullet-icon" src="../icons/icon-bullet.svg" alt=""><p class="ds-card__bullet-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div>
+              <div class="ds-card__bullet-item"><img class="ds-card__bullet-icon" src="../icons/icon-bullet.svg" alt=""><p class="ds-card__bullet-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div>
+              <div class="ds-icon-card__fade" hidden=""></div>
+            </div>
+            <div class="ds-icon-card__link">
+              <button type="button" class="ds-icon-card__toggle ds-text-btn ds-text-btn--inline ds-text-btn--blue-link ds-text-btn--m ds-text-btn--expanded" data-toggle-btn="" aria-expanded="true" aria-controls="icon-card-left-white-expanded-list">
+                <span class="ds-text-btn__text" data-toggle-text="">See less</span>
+                <img class="ds-text-btn__icon" src="../icons/icon-chevron-down.svg" alt="">
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-col card-col--icon-card-specimen">
+        <div class="state-label">灰色背景 · 折叠态 (See more)</div>
+        <div class="ds-icon-card ds-icon-card--left ds-icon-card--bg-gray" data-expandable="">
+          <img class="ds-icon-card__icon" src="../icons/icon-benefit-development.svg" alt="">
+          <div class="ds-icon-card__body">
+            <p class="ds-icon-card__title">This is a card title</p>
+            <p class="ds-icon-card__desc">This is a card description. This is a card description. This is a card description.</p>
+            <div id="icon-card-left-gray-collapsed-list" class="ds-icon-card__bullets ds-icon-card__bullets--collapsed">
+              <div class="ds-card__bullet-item"><img class="ds-card__bullet-icon" src="../icons/icon-bullet.svg" alt=""><p class="ds-card__bullet-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div>
+              <div class="ds-card__bullet-item"><img class="ds-card__bullet-icon" src="../icons/icon-bullet.svg" alt=""><p class="ds-card__bullet-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div>
+              <div class="ds-card__bullet-item"><img class="ds-card__bullet-icon" src="../icons/icon-bullet.svg" alt=""><p class="ds-card__bullet-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div>
+              <div class="ds-card__bullet-item"><img class="ds-card__bullet-icon" src="../icons/icon-bullet.svg" alt=""><p class="ds-card__bullet-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div>
+              <div class="ds-card__bullet-item"><img class="ds-card__bullet-icon" src="../icons/icon-bullet.svg" alt=""><p class="ds-card__bullet-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div>
+              <div class="ds-card__bullet-item"><img class="ds-card__bullet-icon" src="../icons/icon-bullet.svg" alt=""><p class="ds-card__bullet-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div>
+              <div class="ds-card__bullet-item"><img class="ds-card__bullet-icon" src="../icons/icon-bullet.svg" alt=""><p class="ds-card__bullet-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div>
+              <div class="ds-card__bullet-item"><img class="ds-card__bullet-icon" src="../icons/icon-bullet.svg" alt=""><p class="ds-card__bullet-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div>
+              <div class="ds-icon-card__fade"></div>
+            </div>
+            <div class="ds-icon-card__link">
+              <button type="button" class="ds-icon-card__toggle ds-text-btn ds-text-btn--inline ds-text-btn--blue-link ds-text-btn--m" data-toggle-btn="" aria-expanded="false" aria-controls="icon-card-left-gray-collapsed-list">
+                <span class="ds-text-btn__text" data-toggle-text="">See more</span>
+                <img class="ds-text-btn__icon" src="../icons/icon-chevron-down.svg" alt="">
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-col card-col--icon-card-specimen">
+        <div class="state-label">灰色背景 · 展开态 (See less)</div>
+        <div class="ds-icon-card ds-icon-card--left ds-icon-card--bg-gray" data-expandable="">
+          <img class="ds-icon-card__icon" src="../icons/icon-benefit-development.svg" alt="">
+          <div class="ds-icon-card__body">
+            <p class="ds-icon-card__title">This is a card title</p>
+            <p class="ds-icon-card__desc">This is a card description. This is a card description. This is a card description.</p>
+            <div id="icon-card-left-gray-expanded-list" class="ds-icon-card__bullets ds-icon-card__bullets--expanded">
+              <div class="ds-card__bullet-item"><img class="ds-card__bullet-icon" src="../icons/icon-bullet.svg" alt=""><p class="ds-card__bullet-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div>
+              <div class="ds-card__bullet-item"><img class="ds-card__bullet-icon" src="../icons/icon-bullet.svg" alt=""><p class="ds-card__bullet-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div>
+              <div class="ds-card__bullet-item"><img class="ds-card__bullet-icon" src="../icons/icon-bullet.svg" alt=""><p class="ds-card__bullet-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div>
+              <div class="ds-card__bullet-item"><img class="ds-card__bullet-icon" src="../icons/icon-bullet.svg" alt=""><p class="ds-card__bullet-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div>
+              <div class="ds-card__bullet-item"><img class="ds-card__bullet-icon" src="../icons/icon-bullet.svg" alt=""><p class="ds-card__bullet-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div>
+              <div class="ds-card__bullet-item"><img class="ds-card__bullet-icon" src="../icons/icon-bullet.svg" alt=""><p class="ds-card__bullet-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div>
+              <div class="ds-card__bullet-item"><img class="ds-card__bullet-icon" src="../icons/icon-bullet.svg" alt=""><p class="ds-card__bullet-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div>
+              <div class="ds-card__bullet-item"><img class="ds-card__bullet-icon" src="../icons/icon-bullet.svg" alt=""><p class="ds-card__bullet-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div>
+              <div class="ds-icon-card__fade" hidden=""></div>
+            </div>
+            <div class="ds-icon-card__link">
+              <button type="button" class="ds-icon-card__toggle ds-text-btn ds-text-btn--inline ds-text-btn--blue-link ds-text-btn--m ds-text-btn--expanded" data-toggle-btn="" aria-expanded="true" aria-controls="icon-card-left-gray-expanded-list">
+                <span class="ds-text-btn__text" data-toggle-text="">See less</span>
+                <img class="ds-text-btn__icon" src="../icons/icon-chevron-down.svg" alt="">
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // See more / See less toggle：保留原生 button 的鼠标与 Enter/Space 行为，并同步 ARIA。
+    document.querySelectorAll('[data-toggle-btn]').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var card = btn.closest('[data-expandable]');
+        if (!card) return;
+        var bullets = card.querySelector('.ds-icon-card__bullets');
+        var fade = card.querySelector('.ds-icon-card__fade');
+        var text = btn.querySelector('[data-toggle-text]');
+        var willExpand = btn.getAttribute('aria-expanded') !== 'true';
+        bullets.classList.toggle('ds-icon-card__bullets--collapsed', !willExpand);
+        bullets.classList.toggle('ds-icon-card__bullets--expanded', willExpand);
+        if (fade) fade.hidden = willExpand;
+        text.textContent = willExpand ? 'See less' : 'See more';
+        btn.classList.toggle('ds-text-btn--expanded', willExpand);
+        btn.setAttribute('aria-expanded', String(willExpand));
+      });
+    });
+  </script>
+  <!-- DS_PREVIEW_AUTOHEIGHT: 供 component-library.html 堆叠合并视图自撑高，勿删 -->
+  <script>
+    (function () {
+      // 嵌入组件库 iframe 时，关闭自身竖向滚动条：高度由父页按内容精确设定，
+      // 避免出现「父页滚动条 + iframe 自身滚动条」两条滚动条。
+      if (window.parent !== window && document.documentElement) {
+        document.documentElement.style.overflow = 'hidden';
+      }
+      // 用 body 最后一个可视元素的 bottom 作为高度，去掉 body padding-bottom / 尾部 section
+      // margin-bottom 等空白，避免合并视图（stage--stacked）里两个 iframe 之间出现过大间隙。
+      // rAF 节流合并 ResizeObserver 抖动，减少视觉上的高度反复变化。
+      var reportPending = false;
+      function measure() {
+        var last = null;
+        if (document.body) {
+          for (var i = document.body.children.length - 1; i >= 0; i--) {
+            var c = document.body.children[i];
+            if (c.tagName === 'SCRIPT' || c.tagName === 'STYLE') continue;
+            last = c;
+            break;
+          }
+        }
+        if (last) {
+          var rect = last.getBoundingClientRect();
+          var scrollY = window.scrollY || window.pageYOffset || 0;
+          return Math.ceil(rect.bottom + scrollY);
+        }
+        return Math.max(document.body ? document.body.scrollHeight : 0, document.documentElement.scrollHeight);
+      }
+      function report() {
+        parent.postMessage({ __dsPreviewHeight: measure(), __dsUrl: location.href }, '*');
+      }
+      function scheduleReport() {
+        if (reportPending) return;
+        reportPending = true;
+        requestAnimationFrame(function () { reportPending = false; report(); });
+      }
+      window.addEventListener('load', scheduleReport);
+      window.addEventListener('resize', scheduleReport);
+      setTimeout(report, 300);
+      if (window.ResizeObserver && document.body) {
+        new ResizeObserver(scheduleReport).observe(document.body);
+      }
+    })();
+  </script>
+  <script src="preview-link.js"></script>
+  <script src="reference-live.js"></script>
+
+
+<section data-fs-page-custom=""><h2>Left jump IconCard · native display-only links</h2><div class="ds-icon-card ds-icon-card--left ds-icon-card--bg-gray" data-ai-example="ai-icon-card-left-jump" data-icon-card-current="jump">
+          <img class="ds-icon-card__icon" src="../icons/icon-placeholder-switch.svg" alt="">
+          <div class="ds-icon-card__body">
+            <div class="ds-icon-card__title-slot"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--black-bold ds-text-btn--l" aria-disabled="true"><span class="ds-text-btn__text">This is a card title</span></a></div>
+            <div class="ds-icon-card__blue-links">
+              <a class="ds-icon-card__blue-link" role="link" aria-disabled="true">This text is used to show a description</a>
+              <a class="ds-icon-card__blue-link" role="link" aria-disabled="true">This text is used to show a description</a>
+              <a class="ds-icon-card__blue-link" role="link" aria-disabled="true">This text is used to show a description</a>
+            </div>
+          </div>
+        </div></section></body></html>

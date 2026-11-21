@@ -1,0 +1,33 @@
+/* Exact 12px source divider; explicitly current roots only. Legacy pages retain shared resources. */
+.ds-breadcrumb[data-breadcrumb-current] .ds-breadcrumb__separator {
+  width: 12px;
+  height: 12px;
+  font-size: 0;
+  line-height: 0;
+  background-color: var(--color-gray-3);
+  -webkit-mask: url("./icons/icon-breadcrumb-separator.svg") center / 12px 12px no-repeat;
+  mask: url("./icons/icon-breadcrumb-separator.svg") center / 12px 12px no-repeat;
+}
+.ds-breadcrumb.ds-breadcrumb--dark[data-breadcrumb-current] .ds-breadcrumb__separator {
+  background-color: var(--color-white);
+  opacity: 0.5;
+}
+.ds-breadcrumb[data-breadcrumb-current] .ds-breadcrumb__link:hover {
+  color: var(--color-gray-1);
+  text-decoration: none;
+}
+.ds-breadcrumb.ds-breadcrumb--dark[data-breadcrumb-current] .ds-breadcrumb__link:hover {
+  color: var(--color-white);
+}
+
+/* Original members10621:10128 /62724:74229. Fixed source display, no responsive admission. */
+.ds-breadcrumb-source-full-width {
+  box-sizing: border-box;
+  width: 1920px;
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-20) var(--spacing-banner-content-inset);
+}

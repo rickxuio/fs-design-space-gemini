@@ -1,0 +1,80 @@
+{
+  "date": "2026-10-12",
+  "status": "有限清理工程范围通过；视觉待验证；预算检查点等待下一批确认",
+  "purpose": "Preserve currently displayed local demos and dependency bindings before source-only cleanup",
+  "snapshots": [
+    {
+      "original": "components/preview/rate.html",
+      "archive": "components/sources/maintenance/preview-source-cleanup-1012/preview-rate.html",
+      "sha256": "f3d91ee86e36f4ab22ce8f39206dd27396a4fc4c78f532f9383a98ee3030e225"
+    },
+    {
+      "original": "components/preview/carousel.html",
+      "archive": "components/sources/maintenance/preview-source-cleanup-1012/preview-carousel.html",
+      "sha256": "8844c4a318056af913283993bfcdc37a2c41817e2f8bf2c4f2e889c9fb79fb94"
+    },
+    {
+      "original": "components/contracts/rate.json",
+      "archive": "components/sources/maintenance/preview-source-cleanup-1012/contract-rate.json",
+      "sha256": "8f75871d2b588b62d2294e27cd1829c18c99f7c554da946d7ba172bdd3b28135"
+    },
+    {
+      "original": "components/contracts/carousel.json",
+      "archive": "components/sources/maintenance/preview-source-cleanup-1012/contract-carousel.json",
+      "sha256": "8fa4c236a94f0892ddcd840fb0e5cf13b9193a837a6f07e5fef27cfe29a341e7"
+    }
+  ],
+  "onlineAttempt": {
+    "url": "https://mastergo.com/file/143880409387753?page_id=3752%3A4106&layer_id=69772%3A098027",
+    "result": "Chrome原路线仍停登录；随后已登录原生MasterGo成功读取对应原件，不绕过本地浏览器拒绝"
+  },
+  "requiredNext": [
+    "仅在确认下一批范围后复核Carousel清理后本地视觉"
+  ],
+  "limits": [
+    "完整Rate summary及Carousel AI调用未开放",
+    "原件截图不替代本地实际视觉验证",
+    "冻结页面未升级，适配暂缓"
+  ],
+  "sourceRead": {
+    "date": "2026-10-12",
+    "rateNode": "69772:106234",
+    "rateGeometry": "284×108",
+    "rateData": "4.0 / 42 reviews / 28,14,0,0,0（保留原件，不自行修正均值）",
+    "carouselNode": "68908:043079",
+    "carouselGeometry": "1920×512；Web外部多图",
+    "evidence": [
+      "rate-native-1012.png",
+      "rate-native-state-1012.txt",
+      "carousel-native-1012.png",
+      "carousel-native-state-1012.txt"
+    ]
+  },
+  "batch": {
+    "mainComponent": "Carousel",
+    "relatedScope": [
+      "收敛此前已在执行的Rate清理",
+      "Banner只核对分页依赖",
+      "Comment只核对Rate display依赖",
+      "Select仅更新受编译器变化影响的库存指纹"
+    ],
+    "closed": [
+      "删除无原件对应的演示",
+      "撤回不可信完整调用",
+      "保留有来源的有限依赖",
+      "必要同步通过；相关52项中51项原通过，最后1项措辞断言修正后单独通过"
+    ],
+    "remaining": [
+      "Carousel清理后的本地实际视觉",
+      "Rate评分表实际几何/样式映射"
+    ],
+    "engineering": "本批有限范围通过，不是两个家族完整验收",
+    "visual": "待验证",
+    "stop": "已到安全检查点；等待用户确认下一批范围"
+  },
+  "checks": [
+    "source-sync-final2.log：同步通过",
+    "final-related-tests.log：51项通过、1项措辞断言失败",
+    "last-required-check.log：修正措辞后该1项单独通过，无重复全套检查"
+  ]
+}

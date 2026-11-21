@@ -1,0 +1,1044 @@
+{
+  "id": "comp_video_button_001",
+  "name": "VideoButton",
+  "chineseName": "视频播放按钮",
+  "description": "视频播放控制按钮，用于深色背景上的视频播放操作，支持时间标签和播放按钮两种形态",
+  "category": "通用 General",
+  "types": [
+    {
+      "name": "time-tag",
+      "chineseName": "时间标签",
+      "description": "带播放图标和时间文字的小型标签按钮"
+    },
+    {
+      "name": "play-button",
+      "chineseName": "播放按钮",
+      "description": "仅含播放图标的大型播放按钮"
+    }
+  ],
+  "variants": [
+    {
+      "name": "dark",
+      "type": "time-tag / play-button",
+      "chineseName": "黑色",
+      "sizes": [
+        {
+          "name": "s",
+          "dimensions": "63x24px",
+          "styleProperties": {
+            "width": "auto",
+            "height": "24px",
+            "padding": "8px",
+            "gap": "4px",
+            "fontSize": "12px",
+            "lineHeight": "20px",
+            "fontWeight": "400",
+            "fontFamily": "Open Sans",
+            "backgroundColor": "rgba(25,25,26,0.6)",
+            "color": "#FFFFFF",
+            "borderRadius": "4px",
+            "iconSize": "12x12px",
+            "icon": "icon-play.svg"
+          },
+          "cssClass": "ds-video-btn--s",
+          "sourceCorrespondence": {
+            "padding": {
+              "sourceDeclaration": "8px",
+              "runtimeDeclaration": "8px",
+              "status": "online-source-axis-declarations-confirmed",
+              "note": "2026-10-10 native MasterGo inspector: horizontal 8px / vertical 8px, fixed height24px, width63px. Defaults64858:84732(dark) and64858:84737(light). Declaration match only; local rendering, font loading and intrinsic content layout remain pending."
+            }
+          }
+        },
+        {
+          "name": "l",
+          "dimensions": "90x38px",
+          "styleProperties": {
+            "width": "auto",
+            "height": "38px",
+            "padding": "8px 16px",
+            "gap": "8px",
+            "fontSize": "14px",
+            "lineHeight": "22px",
+            "fontWeight": "400",
+            "fontFamily": "Open Sans",
+            "backgroundColor": "rgba(25,25,26,0.6)",
+            "color": "#FFFFFF",
+            "borderRadius": "4px",
+            "iconSize": "14x14px",
+            "icon": "icon-play.svg"
+          },
+          "cssClass": "ds-video-btn--l"
+        },
+        {
+          "name": "xl",
+          "dimensions": "100x50px",
+          "styleProperties": {
+            "width": "100px",
+            "height": "50px",
+            "padding": "12px 25px",
+            "gap": "12px",
+            "fontFamily": "Open Sans",
+            "backgroundColor": "rgba(25,25,26,0.6)",
+            "color": "#FFFFFF",
+            "borderRadius": "4px",
+            "iconSize": "20x20px",
+            "icon": "icon-play.svg",
+            "content": "icon only, no text"
+          },
+          "cssClass": "ds-video-btn--xl",
+          "sourceCorrespondence": {
+            "source": "components/sources/video-button/xl-geometry-source-1014.json",
+            "default": "fixed100×50;Play20 centered40/15;12/25 padding",
+            "hover": "same100×50/Play20;inner12.8/25.6 padding and12.8 gap;Pointer is explanatory",
+            "runtime": "Flattened visual inner frame onto existing simple button; no new AI call",
+            "oldMismatch": "143×60/25px from old local declaration corrected by original component"
+          }
+        }
+      ],
+      "cssClass": "ds-video-btn ds-video-btn--dark",
+      "isComplete": true,
+      "requiredChildren": [
+        "img.ds-video-btn__icon",
+        "span.ds-video-btn__text"
+      ],
+      "selectionDecisionType": "深色遮罩",
+      "whenToUse": "亮色视频封面上的深色S时长标签。",
+      "whenNotToUse": "纯播放XL、播放暂停状态或内建播放器。",
+      "usage": "亮色视频封面上的深色S时长标签。"
+    },
+    {
+      "name": "light",
+      "type": "time-tag / play-button",
+      "chineseName": "反白",
+      "sizes": [
+        {
+          "name": "s",
+          "dimensions": "63x24px",
+          "styleProperties": {
+            "width": "auto",
+            "height": "24px",
+            "padding": "8px",
+            "gap": "4px",
+            "fontSize": "12px",
+            "lineHeight": "20px",
+            "fontWeight": "400",
+            "fontFamily": "Open Sans",
+            "backgroundColor": "rgba(255,255,255,0.1)",
+            "color": "#FFFFFF",
+            "borderRadius": "4px",
+            "iconSize": "12x12px",
+            "icon": "icon-play.svg"
+          },
+          "cssClass": "ds-video-btn--s",
+          "sourceCorrespondence": {
+            "padding": {
+              "sourceDeclaration": "8px",
+              "runtimeDeclaration": "8px",
+              "status": "online-source-axis-declarations-confirmed",
+              "note": "2026-10-10 native MasterGo inspector: horizontal 8px / vertical 8px, fixed height24px, width63px. Defaults64858:84732(dark) and64858:84737(light). Declaration match only; local rendering, font loading and intrinsic content layout remain pending."
+            }
+          }
+        },
+        {
+          "name": "l",
+          "dimensions": "90x38px",
+          "styleProperties": {
+            "width": "auto",
+            "height": "38px",
+            "padding": "8px 16px",
+            "gap": "8px",
+            "fontSize": "14px",
+            "lineHeight": "22px",
+            "fontWeight": "400",
+            "fontFamily": "Open Sans",
+            "backgroundColor": "rgba(255,255,255,0.1)",
+            "color": "#FFFFFF",
+            "borderRadius": "4px",
+            "iconSize": "14x14px",
+            "icon": "icon-play.svg"
+          },
+          "cssClass": "ds-video-btn--l"
+        },
+        {
+          "name": "xl",
+          "dimensions": "100x50px",
+          "styleProperties": {
+            "width": "100px",
+            "height": "50px",
+            "padding": "12px 25px",
+            "gap": "12px",
+            "fontFamily": "Open Sans",
+            "backgroundColor": "rgba(255,255,255,0.1)",
+            "color": "#FFFFFF",
+            "borderRadius": "4px",
+            "iconSize": "20x20px",
+            "icon": "icon-play.svg",
+            "content": "icon only, no text"
+          },
+          "cssClass": "ds-video-btn--xl",
+          "sourceCorrespondence": {
+            "source": "components/sources/video-button/xl-geometry-source-1014.json",
+            "default": "fixed100×50;Play20 centered40/15;12/25 padding",
+            "hover": "same100×50/Play20;inner12.8/25.6 padding and12.8 gap;Pointer is explanatory",
+            "runtime": "Flattened visual inner frame onto existing simple button; no new AI call",
+            "oldMismatch": "143×60/25px from old local declaration corrected by original component"
+          }
+        }
+      ],
+      "cssClass": "ds-video-btn ds-video-btn--light",
+      "isComplete": true,
+      "requiredChildren": [
+        "img.ds-video-btn__icon",
+        "span.ds-video-btn__text"
+      ],
+      "selectionDecisionType": "浅色反白",
+      "whenToUse": "深色视频封面上的反白S时长标签。",
+      "whenNotToUse": "亮底对比不足、任意尺寸或播放状态。",
+      "usage": "深色视频封面上的反白S时长标签。"
+    }
+  ],
+  "states": [
+    {
+      "name": "default",
+      "chineseName": "默认",
+      "styleOverrides": {},
+      "description": "正常显示状态"
+    },
+    {
+      "name": "hover",
+      "chineseName": "悬停",
+      "styleOverrides": {
+        "dark": "background-color: rgba(25,25,26,0.8)",
+        "light": "background-color: rgba(255,255,255,0.3)",
+        "xl": "padding:12.8px 25.6px;gap:12.8px; width100px/height50px/icon20px remain fixed"
+      },
+      "description": "鼠标悬停状态，背景透明度增加"
+    }
+  ],
+  "commonProperties": {
+    "display": "inline-flex",
+    "alignItems": "center",
+    "justifyContent": "center",
+    "cursor": "pointer",
+    "fontFamily": "Open Sans",
+    "borderRadius": "4px",
+    "color": "#FFFFFF",
+    "transition": "background-color 0.2s ease",
+    "border": "none"
+  },
+  "usageGuidelines": "视频播放按钮用于深色背景上的视频封面或视频区域。S 和 L 尺寸为时间标签，显示视频时长；XL 尺寸为纯播放按钮，仅显示播放图标。黑色配色用于浅色视频封面，反白配色用于深色视频封面。",
+  "tokenReferences": [
+    "color.gray-1",
+    "color.white",
+    "color.white-translucent",
+    "typography.font-family-base",
+    "typography.font-size-sm",
+    "typography.font-size-md",
+    "typography.font-weight-regular",
+    "border-radius.md",
+    "spacing.sm",
+    "spacing.xs",
+    "spacing.lg",
+    "spacing.md",
+    "spacing.25",
+    "border.style.none",
+    "typography.h7-regular",
+    "typography.h9-regular",
+    "color.video-dark-surface",
+    "color.video-dark-hover-surface",
+    "color.video-light-hover-surface"
+  ],
+  "constraints": {
+    "allowedChildren": [
+      "Icon",
+      "Text"
+    ],
+    "requiredProperties": [
+      "variant",
+      "size"
+    ],
+    "forbiddenCombinations": [],
+    "notes": "XL size does not contain text, only the play icon"
+  },
+  "relations": {
+    "iconDependencies": [
+      {
+        "icon": "icon-play.svg",
+        "usage": "播放图标；时间标签（S/L）与播放按钮（XL）所有形态固定显示，白色反白填充",
+        "required": true,
+        "appliesTo": [
+          "time-tag",
+          "play-button"
+        ]
+      }
+    ],
+    "variantDecisionsDescription": "按内容与交互选具体变体，再核对同版调用资格。候选、不用、参考同时用于规范展示与AI；既有来源、当前MG核对、工程与视觉批准分开记录。",
+    "variantDecisions": [
+      {
+        "type": "深色遮罩",
+        "className": "ds-video-btn--dark",
+        "whenToUse": "亮色视频封面上的深色S时长标签。",
+        "whenNotToUse": "纯播放XL、播放暂停状态或内建播放器。",
+        "nestedComponents": [],
+        "status": "当前MG来源与现有有限调用已核对；资格读同版catalog，未开放和视觉批准不据此改变。",
+        "variant": "dark",
+        "fragment": "dark",
+        "selectionCases": [
+          {
+            "id": "video-button.dark.1",
+            "kind": "use",
+            "condition": "亮色视频封面上的深色S时长标签。",
+            "result": "调用dark；当前固定S；duration为时长内容，action归宿主。",
+            "targetVariant": "dark",
+            "strength": "candidate"
+          },
+          {
+            "id": "video-button.dark.2",
+            "kind": "avoid",
+            "condition": "纯播放XL、播放暂停状态或内建播放器。",
+            "result": "不使用此变体；先核对相邻组件和实际调用范围。",
+            "targetVariant": "dark",
+            "strength": "avoid"
+          }
+        ]
+      },
+      {
+        "type": "浅色反白",
+        "className": "ds-video-btn--light",
+        "whenToUse": "深色视频封面上的反白S时长标签。",
+        "whenNotToUse": "亮底对比不足、任意尺寸或播放状态。",
+        "nestedComponents": [],
+        "status": "当前MG来源与现有有限调用已核对；资格读同版catalog，未开放和视觉批准不据此改变。",
+        "variant": "light",
+        "fragment": "light",
+        "selectionCases": [
+          {
+            "id": "video-button.light.1",
+            "kind": "use",
+            "condition": "深色视频封面上的反白S时长标签。",
+            "result": "调用light；当前固定S；使用原播放图标。",
+            "targetVariant": "light",
+            "strength": "candidate"
+          },
+          {
+            "id": "video-button.light.2",
+            "kind": "avoid",
+            "condition": "亮底对比不足、任意尺寸或播放状态。",
+            "result": "不使用此变体；先核对相邻组件和实际调用范围。",
+            "targetVariant": "light",
+            "strength": "avoid"
+          }
+        ]
+      },
+      {
+        "type": "时间标签",
+        "className": "ds-video-btn--dark/light ds-video-btn--s/l",
+        "whenToUse": "视频封面上需展示播放时长，选 S 或 L。",
+        "whenNotToUse": "只需纯播放入口 → 用播放按钮。",
+        "nestedComponents": [],
+        "status": "当前MG来源与现有有限调用已核对；资格读同版catalog，未开放和视觉批准不据此改变。",
+        "variant": "dark",
+        "fragment": "dark",
+        "selectionCases": [
+          {
+            "id": "video-button.dark.shape2",
+            "kind": "reference",
+            "condition": "视频封面上需展示播放时长，选 S 或 L。",
+            "result": "S/L完整尺寸矩阵与XL仅保留原规范；当前两个调用固定S。",
+            "targetVariant": "dark",
+            "strength": "reference"
+          }
+        ],
+        "referenceShape": true
+      },
+      {
+        "type": "播放按钮",
+        "className": "ds-video-btn--dark/light ds-video-btn--xl",
+        "whenToUse": "视频封面或 Hero 的纯播放入口；XL 仅显示播放图标。",
+        "whenNotToUse": "需要时间文字 → 用时间标签。",
+        "nestedComponents": [],
+        "status": "当前MG来源与现有有限调用已核对；资格读同版catalog，未开放和视觉批准不据此改变。",
+        "variant": "dark",
+        "fragment": "dark",
+        "selectionCases": [
+          {
+            "id": "video-button.dark.shape3",
+            "kind": "reference",
+            "condition": "视频封面或 Hero 的纯播放入口；XL 仅显示播放图标。",
+            "result": "S/L完整尺寸矩阵与XL仅保留原规范；当前两个调用固定S。",
+            "targetVariant": "dark",
+            "strength": "reference"
+          }
+        ],
+        "referenceShape": true
+      }
+    ],
+    "radiusDependencies": [
+      {
+        "token": "border-radius.md",
+        "value": "4px",
+        "usage": "中圆角 - 按钮默认圆角",
+        "appliesTo": [
+          "time-tag",
+          "play-button"
+        ]
+      }
+    ],
+    "fontSizeDependencies": [
+      {
+        "token": "typography.font-size-md",
+        "value": "14px",
+        "usage": "中号字体 - XL/L 按钮",
+        "appliesTo": [
+          "time-tag"
+        ]
+      },
+      {
+        "token": "typography.font-size-sm",
+        "value": "12px",
+        "usage": "小号字体 - M/S 按钮",
+        "appliesTo": [
+          "time-tag"
+        ]
+      }
+    ],
+    "fontWeightDependencies": [
+      {
+        "token": "typography.font-weight-regular",
+        "value": "400",
+        "usage": "S/L 时间标签文字",
+        "appliesTo": [
+          "time-tag"
+        ],
+        "properties": [
+          "font-weight"
+        ],
+        "selectors": [
+          ".ds-video-btn--s .ds-video-btn__text",
+          ".ds-video-btn--l .ds-video-btn__text"
+        ]
+      }
+    ],
+    "typographyDependencies": [
+      {
+        "token": "typography.h7-regular",
+        "fontSizeToken": "typography.font-size-md",
+        "fontSizeValue": "14px",
+        "fontWeightToken": "typography.font-weight-regular",
+        "fontWeightValue": "400",
+        "weightEvidence": "explicit-css",
+        "usage": "L 时间标签文字",
+        "appliesTo": [
+          "time-tag"
+        ]
+      },
+      {
+        "token": "typography.h9-regular",
+        "fontSizeToken": "typography.font-size-sm",
+        "fontSizeValue": "12px",
+        "fontWeightToken": "typography.font-weight-regular",
+        "fontWeightValue": "400",
+        "weightEvidence": "explicit-css",
+        "usage": "S 时间标签文字",
+        "appliesTo": [
+          "time-tag"
+        ]
+      }
+    ],
+    "colorDependencies": [
+      {
+        "token": "color.white",
+        "value": "#FFFFFF",
+        "usage": "白色 (深色背景上的文字)",
+        "appliesTo": [
+          "time-tag/dark",
+          "time-tag/light",
+          "play-button/dark",
+          "play-button/light"
+        ],
+        "properties": [
+          "color"
+        ],
+        "selectors": [
+          ".ds-video-btn",
+          ".ds-video-btn__text"
+        ]
+      },
+      {
+        "token": "color.white-translucent",
+        "value": "rgba(255,255,255,0.1)",
+        "usage": "反白背景",
+        "appliesTo": [
+          "time-tag/light",
+          "play-button/light"
+        ],
+        "properties": [
+          "background-color"
+        ],
+        "selectors": [
+          ".ds-video-btn--light"
+        ]
+      },
+      {
+        "token": "color.video-dark-surface",
+        "value": "rgba(25,25,26,0.6)",
+        "usage": "现有方形S/L背景声明，其他播放器形态未获批",
+        "appliesTo": [
+          "time-tag/dark",
+          "play-button/dark"
+        ],
+        "properties": [
+          "background-color"
+        ],
+        "selectors": [
+          ".ds-video-btn--dark"
+        ]
+      },
+      {
+        "token": "color.video-dark-hover-surface",
+        "value": "rgba(25,25,26,0.8)",
+        "usage": "现有方形S/L背景声明，其他播放器形态未获批",
+        "appliesTo": [
+          "time-tag/dark",
+          "play-button/dark"
+        ],
+        "properties": [
+          "background-color"
+        ],
+        "selectors": [
+          ".ds-video-btn--dark:hover:not(.ds-video-btn--hover)",
+          ".ds-video-btn--dark.ds-video-btn--hover"
+        ]
+      },
+      {
+        "token": "color.video-light-hover-surface",
+        "value": "rgba(255,255,255,0.3)",
+        "usage": "现有方形S/L背景声明，其他播放器形态未获批",
+        "appliesTo": [
+          "time-tag/light",
+          "play-button/light"
+        ],
+        "properties": [
+          "background-color"
+        ],
+        "selectors": [
+          ".ds-video-btn--light:hover:not(.ds-video-btn--hover)",
+          ".ds-video-btn--light.ds-video-btn--hover"
+        ]
+      }
+    ],
+    "commonlyEmbeddedIn": [
+      {
+        "component": "Card",
+        "usage": "视频封面型卡片图片区域内叠加时间标签/播放按钮（如卡片图片本身是视频封面）",
+        "verified": false,
+        "verifiedNote": "2026-07-17 核查：card.html preview 里没有 ds-video-btn 真实结构，card.json 也未声明依赖 VideoButton。此条为设计意图/未来参考用法（视频封面型卡片出现时才用），保留手写。"
+      },
+      {
+        "component": "Banner",
+        "usage": "Hero banner 如背景为视频封面，可叠加 XL 播放按钮",
+        "verified": false,
+        "verifiedNote": "2026-07-17 核查：banner.html preview 里没有 ds-video-btn 真实结构，banner.json 也未声明依赖 VideoButton。此条为设计意图/未来参考用法，保留手写。"
+      }
+    ],
+    "parentContext": {
+      "深色/图片背景": {
+        "note": "VideoButton 只用于深色或图片背景之上，浅色纯色背景上使用会导致对比度不足，规范未提供浅色背景变体"
+      }
+    },
+    "mutuallyExclusiveWith": [],
+    "notes": "S/L 尺寸是时间标签形态（显示时长），XL 是纯播放按钮形态（无文字）；二者语义不同，不是同一按钮的简单缩放，投喂/使用时不要混淆。",
+    "enforcementStatus": {
+      "colorDependencies.tokens-exist": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 2b：colorDependencies 引用的 color.* token 必须存在于 token-specs/colors.json（缺失即 error）；token 为 / 表示无对应 token 的白名单裸值；双源值一致由 validate-tokens.js 全量保证；Guard C 保证声明了就必须有颜色依赖表"
+      },
+      "colorDependencies.css-uses-var": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 2c：切出组件样式段，校验用到的 var(--color-*) 都在 colorDependencies 声明过，且无未声明裸色值（box-shadow/注释除外），违反即 error —— 保证颜色映射闭环"
+      },
+      "radiusDependencies.tokens-exist": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 3a：radiusDependencies 引用的 border-radius.* token 必须存在于 token-specs/border-radius.json（缺失即 error）；token 为 / 表示白名单裸值；Guard D 保证声明了就必须有圆角依赖表"
+      },
+      "radiusDependencies.css-uses-var": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 3b：校验 border-radius 用到的 var(--border-radius-*) 都在 radiusDependencies 声明过，且无未声明裸圆角值（0 除外），违反即 error —— 保证圆角映射闭环"
+      },
+      "fontSizeDependencies.tokens-exist": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 4a：fontSizeDependencies 引用的 typography.font-size-* token 必须存在于 token-specs/typography.json（缺失即 error）；token 为 / 表示无对应正式 token 的白名单值；Guard E 保证声明了就必须有字号依赖表"
+      },
+      "fontSizeDependencies.css-uses-var": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 4b：校验 font-size 用到的 var(--font-size-*) 都在 fontSizeDependencies 声明过，且无未声明裸字号值，违反即 error —— 保证字号映射闭环"
+      },
+      "shadowDependencies": {
+        "enforced": true,
+        "mechanism": "/",
+        "note": "本组件无 box-shadow，无 shadowDependencies"
+      },
+      "parentContext.深色图片背景要求": {
+        "enforced": false,
+        "mechanism": "无",
+        "note": "'只能用于深色/图片背景'是语义判断，没有专门校验 VideoButton 所在容器背景是否为深色/图片"
+      },
+      "commonlyEmbeddedIn": {
+        "enforced": false,
+        "mechanism": "无",
+        "note": "不会检查 Card/Banner 里出现的播放按钮是否真的复用了本组件而非自造"
+      },
+      "spacingDependencies.tokens-and-css-closure": {
+        "enforced": true,
+        "mechanism": "check-contracts.js: spacingDependencies token/value/selector/property 与组件 CSS 双向闭环校验"
+      },
+      "borderDependencies.tokens-and-css-closure": {
+        "enforced": true,
+        "mechanism": "check-contracts.js: borderDependencies token/value/aspect/selector/property 与组件 CSS 双向闭环校验"
+      },
+      "fontWeightDependencies.tokens-and-css-closure": {
+        "enforced": true,
+        "mechanism": "check-contracts.js: fontWeightDependencies token/value/selector/property 与组件 CSS 双向闭环校验；仅允许 Regular 400 / SemiBold 600，禁止裸字重值"
+      },
+      "typographyDependencies.size-weight-pairing": {
+        "enforced": true,
+        "mechanism": "check-contracts.js: typographyDependencies.token 必须引用 token-specs/typography.json 中真实 composite typography token；该 token 同时锁定 fontSize、lineHeight、fontWeight，并核对底层字号/字重 primitive 与 CSS 证据，依赖汇总表只输出一个 Token 链接"
+      }
+    },
+    "spacingDependencies": [
+      {
+        "token": "spacing.sm",
+        "value": "8px",
+        "usage": "S/L padding/gap；XL Hover原件12.8/25.6px以现有8px token ×1.6/3.2表达，不新增全局间距档位",
+        "properties": [
+          "padding",
+          "gap"
+        ],
+        "selectors": [
+          ".ds-video-btn--s",
+          ".ds-video-btn--l",
+          ".ds-video-btn--xl:hover:not(.ds-video-btn--hover)",
+          ".ds-video-btn--xl.ds-video-btn--hover"
+        ],
+        "appliesTo": [
+          "time-tag",
+          "play-button"
+        ]
+      },
+      {
+        "token": "spacing.xs",
+        "value": "4px",
+        "usage": "gap：.ds-video-btn--s",
+        "properties": [
+          "gap"
+        ],
+        "selectors": [
+          ".ds-video-btn--s"
+        ],
+        "appliesTo": [
+          "time-tag"
+        ]
+      },
+      {
+        "token": "spacing.lg",
+        "value": "16px",
+        "usage": "padding：.ds-video-btn--l",
+        "properties": [
+          "padding"
+        ],
+        "selectors": [
+          ".ds-video-btn--l"
+        ],
+        "appliesTo": [
+          "time-tag"
+        ]
+      },
+      {
+        "token": "spacing.md",
+        "value": "12px",
+        "usage": "padding / gap：.ds-video-btn--xl",
+        "properties": [
+          "padding",
+          "gap"
+        ],
+        "selectors": [
+          ".ds-video-btn--xl"
+        ],
+        "appliesTo": [
+          "play-button"
+        ]
+      },
+      {
+        "token": "spacing.25",
+        "value": "25px",
+        "usage": "padding：.ds-video-btn--xl",
+        "properties": [
+          "padding"
+        ],
+        "selectors": [
+          ".ds-video-btn--xl"
+        ],
+        "appliesTo": [
+          "play-button"
+        ]
+      }
+    ],
+    "borderDependencies": [
+      {
+        "token": "border.style.none",
+        "value": "none",
+        "usage": "border：.ds-video-btn",
+        "aspect": "style",
+        "properties": [
+          "border"
+        ],
+        "selectors": [
+          ".ds-video-btn"
+        ],
+        "appliesTo": [
+          "time-tag",
+          "play-button"
+        ]
+      }
+    ],
+    "prototypeRollout": {
+      "template": "docs/component-spec-template.html",
+      "source": "relations.variantDecisions",
+      "workflow": "existing-local-only",
+      "scope": "existing finite calls and original references; no publication expansion",
+      "currentMg": {
+        "status": "partial-source-scope",
+        "reason": "已读取《新文件》【按钮】设计规范V2.0.2610A（3:11394），按现有有限调用核对；未开放原件与视觉批准仍分别保留。"
+      },
+      "retainedEvidence": [
+        {
+          "name": "original",
+          "file": "components/sources/video-button/mastergo-original-components.json"
+        },
+        {
+          "name": "comparison",
+          "file": "components/sources/video-button/local-structure-review.json"
+        },
+        {
+          "name": "specificationIndex",
+          "file": "components/sources/button/specification-index.json"
+        },
+        {
+          "name": "darkDefaultPlay12Review",
+          "file": "components/sources/video-button/dark-default-play12-review-1013.json"
+        }
+      ]
+    },
+    "interactionRules": [
+      {
+        "name": "实际调用",
+        "rule": "仅使用同版catalog的callable变体和allowedEdits；参考示例不授予调用资格，不用改类或自绘控件绕过。",
+        "owner": "原本地选型与调用入口"
+      },
+      {
+        "name": "父子与同步",
+        "rule": "沿用原componentDependencies及反向父关系；改原规范后协调契约/实现，继续component:sync/watch；已交付页保留固定版本。",
+        "owner": "既有维护机制"
+      },
+      {
+        "name": "交互与业务",
+        "rule": "当前固定S；duration为时长内容，action归宿主。；当前固定S；使用原播放图标。",
+        "owner": "具体变体运行时与原页面宿主"
+      }
+    ]
+  },
+  "searchIntents": [
+    "视频播放按钮",
+    "播放图标",
+    "视频时长标签",
+    "视频封面按钮",
+    "播放控制按钮"
+  ],
+  "history": [
+    {
+      "date": "2026-07-23",
+      "author": "Kiro",
+      "change": "将字号与字重配对提升为正式 composite typography token；组件依赖以单一 token 引用完整字号、行高、字重，primitive 字段仅保留作 CSS 证据。"
+    },
+    {
+      "date": "2026-07-22",
+      "change": "新增 typographyDependencies 成对字体依赖：每条记录明确绑定字号与字重，依赖汇总表按“字号 · 层级 · 字重”整体展示，禁止拆列后猜测组合。",
+      "author": "Kiro"
+    },
+    {
+      "date": "2026-07-22",
+      "change": "新增 fontWeightDependencies：按组件 CSS 显式 font-weight 证据登记 Regular 400 / SemiBold 600；无显式声明的组件保留空数组，并纳入 token/value/selector/property 双向闭环校验。",
+      "author": "Kiro"
+    },
+    {
+      "date": "2026-07-20",
+      "change": "父子依赖治理：Card/Banner 尚无真实 VideoButton 结构，明确标记为 verified:false 的参考·未验证关系。",
+      "author": "Kiro"
+    },
+    {
+      "date": "2026-06-30",
+      "change": "补齐 relations/searchIntents 字段（此前投喂时遗漏，本次一致性治理中发现并补齐）",
+      "author": "TBD"
+    },
+    {
+      "date": "2026-07-14",
+      "change": "增加间距与描边 token 依赖、CSS 选择器/属性证据及机械闭环校验映射",
+      "author": "Kiro"
+    },
+    {
+      "date": "2026-07-14",
+      "change": "依据契约语义、组件 CSS 选择器与预览结构，补齐全部现有依赖的 appliesTo 汇总行映射；仅使用真实 types/variants，不新增伪类型或不确定依赖",
+      "author": "Kiro"
+    },
+    {
+      "date": "2026-10-09",
+      "author": "Codex",
+      "change": "统一规范维护质量标准：登记真实实现与选型规则入口、源变更重新验收、父子影响检查及历史页面隔离；不推断可编辑槽位或视觉批准。"
+    },
+    {
+      "date": "2026-10-10",
+      "change": "小号黑底/反白默认原子在线属性确认纵横内边距均8px；独立current资源修正旧纵向0px，保持24px高及已锁定历史资源。未据此批准实际浏览器几何或视频播放。"
+    }
+  ],
+  "isComplete": true,
+  "createdAt": "2025-01-15T10:00:00Z",
+  "updatedAt": "2026-10-15",
+  "qualityProfile": {
+    "schemaVersion": "1.0.0",
+    "standard": "docs/component-quality-standard.md",
+    "implementation": "components/variants/video-button.html",
+    "selection": {
+      "mappingSource": "components/selection-mvp-policy.json",
+      "mappingPointer": "components.video-button.variantDecisionTypes",
+      "rulesPointer": "relations.variantDecisions"
+    },
+    "maintenance": {
+      "authority": "contract-preview-runtime-token-icon",
+      "generatedOnly": [
+        "preview-reference-tables",
+        "component-index",
+        "selection-catalog",
+        "design-reading-view",
+        "ai-reference"
+      ],
+      "changePolicy": "记录来源差异、兼容性与受影响父子组件；源文件变化后旧工程验收失效。",
+      "historicalPages": "不自动升级；新页面锁定本地组件运行资源版本。"
+    },
+    "acceptance": {
+      "report": "components/quality/report.json",
+      "proof": "components/quality/acceptance.json",
+      "declarationIsNotProof": true
+    }
+  },
+  "editable": [
+    "duration",
+    "accessibleLabel",
+    "actionCallback"
+  ],
+  "integration": {
+    "styles": [
+      "components/tokens.css",
+      "components/components.css",
+      "components/video-button-current.css"
+    ],
+    "scripts": [],
+    "fontStylesheets": [
+      "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+    ],
+    "fontFallback": "Open Sans stack; actual browser visual verification pending."
+  },
+  "aiContract": {
+    "schemaVersion": "1.0.0",
+    "rootTag": "button",
+    "scope": "existing-desktop-dark-light-duration-tags-s-l",
+    "supported": [
+      "dark",
+      "light"
+    ],
+    "unsupported": [
+      "xl",
+      "circle",
+      "pause",
+      "playback-state",
+      "built-in-player",
+      "disabled-canonical-call",
+      "mobile"
+    ],
+    "reviewStatus": {
+      "engineering": "pending",
+      "visual": "pending",
+      "familyCoverage": "partial"
+    },
+    "previewAssets": [
+      "components/preview/reference-live.js",
+      "components/sources/video-button/play20-source-review-1015.json",
+      "components/sources/video-button/play20-official-1015.svg",
+      "components/sources/video-button/play20-geometry-comparison-1015.json"
+    ],
+    "selectionPolicy": "先按封面对比选择dark/light。本地只提取两个默认S时长标签；只接受duration/accessibleLabel/actionCallback，不接受size。原L、XL纯播放及其他状态保留参考，不用页面CSS修尺寸；click归宿主，不内建播放器。",
+    "identity": {
+      "rule": "Safe type=button, nonempty root aria-label, decorative play icon. No copied icon-map ID, inline style or invented playback state.",
+      "labelRule": "duration changes only the visible time slot; accessibleLabel names the action/video and should remain meaningful when duration changes."
+    },
+    "locked": [
+      "S/L rectangle classes and two direct children",
+      "Registered play icon, decorative alt and safe button type",
+      "Size, translucent background and hover from shared CSS",
+      "No media-player behavior"
+    ],
+    "behavior": {
+      "action": "Native button click calls the host actionCallback; component has no independent media JS, toggle state or automatic pause icon.",
+      "duration": "Visible preformatted m:ss with seconds 00..59, not a countdown formatter.",
+      "keyboard": "Native button activation; browser keyboard/focus/contrast remain pending.",
+      "source": "Four default rectangular S/L saved COMPONENT nodes are deterministically re-indexed during reference compilation. Role/default/not-playing/light properties, height/icon geometry, padding/gap/radius, fill, font and explicit textColor ranges are compared to local declarations. Source sample width is not fixed runtime width; local remains auto. Design navigation is not frontend playback; XL remains excluded. Browser/SVG path/complete spec approval pending.",
+      "hosts": "Card/Banner entries are design references; their current Preview has no declared VideoButton child implementation.",
+      "specificationScope": "Saved Button update log and type section only: 4 explicit rule texts and 33 document usage rows paired by actual source ancestry. Original text-node IDs retained; document examples do not define new components or automatically approve hosts. There is no complete specification, browser or visual approval inferred.",
+      "sourcePaddingBoundary": "S source and current padding are 8px on both axes, confirmed in native MasterGo inspector for dark/light default originals on 2026-10-10. See components/sources/video-button/online-padding-1010.json. Height stays24px; local rendered content geometry and font loading remain pending."
+    },
+    "evidence": {
+      "original": "components/sources/video-button/mastergo-original-components.json",
+      "comparison": "components/sources/video-button/local-structure-review.json",
+      "inventory": "components/sources/video-button/source-inventory.json",
+      "localImplementation": "components/variants/video-button.html",
+      "specificationIndex": "components/sources/button/specification-index.json",
+      "darkDefaultPlay12Review": "components/sources/video-button/dark-default-play12-review-1013.json",
+      "darkSHoverSource": "components/sources/video-button/dark-s-hover-source-1014.json",
+      "xlGeometry": "components/sources/video-button/xl-geometry-source-1014.json",
+      "timeTagOtherHoverSource": "components/sources/video-button/time-tag-other-hover-source-1014.json",
+      "currentMgReview": "components/sources/remaining-prototypes-mg-20261115/video-button-review.json"
+    },
+    "variants": {
+      "dark": {
+        "purpose": "dark-cover-duration-tag",
+        "exampleSelector": "[data-ai-example=\"ai-video-dark-s\"]",
+        "defaultSize": "s",
+        "sizes": [
+          {
+            "name": "s",
+            "cssClass": "ds-video-btn--s",
+            "exampleSelector": "[data-ai-example=\"ai-video-dark-s\"]"
+          },
+          {
+            "name": "l",
+            "cssClass": "ds-video-btn--l",
+            "exampleSelector": "[data-ai-example=\"ai-video-dark-l\"]"
+          }
+        ],
+        "unsupportedSizes": [
+          "xl"
+        ],
+        "allowedEdits": [
+          "duration",
+          "accessibleLabel",
+          "actionCallback"
+        ],
+        "slots": {
+          "duration": {
+            "selector": "span.ds-video-btn__text",
+            "mode": "text",
+            "required": true,
+            "format": "m:ss, seconds 00..59"
+          }
+        },
+        "bindings": {
+          "accessibleLabel": {
+            "mode": "accessible-label",
+            "target": "root",
+            "attribute": "aria-label",
+            "nonEmpty": true
+          },
+          "actionCallback": {
+            "mode": "event-handler",
+            "target": "root",
+            "event": "click"
+          }
+        }
+      },
+      "light": {
+        "purpose": "light-cover-duration-tag",
+        "exampleSelector": "[data-ai-example=\"ai-video-light-s\"]",
+        "defaultSize": "s",
+        "sizes": [
+          {
+            "name": "s",
+            "cssClass": "ds-video-btn--s",
+            "exampleSelector": "[data-ai-example=\"ai-video-light-s\"]"
+          },
+          {
+            "name": "l",
+            "cssClass": "ds-video-btn--l",
+            "exampleSelector": "[data-ai-example=\"ai-video-light-l\"]"
+          }
+        ],
+        "unsupportedSizes": [
+          "xl"
+        ],
+        "allowedEdits": [
+          "duration",
+          "accessibleLabel",
+          "actionCallback"
+        ],
+        "slots": {
+          "duration": {
+            "selector": "span.ds-video-btn__text",
+            "mode": "text",
+            "required": true,
+            "format": "m:ss, seconds 00..59"
+          }
+        },
+        "bindings": {
+          "accessibleLabel": {
+            "mode": "accessible-label",
+            "target": "root",
+            "attribute": "aria-label",
+            "nonEmpty": true
+          },
+          "actionCallback": {
+            "mode": "event-handler",
+            "target": "root",
+            "event": "click"
+          }
+        }
+      }
+    }
+  },
+  "darkSHoverCheck1014": {
+    "scope": "既有dark/S实际Hover，Default复用",
+    "source": "components/sources/video-button/dark-s-hover-source-1014.json",
+    "renderChange": false,
+    "result": "Hover背景0.8、24高、4gap/4圆角、12图标与12/20文字实测；没有样式差异，不再修正或重复测试",
+    "limits": "auto文字宽62.6016对来源样例63差异仍保留；精确字形/源像素、播放业务、其他尺寸与用户批准不外推"
+  },
+  "xlCorrection1014": {
+    "scope": "已有XL深色/反白Default/Hover四展示",
+    "source": "components/sources/video-button/xl-geometry-source-1014.json",
+    "noNewCall": true,
+    "old": "143×60px声明、25px图标；原来auto宽在无文案时实际75px",
+    "new": "100×50固定尺寸、20px图标；Hover内层几何映射到现有根",
+    "remaining": "20px完整矢量与播放业务仍待；保留XL不开放AI调用"
+  },
+  "timeTagHoverResult1014": {
+    "scope": "4种已开放时间标签调用的真实Hover；dark/S复用本轮证据",
+    "browser": [
+      "components/sources/video-button/dark-s-hover-browser-1014.json",
+      "components/sources/video-button/time-tag-other-hover-browser-1014.json"
+    ],
+    "result": "四种真实Hover背景/尺寸/间距/图标/文字几何稳定；无新增实现差异；源像素/字形与用户批准待",
+    "noNewCall": true
+  },
+  "play20SourceClosure1015": {
+    "scope": "Existing XL dark/light Default/Hover not-playing only",
+    "source": "components/sources/video-button/play20-source-review-1015.json",
+    "official": "components/sources/video-button/play20-official-1015.svg",
+    "comparison": "components/sources/video-button/play20-geometry-comparison-1015.json",
+    "closed": [
+      "Four glyph sources match",
+      "Full20 official original and native geometry acquired; temporary export removed",
+      "Existing scaled14 asset geometrically compatible, max transformed control-point delta0.000003312px"
+    ],
+    "noRenderChange": true,
+    "visual": "pending; no pixel pass",
+    "fullFamilyAcceptance": false
+  }
+}

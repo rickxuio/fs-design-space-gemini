@@ -1,0 +1,157 @@
+{
+  "schemaVersion": "fs-native-specification-review/1.0.0",
+  "date": "2026-10-11",
+  "method": "Logged-in native Chrome: visible MasterGo canvas and sidebar only",
+  "source": {
+    "url": "https://mastergo.com/file/143880409387753?fileOpenFrom=project&page_id=68908%3A290575",
+    "pageId": "68908:290575",
+    "specificationNode": "68947:071953",
+    "title": "数字输入框 InputNumber",
+    "version": "v1.0.2602A",
+    "versionDate": "2026-02-04",
+    "remoteRevision": null,
+    "zoom": "50%",
+    "nativeScreenshotPixels": [
+      4608,
+      2352
+    ]
+  },
+  "reviewed": {
+    "position": "用于有明确范围且需要快速增减的正整数；任意数值、字符等选 Input，低精度可视区间调整选 Slider。",
+    "business": "购物流程采用白底线框分离式；表单数量输入与其他输入元素的灰底或白底形态保持一致。",
+    "numeric": {
+      "kind": "positive-integer",
+      "recommendedMin": 1,
+      "recommendedMax": 9999,
+      "belowMin": "reset to minimum",
+      "aboveMax": "reset to maximum",
+      "atMin": "decrement disabled",
+      "atMax": "increment disabled"
+    },
+    "interaction": {
+      "buttons": "increase/decrease",
+      "keyboard": "ArrowUp/ArrowDown; Tab switches focus",
+      "paste": "allowed; filter nonnumeric content",
+      "focus": "select current value"
+    },
+    "sizes": {
+      "outline": [
+        32,
+        42
+      ],
+      "filled": [
+        42
+      ],
+      "outlineInputWidth": [
+        32,
+        42
+      ],
+      "outlineGap": 4,
+      "outlineButtonHotArea": {
+        "small": [
+          24,
+          24
+        ],
+        "large": [
+          30,
+          30
+        ]
+      },
+      "filledButtonHotArea": [
+        24,
+        24
+      ],
+      "filledHorizontalPadding": 8
+    },
+    "states": {
+      "names": [
+        "Default",
+        "Hover Input",
+        "Hover button",
+        "Inputting",
+        "Input complete",
+        "Disabled",
+        "Readonly"
+      ],
+      "outlineDefault": {
+        "background": "#FFFFFF",
+        "border": "1px solid #DEE0E3",
+        "radius": 8,
+        "text": "14px Regular/400 #19191A"
+      },
+      "filledDefault": {
+        "background": "#F6F6F8",
+        "radius": 4,
+        "text": "14px Regular/400 #19191A"
+      },
+      "normalIcon": "#707070",
+      "disabledTextAndIcons": "#19191A at 30%",
+      "outlineInputHoverAndFocusBorder": "#19191A",
+      "filledInputHoverAndFocus": "no container change",
+      "outlineButtonHover": {
+        "icon": "#19191A",
+        "background": "#19191A at 4%",
+        "largeHotArea": [
+          30,
+          30
+        ],
+        "radius": 4
+      },
+      "filledButtonHover": {
+        "icon": "#19191A",
+        "hotArea": [
+          24,
+          24
+        ]
+      },
+      "outlineDisabled": {
+        "background": "#F6F6F8",
+        "border": "unchanged"
+      },
+      "readonlyText": "#19191A",
+      "readonlyContainerAndIcons": "same as disabled"
+    },
+    "feedback": "Visible feedback area observed; links not opened"
+  },
+  "conflicts": [
+    {
+      "item": "filled input inner size annotation",
+      "detail": "Size section says filled root height42; nearby caption states fixed input width/height32. Preserve both facts, do not infer actual node geometry from annotation.",
+      "resolution": {
+        "status": "resolved-by-selected-original-nodes",
+        "outer": "68908:024985=104x42",
+        "innerAssembly": "68908:024986=88x32",
+        "quantityBox": "68908:024991=32x32"
+      }
+    },
+    {
+      "item": "Readonly outline fill",
+      "specification": "State table says same container as Disabled",
+      "original": "Readonly32 node68908:025077 has no fill entry and appears white; borderDEE0E3",
+      "decision": "Atom priority: remove readonly-gray current override, retain current outline white background; other unmeasured states pending"
+    }
+  ],
+  "fix": {
+    "file": "components/input-number-current.js",
+    "problem": "400 positive pasted digits parse to Infinity; old Number.isFinite check treated overflow as missing value and reset to min.",
+    "result": "Only NaN falls back to min; overflowing positive digits clamp to configured max.",
+    "verification": "Regression reproduced before fix: actual1 expected9999. After fix8 InputNumber +4 List product +10 List reference tests passed (22 total)."
+  },
+  "boundary": {
+    "actualLocalBrowserVerified": false,
+    "allOriginalComponentStatesMeasured": false,
+    "screenshotArchive": "Native inline screenshots in this conversation; no saved screenshot file.",
+    "completeSpecificationCoverage": false,
+    "note": "Core rules and visible size/state annotations read. Does not prove complete original component inventory or local visual acceptance."
+  },
+  "currentStyleCorrection": {
+    "stylesheet": "components/input-number-current.css",
+    "scope": "only data-input-number-current atoms; List marked PC quantity calls share the atom stylesheet",
+    "normalIcon": "Use same existing SVG shape as alpha mask, paint source #707070 token rather than approximate55% black.",
+    "hoverIcon": "#19191A",
+    "disabledAndReadonlyIcon": "#19191A at30%; remove legacy readonly55% override in current calls",
+    "readonlyOutline": "Normal dark text retained. Gray background override withdrawn after selected original Readonly32 node review; current outline white surface retained. Disabled text wins if both locked states apply.",
+    "boundary": "CSS/source correspondence only; actual browser rendering and geometry not verified; legacy shared CSS unchanged"
+  },
+  "originalComponentReview": "components/sources/input-number/native-component-review-1011.json"
+}

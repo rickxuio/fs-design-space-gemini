@@ -1,0 +1,297 @@
+TAP version 13
+# Subtest: compact context keeps complete section content and fingerprinted source references
+ok 1 - compact context keeps complete section content and fingerprinted source references
+  ---
+  duration_ms: 2844.855792
+  type: 'test'
+  ...
+# Subtest: Preview root validation recognizes the real Button and TextButton aliases
+ok 2 - Preview root validation recognizes the real Button and TextButton aliases
+  ---
+  duration_ms: 0.722958
+  type: 'test'
+  ...
+# Subtest: prepares a page-scoped context and preserves repeated component uses
+ok 3 - prepares a page-scoped context and preserves repeated component uses
+  ---
+  duration_ms: 737.538917
+  type: 'test'
+  ...
+# Subtest: preserves explicit Case groups and Products source bindings in the A4 context
+ok 4 - preserves explicit Case groups and Products source bindings in the A4 context
+  ---
+  duration_ms: 1338.740458
+  type: 'test'
+  ...
+# Subtest: reports missing local source files and unresolved variants without changing the plan
+ok 5 - reports missing local source files and unresolved variants without changing the plan
+  ---
+  duration_ms: 536.113583
+  type: 'test'
+  ...
+# Subtest: uses a durable input bundle to resolve an old temporary source path
+ok 6 - uses a durable input bundle to resolve an old temporary source path
+  ---
+  duration_ms: 758.698708
+  type: 'test'
+  ...
+# Subtest: blocks A2 until URL or text sources have reference facts
+ok 7 - blocks A2 until URL or text sources have reference facts
+  ---
+  duration_ms: 431.765
+  type: 'test'
+  ...
+# Subtest: blocks a legacy bundle that has no confirmed A1 input mode
+ok 8 - blocks a legacy bundle that has no confirmed A1 input mode
+  ---
+  duration_ms: 365.8405
+  type: 'test'
+  ...
+# Subtest: blocks direct component resolution when Preview misses its real variant structure
+not ok 9 - blocks direct component resolution when Preview misses its real variant structure
+  ---
+  duration_ms: 1.740625
+  type: 'test'
+  location: '/Users/rick/Library/Mobile Documents/com~apple~CloudDocs/FS 设计规范系统/scripts/prepare-page-generation-context.test.js:148:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+    
+      [
+        'ds-card--vertical',
+    +   'ds-card--no-border'
+      ]
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    0: 'ds-card--vertical'
+  actual:
+    0: 'ds-card--vertical'
+    1: 'ds-card--no-border'
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (/Users/rick/Library/Mobile Documents/com~apple~CloudDocs/FS 设计规范系统/scripts/prepare-page-generation-context.test.js:156:10)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: generation runner accepts a ready page-scoped context
+ok 10 - generation runner accepts a ready page-scoped context
+  ---
+  duration_ms: 0.7725
+  type: 'test'
+  ...
+# Subtest: generation runner blocks a context gate failure
+ok 11 - generation runner blocks a context gate failure
+  ---
+  duration_ms: 0.103
+  type: 'test'
+  ...
+# Subtest: generation runner waits for an HTML artifact without writing a page
+ok 12 - generation runner waits for an HTML artifact without writing a page
+  ---
+  duration_ms: 1.025
+  type: 'test'
+  ...
+# Subtest: generation policy blocks legacy Plans before A4 HTML generation
+ok 13 - generation policy blocks legacy Plans before A4 HTML generation
+  ---
+  duration_ms: 0.093333
+  type: 'test'
+  ...
+# Subtest: strict generation context rejects missing or stale file fingerprints
+ok 14 - strict generation context rejects missing or stale file fingerprints
+  ---
+  duration_ms: 0.285958
+  type: 'test'
+  ...
+# Subtest: generation runner registers A6 by default and supports an explicit no-register mode
+ok 15 - generation runner registers A6 by default and supports an explicit no-register mode
+  ---
+  duration_ms: 0.093667
+  type: 'test'
+  ...
+# Subtest: A4 checks AI reference source fingerprints again even when context was previously ready
+ok 16 - A4 checks AI reference source fingerprints again even when context was previously ready
+  ---
+  duration_ms: 200.829083
+  type: 'test'
+  ...
+# Subtest: historical test pages require explicit upgrade mode; checking and new pages remain allowed
+ok 17 - historical test pages require explicit upgrade mode; checking and new pages remain allowed
+  ---
+  duration_ms: 1.183417
+  type: 'test'
+  ...
+# Subtest: source attribution reaches both generated selectors and retains explicit legacy Dropdown calls
+ok 18 - source attribution reaches both generated selectors and retains explicit legacy Dropdown calls
+  ---
+  duration_ms: 362.8805
+  type: 'test'
+  ...
+# Subtest: legacy-only source attribution blocks automatic Dropdown recall without forcing a Select match
+ok 19 - legacy-only source attribution blocks automatic Dropdown recall without forcing a Select match
+  ---
+  duration_ms: 0.159709
+  type: 'test'
+  ...
+# Subtest: rate words cannot turn throughput or numeric survey into star rating
+ok 20 - rate words cannot turn throughput or numeric survey into star rating
+  ---
+  duration_ms: 0.6025
+  type: 'test'
+  ...
+# Subtest: visible disclosure outranks incidental answer copy but remains an unverified candidate
+ok 21 - visible disclosure outranks incidental answer copy but remains an unverified candidate
+  ---
+  duration_ms: 0.175
+  type: 'test'
+  ...
+# Subtest: static FAQ copy does not prove disclosure interaction
+ok 22 - static FAQ copy does not prove disclosure interaction
+  ---
+  duration_ms: 0.418167
+  type: 'test'
+  ...
+# Subtest: native summary is disclosure evidence and missing split never falls back to first variant
+ok 23 - native summary is disclosure evidence and missing split never falls back to first variant
+  ---
+  duration_ms: 0.304625
+  type: 'test'
+  ...
+# Subtest: disclosure containing actual form or table evidence is not certified as ordinary split
+ok 24 - disclosure containing actual form or table evidence is not certified as ordinary split
+  ---
+  duration_ms: 0.250209
+  type: 'test'
+  ...
+# Subtest: persisted Omada FAQ recalls Collapse split without certifying direct use
+ok 25 - persisted Omada FAQ recalls Collapse split without certifying direct use
+  ---
+  duration_ms: 2.822083
+  type: 'test'
+  ...
+# Subtest: selector chooses a strong candidate and falls back for ambiguity
+ok 26 - selector chooses a strong candidate and falls back for ambiguity
+  ---
+  duration_ms: 0.983542
+  type: 'test'
+  ...
+# Subtest: selector does not infer structural components from generic copy alone
+ok 27 - selector does not infer structural components from generic copy alone
+  ---
+  duration_ms: 0.315167
+  type: 'test'
+  ...
+# Subtest: selector does not treat a generic form control as every specific control component
+ok 28 - selector does not treat a generic form control as every specific control component
+  ---
+  duration_ms: 0.18025
+  type: 'test'
+  ...
+# Subtest: selector falls back when one fact module clearly contains multiple page modules
+ok 29 - selector falls back when one fact module clearly contains multiple page modules
+  ---
+  duration_ms: 0.074625
+  type: 'test'
+  ...
+# Subtest: selector reuses the closest Card with a controlled adaptation for metric grids
+ok 30 - selector reuses the closest Card with a controlled adaptation for metric grids
+  ---
+  duration_ms: 0.204625
+  type: 'test'
+  ...
+# Subtest: button selection does not infer blue from brand or external-link context
+ok 31 - button selection does not infer blue from brand or external-link context
+  ---
+  duration_ms: 0.201833
+  type: 'test'
+  ...
+# Subtest: draft keeps fixed shell, source facts, and automatic coverage status
+ok 32 - draft keeps fixed shell, source facts, and automatic coverage status
+  ---
+  duration_ms: 2.758125
+  type: 'test'
+  ...
+# Subtest: draft reports blocked reference facts without mislabeling them as screenshot vision gaps
+ok 33 - draft reports blocked reference facts without mislabeling them as screenshot vision gaps
+  ---
+  duration_ms: 0.495791
+  type: 'test'
+  ...
+# Subtest: draft filters only outer reference header/footer modules, not inner navigation content
+ok 34 - draft filters only outer reference header/footer modules, not inner navigation content
+  ---
+  duration_ms: 0.032583
+  type: 'test'
+  ...
+# Subtest: generic variant fallback: actual Table recall without variant facts stays pending regardless of order
+ok 35 - generic variant fallback: actual Table recall without variant facts stays pending regardless of order
+  ---
+  duration_ms: 0.1225
+  type: 'test'
+  ...
+# Subtest: generic variant fallback: conflicting actual Badge recall cannot select the first variant
+ok 36 - generic variant fallback: conflicting actual Badge recall cannot select the first variant
+  ---
+  duration_ms: 0.205167
+  type: 'test'
+  ...
+# Subtest: generic variant fallback: single registered variant does not establish usage and empty facts never directly call
+ok 37 - generic variant fallback: single registered variant does not establish usage and empty facts never directly call
+  ---
+  duration_ms: 0.081
+  type: 'test'
+  ...
+# Subtest: generic variant fallback: explicit existing Banner match survives and absent preferred variant stays pending
+ok 38 - generic variant fallback: explicit existing Banner match survives and absent preferred variant stays pending
+  ---
+  duration_ms: 0.095459
+  type: 'test'
+  ...
+# Subtest: generic variant fallback: existing draft consumer blocks pending candidate rather than certifying custom output
+ok 39 - generic variant fallback: existing draft consumer blocks pending candidate rather than certifying custom output
+  ---
+  duration_ms: 122.561333
+  type: 'test'
+  ...
+# Error: facts not found: /var/folders/zj/tqydc6gn4835hd3l46vqt7fw0000gn/T/fs-selection-source-V0D69U/reference-facts.json
+# Subtest: source freshness: real CLI selection binds facts and Plan/Context propagate current state
+ok 40 - source freshness: real CLI selection binds facts and Plan/Context propagate current state
+  ---
+  duration_ms: 508.306625
+  type: 'test'
+  ...
+# Current binding does not bypass other runner gates: ["context 含 blocked component，禁止生成","context readSet.required 缺少文件：components/references/navigation/footer.json","context fingerprint 对应文件不存在：components/references/navigation/footer.json","组件 Navigation: AI 调用清单未 ready","组件 Navigation/header 的 automaticResolution 为 blocked","组件 Navigation: AI 调用清单未 ready","组件 Navigation/footer 的 automaticResolution 为 blocked"]
+# Subtest: source freshness: content change with identical mtime blocks stale selection and regenerated Context; old Context rejects bytes
+ok 41 - source freshness: content change with identical mtime blocks stale selection and regenerated Context; old Context rejects bytes
+  ---
+  duration_ms: 924.247583
+  type: 'test'
+  ...
+# Subtest: source freshness: mtime-only change retains selection validity and old Context fingerprints
+ok 42 - source freshness: mtime-only change retains selection validity and old Context fingerprints
+  ---
+  duration_ms: 892.10425
+  type: 'test'
+  ...
+# Subtest: source freshness: legacy missing fingerprint and missing bound file are explicitly unverified, never auto-remapped
+ok 43 - source freshness: legacy missing fingerprint and missing bound file are explicitly unverified, never auto-remapped
+  ---
+  duration_ms: 880.466292
+  type: 'test'
+  ...
+1..43
+# tests 43
+# suites 0
+# pass 42
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 7071.673625

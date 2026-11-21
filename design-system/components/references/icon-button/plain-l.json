@@ -1,0 +1,698 @@
+{
+  "schemaVersion": "fs-component-reference/1.0.0",
+  "component": {
+    "id": "icon-button",
+    "name": "IconButton",
+    "scope": "mg-original-five-geometries-supported-icon-subset",
+    "reviewStatus": {
+      "engineering": "pending",
+      "visual": "pending",
+      "familyCoverage": "partial"
+    }
+  },
+  "selection": {
+    "policy": "按本地工作流核对真实宿主、图标语义与实际容器/图标尺寸；只用6个变体和各自登记图标。S20/14、XS24/12不可按名称推断大小；筛选选中由宿主控制。仅icon、accessibleLabel、actionCallback可编辑；不开放任意图标、尺寸、禁用或加载。",
+    "supported": [
+      "bordered-xl",
+      "plain-l",
+      "plain-m",
+      "plain-s",
+      "plain-xs",
+      "bordered-xl-checked"
+    ],
+    "unsupported": [
+      "unregistered-icon",
+      "unverified-variant-icon-combination",
+      "dialog-close-28x20",
+      "mobile",
+      "business-logic",
+      "unevidenced-size-icon-pair",
+      "pinned-icon-missing",
+      "calendar-icon-missing",
+      "invented-bordered-hover-outside-local-norm"
+    ]
+  },
+  "runtime": {
+    "styles": [
+      "components/tokens.css",
+      "components/components.css",
+      "components/icon-button-current.css"
+    ],
+    "scripts": [],
+    "businessBoundary": "宿主绑定 click；默认 type=button 不提交表单。",
+    "fontStylesheets": [],
+    "fontFallback": "无可见文字，图标为本地 SVG。"
+  },
+  "identity": {
+    "rule": "保留 button type=button、尺寸与图标节点；替换图标同时修改 aria-label。",
+    "labelRule": "accessibleLabel 必须非空并说明操作。"
+  },
+  "locked": [
+    "原生 button 与 type=button",
+    "变体、容器/图标尺寸和图标节点",
+    "组件 CSS 与 hover",
+    "筛选默认变体 aria-pressed=false，选中变体 aria-pressed=true；宿主状态变化时整体切换对应变体。"
+  ],
+  "behavior": {
+    "click": "宿主监听原生 click；组件不自带下载、删除、数据切换。",
+    "keyboard": "使用原生 button 与非空 aria-label。",
+    "size": "S 为20px容器/14px图标，XS为24px容器/12px图标，不按名称重排。",
+    "dialog": "Dialog头部关闭真实调用plain-l；宿主只定位和绑定关闭事件，不覆盖原子尺寸、圆角和悬停。旧28px/icon20宿主设计差异已由用户确认按原子统一。",
+    "checked": "带边框 XL 为筛选按钮。aria-pressed=false/true 对应未选中/选中；宿主负责更新该属性，组件不推断筛选业务。",
+    "specificationScope": "Saved Button update log and type section only: 4 explicit rule texts and 33 document usage rows paired by actual source ancestry. Original text-node IDs retained; document examples do not define new components or automatically approve hosts. There is no complete specification, browser or visual approval inferred.",
+    "sourceGeometry": "32 saved COMPONENT nodes; 15 registered icon/variant pairs each map to one source hover-off/checked-state node. Container/icon dimensions, surface/radius/border are saved design declarations, not computed styles. S preserves existing current padding 3px matching saved realized insets, while source flex padding declares 6px: explicit adaptation, actual browser flex/layout pending.",
+    "smallIconPaint": "plain/s：关闭 Default/Hover 使用官方14px Gray1 SVG；搜索 Default Gray3，:hover/显式模拟悬停由组件 CSS 切换官方 Gray1 SVG，宿主不得改写。"
+  },
+  "examples": [
+    {
+      "name": "plain-l",
+      "publication": {
+        "key": "icon-button/plain-l",
+        "disposition": "retain",
+        "newPages": true,
+        "reason": "Retain existing finite exact contract only.",
+        "constraints": [
+          "Plain only registered official roles/glyphs. bordered-xl and checked are source display/compatibility only; independent Hover source is missing."
+        ],
+        "contractPolicy": "MG 原始组件集合 56279:012691 的五种几何形态；图标组合限定于对应原始变体及本地已有资源。置顶、日历尚未迁入，不能临时以其他图标替代。SVG 形状仍待视觉复核。",
+        "use": "finite-new-page-candidate",
+        "evidence": "components/contracts/icon-button.json#aiContract/evidence",
+        "requiresCurrentEngineering": true,
+        "visualApproval": "separate-not-granted"
+      },
+      "rootTag": "button",
+      "type": "plain",
+      "sizeOptions": [],
+      "bindings": {
+        "icon": {
+          "mode": "registered-icon",
+          "target": ".ds-icon-btn__icon",
+          "attribute": "src",
+          "values": [
+            "components/icons/icon-grid-view.svg",
+            "components/icons/icon-list-view.svg",
+            "components/icons/icon-close.svg"
+          ]
+        },
+        "accessibleLabel": {
+          "mode": "accessible-label",
+          "target": "root",
+          "attribute": "aria-label",
+          "nonEmpty": true
+        },
+        "actionCallback": {
+          "mode": "event-handler",
+          "target": "root",
+          "event": "click"
+        }
+      },
+      "purpose": "icon-operation-plain-l",
+      "whenToUse": "宫格、列表或关闭操作，32px容器、20px图标",
+      "whenNotToUse": "不是按名称放大其他图标；仅3个已登记图标",
+      "rootClasses": "ds-icon-btn ds-icon-btn--plain ds-icon-btn--l",
+      "requiredStructure": [
+        "img.ds-icon-btn__icon"
+      ],
+      "slots": {},
+      "allowedEdits": [
+        "icon",
+        "accessibleLabel",
+        "actionCallback"
+      ],
+      "exampleHtml": "<button id=\"icon-usage-icon-grid-view\" class=\"ds-icon-btn ds-icon-btn--plain ds-icon-btn--l\" type=\"button\" aria-label=\"宫格视图\" style=\"scroll-margin-top: 40px;\" data-ai-example=\"ai-icon-button-plain-l\">\n        <img class=\"ds-icon-btn__icon\" src=\"../icons/icon-grid-view.svg\" alt=\"\">\n      </button>"
+    }
+  ],
+  "relationships": {
+    "children": [],
+    "parents": [
+      {
+        "id": "banner",
+        "contract": "components/contracts/banner.json",
+        "preview": "components/variants/banner.html",
+        "status": "preview-class-evidence-only",
+        "evidence": {
+          "status": "preview-class-evidence-only",
+          "verified": false,
+          "previewExists": true,
+          "classEvidence": true,
+          "declaredClasses": [
+            "ds-icon-btn",
+            "ds-icon-btn--plain",
+            "ds-icon-btn--m",
+            "ds-icon-btn__icon"
+          ],
+          "missingClasses": [],
+          "exactStructure": "not-established",
+          "browserEvidence": "not-established",
+          "note": "宿主依赖声明及离线类名盘点；未证明具体变体、尺寸、必需子结构、宿主适配或浏览器行为。"
+        },
+        "usage": [
+          {
+            "component": "IconButton",
+            "requiredVariants": [
+              "plain-m"
+            ],
+            "appliesTo": [
+              "search"
+            ],
+            "slot": "search-submit",
+            "implementationClasses": [
+              "ds-icon-btn",
+              "ds-icon-btn--plain",
+              "ds-icon-btn--m",
+              "ds-icon-btn__icon"
+            ],
+            "usage": "来源Search16px图标/28px按钮，原子样式不覆盖。"
+          }
+        ]
+      },
+      {
+        "id": "comment",
+        "contract": "components/contracts/comment.json",
+        "preview": "components/variants/comment.html",
+        "status": "preview-class-evidence-only",
+        "evidence": {
+          "status": "preview-class-evidence-only",
+          "verified": false,
+          "previewExists": true,
+          "classEvidence": true,
+          "declaredClasses": [
+            "ds-icon-btn",
+            "ds-icon-btn--plain",
+            "ds-icon-btn--l",
+            "ds-icon-btn__icon"
+          ],
+          "missingClasses": [],
+          "exactStructure": "not-established",
+          "browserEvidence": "not-established",
+          "note": "宿主依赖声明及离线类名盘点；未证明具体变体、尺寸、必需子结构、宿主适配或浏览器行为。"
+        },
+        "usage": [
+          {
+            "component": "IconButton",
+            "usage": "网格和单图关闭均使用真实plain-l32px/20px原子；与源28px宿主的尺寸差异保留，原子样式优先，不复制关闭控件。",
+            "slot": "gallery/header",
+            "appliesTo": [
+              "customer-gallery"
+            ],
+            "requiredVariants": [
+              "plain-l"
+            ],
+            "implementationClasses": [
+              "ds-icon-btn",
+              "ds-icon-btn--plain",
+              "ds-icon-btn--l",
+              "ds-icon-btn__icon"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "dialog",
+        "contract": "components/contracts/dialog.json",
+        "preview": "components/variants/dialog.html",
+        "status": "preview-class-evidence-only",
+        "evidence": {
+          "status": "preview-class-evidence-only",
+          "verified": false,
+          "previewExists": true,
+          "classEvidence": true,
+          "declaredClasses": [
+            "ds-icon-btn",
+            "ds-icon-btn--plain",
+            "ds-icon-btn--l",
+            "ds-icon-btn__icon"
+          ],
+          "missingClasses": [],
+          "exactStructure": "not-established",
+          "browserEvidence": "not-established",
+          "note": "宿主依赖声明及离线类名盘点；未证明具体变体、尺寸、必需子结构、宿主适配或浏览器行为。"
+        },
+        "usage": [
+          {
+            "component": "IconButton",
+            "usage": "两种Dialog头部关闭直接调用无边框L原子；宿主只定位和绑定关闭事件，不覆盖原子尺寸/圆角/悬停",
+            "requiredVariants": [
+              "plain-l"
+            ],
+            "implementationClasses": [
+              "ds-icon-btn",
+              "ds-icon-btn--plain",
+              "ds-icon-btn--l",
+              "ds-icon-btn__icon"
+            ],
+            "appliesTo": [
+              "information",
+              "confirmation",
+              "form",
+              "cart",
+              "message"
+            ],
+            "slot": "header.close",
+            "hostPreviewAnchor": "demo-information",
+            "sourceEvidence": {
+              "componentId": "56279:012458",
+              "originalComponents": "components/sources/icon-button/mastergo-original-components.json",
+              "decision": "2026-10-10 用户确认以原子为主，嵌套关联关系优先；Dialog旧28px/3px覆盖不再采用"
+            }
+          }
+        ]
+      },
+      {
+        "id": "dropdown",
+        "contract": "components/contracts/dropdown.json",
+        "preview": "components/variants/dropdown.html",
+        "status": "preview-class-evidence-only",
+        "evidence": {
+          "status": "preview-class-evidence-only",
+          "verified": false,
+          "previewExists": true,
+          "classEvidence": true,
+          "declaredClasses": [
+            "ds-icon-btn",
+            "ds-icon-btn--plain",
+            "ds-icon-btn--m",
+            "ds-icon-btn__icon"
+          ],
+          "missingClasses": [],
+          "exactStructure": "not-established",
+          "browserEvidence": "not-established",
+          "note": "宿主依赖声明及离线类名盘点；未证明具体变体、尺寸、必需子结构、宿主适配或浏览器行为。"
+        },
+        "usage": [
+          {
+            "component": "IconButton",
+            "slot": "command-trigger",
+            "requiredVariants": [
+              "plain-m"
+            ],
+            "implementationClasses": [
+              "ds-icon-btn",
+              "ds-icon-btn--plain",
+              "ds-icon-btn--m",
+              "ds-icon-btn__icon"
+            ],
+            "appliesTo": [
+              "command-dot"
+            ],
+            "usage": "Dot命令直接复用plain-m真实More图标原子，宿主仅定位/绑定菜单。"
+          }
+        ]
+      },
+      {
+        "id": "list",
+        "contract": "components/contracts/list.json",
+        "preview": "components/variants/list.html",
+        "status": "preview-class-evidence-only",
+        "evidence": {
+          "status": "preview-class-evidence-only",
+          "verified": false,
+          "previewExists": true,
+          "classEvidence": true,
+          "declaredClasses": [
+            "ds-icon-btn",
+            "ds-icon-btn--plain",
+            "ds-icon-btn--m",
+            "ds-icon-btn__icon"
+          ],
+          "missingClasses": [],
+          "exactStructure": "not-established",
+          "browserEvidence": "not-established",
+          "note": "宿主依赖声明及离线类名盘点；未证明具体变体、尺寸、必需子结构、宿主适配或浏览器行为。"
+        },
+        "usage": [
+          {
+            "component": "IconButton",
+            "usage": "PC商品删除为当前plain-m真实button+img，原稿24px/12px与BOM28px差异记录，原子优先使用28px/16px；M未迁移。宿主只删除本地演示行。",
+            "slot": "product-item/delete",
+            "hostPreviewAnchor": "list-product-content",
+            "appliesTo": [
+              "product-content"
+            ],
+            "requiredVariants": [
+              "plain-m"
+            ],
+            "implementationClasses": [
+              "ds-icon-btn",
+              "ds-icon-btn--plain",
+              "ds-icon-btn--m",
+              "ds-icon-btn__icon"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "menu-navigation",
+        "contract": "components/contracts/menu-navigation.json",
+        "preview": "components/variants/menu-navigation.html",
+        "status": "preview-class-evidence-only",
+        "evidence": {
+          "status": "preview-class-evidence-only",
+          "verified": false,
+          "previewExists": true,
+          "classEvidence": true,
+          "declaredClasses": [
+            "ds-icon-btn",
+            "ds-icon-btn--plain",
+            "ds-icon-btn--m",
+            "ds-icon-btn__icon"
+          ],
+          "missingClasses": [],
+          "exactStructure": "not-established",
+          "browserEvidence": "not-established",
+          "note": "宿主依赖声明及离线类名盘点；未证明具体变体、尺寸、必需子结构、宿主适配或浏览器行为。"
+        },
+        "usage": [
+          {
+            "component": "IconButton",
+            "appliesTo": [
+              "multi-level-search"
+            ],
+            "requiredVariants": [
+              "plain-m"
+            ],
+            "slot": "search-submit",
+            "implementationClasses": [
+              "ds-icon-btn",
+              "ds-icon-btn--plain",
+              "ds-icon-btn--m",
+              "ds-icon-btn__icon"
+            ],
+            "usage": "当前28/16px Search原子，不把源层名称当作业务语义。"
+          }
+        ]
+      }
+    ],
+    "parentStatus": "declared-hosts",
+    "icons": [
+      {
+        "file": "components/icons/icon-grid-view.svg",
+        "registry": "components/icons/icons-manifest.json",
+        "appliesTo": [
+          "plain/l"
+        ],
+        "usage": "原始组件中对应操作；本地 SVG 轮廓待视觉复核，替换时同步 aria-label。"
+      },
+      {
+        "file": "components/icons/icon-list-view.svg",
+        "registry": "components/icons/icons-manifest.json",
+        "appliesTo": [
+          "plain/l"
+        ],
+        "usage": "原始组件中对应操作；本地 SVG 轮廓待视觉复核，替换时同步 aria-label。"
+      },
+      {
+        "file": "components/icons/icon-close.svg",
+        "registry": "components/icons/icons-manifest.json",
+        "appliesTo": [
+          "plain/l",
+          "plain/m"
+        ],
+        "usage": "原始组件中对应操作；本地 SVG 轮廓待视觉复核，替换时同步 aria-label。"
+      },
+      {
+        "file": "components/icons/icon-button-close-l-hover.svg",
+        "registry": "components/icons/icons-manifest.json",
+        "appliesTo": [
+          "plain/l"
+        ],
+        "usage": "仅 plain/l Close Hover 官方20px Gray1状态资源，宿主沿真实原子调用继承。"
+      },
+      {
+        "file": "components/icons/icon-button-grid-l-hover.svg",
+        "registry": "components/icons/icons-manifest.json",
+        "appliesTo": [
+          "plain/l"
+        ],
+        "usage": "仅 plain/l 宫格 Hover官方20px Gray1状态资源。"
+      },
+      {
+        "file": "components/icons/icon-button-list-l-hover.svg",
+        "registry": "components/icons/icons-manifest.json",
+        "appliesTo": [
+          "plain/l"
+        ],
+        "usage": "仅 plain/l 列表 Hover官方20px Gray1状态资源。"
+      }
+    ],
+    "tokens": [
+      {
+        "name": "color.gray-3",
+        "value": "#707070",
+        "unit": null,
+        "cssVar": "--color-gray-3",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.gray-5",
+        "value": "#DEE0E3",
+        "unit": null,
+        "cssVar": "--color-gray-5",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.gray-9",
+        "value": "#FAFBFB",
+        "unit": null,
+        "cssVar": "--color-gray-9",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.gray-1",
+        "value": "#19191A",
+        "unit": null,
+        "cssVar": "--color-gray-1",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.hover-overlay-light",
+        "value": "rgba(25,25,26,0.04)",
+        "unit": null,
+        "cssVar": "--color-hover-overlay-light",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "border-radius.md",
+        "value": 4,
+        "unit": "px",
+        "cssVar": "--border-radius-md",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border-radius.json"
+      },
+      {
+        "name": "spacing.sm",
+        "value": 8,
+        "unit": "px",
+        "cssVar": "--spacing-sm",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.lg",
+        "value": 16,
+        "unit": "px",
+        "cssVar": "--spacing-lg",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.6",
+        "value": 6,
+        "unit": "px",
+        "cssVar": "--spacing-6",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "border.style.none",
+        "value": "none",
+        "unit": null,
+        "cssVar": "--border-style-none",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.width.default",
+        "value": 1,
+        "unit": "px",
+        "cssVar": "--border-width-default",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.style.default",
+        "value": "solid",
+        "unit": null,
+        "cssVar": "--border-style-default",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.default",
+        "value": "var(--color-gray-5)",
+        "unit": null,
+        "cssVar": "--border-color-default",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.emphasis",
+        "value": "var(--color-gray-1)",
+        "unit": null,
+        "cssVar": "--border-color-emphasis",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "spacing.3",
+        "value": 3,
+        "unit": "px",
+        "cssVar": "--spacing-3",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      }
+    ]
+  },
+  "evidence": {
+    "localPreview": "components/variants/icon-button.html",
+    "sourceStatus": "2026-10-09 读取 MG 原始 COMPONENT_SET 56279:012691。尺寸、图标角色和 checked 来源已核对；本地 SVG 轮廓待视觉复核。 2026-10-11原生界面复核记录components/sources/icon-button/native-geometry-review-1011.json：两个S源均20/14、实际坐标3/3但声明padding6；集合32个变体中筛选只见Default/checked，不当作Hover来源。当前padding3适配与待验收边界保持。 2026-10-14：无自身独立Hover证据的描边静态样例移出展示，Default/Checked保留；编译闸门拒绝重新混入无来源静态Hover，真实悬浮源码维持待来源状态。 2026-11-13：按用户确认以本地新版规范为实现基线，明确的Hover规范经真实浏览器验证后开放有限筛选调用；未声称新增独立远端Hover身份。",
+    "originalComponents": "components/sources/icon-button/mastergo-original-components.json",
+    "specificationIndex": "components/sources/button/specification-index.json",
+    "inventory": "components/sources/icon-button/design-inventory.json",
+    "smallIconExportReview": "components/sources/icon-button/small-icon-export-review-1012.json",
+    "smallCloseSvg": "components/sources/icon-button/close-s-official-1012.svg",
+    "smallSearchSvg": "components/sources/icon-button/search-s-official-1012.svg",
+    "smallSearchHoverSvg": "components/sources/icon-button/search-s-hover-official-1012.svg",
+    "mediumSearchHoverSvg": "components/sources/icon-button/search-m-hover-official-1012.svg",
+    "mediumSearchPaintReview": "components/sources/icon-button/search-m-paint-review-1012.json",
+    "mediumSearchDefaultSvg": "components/sources/icon-button/search-m-default-official-1012.svg",
+    "mediumCloseHoverSvg": "components/sources/icon-button/close-m-hover-official-1012.svg",
+    "mediumClosePaintReview": "components/sources/icon-button/close-m-paint-review-1012.json",
+    "largeCloseHoverSvg": "components/sources/icon-button/close-l-hover-official-1012.svg",
+    "largeClosePaintReview": "components/sources/icon-button/close-l-paint-review-1012.json",
+    "mediumDownloadHoverSvg": "components/sources/icon-button/download-m-hover-official-1012.svg",
+    "mediumDownloadPaintReview": "components/sources/icon-button/download-m-paint-review-1012.json",
+    "hoverSvgDeleteMHover": "components/sources/icon-button/delete-m-hover-official-1012.svg",
+    "hoverSvgMoreMHover": "components/sources/icon-button/more-m-hover-official-1012.svg",
+    "hoverSvgEyeOffMHover": "components/sources/icon-button/eye-off-m-hover-official-1012.svg",
+    "hoverSvgEyeMHover": "components/sources/icon-button/eye-m-hover-official-1012.svg",
+    "hoverSvgEditXsHover": "components/sources/icon-button/edit-xs-hover-official-1012.svg",
+    "hoverSvgGridLHover": "components/sources/icon-button/grid-l-hover-official-1012.svg",
+    "hoverSvgListLHover": "components/sources/icon-button/list-l-hover-official-1012.svg",
+    "remainingHoverPaintReview": "components/sources/icon-button/remaining-hover-paint-review-1012.json",
+    "currentScope": "components/sources/icon-button/mg-current-scope-20261114.json"
+  },
+  "sourceValidation": {
+    "componentIdentity": {
+      "status": "saved-typed-nodes-checked",
+      "files": [
+        "components/sources/icon-button/design-inventory.json",
+        "components/sources/icon-button/mastergo-original-components.json"
+      ],
+      "basis": "Original saved COMPONENT_SET/COMPONENT types and finite node identities; not screen position or container title."
+    },
+    "specificationBody": {
+      "status": "selected-saved-body-texts-checked",
+      "scope": "shared-button-section-only",
+      "files": [
+        "components/sources/button/specification-index.json",
+        "docs/handoff/archives/2026-10-09-overnight/mastergo/button-spec-document.json"
+      ]
+    },
+    "originalOnlineFrontendCode": false,
+    "browserComputedStyles": false,
+    "completeSpecificationCoverage": false,
+    "previewStateBoundary": {
+      "status": "finite-preview-state-boundary-checked",
+      "missingOwnHoverVariants": [
+        "bordered-xl",
+        "bordered-xl-checked"
+      ],
+      "scope": "Static bordered Hover showcase only; actual hover behavior and complete source coverage remain unapproved"
+    }
+  },
+  "freshness": {
+    "fingerprints": {
+      "components/components.css": "a08b4fe2790b5ff2b784c6362a90f1b94e7535a03e863232ce6d620a52e85f73",
+      "components/contracts/icon-button.json": "19f3ce860f24650fba7fbc0b43b59c80255feae164b8d24d9ed71cb4d39d782d",
+      "components/icon-button-current.css": "5a4d55cf3817c9491473c1db1df6690cd9a06faf89663a7116e4b044ac5bbd2d",
+      "components/icons/icon-button-close-l-hover.svg": "bd3c01a47929f04b97acf6717a437f6bfca612a85a98487011d24d439809d505",
+      "components/icons/icon-button-close-m-hover.svg": "931e0ca5fc7a611c8ea8ca0b8d744487f31c4bffdfa1188bdd95339eeb15d8fd",
+      "components/icons/icon-button-close-s.svg": "d05154223c9e7bac48e56bc6193d06133a86f64555e2a94524661429d532f278",
+      "components/icons/icon-button-delete-m-hover.svg": "0cc7d10a7fce0921ccd08207c16fe7eb76393b4552a3956e686c6ea78f8c6b2a",
+      "components/icons/icon-button-download-m-hover.svg": "8bf3f4c8445b5fc86273d4621c01cf5c2779460ddcd4a443ddef5b0beeb1303f",
+      "components/icons/icon-button-edit-xs-hover.svg": "04a6051081f168e38a3560514480319a83800568e65e663ca6b0268ab4a154d5",
+      "components/icons/icon-button-eye-m-hover.svg": "e26bab2c6149ddc13e1dce98b8c9ffa0b4ef986fb8b0d5659f73f82555d1e51a",
+      "components/icons/icon-button-eye-off-m-hover.svg": "3fd228a98200ea25c1fa7e49b095dc5b9fe6284cda17ceac1be1d3e64a0f0bd6",
+      "components/icons/icon-button-grid-l-hover.svg": "6ee3fab85e52559d0d3ceeef286ad3e7bdce665cee1df92fac410f8a8f245fcc",
+      "components/icons/icon-button-list-l-hover.svg": "38d07b2f36ad321aae273b0f7abf1b05d59dac0a9c44d733a428ba0b927a92bf",
+      "components/icons/icon-button-more-m-hover.svg": "dd924972438373847f1794709bea76ca9a1bd1aef29423944aa820ec65eef24a",
+      "components/icons/icon-button-search-m-default.svg": "1d711c6df60e7ab61b90e13c901fcf785ec3d60b6aad4c7cd2cc557952fffcf7",
+      "components/icons/icon-button-search-m-hover.svg": "24ea696a2f707c477be989147f70839ea43f9141e1698fbf27b0f748d48c8a88",
+      "components/icons/icon-button-search-s-hover.svg": "43dcaefba5672836d7479f59b22a0ea74e3fe5840f312aa37d0d88647de81850",
+      "components/icons/icon-close.svg": "226867654d63f99f548f7e25b2f0286c19aa5786f5b9497905474f3959704424",
+      "components/icons/icon-delete.svg": "3b8807c395d1d4b94ceeb14e6c8318b5128880bc4d2c9350e60411b8377c9fa5",
+      "components/icons/icon-download.svg": "d22356b69888fa9259737fc9af2c4d0cb6d219f6ecb452a86be69f10e97ab19b",
+      "components/icons/icon-edit.svg": "c6076863bfb71113c79317b5218b7d6e17a547c00c7c87e8e9baea3be11b8f6b",
+      "components/icons/icon-eye-off.svg": "6899d93cc07528df162d17e5852349b1b08dbfd3f204b1cbf64759e7d3864611",
+      "components/icons/icon-eye.svg": "11c57eb3fa61bb24b072d8bb8a785f58bd1371a6543338902e39607097378db6",
+      "components/icons/icon-filter.svg": "8a4911b2335d63b8c475a62d9a836500b772351ae6635c3513ed3b8b201351c4",
+      "components/icons/icon-grid-view.svg": "7337e2156917d2c0db7a77a62d0c0f7e5748253a928ae996d68130eaa1d2e284",
+      "components/icons/icon-list-view.svg": "321faa85653328e3b319e2512c8e984c90809f5a39b8499128c36f7943d034b3",
+      "components/icons/icon-more.svg": "20f6e039a56fa1b3decd4430ce56186f85fd7190416eef9d4c434a5cab4332c8",
+      "components/icons/icon-search.svg": "11e01599b008320c723773284b56944f810762688a2928b37e6cb228fc9a3347",
+      "components/icons/icons-manifest.json": "12c48af6d1dc59d50b76046bb0507005f565aa4224a6d8056ce4eaaf8050c43e",
+      "components/preview/reference-live.js": "4839383529a3ee82df1d8efe675d430567abc1986034499107aa429d21a18ea6",
+      "components/reference-policy.json": "4ae8f51f623386417e38d497caafb8bda4417c929159002a7ac088e6e526b482",
+      "components/sources/button/specification-index.json": "04d17ff66f36bfae9f6acc9f5633275393a2a52f4bc27475a0f06a80425f1b9e",
+      "components/sources/icon-button/close-l-hover-official-1012.svg": "bd3c01a47929f04b97acf6717a437f6bfca612a85a98487011d24d439809d505",
+      "components/sources/icon-button/close-l-paint-review-1012.json": "0a0ba5e74583feae9bd0be21466bf934dd39903fbfd105e2a9b31f0f8563fee6",
+      "components/sources/icon-button/close-m-hover-official-1012.svg": "931e0ca5fc7a611c8ea8ca0b8d744487f31c4bffdfa1188bdd95339eeb15d8fd",
+      "components/sources/icon-button/close-m-paint-review-1012.json": "8a880c4ed0a83e05a98814af3519450d0096d0faf639812a79da99a460618cfb",
+      "components/sources/icon-button/close-s-official-1012.svg": "d05154223c9e7bac48e56bc6193d06133a86f64555e2a94524661429d532f278",
+      "components/sources/icon-button/delete-m-hover-official-1012.svg": "0cc7d10a7fce0921ccd08207c16fe7eb76393b4552a3956e686c6ea78f8c6b2a",
+      "components/sources/icon-button/design-inventory.json": "e51af4d58b9dca788e17bb5db295ce640feda3f7c235f2807790ea3cbc6409dc",
+      "components/sources/icon-button/download-m-hover-official-1012.svg": "8bf3f4c8445b5fc86273d4621c01cf5c2779460ddcd4a443ddef5b0beeb1303f",
+      "components/sources/icon-button/download-m-paint-review-1012.json": "f1b0dc1d46cd0905592626f4ec9a0810005a3f23a276f31d055bd5b56b1670c9",
+      "components/sources/icon-button/edit-xs-hover-official-1012.svg": "04a6051081f168e38a3560514480319a83800568e65e663ca6b0268ab4a154d5",
+      "components/sources/icon-button/eye-m-hover-official-1012.svg": "e26bab2c6149ddc13e1dce98b8c9ffa0b4ef986fb8b0d5659f73f82555d1e51a",
+      "components/sources/icon-button/eye-off-m-hover-official-1012.svg": "3fd228a98200ea25c1fa7e49b095dc5b9fe6284cda17ceac1be1d3e64a0f0bd6",
+      "components/sources/icon-button/grid-l-hover-official-1012.svg": "6ee3fab85e52559d0d3ceeef286ad3e7bdce665cee1df92fac410f8a8f245fcc",
+      "components/sources/icon-button/list-l-hover-official-1012.svg": "38d07b2f36ad321aae273b0f7abf1b05d59dac0a9c44d733a428ba0b927a92bf",
+      "components/sources/icon-button/mastergo-original-components.json": "825a7ab5731310b020c0dfe81d40056d5cc745544e4058ce719fd68c5aed19a7",
+      "components/sources/icon-button/mg-current-scope-20261114.json": "6ced8b335fdebd8de1036ed56babddae0fefe2e30a16c65ef8fc6718715b961f",
+      "components/sources/icon-button/more-m-hover-official-1012.svg": "dd924972438373847f1794709bea76ca9a1bd1aef29423944aa820ec65eef24a",
+      "components/sources/icon-button/remaining-hover-paint-review-1012.json": "3528b8d70399ee8e63f6693b8fc359c82916ab48cdf7da7538fddfb0385726a0",
+      "components/sources/icon-button/search-m-default-official-1012.svg": "1d711c6df60e7ab61b90e13c901fcf785ec3d60b6aad4c7cd2cc557952fffcf7",
+      "components/sources/icon-button/search-m-hover-official-1012.svg": "24ea696a2f707c477be989147f70839ea43f9141e1698fbf27b0f748d48c8a88",
+      "components/sources/icon-button/search-m-paint-review-1012.json": "416c2eed3fb593620ab703c330fef001c83899cb749c1bef0a359f44dee2aa9d",
+      "components/sources/icon-button/search-s-hover-official-1012.svg": "43dcaefba5672836d7479f59b22a0ea74e3fe5840f312aa37d0d88647de81850",
+      "components/sources/icon-button/search-s-official-1012.svg": "e7ed607140303eaa4133565498f32e9860b6aef06a248e8f124cbe315b828824",
+      "components/sources/icon-button/small-icon-export-review-1012.json": "f573ebadbd7dd151087d3fea131253c7b0c3c1e25b16b9e2ff28b209896b2183",
+      "components/token-specs/border-radius.json": "b01e4c23fbc7e19983d9592b59b0303155b79d66c52459356eda0ea9f4ca74b5",
+      "components/token-specs/border.json": "d286ee4681deda1c7702c310b065c86f824539b3a8797efba05b24bc225ab322",
+      "components/token-specs/colors.json": "5267d59fdc687b54496977280c00c97f0beb6ffce013f87853504f5b736d3389",
+      "components/token-specs/spacing.json": "351b14cfce4411248ad41e00eaaf2b1cab9b705997980dfed1fc65693740e65c",
+      "components/tokens.css": "f63f3c8fea511d8029902bc3905b01853ac5e92049c1b18ca35ebc9a680c3e69",
+      "components/variants/banner.html": "fa9af2a1b48a9b7fe7f8720a6935613bcd52aebb44313a77dbfd94f2f273c6e6",
+      "components/variants/comment.html": "e0d983eb8704ddc84c51eb162cc7683d4aaca8ff6d94a6ca3ddcfa481b751e59",
+      "components/variants/dialog.html": "40132b51264249e10a92ea5f24730d989ca1415daa62f9ef42d391aadff7f21f",
+      "components/variants/dropdown.html": "44354e67c711c48da210aa5e5abe899eb15bfbf49688fdf485090caee0b07ce5",
+      "components/variants/icon-button.html": "91c84e01916ffb0fb58a102a83123aa24b16263a9d3a744dc0316ec19f2f317f",
+      "components/variants/list.html": "51f7f184f06b1e0a334887d65cf352e2c89a43a5ac72358b88bf405500f0d98e",
+      "components/variants/menu-navigation.html": "6238b924e7c62295141a5dba9b8900cd5eb39779a19ce00fb307aac928900462",
+      "docs/handoff/archives/2026-10-09-overnight/mastergo/button-spec-document.json": "b1b383121a492fb6efbf4daa4eeec51461d1be176a9b2b027bfeced0a23bd120"
+    },
+    "graphFingerprint": "6fa12b0da6c4036894d97f5136f03846399279931cf3b5e91fc0ed2704ec9e20",
+    "note": "从本地源文件生成；不是 MasterGo 在线实时状态。"
+  },
+  "readScope": {
+    "variant": "plain-l",
+    "note": "只展开当前已选变体；其他变体没有被声明为不可用。尺寸继续按真实 sizeOptions 选择。"
+  }
+}

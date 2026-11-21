@@ -1,0 +1,276 @@
+{
+  "schemaVersion": "fs-component-reference/1.0.0",
+  "component": {
+    "id": "cart",
+    "name": "Cart",
+    "scope": "necessary-product-card-cart-default-hover",
+    "reviewStatus": {
+      "engineering": "pending",
+      "visual": "pending",
+      "familyCoverage": "partial"
+    }
+  },
+  "selection": {
+    "policy": "Only actual Card product purchase/recent-view Add slots; fixed Add label and official whiteCart1; no other Cart usage or unverified states.",
+    "supported": [
+      "product-card"
+    ],
+    "unsupported": [
+      "popover-cart",
+      "processing",
+      "disabled",
+      "editable-icon"
+    ]
+  },
+  "runtime": {
+    "styles": [
+      "components/tokens.css",
+      "components/cart-current.css"
+    ],
+    "scripts": [],
+    "fontStylesheets": [
+      "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+    ]
+  },
+  "identity": {
+    "rule": "button type=button with fixed official icon and Add span; host owns assembly position and business event only."
+  },
+  "locked": [
+    "button root and type",
+    "official14px icon and Add label",
+    "atom-owned padding/gap/font/radius/paint"
+  ],
+  "behavior": {
+    "hover": "Actual pointer shows source20% Gray1 overlay.",
+    "business": "Host attaches business events; atom has no invented purchase logic."
+  },
+  "examples": [
+    {
+      "name": "product-card",
+      "rootTag": "button",
+      "sizeOptions": [],
+      "purpose": "card-product-add-atom",
+      "whenToUse": "仅嵌入真实产品小卡片/产品完整卡片Add入口；不作为普通Button或其他Cart用途。",
+      "rootClasses": "ds-cart ds-cart--product-card",
+      "requiredStructure": [
+        "img.ds-cart__icon",
+        "span.ds-cart__text"
+      ],
+      "slots": {
+        "label": {
+          "selector": "span.ds-cart__text",
+          "mode": "text",
+          "required": true
+        }
+      },
+      "allowedEdits": [
+        "label"
+      ],
+      "exampleHtml": "<button class=\"ds-cart ds-cart--product-card\" type=\"button\" data-ai-example=\"ai-cart-product-card\"><img class=\"ds-cart__icon\" src=\"../icons/icon-cart-add.svg\" alt=\"\"><span class=\"ds-cart__text\">Add</span></button>"
+    }
+  ],
+  "relationships": {
+    "children": [],
+    "parents": [
+      {
+        "id": "card",
+        "contract": "components/contracts/card.json",
+        "preview": "components/preview/card.html",
+        "status": "preview-class-evidence-only",
+        "evidence": {
+          "status": "preview-class-evidence-only",
+          "verified": false,
+          "previewExists": true,
+          "classEvidence": true,
+          "declaredClasses": [
+            "ds-cart",
+            "ds-cart--product-card",
+            "ds-cart__icon",
+            "ds-cart__text"
+          ],
+          "missingClasses": [],
+          "exactStructure": "not-established",
+          "browserEvidence": "not-established",
+          "note": "宿主依赖声明及离线类名盘点；未证明具体变体、尺寸、必需子结构、宿主适配或浏览器行为。"
+        },
+        "usage": [
+          {
+            "component": "Cart",
+            "usage": "已授权必要依赖；独立Cart产品卡片Default/Hover原子，宿主仅管理位置与显示。",
+            "slot": "actionButton",
+            "requiredVariants": [
+              "product-card"
+            ],
+            "implementationClasses": [
+              "ds-cart",
+              "ds-cart--product-card",
+              "ds-cart__icon",
+              "ds-cart__text"
+            ],
+            "appliesTo": [
+              "embedded.product-small",
+              "embedded.product-full"
+            ],
+            "status": "implemented-source-verified-browser-pending"
+          }
+        ]
+      }
+    ],
+    "parentStatus": "declared-hosts",
+    "icons": [
+      {
+        "file": "components/icons/icon-cart-add.svg",
+        "registry": "components/icons/icons-manifest.json",
+        "appliesTo": [
+          "product-card"
+        ],
+        "usage": "已导出官方Cart1 SVG，路径/画布/填色与现有文件一致"
+      }
+    ],
+    "tokens": [
+      {
+        "name": "color.brand-red",
+        "value": "#C00000",
+        "unit": null,
+        "cssVar": "--brand-red",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.white",
+        "value": "#FFFFFF",
+        "unit": null,
+        "cssVar": "--color-white",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "typography.font-family-base",
+        "value": "Open Sans",
+        "unit": null,
+        "cssVar": "--font-family-base",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-size-sm",
+        "value": 12,
+        "unit": "px",
+        "cssVar": "--font-size-sm",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-weight-regular",
+        "value": 400,
+        "unit": null,
+        "cssVar": "--font-weight-regular",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.h9-regular",
+        "value": {
+          "fontSize": "12px",
+          "lineHeight": "20px",
+          "fontWeight": 400
+        },
+        "unit": null,
+        "cssVar": null,
+        "primitiveReferences": {
+          "fontSize": "typography.font-size-sm",
+          "fontWeight": "typography.font-weight-regular"
+        },
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "spacing.6",
+        "value": 6,
+        "unit": "px",
+        "cssVar": "--spacing-6",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.sm",
+        "value": 8,
+        "unit": "px",
+        "cssVar": "--spacing-sm",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.xs",
+        "value": 4,
+        "unit": "px",
+        "cssVar": "--spacing-xs",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "border-radius.md",
+        "value": 4,
+        "unit": "px",
+        "cssVar": "--border-radius-md",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border-radius.json"
+      },
+      {
+        "name": "border.style.none",
+        "value": "none",
+        "unit": null,
+        "cssVar": "--border-style-none",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      }
+    ]
+  },
+  "evidence": {
+    "original": "components/sources/card/cart-dependency-source-1014.json",
+    "svg": "components/sources/card/cart-icon-original-1014.svg"
+  },
+  "sourceValidation": {
+    "componentIdentity": {
+      "status": "not-established",
+      "files": []
+    },
+    "specificationBody": {
+      "status": "not-established",
+      "files": []
+    },
+    "originalOnlineFrontendCode": false,
+    "browserComputedStyles": false,
+    "completeSpecificationCoverage": false,
+    "cart": {
+      "status": "product-default-hover-and-official-svg-checked",
+      "source": "components/sources/card/cart-dependency-source-1014.json",
+      "svg": "components/sources/card/cart-icon-original-1014.svg"
+    }
+  },
+  "freshness": {
+    "fingerprints": {
+      "components/cart-current.css": "1dcceb0139a292876bac11eee7d617d76365ef4a45b324efafd9ffd6f99ddc40",
+      "components/contracts/cart.json": "9edebed07bfe71145a0aee2d127027a47920a62bd32440911a5060aa3f5291e7",
+      "components/icons/icon-cart-add.svg": "ec9abb0e806f0d23db0e279cc5a8935bab0619d0c2c8b71d8b56b0945e3b8377",
+      "components/icons/icons-manifest.json": "6bb5009565ceb7d0f0d981e50140c1d950984b1635aea6db19dc966e550811e7",
+      "components/preview/card.html": "0673f8f8f8dfa7c7620381b056961316e030e63517e7a15300f4344ff52d6afe",
+      "components/preview/cart.html": "4c44acf483bb712c194a59bfe4bcde41739cc04824815e87cdde97aefa90a412",
+      "components/preview/reference-live.js": "4839383529a3ee82df1d8efe675d430567abc1986034499107aa429d21a18ea6",
+      "components/reference-policy.json": "44ef1e113a20ce112fc9dfaf279596aefbcaf814baec6dda3307e55fdd8be86d",
+      "components/sources/card/cart-dependency-source-1014.json": "5b489f0b93fad1c5d896bfc892aebe621139ba0a9594a660a6d29e3d1163b68d",
+      "components/sources/card/cart-icon-original-1014.svg": "d82ec09fa66e10017004d5de93827524612793d6b90602bbb63e7f8e7d451d73",
+      "components/token-specs/border-radius.json": "77d9245e2504b7c0c605288290e938b2453a79b27d4312448d14a58692290791",
+      "components/token-specs/border.json": "d286ee4681deda1c7702c310b065c86f824539b3a8797efba05b24bc225ab322",
+      "components/token-specs/colors.json": "82cba8e4a6b3e1e5bc961e4039478b0dea4ba9b92a5291d579bb8d7a54db0d95",
+      "components/token-specs/spacing.json": "351b14cfce4411248ad41e00eaaf2b1cab9b705997980dfed1fc65693740e65c",
+      "components/token-specs/typography.json": "93b7dc07547218a33c075b7cdcd942f89094353a7847d483d8378b8883327e16",
+      "components/tokens.css": "2424558781ddfc12cad4d2b91e78451dc26fe5e126e6f24a3b9631753b644afa"
+    },
+    "graphFingerprint": "19f77da76a0f2d5d7c844ecabcde5c86c32975d72db4d5e574821b4f427eadfc",
+    "note": "从本地源文件生成；不是 MasterGo 在线实时状态。"
+  },
+  "readScope": {
+    "variant": "product-card",
+    "note": "只展开当前已选变体；其他变体没有被声明为不可用。尺寸继续按真实 sizeOptions 选择。"
+  }
+}

@@ -1,0 +1,163 @@
+<!-- INTERNAL VARIANT SOURCE: for compile/sync scripts only. Human-facing spec: maintenance/foundation-prototypes-20261114/checkbox.html -->
+<!DOCTYPE html>
+<html data-component-reference="checkbox" lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkbox 复选框 - 组件预览</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../tokens.css">
+  <link rel="stylesheet" href="../components.css?v=2">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: var(--font-family-base); padding: 40px; background: #FFF; color: var(--color-gray-1); }
+    h1 { font-size: 24px; font-weight: 600; margin-bottom: 8px; }
+    .subtitle { font-size: 14px; color: var(--color-gray-3); margin-bottom: 40px; }
+    .section { margin-bottom: 48px; }
+    .section-title { font-size: 18px; font-weight: 600; margin-bottom: 24px; padding-bottom: 8px; border-bottom: 1px solid var(--color-gray-5); }
+
+    table { width: 100%; border-collapse: collapse; }
+    th, td { font-size: 12px; text-align: left; padding: 8px 10px; border: 1px solid #DEE0E3; }
+    th { background: #F6F6F8; font-weight: 600; }
+
+    /* State grid: rows = states, columns = sizes */
+    .cb-grid { display: grid; grid-template-columns: 160px 240px 240px; row-gap: 24px; align-items: center; max-width: 720px; }
+    .cb-grid__head { font-size: 12px; font-weight: 600; color: var(--color-gray-3); }
+    .cb-grid__state { font-size: 13px; font-weight: 600; color: var(--color-gray-1); }
+
+
+    /* Category Badge（分类与左侧导航栏保持一致） */
+    .cat-badge { display: inline-flex; align-items: center; height: 22px; padding: 0 10px; border-radius: 11px; font-size: 11px; font-weight: 700; margin-bottom: 10px; }
+  </style>
+  <link rel="stylesheet" href="../checkbox-current.css">
+</head>
+<body>
+  <span class="cat-badge" style="background:#E0F2F1;color:#00897B;">数据录入 Data Entry</span>
+  <h1>Checkbox 复选框 <span class="version-badge" style="font-size:18px;font-weight:600;color:#707070;vertical-align:middle;margin-left:10px;">v1.2.2608C</span></h1>
+  <p class="subtitle">复选框组件 — 两种尺寸（大 18px / 小 14px），六种状态（默认 / 悬停 / 选中 / 半选 / 禁用 / 选中且禁用）</p>
+
+  <!-- Dependency Bar -->
+  <!-- 变体决策 + 关联关系表 -->
+  <div style="margin-bottom: 0; padding: 24px; background: #FAFBFC; border: 1px solid var(--color-gray-5); border-radius: 8px;">
+    <!-- AUTO-GENERATED-PREVIEW:START -->
+<!-- 合并模式：硬规则已并入下方合并表 -->
+    <!-- AUTO-GENERATED-PREVIEW:END -->
+    <!-- AUTO-GENERATED-DECISION-TABLE:START -->
+    <p style="font-size:14px;font-weight:600;margin-bottom:4px;">变体决策</p>
+    <p style="font-size:12px;color:#707070;margin-bottom:12px;">按原规范的具体场景逐项判断，先排除禁用条件，再在候选中核对宿主、内容与调用范围；资料不足保留待确认。设计参考不开放调用。展示与本地AI索引使用同一份规则。</p>
+    <table style="width:100%;border-collapse:collapse;table-layout:fixed;">
+      <colgroup><col style="width:18%"><col style="width:38%"><col style="width:44%"></colgroup>
+      <thead><tr><th scope="col" style="background:#F6F6F8;font-size:12px;font-weight:600;text-align:left;padding:8px 10px;border:1px solid #DEE0E3;">变体</th><th scope="col" style="background:#F6F6F8;font-size:12px;font-weight:600;text-align:left;padding:8px 10px;border:1px solid #DEE0E3;">匹配条件</th><th scope="col" style="background:#F6F6F8;font-size:12px;font-weight:600;text-align:left;padding:8px 10px;border:1px solid #DEE0E3;">选型结论</th></tr></thead>
+<tbody><tr><th scope="rowgroup" rowspan="2" style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">大号 lg</th><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">普通大号18px选项；普通多选同组≥2，协议等布尔开关可单项。</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>候选 · </strong>按登记接口调用。</td></tr>
+<tr><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">下拉/表格行/筛选侧栏等密集容器 → 用小号。</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>不用 · </strong>不用此变体。</td></tr></tbody>
+<tbody><tr><th scope="rowgroup" rowspan="2" style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">小号 sm</th><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">密集14px选项或已核实的表单/协议宿主；普通多选同组≥2，协议等布尔开关可单项。</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>候选 · </strong>按登记接口调用。</td></tr>
+<tr><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">来源明确18px的商品/其他选项行；不得为压缩空间擅自改小。</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>不用 · </strong>不用此变体。</td></tr></tbody>
+<tbody><tr><th colspan="3" style="background:#F6F6F8;font-size:12px;font-weight:600;text-align:left;padding:8px 10px;border:1px solid #DEE0E3;">⚠️ 硬规则：方块使用来源SVG，原生控件负责交互，组内尺寸统一</th></tr><tr><td colspan="2" style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>描述原文</strong><div><strong>复选框方块使用 <code>icons/icon-checkbox-*.svg</code> 的12个来源SVG（两尺寸×六态），不使用浏览器默认勾选外观或自行绘制图形。</strong>独立控件保留隐藏的原生 <code>input type="checkbox"</code>，负责键盘、表单与checked/disabled语义；原子box负责FS外观。宿主受控标记适配仅按已登记范围调用，不叠加独立input事件。同组尺寸统一；实际尺寸与文案配置优先跟随已核实宿主来源。 原生current根按原件适应宽高，不拉满父列形成额外空白热区；104/95px仅为原件示例宽。</div></td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>AI 解析（写入契约 JSON 的字段）</strong><pre style="white-space:pre-wrap;word-break:break-all;">relations.iconDependencies：12个已登记来源SVG，存在性受检。
+relations.notes：原生input负责独立控制；宿主受控标记不叠加原生事件。
+relations.variantSelectionRules：一般选项默认lg，密集及来源已核实的14px宿主可用sm，同组尺寸统一。</pre></td></tr></tbody>
+    </table>
+    <!-- AUTO-GENERATED-DECISION-TABLE:END -->
+  </div>
+
+    <!-- DEPENDENCY-SUMMARY-SPACING -->
+    <div style="height:24px;"></div>
+    <!-- AUTO-GENERATED-DEPENDENCY-SUMMARY-TABLE:START -->
+    <div style="margin-bottom: 0; padding: 24px; background: #FAFBFC; border: 1px solid var(--color-gray-5); border-radius: 8px;">
+      <p style="font-size: 14px; font-weight: 600; margin-bottom: 4px;">依赖汇总表</p>
+      <p style="font-size: 12px; color: #707070; margin-bottom: 12px;">按组件类型汇总组件关系、颜色、字体、间距、描边、圆角、阴影和图标依赖；未填写 <code>appliesTo</code> 的组件级依赖不猜测变体归属，不参与本表归类。「组件关系」列用标签区分：<span style="display:inline-block;font-size:11px;line-height:16px;padding:0 5px;border-radius:3px;background:#EAF2FF;color:#0060BF;">子组件</span> = 嵌入本组件内部；<span style="display:inline-block;font-size:11px;line-height:16px;padding:0 5px;border-radius:3px;background:#F3EEFA;color:#512971;">父组件·类名证据／仅声明</span> = 从宿主 <code>componentDependencies</code> 自动推导；类名出现不等于具体变体、尺寸、必需结构或交互已验证，链接仅供打开 Preview 复核；<span style="display:inline-block;font-size:11px;line-height:16px;padding:0 5px;border-radius:3px;background:#FFF3E0;color:#A65300;">参考·未验证</span> = 仅保留设计意图，宿主 preview 尚无真实结构，不可作为已实现依赖。</p>
+      <div class="dep-summary-scroll">
+        <div class="dep-summary-grid" style="grid-template-columns:minmax(max-content, auto) repeat(8, minmax(max-content, 1fr));">
+          <div class="dep-cell dep-cell--sticky dep-cell--head" role="columnheader">组件类型</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">颜色</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">字体</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">间距</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">描边</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">圆角</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">阴影</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">图标</div>
+          <div class="dep-cell dep-cell--head dep-cell--right-edge" role="columnheader">组件关系</div>
+          <div class="dep-cell dep-cell--sticky" role="rowheader"><strong>大号</strong><br><code>lg</code></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#19191A;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-1" style="color:#0060BF;text-decoration:underline;"><code>color.gray-1</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:rgba(25,25,26,0.3);vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-text-disabled" style="color:#0060BF;text-decoration:underline;"><code>color.text-disabled</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">14px · md · Regular 400</span><a href="font.html#tok-typography-h7-regular" style="color:#0060BF;text-decoration:underline;"><code>typography.h7-regular</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">8px</span><a href="spacing.html#tok-spacing-sm" style="color:#0060BF;text-decoration:underline;"><code>spacing.sm</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">2px</span><a href="spacing.html#tok-spacing-2" style="color:#0060BF;text-decoration:underline;"><code>spacing.2</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><img src="../icons/icon-checkbox-default-18.svg?v=a2b81f44fd5f" alt="" style="display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;"><a href="icon-map.html#icon-checkbox-default-18" style="color:#0060BF;text-decoration:underline;"><code>icon-checkbox-default-18.svg</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><img src="../icons/icon-checkbox-hover-18.svg?v=10e14bfe6f2c" alt="" style="display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;"><a href="icon-map.html#icon-checkbox-hover-18" style="color:#0060BF;text-decoration:underline;"><code>icon-checkbox-hover-18.svg</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><img src="../icons/icon-checkbox-checked-18.svg?v=59290914956e" alt="" style="display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;"><a href="icon-map.html#icon-checkbox-checked-18" style="color:#0060BF;text-decoration:underline;"><code>icon-checkbox-checked-18.svg</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><img src="../icons/icon-checkbox-indeterminate-18.svg?v=c5dd19bb2900" alt="" style="display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;"><a href="icon-map.html#icon-checkbox-indeterminate-18" style="color:#0060BF;text-decoration:underline;"><code>icon-checkbox-indeterminate-18.svg</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><img src="../icons/icon-checkbox-disabled-18.svg?v=286231edd6d0" alt="" style="display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;"><a href="icon-map.html#icon-checkbox-disabled-18" style="color:#0060BF;text-decoration:underline;"><code>icon-checkbox-disabled-18.svg</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><img src="../icons/icon-checkbox-disabled-checked-18.svg?v=89b87ec42edb" alt="" style="display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;"><a href="icon-map.html#icon-checkbox-disabled-checked-18" style="color:#0060BF;text-decoration:underline;"><code>icon-checkbox-disabled-checked-18.svg</code></a></span></div>
+          <div class="dep-cell dep-cell--right-edge" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:normal;overflow-wrap:anywhere;"><span style="display:inline-block;flex-shrink:0;font-size:11px;line-height:16px;padding:0 5px;margin-right:6px;border-radius:3px;background:#F3EEFA;color:#512971;">父组件·仅声明</span><a href="dialog.html" style="color:#0060BF;text-decoration:underline;">Dialog</a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:normal;overflow-wrap:anywhere;"><span style="display:inline-block;flex-shrink:0;font-size:11px;line-height:16px;padding:0 5px;margin-right:6px;border-radius:3px;background:#F3EEFA;color:#512971;">父组件·仅声明</span><a href="list.html" style="color:#0060BF;text-decoration:underline;">List</a></span></div>
+          <div class="dep-cell dep-cell--sticky dep-cell--bottom-edge" role="rowheader"><strong>小号</strong><br><code>sm</code></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#19191A;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-1" style="color:#0060BF;text-decoration:underline;"><code>color.gray-1</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:rgba(25,25,26,0.3);vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-text-disabled" style="color:#0060BF;text-decoration:underline;"><code>color.text-disabled</code></a></span></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">13px · H8 · Regular 400</span><a href="font.html#tok-typography-h8-regular" style="color:#0060BF;text-decoration:underline;"><code>typography.h8-regular</code></a></span></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">8px</span><a href="spacing.html#tok-spacing-sm" style="color:#0060BF;text-decoration:underline;"><code>spacing.sm</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">3px</span><a href="spacing.html#tok-spacing-3" style="color:#0060BF;text-decoration:underline;"><code>spacing.3</code></a></span></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><img src="../icons/icon-checkbox-default-14.svg?v=e610d5b12893" alt="" style="display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;"><a href="icon-map.html#icon-checkbox-default-14" style="color:#0060BF;text-decoration:underline;"><code>icon-checkbox-default-14.svg</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><img src="../icons/icon-checkbox-hover-14.svg?v=5c9ebcc0364f" alt="" style="display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;"><a href="icon-map.html#icon-checkbox-hover-14" style="color:#0060BF;text-decoration:underline;"><code>icon-checkbox-hover-14.svg</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><img src="../icons/icon-checkbox-checked-14.svg?v=f83d910808d0" alt="" style="display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;"><a href="icon-map.html#icon-checkbox-checked-14" style="color:#0060BF;text-decoration:underline;"><code>icon-checkbox-checked-14.svg</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><img src="../icons/icon-checkbox-indeterminate-14.svg?v=82735709fabe" alt="" style="display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;"><a href="icon-map.html#icon-checkbox-indeterminate-14" style="color:#0060BF;text-decoration:underline;"><code>icon-checkbox-indeterminate-14.svg</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><img src="../icons/icon-checkbox-disabled-14.svg?v=9aaf4fac0c53" alt="" style="display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;"><a href="icon-map.html#icon-checkbox-disabled-14" style="color:#0060BF;text-decoration:underline;"><code>icon-checkbox-disabled-14.svg</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><img src="../icons/icon-checkbox-disabled-checked-14.svg?v=0ff37fbf929e" alt="" style="display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;"><a href="icon-map.html#icon-checkbox-disabled-checked-14" style="color:#0060BF;text-decoration:underline;"><code>icon-checkbox-disabled-checked-14.svg</code></a></span></div>
+          <div class="dep-cell dep-cell--right-edge dep-cell--bottom-edge" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:normal;overflow-wrap:anywhere;"><span style="display:inline-block;flex-shrink:0;font-size:11px;line-height:16px;padding:0 5px;margin-right:6px;border-radius:3px;background:#F3EEFA;color:#512971;">父组件·仅声明</span><a href="dropdown.html" style="color:#0060BF;text-decoration:underline;">Dropdown</a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:normal;overflow-wrap:anywhere;"><span style="display:inline-block;flex-shrink:0;font-size:11px;line-height:16px;padding:0 5px;margin-right:6px;border-radius:3px;background:#F3EEFA;color:#512971;">父组件·仅声明</span><a href="form.html" style="color:#0060BF;text-decoration:underline;">Form</a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:normal;overflow-wrap:anywhere;"><span style="display:inline-block;flex-shrink:0;font-size:11px;line-height:16px;padding:0 5px;margin-right:6px;border-radius:3px;background:#F3EEFA;color:#512971;">父组件·仅声明</span><a href="option-selector.html" style="color:#0060BF;text-decoration:underline;">OptionSelector</a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:normal;overflow-wrap:anywhere;"><span style="display:inline-block;flex-shrink:0;font-size:11px;line-height:16px;padding:0 5px;margin-right:6px;border-radius:3px;background:#F3EEFA;color:#512971;">父组件·仅声明</span><a href="select.html" style="color:#0060BF;text-decoration:underline;">Select</a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:normal;overflow-wrap:anywhere;"><span style="display:inline-block;flex-shrink:0;font-size:11px;line-height:16px;padding:0 5px;margin-right:6px;border-radius:3px;background:#F3EEFA;color:#512971;">父组件·仅声明</span><a href="tag.html" style="color:#0060BF;text-decoration:underline;">Tag</a></span></div>
+        </div>
+      </div>
+    </div>
+    <!-- AUTO-GENERATED-DEPENDENCY-SUMMARY-TABLE:END -->
+
+  <!-- TEMPLATE-DEMO-SPACING -->
+  <div style="height:24px;"></div>
+
+
+
+<!-- 大号 -->
+  <div class="section">
+    <div class="section-title">大号 lg（方块 18px / 文字 14px）</div>
+    <div class="cb-grid" style="grid-template-columns:120px 1fr">
+      <div class="cb-grid__head">状态</div>
+      <div class="cb-grid__head">原件显示</div>
+      <div class="cb-grid__state">Default 默认</div>
+      <label class="ds-checkbox" data-ai-example="ai-checkbox-lg" data-checkbox-current data-checkbox-control><input class="ds-checkbox__input" type="checkbox" name="checkbox-lg" value="option-a"><span class="ds-checkbox__box" aria-hidden="true"></span><span class="ds-checkbox__label">Options-A</span></label>
+      <div class="cb-grid__state">Hover 悬停</div>
+      <label class="ds-checkbox ds-checkbox--hover" data-checkbox-current><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Options-A</span></label>
+      <div class="cb-grid__state">Press 选中</div>
+      <label class="ds-checkbox ds-checkbox--checked" data-checkbox-current><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Options-A</span></label>
+      <div class="cb-grid__state">半选</div>
+      <label class="ds-checkbox ds-checkbox--indeterminate" data-checkbox-current><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Options-A</span></label>
+      <div class="cb-grid__state">Disable 禁用</div>
+      <label class="ds-checkbox ds-checkbox--disabled" data-checkbox-current><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Options-A</span></label>
+      <div class="cb-grid__state">Disable选中</div>
+      <label class="ds-checkbox ds-checkbox--disabled ds-checkbox--checked" data-checkbox-current><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Options-A</span></label>
+    </div>
+  </div>
+
+  <!-- 小号 -->
+  <div class="section">
+    <div class="section-title">小号 sm（方块 14px / 文字 13px）</div>
+    <div class="cb-grid" style="grid-template-columns:120px 1fr">
+      <div class="cb-grid__head">状态</div>
+      <div class="cb-grid__head">原件显示</div>
+      <div class="cb-grid__state">Default 默认</div>
+      <label class="ds-checkbox ds-checkbox--sm" data-ai-example="ai-checkbox-sm" data-checkbox-current data-checkbox-control><input class="ds-checkbox__input" type="checkbox" name="checkbox-sm" value="option-a"><span class="ds-checkbox__box" aria-hidden="true"></span><span class="ds-checkbox__label">Options-A</span></label>
+      <div class="cb-grid__state">Hover 悬停</div>
+      <label class="ds-checkbox ds-checkbox--sm ds-checkbox--hover" data-checkbox-current><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Options-A</span></label>
+      <div class="cb-grid__state">Press 选中</div>
+      <label class="ds-checkbox ds-checkbox--sm ds-checkbox--checked" data-checkbox-current><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Options-A</span></label>
+      <div class="cb-grid__state">半选</div>
+      <label class="ds-checkbox ds-checkbox--sm ds-checkbox--indeterminate" data-checkbox-current><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Options-A</span></label>
+      <div class="cb-grid__state">Disable 禁用</div>
+      <label class="ds-checkbox ds-checkbox--sm ds-checkbox--disabled" data-checkbox-current><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Options-A</span></label>
+      <div class="cb-grid__state">Disable选中</div>
+      <label class="ds-checkbox ds-checkbox--sm ds-checkbox--disabled ds-checkbox--checked" data-checkbox-current><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Options-A</span></label>
+    </div>
+  
+  </div>
+  <div class="section">
+    <div class="section-title">多行标签：方块对齐第一行（当前原子）</div>
+    <div style="display:flex;gap:32px;align-items:flex-start;">
+      <label class="ds-checkbox" data-checkbox-current style="width:122px;"><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Options-A Test<br>the text</span></label>
+      <label class="ds-checkbox ds-checkbox--sm" data-checkbox-current style="width:112px;"><span class="ds-checkbox__box"></span><span class="ds-checkbox__label">Options-A Test<br>the text</span></label>
+    </div>
+  </div>
+
+  <script src="../checkbox-current.js"></script>
+  <script src="../preview/preview-link.js"></script>
+  <script src="../preview/reference-live.js"></script>
+</body>
+</html>

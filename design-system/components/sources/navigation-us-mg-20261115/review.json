@@ -1,0 +1,94 @@
+{
+  "schemaVersion": "fs-component-source-review/1.0.0",
+  "component": "navigation",
+  "status": "partial-source-scope",
+  "source": {
+    "file": "components/sources/navigation-us-mg-20261115/english-us.txt",
+    "fileId": "209944605602401",
+    "root": "3:81025",
+    "title": "头部底部组件V1.0.2511A · US英文Web限定",
+    "sha256": "dbcc99a76c006f2d305d067df5d3cbd867bc3c406b10d49f9f345c56a5e8f8ba",
+    "url": "https://mastergo.com/file/209944605602401?page_id=M&layer_id=3:81025",
+    "method": "Fresh read-only get_selection_node(81025); targets87058/84947 extracted from the returned current-file DOM; shared Web atom81030 retained for conflict review",
+    "targets": [
+      {
+        "variant": "header",
+        "node": "3:87058",
+        "site": "US",
+        "position": "公共头部"
+      },
+      {
+        "variant": "footer",
+        "node": "3:84947",
+        "site": "US",
+        "position": "公共底部"
+      }
+    ],
+    "extraction": "Only the two requested US Web nodes and their Web-atom source; other language/device source not copied into implementation"
+  },
+  "scope": "本轮仅US英文站PC/Web Header与Footer的固定Default调用；不实现其他站点、语言或Pad/M，不新增可编辑字段、尺寸/状态接口或业务。",
+  "findings": [
+    {
+      "nodes": [
+        "3:87058",
+        "3:87060",
+        "3:87077",
+        "3:87090",
+        "3:87106",
+        "3:87094",
+        "3:87098",
+        "3:87102"
+      ],
+      "sourceFact": "US英文Header为1920px原件，上栏32px、主导航68px；五个固定入口All Products/Solutions/Services/Resources/Contact Us。",
+      "correction": "沿用现有固定英文header，不改Logo、文案、顺序、144px操作区或真实资源；不开放其他语言/设备。"
+    },
+    {
+      "nodes": [
+        "3:84947",
+        "3:84989",
+        "3:85040",
+        "3:85036",
+        "3:85160",
+        "3:85158",
+        "3:85156",
+        "3:85154"
+      ],
+      "sourceFact": "US Footer有四列链接加280px侧栏、Email Default插槽、32px/12px红色Subscribe按钮，以及DigiCert等认证和2026版权。",
+      "correction": "保留已有Default实现及原子依赖；更正自绘按钮、旧认证名、旧版权及列数等过期契约描述，未替换Input母组件或实现订阅业务。"
+    },
+    {
+      "nodes": [
+        "3:81030",
+        "3:81535",
+        "3:81537",
+        "3:81530",
+        "3:81532"
+      ],
+      "sourceFact": "当前共享Web原子Default为Regular，Hover图层明确600字重和2px底部标记。",
+      "correction": "现有用户纠正1013明确要求400字重不变与独立2px红色标记、防止文字/布局跳动。本轮保留此有效修正，登记MG600差异待视觉负责人确认，不自动覆盖。"
+    }
+  ],
+  "conflicts": [
+    {
+      "id": "navigation-us-web-hover-weight",
+      "nodes": [
+        "3:81535",
+        "3:81537"
+      ],
+      "source": "Hover600",
+      "effective": "user correction1013: Hover400, independent2px red marker, no glyph/layout jump",
+      "status": "preserved-user-override-visual-confirmation-pending",
+      "authority": [
+        "components/navigation-header-web-atom.css",
+        "scripts/navigation-header-quality.test.js",
+        "components/contracts/navigation.json#/states"
+      ]
+    }
+  ],
+  "unverified": [
+    "仅US英文PC/Web Default；UK/AU等其他站点、中文、Pad/M未实现或开放。",
+    "未取得全部嵌套母组件的新状态或全族像素批准；保留既有锁定素材与Input专属来源。",
+    "MG Hover600与用户确认400的视觉差异保留，不据此变更现有实现。"
+  ],
+  "ruleDigest": "dc00632123e0c19ae318aeecd737cbcb332ed7d12dd47418acc31685c40ebaae"
+}

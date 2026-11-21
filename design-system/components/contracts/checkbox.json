@@ -1,0 +1,797 @@
+{
+  "id": "comp_checkbox_001",
+  "name": "Checkbox",
+  "chineseName": "复选框",
+  "description": "复选框组件，两种尺寸（大 18px / 小 14px），六种状态（默认未选 / 悬停 / 选中 / 半选 / 禁用 / 选中且禁用）。方块视觉由 icons/icon-checkbox-*.svg SVG资源按状态切换，不使用浏览器原生 input 默认样式。",
+  "category": "数据录入 Data Entry",
+  "variants": [
+    {
+      "name": "lg",
+      "chineseName": "大号",
+      "styleProperties": {
+        "boxSize": "18px",
+        "fontSize": "14px",
+        "lineHeight": "22px",
+        "gap": "8px"
+      },
+      "cssClass": "ds-checkbox",
+      "isComplete": true,
+      "requiredChildren": [
+        "input.ds-checkbox__input",
+        "span.ds-checkbox__box",
+        "span.ds-checkbox__label"
+      ],
+      "whenToUse": "普通大号18px选项；普通多选同组≥2，协议等布尔开关可单项。",
+      "whenNotToUse": "下拉/表格行/筛选侧栏等密集容器 → 用小号。",
+      "selectionDecisionType": "大号 lg"
+    },
+    {
+      "name": "sm",
+      "chineseName": "小号",
+      "styleProperties": {
+        "boxSize": "14px",
+        "fontSize": "13px",
+        "lineHeight": "20px",
+        "gap": "8px"
+      },
+      "cssClass": "ds-checkbox ds-checkbox--sm",
+      "isComplete": true,
+      "requiredChildren": [
+        "input.ds-checkbox__input",
+        "span.ds-checkbox__box",
+        "span.ds-checkbox__label"
+      ],
+      "whenToUse": "密集14px选项或已核实的表单/协议宿主；普通多选同组≥2，协议等布尔开关可单项。",
+      "whenNotToUse": "来源明确18px的商品/其他选项行；不得为压缩空间擅自改小。",
+      "selectionDecisionType": "小号 sm"
+    }
+  ],
+  "states": [
+    {
+      "name": "default",
+      "chineseName": "默认未选",
+      "styleOverrides": {
+        "box": "icon-checkbox-default-{size}.svg（空框，边框 #19191A 30%）",
+        "label": "color: color.gray-1 (#19191A)"
+      },
+      "description": "未勾选的常态"
+    },
+    {
+      "name": "hover",
+      "chineseName": "悬停",
+      "styleOverrides": {
+        "box": "icon-checkbox-hover-{size}.svg（空框，边框加深 #707070）",
+        "label": "color: color.gray-1 (#19191A)"
+      },
+      "description": "鼠标悬停在未选中框上，边框由 30% 黑加深为 #707070。选中/半选/禁用态 hover 不改变外观。预览网格用 .ds-checkbox--hover 静态模拟。"
+    },
+    {
+      "name": "checked",
+      "chineseName": "选中",
+      "styleOverrides": {
+        "box": "icon-checkbox-checked-{size}.svg（实心 #707070 + 白色对勾）",
+        "label": "color: color.gray-1 (#19191A)"
+      },
+      "description": "用户勾选后的常态（设计稿中标注为 Press，实为选中态）"
+    },
+    {
+      "name": "indeterminate",
+      "chineseName": "半选",
+      "styleOverrides": {
+        "box": "icon-checkbox-indeterminate-{size}.svg（空框 + 内部实心方块 #707070）",
+        "label": "color: color.gray-1 (#19191A)"
+      },
+      "description": "部分子项选中时父级复选框的半选状态"
+    },
+    {
+      "name": "disabled",
+      "chineseName": "禁用",
+      "styleOverrides": {
+        "box": "icon-checkbox-disabled-{size}.svg（底 #F6F6F8 + 边框 #19191A 30%）",
+        "label": "color: rgba(25,25,26,0.3)",
+        "cursor": "not-allowed"
+      },
+      "description": "不可交互状态，方块灰底、文字降为 30% 黑"
+    },
+    {
+      "name": "disabled-checked",
+      "chineseName": "选中且禁用",
+      "styleOverrides": {
+        "box": "icon-checkbox-disabled-checked-{size}.svg；原图内置30%透明度",
+        "label": "color.gray-1 (#19191A)"
+      },
+      "description": "原生checked+disabled保留选中图标和黑色标签；静态宿主标记同样由原子资源提供。"
+    }
+  ],
+  "commonProperties": {
+    "display": "inline-flex",
+    "alignItems": "当前标记原子flex-start；box首行偏移lg2px/sm3px，历史未标记调用center",
+    "gap": "8px",
+    "cursor": "pointer",
+    "fontFamily": "Open Sans",
+    "userSelect": "none"
+  },
+  "usageGuidelines": "默认使用大号（lg）；密集选项可用小号（sm）；已核实Form/协议等宿主的14px调用按真实来源保留，不限于密集容器。复选框方块必须使用 icons/ 目录下的 icon-checkbox-* SVG资源，不得用浏览器原生 input 默认外观或手写内联 SVG。 普通文字属于复选框热区，链接文字除外；单个协议确认用Checkbox。下拉内事件由宿主规则负责，不在role=option内部叠加原生勾选事件。独立控制使用原生input；实际浏览器键盘与视觉验收待验证。 当前两尺寸Default主根宽高均为适应；原生current控制根按内容收缩，max-width100%，不得被父列拉满形成无关空白行热区。104/95px是原件示例宽，禁止固定写入生产。",
+  "tokenReferences": [
+    "color.gray-1",
+    "color.gray-3",
+    "color.gray-9",
+    "color.white",
+    "opacity.disabled",
+    "typography.font-family-base",
+    "typography.font-size-h8",
+    "spacing.sm",
+    "typography.font-size-md",
+    "typography.font-weight-regular",
+    "typography.h7-regular",
+    "typography.h8-regular",
+    "spacing.2",
+    "spacing.3"
+  ],
+  "constraints": {
+    "allowedChildren": [
+      "Input",
+      "Text",
+      "Icon"
+    ],
+    "requiredProperties": [
+      "variant"
+    ],
+    "forbiddenCombinations": [
+      [
+        "checked",
+        "indeterminate"
+      ]
+    ]
+  },
+  "relations": {
+    "variantDecisionsDescription": "按原规范的具体场景逐项判断，先排除禁用条件，再在候选中核对宿主、内容与调用范围；资料不足保留待确认。设计参考不开放调用。展示与本地AI索引使用同一份规则。",
+    "variantDecisions": [
+      {
+        "type": "大号 lg",
+        "className": "ds-checkbox",
+        "whenToUse": "普通大号18px选项；普通多选同组≥2，协议等布尔开关可单项。",
+        "whenNotToUse": "下拉/表格行/筛选侧栏等密集容器 → 用小号。",
+        "nestedComponents": [],
+        "status": "当前调用资格与限制读取同版catalog；原来源核对记录保留，视觉确认由设计负责人独立维护。",
+        "variant": "lg",
+        "selectionCases": [
+          {
+            "id": "checkbox.lg.use",
+            "kind": "use",
+            "condition": "普通大号18px选项；普通多选同组≥2，协议等布尔开关可单项。",
+            "result": "按登记接口调用。",
+            "targetVariant": "lg"
+          },
+          {
+            "id": "checkbox.lg.avoid",
+            "kind": "avoid",
+            "condition": "下拉/表格行/筛选侧栏等密集容器 → 用小号。",
+            "result": "不用此变体。",
+            "targetVariant": "lg"
+          }
+        ],
+        "evidence": {
+          "review": "components/sources/foundation-mg-20261114/checkbox-review.json",
+          "nodes": [
+            "3:219184",
+            "3:218855",
+            "3:219158"
+          ]
+        }
+      },
+      {
+        "type": "小号 sm",
+        "className": "ds-checkbox ds-checkbox--sm",
+        "whenToUse": "密集14px选项或已核实的表单/协议宿主；普通多选同组≥2，协议等布尔开关可单项。",
+        "whenNotToUse": "来源明确18px的商品/其他选项行；不得为压缩空间擅自改小。",
+        "nestedComponents": [],
+        "status": "当前调用资格与限制读取同版catalog；原来源核对记录保留，视觉确认由设计负责人独立维护。",
+        "variant": "sm",
+        "selectionCases": [
+          {
+            "id": "checkbox.sm.use",
+            "kind": "use",
+            "condition": "密集14px选项或已核实的表单/协议宿主；普通多选同组≥2，协议等布尔开关可单项。",
+            "result": "按登记接口调用。",
+            "targetVariant": "sm"
+          },
+          {
+            "id": "checkbox.sm.avoid",
+            "kind": "avoid",
+            "condition": "来源明确18px的商品/其他选项行；不得为压缩空间擅自改小。",
+            "result": "不用此变体。",
+            "targetVariant": "sm"
+          }
+        ],
+        "evidence": {
+          "review": "components/sources/foundation-mg-20261114/checkbox-review.json",
+          "nodes": [
+            "3:219184",
+            "3:218855",
+            "3:219158"
+          ]
+        }
+      }
+    ],
+    "fontSizeDependencies": [
+      {
+        "token": "typography.font-size-md",
+        "value": "14px",
+        "usage": "中号字体 - XL/L 按钮",
+        "appliesTo": [
+          "lg"
+        ]
+      },
+      {
+        "token": "typography.font-size-h8",
+        "value": "13px",
+        "usage": "H8 紧凑正文/组件文字",
+        "appliesTo": [
+          "sm"
+        ]
+      }
+    ],
+    "fontWeightDependencies": [],
+    "typographyDependencies": [
+      {
+        "token": "typography.h7-regular",
+        "fontSizeToken": "typography.font-size-md",
+        "fontSizeValue": "14px",
+        "fontWeightToken": "typography.font-weight-regular",
+        "fontWeightValue": "400",
+        "weightEvidence": "inherited-regular",
+        "usage": "大尺寸复选框标签",
+        "appliesTo": [
+          "lg"
+        ]
+      },
+      {
+        "token": "typography.h8-regular",
+        "fontSizeToken": "typography.font-size-h8",
+        "fontSizeValue": "13px",
+        "fontWeightToken": "typography.font-weight-regular",
+        "fontWeightValue": "400",
+        "weightEvidence": "inherited-regular",
+        "usage": "小尺寸复选框标签",
+        "appliesTo": [
+          "sm"
+        ]
+      }
+    ],
+    "colorDependencies": [
+      {
+        "token": "color.gray-1",
+        "value": "#19191A",
+        "usage": "标题/深色文字 (Primary text)",
+        "appliesTo": [
+          "lg",
+          "sm"
+        ]
+      },
+      {
+        "token": "color.text-disabled",
+        "value": "rgba(25,25,26,0.3)",
+        "usage": "禁用状态文字色 (Disabled text)",
+        "appliesTo": [
+          "lg",
+          "sm"
+        ]
+      }
+    ],
+    "componentDependencies": [],
+    "iconDependencies": [
+      {
+        "icon": "icon-checkbox-default-18",
+        "usage": "大号未选方块",
+        "required": true,
+        "appliesTo": [
+          "lg/default"
+        ]
+      },
+      {
+        "icon": "icon-checkbox-default-14",
+        "usage": "小号未选方块",
+        "required": true,
+        "appliesTo": [
+          "sm/default"
+        ]
+      },
+      {
+        "icon": "icon-checkbox-hover-18",
+        "usage": "大号悬停方块",
+        "required": true,
+        "appliesTo": [
+          "lg/hover"
+        ]
+      },
+      {
+        "icon": "icon-checkbox-hover-14",
+        "usage": "小号悬停方块",
+        "required": true,
+        "appliesTo": [
+          "sm/hover"
+        ]
+      },
+      {
+        "icon": "icon-checkbox-checked-18",
+        "usage": "大号选中方块（带对勾）",
+        "required": true,
+        "appliesTo": [
+          "lg/checked"
+        ]
+      },
+      {
+        "icon": "icon-checkbox-checked-14",
+        "usage": "小号选中方块（带对勾）",
+        "required": true,
+        "appliesTo": [
+          "sm/checked"
+        ]
+      },
+      {
+        "icon": "icon-checkbox-indeterminate-18",
+        "usage": "大号半选方块",
+        "required": true,
+        "appliesTo": [
+          "lg/indeterminate"
+        ]
+      },
+      {
+        "icon": "icon-checkbox-indeterminate-14",
+        "usage": "小号半选方块",
+        "required": true,
+        "appliesTo": [
+          "sm/indeterminate"
+        ]
+      },
+      {
+        "icon": "icon-checkbox-disabled-18",
+        "usage": "大号禁用方块",
+        "required": true,
+        "appliesTo": [
+          "lg/disabled"
+        ]
+      },
+      {
+        "icon": "icon-checkbox-disabled-14",
+        "usage": "小号禁用方块",
+        "required": true,
+        "appliesTo": [
+          "sm/disabled"
+        ]
+      },
+      {
+        "icon": "icon-checkbox-disabled-checked-14",
+        "usage": "选中且禁用的原始图标",
+        "required": true,
+        "appliesTo": [
+          "sm/disabled-checked"
+        ]
+      },
+      {
+        "icon": "icon-checkbox-disabled-checked-18",
+        "usage": "选中且禁用的原始图标",
+        "required": true,
+        "appliesTo": [
+          "lg/disabled-checked"
+        ]
+      }
+    ],
+    "variantSelectionRules": [
+      "默认用 lg（大号）。",
+      "密集选项可用sm；已核实Form/协议宿主使用14px时按宿主真实调用，不以“仅密集容器”排除。",
+      "同一组复选框列表内尺寸必须统一，不得大小混用。"
+    ],
+    "mutuallyExclusiveWith": [],
+    "notes": "独立控制由原生input的checked/disabled/indeterminate驱动；静态网格和宿主标记使用修饰类。宿主不得复制状态图标样式。",
+    "enforcementStatus": {
+      "colorDependencies.tokens-exist": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 2b：colorDependencies 引用的 color.* token 必须存在于 token-specs/colors.json（缺失即 error）；token 为 / 表示无对应 token 的白名单裸值；双源值一致由 validate-tokens.js 全量保证；Guard C 保证声明了就必须有颜色依赖表"
+      },
+      "colorDependencies.css-uses-var": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 2c：切出组件样式段，校验用到的 var(--color-*) 都在 colorDependencies 声明过，且无未声明裸色值（box-shadow/注释除外），违反即 error —— 保证颜色映射闭环"
+      },
+      "radiusDependencies": {
+        "enforced": true,
+        "mechanism": "/",
+        "note": "本组件无圆角，无 radiusDependencies"
+      },
+      "fontSizeDependencies.tokens-exist": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 4a：fontSizeDependencies 引用的 typography.font-size-* token 必须存在于 token-specs/typography.json（缺失即 error）；token 为 / 表示无对应正式 token 的白名单值；Guard E 保证声明了就必须有字号依赖表"
+      },
+      "fontSizeDependencies.css-uses-var": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 4b：校验 font-size 用到的 var(--font-size-*) 都在 fontSizeDependencies 声明过，且无未声明裸字号值，违反即 error —— 保证字号映射闭环"
+      },
+      "shadowDependencies": {
+        "enforced": true,
+        "mechanism": "/",
+        "note": "本组件无 box-shadow，无 shadowDependencies"
+      },
+      "variantSelectionRules.lg-default-sm-dense": {
+        "enforced": false,
+        "mechanism": "无",
+        "note": "默认lg／密集sm是一般选型约定，已核实宿主原件优先；Form/协议14px不被排除，场景与组内尺寸仍须按来源核对。"
+      },
+      "iconDependencies.checkbox-icons-exist": {
+        "enforced": true,
+        "mechanism": "check-contracts.js: iconDependencies 引用的 12 个 icon-checkbox-* 均校验存在于 icons/ 目录"
+      },
+      "commonlyEmbeddedIn.dropdown": {
+        "enforced": false,
+        "mechanism": "无",
+        "note": "Checkbox 嵌入 Dropdown 的关系为文档声明，check-contracts.js 做双向 warning 级核对，无 error 级强制"
+      },
+      "spacingDependencies.tokens-and-css-closure": {
+        "enforced": true,
+        "mechanism": "check-contracts.js: spacingDependencies token/value/selector/property 与组件 CSS 双向闭环校验"
+      },
+      "borderDependencies.tokens-and-css-closure": {
+        "enforced": true,
+        "mechanism": "check-contracts.js: borderDependencies token/value/aspect/selector/property 与组件 CSS 双向闭环校验"
+      },
+      "fontWeightDependencies.tokens-and-css-closure": {
+        "enforced": true,
+        "mechanism": "check-contracts.js: fontWeightDependencies token/value/selector/property 与组件 CSS 双向闭环校验；仅允许 Regular 400 / SemiBold 600，禁止裸字重值"
+      },
+      "typographyDependencies.size-weight-pairing": {
+        "enforced": true,
+        "mechanism": "check-contracts.js: typographyDependencies.token 必须引用 token-specs/typography.json 中真实 composite typography token；该 token 同时锁定 fontSize、lineHeight、fontWeight，并核对底层字号/字重 primitive 与 CSS 证据，依赖汇总表只输出一个 Token 链接"
+      }
+    },
+    "spacingDependencies": [
+      {
+        "token": "spacing.sm",
+        "value": "8px",
+        "usage": "gap：.ds-checkbox",
+        "properties": [
+          "gap"
+        ],
+        "selectors": [
+          ".ds-checkbox"
+        ],
+        "appliesTo": [
+          "lg",
+          "sm"
+        ]
+      },
+      {
+        "token": "spacing.2",
+        "value": "2px",
+        "usage": "Checkbox原子首行位置；宿主仅引用同一资源，不覆盖样式",
+        "properties": [
+          "margin-top"
+        ],
+        "selectors": [
+          ".ds-checkbox[data-checkbox-current] .ds-checkbox__box"
+        ],
+        "appliesTo": [
+          "lg"
+        ]
+      },
+      {
+        "token": "spacing.3",
+        "value": "3px",
+        "usage": "Checkbox原子首行位置；宿主仅引用同一资源，不覆盖样式",
+        "properties": [
+          "margin-top"
+        ],
+        "selectors": [
+          ".ds-checkbox[data-checkbox-current].ds-checkbox--sm .ds-checkbox__box"
+        ],
+        "appliesTo": [
+          "sm"
+        ]
+      }
+    ],
+    "borderDependencies": [],
+    "hardRules": [
+      {
+        "title": "方块使用来源SVG，原生控件负责交互，组内尺寸统一",
+        "description": "AI 生成页面时必须遵守。左边是描述原文，右边是 AI 解析后写入 <code>checkbox.json</code> 的字段值。",
+        "ruleContent": "<strong>复选框方块使用 <code>icons/icon-checkbox-*.svg</code> 的12个来源SVG（两尺寸×六态），不使用浏览器默认勾选外观或自行绘制图形。</strong>独立控件保留隐藏的原生 <code>input type=\"checkbox\"</code>，负责键盘、表单与checked/disabled语义；原子box负责FS外观。宿主受控标记适配仅按已登记范围调用，不叠加独立input事件。同组尺寸统一；实际尺寸与文案配置优先跟随已核实宿主来源。 原生current根按原件适应宽高，不拉满父列形成额外空白热区；104/95px仅为原件示例宽。",
+        "aiParse": "relations.iconDependencies：12个已登记来源SVG，存在性受检。\nrelations.notes：原生input负责独立控制；宿主受控标记不叠加原生事件。\nrelations.variantSelectionRules：一般选项默认lg，密集及来源已核实的14px宿主可用sm，同组尺寸统一。",
+        "enforcement": "来源SVG存在性由check-contracts.js检查；独立原生控件及受控宿主结构由compile-component-reference.js和既有Checkbox专项检查验证。组内业务尺寸选择与实际浏览器状态仍须按来源复核。"
+      }
+    ]
+  },
+  "searchIntents": [
+    "复选框",
+    "多选框",
+    "勾选框",
+    "Checkbox组件",
+    "半选状态复选框",
+    "全选控件"
+  ],
+  "history": [
+    {
+      "date": "2026-07-23",
+      "author": "Kiro",
+      "change": "将字号与字重配对提升为正式 composite typography token；组件依赖以单一 token 引用完整字号、行高、字重，primitive 字段仅保留作 CSS 证据。"
+    },
+    {
+      "date": "2026-07-22",
+      "change": "新增 typographyDependencies 成对字体依赖：每条记录明确绑定字号与字重，依赖汇总表按“字号 · 层级 · 字重”整体展示，禁止拆列后猜测组合。",
+      "author": "Kiro"
+    },
+    {
+      "date": "2026-07-22",
+      "change": "新增 fontWeightDependencies：按组件 CSS 显式 font-weight 证据登记 Regular 400 / SemiBold 600；无显式声明的组件保留空数组，并纳入 token/value/selector/property 双向闭环校验。",
+      "author": "Kiro"
+    },
+    {
+      "date": "2026-07-20",
+      "change": "父子依赖治理：Dropdown→Checkbox(sm) 已实现关系改由宿主 componentDependencies 自动反向推导，删除子组件侧重复手写声明。",
+      "author": "Kiro"
+    },
+    {
+      "date": "2026-07-08",
+      "change": "新建 Checkbox 契约：2 尺寸（lg/sm）× 5 状态（default/hover/checked/indeterminate/disabled），登记 10 个 icon-checkbox-* 图标依赖，声明被 Dropdown 嵌套；同步将 dropdown 原生 input 复选框替换为 ds-checkbox",
+      "author": "TBD"
+    },
+    {
+      "date": "2026-07-14",
+      "change": "增加间距与描边 token 依赖、CSS 选择器/属性证据及机械闭环校验映射",
+      "author": "Kiro"
+    },
+    {
+      "date": "2026-07-14",
+      "change": "依据契约语义、组件 CSS 选择器与预览结构，补齐全部现有依赖的 appliesTo 汇总行映射；仅使用真实 types/variants，不新增伪类型或不确定依赖",
+      "author": "Kiro"
+    },
+    {
+      "date": "2026-10-09",
+      "author": "Codex",
+      "change": "统一规范维护质量标准：登记真实实现与选型规则入口、源变更重新验收、父子影响检查及历史页面隔离；不推断可编辑槽位或视觉批准。"
+    },
+    {
+      "date": "2026-10-10",
+      "author": "Codex",
+      "change": "补齐现有lg/sm默认视觉标签的精确实例、文字槽和结构反例；原始MG来源、独立交互与宿主标记适配仍待验证。共享CSS/JS及历史页未改。"
+    },
+    {
+      "date": "2026-10-11",
+      "author": "Codex",
+      "change": "按MasterGo精确14/18原图补齐当前选中且禁用静态态；当前宿主接入同一原子资源，默认精确调用范围和历史锁定资源保持。浏览器与原生表单语义待验。 多行图标按原始首行几何lg y2/sm y3对齐，单行中心不变。"
+    }
+  ],
+  "isComplete": true,
+  "createdAt": "2026-07-08T00:00:00Z",
+  "updatedAt": "2026-10-11T00:00:00+08:00",
+  "qualityProfile": {
+    "schemaVersion": "1.0.0",
+    "standard": "docs/component-quality-standard.md",
+    "implementation": "components/variants/checkbox.html",
+    "selection": {
+      "mappingSource": "components/selection-mvp-policy.json",
+      "mappingPointer": "components.checkbox.variantDecisionTypes",
+      "rulesPointer": "relations.variantDecisions"
+    },
+    "maintenance": {
+      "authority": "contract-preview-runtime-token-icon",
+      "generatedOnly": [
+        "preview-reference-tables",
+        "component-index",
+        "selection-catalog",
+        "design-reading-view",
+        "ai-reference"
+      ],
+      "changePolicy": "记录来源差异、兼容性与受影响父子组件；源文件变化后旧工程验收失效。",
+      "historicalPages": "不自动升级；新页面锁定本地组件运行资源版本。"
+    },
+    "acceptance": {
+      "report": "components/quality/report.json",
+      "proof": "components/quality/acceptance.json",
+      "declarationIsNotProof": true
+    }
+  },
+  "editable": [
+    "label",
+    "name",
+    "value",
+    "checked",
+    "disabled",
+    "changeCallback"
+  ],
+  "integration": {
+    "styles": [
+      "components/tokens.css",
+      "components/components.css",
+      "components/checkbox-current.css"
+    ],
+    "scripts": [
+      "components/checkbox-current.js"
+    ],
+    "fontStylesheets": [
+      "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+    ],
+    "fontFallback": "沿用现有Open Sans字体栈；远端字体不可用时回退，不宣称离线视觉一致。"
+  },
+  "aiContract": {
+    "schemaVersion": "1.0.0",
+    "rootTag": "label",
+    "scope": "desktop-native-checkbox-two-sizes",
+    "supported": [
+      "lg",
+      "sm"
+    ],
+    "unsupported": [
+      "host-marker-without-label",
+      "indeterminate-state-edit",
+      "disabled-indeterminate",
+      "mobile",
+      "browser-keyboard-acceptance-pending",
+      "linked-text-slot"
+    ],
+    "reviewStatus": {
+      "engineering": "pending",
+      "visual": "pending",
+      "familyCoverage": "partial"
+    },
+    "previewAssets": [
+      "components/preview/reference-live.js"
+    ],
+    "selectionPolicy": "普通同组复选应≥2且不互斥；协议/记住密码/保持登录等明确布尔开关可单项。按宿主来源选lg18/14文字或sm14/13文字。保留原生input，不复制宿主受控标记为独立Checkbox。",
+    "identity": {
+      "rule": "默认规范实例为未选且启用的原生input，必须保留两个当前标记、input类型和name/value；编辑状态限声明bindings。",
+      "labelRule": "根节点保留input、aria-hidden方块与唯一纯文字槽。"
+    },
+    "locked": [
+      "label根节点与尺寸类",
+      "直接子节点input、box、label及其顺序",
+      "原生checkbox类型与背景图资源",
+      "共享CSS与图标文件",
+      "data-checkbox-current及data-checkbox-control",
+      "历史资源不自动升级",
+      "Current native root hugs content width with max-width100%; no parent stretch or fixed104/95px specimen width."
+    ],
+    "behavior": {
+      "default": "规范实例默认未选且启用。",
+      "interaction": "原生input负责点击、checked、disabled和表单取值，change事件原生冒泡；不模拟Space。当前JS仅初始化半选并在非取消reset后恢复初始半选。",
+      "hosts": "Select/Dropdown省略input的受控标记由宿主管理选择。OptionSelector服务span根input+box、List toolbar label根input+box省略caption，沿实际来源保留原子22/lg或20/sm首行wrapper高度与top2/3偏移；外层业务label或input可访问名称供名。List PC行保留完整原子标题；M历史适配未验收。",
+      "states": "checked/disabled可通过声明binding配置。半选可由input.indeterminate设置，当前初始化标记只在专用演示中使用，未开放AI binding。disabled+indeterminate未取得源规范。保留原子F6F6F8与规范F6F6F6冲突；浏览器视觉和真实键盘待验证。"
+    },
+    "evidence": {
+      "localImplementation": "components/variants/checkbox.html",
+      "comparison": "components/sources/checkbox/local-structure-review.json",
+      "specificationReview": "components/sources/checkbox/native-specification-review-1011.json",
+      "default14Glyph": "components/sources/checkbox/default14-property-review-1013.json",
+      "remaining14Glyphs": "components/sources/checkbox/remaining14-glyph-review-1013.json",
+      "currentDefaultRootMode": "components/sources/checkbox/default-root-mode-review-1014.json",
+      "currentMgReview": "components/sources/foundation-mg-20261114/checkbox-review.json"
+    },
+    "variants": {
+      "lg": {
+        "purpose": "default-checkbox-visual-regular",
+        "exampleSelector": "[data-ai-example=\"ai-checkbox-lg\"]",
+        "allowedEdits": [
+          "label",
+          "name",
+          "value",
+          "checked",
+          "disabled",
+          "changeCallback"
+        ],
+        "slots": {
+          "label": {
+            "selector": "span.ds-checkbox__label",
+            "mode": "text",
+            "required": true
+          }
+        },
+        "bindings": {
+          "name": {
+            "mode": "native-attribute",
+            "target": "input.ds-checkbox__input",
+            "attribute": "name",
+            "valueType": "nonempty-string"
+          },
+          "value": {
+            "mode": "native-attribute",
+            "target": "input.ds-checkbox__input",
+            "attribute": "value",
+            "valueType": "nonempty-string"
+          },
+          "checked": {
+            "mode": "native-attribute",
+            "target": "input.ds-checkbox__input",
+            "attribute": "checked",
+            "values": [
+              false,
+              true
+            ],
+            "default": false
+          },
+          "disabled": {
+            "mode": "native-attribute",
+            "target": "input.ds-checkbox__input",
+            "attribute": "disabled",
+            "values": [
+              false,
+              true
+            ],
+            "default": false
+          },
+          "changeCallback": {
+            "mode": "event-handler",
+            "target": "root",
+            "event": "change"
+          }
+        }
+      },
+      "sm": {
+        "purpose": "default-checkbox-visual-dense",
+        "exampleSelector": "[data-ai-example=\"ai-checkbox-sm\"]",
+        "allowedEdits": [
+          "label",
+          "name",
+          "value",
+          "checked",
+          "disabled",
+          "changeCallback"
+        ],
+        "slots": {
+          "label": {
+            "selector": "span.ds-checkbox__label",
+            "mode": "text",
+            "required": true
+          }
+        },
+        "bindings": {
+          "name": {
+            "mode": "native-attribute",
+            "target": "input.ds-checkbox__input",
+            "attribute": "name",
+            "valueType": "nonempty-string"
+          },
+          "value": {
+            "mode": "native-attribute",
+            "target": "input.ds-checkbox__input",
+            "attribute": "value",
+            "valueType": "nonempty-string"
+          },
+          "checked": {
+            "mode": "native-attribute",
+            "target": "input.ds-checkbox__input",
+            "attribute": "checked",
+            "values": [
+              false,
+              true
+            ],
+            "default": false
+          },
+          "disabled": {
+            "mode": "native-attribute",
+            "target": "input.ds-checkbox__input",
+            "attribute": "disabled",
+            "values": [
+              false,
+              true
+            ],
+            "default": false
+          },
+          "changeCallback": {
+            "mode": "event-handler",
+            "target": "root",
+            "event": "change"
+          }
+        }
+      }
+    }
+  },
+  "maintenanceReview": {
+    "consentCaption": {
+      "date": "2026-10-12",
+      "scope": "explicit-host-only-controlled-consent-caption",
+      "marker": "data-checkbox-caption=\"consent\"",
+      "source": "components/sources/form/native-authority-review-1012/consent-text-review.json",
+      "interface": "Retain native input/atomic box/caption order. Caption may contain source prose and two display-only legal anchors; no arbitraryHTML or business targets. Atom owns12px/20px Gray3/Blue/default no underline. Plain-caption AI entry unchanged.",
+      "behavior": "Click/Enter/Space on legal anchor prevents native label toggle/navigation; native input activation untouched. Disabled caption follows existing canonical disabled color, not newly source-verified consent state.",
+      "boundary": "Not generic linked-text-slot AI admission; visual and native keyboard acceptance pending."
+    }
+  }
+}

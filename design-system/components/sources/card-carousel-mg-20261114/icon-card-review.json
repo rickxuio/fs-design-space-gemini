@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "fs-component-source-review/1.0.0",
+  "component": "icon-card",
+  "status": "partial-source-scope",
+  "source": {
+    "file": "components/sources/card-carousel-mg-20261114/card-icon-card.txt",
+    "fileId": "209944605602401",
+    "root": "3:082263",
+    "title": "【卡片】设计规范v3.1.2608A",
+    "sha256": "21d65be253d35339ec97b30ef9890b32fc720bf97c6032713b7592ed2044d9ac",
+    "url": "https://mastergo.com/file/209944605602401?page_id=M&layer_id=3:082263",
+    "recordedAt": "2026-11-14T10:20:59.834Z",
+    "method": "Fresh MasterGo get_selection_node(3:082263), after get_library_list verified local-209944605602401; exact snapshot equality confirmed"
+  },
+  "scope": "当前MG原件的分类、可见结构和父子原件核对；交互约束同时沿用原规范文字和实际本地实现。不把静态画布当作可执行行为或视觉批准。",
+  "findings": [
+    {
+      "nodes": [
+        "3:082266",
+        "3:082327",
+        "3:082279",
+        "3:082282",
+        "3:082320"
+      ],
+      "sourceFact": "图标卡片有单事件/多事件，以及折叠/展开的真实状态分类。",
+      "correction": "不能因文案较长自动生成折叠，也不能用普通链接冒充折叠交互。当前只有两种单事件精确调用。"
+    },
+    {
+      "nodes": [
+        "3:082310",
+        "3:082289",
+        "3:082292",
+        "3:082316",
+        "3:082313",
+        "3:082286"
+      ],
+      "sourceFact": "居中/居左及白底/灰底是不同的来源布局与表面。",
+      "correction": "决策同时核对布局和表面，不根据页面背景任意改类；白卡未开放。"
+    },
+    {
+      "nodes": [
+        "3:082265",
+        "3:082277",
+        "3:082276",
+        "3:082271"
+      ],
+      "sourceFact": "展示型和跳转型原件真实嵌套文字按钮与列表；有上下和左右结构。",
+      "correction": "保留真实TextButton标题/链接、图标尺寸及来源；图标资源合法不代表业务语义正确，不按编号分配示例图标。"
+    }
+  ],
+  "unverified": [
+    "原规范可选icon/description与现有精确接口仍有差距；当前仅支持bullets/link受控省略。",
+    "白卡、跳转型及多事件折叠未开放；完整交互不由静态画布证明。",
+    "保留此前用户取消描述64px截断的决定；本次未做像素级视觉批准。"
+  ],
+  "ruleDigest": "34cd077418e0a02cc9b9eb74b91bb81c0304c666a5d6eea5f918f883648d99b6",
+  "capabilityCompletion": {
+    "date": "2026-11-15",
+    "scope": "Finite source-backed additions only; original source findings retained as historical review, current call boundary is catalog",
+    "visualApproval": false
+  }
+}

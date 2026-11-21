@@ -1,0 +1,22 @@
+/* User-requested current-page runtime adaptation, explicitly enabled.
+   Atom owns text/marker positioning; host JS only reserves assembly widths.
+   Default text position retained; source Hover padding22 is intentionally adapted. */
+[data-header-stable] .ds-nav-header:not(.ds-nav-header--responsive) .ds-nav-header__link,
+[data-header-stable] .ds-nav-header:not(.ds-nav-header--responsive) .ds-nav-header__link:hover {
+  position: relative;
+  width: 100%;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0;
+}
+[data-header-stable] .ds-nav-header:not(.ds-nav-header--responsive) .ds-nav-header__link:hover::after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+/* User feedback r11: preserve regular glyphs on hover; marker is the state cue. */
+[data-header-stable] .ds-nav-header:not(.ds-nav-header--responsive) .ds-nav-header__link:hover {
+  font-weight: var(--font-weight-regular);
+}

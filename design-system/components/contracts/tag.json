@@ -1,0 +1,1920 @@
+{
+  "id": "comp_tag_001",
+  "name": "Tag",
+  "chineseName": "标签",
+  "description": "Tag v2.5 已登记常规标签，另包含Card所需22px小号产品属性常规、Customized及颜色标签的有限调用；不包含完整SKU/计数器/配件选择器。",
+  "category": "数据展示 Data Display",
+  "variants": [
+    {
+      "name": "status-text",
+      "chineseName": "纯文字状态标签",
+      "cssClass": "ds-tag ds-tag--status-text",
+      "styleProperties": {
+        "sizes": "12px/20px；ds-tag--status-lg 为 14px/22px",
+        "colors": "success / warning",
+        "interaction": "纯展示"
+      },
+      "isComplete": true,
+      "requiredChildren": [
+        ":scope"
+      ],
+      "selectionDecisionType": "纯文字状态 status-text",
+      "whenToUse": "无底短状态文字，沿用当前success文字实例。",
+      "whenNotToUse": "需要其他颜色、14px大号或选择交互。",
+      "usage": "无底短状态文字，沿用当前success文字实例。"
+    },
+    {
+      "name": "metadata",
+      "chineseName": "并列元数据标签",
+      "cssClass": "ds-tag-meta",
+      "styleProperties": {
+        "font": "12px / 20px Regular",
+        "gap": "8px",
+        "divider": "1×10px #DEE0E3",
+        "interaction": "纯展示"
+      },
+      "isComplete": true,
+      "requiredChildren": [
+        "span.ds-tag-meta__divider"
+      ],
+      "selectionDecisionType": "并列元数据 metadata",
+      "whenToUse": "两个同级元数据值，如行业与地区。",
+      "whenNotToUse": "只有一个值、状态提示或可操作筛选。",
+      "usage": "两个同级元数据值，如行业与地区。"
+    },
+    {
+      "name": "metadata-single",
+      "chineseName": "单值元数据标签",
+      "cssClass": "ds-tag-meta ds-tag-meta--single",
+      "styleProperties": {
+        "font": "12px / 20px Regular400",
+        "sourceRadius": "3px unpainted source property",
+        "interaction": "纯展示",
+        "source": "017293 属性/大/双属性=no"
+      },
+      "isComplete": true,
+      "requiredChildren": [
+        "span[data-tag-value=\"first\"]"
+      ],
+      "selectionDecisionType": "单值元数据 metadata-single",
+      "whenToUse": "一个只读元数据值。",
+      "whenNotToUse": "两个值被拼成一个标签或需要交互。",
+      "usage": "一个只读元数据值。"
+    },
+    {
+      "name": "semantic",
+      "chineseName": "语义标签",
+      "cssClass": "ds-tag ds-tag--semantic",
+      "styleProperties": {
+        "height": "20px",
+        "padding": "2px 4px",
+        "gap": "4px",
+        "borderRadius": "4px",
+        "examples": "Individual / Split Order / Pickup Order / New / Hot / Limited Offer",
+        "interaction": "纯展示"
+      },
+      "isComplete": true,
+      "requiredChildren": [
+        "span.ds-tag__label",
+        "span.ds-tag__icon--info"
+      ],
+      "selectionDecisionType": "20px 语义标签 semantic",
+      "whenToUse": "固定Individual语义与原info图标。",
+      "whenNotToUse": "想更改语义、文案、颜色或隐藏图标。",
+      "usage": "固定Individual语义与原info图标。"
+    },
+    {
+      "name": "selectable",
+      "chineseName": "可选择胶囊标签",
+      "cssClass": "ds-tag ds-tag--selectable",
+      "styleProperties": {
+        "height": "28px",
+        "padding": "4px 10px",
+        "borderRadius": "full",
+        "font": "12px / 20px Regular",
+        "interaction": "button + aria-pressed；default / hover / checked"
+      },
+      "isComplete": true,
+      "requiredChildren": [
+        "span.ds-tag__label"
+      ],
+      "selectionDecisionType": "28px 可选择胶囊 selectable",
+      "whenToUse": "纯文字条件需要本地选中/取消。",
+      "whenNotToUse": "真实表单复选值、单选组或带关闭条件。",
+      "usage": "纯文字条件需要本地选中/取消。"
+    },
+    {
+      "name": "filter",
+      "chineseName": "复合筛选标签",
+      "cssClass": "ds-tag ds-tag--selectable ds-tag--filter",
+      "styleProperties": {
+        "height": "28px",
+        "padding": "4px 10px",
+        "gap": "8px",
+        "border": "1px solid #EEEEEE",
+        "content": "Semibold 前缀 + Regular 值 + 12px close",
+        "interaction": "button + aria-pressed；default / hover / checked"
+      },
+      "isComplete": true,
+      "requiredChildren": [
+        "span.ds-tag__label",
+        "span.ds-tag__prefix",
+        "span.ds-tag__value",
+        "img.ds-tag__close"
+      ],
+      "selectionDecisionType": "28px 复合筛选 filter",
+      "whenToUse": "前缀+值的条件标签，关闭由宿主处理。",
+      "whenNotToUse": "要求点击关闭自动删除业务对象。",
+      "usage": "前缀+值的条件标签，关闭由宿主处理。"
+    },
+    {
+      "name": "featured",
+      "chineseName": "FEATURED 图标标签",
+      "cssClass": "ds-tag ds-tag--featured",
+      "styleProperties": {
+        "font": "12px / 20px SemiBold600",
+        "gap": "4px",
+        "icon": "icon-featured-star.svg 16×16px",
+        "interaction": "纯展示"
+      },
+      "isComplete": true,
+      "requiredChildren": [
+        "img.ds-tag__icon",
+        "span.ds-tag__label"
+      ],
+      "selectionDecisionType": "FEATURED 图标标签 featured",
+      "whenToUse": "固定FEATURED精选标记。",
+      "whenNotToUse": "任意自定义图标或状态文字。",
+      "usage": "固定FEATURED精选标记。"
+    },
+    {
+      "name": "semantic-new",
+      "chineseName": "语义标签·New",
+      "cssClass": "ds-tag ds-tag--semantic ds-tag--new ds-tag--emphasis",
+      "styleProperties": {
+        "height": "20px",
+        "padding": "0 4px",
+        "borderRadius": "4px",
+        "fontSize": "12px",
+        "fontWeight": "600",
+        "lineHeight": "20px",
+        "background": "#D6F5DF",
+        "color": "#09832A"
+      },
+      "isComplete": true,
+      "requiredChildren": [
+        "span.ds-tag__label"
+      ],
+      "selectionDecisionType": "语义标签·New",
+      "whenToUse": "固定绿色New展示标记。",
+      "whenNotToUse": "把展示标记作为可选产品属性。",
+      "usage": "固定绿色New展示标记。"
+    },
+    {
+      "name": "product-regular-small",
+      "chineseName": "产品属性·常规小号",
+      "cssClass": "ds-tag ds-tag--product-small",
+      "isComplete": true,
+      "requiredChildren": [
+        "span.ds-tag__product-label"
+      ],
+      "styleProperties": {
+        "height": "22px",
+        "padding": "2px 8px",
+        "borderRadius": "4px",
+        "stroke": "inside 1px #EEEEEE; checked #19191A",
+        "font": "12px / 20px / 400",
+        "chip": "no image: source 产品图=false",
+        "states": "Default/Hover/checked",
+        "source": "143880409387753, small product tag source 1014"
+      },
+      "selectionDecisionType": "产品属性·常规小号",
+      "whenToUse": "现有22px产品属性，原件产品图=false。",
+      "whenNotToUse": "要求大号、价格、图片或完整SKU选择器。",
+      "usage": "现有22px产品属性，原件产品图=false。"
+    },
+    {
+      "name": "product-custom-small",
+      "chineseName": "产品属性·Customized小号",
+      "cssClass": "ds-tag ds-tag--product-small ds-tag--product-custom",
+      "isComplete": true,
+      "requiredChildren": [
+        "span.ds-tag__product-label"
+      ],
+      "styleProperties": {
+        "height": "22px",
+        "padding": "2px 8px",
+        "borderRadius": "4px",
+        "stroke": "inside 1px #EEEEEE; checked #0060BF",
+        "font": "12px / 20px / 400",
+        "chip": "no image: source 产品图=false",
+        "states": "Default/Hover/checked",
+        "source": "143880409387753, small product tag source 1014"
+      },
+      "selectionDecisionType": "产品属性·Customized小号",
+      "whenToUse": "现有22px Customized属性动作入口。",
+      "whenNotToUse": "把它当普通选中项或自定义SKU表单。",
+      "usage": "现有22px Customized属性动作入口。"
+    },
+    {
+      "name": "product-color-small",
+      "chineseName": "产品属性·颜色小号",
+      "cssClass": "ds-tag ds-tag--product-small ds-tag--product-color",
+      "isComplete": true,
+      "requiredChildren": [
+        "span.ds-tag__product-chip"
+      ],
+      "styleProperties": {
+        "height": "22px",
+        "padding": "4px",
+        "borderRadius": "4px",
+        "stroke": "inside 1px #EEEEEE; checked #19191A",
+        "font": "none",
+        "chip": "14×14px, radius2; fill is option content",
+        "states": "Default/Hover/checked",
+        "source": "143880409387753, small product tag source 1014"
+      },
+      "selectionDecisionType": "产品属性·颜色小号",
+      "whenToUse": "现有22px颜色选项，产品图=false。",
+      "whenNotToUse": "图片/价格/完整SKU或自定义组件CSS。",
+      "usage": "现有22px颜色选项，产品图=false。"
+    },
+    {
+      "name": "product-configuration-color-source",
+      "chineseName": "product-configuration-color-source",
+      "cssClass": "ds-tag ds-tag--configuration-color",
+      "isComplete": false,
+      "pendingParts": [
+        "standalone-call-not-published; complete finite source part is used by OptionSelector"
+      ],
+      "description": "Current MG product attribute source identity; finite owner part, not the22px small Tag call. Use OptionSelector/color or service for actual calls."
+    },
+    {
+      "name": "product-accessory-pc-source",
+      "chineseName": "product-accessory-pc-source",
+      "cssClass": "ds-tag ds-tag--accessory-pc",
+      "isComplete": false,
+      "pendingParts": [
+        "standalone-call-not-published; complete finite source part is used by OptionSelector"
+      ],
+      "description": "Current MG product attribute source identity; finite owner part, not the22px small Tag call. Use OptionSelector/color or service for actual calls."
+    }
+  ],
+  "states": [
+    {
+      "name": "default",
+      "chineseName": "默认",
+      "styleOverrides": {},
+      "description": "全部变体的默认外观；展示型变体仅使用此状态。"
+    },
+    {
+      "name": "hover",
+      "chineseName": "悬停",
+      "styleOverrides": {
+        "selectable": "在 #F6F6F8 上叠加 rgba(25,25,26,0.04)",
+        "filter": "rgba(25,25,26,0.04) 背景并保留 #EEEEEE 描边"
+      },
+      "description": "仅 selectable 与 filter 使用；预览可用 ds-tag--hover 静态模拟。；product-small具备已核实来源状态。"
+    },
+    {
+      "name": "checked",
+      "chineseName": "选中",
+      "styleOverrides": {
+        "selectable": "#DEE0E3 背景",
+        "filter": "rgba(25,25,26,0.04) 背景 + #19191A 描边",
+        "aria": "aria-pressed=true"
+      },
+      "description": "仅 selectable 与 filter 使用 ds-tag--checked，并由 tag.js 同步 aria-pressed。；product-small具备已核实来源状态。"
+    }
+  ],
+  "contentSlots": {
+    "label": {
+      "required": true,
+      "description": "标签文字；受限宽度下由 ds-tag__label 或 ds-tag__value 省略。"
+    },
+    "prefix": {
+      "required": false,
+      "description": "仅复合筛选标签使用 ds-tag__prefix，字重 600。"
+    },
+    "icon": {
+      "required": false,
+      "description": "Individual、Split Order、Pickup Order 必须在文字右侧使用 16px icon-info；其他 20px 语义标签不显示图标。FEATURED 必须使用 icon-featured-star。"
+    },
+    "close": {
+      "required": false,
+      "description": "复合筛选标签使用 12px icon-close.svg。"
+    }
+  },
+  "commonProperties": {
+    "display": "inline-flex",
+    "alignItems": "center",
+    "width": "fit-content / 随内容自适应",
+    "maxWidth": "100%",
+    "whiteSpace": "nowrap",
+    "fontFamily": "Open Sans"
+  },
+  "usageGuidelines": "状态文字用于 New/Hot 等无容器短状态；metadata 用于 Education | United States 等并列信息；semantic 用于 Individual、Split Order、Pickup Order、New、Hot、Limited Offer；selectable 用于 Router 等可选属性；filter 用于 Industry: K-12 Education 等前缀/值/关闭图标组合；FEATURED 只用于精选标识。仅 selectable 与 filter 使用 button 和 aria-pressed。 Card产品完整卡使用product-regular-small/product-custom-small/product-color-small，22px小号；常规/颜色切换ds:tag-change，Customized仅派发ds:tag-activate由宿主处理，不自动导航。",
+  "responsiveRules": [
+    "单枚 Tag 宽度随内容自适应，不使用设计导出中的固定 specimen 宽度。",
+    "Tag 保持单行；容器不足时 label/value 省略，图标不压缩。",
+    "多枚 Tag 使用 .ds-tag-group 自动换行，适用于 PC、Pad 与 Mobile。"
+  ],
+  "tokenReferences": [
+    "color.gray-1",
+    "color.gray-2",
+    "color.gray-3",
+    "color.gray-5",
+    "color.gray-7",
+    "color.gray-8",
+    "color.white",
+    "color.blue",
+    "color.hover-overlay-light",
+    "color.success",
+    "color.success-bg",
+    "color.success-tag-bg",
+    "color.success-tag-text",
+    "color.warning",
+    "color.purple-tag",
+    "color.tag-blue-bg",
+    "color.tag-warning-bg",
+    "color.tag-purple-bg",
+    "color.tag-border",
+    "color.yellow",
+    "typography.font-family-base",
+    "typography.font-size-sm",
+    "typography.font-size-md",
+    "typography.font-weight-regular",
+    "typography.font-weight-semibold",
+    "typography.h9-regular",
+    "typography.h9-semibold",
+    "typography.h7-regular",
+    "spacing.2",
+    "spacing.xs",
+    "spacing.sm",
+    "spacing.10",
+    "border.width.default",
+    "border.style.default",
+    "border.color.tag",
+    "border.color.emphasis",
+    "border-radius.md",
+    "border-radius.full",
+    "border.color.focus"
+  ],
+  "constraints": {
+    "allowedChildren": [
+      "Text",
+      "Icon"
+    ],
+    "requiredProperties": [
+      "variant"
+    ],
+    "forbiddenCombinations": [
+      [
+        "status-text",
+        "checked"
+      ],
+      [
+        "metadata",
+        "checked"
+      ],
+      [
+        "semantic",
+        "checked"
+      ],
+      [
+        "featured",
+        "checked"
+      ],
+      [
+        "semantic",
+        "invented-icon"
+      ]
+    ]
+  },
+  "relations": {
+    "variantDecisionsDescription": "按内容与交互选具体变体，再核对同版调用资格。候选、不用、参考同时用于规范展示与AI；既有来源、当前MG核对、工程与视觉批准分开记录。",
+    "variantDecisions": [
+      {
+        "type": "纯文字状态 status-text",
+        "className": "ds-tag ds-tag--status-text（可加 ds-tag--status-lg 与语义色）",
+        "whenToUse": "无底短状态文字，沿用当前success文字实例。",
+        "whenNotToUse": "需要其他颜色、14px大号或选择交互。",
+        "nestedComponents": [],
+        "status": "当前MG来源与现有有限调用已核对；资格读同版catalog，未开放和视觉批准不据此改变。",
+        "variant": "status-text",
+        "fragment": "status-text",
+        "selectionCases": [
+          {
+            "id": "tag.status-text.1",
+            "kind": "use",
+            "condition": "无底短状态文字，沿用当前success文字实例。",
+            "result": "调用status-text；只改label，不以文字替换状态点。",
+            "targetVariant": "status-text",
+            "strength": "candidate"
+          },
+          {
+            "id": "tag.status-text.2",
+            "kind": "avoid",
+            "condition": "需要其他颜色、14px大号或选择交互。",
+            "result": "不使用此变体；先核对相邻组件和实际调用范围。",
+            "targetVariant": "status-text",
+            "strength": "avoid"
+          }
+        ]
+      },
+      {
+        "type": "并列元数据 metadata",
+        "className": "ds-tag-meta + ds-tag-meta__divider",
+        "whenToUse": "两个同级元数据值，如行业与地区。",
+        "whenNotToUse": "只有一个值、状态提示或可操作筛选。",
+        "nestedComponents": [],
+        "status": "当前MG来源与现有有限调用已核对；资格读同版catalog，未开放和视觉批准不据此改变。",
+        "variant": "metadata",
+        "fragment": "metadata",
+        "selectionCases": [
+          {
+            "id": "tag.metadata.1",
+            "kind": "use",
+            "condition": "两个同级元数据值，如行业与地区。",
+            "result": "调用metadata；恰好两个值，保留原分隔线。",
+            "targetVariant": "metadata",
+            "strength": "candidate"
+          },
+          {
+            "id": "tag.metadata.2",
+            "kind": "avoid",
+            "condition": "只有一个值、状态提示或可操作筛选。",
+            "result": "不使用此变体；先核对相邻组件和实际调用范围。",
+            "targetVariant": "metadata",
+            "strength": "avoid"
+          }
+        ]
+      },
+      {
+        "type": "20px 语义标签 semantic",
+        "className": "ds-tag ds-tag--semantic + 语义修饰类",
+        "whenToUse": "固定Individual语义与原info图标。",
+        "whenNotToUse": "想更改语义、文案、颜色或隐藏图标。",
+        "nestedComponents": [],
+        "status": "当前MG来源与现有有限调用已核对；资格读同版catalog，未开放和视觉批准不据此改变。",
+        "variant": "semantic",
+        "fragment": "semantic",
+        "selectionCases": [
+          {
+            "id": "tag.semantic.1",
+            "kind": "use",
+            "condition": "固定Individual语义与原info图标。",
+            "result": "调用semantic；当前无可编辑字段。",
+            "targetVariant": "semantic",
+            "strength": "candidate"
+          },
+          {
+            "id": "tag.semantic.2",
+            "kind": "avoid",
+            "condition": "想更改语义、文案、颜色或隐藏图标。",
+            "result": "不使用此变体；先核对相邻组件和实际调用范围。",
+            "targetVariant": "semantic",
+            "strength": "avoid"
+          }
+        ]
+      },
+      {
+        "type": "28px 可选择胶囊 selectable",
+        "className": "button.ds-tag.ds-tag--selectable",
+        "whenToUse": "纯文字条件需要本地选中/取消。",
+        "whenNotToUse": "真实表单复选值、单选组或带关闭条件。",
+        "nestedComponents": [],
+        "status": "当前MG来源与现有有限调用已核对；资格读同版catalog，未开放和视觉批准不据此改变。",
+        "variant": "selectable",
+        "fragment": "selectable",
+        "selectionCases": [
+          {
+            "id": "tag.selectable.1",
+            "kind": "use",
+            "condition": "纯文字条件需要本地选中/取消。",
+            "result": "调用selectable；只派发change，不冒充原生表单值。",
+            "targetVariant": "selectable",
+            "strength": "candidate"
+          },
+          {
+            "id": "tag.selectable.2",
+            "kind": "avoid",
+            "condition": "真实表单复选值、单选组或带关闭条件。",
+            "result": "不使用此变体；先核对相邻组件和实际调用范围。",
+            "targetVariant": "selectable",
+            "strength": "avoid"
+          }
+        ]
+      },
+      {
+        "type": "28px 复合筛选 filter",
+        "className": "button.ds-tag.ds-tag--selectable.ds-tag--filter",
+        "whenToUse": "前缀+值的条件标签，关闭由宿主处理。",
+        "whenNotToUse": "要求点击关闭自动删除业务对象。",
+        "nestedComponents": [],
+        "status": "当前MG来源与现有有限调用已核对；资格读同版catalog，未开放和视觉批准不据此改变。",
+        "variant": "filter",
+        "fragment": "filter",
+        "selectionCases": [
+          {
+            "id": "tag.filter.1",
+            "kind": "use",
+            "condition": "前缀+值的条件标签，关闭由宿主处理。",
+            "result": "调用filter；保留关闭图标；closeCallback归宿主。",
+            "targetVariant": "filter",
+            "strength": "candidate"
+          },
+          {
+            "id": "tag.filter.2",
+            "kind": "avoid",
+            "condition": "要求点击关闭自动删除业务对象。",
+            "result": "不使用此变体；先核对相邻组件和实际调用范围。",
+            "targetVariant": "filter",
+            "strength": "avoid"
+          }
+        ]
+      },
+      {
+        "type": "FEATURED 图标标签 featured",
+        "className": "ds-tag ds-tag--featured",
+        "whenToUse": "固定FEATURED精选标记。",
+        "whenNotToUse": "任意自定义图标或状态文字。",
+        "nestedComponents": [],
+        "status": "当前MG来源与现有有限调用已核对；资格读同版catalog，未开放和视觉批准不据此改变。",
+        "variant": "featured",
+        "fragment": "featured",
+        "selectionCases": [
+          {
+            "id": "tag.featured.1",
+            "kind": "use",
+            "condition": "固定FEATURED精选标记。",
+            "result": "调用featured；固定文字和官方星标，不编辑。",
+            "targetVariant": "featured",
+            "strength": "candidate"
+          },
+          {
+            "id": "tag.featured.2",
+            "kind": "avoid",
+            "condition": "任意自定义图标或状态文字。",
+            "result": "不使用此变体；先核对相邻组件和实际调用范围。",
+            "targetVariant": "featured",
+            "strength": "avoid"
+          }
+        ]
+      },
+      {
+        "type": "语义标签·New",
+        "className": "ds-tag ds-tag--semantic ds-tag--new ds-tag--emphasis",
+        "whenToUse": "固定绿色New展示标记。",
+        "whenNotToUse": "把展示标记作为可选产品属性。",
+        "nestedComponents": [],
+        "status": "当前MG来源与现有有限调用已核对；资格读同版catalog，未开放和视觉批准不据此改变。",
+        "variant": "semantic-new",
+        "fragment": "semantic-new",
+        "selectionCases": [
+          {
+            "id": "tag.semantic-new.1",
+            "kind": "use",
+            "condition": "固定绿色New展示标记。",
+            "result": "调用semantic-new；固定New原子，仅由父组件定位。",
+            "targetVariant": "semantic-new",
+            "strength": "candidate"
+          },
+          {
+            "id": "tag.semantic-new.2",
+            "kind": "avoid",
+            "condition": "把展示标记作为可选产品属性。",
+            "result": "不使用此变体；先核对相邻组件和实际调用范围。",
+            "targetVariant": "semantic-new",
+            "strength": "avoid"
+          }
+        ]
+      },
+      {
+        "type": "产品属性·常规小号",
+        "className": "ds-tag ds-tag--product-small",
+        "whenToUse": "现有22px产品属性，原件产品图=false。",
+        "whenNotToUse": "要求大号、价格、图片或完整SKU选择器。",
+        "nestedComponents": [],
+        "status": "当前MG来源与现有有限调用已核对；资格读同版catalog，未开放和视觉批准不据此改变。",
+        "variant": "product-regular-small",
+        "fragment": "product-regular-small",
+        "selectionCases": [
+          {
+            "id": "tag.product-regular-small.1",
+            "kind": "use",
+            "condition": "现有22px产品属性，原件产品图=false。",
+            "result": "调用product-regular-small；label/change仅有限小号属性。",
+            "targetVariant": "product-regular-small",
+            "strength": "candidate"
+          },
+          {
+            "id": "tag.product-regular-small.2",
+            "kind": "avoid",
+            "condition": "要求大号、价格、图片或完整SKU选择器。",
+            "result": "不使用此变体；先核对相邻组件和实际调用范围。",
+            "targetVariant": "product-regular-small",
+            "strength": "avoid"
+          }
+        ]
+      },
+      {
+        "type": "产品属性·Customized小号",
+        "className": "ds-tag ds-tag--product-small ds-tag--product-custom",
+        "whenToUse": "现有22px Customized属性动作入口。",
+        "whenNotToUse": "把它当普通选中项或自定义SKU表单。",
+        "nestedComponents": [],
+        "status": "当前MG来源与现有有限调用已核对；资格读同版catalog，未开放和视觉批准不据此改变。",
+        "variant": "product-custom-small",
+        "fragment": "product-custom-small",
+        "selectionCases": [
+          {
+            "id": "tag.product-custom-small.1",
+            "kind": "use",
+            "condition": "现有22px Customized属性动作入口。",
+            "result": "调用product-custom-small；固定文案；仅派发actionCallback。",
+            "targetVariant": "product-custom-small",
+            "strength": "candidate"
+          },
+          {
+            "id": "tag.product-custom-small.2",
+            "kind": "avoid",
+            "condition": "把它当普通选中项或自定义SKU表单。",
+            "result": "不使用此变体；先核对相邻组件和实际调用范围。",
+            "targetVariant": "product-custom-small",
+            "strength": "avoid"
+          }
+        ]
+      },
+      {
+        "type": "产品属性·颜色小号",
+        "className": "ds-tag ds-tag--product-small ds-tag--product-color",
+        "whenToUse": "现有22px颜色选项，产品图=false。",
+        "whenNotToUse": "图片/价格/完整SKU或自定义组件CSS。",
+        "nestedComponents": [],
+        "status": "当前MG来源与现有有限调用已核对；资格读同版catalog，未开放和视觉批准不据此改变。",
+        "variant": "product-color-small",
+        "fragment": "product-color-small",
+        "selectionCases": [
+          {
+            "id": "tag.product-color-small.1",
+            "kind": "use",
+            "condition": "现有22px颜色选项，产品图=false。",
+            "result": "调用product-color-small；仅六位HEX内容和可访问名称。",
+            "targetVariant": "product-color-small",
+            "strength": "candidate"
+          },
+          {
+            "id": "tag.product-color-small.2",
+            "kind": "avoid",
+            "condition": "图片/价格/完整SKU或自定义组件CSS。",
+            "result": "不使用此变体；先核对相邻组件和实际调用范围。",
+            "targetVariant": "product-color-small",
+            "strength": "avoid"
+          }
+        ]
+      },
+      {
+        "type": "单值元数据 metadata-single",
+        "className": "ds-tag-meta ds-tag-meta--single",
+        "whenToUse": "一个只读元数据值。",
+        "whenNotToUse": "两个值被拼成一个标签或需要交互。",
+        "nestedComponents": [],
+        "status": "当前MG来源与现有有限调用已核对；资格读同版catalog，未开放和视觉批准不据此改变。",
+        "variant": "metadata-single",
+        "fragment": "metadata-single",
+        "selectionCases": [
+          {
+            "id": "tag.metadata-single.1",
+            "kind": "use",
+            "condition": "一个只读元数据值。",
+            "result": "调用metadata-single；只改firstLabel，不添加分隔符。",
+            "targetVariant": "metadata-single",
+            "strength": "candidate"
+          },
+          {
+            "id": "tag.metadata-single.2",
+            "kind": "avoid",
+            "condition": "两个值被拼成一个标签或需要交互。",
+            "result": "不使用此变体；先核对相邻组件和实际调用范围。",
+            "targetVariant": "metadata-single",
+            "strength": "avoid"
+          }
+        ]
+      }
+    ],
+    "colorDependencies": [
+      {
+        "token": "color.gray-1",
+        "value": "#19191A",
+        "usage": "Tag 默认文字、filter checked 强调描边的基础色；来源小号产品属性Tag对应项",
+        "appliesTo": [
+          "status-text",
+          "semantic",
+          "selectable",
+          "filter",
+          "product-regular-small",
+          "product-custom-small",
+          "product-color-small"
+        ]
+      },
+      {
+        "token": "color.gray-2",
+        "value": "#4B4B4D",
+        "usage": "Individual 文字",
+        "appliesTo": [
+          "semantic"
+        ]
+      },
+      {
+        "token": "color.gray-3",
+        "value": "#707070",
+        "usage": "元数据与 FEATURED 文字",
+        "appliesTo": [
+          "metadata",
+          "featured",
+          "metadata-single"
+        ]
+      },
+      {
+        "token": "color.gray-5",
+        "value": "#DEE0E3",
+        "usage": "元数据分隔线与 Router checked 背景",
+        "appliesTo": [
+          "metadata",
+          "selectable",
+          "metadata-single"
+        ]
+      },
+      {
+        "token": "color.gray-7",
+        "value": "#F2F2F2",
+        "usage": "Individual 背景；来源小号产品属性Tag对应项",
+        "appliesTo": [
+          "semantic",
+          "product-regular-small",
+          "product-custom-small",
+          "product-color-small"
+        ]
+      },
+      {
+        "token": "color.gray-8",
+        "value": "#F6F6F8",
+        "usage": "Router 默认背景",
+        "appliesTo": [
+          "selectable"
+        ]
+      },
+      {
+        "token": "color.white",
+        "value": "#FFFFFF",
+        "usage": "复合筛选标签默认背景",
+        "appliesTo": [
+          "filter"
+        ]
+      },
+      {
+        "token": "color.blue",
+        "value": "#0060BF",
+        "usage": "Split Order 文字与交互标签 focus 外框；来源小号产品属性Tag对应项",
+        "appliesTo": [
+          "semantic",
+          "selectable",
+          "filter",
+          "product-custom-small"
+        ]
+      },
+      {
+        "token": "color.hover-overlay-light",
+        "value": "rgba(25,25,26,0.04)",
+        "usage": "Router 与复合筛选 hover；filter checked 浅底",
+        "appliesTo": [
+          "selectable",
+          "filter"
+        ]
+      },
+      {
+        "token": "color.success",
+        "value": "#10A300",
+        "usage": "绿色状态文字与 Pickup Order 文字",
+        "appliesTo": [
+          "status-text",
+          "semantic"
+        ]
+      },
+      {
+        "token": "color.success-bg",
+        "value": "rgba(16,163,0,0.1)",
+        "usage": "Pickup Order 背景",
+        "appliesTo": [
+          "semantic"
+        ]
+      },
+      {
+        "token": "color.success-tag-bg",
+        "value": "#D6F5DF",
+        "usage": "New 语义标签背景",
+        "appliesTo": [
+          "semantic"
+        ]
+      },
+      {
+        "token": "color.success-tag-text",
+        "value": "#09832A",
+        "usage": "New 语义标签文字",
+        "appliesTo": [
+          "semantic"
+        ]
+      },
+      {
+        "token": "color.warning",
+        "value": "#F56300",
+        "usage": "橙色状态文字与 Hot 文字",
+        "appliesTo": [
+          "status-text",
+          "semantic"
+        ]
+      },
+      {
+        "token": "color.purple-tag",
+        "value": "#512971",
+        "usage": "Limited Offer 文字",
+        "appliesTo": [
+          "semantic"
+        ]
+      },
+      {
+        "token": "color.tag-blue-bg",
+        "value": "rgba(0,96,191,0.1)",
+        "usage": "Split Order 背景",
+        "appliesTo": [
+          "semantic"
+        ]
+      },
+      {
+        "token": "color.tag-warning-bg",
+        "value": "#FFEBDD",
+        "usage": "Hot 背景",
+        "appliesTo": [
+          "semantic"
+        ]
+      },
+      {
+        "token": "color.tag-purple-bg",
+        "value": "#ECDCF9",
+        "usage": "Limited Offer 背景",
+        "appliesTo": [
+          "semantic"
+        ]
+      },
+      {
+        "token": "color.tag-border",
+        "value": "#EEEEEE",
+        "usage": "复合筛选标签默认描边的颜色源；来源小号产品属性Tag对应项",
+        "appliesTo": [
+          "filter",
+          "product-regular-small",
+          "product-custom-small",
+          "product-color-small"
+        ]
+      },
+      {
+        "token": "color.yellow",
+        "value": "#FFD748",
+        "usage": "FEATURED 外部 SVG 星标色",
+        "appliesTo": [
+          "featured"
+        ]
+      }
+    ],
+    "fontSizeDependencies": [
+      {
+        "token": "typography.font-size-sm",
+        "value": "12px",
+        "usage": "Tag 默认、元数据、语义、交互与 FEATURED 文字；来源小号产品属性Tag对应项",
+        "appliesTo": [
+          "status-text",
+          "metadata",
+          "semantic",
+          "selectable",
+          "filter",
+          "featured",
+          "product-regular-small",
+          "product-custom-small",
+          "metadata-single"
+        ]
+      },
+      {
+        "token": "typography.font-size-md",
+        "value": "14px",
+        "usage": "纯文字状态大号",
+        "appliesTo": [
+          "status-text"
+        ]
+      }
+    ],
+    "fontWeightDependencies": [
+      {
+        "token": "typography.font-weight-regular",
+        "value": "400",
+        "usage": "Tag 基础文字与元数据；来源小号产品属性Tag对应项",
+        "properties": [
+          "font-weight"
+        ],
+        "selectors": [
+          ".ds-tag",
+          ".ds-tag-meta",
+          ".ds-tag.ds-tag--product-small[data-tag-product=\"current\"]"
+        ],
+        "appliesTo": [
+          "status-text",
+          "metadata",
+          "semantic",
+          "selectable",
+          "filter",
+          "product-regular-small",
+          "product-custom-small",
+          "metadata-single"
+        ]
+      },
+      {
+        "token": "typography.font-weight-semibold",
+        "value": "600",
+        "usage": "复合筛选前缀及 New/Hot/Limited Offer 强调文字；当前FEATURED母组件019727实际600",
+        "properties": [
+          "font-weight"
+        ],
+        "selectors": [
+          ".ds-tag__prefix",
+          ".ds-tag--emphasis",
+          ".ds-tag.ds-tag--featured[data-tag-source-featured=\"official\"]"
+        ],
+        "appliesTo": [
+          "semantic",
+          "filter",
+          "featured"
+        ]
+      }
+    ],
+    "typographyDependencies": [
+      {
+        "token": "typography.h9-regular",
+        "fontSizeToken": "typography.font-size-sm",
+        "fontSizeValue": "12px",
+        "fontWeightToken": "typography.font-weight-regular",
+        "fontWeightValue": "400",
+        "weightEvidence": "explicit-css",
+        "usage": "12px / 20px Tag 基础文字；来源小号产品属性Tag对应项",
+        "appliesTo": [
+          "status-text",
+          "metadata",
+          "semantic",
+          "selectable",
+          "filter",
+          "product-regular-small",
+          "product-custom-small",
+          "metadata-single"
+        ]
+      },
+      {
+        "token": "typography.h9-semibold",
+        "fontSizeToken": "typography.font-size-sm",
+        "fontSizeValue": "12px",
+        "fontWeightToken": "typography.font-weight-semibold",
+        "fontWeightValue": "600",
+        "weightEvidence": "explicit-css",
+        "usage": "复合筛选前缀与强调语义文字；FEATURED按原件修正",
+        "appliesTo": [
+          "semantic",
+          "filter",
+          "semantic-new",
+          "featured"
+        ]
+      },
+      {
+        "token": "typography.h7-regular",
+        "fontSizeToken": "typography.font-size-md",
+        "fontSizeValue": "14px",
+        "fontWeightToken": "typography.font-weight-regular",
+        "fontWeightValue": "400",
+        "weightEvidence": "explicit-css",
+        "usage": "14px / 22px 纯文字状态",
+        "appliesTo": [
+          "status-text"
+        ]
+      }
+    ],
+    "spacingDependencies": [
+      {
+        "token": "spacing.2",
+        "value": "2px",
+        "usage": "20px 语义标签垂直内边距；来源小号产品属性Tag对应项",
+        "properties": [
+          "padding"
+        ],
+        "selectors": [
+          ".ds-tag--semantic",
+          ".ds-tag.ds-tag--product-small[data-tag-product=\"current\"]"
+        ],
+        "appliesTo": [
+          "semantic",
+          "product-regular-small",
+          "product-custom-small"
+        ]
+      },
+      {
+        "token": "spacing.xs",
+        "value": "4px",
+        "usage": "语义标签 padding/gap、28px 标签垂直 padding、FEATURED gap；来源小号产品属性Tag对应项",
+        "properties": [
+          "padding",
+          "gap"
+        ],
+        "selectors": [
+          ".ds-tag--semantic",
+          "button.ds-tag--selectable",
+          ".ds-tag--featured",
+          ".ds-tag.ds-tag--product-color[data-tag-product=\"current\"]"
+        ],
+        "appliesTo": [
+          "semantic",
+          "selectable",
+          "filter",
+          "featured",
+          "product-color-small"
+        ]
+      },
+      {
+        "token": "spacing.sm",
+        "value": "8px",
+        "usage": "Tag Group、元数据及 28px 标签内部间距；来源小号产品属性Tag对应项",
+        "properties": [
+          "gap"
+        ],
+        "selectors": [
+          ".ds-tag-group",
+          ".ds-tag-meta",
+          "button.ds-tag--selectable",
+          ".ds-tag.ds-tag--product-small[data-tag-product=\"current\"]"
+        ],
+        "appliesTo": [
+          "status-text",
+          "metadata",
+          "semantic",
+          "selectable",
+          "filter",
+          "featured",
+          "product-regular-small",
+          "product-custom-small",
+          "metadata-single"
+        ]
+      },
+      {
+        "token": "spacing.10",
+        "value": "10px",
+        "usage": "28px selectable/filter 水平内边距",
+        "properties": [
+          "padding"
+        ],
+        "selectors": [
+          "button.ds-tag--selectable"
+        ],
+        "appliesTo": [
+          "selectable",
+          "filter"
+        ]
+      }
+    ],
+    "borderDependencies": [
+      {
+        "token": "border.width.default",
+        "value": "1px",
+        "usage": "复合筛选标签默认描边宽度",
+        "aspect": "width",
+        "properties": [
+          "border"
+        ],
+        "selectors": [
+          "button.ds-tag--filter"
+        ],
+        "appliesTo": [
+          "filter"
+        ]
+      },
+      {
+        "token": "border.style.default",
+        "value": "solid",
+        "usage": "复合筛选标签默认描边样式",
+        "aspect": "style",
+        "properties": [
+          "border"
+        ],
+        "selectors": [
+          "button.ds-tag--filter"
+        ],
+        "appliesTo": [
+          "filter"
+        ]
+      },
+      {
+        "token": "border.color.tag",
+        "value": "var(--color-tag-border)",
+        "usage": "复合筛选标签默认 #EEEEEE 描边",
+        "aspect": "color",
+        "properties": [
+          "border"
+        ],
+        "selectors": [
+          "button.ds-tag--filter"
+        ],
+        "appliesTo": [
+          "filter",
+          "product-regular-small",
+          "product-custom-small",
+          "product-color-small"
+        ]
+      },
+      {
+        "token": "border.color.emphasis",
+        "value": "var(--color-gray-1)",
+        "usage": "复合筛选标签 checked 强调描边",
+        "aspect": "color",
+        "properties": [
+          "border-color"
+        ],
+        "selectors": [
+          "button.ds-tag--filter.ds-tag--checked"
+        ],
+        "appliesTo": [
+          "filter",
+          "product-regular-small",
+          "product-custom-small",
+          "product-color-small"
+        ]
+      },
+      {
+        "token": "border.width.default",
+        "value": "1px",
+        "usage": "产品属性标签内部描边；用inset shadow保持原件padding坐标",
+        "aspect": "width",
+        "properties": [
+          "box-shadow"
+        ],
+        "selectors": [
+          ".ds-tag.ds-tag--product-small[data-tag-product=\"current\"]"
+        ],
+        "appliesTo": [
+          "product-regular-small",
+          "product-custom-small",
+          "product-color-small"
+        ]
+      },
+      {
+        "token": "border.color.focus",
+        "value": "var(--color-blue)",
+        "usage": "来源Customized checked为Blue描边，复用已有blue边框token；不增加focus状态",
+        "aspect": "color",
+        "properties": [
+          "box-shadow"
+        ],
+        "selectors": [
+          ".ds-tag--product-custom[data-tag-product=\"current\"][aria-pressed=\"true\"]"
+        ],
+        "appliesTo": [
+          "product-custom-small"
+        ]
+      }
+    ],
+    "radiusDependencies": [
+      {
+        "token": "border-radius.md",
+        "value": "4px",
+        "usage": "20px 语义标签圆角；来源小号产品属性Tag对应项",
+        "appliesTo": [
+          "semantic",
+          "product-regular-small",
+          "product-custom-small",
+          "product-color-small"
+        ]
+      },
+      {
+        "token": "border-radius.full",
+        "value": "9999px",
+        "usage": "28px selectable/filter 胶囊圆角（设计源 140px 等效 full）",
+        "appliesTo": [
+          "selectable",
+          "filter"
+        ]
+      },
+      {
+        "token": "border-radius.sm",
+        "value": "2px",
+        "usage": "小号颜色标签内部色块",
+        "appliesTo": [
+          "product-color-small"
+        ]
+      }
+    ],
+    "shadowDependencies": [],
+    "componentDependencies": [
+      {
+        "component": "Checkbox",
+        "slot": "source-accessory-part",
+        "requiredVariants": [
+          "sm"
+        ],
+        "implementationClasses": [
+          "ds-checkbox",
+          "ds-checkbox--sm",
+          "ds-checkbox__input",
+          "ds-checkbox__box"
+        ],
+        "appliesTo": [
+          "product-accessory-source-part"
+        ],
+        "usage": "仅configuration-service私有来源部件使用；OptionSelector实际调用保留同一Checkbox依赖和原生语义。"
+      }
+    ],
+    "iconDependencies": [
+      {
+        "icon": "icon-close",
+        "usage": "复合筛选标签右侧 12px 关闭图标",
+        "required": true,
+        "appliesTo": [
+          "filter"
+        ]
+      },
+      {
+        "icon": "icon-info",
+        "usage": "Current own Individual022406, Split022401 and Pickup022411 whole Info16 contours match. Source-specific markers preserve semantic currentColor; shared historical mask stays versioned.",
+        "required": true,
+        "appliesTo": [
+          "semantic"
+        ]
+      },
+      {
+        "icon": "icon-featured-star",
+        "usage": "FEATURED 左侧 16px 黄色星标",
+        "required": true,
+        "appliesTo": [
+          "featured"
+        ]
+      }
+    ],
+    "variantSelectionRules": [
+      "无容器短状态 → status-text；同层级并列信息 → metadata。",
+      "20px 业务语义色块 → semantic；Individual、Split Order、Pickup Order 必须在文字右侧显示 icon-info，New、Hot、Limited Offer 不显示图标。",
+      "Router 等纯文字选择 → selectable；前缀 + 值 + close → filter。",
+      "只有 selectable/filter 使用 button、aria-pressed、hover 与 checked。",
+      "FEATURED 必须复用 icon-featured-star.svg。",
+      "标签宽度由内容决定；多标签容器使用 ds-tag-group 换行。"
+    ],
+    "mutuallyExclusiveWith": [
+      {
+        "component": "Card",
+        "reason": "Tag 只表示短状态或属性，不承载商品/服务卡片内容。"
+      },
+      {
+        "component": "OptionSelector",
+        "reason": "Tag 不承载 SKU 或模块的 Radio/Checkbox 选择语义。"
+      },
+      {
+        "component": "Dropdown",
+        "reason": "Tag 不是带浮层选项的下拉选择器。"
+      }
+    ],
+    "notes": "Figma 导出的绝对定位、画板尺寸、固定 specimen 宽度与鼠标标注 SVG 均不是组件规则。三个订单语义标签复用 icon-info.svg，并通过 CSS mask 继承各自文字色。；2026-10-13：当前Individual专用data-tag-source-individual-info=official从022406完整16px原件mask继承语义色；共享icon-info及其他两语义态未升级。FEATURED原件019728与本地SVG仅clip ID不同，几何、填色和裁切相同。",
+    "enforcementStatus": {
+      "iconDependencies.assets-exist": {
+        "enforced": true,
+        "mechanism": "check-contracts.js"
+      },
+      "spacingDependencies.tokens-and-css-closure": {
+        "enforced": true,
+        "mechanism": "check-contracts.js"
+      },
+      "borderDependencies.tokens-and-css-closure": {
+        "enforced": true,
+        "mechanism": "check-contracts.js"
+      },
+      "fontWeightDependencies.tokens-and-css-closure": {
+        "enforced": true,
+        "mechanism": "check-contracts.js"
+      },
+      "typographyDependencies.size-weight-pairing": {
+        "enforced": true,
+        "mechanism": "check-contracts.js"
+      },
+      "interaction.aria-pressed-sync": {
+        "enforced": true,
+        "mechanism": "components/tag.js 初始化并在 click 后同步 aria-pressed，同时派发 ds:tag-change"
+      },
+      "responsive.content-driven-width": {
+        "enforced": false,
+        "mechanism": "CSS 实现 max-width、ellipsis 与 flex-wrap；页面固定宽度覆盖仍需审查"
+      },
+      "product.inside-stroke-tokens": {
+        "enforced": true,
+        "mechanism": "check-contracts.js recognizes only zero-offset/zero-blur inset spread strokes as border token evidence; source/frame geometry is separately pending browser validation."
+      }
+    },
+    "hardRules": [
+      {
+        "title": "只实现已投喂 Tag，宽度由内容决定",
+        "description": "Tag v2.5 的实现范围与适配硬规则。",
+        "ruleContent": "<strong>已有常规Tag与Card必需小号产品属性Tag分别按真实来源调用；小号只开放常规、Customized、颜色，不能推断完整SKU选择器。</strong>宽度随内容，不使用specimen固定宽度；Card产品图=false必须登记。原子管理样式，宿主仅管理位置与业务事件。",
+        "aiParse": "existing regular Tag + product-regular-small/product-custom-small/product-color-small; small22 only; image=false; no price/counter/SKU family",
+        "enforcement": "严格有限实例/字段/事件与Tag/Card关系检查；实际视觉及家族验收独立。"
+      }
+    ],
+    "prototypeRollout": {
+      "template": "docs/component-spec-template.html",
+      "source": "relations.variantDecisions",
+      "workflow": "existing-local-only",
+      "scope": "existing finite calls and original references; no publication expansion",
+      "currentMg": {
+        "status": "partial-source-scope",
+        "reason": "已读取《新文件》【标签】设计规范✅ v2.5（3:067132），按现有有限调用核对；未开放原件与视觉批准仍分别保留。"
+      },
+      "retainedEvidence": [
+        {
+          "name": "comparison",
+          "file": "components/sources/tag/local-structure-review.json"
+        },
+        {
+          "name": "nativeSpecification",
+          "file": "components/sources/tag/native-specification-review-1011.json"
+        }
+      ]
+    },
+    "interactionRules": [
+      {
+        "name": "实际调用",
+        "rule": "仅使用同版catalog的callable变体和allowedEdits；参考示例不授予调用资格，不用改类或自绘控件绕过。",
+        "owner": "原本地选型与调用入口"
+      },
+      {
+        "name": "父子与同步",
+        "rule": "沿用原componentDependencies及反向父关系；改原规范后协调契约/实现，继续component:sync/watch；已交付页保留固定版本。",
+        "owner": "既有维护机制"
+      },
+      {
+        "name": "交互与业务",
+        "rule": "只改label，不以文字替换状态点。；恰好两个值，保留原分隔线。；只改firstLabel，不添加分隔符。；当前无可编辑字段。；只派发change，不冒充原生表单值。；保留关闭图标；closeCallback归宿主。；固定文字和官方星标，不编辑。；固定New原子，仅由父组件定位。；label/change仅有限小号属性。；固定文案；仅派发actionCallback。；仅六位HEX内容和可访问名称。",
+        "owner": "具体变体运行时与原页面宿主"
+      }
+    ]
+  },
+  "searchIntents": [
+    "常规标签",
+    "状态文字标签",
+    "元数据标签",
+    "语义标签",
+    "属性胶囊标签",
+    "复合筛选条件",
+    "FEATURED标签",
+    "可选择标签"
+  ],
+  "history": [
+    {
+      "date": "2026-08-18",
+      "author": "Kiro",
+      "change": "补齐 Individual、Split Order、Pickup Order 右侧 16px icon-info；通过 CSS mask 继承中性灰、蓝、绿色，New/Hot/Limited Offer 保持无图标。"
+    },
+    {
+      "date": "2026-08-18",
+      "author": "Kiro",
+      "change": "依据已投喂原始 HTML 将截图草稿修正为六变体：12/14px 状态文字、并列元数据、20px 语义标签、28px selectable/filter 与 FEATURED；补齐精确颜色、尺寸、状态和资源依赖。"
+    },
+    {
+      "date": "2026-10-09",
+      "author": "Codex",
+      "change": "统一规范维护质量标准：登记真实实现与选型规则入口、源变更重新验收、父子影响检查及历史页面隔离；不推断可编辑槽位或视觉批准。"
+    },
+    {
+      "date": "2026-10-10",
+      "author": "Codex",
+      "change": "补齐selectable/filter默认真实button调用及文字槽，核对选择事件和图标点击行为；记录Select移除标签并非默认Tag切换的适配缺口。原始来源、浏览器和完整家族验收待完成；共享CSS/JS及历史页未改。"
+    },
+    {
+      "date": "2026-10-14",
+      "change": "按用户指定有效Tag母组件与产品属性规范，补Card必要小号常规/Customized/颜色来源状态和真实原子；修正替代色块/内部几何及选中态，业务动作仍由宿主处理。",
+      "source": "components/sources/tag/card-product-host-review-1014.json",
+      "compatibility": "scoped current marker only; frozen pages unchanged; source/image-off browser geometry and user visual approval remain pending"
+    }
+  ],
+  "isComplete": true,
+  "createdAt": "2026-08-18T00:00:00Z",
+  "updatedAt": "2026-11-15",
+  "qualityProfile": {
+    "schemaVersion": "1.0.0",
+    "standard": "docs/component-quality-standard.md",
+    "implementation": "components/variants/tag.html",
+    "selection": {
+      "mappingSource": "components/selection-mvp-policy.json",
+      "mappingPointer": "components.tag.variantDecisionTypes",
+      "rulesPointer": "relations.variantDecisions"
+    },
+    "maintenance": {
+      "authority": "contract-preview-runtime-token-icon",
+      "generatedOnly": [
+        "preview-reference-tables",
+        "component-index",
+        "selection-catalog",
+        "design-reading-view",
+        "ai-reference"
+      ],
+      "changePolicy": "记录来源差异、兼容性与受影响父子组件；源文件变化后旧工程验收失效。",
+      "historicalPages": "不自动升级；新页面锁定本地组件运行资源版本。"
+    },
+    "acceptance": {
+      "report": "components/quality/report.json",
+      "proof": "components/quality/acceptance.json",
+      "declarationIsNotProof": true
+    }
+  },
+  "editable": [
+    "label",
+    "prefix",
+    "value",
+    "changeCallback",
+    "metadata.firstLabel",
+    "metadata.secondLabel",
+    "closeCallback",
+    "actionCallback",
+    "color",
+    "accessibleLabel"
+  ],
+  "integration": {
+    "styles": [
+      "components/tokens.css",
+      "components/components.css",
+      "components/tag-current.css",
+      "components/tag-product-current.css",
+      "components/tag-configuration-current.css"
+    ],
+    "scripts": [
+      "components/tag-current.js",
+      "components/tag-product-current.js"
+    ],
+    "fontStylesheets": [
+      "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+    ],
+    "fontFallback": "沿用Open Sans字体栈；远端字体不可用时回退。"
+  },
+  "aiContract": {
+    "schemaVersion": "1.0.0",
+    "rootTag": "button",
+    "scope": "existing-desktop-tag-finite-display-toggles-and-card-product-small",
+    "supported": [
+      "selectable",
+      "filter",
+      "status-text",
+      "metadata",
+      "metadata-single",
+      "semantic",
+      "featured",
+      "semantic-new",
+      "product-regular-small",
+      "product-custom-small",
+      "product-color-small"
+    ],
+    "unsupported": [
+      "select-removal-tag",
+      "native-checkbox-submission",
+      "mobile",
+      "status-warning-or-large",
+      "semantic-other-colors-or-iconless",
+      "unrecorded-size-state-or-host-adaptation",
+      "implicit-business-removal-without-host-callback",
+      "product-configuration-color-source",
+      "product-accessory-pc-source"
+    ],
+    "reviewStatus": {
+      "engineering": "pending",
+      "visual": "pending",
+      "familyCoverage": "partial"
+    },
+    "previewAssets": [
+      "components/preview/reference-live.js",
+      "components/sources/tag/semantic-new-source-1014.json",
+      "components/sources/tag/card-product-source-locator-1014.json",
+      "components/sources/tag/card-product-small-source-1014.json",
+      "components/sources/tag/card-product-host-review-1014.json",
+      "components/sources/tag/card-product-host-identities-1014.json",
+      "components/sources/tag/card-product-color-default-host-1014.json",
+      "components/sources/tag/card-metadata-featured-review-1015.json",
+      "components/sources/tag/card-count-popup-review-1015.json",
+      "components/sources/tag/card-single-metadata-review-1015.json",
+      "components/sources/tag/card-gray-label-adaptation-1015.json",
+      "components/sources/tag/card-gray-label-source-calls-1015.html"
+    ],
+    "selectionPolicy": "Use one finite authored example per supported family: two default marker-only button toggles, success 12px status, source-matched single metadata value or exactly two dual metadata values, fixed Individual neutral/info and fixed FEATURED/star. Not all colors, sizes, states or source/browser acceptance. 当前filter支持显式closeCallback，宿主移除；不自动移除业务对象。 2026-10-14按用户提供母组件补Card必要小号三种属性；原件产品图=false；颜色仅改data-tag-color的六位HEX选项内容，不开放任意CSS。 按relations.variantDecisions的具体场景选型；最终资格读同版catalog，未开放项不自动调用。当前MG核对状态见prototypeRollout，不将既有来源冒称本次在线核对。",
+    "identity": {
+      "rule": "Default native button with data-tag-current, type=button and aria-pressed=false; current delegated runtime scopes standalone Tag toggles and excludes Select removal adapters. Static Tag examples are native spans; semantic/featured text and icon are frozen. No role/tabindex/button or toggle marker may be added.",
+      "labelRule": "selectable保留唯一label；filter保留唯一prefix/value及原关闭图标。filter必须保留data-tag-close=event与键盘说明；X保持img，不嵌套button。",
+      "product": "button.ds-tag--product-small[data-tag-product=current], type=button, default aria-pressed=false；文字唯一span.ds-tag__product-label，产品图=false；颜色唯一14px装饰chip及有效六位HEX内容/可访问名。Canonical forbids host action/state markers.",
+      "metadata": "Single mother017293 uses ds-tag-meta--single/data-tag-source-metadata=single and one value; dual019949 uses source markerdual and two values withDivider. Both are static spans; no inferred interaction."
+    },
+    "locked": [
+      "根button、类型、28px形态与共享CSS",
+      "默认状态与aria-pressed",
+      "filter关闭图标及前缀/值分组",
+      "tag-current.js选择事件语义",
+      "X只发关闭事件，宿主负责移除；不添加提交/通用业务删除",
+      "Static span structure, default semantic class and decorative assets; semantic Individual and FEATURED labels are literal",
+      "Product small22 frame, inside1px stroke and original variant state colours; image=false source Boolean",
+      "Customized literal label; colour content edits only on data-tag-color, never frame CSS"
+    ],
+    "behavior": {
+      "toggle": "点击button时切换ds-tag--checked，同步aria-pressed，派发冒泡ds:tag-change；detail.checked为布尔值。",
+      "disabled": "原生disabled禁止响应；本批默认实例不开放disabled编辑。",
+      "close": "用户2026-10-13最新决定：点击X删除已选择标签。当前filter X只派发可取消冒泡ds:tag-close/detail.checked，不切换checked、不派发tag-change；宿主closeCallback决定并移除。组件不会自行删除调用实例。聚焦filter后Delete/Backspace提供等效关闭；禁用/隐藏/Select移除适配不响应。",
+      "programmatic": "首次初始化同步既有checked类；动态button点击由事件委托处理，但动态插入的初始aria需宿主提供一致状态。",
+      "selectHost": "Current Tag excludes .ds-select / data-select-remove, avoiding accidental toggle events when mixed with select-current.js. This only resolves runtime interference; source/style adapter remains unapproved.",
+      "initialization": "One document guard; marker-only delegated current calls, including dynamically inserted exact calls. Do not load legacy tag.js alongside current Tag runtime.",
+      "display": "Static examples dispatch no Tag event and add no keyboard, link or form control semantics; only status label and two metadata texts are editable.",
+      "product": "tag-product-current.js隔离原有Tag切换；常规/颜色切换aria-pressed并发ds:tag-change；Customized或Card已登记+N适配仅发ds:tag-activate，宿主决定动作。状态矩阵data-tag-state为来源展示，不响应切换。颜色初始化/动态插入/属性更新仅写内部色块background-color。"
+    },
+    "evidence": {
+      "localImplementation": "components/variants/tag.html",
+      "comparison": "components/sources/tag/local-structure-review.json",
+      "nativeSpecification": "components/sources/tag/native-specification-review-1011.json",
+      "nativeComponent": "components/sources/tag/native-component-review-1011.json",
+      "filterCloseUserDecision": "components/sources/tag/filter-close-user-decision-1013.json",
+      "infoFeaturedSvg": "components/sources/tag/info-featured-svg-review-1013.json",
+      "semanticOwnInfo": "components/sources/tag/semantic-info-own-review-1014.json",
+      "splitOwnInfoSvg": "components/sources/tag/split-info16-official-1014.svg",
+      "pickupOwnInfoSvg": "components/sources/tag/pickup-info16-official-1014.svg",
+      "productSmall": "components/sources/tag/card-product-small-source-1014.json",
+      "productHosts": "components/sources/tag/card-product-host-review-1014.json",
+      "cardMetadataFeatured1015": "components/sources/tag/card-metadata-featured-review-1015.json",
+      "singleMetadata": "components/sources/tag/card-single-metadata-review-1015.json",
+      "currentMgReview": "components/sources/remaining-prototypes-mg-20261115/tag-review.json",
+      "listOptionSource": "components/sources/list-option-mg-20261115/review.json"
+    },
+    "variants": {
+      "selectable": {
+        "purpose": "toggle-simple-pill-tag",
+        "exampleSelector": "[data-ai-example=\"ai-tag-selectable\"]",
+        "allowedEdits": [
+          "label",
+          "changeCallback"
+        ],
+        "slots": {
+          "label": {
+            "selector": "span.ds-tag__label",
+            "mode": "text",
+            "required": true
+          }
+        },
+        "bindings": {
+          "changeCallback": {
+            "mode": "event-handler",
+            "target": "root",
+            "event": "ds:tag-change"
+          }
+        }
+      },
+      "filter": {
+        "purpose": "toggle-composite-filter-tag",
+        "exampleSelector": "[data-ai-example=\"ai-tag-filter\"]",
+        "allowedEdits": [
+          "prefix",
+          "value",
+          "changeCallback",
+          "closeCallback"
+        ],
+        "slots": {
+          "prefix": {
+            "selector": "span.ds-tag__prefix",
+            "mode": "text",
+            "required": true
+          },
+          "value": {
+            "selector": "span.ds-tag__value",
+            "mode": "text",
+            "required": true
+          }
+        },
+        "bindings": {
+          "changeCallback": {
+            "mode": "event-handler",
+            "target": "root",
+            "event": "ds:tag-change"
+          },
+          "closeCallback": {
+            "mode": "event-handler",
+            "target": "root",
+            "event": "ds:tag-close"
+          }
+        }
+      },
+      "status-text": {
+        "exampleSelector": "[data-ai-example=\"ai-tag-status-text\"]",
+        "purpose": "display-success-status-tag",
+        "rootTag": "span",
+        "allowedEdits": [
+          "label"
+        ],
+        "slots": {
+          "label": {
+            "selector": ":scope",
+            "mode": "text",
+            "required": true
+          }
+        },
+        "bindings": {}
+      },
+      "metadata": {
+        "exampleSelector": "[data-ai-example=\"ai-tag-metadata\"]",
+        "purpose": "display-paired-metadata-tags",
+        "rootTag": "span",
+        "allowedEdits": [
+          "metadata.firstLabel",
+          "metadata.secondLabel"
+        ],
+        "slots": {
+          "metadata.firstLabel": {
+            "selector": "span[data-tag-value=\"first\"]",
+            "mode": "text",
+            "required": true
+          },
+          "metadata.secondLabel": {
+            "selector": "span[data-tag-value=\"second\"]",
+            "mode": "text",
+            "required": true
+          }
+        },
+        "bindings": {}
+      },
+      "semantic": {
+        "exampleSelector": "[data-ai-example=\"ai-tag-semantic\"]",
+        "purpose": "display-neutral-individual-tag",
+        "rootTag": "span",
+        "allowedEdits": [],
+        "slots": {},
+        "bindings": {}
+      },
+      "featured": {
+        "exampleSelector": "[data-ai-example=\"ai-tag-featured\"]",
+        "purpose": "display-featured-label",
+        "rootTag": "span",
+        "allowedEdits": [],
+        "slots": {},
+        "bindings": {}
+      },
+      "semantic-new": {
+        "exampleSelector": "[data-ai-example=\"ai-tag-semantic-new\"]",
+        "purpose": "display-original-green-new-tag",
+        "rootTag": "span",
+        "allowedEdits": [],
+        "slots": {},
+        "bindings": {}
+      },
+      "product-regular-small": {
+        "exampleSelector": "[data-ai-example=\"ai-tag-product-regular-small\"]",
+        "purpose": "card-product-regular-small",
+        "allowedEdits": [
+          "label",
+          "changeCallback"
+        ],
+        "slots": {
+          "label": {
+            "selector": "span.ds-tag__product-label",
+            "mode": "text",
+            "required": true
+          }
+        },
+        "bindings": {
+          "changeCallback": {
+            "mode": "event-handler",
+            "target": "root",
+            "event": "ds:tag-change"
+          }
+        },
+        "runtimeSemantics": {
+          "scope": "small22 only; original source Boolean image=false; frames/styles locked",
+          "state": "default; current marker; host may coordinate single selection",
+          "custom": "ds:tag-change; checked Boolean"
+        }
+      },
+      "product-custom-small": {
+        "exampleSelector": "[data-ai-example=\"ai-tag-product-custom-small\"]",
+        "purpose": "card-product-custom-small-action",
+        "allowedEdits": [
+          "actionCallback"
+        ],
+        "slots": {},
+        "bindings": {
+          "actionCallback": {
+            "mode": "event-handler",
+            "target": "root",
+            "event": "ds:tag-activate"
+          }
+        },
+        "runtimeSemantics": {
+          "scope": "small22 only; original source Boolean image=false; frames/styles locked",
+          "state": "default; current marker; host may coordinate single selection",
+          "custom": "ds:tag-activate only; no invented business action"
+        }
+      },
+      "product-color-small": {
+        "exampleSelector": "[data-ai-example=\"ai-tag-product-color-small\"]",
+        "purpose": "card-product-color-small",
+        "allowedEdits": [
+          "color",
+          "accessibleLabel",
+          "changeCallback"
+        ],
+        "slots": {},
+        "bindings": {
+          "changeCallback": {
+            "mode": "event-handler",
+            "target": "root",
+            "event": "ds:tag-change"
+          },
+          "color": {
+            "mode": "native-attribute",
+            "target": "root",
+            "attribute": "data-tag-color",
+            "valueType": "hex-color",
+            "pattern": "^#[0-9a-fA-F]{6}$",
+            "default": "#5A82F7",
+            "sourceRole": "product-option-content"
+          },
+          "accessibleLabel": {
+            "mode": "accessible-label",
+            "target": "root",
+            "attribute": "aria-label",
+            "nonEmpty": true
+          }
+        },
+        "runtimeSemantics": {
+          "scope": "small22 only; original source Boolean image=false; frames/styles locked",
+          "state": "default; current marker; host may coordinate single selection",
+          "custom": "ds:tag-change; checked Boolean"
+        }
+      },
+      "metadata-single": {
+        "exampleSelector": "[data-ai-example=\"ai-tag-metadata-single\"]",
+        "purpose": "display-single-metadata-value",
+        "rootTag": "span",
+        "allowedEdits": [
+          "metadata.firstLabel"
+        ],
+        "slots": {
+          "metadata.firstLabel": {
+            "selector": "span[data-tag-value=\"first\"]",
+            "mode": "text",
+            "required": true
+          }
+        },
+        "bindings": {}
+      }
+    }
+  },
+  "metadataFeaturedClosure1015": {
+    "source": "components/sources/tag/card-metadata-featured-review-1015.json",
+    "featuredCorrection": "400 old record to600 actual mother; opt-in source marker",
+    "cardHosts": 4,
+    "visual": "pending"
+  },
+  "cardCountPopup1015": {
+    "source": "components/sources/tag/card-count-popup-review-1015.json",
+    "scope": "Three existing popup atoms; initial genuine Hover popup visible",
+    "visual": "pending",
+    "remaining": [
+      "Whole host width and popup position",
+      "Popup selection business mapping and Hover timing"
+    ]
+  },
+  "singleMetadataClosure1015": {
+    "source": "components/sources/tag/card-single-metadata-review-1015.json",
+    "scope": "Actual single metadata shape and four Card calls; dual remains separate",
+    "radius": "Marked source atoms own literal3px from original,transparent/no visible radius claim",
+    "visual": "pending"
+  },
+  "parts": {
+    "cardGraySource": {
+      "scope": "Eight source-locked gray regular Tag adaptations in existing vertical Card hosts only; not a standalone atom variant",
+      "source": "components/sources/tag/card-gray-label-adaptation-1015.json",
+      "sourcePreview": "components/sources/tag/card-gray-label-source-calls-1015.html",
+      "previewSelector": "span.ds-tag[data-tag-card-gray-source=\"official\"]",
+      "requiredClasses": [
+        "ds-tag",
+        "ds-tag--semantic",
+        "ds-tag--neutral",
+        "ds-tag__label"
+      ],
+      "colorVariants": [
+        "semantic"
+      ],
+      "allowedHosts": [
+        {
+          "component": "Card",
+          "variant": "spliced.vertical.single-event"
+        }
+      ],
+      "isComplete": true,
+      "pendingParts": [],
+      "adaptation": {
+        "omitted": "Info16 absent in eight actual host instances",
+        "retained": "Real gray semantic Tag root,label and atom-owned geometry/paint/font",
+        "labels": [
+          "This is tag A",
+          "This is tag B"
+        ],
+        "limits": "No generic iconless/Boolean capability or local visual approval",
+        "property": "显示 info-信息",
+        "value": false,
+        "definitionEvidence": "components/sources/tag/card-gray-label-set-native-1015.txt"
+      }
+    },
+    "comment-filter": {
+      "isComplete": true,
+      "pendingParts": [],
+      "colorVariants": [
+        "selectable"
+      ],
+      "previewSelector": "[data-comment-controlled-tag]",
+      "requiredClasses": [
+        "ds-tag",
+        "ds-tag--selectable"
+      ],
+      "source": "components/sources/remaining-prototypes-mg-20261115/comment-review.json",
+      "sourcePreview": "components/sources/tag/comment-filter-current.html",
+      "scope": "Source Comment filter owns exclusive selection and filter intents; canonical Tag capsule paint, label and aria state retained, independent Tag toggle opt-in omitted.",
+      "allowedHosts": [
+        {
+          "component": "Comment",
+          "variant": "rating-summary"
+        }
+      ]
+    },
+    "collapse-pickup": {
+      "isComplete": true,
+      "pendingParts": [],
+      "colorVariants": [
+        "semantic"
+      ],
+      "previewSelector": "[data-tag-part=\"collapse-pickup\"]",
+      "requiredClasses": [
+        "ds-tag",
+        "ds-tag--pickup",
+        "ds-tag__label"
+      ],
+      "source": "components/sources/list-option-mg-20261115/review.json",
+      "sourcePreview": "components/sources/tag/collapse-pickup-1115.html",
+      "scope": "Finite current MG source part; host owns operational semantics. No standalone variant or independent visual approval.",
+      "allowedHosts": [
+        {
+          "component": "Collapse",
+          "variant": "data-preview"
+        }
+      ]
+    },
+    "configuration-color": {
+      "isComplete": true,
+      "pendingParts": [],
+      "colorVariants": [
+        "product-configuration-color-source"
+      ],
+      "previewSelector": "[data-tag-part=\"configuration-color\"]",
+      "requiredClasses": [
+        "ds-tag",
+        "ds-tag--configuration-color"
+      ],
+      "source": "components/sources/list-option-mg-20261115/review.json",
+      "sourcePreview": "components/sources/tag/configuration-color-1115.html",
+      "scope": "Finite current MG source part; host owns operational semantics. No standalone variant or independent visual approval.",
+      "allowedHosts": [
+        {
+          "component": "OptionSelector",
+          "variant": "color"
+        }
+      ]
+    },
+    "configuration-service": {
+      "isComplete": true,
+      "pendingParts": [],
+      "colorVariants": [
+        "product-accessory-pc-source"
+      ],
+      "previewSelector": "[data-tag-part=\"configuration-service\"]",
+      "requiredClasses": [
+        "ds-tag",
+        "ds-tag--accessory-pc"
+      ],
+      "source": "components/sources/list-option-mg-20261115/review.json",
+      "sourcePreview": "components/sources/tag/configuration-service-1115.html",
+      "scope": "Finite current MG source part; host owns operational semantics. No standalone variant or independent visual approval.",
+      "allowedHosts": [
+        {
+          "component": "OptionSelector",
+          "variant": "service"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "fs-component-source-review/1.0.0",
+  "component": "radio",
+  "status": "verified-rules-and-structure",
+  "source": {
+    "root": "3:200883",
+    "title": "【单选框 Radio】设计规范v1.2.2510B",
+    "file": "components/sources/foundation-mg-20261114/radio.txt",
+    "fileId": "209944605602401",
+    "sha256": "311ff76a302f99884a7f9b79b88706275778b642b4f17c9384360b219a39bfa4",
+    "recordedAt": "2026-11-14T05:25:33.889Z",
+    "method": "MasterGo get_selection_node; explicit current-file node read",
+    "url": "https://mastergo.com/file/209944605602401?page_id=M&layer_id=3:200883"
+  },
+  "scope": "Current admitted desktop calls: scene rules, declared states and actual source relationships; not pixel or whole-family visual approval",
+  "findings": [
+    {
+      "id": "group-and-checkout-boundary",
+      "nodes": [
+        "3:206459",
+        "3:206576",
+        "3:206334"
+      ],
+      "sourceFact": "单选组至少两项；第二描边框架仅结算地址/账单/交货/支付，额外内容属于框架插槽。",
+      "correction": "维持四个调用；明确支付品牌内容不自动归类为OptionSelector。"
+    }
+  ],
+  "unverified": [
+    "Checkout right-side atoms and payment symbols exist but current label/description calls do not implement those slots; no false local IconButton or payment dependency added."
+  ],
+  "ruleDigest": "124952427a3f6a85286a932b5b60115416fe5645dd9e5ffa92c1a356ea2829d8"
+}

@@ -1,0 +1,131 @@
+TAP version 13
+# Subtest: Tag exact scope exposes two default toggles and four finite displays, independent text slots and honest unsupported actions
+ok 1 - Tag exact scope exposes two default toggles and four finite displays, independent text slots and honest unsupported actions
+  ---
+  duration_ms: 153.543875
+  type: 'test'
+  ...
+# Subtest: Tag rejects fake toggle semantics, extra close controls and damaged filter structure
+ok 2 - Tag rejects fake toggle semantics, extra close controls and damaged filter structure
+  ---
+  duration_ms: 869.558708
+  type: 'test'
+  ...
+# Subtest: Tag label toggles independently while X emits close without implicit removal or change
+ok 3 - Tag label toggles independently while X emits close without implicit removal or change
+  ---
+  duration_ms: 77.587584
+  type: 'test'
+  ...
+# Subtest: dynamically inserted Tag toggles use existing delegated runtime
+ok 4 - dynamically inserted Tag toggles use existing delegated runtime
+  ---
+  duration_ms: 79.172458
+  type: 'test'
+  ...
+# Subtest: Tag label text may change while close assets and exact instance uniqueness remain required
+ok 5 - Tag label text may change while close assets and exact instance uniqueness remain required
+  ---
+  duration_ms: 242.967458
+  type: 'test'
+  ...
+# Subtest: Select removal tag is not a default Tag toggle when both delegated runtimes are loaded
+not ok 6 - Select removal tag is not a default Tag toggle when both delegated runtimes are loaded
+  ---
+  duration_ms: 532.264792
+  type: 'test'
+  location: '/Users/rick/Library/Mobile Documents/com~apple~CloudDocs/FS 设计规范系统/scripts/tag-reference.test.js:39:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+    
+    + []
+    - [
+    -   true
+    - ]
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    0: true
+  actual:
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (/Users/rick/Library/Mobile Documents/com~apple~CloudDocs/FS 设计规范系统/scripts/tag-reference.test.js:41:452)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: current Tag avoids Select removal interference regardless of script load order
+ok 7 - current Tag avoids Select removal interference regardless of script load order
+  ---
+  duration_ms: 1159.450709
+  type: 'test'
+  ...
+# Subtest: current Tag guards repeated loading, disabled fieldsets and removal-shaped markers
+ok 8 - current Tag guards repeated loading, disabled fieldsets and removal-shaped markers
+  ---
+  duration_ms: 76.306291
+  type: 'test'
+  ...
+# Subtest: four finite display Tags are native spans with no toggle events, and frozen semantic/icon labels stay literal
+ok 9 - four finite display Tags are native spans with no toggle events, and frozen semantic/icon labels stay literal
+  ---
+  duration_ms: 73.671625
+  type: 'test'
+  ...
+# Subtest: static Tag guards reject fake controls, wrong palette, metadata hierarchy and substituted decorative assets
+ok 10 - static Tag guards reject fake controls, wrong palette, metadata hierarchy and substituted decorative assets
+  ---
+  duration_ms: 586.122
+  type: 'test'
+  ...
+# Subtest: metadata and status text can be replaced, while display root and frozen label bindings cannot be invented
+ok 11 - metadata and status text can be replaced, while display root and frozen label bindings cannot be invented
+  ---
+  duration_ms: 180.433166
+  type: 'test'
+  ...
+# Subtest: current Tag preserves checked state under hidden or ARIA-disabled hosts and resumes once visible
+ok 12 - current Tag preserves checked state under hidden or ARIA-disabled hosts and resumes once visible
+  ---
+  duration_ms: 175.004416
+  type: 'test'
+  ...
+# Subtest: Tag close cancellation and disabled hidden Select boundaries preserve host selection
+ok 13 - Tag close cancellation and disabled hidden Select boundaries preserve host selection
+  ---
+  duration_ms: 107.860917
+  type: 'test'
+  ...
+# Subtest: Tag keyboard close supports dynamic calls and respects cancellation modifiers and repeated initialization
+ok 14 - Tag keyboard close supports dynamic calls and respects cancellation modifiers and repeated initialization
+  ---
+  duration_ms: 75.063292
+  type: 'test'
+  ...
+# Subtest: Tag Preview host removes only clicked filter and keeps label toggles separate
+ok 15 - Tag Preview host removes only clicked filter and keeps label toggles separate
+  ---
+  duration_ms: 47.260084
+  type: 'test'
+  ...
+# Subtest: Tag filter requires explicit close semantics and callback typed to its root event
+ok 16 - Tag filter requires explicit close semantics and callback typed to its root event
+  ---
+  duration_ms: 231.24825
+  type: 'test'
+  ...
+1..16
+# tests 16
+# suites 0
+# pass 15
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 5090.971833

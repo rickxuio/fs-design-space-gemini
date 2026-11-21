@@ -1,0 +1,60 @@
+{
+  "date": "2026-10-11",
+  "scope": "Two current PC consent Checkbox assemblies",
+  "counts": {
+    "Input": 12,
+    "Checkbox": 6,
+    "Submit": 2
+  },
+  "source": "components/sources/form/native-checkbox-structure-review-1011.json",
+  "adaptation": {
+    "baseComponent": "Checkbox",
+    "baseVariant": "sm",
+    "omittedSlots": [
+      "caption"
+    ],
+    "retainedStructure": [
+      "native input",
+      "atomic box",
+      "current/control markers"
+    ],
+    "hostContent": "Source-specific12px named prose/mixedGray3Blue links, outer label association",
+    "interaction": "Native ordinary-label toggle; legal link default prevented, no external targets"
+  },
+  "tests": {
+    "passed": 32,
+    "failed": 0,
+    "log": "/tmp/fs-form-consent-final-test.log"
+  },
+  "sync": {
+    "passed": true,
+    "log": "/tmp/fs-form-consent-sync.log"
+  },
+  "health": {
+    "passed": true,
+    "errors": 0,
+    "existingWarnings": 2,
+    "log": "/tmp/fs-form-consent-health.log"
+  },
+  "browser": {
+    "urlSuffix": "form.html?review=consent-final",
+    "observed": [
+      "Both Email1/Phone0 and consent0 from latest navigation",
+      "Each consent clicked to1 independently",
+      "Each Terms and Conditions link click leaves consent1 and URLunchanged",
+      "Final sm grayPhone click1/Space0"
+    ],
+    "limits": [
+      "Prior regular reload showed cached implementation; explicit query navigation confirmed latest period-containing label before tests",
+      "Reset covered offline only",
+      "No exact geometry, all-states or full visual acceptance",
+      "Mixed-run font overrides remain pending"
+    ]
+  },
+  "remaining": [
+    "Phone prefix2",
+    "Textarea2",
+    "M implementation",
+    "Full fixed-size acceptance"
+  ]
+}

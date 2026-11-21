@@ -1,0 +1,331 @@
+<!DOCTYPE html><html data-component-reference="tag" lang="zh-CN"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tag 常规标签 - 组件预览</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../tokens.css">
+  <link rel="stylesheet" href="../components.css?v=4">
+  <link rel="stylesheet" href="../tag-current.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { padding: 40px; background: var(--color-white); color: var(--color-gray-1); font-family: var(--font-family-base); }
+    h1 { margin-bottom: 8px; font-size: 24px; font-weight: 600; }
+    .subtitle { margin-bottom: 40px; color: var(--color-gray-3); font-size: 14px; }
+    .cat-badge { display: inline-flex; align-items: center; height: 22px; margin-bottom: 10px; padding: 0 10px; border-radius: 11px; background: #FBEAEA; color: #C00000; font-size: 11px; font-weight: 700; }
+    .section { margin-bottom: 48px; }
+    .section-title { margin-bottom: 20px; padding-bottom: 8px; border-bottom: 1px solid var(--color-gray-5); font-size: 18px; font-weight: 600; }
+    .section-note { margin: -10px 0 20px; color: var(--color-gray-3); font-size: 12px; line-height: 20px; }
+    .specimen { display: flex; flex-wrap: wrap; align-items: center; gap: 20px; }
+    .specimen + .specimen { margin-top: 16px; }
+    .specimen-label { width: 112px; flex: none; color: var(--color-gray-3); font-size: 12px; }
+    .state-grid { display: grid; grid-template-columns: 100px repeat(3, minmax(190px, 1fr)); border-top: 1px solid var(--color-gray-5); border-left: 1px solid var(--color-gray-5); }
+    .state-grid > div { min-height: 64px; padding: 12px; border-right: 1px solid var(--color-gray-5); border-bottom: 1px solid var(--color-gray-5); display: flex; align-items: center; }
+    .state-grid__head { min-height: 40px !important; background: var(--color-gray-8); font-size: 12px; font-weight: 600; }
+    .state-grid__label { color: var(--color-gray-3); font-size: 12px; }
+    .constrained { width: 230px; padding: 16px; border: 1px dashed var(--color-gray-5); border-radius: 4px; }
+    .live-status { min-height: 20px; margin-top: 12px; color: var(--color-gray-3); font-size: 12px; }
+    code { font-family: 'SF Mono', Consolas, monospace; }
+    @media (max-width: 760px) {
+      body { padding: 24px 16px; }
+      .state-grid { grid-template-columns: 88px minmax(170px, 1fr); overflow-x: auto; }
+      .state-grid > div:nth-child(4n + 3), .state-grid > div:nth-child(4n + 4) { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <span class="cat-badge">数据展示 Data Display</span>
+  <h1>Tag 常规标签 <span style="margin-left:10px;color:var(--color-gray-3);font-size:18px;vertical-align:middle;">v2.5</span></h1>
+  <p class="subtitle">仅展示已投喂源码确认的六类 Tag；商品/服务卡片、SKU 与模块选择器不在本页范围。</p>
+
+  <div style="margin-bottom:0;padding:24px;background:#FAFBFC;border:1px solid var(--color-gray-5);border-radius:8px;">
+    <!-- AUTO-GENERATED-PREVIEW:START -->
+<!-- 合并模式：硬规则已并入下方合并表 -->
+    <!-- AUTO-GENERATED-PREVIEW:END -->
+    <!-- AUTO-GENERATED-DECISION-TABLE:START -->
+    <p style="font-size: 14px; font-weight: 600; margin-bottom: 4px;">变体决策</p>
+    <p style="font-size: 12px; color: #707070; margin-bottom: 12px;">按已投喂 Tag v2.5 原始 HTML 选择六种实现；尺寸、颜色和状态均来自源码证据。</p>
+    <table style="width:100%;border-collapse:collapse;table-layout:fixed;">
+      <colgroup>
+        <col style="width:50%;">
+        <col style="width:50%;">
+      </colgroup>
+      <tbody>
+        <tr>
+          <th style="background:#F6F6F8;font-size:12px;font-weight:600;text-align:left;padding:8px 10px;border:1px solid #DEE0E3;">类型</th>
+          <th style="background:#F6F6F8;font-size:12px;font-weight:600;text-align:left;padding:8px 10px;border:1px solid #DEE0E3;">变体决策（什么场景用）</th>
+        </tr>
+        <tr>
+          <td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;" rowspan="2">纯文字状态 status-text</td>
+          <td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>用：</strong>无底无边框地显示 New、Hot 等短状态，使用 12/20 或 14/22 两档。</td>
+        </tr>
+        <tr>
+          <td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong style="color:#707070;">不用：</strong>需要色块容器时改用 semantic；需要交互时改用 selectable。</td>
+        </tr>
+        <tr>
+          <td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;" rowspan="2">并列元数据 metadata</td>
+          <td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>用：</strong>并列展示 Education | United States 等同层级元数据。</td>
+        </tr>
+        <tr>
+          <td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong style="color:#707070;">不用：</strong>单个状态或可操作筛选条件。</td>
+        </tr>
+        <tr>
+          <td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;" rowspan="2">20px 语义标签 semantic</td>
+          <td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>用：</strong>展示 Individual、Split Order、Pickup Order、New、Hot、Limited Offer 等业务语义。</td>
+        </tr>
+        <tr>
+          <td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong style="color:#707070;">不用：</strong>需要选择/取消选择时改用 selectable 或 filter。</td>
+        </tr>
+        <tr>
+          <td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;" rowspan="2">28px 可选择胶囊 selectable</td>
+          <td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>用：</strong>Router 等纯文字属性需要 default、hover、checked 反馈。</td>
+        </tr>
+        <tr>
+          <td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong style="color:#707070;">不用：</strong>带前缀、值、关闭图标的条件改用 filter。</td>
+        </tr>
+        <tr>
+          <td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;" rowspan="2">28px 复合筛选 filter</td>
+          <td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>用：</strong>Industry: K-12 Education 等前缀、值和关闭图标组成的筛选条件。</td>
+        </tr>
+        <tr>
+          <td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong style="color:#707070;">不用：</strong>纯文字属性改用 selectable。</td>
+        </tr>
+        <tr>
+          <td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;" rowspan="2">FEATURED 图标标签 featured</td>
+          <td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>用：</strong>仅用于 FEATURED 精选标识。</td>
+        </tr>
+        <tr>
+          <td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong style="color:#707070;">不用：</strong>普通状态、属性、筛选或任意自定义图标标签。</td>
+        </tr>
+        <tr>
+          <td colspan="2" style="background:#FFF3E0;color:#F56300;font-size:12px;font-weight:600;padding:10px 12px;border:1px solid #DEE0E3;">⚠️ 硬规则： 只实现已投喂 Tag，宽度由内容决定</td>
+        </tr>
+        <tr>
+          <td style="border:1px solid #DEE0E3;padding:12px;font-size:12px;line-height:20px;vertical-align:top;word-break:break-word;">
+            <p style="font-size:11px;font-weight:600;color:#707070;margin-bottom:6px;">👤 描述原文</p>
+            <div><strong>只允许使用 status-text、metadata、semantic、selectable、filter、featured 六类 Tag；商品/服务卡片、SKU 和模块选择器不属于 Tag。</strong>禁止使用 Figma specimen 固定宽度；单枚 Tag 随内容自适应并保持单行，受限时只省略文字，多枚标签用 <code>ds-tag-group</code> 换行。Individual、Split Order、Pickup Order 必须复用 <code>icon-info.svg</code> 并继承标签语义色；New、Hot、Limited Offer 不显示图标。</div>
+          </td>
+          <td style="border:1px solid #DEE0E3;padding:12px;font-size:12px;line-height:20px;vertical-align:top;word-break:break-word;">
+            <p style="font-size:11px;font-weight:600;color:#707070;margin-bottom:6px;">🤖 AI 解析（写入契约 JSON 的字段）</p>
+            <pre style="margin:0;font-family:'SF Mono',Consolas,monospace;font-size:11px;line-height:18px;white-space:pre-wrap;word-break:break-all;overflow-wrap:anywhere;color:#19191A;">variants = ["status-text", "metadata", "semantic", "selectable", "filter", "featured"]
+commonProperties.width = "fit-content"
+responsiveRules = ["文字省略", "ds-tag-group 换行"]
+semantic.icon = "icon-info for Individual/Split Order/Pickup Order only; inherit currentColor"</pre>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <!-- AUTO-GENERATED-DECISION-TABLE:END -->
+  </div>
+
+  <!-- DEPENDENCY-SUMMARY-SPACING -->
+  <div style="height:24px;"></div>
+  <!-- AUTO-GENERATED-DEPENDENCY-SUMMARY-TABLE:START -->
+    <div style="margin-bottom: 0; padding: 24px; background: #FAFBFC; border: 1px solid var(--color-gray-5); border-radius: 8px;">
+      <p style="font-size: 14px; font-weight: 600; margin-bottom: 4px;">依赖汇总表</p>
+      <p style="font-size: 12px; color: #707070; margin-bottom: 12px;">按组件类型汇总组件关系、颜色、字体、间距、描边、圆角、阴影和图标依赖；未填写 <code>appliesTo</code> 的组件级依赖不猜测变体归属，不参与本表归类。「组件关系」列用标签区分：<span style="display:inline-block;font-size:11px;line-height:16px;padding:0 5px;border-radius:3px;background:#EAF2FF;color:#0060BF;">子组件</span> = 嵌入本组件内部；<span style="display:inline-block;font-size:11px;line-height:16px;padding:0 5px;border-radius:3px;background:#F3EEFA;color:#512971;">父组件·类名证据／仅声明</span> = 从宿主 <code>componentDependencies</code> 自动推导；类名出现不等于具体变体、尺寸、必需结构或交互已验证，链接仅供打开 Preview 复核；<span style="display:inline-block;font-size:11px;line-height:16px;padding:0 5px;border-radius:3px;background:#FFF3E0;color:#A65300;">参考·未验证</span> = 仅保留设计意图，宿主 preview 尚无真实结构，不可作为已实现依赖。</p>
+      <div class="dep-summary-scroll">
+        <div class="dep-summary-grid" style="grid-template-columns:minmax(max-content, auto) repeat(8, minmax(max-content, 1fr));">
+          <div class="dep-cell dep-cell--sticky dep-cell--head" role="columnheader">组件类型</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">颜色</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">字体</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">间距</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">描边</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">圆角</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">阴影</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">图标</div>
+          <div class="dep-cell dep-cell--head dep-cell--right-edge" role="columnheader">组件关系</div>
+          <div class="dep-cell dep-cell--sticky" role="rowheader"><strong>纯文字状态标签</strong><br><code>status-text</code></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#19191A;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-1" style="color:#0060BF;text-decoration:underline;"><code>color.gray-1</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#10A300;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-success" style="color:#0060BF;text-decoration:underline;"><code>color.success</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#F56300;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-warning" style="color:#0060BF;text-decoration:underline;"><code>color.warning</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">12px · sm · Regular 400</span><a href="font.html#tok-typography-h9-regular" style="color:#0060BF;text-decoration:underline;"><code>typography.h9-regular</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">14px · md · Regular 400</span><a href="font.html#tok-typography-h7-regular" style="color:#0060BF;text-decoration:underline;"><code>typography.h7-regular</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">8px</span><a href="spacing.html#tok-spacing-sm" style="color:#0060BF;text-decoration:underline;"><code>spacing.sm</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell dep-cell--right-edge" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell dep-cell--sticky" role="rowheader"><strong>并列元数据标签</strong><br><code>metadata</code></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#707070;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-3" style="color:#0060BF;text-decoration:underline;"><code>color.gray-3</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#DEE0E3;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-5" style="color:#0060BF;text-decoration:underline;"><code>color.gray-5</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">12px · sm · Regular 400</span><a href="font.html#tok-typography-h9-regular" style="color:#0060BF;text-decoration:underline;"><code>typography.h9-regular</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">8px</span><a href="spacing.html#tok-spacing-sm" style="color:#0060BF;text-decoration:underline;"><code>spacing.sm</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell dep-cell--right-edge" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell dep-cell--sticky" role="rowheader"><strong>语义标签</strong><br><code>semantic</code></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#19191A;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-1" style="color:#0060BF;text-decoration:underline;"><code>color.gray-1</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#4B4B4D;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-2" style="color:#0060BF;text-decoration:underline;"><code>color.gray-2</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#F2F2F2;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-7" style="color:#0060BF;text-decoration:underline;"><code>color.gray-7</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#0060BF;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-blue" style="color:#0060BF;text-decoration:underline;"><code>color.blue</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#10A300;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-success" style="color:#0060BF;text-decoration:underline;"><code>color.success</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:rgba(16,163,0,0.1);vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-success-bg" style="color:#0060BF;text-decoration:underline;"><code>color.success-bg</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#D6F5DF;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-success-tag-bg" style="color:#0060BF;text-decoration:underline;"><code>color.success-tag-bg</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#09832A;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-success-tag-text" style="color:#0060BF;text-decoration:underline;"><code>color.success-tag-text</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#F56300;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-warning" style="color:#0060BF;text-decoration:underline;"><code>color.warning</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#512971;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-purple-tag" style="color:#0060BF;text-decoration:underline;"><code>color.purple-tag</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:rgba(0,96,191,0.1);vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-tag-blue-bg" style="color:#0060BF;text-decoration:underline;"><code>color.tag-blue-bg</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#FFEBDD;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-tag-warning-bg" style="color:#0060BF;text-decoration:underline;"><code>color.tag-warning-bg</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#ECDCF9;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-tag-purple-bg" style="color:#0060BF;text-decoration:underline;"><code>color.tag-purple-bg</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">12px · sm · Regular 400</span><a href="font.html#tok-typography-h9-regular" style="color:#0060BF;text-decoration:underline;"><code>typography.h9-regular</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">12px · sm · SemiBold 600</span><a href="font.html#tok-typography-h9-semibold" style="color:#0060BF;text-decoration:underline;"><code>typography.h9-semibold</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">2px</span><a href="spacing.html#tok-spacing-2" style="color:#0060BF;text-decoration:underline;"><code>spacing.2</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">4px</span><a href="spacing.html#tok-spacing-xs" style="color:#0060BF;text-decoration:underline;"><code>spacing.xs</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">8px</span><a href="spacing.html#tok-spacing-sm" style="color:#0060BF;text-decoration:underline;"><code>spacing.sm</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">4px</span><a href="radius.html#tok-border-radius-md" style="color:#0060BF;text-decoration:underline;"><code>border-radius.md</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><img src="../icons/icon-info.svg?v=6e6c97d5d691" alt="" style="display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;"><a href="icon-map.html#icon-info" style="color:#0060BF;text-decoration:underline;"><code>icon-info.svg</code></a></span></div>
+          <div class="dep-cell dep-cell--right-edge" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell dep-cell--sticky" role="rowheader"><strong>可选择胶囊标签</strong><br><code>selectable</code></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#19191A;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-1" style="color:#0060BF;text-decoration:underline;"><code>color.gray-1</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#DEE0E3;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-5" style="color:#0060BF;text-decoration:underline;"><code>color.gray-5</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#F6F6F8;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-8" style="color:#0060BF;text-decoration:underline;"><code>color.gray-8</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#0060BF;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-blue" style="color:#0060BF;text-decoration:underline;"><code>color.blue</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:rgba(25,25,26,0.04);vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-hover-overlay-light" style="color:#0060BF;text-decoration:underline;"><code>color.hover-overlay-light</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">12px · sm · Regular 400</span><a href="font.html#tok-typography-h9-regular" style="color:#0060BF;text-decoration:underline;"><code>typography.h9-regular</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">4px</span><a href="spacing.html#tok-spacing-xs" style="color:#0060BF;text-decoration:underline;"><code>spacing.xs</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">8px</span><a href="spacing.html#tok-spacing-sm" style="color:#0060BF;text-decoration:underline;"><code>spacing.sm</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">10px</span><a href="spacing.html#tok-spacing-10" style="color:#0060BF;text-decoration:underline;"><code>spacing.10</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">9999px</span><a href="radius.html#tok-border-radius-full" style="color:#0060BF;text-decoration:underline;"><code>border-radius.full</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell dep-cell--right-edge" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:normal;overflow-wrap:anywhere;"><span style="display:inline-block;flex-shrink:0;font-size:11px;line-height:16px;padding:0 5px;margin-right:6px;border-radius:3px;background:#F3EEFA;color:#512971;">父组件·仅声明</span><a href="comment.html" style="color:#0060BF;text-decoration:underline;">Comment</a></span></div>
+          <div class="dep-cell dep-cell--sticky" role="rowheader"><strong>复合筛选标签</strong><br><code>filter</code></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#19191A;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-1" style="color:#0060BF;text-decoration:underline;"><code>color.gray-1</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#FFFFFF;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-white" style="color:#0060BF;text-decoration:underline;"><code>color.white</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#0060BF;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-blue" style="color:#0060BF;text-decoration:underline;"><code>color.blue</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:rgba(25,25,26,0.04);vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-hover-overlay-light" style="color:#0060BF;text-decoration:underline;"><code>color.hover-overlay-light</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#EEEEEE;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-tag-border" style="color:#0060BF;text-decoration:underline;"><code>color.tag-border</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">12px · sm · Regular 400</span><a href="font.html#tok-typography-h9-regular" style="color:#0060BF;text-decoration:underline;"><code>typography.h9-regular</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">12px · sm · SemiBold 600</span><a href="font.html#tok-typography-h9-semibold" style="color:#0060BF;text-decoration:underline;"><code>typography.h9-semibold</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">4px</span><a href="spacing.html#tok-spacing-xs" style="color:#0060BF;text-decoration:underline;"><code>spacing.xs</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">8px</span><a href="spacing.html#tok-spacing-sm" style="color:#0060BF;text-decoration:underline;"><code>spacing.sm</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">10px</span><a href="spacing.html#tok-spacing-10" style="color:#0060BF;text-decoration:underline;"><code>spacing.10</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:1px;background:#707070;margin-right:8px;vertical-align:middle;flex:0 0 auto;"></span><a href="stroke.html#tok-border-width-default" style="color:#0060BF;text-decoration:underline;"><code>border.width.default</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:0;border-top:2px solid #707070;margin-right:8px;vertical-align:middle;flex:0 0 auto;"></span><a href="stroke.html#tok-border-style-default" style="color:#0060BF;text-decoration:underline;"><code>border.style.default</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;box-sizing:border-box;border:2px solid var(--color-tag-border);background:transparent;margin-right:8px;vertical-align:-3px;flex:0 0 auto;"></span><a href="stroke.html#tok-border-color-tag" style="color:#0060BF;text-decoration:underline;"><code>border.color.tag</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;box-sizing:border-box;border:2px solid var(--color-gray-1);background:transparent;margin-right:8px;vertical-align:-3px;flex:0 0 auto;"></span><a href="stroke.html#tok-border-color-emphasis" style="color:#0060BF;text-decoration:underline;"><code>border.color.emphasis</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">9999px</span><a href="radius.html#tok-border-radius-full" style="color:#0060BF;text-decoration:underline;"><code>border-radius.full</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><img src="../icons/icon-close.svg?v=226867654d63" alt="" style="display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;"><a href="icon-map.html#icon-close" style="color:#0060BF;text-decoration:underline;"><code>icon-close.svg</code></a></span></div>
+          <div class="dep-cell dep-cell--right-edge" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell dep-cell--sticky dep-cell--bottom-edge" role="rowheader"><strong>FEATURED 图标标签</strong><br><code>featured</code></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#707070;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-3" style="color:#0060BF;text-decoration:underline;"><code>color.gray-3</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#FFD748;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-yellow" style="color:#0060BF;text-decoration:underline;"><code>color.yellow</code></a></span></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">12px · sm · Regular 400</span><a href="font.html#tok-typography-h9-regular" style="color:#0060BF;text-decoration:underline;"><code>typography.h9-regular</code></a></span></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">4px</span><a href="spacing.html#tok-spacing-xs" style="color:#0060BF;text-decoration:underline;"><code>spacing.xs</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">8px</span><a href="spacing.html#tok-spacing-sm" style="color:#0060BF;text-decoration:underline;"><code>spacing.sm</code></a></span></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><img src="../icons/icon-featured-star.svg?v=3ff7625e9743" alt="" style="display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;"><a href="icon-map.html#icon-featured-star" style="color:#0060BF;text-decoration:underline;"><code>icon-featured-star.svg</code></a></span></div>
+          <div class="dep-cell dep-cell--right-edge dep-cell--bottom-edge" role="cell"><span style="color:#A6A6A6;">—</span></div>
+        </div>
+      </div>
+    </div>
+    <!-- AUTO-GENERATED-DEPENDENCY-SUMMARY-TABLE:END -->
+
+<section class="section">
+    <h2 class="section-title">1. 纯文字状态标签</h2>
+    <p class="section-note">源码提供 12px/20px 与 14px/22px 两档；无底色、无描边、纯展示。</p>
+    <div class="specimen">
+      <span class="specimen-label">12px / 20px</span>
+      <span class="ds-tag ds-tag--status-text ds-tag--success" data-ai-example="ai-tag-status-text">New</span>
+      <span class="ds-tag ds-tag--status-text ds-tag--warning">Hot</span>
+    </div>
+    <div class="specimen">
+      <span class="specimen-label">14px / 22px</span>
+      <span class="ds-tag ds-tag--status-text ds-tag--status-lg ds-tag--success">New</span>
+      <span class="ds-tag ds-tag--status-text ds-tag--status-lg ds-tag--warning">Hot</span>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">2. 并列元数据标签</h2>
+    <p class="section-note">12px/20px、8px 间距，分隔线为 1×10px #DEE0E3。</p>
+    <span class="ds-tag-meta" data-ai-example="ai-tag-metadata">
+      <span data-tag-value="first">Education</span>
+      <span class="ds-tag-meta__divider" aria-hidden="true"></span>
+      <span data-tag-value="second">United States</span>
+    </span>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">3. 20px 语义标签</h2>
+    <p class="section-note">Individual、Split Order、Pickup Order 使用右侧 16px info 图标；图标继承标签语义色。</p>
+    <div class="ds-tag-group">
+      <span class="ds-tag ds-tag--semantic ds-tag--neutral" data-tag-source-individual-info="official" data-ai-example="ai-tag-semantic"><span class="ds-tag__label">Individual</span><span class="ds-tag__icon ds-tag__icon--info" aria-hidden="true"></span></span>
+      <span class="ds-tag ds-tag--semantic ds-tag--blue"><span class="ds-tag__label">Split Order</span><span class="ds-tag__icon ds-tag__icon--info" aria-hidden="true"></span></span>
+      <span class="ds-tag ds-tag--semantic ds-tag--pickup"><span class="ds-tag__label">Pickup Order</span><span class="ds-tag__icon ds-tag__icon--info" aria-hidden="true"></span></span>
+      <span class="ds-tag ds-tag--semantic ds-tag--new ds-tag--emphasis"><span class="ds-tag__label">New</span></span>
+      <span class="ds-tag ds-tag--semantic ds-tag--hot ds-tag--emphasis"><span class="ds-tag__label">Hot</span></span>
+      <span class="ds-tag ds-tag--semantic ds-tag--limited ds-tag--emphasis"><span class="ds-tag__label">Limited Offer</span></span>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">4. 28px 可选择胶囊：Router</h2>
+    <p class="section-note">状态矩阵：default #F6F6F8；hover 叠加 4% 黑；checked #DEE0E3。</p>
+    <div class="state-grid">
+      <div class="state-grid__head">变体</div>
+      <div class="state-grid__head">Default</div>
+      <div class="state-grid__head">Hover</div>
+      <div class="state-grid__head">Checked</div>
+      <div class="state-grid__label">Router</div>
+      <div><button class="ds-tag ds-tag--selectable" type="button" aria-pressed="false" data-ai-example="ai-tag-selectable" data-tag-current=""><span class="ds-tag__label">Router</span></button></div>
+      <div><button class="ds-tag ds-tag--selectable ds-tag--hover" type="button" aria-pressed="false"><span class="ds-tag__label">Router</span></button></div>
+      <div><button class="ds-tag ds-tag--selectable ds-tag--checked" type="button" aria-pressed="true"><span class="ds-tag__label">Router</span></button></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 id="filter-close-location" class="section-title">5. 28px 复合筛选：Industry</h2>
+    <p class="section-note">前缀 600、值 400、关闭图标 12px；default #FFFFFF + #EEEEEE，checked 使用 #19191A 描边。点击文字切换选中；点击 X（或聚焦后按 Delete / Backspace）发出关闭事件，由本 Preview 宿主移除此标签。</p>
+    <div class="state-grid">
+      <div class="state-grid__head">变体</div>
+      <div class="state-grid__head">Default</div>
+      <div class="state-grid__head">Hover</div>
+      <div class="state-grid__head">Checked</div>
+      <div class="state-grid__label">Industry</div>
+      <div>
+        <button class="ds-tag ds-tag--selectable ds-tag--filter" type="button" aria-pressed="false" data-tag-current="" data-tag-close="event" aria-keyshortcuts="Delete Backspace" aria-description="按 Delete 或 Backspace 删除此标签" data-ai-example="ai-tag-filter">
+          <span class="ds-tag__label"><span class="ds-tag__prefix">Industry:</span> <span class="ds-tag__value">K-12 Education</span></span>
+          <img class="ds-tag__close" src="../icons/icon-close.svg" alt="">
+        </button>
+      </div>
+      <div>
+        <button class="ds-tag ds-tag--selectable ds-tag--filter ds-tag--hover" type="button" aria-pressed="false" data-tag-current="" data-tag-close="event" aria-keyshortcuts="Delete Backspace" aria-description="按 Delete 或 Backspace 删除此标签">
+          <span class="ds-tag__label"><span class="ds-tag__prefix">Industry:</span> <span class="ds-tag__value">K-12 Education</span></span>
+          <img class="ds-tag__close" src="../icons/icon-close.svg" alt="">
+        </button>
+      </div>
+      <div>
+        <button class="ds-tag ds-tag--selectable ds-tag--filter ds-tag--checked" type="button" aria-pressed="true" data-tag-current="" data-tag-close="event" aria-keyshortcuts="Delete Backspace" aria-description="按 Delete 或 Backspace 删除此标签">
+          <span class="ds-tag__label"><span class="ds-tag__prefix">Industry:</span> <span class="ds-tag__value">K-12 Education</span></span>
+          <img class="ds-tag__close" src="../icons/icon-close.svg" alt="">
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">6. FEATURED</h2>
+    <p class="section-note">复用仓库正式 16px 星标资源，文字为 12px/20px #707070。</p>
+    <span class="ds-tag ds-tag--featured" data-ai-example="ai-tag-featured">
+      <img class="ds-tag__icon" src="../icons/icon-featured-star.svg" alt="">
+      <span class="ds-tag__label">FEATURED</span>
+    </span>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">交互与内容宽度</h2>
+    <p class="section-note">点击下方按钮验证 <code>ds-tag--checked</code>、<code>aria-pressed</code> 与 <code>ds:tag-change</code> 同步。</p>
+    <div class="specimen">
+      <span class="specimen-label">Live selectable</span>
+      <button id="live-tag" class="ds-tag ds-tag--selectable" type="button" aria-pressed="false"><span class="ds-tag__label">Router</span></button>
+    </div>
+    <p id="live-status" class="live-status" aria-live="polite">aria-pressed=false</p>
+    <div class="specimen" style="margin-top:24px;align-items:flex-start;">
+      <span class="specimen-label">受限容器</span>
+      <div class="constrained">
+        <div class="ds-tag-group">
+          <button class="ds-tag ds-tag--selectable" type="button" aria-pressed="false"><span class="ds-tag__label">Router with a very long descriptive label</span></button>
+          <span class="ds-tag ds-tag--semantic ds-tag--new ds-tag--emphasis"><span class="ds-tag__label">New</span></span>
+          <span class="ds-tag ds-tag--semantic ds-tag--limited ds-tag--emphasis"><span class="ds-tag__label">Limited Offer</span></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="../tag-current.js"></script>
+  <script>
+    document.getElementById('filter-close-location').parentElement.addEventListener('ds:tag-close', function (event) {
+      if (event.defaultPrevented) return;
+      var tag = event.target;
+      if (!tag.matches('button.ds-tag--filter[data-tag-close="event"]')) return;
+      var tags = Array.from(event.currentTarget.querySelectorAll('button.ds-tag--filter[data-tag-close="event"]'));
+      var index = tags.indexOf(tag);
+      var next = tags[index + 1] || tags[index - 1];
+      var focused = tag === document.activeElement;
+      tag.remove();
+      if (focused && next) next.focus({ preventScroll: true });
+    });
+    document.getElementById('live-tag').addEventListener('ds:tag-change', function (event) {
+      document.getElementById('live-status').textContent = 'aria-pressed=' + event.currentTarget.getAttribute('aria-pressed') + ' · checked=' + event.detail.checked;
+    });
+  </script>
+  <script src="preview-link.js"></script>
+  <script src="reference-live.js"></script>
+
+
+</body></html>

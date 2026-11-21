@@ -1,0 +1,35 @@
+{
+  "method": "64px native snapshots versus registered16pxSVG rendered at4x; alpha separately from colour",
+  "runtimeSVG": "components/icons/mastergo-library/系统Icon/1634-37848.svg",
+  "sourceNodes": [
+    "3:22582",
+    "3:22618"
+  ],
+  "sourceAliasesExactAlphaMatch": true,
+  "results": [
+    {
+      "source": "outline-loading.png",
+      "size": [
+        64,
+        64
+      ],
+      "alphaDifferentPixels": 292,
+      "silhouetteDifferentPixels": 41,
+      "silhouetteIoU": 0.9428172942817294,
+      "sha256": "2886252b3d898238e18931848774e1c07b413beaeec6aacc9eef68bdf1ffa0e3"
+    },
+    {
+      "source": "system-loading.png",
+      "size": [
+        64,
+        64
+      ],
+      "alphaDifferentPixels": 292,
+      "silhouetteDifferentPixels": 41,
+      "silhouetteIoU": 0.9428172942817294,
+      "sha256": "e1943d5c91b9399ad713764c9e02c627a5c2dd88af83fda672007fa54ad07f9d"
+    }
+  ],
+  "conclusion": "Two source names share identical native alpha silhouette. Retain the registered Loading glyph; dimensions/paint match. Browser/native raster edges differ, so no exact antialiasing or new vector-command identity claim.",
+  "boundary": "Declared-property verification and small-glyph visual comparison, not whole-family pixel approval."
+}

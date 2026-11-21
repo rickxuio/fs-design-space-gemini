@@ -1,0 +1,1410 @@
+{
+  "id": "comp_option_selector_001",
+  "name": "OptionSelector",
+  "chineseName": "选项选择器",
+  "description": "Configuration adapter: media/product keep their existing local radio calls. Current MG color/service belong to Tag product attributes: PC color uses the real Select dropdown; PC accessories use native Checkbox. The M right-checkbox row is a separate source shape.",
+  "category": "数据录入 Data Entry",
+  "variants": [
+    {
+      "name": "media",
+      "chineseName": "图文配置选项",
+      "whenToUse": "图文内容本身构成互斥配置；当前仅已登记无框H7。支付品牌不据此选型。",
+      "cssClass": "ds-option-selector ds-option-selector--plain",
+      "styleProperties": {
+        "leading": "14/18/24px 内容图形，或 18px 高且保持自然宽度的支付品牌 Logo",
+        "content": "单行标签；支付方式可仅展示有可访问名称的品牌 Logo",
+        "appearances": "ds-option-selector--plain / 默认紧凑描边 / ds-option-selector--payment",
+        "examples": "100 QSFP28 / Credit/Debit Card",
+        "semantics": "button[role=radio]"
+      },
+      "isComplete": true,
+      "pendingParts": [],
+      "requiredChildren": [
+        "img.ds-option-selector__media",
+        "span.ds-option-selector__label"
+      ],
+      "selectionDecisionType": "图文与支付选项 media",
+      "whenNotToUse": "只有圆形状态图加单行文字时使用 Radio regular；仅靠颜色辨识时使用 color；需要商品、价格等复合双行信息时使用 product；不得把 104/95/111px specimen 宽度写入生产 CSS。"
+    },
+    {
+      "name": "color",
+      "chineseName": "颜色配置选项",
+      "whenToUse": "PC产品属性文本＋颜色下拉：306×30，14px色块，复用Select单选。",
+      "cssClass": "ds-select ds-option-selector--color",
+      "styleProperties": {
+        "trigger": "PC306x30; padding0/8; border1px #EEE; radius4",
+        "leading": "14px swatch/radius2, supplied business color",
+        "content": "13px/20px label,12px down arrow",
+        "semantics": "Tag trigger + real Select combobox/listbox; not Radio",
+        "states": "Default white/light border; Hover gray/light border; Checked gray/dark border"
+      },
+      "selectionDecisionType": "颜色选项 color",
+      "whenNotToUse": "仅色块Tag、Radio按钮组、M端42px形态或用颜色替代语义图标。",
+      "isComplete": true,
+      "pendingParts": [],
+      "requiredChildren": [
+        "button.ds-select__trigger",
+        "div.ds-select__panel",
+        "div.ds-select__option",
+        "span.ds-tag__configuration-swatch"
+      ],
+      "usage": "PC产品属性文本＋颜色下拉：306×30，14px色块，复用Select单选。"
+    },
+    {
+      "name": "product",
+      "chineseName": "商品、套餐与双行详情选项",
+      "whenToUse": "商品/SKU与价格共同构成互斥配置；按现有本地规范候选，当前MG独立来源未定位。",
+      "cssClass": "ds-option-selector ds-option-selector--sm ds-option-selector--product",
+      "styleProperties": {
+        "leading": "可选 24×24px 商品或状态图形",
+        "content": "紧凑项可展示标签与右置价格；detail/lg 使用标题与副文案或价格纵向排列",
+        "appearance": "ds-option-selector--detail 使用 8px 16px padding 和 8px 圆角，宽度由容器决定",
+        "example": "IES5220-4T4FP-E | 4x 1Gb RJ45 / US$1,669.00",
+        "semantics": "button[role=radio]"
+      },
+      "isComplete": true,
+      "pendingParts": [],
+      "requiredChildren": [
+        "img.ds-option-selector__media",
+        "span.ds-option-selector__label",
+        "span.ds-option-selector__price",
+        "span.ds-option-selector__disclosure"
+      ],
+      "selectionDecisionType": "商品、套餐与双行详情 product",
+      "whenNotToUse": "只有圆形状态图加主副文本的结算地址、配送或支付项使用 Radio bordered-detail；可独立加购服务使用 service；支付品牌 Logo-only 使用 media + payment；不得把 378px specimen 宽度固化为生产宽度。"
+    },
+    {
+      "name": "service",
+      "chineseName": "服务勾选项",
+      "whenToUse": "PC配件或可独立加购服务：264×80、64px图，Checkbox多选。",
+      "cssClass": "ds-option-selector--service ds-tag ds-tag--accessory-pc",
+      "styleProperties": {
+        "layout": "PC264x80 accessory card only; M382x80 right-checkbox row not admitted",
+        "leading": "14px Checkbox upper-left, required64px accessory image",
+        "content": "12px/20px name max2lines,14px/600/22px price,2px gap",
+        "semantics": "native Checkbox(sm) input+box inside label; independent multiple selection",
+        "states": "Default white/light border; Hover gray/light border; Checked gray/dark border; disabled cannot activate"
+      },
+      "requiredChildren": [
+        "input.ds-checkbox__input",
+        "span.ds-checkbox__box",
+        "img.ds-option-selector__media",
+        "span.ds-option-selector__content"
+      ],
+      "selectionDecisionType": "服务勾选项 service",
+      "whenNotToUse": "互斥套餐、M端右侧Checkbox服务行、库存与加购后端。",
+      "isComplete": true,
+      "pendingParts": [],
+      "usage": "PC配件或可独立加购服务：264×80、64px图，Checkbox多选。"
+    }
+  ],
+  "sizeModifiers": {
+    "plain-h7": "ds-option-selector--plain，22px 高，14px/22px H7，18px 图形；宽度随内容。",
+    "plain-h8": "ds-option-selector--plain ds-option-selector--plain-sm，20px 高，13px/20px H8，14px 图形；宽度随内容。",
+    "xs": "ds-option-selector--xs，22px 高，12px/20px 文字，水平 padding 8px。",
+    "sm": "ds-option-selector--sm，30px 高，13px/20px 文字，水平 padding 8px。",
+    "md": "ds-option-selector--md，42px 高，13px/20px 文字，水平 padding 12px。",
+    "detail": "ds-option-selector--detail，最小高度由 14px/22px 标题、12px/20px 副文案及 8px 16px padding 共同决定，8px 圆角；宽度由容器决定。",
+    "lg": "ds-option-selector--lg，80px 高，13px/20px 文字，垂直 padding 8px、水平 padding 16px；商品标题与价格纵向排列。"
+  },
+  "states": [
+    {
+      "name": "default",
+      "chineseName": "默认",
+      "styleOverrides": {
+        "background": "#FFFFFF",
+        "border": "1px solid #EEEEEE"
+      },
+      "description": "未选择的静止状态；plain 修饰符不显示容器描边。"
+    },
+    {
+      "name": "hover",
+      "chineseName": "悬停",
+      "styleOverrides": {
+        "background": "#FFFFFF",
+        "border": "1px solid #19191A"
+      },
+      "description": "源码顺序与素材命名共同确认：Hover 为白底深色描边；预览可用 ds-option-selector--hover 静态模拟。plain 保持无框。"
+    },
+    {
+      "name": "selected",
+      "chineseName": "选中 Checked",
+      "styleOverrides": {
+        "background": "#F2F2F2",
+        "border": "1px solid #19191A",
+        "semantics": "Radio: aria-checked=true；Service: input.checked=true"
+      },
+      "description": "灰底与深色描边共同表示 Checked。Radio 配置组内唯一选中；service 可独立多选；强调型 Customized 使用 #0060BF 文字与描边。"
+    },
+    {
+      "name": "disabled",
+      "chineseName": "禁用",
+      "styleOverrides": {
+        "interaction": "button.disabled / input.disabled，不响应点击和键盘切换",
+        "opacity": "普通内容整体 0.3；支付品牌使用对应 Disable SVG 内置 0.3 透明度，禁止二次降透明度"
+      },
+      "description": "禁用优先级高于 hover/selected；支付方式必须切换到同品牌 Disable 素材。"
+    },
+    {
+      "name": "focus-visible",
+      "chineseName": "键盘聚焦",
+      "styleOverrides": {
+        "border": "1px solid #0060BF"
+      },
+      "description": "仅键盘 focus-visible 使用蓝色描边，不增加额外外圈。"
+    }
+  ],
+  "contentSlots": {
+    "media": {
+      "required": false,
+      "description": "业务内容图形：plain H7 为 18×18px、plain H8/sm 为 14×14px、md 为 18×18px、detail/lg/service 为 24×24px；不进入 UI 图标清单。"
+    },
+    "brand": {
+      "required": false,
+      "description": "支付品牌 Logo 使用 ds-option-selector__brand，固定 18px 高并保持 SVG 自然宽度；Default/Hover/Checked 共用正常素材，Disabled 使用对应 Disable 素材。五种已核实素材为 Credit/Debit Card、Electronic Check、Net Terms、PayPal Credit、Wire/ACH Transfer。"
+    },
+    "swatch": {
+      "required": false,
+      "description": "14×14px 动态颜色块，通过 --ds-option-selector-color 传入业务颜色。"
+    },
+    "content": {
+      "required": false,
+      "description": "detail/lg 商品选项使用 ds-option-selector__content 包裹 label 与 description/price，使两行信息纵向排列；其他尺寸可继续使用扁平槽位。"
+    },
+    "label": {
+      "required": true,
+      "description": "主标签；plain H7 使用 14px/22px，plain H8 与常规 sm/md 使用 13px/20px；受限宽度单行省略，detail/lg 可显示多行。支付 Logo-only 选项必须通过 aria-label 提供同等名称。"
+    },
+    "description": {
+      "required": false,
+      "description": "双行 detail 副文案使用 ds-option-selector__description，12px/20px Regular、#707070；示例原文保留 Address & Phipping & Payment。"
+    },
+    "price": {
+      "required": false,
+      "description": "价格使用 13px/20px #707070 且不压缩；xs/sm/md 可右置，detail/lg 在标题下方左对齐。"
+    },
+    "disclosure": {
+      "required": false,
+      "description": "12×12px icon-chevron-down，仅表示关联配置入口；不得伪造下拉面板。"
+    },
+    "checkbox": {
+      "required": false,
+      "description": "仅 service 变体使用 14×14px Checkbox 图标；service-card 位于左上区域，service-row 位于右侧。"
+    }
+  },
+  "commonProperties": {
+    "radioElement": "button[role=radio]",
+    "radioGroup": "role=radiogroup",
+    "serviceElement": "label + input[type=checkbox]",
+    "display": "flex / grid（service）",
+    "alignItems": "center",
+    "gap": "8px；双行 content 内为 4px",
+    "borderRadius": "紧凑描边 4px；detail 8px；plain 无容器圆角",
+    "width": "由使用容器决定；无框和紧凑项可用 ds-option-selector--inline",
+    "fontFamily": "Open Sans",
+    "interaction": "配置、套餐与支付方式单选：roving tabindex、方向键/Home/End、Enter/Space 原生按钮激活；服务项多选：原生 Checkbox 键盘行为；disabled 从可选集合中排除"
+  },
+  "usageGuidelines": "仅当媒体、颜色、商品、价格或品牌内容本身构成可视化选择项时使用 media、color、product；可独立加购的服务使用 service Checkbox 变体。只有圆形状态图加文字，或结算页地址、配送、支付等圆形状态图加主副文本时，必须使用 Radio 的 regular/bordered 变体。纯展示状态使用 Tag，真正的下拉浮层使用 Dropdown。",
+  "responsiveRules": [
+    "组件宽度由容器决定，不保留 Figma/静态 HTML 的固定 specimen 宽度；104px、95px、111px、378px 与旧 207px 均只用于 Preview 复现设计稿比例。",
+    "plain/紧凑项宽度随内容或容器；detail/payment 可由容器拉伸。不得把 specimen 宽度写入组件共享 CSS。",
+    "xs/sm/md label 使用 min-width:0 与单行 ellipsis；detail/lg 标题按内容换行；图片、色块、品牌 Logo、价格、箭头均不得压缩。",
+    "选项组默认可换行；窄容器可将每个选项设为 width:100%。"
+  ],
+  "tokenReferences": [
+    "color.gray-1",
+    "color.gray-3",
+    "color.gray-7",
+    "color.white",
+    "color.blue",
+    "color.option-border",
+    "typography.font-family-base",
+    "typography.font-size-md",
+    "typography.font-size-h8",
+    "typography.font-size-sm",
+    "typography.font-weight-regular",
+    "typography.font-weight-semibold",
+    "typography.h7-regular",
+    "typography.h8-regular",
+    "typography.h9-regular",
+    "spacing.xs",
+    "spacing.3",
+    "spacing.sm",
+    "spacing.md",
+    "spacing.lg",
+    "border.width.default",
+    "border.style.default",
+    "border.color.option",
+    "border.color.emphasis",
+    "border.color.focus",
+    "border.color.transparent",
+    "border-radius.md",
+    "border-radius.lg",
+    "border-radius.sm",
+    "spacing.2",
+    "border.color.tag"
+  ],
+  "relations": {
+    "variantDecisionsDescription": "按原规范的具体场景逐项判断，先排除禁用条件，再在候选中核对宿主、内容与调用范围；资料不足保留待确认。设计参考不开放调用。展示与本地AI索引使用同一份规则。",
+    "variantDecisions": [
+      {
+        "type": "图文与支付选项 media",
+        "className": "ds-option-selector + 可选 --plain/--payment",
+        "whenToUse": "图文内容本身构成互斥配置；当前仅已登记无框H7。支付品牌不据此选型。",
+        "whenNotToUse": "只有圆形状态图加单行文字时使用 Radio regular；仅靠颜色辨识时使用 color；需要商品、价格等复合双行信息时使用 product；不得把 104/95/111px specimen 宽度写入生产 CSS。",
+        "nestedComponents": [],
+        "status": "当前调用资格与限制读取同版catalog；原来源核对记录保留，视觉确认由设计负责人独立维护。",
+        "variant": "media",
+        "selectionCases": [
+          {
+            "id": "option-selector.media.use",
+            "kind": "use",
+            "condition": "图文内容本身构成互斥配置；当前仅已登记无框H7。支付品牌不据此选型。",
+            "result": "按登记接口调用。",
+            "targetVariant": "media"
+          },
+          {
+            "id": "option-selector.media.avoid",
+            "kind": "avoid",
+            "condition": "只有圆形状态图加单行文字时使用 Radio regular；仅靠颜色辨识时使用 color；需要商品、价格等复合双行信息时使用 product；不得把 104/95/111px specimen 宽度写入生产 CSS。",
+            "result": "不用此变体。",
+            "targetVariant": "media"
+          }
+        ]
+      },
+      {
+        "type": "颜色选项 color",
+        "className": "ds-select ds-option-selector--color",
+        "whenToUse": "PC产品属性文本＋颜色下拉：306×30，14px色块，复用Select单选。",
+        "whenNotToUse": "仅色块Tag、Radio按钮组、M端42px形态或用颜色替代语义图标。",
+        "nestedComponents": [
+          {
+            "component": "Tag",
+            "href": "tag.html"
+          },
+          {
+            "component": "Select",
+            "href": "select.html"
+          }
+        ],
+        "status": "当前调用资格与限制读取同版catalog；原来源核对记录保留，视觉确认由设计负责人独立维护。",
+        "variant": "color",
+        "selectionCases": [
+          {
+            "id": "option-selector.color.use",
+            "kind": "use",
+            "condition": "PC产品属性文本＋颜色下拉：306×30，14px色块，复用Select单选。",
+            "result": "调用现有Tag原件宿主，不另建视觉。",
+            "targetVariant": "color"
+          },
+          {
+            "id": "option-selector.color.avoid",
+            "kind": "avoid",
+            "condition": "仅色块Tag、Radio按钮组、M端42px形态或用颜色替代语义图标。",
+            "result": "保持来源与调用边界。",
+            "targetVariant": "color"
+          }
+        ]
+      },
+      {
+        "type": "商品、套餐与双行详情 product",
+        "className": "ds-option-selector--product + 可选 --detail/__description/__price",
+        "whenToUse": "商品/SKU与价格共同构成互斥配置；按现有本地规范候选，当前MG独立来源未定位。",
+        "whenNotToUse": "只有圆形状态图加主副文本的结算地址、配送或支付项使用 Radio bordered-detail；可独立加购服务使用 service；支付品牌 Logo-only 使用 media + payment；不得把 378px specimen 宽度固化为生产宽度。",
+        "nestedComponents": [],
+        "status": "当前调用资格与限制读取同版catalog；原来源核对记录保留，视觉确认由设计负责人独立维护。",
+        "variant": "product",
+        "selectionCases": [
+          {
+            "id": "option-selector.product.use",
+            "kind": "use",
+            "condition": "商品/SKU与价格共同构成互斥配置；按现有本地规范候选，当前MG独立来源未定位。",
+            "result": "按登记接口调用。",
+            "targetVariant": "product"
+          },
+          {
+            "id": "option-selector.product.avoid",
+            "kind": "avoid",
+            "condition": "只有圆形状态图加主副文本的结算地址、配送或支付项使用 Radio bordered-detail；可独立加购服务使用 service；支付品牌 Logo-only 使用 media + payment；不得把 378px specimen 宽度固化为生产宽度。",
+            "result": "不用此变体。",
+            "targetVariant": "product"
+          }
+        ]
+      },
+      {
+        "type": "服务勾选项 service",
+        "className": "ds-option-selector--service ds-tag ds-tag--accessory-pc",
+        "whenToUse": "PC配件或可独立加购服务：264×80、64px图，Checkbox多选。",
+        "whenNotToUse": "互斥套餐、M端右侧Checkbox服务行、库存与加购后端。",
+        "nestedComponents": [
+          {
+            "component": "Tag",
+            "href": "tag.html"
+          },
+          {
+            "component": "Checkbox",
+            "href": "checkbox.html"
+          }
+        ],
+        "status": "当前调用资格与限制读取同版catalog；原来源核对记录保留，视觉确认由设计负责人独立维护。",
+        "variant": "service",
+        "selectionCases": [
+          {
+            "id": "option-selector.service.use",
+            "kind": "use",
+            "condition": "PC配件或可独立加购服务：264×80、64px图，Checkbox多选。",
+            "result": "调用现有Tag原件宿主，不另建视觉。",
+            "targetVariant": "service"
+          },
+          {
+            "id": "option-selector.service.avoid",
+            "kind": "avoid",
+            "condition": "互斥套餐、M端右侧Checkbox服务行、库存与加购后端。",
+            "result": "保持来源与调用边界。",
+            "targetVariant": "service"
+          }
+        ]
+      }
+    ],
+    "colorDependencies": [
+      {
+        "token": "color.gray-1",
+        "value": "#19191A",
+        "usage": "默认文字与 hover/selected 强调描边",
+        "appliesTo": [
+          "media",
+          "color",
+          "product",
+          "service"
+        ]
+      },
+      {
+        "token": "color.gray-3",
+        "value": "#707070",
+        "usage": "副文案、价格和 disclosure 默认色",
+        "appliesTo": [
+          "product"
+        ]
+      },
+      {
+        "token": "color.gray-7",
+        "value": "#F2F2F2",
+        "usage": "selected/checked 背景",
+        "appliesTo": [
+          "media",
+          "color",
+          "product",
+          "service"
+        ]
+      },
+      {
+        "token": "color.white",
+        "value": "#FFFFFF",
+        "usage": "default 与 hover 背景",
+        "appliesTo": [
+          "media",
+          "color",
+          "product",
+          "service"
+        ]
+      },
+      {
+        "token": "color.blue",
+        "value": "#0060BF",
+        "usage": "强调型选项文字、selected/focus 描边、service 聚焦外框及动态色块默认回退",
+        "appliesTo": [
+          "media",
+          "color",
+          "product",
+          "service"
+        ]
+      },
+      {
+        "token": "color.option-border",
+        "value": "#EEEEEE",
+        "usage": "default 与 disabled 精确描边",
+        "appliesTo": [
+          "media",
+          "color",
+          "product",
+          "service"
+        ]
+      }
+    ],
+    "fontSizeDependencies": [
+      {
+        "token": "typography.font-size-md",
+        "value": "14px",
+        "usage": "plain H7 与 detail 标题",
+        "appliesTo": [
+          "media",
+          "product"
+        ]
+      },
+      {
+        "token": "typography.font-size-h8",
+        "value": "13px",
+        "usage": "plain H8、sm/md/lg 与 service 标签、价格",
+        "appliesTo": [
+          "media",
+          "color",
+          "product",
+          "service"
+        ]
+      },
+      {
+        "token": "typography.font-size-sm",
+        "value": "12px",
+        "usage": "xs 标签与 detail 副文案",
+        "appliesTo": [
+          "media",
+          "color",
+          "product"
+        ]
+      }
+    ],
+    "fontWeightDependencies": [
+      {
+        "token": "typography.font-weight-regular",
+        "value": "400",
+        "usage": "全部选项文字",
+        "properties": [
+          "font-weight"
+        ],
+        "selectors": [
+          "button.ds-option-selector",
+          "label.ds-option-selector--service"
+        ],
+        "appliesTo": [
+          "media",
+          "color",
+          "product",
+          "service"
+        ]
+      },
+      {
+        "token": "typography.font-weight-semibold",
+        "value": "600",
+        "usage": "service 价格强调",
+        "properties": [
+          "font-weight"
+        ],
+        "selectors": [
+          "label.ds-option-selector--service .ds-option-selector__price"
+        ],
+        "appliesTo": [
+          "service"
+        ]
+      }
+    ],
+    "typographyDependencies": [
+      {
+        "token": "typography.h7-regular",
+        "fontSizeToken": "typography.font-size-md",
+        "fontSizeValue": "14px",
+        "fontWeightToken": "typography.font-weight-regular",
+        "fontWeightValue": "400",
+        "weightEvidence": "explicit-css",
+        "usage": "plain H7 与 detail 标题",
+        "appliesTo": [
+          "media",
+          "product"
+        ]
+      },
+      {
+        "token": "typography.h8-regular",
+        "fontSizeToken": "typography.font-size-h8",
+        "fontSizeValue": "13px",
+        "fontWeightToken": "typography.font-weight-regular",
+        "fontWeightValue": "400",
+        "weightEvidence": "explicit-css",
+        "usage": "plain H8、sm/md/lg 与 service 选项正文",
+        "appliesTo": [
+          "media",
+          "color",
+          "product",
+          "service"
+        ]
+      },
+      {
+        "token": "typography.h9-regular",
+        "fontSizeToken": "typography.font-size-sm",
+        "fontSizeValue": "12px",
+        "fontWeightToken": "typography.font-weight-regular",
+        "fontWeightValue": "400",
+        "weightEvidence": "explicit-css",
+        "usage": "xs 紧凑正文与 detail 副文案",
+        "appliesTo": [
+          "media",
+          "color",
+          "product"
+        ]
+      }
+    ],
+    "spacingDependencies": [
+      {
+        "token": "spacing.3",
+        "value": "3px",
+        "usage": "service checkbox 与首行文字的垂直对齐微调",
+        "properties": [
+          "margin-top"
+        ],
+        "selectors": [
+          ".ds-option-selector__check",
+          ".ds-checkbox[data-checkbox-current].ds-checkbox--sm .ds-checkbox__box"
+        ],
+        "appliesTo": [
+          "service"
+        ]
+      },
+      {
+        "token": "spacing.xs",
+        "value": "4px",
+        "usage": "detail/lg 标题与副文案/价格、service 标题与价格的纵向间距",
+        "properties": [
+          "gap"
+        ],
+        "selectors": [
+          "button.ds-option-selector--detail .ds-option-selector__content",
+          "button.ds-option-selector--lg .ds-option-selector__content",
+          "label.ds-option-selector--service .ds-option-selector__content"
+        ],
+        "appliesTo": [
+          "product",
+          "service"
+        ]
+      },
+      {
+        "token": "spacing.sm",
+        "value": "8px",
+        "usage": "基础 gap、xs/sm 水平 padding、detail/lg/service 垂直 padding与组间距",
+        "properties": [
+          "gap",
+          "padding"
+        ],
+        "selectors": [
+          ".ds-option-selector-group",
+          "button.ds-option-selector",
+          "button.ds-option-selector--xs",
+          "button.ds-option-selector--sm",
+          "button.ds-option-selector--detail",
+          "button.ds-option-selector--lg",
+          "label.ds-option-selector--service"
+        ],
+        "appliesTo": [
+          "media",
+          "color",
+          "product",
+          "service"
+        ]
+      },
+      {
+        "token": "spacing.md",
+        "value": "12px",
+        "usage": "md 与 service 水平 padding",
+        "properties": [
+          "padding"
+        ],
+        "selectors": [
+          "button.ds-option-selector--md",
+          "label.ds-option-selector--service"
+        ],
+        "appliesTo": [
+          "media",
+          "color",
+          "product",
+          "service"
+        ]
+      },
+      {
+        "token": "spacing.lg",
+        "value": "16px",
+        "usage": "detail/lg 水平 padding",
+        "properties": [
+          "padding"
+        ],
+        "selectors": [
+          "button.ds-option-selector--detail",
+          "button.ds-option-selector--lg"
+        ],
+        "appliesTo": [
+          "product"
+        ]
+      },
+      {
+        "token": "spacing.2",
+        "value": "2px",
+        "usage": "Checkbox原子首行位置；宿主仅引用同一资源，不覆盖样式",
+        "properties": [
+          "margin-top"
+        ],
+        "selectors": [
+          ".ds-checkbox[data-checkbox-current] .ds-checkbox__box"
+        ],
+        "appliesTo": [
+          "service"
+        ]
+      }
+    ],
+    "borderDependencies": [
+      {
+        "token": "border.width.default",
+        "value": "1px",
+        "usage": "描边型选项全部状态的描边宽度；plain 仍保留透明 1px 以稳定几何",
+        "aspect": "width",
+        "properties": [
+          "border"
+        ],
+        "selectors": [
+          "button.ds-option-selector",
+          "label.ds-option-selector--service"
+        ],
+        "appliesTo": [
+          "media",
+          "color",
+          "product",
+          "service"
+        ]
+      },
+      {
+        "token": "border.style.default",
+        "value": "solid",
+        "usage": "全部状态描边样式",
+        "aspect": "style",
+        "properties": [
+          "border"
+        ],
+        "selectors": [
+          "button.ds-option-selector",
+          "label.ds-option-selector--service"
+        ],
+        "appliesTo": [
+          "media",
+          "color",
+          "product",
+          "service"
+        ]
+      },
+      {
+        "token": "border.color.option",
+        "value": "var(--color-option-border)",
+        "usage": "default 与 disabled #EEEEEE 描边",
+        "aspect": "color",
+        "properties": [
+          "border"
+        ],
+        "selectors": [
+          "button.ds-option-selector",
+          "label.ds-option-selector--service"
+        ],
+        "appliesTo": [
+          "media",
+          "color",
+          "product",
+          "service"
+        ]
+      },
+      {
+        "token": "border.color.transparent",
+        "value": "transparent",
+        "usage": "plain 无框形态的透明描边，保持组件几何稳定",
+        "aspect": "color",
+        "properties": [
+          "border-color"
+        ],
+        "selectors": [
+          "button.ds-option-selector--plain",
+          "button.ds-option-selector--plain:hover:not(:disabled)",
+          "button.ds-option-selector--plain.ds-option-selector--hover",
+          "button.ds-option-selector--plain[aria-checked=\"true\"]",
+          "button.ds-option-selector--plain.ds-option-selector--selected"
+        ],
+        "appliesTo": [
+          "media"
+        ]
+      },
+      {
+        "token": "border.color.emphasis",
+        "value": "var(--color-gray-1)",
+        "usage": "hover 与 selected 深色描边",
+        "aspect": "color",
+        "properties": [
+          "border-color"
+        ],
+        "selectors": [
+          "button.ds-option-selector:hover:not(:disabled)",
+          "button.ds-option-selector--hover",
+          "button.ds-option-selector[aria-checked=\"true\"]",
+          "button.ds-option-selector--selected",
+          "label.ds-option-selector--service:hover:not(:has(.ds-option-selector__input:disabled))",
+          "label.ds-option-selector--service:has(.ds-option-selector__input:checked)",
+          "label.ds-option-selector--service.ds-option-selector--selected"
+        ],
+        "appliesTo": [
+          "media",
+          "color",
+          "product",
+          "service"
+        ]
+      },
+      {
+        "token": "border.color.focus",
+        "value": "var(--color-blue)",
+        "usage": "强调 selected 与 Radio focus-visible 蓝色描边",
+        "aspect": "color",
+        "properties": [
+          "border-color"
+        ],
+        "selectors": [
+          "button.ds-option-selector--accent[aria-checked=\"true\"]",
+          "button.ds-option-selector--accent.ds-option-selector--selected",
+          "button.ds-option-selector:focus-visible"
+        ],
+        "appliesTo": [
+          "media",
+          "color",
+          "product"
+        ]
+      },
+      {
+        "token": "border.color.tag",
+        "value": "var(--color-tag-border)",
+        "usage": "当前MG来源Tag配置项边框，随共享Tag源同步。",
+        "aspect": "color",
+        "properties": [
+          "border",
+          "border-color"
+        ],
+        "selectors": [
+          ".ds-tag[data-tag-part=\"configuration-color\"]",
+          "label.ds-tag[data-tag-part=\"configuration-service\"]"
+        ],
+        "appliesTo": [
+          "color",
+          "service"
+        ]
+      }
+    ],
+    "radiusDependencies": [
+      {
+        "token": "border-radius.md",
+        "value": "4px",
+        "usage": "紧凑描边选项与 service 容器圆角",
+        "appliesTo": [
+          "media",
+          "color",
+          "product",
+          "service"
+        ]
+      },
+      {
+        "token": "border-radius.lg",
+        "value": "8px",
+        "usage": "detail 双行卡片圆角",
+        "appliesTo": [
+          "product"
+        ]
+      },
+      {
+        "token": "border-radius.sm",
+        "value": "2px",
+        "usage": "14px 动态色块与 service 聚焦外框圆角",
+        "appliesTo": [
+          "color",
+          "service"
+        ]
+      }
+    ],
+    "shadowDependencies": [],
+    "componentDependencies": [
+      {
+        "component": "Checkbox",
+        "usage": "service当前受控适配真实Checkbox(sm)：span根保留原生input+box，省略原子文字槽；外层宿主label与业务标题/价格提供可访问名称和整卡点击。原子管理方块尺寸、首行偏移、状态SVG及focus，宿主只装配。服务来源/禁用业务文字视觉待验证。",
+        "slot": "check",
+        "requiredVariants": [
+          "sm"
+        ],
+        "implementationClasses": [
+          "ds-checkbox",
+          "ds-checkbox--sm",
+          "ds-checkbox__input",
+          "ds-checkbox__box"
+        ],
+        "appliesTo": [
+          "service"
+        ],
+        "required": true
+      },
+      {
+        "component": "Tag",
+        "part": "configuration-color",
+        "requiredVariants": [
+          "product-configuration-color-source"
+        ],
+        "implementationClasses": [
+          "ds-tag",
+          "ds-tag--configuration-color"
+        ],
+        "slot": "trigger",
+        "appliesTo": [
+          "color"
+        ],
+        "usage": "Tag产品属性原件306×30，14px色块与下拉箭头；私有来源部件。"
+      },
+      {
+        "component": "Tag",
+        "part": "configuration-service",
+        "requiredVariants": [
+          "product-accessory-pc-source"
+        ],
+        "implementationClasses": [
+          "ds-tag",
+          "ds-tag--accessory-pc"
+        ],
+        "slot": "accessory",
+        "appliesTo": [
+          "service"
+        ],
+        "usage": "Tag配件PC原件，64px图；不是新独立Tag变体。"
+      },
+      {
+        "component": "Select",
+        "requiredVariants": [
+          "single-basic"
+        ],
+        "implementationClasses": [
+          "ds-select__panel",
+          "ds-select__list",
+          "ds-select__option",
+          "ds-select__option-label"
+        ],
+        "slot": "color-options",
+        "appliesTo": [
+          "color"
+        ],
+        "usage": "复用现有单选panel与键盘、关闭/回焦逻辑，Tag负责触发面视觉。",
+        "part": "configuration-color-options"
+      }
+    ],
+    "iconDependencies": [
+      {
+        "icon": "icon-chevron-down",
+        "usage": "可选右侧 disclosure，12×12px，通过 mask 继承文字色",
+        "required": false,
+        "appliesTo": [
+          "media",
+          "color",
+          "product"
+        ]
+      },
+      {
+        "icon": "icon-checkbox-default-14",
+        "usage": "历史未标记service兼容资产；当前service经Checkbox(sm)原子资源间接引用，不由宿主切图。",
+        "required": true,
+        "appliesTo": [
+          "service"
+        ]
+      },
+      {
+        "icon": "icon-checkbox-hover-14",
+        "usage": "历史未标记service兼容资产；当前service经Checkbox(sm)原子资源间接引用，不由宿主切图。",
+        "required": true,
+        "appliesTo": [
+          "service"
+        ]
+      },
+      {
+        "icon": "icon-checkbox-checked-14",
+        "usage": "历史未标记service兼容资产；当前service经Checkbox(sm)原子资源间接引用，不由宿主切图。",
+        "required": true,
+        "appliesTo": [
+          "service"
+        ]
+      }
+    ],
+    "variantSelectionRules": [
+      "media/product retain their existing named radiogroup calls; other payment/size specimens remain unavailable.",
+      "PC text+color configuration uses Tag current source and existing Select single-basic controller, not Radio.",
+      "PC accessories use service264x80,64px image and upper-left Checkbox; M right-checkbox service-row is not a PC alternative.",
+      "Current MG color/service Default:white+light border; Hover:gray+light border; Checked:gray+dark border. Do not apply legacy white/dark Hover.",
+      "Preserve real atoms and allowed content; no canvas coordinates, cursor annotations, invented icons or arbitrary class edits. Host owns backend requests."
+    ],
+    "mutuallyExclusiveWith": [
+      {
+        "component": "Radio",
+        "reason": "只有圆形状态图加文字或结算主副文本的基础互斥项使用 Radio；OptionSelector 必须由媒体、颜色、商品、价格、品牌或服务内容构成复合可视选择。"
+      },
+      {
+        "component": "Tag",
+        "reason": "Tag 只展示短状态/属性，不承载模块、颜色或商品的互斥选择。"
+      },
+      {
+        "component": "Dropdown",
+        "reason": "Dropdown 必须包含浮层列表；OptionSelector 本身就是可视选项。"
+      },
+      {
+        "component": "Card",
+        "reason": "Card 用于内容展示或复杂操作，不替代紧凑配置选项。"
+      }
+    ],
+    "notes": "已剔除 Figma 画板、绝对坐标、固定 specimen 宽度和 24px 鼠标标注 SVG。104/95/111/378px 与旧 207px 只在 Preview wrapper 复现比例，不进入共享 CSS。支付 SVG 作为业务品牌内容素材使用：Default/Hover/Checked 与 Disable 两组各覆盖五种支付方式，不登记为 UI iconDependencies。原始可见拼写 Address & Phipping & Payment 仅在 specimen 中照录。",
+    "enforcementStatus": {
+      "componentDependencies.service-checkbox": {
+        "enforced": true,
+        "mechanism": "current Preview使用真实Checkbox(sm)受控span/input/box装配，契约/资源关联与定向DOM行为检查；原始服务身份及浏览器视觉仍pending。"
+      },
+      "iconDependencies.assets-exist": {
+        "enforced": true,
+        "mechanism": "check-contracts.js"
+      },
+      "interaction.single-selection": {
+        "enforced": true,
+        "mechanism": "components/option-selector.js 同步 aria-checked、selected class、roving tabindex，并从选项集合排除 disabled"
+      },
+      "interaction.native-checkbox": {
+        "enforced": true,
+        "mechanism": "service 使用原生 input[type=checkbox]，disabled/Space 行为由浏览器提供"
+      },
+      "state.disabled-precedence": {
+        "enforced": true,
+        "mechanism": "components.css 的 :disabled 与 :has(input:disabled) 规则位于 hover/selected 之后"
+      },
+      "payment.disabled-assets": {
+        "enforced": false,
+        "mechanism": "正式 Preview 逐项引用五种 Disable SVG；当前无专用脚本核对正常/禁用素材成对关系"
+      },
+      "responsive.no-fixed-specimen-width": {
+        "enforced": false,
+        "mechanism": "共享 CSS 不含 104/95/111/378/207px 宽度；页面固定宽度误用仍需审查"
+      },
+      "artifact.cursor-excluded": {
+        "enforced": true,
+        "mechanism": "contract/preview/iconDependencies 均不包含鼠标标注"
+      }
+    },
+    "hardRules": [
+      {
+        "title": "只保留可复用选择规则，禁止复制画板",
+        "description": "Current MG Tag/Select/Checkbox roles override the old color/service draft only.",
+        "ruleContent": "PC color uses the real Tag text/swatch trigger and Select single listbox. PC service uses Tag accessory64px and native Checkbox. Default white/light border; Hover gray/light border; Checked gray/dark border. Existing media/product radio calls stay compatible. Do not reinterpret M service-row as PC.",
+        "aiParse": "media/product=existing named radiogroup\ncolor=Tag PC306x30 + existing Select\nservice=Tag PC264x80/image64 + Checkbox/sm\nbackend=host-owned\nmobile=not-admitted",
+        "enforcement": "Finite source contracts, Preview, original part synchronization and actual browser tests; old delivered pages stay pinned."
+      }
+    ]
+  },
+  "searchIntents": [
+    "选项选择器",
+    "配置选择",
+    "模块选择",
+    "无框图文选择",
+    "紧凑描边选项",
+    "双行详情选择卡",
+    "支付方式选择",
+    "支付品牌选择",
+    "颜色选择",
+    "商品配置选择",
+    "服务选择",
+    "服务勾选卡",
+    "附加服务多选",
+    "许可证套餐选择",
+    "商品套餐选择",
+    "SKU选择",
+    "Option Selector"
+  ],
+  "history": [
+    {
+      "date": "2026-08-18",
+      "author": "Kiro",
+      "change": "依据投喂的绝对定位 HTML 提炼 OptionSelector v1.0：三种内容形态、三档尺寸、三态视觉与键盘单选交互；剔除画板坐标和鼠标标注。"
+    },
+    {
+      "date": "2026-08-18",
+      "author": "Kiro",
+      "change": "OptionSelector v1.1 新增 80px 商品套餐规格与 __content 纵排槽位，补充 207px 的常规/紧凑三态预览，并明确鼠标 SVG 仅为设计标注。"
+    },
+    {
+      "date": "2026-08-18",
+      "author": "Kiro",
+      "change": "OptionSelector v1.2 按补充投喂稿恢复三种业务类型总览：配置选择、Checkbox 服务选择（80px 信息卡/横向服务行）和许可证套餐（80px 卡/30px 行），完整展示 Default/Hover/Selected。"
+    },
+    {
+      "date": "2026-08-31",
+      "author": "Kiro",
+      "change": "OptionSelector v1.2 补齐无框 H7/H8、30px 紧凑描边、双行 detail、disabled 与五种支付品牌素材；确认 Hover 为白底深描边、Checked 为灰底深描边，104/95/111/378px 仅作 Preview specimen，并保留既有 Radio/Checkbox 键盘语义。"
+    },
+    {
+      "date": "2026-09-01",
+      "author": "Kiro",
+      "change": "配合正式 Radio v1.2.2510B 建立职责边界：只有圆形状态图加文字或结算说明的基础互斥项使用 Radio；OptionSelector 仅保留媒体、颜色、商品、价格、品牌与服务等复合可视选择。"
+    },
+    {
+      "date": "2026-10-09",
+      "author": "Codex",
+      "change": "统一规范维护质量标准：登记真实实现与选型规则入口、源变更重新验收、父子影响检查及历史页面隔离；不推断可编辑槽位或视觉批准。"
+    }
+  ],
+  "isComplete": true,
+  "pendingParts": [],
+  "createdAt": "2026-08-18T00:00:00Z",
+  "updatedAt": "2026-11-15",
+  "qualityProfile": {
+    "schemaVersion": "1.0.0",
+    "standard": "docs/component-quality-standard.md",
+    "implementation": "components/variants/option-selector.html",
+    "selection": {
+      "mappingSource": "components/selection-mvp-policy.json",
+      "mappingPointer": "components.option-selector.variantDecisionTypes",
+      "rulesPointer": "relations.variantDecisions"
+    },
+    "maintenance": {
+      "authority": "contract-preview-runtime-token-icon",
+      "generatedOnly": [
+        "preview-reference-tables",
+        "component-index",
+        "selection-catalog",
+        "design-reading-view",
+        "ai-reference"
+      ],
+      "changePolicy": "记录来源差异、兼容性与受影响父子组件；源文件变化后旧工程验收失效。",
+      "historicalPages": "不自动升级；新页面锁定本地组件运行资源版本。"
+    },
+    "acceptance": {
+      "report": "components/quality/report.json",
+      "proof": "components/quality/acceptance.json",
+      "declarationIsNotProof": true
+    }
+  },
+  "editable": [
+    "label",
+    "description",
+    "value",
+    "disabled",
+    "changeCallback",
+    "price",
+    "image",
+    "options"
+  ],
+  "integration": {
+    "styles": [
+      "components/tokens.css",
+      "components/components.css",
+      "components/checkbox-current.css",
+      "components/option-selector-current.css",
+      "components/tag-configuration-current.css",
+      "components/select-current.css",
+      "components/option-configuration-current.css"
+    ],
+    "scripts": [
+      "components/checkbox-current.js",
+      "components/option-selector-current.js",
+      "components/select-current.js",
+      "components/option-configuration-current.js"
+    ],
+    "fontStylesheets": [
+      "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+    ]
+  },
+  "aiContract": {
+    "schemaVersion": "1.0.0",
+    "rootTag": "button",
+    "scope": "desktop-plain-h7-media-and-compact-SKU-price-product-radio-options-MG-Tag-PC-color-and-accessory",
+    "supported": [
+      "media",
+      "product",
+      "color",
+      "service"
+    ],
+    "unsupported": [
+      "payment-brand",
+      "plain-sm",
+      "other-size-canonical-calls",
+      "standalone-interaction",
+      "initial-selected-canonical",
+      "public-dynamic-api",
+      "legacy-current-co-loading",
+      "mobile"
+    ],
+    "reviewStatus": {
+      "engineering": "pending",
+      "visual": "pending",
+      "familyCoverage": "partial"
+    },
+    "previewAssets": [
+      "components/preview/reference-live.js"
+    ],
+    "selectionPolicy": "Use full plain H7 media or two-line detail product radio button. Every operational call needs the existing radiogroup wrapper with an accessible name and >=2 unique nonempty values; alone the specimen is presentation-only. 当前《新文件》仅核实Radio结算插槽边界；OptionSelector独立规范未定位，保留本地兼容范围，不标为全族MG通过。 颜色与服务已定位Tag常规属性/配件属性；颜色复用Select下拉，服务复用原生Checkbox。仅PC，不沿本地草案的Radio/24px图/M横向行。",
+    "identity": {
+      "rule": "media/product retain named radiogroup and unique values. color uses Tag PC trigger + existing Select single listbox. service uses Tag PC accessory + native Checkbox. These four current call shapes have separate semantics and allowed content; no page style overrides.",
+      "groupAssembly": {
+        "selector": "div.ds-option-selector-group[role=\"radiogroup\"]",
+        "minimumItems": 2,
+        "required": [
+          "aria-label",
+          "unique nonempty option values"
+        ],
+        "rule": "Wrapper is page assembly using the existing Preview class, not a new variant. Groups are independent and options cannot be nested groups.",
+        "appliesTo": [
+          "media",
+          "product"
+        ]
+      }
+    },
+    "locked": [
+      "Safe button/radio native semantics",
+      "Plain H7 media or compact SKU/price product structure; source example retained",
+      "Single-selection group assembly",
+      "Current reusable runtime and shared CSS"
+    ],
+    "behavior": {
+      "group": "Existing .ds-option-selector-group[role=radiogroup] required; initialization makes first enabled option tabbable if none selected. Click and arrows select once and emit ds:option-selector-change with value/label. Groups independent; no submission or navigation.",
+      "disabled": "Native disabled option is cleared and skipped; current runtime also ignores synthetic disabled keyboard events.",
+      "keyboard": "Arrow directions wrap; Home/End select boundaries. Enter/Space rely on native button activation and require browser evidence.",
+      "initialization": "New current runtime uses a document guard to prevent duplicate delegates. Load timing supports DOMContentLoaded; no public insertion API. Do not co-load legacy and current scripts.",
+      "scope": "Current PC media/product compatibility, Tag color dropdown and Tag accessory calls are available. Payment-brand, other source sizes, M/Pad and backend requests remain outside current call scope.",
+      "nativeStateGuard": "Current native :disabled guards inherited fieldset; disabled changes resync tabstops without changing selection, and new choice clears previously disabled selection. Browser proof pending.",
+      "availability": "Native disabled/fieldset, hidden or ARIA-disabled ancestors block synthetic selection and remove all unavailable tabstops while preserving previously committed state. Re-enable restores one available tabstop. Composing arrows do not select.",
+      "groupOwnership": "Nearest radiogroup owns its options. Nested groups and dynamically inserted groups have independent state/tabstops; initialization runs once per group and subsequent availability sync does not clear prior selection.",
+      "serviceCheckbox": "PC service is source Tag accessory + actual Checkbox(sm),264×80/64px image, native label activation. Existing M row specimen is not admitted.",
+      "finiteProduct": "当前精确调用采用规范页已有SKU+价格紧凑项；原Address/Shipping/Payment演示不作为商品选型依据，结算基础互斥项使用Radio/bordered-detail。",
+      "sourceConfiguration": "color uses existing Select keyboard/outside/Escape/focus and ds:select-change(values,labels); Tag swatch follows selected data-color. service uses genuine Checkbox input and native change/disabled/Space. Host owns product/data requests; not a checkout/cart backend."
+    },
+    "evidence": {
+      "localImplementation": "components/variants/option-selector.html",
+      "comparison": "components/sources/option-selector/local-structure-review.json",
+      "currentMgReview": "components/sources/foundation-mg-20261114/option-selector-review.json",
+      "listOptionSource": "components/sources/list-option-mg-20261115/review.json",
+      "fiveVariantSource": "components/sources/five-variants-20261115/review.json"
+    },
+    "variants": {
+      "media": {
+        "purpose": "plain-h7-illustrated-radio-option",
+        "exampleSelector": "[data-ai-example=\"ai-option-selector-media\"]",
+        "allowedEdits": [
+          "label",
+          "value",
+          "disabled",
+          "changeCallback"
+        ],
+        "slots": {
+          "label": {
+            "selector": "span.ds-option-selector__label",
+            "mode": "text",
+            "required": true
+          }
+        },
+        "bindings": {
+          "value": {
+            "mode": "native-attribute",
+            "target": "root",
+            "attribute": "value",
+            "valueType": "nonempty-string"
+          },
+          "disabled": {
+            "mode": "native-attribute",
+            "target": "root",
+            "attribute": "disabled",
+            "values": [
+              false,
+              true
+            ],
+            "default": false
+          },
+          "changeCallback": {
+            "mode": "event-handler",
+            "target": "root",
+            "event": "ds:option-selector-change"
+          }
+        },
+        "requiresGroup": {
+          "selector": ".ds-option-selector-group[role=\"radiogroup\"]",
+          "minItems": 2
+        },
+        "runtime": {
+          "styles": [
+            "components/tokens.css",
+            "components/components.css",
+            "components/checkbox-current.css",
+            "components/option-selector-current.css"
+          ],
+          "scripts": [
+            "components/checkbox-current.js",
+            "components/option-selector-current.js"
+          ]
+        }
+      },
+      "product": {
+        "purpose": "actual-SKU-and-price-compact-radio-option",
+        "exampleSelector": "[data-ai-example=\"ai-option-selector-product\"]",
+        "allowedEdits": [
+          "label",
+          "price",
+          "image",
+          "value",
+          "disabled",
+          "changeCallback"
+        ],
+        "slots": {
+          "label": {
+            "selector": "span.ds-option-selector__label",
+            "mode": "text",
+            "required": true
+          },
+          "price": {
+            "selector": "span.ds-option-selector__price",
+            "mode": "text",
+            "required": true
+          },
+          "image": {
+            "selector": "img.ds-option-selector__media",
+            "mode": "structured-content",
+            "required": true
+          }
+        },
+        "bindings": {
+          "value": {
+            "mode": "native-attribute",
+            "target": "root",
+            "attribute": "value",
+            "valueType": "nonempty-string"
+          },
+          "disabled": {
+            "mode": "native-attribute",
+            "target": "root",
+            "attribute": "disabled",
+            "values": [
+              false,
+              true
+            ],
+            "default": false
+          },
+          "changeCallback": {
+            "mode": "event-handler",
+            "target": "root",
+            "event": "ds:option-selector-change"
+          }
+        },
+        "requiresGroup": {
+          "selector": ".ds-option-selector-group[role=\"radiogroup\"]",
+          "minItems": 2
+        },
+        "runtime": {
+          "styles": [
+            "components/tokens.css",
+            "components/components.css",
+            "components/checkbox-current.css",
+            "components/option-selector-current.css"
+          ],
+          "scripts": [
+            "components/checkbox-current.js",
+            "components/option-selector-current.js"
+          ]
+        }
+      },
+      "color": {
+        "rootTag": "div",
+        "purpose": "MG-Tag-PC-color-dropdown-with-real-Select",
+        "exampleSelector": "[data-ai-example=\"ai-option-color-source\"]",
+        "allowedEdits": [
+          "options",
+          "changeCallback"
+        ],
+        "slots": {
+          "options": {
+            "selector": ".ds-select__list",
+            "mode": "structured-content",
+            "required": true,
+            "preserve": [
+              "div.ds-select__option",
+              "span.ds-select__option-label"
+            ],
+            "rule": "2..24 unique options; one initially selected, paired IDs, safe six-digit data-color business values only."
+          }
+        },
+        "bindings": {
+          "changeCallback": {
+            "mode": "event-handler",
+            "target": "root",
+            "event": "ds:select-change"
+          }
+        },
+        "runtime": {
+          "styles": [
+            "components/tokens.css",
+            "components/components.css",
+            "components/select-current.css",
+            "components/tag-configuration-current.css",
+            "components/option-configuration-current.css"
+          ],
+          "scripts": [
+            "components/select-current.js",
+            "components/option-configuration-current.js"
+          ]
+        }
+      },
+      "service": {
+        "rootTag": "label",
+        "purpose": "MG-Tag-PC-accessory-native-checkbox",
+        "exampleSelector": "[data-ai-example=\"ai-option-service-source\"]",
+        "allowedEdits": [
+          "label",
+          "price",
+          "image",
+          "value",
+          "disabled",
+          "changeCallback"
+        ],
+        "slots": {
+          "label": {
+            "selector": "span.ds-option-selector__label",
+            "mode": "text",
+            "required": true
+          },
+          "price": {
+            "selector": "span.ds-option-selector__price",
+            "mode": "text",
+            "required": true
+          },
+          "image": {
+            "selector": "img.ds-option-selector__media",
+            "mode": "structured-content",
+            "required": true
+          }
+        },
+        "bindings": {
+          "value": {
+            "mode": "native-attribute",
+            "target": "input.ds-checkbox__input",
+            "attribute": "value",
+            "valueType": "nonempty-string"
+          },
+          "disabled": {
+            "mode": "native-attribute",
+            "target": "input.ds-checkbox__input",
+            "attribute": "disabled",
+            "values": [
+              false,
+              true
+            ],
+            "default": false
+          },
+          "changeCallback": {
+            "mode": "event-handler",
+            "target": "root",
+            "event": "change"
+          }
+        },
+        "runtime": {
+          "styles": [
+            "components/tokens.css",
+            "components/components.css",
+            "components/checkbox-current.css",
+            "components/tag-configuration-current.css"
+          ],
+          "scripts": [
+            "components/checkbox-current.js"
+          ]
+        }
+      }
+    }
+  }
+}

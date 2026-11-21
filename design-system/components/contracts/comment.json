@@ -1,0 +1,2178 @@
+{
+  "id": "comp_comment_001",
+  "name": "Comment",
+  "chineseName": "评论",
+  "description": "评论v2.1 PC有限调用：已回答/未回答问答、客户评论、评分汇总、客户媒体画廊。真实状态交互和数据槽已接入；提交只发宿主事件，不虚构保存成功。",
+  "category": "数据展示 Data Display",
+  "specVersion": "v2.0.2512A",
+  "types": [
+    {
+      "name": "qa-thread",
+      "chineseName": "问答线程",
+      "description": "问题、空回答或已回答内容，并可展开回答/评论输入区。"
+    },
+    {
+      "name": "review-thread",
+      "chineseName": "客户评论线程",
+      "description": "包含用户、评分、属性、正文、媒体、认证与评论回复。"
+    },
+    {
+      "name": "rating-summary",
+      "chineseName": "评分总览",
+      "description": "综合评分、星级分布、客户媒体和分类筛选。"
+    },
+    {
+      "name": "customer-gallery",
+      "chineseName": "客户画廊",
+      "description": "客户媒体网格及单图详情浏览。"
+    }
+  ],
+  "variants": [
+    {
+      "name": "qa-thread",
+      "chineseName": "已回答问答",
+      "cssClass": "ds-comment ds-comment--qa-thread",
+      "whenToUse": "产品问答已有回答，主回答始终展开，可展开子评论输入。",
+      "isComplete": true,
+      "pendingParts": [],
+      "requiredChildren": [
+        ".ds-comment__question",
+        ".ds-comment__title"
+      ],
+      "selectionDecisionType": "已回答问答",
+      "whenNotToUse": "普通FAQ、营销卡片或伪造已提交/已保存评论；不接后端持久化、登录或移动端。",
+      "usage": "含问题、回答入口或评论输入的商品问答。",
+      "selector": "[data-comment-call=\"qa-thread\"]",
+      "type": "qa-thread",
+      "currentMgSource": {
+        "fileId": "209944605602401",
+        "node": "3:101932"
+      }
+    },
+    {
+      "name": "review-thread",
+      "chineseName": "产品评论",
+      "cssClass": "ds-comment ds-comment--review-thread",
+      "whenToUse": "展示客户评论、只读评分、媒体和Helpful/子评论入口。",
+      "isComplete": true,
+      "pendingParts": [],
+      "selectionDecisionType": "产品评论",
+      "whenNotToUse": "普通FAQ、营销卡片或伪造已提交/已保存评论；不接后端持久化、登录或移动端。",
+      "usage": "含评分、用户、媒体及回复的客户评价。",
+      "selector": "[data-comment-call=\"review-thread\"]",
+      "type": "review-thread",
+      "requiredChildren": [
+        ".ds-comment__review",
+        ".ds-rate",
+        ".ds-comment__comments"
+      ],
+      "currentMgSource": {
+        "fileId": "209944605602401",
+        "node": "3:101516"
+      }
+    },
+    {
+      "name": "rating-summary",
+      "chineseName": "评分总览",
+      "cssClass": "ds-comment ds-comment--rating-summary",
+      "whenToUse": "展示评分分布与分类筛选；数据由调用方提供，筛选发事件。",
+      "isComplete": true,
+      "pendingParts": [],
+      "selectionDecisionType": "评分总览",
+      "whenNotToUse": "普通FAQ、营销卡片或伪造已提交/已保存评论；不接后端持久化、登录或移动端。",
+      "usage": "评论列表顶部的分布、媒体与筛选。",
+      "selector": "[data-comment-call=\"rating-summary\"]",
+      "type": "rating-summary",
+      "requiredChildren": [
+        ".ds-comment__summary",
+        ".ds-rate[data-rate-summary-current]",
+        ".ds-rate__distribution"
+      ],
+      "currentMgSource": {
+        "fileId": "209944605602401",
+        "node": "3:102290"
+      }
+    },
+    {
+      "name": "customer-gallery",
+      "chineseName": "客户画廊",
+      "cssClass": "ds-comment ds-comment--customer-gallery",
+      "whenToUse": "展示客户媒体网格与单图详情，支持缩略图、前后切换及关闭返回。",
+      "isComplete": true,
+      "pendingParts": [],
+      "selectionDecisionType": "客户画廊",
+      "whenNotToUse": "普通FAQ、营销卡片或伪造已提交/已保存评论；不接后端持久化、登录或移动端。",
+      "usage": "客户媒体网格与详情切换。",
+      "selector": "[data-comment-call=\"customer-gallery\"]",
+      "type": "customer-gallery",
+      "requiredChildren": [
+        ".ds-comment__gallery",
+        "[data-gallery-view=\"grid\"]",
+        "[data-gallery-view=\"detail\"]"
+      ],
+      "currentMgSource": {
+        "fileId": "209944605602401",
+        "node": "3:102614"
+      }
+    },
+    {
+      "name": "qa-unanswered",
+      "chineseName": "未回答问答",
+      "isComplete": true,
+      "pendingParts": [],
+      "cssClass": "ds-comment ds-comment--qa-thread",
+      "selector": "[data-comment-call=\"qa-unanswered\"]",
+      "type": "qa-unanswered",
+      "selectionDecisionType": "未回答问答",
+      "whenToUse": "产品问答暂无回答，展示未回答提示并请求宿主提供回答入口。",
+      "whenNotToUse": "普通FAQ、营销卡片或伪造已提交/已保存评论；不接后端持久化、登录或移动端。",
+      "requiredChildren": [
+        ".ds-comment__question",
+        ".ds-comment__title"
+      ],
+      "currentMgSource": {
+        "fileId": "209944605602401",
+        "node": "3:097653"
+      }
+    }
+  ],
+  "states": [
+    {
+      "name": "empty-answer",
+      "styleOverrides": {
+        "answer": "显示空回答提示与 answer it 操作"
+      },
+      "description": "问答线程尚无回答。"
+    },
+    {
+      "name": "answered",
+      "styleOverrides": {
+        "answer": "显示回答正文、作者和操作栏",
+        "answerBodyWidth": "750px",
+        "verticalPadding": "16px",
+        "metaToActions": "12px（由 .ds-comment__body 的 spacing.md gap 提供，操作行不得重复增加顶部 padding）",
+        "actionPadding": "0"
+      },
+      "description": "问答线程已有回答；回答内容列按最新 750px PC 源码约束，作者信息到 Helpful/Comment 按钮外框保持 12px，按钮本身不增加额外 padding。"
+    },
+    {
+      "name": "comments-open",
+      "styleOverrides": {
+        "rootClass": "ds-comment--comments-open",
+        "rootMinHeight": "569px",
+        "panelMinHeight": "291px",
+        "listItemHeight": "20px（H8 Regular line-height，自然高度，无额外最小高度）",
+        "panel": "显示 772px 输入区与 3 条评论列表；新增评论后自然增高",
+        "aria-expanded": "true"
+      },
+      "description": "Comment 操作激活并展开本地评论面板；三条评论基线为 569px，关闭后恢复 270px 默认高度。"
+    },
+    {
+      "name": "helpful-selected",
+      "styleOverrides": {
+        "color": "#19191A",
+        "icon": "实心拇指",
+        "aria-pressed": "true"
+      },
+      "description": "Helpful 被选中后使用黑色实心拇指且数量增加 1；再次操作恢复。"
+    },
+    {
+      "name": "action-hover",
+      "styleOverrides": {
+        "color": "#19191A",
+        "iconColor": "#19191A",
+        "textDecoration": "仅文字标签 underline，数量不加下划线",
+        "background": "transparent"
+      },
+      "description": "Helpful 与 Comment 在 hover 或键盘聚焦时图标和前景变黑，仅文字标签显示下划线，数量保持无下划线。"
+    },
+    {
+      "name": "inline-action-hover",
+      "styleOverrides": {
+        "color": "#0060BF",
+        "textDecoration": "underline",
+        "background": "transparent",
+        "labelBoundary": "标点位于交互标签之外，不参与下划线"
+      },
+      "description": "answer it 与 See more 等蓝色文字操作在 hover 或键盘聚焦时保持蓝色，并在文字下方增加蓝色下划线，不显示浅灰背景；句号等相邻标点必须放在按钮标签之外，不进入下划线范围。"
+    },
+    {
+      "name": "text-expanded",
+      "styleOverrides": {
+        "lineClamp": "none"
+      },
+      "description": "See more 展开完整正文。"
+    },
+    {
+      "name": "filter-selected",
+      "styleOverrides": {
+        "aria-pressed": "true",
+        "selection": "组内唯一"
+      },
+      "description": "评分或分类筛选组内保持唯一选中项。"
+    },
+    {
+      "name": "distribution-available",
+      "styleOverrides": {
+        "color": "#19191A",
+        "data": "评分数量大于 0"
+      },
+      "description": "5 星与 4 星数据行使用主要文字色，且与筛选选中态相互独立。"
+    },
+    {
+      "name": "distribution-empty",
+      "styleOverrides": {
+        "color": "#707070",
+        "data": "评分数量为 0"
+      },
+      "description": "3 星、2 星与 1 星空数据行使用辅助文字色，且与筛选选中态相互独立。"
+    },
+    {
+      "name": "gallery-open",
+      "styleOverrides": {
+        "dialog": "open",
+        "view": "grid/detail",
+        "detailSize": "750×527px",
+        "mediaStage": "420×420px",
+        "thumbnail": "80×80px"
+      },
+      "description": "客户画廊以网格或单图详情呈现；详情态保持固定源码几何。"
+    }
+  ],
+  "usageGuidelines": "先按任务选择变体：商品 Q&A 使用 qa-thread；客户评价与回复使用 review-thread；列表顶部聚合与筛选使用 rating-summary；媒体放大浏览使用 customer-gallery。review-thread 固定使用 1200×270px PC 默认态，展开本地评论面板后为 1200×569px；头像与内容间距 24px，内容使用 270px 用户列、12px 间距和 772px 详情列，正文完整显示且不生成 See more，单张 772×88px 客户媒体为非交互内容而不是 Gallery。rating-summary 固定使用 1200×236px PC 基线，评分/分布与 7 个 108px 媒体同排，分类筛选保留源码顺序与重复项并从 x=367px 开始；5/4 星的数据可用色和 3/2/1 星的空数据色不得与 aria-pressed 选中态混用。customer-gallery 详情态固定 750×527px：67px 返回/关闭头部，正文使用 16px 24px 24px 内距、420px 媒体舞台、12px 双栏间距、42px 头像、13/20px 五行正文和 80px 缩略图；36px Prev/Next 在首尾循环，28px 关闭按钮使用 IconButton plain-m。Helpful 只切换当前条目的本地状态，选中后使用实心拇指；Comment 展开当前条目的输入和评论列表；Helpful/Comment 在 hover 或键盘聚焦时图标与前景变黑且无背景，仅文字标签显示下划线，数量不加下划线；同类操作行统一使用 16px 本地图标、24px 组间距、4px 图标/文字/数量间距且按钮自身 padding 为 0；展开评论面板使用 16px 内距与区块间距、42px 输入框（10px×12px 内距）、12px 标题到列表间距和 8px 列表间距；Submit 仅提交非空文本；所有操作不产生页面跳转。客户画廊只有在真实存在多张媒体且 Prev/Next/缩略图会改变当前媒体时使用。",
+  "tokenReferences": [
+    "color.gray-1",
+    "color.gray-2",
+    "color.gray-3",
+    "color.gray-5",
+    "color.gray-8",
+    "color.white",
+    "color.blue",
+    "color.yellow",
+    "color.text-disabled",
+    "color.hover-overlay-light",
+    "color.hover-overlay",
+    "color.comment-score-bg",
+    "color.comment-media-overlay",
+    "color.comment-avatar-bg",
+    "color.comment-divider",
+    "color.comment-date",
+    "typography.font-family-base",
+    "typography.font-size-sm",
+    "typography.font-size-h3",
+    "typography.font-size-h5",
+    "typography.font-size-h6",
+    "typography.font-size-md",
+    "typography.font-size-h8",
+    "typography.font-weight-regular",
+    "typography.font-weight-semibold",
+    "typography.h3-semibold",
+    "typography.h5-semibold",
+    "typography.h6-regular",
+    "typography.h7-regular",
+    "typography.h7-semibold",
+    "typography.h8-regular",
+    "typography.h8-semibold",
+    "typography.h9-regular",
+    "spacing.2",
+    "spacing.xs",
+    "spacing.sm",
+    "spacing.10",
+    "spacing.md",
+    "spacing.lg",
+    "spacing.20",
+    "spacing.xl",
+    "spacing.68",
+    "border.width.default",
+    "border.style.default",
+    "border.style.none",
+    "border.color.default",
+    "border.color.emphasis",
+    "border.color.comment-divider",
+    "border-radius.md",
+    "border-radius.lg",
+    "border-radius.full",
+    "spacing.3",
+    "spacing.56",
+    "spacing.25",
+    "spacing.6",
+    "spacing.48",
+    "spacing.2xl",
+    "spacing.40",
+    "spacing.14",
+    "spacing.banner-hero-inset",
+    "spacing.banner-content-inset",
+    "spacing.5",
+    "spacing.collapse-status-indent",
+    "spacing.36",
+    "spacing.9",
+    "spacing.collapse-body-indent",
+    "spacing.26",
+    "spacing.80",
+    "spacing.menu-navigation-left-gutter",
+    "border.color.inverse",
+    "border.color.focus",
+    "border.color.subtle",
+    "border.width.strong",
+    "border.color.strong",
+    "border.color.transparent",
+    "border.color.brand",
+    "border.color.option",
+    "border.color.tag",
+    "border.color.table-header",
+    "border.color.table-divider",
+    "border.color.list-product-divider",
+    "border.color.list-item-divider",
+    "color.gray-7",
+    "color.success-tag-bg",
+    "color.success-tag-text",
+    "color.rate-summary-track",
+    "color.rate-summary-bg"
+  ],
+  "responsiveRules": [
+    {
+      "breakpoint": "desktop",
+      "rule": "仅按 PC 端实现；qa-thread 已回答内容列固定 750px、根上下内距 16px，展开评论内容随真实条目自然增高；review-thread 默认态为 1200×270px、comments-open 为 1200×569px，左侧 42px 头像与 1054px 内容间距 24px，内容内部为 270px 用户列、12px 间距和 772px 详情列，单张中性媒体固定 772×88px；rating-summary 基线为 1200×236px，顶部评分组合与 7 个 108×108px 媒体同排，媒体间距 12px，分类筛选从根节点 x=367px 开始并允许自然换行；customer-gallery 详情态固定为 750×527px，67px 头部下使用 420px+12px+270px 双栏，不生成 Tablet/Mobile 重排。"
+    }
+  ],
+  "constraints": {
+    "allowedChildren": [
+      "Text",
+      "Icon",
+      "Button",
+      "IconButton",
+      "Carousel",
+      "Tag",
+      "Rate",
+      "Textarea",
+      "Image"
+    ],
+    "requiredProperties": [
+      "variant"
+    ],
+    "forbiddenCombinations": [
+      "把静态内容列表误用为可提交评论线程",
+      "没有可切换媒体却生成 Customer Gallery 或 Carousel"
+    ]
+  },
+  "relations": {
+    "variantDecisionsDescription": "按内容与交互选具体变体，再核对同版调用资格。候选、不用、参考同时用于规范展示与AI；既有来源、当前MG核对、工程与视觉批准分开记录。",
+    "variantDecisions": [
+      {
+        "type": "已回答问答",
+        "variant": "qa-thread",
+        "fragment": "qa-thread",
+        "className": "ds-comment ds-comment--qa-thread",
+        "whenToUse": "产品问答已有回答，主回答始终展开，可展开子评论输入。",
+        "whenNotToUse": "普通FAQ、营销卡片或伪造已提交/已保存评论；不接后端持久化、登录或移动端。",
+        "status": "既有MG原件和现有实现补为实际有限调用；业务与视觉批准独立。",
+        "nestedComponents": [],
+        "selectionCases": [
+          {
+            "id": "comment.qa-thread.use",
+            "kind": "use",
+            "condition": "产品问答已有回答，主回答始终展开，可展开子评论输入。",
+            "result": "调用qa-thread；按实际槽位传内容，保留子组件与原状态。",
+            "targetVariant": "qa-thread",
+            "strength": "candidate"
+          },
+          {
+            "id": "comment.qa-thread.avoid",
+            "kind": "avoid",
+            "condition": "普通FAQ、营销卡片或伪造已提交/已保存评论；不接后端持久化、登录或移动端。",
+            "result": "不作为其他组件或真实业务结果的替代。",
+            "targetVariant": "qa-thread",
+            "strength": "avoid"
+          }
+        ]
+      },
+      {
+        "type": "未回答问答",
+        "variant": "qa-unanswered",
+        "fragment": "qa-unanswered",
+        "className": "ds-comment ds-comment--qa-thread",
+        "whenToUse": "产品问答暂无回答，展示未回答提示并请求宿主提供回答入口。",
+        "whenNotToUse": "普通FAQ、营销卡片或伪造已提交/已保存评论；不接后端持久化、登录或移动端。",
+        "status": "既有MG原件和现有实现补为实际有限调用；业务与视觉批准独立。",
+        "nestedComponents": [],
+        "selectionCases": [
+          {
+            "id": "comment.qa-unanswered.use",
+            "kind": "use",
+            "condition": "产品问答暂无回答，展示未回答提示并请求宿主提供回答入口。",
+            "result": "调用qa-unanswered；按实际槽位传内容，保留子组件与原状态。",
+            "targetVariant": "qa-unanswered",
+            "strength": "candidate"
+          },
+          {
+            "id": "comment.qa-unanswered.avoid",
+            "kind": "avoid",
+            "condition": "普通FAQ、营销卡片或伪造已提交/已保存评论；不接后端持久化、登录或移动端。",
+            "result": "不作为其他组件或真实业务结果的替代。",
+            "targetVariant": "qa-unanswered",
+            "strength": "avoid"
+          }
+        ]
+      },
+      {
+        "type": "产品评论",
+        "variant": "review-thread",
+        "fragment": "review-thread",
+        "className": "ds-comment ds-comment--review-thread",
+        "whenToUse": "展示客户评论、只读评分、媒体和Helpful/子评论入口。",
+        "whenNotToUse": "普通FAQ、营销卡片或伪造已提交/已保存评论；不接后端持久化、登录或移动端。",
+        "status": "既有MG原件和现有实现补为实际有限调用；业务与视觉批准独立。",
+        "nestedComponents": [
+          {
+            "component": "Rate",
+            "href": "rate.html"
+          }
+        ],
+        "selectionCases": [
+          {
+            "id": "comment.review-thread.use",
+            "kind": "use",
+            "condition": "展示客户评论、只读评分、媒体和Helpful/子评论入口。",
+            "result": "调用review-thread；按实际槽位传内容，保留子组件与原状态。",
+            "targetVariant": "review-thread",
+            "strength": "candidate"
+          },
+          {
+            "id": "comment.review-thread.avoid",
+            "kind": "avoid",
+            "condition": "普通FAQ、营销卡片或伪造已提交/已保存评论；不接后端持久化、登录或移动端。",
+            "result": "不作为其他组件或真实业务结果的替代。",
+            "targetVariant": "review-thread",
+            "strength": "avoid"
+          }
+        ]
+      },
+      {
+        "type": "评分总览",
+        "variant": "rating-summary",
+        "fragment": "rating-summary",
+        "className": "ds-comment ds-comment--rating-summary",
+        "whenToUse": "展示评分分布与分类筛选；数据由调用方提供，筛选发事件。",
+        "whenNotToUse": "普通FAQ、营销卡片或伪造已提交/已保存评论；不接后端持久化、登录或移动端。",
+        "status": "既有MG原件和现有实现补为实际有限调用；业务与视觉批准独立。",
+        "nestedComponents": [
+          {
+            "component": "Tag",
+            "href": "tag.html"
+          }
+        ],
+        "selectionCases": [
+          {
+            "id": "comment.rating-summary.use",
+            "kind": "use",
+            "condition": "展示评分分布与分类筛选；数据由调用方提供，筛选发事件。",
+            "result": "调用rating-summary；按实际槽位传内容，保留子组件与原状态。",
+            "targetVariant": "rating-summary",
+            "strength": "candidate"
+          },
+          {
+            "id": "comment.rating-summary.avoid",
+            "kind": "avoid",
+            "condition": "普通FAQ、营销卡片或伪造已提交/已保存评论；不接后端持久化、登录或移动端。",
+            "result": "不作为其他组件或真实业务结果的替代。",
+            "targetVariant": "rating-summary",
+            "strength": "avoid"
+          }
+        ]
+      },
+      {
+        "type": "客户画廊",
+        "variant": "customer-gallery",
+        "fragment": "customer-gallery",
+        "className": "ds-comment ds-comment--customer-gallery",
+        "whenToUse": "展示客户媒体网格与单图详情，支持缩略图、前后切换及关闭返回。",
+        "whenNotToUse": "普通FAQ、营销卡片或伪造已提交/已保存评论；不接后端持久化、登录或移动端。",
+        "status": "既有MG原件和现有实现补为实际有限调用；业务与视觉批准独立。",
+        "nestedComponents": [],
+        "selectionCases": [
+          {
+            "id": "comment.customer-gallery.use",
+            "kind": "use",
+            "condition": "展示客户媒体网格与单图详情，支持缩略图、前后切换及关闭返回。",
+            "result": "调用customer-gallery；按实际槽位传内容，保留子组件与原状态。",
+            "targetVariant": "customer-gallery",
+            "strength": "candidate"
+          },
+          {
+            "id": "comment.customer-gallery.avoid",
+            "kind": "avoid",
+            "condition": "普通FAQ、营销卡片或伪造已提交/已保存评论；不接后端持久化、登录或移动端。",
+            "result": "不作为其他组件或真实业务结果的替代。",
+            "targetVariant": "customer-gallery",
+            "strength": "avoid"
+          }
+        ]
+      }
+    ],
+    "componentDependencies": [
+      {
+        "component": "Button",
+        "usage": "问答与评论输入区的 Submit 主操作。",
+        "slot": "composer/actions",
+        "appliesTo": [
+          "qa-thread",
+          "review-thread"
+        ],
+        "requiredVariants": [
+          "filled-red"
+        ],
+        "implementationClasses": [
+          "ds-btn",
+          "ds-btn--filled-red",
+          "ds-btn--l"
+        ],
+        "requiredSizes": [
+          {
+            "variant": "filled-red",
+            "size": "l"
+          }
+        ]
+      },
+      {
+        "component": "Rate",
+        "usage": "客户评论线程和客户画廊详情态中的 5.0 只读评分。",
+        "slot": "review/rating",
+        "hostPreviewAnchor": "comment-rating-summary",
+        "appliesTo": [
+          "review-thread",
+          "customer-gallery"
+        ],
+        "requiredVariants": [
+          "display"
+        ],
+        "implementationClasses": [
+          "ds-rate",
+          "ds-rate--display",
+          "ds-rate--sm",
+          "ds-rate__stars",
+          "ds-rate__star",
+          "ds-rate__label",
+          "ds-rate__label--muted"
+        ]
+      },
+      {
+        "component": "Tag",
+        "usage": "评分总览中的 28px 分类筛选胶囊。",
+        "slot": "summary/filters",
+        "appliesTo": [
+          "rating-summary"
+        ],
+        "requiredVariants": [
+          "selectable"
+        ],
+        "implementationClasses": [
+          "ds-tag",
+          "ds-tag--selectable"
+        ],
+        "part": "comment-filter"
+      },
+      {
+        "component": "IconButton",
+        "usage": "网格和单图关闭均使用真实plain-l32px/20px原子；与源28px宿主的尺寸差异保留，原子样式优先，不复制关闭控件。",
+        "slot": "gallery/header",
+        "appliesTo": [
+          "customer-gallery"
+        ],
+        "requiredVariants": [
+          "plain-l"
+        ],
+        "implementationClasses": [
+          "ds-icon-btn",
+          "ds-icon-btn--plain",
+          "ds-icon-btn--l",
+          "ds-icon-btn__icon"
+        ]
+      },
+      {
+        "component": "TextButton",
+        "slot": "composer-cancel",
+        "requiredVariants": [
+          "with-bg-default"
+        ],
+        "requiredSizes": [
+          {
+            "variant": "with-bg-default",
+            "size": "l-bg"
+          }
+        ],
+        "iconMode": "absent",
+        "implementationClasses": [
+          "ds-text-btn",
+          "ds-text-btn--with-bg",
+          "ds-text-btn--l-bg",
+          "ds-text-btn__text"
+        ],
+        "appliesTo": [
+          "qa-thread",
+          "review-thread"
+        ],
+        "usage": "源Cancel14px灰容器使用真实TextButton/L-bg，箭头按源关闭。"
+      },
+      {
+        "component": "TextButton",
+        "slot": "gallery-expand",
+        "requiredVariants": [
+          "inline-blue-link"
+        ],
+        "requiredSizes": [
+          {
+            "variant": "inline-blue-link",
+            "size": "m"
+          }
+        ],
+        "iconMode": "absent",
+        "implementationClasses": [
+          "ds-text-btn",
+          "ds-text-btn--inline",
+          "ds-text-btn--blue-link",
+          "ds-text-btn--m",
+          "ds-text-btn__text"
+        ],
+        "appliesTo": [
+          "customer-gallery"
+        ],
+        "usage": "源See more13px蓝色文字按钮，按源无箭头。"
+      },
+      {
+        "component": "Rate",
+        "usage": "评分汇总的实际唯一子组件；星图、统计和交互由Rate维护。",
+        "slot": "rating-summary/aggregate",
+        "hostPreviewAnchor": "comment-rating-summary",
+        "appliesTo": [
+          "rating-summary"
+        ],
+        "requiredVariants": [
+          "summary"
+        ],
+        "implementationClasses": [
+          "ds-rate",
+          "ds-rate--summary",
+          "ds-rate__score-card",
+          "ds-rate__distribution",
+          "ds-rate__progress"
+        ]
+      }
+    ],
+    "commonlyEmbeddedIn": [],
+    "mutuallyExclusiveWith": [
+      {
+        "component": "List",
+        "reason": "List 可承载静态内容流，但不提供回答、Helpful、评论提交、评分汇总和客户画廊语义。"
+      }
+    ],
+    "iconDependencies": [
+      {
+        "icon": "icon-helpful",
+        "usage": "Helpful 默认态灰色线性拇指，hover/focus 通过 currentColor 变黑",
+        "required": true,
+        "appliesTo": [
+          "qa-thread",
+          "review-thread",
+          "customer-gallery"
+        ]
+      },
+      {
+        "icon": "icon-helpful-active",
+        "usage": "Helpful 选中态黑色实心拇指",
+        "required": true,
+        "appliesTo": [
+          "qa-thread",
+          "review-thread",
+          "customer-gallery"
+        ]
+      },
+      {
+        "icon": "icon-comment",
+        "usage": "Comment 默认态灰色三点对话框",
+        "required": true,
+        "appliesTo": [
+          "qa-thread",
+          "review-thread"
+        ]
+      },
+      {
+        "icon": "icon-comment-active",
+        "usage": "Comment 展开态黑色三点对话框",
+        "required": true,
+        "appliesTo": [
+          "qa-thread",
+          "review-thread"
+        ]
+      },
+      {
+        "icon": "icon-rating-star",
+        "usage": "评分总览中 16px #FFD748 填充、#E5B423 描边的实心评分星标",
+        "required": true,
+        "appliesTo": [
+          "rating-summary"
+        ]
+      },
+      {
+        "icon": "icon-verified",
+        "usage": "Verified Purchase 前 14px 绿色实心圆与白色对勾",
+        "required": true,
+        "appliesTo": [
+          "review-thread",
+          "customer-gallery"
+        ]
+      },
+      {
+        "icon": "icon-close",
+        "usage": "客户画廊关闭按钮",
+        "required": true,
+        "appliesTo": [
+          "customer-gallery"
+        ]
+      },
+      {
+        "icon": "icon-carousel-prev",
+        "usage": "客户画廊返回网格与 36px 循环上一张操作",
+        "required": true,
+        "appliesTo": [
+          "customer-gallery"
+        ]
+      },
+      {
+        "icon": "icon-carousel-next",
+        "usage": "客户画廊 36px 循环下一张操作",
+        "required": true,
+        "appliesTo": [
+          "customer-gallery"
+        ]
+      }
+    ],
+    "colorDependencies": [
+      {
+        "token": "color.gray-1",
+        "value": "#19191A",
+        "usage": "问题、标题、激活操作和主要文字",
+        "appliesTo": [
+          "qa-thread",
+          "review-thread",
+          "rating-summary",
+          "customer-gallery"
+        ]
+      },
+      {
+        "token": "color.gray-2",
+        "value": "#4B4B4D",
+        "usage": "客户画廊媒体占位与遮罩",
+        "appliesTo": [
+          "customer-gallery",
+          "rating-summary"
+        ]
+      },
+      {
+        "token": "color.gray-3",
+        "value": "#707070",
+        "usage": "回答正文、辅助信息和默认操作",
+        "appliesTo": [
+          "qa-thread",
+          "review-thread",
+          "rating-summary",
+          "customer-gallery"
+        ]
+      },
+      {
+        "token": "color.gray-5",
+        "value": "#DEE0E3",
+        "usage": "输入框和媒体边框、分隔线",
+        "appliesTo": [
+          "qa-thread",
+          "review-thread",
+          "customer-gallery"
+        ]
+      },
+      {
+        "token": "color.gray-8",
+        "value": "#F6F6F8",
+        "usage": "评论面板与媒体占位背景",
+        "appliesTo": [
+          "qa-thread",
+          "review-thread",
+          "rating-summary",
+          "customer-gallery"
+        ]
+      },
+      {
+        "token": "color.yellow",
+        "value": "#FFD748",
+        "usage": "评分总览星标与 5/4 星正向分布进度填充",
+        "appliesTo": [
+          "rating-summary"
+        ]
+      },
+      {
+        "token": "color.comment-score-bg",
+        "value": "#FAFAFB",
+        "usage": "评分总览综合评分卡精确背景色",
+        "appliesTo": [
+          "rating-summary"
+        ]
+      },
+      {
+        "token": "color.comment-media-overlay",
+        "value": "rgba(25,25,26,0.5)",
+        "usage": "评分总览第 7 个媒体 See more 遮罩与客户画廊 36px 媒体切换控件悬停色",
+        "appliesTo": [
+          "rating-summary",
+          "customer-gallery"
+        ]
+      },
+      {
+        "token": "color.comment-avatar-bg",
+        "value": "#F7F7F7",
+        "usage": "客户评论线程与画廊详情态 42px 头像精确背景色",
+        "appliesTo": [
+          "review-thread",
+          "customer-gallery"
+        ]
+      },
+      {
+        "token": "color.comment-date",
+        "value": "#89898C",
+        "usage": "客户画廊详情态日期精确文字色",
+        "appliesTo": [
+          "customer-gallery"
+        ]
+      },
+      {
+        "token": "color.comment-divider",
+        "value": "#E5E5E5",
+        "usage": "客户评论展开面板中输入区与评论列表之间的精确分隔线色",
+        "appliesTo": [
+          "review-thread"
+        ]
+      },
+      {
+        "token": "color.white",
+        "value": "#FFFFFF",
+        "usage": "组件、输入区和画廊背景及遮罩文字",
+        "appliesTo": [
+          "qa-thread",
+          "review-thread",
+          "rating-summary",
+          "customer-gallery"
+        ]
+      },
+      {
+        "token": "color.blue",
+        "value": "#0060BF",
+        "usage": "answer it 与 See more 信息操作",
+        "appliesTo": [
+          "qa-thread",
+          "review-thread"
+        ]
+      },
+      {
+        "token": "color.text-disabled",
+        "value": "rgba(25,25,26,0.3)",
+        "usage": "客户画廊 36px Prev/Next 默认圆形背景",
+        "appliesTo": [
+          "customer-gallery"
+        ]
+      },
+      {
+        "token": "color.hover-overlay-light",
+        "value": "rgba(25,25,26,0.04)",
+        "usage": "文本操作和筛选悬停背景",
+        "appliesTo": [
+          "qa-thread",
+          "review-thread",
+          "rating-summary",
+          "customer-gallery"
+        ]
+      },
+      {
+        "token": "color.hover-overlay",
+        "value": "rgba(25,25,26,0.2)",
+        "usage": "画廊对话框背景遮罩",
+        "appliesTo": [
+          "customer-gallery"
+        ]
+      },
+      {
+        "token": "color.gray-7",
+        "value": "#F2F2F2",
+        "usage": "当前Rate汇总及真实Comment子组件使用的原共享规范",
+        "appliesTo": [
+          "rating-summary"
+        ]
+      },
+      {
+        "token": "color.success-tag-bg",
+        "value": "#D6F5DF",
+        "usage": "当前Rate汇总及真实Comment子组件使用的原共享规范",
+        "appliesTo": [
+          "rating-summary"
+        ]
+      },
+      {
+        "token": "color.success-tag-text",
+        "value": "#09832A",
+        "usage": "当前Rate汇总及真实Comment子组件使用的原共享规范",
+        "appliesTo": [
+          "rating-summary"
+        ]
+      },
+      {
+        "token": "color.rate-summary-track",
+        "value": "#EEEEEE",
+        "usage": "当前Rate汇总及真实Comment子组件使用的原共享规范",
+        "appliesTo": [
+          "rating-summary"
+        ]
+      },
+      {
+        "token": "color.rate-summary-bg",
+        "value": "#FAFAFB",
+        "usage": "当前Rate汇总及真实Comment子组件使用的原共享规范",
+        "appliesTo": [
+          "rating-summary"
+        ]
+      }
+    ],
+    "spacingDependencies": [
+      {
+        "token": "spacing.2",
+        "value": "2px",
+        "usage": "评分总览星标、评分卡内容与星级分布行的紧凑间距",
+        "properties": [
+          "gap"
+        ],
+        "selectors": [
+          ".ds-comment__stars",
+          ".ds-comment__score-card",
+          ".ds-comment__distribution"
+        ],
+        "appliesTo": [
+          "rating-summary"
+        ]
+      },
+      {
+        "token": "spacing.xs",
+        "value": "4px",
+        "usage": "图标文字、meta、属性键值与操作栏顶部间距",
+        "properties": [
+          "gap",
+          "padding"
+        ],
+        "selectors": [
+          ".ds-comment__action",
+          ".ds-comment__meta",
+          ".ds-comment__attribute",
+          ".ds-comment__answer-list",
+          ".ds-comment__text-toggle",
+          ".ds-comment__progress-row",
+          ".ds-comment--review-thread .ds-comment__action-row",
+          ".ds-comment__gallery-back",
+          ".ds-comment__gallery-review .ds-comment__meta",
+          ".ds-comment__gallery-copy"
+        ],
+        "appliesTo": [
+          "qa-thread",
+          "review-thread",
+          "rating-summary",
+          "customer-gallery"
+        ]
+      },
+      {
+        "token": "spacing.sm",
+        "value": "8px",
+        "usage": "问题、回答、Review 详情/标题组/评分、缩略图、画廊返回入口和评论列表间距",
+        "properties": [
+          "gap",
+          "padding",
+          "margin-right"
+        ],
+        "selectors": [
+          ".ds-comment__question",
+          ".ds-comment__answer",
+          ".ds-comment__review-detail",
+          ".ds-comment__user-summary",
+          ".ds-comment--review-thread .ds-comment__rating",
+          ".ds-comment__thumbs",
+          ".ds-comment__comment-list",
+          ".ds-comment__gallery-grid",
+          ".ds-comment__filter-group",
+          ".ds-comment__gallery-back",
+          ".ds-comment__gallery-detail-divider",
+          ".ds-comment__gallery-thumbs"
+        ],
+        "appliesTo": [
+          "qa-thread",
+          "review-thread",
+          "rating-summary",
+          "customer-gallery"
+        ]
+      },
+      {
+        "token": "spacing.10",
+        "value": "10px",
+        "usage": "客户画廊网格间距",
+        "properties": [
+          "gap"
+        ],
+        "selectors": [
+          ".ds-comment__gallery-grid"
+        ],
+        "appliesTo": [
+          "customer-gallery"
+        ]
+      },
+      {
+        "token": "spacing.md",
+        "value": "12px",
+        "usage": "线程区块、评论标题到列表、Review 用户/双列/输入操作、评分左组合/媒体与画廊详情间距",
+        "properties": [
+          "gap",
+          "padding"
+        ],
+        "selectors": [
+          ".ds-comment",
+          ".ds-comment__body",
+          ".ds-comment__composer-actions",
+          ".ds-comment__comment-block",
+          ".ds-comment__review-content",
+          ".ds-comment__user",
+          ".ds-comment--review-thread .ds-comment__composer",
+          ".ds-comment--review-thread .ds-comment__comment-block",
+          ".ds-comment__summary-left",
+          ".ds-comment__score-card",
+          ".ds-comment__summary-media",
+          ".ds-comment__gallery-detail",
+          ".ds-comment__gallery-review",
+          ".ds-comment__gallery-user"
+        ],
+        "appliesTo": [
+          "qa-thread",
+          "review-thread",
+          "rating-summary",
+          "customer-gallery"
+        ]
+      },
+      {
+        "token": "spacing.lg",
+        "value": "16px",
+        "usage": "Q&A 根上下内距、评论面板、属性组、输入区、画廊详情头部与正文顶部间距",
+        "properties": [
+          "gap",
+          "padding"
+        ],
+        "selectors": [
+          ".ds-comment--qa-thread",
+          ".ds-comment__comments",
+          ".ds-comment__composer",
+          ".ds-comment__attributes",
+          ".ds-comment--review-thread .ds-comment__comment-block",
+          ".ds-comment__gallery-view--grid",
+          ".ds-comment__gallery-detail-header",
+          ".ds-comment__gallery-detail"
+        ],
+        "appliesTo": [
+          "qa-thread",
+          "review-thread",
+          "customer-gallery"
+        ]
+      },
+      {
+        "token": "spacing.20",
+        "value": "20px",
+        "usage": "Review/评分总览纵向内距与默认评论列表缩进",
+        "properties": [
+          "row-gap",
+          "padding"
+        ],
+        "selectors": [
+          ".ds-comment__comment-list",
+          ".ds-comment--review-thread",
+          ".ds-comment--rating-summary",
+          ".ds-comment__summary"
+        ],
+        "appliesTo": [
+          "qa-thread",
+          "review-thread",
+          "rating-summary"
+        ]
+      },
+      {
+        "token": "spacing.xl",
+        "value": "24px",
+        "usage": "操作组、Review 头像到内容、Review 根左内距、评分总览顶部和画廊头体内距",
+        "properties": [
+          "gap",
+          "padding"
+        ],
+        "selectors": [
+          ".ds-comment__action-row",
+          ".ds-comment__review-layout",
+          ".ds-comment--review-thread",
+          ".ds-comment--rating-summary",
+          ".ds-comment__gallery-header",
+          ".ds-comment__gallery-body",
+          ".ds-comment__gallery-detail-header",
+          ".ds-comment__gallery-detail"
+        ],
+        "appliesTo": [
+          "qa-thread",
+          "review-thread",
+          "rating-summary",
+          "customer-gallery"
+        ]
+      },
+      {
+        "token": "spacing.68",
+        "value": "68px",
+        "usage": "评分总览左侧评分组合与媒体列的精确主间距",
+        "properties": [
+          "column-gap"
+        ],
+        "selectors": [
+          ".ds-comment__summary"
+        ],
+        "appliesTo": [
+          "rating-summary"
+        ]
+      },
+      {
+        "token": "spacing.3",
+        "value": "3px",
+        "usage": "嵌套IconButton当前资源的plain-s规则；画廊关闭仍为plain-m，不使用此规则",
+        "properties": [
+          "padding"
+        ],
+        "selectors": [
+          ".ds-icon-btn--plain.ds-icon-btn--s"
+        ],
+        "appliesTo": [
+          "customer-gallery"
+        ]
+      },
+      {
+        "token": "spacing.56",
+        "value": "56px",
+        "usage": "原稿017680无回答PC QA右侧留白",
+        "properties": [
+          "padding"
+        ],
+        "selectors": [
+          ".ds-comment--qa-thread[data-comment-current=\"qa-empty\"]"
+        ],
+        "appliesTo": [
+          "qa-thread"
+        ]
+      }
+    ],
+    "borderDependencies": [
+      {
+        "token": "border.width.default",
+        "value": "1px",
+        "usage": "输入框、媒体和分隔线宽度",
+        "aspect": "width",
+        "properties": [
+          "border",
+          "border-top",
+          "border-bottom"
+        ],
+        "selectors": [
+          ".ds-comment__textarea",
+          ".ds-comment__media",
+          ".ds-comment__comment-block",
+          ".ds-comment__gallery-header"
+        ],
+        "appliesTo": [
+          "qa-thread",
+          "review-thread",
+          "rating-summary",
+          "customer-gallery"
+        ]
+      },
+      {
+        "token": "border.style.default",
+        "value": "solid",
+        "usage": "输入框、媒体和分隔线样式",
+        "aspect": "style",
+        "properties": [
+          "border",
+          "border-top",
+          "border-bottom"
+        ],
+        "selectors": [
+          ".ds-comment__textarea",
+          ".ds-comment__media",
+          ".ds-comment__comment-block",
+          ".ds-comment__gallery-header"
+        ],
+        "appliesTo": [
+          "qa-thread",
+          "review-thread",
+          "rating-summary",
+          "customer-gallery"
+        ]
+      },
+      {
+        "token": "border.style.none",
+        "value": "none",
+        "usage": "组件自有文本与媒体操作清除原生按钮描边",
+        "aspect": "style",
+        "properties": [
+          "border"
+        ],
+        "selectors": [
+          ".ds-comment__action",
+          ".ds-comment__inline-action",
+          ".ds-comment__cancel",
+          ".ds-comment__media-button",
+          ".ds-comment__filter-button",
+          ".ds-comment__gallery-back"
+        ],
+        "appliesTo": [
+          "qa-thread",
+          "review-thread",
+          "rating-summary",
+          "customer-gallery"
+        ]
+      },
+      {
+        "token": "border.color.default",
+        "value": "var(--color-gray-5)",
+        "usage": "输入框、媒体和默认分隔线颜色",
+        "aspect": "color",
+        "properties": [
+          "border",
+          "border-top",
+          "border-bottom"
+        ],
+        "selectors": [
+          ".ds-comment__textarea",
+          ".ds-comment__media",
+          ".ds-comment__comment-block",
+          ".ds-comment__gallery-header"
+        ],
+        "appliesTo": [
+          "qa-thread",
+          "review-thread",
+          "rating-summary",
+          "customer-gallery"
+        ]
+      },
+      {
+        "token": "border.color.comment-divider",
+        "value": "var(--color-comment-divider)",
+        "usage": "Review comments-open 输入区与评论列表之间的 #E5E5E5 分隔线",
+        "aspect": "color",
+        "properties": [
+          "border-top-color"
+        ],
+        "selectors": [
+          ".ds-comment--review-thread .ds-comment__comment-block"
+        ],
+        "appliesTo": [
+          "review-thread"
+        ]
+      },
+      {
+        "token": "border.color.emphasis",
+        "value": "var(--color-gray-1)",
+        "usage": "输入聚焦、当前媒体和当前缩略图的强调描边",
+        "aspect": "color",
+        "properties": [
+          "border-color"
+        ],
+        "selectors": [
+          ".ds-comment__textarea:focus",
+          ".ds-comment__media-button--active .ds-comment__media",
+          ".ds-comment__gallery-thumb--active"
+        ],
+        "appliesTo": [
+          "qa-thread",
+          "review-thread",
+          "rating-summary",
+          "customer-gallery"
+        ]
+      }
+    ],
+    "radiusDependencies": [
+      {
+        "token": "border-radius.md",
+        "value": "4px",
+        "usage": "输入框、评论面板、媒体与缩略图圆角",
+        "appliesTo": [
+          "qa-thread",
+          "review-thread",
+          "rating-summary",
+          "customer-gallery"
+        ]
+      },
+      {
+        "token": "border-radius.lg",
+        "value": "8px",
+        "usage": "评分总览和画廊弹层圆角",
+        "appliesTo": [
+          "rating-summary",
+          "customer-gallery"
+        ]
+      },
+      {
+        "token": "border-radius.full",
+        "value": "9999px",
+        "usage": "评论用户头像与圆形媒体按钮",
+        "appliesTo": [
+          "review-thread",
+          "customer-gallery"
+        ]
+      }
+    ],
+    "shadowDependencies": [],
+    "fontSizeDependencies": [
+      {
+        "token": "typography.font-size-sm",
+        "value": "12px",
+        "usage": "评分总览评论数量、星级分布与嵌套 Tag selectable 分类筛选文字",
+        "appliesTo": [
+          "rating-summary"
+        ]
+      },
+      {
+        "token": "typography.font-size-h3",
+        "value": "24px",
+        "usage": "评分总览综合分值",
+        "appliesTo": [
+          "rating-summary"
+        ]
+      },
+      {
+        "token": "typography.font-size-h5",
+        "value": "18px",
+        "usage": "客户画廊标题",
+        "appliesTo": [
+          "customer-gallery"
+        ]
+      },
+      {
+        "token": "typography.font-size-h6",
+        "value": "16px",
+        "usage": "用户头像首字母",
+        "appliesTo": [
+          "review-thread",
+          "customer-gallery"
+        ]
+      },
+      {
+        "token": "typography.font-size-md",
+        "value": "14px",
+        "usage": "问题、回答、评论正文与按钮",
+        "appliesTo": [
+          "qa-thread",
+          "review-thread",
+          "rating-summary",
+          "customer-gallery"
+        ]
+      },
+      {
+        "token": "typography.font-size-h8",
+        "value": "13px",
+        "usage": "meta、操作栏、输入和评论列表",
+        "appliesTo": [
+          "qa-thread",
+          "review-thread",
+          "customer-gallery"
+        ]
+      }
+    ],
+    "fontWeightDependencies": [
+      {
+        "token": "typography.font-weight-regular",
+        "value": "400",
+        "usage": "正文、meta、购买认证、评论项、评分评论数/分布、Helpful/Comment 文案与数量、Cancel、answer it、正文及媒体 See more",
+        "properties": [
+          "font-weight"
+        ],
+        "selectors": [
+          ".ds-comment",
+          ".ds-comment__text",
+          ".ds-comment__meta",
+          ".ds-comment__verified",
+          ".ds-comment--review-thread .ds-comment__comment-item",
+          ".ds-comment__answer-list",
+          ".ds-comment__summary-review-count",
+          ".ds-comment__filter-button",
+          ".ds-comment__action",
+          ".ds-comment__cancel",
+          ".ds-comment__inline-action",
+          ".ds-comment__text-toggle",
+          ".ds-comment__media-overlay"
+        ],
+        "appliesTo": [
+          "qa-thread",
+          "review-thread",
+          "rating-summary",
+          "customer-gallery"
+        ]
+      },
+      {
+        "token": "typography.font-weight-semibold",
+        "value": "600",
+        "usage": "问题、标题、评分和评论列表标题（Showing N Comments）",
+        "properties": [
+          "font-weight"
+        ],
+        "selectors": [
+          ".ds-comment__title",
+          ".ds-comment__review-title",
+          ".ds-comment__score",
+          ".ds-comment__gallery-title",
+          ".ds-comment__comment-heading"
+        ],
+        "appliesTo": [
+          "qa-thread",
+          "review-thread",
+          "rating-summary",
+          "customer-gallery"
+        ]
+      }
+    ],
+    "typographyDependencies": [
+      {
+        "token": "typography.h3-semibold",
+        "fontSizeToken": "typography.font-size-h3",
+        "fontSizeValue": "24px",
+        "fontWeightToken": "typography.font-weight-semibold",
+        "fontWeightValue": "600",
+        "weightEvidence": "explicit-css",
+        "usage": "综合评分",
+        "appliesTo": [
+          "rating-summary"
+        ]
+      },
+      {
+        "token": "typography.h5-semibold",
+        "fontSizeToken": "typography.font-size-h5",
+        "fontSizeValue": "18px",
+        "fontWeightToken": "typography.font-weight-semibold",
+        "fontWeightValue": "600",
+        "weightEvidence": "explicit-css",
+        "usage": "画廊标题",
+        "appliesTo": [
+          "customer-gallery"
+        ]
+      },
+      {
+        "token": "typography.h6-regular",
+        "fontSizeToken": "typography.font-size-h6",
+        "fontSizeValue": "16px",
+        "fontWeightToken": "typography.font-weight-regular",
+        "fontWeightValue": "400",
+        "weightEvidence": "explicit-css",
+        "usage": "用户头像首字母",
+        "appliesTo": [
+          "review-thread",
+          "customer-gallery"
+        ]
+      },
+      {
+        "token": "typography.h7-regular",
+        "fontSizeToken": "typography.font-size-md",
+        "fontSizeValue": "14px",
+        "fontWeightToken": "typography.font-weight-regular",
+        "fontWeightValue": "400",
+        "weightEvidence": "explicit-css",
+        "usage": "正文、Cancel、媒体 See more；Submit 由嵌套 Button L 提供同一 H7 Regular 组合",
+        "appliesTo": [
+          "qa-thread",
+          "review-thread",
+          "rating-summary",
+          "customer-gallery"
+        ]
+      },
+      {
+        "token": "typography.h7-semibold",
+        "fontSizeToken": "typography.font-size-md",
+        "fontSizeValue": "14px",
+        "fontWeightToken": "typography.font-weight-semibold",
+        "fontWeightValue": "600",
+        "weightEvidence": "explicit-css",
+        "usage": "问题和评论标题",
+        "appliesTo": [
+          "qa-thread",
+          "review-thread",
+          "customer-gallery"
+        ]
+      },
+      {
+        "token": "typography.h8-regular",
+        "fontSizeToken": "typography.font-size-h8",
+        "fontSizeValue": "13px",
+        "fontWeightToken": "typography.font-weight-regular",
+        "fontWeightValue": "400",
+        "weightEvidence": "explicit-css",
+        "usage": "meta、Helpful/Comment 文案及数量、answer it、正文 See more、输入与列表",
+        "appliesTo": [
+          "qa-thread",
+          "review-thread",
+          "rating-summary",
+          "customer-gallery"
+        ]
+      },
+      {
+        "token": "typography.h8-semibold",
+        "fontSizeToken": "typography.font-size-h8",
+        "fontSizeValue": "13px",
+        "fontWeightToken": "typography.font-weight-semibold",
+        "fontWeightValue": "600",
+        "weightEvidence": "explicit-css",
+        "usage": "评论列表标题（Showing N Comments）",
+        "appliesTo": [
+          "qa-thread",
+          "review-thread"
+        ]
+      },
+      {
+        "token": "typography.h9-regular",
+        "fontSizeToken": "typography.font-size-sm",
+        "fontSizeValue": "12px",
+        "fontWeightToken": "typography.font-weight-regular",
+        "fontWeightValue": "400",
+        "weightEvidence": "explicit-css",
+        "usage": "评分总览评论数量与星级分布",
+        "appliesTo": [
+          "rating-summary"
+        ]
+      }
+    ],
+    "variantSelectionRules": [
+      "已有回答的商品问答 → qa-thread；暂无回答且需要Answer it入口 → qa-unanswered；普通FAQ使用Collapse。",
+      "客户评价含评分、购买信息、媒体和回复 → review-thread。",
+      "评论列表顶部综合评分、分布、媒体和筛选 → rating-summary。",
+      "真实客户媒体查看 → customer-gallery；需至少一张可用图片，网格、单图和关闭能力完整；禁止空媒体或纯占位。"
+    ],
+    "enforcementStatus": {
+      "componentDependencies.preview-evidence": {
+        "enforced": true,
+        "mechanism": "scripts/check-contracts.js 校验 Button、Rate、Tag、IconButton 变体和 Preview class 证据"
+      },
+      "mutuallyExclusiveWith.list": {
+        "enforced": false,
+        "mechanism": "无",
+        "note": "由生成时组件选型人工复核"
+      },
+      "variantSelectionRules.four-variants": {
+        "enforced": false,
+        "mechanism": "契约与 Preview 决策表人工核对"
+      },
+      "iconDependencies.local-assets": {
+        "enforced": true,
+        "mechanism": "scripts/check-contracts.js + scripts/generate-preview-tables.js 核对本地图标存在"
+      },
+      "colorDependencies.tokens-and-css-closure": {
+        "enforced": true,
+        "mechanism": "scripts/check-contracts.js + scripts/validate-tokens.js"
+      },
+      "spacingDependencies.tokens-and-css-closure": {
+        "enforced": true,
+        "mechanism": "scripts/check-contracts.js"
+      },
+      "borderDependencies.tokens-and-css-closure": {
+        "enforced": true,
+        "mechanism": "scripts/check-contracts.js"
+      },
+      "radiusDependencies.tokens-and-css-closure": {
+        "enforced": true,
+        "mechanism": "scripts/check-contracts.js"
+      },
+      "fontWeightDependencies.tokens-and-css-closure": {
+        "enforced": true,
+        "mechanism": "scripts/check-contracts.js"
+      },
+      "typographyDependencies.size-weight-pairing": {
+        "enforced": true,
+        "mechanism": "scripts/check-contracts.js"
+      },
+      "interactions.local-state": {
+        "enforced": true,
+        "mechanism": "components/comment.js 同步 aria-pressed、aria-expanded、hidden、数量、提交和画廊状态"
+      }
+    },
+    "notes": "投喂代码中的远程哈希 SVG、772×88 客户内容图片以及 Customer Gallery 的 315×420 主图/3 张 80×80 缩略图均未进入仓库；Helpful 按代码中 default 灰色线性、hover/focus 黑色线性、selected 黑色实心三态映射到内联正式 SVG mask，Comment 按 default 灰色与 hover/open 黑色两态映射；四个 action mask 均内联以规避 file:// Chromium 对外部 SVG mask 的拦截。评分总览星标已按最新附件保留为黄色填充、深黄色描边星形；review-thread 与 customer-gallery 详情态的单值评分改为真实复用 Rate/display sm。Verified 已改为绿色实心圆内白色对勾。Review 媒体和 Gallery 图片使用精确几何的中性非交互占位，不热链或猜造源图。Customer Gallery 的返回、关闭、循环 Prev/Next、缩略图、See more 与 Helpful 均保持本地状态交互。review-thread 默认态与 comments-open 为同一组件的本地状态切换，Comment 数量与预置 3 条列表保持自洽。",
+    "internalPartUsage": [
+      {
+        "part": "galleryImage168",
+        "hostVariant": "customer-gallery",
+        "hostSelector": "[data-comment-gallery-source=\"pc-grid-029476\"] [data-gallery-view=\"grid\"]",
+        "sourceHost": "68908:029476",
+        "slot": "gridImages",
+        "count": 12,
+        "sourceInstances": [
+          "68908:029488",
+          "68908:029483",
+          "68908:029490",
+          "68908:029489",
+          "68908:029482",
+          "68908:029485",
+          "68908:029481",
+          "68908:029480",
+          "68908:029486",
+          "68908:029487",
+          "68908:029484",
+          "68908:029479"
+        ]
+      },
+      {
+        "part": "galleryScrollbar3",
+        "hostVariant": "customer-gallery",
+        "hostSelector": "[data-comment-gallery-source=\"pc-grid-029476\"] [data-gallery-view=\"grid\"]",
+        "sourceHost": "68908:029476",
+        "slot": "scrollbar",
+        "count": 1,
+        "sourceInstances": [
+          "68908:029503"
+        ]
+      }
+    ],
+    "prototypeRollout": {
+      "template": "docs/component-spec-template.html",
+      "source": "relations.variantDecisions",
+      "workflow": "existing-local-only",
+      "scope": "Source-backed finite PC calls in current catalog; original local workflow and shared template retained; visual approval separate",
+      "currentMg": {
+        "status": "partial-source-scope",
+        "reason": "已保存《新文件》评论v2.1原件支撑当前五种PC调用，QA主回答不折叠；回复输入、Rate/Tag/TextButton/IconButton及媒体交互按实际能力接入。其他设备、业务后端和视觉批准单列。"
+      },
+      "retainedEvidence": [
+        {
+          "name": "comparison",
+          "file": "components/sources/comment/local-structure-review.json"
+        },
+        {
+          "name": "nativeSpecification",
+          "file": "components/sources/comment/native-specification-review-1011.json"
+        }
+      ]
+    },
+    "interactionRules": [
+      {
+        "name": "实际调用",
+        "rule": "仅使用同版catalog的callable变体和allowedEdits；参考示例不授予调用资格，不用改类或自绘控件绕过。",
+        "owner": "原本地选型与调用入口"
+      },
+      {
+        "name": "父子与同步",
+        "rule": "沿用原componentDependencies及反向父关系；改原规范后协调契约/实现，继续component:sync/watch；已交付页保留固定版本。",
+        "owner": "既有维护机制"
+      },
+      {
+        "name": "交互与业务",
+        "rule": "五种PC调用已接入。已有QA主回答始终可见，子评论按需展开；Helpful为本地可取消状态，提交/筛选/回答仅发宿主事件，不生成假保存结果。媒体网格和单图共用真实图片；FAQ仍用Collapse/faq。",
+        "owner": "具体变体运行时与原页面宿主"
+      }
+    ]
+  },
+  "searchIntents": [
+    "评论组件",
+    "客户评价",
+    "商品问答",
+    "评论回复",
+    "评分总览",
+    "客户画廊"
+  ],
+  "history": [
+    {
+      "date": "2026-08-25",
+      "author": "Kiro",
+      "change": "依据用户设计规范图与全部 PC HTML 投喂建立 Comment v1.0，统一问答、客户评论、评分总览和客户画廊四类变体，并补齐本地状态交互。"
+    },
+    {
+      "date": "2026-08-25",
+      "author": "Kiro",
+      "change": "按用户确认将 Comment 正式版本更新为 v2.0.2512A。"
+    },
+    {
+      "date": "2026-08-25",
+      "author": "Kiro",
+      "change": "按用户截图明确 Q&A meta、回答正文与列表使用 Regular，并为 Helpful/Comment hover 与键盘聚焦补充下划线反馈。"
+    },
+    {
+      "date": "2026-08-25",
+      "author": "Kiro",
+      "change": "依据用户最新 rating-summary PC 源码纠正为 1200×236 布局：评分/分布与 7 个媒体同排，筛选从 x=367 开始且保留重复项；新增精确评分卡背景、媒体遮罩与 68px 列间距 Token。"
+    },
+    {
+      "date": "2026-08-25",
+      "author": "Kiro",
+      "change": "依据用户标注图移除 Customer Gallery 标题图标；Helpful 选中态改为实心拇指，Comment 改为三点对话框；hover/focus 无背景且仅文字标签下划线，数量不加下划线。"
+    },
+    {
+      "date": "2026-08-25",
+      "author": "Kiro",
+      "change": "依据用户最新完整 1200×913 HTML 重构 review-thread：默认/展开根高度 270/569px，两级 42px+24px+270px+12px+772px 布局，完整正文、772×88 非交互媒体、Comment 3 与三条评论；同步本地评分星、Verified 徽记、头像/分隔线 Token 及根状态联动。"
+    },
+    {
+      "date": "2026-08-25",
+      "author": "Kiro",
+      "change": "依据用户最新 Customer Gallery 详情 HTML 对齐 750×527 PC 几何：详情专用返回/关闭头部、420×420 媒体舞台、42px 头像、五行正文、80px 缩略图与 36px 循环切换控件；新增 #89898C 日期 Token，缺失客户图片继续使用等尺寸本地中性槽位。"
+    },
+    {
+      "date": "2026-08-26",
+      "author": "Kiro",
+      "change": "依据用户补充的操作状态代码与标注截图复核 Helpful/Comment 状态图标映射；将评分星替换为黄色填充、深黄色描边星形，并将 Verified Purchase 替换为绿色实心圆白色对勾。"
+    },
+    {
+      "date": "2026-08-26",
+      "author": "Kiro",
+      "change": "依据用户补充的 750×435 展开评论源码统一 action 细节：16px 图标、24px 组间距、4px 内部间距、按钮零 padding、12px 标题到列表；将四种 action mask 内联以修复 file:// 预览缺图标，并补齐 icon-comment-active 目录登记。"
+    },
+    {
+      "date": "2026-08-26",
+      "author": "Kiro",
+      "change": "按用户最终视觉确认，将 review-thread 展开区的评论编号作为正文内联前缀显示；继续使用 16px 面板内距、12px 标题到列表间距和 8px 条目间距，不启用有默认缩进的列表 marker，动态提交的新评论按当前列表数量自动续号。"
+    },
+    {
+      "date": "2026-10-09",
+      "author": "Codex",
+      "change": "统一规范维护质量标准：登记真实实现与选型规则入口、源变更重新验收、父子影响检查及历史页面隔离；不推断可编辑槽位或视觉批准。"
+    }
+  ],
+  "isComplete": false,
+  "pendingParts": [
+    "移动端、远程分页/筛选、鉴权和持久化属于接入方或后续范围",
+    "视觉批准待完成"
+  ],
+  "createdAt": "2026-08-25T00:00:00Z",
+  "updatedAt": "2026-08-26T00:00:00Z",
+  "qualityProfile": {
+    "schemaVersion": "1.0.0",
+    "standard": "docs/component-quality-standard.md",
+    "implementation": "components/variants/comment.html",
+    "selection": {
+      "mappingSource": "components/selection-mvp-policy.json",
+      "mappingPointer": "components.comment.variantDecisionTypes",
+      "rulesPointer": "relations.variantDecisions"
+    },
+    "maintenance": {
+      "authority": "contract-preview-runtime-token-icon",
+      "generatedOnly": [
+        "preview-reference-tables",
+        "component-index",
+        "selection-catalog",
+        "design-reading-view",
+        "ai-reference"
+      ],
+      "changePolicy": "记录来源差异、兼容性与受影响父子组件；源文件变化后旧工程验收失效。",
+      "historicalPages": "不自动升级；新页面锁定本地组件运行资源版本。"
+    },
+    "acceptance": {
+      "report": "components/quality/report.json",
+      "proof": "components/quality/acceptance.json",
+      "declarationIsNotProof": true
+    }
+  },
+  "editable": [
+    "question",
+    "questionMeta",
+    "answer",
+    "answerMeta",
+    "reviewTitle",
+    "author",
+    "body",
+    "ratingContent",
+    "media",
+    "counts",
+    "images",
+    "panelIdentity",
+    "submitCallback",
+    "helpfulCallback",
+    "filterCallback",
+    "galleryTarget",
+    "answerCallback",
+    "filters"
+  ],
+  "integration": {
+    "styles": [
+      "components/tokens.css",
+      "components/components.css",
+      "components/button-current.css",
+      "components/button-runtime-current.css",
+      "components/text-button-current.css",
+      "components/icon-button-current.css",
+      "components/tag-current.css",
+      "components/rate-summary-current.css",
+      "components/comment-current.css",
+      "components/comment-call-current.css"
+    ],
+    "scripts": [
+      "components/rate-current.js",
+      "components/rate-summary-current.js",
+      "components/comment-current.js",
+      "components/comment-call-current.js"
+    ],
+    "fontStylesheets": [
+      "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+    ],
+    "atomicResourceBoundary": "当前PC调用使用真实IconButton/plain-l关闭、Button/L回复提交、TextButton取消/展开、review/gallery使用Rate/display，评分汇总实际引用Rate/summary（官方图标、浅灰卡及统计条归Rate维护），以及Tag/selectable来源锁定子部件。Tag保留原子CSS，互斥筛选由Comment宿主管理，不启动独立Tag切换。旧标本和来源记录保留，视觉批准单列。"
+  },
+  "aiContract": {
+    "schemaVersion": "1.0.0",
+    "rootTag": "article",
+    "scope": "source-backed-desktop-comment-calls",
+    "supported": [
+      "qa-thread",
+      "qa-unanswered",
+      "review-thread",
+      "rating-summary",
+      "customer-gallery"
+    ],
+    "unsupported": [
+      "business-persistence",
+      "mobile",
+      "remote-filtering-pagination",
+      "moderation-authentication"
+    ],
+    "reviewStatus": {
+      "engineering": "pending",
+      "visual": "pending",
+      "familyCoverage": "partial"
+    },
+    "previewAssets": [
+      "components/preview/reference-live.js",
+      "components/sources/comment/pc-grid-source-mapping-1015.json",
+      "components/sources/comment/pc-grid-source-calls-1015.html",
+      "components/sources/comment/pc-grid-close20-native-official-1015.svg",
+      "components/sources/comment/pc-grid-close20-native-restored-1015.txt",
+      "components/sources/comment/pc-grid-image168-native-1015.txt"
+    ],
+    "selectionPolicy": "按已有回答/未回答、产品评论、汇总、媒体查看选择具体PC变体。QA主回答始终展开；提交只发可取消事件，宿主确认后才更新业务数据。媒体以真实调用数据填充；默认产品图片仅为规范演示，不标为原客户实拍。普通FAQ不可替代。",
+    "identity": {
+      "rule": "Complete question, empty-answer prompt and hidden composer. Safe unique panel ID matches trigger aria-controls; copies replace panelIdentity and linked control atomically. No initialized local answer or open composer in canonical markup.",
+      "labelRule": "Only explicit text fields and linked panel identity may change; preserved Q: marker, native form/textarea, required data markers and true Button child structure."
+    },
+    "locked": [
+      "Answered QA keeps its main answer visible; only the child reply composer starts hidden",
+      "Unanswered QA issues a host answer request, without inventing an answer or form",
+      "Real Rate, Tag, Button, TextButton and IconButton children retain their atomic styles and allowed finite scope",
+      "Reply draft remains until the host confirms persistence; no invented saved comment or backend request",
+      "Only current PC source templates are callable; mobile and visual approval remain separate"
+    ],
+    "behavior": {
+      "answer": "answer it toggles composer and focuses textarea. Cancel clears/hides composer and returns focus. Blank submit retains composer and focuses input. Nonempty submit replaces empty prompt with local answer using textContent; no server request.",
+      "repeat": "Current runtime guards document delegate registration. Repeated legacy loading toggles panel twice; current loading only once. Do not co-load scripts.",
+      "identity": "Global aria-controls lookup requires unique safe IDs. Duplicate IDs are rejected in canonical inspection; regenerate paired IDs for copies.",
+      "limits": "Native submission and browser textarea focus remain pending. Answer author/time are existing demo placeholders, not business data. Other comment features stay outside finite canonical scope.",
+      "nativeStateGuard": "Native/ARIA disabled buttons do not handle synthetic clicks. Hidden composers, disabled textareas or disabled submitters do not accept synthetic submit events; values remain intact. No business policy or requests added.",
+      "submit": "ds:comment-submit contains kind/content; draft remains until host acknowledges; no fabricated saved answer, author or success."
+    },
+    "evidence": {
+      "localImplementation": "components/variants/comment.html",
+      "comparison": "components/sources/comment/local-structure-review.json",
+      "nativeSpecification": "components/sources/comment/native-specification-review-1011.json",
+      "nativeComponents": "components/sources/comment/native-component-review-1011.json",
+      "nativeProductSubmitCurrent": "components/sources/comment/pc-product-submit-review-1013.json",
+      "nativeGalleryCloseCurrent": "components/sources/comment/pc-gallery-close-review-1013.json",
+      "nativeQaExpandedSubmitCurrent": "components/sources/comment/qa-pc-expanded-submit-review-1013.json",
+      "pcGridCurrent": "components/sources/comment/pc-grid-source-mapping-1015.json",
+      "currentMgReview": "components/sources/remaining-prototypes-mg-20261115/comment-review.json",
+      "summaryIntegration": "components/sources/rate/summary-integration-20261115.json"
+    },
+    "variants": {
+      "qa-thread": {
+        "purpose": "source-pc-qa-thread",
+        "rootTag": "article",
+        "exampleSelector": "[data-ai-example=\"ai-comment-call-qa-thread\"]",
+        "allowedEdits": [
+          "question",
+          "questionMeta",
+          "answer",
+          "answerMeta",
+          "panelIdentity",
+          "submitCallback",
+          "helpfulCallback"
+        ],
+        "slots": {
+          "question": {
+            "selector": ".ds-comment__question .ds-comment__title",
+            "mode": "text",
+            "required": true
+          },
+          "questionMeta": {
+            "selector": ".ds-comment__question .ds-comment__meta",
+            "mode": "text",
+            "required": true
+          },
+          "answer": {
+            "selector": ".ds-comment__answer .ds-comment__text",
+            "mode": "text",
+            "required": true
+          },
+          "answerMeta": {
+            "selector": ".ds-comment__answer .ds-comment__meta",
+            "mode": "text",
+            "required": true
+          }
+        },
+        "bindings": {
+          "panelIdentity": {
+            "mode": "linked-identity",
+            "target": ".ds-comment__comments",
+            "attribute": "id",
+            "valueType": "safe-dom-id",
+            "unique": true,
+            "references": [
+              {
+                "selector": "[data-comment-action=\"comment\"]",
+                "attribute": "aria-controls"
+              }
+            ]
+          },
+          "submitCallback": {
+            "mode": "event-handler",
+            "target": "root",
+            "event": "ds:comment-submit"
+          },
+          "helpfulCallback": {
+            "mode": "event-handler",
+            "target": "root",
+            "event": "ds:comment-helpful"
+          }
+        }
+      },
+      "qa-unanswered": {
+        "purpose": "source-pc-qa-unanswered",
+        "rootTag": "article",
+        "exampleSelector": "[data-ai-example=\"ai-comment-call-qa-unanswered\"]",
+        "allowedEdits": [
+          "question",
+          "questionMeta",
+          "answerCallback"
+        ],
+        "slots": {
+          "question": {
+            "selector": ".ds-comment__question .ds-comment__title",
+            "mode": "text",
+            "required": true
+          },
+          "questionMeta": {
+            "selector": ".ds-comment__question .ds-comment__meta",
+            "mode": "text",
+            "required": true
+          }
+        },
+        "bindings": {
+          "answerCallback": {
+            "mode": "event-handler",
+            "target": "root",
+            "event": "ds:comment-answer-request"
+          }
+        }
+      },
+      "review-thread": {
+        "purpose": "source-pc-review-thread",
+        "rootTag": "article",
+        "exampleSelector": "[data-ai-example=\"ai-comment-call-review-thread\"]",
+        "allowedEdits": [
+          "panelIdentity",
+          "submitCallback",
+          "author",
+          "reviewTitle",
+          "body",
+          "media",
+          "ratingContent",
+          "helpfulCallback"
+        ],
+        "slots": {
+          "author": {
+            "selector": ".ds-comment__user-summary .ds-comment__review-title",
+            "mode": "text",
+            "required": true
+          },
+          "reviewTitle": {
+            "selector": ".ds-comment__review-detail .ds-comment__review-title",
+            "mode": "text",
+            "required": true
+          },
+          "body": {
+            "selector": ".ds-comment__review-detail .ds-comment__text",
+            "mode": "text",
+            "required": true
+          },
+          "media": {
+            "selector": "img.ds-comment__review-image",
+            "mode": "structured-content",
+            "required": true
+          },
+          "ratingContent": {
+            "selector": ".ds-rate",
+            "mode": "structured-content",
+            "required": true,
+            "preserve": [
+              ".ds-rate__stars",
+              ".ds-rate__label"
+            ]
+          }
+        },
+        "bindings": {
+          "panelIdentity": {
+            "mode": "linked-identity",
+            "target": ".ds-comment__comments",
+            "attribute": "id",
+            "valueType": "safe-dom-id",
+            "unique": true,
+            "references": [
+              {
+                "selector": "[data-comment-action=\"comment\"]",
+                "attribute": "aria-controls"
+              }
+            ]
+          },
+          "submitCallback": {
+            "mode": "event-handler",
+            "target": "root",
+            "event": "ds:comment-submit"
+          },
+          "helpfulCallback": {
+            "mode": "event-handler",
+            "target": "root",
+            "event": "ds:comment-helpful"
+          }
+        }
+      },
+      "rating-summary": {
+        "purpose": "source-pc-rating-summary",
+        "rootTag": "section",
+        "exampleSelector": "[data-ai-example=\"ai-comment-call-rating-summary\"]",
+        "allowedEdits": [
+          "counts",
+          "galleryTarget",
+          "filterCallback",
+          "filters"
+        ],
+        "slots": {
+          "filters": {
+            "selector": ".ds-comment__filter-group",
+            "mode": "structured-content",
+            "required": true,
+            "preserve": [
+              "button.ds-tag",
+              ".ds-tag__label"
+            ],
+            "rule": "1..24 complete original selectable Tags with unique values and labels; first All tag is selected, totals derive from counts. Gallery thumbnails use the actual linked gallery images, not unrelated example data."
+          }
+        },
+        "bindings": {
+          "counts": {
+            "mode": "native-attribute",
+            "target": "root",
+            "attribute": "data-comment-rating-counts",
+            "valueType": "json-integer-array",
+            "length": 5,
+            "min": 0,
+            "max": 1000000
+          },
+          "galleryTarget": {
+            "mode": "native-attribute",
+            "target": "root",
+            "attribute": "data-comment-gallery-target",
+            "valueType": "safe-dom-id"
+          },
+          "filterCallback": {
+            "mode": "event-handler",
+            "target": "root",
+            "event": "ds:comment-filter"
+          }
+        }
+      },
+      "customer-gallery": {
+        "purpose": "source-pc-customer-gallery",
+        "rootTag": "dialog",
+        "exampleSelector": "[data-ai-example=\"ai-comment-call-customer-gallery\"]",
+        "allowedEdits": [
+          "ratingContent",
+          "helpfulCallback",
+          "images",
+          "author",
+          "body"
+        ],
+        "slots": {
+          "ratingContent": {
+            "selector": ".ds-rate",
+            "mode": "structured-content",
+            "required": true,
+            "preserve": [
+              ".ds-rate__stars",
+              ".ds-rate__label"
+            ]
+          },
+          "author": {
+            "selector": ".ds-comment__gallery-user-copy .ds-comment__review-title",
+            "mode": "text",
+            "required": true
+          },
+          "body": {
+            "selector": ".ds-comment__gallery-copy .ds-comment__text",
+            "mode": "text",
+            "required": true
+          }
+        },
+        "bindings": {
+          "helpfulCallback": {
+            "mode": "event-handler",
+            "target": "root",
+            "event": "ds:comment-helpful"
+          },
+          "images": {
+            "mode": "comment-media-list",
+            "target": "root",
+            "minItems": 1,
+            "maxItems": 24
+          }
+        }
+      }
+    }
+  },
+  "parts": {
+    "galleryImage168": {
+      "scope": "Only12 existing PC gallery grid source instances168/default/border=no; no standalone image component admission",
+      "source": "components/sources/comment/pc-grid-source-mapping-1015.json",
+      "sourcePreview": "components/sources/comment/pc-grid-source-calls-1015.html",
+      "previewSelector": "span.ds-comment__media[data-comment-image-source=\"168-default-no-border\"]",
+      "requiredClasses": [
+        "ds-comment__media"
+      ],
+      "colorVariants": [
+        "customer-gallery"
+      ],
+      "allowedHosts": [
+        {
+          "component": "Comment",
+          "variant": "customer-gallery"
+        }
+      ],
+      "isComplete": true,
+      "pendingParts": []
+    },
+    "galleryScrollbar3": {
+      "scope": "Only existing grid style3 static source scrollbar; no drag or generic scrollbar admission",
+      "source": "components/sources/comment/pc-grid-source-mapping-1015.json",
+      "sourcePreview": "components/sources/comment/pc-grid-source-calls-1015.html",
+      "previewSelector": "span.ds-comment__scrollbar[data-comment-scrollbar-source=\"style3\"]",
+      "requiredClasses": [
+        "ds-comment__scrollbar",
+        "ds-comment__scrollbar-thumb"
+      ],
+      "colorVariants": [
+        "customer-gallery"
+      ],
+      "allowedHosts": [
+        {
+          "component": "Comment",
+          "variant": "customer-gallery"
+        }
+      ],
+      "isComplete": true,
+      "pendingParts": []
+    }
+  }
+}

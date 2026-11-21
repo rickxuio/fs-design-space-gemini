@@ -1,0 +1,4145 @@
+{
+  "id": "card",
+  "name": "Card",
+  "chineseName": "图文卡片",
+  "description": "图文卡片组件，用于展示图片+文字内容的组合。分为拼接式（上下结构/左右结构）和嵌入式两大类。支持多种内容组合、边框样式和交互状态。",
+  "category": "数据展示 Data Display",
+  "variants": [
+    {
+      "name": "spliced.vertical.single-event",
+      "chineseName": "拼接式 · 上下结构 · 单事件卡片",
+      "description": "图片在上、内容在下；包含分类、FEATURED标记、标题、描述、要点列表、信息行、标签、Learn more链接",
+      "cssClass": "ds-card ds-card--vertical ds-card--no-border",
+      "whenToUse": "普通内容图上文下，灰色父级。",
+      "styleProperties": {
+        "width": "parent-grid (285px is the four-column example)",
+        "imageAspectRatio": "16:9"
+      },
+      "isComplete": true,
+      "pendingParts": [],
+      "requiredChildren": [
+        "div.ds-card__image",
+        "img",
+        "div.ds-card__body",
+        "p.ds-card__title",
+        "div.ds-card__link",
+        "a.ds-text-btn",
+        "span.ds-text-btn__text",
+        "img.ds-text-btn__icon",
+        "div.ds-card__meta",
+        "span.ds-card__category",
+        "div.ds-card__desc"
+      ],
+      "selectionDecisionType": "上下结构·单事件卡片",
+      "whenNotToUse": "分类链接入口或专用产品选购。",
+      "usage": "普通内容图上文下，灰色父级。"
+    },
+    {
+      "name": "spliced.vertical.category-nav",
+      "chineseName": "拼接式 · 上下结构 · 多事件卡片",
+      "description": "本次有限调用仅PC285px无描边普通多事件卡片，不含折叠触发或面板；有描边原件仅当前展示。",
+      "cssClass": "ds-card--vertical",
+      "whenToUse": "图片、标题及多个独立分类链接。",
+      "styleProperties": {
+        "width": "285px",
+        "imageHeight": "160px",
+        "height": "366px",
+        "bodyPadding": "20px",
+        "titleTypography": "14px/22px SemiBold600",
+        "linkTypography": "12px/20px Regular400",
+        "linksGap": "8px",
+        "linksPaddingTop": "12px"
+      },
+      "isComplete": true,
+      "pendingParts": [],
+      "requiredChildren": [
+        "div.ds-card__image",
+        "img",
+        "div.ds-card__body",
+        "span.ds-card__title",
+        "div.ds-card__sub-links",
+        "span.ds-card__sub-link"
+      ],
+      "selectionDecisionType": "上下结构·多事件卡片",
+      "whenNotToUse": "仅一个普通操作或长描述。",
+      "usage": "图片、标题及多个独立分类链接。"
+    },
+    {
+      "name": "spliced.horizontal.full-width",
+      "chineseName": "拼接式 · 左右结构 · 通栏",
+      "description": "图片与内容左右排列，1200px宽，支持图左文右和文左图右；操作入口统一使用黑色文字按钮，不使用实心或描边 Button。",
+      "cssClass": "ds-card ds-card--horizontal",
+      "cssClassReverse": "ds-card--horizontal-reverse",
+      "whenToUse": "一行独占版心的左右图文。",
+      "styleProperties": {
+        "width": "1200px",
+        "imageSize": "580x326px (marked current call); legacy unmarked580x328 preserved",
+        "gap": "40px",
+        "bodyPadding": "0px (marked current call)"
+      },
+      "isComplete": true,
+      "pendingParts": [],
+      "requiredChildren": [
+        "div.ds-card__image",
+        "img",
+        "div.ds-card__body",
+        "div.ds-card__content-stack",
+        "p.ds-card__title",
+        "p.ds-card__desc",
+        "div.ds-card__link",
+        "a.ds-text-btn",
+        "span.ds-text-btn__text",
+        "img.ds-text-btn__icon"
+      ],
+      "selectionDecisionType": "左右结构·通栏",
+      "whenNotToUse": "侧栏、网格单格或描边半区。",
+      "usage": "一行独占版心的左右图文。"
+    },
+    {
+      "name": "spliced.horizontal.full-width.bordered-background",
+      "chineseName": "拼接式-左右结构-通栏（1200px）-描边/背景",
+      "description": "1200px 通栏横向卡片；图片与文字各占一半，仅文字背景半区使用描边，支持图左文右和文左图右",
+      "cssClass": "ds-card ds-card--horizontal ds-card--horizontal-bordered",
+      "cssClassReverse": "ds-card--horizontal-reverse ds-card--horizontal-bordered",
+      "whenToUse": "左右图文通栏，文本区明确为描边/白底，包含可滚动参数列表。",
+      "styleProperties": {
+        "width": "1200px",
+        "height": "338px",
+        "imageWidth": "600px",
+        "bodyWidth": "600px",
+        "bodyPadding": "20px",
+        "titleTypography": "当前PC左图右文固定样例14px/22px SemiBold 600；其他方向未外推",
+        "contentGap": "12px",
+        "border": "1px solid #DEE0E3 on text half only"
+      },
+      "isComplete": true,
+      "pendingParts": [],
+      "requiredChildren": [
+        "div.ds-card__image",
+        "img",
+        "div.ds-card__body",
+        "div.ds-card__content-stack",
+        "p.ds-card__title",
+        "p.ds-card__desc",
+        "div.ds-card__link",
+        "a.ds-text-btn",
+        "span.ds-text-btn__text",
+        "img.ds-text-btn__icon",
+        ".ds-list",
+        "div.ds-list__unordered-item",
+        "span.ds-list__unordered-dot",
+        "p.ds-list__unordered-text"
+      ],
+      "selectionDecisionType": "拼接式-左右结构-通栏（1200px）-描边/背景",
+      "whenNotToUse": "没有描边表面、无侧边结构或移动端自由尺寸。",
+      "usage": "左右图文通栏，文本区明确为描边/白底，包含可滚动参数列表。"
+    },
+    {
+      "name": "spliced.horizontal.with-sidebar",
+      "chineseName": "拼接式 · 左右结构 · 含侧边栏",
+      "description": "图片与内容左右排列，带侧边导航的布局",
+      "cssClass": "ds-card--horizontal-sidebar",
+      "whenToUse": "PC左侧真实菜单＋无描边左右图文内容，图文源件为样式二。",
+      "styleProperties": {
+        "imageSize": "438x246px",
+        "gap": "40px"
+      },
+      "selectionDecisionType": "左右结构·含侧边栏",
+      "whenNotToUse": "没有实际侧栏、普通通栏卡片或M/Pad适配。",
+      "usage": "侧栏复用MenuNavigation/288源部件；内容文字、图片和链接按槽编辑。",
+      "isComplete": true,
+      "pendingParts": [],
+      "requiredChildren": [
+        "div.ds-card__sidebar-layout",
+        "aside.ds-card__sidebar-shell",
+        "nav.ds-menu-navigation",
+        "div.ds-card__content-area",
+        "div.ds-card__image",
+        "div.ds-card__body"
+      ]
+    },
+    {
+      "name": "spliced.horizontal.with-sidebar.bordered-background",
+      "chineseName": "拼接式-左右结构-含侧边栏-描边/背景",
+      "description": "288px 侧边导航与876px横向内容卡组合；内容卡图片与文字各占一半，仅文字背景半区使用描边",
+      "cssClass": "ds-card--horizontal-sidebar",
+      "cssClassReverse": "ds-card--horizontal-sidebar ds-card--horizontal-reverse ds-card--horizontal-bordered",
+      "whenToUse": "PC左侧真实菜单＋左右图文内容，文字半区需原件描边与List12。",
+      "styleProperties": {
+        "layoutWidth": "1196px",
+        "sidebarWidth": "288px",
+        "layoutGap": "32px",
+        "contentWidth": "876px",
+        "imageWidth": "438px",
+        "bodyWidth": "438px",
+        "height": "246px",
+        "bodyPadding": "20px",
+        "contentGap": "8px",
+        "border": "1px solid #DEE0E3 on text half only"
+      },
+      "selectionDecisionType": "拼接式-左右结构-含侧边栏-描边/背景",
+      "whenNotToUse": "没有实际侧栏、普通通栏卡片或M/Pad适配。",
+      "usage": "侧栏复用MenuNavigation/288源部件；内容文字、图片和链接按槽编辑。",
+      "isComplete": true,
+      "pendingParts": [],
+      "requiredChildren": [
+        "div.ds-card__sidebar-layout",
+        "aside.ds-card__sidebar-shell",
+        "nav.ds-menu-navigation",
+        "div.ds-card__content-area",
+        "div.ds-card__image",
+        "div.ds-card__body"
+      ]
+    },
+    {
+      "name": "embedded.product-small",
+      "chineseName": "嵌入式 · 产品小卡片",
+      "description": "图片嵌入卡片内部；230px宽，产品图+标题+价格",
+      "cssClass": "ds-card ds-card--embedded ds-card--embedded-small ds-card--embedded-bg-gray",
+      "whenToUse": "最近浏览式产品图、标题和价格。",
+      "styleProperties": {
+        "width": "230px",
+        "padding": "8px 20px 20px",
+        "imageSize": "140x140px",
+        "bodyGap": "12px",
+        "borderRadius": "4px"
+      },
+      "isComplete": true,
+      "requiredChildren": [
+        "img.ds-card__product-image",
+        "div.ds-card__product-body",
+        "p.ds-card__product-title",
+        "p.ds-card__product-price",
+        "div.ds-card__cart-slot",
+        "button.ds-cart",
+        "img.ds-cart__icon",
+        "span.ds-cart__text"
+      ],
+      "selectionDecisionType": "嵌入式·产品小卡片",
+      "whenNotToUse": "参数、库存、销量或新品不能据此补画。",
+      "usage": "最近浏览式产品图、标题和价格。"
+    },
+    {
+      "name": "embedded.product-standard",
+      "chineseName": "嵌入式 · 产品卡片",
+      "description": "图片嵌入卡片内部；285px宽，产品图+标题+描述+Learn more，支持白/灰背景与悬停态",
+      "cssClass": "ds-card--embedded-standard",
+      "whenToUse": "搜索结果页产品展示卡。",
+      "styleProperties": {
+        "width": "285px",
+        "padding": "20px",
+        "contentWidth": "245px",
+        "imageSize": "180x180px",
+        "contentGap": "16px",
+        "borderRadius": "8px",
+        "hoverShadow": "0px 15px 15px -10px rgba(0,0,0,0.15)",
+        "imageFit": "cover",
+        "imageBlendMode": "multiply",
+        "linkAtomHeight": "20px",
+        "linkGap": "16px"
+      },
+      "requiredChildren": [
+        "div.ds-card__product-image",
+        "img",
+        "div.ds-card__product-body",
+        "p.ds-card__product-title",
+        "p.ds-card__product-description",
+        "div.ds-card__product-link",
+        "a.ds-text-btn",
+        "span.ds-text-btn__text",
+        "img.ds-text-btn__icon"
+      ],
+      "isComplete": true,
+      "pendingParts": [],
+      "selectionDecisionType": "嵌入式·产品卡片",
+      "whenNotToUse": "普通内容页不默认套搜索产品卡。",
+      "usage": "搜索结果页产品展示卡。"
+    },
+    {
+      "name": "embedded.product-detail",
+      "chineseName": "嵌入式 · 产品详情卡片",
+      "description": "图片嵌入卡片内部；左右布局，100×75图片、标题、描述与12px无序List。有效原件Default/Hover未包含价格、库存或销量。",
+      "cssClass": "ds-card--embedded ds-card--embedded-detail ds-card",
+      "whenToUse": "产品小图、标题、说明及参数列表，横向嵌入式详情卡片。",
+      "styleProperties": {
+        "width": "430px"
+      },
+      "selectionDecisionType": "嵌入式·产品详情卡片",
+      "whenNotToUse": "没有参数列表、完整选购或价格/库存操作。",
+      "usage": "产品小图、标题、说明及参数列表，横向嵌入式详情卡片。",
+      "isComplete": true,
+      "pendingParts": [],
+      "requiredChildren": [
+        "img",
+        ".ds-list"
+      ]
+    },
+    {
+      "name": "embedded.product-full",
+      "chineseName": "嵌入式 · 产品完整卡片",
+      "description": "图片嵌入卡片内部；含标签行+标题+参数+价格+库存+销量+Add按钮+New徽章；原始加购节点037133引用独立Cart按钮，当前Preview普通Button仅为旧演示替代，待Cart来源与接入取舍，不开放AI调用。",
+      "cssClass": "ds-card--embedded ds-card--embedded-full ds-card--embedded-bg-gray ds-card",
+      "whenToUse": "完整产品选购卡：兼容标签、参数、价格、库存、销量评价及真实Cart加购按钮同时存在。",
+      "styleProperties": {
+        "width": "291-300px"
+      },
+      "selectionDecisionType": "嵌入式·产品完整卡片",
+      "whenNotToUse": "普通图文展示，或来源没有兼容标签、库存与选购数据。",
+      "usage": "完整产品选购卡：兼容标签、参数、价格、库存、销量评价及真实Cart加购按钮同时存在。",
+      "isComplete": true,
+      "pendingParts": [],
+      "requiredChildren": [
+        "img",
+        ".ds-list"
+      ]
+    },
+    {
+      "name": "spliced.horizontal.full-width.responsive",
+      "chineseName": "拼接式 · 通栏 · 响应式（当前MG）",
+      "description": "Opt-in current source-backed PC052289/image052290580×326/text052293padding0; existing Pad/M queries retained without new adaptation approval.",
+      "cssClass": "ds-card ds-card--horizontal ds-card--source-responsive",
+      "cssClassReverse": "ds-card--horizontal-reverse ds-card--source-responsive",
+      "whenToUse": "明确需适配的左右图文通栏。",
+      "styleProperties": {
+        "width": "1200px",
+        "imageSize": "580x326px",
+        "gap": "40px",
+        "bodyPadding": "0px"
+      },
+      "isComplete": true,
+      "pendingParts": [],
+      "requiredChildren": [
+        "div.ds-card__image",
+        "img",
+        "div.ds-card__body",
+        "div.ds-card__content-stack",
+        "p.ds-card__title",
+        "p.ds-card__desc",
+        "div.ds-card__link",
+        "a.ds-text-btn",
+        "span.ds-text-btn__text",
+        "img.ds-text-btn__icon"
+      ],
+      "selectionDecisionType": "左右结构·通栏·响应式",
+      "whenNotToUse": "旧页、侧栏和描边形态不自动升级。",
+      "usage": "明确需适配的左右图文通栏。"
+    },
+    {
+      "name": "spliced.vertical.single-event.bordered",
+      "chineseName": "拼接式 · 上下结构 · 单事件 · 白色父级描边",
+      "description": "Source-backed existing single-event on; border only inside body left/right/bottom, root/image unbordered",
+      "cssClass": "ds-card ds-card--vertical ds-card--bordered",
+      "whenToUse": "白色父级PC四栏的285px图文卡。",
+      "styleProperties": {
+        "width": "285px",
+        "imageHeight": "160px",
+        "parentSurface": "white",
+        "bodyBorder": "inside left/right/bottom 1px #DEE0E3; top0; no layout inset"
+      },
+      "isComplete": true,
+      "pendingParts": [],
+      "requiredChildren": [
+        "div.ds-card__image",
+        "img",
+        "div.ds-card__body",
+        "p.ds-card__title",
+        "div.ds-card__link",
+        "a.ds-text-btn",
+        "span.ds-text-btn__text",
+        "img.ds-text-btn__icon",
+        "div.ds-card__meta",
+        "span.ds-card__category",
+        "div.ds-card__desc"
+      ],
+      "sourceEvidence": "components/sources/card/vertical-white-parent-review-1013.json",
+      "selectionDecisionType": "上下结构·单事件·白色父级描边",
+      "whenNotToUse": "灰父级或其他宽度网格不外推。",
+      "usage": "白色父级PC四栏的285px图文卡。"
+    }
+  ],
+  "responsiveRules": [
+    {
+      "appliesTo": [
+        "spliced.horizontal.full-width"
+      ],
+      "desktop": "1200px container: image and copy remain side by side with the contract-defined 580x328 image.",
+      "tablet": "At 960px and below, preserve the horizontal direction while the image uses 48% width and at least 280px height.",
+      "mobile": "At 640px and below, stack image above copy; image uses full width and 220px height. This behavior is implemented in components.css and must not be recreated by page CSS."
+    },
+    {
+      "appliesTo": [
+        "spliced.horizontal.full-width.bordered-background"
+      ],
+      "desktop": "At the 1200px classification width, image and copy remain side by side at 600px each; the image is 338px high and only the copy half has the white background and 1px border.",
+      "tablet": "At 960px and below, inherit the horizontal Card behavior: preserve the horizontal direction while the image uses 48% width and at least 280px height; the dedicated copy-half border remains in effect.",
+      "mobile": "At 640px and below, stack image above copy; image uses full width and 220px height, and the copy border moves below the image with no border on the shared edge. This behavior is implemented in components.css and must not be recreated by page CSS."
+    }
+  ],
+  "borderVariants": [
+    "no-border",
+    "bordered",
+    "bordered-full"
+  ],
+  "states": [
+    {
+      "name": "default",
+      "chineseName": "默认",
+      "styleOverrides": {},
+      "description": "正常显示状态"
+    },
+    {
+      "name": "hover",
+      "chineseName": "悬停",
+      "styleOverrides": {
+        "boxShadow": "0px 15px 15px -10px rgba(0,0,0,0.1)"
+      },
+      "description": "鼠标悬停时出现阴影"
+    },
+    {
+      "name": "selected",
+      "chineseName": "选中",
+      "styleOverrides": {
+        "boxShadow": "0px 15px 15px -10px rgba(0,0,0,0.1)"
+      },
+      "description": "卡片对应内容处于当前选中或展开状态时，持续显示与悬停态一致的底部投影"
+    },
+    {
+      "name": "product-standard-hover",
+      "chineseName": "产品卡片悬停",
+      "styleOverrides": {
+        "boxShadow": "0px 15px 15px -10px rgba(0,0,0,0.15)"
+      },
+      "description": "285px嵌入式产品卡片悬停态；白底或灰底均保留原背景，只显示底部投影，不显示选中图标"
+    }
+  ],
+  "hoverEffect": {
+    "type": "shadow",
+    "value": "0px 15px 15px -10px rgba(0,0,0,0.1)"
+  },
+  "contentSlots": {
+    "image": {
+      "required": true,
+      "description": "图片区域"
+    },
+    "meta": {
+      "required": false,
+      "description": "分类+FEATURED标记行"
+    },
+    "title": {
+      "required": true,
+      "description": "标题，支持1行或2行截断"
+    },
+    "description": {
+      "required": false,
+      "description": "描述文字，内部段落不使用浏览器默认上下 margin，最多3行截断"
+    },
+    "bullets": {
+      "required": false,
+      "description": "要点列表，使用icon-bullet圆点"
+    },
+    "info": {
+      "required": false,
+      "description": "信息行（分类|地区）"
+    },
+    "tags": {
+      "required": false,
+      "description": "标签列表"
+    },
+    "link": {
+      "required": false,
+      "description": "Learn more链接，复用TextButton组件"
+    },
+    "subLinks": {
+      "required": false,
+      "description": "子分类链接列表（多事件卡片专用）"
+    },
+    "foldPanel": {
+      "required": false,
+      "description": "历史本地折叠适配记录；当前有效Card原件证据不足，不属于当前原始组件能力，不开放调用。"
+    },
+    "foldTrigger": {
+      "required": false,
+      "description": "历史本地折叠适配记录；当前有效Card原件证据不足，不属于当前原始组件能力，不开放调用。"
+    },
+    "badge": {
+      "required": false,
+      "description": "New徽章（嵌入式产品卡片专用）"
+    }
+  },
+  "relations": {
+    "variantDecisionsDescription": "按内容角色与实际行为选型，再核对布局、父级背景及同版调用资格。原变体和本地fragment明确对应；参考不授权调用。《新文件》已核对可见结构分类；交互执行结合原契约及本地实测。",
+    "variantDecisions": [
+      {
+        "type": "上下结构·单事件卡片",
+        "className": "ds-card--vertical",
+        "whenToUse": "普通内容图上文下，灰色父级。",
+        "whenNotToUse": "分类链接入口或专用产品选购。",
+        "nestedComponents": [
+          {
+            "component": "TextButton",
+            "label": "TextButton (inline-black)",
+            "href": "text-button.html"
+          }
+        ],
+        "status": "《新文件》结构分类已核对；调用资格仍读同版catalog，未开放组合保留为参考。",
+        "variant": "spliced.vertical.single-event",
+        "fragment": "spliced-vertical-single-event",
+        "selectionCases": [
+          {
+            "id": "ca1u",
+            "kind": "use",
+            "condition": "普通内容图上文下，灰色父级。",
+            "result": "按同版登记调用。",
+            "targetVariant": "spliced.vertical.single-event"
+          },
+          {
+            "id": "ca1a",
+            "kind": "avoid",
+            "condition": "分类链接入口或专用产品选购。",
+            "result": "不据此选型。",
+            "targetVariant": "spliced.vertical.single-event"
+          }
+        ]
+      },
+      {
+        "type": "上下结构·多事件卡片",
+        "className": "ds-card--vertical",
+        "whenToUse": "图片、标题及多个独立分类链接。",
+        "whenNotToUse": "仅一个普通操作或长描述。",
+        "nestedComponents": [],
+        "status": "《新文件》结构分类已核对；调用资格仍读同版catalog，未开放组合保留为参考。",
+        "variant": "spliced.vertical.category-nav",
+        "fragment": "spliced-vertical-category-nav",
+        "selectionCases": [
+          {
+            "id": "ca2u",
+            "kind": "use",
+            "condition": "图片、标题及多个独立分类链接。",
+            "result": "按同版登记调用。",
+            "targetVariant": "spliced.vertical.category-nav"
+          },
+          {
+            "id": "ca2a",
+            "kind": "avoid",
+            "condition": "仅一个普通操作或长描述。",
+            "result": "不据此选型。",
+            "targetVariant": "spliced.vertical.category-nav"
+          }
+        ]
+      },
+      {
+        "type": "左右结构·通栏",
+        "className": "ds-card--horizontal(-reverse)",
+        "whenToUse": "一行独占版心的左右图文。",
+        "whenNotToUse": "侧栏、网格单格或描边半区。",
+        "nestedComponents": [
+          {
+            "component": "TextButton",
+            "label": "TextButton (inline-black)",
+            "href": "text-button.html"
+          }
+        ],
+        "status": "《新文件》结构分类已核对；调用资格仍读同版catalog，未开放组合保留为参考。",
+        "variant": "spliced.horizontal.full-width",
+        "fragment": "spliced-horizontal-full-width",
+        "selectionCases": [
+          {
+            "id": "ca3u",
+            "kind": "use",
+            "condition": "一行独占版心的左右图文。",
+            "result": "按同版登记调用。",
+            "targetVariant": "spliced.horizontal.full-width"
+          },
+          {
+            "id": "ca3a",
+            "kind": "avoid",
+            "condition": "侧栏、网格单格或描边半区。",
+            "result": "不据此选型。",
+            "targetVariant": "spliced.horizontal.full-width"
+          }
+        ]
+      },
+      {
+        "type": "拼接式-左右结构-通栏（1200px）-描边/背景",
+        "className": "ds-card--horizontal(-reverse) ds-card--horizontal-bordered",
+        "whenToUse": "左右图文通栏，文本区明确为描边/白底，包含可滚动参数列表。",
+        "whenNotToUse": "没有描边表面、无侧边结构或移动端自由尺寸。",
+        "nestedComponents": [
+          {
+            "component": "TextButton",
+            "label": "TextButton (inline-black / M)",
+            "href": "text-button.html"
+          }
+        ],
+        "status": "《新文件》结构分类已核对；调用资格仍读同版catalog，未开放组合保留为参考。",
+        "variant": "spliced.horizontal.full-width.bordered-background",
+        "fragment": "spliced-horizontal-full-width-bordered-background",
+        "selectionCases": [
+          {
+            "id": "ca4u",
+            "kind": "reference",
+            "condition": "通栏图文的文字半区需描边/白底。",
+            "result": "仅规范参考，不开放调用。",
+            "targetVariant": "spliced.horizontal.full-width.bordered-background"
+          },
+          {
+            "id": "ca4a",
+            "kind": "avoid",
+            "condition": "不能给根和图片整体加描边。",
+            "result": "不据此选型。",
+            "targetVariant": "spliced.horizontal.full-width.bordered-background"
+          }
+        ]
+      },
+      {
+        "type": "左右结构·含侧边栏",
+        "className": "ds-card--horizontal-sidebar",
+        "whenToUse": "PC左侧真实菜单＋无描边左右图文内容，图文源件为样式二。",
+        "whenNotToUse": "没有实际侧栏、普通通栏卡片或M/Pad适配。",
+        "nestedComponents": [
+          {
+            "component": "TextButton",
+            "label": "TextButton (inline-black)",
+            "href": "text-button.html"
+          }
+        ],
+        "status": "沿既有MG来源与现行原子完成有限PC调用；工程和视觉独立。",
+        "variant": "spliced.horizontal.with-sidebar",
+        "fragment": "spliced-horizontal-with-sidebar",
+        "selectionCases": [
+          {
+            "id": "card.spliced.horizontal.with-sidebar.use",
+            "kind": "use",
+            "condition": "PC左侧真实菜单＋无描边左右图文内容，图文源件为样式二。",
+            "result": "侧栏复用MenuNavigation/288源部件；内容文字、图片和链接按槽编辑。",
+            "targetVariant": "spliced.horizontal.with-sidebar"
+          },
+          {
+            "id": "card.spliced.horizontal.with-sidebar.avoid",
+            "kind": "avoid",
+            "condition": "没有实际侧栏、普通通栏卡片或M/Pad适配。",
+            "result": "不扩大为其他场景或后台业务。",
+            "targetVariant": "spliced.horizontal.with-sidebar"
+          }
+        ]
+      },
+      {
+        "type": "拼接式-左右结构-含侧边栏-描边/背景",
+        "className": "ds-card--horizontal-sidebar ds-card--horizontal(-reverse) ds-card--horizontal-bordered",
+        "whenToUse": "PC左侧真实菜单＋左右图文内容，文字半区需原件描边与List12。",
+        "whenNotToUse": "没有实际侧栏、普通通栏卡片或M/Pad适配。",
+        "nestedComponents": [
+          {
+            "component": "TextButton",
+            "label": "TextButton (inline-black / M)",
+            "href": "text-button.html"
+          }
+        ],
+        "status": "沿既有MG来源与现行原子完成有限PC调用；工程和视觉独立。",
+        "variant": "spliced.horizontal.with-sidebar.bordered-background",
+        "fragment": "spliced-horizontal-with-sidebar-bordered-background",
+        "selectionCases": [
+          {
+            "id": "card.spliced.horizontal.with-sidebar.bordered-background.use",
+            "kind": "use",
+            "condition": "PC左侧真实菜单＋左右图文内容，文字半区需原件描边与List12。",
+            "result": "侧栏复用MenuNavigation/288源部件；内容文字、图片和链接按槽编辑。",
+            "targetVariant": "spliced.horizontal.with-sidebar.bordered-background"
+          },
+          {
+            "id": "card.spliced.horizontal.with-sidebar.bordered-background.avoid",
+            "kind": "avoid",
+            "condition": "没有实际侧栏、普通通栏卡片或M/Pad适配。",
+            "result": "不扩大为其他场景或后台业务。",
+            "targetVariant": "spliced.horizontal.with-sidebar.bordered-background"
+          }
+        ]
+      },
+      {
+        "type": "嵌入式·产品小卡片",
+        "className": "ds-card--embedded-small",
+        "whenToUse": "最近浏览式产品图、标题和价格。",
+        "whenNotToUse": "参数、库存、销量或新品不能据此补画。",
+        "nestedComponents": [
+          {
+            "component": "Button",
+            "label": "Button · Cart加购（产品卡片）",
+            "href": "button.html#cart-product-card"
+          }
+        ],
+        "status": "《新文件》结构分类已核对；调用资格仍读同版catalog，未开放组合保留为参考。",
+        "variant": "embedded.product-small",
+        "fragment": "embedded-product-small",
+        "selectionCases": [
+          {
+            "id": "ca7u",
+            "kind": "use",
+            "condition": "最近浏览式产品图、标题和价格。",
+            "result": "按同版登记调用。",
+            "targetVariant": "embedded.product-small"
+          },
+          {
+            "id": "ca7a",
+            "kind": "avoid",
+            "condition": "参数、库存、销量或新品不能据此补画。",
+            "result": "不据此选型。",
+            "targetVariant": "embedded.product-small"
+          }
+        ]
+      },
+      {
+        "type": "嵌入式·产品卡片",
+        "className": "ds-card--embedded-standard",
+        "whenToUse": "搜索结果页产品展示卡。",
+        "whenNotToUse": "普通内容页不默认套搜索产品卡。",
+        "nestedComponents": [
+          {
+            "component": "TextButton",
+            "label": "TextButton (inline-black / M)",
+            "href": "text-button.html"
+          }
+        ],
+        "status": "《新文件》结构分类已核对；调用资格仍读同版catalog，未开放组合保留为参考。",
+        "variant": "embedded.product-standard",
+        "fragment": "embedded-product-standard",
+        "selectionCases": [
+          {
+            "id": "ca8u",
+            "kind": "use",
+            "condition": "搜索结果页产品展示卡。",
+            "result": "按同版登记调用。",
+            "targetVariant": "embedded.product-standard"
+          },
+          {
+            "id": "ca8a",
+            "kind": "avoid",
+            "condition": "普通内容页不默认套搜索产品卡。",
+            "result": "不据此选型。",
+            "targetVariant": "embedded.product-standard"
+          }
+        ]
+      },
+      {
+        "type": "嵌入式·产品详情卡片",
+        "className": "ds-card--embedded-detail",
+        "whenToUse": "产品小图、标题、说明及参数列表，横向嵌入式详情卡片。",
+        "whenNotToUse": "没有参数列表、完整选购或价格/库存操作。",
+        "nestedComponents": [],
+        "status": "《新文件》结构分类已核对；调用资格仍读同版catalog，未开放组合保留为参考。",
+        "variant": "embedded.product-detail",
+        "fragment": "embedded-product-detail",
+        "selectionCases": [
+          {
+            "id": "card-embedded-product-detail-completed-use",
+            "kind": "use",
+            "condition": "产品小图、标题、说明及参数列表，横向嵌入式详情卡片。",
+            "result": "调用embedded.product-detail，保留真实子原子及当前资源。",
+            "targetVariant": "embedded.product-detail"
+          },
+          {
+            "id": "card-embedded-product-detail-completed-exclude",
+            "kind": "exclude",
+            "condition": "没有参数列表、完整选购或价格/库存操作。",
+            "result": "按内容和交互另选变体。",
+            "targetVariant": "embedded.product-detail"
+          }
+        ]
+      },
+      {
+        "type": "嵌入式·产品完整卡片",
+        "className": "ds-card--embedded-full",
+        "whenToUse": "完整产品选购卡：兼容标签、参数、价格、库存、销量评价及真实Cart加购按钮同时存在。",
+        "whenNotToUse": "普通图文展示，或来源没有兼容标签、库存与选购数据。",
+        "nestedComponents": [
+          {
+            "component": "Button",
+            "label": "Button · Cart加购（产品卡片）",
+            "href": "button.html#cart-product-card"
+          }
+        ],
+        "status": "《新文件》结构分类已核对；调用资格仍读同版catalog，未开放组合保留为参考。",
+        "variant": "embedded.product-full",
+        "fragment": "embedded-product-full",
+        "selectionCases": [
+          {
+            "id": "card-embedded-product-full-completed-use",
+            "kind": "use",
+            "condition": "完整产品选购卡：兼容标签、参数、价格、库存、销量评价及真实Cart加购按钮同时存在。",
+            "result": "调用embedded.product-full，保留真实子原子及当前资源。",
+            "targetVariant": "embedded.product-full"
+          },
+          {
+            "id": "card-embedded-product-full-completed-exclude",
+            "kind": "exclude",
+            "condition": "普通图文展示，或来源没有兼容标签、库存与选购数据。",
+            "result": "按内容和交互另选变体。",
+            "targetVariant": "embedded.product-full"
+          }
+        ]
+      },
+      {
+        "type": "左右结构·通栏·响应式",
+        "className": "ds-card--source-responsive",
+        "whenToUse": "明确需适配的左右图文通栏。",
+        "whenNotToUse": "旧页、侧栏和描边形态不自动升级。",
+        "nestedComponents": [
+          {
+            "component": "TextButton",
+            "href": "text-button.html"
+          }
+        ],
+        "status": "《新文件》结构分类已核对；调用资格仍读同版catalog，未开放组合保留为参考。",
+        "variant": "spliced.horizontal.full-width.responsive",
+        "fragment": "spliced-horizontal-full-width-responsive",
+        "selectionCases": [
+          {
+            "id": "ca11u",
+            "kind": "use",
+            "condition": "明确需适配的左右图文通栏。",
+            "result": "按同版登记调用。",
+            "targetVariant": "spliced.horizontal.full-width.responsive"
+          },
+          {
+            "id": "ca11a",
+            "kind": "avoid",
+            "condition": "旧页、侧栏和描边形态不自动升级。",
+            "result": "不据此选型。",
+            "targetVariant": "spliced.horizontal.full-width.responsive"
+          }
+        ]
+      },
+      {
+        "type": "上下结构·单事件·白色父级描边",
+        "className": "ds-card--vertical ds-card--bordered",
+        "whenToUse": "白色父级PC四栏的285px图文卡。",
+        "whenNotToUse": "灰父级或其他宽度网格不外推。",
+        "nestedComponents": [
+          {
+            "component": "TextButton",
+            "label": "TextButton (inline-black / M)",
+            "href": "text-button.html"
+          }
+        ],
+        "status": "《新文件》结构分类已核对；调用资格仍读同版catalog，未开放组合保留为参考。",
+        "variant": "spliced.vertical.single-event.bordered",
+        "fragment": "spliced-vertical-single-event-bordered",
+        "selectionCases": [
+          {
+            "id": "ca12u",
+            "kind": "use",
+            "condition": "白色父级PC四栏的285px图文卡。",
+            "result": "按同版登记调用。",
+            "targetVariant": "spliced.vertical.single-event.bordered"
+          },
+          {
+            "id": "ca12a",
+            "kind": "avoid",
+            "condition": "灰父级或其他宽度网格不外推。",
+            "result": "不据此选型。",
+            "targetVariant": "spliced.vertical.single-event.bordered"
+          }
+        ]
+      }
+    ],
+    "radiusDependencies": [
+      {
+        "token": "border-radius.lg",
+        "value": "8px",
+        "usage": "大圆角",
+        "appliesTo": [
+          "spliced.vertical.single-event",
+          "spliced.vertical.category-nav",
+          "spliced.horizontal.full-width",
+          "spliced.horizontal.with-sidebar",
+          "spliced.horizontal.full-width.bordered-background",
+          "spliced.horizontal.with-sidebar.bordered-background",
+          "embedded.product-detail",
+          "embedded.product-standard"
+        ]
+      },
+      {
+        "token": "border-radius.md",
+        "value": "4px",
+        "usage": "中圆角 - 按钮默认圆角",
+        "appliesTo": [
+          "spliced.vertical.single-event",
+          "embedded.product-small",
+          "embedded.product-full"
+        ]
+      }
+    ],
+    "fontSizeDependencies": [
+      {
+        "token": "typography.font-size-md",
+        "value": "14px",
+        "usage": "中号字体 - XL/L 按钮",
+        "appliesTo": [
+          "spliced.vertical.single-event",
+          "spliced.vertical.category-nav",
+          "spliced.horizontal.full-width",
+          "spliced.horizontal.with-sidebar",
+          "spliced.horizontal.full-width.bordered-background",
+          "spliced.horizontal.with-sidebar.bordered-background",
+          "embedded.product-small",
+          "embedded.product-detail",
+          "embedded.product-full",
+          "embedded.product-standard"
+        ]
+      },
+      {
+        "token": "typography.font-size-sm",
+        "value": "12px",
+        "usage": "小号字体 - M/S 按钮",
+        "appliesTo": [
+          "spliced.vertical.single-event",
+          "spliced.vertical.category-nav",
+          "spliced.horizontal.full-width",
+          "spliced.horizontal.with-sidebar",
+          "spliced.horizontal.full-width.bordered-background",
+          "spliced.horizontal.with-sidebar.bordered-background",
+          "embedded.product-detail",
+          "embedded.product-full",
+          "embedded.product-standard"
+        ]
+      },
+      {
+        "token": "typography.font-size-h8",
+        "value": "13px",
+        "usage": "H8 紧凑正文/组件文字",
+        "appliesTo": [
+          "spliced.vertical.single-event",
+          "spliced.vertical.category-nav",
+          "embedded.product-full",
+          "spliced.horizontal.full-width",
+          "spliced.horizontal.with-sidebar",
+          "spliced.horizontal.full-width.bordered-background",
+          "spliced.horizontal.with-sidebar.bordered-background",
+          "embedded.product-standard"
+        ]
+      },
+      {
+        "token": "/",
+        "value": "16px",
+        "usage": "无对应正式 token 的字号值，白名单登记",
+        "appliesTo": [
+          "embedded.product-full"
+        ]
+      },
+      {
+        "token": "/",
+        "value": "20px",
+        "usage": "无对应正式 token 的字号值，白名单登记",
+        "appliesTo": [
+          "spliced.horizontal.full-width",
+          "spliced.horizontal.with-sidebar",
+          "spliced.horizontal.full-width.bordered-background",
+          "spliced.horizontal.with-sidebar.bordered-background"
+        ]
+      }
+    ],
+    "fontWeightDependencies": [
+      {
+        "token": "typography.font-weight-semibold",
+        "value": "600",
+        "usage": "卡片标题、徽标、产品标题与价格",
+        "appliesTo": [
+          "spliced.vertical.single-event",
+          "spliced.vertical.category-nav",
+          "spliced.horizontal.full-width",
+          "spliced.horizontal.with-sidebar",
+          "spliced.horizontal.full-width.bordered-background",
+          "spliced.horizontal.with-sidebar.bordered-background",
+          "embedded.product-small",
+          "embedded.product-detail",
+          "embedded.product-full",
+          "embedded.product-standard"
+        ],
+        "properties": [
+          "font-weight"
+        ],
+        "selectors": [
+          ".ds-card__title",
+          ".ds-card--horizontal-bordered .ds-card__title",
+          ".ds-card__badge-text",
+          ".ds-card--horizontal-sidebar .ds-card__sidebar-placeholder span",
+          ".ds-card--embedded-small .ds-card__product-title",
+          ".ds-card--embedded-small .ds-card__product-price",
+          ".ds-card--embedded-detail .ds-card__product-title",
+          ".ds-card__price",
+          ".ds-card--embedded-standard .ds-card__product-title"
+        ]
+      },
+      {
+        "token": "typography.font-weight-regular",
+        "value": "400",
+        "usage": "产品卡片描述",
+        "appliesTo": [
+          "embedded.product-standard"
+        ],
+        "properties": [
+          "font-weight"
+        ],
+        "selectors": [
+          ".ds-card--embedded-standard .ds-card__product-description"
+        ]
+      }
+    ],
+    "typographyDependencies": [
+      {
+        "token": "typography.h7-semibold",
+        "fontSizeToken": "typography.font-size-md",
+        "fontSizeValue": "14px",
+        "fontWeightToken": "typography.font-weight-semibold",
+        "fontWeightValue": "600",
+        "weightEvidence": "explicit-css",
+        "usage": "竖向与产品卡片标题",
+        "appliesTo": [
+          "spliced.vertical.single-event",
+          "spliced.vertical.category-nav",
+          "embedded.product-small",
+          "embedded.product-detail",
+          "embedded.product-full",
+          "embedded.product-standard"
+        ]
+      },
+      {
+        "token": "typography.h6-semibold",
+        "fontSizeToken": "/",
+        "fontSizeValue": "16px",
+        "fontWeightToken": "typography.font-weight-semibold",
+        "fontWeightValue": "600",
+        "weightEvidence": "explicit-css",
+        "usage": "产品完整卡片价格",
+        "appliesTo": [
+          "embedded.product-full"
+        ]
+      },
+      {
+        "token": "typography.h7-regular",
+        "fontSizeToken": "typography.font-size-md",
+        "fontSizeValue": "14px",
+        "fontWeightToken": "typography.font-weight-regular",
+        "fontWeightValue": "400",
+        "weightEvidence": "inherited-regular",
+        "usage": "横向卡片正文",
+        "appliesTo": [
+          "spliced.horizontal.full-width",
+          "spliced.horizontal.with-sidebar"
+        ]
+      },
+      {
+        "token": "typography.h9-regular",
+        "fontSizeToken": "typography.font-size-sm",
+        "fontSizeValue": "12px",
+        "fontWeightToken": "typography.font-weight-regular",
+        "fontWeightValue": "400",
+        "weightEvidence": "inherited-regular",
+        "usage": "卡片辅助文字",
+        "appliesTo": [
+          "spliced.vertical.single-event",
+          "spliced.vertical.category-nav",
+          "spliced.horizontal.full-width",
+          "spliced.horizontal.with-sidebar",
+          "spliced.horizontal.full-width.bordered-background",
+          "spliced.horizontal.with-sidebar.bordered-background",
+          "embedded.product-detail",
+          "embedded.product-full",
+          "embedded.product-standard"
+        ]
+      },
+      {
+        "token": "typography.h8-regular",
+        "fontSizeToken": "typography.font-size-h8",
+        "fontSizeValue": "13px",
+        "fontWeightToken": "typography.font-weight-regular",
+        "fontWeightValue": "400",
+        "weightEvidence": "inherited-regular",
+        "usage": "单事件与横向卡片 Learn more 文字按钮（继承 TextButton black / M 变体）",
+        "appliesTo": [
+          "spliced.vertical.single-event",
+          "spliced.horizontal.full-width",
+          "spliced.horizontal.with-sidebar",
+          "spliced.horizontal.full-width.bordered-background",
+          "spliced.horizontal.with-sidebar.bordered-background",
+          "embedded.product-standard"
+        ]
+      },
+      {
+        "token": "typography.h8-regular",
+        "fontSizeToken": "typography.font-size-h8",
+        "fontSizeValue": "13px",
+        "fontWeightToken": "typography.font-weight-regular",
+        "fontWeightValue": "400",
+        "weightEvidence": "inherited-regular",
+        "usage": "多事件折叠 Learn more 文字按钮（继承 TextButton black / M 变体）",
+        "appliesTo": [
+          "spliced.vertical.category-nav"
+        ]
+      },
+      {
+        "token": "typography.h8-regular",
+        "fontSizeToken": "typography.font-size-h8",
+        "fontSizeValue": "13px",
+        "fontWeightToken": "typography.font-weight-regular",
+        "fontWeightValue": "400",
+        "weightEvidence": "inherited-regular",
+        "usage": "产品完整卡片统计文字",
+        "appliesTo": [
+          "embedded.product-full"
+        ]
+      }
+    ],
+    "shadowDependencies": [
+      {
+        "token": "/",
+        "value": "0px 15px 15px -10px rgba(0, 0, 0, 0.1)",
+        "usage": "无对应 token 的投影值，白名单登记",
+        "appliesTo": [
+          "spliced.vertical.single-event",
+          "spliced.vertical.category-nav",
+          "embedded.product-detail"
+        ]
+      },
+      {
+        "token": "/",
+        "value": "0px 2px 8px 0px rgba(0, 0, 0, 0.1)",
+        "usage": "无对应 token 的投影值，白名单登记",
+        "appliesTo": [
+          "spliced.vertical.category-nav",
+          "embedded.product-small",
+          "embedded.product-detail",
+          "embedded.product-full"
+        ]
+      },
+      {
+        "token": "/",
+        "value": "0px 2px 8px 0px rgba(0, 0, 0, 0.1) !important",
+        "usage": "无对应 token 的投影值，白名单登记",
+        "appliesTo": [
+          "embedded.product-small",
+          "embedded.product-full"
+        ]
+      },
+      {
+        "token": "/",
+        "value": "0px 15px 15px -10px rgba(0, 0, 0, 0.15)",
+        "usage": "285px嵌入式产品卡片悬停态底部投影，白名单登记",
+        "appliesTo": [
+          "embedded.product-standard"
+        ]
+      }
+    ],
+    "colorDependencies": [
+      {
+        "token": "color.blue",
+        "value": "#0060BF",
+        "usage": "强调蓝色 / 链接色 (Link)",
+        "appliesTo": [
+          "embedded.product-full"
+        ]
+      },
+      {
+        "token": "color.gray-1",
+        "value": "#19191A",
+        "usage": "标题/深色文字 (Primary text)",
+        "appliesTo": [
+          "spliced.vertical.single-event",
+          "spliced.vertical.category-nav",
+          "spliced.horizontal.full-width",
+          "spliced.horizontal.with-sidebar",
+          "spliced.horizontal.full-width.bordered-background",
+          "spliced.horizontal.with-sidebar.bordered-background",
+          "embedded.product-small",
+          "embedded.product-detail",
+          "embedded.product-full",
+          "embedded.product-standard"
+        ]
+      },
+      {
+        "token": "color.gray-2",
+        "value": "#4B4B4D",
+        "usage": "正文文字，黑色按钮背景 (Body text)",
+        "appliesTo": [
+          "spliced.vertical.single-event"
+        ]
+      },
+      {
+        "token": "color.gray-3",
+        "value": "#707070",
+        "usage": "次要/辅助文字 (Secondary/auxiliary text)",
+        "appliesTo": [
+          "spliced.vertical.single-event",
+          "spliced.vertical.category-nav",
+          "spliced.horizontal.full-width",
+          "spliced.horizontal.with-sidebar",
+          "spliced.horizontal.full-width.bordered-background",
+          "spliced.horizontal.with-sidebar.bordered-background",
+          "embedded.product-detail",
+          "embedded.product-full",
+          "embedded.product-standard"
+        ]
+      },
+      {
+        "token": "color.gray-5",
+        "value": "#DEE0E3",
+        "usage": "边框色 / 菜单项禁用色",
+        "appliesTo": [
+          "spliced.vertical.single-event",
+          "spliced.vertical.category-nav",
+          "spliced.horizontal.full-width.bordered-background",
+          "spliced.horizontal.with-sidebar.bordered-background",
+          "embedded.product-detail",
+          "embedded.product-full"
+        ]
+      },
+      {
+        "token": "color.gray-6",
+        "value": "#EDEDF0",
+        "usage": "浅灰分割线 / 弱边框（介于 gray-5 #DEE0E3 与 gray-7 #F2F2F2 之间）",
+        "appliesTo": [
+          "spliced.horizontal.with-sidebar",
+          "spliced.horizontal.with-sidebar.bordered-background",
+          "embedded.product-full"
+        ]
+      },
+      {
+        "token": "color.gray-7",
+        "value": "#F2F2F2",
+        "usage": "灰色按钮背景",
+        "appliesTo": [
+          "spliced.vertical.single-event",
+          "embedded.product-full"
+        ]
+      },
+      {
+        "token": "color.gray-9",
+        "value": "#FAFBFB",
+        "usage": "最浅灰背景（hover/展开态整行底、输入框底、卡片区底）",
+        "appliesTo": [
+          "embedded.product-small",
+          "embedded.product-full",
+          "embedded.product-standard"
+        ]
+      },
+      {
+        "token": "color.sold-label",
+        "value": "#A65300",
+        "usage": "售罄标签文字色（深橙），Card 售罄态使用",
+        "appliesTo": [
+          "embedded.product-full"
+        ]
+      },
+      {
+        "token": "color.success-tag-bg",
+        "value": "#D6F5DF",
+        "usage": "绿色标签实底背景（Badge 成功态标签底色），比 success-bg 更实",
+        "appliesTo": [
+          "embedded.product-full"
+        ]
+      },
+      {
+        "token": "color.success-tag-text",
+        "value": "#09832A",
+        "usage": "绿色标签文字色（Badge 成功态标签文字），比 success #10A300 更深以保证对比度",
+        "appliesTo": [
+          "embedded.product-full"
+        ]
+      },
+      {
+        "token": "color.white",
+        "value": "#FFFFFF",
+        "usage": "白色背景与深色背景上的文字",
+        "appliesTo": [
+          "spliced.vertical.single-event",
+          "spliced.vertical.category-nav",
+          "spliced.horizontal.full-width.bordered-background",
+          "spliced.horizontal.with-sidebar.bordered-background",
+          "embedded.product-small",
+          "embedded.product-detail",
+          "embedded.product-full",
+          "embedded.product-standard"
+        ]
+      },
+      {
+        "token": "color.tag-border",
+        "value": "#EEEEEE",
+        "usage": "已核PC051801侧栏占位原件Gray5；本地旧Gray6并非EEE，不新增Navigation调用",
+        "appliesTo": [
+          "spliced.horizontal.with-sidebar.bordered-background"
+        ]
+      },
+      {
+        "token": "color.brand-red",
+        "value": "#C00000",
+        "usage": "当前来源支持的新增调用及真实原子资源",
+        "appliesTo": [
+          "embedded.product-full"
+        ]
+      },
+      {
+        "token": "color.hover-overlay",
+        "value": "rgba(25,25,26,0.2)",
+        "usage": "当前来源支持的新增调用及真实原子资源",
+        "appliesTo": [
+          "embedded.product-full"
+        ]
+      }
+    ],
+    "parentContext": {
+      "page-section--white": {
+        "resultingClass": "ds-card--bordered",
+        "appliesTo": [
+          "spliced-vertical"
+        ],
+        "reason": "竖向含图卡片仅文字区内部左/右/下描边；根与图片无描边，不将完整外框伪称on变体"
+      },
+      "page-section--gray": {
+        "resultingClass": "ds-card--no-border",
+        "appliesTo": [
+          "spliced-vertical"
+        ],
+        "reason": "灰色 section 内卡片用白底本身即可区分，不需要额外边框"
+      }
+    },
+    "variantSelectionRules": [
+      {
+        "condition": "多个并列内容（3-4列网格）",
+        "variant": "spliced.vertical",
+        "cssClass": "ds-card--vertical"
+      },
+      {
+        "condition": "单个内容占满 1200px 宽通栏展示",
+        "variant": "spliced.horizontal.full-width",
+        "cssClass": "ds-card--horizontal / ds-card--horizontal-reverse"
+      },
+      {
+        "condition": "1200px 通栏横向卡片需要白色文字背景半区与 1px 描边",
+        "variant": "spliced.horizontal.full-width.bordered-background",
+        "cssClass": "ds-card--horizontal / ds-card--horizontal-reverse + ds-card--horizontal-bordered"
+      },
+      {
+        "condition": "多个通栏卡片上下排列需交替方向",
+        "variant": "spliced.horizontal.full-width（图左文右/文左图右交替）",
+        "cssClass": "ds-card--horizontal / ds-card--horizontal-reverse"
+      },
+      {
+        "condition": "带侧边导航的图文展示",
+        "variant": "spliced.horizontal.with-sidebar",
+        "cssClass": "ds-card--horizontal-sidebar"
+      },
+      {
+        "condition": "带侧边导航的横向内容卡需要白色文字背景半区与 1px 描边",
+        "variant": "spliced.horizontal.with-sidebar.bordered-background",
+        "cssClass": "ds-card--horizontal-sidebar + ds-card--horizontal / ds-card--horizontal-reverse + ds-card--horizontal-bordered"
+      },
+      {
+        "condition": "搜索结果页的285px结果卡片需要产品图、标题、简短描述、Learn more及白/灰背景与悬停态",
+        "variant": "embedded.product-standard",
+        "cssClass": "ds-card--embedded-standard"
+      }
+    ],
+    "variantSelectionEdgeCases": [
+      {
+        "scenario": "两个并列的通栏内容（既不是1个也不是3-4个）",
+        "resolution": "按 spliced.vertical 处理——2列也算并列网格；单个内容通栏（full-width）只适用于恰好1个内容占满1200px的情况",
+        "confirmedBy": "AI 初判 + 人工核对时补充确认（决策表专项核对新增项，见 docs/component-contribution-guide.md 步骤2）"
+      },
+      {
+        "scenario": "内容既不是多卡片网格，也不需要占满1200px（比如占60%宽度的单个内容）",
+        "resolution": "灰色地带，现有4条规则均不覆盖。人工确认前不要让 AI 自行选择，必须先问用户",
+        "confirmedBy": "待补充——目前没有真实案例落地验证，先记录成已知缺口"
+      }
+    ],
+    "componentDependencies": [
+      {
+        "component": "TextButton",
+        "usage": "真实单事件及285px标准产品展示卡调用inline-black/M；普通多事件无TextButton。",
+        "slot": "link",
+        "requiredVariants": [
+          "inline-black"
+        ],
+        "implementationClasses": [
+          "ds-text-btn",
+          "ds-text-btn--inline",
+          "ds-text-btn--black",
+          "ds-text-btn--m",
+          "ds-text-btn--hover"
+        ],
+        "requiredSizes": [
+          {
+            "variant": "inline-black",
+            "size": "m"
+          }
+        ],
+        "appliesTo": [
+          "spliced.vertical.single-event",
+          "spliced.horizontal.full-width",
+          "spliced.horizontal.full-width.bordered-background",
+          "spliced.horizontal.with-sidebar",
+          "spliced.horizontal.with-sidebar.bordered-background",
+          "embedded.product-standard",
+          "spliced.horizontal.full-width.responsive",
+          "spliced.vertical.single-event.bordered"
+        ],
+        "sourceEvidence": {
+          "hostAdapterClasses": [
+            "ds-text-btn--expanded"
+          ],
+          "previewBoundary": "Existing Card disclosure state adapter, not an original TextButton library variant; canonical implementationClasses refer only to original TextButton preview structure. Adapter class remains in the real host Preview and registered TextButton CSS/state rules.",
+          "foldedHostCall": "历史本地折叠适配来源不足，已从原始Card展示撤下，保留归档；当前普通多事件不调用。"
+        }
+      },
+      {
+        "component": "Tag",
+        "slot": "badge",
+        "usage": "完整产品卡绿色New使用真实Tag原子；宿主仅定位，不复制样式。",
+        "requiredVariants": [
+          "semantic-new"
+        ],
+        "implementationClasses": [
+          "ds-tag",
+          "ds-tag--semantic",
+          "ds-tag--new",
+          "ds-tag--emphasis"
+        ],
+        "appliesTo": [
+          "embedded.product-full"
+        ]
+      },
+      {
+        "component": "Button",
+        "usage": "Button家族Cart产品卡片按钮；宿主只管理位置和业务事件。",
+        "slot": "actionButton",
+        "requiredVariants": [
+          "cart-product-card"
+        ],
+        "implementationClasses": [
+          "ds-cart",
+          "ds-cart--product-card",
+          "ds-cart__icon",
+          "ds-cart__text"
+        ],
+        "appliesTo": [
+          "embedded.product-small",
+          "embedded.product-full"
+        ],
+        "status": "source-verified-implemented-visual-pending"
+      },
+      {
+        "component": "List",
+        "usage": "当前Card正式预览中两个embedded.product-detail宿主真实调用用户允许旧库固定无序List12；不开放整个宿主自动调用。 通栏描边图左文右来源展示也调用同一List12，保留宿主四行；滚动及视觉待核，不开放自动调用。 已核镜像051833也保留四行真实调用，左右形态共2个通栏描边正式宿主。；PC051801侧边栏描边来源展示使用四行List12。；镜像PC051860单独核实并接入。；四种单事件上下结构来源展示各三行List12，12px上距由宿主管理。；定制服务器Default/Hover各四行List12。",
+        "slot": "bullets",
+        "requiredVariants": [
+          "unordered-12"
+        ],
+        "implementationClasses": [
+          "ds-list",
+          "ds-list--unordered-12",
+          "ds-list__unordered-item",
+          "ds-list__unordered-dot",
+          "ds-list__unordered-text"
+        ],
+        "appliesTo": [
+          "embedded.product-detail",
+          "spliced.horizontal.full-width.bordered-background",
+          "spliced.horizontal.with-sidebar.bordered-background",
+          "spliced.vertical.single-event",
+          "embedded.product-full"
+        ],
+        "sourceEvidence": {
+          "fixedSource": "components/sources/list/card-unordered12-fixed-source-1014.json",
+          "hostSource": "components/sources/card/embedded-detail-source-1014.json",
+          "borderedHostSource": "components/sources/card/layout-one-list-host-review-1015.json",
+          "reverseBorderedHostSource": "components/sources/card/layout-one-reverse-list-host-review-1015.json",
+          "borderedSidebarSource": "components/sources/card/bordered-sidebar-list-host-review-1015.json",
+          "reverseBorderedSidebarSource": "components/sources/card/reverse-bordered-sidebar-list-host-review-1015.json",
+          "verticalHostSource": "components/sources/card/vertical-list-host-review-1015.json",
+          "serverProductHostSource": "components/sources/card/server-product-list-host-review-1015.json"
+        }
+      },
+      {
+        "component": "List",
+        "usage": "当前Card正式预览中两个spliced.horizontal.with-sidebar宿主真实调用用户允许旧库固定无序List14；不开放整个宿主自动调用。；PC052289无描边通栏左图右文亦使用四行真实List14，仅正式来源展示。；镜像PC052191单独来源核实并接入。",
+        "slot": "bullets",
+        "requiredVariants": [
+          "unordered-14"
+        ],
+        "implementationClasses": [
+          "ds-list",
+          "ds-list--unordered-14",
+          "ds-list__unordered-item",
+          "ds-list__unordered-dot",
+          "ds-list__unordered-text"
+        ],
+        "appliesTo": [
+          "spliced.horizontal.with-sidebar",
+          "spliced.horizontal.full-width"
+        ],
+        "sourceEvidence": {
+          "fixedSource": "components/sources/list/card-unordered14-fixed-source-1014.json",
+          "hostSource": "components/sources/card/sidebar-dependency-source-1014.json",
+          "unborderedHostSource": "components/sources/card/unbordered-list-host-review-1015.json",
+          "reverseUnborderedHostSource": "components/sources/card/reverse-unbordered-list-host-review-1015.json"
+        }
+      },
+      {
+        "component": "Tag",
+        "slot": "productAttributes",
+        "usage": "当前产品完整卡六个属性行真实调用22px常规/Customized/颜色原子；宿主仅选中协调/+N业务事件，不覆盖原子样式。仅有限原件属性槽，不开放整个Card产品完整卡自动生成。；原有+4浮层三个真实Tag原子亦已接入。",
+        "requiredVariants": [
+          "product-regular-small",
+          "product-custom-small",
+          "product-color-small"
+        ],
+        "implementationClasses": [
+          "ds-tag",
+          "ds-tag--product-small",
+          "ds-tag--product-custom",
+          "ds-tag--product-color",
+          "ds-tag__product-label",
+          "ds-tag__product-chip"
+        ],
+        "appliesTo": [
+          "embedded.product-full"
+        ],
+        "sourceEvidence": {
+          "hostSource": "components/sources/tag/card-product-host-review-1014.json",
+          "identities": "components/sources/tag/card-product-host-identities-1014.json",
+          "colorDefault": "components/sources/tag/card-product-color-default-host-1014.json",
+          "adapter": "+N为来源常规Tag文本，宿主data-tag-action=host只调用已有浮层；浮层内部旧标签不冒称本批已复核。",
+          "countPopup": "components/sources/tag/card-count-popup-review-1015.json"
+        }
+      },
+      {
+        "component": "Tag",
+        "slot": "metadata",
+        "usage": "四个上下结构单事件正式来源宿主调用已投喂metadata与Featured原子；仅槽位装配，完整宿主视觉仍待。；Education单值属性亦为真实017293原子调用。",
+        "requiredVariants": [
+          "metadata-single",
+          "metadata",
+          "featured"
+        ],
+        "implementationClasses": [
+          "ds-tag-meta",
+          "ds-tag-meta__divider",
+          "ds-tag",
+          "ds-tag--featured",
+          "ds-tag__icon",
+          "ds-tag__label",
+          "ds-tag-meta--single"
+        ],
+        "appliesTo": [
+          "spliced.vertical.single-event"
+        ],
+        "sourceEvidence": {
+          "host": "components/sources/card/vertical-list-host-review-1015.json",
+          "atom": "components/sources/tag/card-metadata-featured-review-1015.json",
+          "singleMetadata": "components/sources/tag/card-single-metadata-review-1015.json"
+        }
+      },
+      {
+        "component": "Tag",
+        "part": "cardGraySource",
+        "slot": "grayLabels",
+        "usage": "仅四个原件宿主中8枚灰色Tag的真实无Info适配；不新增Tag原子变体或AI调用。",
+        "requiredVariants": [
+          "semantic"
+        ],
+        "implementationClasses": [
+          "ds-tag",
+          "ds-tag--semantic",
+          "ds-tag--neutral",
+          "ds-tag__label"
+        ],
+        "appliesTo": [
+          "spliced.vertical.single-event"
+        ],
+        "sourceEvidence": {
+          "adaptation": "components/sources/tag/card-gray-label-adaptation-1015.json"
+        }
+      },
+      {
+        "component": "Tag",
+        "slot": "compatibility",
+        "appliesTo": [
+          "embedded.product-full"
+        ],
+        "requiredVariants": [
+          "product-regular-small",
+          "product-custom-small"
+        ],
+        "implementationClasses": [
+          "ds-tag",
+          "ds-tag__product-label"
+        ],
+        "usage": "真实兼容性Tag组；不以普通span模仿。"
+      },
+      {
+        "component": "MenuNavigation",
+        "part": "card-sidebar-288",
+        "slot": "sidebar",
+        "requiredVariants": [
+          "single-level"
+        ],
+        "implementationClasses": [
+          "ds-menu-navigation",
+          "ds-menu-navigation--single-level",
+          "ds-menu-navigation--width-288",
+          "ds-menu-navigation__item",
+          "ds-menu-navigation__item-label"
+        ],
+        "appliesTo": [
+          "spliced.horizontal.with-sidebar"
+        ],
+        "usage": "PC原件sidebar288，真实Menu子部件由原同步入口维护。"
+      },
+      {
+        "component": "MenuNavigation",
+        "part": "card-sidebar-288",
+        "slot": "sidebar",
+        "requiredVariants": [
+          "single-level"
+        ],
+        "implementationClasses": [
+          "ds-menu-navigation",
+          "ds-menu-navigation--single-level",
+          "ds-menu-navigation--width-288",
+          "ds-menu-navigation__item",
+          "ds-menu-navigation__item-label"
+        ],
+        "appliesTo": [
+          "spliced.horizontal.with-sidebar.bordered-background"
+        ],
+        "usage": "PC原件sidebar288，真实Menu子部件由原同步入口维护。"
+      }
+    ],
+    "iconDependencies": [
+      {
+        "icon": "icon-bullet",
+        "usage": "要点列表圆点",
+        "required": false,
+        "appliesTo": [
+          "spliced.vertical.single-event",
+          "spliced.horizontal.full-width",
+          "spliced.horizontal.with-sidebar",
+          "spliced.horizontal.full-width.bordered-background",
+          "spliced.horizontal.with-sidebar.bordered-background"
+        ]
+      },
+      {
+        "icon": "icon-featured-star",
+        "usage": "FEATURED 星标",
+        "required": false,
+        "appliesTo": [
+          "spliced.vertical.single-event"
+        ]
+      },
+      {
+        "icon": "icon-cart-add",
+        "usage": "Add 购物车按钮（嵌入式产品卡片）",
+        "required": false,
+        "appliesTo": [
+          "embedded.product-full"
+        ]
+      }
+    ],
+    "mutuallyExclusiveWith": [
+      {
+        "component": "content-banner-dark",
+        "reason": "图左文右/文左图右的单内容通栏展示必须用 ds-card--horizontal(-reverse)，禁止手搓深色 content-banner 来实现图文并排"
+      }
+    ],
+    "siblingRule": {
+      "cls": "ds-card__link",
+      "sibling": "ds-card__tags",
+      "sharedPattern": "margin-top: auto",
+      "reason": "与 ds-icon-card__link 是同一居底对齐模式的三处姐妹实现，改一处要连带检查另外两处（components.css 里三处都各自定义，不共用一条规则）"
+    },
+    "notes": [
+      "普",
+      "通",
+      "横",
+      "向",
+      "卡",
+      "片",
+      "（",
+      "s",
+      "p",
+      "l",
+      "i",
+      "c",
+      "e",
+      "d",
+      ".",
+      "h",
+      "o",
+      "r",
+      "i",
+      "z",
+      "o",
+      "n",
+      "t",
+      "a",
+      "l",
+      ".",
+      "f",
+      "u",
+      "l",
+      "l",
+      "-",
+      "w",
+      "i",
+      "d",
+      "t",
+      "h",
+      " ",
+      "/",
+      " ",
+      "w",
+      "i",
+      "t",
+      "h",
+      "-",
+      "s",
+      "i",
+      "d",
+      "e",
+      "b",
+      "a",
+      "r",
+      "）",
+      "保",
+      "持",
+      "无",
+      "边",
+      "框",
+      "，",
+      "禁",
+      "止",
+      "使",
+      "用",
+      "通",
+      "用",
+      " ",
+      "d",
+      "s",
+      "-",
+      "c",
+      "a",
+      "r",
+      "d",
+      "-",
+      "-",
+      "b",
+      "o",
+      "r",
+      "d",
+      "e",
+      "r",
+      "e",
+      "d",
+      "/",
+      "-",
+      "f",
+      "u",
+      "l",
+      "l",
+      "。",
+      "只",
+      "有",
+      "两",
+      "个",
+      "正",
+      "式",
+      "描",
+      "边",
+      "/",
+      "背",
+      "景",
+      "变",
+      "体",
+      "可",
+      "追",
+      "加",
+      " ",
+      "d",
+      "s",
+      "-",
+      "c",
+      "a",
+      "r",
+      "d",
+      "-",
+      "-",
+      "h",
+      "o",
+      "r",
+      "i",
+      "z",
+      "o",
+      "n",
+      "t",
+      "a",
+      "l",
+      "-",
+      "b",
+      "o",
+      "r",
+      "d",
+      "e",
+      "r",
+      "e",
+      "d",
+      "，",
+      "且",
+      "描",
+      "边",
+      "只",
+      "包",
+      "围",
+      "白",
+      "色",
+      "文",
+      "字",
+      "半",
+      "区",
+      "，",
+      "不",
+      "包",
+      "围",
+      "图",
+      "片",
+      "，",
+      "与",
+      " ",
+      "s",
+      "e",
+      "c",
+      "t",
+      "i",
+      "o",
+      "n",
+      " ",
+      "背",
+      "景",
+      "色",
+      "无",
+      "关",
+      "。",
+      "所",
+      "有",
+      "横",
+      "向",
+      "图",
+      "文",
+      "卡",
+      "片",
+      "的",
+      "操",
+      "作",
+      "入",
+      "口",
+      "统",
+      "一",
+      "使",
+      "用",
+      "黑",
+      "色",
+      " ",
+      "T",
+      "e",
+      "x",
+      "t",
+      "B",
+      "u",
+      "t",
+      "t",
+      "o",
+      "n",
+      "，",
+      "不",
+      "使",
+      "用",
+      "实",
+      "心",
+      "或",
+      "描",
+      "边",
+      " ",
+      "B",
+      "u",
+      "t",
+      "t",
+      "o",
+      "n",
+      "；",
+      "嵌",
+      "入",
+      "式",
+      "产",
+      "品",
+      "卡",
+      "片",
+      "的",
+      " ",
+      "A",
+      "d",
+      "d",
+      " ",
+      "操",
+      "作",
+      "才",
+      "使",
+      "用",
+      " ",
+      "f",
+      "i",
+      "l",
+      "l",
+      "e",
+      "d",
+      "-",
+      "r",
+      "e",
+      "d",
+      " ",
+      "B",
+      "u",
+      "t",
+      "t",
+      "o",
+      "n",
+      "。",
+      "多",
+      "事",
+      "件",
+      "折",
+      "叠",
+      "状",
+      "态",
+      "中",
+      "的",
+      " ",
+      "L",
+      "e",
+      "a",
+      "r",
+      "n",
+      " ",
+      "m",
+      "o",
+      "r",
+      "e",
+      " ",
+      "是",
+      "控",
+      "制",
+      "当",
+      "前",
+      "卡",
+      "片",
+      "附",
+      "属",
+      "面",
+      "板",
+      "的",
+      " ",
+      "T",
+      "e",
+      "x",
+      "t",
+      "B",
+      "u",
+      "t",
+      "t",
+      "o",
+      "n",
+      "：",
+      "固",
+      "定",
+      "使",
+      "用",
+      " ",
+      "i",
+      "n",
+      "l",
+      "i",
+      "n",
+      "e",
+      "-",
+      "b",
+      "l",
+      "a",
+      "c",
+      "k",
+      " ",
+      "/",
+      " ",
+      "M",
+      "；",
+      "面",
+      "板",
+      "可",
+      "见",
+      "时",
+      "追",
+      "加",
+      " ",
+      "h",
+      "o",
+      "v",
+      "e",
+      "r",
+      " ",
+      "与",
+      " ",
+      "e",
+      "x",
+      "p",
+      "a",
+      "n",
+      "d",
+      "e",
+      "d",
+      " ",
+      "状",
+      "态",
+      "，",
+      "文",
+      "字",
+      "显",
+      "示",
+      "下",
+      "划",
+      "线",
+      "，",
+      "i",
+      "c",
+      "o",
+      "n",
+      "-",
+      "c",
+      "h",
+      "e",
+      "v",
+      "r",
+      "o",
+      "n",
+      "-",
+      "d",
+      "o",
+      "w",
+      "n",
+      " ",
+      "旋",
+      "转",
+      " ",
+      "1",
+      "8",
+      "0",
+      "°",
+      "朝",
+      "上",
+      "，",
+      "并",
+      "同",
+      "步",
+      " ",
+      "a",
+      "r",
+      "i",
+      "a",
+      "-",
+      "e",
+      "x",
+      "p",
+      "a",
+      "n",
+      "d",
+      "e",
+      "d",
+      " ",
+      "与",
+      " ",
+      "a",
+      "r",
+      "i",
+      "a",
+      "-",
+      "c",
+      "o",
+      "n",
+      "t",
+      "r",
+      "o",
+      "l",
+      "s",
+      "。"
+    ],
+    "enforcementStatus": {
+      "colorDependencies.tokens-exist": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 2b：colorDependencies 引用的 color.* token 必须存在于 token-specs/colors.json（缺失即 error）；token 为 / 表示无对应 token 的白名单裸值；双源值一致由 validate-tokens.js 全量保证；Guard C 保证声明了就必须有颜色依赖表"
+      },
+      "colorDependencies.css-uses-var": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 2c：切出组件样式段，校验用到的 var(--color-*) 都在 colorDependencies 声明过，且无未声明裸色值（box-shadow/注释除外），违反即 error —— 保证颜色映射闭环"
+      },
+      "radiusDependencies.tokens-exist": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 3a：radiusDependencies 引用的 border-radius.* token 必须存在于 token-specs/border-radius.json（缺失即 error）；token 为 / 表示白名单裸值；Guard D 保证声明了就必须有圆角依赖表"
+      },
+      "radiusDependencies.css-uses-var": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 3b：校验 border-radius 用到的 var(--border-radius-*) 都在 radiusDependencies 声明过，且无未声明裸圆角值（0 除外），违反即 error —— 保证圆角映射闭环"
+      },
+      "fontSizeDependencies.tokens-exist": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 4a：fontSizeDependencies 引用的 typography.font-size-* token 必须存在于 token-specs/typography.json（缺失即 error）；token 为 / 表示无对应正式 token 的白名单值；Guard E 保证声明了就必须有字号依赖表"
+      },
+      "fontSizeDependencies.css-uses-var": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 4b：校验 font-size 用到的 var(--font-size-*) 都在 fontSizeDependencies 声明过，且无未声明裸字号值，违反即 error —— 保证字号映射闭环"
+      },
+      "shadowDependencies.tokens-exist": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 5a：shadowDependencies 引用的 shadow.* token 必须存在于 token-specs/shadows.json（缺失即 error）；token 为 / 表示无对应 token 的白名单值；Guard F 保证声明了就必须有投影依赖表"
+      },
+      "shadowDependencies.css-uses-var": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 5b：校验 box-shadow 用到的 var(--shadow-*) 都在 shadowDependencies 声明过，且无未声明裸投影值（none 除外），违反即 error —— 保证投影映射闭环"
+      },
+      "horizontalCardNoBorder": {
+        "enforced": true,
+        "mechanism": "validate.js: checkHorizontalCardBorder (HCARD_BORDER)；普通横向卡片继续禁止 ds-card--bordered/-full，仅放行与横向基础类同时使用的 ds-card--horizontal-bordered 专用修饰符"
+      },
+      "parentContext.page-section--white/gray.resultingClass": {
+        "enforced": true,
+        "mechanism": "verify.js: pageProbe CARD_BORDER_CTX（2026-06-30 新增，用 closest('.page-section--white, .page-section--gray') 找最近父容器，真实 DOM 判断，已用 fixture 验证；横向卡片明确排除，不受此规则约束）"
+      },
+      "mutuallyExclusiveWith.content-banner-dark": {
+        "enforced": false,
+        "mechanism": "无",
+        "note": "组件选型层面的互斥关系，机械检查很难判断'这块该不该是卡片'"
+      },
+      "siblingRule.ds-card__link-margin-top-auto": {
+        "enforced": true,
+        "mechanism": "verify.js: pageProbe CARD_ALIGN（几何断言，检查同行卡片尾部元素 bottom Y 是否一致，不是直接检查 CSS 属性）"
+      },
+      "componentDependencies.implementationClasses-evidence": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 8（证据链，2026-07-16 新增）：componentDependencies[*].implementationClasses 里声明的每个 class，必须在宿主组件自己的 preview HTML 的 class 属性里真实出现，缺证据即 error。把'依赖用了哪几个 class'从 AI 单方声明升级为文件有证据。",
+        "note": "只覆盖'声明的 class 是否真实存在于本组件 preview'这一机械事实；'该不该依赖某组件'仍是语义选型，靠人核对。TextButton(inline-black) 与 Button(filled-red) 两条依赖均已声明 implementationClasses。"
+      },
+      "spacingDependencies.tokens-and-css-closure": {
+        "enforced": true,
+        "mechanism": "check-contracts.js: spacingDependencies token/value/selector/property 与组件 CSS 双向闭环校验"
+      },
+      "borderDependencies.tokens-and-css-closure": {
+        "enforced": true,
+        "mechanism": "check-contracts.js: borderDependencies token/value/aspect/selector/property 与组件 CSS 双向闭环校验"
+      },
+      "fontWeightDependencies.tokens-and-css-closure": {
+        "enforced": true,
+        "mechanism": "check-contracts.js: fontWeightDependencies token/value/selector/property 与组件 CSS 双向闭环校验；仅允许 Regular 400 / SemiBold 600，禁止裸字重值"
+      },
+      "typographyDependencies.size-weight-pairing": {
+        "enforced": true,
+        "mechanism": "check-contracts.js: typographyDependencies.token 必须引用 token-specs/typography.json 中真实 composite typography token；该 token 同时锁定 fontSize、lineHeight、fontWeight，并核对底层字号/字重 primitive 与 CSS 证据，依赖汇总表只输出一个 Token 链接"
+      }
+    },
+    "spacingDependencies": [
+      {
+        "token": "spacing.40",
+        "value": "40px",
+        "usage": "gap：.ds-card--horizontal、.ds-card--horizontal-reverse、.ds-card--horizontal-sidebar .ds-card__content-area",
+        "properties": [
+          "gap"
+        ],
+        "selectors": [
+          ".ds-card--horizontal",
+          ".ds-card--horizontal-reverse",
+          ".ds-card--horizontal-sidebar .ds-card__content-area"
+        ],
+        "appliesTo": [
+          "spliced.horizontal.full-width",
+          "spliced.horizontal.with-sidebar"
+        ]
+      },
+      {
+        "token": "spacing.20",
+        "value": "20px",
+        "usage": "padding：.ds-card__body、.ds-card__fold-panel、.ds-card--embedded-small、.ds-card--embedded-detail、.ds-card--embedded-full、.ds-card--embedded-standard",
+        "properties": [
+          "padding"
+        ],
+        "selectors": [
+          ".ds-card__body",
+          ".ds-card__fold-panel",
+          ".ds-card--embedded-small",
+          ".ds-card--embedded-detail",
+          ".ds-card--embedded-full",
+          ".ds-card--embedded-standard"
+        ],
+        "appliesTo": [
+          "spliced.vertical.single-event",
+          "spliced.vertical.category-nav",
+          "spliced.horizontal.full-width",
+          "spliced.horizontal.with-sidebar",
+          "spliced.horizontal.full-width.bordered-background",
+          "spliced.horizontal.with-sidebar.bordered-background",
+          "embedded.product-small",
+          "embedded.product-detail",
+          "embedded.product-full",
+          "embedded.product-standard"
+        ]
+      },
+      {
+        "token": "spacing.md",
+        "value": "12px",
+        "usage": "padding-bottom / padding-top / gap：.ds-card__meta、横向 Card 标题→正文、.ds-card__bullets、.ds-card__info、.ds-card__link、.ds-card__sub-links、.ds-card--embedded-small .ds-card__product-body、.ds-card--embedded-detail、.ds-card--embedded-detail .ds-card__product-body、.ds-card--embedded-full .ds-card__product-body",
+        "properties": [
+          "padding-bottom",
+          "padding-top",
+          "gap"
+        ],
+        "selectors": [
+          ".ds-card__meta",
+          ".ds-card--horizontal .ds-card__desc",
+          ".ds-card--horizontal-reverse .ds-card__desc",
+          ".ds-card--horizontal-bordered .ds-card__desc",
+          ".ds-card__bullets",
+          ".ds-card__info",
+          ".ds-card__link",
+          ".ds-card__sub-links",
+          ".ds-card--embedded-small .ds-card__product-body",
+          ".ds-card--embedded-detail",
+          ".ds-card--embedded-detail .ds-card__product-body",
+          ".ds-card--embedded-full .ds-card__product-body"
+        ],
+        "appliesTo": [
+          "spliced.vertical.single-event",
+          "spliced.vertical.category-nav",
+          "spliced.horizontal.full-width",
+          "spliced.horizontal.with-sidebar",
+          "spliced.horizontal.full-width.bordered-background",
+          "spliced.horizontal.with-sidebar.bordered-background",
+          "embedded.product-small",
+          "embedded.product-detail",
+          "embedded.product-full"
+        ]
+      },
+      {
+        "token": "spacing.xs",
+        "value": "4px",
+        "usage": "gap / padding-top / padding：.ds-card__fold-stack、.ds-card__featured、.ds-card__desc、.ds-card__bullets、.ds-card__tag、.ds-card__badge、.ds-card__add-btn、.ds-card__compat-tags、.ds-card__color-tags、.ds-card__spec-row、.ds-card--embedded-standard .ds-card__product-description",
+        "properties": [
+          "gap",
+          "padding-top",
+          "padding"
+        ],
+        "selectors": [
+          ".ds-card__fold-stack",
+          ".ds-card__featured",
+          ".ds-card__desc",
+          ".ds-card__bullets",
+          ".ds-card__tag",
+          ".ds-card__badge",
+          ".ds-card__add-btn",
+          ".ds-card__compat-tags",
+          ".ds-card__color-tags",
+          ".ds-card__spec-row",
+          ".ds-card--embedded-standard .ds-card__product-description"
+        ],
+        "appliesTo": [
+          "spliced.vertical.single-event",
+          "spliced.vertical.category-nav",
+          "spliced.horizontal.full-width",
+          "spliced.horizontal.with-sidebar",
+          "spliced.horizontal.full-width.bordered-background",
+          "spliced.horizontal.with-sidebar.bordered-background",
+          "embedded.product-full",
+          "embedded.product-standard"
+        ]
+      },
+      {
+        "token": "spacing.sm",
+        "value": "8px",
+        "usage": "gap / padding：.ds-card__bullet-item、.ds-card__info、.ds-card__tags、.ds-card__sub-links、.ds-card--embedded-small、.ds-card__compat-tag",
+        "properties": [
+          "gap",
+          "padding"
+        ],
+        "selectors": [
+          ".ds-card__bullet-item",
+          ".ds-card__info",
+          ".ds-card__tags",
+          ".ds-card__sub-links",
+          ".ds-card--embedded-small",
+          ".ds-card__compat-tag",
+          ".ds-card[data-card-source-layout-one-list=\"official\"] .ds-card__content-stack"
+        ],
+        "appliesTo": [
+          "spliced.vertical.single-event",
+          "spliced.vertical.category-nav",
+          "spliced.horizontal.full-width",
+          "spliced.horizontal.with-sidebar",
+          "spliced.horizontal.full-width.bordered-background",
+          "spliced.horizontal.with-sidebar.bordered-background",
+          "embedded.product-small",
+          "embedded.product-full"
+        ]
+      },
+      {
+        "token": "spacing.lg",
+        "value": "16px",
+        "usage": "padding-top / gap：.ds-card__tags、.ds-card--horizontal .ds-card__link、.ds-card--horizontal-reverse .ds-card__link、.ds-card--horizontal-bordered .ds-card__link、.ds-card--embedded-full、.ds-card--embedded-standard、.ds-card__product-link",
+        "properties": [
+          "padding-top",
+          "gap"
+        ],
+        "selectors": [
+          ".ds-card__tags",
+          ".ds-card--horizontal .ds-card__link",
+          ".ds-card--horizontal-reverse .ds-card__link",
+          ".ds-card--horizontal-bordered .ds-card__link",
+          ".ds-card--embedded-full",
+          ".ds-card--embedded-standard",
+          ".ds-card__product-link"
+        ],
+        "appliesTo": [
+          "spliced.vertical.single-event",
+          "spliced.horizontal.full-width",
+          "spliced.horizontal.full-width.bordered-background",
+          "spliced.horizontal.with-sidebar.bordered-background",
+          "embedded.product-full",
+          "embedded.product-standard"
+        ]
+      },
+      {
+        "token": "spacing.2",
+        "value": "2px",
+        "usage": "padding：.ds-card__tag、.ds-card__compat-tag",
+        "properties": [
+          "padding"
+        ],
+        "selectors": [
+          ".ds-card__tag",
+          ".ds-card__compat-tag"
+        ],
+        "appliesTo": [
+          "spliced.vertical.single-event",
+          "embedded.product-full"
+        ]
+      },
+      {
+        "token": "spacing.2xl",
+        "value": "32px",
+        "usage": "gap：.ds-card--horizontal-sidebar",
+        "properties": [
+          "gap"
+        ],
+        "selectors": [
+          ".ds-card--horizontal-sidebar"
+        ],
+        "appliesTo": [
+          "spliced.horizontal.with-sidebar",
+          "spliced.horizontal.with-sidebar.bordered-background"
+        ]
+      },
+      {
+        "token": "spacing.xl",
+        "value": "24px",
+        "usage": "padding：.ds-card--embedded-full",
+        "properties": [
+          "padding"
+        ],
+        "selectors": [
+          ".ds-card--embedded-full"
+        ],
+        "appliesTo": [
+          "embedded.product-full"
+        ]
+      },
+      {
+        "token": "spacing.6",
+        "value": "6px",
+        "usage": "gap：.ds-card__stats",
+        "properties": [
+          "gap"
+        ],
+        "selectors": [
+          ".ds-card__stats"
+        ],
+        "appliesTo": [
+          "embedded.product-full"
+        ]
+      },
+      {
+        "token": "spacing.md",
+        "value": "12px",
+        "usage": "四种原件单事件列表槽上距；不覆盖List原子padding",
+        "appliesTo": [
+          "spliced.vertical.single-event"
+        ],
+        "selectors": [
+          ".ds-card[data-card-source-vertical-list=\"official\"] .ds-card__list-slot"
+        ],
+        "properties": [
+          "padding-top"
+        ]
+      }
+    ],
+    "borderDependencies": [
+      {
+        "token": "border.style.none",
+        "value": "none",
+        "usage": "border / border-top：.ds-card--no-border、.ds-card--bordered、.ds-card--vertical.ds-card--bordered、.ds-card--vertical.ds-card--bordered .ds-card__body",
+        "aspect": "style",
+        "properties": [
+          "border",
+          "border-top"
+        ],
+        "selectors": [
+          ".ds-card--no-border",
+          ".ds-card--bordered",
+          ".ds-card--vertical.ds-card--bordered",
+          ".ds-card--vertical.ds-card--bordered .ds-card__body"
+        ],
+        "appliesTo": [
+          "spliced.vertical.single-event",
+          "spliced.vertical.category-nav"
+        ]
+      },
+      {
+        "token": "border.width.default",
+        "value": "1px",
+        "usage": "border：.ds-card--bordered、.ds-card--bordered-full、.ds-card--vertical.ds-card--bordered .ds-card__body、.ds-card--embedded-detail、.ds-card__compat-tag、.ds-card__compat-tag--active、.ds-card__color-swatch",
+        "aspect": "width",
+        "properties": [
+          "border"
+        ],
+        "selectors": [
+          ".ds-card--bordered",
+          ".ds-card--bordered-full",
+          ".ds-card--vertical.ds-card--bordered .ds-card__body",
+          ".ds-card--embedded-detail",
+          ".ds-card__compat-tag",
+          ".ds-card__compat-tag--active",
+          ".ds-card__color-swatch"
+        ],
+        "appliesTo": [
+          "spliced.vertical.single-event",
+          "spliced.vertical.category-nav",
+          "embedded.product-detail",
+          "embedded.product-full"
+        ]
+      },
+      {
+        "token": "border.style.default",
+        "value": "solid",
+        "usage": "border：.ds-card--bordered、.ds-card--bordered-full、.ds-card--vertical.ds-card--bordered .ds-card__body、.ds-card--embedded-detail、.ds-card__compat-tag、.ds-card__compat-tag--active、.ds-card__color-swatch、.ds-card__color-swatch--active",
+        "aspect": "style",
+        "properties": [
+          "border"
+        ],
+        "selectors": [
+          ".ds-card--bordered",
+          ".ds-card--bordered-full",
+          ".ds-card--vertical.ds-card--bordered .ds-card__body",
+          ".ds-card--embedded-detail",
+          ".ds-card__compat-tag",
+          ".ds-card__compat-tag--active",
+          ".ds-card__color-swatch",
+          ".ds-card__color-swatch--active"
+        ],
+        "appliesTo": [
+          "spliced.vertical.single-event",
+          "spliced.vertical.category-nav",
+          "embedded.product-detail",
+          "embedded.product-full"
+        ]
+      },
+      {
+        "token": "border.color.default",
+        "value": "var(--color-gray-5)",
+        "usage": "border：.ds-card--bordered、.ds-card--bordered-full、.ds-card--vertical.ds-card--bordered .ds-card__body、.ds-card--embedded-detail",
+        "aspect": "color",
+        "properties": [
+          "border"
+        ],
+        "selectors": [
+          ".ds-card--bordered",
+          ".ds-card--bordered-full",
+          ".ds-card--vertical.ds-card--bordered .ds-card__body",
+          ".ds-card--embedded-detail"
+        ],
+        "appliesTo": [
+          "spliced.vertical.single-event",
+          "spliced.vertical.category-nav",
+          "embedded.product-detail"
+        ]
+      },
+      {
+        "token": "border.width.default",
+        "value": "1px",
+        "usage": "专用横向描边/背景变体文字半区描边",
+        "aspect": "width",
+        "properties": [
+          "border",
+          "border-left"
+        ],
+        "selectors": [
+          ".ds-card--horizontal-bordered .ds-card__body",
+          ".ds-card--horizontal-reverse.ds-card--horizontal-bordered .ds-card__body"
+        ],
+        "appliesTo": [
+          "spliced.horizontal.full-width.bordered-background",
+          "spliced.horizontal.with-sidebar.bordered-background"
+        ]
+      },
+      {
+        "token": "border.style.default",
+        "value": "solid",
+        "usage": "专用横向描边/背景变体文字半区描边",
+        "aspect": "style",
+        "properties": [
+          "border",
+          "border-left"
+        ],
+        "selectors": [
+          ".ds-card--horizontal-bordered .ds-card__body",
+          ".ds-card--horizontal-reverse.ds-card--horizontal-bordered .ds-card__body"
+        ],
+        "appliesTo": [
+          "spliced.horizontal.full-width.bordered-background",
+          "spliced.horizontal.with-sidebar.bordered-background"
+        ]
+      },
+      {
+        "token": "border.color.default",
+        "value": "var(--color-gray-5)",
+        "usage": "专用横向描边/背景变体文字半区描边",
+        "aspect": "color",
+        "properties": [
+          "border",
+          "border-left"
+        ],
+        "selectors": [
+          ".ds-card--horizontal-bordered .ds-card__body",
+          ".ds-card--horizontal-reverse.ds-card--horizontal-bordered .ds-card__body"
+        ],
+        "appliesTo": [
+          "spliced.horizontal.full-width.bordered-background",
+          "spliced.horizontal.with-sidebar.bordered-background"
+        ]
+      },
+      {
+        "token": "border.style.none",
+        "value": "none",
+        "usage": "专用横向描边/背景变体移除图片接缝侧描边；移动端移除顶部接缝描边",
+        "aspect": "style",
+        "properties": [
+          "border-left",
+          "border-right",
+          "border-top"
+        ],
+        "selectors": [
+          ".ds-card--horizontal-bordered .ds-card__body",
+          ".ds-card--horizontal-reverse.ds-card--horizontal-bordered .ds-card__body"
+        ],
+        "appliesTo": [
+          "spliced.horizontal.full-width.bordered-background",
+          "spliced.horizontal.with-sidebar.bordered-background"
+        ]
+      },
+      {
+        "token": "border.color.subtle",
+        "value": "var(--color-gray-6)",
+        "usage": "border / border-color：.ds-card__compat-tag、.ds-card__compat-tag--more、.ds-card__color-swatch",
+        "aspect": "color",
+        "properties": [
+          "border",
+          "border-color"
+        ],
+        "selectors": [
+          ".ds-card__compat-tag",
+          ".ds-card__compat-tag--more",
+          ".ds-card__color-swatch"
+        ],
+        "appliesTo": [
+          "embedded.product-full"
+        ]
+      },
+      {
+        "token": "border.color.emphasis",
+        "value": "var(--color-gray-1)",
+        "usage": "border：.ds-card__compat-tag--active、.ds-card__color-swatch--active",
+        "aspect": "color",
+        "properties": [
+          "border"
+        ],
+        "selectors": [
+          ".ds-card__compat-tag--active",
+          ".ds-card__color-swatch--active"
+        ],
+        "appliesTo": [
+          "embedded.product-full"
+        ]
+      },
+      {
+        "token": "border.width.strong",
+        "value": "2px",
+        "usage": "border：.ds-card__color-swatch--active",
+        "aspect": "width",
+        "properties": [
+          "border"
+        ],
+        "selectors": [
+          ".ds-card__color-swatch--active"
+        ],
+        "appliesTo": [
+          "embedded.product-full"
+        ]
+      },
+      {
+        "token": "border.color.tag",
+        "value": "var(--color-tag-border)",
+        "usage": "当前真实Tag子组件资源的内描边依赖；Card不覆盖原子样式",
+        "aspect": "color",
+        "appliesTo": [
+          "embedded.product-full"
+        ]
+      },
+      {
+        "token": "border.color.focus",
+        "value": "var(--color-blue)",
+        "usage": "当前真实Tag子组件资源的内描边依赖；Card不覆盖原子样式",
+        "aspect": "color",
+        "appliesTo": [
+          "embedded.product-full"
+        ]
+      }
+    ],
+    "hardRules": [
+      {
+        "title": "嵌入式标准产品卡片仅用于搜索结果页",
+        "ruleContent": "<strong><code>embedded.product-standard</code> 仅允许用于搜索结果页，普通页面不得使用。</strong>普通页面的图上文下卡片优先核对 <code>spliced.vertical.single-event</code> 的契约与 Preview；只有参考内容能够填入其必需区域时才使用，不得编造内容或删减组件结构。",
+        "aiParse": "本地组件映射选择 embedded.product-standard 前，必须有页面为搜索结果页的可见证据并在本地模块映射中说明；普通页面优先核对 spliced.vertical.single-event，内容不适配时继续映射其他真实变体。",
+        "enforcement": "本地组件映射与实际渲染核对：非搜索结果页出现 embedded.product-standard 即为选型错误；不得仅凭产品图、标题、描述和 Learn more 四个字段放行。当前未配置自动检查脚本。"
+      },
+      {
+        "title": "卡片边框 ↔ Section 背景色",
+        "description": "AI 生成页面时必须遵守的强制规则。左边是描述原文，右边是 AI 解析后写入 <code>card.json</code> 的字段值。",
+        "ruleContent": "<strong>卡片在白底时，必须要有描边；在灰底时，不能有描边。</strong>多个通栏卡片上下排列时，图左文右 / 文左图右要交替。",
+        "aiParse": "relations.parentContext[\n  \"page-section--white\"\n].resultingClass\n  = \"ds-card--bordered\"\n\nrelations.parentContext[\n  \"page-section--gray\"\n].resultingClass\n  = \"ds-card--no-border\"",
+        "enforcement": "强制规则，AI 生成页面时自动执行检查（<code>verify.js: CARD_BORDER_CTX</code>），违反直接判 <strong style=\"color:#C00000;\">error</strong>。"
+      },
+      {
+        "title": "横向图文卡片的操作入口统一使用黑色 TextButton",
+        "description": "AI 生成页面时必须遵守。左边是描述原文，右边是 AI 解析后写入 <code>card.json</code> 的字段值。",
+        "ruleContent": "<strong>所有横向图文卡片的操作入口统一使用黑色 TextButton（inline-black）；不使用实心或描边 Button。</strong>只有嵌入式产品卡片的 Add 操作复用 Button 家族的 Cart 产品卡加购原子（不是普通 filled-red Button）。",
+        "aiParse": "relations.notes +=\n  \"横向图文 Card：操作入口统一使用黑色 TextButton；嵌入式产品卡 Add 才使用 filled-red Button\"",
+        "enforcement": "使用真实 <code>ds-card--horizontal / -reverse / -sidebar</code> 结构时，<code>verify.js: HCARD_CTA_HIERARCHY</code> 强制检查，内含任意实心或描边 Button 直接判 <strong style=\"color:#C00000;\">error</strong>。"
+      },
+      {
+        "title": "竖向单事件卡片的操作槽仅允许 TextButton",
+        "ruleContent": "<strong>竖向单事件 Card 的 <code>ds-card__link</code> 必须复用真实 TextButton Preview DOM，包含 <code>ds-text-btn__text</code>；inline 变体还必须包含 <code>ds-text-btn__icon</code>。</strong>不允许放入实心或描边 Button。横向图文 Card 同样只允许黑色 TextButton。",
+        "aiParse": "relations.notes +=\n  \"竖向单事件 Card 的 link slot 仅允许 TextButton Preview 完整 DOM；inline 包含 text 与 icon；横向图文 Card 同样只允许黑色 TextButton\"",
+        "enforcement": "强制规则（<code>verify.js: VCARD_CTA_VARIANT + CARD_TEXT_BUTTON_STRUCTURE</code>），组件类型错误或结构缺失直接判 <strong style=\"color:#C00000;\">error</strong>。"
+      },
+      {
+        "title": "横向卡片标题到正文固定 12px",
+        "ruleContent": "<strong>横向 Card 的 <code>ds-card__desc</code> 顶部间距必须使用 <code>spacing.md</code>（12px）。</strong>",
+        "aiParse": "relations.notes +=\n  \"horizontal / horizontal-reverse 标题到正文使用 spacing.md = 12px\"",
+        "enforcement": "强制规则（<code>verify.js: HCARD_TITLE_DESC_GAP</code>），计算样式不是 12px 直接判 <strong style=\"color:#C00000;\">error</strong>。"
+      }
+    ],
+    "internalSourceComponents": [
+      {
+        "sourceName": "图文卡片/嵌入式/上下结构/原子图片",
+        "set": "68908:013434",
+        "member": "68908:016493",
+        "localPart": "ds-card__product-image",
+        "appliesTo": [
+          "embedded.product-standard"
+        ],
+        "source": "components/sources/card/embedded-standard-hover-source-1014.json#/privateImageAtom",
+        "verified": "180px PC square; cover/center/multiply; private Card media implementation, not a new public component"
+      }
+    ],
+    "interactionRules": [
+      {
+        "name": "整卡与链接",
+        "rule": "单事件按来源核对；当前不是整卡路由器，跳转由真实子链接负责。没有目标时按现有规则禁用入口。",
+        "owner": "Card宿主与TextButton"
+      },
+      {
+        "name": "图文方向",
+        "rule": "横向卡使用已登记imagePosition，不删除或增加样式类；适配变体须显式选择。",
+        "owner": "真实Preview及受控参数"
+      },
+      {
+        "name": "产品加购",
+        "rule": "小卡Hover复用Cart原子；完整产品卡不能用普通红色Button替代Cart。业务加购由宿主处理。",
+        "owner": "Button家族Cart"
+      },
+      {
+        "name": "可选内容",
+        "rule": "仅按允许字段及已记录来源缺省略；不能删图凑卡片或编造参数、库存和新品。",
+        "owner": "原契约与来源适配"
+      },
+      {
+        "name": "父子维护",
+        "rule": "保留TextButton、List、Tag、Cart真实引用；未开放形态的依赖不等于已开放调用。",
+        "owner": "既有依赖与同步"
+      }
+    ],
+    "prototypeRollout": {
+      "template": "component-spec-v1",
+      "sourceReview": "partial-source-scope",
+      "draftOnly": false,
+      "originalDependencies": "preserved"
+    }
+  },
+  "searchIntents": [
+    "图文卡片",
+    "产品卡片",
+    "文章列表卡片",
+    "通栏图文展示",
+    "图左文右",
+    "文左图右",
+    "多事件卡片",
+    "侧边栏图文卡片",
+    "嵌入式标准产品卡片"
+  ],
+  "tokenReferences": [
+    "color.gray-1",
+    "color.gray-3",
+    "color.white",
+    "typography.font-family-base",
+    "typography.font-size-h8",
+    "typography.font-size-sm",
+    "typography.font-size-md",
+    "typography.font-size-h4",
+    "spacing.40",
+    "spacing.20",
+    "spacing.md",
+    "spacing.xs",
+    "spacing.sm",
+    "spacing.lg",
+    "spacing.2",
+    "spacing.2xl",
+    "spacing.xl",
+    "spacing.6",
+    "border.style.none",
+    "border.width.default",
+    "border.style.default",
+    "border.color.default",
+    "border.color.subtle",
+    "border.color.emphasis",
+    "border.width.strong",
+    "typography.font-weight-semibold",
+    "typography.font-weight-regular",
+    "typography.h7-semibold",
+    "typography.h6-semibold",
+    "typography.h7-regular",
+    "typography.h9-regular",
+    "typography.h8-regular",
+    "border.color.tag",
+    "border.color.focus",
+    "color.tag-border",
+    "color.brand-red",
+    "color.gray-2",
+    "color.gray-7",
+    "color.gray-9",
+    "color.blue",
+    "color.hover-overlay",
+    "color.success-tag-bg",
+    "color.success-tag-text"
+  ],
+  "history": [
+    {
+      "date": "2026-10-12",
+      "author": "Codex",
+      "change": "TextButton原子预览按用户要求移除额外能力演示；将ds-text-btn--expanded从原始组件双向Preview调用类清单移到sourceEvidence.hostAdapterClasses，保留现有真实宿主适配及其来源/结构检查，不冒称原子新变体。"
+    },
+    {
+      "date": "2026-09-18",
+      "author": "Codex",
+      "change": "Card 描述区域内的段落统一清除浏览器默认上下 margin，避免正文在 ds-card__desc 内产生未定义额外留白。"
+    },
+    {
+      "date": "2026-08-11",
+      "author": "Kiro",
+      "change": "纠正285px嵌入式产品卡片状态：Selected改为Hover，移除右下角对勾及其slot、图标依赖，保留白/灰背景悬停投影。"
+    },
+    {
+      "date": "2026-08-11",
+      "author": "Kiro",
+      "change": "新增285px嵌入式产品卡片正式变体：四种白/灰背景与默认/选中状态，复用TextButton inline-black / M和本地选中图标，并补齐决策、Token、图标与状态依赖。"
+    },
+    {
+      "date": "2026-08-11",
+      "author": "Kiro",
+      "change": "新增拼接式左右结构通栏（1200px）描边/背景与含侧边栏描边/背景两个正式变体：仅文字背景半区使用描边，补齐双向示例、选型规则、响应式说明、Token/图标/TextButton 依赖和专用校验 allowlist。"
+    },
+    {
+      "date": "2026-08-10",
+      "author": "Kiro",
+      "change": "调整两个横向 Card 依赖汇总字体：删除 20px SemiBold 600 composite 类型项，保留 14px/12px，并新增 TextButton M 对应的 13px H8 Regular 400；底层 20px CSS primitive 证据继续保留用于实现审计。"
+    },
+    {
+      "date": "2026-08-10",
+      "author": "Kiro",
+      "change": "多事件折叠面板可见时，主卡片新增 selected 状态并持续显示 Card 交互规范中的底部投影。"
+    },
+    {
+      "date": "2026-08-10",
+      "author": "Kiro",
+      "change": "纠正多事件折叠 Learn more：改用正式 TextButton inline-black / M 选中展开态，文字下划线，Chevron 向上，并补齐 ARIA 关联。"
+    },
+    {
+      "date": "2026-07-31",
+      "change": "Added contract-owned responsive behavior for horizontal full-width cards: horizontal at tablet and stacked at mobile, replacing page-level ds-* overrides.",
+      "author": "Kiro"
+    },
+    {
+      "date": "2026-07-23",
+      "author": "Kiro",
+      "change": "将字号与字重配对提升为正式 composite typography token；组件依赖以单一 token 引用完整字号、行高、字重，primitive 字段仅保留作 CSS 证据。"
+    },
+    {
+      "date": "2026-07-22",
+      "change": "新增 typographyDependencies 成对字体依赖：每条记录明确绑定字号与字重，依赖汇总表按“字号 · 层级 · 字重”整体展示，禁止拆列后猜测组合。",
+      "author": "Kiro"
+    },
+    {
+      "date": "2026-07-22",
+      "change": "新增 fontWeightDependencies：按组件 CSS 显式 font-weight 证据登记 Regular 400 / SemiBold 600；无显式声明的组件保留空数组，并纳入 token/value/selector/property 双向闭环校验。",
+      "author": "Kiro"
+    },
+    {
+      "date": "2026-06-30",
+      "change": "修正 isComplete 逻辑矛盾：pendingParts 非空但原先标记 isComplete:true，现改为 false 并如实反映 spliced-horizontal-pad 在 components.css 中未实现；新增 relations/searchIntents 字段",
+      "author": "TBD"
+    },
+    {
+      "date": "2026-07-03",
+      "change": "移除从未实现的 spliced.horizontal.pad（Pad适配）变体：components.css 里从未做出这个样式，preview HTML 也没有对应展示区块，属于承诺了但没兑现的空条目。清空 pendingParts，isComplete 改为 true。如果未来真的需要 Pad 适配，按正常投喂流程重新走一遍（先补 components.css 实现，再补 preview 展示，再补契约）",
+      "author": "TBD"
+    },
+    {
+      "date": "2026-06-30",
+      "change": "字段命名统一治理（方向A）：原 types 深度嵌套树拍平为 variants 数组（每个叶子子类型变成一个 variant 条目，语义信息保留在 description 里，无信息丢失）；新增 tokenReferences 数组；typography 字段保留不变（比 tokenReferences 更详细，继续作为补充信息）",
+      "author": "TBD"
+    },
+    {
+      "date": "2026-06-30",
+      "change": "parentContext.page-section--white/gray.resultingClass 从 enforced:false 升级为 true：在 verify.js 新增 CARD_BORDER_CTX 机械检查（真实 DOM closest() 判断，已用本地 fixture 验证 3 个正例+3 个反例，无误报无漏报）",
+      "author": "TBD"
+    },
+    {
+      "date": "2026-07-02",
+      "change": "删除顶层冗余旧字段（iconDependencies / componentDependencies / typography）：这些信息已完整迁移至 relations 内部，顶层保留的是一期遗留的重复数据，check-contracts.js 只读 relations 里的版本，顶层那份不被任何脚本消费且存在漂移风险",
+      "author": "TBD"
+    },
+    {
+      "date": "2026-07-14",
+      "change": "增加间距与描边 token 依赖、CSS 选择器/属性证据及机械闭环校验映射",
+      "author": "Kiro"
+    },
+    {
+      "date": "2026-07-14",
+      "change": "依据契约语义、组件 CSS 选择器与预览结构，补齐全部现有依赖的 appliesTo 汇总行映射；仅使用真实 types/variants，不新增伪类型或不确定依赖",
+      "author": "Kiro"
+    },
+    {
+      "date": "2026-10-09",
+      "author": "Codex",
+      "change": "统一规范维护质量标准：登记真实实现与选型规则入口、源变更重新验收、父子影响检查及历史页面隔离；不推断可编辑槽位或视觉批准。"
+    },
+    {
+      "date": "2026-10-13",
+      "author": "Codex",
+      "change": "沿有效组件库实例真实引用核对竖向single-event Default/Hover on主定义；仅开放PC285含图有限描边on调用，三边内部描边以不占布局的绘制实现；TextButton沿原子优先，List12/缺图/更宽网格仍未准入。"
+    },
+    {
+      "date": "2026-10-14",
+      "change": "Existing embedded.product-standard source-matched white/gray call migrated with genuine TextButton and actual image; original two Hover members040885/040948 supplement exact0.15 shadow, no new shape."
+    },
+    {
+      "date": "2026-10-14",
+      "change": "产品完整卡六个属性行36枚真实小号Tag调用；原件颜色/内部色块/选中态修正，+N保持宿主动作，旧浮层内容归后续来源核对。",
+      "source": "components/sources/tag/card-product-host-review-1014.json",
+      "compatibility": "仅当前正式Preview/依赖登记；历史页保持冻结；视觉待验证"
+    },
+    {
+      "date": "2026-11-10",
+      "change": "用户明确上下图文Card三张及以上铺满1200版心、配图16:9；纠正285/160全局锁宽解释。当前无描边调用以现有parentGrid声明，原生样式提供显式parent-grid配置；描边on发布限制独立保留。",
+      "source": "components/sources/card/vertical-grid-clarification-20261110.json"
+    }
+  ],
+  "isComplete": true,
+  "completedParts": [
+    "spliced-vertical",
+    "spliced-horizontal-pc",
+    "spliced-horizontal-sidebar",
+    "embedded-small",
+    "embedded-standard",
+    "embedded-detail",
+    "embedded-full"
+  ],
+  "pendingParts": [],
+  "updatedAt": "2026-11-15",
+  "qualityProfile": {
+    "schemaVersion": "1.0.0",
+    "standard": "docs/component-quality-standard.md",
+    "implementation": "components/variants/card.html",
+    "selection": {
+      "mappingSource": "components/selection-mvp-policy.json",
+      "mappingPointer": "components.card.variantDecisionTypes",
+      "rulesPointer": "relations.variantDecisions"
+    },
+    "maintenance": {
+      "authority": "contract-preview-runtime-token-icon",
+      "generatedOnly": [
+        "preview-reference-tables",
+        "component-index",
+        "selection-catalog",
+        "design-reading-view",
+        "ai-reference"
+      ],
+      "changePolicy": "记录来源差异、兼容性与受影响父子组件；源文件变化后旧工程验收失效。",
+      "historicalPages": "不自动升级；新页面锁定本地组件运行资源版本。"
+    },
+    "acceptance": {
+      "report": "components/quality/report.json",
+      "proof": "components/quality/acceptance.json",
+      "declarationIsNotProof": true
+    }
+  },
+  "responsiveExtension": {
+    "source": "page-inputs/bdcom-oem-m2/component-sources/card.json",
+    "stylesheet": "components/card-responsive.css",
+    "sourceNodes": [
+      "68908:052169",
+      "68908:052147"
+    ],
+    "scope": "Both explicitly marked unbordered current PC calls use original052289/image580x326 and text bodypadding0. Existing responsive query applies only to source-responsive variant; Pad/M validation deferred.",
+    "evidenceIndex": "components/sources/card/source-index.json",
+    "sourceFormat": "mastergo-tool-generated-html-not-original-frontend",
+    "originalNodeTypesConfirmed": false,
+    "sourceRole": "composition-candidates-await-original-node-type",
+    "currentPCSource": "components/sources/card/native-component-review-1011.json"
+  },
+  "editable": [
+    "title",
+    "description",
+    "image",
+    "linkLabel",
+    "href",
+    "bullets",
+    "category",
+    "surface",
+    "price",
+    "subLinks",
+    "sourceAbsent",
+    "imagePosition",
+    "items",
+    "stock",
+    "soldCount",
+    "reviewCount",
+    "compatibility",
+    "linkHref",
+    "sidebar"
+  ],
+  "integration": {
+    "styles": [
+      "components/tokens.css",
+      "components/components.css",
+      "components/card-responsive.css",
+      "components/text-button-current.css",
+      "components/button-current.css",
+      "components/button-runtime-current.css",
+      "components/card-current.css",
+      "components/cart-current.css",
+      "components/menu-navigation-current.css",
+      "components/tag-current.css",
+      "components/list-unordered-current.css",
+      "components/tag-product-current.css",
+      "components/card-completion-current.css",
+      "components/card-sidebar-current.css"
+    ],
+    "scripts": [
+      "components/card-current.js",
+      "components/tag-product-current.js",
+      "components/menu-navigation-current.js"
+    ],
+    "fontStylesheets": [
+      "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+    ]
+  },
+  "aiContract": {
+    "schemaVersion": "1.0.0",
+    "rootTag": "div",
+    "scope": "ten-finite-source-backed-PC-card-shapes",
+    "supported": [
+      "spliced.horizontal.full-width.responsive",
+      "spliced.horizontal.full-width",
+      "spliced.vertical.single-event",
+      "spliced.vertical.single-event.bordered",
+      "embedded.product-standard",
+      "embedded.product-small",
+      "spliced.vertical.category-nav",
+      "embedded.product-detail",
+      "embedded.product-full",
+      "spliced.horizontal.full-width.bordered-background",
+      "spliced.horizontal.with-sidebar",
+      "spliced.horizontal.with-sidebar.bordered-background"
+    ],
+    "unsupported": [
+      "image-omission-canonical",
+      "reverse-layout",
+      "extra-inline-overrides",
+      "mobile-tablet-acceptance",
+      "vertical-white-parent-bordered-canonical",
+      "category-folded-unverified"
+    ],
+    "reviewStatus": {
+      "engineering": "pending",
+      "visual": "pending",
+      "familyCoverage": "partial"
+    },
+    "previewAssets": [
+      "components/preview/reference-live.js",
+      "components/sources/card/preview-assets/img-placeholder.svg",
+      "components/sources/card/layout-one-list-host-review-1015.json",
+      "components/sources/card/layout-one-reverse-list-host-review-1015.json",
+      "components/sources/card/unbordered-list-host-review-1015.json",
+      "components/sources/card/reverse-unbordered-list-host-review-1015.json",
+      "components/sources/card/bordered-sidebar-list-host-review-1015.json",
+      "components/sources/card/reverse-bordered-sidebar-list-host-review-1015.json",
+      "components/sources/card/vertical-list-host-review-1015.json",
+      "components/sources/card/server-product-list-host-review-1015.json",
+      "components/sources/tag/card-metadata-featured-review-1015.json",
+      "components/sources/tag/card-count-popup-review-1015.json",
+      "components/sources/tag/card-single-metadata-review-1015.json",
+      "components/sources/tag/card-gray-label-adaptation-1015.json",
+      "components/sources/tag/card-gray-label-source-calls-1015.html"
+    ],
+    "selectionPolicy": "按普通内容、分类多链接、搜索结果、最近浏览或产品选购选型，再核对布局、背景与设备。当前十个精确调用含描边通栏、嵌入详情和完整产品卡；侧栏仍参考。Card真实引用List、Tag和Cart；仅按allowedEdits修改内容，不自动扩展移动端或业务请求。 Current five-variant closure 20261115: only supported exact source examples and publication decisions permit local calls. Earlier preview-only or placeholder descriptions are historical; PC geometry and host boundaries remain explicit.",
+    "identity": {
+      "rule": "Complete actual image + body, selected stack/meta/description wrappers, and real inline-black/M TextButton. No Preview inline sizing, placeholder media or fictitious action child. Bordered horizontal auto-call withdrawn pending scrollbar/tall-content and visual verification; vertical metadata is category plaintext. Current vertical requires data-card-current=vertical-single-event.",
+      "assetRule": "Default existing engineering photo is demo/page content, not a design-system icon or MG component asset. Rebase relative image/icon paths when assembled elsewhere."
+    },
+    "locked": [
+      "True Card image/body/content-stack/link hierarchy",
+      "Current opt-in Card stylesheet and shared base styles",
+      "Genuine TextButton inline-black/M label + registered arrow",
+      "Native spacing, typography, radius and states; vertical single-event current parent-grid sizing is defined below, no page CSS overrides",
+      "Exact horizontal border or vertical no-border variant; parent surface per contract",
+      "Vertical meta/description wrappers and bordered horizontal full bullet fragments",
+      "Source on variant: three inside body edges only; root and image unbordered; Default/Hover geometry identical",
+      "spliced.vertical.single-event.bordered页面调用须configuration.parentGrid=1200/4/20、quantity4及outputGroup；只声明cardCount4不能冒称真实4栏285几何。"
+    ],
+    "behavior": {
+      "static": "普通内容按真实TextButton导航；产品选购使用真实Tag、List12和Cart，选择/加购业务由宿主处理。原稿和当前调用的资格分别记录。",
+      "content": "Image, title, description and link text are page content; existing Pexels photo is replaceable and not MG visual evidence.",
+      "source": "Partial native independent norm and actual PC/vertical nodes linked separately from historical generated export; remaining shape/slot/state sources pending.",
+      "geometry": "本批实测当前精确调用的受控图文方向、文档宽度和资源。桌面文档渲染不构成全设备视觉批准。"
+    },
+    "evidence": {
+      "localImplementation": "components/variants/card.html",
+      "comparison": "components/sources/card/local-structure-review.json",
+      "exportIndex": "components/sources/card/source-index.json",
+      "nativeComponents": "components/sources/card/native-component-review-1011.json",
+      "nativeSpecification": "components/sources/card/native-specification-review-1011.json",
+      "nativeVertical": "components/sources/card/native-vertical-review-1011.json",
+      "nativeTextBorderCurrent": "components/sources/card/layout-one-text-border-review-1013.json",
+      "nativeTitleListCurrent": "components/sources/card/layout-one-title-list-review-1013.json",
+      "verticalWhiteParent": "components/sources/card/vertical-white-parent-review-1013.json",
+      "embeddedStandardHover": "components/sources/card/embedded-standard-hover-source-1014.json",
+      "embeddedDetail": "components/sources/card/embedded-detail-source-1014.json",
+      "embeddedSmall": "components/sources/card/embedded-small-source-1014.json",
+      "categoryNav": "components/sources/card/category-nav-source-1014.json",
+      "verticalGridClarification": "components/sources/card/vertical-grid-clarification-20261110.json",
+      "localHorizontalAdmission": "components/sources/card/horizontal-local-admission-20261113.json",
+      "currentMgReview": "components/sources/card-carousel-mg-20261114/card-review.json",
+      "fiveVariantSource": "components/sources/five-variants-20261115/review.json"
+    },
+    "variants": {
+      "spliced.horizontal.full-width.responsive": {
+        "purpose": "desktop-horizontal-full-width-image-and-copy-card",
+        "exampleSelector": "[data-ai-example=\"ai-card-horizontal-current\"]",
+        "allowedEdits": [
+          "title",
+          "description",
+          "image",
+          "linkLabel",
+          "href",
+          "imagePosition",
+          "sourceAbsent"
+        ],
+        "slots": {
+          "title": {
+            "selector": "p.ds-card__title",
+            "mode": "text",
+            "required": true
+          },
+          "description": {
+            "selector": "p.ds-card__desc",
+            "mode": "text",
+            "required": true
+          },
+          "image": {
+            "selector": "div.ds-card__image",
+            "mode": "structured-content",
+            "required": true,
+            "preserve": [
+              "img"
+            ],
+            "rule": "One actual image with evidence-backed src and descriptive alt. No placeholder text or extra wrapper."
+          },
+          "linkLabel": {
+            "selector": "span.ds-text-btn__text",
+            "mode": "text",
+            "required": true
+          }
+        },
+        "bindings": {
+          "href": {
+            "mode": "navigation-target",
+            "target": "a.ds-text-btn",
+            "attribute": "href",
+            "protocols": [
+              "https:",
+              "http:",
+              "mailto:",
+              "tel:"
+            ],
+            "relative": true,
+            "previewPlaceholder": "#"
+          },
+          "imagePosition": {
+            "mode": "native-attribute",
+            "target": "root",
+            "attribute": "data-card-image-position",
+            "values": [
+              "left",
+              "right"
+            ],
+            "default": "left",
+            "sourceProperty": "cssClassReverse: image/text direction"
+          },
+          "sourceAbsent": {
+            "mode": "source-absence",
+            "target": "root",
+            "sourceProperty": "contentSlots.link required=false",
+            "regions": {
+              "link": ".ds-card__link"
+            }
+          }
+        },
+        "sourceAbsencePolicy": "Omit only the original optional link when the retained original content object has no link. Title/image/description remain present.",
+        "runtime": {
+          "styles": [
+            "components/tokens.css",
+            "components/components.css",
+            "components/card-responsive.css",
+            "components/text-button-current.css",
+            "components/button-current.css",
+            "components/button-runtime-current.css",
+            "components/card-current.css",
+            "components/cart-current.css",
+            "components/tag-current.css",
+            "components/list-unordered-current.css",
+            "components/tag-product-current.css"
+          ],
+          "scripts": [
+            "components/card-current.js",
+            "components/tag-product-current.js"
+          ]
+        }
+      },
+      "spliced.horizontal.full-width": {
+        "purpose": "finite-spliced.horizontal.full-width",
+        "exampleSelector": "[data-ai-example=\"ai-card-spliced-horizontal-full-width\"]",
+        "allowedEdits": [
+          "title",
+          "description",
+          "image",
+          "linkLabel",
+          "href",
+          "imagePosition",
+          "sourceAbsent"
+        ],
+        "slots": {
+          "title": {
+            "selector": "p.ds-card__title",
+            "mode": "text",
+            "required": true
+          },
+          "description": {
+            "selector": "p.ds-card__desc",
+            "mode": "text",
+            "required": true
+          },
+          "image": {
+            "selector": "div.ds-card__image",
+            "mode": "structured-content",
+            "required": true,
+            "preserve": [
+              "img"
+            ],
+            "rule": "One actual image with evidence-backed src and descriptive alt. No placeholder text or extra wrapper."
+          },
+          "linkLabel": {
+            "selector": "span.ds-text-btn__text",
+            "mode": "text",
+            "required": true
+          }
+        },
+        "bindings": {
+          "href": {
+            "mode": "navigation-target",
+            "target": "a.ds-text-btn",
+            "attribute": "href",
+            "protocols": [
+              "https:",
+              "http:",
+              "mailto:",
+              "tel:"
+            ],
+            "relative": true,
+            "previewPlaceholder": "#"
+          },
+          "imagePosition": {
+            "mode": "native-attribute",
+            "target": "root",
+            "attribute": "data-card-image-position",
+            "values": [
+              "left",
+              "right"
+            ],
+            "default": "left",
+            "sourceProperty": "cssClassReverse: image/text direction"
+          },
+          "sourceAbsent": {
+            "mode": "source-absence",
+            "target": "root",
+            "sourceProperty": "contentSlots.link required=false",
+            "regions": {
+              "link": ".ds-card__link"
+            }
+          }
+        },
+        "sourceAbsencePolicy": "Omit only the original optional link when the retained original content object has no link. Title/image/description remain present.",
+        "runtime": {
+          "styles": [
+            "components/tokens.css",
+            "components/components.css",
+            "components/card-responsive.css",
+            "components/text-button-current.css",
+            "components/button-current.css",
+            "components/button-runtime-current.css",
+            "components/card-current.css",
+            "components/cart-current.css",
+            "components/tag-current.css",
+            "components/list-unordered-current.css",
+            "components/tag-product-current.css"
+          ],
+          "scripts": [
+            "components/card-current.js",
+            "components/tag-product-current.js"
+          ]
+        }
+      },
+      "spliced.horizontal.full-width.bordered-background": {
+        "purpose": "finite-spliced.horizontal.full-width.bordered-background",
+        "exampleSelector": "[data-ai-example=\"ai-card-completion-spliced-horizontal-full-width-bordered-background\"]",
+        "allowedEdits": [
+          "title",
+          "description",
+          "image",
+          "linkLabel",
+          "href",
+          "items"
+        ],
+        "slots": {
+          "title": {
+            "selector": "p.ds-card__title",
+            "mode": "text",
+            "required": true
+          },
+          "description": {
+            "selector": "p.ds-card__desc",
+            "mode": "text",
+            "required": true
+          },
+          "image": {
+            "selector": "div.ds-card__image",
+            "mode": "structured-content",
+            "required": true,
+            "preserve": [
+              "img"
+            ],
+            "rule": "One actual image with evidence-backed src and descriptive alt. No placeholder text or extra wrapper."
+          },
+          "linkLabel": {
+            "selector": "span.ds-text-btn__text",
+            "mode": "text",
+            "required": true
+          },
+          "items": {
+            "selector": ".ds-list",
+            "mode": "structured-content",
+            "required": true,
+            "preserve": [
+              "div.ds-list__unordered-item",
+              "span.ds-list__unordered-dot",
+              "p.ds-list__unordered-text"
+            ],
+            "rule": "One real List/unordered-12; long content remains in source scroll region."
+          }
+        },
+        "bindings": {
+          "href": {
+            "mode": "navigation-target",
+            "target": "a.ds-text-btn",
+            "attribute": "href",
+            "protocols": [
+              "https:",
+              "http:",
+              "mailto:",
+              "tel:"
+            ],
+            "relative": true,
+            "previewPlaceholder": "#"
+          }
+        }
+      },
+      "spliced.vertical.single-event": {
+        "purpose": "finite-spliced.vertical.single-event",
+        "exampleSelector": "[data-ai-example=\"ai-card-spliced-vertical-single-event\"]",
+        "allowedEdits": [
+          "title",
+          "description",
+          "image",
+          "linkLabel",
+          "href",
+          "category",
+          "sourceAbsent"
+        ],
+        "slots": {
+          "title": {
+            "selector": "p.ds-card__title",
+            "mode": "text",
+            "required": true
+          },
+          "description": {
+            "selector": "div.ds-card__desc",
+            "mode": "structured-content",
+            "required": true,
+            "preserve": [
+              "p"
+            ],
+            "rule": "One plaintext paragraph inside existing vertical description wrapper; no controls, links or extra formatting."
+          },
+          "image": {
+            "selector": "div.ds-card__image",
+            "mode": "structured-content",
+            "required": true,
+            "preserve": [
+              "img"
+            ],
+            "rule": "One actual image with evidence-backed src and descriptive alt. No placeholder text or extra wrapper."
+          },
+          "linkLabel": {
+            "selector": "span.ds-text-btn__text",
+            "mode": "text",
+            "required": true
+          },
+          "category": {
+            "selector": "span.ds-card__category",
+            "mode": "text",
+            "required": true
+          }
+        },
+        "bindings": {
+          "href": {
+            "mode": "navigation-target",
+            "target": "a.ds-text-btn",
+            "attribute": "href",
+            "protocols": [
+              "https:",
+              "http:",
+              "mailto:",
+              "tel:"
+            ],
+            "relative": true,
+            "previewPlaceholder": "#"
+          },
+          "sourceAbsent": {
+            "mode": "source-absence",
+            "target": "root",
+            "sourceProperty": "contentSlots.meta/description/link required=false",
+            "regions": {
+              "category": ".ds-card__meta",
+              "description": ".ds-card__desc",
+              "link": ".ds-card__link"
+            }
+          }
+        },
+        "parentGridRequirement": {
+          "configuration": "configuration.parentGrid: containerWidth / columns / gap; outputGroup binds the actual grid",
+          "sizing": "data-card-layout=parent-grid on each genuine root; 3–4 columns fill1200px with20px gap; 1–2 columns may be narrower; final row keeps the same tracks",
+          "image": "16:9 frame provided by card-current.css;285x160 is the historical four-column rounded example",
+          "compatibility": "Explicit current calls only; existing unmarked callers, bordered finite publication and other Card families retain their scope."
+        },
+        "sourceAbsencePolicy": "Only omit original optional meta, description or link when a retained original-page-content-reference object lacks that exact field. Image/title remain required; no style or arbitrary structure edits.",
+        "runtime": {
+          "styles": [
+            "components/tokens.css",
+            "components/components.css",
+            "components/card-responsive.css",
+            "components/text-button-current.css",
+            "components/button-current.css",
+            "components/button-runtime-current.css",
+            "components/card-current.css",
+            "components/cart-current.css",
+            "components/tag-current.css",
+            "components/list-unordered-current.css",
+            "components/tag-product-current.css"
+          ],
+          "scripts": [
+            "components/card-current.js",
+            "components/tag-product-current.js"
+          ]
+        }
+      },
+      "spliced.vertical.single-event.bordered": {
+        "purpose": "finite-white-parent-vertical-single-event-body-only-inside-border",
+        "exampleSelector": "[data-ai-example=\"ai-card-spliced-vertical-single-event-bordered\"]",
+        "allowedEdits": [
+          "title",
+          "description",
+          "image",
+          "linkLabel",
+          "href",
+          "category",
+          "sourceAbsent"
+        ],
+        "slots": {
+          "title": {
+            "selector": "p.ds-card__title",
+            "mode": "text",
+            "required": true
+          },
+          "description": {
+            "selector": "div.ds-card__desc",
+            "mode": "structured-content",
+            "required": true,
+            "preserve": [
+              "p"
+            ],
+            "rule": "One plaintext paragraph inside existing vertical description wrapper; no controls, links or extra formatting."
+          },
+          "image": {
+            "selector": "div.ds-card__image",
+            "mode": "structured-content",
+            "required": true,
+            "preserve": [
+              "img"
+            ],
+            "rule": "One actual image with evidence-backed src and descriptive alt. No placeholder text or extra wrapper."
+          },
+          "linkLabel": {
+            "selector": "span.ds-text-btn__text",
+            "mode": "text",
+            "required": true
+          },
+          "category": {
+            "selector": "span.ds-card__category",
+            "mode": "text",
+            "required": true
+          }
+        },
+        "bindings": {
+          "href": {
+            "mode": "navigation-target",
+            "target": "a.ds-text-btn",
+            "attribute": "href",
+            "protocols": [
+              "https:",
+              "http:",
+              "mailto:",
+              "tel:"
+            ],
+            "relative": true,
+            "previewPlaceholder": "#"
+          },
+          "sourceAbsent": {
+            "mode": "source-absence",
+            "target": "root",
+            "sourceProperty": "contentSlots.meta/description/link required=false",
+            "regions": {
+              "category": ".ds-card__meta",
+              "description": ".ds-card__desc",
+              "link": ".ds-card__link"
+            }
+          }
+        },
+        "parentGridRequirement": {
+          "configuration": {
+            "parentGrid": {
+              "containerWidth": 1200,
+              "columns": 4,
+              "gap": 20
+            }
+          },
+          "quantity": 4,
+          "outputGroup": "必填，匹配真实data-plan-component-group",
+          "output": "1200宽、4列、20列间距、无父级padding/border；4个直接Card根；实际浏览器仍需核285/160与状态"
+        },
+        "sourceAbsencePolicy": "Only omit original optional meta, description or link when a retained original-page-content-reference object lacks that exact field. Image/title remain required; no style or arbitrary structure edits.",
+        "runtime": {
+          "styles": [
+            "components/tokens.css",
+            "components/components.css",
+            "components/card-responsive.css",
+            "components/text-button-current.css",
+            "components/button-current.css",
+            "components/button-runtime-current.css",
+            "components/card-current.css",
+            "components/cart-current.css",
+            "components/tag-current.css",
+            "components/list-unordered-current.css",
+            "components/tag-product-current.css"
+          ],
+          "scripts": [
+            "components/card-current.js",
+            "components/tag-product-current.js"
+          ]
+        }
+      },
+      "embedded.product-standard": {
+        "purpose": "source-matched-pc285-embedded-display-white-gray",
+        "exampleSelector": "[data-ai-example=\"ai-card-embedded-standard-current\"]",
+        "allowedEdits": [
+          "title",
+          "description",
+          "image",
+          "linkLabel",
+          "href",
+          "surface"
+        ],
+        "slots": {
+          "title": {
+            "selector": "p.ds-card__product-title",
+            "mode": "text",
+            "required": true
+          },
+          "description": {
+            "selector": "p.ds-card__product-description",
+            "mode": "text",
+            "required": true
+          },
+          "image": {
+            "selector": "div.ds-card__product-image",
+            "mode": "structured-content",
+            "required": true,
+            "preserve": [
+              "img"
+            ],
+            "rule": "One actual image and descriptive alt; preserve180px square source private image atom, cover/center/multiply."
+          },
+          "linkLabel": {
+            "selector": "span.ds-text-btn__text",
+            "mode": "text",
+            "required": true
+          }
+        },
+        "bindings": {
+          "href": {
+            "mode": "navigation-target",
+            "target": "a.ds-text-btn",
+            "attribute": "href",
+            "protocols": [
+              "https:",
+              "http:",
+              "mailto:",
+              "tel:"
+            ],
+            "relative": true,
+            "previewPlaceholder": "#"
+          },
+          "surface": {
+            "mode": "native-attribute",
+            "target": "root",
+            "attribute": "data-card-surface",
+            "values": [
+              "white",
+              "gray"
+            ],
+            "default": "white",
+            "sourceProperty": "背景"
+          }
+        },
+        "runtime": {
+          "styles": [
+            "components/tokens.css",
+            "components/components.css",
+            "components/card-responsive.css",
+            "components/text-button-current.css",
+            "components/button-current.css",
+            "components/button-runtime-current.css",
+            "components/card-current.css",
+            "components/cart-current.css",
+            "components/tag-current.css",
+            "components/list-unordered-current.css",
+            "components/tag-product-current.css"
+          ],
+          "scripts": [
+            "components/card-current.js",
+            "components/tag-product-current.js"
+          ]
+        }
+      },
+      "embedded.product-small": {
+        "purpose": "source-recent-view230-product-image-title-price-cart",
+        "exampleSelector": "[data-ai-example=\"ai-card-embedded-small-current\"]",
+        "allowedEdits": [
+          "title",
+          "price",
+          "image"
+        ],
+        "slots": {
+          "title": {
+            "selector": "p.ds-card__product-title",
+            "mode": "text",
+            "required": true
+          },
+          "price": {
+            "selector": "p.ds-card__product-price",
+            "mode": "text",
+            "required": true
+          },
+          "image": {
+            "selector": "img.ds-card__product-image",
+            "mode": "structured-content",
+            "required": true,
+            "rule": "Edit only actual image src/alt; retain140px square direct IMG and source mix-blend-mode."
+          }
+        },
+        "runtime": {
+          "styles": [
+            "components/tokens.css",
+            "components/components.css",
+            "components/card-responsive.css",
+            "components/text-button-current.css",
+            "components/button-current.css",
+            "components/button-runtime-current.css",
+            "components/card-current.css",
+            "components/cart-current.css",
+            "components/tag-current.css",
+            "components/list-unordered-current.css",
+            "components/tag-product-current.css"
+          ],
+          "scripts": [
+            "components/card-current.js",
+            "components/tag-product-current.js"
+          ]
+        }
+      },
+      "spliced.vertical.category-nav": {
+        "exampleSelector": "[data-ai-example=\"ai-card-category-nav-current\"]",
+        "purpose": "source-pc285-unbordered-category-navigation-card",
+        "allowedEdits": [
+          "title",
+          "image",
+          "subLinks"
+        ],
+        "slots": {
+          "title": {
+            "selector": "span.ds-card__title",
+            "mode": "text",
+            "required": true
+          },
+          "subLinks": {
+            "selector": "div.ds-card__sub-links",
+            "mode": "structured-content",
+            "required": true,
+            "preserve": [
+              "span.ds-card__sub-link"
+            ],
+            "rule": "至少一条纯子导航文字；不添加折叠、按钮或List原子。"
+          },
+          "image": {
+            "selector": "div.ds-card__image",
+            "mode": "structured-content",
+            "required": true,
+            "preserve": [
+              "img"
+            ],
+            "rule": "One actual image with evidence-backed src and descriptive alt. No placeholder text or extra wrapper."
+          }
+        },
+        "runtime": {
+          "styles": [
+            "components/tokens.css",
+            "components/components.css",
+            "components/card-responsive.css",
+            "components/text-button-current.css",
+            "components/button-current.css",
+            "components/button-runtime-current.css",
+            "components/card-current.css",
+            "components/cart-current.css",
+            "components/tag-current.css",
+            "components/list-unordered-current.css",
+            "components/tag-product-current.css"
+          ],
+          "scripts": [
+            "components/card-current.js",
+            "components/tag-product-current.js"
+          ]
+        }
+      },
+      "embedded.product-detail": {
+        "allowedEdits": [
+          "image",
+          "title",
+          "description",
+          "items"
+        ],
+        "slots": {
+          "image": {
+            "selector": ".ds-card__product-image-wrap",
+            "mode": "structured-content",
+            "required": true,
+            "preserve": [
+              "img.ds-card__product-image"
+            ],
+            "rule": "One actual product picture and descriptive alt."
+          },
+          "title": {
+            "selector": ".ds-card__product-title",
+            "mode": "text",
+            "required": true
+          },
+          "description": {
+            "selector": ".ds-card__product-subtitle",
+            "mode": "text",
+            "required": true
+          },
+          "items": {
+            "selector": ".ds-list",
+            "mode": "structured-content",
+            "required": true,
+            "preserve": [
+              "div.ds-list__unordered-item",
+              "span.ds-list__unordered-dot",
+              "p.ds-list__unordered-text"
+            ],
+            "rule": "Real List/unordered-12 rows only."
+          }
+        },
+        "bindings": {},
+        "purpose": "current-source-embedded.product-detail",
+        "exampleSelector": "[data-ai-example=\"ai-card-completion-embedded-product-detail\"]"
+      },
+      "embedded.product-full": {
+        "allowedEdits": [
+          "image",
+          "title",
+          "price",
+          "stock",
+          "soldCount",
+          "reviewCount",
+          "items",
+          "compatibility"
+        ],
+        "slots": {
+          "image": {
+            "selector": "div.ds-card__product-image",
+            "mode": "structured-content",
+            "required": true,
+            "preserve": [
+              "img.ds-card__product-image"
+            ],
+            "rule": "One actual product picture and descriptive alt."
+          },
+          "title": {
+            "selector": ".ds-card__title",
+            "mode": "text",
+            "required": true
+          },
+          "price": {
+            "selector": ".ds-card__price",
+            "mode": "text",
+            "required": true
+          },
+          "stock": {
+            "selector": ".ds-card__stock-text",
+            "mode": "text",
+            "required": true
+          },
+          "soldCount": {
+            "selector": ".ds-card__sold-count",
+            "mode": "text",
+            "required": true
+          },
+          "reviewCount": {
+            "selector": ".ds-card__review-count",
+            "mode": "text",
+            "required": true
+          },
+          "items": {
+            "selector": ".ds-list",
+            "mode": "structured-content",
+            "required": true,
+            "preserve": [
+              "div.ds-list__unordered-item",
+              "span.ds-list__unordered-dot",
+              "p.ds-list__unordered-text"
+            ],
+            "rule": "Real List/unordered-12 rows only."
+          },
+          "compatibility": {
+            "selector": ".ds-card__compat-tags",
+            "mode": "structured-content",
+            "required": true,
+            "preserve": [
+              "button.ds-tag",
+              "span.ds-tag__product-label"
+            ],
+            "rule": "Keep complete Tag product small/custom atoms,unique labels and one source initial selection."
+          }
+        },
+        "bindings": {},
+        "purpose": "current-source-embedded.product-full",
+        "exampleSelector": "[data-ai-example=\"ai-card-completion-embedded-product-full\"]"
+      },
+      "spliced.horizontal.with-sidebar": {
+        "purpose": "source-PC-sidebar-plain-card-composition",
+        "exampleSelector": "[data-ai-example=\"ai-card-sidebar-plain\"]",
+        "allowedEdits": [
+          "title",
+          "description",
+          "image",
+          "linkLabel",
+          "href",
+          "sidebar"
+        ],
+        "slots": {
+          "title": {
+            "selector": "p.ds-card__title",
+            "mode": "text",
+            "required": true
+          },
+          "description": {
+            "selector": "p.ds-card__desc",
+            "mode": "text",
+            "required": true
+          },
+          "image": {
+            "selector": "div.ds-card__image",
+            "mode": "structured-content",
+            "required": true,
+            "preserve": [
+              "img"
+            ],
+            "rule": "One real content image with nonempty alt."
+          },
+          "linkLabel": {
+            "selector": "span.ds-text-btn__text",
+            "mode": "text",
+            "required": true
+          },
+          "sidebar": {
+            "selector": "nav.ds-menu-navigation",
+            "mode": "structured-content",
+            "required": true,
+            "preserve": [
+              "ul.ds-menu-navigation__list",
+              "button.ds-menu-navigation__item",
+              "span.ds-menu-navigation__item-label"
+            ],
+            "rule": "At least2 unique source menu leaves, one initial selection; no arbitrary side panel markup."
+          }
+        },
+        "bindings": {
+          "href": {
+            "mode": "navigation-target",
+            "target": "a.ds-text-btn",
+            "attribute": "href",
+            "relative": true,
+            "protocols": [
+              "https:",
+              "http:",
+              "mailto:",
+              "tel:"
+            ]
+          }
+        },
+        "runtime": {
+          "styles": [
+            "components/tokens.css",
+            "components/components.css",
+            "components/card-responsive.css",
+            "components/text-button-current.css",
+            "components/button-current.css",
+            "components/button-runtime-current.css",
+            "components/card-current.css",
+            "components/cart-current.css",
+            "components/menu-navigation-current.css",
+            "components/tag-current.css",
+            "components/list-unordered-current.css",
+            "components/tag-product-current.css",
+            "components/card-completion-current.css",
+            "components/card-sidebar-current.css"
+          ],
+          "scripts": [
+            "components/card-current.js",
+            "components/tag-product-current.js",
+            "components/menu-navigation-current.js"
+          ]
+        }
+      },
+      "spliced.horizontal.with-sidebar.bordered-background": {
+        "purpose": "source-PC-sidebar-bordered-card-composition",
+        "exampleSelector": "[data-ai-example=\"ai-card-sidebar-bordered\"]",
+        "allowedEdits": [
+          "title",
+          "description",
+          "image",
+          "linkLabel",
+          "href",
+          "sidebar",
+          "items"
+        ],
+        "slots": {
+          "title": {
+            "selector": "p.ds-card__title",
+            "mode": "text",
+            "required": true
+          },
+          "description": {
+            "selector": "p.ds-card__desc",
+            "mode": "text",
+            "required": true
+          },
+          "image": {
+            "selector": "div.ds-card__image",
+            "mode": "structured-content",
+            "required": true,
+            "preserve": [
+              "img"
+            ],
+            "rule": "One real content image with nonempty alt."
+          },
+          "linkLabel": {
+            "selector": "span.ds-text-btn__text",
+            "mode": "text",
+            "required": true
+          },
+          "sidebar": {
+            "selector": "nav.ds-menu-navigation",
+            "mode": "structured-content",
+            "required": true,
+            "preserve": [
+              "ul.ds-menu-navigation__list",
+              "button.ds-menu-navigation__item",
+              "span.ds-menu-navigation__item-label"
+            ],
+            "rule": "At least2 unique source menu leaves, one initial selection; no arbitrary side panel markup."
+          },
+          "items": {
+            "selector": "div.ds-list",
+            "mode": "structured-content",
+            "required": true,
+            "preserve": [
+              "div.ds-list__unordered-item",
+              "p.ds-list__unordered-text"
+            ],
+            "rule": "1..4 real List12 rows; source-owned geometry/markers remain."
+          }
+        },
+        "bindings": {
+          "href": {
+            "mode": "navigation-target",
+            "target": "a.ds-text-btn",
+            "attribute": "href",
+            "relative": true,
+            "protocols": [
+              "https:",
+              "http:",
+              "mailto:",
+              "tel:"
+            ]
+          }
+        },
+        "runtime": {
+          "styles": [
+            "components/tokens.css",
+            "components/components.css",
+            "components/card-responsive.css",
+            "components/text-button-current.css",
+            "components/button-current.css",
+            "components/button-runtime-current.css",
+            "components/card-current.css",
+            "components/cart-current.css",
+            "components/menu-navigation-current.css",
+            "components/tag-current.css",
+            "components/list-unordered-current.css",
+            "components/tag-product-current.css",
+            "components/card-completion-current.css",
+            "components/card-sidebar-current.css"
+          ],
+          "scripts": [
+            "components/card-current.js",
+            "components/tag-product-current.js",
+            "components/menu-navigation-current.js"
+          ]
+        }
+      }
+    },
+    "exampleFile": "components/variants/card-call-checks.html"
+  },
+  "generationScopeClarification": {
+    "rule": "contentSlots.required 表示通用槽是否必需；variants.requiredChildren是完整canonical结构。aiContract.supported/unsupported表示当前已核实可调用范围，三者不可互相替代。",
+    "adaptation": "来源没有可选槽时必须逐项登记omittedSlots/reason/保留结构；unsupported范围仍不自动开放，不得以缺少可选链接/列表笼统判整个家族不可用。",
+    "fallback": "页面级自定义需明确具体未开放范围或来源缺口；复用已登记图标等原子资源时须带入其展示尺寸和数量，不用素材原始尺寸。"
+  },
+  "legacyFoldedAssembly1014": {
+    "state": {
+      "name": "multi-event-folded",
+      "chineseName": "多事件折叠",
+      "styleOverrides": {
+        "stackGap": "4px",
+        "panelPadding": "20px",
+        "panelBackground": "#FFFFFF",
+        "panelBorderRadius": "8px",
+        "panelBoxShadow": "0px 2px 8px 0px rgba(0,0,0,0.1)",
+        "eventGap": "8px",
+        "triggerIcon": "icon-chevron-down.svg",
+        "triggerComponent": "TextButton inline-black / M",
+        "triggerState": "selected + expanded",
+        "triggerTextDecoration": "underline",
+        "triggerIconTransform": "rotate(180deg)",
+        "cardState": "selected",
+        "cardBoxShadow": "0px 15px 15px -10px rgba(0,0,0,0.1)"
+      },
+      "description": "多事件卡片在主卡片下方显示折叠事件面板；面板可见时主卡片使用选中态底部投影，Learn more 使用 TextButton 选中/展开态、文字下划线且 Chevron 朝上"
+    },
+    "status": "unverified-local-adapter-removed-from-original-library-preview",
+    "sourceConflict": "已保存规范changeLog明确属于IconCard，不能作为普通图文Card折叠形态证据；四真实多事件成员未包含该组装。",
+    "preserved": "components/sources/card/legacy-folded-preview-before-1014.html",
+    "generation": "不开放；冻结历史资源不升级。"
+  },
+  "previewImageCorrection1014": {
+    "userIssue": "旧人物示例图与产品/交换机卡片内容不匹配",
+    "scope": "当前Card Preview的15处已接入真实图片槽，仅替换内容素材",
+    "asset": "components/sources/card/preview-assets/network-switches-example.jpg",
+    "origin": "https://static-page.tp-link.com/omada/home/img/home-switches.jpg",
+    "role": "本地已保存的交换机展示示例，非MasterGo原件媒体或具体FS SKU",
+    "notChanged": [
+      "原件几何和状态样式",
+      "旧素材文件",
+      "冻结历史页面"
+    ],
+    "remaining": "需要原件媒体一致性时再补独立原件文件，不能把示例替换冒称原件验收。"
+  },
+  "previewPlaceholderDecision1014": {
+    "decision": "用户要求Card所有配图统一灰底、居中Img占位",
+    "scope": "当前Card预览全部图片槽；图标保持原件",
+    "asset": "components/sources/card/preview-assets/img-placeholder.svg",
+    "implementation": "15个实际img槽使用本地占位SVG；已有文字占位统一Img。图片槽尺寸、结构与状态样式保留。",
+    "sourceBoundary": "占位仅为展示内容；不作为MasterGo原始素材或新增变体。真实页面仍按页面来源替换图片。",
+    "supersedes": "人物示例和后续交换机示例选择；历史记录保留"
+  },
+  "previewCallSeparation1014": {
+    "decision": "用户确认工程调用样例与正式组件预览分开",
+    "preview": "components/variants/card.html",
+    "engineering": "components/variants/card-call-checks.html",
+    "scope": "移出底部5个工程/来源核验块；7种有限调用统一从独立页提取，其中3种复用原件展示结构",
+    "boundary": "不新增组件或调用，不恢复Pad/M适配，不开放List12未闭合形态；原件展示保留"
+  },
+  "layoutOneListHost1015": {
+    "scope": "PC051710图左文右正式+工程展示及051833左文右图正式展示；不开放完整自动调用",
+    "source": "components/sources/card/layout-one-list-host-review-1015.json",
+    "implemented": [
+      "List12四行真实调用",
+      "14px/22px标题标记",
+      "宿主文本栈间距8px",
+      "三侧内描边不占内容宽度"
+    ],
+    "pending": [
+      "原件滚动区域与长内容状态",
+      "实际浏览器视觉"
+    ],
+    "automaticCall": "withdrawn",
+    "fullFamilyAcceptance": false,
+    "reverseSource": "components/sources/card/layout-one-reverse-list-host-review-1015.json"
+  },
+  "unborderedListHost1015": {
+    "source": "components/sources/card/unbordered-list-host-review-1015.json",
+    "scope": "Both formal PC full-width unbordered source specimens only; no automatic call expansion",
+    "implemented": [
+      "Four real List14 rows",
+      "Actual326px host/image",
+      "One genuine Learn more action; remove invented pair"
+    ],
+    "visual": "pending",
+    "reverseSource": "components/sources/card/reverse-unbordered-list-host-review-1015.json"
+  },
+  "borderedSidebarList1015": {
+    "source": "components/sources/card/bordered-sidebar-list-host-review-1015.json",
+    "scope": "Both independently read PC bordered sidebar formal specimens only",
+    "visual": "pending",
+    "remaining": [
+      "Source max168 clipping and scrollbar/runtime",
+      "Actual local visual"
+    ],
+    "automaticCall": "withdrawn",
+    "reverseSource": "components/sources/card/reverse-bordered-sidebar-list-host-review-1015.json"
+  },
+  "verticalListHosts1015": {
+    "source": "components/sources/card/vertical-list-host-review-1015.json",
+    "scope": "Four genuine source previews,three rows each;no AI List slot expansion",
+    "visual": "pending"
+  },
+  "serverProductListHosts1015": {
+    "source": "components/sources/card/server-product-list-host-review-1015.json",
+    "scope": "Existing two source preview slots only; product-full automatic call remains unsupported",
+    "visual": "pending"
+  },
+  "cardMetadataFeatured1015": {
+    "source": "components/sources/tag/card-metadata-featured-review-1015.json",
+    "scope": "Four formal source hosts only; finite content-only AI call has no metadata or Featured slot",
+    "visual": "pending"
+  },
+  "cardCountPopup1015": {
+    "source": "components/sources/tag/card-count-popup-review-1015.json",
+    "scope": "Three existing popup atoms; initial genuine Hover popup visible",
+    "visual": "pending",
+    "remaining": [
+      "Whole host width and popup position",
+      "Popup selection business mapping and Hover timing"
+    ]
+  },
+  "cardGrayTagAdaptation1015": {
+    "source": "components/sources/tag/card-gray-label-adaptation-1015.json",
+    "scope": "Only eight original source-host instances; canonical standalone Tag unchanged",
+    "visual": "pending"
+  },
+  "localHorizontalAdmission1113": {
+    "evidence": "components/sources/card/horizontal-local-admission-20261113.json",
+    "fontBaseline": "local-English-normative-Open-Sans",
+    "sourceGlyphEquivalence": "unresolved; original audit retained",
+    "calls": [
+      "spliced.horizontal.full-width",
+      "spliced.horizontal.full-width.responsive"
+    ]
+  }
+}

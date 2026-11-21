@@ -1,0 +1,1650 @@
+{
+  "readDate": "2026-10-14",
+  "fileId": "143880409387753",
+  "regularGroup": {
+    "nodeId": "68908:037037",
+    "overview": {
+      "sections": [
+        {
+          "id": "68908:037049",
+          "name": "标签/产品属性/常规属性",
+          "type": "INSTANCE",
+          "nodeCount": 2,
+          "x": 0,
+          "y": 0,
+          "width": 46,
+          "height": 22,
+          "textPreview": "Cisco",
+          "structureSiblingCount": 1
+        },
+        {
+          "id": "68908:037045",
+          "name": "标签/产品属性/常规属性",
+          "type": "INSTANCE",
+          "nodeCount": 2,
+          "x": 50,
+          "y": 0,
+          "width": 56,
+          "height": 22,
+          "textPreview": "Juniper",
+          "structureSiblingCount": 1
+        },
+        {
+          "id": "68908:037041",
+          "name": "标签/产品属性/常规属性",
+          "type": "INSTANCE",
+          "nodeCount": 2,
+          "x": 110,
+          "y": 0,
+          "width": 49,
+          "height": 22,
+          "textPreview": "Arista",
+          "structureSiblingCount": 1
+        },
+        {
+          "id": "68908:037038",
+          "name": "标签/产品属性/常规属性",
+          "type": "INSTANCE",
+          "nodeCount": 2,
+          "x": 163,
+          "y": 0,
+          "width": 83,
+          "height": 22,
+          "textPreview": "Customized",
+          "structureSiblingCount": 1
+        }
+      ],
+      "totalSections": 4,
+      "totalNodes": 8,
+      "allTexts": [
+        "Cisco",
+        "Juniper",
+        "Arista"
+      ],
+      "rootMetadata": {
+        "width": 260,
+        "height": 22,
+        "name": "标签",
+        "type": "FRAME",
+        "allTexts": [
+          "Cisco",
+          "Juniper",
+          "Arista"
+        ]
+      },
+      "rootContainer": {
+        "width": "260px",
+        "minHeight": "22px",
+        "background": "transparent",
+        "overflow": "hidden",
+        "position": "relative"
+      },
+      "nextAction": "STOP. This section LIST is only a directory — it has NO DSL nodes,  NO rowTexts. You CANNOT generate HTML from this list alone. Your NEXT ACTION: call mcp__getDesignSections with sectionIndex=0, then sectionIndex=1, ... up to sectionIndex=3 (total 4 calls). Fetch ALL 4 sections in batches of 3-5 before writing ANY HTML. Sections with nodeCount=3 and empty name are NOT empty — they contain real menu items and content (resolved from INSTANCE overrides during DSL transfer). Skipping section DSL fetch is the #1 cause of missing menus, broken icons, and wrong data.",
+      "rules": [
+        "CRITICAL — Page positioning: the section LIST response contains splitContainers with page-absolute coordinates for each page region. Use splitContainers to construct the page skeleton (position:absolute with exact coordinates). Do NOT guess or stack with flex. IMPORTANT: splitContainers x/y are the container's absolute position on the canvas — they are NOT CSS margins/padding for child elements. Do NOT apply a container's y coordinate as top/margin-top on the main content wrapper. The main content area should start at top:0 within its own positioning context; sub-sections inside it use their own bbox y coordinates relative to the container, not to the page root.",
+        "CRITICAL — Multi-column sidebar layout: render ALL sidebar levels as persistent visible columns positioned via splitContainers coordinates. Do NOT use position:absolute/fixed for submenu panels (they become floating overlays and break the main content width). Instead, lay out ALL columns (primary sidebar + submenu + main content) side-by-side using flex or absolute positioning that ACCOUNTS for every column's width. The main content area width = rootContainer.width minus ALL sidebar column widths. Do NOT use flex:1 for main content when there are multiple sidebar columns — it will expand into the submenu's space. Each sidebar column's width comes from its splitContainer entry.",
+        "token filed must be generated as a variable (colors, shadows, fonts, etc.) and the token field must be displayed in the comment",
+        "componentDocumentLinks is a list of frontend component documentation links. When it exists and is not empty, use mcp__getComponentLink to get the documentation.",
+        "",
+        "CRITICAL — SVG FROM PATH NODES (MUST FOLLOW): Every PATH node has a `svgShortKey` field (a short sequential ID like `S0#0`, `S0#1`). The SVG markup is NOT in the DSL. You MUST place a placeholder `@@SVG:{svgShortKey}@@` where each icon goes, then call `mcp__applyDesign` at the end to inject the real high-precision SVG. NEVER hand-write `<path d=\"...\">` — the DSL does NOT contain path data. NEVER leave a PATH node unrendered — every icon MUST have a `@@SVG:{svgShortKey}@@` placeholder.",
+        "CRITICAL — RENDER EVERY ICON IN PATH NODES: Every PATH node has a `svgShortKey`. Place `@@SVG:{svgShortKey}@@` for each — sidebar menu icons, table header sort/filter/search icons, pagination prev/next/refresh icons, and action buttons. A header cell or menu item showing only plain text is a fidelity defect. After ALL placeholders are placed, call `mcp__applyDesign` to replace them with real SVG.",
+        "",
+        "CRITICAL — _placeholder TEXT handling: TEXT nodes with `_placeholder: true` (name==text) are listed in `dsl.placeholderTexts`. These are component-library boilerplate — NOT real column headers, labels, or data. Do NOT render them as table headers, column names, or visible UI labels. They appear alongside real text in the same section (e.g. a header cell has both realTitle='用户名称' and placeholder='Hillstone Design') — render ONLY the real title, omit the placeholder. EXCEPTION: if a placeholder text is the SOLE text in its section AND it reads as a legitimate brand name or page title (e.g. '智源智能安全运营平台'), it may be real content — render it in its proper context (logo area, page title), never as a table header.",
+        "CRITICAL — CLOSED-SET TEXT: the section LIST response carries `rootMetadata.allTexts` — the complete whitelist of text strings in this design (including placeholder strings). Any visible string NOT in allTexts is a hallucination and MUST be removed. Use `dsl.placeholderTexts` in each section to identify which strings are component-library boilerplate.",
+        "",
+        "CRITICAL — INSTANCE fill color: when an INSTANCE has both `fill` and `_color`, use `_color` directly as the CSS value. Do NOT guess colors from _variantProps semantics.",
+        "CRITICAL — INSTANCE _variantProps: compare across siblings for selected/hovered/disabled. Active class MUST match DSL variant state, NOT a default index.",
+        "CRITICAL — Render count = structureSiblingCount: if ssc=1, that single instance IS complete — do NOT fabricate extra rows/items.",
+        "CRITICAL — BACKGROUND FROM splitContainers: splitContainers[].background IS the exact CSS background-color. Copy verbatim, no changes.",
+        "CRITICAL — FRAME/GROUP opacity: translate to rgba() on background only, NOT CSS opacity (would make children translucent).",
+        "CRITICAL — rowTexts: each entry has parentType/parentName for context and `_placeholder: true` if boilerplate. Use parentName to place text correctly; skip _placeholder entries. IMPORTANT: if a short numeric text (like '8') has parentName matching a button INSTANCE (e.g. '分类[a3]=文本按钮,类型[aI]=危险'), it is likely a badge/count indicator overlaid on that button — NOT part of the button label. Do NOT render it inside the button text; render it as a separate badge element positioned on the button corner, OR omit it if the design does not show a visible badge on that specific button instance.",
+        "Render ALL nodes recursively. Section root layoutStyle.width = section width. Do not call mcp__getDsl after completing section workflow.",
+        "CRITICAL — ICON-TO-NODE BINDING: match PATH nodes to their UI position by the node's ancestor name. A PATH node under a menu item belongs in that menu's icon slot; one under a button/refresh belongs in that button. NEVER substitute a memorized icon — use the exact `@@SVG:{svgShortKey}@@` from the PATH node in its section. NEVER reuse a svgShortKey from a different section.",
+        "CRITICAL — TEXT PROVENANCE SELF-CHECK: before finalizing output, verify every visible text string exists in allTexts. If you emit MORE distinct strings than allTexts.length, you are hallucinating. Typical hallucinations: fabricated table headers, invented data, brand tokens, generic labels not in the design.",
+        "CRITICAL — DO NOT SKIP SECTION DSL FETCH: the section LIST response is ONLY a directory (id/name/nodeCount/textPreview). It does NOT contain DSL nodes, rowTexts, or any rendering data. You CANNOT generate correct HTML from the list alone. You MUST call mcp__getDesignSections with sectionIndex=0, then 1, ... up to totalSections-1 to get each section's DSL. Generating HTML without fetching ALL section DSLs will produce missing content (menus, table data, icons) and incorrect SVGs — this is the #1 cause of broken output."
+      ]
+    },
+    "sections": [
+      {
+        "sectionIndex": 0,
+        "section": {
+          "id": "68908:037049",
+          "name": "标签/产品属性/常规属性",
+          "type": "INSTANCE"
+        },
+        "rootContainer": {
+          "width": "260px",
+          "minHeight": "22px",
+          "background": "transparent",
+          "overflow": "hidden",
+          "position": "relative"
+        },
+        "structureSiblingCount": 1,
+        "dsl": {
+          "styles": {
+            "font_68700:84787": {
+              "value": {
+                "family": "Open Sans",
+                "size": 12,
+                "decoration": "none",
+                "case": "none",
+                "lineHeight": "20",
+                "letterSpacing": "auto",
+                "weight": "400"
+              },
+              "token": "Open Sans/12px-Regular"
+            },
+            "paint_68700:83502": {
+              "value": [
+                "#19191A"
+              ],
+              "token": "中性色/Gray1-#19191A",
+              "description": "💚场景：文本(重)"
+            },
+            "paint_68753:90583": {
+              "value": [
+                "#EEEEEE"
+              ],
+              "token": "中性色/Gray5-#EEEEEE",
+              "description": "💚场景：占位骨架、版块横分隔线"
+            }
+          },
+          "nodes": [
+            {
+              "type": "INSTANCE",
+              "id": "68908:037049",
+              "name": "标签/产品属性/常规属性",
+              "layoutStyle": {
+                "width": 46,
+                "height": 22,
+                "relativeX": 0,
+                "relativeY": 0
+              },
+              "borderRadius": "4px",
+              "flexContainerInfo": {
+                "flexDirection": "row",
+                "justifyContent": "center",
+                "alignItems": "center",
+                "mainSizing": "auto",
+                "crossSizing": "fixed",
+                "gap": "8px",
+                "padding": "2px 8px"
+              },
+              "strokeColor": "paint_68753:90583",
+              "strokeType": "solid",
+              "strokeAlign": "inside",
+              "strokeWidth": "1px",
+              "componentInfo": {
+                "properties": {
+                  "组件宽度": "自适应",
+                  "尺寸": "小",
+                  "状态": "default",
+                  "客户端": "pc（三端一致）",
+                  "价格": "no",
+                  "定制": "no",
+                  "颜色": "no"
+                }
+              },
+              "children": [
+                {
+                  "type": "TEXT",
+                  "id": "68908:037049/68908:017180",
+                  "name": "Mini Module",
+                  "layoutStyle": {
+                    "width": 30,
+                    "height": 20,
+                    "relativeX": 8,
+                    "relativeY": 1
+                  },
+                  "fill": "paint_68700:83502",
+                  "_color": "#19191A",
+                  "_token": "中性色/Gray1-#19191A",
+                  "text": [
+                    {
+                      "text": "Cisco",
+                      "font": "font_68700:84787"
+                    }
+                  ],
+                  "textColor": [
+                    {
+                      "start": 0,
+                      "end": 5,
+                      "color": "paint_68700:83502"
+                    }
+                  ],
+                  "textAlign": "left",
+                  "textMode": "single-line"
+                }
+              ],
+              "componentId": "68908:017178",
+              "_variantProps": {
+                "组件宽度": "自适应",
+                "尺寸": "小",
+                "状态": "default",
+                "客户端": "pc（三端一致）",
+                "价格": "no",
+                "定制": "no",
+                "颜色": "no"
+              }
+            }
+          ],
+          "components": [],
+          "rowTexts": [
+            {
+              "text": "Cisco",
+              "parentType": "INSTANCE",
+              "parentName": "标签/产品属性/常规属性"
+            }
+          ]
+        },
+        "nodeCount": 2,
+        "componentDocumentLinks": [],
+        "fetchProgress": "Fetched 1/4. MISSING 3 sections: [1,2,3]. You MUST fetch ALL remaining sections before generating HTML. Do NOT stop early."
+      },
+      {
+        "sectionIndex": 1,
+        "section": {
+          "id": "68908:037045",
+          "name": "标签/产品属性/常规属性",
+          "type": "INSTANCE"
+        },
+        "rootContainer": {
+          "width": "260px",
+          "minHeight": "22px",
+          "background": "transparent",
+          "overflow": "hidden",
+          "position": "relative"
+        },
+        "structureSiblingCount": 1,
+        "dsl": {
+          "styles": {
+            "font_68700:84787": {
+              "value": {
+                "family": "Open Sans",
+                "size": 12,
+                "decoration": "none",
+                "case": "none",
+                "lineHeight": "20",
+                "letterSpacing": "auto",
+                "weight": "400"
+              },
+              "token": "Open Sans/12px-Regular"
+            },
+            "paint_68700:83502": {
+              "value": [
+                "#19191A"
+              ],
+              "token": "中性色/Gray1-#19191A",
+              "description": "💚场景：文本(重)"
+            },
+            "paint_68700:84662": {
+              "value": [
+                "#F2F2F2"
+              ],
+              "token": "中性色/Gray7-#F2F2F2",
+              "description": "💚场景：背景色(常规导航)"
+            }
+          },
+          "nodes": [
+            {
+              "type": "INSTANCE",
+              "id": "68908:037045",
+              "name": "标签/产品属性/常规属性",
+              "layoutStyle": {
+                "width": 56,
+                "height": 22,
+                "relativeX": 0,
+                "relativeY": 0
+              },
+              "fill": "paint_68700:84662",
+              "_color": "#F2F2F2",
+              "_token": "中性色/Gray7-#F2F2F2",
+              "strokeColor": "paint_68700:83502",
+              "strokeType": "solid",
+              "strokeAlign": "inside",
+              "strokeWidth": "1px",
+              "componentInfo": {
+                "properties": {
+                  "组件宽度": "自适应",
+                  "尺寸": "小",
+                  "状态": "checked",
+                  "客户端": "pc（三端一致）",
+                  "价格": "no",
+                  "定制": "no",
+                  "颜色": "no"
+                }
+              },
+              "children": [
+                {
+                  "type": "TEXT",
+                  "id": "68908:037045/68908:016489",
+                  "name": "Mini Module",
+                  "layoutStyle": {
+                    "width": 40,
+                    "height": 20,
+                    "relativeX": 8,
+                    "relativeY": 1
+                  },
+                  "fill": "paint_68700:83502",
+                  "_color": "#19191A",
+                  "_token": "中性色/Gray1-#19191A",
+                  "text": [
+                    {
+                      "text": "Juniper",
+                      "font": "font_68700:84787"
+                    }
+                  ],
+                  "textColor": [
+                    {
+                      "start": 0,
+                      "end": 7,
+                      "color": "paint_68700:83502"
+                    }
+                  ],
+                  "textAlign": "left",
+                  "textMode": "single-line"
+                }
+              ],
+              "componentId": "68908:016488",
+              "_variantProps": {
+                "组件宽度": "自适应",
+                "尺寸": "小",
+                "状态": "checked",
+                "客户端": "pc（三端一致）",
+                "价格": "no",
+                "定制": "no",
+                "颜色": "no"
+              }
+            }
+          ],
+          "components": [],
+          "rowTexts": [
+            {
+              "text": "Juniper",
+              "parentType": "INSTANCE",
+              "parentName": "标签/产品属性/常规属性"
+            }
+          ]
+        },
+        "nodeCount": 2,
+        "componentDocumentLinks": [],
+        "fetchProgress": "Fetched 2/4. MISSING 2 sections: [2,3]. You MUST fetch ALL remaining sections before generating HTML. Do NOT stop early."
+      },
+      {
+        "sectionIndex": 2,
+        "section": {
+          "id": "68908:037041",
+          "name": "标签/产品属性/常规属性",
+          "type": "INSTANCE"
+        },
+        "rootContainer": {
+          "width": "260px",
+          "minHeight": "22px",
+          "background": "transparent",
+          "overflow": "hidden",
+          "position": "relative"
+        },
+        "structureSiblingCount": 1,
+        "dsl": {
+          "styles": {
+            "font_68700:84787": {
+              "value": {
+                "family": "Open Sans",
+                "size": 12,
+                "decoration": "none",
+                "case": "none",
+                "lineHeight": "20",
+                "letterSpacing": "auto",
+                "weight": "400"
+              },
+              "token": "Open Sans/12px-Regular"
+            },
+            "paint_68700:83502": {
+              "value": [
+                "#19191A"
+              ],
+              "token": "中性色/Gray1-#19191A",
+              "description": "💚场景：文本(重)"
+            },
+            "paint_68753:90583": {
+              "value": [
+                "#EEEEEE"
+              ],
+              "token": "中性色/Gray5-#EEEEEE",
+              "description": "💚场景：占位骨架、版块横分隔线"
+            }
+          },
+          "nodes": [
+            {
+              "type": "INSTANCE",
+              "id": "68908:037041",
+              "name": "标签/产品属性/常规属性",
+              "layoutStyle": {
+                "width": 49,
+                "height": 22,
+                "relativeX": 0,
+                "relativeY": 0
+              },
+              "borderRadius": "4px",
+              "flexContainerInfo": {
+                "flexDirection": "row",
+                "justifyContent": "center",
+                "alignItems": "center",
+                "mainSizing": "auto",
+                "crossSizing": "fixed",
+                "gap": "8px",
+                "padding": "2px 8px"
+              },
+              "strokeColor": "paint_68753:90583",
+              "strokeType": "solid",
+              "strokeAlign": "inside",
+              "strokeWidth": "1px",
+              "componentInfo": {
+                "properties": {
+                  "组件宽度": "自适应",
+                  "尺寸": "小",
+                  "状态": "default",
+                  "客户端": "pc（三端一致）",
+                  "价格": "no",
+                  "定制": "no",
+                  "颜色": "no"
+                }
+              },
+              "children": [
+                {
+                  "type": "TEXT",
+                  "id": "68908:037041/68908:017180",
+                  "name": "Mini Module",
+                  "layoutStyle": {
+                    "width": 33,
+                    "height": 20,
+                    "relativeX": 8,
+                    "relativeY": 1
+                  },
+                  "fill": "paint_68700:83502",
+                  "_color": "#19191A",
+                  "_token": "中性色/Gray1-#19191A",
+                  "text": [
+                    {
+                      "text": "Arista",
+                      "font": "font_68700:84787"
+                    }
+                  ],
+                  "textColor": [
+                    {
+                      "start": 0,
+                      "end": 6,
+                      "color": "paint_68700:83502"
+                    }
+                  ],
+                  "textAlign": "left",
+                  "textMode": "single-line"
+                }
+              ],
+              "componentId": "68908:017178",
+              "_variantProps": {
+                "组件宽度": "自适应",
+                "尺寸": "小",
+                "状态": "default",
+                "客户端": "pc（三端一致）",
+                "价格": "no",
+                "定制": "no",
+                "颜色": "no"
+              }
+            }
+          ],
+          "components": [],
+          "rowTexts": [
+            {
+              "text": "Arista",
+              "parentType": "INSTANCE",
+              "parentName": "标签/产品属性/常规属性"
+            }
+          ]
+        },
+        "nodeCount": 2,
+        "componentDocumentLinks": [],
+        "fetchProgress": "Fetched 3/4. MISSING 1 sections: [3]. You MUST fetch ALL remaining sections before generating HTML. Do NOT stop early."
+      },
+      {
+        "sectionIndex": 3,
+        "section": {
+          "id": "68908:037038",
+          "name": "标签/产品属性/常规属性",
+          "type": "INSTANCE"
+        },
+        "rootContainer": {
+          "width": "260px",
+          "minHeight": "22px",
+          "background": "transparent",
+          "overflow": "hidden",
+          "position": "relative"
+        },
+        "structureSiblingCount": 1,
+        "dsl": {
+          "styles": {
+            "font_68700:84787": {
+              "value": {
+                "family": "Open Sans",
+                "size": 12,
+                "decoration": "none",
+                "case": "none",
+                "lineHeight": "20",
+                "letterSpacing": "auto",
+                "weight": "400"
+              },
+              "token": "Open Sans/12px-Regular"
+            },
+            "paint_68753:84338": {
+              "value": [
+                "#0060BF"
+              ],
+              "token": "辅助色/Blue-#0060BF",
+              "description": "💚场景：热链"
+            },
+            "paint_68753:90583": {
+              "value": [
+                "#EEEEEE"
+              ],
+              "token": "中性色/Gray5-#EEEEEE",
+              "description": "💚场景：占位骨架、版块横分隔线"
+            }
+          },
+          "nodes": [
+            {
+              "type": "INSTANCE",
+              "id": "68908:037038",
+              "name": "标签/产品属性/常规属性",
+              "layoutStyle": {
+                "width": 83,
+                "height": 22,
+                "relativeX": 0,
+                "relativeY": 0
+              },
+              "borderRadius": "4px",
+              "flexContainerInfo": {
+                "flexDirection": "row",
+                "justifyContent": "center",
+                "alignItems": "center",
+                "mainSizing": "auto",
+                "crossSizing": "fixed",
+                "gap": "8px",
+                "padding": "2px 8px"
+              },
+              "strokeColor": "paint_68753:90583",
+              "strokeType": "solid",
+              "strokeAlign": "inside",
+              "strokeWidth": "1px",
+              "componentInfo": {
+                "properties": {
+                  "组件宽度": "自适应",
+                  "尺寸": "小",
+                  "状态": "default",
+                  "客户端": "pc（三端一致）",
+                  "价格": "no",
+                  "定制": "yes",
+                  "颜色": "no"
+                }
+              },
+              "children": [
+                {
+                  "type": "TEXT",
+                  "id": "68908:037038/68908:018031",
+                  "name": "Customized",
+                  "layoutStyle": {
+                    "width": 67,
+                    "height": 20,
+                    "relativeX": 40,
+                    "relativeY": 1
+                  },
+                  "fill": "paint_68753:84338",
+                  "_color": "#0060BF",
+                  "_token": "辅助色/Blue-#0060BF",
+                  "text": [
+                    {
+                      "text": "Customized",
+                      "font": "font_68700:84787"
+                    }
+                  ],
+                  "textColor": [
+                    {
+                      "start": 0,
+                      "end": 10,
+                      "color": "paint_68753:84338"
+                    }
+                  ],
+                  "textAlign": "left",
+                  "textMode": "single-line",
+                  "_placeholder": true
+                }
+              ],
+              "componentId": "68908:018030",
+              "_variantProps": {
+                "组件宽度": "自适应",
+                "尺寸": "小",
+                "状态": "default",
+                "客户端": "pc（三端一致）",
+                "价格": "no",
+                "定制": "yes",
+                "颜色": "no"
+              }
+            }
+          ],
+          "components": [],
+          "rowTexts": [
+            {
+              "text": "Customized",
+              "_placeholder": true,
+              "parentType": "INSTANCE",
+              "parentName": "标签/产品属性/常规属性"
+            }
+          ],
+          "placeholderTexts": [
+            "Customized"
+          ]
+        },
+        "nodeCount": 2,
+        "componentDocumentLinks": [],
+        "fetchProgress": "ALL 4 sections fetched. You can now generate the complete HTML."
+      }
+    ]
+  },
+  "colorGroup": {
+    "nodeId": "68908:035439",
+    "overview": {
+      "sections": [
+        {
+          "id": "68908:035444",
+          "name": "标签/产品属性/颜色",
+          "type": "INSTANCE",
+          "nodeCount": 2,
+          "x": 0,
+          "y": 0,
+          "width": 22,
+          "height": 22,
+          "structureHash": "{\"t\":\"INSTANCE\",\"l\":{\"w\":22,\"h\":22},\"c\":[{\"t\":\"LAYER\",\"l\":{\"w\":14,\"h\":14}}]}",
+          "structureSiblingCount": 8
+        },
+        {
+          "id": "68908:035451",
+          "name": "标签/产品属性/颜色",
+          "type": "INSTANCE",
+          "nodeCount": 2,
+          "x": 26,
+          "y": 0,
+          "width": 22,
+          "height": 22,
+          "structureHash": "{\"t\":\"INSTANCE\",\"l\":{\"w\":22,\"h\":22},\"c\":[{\"t\":\"LAYER\",\"l\":{\"w\":14,\"h\":14}}]}",
+          "structureSiblingCount": 8
+        },
+        {
+          "id": "68908:035443",
+          "name": "标签/产品属性/颜色",
+          "type": "INSTANCE",
+          "nodeCount": 2,
+          "x": 52,
+          "y": 0,
+          "width": 22,
+          "height": 22,
+          "structureHash": "{\"t\":\"INSTANCE\",\"l\":{\"w\":22,\"h\":22},\"c\":[{\"t\":\"LAYER\",\"l\":{\"w\":14,\"h\":14}}]}",
+          "structureSiblingCount": 8
+        },
+        {
+          "id": "68908:035445",
+          "name": "标签/产品属性/颜色",
+          "type": "INSTANCE",
+          "nodeCount": 10,
+          "x": 78,
+          "y": 0,
+          "width": 22,
+          "height": 22,
+          "structureSiblingCount": 1
+        },
+        {
+          "id": "68908:035449",
+          "name": "标签/产品属性/颜色",
+          "type": "INSTANCE",
+          "nodeCount": 2,
+          "x": 104,
+          "y": 0,
+          "width": 22,
+          "height": 22,
+          "structureHash": "{\"t\":\"INSTANCE\",\"l\":{\"w\":22,\"h\":22},\"c\":[{\"t\":\"LAYER\",\"l\":{\"w\":14,\"h\":14}}]}",
+          "structureSiblingCount": 8
+        },
+        {
+          "id": "68908:035442",
+          "name": "标签/产品属性/颜色",
+          "type": "INSTANCE",
+          "nodeCount": 2,
+          "x": 130,
+          "y": 0,
+          "width": 22,
+          "height": 22,
+          "structureHash": "{\"t\":\"INSTANCE\",\"l\":{\"w\":22,\"h\":22},\"c\":[{\"t\":\"LAYER\",\"l\":{\"w\":14,\"h\":14}}]}",
+          "structureSiblingCount": 8
+        },
+        {
+          "id": "68908:035441",
+          "name": "标签/产品属性/颜色",
+          "type": "INSTANCE",
+          "nodeCount": 2,
+          "x": 156,
+          "y": 0,
+          "width": 22,
+          "height": 22,
+          "structureHash": "{\"t\":\"INSTANCE\",\"l\":{\"w\":22,\"h\":22},\"c\":[{\"t\":\"LAYER\",\"l\":{\"w\":14,\"h\":14}}]}",
+          "structureSiblingCount": 8
+        },
+        {
+          "id": "68908:035450",
+          "name": "标签/产品属性/颜色",
+          "type": "INSTANCE",
+          "nodeCount": 2,
+          "x": 182,
+          "y": 0,
+          "width": 22,
+          "height": 22,
+          "structureHash": "{\"t\":\"INSTANCE\",\"l\":{\"w\":22,\"h\":22},\"c\":[{\"t\":\"LAYER\",\"l\":{\"w\":14,\"h\":14}}]}",
+          "structureSiblingCount": 8
+        },
+        {
+          "id": "68908:035440",
+          "name": "标签/产品属性/颜色",
+          "type": "INSTANCE",
+          "nodeCount": 2,
+          "x": 208,
+          "y": 0,
+          "width": 22,
+          "height": 22,
+          "structureHash": "{\"t\":\"INSTANCE\",\"l\":{\"w\":22,\"h\":22},\"c\":[{\"t\":\"LAYER\",\"l\":{\"w\":14,\"h\":14}}]}",
+          "structureSiblingCount": 8
+        }
+      ],
+      "totalSections": 9,
+      "totalNodes": 26,
+      "rootMetadata": {
+        "width": 260,
+        "height": 22,
+        "name": "标签",
+        "type": "FRAME"
+      },
+      "rootContainer": {
+        "width": "260px",
+        "minHeight": "22px",
+        "background": "transparent",
+        "overflow": "hidden",
+        "position": "relative"
+      },
+      "nextAction": "STOP. This section LIST is only a directory — it has NO DSL nodes,  NO rowTexts. You CANNOT generate HTML from this list alone. Your NEXT ACTION: call mcp__getDesignSections with sectionIndex=0, then sectionIndex=1, ... up to sectionIndex=8 (total 9 calls). Fetch ALL 9 sections in batches of 3-5 before writing ANY HTML. Sections with nodeCount=3 and empty name are NOT empty — they contain real menu items and content (resolved from INSTANCE overrides during DSL transfer). WARNING: 8 sections have structureSiblingCount up to 8 — they look identical in the list (same nodeCount, empty name) but each has DIFFERENT text content and variant state. You MUST fetch ALL of them individually (do NOT skip any after fetching a few). Skipping sibling sections causes missing active-state styling and wrong menu item rendering. Skipping section DSL fetch is the #1 cause of missing menus, broken icons, and wrong data.",
+      "rules": [
+        "CRITICAL — Page positioning: the section LIST response contains splitContainers with page-absolute coordinates for each page region. Use splitContainers to construct the page skeleton (position:absolute with exact coordinates). Do NOT guess or stack with flex. IMPORTANT: splitContainers x/y are the container's absolute position on the canvas — they are NOT CSS margins/padding for child elements. Do NOT apply a container's y coordinate as top/margin-top on the main content wrapper. The main content area should start at top:0 within its own positioning context; sub-sections inside it use their own bbox y coordinates relative to the container, not to the page root.",
+        "CRITICAL — Multi-column sidebar layout: render ALL sidebar levels as persistent visible columns positioned via splitContainers coordinates. Do NOT use position:absolute/fixed for submenu panels (they become floating overlays and break the main content width). Instead, lay out ALL columns (primary sidebar + submenu + main content) side-by-side using flex or absolute positioning that ACCOUNTS for every column's width. The main content area width = rootContainer.width minus ALL sidebar column widths. Do NOT use flex:1 for main content when there are multiple sidebar columns — it will expand into the submenu's space. Each sidebar column's width comes from its splitContainer entry.",
+        "token filed must be generated as a variable (colors, shadows, fonts, etc.) and the token field must be displayed in the comment",
+        "componentDocumentLinks is a list of frontend component documentation links. When it exists and is not empty, use mcp__getComponentLink to get the documentation.",
+        "",
+        "CRITICAL — SVG FROM PATH NODES (MUST FOLLOW): Every PATH node has a `svgShortKey` field (a short sequential ID like `S0#0`, `S0#1`). The SVG markup is NOT in the DSL. You MUST place a placeholder `@@SVG:{svgShortKey}@@` where each icon goes, then call `mcp__applyDesign` at the end to inject the real high-precision SVG. NEVER hand-write `<path d=\"...\">` — the DSL does NOT contain path data. NEVER leave a PATH node unrendered — every icon MUST have a `@@SVG:{svgShortKey}@@` placeholder.",
+        "CRITICAL — RENDER EVERY ICON IN PATH NODES: Every PATH node has a `svgShortKey`. Place `@@SVG:{svgShortKey}@@` for each — sidebar menu icons, table header sort/filter/search icons, pagination prev/next/refresh icons, and action buttons. A header cell or menu item showing only plain text is a fidelity defect. After ALL placeholders are placed, call `mcp__applyDesign` to replace them with real SVG.",
+        "",
+        "CRITICAL — _placeholder TEXT handling: TEXT nodes with `_placeholder: true` (name==text) are listed in `dsl.placeholderTexts`. These are component-library boilerplate — NOT real column headers, labels, or data. Do NOT render them as table headers, column names, or visible UI labels. They appear alongside real text in the same section (e.g. a header cell has both realTitle='用户名称' and placeholder='Hillstone Design') — render ONLY the real title, omit the placeholder. EXCEPTION: if a placeholder text is the SOLE text in its section AND it reads as a legitimate brand name or page title (e.g. '智源智能安全运营平台'), it may be real content — render it in its proper context (logo area, page title), never as a table header.",
+        "CRITICAL — CLOSED-SET TEXT: the section LIST response carries `rootMetadata.allTexts` — the complete whitelist of text strings in this design (including placeholder strings). Any visible string NOT in allTexts is a hallucination and MUST be removed. Use `dsl.placeholderTexts` in each section to identify which strings are component-library boilerplate.",
+        "",
+        "CRITICAL — INSTANCE fill color: when an INSTANCE has both `fill` and `_color`, use `_color` directly as the CSS value. Do NOT guess colors from _variantProps semantics.",
+        "CRITICAL — INSTANCE _variantProps: compare across siblings for selected/hovered/disabled. Active class MUST match DSL variant state, NOT a default index.",
+        "CRITICAL — Render count = structureSiblingCount: if ssc=1, that single instance IS complete — do NOT fabricate extra rows/items.",
+        "CRITICAL — BACKGROUND FROM splitContainers: splitContainers[].background IS the exact CSS background-color. Copy verbatim, no changes.",
+        "CRITICAL — FRAME/GROUP opacity: translate to rgba() on background only, NOT CSS opacity (would make children translucent).",
+        "CRITICAL — rowTexts: each entry has parentType/parentName for context and `_placeholder: true` if boilerplate. Use parentName to place text correctly; skip _placeholder entries. IMPORTANT: if a short numeric text (like '8') has parentName matching a button INSTANCE (e.g. '分类[a3]=文本按钮,类型[aI]=危险'), it is likely a badge/count indicator overlaid on that button — NOT part of the button label. Do NOT render it inside the button text; render it as a separate badge element positioned on the button corner, OR omit it if the design does not show a visible badge on that specific button instance.",
+        "Render ALL nodes recursively. Section root layoutStyle.width = section width. Do not call mcp__getDsl after completing section workflow.",
+        "CRITICAL — ICON-TO-NODE BINDING: match PATH nodes to their UI position by the node's ancestor name. A PATH node under a menu item belongs in that menu's icon slot; one under a button/refresh belongs in that button. NEVER substitute a memorized icon — use the exact `@@SVG:{svgShortKey}@@` from the PATH node in its section. NEVER reuse a svgShortKey from a different section.",
+        "CRITICAL — TEXT PROVENANCE SELF-CHECK: before finalizing output, verify every visible text string exists in allTexts. If you emit MORE distinct strings than allTexts.length, you are hallucinating. Typical hallucinations: fabricated table headers, invented data, brand tokens, generic labels not in the design.",
+        "CRITICAL — DO NOT SKIP SECTION DSL FETCH: the section LIST response is ONLY a directory (id/name/nodeCount/textPreview). It does NOT contain DSL nodes, rowTexts, or any rendering data. You CANNOT generate correct HTML from the list alone. You MUST call mcp__getDesignSections with sectionIndex=0, then 1, ... up to totalSections-1 to get each section's DSL. Generating HTML without fetching ALL section DSLs will produce missing content (menus, table data, icons) and incorrect SVGs — this is the #1 cause of broken output."
+      ]
+    },
+    "sections": [
+      {
+        "sectionIndex": 0,
+        "section": {
+          "id": "68908:035444",
+          "name": "标签/产品属性/颜色",
+          "type": "INSTANCE"
+        },
+        "rootContainer": {
+          "width": "260px",
+          "minHeight": "22px",
+          "background": "transparent",
+          "overflow": "hidden",
+          "position": "relative"
+        },
+        "structureSiblingCount": 8,
+        "dsl": {
+          "styles": {
+            "paint_64721:73922": {
+              "value": [
+                "#5A82F7"
+              ]
+            },
+            "paint_68700:83502": {
+              "value": [
+                "#19191A"
+              ],
+              "token": "中性色/Gray1-#19191A",
+              "description": "💚场景：文本(重)"
+            },
+            "paint_68700:84662": {
+              "value": [
+                "#F2F2F2"
+              ],
+              "token": "中性色/Gray7-#F2F2F2",
+              "description": "💚场景：背景色(常规导航)"
+            }
+          },
+          "nodes": [
+            {
+              "type": "INSTANCE",
+              "id": "68908:035444",
+              "name": "标签/产品属性/颜色",
+              "layoutStyle": {
+                "width": 22,
+                "height": 22,
+                "relativeX": 0,
+                "relativeY": 0
+              },
+              "fill": "paint_68700:84662",
+              "_color": "#F2F2F2",
+              "_token": "中性色/Gray7-#F2F2F2",
+              "strokeColor": "paint_68700:83502",
+              "strokeType": "solid",
+              "strokeAlign": "inside",
+              "strokeWidth": "1px",
+              "componentInfo": {
+                "properties": {
+                  "状态": "checked",
+                  "尺寸": "小"
+                }
+              },
+              "children": [
+                {
+                  "type": "LAYER",
+                  "id": "68908:035444/68908:017821",
+                  "name": "矩形 1",
+                  "layoutStyle": {
+                    "width": 14,
+                    "height": 14,
+                    "relativeX": 4,
+                    "relativeY": 4
+                  },
+                  "borderRadius": "2px",
+                  "fill": "paint_64721:73922",
+                  "_color": "#5A82F7"
+                }
+              ],
+              "componentId": "68908:017820",
+              "_variantProps": {
+                "状态": "checked",
+                "尺寸": "小"
+              }
+            }
+          ],
+          "components": []
+        },
+        "nodeCount": 2,
+        "componentDocumentLinks": [],
+        "fetchProgress": "Fetched 1/9. MISSING 8 sections: [1,2,3,4,5,6,7,8]. You MUST fetch ALL remaining sections before generating HTML. Do NOT stop early."
+      },
+      {
+        "sectionIndex": 1,
+        "section": {
+          "id": "68908:035451",
+          "name": "标签/产品属性/颜色",
+          "type": "INSTANCE"
+        },
+        "rootContainer": {
+          "width": "260px",
+          "minHeight": "22px",
+          "background": "transparent",
+          "overflow": "hidden",
+          "position": "relative"
+        },
+        "structureSiblingCount": 8,
+        "dsl": {
+          "styles": {
+            "paint_59746:74283": {
+              "value": [
+                "#7E7E7E"
+              ]
+            },
+            "paint_68753:90583": {
+              "value": [
+                "#EEEEEE"
+              ],
+              "token": "中性色/Gray5-#EEEEEE",
+              "description": "💚场景：占位骨架、版块横分隔线"
+            }
+          },
+          "nodes": [
+            {
+              "type": "INSTANCE",
+              "id": "68908:035451",
+              "name": "标签/产品属性/颜色",
+              "layoutStyle": {
+                "width": 22,
+                "height": 22,
+                "relativeX": 0,
+                "relativeY": 0
+              },
+              "strokeColor": "paint_68753:90583",
+              "strokeType": "solid",
+              "strokeAlign": "inside",
+              "strokeWidth": "1px",
+              "componentInfo": {
+                "properties": {
+                  "状态": "default",
+                  "尺寸": "小"
+                }
+              },
+              "children": [
+                {
+                  "type": "LAYER",
+                  "id": "68908:035451/68908:016291",
+                  "name": "矩形 1",
+                  "layoutStyle": {
+                    "width": 14,
+                    "height": 14,
+                    "relativeX": 4,
+                    "relativeY": 4
+                  },
+                  "borderRadius": "2px",
+                  "fill": "paint_59746:74283",
+                  "_color": "#7E7E7E"
+                }
+              ],
+              "componentId": "68908:016290",
+              "_variantProps": {
+                "状态": "default",
+                "尺寸": "小"
+              }
+            }
+          ],
+          "components": []
+        },
+        "nodeCount": 2,
+        "componentDocumentLinks": [],
+        "fetchProgress": "Fetched 2/9. MISSING 7 sections: [2,3,4,5,6,7,8]. You MUST fetch ALL remaining sections before generating HTML. Do NOT stop early."
+      },
+      {
+        "sectionIndex": 2,
+        "section": {
+          "id": "68908:035443",
+          "name": "标签/产品属性/颜色",
+          "type": "INSTANCE"
+        },
+        "rootContainer": {
+          "width": "260px",
+          "minHeight": "22px",
+          "background": "transparent",
+          "overflow": "hidden",
+          "position": "relative"
+        },
+        "structureSiblingCount": 8,
+        "dsl": {
+          "styles": {
+            "paint_68753:90583": {
+              "value": [
+                "#EEEEEE"
+              ],
+              "token": "中性色/Gray5-#EEEEEE",
+              "description": "💚场景：占位骨架、版块横分隔线"
+            },
+            "paint_68908:035367": {
+              "value": [
+                "#232323"
+              ]
+            }
+          },
+          "nodes": [
+            {
+              "type": "INSTANCE",
+              "id": "68908:035443",
+              "name": "标签/产品属性/颜色",
+              "layoutStyle": {
+                "width": 22,
+                "height": 22,
+                "relativeX": 0,
+                "relativeY": 0
+              },
+              "strokeColor": "paint_68753:90583",
+              "strokeType": "solid",
+              "strokeAlign": "inside",
+              "strokeWidth": "1px",
+              "componentInfo": {
+                "properties": {
+                  "状态": "default",
+                  "尺寸": "小"
+                }
+              },
+              "children": [
+                {
+                  "type": "LAYER",
+                  "id": "68908:035443/68908:016291",
+                  "name": "矩形 1",
+                  "layoutStyle": {
+                    "width": 14,
+                    "height": 14,
+                    "relativeX": 4,
+                    "relativeY": 4
+                  },
+                  "borderRadius": "2px",
+                  "fill": "paint_68908:035367",
+                  "_color": "#232323"
+                }
+              ],
+              "componentId": "68908:016290",
+              "_variantProps": {
+                "状态": "default",
+                "尺寸": "小"
+              }
+            }
+          ],
+          "components": []
+        },
+        "nodeCount": 2,
+        "componentDocumentLinks": [],
+        "fetchProgress": "Fetched 3/9. MISSING 6 sections: [3,4,5,6,7,8]. You MUST fetch ALL remaining sections before generating HTML. Do NOT stop early."
+      },
+      {
+        "sectionIndex": 3,
+        "section": {
+          "id": "68908:035445",
+          "name": "标签/产品属性/颜色",
+          "type": "INSTANCE"
+        },
+        "rootContainer": {
+          "width": "260px",
+          "minHeight": "22px",
+          "background": "transparent",
+          "overflow": "hidden",
+          "position": "relative"
+        },
+        "structureSiblingCount": 1,
+        "dsl": {
+          "styles": {
+            "paint_1:8": {
+              "value": [
+                "#FFFFFF"
+              ],
+              "token": "颜色系统/中性色/White-#FFFFFF",
+              "description": "💚场景：白色背景"
+            },
+            "paint_43264:63126": {
+              "value": [
+                "#FFFFFF"
+              ]
+            },
+            "paint_68700:83502": {
+              "value": [
+                "#19191A"
+              ],
+              "token": "中性色/Gray1-#19191A",
+              "description": "💚场景：文本(重)"
+            },
+            "paint_68700:84662": {
+              "value": [
+                "#F2F2F2"
+              ],
+              "token": "中性色/Gray7-#F2F2F2",
+              "description": "💚场景：背景色(常规导航)"
+            },
+            "paint_68753:90583": {
+              "value": [
+                "#EEEEEE"
+              ],
+              "token": "中性色/Gray5-#EEEEEE",
+              "description": "💚场景：占位骨架、版块横分隔线"
+            }
+          },
+          "nodes": [
+            {
+              "type": "INSTANCE",
+              "id": "68908:035445",
+              "name": "标签/产品属性/颜色",
+              "layoutStyle": {
+                "width": 22,
+                "height": 22,
+                "relativeX": 0,
+                "relativeY": 0
+              },
+              "fill": "paint_68700:84662",
+              "_color": "#F2F2F2",
+              "_token": "中性色/Gray7-#F2F2F2",
+              "strokeColor": "paint_68753:90583",
+              "strokeType": "solid",
+              "strokeAlign": "inside",
+              "strokeWidth": "1px",
+              "componentInfo": {
+                "properties": {
+                  "状态": "hover",
+                  "尺寸": "小"
+                }
+              },
+              "children": [
+                {
+                  "type": "LAYER",
+                  "id": "68908:035445/68908:020706",
+                  "name": "矩形 1",
+                  "layoutStyle": {
+                    "width": 14,
+                    "height": 14,
+                    "relativeX": 4,
+                    "relativeY": 4
+                  },
+                  "borderRadius": "2px",
+                  "fill": "paint_43264:63126",
+                  "_color": "#FFFFFF"
+                },
+                {
+                  "type": "INSTANCE",
+                  "id": "68908:035445/68908:020702",
+                  "name": "Icon/鼠标手势Icon/PC/Pointer",
+                  "layoutStyle": {
+                    "width": 24,
+                    "height": 24,
+                    "relativeX": 0,
+                    "relativeY": 4
+                  },
+                  "flexContainerInfo": {
+                    "flexDirection": "column",
+                    "mainSizing": "auto",
+                    "crossSizing": "auto"
+                  },
+                  "componentInfo": {},
+                  "children": [
+                    {
+                      "type": "FRAME",
+                      "id": "68908:035445/68908:020702/65372:98315",
+                      "name": "容器 3507",
+                      "layoutStyle": {
+                        "width": 24,
+                        "height": 24,
+                        "relativeX": 0,
+                        "relativeY": 0,
+                        "minWidth": 0,
+                        "minHeight": 0,
+                        "maxWidth": 0,
+                        "maxHeight": 0
+                      },
+                      "children": [
+                        {
+                          "type": "GROUP",
+                          "id": "68908:035445/68908:020702/65372:98315/19869:48187",
+                          "name": "pointing",
+                          "layoutStyle": {
+                            "width": 14.396125793457031,
+                            "height": 15.308764457702637,
+                            "relativeX": 4.80194091796875,
+                            "relativeY": 4.3455810546875,
+                            "minWidth": 0,
+                            "minHeight": 0,
+                            "maxWidth": 0,
+                            "maxHeight": 0
+                          },
+                          "path": [
+                            {
+                              "fill": "#FFFFFF",
+                              "data": ""
+                            },
+                            {
+                              "fill": "#19191A",
+                              "data": ""
+                            },
+                            {
+                              "fill": "#19191A",
+                              "data": ""
+                            },
+                            {
+                              "fill": "#19191A",
+                              "data": ""
+                            },
+                            {
+                              "fill": "#19191A",
+                              "data": ""
+                            }
+                          ],
+                          "_mergedVector": true,
+                          "svgKey": "S3:Icon/鼠标手势Icon/PC/Pointer|68908:035445/68908:020702/65372:98315/19869:48187",
+                          "svgShortKey": "S3#0",
+                          "svgName": "Icon/鼠标手势Icon/PC/Pointer"
+                        }
+                      ]
+                    }
+                  ],
+                  "componentId": "671:385"
+                }
+              ],
+              "componentId": "68908:020701",
+              "_variantProps": {
+                "状态": "hover",
+                "尺寸": "小"
+              }
+            }
+          ],
+          "components": []
+        },
+        "nodeCount": 5,
+        "svgNodeCount": 1,
+        "hasStrippedSvgs": true,
+        "componentDocumentLinks": [],
+        "fetchProgress": "Fetched 4/9. MISSING 5 sections: [4,5,6,7,8]. You MUST fetch ALL remaining sections before generating HTML. Do NOT stop early."
+      },
+      {
+        "sectionIndex": 4,
+        "section": {
+          "id": "68908:035449",
+          "name": "标签/产品属性/颜色",
+          "type": "INSTANCE"
+        },
+        "rootContainer": {
+          "width": "260px",
+          "minHeight": "22px",
+          "background": "transparent",
+          "overflow": "hidden",
+          "position": "relative"
+        },
+        "structureSiblingCount": 8,
+        "dsl": {
+          "styles": {
+            "paint_68753:90583": {
+              "value": [
+                "#EEEEEE"
+              ],
+              "token": "中性色/Gray5-#EEEEEE",
+              "description": "💚场景：占位骨架、版块横分隔线"
+            },
+            "paint_68908:035370": {
+              "value": [
+                "#52B13E"
+              ]
+            }
+          },
+          "nodes": [
+            {
+              "type": "INSTANCE",
+              "id": "68908:035449",
+              "name": "标签/产品属性/颜色",
+              "layoutStyle": {
+                "width": 22,
+                "height": 22,
+                "relativeX": 0,
+                "relativeY": 0
+              },
+              "strokeColor": "paint_68753:90583",
+              "strokeType": "solid",
+              "strokeAlign": "inside",
+              "strokeWidth": "1px",
+              "componentInfo": {
+                "properties": {
+                  "状态": "default",
+                  "尺寸": "小"
+                }
+              },
+              "children": [
+                {
+                  "type": "LAYER",
+                  "id": "68908:035449/68908:016291",
+                  "name": "矩形 1",
+                  "layoutStyle": {
+                    "width": 14,
+                    "height": 14,
+                    "relativeX": 4,
+                    "relativeY": 4
+                  },
+                  "borderRadius": "2px",
+                  "fill": "paint_68908:035370",
+                  "_color": "#52B13E"
+                }
+              ],
+              "componentId": "68908:016290",
+              "_variantProps": {
+                "状态": "default",
+                "尺寸": "小"
+              }
+            }
+          ],
+          "components": []
+        },
+        "nodeCount": 2,
+        "componentDocumentLinks": [],
+        "fetchProgress": "Fetched 5/9. MISSING 4 sections: [5,6,7,8]. You MUST fetch ALL remaining sections before generating HTML. Do NOT stop early."
+      },
+      {
+        "sectionIndex": 5,
+        "section": {
+          "id": "68908:035442",
+          "name": "标签/产品属性/颜色",
+          "type": "INSTANCE"
+        },
+        "rootContainer": {
+          "width": "260px",
+          "minHeight": "22px",
+          "background": "transparent",
+          "overflow": "hidden",
+          "position": "relative"
+        },
+        "structureSiblingCount": 8,
+        "dsl": {
+          "styles": {
+            "paint_68753:90583": {
+              "value": [
+                "#EEEEEE"
+              ],
+              "token": "中性色/Gray5-#EEEEEE",
+              "description": "💚场景：占位骨架、版块横分隔线"
+            },
+            "paint_68908:035363": {
+              "value": [
+                "#F74837"
+              ]
+            }
+          },
+          "nodes": [
+            {
+              "type": "INSTANCE",
+              "id": "68908:035442",
+              "name": "标签/产品属性/颜色",
+              "layoutStyle": {
+                "width": 22,
+                "height": 22,
+                "relativeX": 0,
+                "relativeY": 0
+              },
+              "strokeColor": "paint_68753:90583",
+              "strokeType": "solid",
+              "strokeAlign": "inside",
+              "strokeWidth": "1px",
+              "componentInfo": {
+                "properties": {
+                  "状态": "default",
+                  "尺寸": "小"
+                }
+              },
+              "children": [
+                {
+                  "type": "LAYER",
+                  "id": "68908:035442/68908:016291",
+                  "name": "矩形 1",
+                  "layoutStyle": {
+                    "width": 14,
+                    "height": 14,
+                    "relativeX": 4,
+                    "relativeY": 4
+                  },
+                  "borderRadius": "2px",
+                  "fill": "paint_68908:035363",
+                  "_color": "#F74837"
+                }
+              ],
+              "componentId": "68908:016290",
+              "_variantProps": {
+                "状态": "default",
+                "尺寸": "小"
+              }
+            }
+          ],
+          "components": []
+        },
+        "nodeCount": 2,
+        "componentDocumentLinks": [],
+        "fetchProgress": "Fetched 6/9. MISSING 3 sections: [6,7,8]. You MUST fetch ALL remaining sections before generating HTML. Do NOT stop early."
+      },
+      {
+        "sectionIndex": 6,
+        "section": {
+          "id": "68908:035441",
+          "name": "标签/产品属性/颜色",
+          "type": "INSTANCE"
+        },
+        "rootContainer": {
+          "width": "260px",
+          "minHeight": "22px",
+          "background": "transparent",
+          "overflow": "hidden",
+          "position": "relative"
+        },
+        "structureSiblingCount": 8,
+        "dsl": {
+          "styles": {
+            "paint_68753:90583": {
+              "value": [
+                "#EEEEEE"
+              ],
+              "token": "中性色/Gray5-#EEEEEE",
+              "description": "💚场景：占位骨架、版块横分隔线"
+            },
+            "paint_68908:035359": {
+              "value": [
+                "#F8D93D"
+              ]
+            }
+          },
+          "nodes": [
+            {
+              "type": "INSTANCE",
+              "id": "68908:035441",
+              "name": "标签/产品属性/颜色",
+              "layoutStyle": {
+                "width": 22,
+                "height": 22,
+                "relativeX": 0,
+                "relativeY": 0
+              },
+              "strokeColor": "paint_68753:90583",
+              "strokeType": "solid",
+              "strokeAlign": "inside",
+              "strokeWidth": "1px",
+              "componentInfo": {
+                "properties": {
+                  "状态": "default",
+                  "尺寸": "小"
+                }
+              },
+              "children": [
+                {
+                  "type": "LAYER",
+                  "id": "68908:035441/68908:016291",
+                  "name": "矩形 1",
+                  "layoutStyle": {
+                    "width": 14,
+                    "height": 14,
+                    "relativeX": 4,
+                    "relativeY": 4
+                  },
+                  "borderRadius": "2px",
+                  "fill": "paint_68908:035359",
+                  "_color": "#F8D93D"
+                }
+              ],
+              "componentId": "68908:016290",
+              "_variantProps": {
+                "状态": "default",
+                "尺寸": "小"
+              }
+            }
+          ],
+          "components": []
+        },
+        "nodeCount": 2,
+        "componentDocumentLinks": [],
+        "fetchProgress": "Fetched 7/9. MISSING 2 sections: [7,8]. You MUST fetch ALL remaining sections before generating HTML. Do NOT stop early."
+      },
+      {
+        "sectionIndex": 7,
+        "section": {
+          "id": "68908:035450",
+          "name": "标签/产品属性/颜色",
+          "type": "INSTANCE"
+        },
+        "rootContainer": {
+          "width": "260px",
+          "minHeight": "22px",
+          "background": "transparent",
+          "overflow": "hidden",
+          "position": "relative"
+        },
+        "structureSiblingCount": 8,
+        "dsl": {
+          "styles": {
+            "paint_68753:90583": {
+              "value": [
+                "#EEEEEE"
+              ],
+              "token": "中性色/Gray5-#EEEEEE",
+              "description": "💚场景：占位骨架、版块横分隔线"
+            },
+            "paint_68908:035376": {
+              "value": [
+                "#F29B29"
+              ]
+            }
+          },
+          "nodes": [
+            {
+              "type": "INSTANCE",
+              "id": "68908:035450",
+              "name": "标签/产品属性/颜色",
+              "layoutStyle": {
+                "width": 22,
+                "height": 22,
+                "relativeX": 0,
+                "relativeY": 0
+              },
+              "strokeColor": "paint_68753:90583",
+              "strokeType": "solid",
+              "strokeAlign": "inside",
+              "strokeWidth": "1px",
+              "componentInfo": {
+                "properties": {
+                  "状态": "default",
+                  "尺寸": "小"
+                }
+              },
+              "children": [
+                {
+                  "type": "LAYER",
+                  "id": "68908:035450/68908:016291",
+                  "name": "矩形 1",
+                  "layoutStyle": {
+                    "width": 14,
+                    "height": 14,
+                    "relativeX": 4,
+                    "relativeY": 4
+                  },
+                  "borderRadius": "2px",
+                  "fill": "paint_68908:035376",
+                  "_color": "#F29B29"
+                }
+              ],
+              "componentId": "68908:016290",
+              "_variantProps": {
+                "状态": "default",
+                "尺寸": "小"
+              }
+            }
+          ],
+          "components": []
+        },
+        "nodeCount": 2,
+        "componentDocumentLinks": [],
+        "fetchProgress": "Fetched 8/9. MISSING 1 sections: [8]. You MUST fetch ALL remaining sections before generating HTML. Do NOT stop early."
+      },
+      {
+        "sectionIndex": 8,
+        "section": {
+          "id": "68908:035440",
+          "name": "标签/产品属性/颜色",
+          "type": "INSTANCE"
+        },
+        "rootContainer": {
+          "width": "260px",
+          "minHeight": "22px",
+          "background": "transparent",
+          "overflow": "hidden",
+          "position": "relative"
+        },
+        "structureSiblingCount": 8,
+        "dsl": {
+          "styles": {
+            "paint_68753:90583": {
+              "value": [
+                "#EEEEEE"
+              ],
+              "token": "中性色/Gray5-#EEEEEE",
+              "description": "💚场景：占位骨架、版块横分隔线"
+            },
+            "paint_68908:035373": {
+              "value": [
+                "#AB7BD8"
+              ]
+            }
+          },
+          "nodes": [
+            {
+              "type": "INSTANCE",
+              "id": "68908:035440",
+              "name": "标签/产品属性/颜色",
+              "layoutStyle": {
+                "width": 22,
+                "height": 22,
+                "relativeX": 0,
+                "relativeY": 0
+              },
+              "strokeColor": "paint_68753:90583",
+              "strokeType": "solid",
+              "strokeAlign": "inside",
+              "strokeWidth": "1px",
+              "componentInfo": {
+                "properties": {
+                  "状态": "default",
+                  "尺寸": "小"
+                }
+              },
+              "children": [
+                {
+                  "type": "LAYER",
+                  "id": "68908:035440/68908:016291",
+                  "name": "矩形 1",
+                  "layoutStyle": {
+                    "width": 14,
+                    "height": 14,
+                    "relativeX": 4,
+                    "relativeY": 4
+                  },
+                  "borderRadius": "2px",
+                  "fill": "paint_68908:035373",
+                  "_color": "#AB7BD8"
+                }
+              ],
+              "componentId": "68908:016290",
+              "_variantProps": {
+                "状态": "default",
+                "尺寸": "小"
+              }
+            }
+          ],
+          "components": []
+        },
+        "nodeCount": 2,
+        "componentDocumentLinks": [],
+        "fetchProgress": "ALL 9 sections fetched. You can now generate the complete HTML."
+      }
+    ]
+  },
+  "scope": "Only existing Card product-full attribute slots; source Boolean 产品图=false; matched small22 source variants. No business routing for Customized or +N.",
+  "differences": [
+    "Local Card swatches had nine substituted system colours; source uses #5A82F7,#7E7E7E,#232323,#FFFFFF,#52B13E,#F74837,#F8D93D,#F29B29,#AB7BD8 in order.",
+    "Blue source swatch checked; white source swatch hover. Inside stroke1 (old local active stroke2 removed on migrated calls).",
+    "Source Juniper checked in regular row; current local omitted initial selection.",
+    "Customized checked stroke blue, ordinary checked strokeGray1.",
+    "Chip fills are product option content, separate from frame tokens. Source cursor artwork is an annotation, not component content."
+  ],
+  "nativeOffsetLimit": "Custom image-off text relativeX40 is inherited cached offset inconsistent with83=rootwidth67text+16padding; retain actual source auto-layout padding8 and record pending browser geometry."
+}

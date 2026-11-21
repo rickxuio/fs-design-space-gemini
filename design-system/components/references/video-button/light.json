@@ -1,0 +1,406 @@
+{
+  "schemaVersion": "fs-component-reference/1.0.0",
+  "component": {
+    "id": "video-button",
+    "name": "VideoButton",
+    "scope": "existing-desktop-dark-light-duration-tags-s-l",
+    "reviewStatus": {
+      "engineering": "pending",
+      "visual": "pending",
+      "familyCoverage": "partial"
+    }
+  },
+  "selection": {
+    "policy": "先按封面对比选择dark/light。本地只提取两个默认S时长标签；只接受duration/accessibleLabel/actionCallback，不接受size。原L、XL纯播放及其他状态保留参考，不用页面CSS修尺寸；click归宿主，不内建播放器。",
+    "supported": [
+      "dark",
+      "light"
+    ],
+    "unsupported": [
+      "xl",
+      "circle",
+      "pause",
+      "playback-state",
+      "built-in-player",
+      "disabled-canonical-call",
+      "mobile"
+    ]
+  },
+  "runtime": {
+    "styles": [
+      "components/tokens.css",
+      "components/components.css",
+      "components/video-button-current.css"
+    ],
+    "scripts": [],
+    "fontStylesheets": [
+      "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+    ],
+    "fontFallback": "Open Sans stack; actual browser visual verification pending."
+  },
+  "identity": {
+    "rule": "Safe type=button, nonempty root aria-label, decorative play icon. No copied icon-map ID, inline style or invented playback state.",
+    "labelRule": "duration changes only the visible time slot; accessibleLabel names the action/video and should remain meaningful when duration changes."
+  },
+  "locked": [
+    "S/L rectangle classes and two direct children",
+    "Registered play icon, decorative alt and safe button type",
+    "Size, translucent background and hover from shared CSS",
+    "No media-player behavior"
+  ],
+  "behavior": {
+    "action": "Native button click calls the host actionCallback; component has no independent media JS, toggle state or automatic pause icon.",
+    "duration": "Visible preformatted m:ss with seconds 00..59, not a countdown formatter.",
+    "keyboard": "Native button activation; browser keyboard/focus/contrast remain pending.",
+    "source": "Four default rectangular S/L saved COMPONENT nodes are deterministically re-indexed during reference compilation. Role/default/not-playing/light properties, height/icon geometry, padding/gap/radius, fill, font and explicit textColor ranges are compared to local declarations. Source sample width is not fixed runtime width; local remains auto. Design navigation is not frontend playback; XL remains excluded. Browser/SVG path/complete spec approval pending.",
+    "hosts": "Card/Banner entries are design references; their current Preview has no declared VideoButton child implementation.",
+    "specificationScope": "Saved Button update log and type section only: 4 explicit rule texts and 33 document usage rows paired by actual source ancestry. Original text-node IDs retained; document examples do not define new components or automatically approve hosts. There is no complete specification, browser or visual approval inferred.",
+    "sourcePaddingBoundary": "S source and current padding are 8px on both axes, confirmed in native MasterGo inspector for dark/light default originals on 2026-10-10. See components/sources/video-button/online-padding-1010.json. Height stays24px; local rendered content geometry and font loading remain pending."
+  },
+  "examples": [
+    {
+      "name": "light",
+      "publication": {
+        "key": "video-button/light",
+        "disposition": "retain",
+        "newPages": true,
+        "reason": "Retain existing finite exact contract only.",
+        "constraints": [
+          "Only dark/light S/L duration button and host click. XL/play-pause/media business excluded."
+        ],
+        "contractPolicy": "Dark for lighter covers, light for darker covers. S/L are duration tags; use complete size specimens. XL is excluded due source dimension mismatch, not repaired with page CSS.",
+        "use": "finite-new-page-candidate",
+        "evidence": "components/contracts/video-button.json#aiContract/evidence",
+        "requiresCurrentEngineering": true,
+        "visualApproval": "separate-not-granted"
+      },
+      "rootTag": "button",
+      "type": "time-tag / play-button",
+      "defaultSize": "s",
+      "sizeOptions": [
+        {
+          "name": "s",
+          "cssClass": "ds-video-btn--s",
+          "styleProperties": {
+            "width": "auto",
+            "height": "24px",
+            "padding": "8px",
+            "gap": "4px",
+            "fontSize": "12px",
+            "lineHeight": "20px",
+            "fontWeight": "400",
+            "fontFamily": "Open Sans",
+            "backgroundColor": "rgba(255,255,255,0.1)",
+            "color": "#FFFFFF",
+            "borderRadius": "4px",
+            "iconSize": "12x12px",
+            "icon": "icon-play.svg"
+          },
+          "exampleHtml": "<button class=\"ds-video-btn ds-video-btn--light ds-video-btn--s\" data-ai-example=\"ai-video-light-s\" type=\"button\" aria-label=\"Play video\">\n            <img class=\"ds-video-btn__icon\" src=\"../icons/icon-play.svg\" alt=\"\">\n            <span class=\"ds-video-btn__text\">03:52</span>\n          </button>"
+        },
+        {
+          "name": "l",
+          "cssClass": "ds-video-btn--l",
+          "styleProperties": {
+            "width": "auto",
+            "height": "38px",
+            "padding": "8px 16px",
+            "gap": "8px",
+            "fontSize": "14px",
+            "lineHeight": "22px",
+            "fontWeight": "400",
+            "fontFamily": "Open Sans",
+            "backgroundColor": "rgba(255,255,255,0.1)",
+            "color": "#FFFFFF",
+            "borderRadius": "4px",
+            "iconSize": "14x14px",
+            "icon": "icon-play.svg"
+          },
+          "exampleHtml": "<button class=\"ds-video-btn ds-video-btn--light ds-video-btn--l\" data-ai-example=\"ai-video-light-l\" type=\"button\" aria-label=\"Play video\">\n            <img class=\"ds-video-btn__icon\" src=\"../icons/icon-play.svg\" alt=\"\">\n            <span class=\"ds-video-btn__text\">00:28</span>\n          </button>"
+        }
+      ],
+      "unsupportedSizes": [
+        "xl"
+      ],
+      "bindings": {
+        "accessibleLabel": {
+          "mode": "accessible-label",
+          "target": "root",
+          "attribute": "aria-label",
+          "nonEmpty": true
+        },
+        "actionCallback": {
+          "mode": "event-handler",
+          "target": "root",
+          "event": "click"
+        }
+      },
+      "purpose": "light-cover-duration-tag",
+      "whenToUse": "深色视频封面上的反白S时长标签。",
+      "whenNotToUse": "亮底对比不足、任意尺寸或播放状态。",
+      "rootClasses": "ds-video-btn ds-video-btn--light",
+      "requiredStructure": [
+        "img.ds-video-btn__icon",
+        "span.ds-video-btn__text"
+      ],
+      "slots": {
+        "duration": {
+          "selector": "span.ds-video-btn__text",
+          "mode": "text",
+          "required": true,
+          "format": "m:ss, seconds 00..59"
+        }
+      },
+      "allowedEdits": [
+        "duration",
+        "accessibleLabel",
+        "actionCallback"
+      ],
+      "exampleHtml": "<button class=\"ds-video-btn ds-video-btn--light ds-video-btn--s\" data-ai-example=\"ai-video-light-s\" type=\"button\" aria-label=\"Play video\">\n            <img class=\"ds-video-btn__icon\" src=\"../icons/icon-play.svg\" alt=\"\">\n            <span class=\"ds-video-btn__text\">03:52</span>\n          </button>"
+    }
+  ],
+  "relationships": {
+    "children": [],
+    "parents": [],
+    "parentStatus": "no-declared-hosts",
+    "icons": [],
+    "tokens": [
+      {
+        "name": "color.gray-1",
+        "value": "#19191A",
+        "unit": null,
+        "cssVar": "--color-gray-1",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.white",
+        "value": "#FFFFFF",
+        "unit": null,
+        "cssVar": "--color-white",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.white-translucent",
+        "value": "rgba(255,255,255,0.1)",
+        "unit": null,
+        "cssVar": "--color-white-translucent",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "typography.font-family-base",
+        "value": "Open Sans",
+        "unit": null,
+        "cssVar": "--font-family-base",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-size-sm",
+        "value": 12,
+        "unit": "px",
+        "cssVar": "--font-size-sm",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-size-md",
+        "value": 14,
+        "unit": "px",
+        "cssVar": "--font-size-md",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-weight-regular",
+        "value": 400,
+        "unit": null,
+        "cssVar": "--font-weight-regular",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "border-radius.md",
+        "value": 4,
+        "unit": "px",
+        "cssVar": "--border-radius-md",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border-radius.json"
+      },
+      {
+        "name": "spacing.sm",
+        "value": 8,
+        "unit": "px",
+        "cssVar": "--spacing-sm",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.xs",
+        "value": 4,
+        "unit": "px",
+        "cssVar": "--spacing-xs",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.lg",
+        "value": 16,
+        "unit": "px",
+        "cssVar": "--spacing-lg",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.md",
+        "value": 12,
+        "unit": "px",
+        "cssVar": "--spacing-md",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.25",
+        "value": 25,
+        "unit": "px",
+        "cssVar": "--spacing-25",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "border.style.none",
+        "value": "none",
+        "unit": null,
+        "cssVar": "--border-style-none",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "typography.h7-regular",
+        "value": {
+          "fontSize": "14px",
+          "lineHeight": "22px",
+          "fontWeight": 400
+        },
+        "unit": null,
+        "cssVar": null,
+        "primitiveReferences": {
+          "fontSize": "typography.font-size-md",
+          "fontWeight": "typography.font-weight-regular"
+        },
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.h9-regular",
+        "value": {
+          "fontSize": "12px",
+          "lineHeight": "20px",
+          "fontWeight": 400
+        },
+        "unit": null,
+        "cssVar": null,
+        "primitiveReferences": {
+          "fontSize": "typography.font-size-sm",
+          "fontWeight": "typography.font-weight-regular"
+        },
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "color.video-dark-surface",
+        "value": "rgba(25,25,26,0.6)",
+        "unit": null,
+        "cssVar": "--color-video-dark-surface",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.video-dark-hover-surface",
+        "value": "rgba(25,25,26,0.8)",
+        "unit": null,
+        "cssVar": "--color-video-dark-hover-surface",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.video-light-hover-surface",
+        "value": "rgba(255,255,255,0.3)",
+        "unit": null,
+        "cssVar": "--color-video-light-hover-surface",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      }
+    ]
+  },
+  "evidence": {
+    "original": "components/sources/video-button/mastergo-original-components.json",
+    "comparison": "components/sources/video-button/local-structure-review.json",
+    "inventory": "components/sources/video-button/source-inventory.json",
+    "localImplementation": "components/variants/video-button.html",
+    "specificationIndex": "components/sources/button/specification-index.json",
+    "darkDefaultPlay12Review": "components/sources/video-button/dark-default-play12-review-1013.json",
+    "darkSHoverSource": "components/sources/video-button/dark-s-hover-source-1014.json",
+    "xlGeometry": "components/sources/video-button/xl-geometry-source-1014.json",
+    "timeTagOtherHoverSource": "components/sources/video-button/time-tag-other-hover-source-1014.json",
+    "currentMgReview": "components/sources/remaining-prototypes-mg-20261115/video-button-review.json"
+  },
+  "sourceValidation": {
+    "componentIdentity": {
+      "status": "saved-typed-nodes-checked",
+      "files": [
+        "components/sources/video-button/source-inventory.json",
+        "components/sources/video-button/mastergo-original-components.json"
+      ],
+      "basis": "Original saved COMPONENT_SET/COMPONENT types and finite node identities; not screen position or container title."
+    },
+    "specificationBody": {
+      "status": "selected-saved-body-texts-checked",
+      "scope": "shared-button-section-only",
+      "files": [
+        "components/sources/button/specification-index.json",
+        "docs/handoff/archives/2026-10-09-overnight/mastergo/button-spec-document.json"
+      ]
+    },
+    "originalOnlineFrontendCode": false,
+    "browserComputedStyles": false,
+    "completeSpecificationCoverage": false
+  },
+  "freshness": {
+    "fingerprints": {
+      "components/components.css": "a08b4fe2790b5ff2b784c6362a90f1b94e7535a03e863232ce6d620a52e85f73",
+      "components/contracts/video-button.json": "0f4df3833cf4cdf4ddd285c634128843526f9ef3d04a7a53ee711f57477d52ca",
+      "components/icons/icon-play.svg": "e0816bc1843832bebfdf5eab1d6b772b61361bdfc4777b6452c2bd5ba1e4de0c",
+      "components/icons/icons-manifest.json": "12c48af6d1dc59d50b76046bb0507005f565aa4224a6d8056ce4eaaf8050c43e",
+      "components/preview/reference-live.js": "4839383529a3ee82df1d8efe675d430567abc1986034499107aa429d21a18ea6",
+      "components/reference-policy.json": "4ae8f51f623386417e38d497caafb8bda4417c929159002a7ac088e6e526b482",
+      "components/sources/button/specification-index.json": "04d17ff66f36bfae9f6acc9f5633275393a2a52f4bc27475a0f06a80425f1b9e",
+      "components/sources/remaining-prototypes-mg-20261115/video-button-review.json": "09748264cf565c0a4510d3d5491b03f00790efbeaaee00712d00ae7e0ec123e1",
+      "components/sources/video-button/dark-default-play12-review-1013.json": "c25daa5446bf7b68498f0ce9f896e575df9eef76c33ab4fbd9775bbd8084d198",
+      "components/sources/video-button/dark-s-hover-source-1014.json": "a2f88374c884146babed6ed9df2292dd9735b8e3b5efae1db7dee3ab231a9d7d",
+      "components/sources/video-button/local-structure-review.json": "edf561269f248e9942cf6a2d430229b2ba108dc0ca1d8c97905199394b01f8d4",
+      "components/sources/video-button/mastergo-original-components.json": "ef8435355b59f8a12df6a65c9d8e36f8f048d3419a46ec292b8ed60a0b4679c5",
+      "components/sources/video-button/play20-geometry-comparison-1015.json": "906d3edd540af5e8ff0449d6fe5e7199db5d87a8bc04300ef1dc2ee7ef0517b8",
+      "components/sources/video-button/play20-official-1015.svg": "65a1afc00e609991d2885d058c1350a605a1a8aa626e9bf34240545c303482b4",
+      "components/sources/video-button/play20-source-review-1015.json": "7f72cdba06b2719dbf9e909654bcddb66bdd1de53a9186f5f50e6e7cfa3b7909",
+      "components/sources/video-button/source-inventory.json": "af500eca78ffbd4264982e9c7ed654c88a97ed0730d7ddf571c7425f3d16f76f",
+      "components/sources/video-button/time-tag-other-hover-source-1014.json": "47b80c6f90ac0fa3b471c298f24773ac7ddddeed9c9aea793f22ea944f607275",
+      "components/sources/video-button/xl-geometry-source-1014.json": "739241d179a6e87e0aaafee3946d529e142f910aa6b1f0e654f469c6040889eb",
+      "components/token-specs/border-radius.json": "b01e4c23fbc7e19983d9592b59b0303155b79d66c52459356eda0ea9f4ca74b5",
+      "components/token-specs/border.json": "d286ee4681deda1c7702c310b065c86f824539b3a8797efba05b24bc225ab322",
+      "components/token-specs/colors.json": "5267d59fdc687b54496977280c00c97f0beb6ffce013f87853504f5b736d3389",
+      "components/token-specs/spacing.json": "351b14cfce4411248ad41e00eaaf2b1cab9b705997980dfed1fc65693740e65c",
+      "components/token-specs/typography.json": "93b7dc07547218a33c075b7cdcd942f89094353a7847d483d8378b8883327e16",
+      "components/tokens.css": "f63f3c8fea511d8029902bc3905b01853ac5e92049c1b18ca35ebc9a680c3e69",
+      "components/variants/video-button.html": "9e9e406e4025816610e9a4932fc92568cb0bb564568f9705435f77bacb2a2807",
+      "components/video-button-current.css": "00e8f788452d9372dab6f4e6d240488c4afd99bdd40b62643733a1837e070099",
+      "docs/handoff/archives/2026-10-09-overnight/mastergo/button-spec-document.json": "b1b383121a492fb6efbf4daa4eeec51461d1be176a9b2b027bfeced0a23bd120"
+    },
+    "graphFingerprint": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "note": "从本地源文件生成；不是 MasterGo 在线实时状态。"
+  },
+  "readScope": {
+    "variant": "light",
+    "note": "只展开当前已选变体；其他变体没有被声明为不可用。尺寸继续按真实 sizeOptions 选择。"
+  }
+}

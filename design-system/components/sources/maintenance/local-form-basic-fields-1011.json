@@ -1,0 +1,46 @@
+{
+  "date": "2026-10-11",
+  "scope": "Current PC gray first three and white third ordinary fields only",
+  "source": "components/sources/form/native-component-review-1011.json",
+  "change": "Complete basic Input atom DOM; Form owns placement/events, Input owns paint/error/state. Four legacy host input fields removed.",
+  "counts": {
+    "grayInput": 6,
+    "whiteInput": 6,
+    "submitButton": 2,
+    "remainingPC": {
+      "checkbox": 6,
+      "phonePrefix": 2,
+      "textarea": 2
+    }
+  },
+  "offline": {
+    "passed": 29,
+    "failed": 0,
+    "log": "/tmp/fs-form-basic-fields-final-test.log",
+    "coverage": "Native FormData, independent values/errors/reset, complete atom structure, ID/label/resource/dependency guards"
+  },
+  "nativeBrowser": {
+    "method": "Existing native Google Chrome local Form tab",
+    "observed": [
+      "Gray first -> Tab second -> Tab third: independent typed values visible",
+      "White third value visible; Tab moved to white Phone Number",
+      "Reload cleared all test values, counters 0/5000"
+    ],
+    "screenshot": "Inline tool screenshot only; no saved PNG",
+    "limits": [
+      "No exact viewport geometry",
+      "Full states and MG vector coverage pending",
+      "No full Form or M acceptance"
+    ]
+  },
+  "syncHealth": {
+    "sync": "passed",
+    "health": "passed",
+    "errors": 0,
+    "existingWarnings": 2,
+    "logs": [
+      "/tmp/fs-form-basic-fields-sync.log",
+      "/tmp/fs-form-basic-fields-health.log"
+    ]
+  }
+}

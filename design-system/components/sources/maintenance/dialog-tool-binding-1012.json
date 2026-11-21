@@ -1,0 +1,134 @@
+{
+  "schemaVersion": "fs-scoped-proof-binding-fix/1.0.0",
+  "date": "2026-10-12",
+  "scope": "Only mandatory Dialog IconButton dependency validator binding; no visual or behavior change",
+  "supersedesGapIn": "components/sources/maintenance/dialog-close-chain-1012.json",
+  "before": {
+    "gap": "Missing Dialog validator fingerprint was accepted; omitted validator mutation left synthetic proof current",
+    "evidence": "components/sources/maintenance/dialog-close-chain-1012.tap.txt"
+  },
+  "after": {
+    "status": "fixed-in-acceptance-gate",
+    "requiredDialogTools": [
+      "scripts/component-acceptance-tools.js",
+      "scripts/form-host-dependencies.js",
+      "scripts/checkbox-host-dependencies.js",
+      "scripts/list-product-dependencies.js",
+      "scripts/list-toolbar-dependencies.js",
+      "scripts/dialog-icon-button-dependencies.js"
+    ],
+    "checks": [
+      "Complete proof current for information and confirmation",
+      "Missing Dialog validator fingerprint stale for both templates",
+      "Registered Dialog validator mutation stale for both templates",
+      "IconButton icon source mutation stale for both templates",
+      "Generic proof reader requires each mandatory tool and invalidates changed tool",
+      "All non-Dialog registered component prerequisite lists exactly unchanged",
+      "Proof writer resolves required tool union from selected component ids"
+    ],
+    "testsAre": "Synthetic temporary acceptance fixtures using actual current Dialog packs and actual acceptanceStatus; never recorded as production acceptance"
+  },
+  "sourceFreshness": {
+    "fingerprints": {
+      "components/button-current.css": "ef5e3f58b33327c94a53696a244e99f1bf597d54129891eec338010df5626f48",
+      "components/components.css": "a08b4fe2790b5ff2b784c6362a90f1b94e7535a03e863232ce6d620a52e85f73",
+      "components/contracts/button.json": "e26fac543ee6721753a9bda7410eb0ff583bcb26d4c06a89927cc5be36e8f1d1",
+      "components/contracts/dialog.json": "417136c2bbab7f20ca96e1605bbb3846928b06faebf115ee0ed25db8eaaf2991",
+      "components/contracts/icon-button.json": "2f652681359c24c2d70d837387347033638e3b414d96246077a3f72e5b8ff92d",
+      "components/dialog-current.css": "d69386bcf39aa40c3c698c40d725b189c683f2d74b8e0f0ad4254bd7aac682b2",
+      "components/dialog-current.js": "7399925c745799c2337f7c24d2d1125c49f0ddaf069a741b348b60d65b39db01",
+      "components/icon-button-current.css": "445637d458e8d76ce8cc773020f319f683764846d8732c7170df3426073484dd",
+      "components/icons/icon-close.svg": "226867654d63f99f548f7e25b2f0286c19aa5786f5b9497905474f3959704424",
+      "components/icons/icons-manifest.json": "d764a19e6a1f32af6858355db3c4f9214d2de8f6f482034abb0dd5ad140288ae",
+      "components/preview/button.html": "390757353969beca094eda9097cf1375d6da39225447daf1c80a98fd5c35ce5c",
+      "components/preview/dialog.html": "ca4c7974c18b04afe26d5fb83cc37fdc4f71707b453bc00435b33a675e17b439",
+      "components/preview/icon-button.html": "7360594e64909dc02330045cb964b5da1cf27b826bc198a565fed56e031f63d1",
+      "components/preview/reference-live.js": "4839383529a3ee82df1d8efe675d430567abc1986034499107aa429d21a18ea6",
+      "components/reference-policy.json": "9a2c54006968a27b3d04e03f0dac429a6e6c215e5e5936b7f65d66cfd9d5c660",
+      "components/sources/dialog/local-structure-review.json": "e87c24e0551f4572c08af5de84ac37f82970429756b0e08bfda22d2293bbcecb",
+      "components/sources/dialog/mastergo-components.json": "57c90ff018152f38def21661737415c245edb7c53e7ee5acebf21c0f77c143d1",
+      "components/sources/dialog/mastergo-spec.json": "4fadfa04db400a6b5e2166ee5672dc0cb6259ea67278e24a56b56be845fd4574",
+      "components/sources/dialog/source-inventory.json": "7b92253ff225743773f8377482bcc4bb04e80d4da7e4c0e6ea5fe375437c6b7a",
+      "components/sources/icon-button/mastergo-original-components.json": "825a7ab5731310b020c0dfe81d40056d5cc745544e4058ce719fd68c5aed19a7",
+      "components/token-specs/border-radius.json": "77d9245e2504b7c0c605288290e938b2453a79b27d4312448d14a58692290791",
+      "components/token-specs/border.json": "d286ee4681deda1c7702c310b065c86f824539b3a8797efba05b24bc225ab322",
+      "components/token-specs/colors.json": "82cba8e4a6b3e1e5bc961e4039478b0dea4ba9b92a5291d579bb8d7a54db0d95",
+      "components/token-specs/spacing.json": "351b14cfce4411248ad41e00eaaf2b1cab9b705997980dfed1fc65693740e65c",
+      "components/token-specs/typography.json": "93b7dc07547218a33c075b7cdcd942f89094353a7847d483d8378b8883327e16",
+      "components/tokens.css": "2424558781ddfc12cad4d2b91e78451dc26fe5e126e6f24a3b9631753b644afa",
+      "docs/handoff/archives/2026-10-09-overnight/mastergo/button-shape-component-set.json": "97baa8363f81381597e5e8874efcfe0897017be8cab528e21ff712e45cf5b925"
+    },
+    "graphFingerprint": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "note": "从本地源文件生成；不是 MasterGo 在线实时状态。"
+  },
+  "toolFingerprints": {
+    "scripts/component-acceptance-tools.js": "2ecf488f383ee0564fadaa69b412bae9c748eeacbc0c40740cebff3a31eb86af",
+    "scripts/component-quality.js": "c7e96d2ecbd8a3d9dd22f4f2fe556d29469b3caa135bec3a59155835fddbbb53",
+    "scripts/record-component-acceptance.js": "7bd59e9ed32d43567587dc992c7fa11e5484fefa20ea5ad4900551805314e8d8",
+    "scripts/component-reference.test.js": "9fc0889b051a796dcde17e79c399eddac0235fb73f34a339f171047052c93820",
+    "scripts/component-quality.test.js": "e69aa8270e4ddb0a6a0bb670ec459de473b22369e7f882a37a397eeac595e4b0",
+    "scripts/dialog-icon-button-dependencies.js": "5957db176a78bf684360a7bc2b84938eae6da627a8be7e55e6962a5e57bee47a",
+    "scripts/compile-component-reference.js": "26a1093d7113da28001e9db6730c9048de3c441d643992adc8454f1f616d85b1",
+    "scripts/link-icon-host-dependencies.js": "4028a565d55c4a70c842f7fdfaa3e65aefe6d8399cb807435713365ef3715baf",
+    "scripts/component_reference_dialog.py": "aa0105e0044180359ece0b49eb1188123559ac3830d658be87320764794bb738",
+    "scripts/compile-component-style-manifest.js": "69065a1f7e3c48ebcfe7902db2f94025d357a470c1eb4c889c305d741b80b25e"
+  },
+  "changedFiles": [
+    "scripts/component-acceptance-tools.js",
+    "scripts/component-quality.js",
+    "scripts/record-component-acceptance.js",
+    "scripts/component-reference.test.js",
+    "scripts/component-quality.test.js"
+  ],
+  "baselineFingerprints": {
+    "scripts/component-acceptance-tools.js": "7a47f1eddf7991cd0069050384183d15232605c499c23a1156ce751f709ca040",
+    "scripts/component-quality.js": "95481f782a9001be711db061555a6aa6511fa0611d81684d4ac668564f045953",
+    "scripts/record-component-acceptance.js": "822ba988475cfe3714ac99f585c9df4e86090fb4ba74019bf6fc23257f197381",
+    "scripts/component-reference.test.js": "06fd5e1796e01b7f27fdac7f5491c0cd202cf4c7a36d85a0f7b94eb55e4c416b",
+    "scripts/component-quality.test.js": "9c62ac4b480cde78565c635b715badbb31b528431c9bf9b32988a8fefcdb8da4",
+    "HANDOFF.md": "4c20d9791d39588134149547e8a766ae695e9c0ac180c6848c342e2e27accc8d",
+    "components/quality/acceptance.json": "41728611c7791c900586fdfc27a85e96af2f186092839ca6a7b93311453b32e2"
+  },
+  "actualAcceptance": {
+    "sha256": "41728611c7791c900586fdfc27a85e96af2f186092839ca6a7b93311453b32e2",
+    "unchanged": true,
+    "engineeringCurrent": 0,
+    "visualApproved": 0
+  },
+  "commands": [
+    {
+      "command": "node --test --test-name-pattern='Dialog close chain batch|engineering claims require|Dialog proof tool binding' scripts/component-reference.test.js scripts/component-quality.test.js",
+      "exitCode": 0,
+      "tests": 6,
+      "passed": 6,
+      "log": "components/sources/maintenance/dialog-tool-binding-1012.tap.txt"
+    },
+    {
+      "command": "node scripts/component-quality.js --check",
+      "exitCode": 0,
+      "log": "components/sources/maintenance/dialog-tool-binding-1012-quality.txt"
+    },
+    {
+      "command": "node scripts/compile-component-reference.js --check",
+      "exitCode": 0,
+      "log": "components/sources/maintenance/dialog-tool-binding-1012-reference.txt"
+    },
+    {
+      "command": "node --check scripts/record-component-acceptance.js",
+      "exitCode": 0
+    }
+  ],
+  "logFingerprints": {
+    "components/sources/maintenance/dialog-tool-binding-1012.tap.txt": "7d5f0602bfbf6934e895ede5ef1bbc7eb54e2c906339a4f5575faebd354b48f0",
+    "components/sources/maintenance/dialog-tool-binding-1012-quality.txt": "4f971974cc6ee2495b250ba525dbe39a7b9d7a2227c87645908fa978f8a0fd7a",
+    "components/sources/maintenance/dialog-tool-binding-1012-reference.txt": "77f7bac304a0327e1e1a825cc446825c5ed76611ae240f68abfa6863962cf640"
+  },
+  "boundaries": [
+    "No real engineering acceptance suite or browser/MasterGo visual approval performed",
+    "No product runtime/styles/contracts/history upgrades, dependency installation, service changes, automation/caffeinate or Git commits/pushes",
+    "Changing shared tool bytes may invalidate prior proofs already fingerprinting them under existing rules; this is not a new non-Dialog prerequisite",
+    "Existing report derived checks passed; no generation or acceptance refresh required",
+    "Prior 7-item batch includes gap characterization and remains historical evidence, not closure"
+  ],
+  "next": "Stop for independent review; coordinator decides Form resumption"
+}

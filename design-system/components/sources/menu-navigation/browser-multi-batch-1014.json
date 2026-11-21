@@ -1,0 +1,31 @@
+{
+  "mainComponent": "MenuNavigation",
+  "scope": "既有multi-level非Search调用的默认、真实Hover、折叠与可见键盘焦点",
+  "status": "completed-finite-engineering-and-browser",
+  "sourceRange": [
+    "components/sources/menu-navigation/native-component-review-1011.json",
+    "components/sources/menu-navigation/local-structure-review.json",
+    "components/sources/maintenance/local-dropdown-tab-cancel-1011.json（取消保护既有检查，不模拟浏览器取消）"
+  ],
+  "completionConditions": [
+    "真实一级父项Hover不变字号/字重/几何且无子项红线混入",
+    "折叠已包含选中子项的父项后，hidden子项不能留可达Tab焦点",
+    "现有Arrow/Home/End/Enter/Space操作和展开ARIA/可见性同步"
+  ],
+  "remaining": [
+    "独立Search/公共头部及其余原件状态、整家族与用户视觉批准"
+  ],
+  "necessaryRelations": [
+    "仅已有multi-level，不接入独立Search或公共头部，不造业务演示"
+  ],
+  "directionalChecks": [
+    "原子父项与子项分开",
+    "collapsed visible tabStops1/hidden0的旧缺陷实测",
+    "Source widths/规范全范围及用户批准待"
+  ],
+  "scopeAdjustment": "实际current root左15而来源/当前说明16，288根内条目273而对应来源272；旧.ds-menu-navigation:not(public-header) specificity2盖过current attribute specificity1。必要关联三种有current marker普通菜单的左留白与调用校验，不扩Search原子/公共头部；替换假共享CSS测试为真实资源/token/cascade负例。",
+  "engineering": "30项菜单与Button来源检查通过；旧选择器15px及组合伪类负例被拦截；component:sync通过",
+  "browser": "1920×1000：根288/条目272/左16；父Hover14/400/几何不变，无子项红线；折叠hidden TabStops0/可见1；ArrowDown/Up、Home/End、Enter、Space、Escape及Tab退出实测",
+  "evidence": "components/sources/menu-navigation/browser-multi-states-1014.json",
+  "fullFamilyAcceptance": false
+}

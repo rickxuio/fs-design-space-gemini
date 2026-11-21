@@ -3,14 +3,19 @@ stages:
 
 spec-check:
   stage: check
-  image: node:20-bookworm
+  image: node:24-bookworm
   before_script:
     - export DEBIAN_FRONTEND=noninteractive
     - apt-get update -qq
     - apt-get install -y -qq chromium > /dev/null
     - export CHROME_PATH="$(command -v chromium)"
     - npm ci
+    - npm run design:install
   script:
+    # Component export and isolated maintenance; no imported page workflow.
+    - npm run component:check
+    - npm test
+    - npm run test:sync
     # Fail if the committed build output is stale.
     - node build.js
     - git diff --exit-code -- fs-components/page-specs

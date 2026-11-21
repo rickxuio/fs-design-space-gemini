@@ -1,44 +1,36 @@
 name: CI
-
 on:
   push:
     branches: [main]
   pull_request:
-
 permissions:
   contents: read
-
 jobs:
   check:
-    name: check
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v7
-
-      - name: Setup Node
-        uses: actions/setup-node@v7
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
         with:
-          node-version: 20
+          node-version: 24.15.0
           cache: npm
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Build page specs
-        run: node build.js
-
-      - name: Verify build output is committed
-        run: git diff --exit-code -- fs-components/page-specs
-
-      - name: Static compliance gate
-        run: node validate.js
-
-      - name: Locate Chrome
-        run: |
-          CHROME=$(command -v google-chrome || command -v google-chrome-stable || command -v chromium || command -v chromium-browser)
-          echo "CHROME_PATH=$CHROME" >> "$GITHUB_ENV"
-          "$CHROME" --version
-
-      - name: Headless geometry gate
-        run: node verify.js
+          cache-dependency-path: |
+            package-lock.json
+            design-system/package-lock.json
+      - run: npm ci
+      - run: npm run design:install
+      - name: Verify generated component adapters
+        run: npm run component:check
+      - name: Local workflow regression
+        run: npm test
+      - name: Isolated parent-child maintenance proof
+        run: npm run test:sync
+        env:
+          CHROME_PATH: /usr/bin/google-chrome
+      - name: Build local page-level examples
+        run: npm run build
+      - run: git diff --exit-code -- fs-components/page-specs
+      - name: Local static and rendered checks
+        run: npm run check
+        env:
+          CHROME_PATH: /usr/bin/google-chrome

@@ -1,0 +1,467 @@
+{
+  "schemaVersion": "fs-component-reference/1.0.0",
+  "component": {
+    "id": "badge",
+    "name": "Badge",
+    "scope": "existing-desktop-badge-success-status-count-logged-in-icon",
+    "reviewStatus": {
+      "engineering": "pending",
+      "visual": "pending",
+      "familyCoverage": "partial"
+    }
+  },
+  "selection": {
+    "policy": "三种有限PC实例：dot只支持success圆点加文字；count接受已格式化0–99或99+；icon是原18px红底白勾。MG其他状态色、无文字点、M端及宿主定位仍是参考；格式化与右上角对角定位归宿主，不增改类名。",
+    "supported": [
+      "dot",
+      "count",
+      "icon"
+    ],
+    "unsupported": [
+      "other-dot-colors",
+      "dot-without-text",
+      "other-icon-assets",
+      "mobile",
+      "automatic-count-formatting",
+      "host-positioning-proof"
+    ]
+  },
+  "runtime": {
+    "styles": [
+      "components/tokens.css",
+      "components/components.css",
+      "components/badge-current.css"
+    ],
+    "scripts": [],
+    "fontStylesheets": [
+      "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+    ],
+    "fontFallback": "沿用Open Sans字体栈；实际字体与浏览器视觉待验。"
+  },
+  "identity": {
+    "rule": "纯展示span，无额外ID或伪造交互角色；count只替换根节点文本，不包装新节点。",
+    "labelRule": "status保留文字；图案徽标按含义设置img.alt或装饰空alt。"
+  },
+  "locked": [
+    "span根节点与各形态CSS",
+    "success状态图及位置",
+    "count品牌红、封顶和纯文本",
+    "不新增交互/自动格式化JS",
+    "data-badge-current；尺寸类由displayCount按唯一规则决定，禁止手写尺寸/状态样式",
+    "PC图案原子SVG完整字节、18px容器与纯展示语义"
+  ],
+  "behavior": {
+    "display": "没有独立运行JS或click状态。数量源大于99时，宿主先格式化为99+；不是组件自动换算。 当前PC尺寸由已格式化文本决定：99+选--max，其余0..99不带该类；宿主不复制尺寸或添加格式化JS。",
+    "status": "此有限实例固定success颜色；其他状态需要对应真实实例，不只改类名。",
+    "host": "3.1明确依据宿主容器右上角对角对齐、沿X/Y各重叠一半；CSS基础规则匹配，实际浏览器宿主位置待验。原稿允许必要光学偏移，需对应证据/装配记录，不改原子尺寸。"
+  },
+  "examples": [
+    {
+      "name": "dot",
+      "publication": {
+        "key": "badge/dot",
+        "disposition": "restricted",
+        "newPages": true,
+        "reason": "dot为success带文字；count为0..99或99+已格式化数量，99+使用--max；icon仅调用原始PC/Pad18px红底白勾SVG。不自动计数格式化，M/其他状态调用待补。",
+        "constraints": [
+          "dot为success带文字；count为0..99或99+已格式化数量，99+使用--max；icon仅调用原始PC/Pad18px红底白勾SVG。不自动计数格式化，M/其他状态调用待补。"
+        ],
+        "contractPolicy": "dot为success带文字；count为0..99或99+已格式化数量，99+使用--max；icon仅调用原始PC/Pad18px红底白勾SVG。不自动计数格式化，M/其他状态调用待补。",
+        "use": "finite-new-page-candidate",
+        "evidence": "components/contracts/badge.json#aiContract/evidence",
+        "requiresCurrentEngineering": true,
+        "visualApproval": "separate-not-granted"
+      },
+      "rootTag": "span",
+      "sizeOptions": [],
+      "purpose": "success-status-with-dot",
+      "whenToUse": "完成状态的8px绿色圆点与文字。",
+      "whenNotToUse": "要求其他状态色、无文字点或未读数量。",
+      "rootClasses": "ds-badge-status",
+      "requiredStructure": [
+        "span.ds-badge-dot",
+        "span.ds-badge-status__text"
+      ],
+      "slots": {
+        "statusText": {
+          "selector": "span.ds-badge-status__text",
+          "mode": "text",
+          "required": true
+        }
+      },
+      "allowedEdits": [
+        "statusText"
+      ],
+      "exampleHtml": "<span class=\"ds-badge-status\" data-ai-example=\"ai-badge-dot\"><span class=\"ds-badge-dot ds-badge-dot--success\"></span><span class=\"ds-badge-status__text\">Completed</span></span>"
+    },
+    {
+      "name": "count",
+      "publication": {
+        "key": "badge/count",
+        "disposition": "restricted",
+        "newPages": true,
+        "reason": "dot为success带文字；count为0..99或99+已格式化数量，99+使用--max；icon仅调用原始PC/Pad18px红底白勾SVG。不自动计数格式化，M/其他状态调用待补。",
+        "constraints": [
+          "dot为success带文字；count为0..99或99+已格式化数量，99+使用--max；icon仅调用原始PC/Pad18px红底白勾SVG。不自动计数格式化，M/其他状态调用待补。"
+        ],
+        "contractPolicy": "dot为success带文字；count为0..99或99+已格式化数量，99+使用--max；icon仅调用原始PC/Pad18px红底白勾SVG。不自动计数格式化，M/其他状态调用待补。",
+        "use": "finite-new-page-candidate",
+        "evidence": "components/contracts/badge.json#aiContract/evidence",
+        "requiresCurrentEngineering": true,
+        "visualApproval": "separate-not-granted"
+      },
+      "rootTag": "span",
+      "sizeOptions": [],
+      "purpose": "formatted-desktop-count-badge",
+      "whenToUse": "宿主已提供0–99或99+的显示数量。",
+      "whenNotToUse": "要求自动计数、自动截断或移动端尺寸。",
+      "rootClasses": "ds-badge-count",
+      "requiredStructure": [],
+      "slots": {
+        "displayCount": {
+          "selector": ":scope",
+          "mode": "text",
+          "required": true,
+          "format": "0..99 or 99+",
+          "derivedClass": {
+            "rule": "Use ds-badge-count--max if and only if displayCount is exactly 99+; no other class edits.",
+            "when": "99+",
+            "class": "ds-badge-count--max",
+            "otherwise": "remove"
+          }
+        }
+      },
+      "allowedEdits": [
+        "displayCount"
+      ],
+      "exampleHtml": "<span class=\"ds-badge-count\" data-badge-current data-ai-example=\"ai-badge-count\">1</span>"
+    },
+    {
+      "name": "icon",
+      "publication": {
+        "key": "badge/icon",
+        "disposition": "restricted",
+        "newPages": true,
+        "reason": "dot为success带文字；count为0..99或99+已格式化数量，99+使用--max；icon仅调用原始PC/Pad18px红底白勾SVG。不自动计数格式化，M/其他状态调用待补。",
+        "constraints": [
+          "dot为success带文字；count为0..99或99+已格式化数量，99+使用--max；icon仅调用原始PC/Pad18px红底白勾SVG。不自动计数格式化，M/其他状态调用待补。"
+        ],
+        "contractPolicy": "dot为success带文字；count为0..99或99+已格式化数量，99+使用--max；icon仅调用原始PC/Pad18px红底白勾SVG。不自动计数格式化，M/其他状态调用待补。",
+        "use": "finite-new-page-candidate",
+        "evidence": "components/contracts/badge.json#aiContract/evidence",
+        "requiresCurrentEngineering": true,
+        "visualApproval": "separate-not-granted"
+      },
+      "rootTag": "span",
+      "sizeOptions": [],
+      "bindings": {
+        "iconAlt": {
+          "mode": "native-attribute",
+          "target": "img",
+          "attribute": "alt",
+          "valueType": "string"
+        }
+      },
+      "purpose": "canonical-logged-in-icon-badge",
+      "whenToUse": "现有PC/Pad18px红底白勾图案。",
+      "whenNotToUse": "其他图标、账户轮廓或M端12px图案。",
+      "rootClasses": "ds-badge-icon",
+      "requiredStructure": [
+        "img"
+      ],
+      "slots": {},
+      "allowedEdits": [
+        "iconAlt"
+      ],
+      "exampleHtml": "<span class=\"ds-badge-icon\" data-ai-example=\"ai-badge-icon\"><img src=\"../icons/icon-badge-logged-in-pc.svg\" alt=\"\"></span>"
+    }
+  ],
+  "relationships": {
+    "children": [],
+    "parents": [
+      {
+        "id": "collapse",
+        "contract": "components/contracts/collapse.json",
+        "preview": "components/variants/collapse.html",
+        "status": "preview-class-evidence-only",
+        "evidence": {
+          "status": "preview-class-evidence-only",
+          "verified": false,
+          "previewExists": true,
+          "classEvidence": true,
+          "declaredClasses": [
+            "ds-badge-status",
+            "ds-badge-dot",
+            "ds-badge-dot--pending",
+            "ds-badge-status__text"
+          ],
+          "missingClasses": [],
+          "exactStructure": "not-established",
+          "browserEvidence": "not-established",
+          "note": "宿主依赖声明及离线类名盘点；未证明具体变体、尺寸、必需子结构、宿主适配或浏览器行为。"
+        },
+        "usage": [
+          {
+            "component": "Badge",
+            "usage": "MG Pending引用但实例文案Canceled，保留黄色FFD748，不能按文案改中性灰。",
+            "slot": "body",
+            "requiredVariants": [
+              "dot"
+            ],
+            "implementationClasses": [
+              "ds-badge-status",
+              "ds-badge-dot",
+              "ds-badge-dot--pending",
+              "ds-badge-status__text"
+            ],
+            "appliesTo": [
+              "data-preview"
+            ],
+            "part": "collapse-pending"
+          }
+        ]
+      }
+    ],
+    "parentStatus": "declared-hosts",
+    "icons": [
+      {
+        "file": "components/icons/icon-badge-logged-in-pc.svg",
+        "registry": "components/icons/icons-manifest.json",
+        "appliesTo": [
+          "icon"
+        ],
+        "usage": "PC/Pad图案原子19792:46493官方导出完整红底白勾；不是账户轮廓或IconButton"
+      },
+      {
+        "file": "components/icons/icon-badge-logged-in-m.svg",
+        "registry": "components/icons/icons-manifest.json",
+        "appliesTo": [
+          "icon"
+        ],
+        "usage": "同一icon类型的M12px Preview原始素材19792:46477；仅预览来源登记，AI仍限PC/Pad18px"
+      }
+    ],
+    "tokens": [
+      {
+        "name": "color.success",
+        "value": "#10A300",
+        "unit": null,
+        "cssVar": "--color-success",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.brand-red",
+        "value": "#C00000",
+        "unit": null,
+        "cssVar": "--brand-red",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.warning",
+        "value": "#F56300",
+        "unit": null,
+        "cssVar": "--color-warning",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.yellow",
+        "value": "#FFD748",
+        "unit": null,
+        "cssVar": "--color-yellow",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.gray-3",
+        "value": "#707070",
+        "unit": null,
+        "cssVar": "--color-gray-3",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.white",
+        "value": "#FFFFFF",
+        "unit": null,
+        "cssVar": "--color-white",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "typography.font-family-base",
+        "value": "Open Sans",
+        "unit": null,
+        "cssVar": "--font-family-base",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "spacing.6",
+        "value": 6,
+        "unit": "px",
+        "cssVar": "--spacing-6",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.5",
+        "value": 5,
+        "unit": "px",
+        "cssVar": "--spacing-5",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.3",
+        "value": 3,
+        "unit": "px",
+        "cssVar": "--spacing-3",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "typography.font-weight-semibold",
+        "value": 600,
+        "unit": null,
+        "cssVar": "--font-weight-semibold",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-weight-regular",
+        "value": 400,
+        "unit": null,
+        "cssVar": "--font-weight-regular",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-size-md",
+        "value": 14,
+        "unit": "px",
+        "cssVar": "--font-size-md",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-size-sm",
+        "value": 12,
+        "unit": "px",
+        "cssVar": "--font-size-sm",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.h7-semibold",
+        "value": {
+          "fontSize": "14px",
+          "lineHeight": "22px",
+          "fontWeight": 600
+        },
+        "unit": null,
+        "cssVar": null,
+        "primitiveReferences": {
+          "fontSize": "typography.font-size-md",
+          "fontWeight": "typography.font-weight-semibold"
+        },
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.h9-regular",
+        "value": {
+          "fontSize": "12px",
+          "lineHeight": "20px",
+          "fontWeight": 400
+        },
+        "unit": null,
+        "cssVar": null,
+        "primitiveReferences": {
+          "fontSize": "typography.font-size-sm",
+          "fontWeight": "typography.font-weight-regular"
+        },
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.10-semibold",
+        "value": {
+          "fontSize": "10px",
+          "lineHeight": "1",
+          "fontWeight": 600
+        },
+        "unit": null,
+        "cssVar": null,
+        "primitiveReferences": {
+          "fontWeight": "typography.font-weight-semibold"
+        },
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "color.error",
+        "value": "#C00000",
+        "unit": null,
+        "cssVar": "--color-error",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.gray-1",
+        "value": "#19191A",
+        "unit": null,
+        "cssVar": "--color-gray-1",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      }
+    ]
+  },
+  "evidence": {
+    "localImplementation": "components/variants/badge.html",
+    "comparison": "components/sources/badge/local-structure-review.json",
+    "specificationReview": "components/sources/badge/native-specification-review-1011.json",
+    "spec": "components/sources/badge/native-specification-review-1011.json",
+    "original": "components/sources/badge/pc&pad.svg",
+    "currentMgReview": "components/sources/remaining-prototypes-mg-20261115/badge-review.json",
+    "listOptionSource": "components/sources/list-option-mg-20261115/review.json"
+  },
+  "sourceValidation": {
+    "componentIdentity": {
+      "status": "not-established",
+      "files": []
+    },
+    "specificationBody": {
+      "status": "not-established",
+      "files": []
+    },
+    "originalOnlineFrontendCode": false,
+    "browserComputedStyles": false,
+    "completeSpecificationCoverage": false
+  },
+  "freshness": {
+    "fingerprints": {
+      "components/badge-current.css": "9ee02c266a713b9f86d506a43c55badaf4066febc3eddf9a2018b6b044678689",
+      "components/components.css": "a08b4fe2790b5ff2b784c6362a90f1b94e7535a03e863232ce6d620a52e85f73",
+      "components/contracts/badge.json": "3dae55f794d4f8900f22baea6b8e098d888056af8d4bce1abbfbdcee386397a0",
+      "components/icons/icon-badge-logged-in-m.svg": "dd0c742f47629dfd42b09ef2c0563384135702cfff87388afd077aa8604271b8",
+      "components/icons/icon-badge-logged-in-pc.svg": "65f771d94bcbe0d5f443e18711674d5a5966051fc8ab8a7f6f64261e3c2d0486",
+      "components/icons/icons-manifest.json": "12c48af6d1dc59d50b76046bb0507005f565aa4224a6d8056ce4eaaf8050c43e",
+      "components/preview/reference-live.js": "4839383529a3ee82df1d8efe675d430567abc1986034499107aa429d21a18ea6",
+      "components/reference-policy.json": "4ae8f51f623386417e38d497caafb8bda4417c929159002a7ac088e6e526b482",
+      "components/sources/badge/collapse-pending-1115.html": "64778ce1f231338a6112c345afb3677074894d0a56bf35b4458bb6ac23fa1a3b",
+      "components/sources/badge/local-structure-review.json": "3640eb950479e6e7a1a343702f70ca88b81010b6dfeef7857aa3612675d13b5a",
+      "components/sources/badge/native-specification-review-1011.json": "cceb86cbf5255e8f9412cc668d9983b9b0b4d77374e4f97678ad1a325db9b063",
+      "components/sources/badge/pc&pad.svg": "65f771d94bcbe0d5f443e18711674d5a5966051fc8ab8a7f6f64261e3c2d0486",
+      "components/sources/list-option-mg-20261115/review.json": "e8d424ddcef3f8c44413851d17943317e386c0f9cd8f8eaeec964ab3192194ae",
+      "components/sources/remaining-prototypes-mg-20261115/badge-review.json": "193eb53233594dc000ef3155ec0d9bff0d15d54ae86fdb35ac10a235892683e0",
+      "components/token-specs/colors.json": "5267d59fdc687b54496977280c00c97f0beb6ffce013f87853504f5b736d3389",
+      "components/token-specs/spacing.json": "351b14cfce4411248ad41e00eaaf2b1cab9b705997980dfed1fc65693740e65c",
+      "components/token-specs/typography.json": "93b7dc07547218a33c075b7cdcd942f89094353a7847d483d8378b8883327e16",
+      "components/tokens.css": "f63f3c8fea511d8029902bc3905b01853ac5e92049c1b18ca35ebc9a680c3e69",
+      "components/variants/badge.html": "b0ceb6daec916b05c772cf2755ccddf2beca0baa7ce10f760d68e59aee44a4b7",
+      "components/variants/collapse.html": "26f87a715552789e80ed66e1a7428719beddfaba67be4e165f5eb40b22c1e45c"
+    },
+    "graphFingerprint": "a5e946576c9d5869307889eccdae2d3d2c3c9fb393de486929693e4008e7c1b2",
+    "note": "从本地源文件生成；不是 MasterGo 在线实时状态。"
+  }
+}

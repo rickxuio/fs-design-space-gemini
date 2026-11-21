@@ -1,0 +1,270 @@
+{
+  "id": "comp_cart_001",
+  "name": "Cart",
+  "chineseName": "Cart加购按钮",
+  "description": "原有Cart加购按钮；本次仅补齐Card实际依赖的产品卡片Default/Hover来源、实现与调用，不新增设计规范。",
+  "category": "通用 General",
+  "variants": [
+    {
+      "name": "product-card",
+      "chineseName": "产品卡片",
+      "cssClass": "ds-cart ds-cart--product-card",
+      "whenToUse": "仅嵌入真实产品小卡片/产品完整卡片Add入口；不作为普通Button或其他Cart用途。",
+      "isComplete": true,
+      "styleProperties": {
+        "padding": "6px 8px",
+        "gap": "4px",
+        "fontSize": "12px",
+        "lineHeight": "20px",
+        "fontWeight": "400",
+        "borderRadius": "4px",
+        "iconSize": "14x14px",
+        "background": "#C00000"
+      },
+      "requiredChildren": [
+        "img.ds-cart__icon",
+        "span.ds-cart__text"
+      ]
+    }
+  ],
+  "states": [
+    {
+      "name": "default",
+      "styleOverrides": {}
+    },
+    {
+      "name": "hover",
+      "styleOverrides": {
+        "background": "20% Gray1 overlay on Red"
+      }
+    }
+  ],
+  "tokenReferences": [
+    "color.brand-red",
+    "color.white",
+    "typography.font-family-base",
+    "typography.font-size-sm",
+    "typography.font-weight-regular",
+    "typography.h9-regular",
+    "spacing.6",
+    "spacing.sm",
+    "spacing.xs",
+    "border-radius.md",
+    "border.style.none"
+  ],
+  "isComplete": true,
+  "pendingParts": [],
+  "editable": [
+    "label"
+  ],
+  "integration": {
+    "styles": [
+      "components/tokens.css",
+      "components/cart-current.css"
+    ],
+    "scripts": [],
+    "fontStylesheets": [
+      "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+    ]
+  },
+  "relations": {
+    "iconDependencies": [
+      {
+        "icon": "icon-cart-add",
+        "appliesTo": [
+          "product-card"
+        ],
+        "required": true,
+        "usage": "已导出官方Cart1 SVG，路径/画布/填色与现有文件一致"
+      }
+    ],
+    "enforcementStatus": [],
+    "spacingDependencies": [
+      {
+        "token": "spacing.xs",
+        "value": "4px",
+        "usage": "Cart atom owns spacing",
+        "properties": [
+          "gap"
+        ],
+        "selectors": [
+          ".ds-cart"
+        ],
+        "appliesTo": [
+          "product-card"
+        ]
+      },
+      {
+        "token": "spacing.6",
+        "value": "6px",
+        "usage": "Cart atom owns spacing",
+        "properties": [
+          "padding"
+        ],
+        "selectors": [
+          ".ds-cart"
+        ],
+        "appliesTo": [
+          "product-card"
+        ]
+      },
+      {
+        "token": "spacing.sm",
+        "value": "8px",
+        "usage": "Cart atom owns spacing",
+        "properties": [
+          "padding"
+        ],
+        "selectors": [
+          ".ds-cart"
+        ],
+        "appliesTo": [
+          "product-card"
+        ]
+      }
+    ],
+    "borderDependencies": [
+      {
+        "token": "border.style.none",
+        "value": "none",
+        "aspect": "style",
+        "properties": [
+          "border"
+        ],
+        "selectors": [
+          ".ds-cart"
+        ],
+        "appliesTo": [
+          "product-card"
+        ],
+        "usage": "No border"
+      }
+    ],
+    "fontSizeDependencies": [
+      {
+        "token": "typography.font-size-sm",
+        "value": "12px",
+        "appliesTo": [
+          "product-card"
+        ],
+        "usage": "Cart Add label"
+      }
+    ],
+    "fontWeightDependencies": [
+      {
+        "token": "typography.font-weight-regular",
+        "value": "400",
+        "properties": [
+          "font-weight"
+        ],
+        "selectors": [
+          ".ds-cart__text"
+        ],
+        "appliesTo": [
+          "product-card"
+        ],
+        "usage": "Cart Add label"
+      }
+    ],
+    "typographyDependencies": [
+      {
+        "token": "typography.h9-regular",
+        "fontSizeToken": "typography.font-size-sm",
+        "fontSizeValue": "12px",
+        "fontWeightToken": "typography.font-weight-regular",
+        "fontWeightValue": "400",
+        "weightEvidence": "explicit-css",
+        "appliesTo": [
+          "product-card"
+        ],
+        "usage": "Source Cart Add12/400/20"
+      }
+    ],
+    "colorDependencies": [
+      {
+        "token": "color.brand-red",
+        "value": "#C00000",
+        "appliesTo": [
+          "product-card"
+        ],
+        "usage": "Source default background"
+      },
+      {
+        "token": "color.white",
+        "value": "#FFFFFF",
+        "appliesTo": [
+          "product-card"
+        ],
+        "usage": "Source text and icon"
+      }
+    ],
+    "variantDecisions": [
+      {
+        "type": "产品卡片加购",
+        "className": "ds-cart ds-cart--product-card",
+        "whenToUse": "已核产品小卡片及产品完整卡片的Add入口",
+        "whenNotToUse": "普通Button、气泡卡片Cart、未定义状态",
+        "nestedComponents": [],
+        "status": "Default/Hover原件与官方SVG已核；工程/用户视觉分别待验"
+      }
+    ]
+  },
+  "qualityProfile": {
+    "type": "interactive"
+  },
+  "aiContract": {
+    "schemaVersion": "1.0.0",
+    "rootTag": "button",
+    "scope": "necessary-product-card-cart-default-hover",
+    "supported": [
+      "product-card"
+    ],
+    "unsupported": [
+      "popover-cart",
+      "processing",
+      "disabled",
+      "editable-icon"
+    ],
+    "reviewStatus": {
+      "engineering": "pending",
+      "visual": "pending",
+      "familyCoverage": "partial"
+    },
+    "previewAssets": [
+      "components/preview/reference-live.js"
+    ],
+    "selectionPolicy": "Only actual Card product purchase/recent-view Add slots; fixed Add label and official whiteCart1; no other Cart usage or unverified states.",
+    "identity": {
+      "rule": "button type=button with fixed official icon and Add span; host owns assembly position and business event only."
+    },
+    "locked": [
+      "button root and type",
+      "official14px icon and Add label",
+      "atom-owned padding/gap/font/radius/paint"
+    ],
+    "behavior": {
+      "hover": "Actual pointer shows source20% Gray1 overlay.",
+      "business": "Host attaches business events; atom has no invented purchase logic."
+    },
+    "evidence": {
+      "original": "components/sources/card/cart-dependency-source-1014.json",
+      "svg": "components/sources/card/cart-icon-original-1014.svg"
+    },
+    "variants": {
+      "product-card": {
+        "purpose": "card-product-add-atom",
+        "exampleSelector": "[data-ai-example=\"ai-cart-product-card\"]",
+        "allowedEdits": [
+          "label"
+        ],
+        "slots": {
+          "label": {
+            "selector": "span.ds-cart__text",
+            "mode": "text",
+            "required": true
+          }
+        }
+      }
+    }
+  }
+}

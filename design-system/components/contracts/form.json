@@ -1,0 +1,2073 @@
+{
+  "id": "comp_form_001",
+  "name": "Form",
+  "chineseName": "表单",
+  "description": "已投喂Form包含PC/M×灰底/白底四种原始组合；当前精确AI调用仅PC灰/白；灰白M整体结构已实现，但来源与浏览器验收未完成，M精确AI调用未开放。输入、电话、文本域及选项按真实原子嵌套维护，不能将PC两栏规则套到M。",
+  "category": "数据录入 Data Entry",
+  "variants": [
+    {
+      "name": "gray",
+      "chineseName": "灰底表单",
+      "usage": "白色背景的既有灰底字段表单，或已保留来源字段的初始组合。",
+      "styleProperties": {
+        "background": "透明或直接铺在白色 section 上",
+        "fieldBackground": "#F6F6F8"
+      },
+      "isComplete": true,
+      "pendingParts": [],
+      "cssClass": "ds-form",
+      "requiredChildren": [
+        "p.ds-form__title",
+        "p.ds-form__desc",
+        "div.ds-form__row",
+        "label.ds-input-field__label",
+        "input.ds-input-field__input",
+        "textarea.ds-input-field__input",
+        "span.ds-input-field__count",
+        "label.ds-checkbox[data-checkbox-control]",
+        "label.ds-form__consent",
+        "button.ds-btn",
+        "span.ds-btn__text",
+        "div.ds-input-field[data-input-arrow=\"down\"]"
+      ],
+      "selectionDecisionType": "灰底表单",
+      "whenToUse": "白色背景的既有灰底字段表单，或已保留来源字段的初始组合。",
+      "whenNotToUse": "需要网络提交、新设备、任意HTML或未支持的字段类型。"
+    },
+    {
+      "name": "white",
+      "chineseName": "白底描边表单",
+      "usage": "灰色背景中使用当前白底描边固定结构表单。",
+      "styleProperties": {
+        "cardBackground": "#FAFBFB",
+        "fieldBackground": "#FFFFFF",
+        "fieldBorder": "1px solid var(--color-gray-5)"
+      },
+      "isComplete": true,
+      "pendingParts": [],
+      "cssClass": "ds-form",
+      "requiredChildren": [
+        "p.ds-form__title",
+        "p.ds-form__desc",
+        "div.ds-form__row",
+        "label.ds-input-field__label",
+        "input.ds-input-field__input",
+        "textarea.ds-input-field__input",
+        "span.ds-input-field__count",
+        "label.ds-checkbox[data-checkbox-control]",
+        "label.ds-form__consent",
+        "button.ds-btn",
+        "span.ds-btn__text",
+        "div.ds-input-field[data-input-arrow=\"down\"]"
+      ],
+      "selectionDecisionType": "白底描边表单",
+      "whenToUse": "灰色背景中使用当前白底描边固定结构表单。",
+      "whenNotToUse": "需要sourceFields或任意增减字段、动态区号与上传。"
+    },
+    {
+      "name": "white-responsive",
+      "chineseName": "白底描边表单 · 响应式",
+      "usage": "旧响应式登记的历史对照。",
+      "styleProperties": {
+        "cardBackground": "#FAFBFB",
+        "fieldBackground": "#FFFFFF",
+        "fieldBorder": "1px solid var(--color-gray-5)"
+      },
+      "cssClass": "ds-form ds-form--source-responsive",
+      "isComplete": true,
+      "pendingParts": [],
+      "description": "Opt-in source-backed single DOM: white fields, container sizing, M single-column and full-width submit42. Source form spec 68908:410102/408479. Desktop geometry uses the existing approved content fields and labels.",
+      "selectionDecisionType": "白底描边表单·响应式",
+      "whenToUse": "旧响应式登记的历史对照。",
+      "whenNotToUse": "当前页面合成或宣称MG移动表单完整实现。"
+    },
+    {
+      "name": "mobile-source-slots",
+      "chineseName": "M端局部槽位装配",
+      "usage": "已有移动原件的有限槽位参考。",
+      "cssClass": "ds-form-mobile-slot",
+      "isComplete": false,
+      "pendingParts": [
+        "完整M Form装配",
+        "电话与文本域冲突",
+        "协议富文本",
+        "浏览器验收"
+      ],
+      "selectionDecisionType": "M端局部槽位装配",
+      "whenToUse": "已有移动原件的有限槽位参考。",
+      "whenNotToUse": "完整移动表单调用。"
+    },
+    {
+      "name": "mobile-integrated",
+      "chineseName": "M端整体结构（待验收）",
+      "cssClass": "ds-form",
+      "usage": "已有移动表单整体结构参考。",
+      "isComplete": false,
+      "pendingParts": [
+        "区号搜索待补",
+        "文本域规范冲突",
+        "浏览器验收"
+      ],
+      "selectionDecisionType": "M端整体结构（待验收）",
+      "whenToUse": "已有移动表单整体结构参考。",
+      "whenNotToUse": "当前新页面或完整移动端验收。"
+    }
+  ],
+  "layoutRules": [
+    {
+      "condition": "表单板块除字段、标题、描述外还有额外文案（联系方式/电话/说明段落）",
+      "layout": "左右结构：左侧标题+描述+额外文案（width ~360px），右侧表单卡片（flex:1）"
+    },
+    {
+      "condition": "表单板块只有标题、描述和字段",
+      "layout": "上下结构：标题+描述居中在上，表单居中在下（max-width:800px）"
+    }
+  ],
+  "fieldLayoutRule": {
+    "mandatory": "当前PC灰/白调用以ds-form__row装配两栏；此规则仅限PC。M原始组合单独核对与实现，不以PC规则禁止已有M表单。",
+    "exceptions": [
+      "textarea（多行文本域）可独占整行",
+      "checkbox/radio 组可独占整行"
+    ],
+    "forbidden": "PC当前调用禁止擅自改变列结构；不得把此限制当成M表单的通用禁止项。",
+    "scope": "PC current calls only; M roots057050/055631 have finite integrated runtime structures; source closure and browser acceptance remain pending, with M AI admission closed."
+  },
+  "fieldSpecRules": [
+    {
+      "field": "必填字段",
+      "rule": "label 不加星号（*），保持原样"
+    },
+    {
+      "field": "选填字段",
+      "rule": "label 文字后加 (optional)，例如 Job Title (optional)"
+    },
+    {
+      "field": "Radio",
+      "rule": "input accent-color: #707070"
+    },
+    {
+      "field": "Checkbox",
+      "rule": "input accent-color: #707070；内部链接默认无下划线，hover 才显示下划线"
+    }
+  ],
+  "responsiveRules": [
+    {
+      "appliesTo": [
+        "gray",
+        "white"
+      ],
+      "desktop": "Keep each ds-form__row as two equal fields.",
+      "tablet": "旧实现保持两栏；Pad独立适配依据未确认，不当作现行MG规范。",
+      "mobile": "旧共享CSS存在640px媒体规则；它仅是历史实现行为，不作为MG断点规范或已完成M表单的证据。当前M具体来源/实现另记，跨尺寸适配走查暂缓。"
+    }
+  ],
+  "states": [
+    {
+      "name": "default",
+      "chineseName": "默认",
+      "styleOverrides": {},
+      "description": "静态展示"
+    },
+    {
+      "name": "hover",
+      "chineseName": "字段悬停",
+      "styleOverrides": {
+        "gray": "rgba(25,25,26,0.04) overlay",
+        "white": "border-color: var(--color-gray-3)"
+      },
+      "description": "输入框悬停态"
+    },
+    {
+      "name": "focus",
+      "chineseName": "字段聚焦",
+      "styleOverrides": {
+        "gray": "1px solid #707070",
+        "white": "border-color: var(--color-gray-3)"
+      },
+      "description": "输入框聚焦态"
+    }
+  ],
+  "contentSlots": {
+    "title": {
+      "required": false,
+      "description": "表单标题，16px/600；沿原件showtitle开关，来源无标题时整块省略。"
+    },
+    "description": {
+      "required": false,
+      "description": "表单描述，14px/400"
+    },
+    "fields": {
+      "required": true,
+      "description": "两栏排布的输入字段组，ds-form__row > ds-form__field"
+    },
+    "textarea": {
+      "required": false,
+      "description": "多行文本域，独占整行，右上角字数统计"
+    },
+    "radioOrCheckboxGroup": {
+      "required": false,
+      "description": "单选/复选组，独占整行"
+    },
+    "submitButton": {
+      "required": true,
+      "description": "提交按钮，灰底当前调用 ds-btn--filled-red ds-btn--xl-regular；当前白底同样使用 XL Regular；旧响应式演示已从预览移除，适配暂缓"
+    }
+  },
+  "relations": {
+    "variantDecisionsDescription": "按实际内容与交互选择具体变体，再核对同版调用资格；候选/不用/参考同源展示给设计师和AI，不把MG原件范围当成完整运行能力。",
+    "variantDecisions": [
+      {
+        "type": "灰底表单",
+        "className": "ds-form--gray（字段背景 #F6F6F8）",
+        "whenToUse": "白色背景的既有灰底字段表单，或已保留来源字段的初始组合。",
+        "whenNotToUse": "需要网络提交、新设备、任意HTML或未支持的字段类型。",
+        "nestedComponents": [
+          {
+            "component": "Button",
+            "label": "Button (filled-red)",
+            "href": "button.html"
+          },
+          {
+            "component": "Input",
+            "href": "input.html",
+            "label": "灰底电话内部与第五、第六字段：真实Input调用"
+          }
+        ],
+        "status": "当前MG规则/结构与有限本地调用分开记录；视觉待确认。",
+        "variant": "gray",
+        "fragment": "gray",
+        "selectionCases": [
+          {
+            "id": "fm11",
+            "kind": "use",
+            "condition": "白色section、固定示例字段。",
+            "result": "gray；保留Input/Checkbox/Button真实子组件。",
+            "strength": "candidate",
+            "targetVariant": "gray"
+          },
+          {
+            "id": "fm12",
+            "kind": "use",
+            "condition": "来源字段不同，类型均已支持。",
+            "result": "gray+sourceFields；保留字段、选项及必填，不继承示例业务。",
+            "strength": "candidate",
+            "targetVariant": "gray"
+          },
+          {
+            "id": "fm13",
+            "kind": "avoid",
+            "condition": "用原站iframe或整块HTML绕过缺口。",
+            "result": "先核对契约，不把嵌入当FS表单完成。",
+            "strength": "avoid",
+            "targetVariant": "gray"
+          },
+          {
+            "id": "fm14",
+            "kind": "reference",
+            "condition": "多步骤/弹窗/上传/验证码/成功反馈。",
+            "result": "MG有场景，当前Form未提供完整业务流程。",
+            "strength": "reference",
+            "targetVariant": "gray"
+          }
+        ]
+      },
+      {
+        "type": "白底描边表单",
+        "className": "ds-form--white（字段背景 #FFFFFF + 1px border）",
+        "whenToUse": "灰色背景中使用当前白底描边固定结构表单。",
+        "whenNotToUse": "需要sourceFields或任意增减字段、动态区号与上传。",
+        "nestedComponents": [
+          {
+            "component": "Button",
+            "label": "Button (filled-red)",
+            "href": "button.html"
+          },
+          {
+            "component": "Input",
+            "href": "input.html",
+            "label": "PC basic fields and Input-owned static phone prefix"
+          }
+        ],
+        "status": "当前MG规则/结构与有限本地调用分开记录；视觉待确认。",
+        "variant": "white",
+        "fragment": "white",
+        "selectionCases": [
+          {
+            "id": "fm21",
+            "kind": "use",
+            "condition": "灰色section、沿用固定字段结构。",
+            "result": "white；原字段、Checkbox及Submit保持。",
+            "strength": "candidate",
+            "targetVariant": "white"
+          },
+          {
+            "id": "fm22",
+            "kind": "avoid",
+            "condition": "来源需要任意初始字段组合。",
+            "result": "white未开放sourceFields，不套用gray接口。",
+            "strength": "avoid",
+            "targetVariant": "white"
+          },
+          {
+            "id": "fm23",
+            "kind": "reference",
+            "condition": "MG标题可选、单/双列及业务成功反馈。",
+            "result": "设计范围不等于当前接口可自由增删/切换。",
+            "strength": "reference",
+            "targetVariant": "white"
+          }
+        ]
+      },
+      {
+        "type": "白底描边表单·响应式",
+        "className": "ds-form--source-responsive",
+        "whenToUse": "旧响应式登记的历史对照。",
+        "whenNotToUse": "当前页面合成或宣称MG移动表单完整实现。",
+        "nestedComponents": [
+          {
+            "component": "Button",
+            "href": "button.html"
+          },
+          {
+            "component": "Input",
+            "href": "input.html"
+          }
+        ],
+        "status": "当前MG规则/结构与有限本地调用分开记录；视觉待确认。",
+        "variant": "white-responsive",
+        "fragment": "white-responsive",
+        "selectionCases": [
+          {
+            "id": "fm31",
+            "kind": "reference",
+            "condition": "旧响应式样例或移动页面需求。",
+            "result": "历史记录不可调用，不能当MG手机原件。",
+            "strength": "reference",
+            "targetVariant": "white-responsive"
+          }
+        ]
+      },
+      {
+        "type": "M端局部槽位装配",
+        "className": "ds-form-mobile-slot",
+        "nestedComponents": [],
+        "variant": "mobile-source-slots",
+        "fragment": "mobile-source-slots",
+        "whenToUse": "已有移动原件的有限槽位参考。",
+        "whenNotToUse": "完整移动表单调用。",
+        "status": "当前MG规则/结构与有限本地调用分开记录；视觉待确认。",
+        "selectionCases": [
+          {
+            "id": "fm41",
+            "kind": "reference",
+            "condition": "需要移动字段槽位对照。",
+            "result": "仅来源参考，不能补成完整Form调用。",
+            "strength": "reference",
+            "targetVariant": "mobile-source-slots"
+          }
+        ]
+      },
+      {
+        "type": "M端整体结构（待验收）",
+        "className": "ds-form",
+        "nestedComponents": [],
+        "variant": "mobile-integrated",
+        "fragment": "mobile-integrated",
+        "whenToUse": "已有移动表单整体结构参考。",
+        "whenNotToUse": "当前新页面或完整移动端验收。",
+        "status": "当前MG规则/结构与有限本地调用分开记录；视觉待确认。",
+        "selectionCases": [
+          {
+            "id": "fm51",
+            "kind": "reference",
+            "condition": "需要移动整体组合或动态电话搜索。",
+            "result": "结构已留存，准入/交互缺口仍保留。",
+            "strength": "reference",
+            "targetVariant": "mobile-integrated"
+          }
+        ]
+      }
+    ],
+    "radiusDependencies": [
+      {
+        "token": "border-radius.md",
+        "value": "4px",
+        "usage": "中圆角 - 按钮默认圆角",
+        "appliesTo": [
+          "gray",
+          "white"
+        ]
+      },
+      {
+        "token": "border-radius.lg",
+        "value": "8px",
+        "usage": "Existing white card corner moved to locked opt-in CSS",
+        "appliesTo": [
+          "white"
+        ]
+      }
+    ],
+    "fontSizeDependencies": [
+      {
+        "token": "typography.font-size-md",
+        "value": "14px",
+        "usage": "中号字体 - XL/L 按钮",
+        "appliesTo": [
+          "gray",
+          "white"
+        ]
+      },
+      {
+        "token": "typography.font-size-sm",
+        "value": "12px",
+        "usage": "小号字体 - M/S 按钮",
+        "appliesTo": [
+          "gray",
+          "white"
+        ]
+      },
+      {
+        "token": "typography.font-size-h8",
+        "value": "13px",
+        "usage": "H8 紧凑正文/组件文字",
+        "appliesTo": [
+          "gray",
+          "white"
+        ]
+      },
+      {
+        "token": "/",
+        "value": "16px",
+        "usage": "无对应正式 token 的字号值，白名单登记",
+        "appliesTo": [
+          "gray",
+          "white"
+        ]
+      }
+    ],
+    "fontWeightDependencies": [
+      {
+        "token": "typography.font-weight-semibold",
+        "value": "600",
+        "usage": "表单标题",
+        "appliesTo": [
+          "gray",
+          "white"
+        ],
+        "properties": [
+          "font-weight"
+        ],
+        "selectors": [
+          ".ds-form__title"
+        ]
+      },
+      {
+        "token": "typography.font-weight-regular",
+        "value": "400",
+        "usage": "Actual current nested Input native text owns regular weight",
+        "selectors": [
+          "[data-input-current] .ds-input-field__input"
+        ],
+        "properties": [
+          "font-weight"
+        ],
+        "appliesTo": [
+          "gray",
+          "white"
+        ],
+        "sourceResource": "components/input-current.css"
+      }
+    ],
+    "typographyDependencies": [
+      {
+        "token": "typography.h6-semibold",
+        "fontSizeToken": "/",
+        "fontSizeValue": "16px",
+        "fontWeightToken": "typography.font-weight-semibold",
+        "fontWeightValue": "600",
+        "weightEvidence": "explicit-css",
+        "usage": "表单标题",
+        "appliesTo": [
+          "gray",
+          "white"
+        ]
+      },
+      {
+        "token": "typography.h7-regular",
+        "fontSizeToken": "typography.font-size-md",
+        "fontSizeValue": "14px",
+        "fontWeightToken": "typography.font-weight-regular",
+        "fontWeightValue": "400",
+        "weightEvidence": "inherited-regular",
+        "usage": "Current Form description and own labels; nested Input labels remain atomic.",
+        "appliesTo": [
+          "gray",
+          "white"
+        ]
+      },
+      {
+        "token": "typography.h8-regular",
+        "fontSizeToken": "typography.font-size-h8",
+        "fontSizeValue": "13px",
+        "fontWeightToken": "typography.font-weight-regular",
+        "fontWeightValue": "400",
+        "weightEvidence": "inherited-regular",
+        "usage": "表单字段文字",
+        "appliesTo": [
+          "gray",
+          "white"
+        ]
+      },
+      {
+        "token": "typography.h9-regular",
+        "fontSizeToken": "typography.font-size-sm",
+        "fontSizeValue": "12px",
+        "fontWeightToken": "typography.font-weight-regular",
+        "fontWeightValue": "400",
+        "weightEvidence": "inherited-regular",
+        "usage": "表单辅助文字",
+        "appliesTo": [
+          "gray",
+          "white"
+        ]
+      }
+    ],
+    "colorDependencies": [
+      {
+        "token": "color.blue",
+        "value": "#0060BF",
+        "usage": "强调蓝色 / 链接色 (Link)",
+        "appliesTo": [
+          "gray",
+          "white"
+        ]
+      },
+      {
+        "token": "color.gray-1",
+        "value": "#19191A",
+        "usage": "标题/深色文字 (Primary text)",
+        "appliesTo": [
+          "gray",
+          "white"
+        ]
+      },
+      {
+        "token": "color.gray-3",
+        "value": "#707070",
+        "usage": "次要/辅助文字 (Secondary/auxiliary text)",
+        "appliesTo": [
+          "gray",
+          "white"
+        ]
+      },
+      {
+        "token": "color.gray-5",
+        "value": "#DEE0E3",
+        "usage": "边框色 / 菜单项禁用色",
+        "appliesTo": [
+          "white"
+        ]
+      },
+      {
+        "token": "color.gray-8",
+        "value": "#F6F6F8",
+        "usage": "输入框/下拉/图标按钮等表单类灰底（gray-9 旧值 #F6F6F8，收敛为正式 token；比 gray-9 #FAFBFB 略深）",
+        "appliesTo": [
+          "gray"
+        ]
+      },
+      {
+        "token": "color.gray-9",
+        "value": "#FAFBFB",
+        "usage": "最浅灰背景（hover/展开态整行底、输入框底、卡片区底）",
+        "appliesTo": [
+          "white"
+        ]
+      },
+      {
+        "token": "color.hover-overlay-light",
+        "value": "rgba(25,25,26,0.04)",
+        "usage": "Hover 浅色叠加层（描边按钮用）",
+        "appliesTo": [
+          "gray"
+        ]
+      },
+      {
+        "token": "color.white",
+        "value": "#FFFFFF",
+        "usage": "白色 (深色背景上的文字)",
+        "appliesTo": [
+          "white"
+        ]
+      },
+      {
+        "token": "color.text-disabled",
+        "value": "rgba(25,25,26,0.3)",
+        "usage": "Nested Checkbox owns: 禁用状态文字色 (Disabled text)",
+        "appliesTo": [
+          "gray",
+          "white"
+        ]
+      }
+    ],
+    "componentDependencies": [
+      {
+        "component": "Button",
+        "usage": "PC gray193814 and white055775: genuine filled-red/xl-regular (42px/24px, regular14). Host only assembles/events.",
+        "slot": "submitButton",
+        "requiredVariants": [
+          "filled-red"
+        ],
+        "implementationClasses": [
+          "ds-btn",
+          "ds-btn--filled-red",
+          "ds-btn--xl-regular"
+        ],
+        "requiredSizes": [
+          {
+            "variant": "filled-red",
+            "size": "xl-regular"
+          }
+        ],
+        "appliesTo": [
+          "gray",
+          "white"
+        ]
+      },
+      {
+        "component": "Input",
+        "usage": "Finite white first and second basic fields, native70918:202597/202608 confirmed via actual main-set jump; complete atomic DOM with fill placement. Other fields pending.",
+        "slot": "firstTwoBasicFields",
+        "requiredVariants": [
+          "white"
+        ],
+        "implementationClasses": [
+          "ds-input-field"
+        ],
+        "appliesTo": [
+          "white"
+        ]
+      },
+      {
+        "component": "Input",
+        "usage": "Current PC phone external/start/fill Input and Input-owned static59x42 prefix, Gray8 both colors/white internal stroke; current official source read; no Select search/options admission.",
+        "slot": "phoneInnerInput",
+        "requiredVariants": [
+          "gray"
+        ],
+        "implementationClasses": [
+          "ds-input-field",
+          "ds-input-prefix"
+        ],
+        "appliesTo": [
+          "gray"
+        ]
+      },
+      {
+        "component": "Input",
+        "usage": "Current PC phone external/start/fill Input and Input-owned static59x42 prefix, Gray8 both colors/white internal stroke; current official source read; no Select search/options admission.",
+        "slot": "phoneInnerInput",
+        "requiredVariants": [
+          "white"
+        ],
+        "implementationClasses": [
+          "ds-input-field",
+          "ds-input-prefix"
+        ],
+        "appliesTo": [
+          "white"
+        ]
+      },
+      {
+        "component": "Input",
+        "usage": "PC gray sixth185394/022134 actual basic Input with decorative Down icon; atom owns styles.",
+        "slot": "sixthArrowBasicField",
+        "requiredVariants": [
+          "gray"
+        ],
+        "implementationClasses": [
+          "ds-input-field"
+        ],
+        "appliesTo": [
+          "gray"
+        ]
+      },
+      {
+        "component": "Input",
+        "usage": "PC gray fifth185348/022134 native visible source text Please enter text and decorative Down icon; replaces wrongly mapped Dropdown.",
+        "slot": "fifthArrowBasicField",
+        "requiredVariants": [
+          "gray"
+        ],
+        "implementationClasses": [
+          "ds-input-field"
+        ],
+        "appliesTo": [
+          "gray"
+        ]
+      },
+      {
+        "component": "Input",
+        "usage": "PC white fifth107908/022300: actual basic Input with decorative Down arrow, White/Gray4 face; incorrect Dropdown/options removed.",
+        "slot": "fifthArrowBasicField",
+        "requiredVariants": [
+          "white"
+        ],
+        "implementationClasses": [
+          "ds-input-field"
+        ],
+        "appliesTo": [
+          "white"
+        ]
+      },
+      {
+        "component": "Input",
+        "usage": "PC white sixth107940/022293 actual basic white Input; native arrow flag false, unlike gray sixth.",
+        "slot": "sixthBasicField",
+        "requiredVariants": [
+          "white"
+        ],
+        "implementationClasses": [
+          "ds-input-field"
+        ],
+        "appliesTo": [
+          "white"
+        ]
+      },
+      {
+        "component": "Input",
+        "usage": "PC gray181555/181544 own root, face022133 and text independently read; complete basic Input, fill, no arrow.",
+        "slot": "firstTwoBasicFields",
+        "requiredVariants": [
+          "gray"
+        ],
+        "implementationClasses": [
+          "ds-input-field"
+        ],
+        "appliesTo": [
+          "gray"
+        ]
+      },
+      {
+        "component": "Input",
+        "usage": "PC gray185306 own root, face022133 and text confirmed; complete basic gray Input, no arrow.",
+        "slot": "thirdBasicField",
+        "requiredVariants": [
+          "gray"
+        ],
+        "implementationClasses": [
+          "ds-input-field"
+        ],
+        "appliesTo": [
+          "gray"
+        ]
+      },
+      {
+        "component": "Input",
+        "usage": "PC white103789 own root, face022293 and text confirmed; complete basic white Input, no arrow.",
+        "slot": "thirdBasicField",
+        "requiredVariants": [
+          "white"
+        ],
+        "implementationClasses": [
+          "ds-input-field"
+        ],
+        "appliesTo": [
+          "white"
+        ]
+      },
+      {
+        "component": "Checkbox",
+        "slot": "contactMethods",
+        "requiredVariants": [
+          "sm"
+        ],
+        "implementationClasses": [
+          "ds-checkbox",
+          "ds-checkbox--sm"
+        ],
+        "appliesTo": [
+          "gray",
+          "white"
+        ],
+        "usage": "Actual gray056961 and white055850 reference Email192450 Press andPhone192445 Default. Size14px is box size; own gray Email text Open Sans/13px-Regular,34x20 at22,0. Canonical sm14px box/13px label owns paint."
+      },
+      {
+        "component": "Checkbox",
+        "slot": "consent",
+        "requiredVariants": [
+          "sm"
+        ],
+        "implementationClasses": [
+          "ds-checkbox",
+          "ds-checkbox--sm"
+        ],
+        "appliesTo": [
+          "gray",
+          "white"
+        ],
+        "usage": "Actual PC gray056996 and white202530 reference031020 Default14px; caption omitted for source-specific mixed prose and legal links, outer native label associates input; link click excluded from toggle.",
+        "adaptation": {
+          "omittedSlots": [
+            "caption"
+          ],
+          "retainedStructure": [
+            "native input",
+            "atomic box",
+            "current/control marker"
+          ],
+          "pageLevelContent": [
+            "source-specific privacy text and two display-only legal links"
+          ],
+          "reason": "Both PC consent source text uses named12px Regular/mixedGray3 Blue instead of canonical sm13px caption; preserve in host prose while atom owns box states.",
+          "risk": "Mixed-run overrides/full focus and disabled visual approval pending"
+        }
+      },
+      {
+        "component": "Input",
+        "slot": "commentsTextarea",
+        "requiredVariants": [
+          "gray"
+        ],
+        "appliesTo": [
+          "gray"
+        ],
+        "capability": "finite-PC-textarea",
+        "source": "components/sources/form/native-textarea-structure-review-1011.json",
+        "usage": "PC gray comments native Input-family textarea; atom owns count, reset and paint",
+        "implementationClasses": [
+          "ds-input-field",
+          "ds-input-field__header",
+          "ds-input-field__count",
+          "ds-input-field__input"
+        ]
+      },
+      {
+        "component": "Input",
+        "slot": "commentsTextarea",
+        "requiredVariants": [
+          "white"
+        ],
+        "appliesTo": [
+          "white"
+        ],
+        "capability": "finite-PC-textarea",
+        "source": "components/sources/form/native-textarea-structure-review-1011.json",
+        "usage": "PC white comments native Input-family textarea; atom owns count, reset and paint",
+        "implementationClasses": [
+          "ds-input-field",
+          "ds-input-field__header",
+          "ds-input-field__count",
+          "ds-input-field__input"
+        ]
+      },
+      {
+        "component": "Button",
+        "slot": "mobileSubmitSourceSlots",
+        "usage": "Finite M Submit uses genuine filled-red/xl-regular (42px/24px regular), main hj66450:98573; host allocates width only.",
+        "requiredVariants": [
+          "filled-red"
+        ],
+        "implementationClasses": [
+          "ds-btn",
+          "ds-btn--filled-red",
+          "ds-btn--xl-regular"
+        ],
+        "requiredSizes": [
+          {
+            "variant": "filled-red",
+            "size": "xl-regular"
+          }
+        ],
+        "appliesTo": [
+          "mobile-source-slots",
+          "mobile-integrated"
+        ]
+      },
+      {
+        "component": "Input",
+        "slot": "mobileWhiteFifthSixthSourceSlots",
+        "usage": "Partial M source slots203557/203568 genuinely call white basic Input013958/022275; fifth arrow on, sixth off; fill width only.",
+        "requiredVariants": [
+          "white"
+        ],
+        "implementationClasses": [
+          "ds-input-field"
+        ],
+        "appliesTo": [
+          "mobile-source-slots",
+          "mobile-integrated"
+        ]
+      },
+      {
+        "component": "Checkbox",
+        "slot": "mobileContactSourceSlots",
+        "usage": "Gray381/white382 contact groups each genuinely call sm Checkbox; Email checked/Press and Phone unchecked/Default, own source paths verified.",
+        "requiredVariants": [
+          "sm"
+        ],
+        "implementationClasses": [
+          "ds-checkbox",
+          "ds-checkbox--sm"
+        ],
+        "appliesTo": [
+          "mobile-source-slots",
+          "mobile-integrated"
+        ]
+      },
+      {
+        "component": "Input",
+        "slot": "mobileFiveBasicSourceSlots",
+        "usage": "Own gray2/3/6 offDefault022120 and white2/3 onDefault022275; real canonical Input fill DOM, originalLable text.",
+        "requiredVariants": [
+          "gray",
+          "white"
+        ],
+        "implementationClasses": [
+          "ds-input-field"
+        ],
+        "appliesTo": [
+          "mobile-source-slots",
+          "mobile-integrated"
+        ]
+      },
+      {
+        "component": "Checkbox",
+        "slot": "mobileConsentCaption",
+        "usage": "Two source-owned M consent captions use controlled native sm atom with prose/legal links; ordinary caption unchanged.",
+        "requiredVariants": [
+          "sm"
+        ],
+        "implementationClasses": [
+          "ds-checkbox",
+          "ds-checkbox--sm"
+        ],
+        "appliesTo": [
+          "mobile-integrated"
+        ]
+      },
+      {
+        "component": "Input",
+        "slot": "mobileStaticPhonePrefix",
+        "usage": "Input有限静态前缀part与external/start/fill内Input真实拼接；来源为属性Input中的Select面板，未伪装完整Select/搜索调用",
+        "requiredVariants": [
+          "gray",
+          "white"
+        ],
+        "implementationClasses": [
+          "ds-input-prefix",
+          "ds-input-field"
+        ],
+        "appliesTo": [
+          "mobile-integrated"
+        ]
+      },
+      {
+        "component": "Select",
+        "slot": "sourceFieldsSelect",
+        "requiredVariants": [
+          "single-basic",
+          "search"
+        ],
+        "requiredWhen": "sourceFields",
+        "usage": "Source-reviewed initial options rendered through actual same-version Select; Form owns native serialization and required checks, atom owns popup and selection. Long source lists reuse existing search; ordinary lists reuse single-basic. No Select API changes.",
+        "implementationClasses": [
+          "ds-select"
+        ]
+      }
+    ],
+    "iconDependencies": [
+      {
+        "icon": "icon-chevron-down",
+        "usage": "电话号码前缀选择、下拉字段的箭头",
+        "required": false,
+        "appliesTo": [
+          "gray",
+          "white"
+        ]
+      }
+    ],
+    "parentContext": {
+      "page-section--gray": {
+        "resultingVariant": "white",
+        "reason": "灰色 section 内表单需要白色背板区分层次"
+      },
+      "page-section--white": {
+        "resultingVariant": "gray",
+        "reason": "白色 section 内表单用灰底字段自然区分"
+      }
+    },
+    "immutableRule": {
+      "field": "submitButton",
+      "rule": "只能是 ds-btn--filled-red，不接受任何其他 variant，无一例外"
+    },
+    "notes": "表单属于数据录入类组件，可能出现在左右结构（配合额外文案说明）或上下结构（独立成 section）两种布局里，选择哪种布局取决于源页面是否有额外文案，不是随意的视觉偏好。",
+    "enforcementStatus": {
+      "componentDependencies.implementationClasses-evidence": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 8（证据链，2026-07-16）：componentDependencies[*].implementationClasses 声明的 class 必须在宿主 preview 的 class 属性里真实出现，缺证据即 error。Button(current gray/white filled-red/xl-regular; legacy responsive preview removed) 与 Dropdown(ds-dropdown) 依赖已声明。"
+      },
+      "colorDependencies.tokens-exist": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 2b：colorDependencies 引用的 color.* token 必须存在于 token-specs/colors.json（缺失即 error）；token 为 / 表示无对应 token 的白名单裸值；双源值一致由 validate-tokens.js 全量保证；Guard C 保证声明了就必须有颜色依赖表"
+      },
+      "colorDependencies.css-uses-var": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 2c：切出组件样式段，校验用到的 var(--color-*) 都在 colorDependencies 声明过，且无未声明裸色值（box-shadow/注释除外），违反即 error —— 保证颜色映射闭环"
+      },
+      "radiusDependencies.tokens-exist": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 3a：radiusDependencies 引用的 border-radius.* token 必须存在于 token-specs/border-radius.json（缺失即 error）；token 为 / 表示白名单裸值；Guard D 保证声明了就必须有圆角依赖表"
+      },
+      "radiusDependencies.css-uses-var": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 3b：校验 border-radius 用到的 var(--border-radius-*) 都在 radiusDependencies 声明过，且无未声明裸圆角值（0 除外），违反即 error —— 保证圆角映射闭环"
+      },
+      "fontSizeDependencies.tokens-exist": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 4a：fontSizeDependencies 引用的 typography.font-size-* token 必须存在于 token-specs/typography.json（缺失即 error）；token 为 / 表示无对应正式 token 的白名单值；Guard E 保证声明了就必须有字号依赖表"
+      },
+      "fontSizeDependencies.css-uses-var": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 4b：校验 font-size 用到的 var(--font-size-*) 都在 fontSizeDependencies 声明过，且无未声明裸字号值，违反即 error —— 保证字号映射闭环"
+      },
+      "shadowDependencies": {
+        "enforced": true,
+        "mechanism": "/",
+        "note": "本组件无 box-shadow，无 shadowDependencies"
+      },
+      "immutableRule.submitButton-must-be-filled-red": {
+        "enforced": true,
+        "mechanism": "verify.js: pageProbe FORM_SUBMIT_RED（2026-07-16 新增）——form/.ds-form 内的显式 submit（button[type=submit] / input[type=submit]）必须带 ds-btn--filled-red，否则 error。",
+        "note": "保守判定：仅校验显式 type=submit 的按钮，避免误伤表单内取消/次要按钮；未标 type=submit 的按钮不判定。"
+      },
+      "fieldLayoutRule.two-column-mandatory": {
+        "enforced": false,
+        "mechanism": "无",
+        "note": "范围仅当前PC调用；M端原稿不受此禁止项约束。"
+      },
+      "parentContext.section-color-to-variant": {
+        "enforced": false,
+        "mechanism": "无"
+      },
+      "spacingDependencies.tokens-and-css-closure": {
+        "enforced": true,
+        "mechanism": "check-contracts.js: spacingDependencies token/value/selector/property 与组件 CSS 双向闭环校验"
+      },
+      "borderDependencies.tokens-and-css-closure": {
+        "enforced": true,
+        "mechanism": "check-contracts.js: borderDependencies token/value/aspect/selector/property 与组件 CSS 双向闭环校验"
+      },
+      "fontWeightDependencies.tokens-and-css-closure": {
+        "enforced": true,
+        "mechanism": "check-contracts.js: fontWeightDependencies token/value/selector/property 与组件 CSS 双向闭环校验；仅允许 Regular 400 / SemiBold 600，禁止裸字重值"
+      },
+      "typographyDependencies.size-weight-pairing": {
+        "enforced": true,
+        "mechanism": "check-contracts.js: typographyDependencies.token 必须引用 token-specs/typography.json 中真实 composite typography token；该 token 同时锁定 fontSize、lineHeight、fontWeight，并核对底层字号/字重 primitive 与 CSS 证据，依赖汇总表只输出一个 Token 链接"
+      }
+    },
+    "spacingDependencies": [
+      {
+        "token": "spacing.md",
+        "value": "12px",
+        "usage": "gap / padding：.ds-form、.ds-form__row、.ds-form__input、.ds-form__textarea、.ds-form__phone-prefix",
+        "properties": [
+          "gap",
+          "padding"
+        ],
+        "selectors": [
+          ".ds-form",
+          ".ds-form__row",
+          ".ds-form__input",
+          ".ds-form__textarea",
+          ".ds-form__phone-prefix"
+        ],
+        "appliesTo": [
+          "gray",
+          "white"
+        ]
+      },
+      {
+        "token": "spacing.xs",
+        "value": "4px",
+        "usage": "gap：.ds-form__field",
+        "properties": [
+          "gap"
+        ],
+        "selectors": [
+          ".ds-form__field"
+        ],
+        "appliesTo": [
+          "gray",
+          "white"
+        ]
+      },
+      {
+        "token": "spacing.10",
+        "value": "10px",
+        "usage": "padding：.ds-form__textarea",
+        "properties": [
+          "padding"
+        ],
+        "selectors": [
+          ".ds-form__textarea"
+        ],
+        "appliesTo": [
+          "gray",
+          "white"
+        ]
+      },
+      {
+        "token": "spacing.sm",
+        "value": "8px",
+        "usage": "gap：.ds-form__phone-prefix、.ds-form__radio、.ds-form__checkbox",
+        "properties": [
+          "gap"
+        ],
+        "selectors": [
+          ".ds-form__phone-prefix",
+          ".ds-form__radio",
+          ".ds-form__checkbox"
+        ],
+        "appliesTo": [
+          "gray",
+          "white"
+        ]
+      },
+      {
+        "token": "spacing.lg",
+        "value": "16px",
+        "usage": "gap：.ds-form__radio-group",
+        "properties": [
+          "gap"
+        ],
+        "selectors": [
+          ".ds-form__radio-group"
+        ],
+        "appliesTo": [
+          "gray",
+          "white"
+        ]
+      },
+      {
+        "token": "spacing.3",
+        "value": "3px",
+        "usage": "margin-top：.ds-form__checkbox input",
+        "properties": [
+          "margin-top"
+        ],
+        "selectors": [
+          ".ds-form__checkbox input"
+        ],
+        "appliesTo": [
+          "gray",
+          "white"
+        ]
+      },
+      {
+        "token": "spacing.20",
+        "value": "20px",
+        "usage": "Existing white card padding moved from Preview inline style to locked opt-in CSS",
+        "properties": [
+          "padding"
+        ],
+        "selectors": [
+          ".ds-form[data-form-current=\"white\"]"
+        ],
+        "appliesTo": [
+          "white"
+        ]
+      },
+      {
+        "token": "spacing.2",
+        "value": "2px",
+        "usage": "Nested Checkbox owns: Checkbox原子首行位置；宿主仅引用同一资源，不覆盖样式",
+        "properties": [
+          "margin-top"
+        ],
+        "selectors": [
+          ".ds-checkbox[data-checkbox-current] .ds-checkbox__box"
+        ],
+        "appliesTo": [
+          "gray",
+          "white"
+        ]
+      }
+    ],
+    "borderDependencies": [
+      {
+        "token": "border.style.none",
+        "value": "none",
+        "usage": "border / border-right：.ds-form__input--gray、.ds-form__textarea--gray、.ds-form__phone-prefix--white",
+        "aspect": "style",
+        "properties": [
+          "border",
+          "border-right"
+        ],
+        "selectors": [
+          ".ds-form__input--gray",
+          ".ds-form__textarea--gray",
+          ".ds-form__phone-prefix--white"
+        ],
+        "appliesTo": [
+          "gray",
+          "white"
+        ]
+      },
+      {
+        "token": "border.width.default",
+        "value": "1px",
+        "usage": "border：.ds-form__input--gray:focus、.ds-form__input--white、.ds-form__textarea--white、.ds-form__phone-prefix--white",
+        "aspect": "width",
+        "properties": [
+          "border"
+        ],
+        "selectors": [
+          ".ds-form__input--gray:focus",
+          ".ds-form__input--white",
+          ".ds-form__textarea--white",
+          ".ds-form__phone-prefix--white"
+        ],
+        "appliesTo": [
+          "gray",
+          "white"
+        ]
+      },
+      {
+        "token": "border.style.default",
+        "value": "solid",
+        "usage": "border：.ds-form__input--gray:focus、.ds-form__input--white、.ds-form__textarea--white、.ds-form__phone-prefix--white",
+        "aspect": "style",
+        "properties": [
+          "border"
+        ],
+        "selectors": [
+          ".ds-form__input--gray:focus",
+          ".ds-form__input--white",
+          ".ds-form__textarea--white",
+          ".ds-form__phone-prefix--white"
+        ],
+        "appliesTo": [
+          "gray",
+          "white"
+        ]
+      },
+      {
+        "token": "border.color.strong",
+        "value": "var(--color-gray-3)",
+        "usage": "border / border-color：.ds-form__input--gray:focus、.ds-form__input--white:hover、.ds-form__input--white:focus",
+        "aspect": "color",
+        "properties": [
+          "border",
+          "border-color"
+        ],
+        "selectors": [
+          ".ds-form__input--gray:focus",
+          ".ds-form__input--white:hover",
+          ".ds-form__input--white:focus"
+        ],
+        "appliesTo": [
+          "gray",
+          "white"
+        ]
+      },
+      {
+        "token": "border.color.default",
+        "value": "var(--color-gray-5)",
+        "usage": "border：.ds-form__input--white、.ds-form__textarea--white、.ds-form__phone-prefix--white",
+        "aspect": "color",
+        "properties": [
+          "border"
+        ],
+        "selectors": [
+          ".ds-form__input--white",
+          ".ds-form__textarea--white",
+          ".ds-form__phone-prefix--white"
+        ],
+        "appliesTo": [
+          "white"
+        ]
+      },
+      {
+        "token": "border.color.input-disabled",
+        "value": "var(--color-input-disabled-border)",
+        "usage": "Exact current basic white Disabled border; not a general other-control rule.",
+        "aspect": "color",
+        "properties": [
+          "border"
+        ],
+        "selectors": [
+          "[data-input-current] .ds-input-field__input--white:disabled"
+        ],
+        "appliesTo": [
+          "white"
+        ]
+      }
+    ],
+    "hardRules": [
+      {
+        "title": "当前PC Submit使用Button filled-red/xl-regular",
+        "ruleContent": "<strong>灰底当前提交按钮真实调用 <code>ds-btn--filled-red ds-btn--xl-regular</code>（42px高、左右24px、14px Regular）。当前白底同样调用 XL Regular；旧响应式演示已从预览移除，适配暂缓。</strong>红色使用范围遵循 Button 宿主契约。",
+        "aiParse": "Current gray Submit: Button filled-red/xl-regular, 42px high, padding24px, regular14px. Current white also uses xl-regular after native instance review; legacy responsive demonstration removed, adaptation deferred.",
+        "enforcement": "设计规范硬约束。目前无专门机械检查，依赖 AI 自觉。"
+      },
+      {
+        "title": "当前PC表单两栏；M端已有单栏整体结构，待验收",
+        "ruleContent": "<strong>当前PC灰底、白底表单按两栏调用（<code>ds-form__row</code> 装配字段）。此限制仅用于当前PC调用。</strong>已有M端原稿为单栏，灰白整体结构已实现但尚未完成验收；不以PC规则禁止M端表单。文本域及复选/单选组可独占整行，跨尺寸适配走查仍暂缓。",
+        "aiParse": "{\n  \"mandatory\": \"当前PC灰/白调用以ds-form__row装配两栏；此规则仅限PC。M原始组合单独核对与实现，不以PC规则禁止已有M表单。\",\n  \"exceptions\": [\n    \"textarea（多行文本域）可独占整行\",\n    \"checkbox/radio 组可独占整行\"\n  ],\n  \"forbidden\": \"PC当前调用禁止擅自改变列结构；不得把此限制当成M表单的通用禁止项。\",\n  \"scope\": \"PC current calls only; M roots057050/055631 have finite integrated runtime structures; source closure and browser acceptance remain pending, with M AI admission closed.\"\n}",
+        "enforcement": "当前PC有限调用结构检查；不是全部表单布局规范。"
+      }
+    ],
+    "prototypeRollout": {
+      "template": "docs/component-spec-template.html",
+      "source": "relations.variantDecisions",
+      "workflow": "existing-local-only",
+      "scope": "preserved calls; solution Stepper restriction reconciled with current MG"
+    },
+    "interactionRules": [
+      {
+        "name": "实际调用边界",
+        "rule": "先判断固定表单还是来源初始字段组合，再按背景选gray/white。gray支持sourceFields，white仍只支持固定结构；来源字段、选项、必填/可选及提示保留，不补造联系方式或隐私同意。Input/Select/Textarea/Checkbox/Button沿用原依赖。sourceFields仅支持已声明text/email/textarea/select，不从MG文件上传/验证码/多步骤原件推断当前接口支持。只做本地校验及ds:form-submit；网络提交、区号搜索、完整成功弹窗与移动表单仍未开放，不用原站iframe替代。",
+        "owner": "原契约与既有运行时"
+      },
+      {
+        "name": "父子维护",
+        "rule": "保留原依赖、共享实现和维护来源；原component:sync/watch更新调用、选型、依赖及规范页，旧页面不自动升级。",
+        "owner": "原维护入口"
+      }
+    ]
+  },
+  "searchIntents": [
+    "表单",
+    "联系表单",
+    "咨询表单",
+    "询价表单",
+    "注册表单",
+    "提交表单",
+    "Product Inquiry"
+  ],
+  "tokenReferences": [
+    "color.white",
+    "color.gray-1",
+    "color.gray-3",
+    "color.gray-5",
+    "color.gray-9",
+    "color.brand-red",
+    "border-radius.md",
+    "typography.font-family-base",
+    "typography.font-size-h8",
+    "spacing.md",
+    "spacing.xs",
+    "spacing.10",
+    "spacing.sm",
+    "spacing.lg",
+    "spacing.3",
+    "border.style.none",
+    "border.width.default",
+    "border.style.default",
+    "border.color.strong",
+    "border.color.default",
+    "typography.font-weight-semibold",
+    "typography.font-size-md",
+    "typography.font-weight-regular",
+    "typography.font-size-sm",
+    "typography.h6-semibold",
+    "typography.h7-regular",
+    "typography.h8-regular",
+    "typography.h9-regular",
+    "spacing.20",
+    "border-radius.lg",
+    "border.color.input-disabled",
+    "color.input-disabled-border",
+    "opacity.disabled",
+    "spacing.2",
+    "spacing.xl",
+    "spacing.25",
+    "spacing.6",
+    "spacing.48",
+    "spacing.2xl",
+    "spacing.40",
+    "spacing.14",
+    "spacing.banner-hero-inset",
+    "spacing.banner-content-inset",
+    "spacing.5",
+    "spacing.collapse-status-indent",
+    "spacing.36",
+    "spacing.9",
+    "spacing.collapse-body-indent",
+    "spacing.26",
+    "spacing.80",
+    "spacing.68",
+    "spacing.menu-navigation-left-gutter",
+    "border.color.emphasis",
+    "border.color.inverse",
+    "border.color.focus",
+    "border.color.subtle",
+    "border.width.strong",
+    "border.color.transparent",
+    "border.color.brand",
+    "border.color.option",
+    "border.color.tag",
+    "border.color.table-header",
+    "border.color.table-divider",
+    "border.color.list-product-divider",
+    "border.color.list-item-divider",
+    "border.color.comment-divider"
+  ],
+  "constraints": {
+    "allowedChildren": [
+      "Input",
+      "Button",
+      "Text"
+    ],
+    "requiredProperties": [
+      "variant",
+      "layout"
+    ],
+    "forbiddenCombinations": [
+      [
+        "单栏长表单",
+        "两栏布局规则"
+      ]
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-07-31",
+      "change": "Added contract-owned mobile stacking for two-field rows at 640px and below, replacing page-level ds-* overrides.",
+      "author": "Kiro"
+    },
+    {
+      "date": "2026-07-23",
+      "author": "Kiro",
+      "change": "将字号与字重配对提升为正式 composite typography token；组件依赖以单一 token 引用完整字号、行高、字重，primitive 字段仅保留作 CSS 证据。"
+    },
+    {
+      "date": "2026-07-22",
+      "change": "新增 typographyDependencies 成对字体依赖：每条记录明确绑定字号与字重，依赖汇总表按“字号 · 层级 · 字重”整体展示，禁止拆列后猜测组合。",
+      "author": "Kiro"
+    },
+    {
+      "date": "2026-07-22",
+      "change": "新增 fontWeightDependencies：按组件 CSS 显式 font-weight 证据登记 Regular 400 / SemiBold 600；无显式声明的组件保留空数组，并纳入 token/value/selector/property 双向闭环校验。",
+      "author": "Kiro"
+    },
+    {
+      "date": "2026-07-20",
+      "change": "父子依赖治理：表单宿主依赖补齐 Button(filled-red) 与 Dropdown(basic) 的 requiredVariants，供父关系自动反向推导。",
+      "author": "Kiro"
+    },
+    {
+      "date": "2026-06-30",
+      "change": "新建档案，记录两栏布局硬约束、submitButton 唯一允许 filled-red 的不可变规则",
+      "author": "TBD"
+    },
+    {
+      "date": "2026-07-14",
+      "change": "增加间距与描边 token 依赖、CSS 选择器/属性证据及机械闭环校验映射",
+      "author": "Kiro"
+    },
+    {
+      "date": "2026-07-14",
+      "change": "依据契约语义、组件 CSS 选择器与预览结构，补齐全部现有依赖的 appliesTo 汇总行映射；仅使用真实 types/variants，不新增伪类型或不确定依赖",
+      "author": "Kiro"
+    },
+    {
+      "date": "2026-10-09",
+      "author": "Codex",
+      "change": "统一规范维护质量标准：登记真实实现与选型规则入口、源变更重新验收、父子影响检查及历史页面隔离；不推断可编辑槽位或视觉批准。"
+    },
+    {
+      "date": "2026-10-09",
+      "author": "Codex",
+      "change": "原生输入及文本域label/for关联；仍有Dropdown与Select语义迁移缺口"
+    },
+    {
+      "date": "2026-10-10",
+      "author": "Codex",
+      "change": "修正tokenReferences中的旧别名，改用Token注册表实际名称；依据既有CSS变量--brand-red/--font-family-base及明确映射，不改Token值、CSS或历史页。新增健康检查阻止未知/重复Token引用。"
+    }
+  ],
+  "isComplete": true,
+  "createdAt": "2026-06-30T00:00:00Z",
+  "updatedAt": "2026-07-31T00:00:00Z",
+  "qualityProfile": {
+    "schemaVersion": "1.0.0",
+    "standard": "docs/component-quality-standard.md",
+    "implementation": "components/variants/form.html",
+    "selection": {
+      "mappingSource": "components/selection-mvp-policy.json",
+      "mappingPointer": "components.form.variantDecisionTypes",
+      "rulesPointer": "relations.variantDecisions"
+    },
+    "maintenance": {
+      "authority": "contract-preview-runtime-token-icon",
+      "generatedOnly": [
+        "preview-reference-tables",
+        "component-index",
+        "selection-catalog",
+        "design-reading-view",
+        "ai-reference"
+      ],
+      "changePolicy": "记录来源差异、兼容性与受影响父子组件；源文件变化后旧工程验收失效。",
+      "historicalPages": "不自动升级；新页面锁定本地组件运行资源版本。"
+    },
+    "acceptance": {
+      "report": "components/quality/report.json",
+      "proof": "components/quality/acceptance.json",
+      "declarationIsNotProof": true
+    }
+  },
+  "maintenanceReview": {
+    "date": "2026-10-11",
+    "sourceStatus": "Native PC gray056904/white055774 and Submit193814/055775 confirmed. Norm408149 sections2.1/2.2 read; remaining nested atoms pending.",
+    "engineeringScope": "Current PC:12 basic Input +2 finite Input textarea,6 Checkbox and2 Submit; current integrated M:12 basic Input +2 finite Input textarea,6 Checkbox and2 Submit. M Warning and counter-center decisions implemented; PC prefix, full-state browser and family acceptance incomplete.",
+    "historicalPages": "Frozen pages retain locked resources; retired responsive implementation retained only for historical users. Current PC atom migrations do not upgrade frozen pages.",
+    "sourceCoverage": {
+      "family": "four-original-PC-M-by-surface-combinations",
+      "roots": {
+        "PC.gray": "68908:056904",
+        "PC.white": "68908:055774",
+        "M.gray": "68908:057050",
+        "M.white": "68908:055631"
+      },
+      "runtime": "PC gray/white partial; M unimplemented",
+      "normativeBody": "408149 sections2.1/2.2 only; remainder pending",
+      "fullAcceptance": "pending",
+      "crossSizeWalkthrough": "deferred"
+    },
+    "legacyStatusBoundary": "isComplete/pendingParts are legacy selection admission flags, not MG full coverage or runtime/visual acceptance. Actual pending work is sourceCoverage and current quality proof. Retired responsive variant is excluded from precise AI calls and current Preview; old selection metadata remains for compatibility.",
+    "offlineLabelCorrection": {
+      "source": "components/sources/form/native-specification-review-1011.json",
+      "norm": "408149 section2.1: label14px/Regular400/Gray3",
+      "change": "Current Form-owned labels use h7 typography. Nested Input labels retain atomic CSS. Historical shared CSS unchanged.",
+      "acceptance": "Source/style correspondence only; actual visual verification pending while Mac locked."
+    },
+    "nativeSubmitCancellation": {
+      "issue": "An already canceled native submit still emitted ds:form-submit.",
+      "fix": "Current handler respects event.defaultPrevented before invoking local submit callback.",
+      "scope": "Prior/capture cancellation; current synchronous callback timing unchanged. Later bubble listener cancellation is not retroactive.",
+      "proof": "Offline regression reproduces failure before fix; canceled values preserved and independent form submits once after repeated runtime loading.",
+      "MG": "No MG/visual/normative inference."
+    },
+    "localDependencyAudit": {
+      "scope": "current PC gray/white authored examples only",
+      "checks": [
+        "Actual registered Input slots/variants require complete atom structure",
+        "Input CSS/JS included; changes invalidate host evidence",
+        "No invented Dropdown/options after source correction"
+      ],
+      "counts": {
+        "gray": {
+          "Input": 7,
+          "Checkbox": 3
+        },
+        "white": {
+          "Input": 7,
+          "Checkbox": 3
+        }
+      },
+      "limits": "Phone prefixes and M incomplete; finite native interactions only, no full MG/browser geometry/all-state visual approval."
+    },
+    "arrowFieldMigration": {
+      "source": "components/sources/form/native-component-review-1011.json",
+      "status": "PC-gray-fifth-sixth-white-fifth-sixth-migrated",
+      "boundary": "Both PC fifth fields and gray sixth have source-proven arrows; white sixth107940 arrow=false migrated to basic white Input. Vector/full-state visual and M pending."
+    },
+    "basicFieldMigration": {
+      "source": "components/sources/form/native-component-review-1011.json",
+      "status": "PC-gray-first-three-white-third-migrated",
+      "limits": "Own default source confirmed; full states, browser exact geometry and M pending."
+    },
+    "textareaMigration": {
+      "source": "components/sources/form/native-textarea-structure-review-1011.json",
+      "scope": "finite existing PC gray/white Form only; no generic AI textarea/new component/M admission",
+      "root": "div.ds-input-field[data-input-current][data-input-kind=textarea][data-input-layout=fill]",
+      "structure": "header(label+count), native textarea; label/for/id and unique counter/aria-describedby required",
+      "defaults": "maxLength5000, empty value, no business error/upload/info slots; default/focus/value/native-disabled runtime only",
+      "ownership": "Input owns typography/face/state/resize/min42/scroll/counter/reset; Form owns placement/name/content/business submit",
+      "limits": "Individual state faces read; full text/error/grip anatomy, resize geometry and all-state visual/browser acceptance still pending"
+    },
+    "mobileSlotAssembly": {
+      "date": "2026-10-12",
+      "scope": "partial-mobile-slots-only",
+      "source": "components/sources/form/native-authority-review-1012/review.json",
+      "previewSelector": "#form-mobile-source-slots",
+      "status": "implemented-pending-browser-verification",
+      "notFullMobileForm": true,
+      "slots": [
+        {
+          "instanceId": "70918:203557",
+          "atom": "Input",
+          "variant": "white",
+          "componentSetId": "68908:013958",
+          "mainVariantId": "68908:022275",
+          "arrow": "down",
+          "widthAllocation": 382
+        },
+        {
+          "instanceId": "70918:203568",
+          "atom": "Input",
+          "variant": "white",
+          "componentSetId": "68908:013958",
+          "mainVariantId": "68908:022275",
+          "arrow": null,
+          "widthAllocation": 382
+        },
+        {
+          "instanceId": "68908:057184",
+          "atom": "Button",
+          "variant": "filled-red",
+          "size": "xl-regular",
+          "componentSetId": "64880:83689",
+          "mainVariantId": "hj66450:98573",
+          "widthAllocation": 382
+        },
+        {
+          "instanceId": "68908:055770",
+          "atom": "Button",
+          "variant": "filled-red",
+          "size": "xl-regular",
+          "componentSetId": "64880:83689",
+          "mainVariantId": "hj66450:98573",
+          "widthAllocation": 382
+        }
+      ],
+      "excluded": [
+        "phone",
+        "textarea",
+        "consent-rich-text",
+        "full-mobile-form",
+        "responsive-breakpoints"
+      ],
+      "mappingCorrection": "42px/24px regular maps to xl-regular, not l(36px/16px). PC unchanged; prior PC dependency wording discrepancy recorded separately."
+    },
+    "submitSizeMappingCorrection": {
+      "date": "2026-10-12",
+      "source": "components/sources/form/native-component-review-1011.json",
+      "instances": [
+        "70918:193814",
+        "68908:055775"
+      ],
+      "required": "42px/24px, regular14",
+      "previousIncorrectMapping": "l = 36px/16px",
+      "correctMapping": "xl-regular = 42px/24px",
+      "atomStylesChanged": false,
+      "browserVerified": false
+    },
+    "mobileContactAssembly": {
+      "date": "2026-10-12",
+      "scope": "partial-mobile-slots-only",
+      "source": "components/sources/form/native-authority-review-1012/review.json",
+      "slots": [
+        {
+          "instanceId": "68908:057115",
+          "color": "gray",
+          "widthAllocation": 381
+        },
+        {
+          "instanceId": "70918:203614",
+          "color": "white",
+          "widthAllocation": 382
+        }
+      ],
+      "atom": "Checkbox",
+      "variant": "sm",
+      "componentSetId": "67746:093527",
+      "children": [
+        {
+          "role": "Email",
+          "sourceLayerId": "70918:192450",
+          "mainVariantId": "67746:094199",
+          "sourceState": "Press",
+          "nativeChecked": true
+        },
+        {
+          "role": "Phone",
+          "sourceLayerId": "70918:192445",
+          "mainVariantId": "67746:093625",
+          "sourceState": "Default",
+          "nativeChecked": false
+        }
+      ],
+      "hostOwns": [
+        "width",
+        "label/group placement",
+        "native field names"
+      ],
+      "boundary": "Existing canonical Checkbox assets/behavior reused; no unverified icon details changed. Full Form and browser/keyboard visual verification pending."
+    },
+    "mobileBasicSourceAssembly": {
+      "date": "2026-10-12",
+      "source": "components/sources/form/native-authority-review-1012/review.json",
+      "previewSelector": "#form-mobile-basic-source-slots",
+      "scope": "five-partial-source-slots-only",
+      "slots": [
+        {
+          "instanceId": "70918:194330",
+          "color": "gray",
+          "position": "second",
+          "componentSetId": "68908:013958",
+          "mainVariantId": "68908:022120",
+          "state": "Default",
+          "background": "off",
+          "instanceWidth": 382,
+          "mainWidth": 290,
+          "arrow": false,
+          "label": "Lable",
+          "placeholder": "Please enter text"
+        },
+        {
+          "instanceId": "70918:194354",
+          "color": "gray",
+          "position": "third",
+          "componentSetId": "68908:013958",
+          "mainVariantId": "68908:022120",
+          "state": "Default",
+          "background": "off",
+          "instanceWidth": 382,
+          "mainWidth": 290,
+          "arrow": false,
+          "label": "Lable",
+          "placeholder": "Please enter text"
+        },
+        {
+          "instanceId": "70918:197205",
+          "color": "gray",
+          "position": "sixth",
+          "componentSetId": "68908:013958",
+          "mainVariantId": "68908:022120",
+          "state": "Default",
+          "background": "off",
+          "instanceWidth": 382,
+          "mainWidth": 290,
+          "arrow": false,
+          "label": "Lable",
+          "placeholder": "Please enter text"
+        },
+        {
+          "instanceId": "70918:203516",
+          "color": "white",
+          "position": "second",
+          "componentSetId": "68908:013958",
+          "mainVariantId": "68908:022275",
+          "state": "Default",
+          "background": "on",
+          "instanceWidth": 382,
+          "mainWidth": 290,
+          "arrow": false,
+          "label": "Lable",
+          "placeholder": "Please enter text"
+        },
+        {
+          "instanceId": "70918:203527",
+          "color": "white",
+          "position": "third",
+          "componentSetId": "68908:013958",
+          "mainVariantId": "68908:022275",
+          "state": "Default",
+          "background": "on",
+          "instanceWidth": 382,
+          "mainWidth": 290,
+          "arrow": false,
+          "label": "Lable",
+          "placeholder": "Please enter text"
+        }
+      ],
+      "textBasis": "Own saved root screenshots, with gray third label additionally recorded in native-mobile-review-1011; no new online revision claimed.",
+      "boundary": "Atomic visuals from current Input; no unread sublayer values guessed. Full M admission/visual/adaptation pending."
+    },
+    "mobileIntegrated": {
+      "date": "2026-10-12",
+      "scope": "whole-mobile-structure-not-complete-design-acceptance",
+      "selector": "#form-mobile-integrated",
+      "phoneDecision": "User approved +1 static prefix/input, country-search deferred",
+      "consent": "Real sm Checkbox controlled consent caption; atom owns text/links and behavior",
+      "textarea": "User2026-10-12 chooses MG instance vertical center for20px count within22px header; explicit Input atomic opt-in in both current M hosts",
+      "aiAdmission": false,
+      "browserAcceptance": false,
+      "partialSamples": "Folded regression aids only",
+      "staticPhonePrefix": {
+        "ownership": "Input-owned controlled presentation part; legacy Form prefix classes removed in integrated M only",
+        "source": "components/sources/form/native-authority-review-1012/mobile-source-closeout-1012.json",
+        "status": "Gray8 both; white Gray4 internal strokes and59+323=382 geometry observed in permitted1920x1000 browser; no full family acceptance",
+        "pc": "Current PC static prefix migrated with independent PC identity and current official Select prefix source; not inferred from M alone"
+      },
+      "textareaError": {
+        "status": "finite-host-declared-Input-error-capability",
+        "scope": "M native textareas; source family gray/white Error rows independently read; PC unchanged",
+        "activation": "Host declares aria-invalid explicitly; no business mandatory or protocol rule added",
+        "source": "components/sources/form/native-authority-review-1012/textarea-error-capability-1012.json",
+        "browserAccepted": false,
+        "browserScope": "Host-declared error, disabled/reset/counter isolation observed at1920x1000; exact official Warning SVG preserved and both current M icons visibly verified14x14/#C00000; full-family acceptance remains incomplete",
+        "warningSource": "components/sources/form/native-authority-review-1012/warning-export-implementation-1012.json"
+      },
+      "browserEvidence": "components/sources/form/native-authority-review-1012/local-browser-review-1012.json",
+      "counterAlignmentDecision": "components/sources/form/native-authority-review-1012/counter-alignment-decision-1012.json",
+      "closeout": "components/sources/form/native-authority-review-1012/form-finite-closeout-1012.json"
+    },
+    "pcStaticPrefix": {
+      "source": "components/sources/form/native-authority-review-1012/pc-static-prefix-implementation-1012.json",
+      "scope": "Both current PC canonical gray/white phone hosts",
+      "ownership": "Form assembles; Input owns prefix geometry/paint and inner native Input",
+      "status": "implemented-offline-validated-browser-observation-pending"
+    }
+  },
+  "responsiveExtension": {
+    "source": "page-inputs/bdcom-oem-m2/component-sources/form.json",
+    "stylesheet": "components/form-responsive.css",
+    "scope": "Historical implementation/resource record only. Current Preview removed at user request. Does not implement/admit the original M gray/white variants and is not an adaptation acceptance proof.",
+    "evidenceIndex": "components/sources/form/source-index.json",
+    "sourceFormat": "mastergo-tool-generated-html-not-original-frontend",
+    "originalNodeTypesConfirmed": false,
+    "specificationNodeIds": [
+      "68908:410102",
+      "68908:408479",
+      "68908:411123"
+    ],
+    "sourceRole": "specification-text-only",
+    "componentNodeIds": [],
+    "status": "retired-from-current-preview-historical-only"
+  },
+  "editable": [
+    "title",
+    "description",
+    "fieldContent",
+    "dropdownOptions",
+    "panelIdentity",
+    "submitLabel",
+    "submitCallback",
+    "sourceFields"
+  ],
+  "integration": {
+    "styles": [
+      "components/tokens.css",
+      "components/components.css",
+      "components/form-current.css",
+      "components/button-current.css",
+      "components/button-runtime-current.css",
+      "components/input-current.css",
+      "components/checkbox-current.css",
+      "components/select-current.css",
+      "components/form-dialog-content.css"
+    ],
+    "scripts": [
+      "components/input-current.js",
+      "components/checkbox-current.js",
+      "components/form-current.js",
+      "components/select-current.js"
+    ],
+    "fontStylesheets": [
+      "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+    ]
+  },
+  "aiContract": {
+    "schemaVersion": "1.0.0",
+    "rootTag": "form",
+    "scope": "two-finite-native-desktop-forms",
+    "supported": [
+      "gray",
+      "white"
+    ],
+    "unsupported": [
+      "white-responsive",
+      "production-policy-validation",
+      "network-submit",
+      "country-code-selection",
+      "new-device-acceptance"
+    ],
+    "reviewStatus": {
+      "engineering": "pending",
+      "visual": "pending",
+      "familyCoverage": "partial"
+    },
+    "previewAssets": [
+      "components/preview/reference-live.js",
+      "components/sources/form/source-fields-admission-20261114.json"
+    ],
+    "selectionPolicy": "先判断固定表单还是来源初始字段组合，再按背景选gray/white。gray支持sourceFields，white仍只支持固定结构；来源字段、选项、必填/可选及提示保留，不补造联系方式或隐私同意。Input/Select/Textarea/Checkbox/Button沿用原依赖。sourceFields仅支持已声明text/email/textarea/select，不从MG文件上传/验证码/多步骤原件推断当前接口支持。只做本地校验及ds:form-submit；网络提交、区号搜索、完整成功弹窗与移动表单仍未开放，不用原站iframe替代。",
+    "identity": {
+      "rule": "Native form, three two-column PC rows, linked unique IDs/names, counter/contact/consent/Submit and two display-only legal links. All six Input slots use complete atomic DOM; both fifth and gray sixth arrow=down. Phone inner external/start Input; prefix is genuine Input-owned static assembly. No Dropdown/options/hidden bridge."
+    },
+    "locked": [
+      "Genuine Input calls at registered slots and exact Submit/Button/L; native text-field identities; no invented Dropdown/options.",
+      "No inline style, SVG, action URL or transport behavior",
+      "White card marker, gray-9 surface, spacing.20 and border-radius.lg; matching white native fields",
+      "Native Form row/field wrappers and real child atoms; specimen row count, contact and consent copy are not universal business requirements."
+    ],
+    "behavior": {
+      "submission": "Native submit always prevented; valid local FormData entries emitted as ds:form-submit. Page owns business policies, persistence and request handling; no successful transaction is invented.",
+      "reset": "Native reset restores text fields and textarea counter; canceled reset preserves values.",
+      "counter": "maxlength 5000 and UTF-16 native textarea length counter; user-entered text never inserted as HTML.",
+      "links": "Existing demo legal text remains visible; no navigation target claimed for Preview fixture.",
+      "initialization": "Single document/root guard. Dynamic fields/options, country selection and native Input component replacement not supported in this finite call.",
+      "nativeStateGuard": "Disabled native/ARIA submitter blocks synthetic submit, including inherited fieldset disable. Existing business validation and FormData semantics unchanged.",
+      "phonePrefix": "The +1 prefix is static source display with an arrow; no country selector behavior was provided or invented.",
+      "submit": "Hidden/ARIA-disabled ancestor or native-disabled submitter blocks synthetic submit without changing values. Valid local submit dispatches only ds:form-submit; business transport remains excluded.",
+      "assembly": "Existing gray sourceFields resolves a retained original content record. Native paired rows, full-row textareas, source-required native fields and independently rendered Select. Omit absent demo consent/contact/phone; legacy fieldContent fixture remains strict. No network submission."
+    },
+    "evidence": {
+      "localImplementation": "components/variants/form.html",
+      "comparison": "components/sources/form/local-structure-review.json",
+      "legacy": "components/sources/form/gray-preview-before.html",
+      "exportIndex": "components/sources/form/source-index.json",
+      "nativeComponents": "components/sources/form/native-component-review-1011.json",
+      "nativeSpecification": "components/sources/form/native-specification-review-1011.json",
+      "nativeTextarea": "components/sources/form/native-textarea-structure-review-1011.json",
+      "currentMgReview": "components/sources/form-stepper-list-mg-20261115/form-review.json",
+      "dialogPartSource": "components/sources/dialog-mg-20261115/review.json"
+    },
+    "variants": {
+      "gray": {
+        "purpose": "finite-gray-native-form-with-local-submit-event",
+        "exampleSelector": "[data-ai-example=\"ai-form-gray-current\"]",
+        "allowedEdits": [
+          "title",
+          "description",
+          "fieldContent",
+          "submitLabel",
+          "submitCallback",
+          "sourceFields"
+        ],
+        "slots": {
+          "title": {
+            "selector": "p.ds-form__title",
+            "mode": "text",
+            "required": false
+          },
+          "description": {
+            "selector": "p.ds-form__desc",
+            "mode": "text",
+            "required": false
+          },
+          "fieldContent": {
+            "selector": ":scope",
+            "mode": "structured-content",
+            "required": true,
+            "preserve": [
+              "input.ds-input-field__input",
+              "textarea.ds-input-field__input",
+              "label.ds-form__consent",
+              "button.ds-btn",
+              "input.ds-input-field__input"
+            ],
+            "rule": "Source-bound initial field composition from existing native Input/textarea slots and separately confirmed Select; keep exact child anatomy, source order, paired ordinary rows and full-width textareas. No invented business field, consent, option or custom state paint. Canonical Preview remains one full example, not a fixed business schema."
+          },
+          "submitLabel": {
+            "selector": "span.ds-btn__text",
+            "mode": "text",
+            "required": true
+          }
+        },
+        "bindings": {
+          "submitCallback": {
+            "mode": "event-handler",
+            "target": "root",
+            "event": "ds:form-submit"
+          },
+          "sourceFields": {
+            "mode": "source-form-fields",
+            "target": "root",
+            "referenceKind": "original-page-content-reference",
+            "kinds": [
+              "text",
+              "email",
+              "textarea",
+              "select"
+            ],
+            "maxFields": 32,
+            "rule": "Retained original fields only; repeat actual Input/textarea and real Select, preserve source order/required/options. No invented consent or business transport; no arbitrary HTML. Select占位优先使用来源字段placeholder，缺省为Select；搜索可访问名称使用Search加来源字段label，不继承品牌示例文案。"
+          }
+        }
+      },
+      "white": {
+        "purpose": "finite-white-native-form-with-local-submit-event",
+        "exampleSelector": "[data-ai-example=\"ai-form-white-current\"]",
+        "allowedEdits": [
+          "title",
+          "description",
+          "fieldContent",
+          "submitLabel",
+          "submitCallback"
+        ],
+        "slots": {
+          "title": {
+            "selector": "p.ds-form__title",
+            "mode": "text",
+            "required": false
+          },
+          "description": {
+            "selector": "p.ds-form__desc",
+            "mode": "text",
+            "required": false
+          },
+          "fieldContent": {
+            "selector": ":scope",
+            "mode": "structured-content",
+            "required": true,
+            "preserve": [
+              "input.ds-input-field__input",
+              "textarea.ds-input-field__input",
+              "label.ds-form__consent",
+              "button.ds-btn",
+              "input.ds-input-field__input"
+            ],
+            "rule": "Source-bound initial field composition from existing native Input/textarea slots and separately confirmed Select; keep exact child anatomy, source order, paired ordinary rows and full-width textareas. No invented business field, consent, option or custom state paint. Canonical Preview remains one full example, not a fixed business schema."
+          },
+          "submitLabel": {
+            "selector": "span.ds-btn__text",
+            "mode": "text",
+            "required": true
+          }
+        },
+        "bindings": {
+          "submitCallback": {
+            "mode": "event-handler",
+            "target": "root",
+            "event": "ds:form-submit"
+          }
+        }
+      }
+    }
+  },
+  "generationScopeClarification": {
+    "rule": "contentSlots.required 表示通用槽是否必需；variants.requiredChildren是完整canonical结构。aiContract.supported/unsupported表示当前已核实可调用范围，三者不可互相替代。",
+    "adaptation": "来源没有可选槽时必须逐项登记omittedSlots/reason/保留结构；unsupported范围仍不自动开放，不得以缺少可选链接/列表笼统判整个家族不可用。",
+    "fallback": "页面级自定义需明确具体未开放范围或来源缺口；复用已登记图标等原子资源时须带入其展示尺寸和数量，不用素材原始尺寸。"
+  },
+  "changeLog": [
+    {
+      "date": "2026-11-10",
+      "change": "依据原件014571的showtitle/showdescription和元素替换槽，解除当前示例三行/联系/协议被当全局必需的误限制；沿既有adaptation/fieldContent验证初始来源字段组合，保留完整canonical检查与真实原子。"
+    }
+  ],
+  "parts": {
+    "dialog-content": {
+      "isComplete": true,
+      "pendingParts": [],
+      "colorVariants": [
+        "white"
+      ],
+      "scope": "Dialog650 body: two complete white Input calls, native Checkbox/lg and Input-owned textarea; Form owns local validation/event and16/12px grouping. Current full accessible labels retained; source hidden-label flag is a recorded visual adaptation.",
+      "source": "components/sources/dialog-mg-20261115/review.json",
+      "selector": "[data-form-part=\"dialog-content\"]",
+      "styles": [
+        "components/form-dialog-content.css"
+      ],
+      "previewSelector": "[data-form-part=\"dialog-content\"]",
+      "sourcePreview": "components/sources/form/dialog-content-current.html",
+      "requiredClasses": [
+        "ds-form",
+        "ds-input-field",
+        "ds-checkbox"
+      ],
+      "allowedHosts": [
+        {
+          "component": "Dialog",
+          "variant": "form"
+        }
+      ]
+    }
+  }
+}

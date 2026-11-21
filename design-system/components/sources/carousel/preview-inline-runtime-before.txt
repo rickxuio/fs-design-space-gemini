@@ -1,0 +1,43 @@
+(function () {
+      function initCarousel(trackId, prevId, nextId, dotsId) {
+        var track = document.getElementById(trackId);
+        var prevBtn = document.getElementById(prevId);
+        var nextBtn = document.getElementById(nextId);
+        var dots = document.getElementById(dotsId).querySelectorAll('.ds-carousel__dot');
+        var slides = track.querySelectorAll('.ds-carousel__slide');
+        var total = slides.length;
+        var current = 0;
+
+        if (dots.length !== total) {
+          throw new Error('Carousel slides and dots must have a one-to-one mapping.');
+        }
+
+        function goTo(index) {
+          current = index;
+          track.style.transform = 'translateX(-' + (current * 100) + '%)';
+          dots.forEach(function (dot, i) {
+            var active = i === current;
+            dot.classList.toggle('ds-carousel__dot--active', active);
+            if (active) dot.setAttribute('aria-current', 'true');
+            else dot.removeAttribute('aria-current');
+          });
+          slides.forEach(function (slide, i) {
+            slide.setAttribute('aria-hidden', i === current ? 'false' : 'true');
+          });
+          prevBtn.disabled = current === 0;
+          nextBtn.disabled = current === total - 1;
+        }
+
+        prevBtn.addEventListener('click', function () { if (current > 0) goTo(current - 1); });
+        nextBtn.addEventListener('click', function () { if (current < total - 1) goTo(current + 1); });
+        dots.forEach(function (dot) {
+          dot.addEventListener('click', function () {
+            goTo(parseInt(dot.getAttribute('data-index'), 10));
+          });
+        });
+        goTo(0);
+      }
+
+      initCarousel('demo-track', 'demo-prev', 'demo-next', 'demo-dots');
+      initCarousel('homepage-banner-track', 'homepage-banner-prev', 'homepage-banner-next', 'homepage-banner-dots');
+    })();

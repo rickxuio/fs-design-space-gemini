@@ -1,0 +1,348 @@
+{
+  "schemaVersion": "fs-component-reference/1.0.0",
+  "component": {
+    "id": "anchor-nav",
+    "name": "AnchorNav",
+    "scope": "existing-desktop-multitab-anchor-nav-selection-and-red-cta",
+    "reviewStatus": {
+      "engineering": "pending",
+      "visual": "pending",
+      "familyCoverage": "partial"
+    }
+  },
+  "selection": {
+    "policy": "横向同页章节导航；保留实际div tabs、一个激活项及现有Button子组件（红色XL Regular，42px/左右24px）。组件只维护激活态，章节目标、滚动定位和sticky偏移由原页面宿主实现。MG的纵向、溢出菜单、自动居中和M端原件仍为参考，不冒充接口已实现；不代替Tab面板或跨页Navigation。",
+    "supported": [
+      "anchor-nav"
+    ],
+    "unsupported": [
+      "single-tab",
+      "anchor-tag-tabs",
+      "custom-cta-variant",
+      "built-in-scroll-target",
+      "dynamic-insertion",
+      "keyboard-tabs",
+      "mobile"
+    ]
+  },
+  "runtime": {
+    "styles": [
+      "components/tokens.css",
+      "components/components.css",
+      "components/button-current.css",
+      "components/button-runtime-current.css"
+    ],
+    "scripts": [
+      "components/anchor-nav-current.js"
+    ],
+    "fontStylesheets": [
+      "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+    ],
+    "fontFallback": "沿用Open Sans；实际字体与浏览器定位待验。"
+  },
+  "identity": {
+    "rule": "保留data-anchor-group和各tab数据标记；默认只有一个激活项。不要复制运行后data-anchor-nav-ready。组件自身不要求额外ID；页面锚点由本地页面映射管理。",
+    "labelRule": "tabs仅替换文字与已登记目标数据，保留div；CTA只替换其文字并通过真实button绑定click。"
+  },
+  "locked": [
+    "根/inner/tabs/action结构",
+    "div tab及激活底边线",
+    "红色Button/xl-regular真实结构与安全type",
+    "sticky及共享CSS",
+    "运行选择逻辑与页面滚动边界"
+  ],
+  "behavior": {
+    "selection": "marker-only运行脚本在本group切换唯一激活类；隐藏或ARIA禁用不切换。页面按根目录本地流程协调章节滚动，CTA事件单独处理。",
+    "initialization": "首次加载或DOMContentLoaded初始化，防止重复绑定；不提供动态插入扫描API。",
+    "scroll": "页面有明确章节目标时，由本地页面JS建立目标与选中/滚动对应；组件不自行生成目标或页面流程。",
+    "action": "CTA为Button/filled-red/xl-regular，type=button避免宿主form意外提交；actionCallback只绑定CTA自身click，不绑定所有tab点击。",
+    "keyboard": "原Preview tab为div，没有键盘tab控件实现；本批不声称已验证完整键盘语义。"
+  },
+  "examples": [
+    {
+      "name": "anchor-nav",
+      "publication": {
+        "key": "anchor-nav/anchor-nav",
+        "disposition": "restricted",
+        "newPages": true,
+        "reason": "Local normative Preview, typed contract and actual shared dependencies reviewed; finite PC call requires current browser engineering proof. No claim of independent latest MG/whole-family acceptance.",
+        "constraints": [
+          "PC56px原生锚点导航；保留原tabs及独立Button filled-red/XL Regular（42px）。组件只同步选中和CTA click，章节目标/滚动由根目录本地页面协调，不附加页面流程。",
+          "只允许契约列明的内容参数；工程验证必须当前有效，原规范视觉、子组件结构与资源版本保持。"
+        ],
+        "contractPolicy": "PC56px原生锚点导航；保留原tabs及独立Button filled-red/XL Regular（42px）。组件只同步选中和CTA click，章节目标/滚动由根目录本地页面协调，不附加页面流程。",
+        "use": "withheld",
+        "evidence": "components/contracts/anchor-nav.json#aiContract/evidence",
+        "requiresCurrentEngineering": true,
+        "visualApproval": "separate-not-granted"
+      },
+      "rootTag": "div",
+      "sizeOptions": [],
+      "bindings": {
+        "actionCallback": {
+          "mode": "event-handler",
+          "target": "button.ds-btn",
+          "event": "click"
+        }
+      },
+      "purpose": "sticky-section-tabs-with-red-cta",
+      "whenToUse": "同一长页多个真实章节，需要横向章节入口及现有单CTA。",
+      "whenNotToUse": "切换内容面板、跳去其他页面、纵向导航或溢出菜单。当前接口也不支持移除CTA。",
+      "rootClasses": "ds-anchor-nav",
+      "requiredStructure": [
+        "div.ds-anchor-nav__inner",
+        "div.ds-anchor-nav__tabs",
+        "div.ds-anchor-nav__tab[data-anchor-tab]",
+        "div.ds-anchor-nav__action",
+        "button.ds-btn",
+        "span.ds-btn__text"
+      ],
+      "slots": {
+        "tabs": {
+          "selector": "div.ds-anchor-nav__tabs",
+          "mode": "structured-content",
+          "required": true,
+          "preserve": [
+            "div.ds-anchor-nav__tab"
+          ],
+          "rule": "至少2个div tab，保留data-anchor-tab和一个激活态。"
+        },
+        "actionLabel": {
+          "selector": "span.ds-btn__text",
+          "mode": "text",
+          "required": true
+        }
+      },
+      "allowedEdits": [
+        "tabs",
+        "actionLabel",
+        "actionCallback"
+      ],
+      "exampleHtml": "<div class=\"ds-anchor-nav\" data-anchor-group data-anchor-current data-fragment=\"anchor-nav\" data-ai-example=\"ai-anchor-nav\">\n      <div class=\"ds-anchor-nav__inner\">\n        <div class=\"ds-anchor-nav__tabs\">\n          <div class=\"ds-anchor-nav__tab ds-anchor-nav__tab--active\" data-anchor-tab>Option</div>\n          <div class=\"ds-anchor-nav__tab\" data-anchor-tab>Option</div>\n          <div class=\"ds-anchor-nav__tab\" data-anchor-tab>Option</div>\n        </div>\n        <div class=\"ds-anchor-nav__action\">\n          <button class=\"ds-btn ds-btn--filled-red ds-btn--xl-regular\" type=\"button\"><span class=\"ds-btn__text\">Button Name</span></button>\n        </div>\n      </div>\n    </div>"
+    }
+  ],
+  "relationships": {
+    "children": [
+      {
+        "id": "button",
+        "contract": "components/contracts/button.json",
+        "variants": [
+          "filled-red"
+        ],
+        "sizes": [
+          {
+            "variant": "filled-red",
+            "size": "xl-regular"
+          }
+        ],
+        "appliesTo": [
+          "anchor-nav"
+        ],
+        "slot": "action",
+        "preview": "components/variants/button.html"
+      }
+    ],
+    "parents": [],
+    "parentStatus": "no-declared-hosts",
+    "icons": [],
+    "tokens": [
+      {
+        "name": "color.gray-1",
+        "value": "#19191A",
+        "unit": null,
+        "cssVar": "--color-gray-1",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.gray-3",
+        "value": "#707070",
+        "unit": null,
+        "cssVar": "--color-gray-3",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.brand-red",
+        "value": "#C00000",
+        "unit": null,
+        "cssVar": "--brand-red",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "typography.font-family-base",
+        "value": "Open Sans",
+        "unit": null,
+        "cssVar": "--font-family-base",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "spacing.lg",
+        "value": 16,
+        "unit": "px",
+        "cssVar": "--spacing-lg",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.sm",
+        "value": 8,
+        "unit": "px",
+        "cssVar": "--spacing-sm",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "border.width.strong",
+        "value": 2,
+        "unit": "px",
+        "cssVar": "--border-width-strong",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.style.default",
+        "value": "solid",
+        "unit": null,
+        "cssVar": "--border-style-default",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.transparent",
+        "value": "transparent",
+        "unit": null,
+        "cssVar": "--border-color-transparent",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.brand",
+        "value": "var(--brand-red)",
+        "unit": null,
+        "cssVar": "--border-color-brand",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "typography.font-weight-semibold",
+        "value": 600,
+        "unit": null,
+        "cssVar": "--font-weight-semibold",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-size-md",
+        "value": 14,
+        "unit": "px",
+        "cssVar": "--font-size-md",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.h7-semibold",
+        "value": {
+          "fontSize": "14px",
+          "lineHeight": "22px",
+          "fontWeight": 600
+        },
+        "unit": null,
+        "cssVar": null,
+        "primitiveReferences": {
+          "fontSize": "typography.font-size-md",
+          "fontWeight": "typography.font-weight-semibold"
+        },
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "spacing.2",
+        "value": 2,
+        "unit": "px",
+        "cssVar": "--spacing-2",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "typography.font-weight-regular",
+        "value": 400,
+        "unit": null,
+        "cssVar": "--font-weight-regular",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      }
+    ]
+  },
+  "evidence": {
+    "localImplementation": "components/variants/anchor-nav.html",
+    "comparison": "components/sources/anchor-nav/local-structure-review.json",
+    "previousInlineRuntime": "components/sources/anchor-nav/preview-inline-runtime-before.txt",
+    "nativeSpecification": "components/sources/anchor-nav/native-specification-review-1011.json",
+    "nativeComponents": "components/sources/anchor-nav/native-component-review-1011.json",
+    "buttonRuleResolution": "components/sources/button/local-rule-review-20261113.json",
+    "currentMgReview": "components/sources/banner-navigation-mg-20261114/anchor-nav-review.json"
+  },
+  "sourceValidation": {
+    "componentIdentity": {
+      "status": "not-established",
+      "files": []
+    },
+    "specificationBody": {
+      "status": "not-established",
+      "files": []
+    },
+    "originalOnlineFrontendCode": false,
+    "browserComputedStyles": false,
+    "completeSpecificationCoverage": false,
+    "buttonNesting": {
+      "scope": "finite-authored-button-nesting-only",
+      "checked": [
+        {
+          "variant": "anchor-nav",
+          "buttons": [
+            {
+              "variant": "filled-red",
+              "size": "xl-regular",
+              "type": "button"
+            }
+          ]
+        }
+      ],
+      "pending": [],
+      "browserVerified": false
+    }
+  },
+  "freshness": {
+    "fingerprints": {
+      "components/anchor-nav-current.js": "6fbc4f2d44ba1ab532d991b5e368cc43669aeb5043a4e4bb5147a9de5f66de3a",
+      "components/button-current.css": "45e94e48ec97a34b4883ecc4f11b33301cdd6679445a3970cb16a2a87c6d8c9e",
+      "components/button-runtime-current.css": "caaa9b65a8d2fbebfa487ca3e0cf0c67d36e0219ffc55d4b0d801371a02da76c",
+      "components/components.css": "a08b4fe2790b5ff2b784c6362a90f1b94e7535a03e863232ce6d620a52e85f73",
+      "components/contracts/anchor-nav.json": "e6f344843b0c2d3de6fdc258f66055ee37dbdf97a1a77419356b2b2317dca66a",
+      "components/contracts/button.json": "1f3092d74e19c1a840fbf2e8b8ecaf6115976b2941cc5484e4cda824025b1f73",
+      "components/preview/reference-live.js": "4839383529a3ee82df1d8efe675d430567abc1986034499107aa429d21a18ea6",
+      "components/reference-policy.json": "4ae8f51f623386417e38d497caafb8bda4417c929159002a7ac088e6e526b482",
+      "components/sources/anchor-nav/local-structure-review.json": "6448d7155f28bb79affaa716c5ff32e5d592213a1046c99d5bd69e8d8e5fbbeb",
+      "components/sources/anchor-nav/native-component-review-1011.json": "be322f33b9a1628dcd5e68bb269158219eab275f20d8a39ed0974eeef69d773a",
+      "components/sources/anchor-nav/native-specification-review-1011.json": "0c762f3930b59b5aa36b330fb91c0e9cdccc7e565fafb5d8c2df7a7092518aeb",
+      "components/sources/anchor-nav/preview-inline-runtime-before.txt": "89d3b801f293f869838dc377de610f1b532e5092662f461fa7753e9ea46d2623",
+      "components/sources/banner-navigation-mg-20261114/anchor-nav-review.json": "868824fff06ef1f88bd5357bf0c78980c0d7d64e9644d7d1473d925f7e42bf46",
+      "components/sources/button/local-rule-review-20261113.json": "cee91fa54f0c5e883411e5183a45f2e6ea549730470e9efc3565a0f0c2a62b06",
+      "components/token-specs/border.json": "d286ee4681deda1c7702c310b065c86f824539b3a8797efba05b24bc225ab322",
+      "components/token-specs/colors.json": "5267d59fdc687b54496977280c00c97f0beb6ffce013f87853504f5b736d3389",
+      "components/token-specs/spacing.json": "351b14cfce4411248ad41e00eaaf2b1cab9b705997980dfed1fc65693740e65c",
+      "components/token-specs/typography.json": "93b7dc07547218a33c075b7cdcd942f89094353a7847d483d8378b8883327e16",
+      "components/tokens.css": "f63f3c8fea511d8029902bc3905b01853ac5e92049c1b18ca35ebc9a680c3e69",
+      "components/variants/anchor-nav.html": "282697e00276374bc69a002eb676da156eb4d2e1da1ebc0fc36a7da0c929f9dd",
+      "components/variants/button.html": "6b6715b66e6c0b684c072dcdcbf7170aeb9f49a31bb32ca5b8986644d626cfe6"
+    },
+    "graphFingerprint": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "note": "从本地源文件生成；不是 MasterGo 在线实时状态。"
+  },
+  "readScope": {
+    "variant": "anchor-nav",
+    "note": "只展开当前已选变体；其他变体没有被声明为不可用。尺寸继续按真实 sizeOptions 选择。"
+  }
+}

@@ -1,0 +1,18 @@
+/* Explicit current resource; frozen historical resources stay unchanged.
+   MasterGo COMPONENT 70047:113525 -> Loading INSTANCE 70047:113526, 12x12. */
+.ds-btn--processing.ds-btn--outline-gray.ds-btn--m .ds-btn__icon-loading { width: 12px; height: 12px; }
+
+/* Source fixture68079:65089 is fixed136; this is not dynamic width preservation. */
+.ds-btn--filled-red.ds-btn--xl-bold.ds-btn--processing[data-button-source-red-xl-bold-processing="official"] {
+  width: 136px;
+}
+
+/* Processing is natively disabled for semantics but owns its 60% source paint.
+   Legacy .ds-btn:disabled otherwise overrides the weaker processing class. */
+.ds-btn.ds-btn--processing:disabled { opacity: var(--opacity-processing); }
+
+/* Original left-icon assembly: 16px glyph + 2px group padding + 2px root gap.
+   The optional group is source-backed; the label remains a text-only slot. */
+.ds-btn__leading { display: inline-flex; flex: none; align-items: center; padding-right: var(--spacing-2); }
+.ds-btn__leading[hidden] { display: none; }
+.ds-btn__leading-icon { display: block; flex: none; width: 16px; height: 16px; object-fit: contain; }

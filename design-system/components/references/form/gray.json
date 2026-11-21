@@ -1,0 +1,1099 @@
+{
+  "schemaVersion": "fs-component-reference/1.0.0",
+  "component": {
+    "id": "form",
+    "name": "Form",
+    "scope": "two-finite-native-desktop-forms",
+    "reviewStatus": {
+      "engineering": "pending",
+      "visual": "pending",
+      "familyCoverage": "partial"
+    }
+  },
+  "selection": {
+    "policy": "先判断固定表单还是来源初始字段组合，再按背景选gray/white。gray支持sourceFields，white仍只支持固定结构；来源字段、选项、必填/可选及提示保留，不补造联系方式或隐私同意。Input/Select/Textarea/Checkbox/Button沿用原依赖。sourceFields仅支持已声明text/email/textarea/select，不从MG文件上传/验证码/多步骤原件推断当前接口支持。只做本地校验及ds:form-submit；网络提交、区号搜索、完整成功弹窗与移动表单仍未开放，不用原站iframe替代。",
+    "supported": [
+      "gray",
+      "white"
+    ],
+    "unsupported": [
+      "white-responsive",
+      "production-policy-validation",
+      "network-submit",
+      "country-code-selection",
+      "new-device-acceptance"
+    ]
+  },
+  "runtime": {
+    "styles": [
+      "components/tokens.css",
+      "components/components.css",
+      "components/form-current.css",
+      "components/button-current.css",
+      "components/button-runtime-current.css",
+      "components/input-current.css",
+      "components/checkbox-current.css",
+      "components/select-current.css",
+      "components/form-dialog-content.css"
+    ],
+    "scripts": [
+      "components/input-current.js",
+      "components/checkbox-current.js",
+      "components/form-current.js",
+      "components/select-current.js"
+    ],
+    "fontStylesheets": [
+      "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+    ]
+  },
+  "identity": {
+    "rule": "Native form, three two-column PC rows, linked unique IDs/names, counter/contact/consent/Submit and two display-only legal links. All six Input slots use complete atomic DOM; both fifth and gray sixth arrow=down. Phone inner external/start Input; prefix is genuine Input-owned static assembly. No Dropdown/options/hidden bridge."
+  },
+  "locked": [
+    "Genuine Input calls at registered slots and exact Submit/Button/L; native text-field identities; no invented Dropdown/options.",
+    "No inline style, SVG, action URL or transport behavior",
+    "White card marker, gray-9 surface, spacing.20 and border-radius.lg; matching white native fields",
+    "Native Form row/field wrappers and real child atoms; specimen row count, contact and consent copy are not universal business requirements."
+  ],
+  "behavior": {
+    "submission": "Native submit always prevented; valid local FormData entries emitted as ds:form-submit. Page owns business policies, persistence and request handling; no successful transaction is invented.",
+    "reset": "Native reset restores text fields and textarea counter; canceled reset preserves values.",
+    "counter": "maxlength 5000 and UTF-16 native textarea length counter; user-entered text never inserted as HTML.",
+    "links": "Existing demo legal text remains visible; no navigation target claimed for Preview fixture.",
+    "initialization": "Single document/root guard. Dynamic fields/options, country selection and native Input component replacement not supported in this finite call.",
+    "nativeStateGuard": "Disabled native/ARIA submitter blocks synthetic submit, including inherited fieldset disable. Existing business validation and FormData semantics unchanged.",
+    "phonePrefix": "The +1 prefix is static source display with an arrow; no country selector behavior was provided or invented.",
+    "submit": "Hidden/ARIA-disabled ancestor or native-disabled submitter blocks synthetic submit without changing values. Valid local submit dispatches only ds:form-submit; business transport remains excluded.",
+    "assembly": "Existing gray sourceFields resolves a retained original content record. Native paired rows, full-row textareas, source-required native fields and independently rendered Select. Omit absent demo consent/contact/phone; legacy fieldContent fixture remains strict. No network submission."
+  },
+  "examples": [
+    {
+      "name": "gray",
+      "publication": {
+        "key": "form/gray",
+        "disposition": "restricted",
+        "newPages": true,
+        "reason": "PC gray/white native forms and local event only; phone prefix is static display, not a country selector; no dynamic fields/mobile/production submit.",
+        "constraints": [
+          "PC gray/white native forms and local event only; phone prefix is static display, not a country selector; no dynamic fields/mobile/production submit."
+        ],
+        "contractPolicy": "Finite PC gray/white native Forms. Six basic Input atoms plus textarea and static phone prefix per PC form; both fifth fields and gray sixth have decorative down arrows. Checkbox atoms integrated; full M admission and whole-family acceptance remain pending.",
+        "use": "finite-new-page-candidate",
+        "evidence": "components/contracts/form.json#aiContract/evidence",
+        "requiresCurrentEngineering": true,
+        "visualApproval": "separate-not-granted"
+      },
+      "rootTag": "form",
+      "sizeOptions": [],
+      "bindings": {
+        "submitCallback": {
+          "mode": "event-handler",
+          "target": "root",
+          "event": "ds:form-submit"
+        },
+        "sourceFields": {
+          "mode": "source-form-fields",
+          "target": "root",
+          "referenceKind": "original-page-content-reference",
+          "kinds": [
+            "text",
+            "email",
+            "textarea",
+            "select"
+          ],
+          "maxFields": 32,
+          "rule": "Retained original fields only; repeat actual Input/textarea and real Select, preserve source order/required/options. No invented consent or business transport; no arbitrary HTML. Select占位优先使用来源字段placeholder，缺省为Select；搜索可访问名称使用Search加来源字段label，不继承品牌示例文案。"
+        }
+      },
+      "purpose": "finite-gray-native-form-with-local-submit-event",
+      "whenToUse": "白色背景的既有灰底字段表单，或已保留来源字段的初始组合。",
+      "whenNotToUse": "需要网络提交、新设备、任意HTML或未支持的字段类型。",
+      "rootClasses": "ds-form",
+      "requiredStructure": [
+        "p.ds-form__title",
+        "p.ds-form__desc",
+        "div.ds-form__row",
+        "label.ds-input-field__label",
+        "input.ds-input-field__input",
+        "textarea.ds-input-field__input",
+        "span.ds-input-field__count",
+        "label.ds-checkbox[data-checkbox-control]",
+        "label.ds-form__consent",
+        "button.ds-btn",
+        "span.ds-btn__text",
+        "div.ds-input-field[data-input-arrow=\"down\"]"
+      ],
+      "slots": {
+        "title": {
+          "selector": "p.ds-form__title",
+          "mode": "text",
+          "required": false
+        },
+        "description": {
+          "selector": "p.ds-form__desc",
+          "mode": "text",
+          "required": false
+        },
+        "fieldContent": {
+          "selector": ":scope",
+          "mode": "structured-content",
+          "required": true,
+          "preserve": [
+            "input.ds-input-field__input",
+            "textarea.ds-input-field__input",
+            "label.ds-form__consent",
+            "button.ds-btn",
+            "input.ds-input-field__input"
+          ],
+          "rule": "Source-bound initial field composition from existing native Input/textarea slots and separately confirmed Select; keep exact child anatomy, source order, paired ordinary rows and full-width textareas. No invented business field, consent, option or custom state paint. Canonical Preview remains one full example, not a fixed business schema."
+        },
+        "submitLabel": {
+          "selector": "span.ds-btn__text",
+          "mode": "text",
+          "required": true
+        }
+      },
+      "allowedEdits": [
+        "title",
+        "description",
+        "fieldContent",
+        "submitLabel",
+        "submitCallback",
+        "sourceFields"
+      ],
+      "exampleHtml": "<form class=\"ds-form\" data-form-current=\"\" data-ai-example=\"ai-form-gray-current\">\n        <p class=\"ds-form__title\">Product and Project Inquiry</p>\n        <p class=\"ds-form__desc\">Have a question about purchasing a product or solution that you are interested in? Fill in the form and we'll respond in 1 working day.</p>\n        <div class=\"ds-form__row\">\n          <div class=\"ds-form__field\"><div class=\"ds-input-field\" data-input-current=\"\" data-input-layout=\"fill\"><label class=\"ds-input-field__label\" for=\"form-native-example-1\">Label</label><input class=\"ds-input-field__input ds-input-field__input--gray\" placeholder=\"Please enter text\" id=\"form-native-example-1\" type=\"text\" name=\"fieldOne\"><div class=\"ds-input-field__error\" id=\"form-native-example-1-error\" hidden><span class=\"ds-input-field__error-icon\" aria-hidden=\"true\"></span><span class=\"ds-input-field__error-text\">Please enter text.</span></div></div></div>\n          <div class=\"ds-form__field\"><div class=\"ds-input-field\" data-input-current=\"\" data-input-layout=\"fill\"><label class=\"ds-input-field__label\" for=\"form-native-example-2\">Label</label><input class=\"ds-input-field__input ds-input-field__input--gray\" placeholder=\"Please enter text\" id=\"form-native-example-2\" type=\"text\" name=\"fieldTwo\"><div class=\"ds-input-field__error\" id=\"form-native-example-2-error\" hidden><span class=\"ds-input-field__error-icon\" aria-hidden=\"true\"></span><span class=\"ds-input-field__error-text\">Please enter text.</span></div></div></div>\n        </div>\n        <div class=\"ds-form__row\">\n          <div class=\"ds-form__field\"><div class=\"ds-input-field\" data-input-current=\"\" data-input-layout=\"fill\"><label class=\"ds-input-field__label\" for=\"form-native-example-3\">Label</label><input class=\"ds-input-field__input ds-input-field__input--gray\" placeholder=\"Please enter text\" id=\"form-native-example-3\" type=\"text\" name=\"fieldThree\"><div class=\"ds-input-field__error\" id=\"form-native-example-3-error\" hidden><span class=\"ds-input-field__error-icon\" aria-hidden=\"true\"></span><span class=\"ds-input-field__error-text\">Please enter text.</span></div></div></div>\n          <div class=\"ds-form__field\">\n            <label class=\"ds-input-field__label\" data-input-current for=\"form-native-example-4\">Phone Number</label>\n            <div class=\"ds-form__phone-row\">\n              <div class=\"ds-input-prefix\" data-input-current data-input-prefix=\"static\" data-input-color=\"gray\" aria-label=\"Country code +1\"><span>+1</span><img src=\"../icons/icon-input-down.svg\" alt=\"\"></div>\n              <div class=\"ds-input-field\" data-input-current data-input-layout=\"fill\" data-input-label=\"external\" data-input-join=\"start\">\n                <input class=\"ds-input-field__input ds-input-field__input--gray\" placeholder=\"\" id=\"form-native-example-4\" type=\"text\" name=\"phone\">\n                <div class=\"ds-input-field__error\" id=\"form-native-example-4-error\" hidden><span class=\"ds-input-field__error-icon\" aria-hidden=\"true\"></span><span class=\"ds-input-field__error-text\">Please check this value.</span></div>\n              </div>\n            </div>\n          </div>\n        </div>\n        <div class=\"ds-form__row\">\n          <div class=\"ds-form__field\"><div class=\"ds-input-field\" data-input-current data-input-layout=\"fill\" data-input-arrow=\"down\"><label class=\"ds-input-field__label\" for=\"form-current-choice-input\">Lable</label><input class=\"ds-input-field__input ds-input-field__input--gray\" placeholder=\"Please enter text\" id=\"form-current-choice-input\" type=\"text\" name=\"choice\"><div class=\"ds-input-field__error\" id=\"form-current-choice-input-error\" hidden><span class=\"ds-input-field__error-icon\" aria-hidden=\"true\"></span><span class=\"ds-input-field__error-text\">Please check this value.</span></div></div></div>\n          <div class=\"ds-form__field\"><div class=\"ds-input-field\" data-input-current data-input-layout=\"fill\" data-input-arrow=\"down\"><label class=\"ds-input-field__label\" for=\"form-native-example-5\">Label</label><input class=\"ds-input-field__input ds-input-field__input--gray\" placeholder=\"Please enter text\" id=\"form-native-example-5\" type=\"text\" name=\"fieldFour\"><div class=\"ds-input-field__error\" id=\"form-native-example-5-error\" hidden><span class=\"ds-input-field__error-icon\" aria-hidden=\"true\"></span><span class=\"ds-input-field__error-text\">Please check this value.</span></div></div></div>\n        </div>\n        <div class=\"ds-form__field\">\n          <div class=\"ds-input-field\" data-input-current=\"\" data-input-layout=\"fill\" data-input-kind=\"textarea\">\n            <div class=\"ds-input-field__header\"><label class=\"ds-input-field__label\" for=\"form-native-example-6\">Comments</label><span class=\"ds-input-field__count\" id=\"form-current-comments-count\">0/5000</span></div>\n            <textarea class=\"ds-input-field__input ds-input-field__input--gray\" placeholder=\"Your comments will help FS respond more quickly.\" id=\"form-native-example-6\" name=\"comments\" maxlength=\"5000\" aria-describedby=\"form-current-comments-count\"></textarea>\n          </div>\n        </div>\n        <div class=\"ds-form__field\"><span class=\"ds-form__label\">How would you like us to contact you?</span>\n          <div class=\"ds-form__radio-group\">\n            <label class=\"ds-checkbox ds-checkbox--sm\" data-checkbox-current=\"\" data-checkbox-control=\"\"><input class=\"ds-checkbox__input\" type=\"checkbox\" checked=\"\" name=\"contactMethods\" value=\"email\"><span class=\"ds-checkbox__box\" aria-hidden=\"true\"></span><span class=\"ds-checkbox__label\">Email</span></label>\n            <label class=\"ds-checkbox ds-checkbox--sm\" data-checkbox-current=\"\" data-checkbox-control=\"\"><input class=\"ds-checkbox__input\" type=\"checkbox\" name=\"contactMethods\" value=\"phone\"><span class=\"ds-checkbox__box\" aria-hidden=\"true\"></span><span class=\"ds-checkbox__label\">Phone</span></label>\n          </div>\n        </div>\n        <label class=\"ds-form__consent\"><span class=\"ds-checkbox ds-checkbox--sm\" data-checkbox-current=\"\" data-checkbox-control=\"\"><input class=\"ds-checkbox__input\" type=\"checkbox\" name=\"consent\" value=\"agreed\"><span class=\"ds-checkbox__box\" aria-hidden=\"true\"></span></span><span class=\"ds-form__consent-copy\">I have read and agree to the FS.COM <a aria-disabled=\"true\" role=\"link\">Terms and Conditions</a> and acknowledge the <a aria-disabled=\"true\" role=\"link\">Privacy Policy and Notice at Collection</a>.</span></label>\n        <div><button class=\"ds-btn ds-btn--filled-red ds-btn--xl-regular\" type=\"submit\"><span class=\"ds-btn__text\">Submit</span></button></div>\n      </form>"
+    }
+  ],
+  "relationships": {
+    "children": [
+      {
+        "id": "button",
+        "contract": "components/contracts/button.json",
+        "variants": [
+          "filled-red"
+        ],
+        "sizes": [
+          {
+            "variant": "filled-red",
+            "size": "xl-regular"
+          }
+        ],
+        "appliesTo": [
+          "gray",
+          "white"
+        ],
+        "slot": "submitButton",
+        "preview": "components/variants/button.html"
+      },
+      {
+        "id": "input",
+        "contract": "components/contracts/input.json",
+        "variants": [
+          "gray"
+        ],
+        "appliesTo": [
+          "gray"
+        ],
+        "slot": "phoneInnerInput",
+        "preview": "components/variants/input.html"
+      },
+      {
+        "id": "input",
+        "contract": "components/contracts/input.json",
+        "variants": [
+          "gray"
+        ],
+        "appliesTo": [
+          "gray"
+        ],
+        "slot": "sixthArrowBasicField",
+        "preview": "components/variants/input.html"
+      },
+      {
+        "id": "input",
+        "contract": "components/contracts/input.json",
+        "variants": [
+          "gray"
+        ],
+        "appliesTo": [
+          "gray"
+        ],
+        "slot": "fifthArrowBasicField",
+        "preview": "components/variants/input.html"
+      },
+      {
+        "id": "input",
+        "contract": "components/contracts/input.json",
+        "variants": [
+          "gray"
+        ],
+        "appliesTo": [
+          "gray"
+        ],
+        "slot": "firstTwoBasicFields",
+        "preview": "components/variants/input.html"
+      },
+      {
+        "id": "input",
+        "contract": "components/contracts/input.json",
+        "variants": [
+          "gray"
+        ],
+        "appliesTo": [
+          "gray"
+        ],
+        "slot": "thirdBasicField",
+        "preview": "components/variants/input.html"
+      },
+      {
+        "id": "checkbox",
+        "contract": "components/contracts/checkbox.json",
+        "variants": [
+          "sm"
+        ],
+        "appliesTo": [
+          "gray",
+          "white"
+        ],
+        "slot": "contactMethods",
+        "preview": "components/variants/checkbox.html"
+      },
+      {
+        "id": "checkbox",
+        "contract": "components/contracts/checkbox.json",
+        "variants": [
+          "sm"
+        ],
+        "appliesTo": [
+          "gray",
+          "white"
+        ],
+        "slot": "consent",
+        "preview": "components/variants/checkbox.html"
+      },
+      {
+        "id": "input",
+        "contract": "components/contracts/input.json",
+        "variants": [
+          "gray"
+        ],
+        "appliesTo": [
+          "gray"
+        ],
+        "slot": "commentsTextarea",
+        "preview": "components/variants/input.html"
+      },
+      {
+        "id": "select",
+        "contract": "components/contracts/select.json",
+        "variants": [
+          "single-basic",
+          "search"
+        ],
+        "slot": "sourceFieldsSelect",
+        "requiredWhen": "sourceFields",
+        "preview": "components/variants/select.html"
+      }
+    ],
+    "parents": [
+      {
+        "id": "dialog",
+        "contract": "components/contracts/dialog.json",
+        "preview": "components/variants/dialog.html",
+        "status": "preview-class-evidence-only",
+        "evidence": {
+          "status": "preview-class-evidence-only",
+          "verified": false,
+          "previewExists": true,
+          "classEvidence": true,
+          "declaredClasses": [
+            "ds-form",
+            "ds-input-field",
+            "ds-checkbox"
+          ],
+          "missingClasses": [],
+          "exactStructure": "not-established",
+          "browserEvidence": "not-established",
+          "note": "宿主依赖声明及离线类名盘点；未证明具体变体、尺寸、必需子结构、宿主适配或浏览器行为。"
+        },
+        "usage": [
+          {
+            "component": "Form",
+            "part": "dialog-content",
+            "slot": "form-body",
+            "requiredVariants": [
+              "white"
+            ],
+            "appliesTo": [
+              "form"
+            ],
+            "implementationClasses": [
+              "ds-form",
+              "ds-input-field",
+              "ds-checkbox"
+            ],
+            "usage": "真实Form-owned Dialog子部件，Input/Checkbox/textarea各保留原子结构与运行样式。"
+          }
+        ]
+      }
+    ],
+    "parentStatus": "declared-hosts",
+    "icons": [
+      {
+        "file": "components/icons/icon-chevron-down.svg",
+        "registry": "components/icons/icons-manifest.json",
+        "appliesTo": [
+          "gray",
+          "white"
+        ],
+        "usage": "电话号码前缀选择、下拉字段的箭头"
+      }
+    ],
+    "tokens": [
+      {
+        "name": "color.white",
+        "value": "#FFFFFF",
+        "unit": null,
+        "cssVar": "--color-white",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.gray-1",
+        "value": "#19191A",
+        "unit": null,
+        "cssVar": "--color-gray-1",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.gray-3",
+        "value": "#707070",
+        "unit": null,
+        "cssVar": "--color-gray-3",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.gray-5",
+        "value": "#DEE0E3",
+        "unit": null,
+        "cssVar": "--color-gray-5",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.gray-9",
+        "value": "#FAFBFB",
+        "unit": null,
+        "cssVar": "--color-gray-9",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.brand-red",
+        "value": "#C00000",
+        "unit": null,
+        "cssVar": "--brand-red",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "border-radius.md",
+        "value": 4,
+        "unit": "px",
+        "cssVar": "--border-radius-md",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border-radius.json"
+      },
+      {
+        "name": "typography.font-family-base",
+        "value": "Open Sans",
+        "unit": null,
+        "cssVar": "--font-family-base",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-size-h8",
+        "value": 13,
+        "unit": "px",
+        "cssVar": "--font-size-h8",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "spacing.md",
+        "value": 12,
+        "unit": "px",
+        "cssVar": "--spacing-md",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.xs",
+        "value": 4,
+        "unit": "px",
+        "cssVar": "--spacing-xs",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.10",
+        "value": 10,
+        "unit": "px",
+        "cssVar": "--spacing-10",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.sm",
+        "value": 8,
+        "unit": "px",
+        "cssVar": "--spacing-sm",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.lg",
+        "value": 16,
+        "unit": "px",
+        "cssVar": "--spacing-lg",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.3",
+        "value": 3,
+        "unit": "px",
+        "cssVar": "--spacing-3",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "border.style.none",
+        "value": "none",
+        "unit": null,
+        "cssVar": "--border-style-none",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.width.default",
+        "value": 1,
+        "unit": "px",
+        "cssVar": "--border-width-default",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.style.default",
+        "value": "solid",
+        "unit": null,
+        "cssVar": "--border-style-default",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.strong",
+        "value": "var(--color-gray-3)",
+        "unit": null,
+        "cssVar": "--border-color-strong",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.default",
+        "value": "var(--color-gray-5)",
+        "unit": null,
+        "cssVar": "--border-color-default",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "typography.font-weight-semibold",
+        "value": 600,
+        "unit": null,
+        "cssVar": "--font-weight-semibold",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-size-md",
+        "value": 14,
+        "unit": "px",
+        "cssVar": "--font-size-md",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-weight-regular",
+        "value": 400,
+        "unit": null,
+        "cssVar": "--font-weight-regular",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-size-sm",
+        "value": 12,
+        "unit": "px",
+        "cssVar": "--font-size-sm",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.h6-semibold",
+        "value": {
+          "fontSize": "16px",
+          "lineHeight": "24px",
+          "fontWeight": 600
+        },
+        "unit": null,
+        "cssVar": null,
+        "primitiveReferences": {
+          "fontSize": "typography.font-size-h6",
+          "fontWeight": "typography.font-weight-semibold"
+        },
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.h7-regular",
+        "value": {
+          "fontSize": "14px",
+          "lineHeight": "22px",
+          "fontWeight": 400
+        },
+        "unit": null,
+        "cssVar": null,
+        "primitiveReferences": {
+          "fontSize": "typography.font-size-md",
+          "fontWeight": "typography.font-weight-regular"
+        },
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.h8-regular",
+        "value": {
+          "fontSize": "13px",
+          "lineHeight": "20px",
+          "fontWeight": 400
+        },
+        "unit": null,
+        "cssVar": null,
+        "primitiveReferences": {
+          "fontSize": "typography.font-size-h8",
+          "fontWeight": "typography.font-weight-regular"
+        },
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.h9-regular",
+        "value": {
+          "fontSize": "12px",
+          "lineHeight": "20px",
+          "fontWeight": 400
+        },
+        "unit": null,
+        "cssVar": null,
+        "primitiveReferences": {
+          "fontSize": "typography.font-size-sm",
+          "fontWeight": "typography.font-weight-regular"
+        },
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "spacing.20",
+        "value": 20,
+        "unit": "px",
+        "cssVar": "--spacing-20",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "border-radius.lg",
+        "value": 8,
+        "unit": "px",
+        "cssVar": "--border-radius-lg",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border-radius.json"
+      },
+      {
+        "name": "border.color.input-disabled",
+        "value": "var(--color-input-disabled-border)",
+        "unit": null,
+        "cssVar": "--border-color-input-disabled",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "color.input-disabled-border",
+        "value": "#EEEEEE",
+        "unit": null,
+        "cssVar": "--color-input-disabled-border",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "opacity.disabled",
+        "value": 0.3,
+        "unit": null,
+        "cssVar": "--opacity-disabled",
+        "primitiveReferences": null,
+        "source": "components/token-specs/opacity.json"
+      },
+      {
+        "name": "spacing.2",
+        "value": 2,
+        "unit": "px",
+        "cssVar": "--spacing-2",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.xl",
+        "value": 24,
+        "unit": "px",
+        "cssVar": "--spacing-xl",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.25",
+        "value": 25,
+        "unit": "px",
+        "cssVar": "--spacing-25",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.6",
+        "value": 6,
+        "unit": "px",
+        "cssVar": "--spacing-6",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.48",
+        "value": 48,
+        "unit": "px",
+        "cssVar": "--spacing-48",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.2xl",
+        "value": 32,
+        "unit": "px",
+        "cssVar": "--spacing-2xl",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.40",
+        "value": 40,
+        "unit": "px",
+        "cssVar": "--spacing-40",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.14",
+        "value": 14,
+        "unit": "px",
+        "cssVar": "--spacing-14",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.banner-hero-inset",
+        "value": 404,
+        "unit": "px",
+        "cssVar": "--spacing-banner-hero-inset",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.banner-content-inset",
+        "value": 360,
+        "unit": "px",
+        "cssVar": "--spacing-banner-content-inset",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.5",
+        "value": 5,
+        "unit": "px",
+        "cssVar": "--spacing-5",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.collapse-status-indent",
+        "value": 42,
+        "unit": "px",
+        "cssVar": "--spacing-collapse-status-indent",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.36",
+        "value": 36,
+        "unit": "px",
+        "cssVar": "--spacing-36",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.9",
+        "value": 9,
+        "unit": "px",
+        "cssVar": "--spacing-9",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.collapse-body-indent",
+        "value": 52,
+        "unit": "px",
+        "cssVar": "--spacing-collapse-body-indent",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.26",
+        "value": 26,
+        "unit": "px",
+        "cssVar": "--spacing-26",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.80",
+        "value": 80,
+        "unit": "px",
+        "cssVar": "--spacing-80",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.68",
+        "value": 68,
+        "unit": "px",
+        "cssVar": "--spacing-68",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.menu-navigation-left-gutter",
+        "value": 15,
+        "unit": "px",
+        "cssVar": "--spacing-menu-navigation-left-gutter",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "border.color.emphasis",
+        "value": "var(--color-gray-1)",
+        "unit": null,
+        "cssVar": "--border-color-emphasis",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.inverse",
+        "value": "var(--color-white)",
+        "unit": null,
+        "cssVar": "--border-color-inverse",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.focus",
+        "value": "var(--color-blue)",
+        "unit": null,
+        "cssVar": "--border-color-focus",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.subtle",
+        "value": "var(--color-gray-6)",
+        "unit": null,
+        "cssVar": "--border-color-subtle",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.width.strong",
+        "value": 2,
+        "unit": "px",
+        "cssVar": "--border-width-strong",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.transparent",
+        "value": "transparent",
+        "unit": null,
+        "cssVar": "--border-color-transparent",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.brand",
+        "value": "var(--brand-red)",
+        "unit": null,
+        "cssVar": "--border-color-brand",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.option",
+        "value": "var(--color-option-border)",
+        "unit": null,
+        "cssVar": "--border-color-option",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.tag",
+        "value": "var(--color-tag-border)",
+        "unit": null,
+        "cssVar": "--border-color-tag",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.table-header",
+        "value": "var(--color-table-header-bg)",
+        "unit": null,
+        "cssVar": "--border-color-table-header",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.table-divider",
+        "value": "var(--color-table-divider)",
+        "unit": null,
+        "cssVar": "--border-color-table-divider",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.list-product-divider",
+        "value": "var(--color-list-product-divider)",
+        "unit": null,
+        "cssVar": "--border-color-list-product-divider",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.list-item-divider",
+        "value": "var(--color-list-item-divider)",
+        "unit": null,
+        "cssVar": "--border-color-list-item-divider",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.comment-divider",
+        "value": "var(--color-comment-divider)",
+        "unit": null,
+        "cssVar": "--border-color-comment-divider",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      }
+    ]
+  },
+  "evidence": {
+    "localImplementation": "components/variants/form.html",
+    "comparison": "components/sources/form/local-structure-review.json",
+    "legacy": "components/sources/form/gray-preview-before.html",
+    "exportIndex": "components/sources/form/source-index.json",
+    "nativeComponents": "components/sources/form/native-component-review-1011.json",
+    "nativeSpecification": "components/sources/form/native-specification-review-1011.json",
+    "nativeTextarea": "components/sources/form/native-textarea-structure-review-1011.json",
+    "currentMgReview": "components/sources/form-stepper-list-mg-20261115/form-review.json",
+    "dialogPartSource": "components/sources/dialog-mg-20261115/review.json"
+  },
+  "sourceValidation": {
+    "componentIdentity": {
+      "status": "not-established",
+      "files": []
+    },
+    "specificationBody": {
+      "status": "not-established",
+      "files": []
+    },
+    "originalOnlineFrontendCode": false,
+    "browserComputedStyles": false,
+    "completeSpecificationCoverage": false,
+    "buttonNesting": {
+      "scope": "finite-authored-button-nesting-only",
+      "checked": [
+        {
+          "variant": "gray",
+          "buttons": [
+            {
+              "variant": "filled-red",
+              "size": "xl-regular",
+              "type": "submit"
+            }
+          ]
+        },
+        {
+          "variant": "white",
+          "buttons": [
+            {
+              "variant": "filled-red",
+              "size": "xl-regular",
+              "type": "submit"
+            }
+          ]
+        }
+      ],
+      "pending": [],
+      "browserVerified": false
+    },
+    "otherAtomNesting": {
+      "formFieldDependencies": {
+        "scope": "current-PC-Form-Input-Checkbox-declarations-and-resources",
+        "checked": [
+          {
+            "hostVariant": "gray",
+            "component": "Input",
+            "instanceCount": 7,
+            "variants": [
+              "gray",
+              "gray",
+              "gray",
+              "gray",
+              "gray",
+              "gray",
+              "gray"
+            ],
+            "slots": [
+              "phoneInnerInput",
+              "sixthArrowBasicField",
+              "fifthArrowBasicField",
+              "firstTwoBasicFields",
+              "thirdBasicField",
+              "commentsTextarea"
+            ]
+          },
+          {
+            "hostVariant": "gray",
+            "component": "Checkbox",
+            "instanceCount": 3,
+            "variants": [
+              "sm",
+              "sm",
+              "sm"
+            ],
+            "slots": [
+              "contactMethods",
+              "consent"
+            ]
+          },
+          {
+            "hostVariant": "white",
+            "component": "Input",
+            "instanceCount": 7,
+            "variants": [
+              "white",
+              "white",
+              "white",
+              "white",
+              "white",
+              "white",
+              "white"
+            ],
+            "slots": [
+              "firstTwoBasicFields",
+              "phoneInnerInput",
+              "fifthArrowBasicField",
+              "sixthBasicField",
+              "thirdBasicField",
+              "commentsTextarea"
+            ]
+          },
+          {
+            "hostVariant": "white",
+            "component": "Checkbox",
+            "instanceCount": 3,
+            "variants": [
+              "sm",
+              "sm",
+              "sm"
+            ],
+            "slots": [
+              "contactMethods",
+              "consent"
+            ]
+          }
+        ],
+        "anatomy": "validated-by-existing-Form-and-Input-Dropdown-exact-checks",
+        "browserVerified": false,
+        "hostStyleCascadeVerified": false,
+        "mastergoVerified": false
+      }
+    }
+  },
+  "freshness": {
+    "fingerprints": {
+      "components/button-current.css": "45e94e48ec97a34b4883ecc4f11b33301cdd6679445a3970cb16a2a87c6d8c9e",
+      "components/button-runtime-current.css": "caaa9b65a8d2fbebfa487ca3e0cf0c67d36e0219ffc55d4b0d801371a02da76c",
+      "components/checkbox-current.css": "81bace454b5f7612b84fd778d5596605dbce94f2bdc1784ba2636140622b168e",
+      "components/checkbox-current.js": "742518c24ba917376a24e0338be88cc6d8d9ae65e74f8c1c1ee215abb1088eee",
+      "components/components.css": "a08b4fe2790b5ff2b784c6362a90f1b94e7535a03e863232ce6d620a52e85f73",
+      "components/contracts/button.json": "1f3092d74e19c1a840fbf2e8b8ecaf6115976b2941cc5484e4cda824025b1f73",
+      "components/contracts/checkbox.json": "ea3c1e3a082df421cafa2729384e7a7849e67048f51c3fde0979c0c3b0c94d63",
+      "components/contracts/form.json": "c9bdb5006244b53c97fe44ca80f98bde385823376dfc382e2027251ce0fa3c27",
+      "components/contracts/input.json": "b367155c40d99807834add264130f574d150f95f09836fe70e84e3bf37a174d1",
+      "components/contracts/select.json": "351bf37ab7259d48bec9e4cdebbfea3054c5fc6dd4c5581fa4af64696dd5b293",
+      "components/form-current.css": "5ffd82dad4e6ad58e4993f67b3b7b0352f7f8076a37a762eb8adb72014f49d1e",
+      "components/form-current.js": "818b6cfb276a444f4c79ceac548f50ef6d526e1e66415e6032b528e9cb30fb6f",
+      "components/form-dialog-content.css": "12d7a7d438272aae0fd5849e59a4503969b0631fcee302e0cac51cb226ea88f5",
+      "components/icons/icon-chevron-down.svg": "fe5df03acb1cb4b8a38a928357775416656fbf97cc54f3c6a5b7d0e4906f3e91",
+      "components/icons/icons-manifest.json": "12c48af6d1dc59d50b76046bb0507005f565aa4224a6d8056ce4eaaf8050c43e",
+      "components/input-current.css": "81df82b74844b99bdb11674ed4ffe47c0e6e02595408a113fec9f4426d5f9d14",
+      "components/input-current.js": "e218bd2029d632ce9d9564fa67a25cfb05819e5cf9668a25333d7fd04cfc7acc",
+      "components/preview/reference-live.js": "4839383529a3ee82df1d8efe675d430567abc1986034499107aa429d21a18ea6",
+      "components/reference-policy.json": "4ae8f51f623386417e38d497caafb8bda4417c929159002a7ac088e6e526b482",
+      "components/select-current.css": "6d005b445b4f1d7a73d9e7dc432655bad4df8bfbbf032f98c46811006c2a94d5",
+      "components/select-current.js": "a725ea2c4f030bebed5d947e1fb84c521bb7441ae362df95d634482bc9f2ed31",
+      "components/sources/dialog-mg-20261115/review.json": "ea3311dc815cb0fda4b71ceccb1d64900700e2460a706a8847a5a5e95ae127b7",
+      "components/sources/form-stepper-list-mg-20261115/form-review.json": "bae206924b7e81e2aa3365a13208dfd8f5f07fbb938357e4a6b458497df30116",
+      "components/sources/form/gray-preview-before.html": "12c622e2d766ddb7914af61f5228e5f651a0682d9b7851a46387fa71fa5be246",
+      "components/sources/form/local-structure-review.json": "0f5b7edcf575eea9c300d81a10a4e89898341c008ef82b11b59706549629c749",
+      "components/sources/form/native-component-review-1011.json": "b8f517cb3462a53b264396afd14eb7f2c52ae2af0c1b60fc28ffc6366cb02b49",
+      "components/sources/form/native-specification-review-1011.json": "c87aef76e55ccdc805640de44b87a673fe33ac1139cec296ae64cd95005b5a99",
+      "components/sources/form/native-textarea-structure-review-1011.json": "5709be921451a97f543e0bdf371896f8f6c2f9c557a88b82ae34e01f51f9117b",
+      "components/sources/form/source-fields-admission-20261114.json": "81b2437431b815edf57a179a4f5ef149ddf77f9c58582b40614a567317454485",
+      "components/sources/form/source-index.json": "b94f582568091b80e91d4e0f125527f7531c3ace358f7d17593a0d7d3e46e69a",
+      "components/token-specs/border-radius.json": "b01e4c23fbc7e19983d9592b59b0303155b79d66c52459356eda0ea9f4ca74b5",
+      "components/token-specs/border.json": "d286ee4681deda1c7702c310b065c86f824539b3a8797efba05b24bc225ab322",
+      "components/token-specs/colors.json": "5267d59fdc687b54496977280c00c97f0beb6ffce013f87853504f5b736d3389",
+      "components/token-specs/opacity.json": "226088dc556be35b2b51766287a7d54f95eebd348cb80f6d8313e525cf2b70b7",
+      "components/token-specs/spacing.json": "351b14cfce4411248ad41e00eaaf2b1cab9b705997980dfed1fc65693740e65c",
+      "components/token-specs/typography.json": "93b7dc07547218a33c075b7cdcd942f89094353a7847d483d8378b8883327e16",
+      "components/tokens.css": "f63f3c8fea511d8029902bc3905b01853ac5e92049c1b18ca35ebc9a680c3e69",
+      "components/variants/button.html": "6b6715b66e6c0b684c072dcdcbf7170aeb9f49a31bb32ca5b8986644d626cfe6",
+      "components/variants/checkbox.html": "7d99c4b8d7b3c89433a31d6a9205f89607c5cbd398abd76824ae7c92bbdf83f6",
+      "components/variants/dialog.html": "40132b51264249e10a92ea5f24730d989ca1415daa62f9ef42d391aadff7f21f",
+      "components/variants/form.html": "25d31960a440684ed7015f9dc5e628875090709d5001bffebd5972232e48d489",
+      "components/variants/input.html": "d34e9585cb00f4293912c199391e0b8328b13fe8db16ac4b4ea4b05b596d10c1",
+      "components/variants/select.html": "0042deb9a302606c3a82505cafbd807753c3c6eb31e8b107e3ecb0fe0538bf7f",
+      "page-inputs/bdcom-oem-m2/component-sources/form.json": "71e99b54e068c22ee81e3d64c6838b99f69c314cb36260d1891e40455bb300d7"
+    },
+    "graphFingerprint": "15a893a07136ecef2dbda438003984ae16ff36d304d8720dd800b5465764ab02",
+    "note": "从本地源文件生成；不是 MasterGo 在线实时状态。"
+  },
+  "readScope": {
+    "variant": "gray",
+    "note": "只展开当前已选变体；其他变体没有被声明为不可用。尺寸继续按真实 sizeOptions 选择。"
+  }
+}

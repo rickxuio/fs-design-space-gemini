@@ -1,0 +1,26 @@
+/* External multi-card host: child atoms retain their original appearance. */
+.ds-carousel-external{position:relative;max-width:1200px;width:100%;margin:0 auto;--carousel-visible:3}
+.ds-carousel-external[data-carousel-columns="2"]{--carousel-visible:2}
+.ds-carousel-external[data-carousel-columns="4"]{--carousel-visible:4}
+.ds-carousel-external__viewport{overflow:hidden;scroll-behavior:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
+.ds-carousel-external__viewport::-webkit-scrollbar{display:none}
+.ds-carousel-external__track{display:flex;gap:var(--spacing-20);align-items:stretch}
+.ds-carousel-external__item{flex:0 0 calc((100% - (var(--carousel-visible) - 1)*20px)/var(--carousel-visible));min-width:0;display:flex;scroll-snap-align:start}
+.ds-carousel-external__item>.ds-card,.ds-carousel-external__item>.ds-icon-card{width:100%;min-width:0;box-sizing:border-box}
+.ds-carousel-external__control{position:absolute;top:0;bottom:48px;width:80px;opacity:0;pointer-events:none;transition:opacity .12s}
+.ds-carousel-external__control.rail-prev{right:100%}
+.ds-carousel-external__control.rail-next{left:100%}
+.ds-carousel-external__control>.ds-carousel__btn{top:50%;transform:translateY(-50%);pointer-events:inherit}
+.ds-carousel-external__control.rail-prev>.ds-carousel__btn{right:32px}
+.ds-carousel-external__control.rail-next>.ds-carousel__btn{left:32px}
+.ds-carousel-external:hover>.ds-carousel-external__control,.ds-carousel-external:has(:focus-visible)>.ds-carousel-external__control{opacity:1;pointer-events:auto}
+.ds-carousel-external__pagination{height:28px;margin-top:var(--spacing-20);display:flex;justify-content:center;align-items:flex-start;gap:var(--spacing-10)}
+.ds-carousel-external__dot{appearance:none;border:0;padding:0;flex:0 0 auto;width:8px;height:8px;border-radius:4px;background:var(--color-gray-3);opacity:.4;cursor:pointer}
+.ds-carousel-external__dot[aria-current="true"]{width:20px;opacity:1}
+.ds-carousel-external__dot:focus-visible{outline:2px solid var(--color-blue);outline-offset:4px}
+.ds-carousel-external__status{position:absolute;width:1px;height:1px;padding:0;margin:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.ds-carousel-external[data-carousel-overflow="false"]>.ds-carousel-external__control,.ds-carousel-external[data-carousel-overflow="false"]>.ds-carousel-external__pagination{visibility:hidden}
+@media(min-width:1024px) and (max-width:1359px){.ds-carousel-external{width:calc(100vw - 160px)}}
+@media(max-width:1023px){.ds-carousel-external{--carousel-visible:2}.ds-carousel-external[data-carousel-columns]{--carousel-visible:2}.ds-carousel-external__viewport{overflow-x:auto;overscroll-behavior-x:contain}.ds-carousel-external__control{display:none}.ds-carousel-external__dot{pointer-events:none}}
+@media(max-width:767px){.ds-carousel-external[data-carousel-columns]{--carousel-visible:1}}
+@media(prefers-reduced-motion:reduce){.ds-carousel-external__control{transition:none}}

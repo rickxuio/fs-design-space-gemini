@@ -1,0 +1,5 @@
+'use strict';
+const test=require('node:test'),assert=require('node:assert/strict'),path=require('node:path'),fs=require('node:fs'),{JSDOM}=require('jsdom'),ROOT=path.resolve(__dirname,'..'),{buildReference}=require('./compile-component-reference'),sync=require('./sync-form-source-example');
+test('source Form declaration keeps original fixtures and synchronizes real Select/Input reference children',()=>{
+ sync.sync(ROOT);const p=buildReference(ROOT,'form'),gray=p.examples.find(e=>e.name==='gray');assert.equal(gray.bindings.sourceFields.mode,'source-form-fields');assert.ok(p.relationships.children.some(c=>c.id==='select'&&c.requiredWhen==='sourceFields'));const d=new JSDOM(fs.readFileSync(path.join(ROOT,'components/variants/form.html'),'utf8')),host=d.window.document.querySelector('[data-form-source-reference]');assert.ok(host.querySelector('.ds-select'));assert.ok(host.querySelector('[data-input-kind="textarea"]'));assert.ok(host.querySelector('button.ds-btn'));assert.equal(d.window.document.querySelectorAll('[data-ai-example="ai-form-gray-current"]').length,1);d.window.close();
+});

@@ -1,0 +1,316 @@
+<!-- INTERNAL VARIANT SOURCE: for compile/sync scripts only. Human-facing spec: maintenance/foundation-prototypes-20261114/tab.html -->
+<!DOCTYPE html><html data-component-reference="tab" lang="zh-CN"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tab 导航 - 组件预览</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../tokens.css">
+  <link rel="stylesheet" href="../components.css">
+  <link rel="stylesheet" href="../tab-current.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: var(--font-family-base); padding: 40px; background: #FFF; color: var(--color-gray-1); }
+    h1 { font-size: 24px; font-weight: 600; margin-bottom: 8px; }
+    .subtitle { font-size: 14px; color: var(--color-gray-3); margin-bottom: 40px; }
+    .section { margin-bottom: 48px; }
+    .section-title { font-size: 18px; font-weight: 600; margin-bottom: 24px; padding-bottom: 8px; border-bottom: 1px solid var(--color-gray-5); }
+    .demo-row { margin-bottom: 24px; }
+    .demo-label { font-size: 12px; color: var(--color-gray-3); margin-bottom: 8px; }
+
+
+    /* Category Badge（分类与左侧导航栏保持一致） */
+    .cat-badge { display: inline-flex; align-items: center; height: 22px; padding: 0 10px; border-radius: 11px; font-size: 11px; font-weight: 700; margin-bottom: 10px; }
+  </style>
+</head>
+<body>
+  <span class="cat-badge" style="background:#FFF3E0;color:#F56300;">导航 Navigation</span>
+  <h1>Tab 导航 <span class="version-badge" style="font-size:18px;font-weight:600;color:#707070;vertical-align:middle;margin-left:10px;">v1.0</span></h1>
+  <p class="subtitle">Tab 切换导航组件 — 胶囊型 / 首页产品导航 / 常规型，支持点击切换选中态</p>
+
+  <!-- 变体决策 + 关联关系表 -->
+  <div style="margin-bottom: 0; padding: 24px; background: #FAFBFC; border: 1px solid var(--color-gray-5); border-radius: 8px;">
+    <!-- AUTO-GENERATED-PREVIEW:START -->
+<!-- 合并模式：硬规则已并入下方合并表 -->
+    <!-- AUTO-GENERATED-PREVIEW:END -->
+    <!-- AUTO-GENERATED-DECISION-TABLE:START -->
+    <p style="font-size:14px;font-weight:600;margin-bottom:4px;">变体决策</p>
+    <p style="font-size:12px;color:#707070;margin-bottom:12px;">先核对具体场景与原件，再排除不适用条件；候选只映射当前可调用变体，设计参考不开放调用。页面展示与 AI 读取同一份规则。</p>
+    <table style="width:100%;border-collapse:collapse;table-layout:fixed;">
+      <colgroup><col style="width:18%"><col style="width:38%"><col style="width:44%"></colgroup>
+      <thead><tr><th scope="col" style="background:#F6F6F8;font-size:12px;font-weight:600;text-align:left;padding:8px 10px;border:1px solid #DEE0E3;">变体</th><th scope="col" style="background:#F6F6F8;font-size:12px;font-weight:600;text-align:left;padding:8px 10px;border:1px solid #DEE0E3;">匹配条件</th><th scope="col" style="background:#F6F6F8;font-size:12px;font-weight:600;text-align:left;padding:8px 10px;border:1px solid #DEE0E3;">选型结论</th></tr></thead>
+<tbody><tr><th scope="rowgroup" rowspan="3" style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">Capsule 胶囊</th><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">商品详情页，选项全部可见。</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>候选 · </strong>宿主切内容。</td></tr>
+<tr><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">仅因分类筛选或用于普通专题。</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>不用 · </strong>不能据此外推胶囊场景。</td></tr>
+<tr><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">需要All菜单、隐藏数量。</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>设计参考 · </strong>仅参考；未开放。</td></tr></tbody>
+<tbody><tr><th scope="rowgroup" rowspan="4" style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">Standard 常规</th><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">居左常规分区，选项全部可见。</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>候选 · </strong>尺寸按来源。</td></tr>
+<tr><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">来源为居中常规导航。</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>不用 · </strong>核对standard-center。</td></tr>
+<tr><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">每项需图标、二级标题或菜单。</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>不用 · </strong>禁止手加未开放插槽。</td></tr>
+<tr><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">需要滚动消隐、All或悬停即切换。</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>设计参考 · </strong>仅参考；未开放。</td></tr></tbody>
+<tbody><tr><th scope="rowgroup" rowspan="2" style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">Product Nav 产品导航</th><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">首页产品大类，登记图标语义匹配。</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>候选 · </strong>仅登记图标。</td></tr>
+<tr><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">普通图标Tab或无匹配素材。</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>不用 · </strong>不用首页产品导航。</td></tr></tbody>
+<tbody><tr><th scope="rowgroup" rowspan="3" style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">Standard常规·居中</th><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">居中常规分区，选项全部可见。</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>候选 · </strong>底线适应内容。</td></tr>
+<tr><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">居左来源或通栏等宽导航。</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>不用 · </strong>不改类替代。</td></tr>
+<tr><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">注册、表单、分段或带菜单导航。</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>设计参考 · </strong>仅参考；未开放。</td></tr></tbody>
+<tbody><tr><th colspan="3" style="background:#F6F6F8;font-size:12px;font-weight:600;text-align:left;padding:8px 10px;border:1px solid #DEE0E3;">⚠️ 硬规则：激活态必须同时具备 class + indicator 元素</th></tr><tr><td colspan="2" style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>描述原文</strong><div><strong>Standard/Capsule 的激活态必须同时加 <code>ds-tab__item--active</code> class 与内部 <code>ds-tab__indicator</code> 元素，二者缺一不可。</strong>只加 class 不加 indicator 会缺少红色/白底视觉反馈。居中对齐加 <code>ds-tab--center</code>。</div></td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>AI 解析（写入契约 JSON 的字段）</strong><pre style="white-space:pre-wrap;word-break:break-all;">relations.structuralRequirement = {
+  rule: &quot;激活态必须同时具备 ds-tab__item--active class 与内部 ds-tab__indicator 元素；只加 class 不加 indicator 会导致缺少红色/白底视觉反馈&quot;,
+  appliesTo: [&quot;standard&quot;,&quot;capsule&quot;]
+}
+
+states[1].styleOverrides.structure
+  = &quot;ds-tab__item--active
+    + 内部 ds-tab__indicator&quot;</pre></td></tr></tbody>
+<tbody><tr><th colspan="3" style="background:#F6F6F8;font-size:12px;font-weight:600;text-align:left;padding:8px 10px;border:1px solid #DEE0E3;">⚠️ 硬规则：Tab选项清除原生外观；居左/居中按原件选择</th></tr><tr><td colspan="2" style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>描述原文</strong><div><strong><code>ds-tab__item</code>必须保留完整内层结构并清除原生button外观。常规Tab按对应原件选择居左或居中，不能因选项未占满而强制居中；居中原件使用<code>ds-tab--center</code>、内容适应宽度，底线覆盖自身内容区域。</strong></div></td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>AI 解析（写入契约 JSON 的字段）</strong><pre style="white-space:pre-wrap;word-break:break-all;">alignment follows source layout; centered regular Tab uses intrinsic content width. Available spare width does not override left-aligned source.</pre></td></tr></tbody>
+<tbody><tr><th colspan="3" style="background:#F6F6F8;font-size:12px;font-weight:600;text-align:left;padding:8px 10px;border:1px solid #DEE0E3;">⚠️ 硬规则：可见 Tab 必须支持单击与键盘切换，禁止静态假控件</th></tr><tr><td colspan="2" style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>描述原文</strong><div><strong>只要 Tab 在视觉上呈现为可切换，每个非禁用项就必须可单击；不得实现为无监听器的静态 <code>div</code>。</strong>当前页选中态切换不得跳转、刷新或改变 <code>location.href</code>、hash、滚动位置；切换后必须保持唯一 <code>ds-tab__item--active</code>、唯一 <code>ds-tab__indicator</code>、唯一 <code>aria-selected=&quot;true&quot;</code>，并采用 roving tabindex。键盘必须支持 ArrowLeft/ArrowRight 循环、Home/End、Enter/Space。</div></td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>AI 解析（写入契约 JSON 的字段）</strong><pre style="white-space:pre-wrap;word-break:break-all;">interaction = {
+  click: &quot;全部非禁用项可切换&quot;,
+  keyboard: [&quot;ArrowLeft&quot;, &quot;ArrowRight&quot;, &quot;Home&quot;, &quot;End&quot;, &quot;Enter&quot;, &quot;Space&quot;],
+  state: &quot;唯一 active + indicator + aria-selected=true&quot;,
+  focus: &quot;roving tabindex: active=0, others=-1&quot;,
+  currentPageSelection: &quot;URL/hash/scroll 均保持不变&quot;
+}
+
+禁止：静态 div、因本地路由缺失而整组 aria-disabled</pre></td></tr></tbody>
+    </table>
+    <!-- AUTO-GENERATED-DECISION-TABLE:END -->
+  </div>
+
+    <!-- DEPENDENCY-SUMMARY-SPACING -->
+    <div style="height:24px;"></div>
+    <!-- AUTO-GENERATED-DEPENDENCY-SUMMARY-TABLE:START -->
+    <div style="margin-bottom: 0; padding: 24px; background: #FAFBFC; border: 1px solid var(--color-gray-5); border-radius: 8px;">
+      <p style="font-size: 14px; font-weight: 600; margin-bottom: 4px;">依赖汇总表</p>
+      <p style="font-size: 12px; color: #707070; margin-bottom: 12px;">按组件类型汇总组件关系、颜色、字体、间距、描边、圆角、阴影和图标依赖；未填写 <code>appliesTo</code> 的组件级依赖不猜测变体归属，不参与本表归类。「组件关系」列用标签区分：<span style="display:inline-block;font-size:11px;line-height:16px;padding:0 5px;border-radius:3px;background:#EAF2FF;color:#0060BF;">子组件</span> = 嵌入本组件内部；<span style="display:inline-block;font-size:11px;line-height:16px;padding:0 5px;border-radius:3px;background:#F3EEFA;color:#512971;">父组件·类名证据／仅声明</span> = 从宿主 <code>componentDependencies</code> 自动推导；类名出现不等于具体变体、尺寸、必需结构或交互已验证，链接仅供打开 Preview 复核；<span style="display:inline-block;font-size:11px;line-height:16px;padding:0 5px;border-radius:3px;background:#FFF3E0;color:#A65300;">参考·未验证</span> = 仅保留设计意图，宿主 preview 尚无真实结构，不可作为已实现依赖。</p>
+      <div class="dep-summary-scroll">
+        <div class="dep-summary-grid" style="grid-template-columns:minmax(max-content, auto) repeat(8, minmax(max-content, 1fr));">
+          <div class="dep-cell dep-cell--sticky dep-cell--head" role="columnheader">组件类型</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">颜色</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">字体</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">间距</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">描边</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">圆角</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">阴影</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">图标</div>
+          <div class="dep-cell dep-cell--head dep-cell--right-edge" role="columnheader">组件关系</div>
+          <div class="dep-cell dep-cell--sticky" role="rowheader"><strong>胶囊</strong><br><code>capsule</code></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#19191A;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-1" style="color:#0060BF;text-decoration:underline;"><code>color.gray-1</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#707070;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-3" style="color:#0060BF;text-decoration:underline;"><code>color.gray-3</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#F6F6F8;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-8" style="color:#0060BF;text-decoration:underline;"><code>color.gray-8</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#FAFBFB;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-9" style="color:#0060BF;text-decoration:underline;"><code>color.gray-9</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#FFFFFF;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-white" style="color:#0060BF;text-decoration:underline;"><code>color.white</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:rgba(255,255,255,0.6);vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span>rgba(255,255,255,0.6) <span style="color:#707070;">（未 token 化）</span></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">14px · md · Regular 400</span><a href="font.html#tok-typography-h7-regular" style="color:#0060BF;text-decoration:underline;"><code>typography.h7-regular</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">13px · H8 · Regular 400</span><a href="font.html#tok-typography-h8-regular" style="color:#0060BF;text-decoration:underline;"><code>typography.h8-regular</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">4px</span><a href="spacing.html#tok-spacing-xs" style="color:#0060BF;text-decoration:underline;"><code>spacing.xs</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">6px</span><a href="spacing.html#tok-spacing-6" style="color:#0060BF;text-decoration:underline;"><code>spacing.6</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">8px</span><a href="spacing.html#tok-spacing-sm" style="color:#0060BF;text-decoration:underline;"><code>spacing.sm</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">16px</span><a href="spacing.html#tok-spacing-lg" style="color:#0060BF;text-decoration:underline;"><code>spacing.lg</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">12px</span><a href="spacing.html#tok-spacing-md" style="color:#0060BF;text-decoration:underline;"><code>spacing.md</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;color:#A6A6A6;font-size:11px;margin-right:8px;vertical-align:-3px;flex:0 0 auto;">∅</span><a href="stroke.html#tok-border-style-none" style="color:#0060BF;text-decoration:underline;"><code>border.style.none</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">4px</span><a href="radius.html#tok-border-radius-md" style="color:#0060BF;text-decoration:underline;"><code>border-radius.md</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;">30px <span style="color:#707070;">（未 token 化）</span></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;">40px <span style="color:#707070;">（未 token 化）</span></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;background:#FFFFFF;border:1px solid #F0F0F0;box-shadow:0px 2px 8px rgba(0,0,0,0.1);margin-right:8px;vertical-align:-3px;flex:0 0 auto;"></span>0px 2px 8px rgba(0,0,0,0.1) <span style="color:#707070;">（未 token 化）</span></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><img src="../icons/icon-chevron-down.svg?v=fe5df03acb1c" alt="" style="display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;"><a href="icon-map.html#icon-chevron-down" style="color:#0060BF;text-decoration:underline;"><code>icon-chevron-down.svg</code></a></span></div>
+          <div class="dep-cell dep-cell--right-edge" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell dep-cell--sticky" role="rowheader"><strong>常规</strong><br><code>standard</code></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#19191A;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-1" style="color:#0060BF;text-decoration:underline;"><code>color.gray-1</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#707070;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-3" style="color:#0060BF;text-decoration:underline;"><code>color.gray-3</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#DEE0E3;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-5" style="color:#0060BF;text-decoration:underline;"><code>color.gray-5</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#C00000;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-brand-red" style="color:#0060BF;text-decoration:underline;"><code>color.brand-red</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">14px · md · Regular 400</span><a href="font.html#tok-typography-h7-regular" style="color:#0060BF;text-decoration:underline;"><code>typography.h7-regular</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">16px · Regular 400</span><a href="font.html#tok-typography-h6-regular" style="color:#0060BF;text-decoration:underline;"><code>typography.h6-regular</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">6px</span><a href="spacing.html#tok-spacing-6" style="color:#0060BF;text-decoration:underline;"><code>spacing.6</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">16px</span><a href="spacing.html#tok-spacing-lg" style="color:#0060BF;text-decoration:underline;"><code>spacing.lg</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">10px</span><a href="spacing.html#tok-spacing-10" style="color:#0060BF;text-decoration:underline;"><code>spacing.10</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">14px</span><a href="spacing.html#tok-spacing-14" style="color:#0060BF;text-decoration:underline;"><code>spacing.14</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:1px;background:#707070;margin-right:8px;vertical-align:middle;flex:0 0 auto;"></span><a href="stroke.html#tok-border-width-default" style="color:#0060BF;text-decoration:underline;"><code>border.width.default</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:0;border-top:2px solid #707070;margin-right:8px;vertical-align:middle;flex:0 0 auto;"></span><a href="stroke.html#tok-border-style-default" style="color:#0060BF;text-decoration:underline;"><code>border.style.default</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;box-sizing:border-box;border:2px solid var(--color-gray-5);background:transparent;margin-right:8px;vertical-align:-3px;flex:0 0 auto;"></span><a href="stroke.html#tok-border-color-default" style="color:#0060BF;text-decoration:underline;"><code>border.color.default</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;color:#A6A6A6;font-size:11px;margin-right:8px;vertical-align:-3px;flex:0 0 auto;">∅</span><a href="stroke.html#tok-border-style-none" style="color:#0060BF;text-decoration:underline;"><code>border.style.none</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">4px</span><a href="radius.html#tok-border-radius-md" style="color:#0060BF;text-decoration:underline;"><code>border-radius.md</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell dep-cell--right-edge" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell dep-cell--sticky" role="rowheader"><strong>产品导航</strong><br><code>product</code></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#19191A;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-1" style="color:#0060BF;text-decoration:underline;"><code>color.gray-1</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#707070;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-3" style="color:#0060BF;text-decoration:underline;"><code>color.gray-3</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">16px · Regular 400</span><a href="font.html#tok-typography-h6-regular" style="color:#0060BF;text-decoration:underline;"><code>typography.h6-regular</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">12px</span><a href="spacing.html#tok-spacing-md" style="color:#0060BF;text-decoration:underline;"><code>spacing.md</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:1px;background:#707070;margin-right:8px;vertical-align:middle;flex:0 0 auto;"></span><a href="stroke.html#tok-border-width-default" style="color:#0060BF;text-decoration:underline;"><code>border.width.default</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:0;border-top:2px solid #707070;margin-right:8px;vertical-align:middle;flex:0 0 auto;"></span><a href="stroke.html#tok-border-style-default" style="color:#0060BF;text-decoration:underline;"><code>border.style.default</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;box-sizing:border-box;border:2px solid var(--color-gray-5);background:transparent;margin-right:8px;vertical-align:-3px;flex:0 0 auto;"></span><a href="stroke.html#tok-border-color-default" style="color:#0060BF;text-decoration:underline;"><code>border.color.default</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;color:#A6A6A6;font-size:11px;margin-right:8px;vertical-align:-3px;flex:0 0 auto;">∅</span><a href="stroke.html#tok-border-style-none" style="color:#0060BF;text-decoration:underline;"><code>border.style.none</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><img src="../icons/icon-placeholder-switch.svg?v=0f52c5a67544" alt="" style="display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;"><a href="icon-map.html#icon-placeholder-switch" style="color:#0060BF;text-decoration:underline;"><code>icon-placeholder-switch.svg</code></a></span></div>
+          <div class="dep-cell dep-cell--right-edge" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell dep-cell--sticky dep-cell--bottom-edge" role="rowheader"><strong>常规·居中</strong><br><code>standard-center</code></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#19191A;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-1" style="color:#0060BF;text-decoration:underline;"><code>color.gray-1</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#707070;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-3" style="color:#0060BF;text-decoration:underline;"><code>color.gray-3</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#DEE0E3;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-5" style="color:#0060BF;text-decoration:underline;"><code>color.gray-5</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#C00000;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-brand-red" style="color:#0060BF;text-decoration:underline;"><code>color.brand-red</code></a></span></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">14px · md · Regular 400</span><a href="font.html#tok-typography-h7-regular" style="color:#0060BF;text-decoration:underline;"><code>typography.h7-regular</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">16px · Regular 400</span><a href="font.html#tok-typography-h6-regular" style="color:#0060BF;text-decoration:underline;"><code>typography.h6-regular</code></a></span></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">6px</span><a href="spacing.html#tok-spacing-6" style="color:#0060BF;text-decoration:underline;"><code>spacing.6</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">16px</span><a href="spacing.html#tok-spacing-lg" style="color:#0060BF;text-decoration:underline;"><code>spacing.lg</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">10px</span><a href="spacing.html#tok-spacing-10" style="color:#0060BF;text-decoration:underline;"><code>spacing.10</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">14px</span><a href="spacing.html#tok-spacing-14" style="color:#0060BF;text-decoration:underline;"><code>spacing.14</code></a></span></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:1px;background:#707070;margin-right:8px;vertical-align:middle;flex:0 0 auto;"></span><a href="stroke.html#tok-border-width-default" style="color:#0060BF;text-decoration:underline;"><code>border.width.default</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:0;border-top:2px solid #707070;margin-right:8px;vertical-align:middle;flex:0 0 auto;"></span><a href="stroke.html#tok-border-style-default" style="color:#0060BF;text-decoration:underline;"><code>border.style.default</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;box-sizing:border-box;border:2px solid var(--color-gray-5);background:transparent;margin-right:8px;vertical-align:-3px;flex:0 0 auto;"></span><a href="stroke.html#tok-border-color-default" style="color:#0060BF;text-decoration:underline;"><code>border.color.default</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;color:#A6A6A6;font-size:11px;margin-right:8px;vertical-align:-3px;flex:0 0 auto;">∅</span><a href="stroke.html#tok-border-style-none" style="color:#0060BF;text-decoration:underline;"><code>border.style.none</code></a></span></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">4px</span><a href="radius.html#tok-border-radius-md" style="color:#0060BF;text-decoration:underline;"><code>border-radius.md</code></a></span></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell dep-cell--right-edge dep-cell--bottom-edge" role="cell"><span style="color:#A6A6A6;">—</span></div>
+        </div>
+      </div>
+    </div>
+    <!-- AUTO-GENERATED-DEPENDENCY-SUMMARY-TABLE:END -->
+
+  <!-- TEMPLATE-DEMO-SPACING -->
+  <div style="height:24px;"></div>
+
+
+
+<div style="margin-top: 48px; font-family: var(--font-family-base);">
+
+<!-- SECTION 1: 胶囊 Tab -->
+  <div class="section">
+    <div class="section-title">① 胶囊 Tab (Capsule)</div>
+    <div class="demo-row">
+      <div class="demo-label">通栏</div>
+      <div class="ds-tab ds-tab--capsule" data-tab-current="capsule-atom" data-tab-group="" data-ai-example="ai-tab-capsule">
+        <div class="ds-tab__item ds-tab__item--active" data-tab-item="">
+          <div class="ds-tab__item-inner">
+            <span class="ds-tab__item-text">Title option A</span>
+            <div class="ds-tab__indicator"></div>
+          </div>
+        </div>
+        <div class="ds-tab__item" data-tab-item=""><div class="ds-tab__item-inner"><span class="ds-tab__item-text">Title option B</span></div></div>
+        <div class="ds-tab__item" data-tab-item=""><div class="ds-tab__item-inner"><span class="ds-tab__item-text">Title option C</span></div></div>
+        <div class="ds-tab__item" data-tab-item=""><div class="ds-tab__item-inner"><span class="ds-tab__item-text">Title option D</span></div></div>
+        <div class="ds-tab__item" data-tab-item=""><div class="ds-tab__item-inner"><span class="ds-tab__item-text">Title option E</span></div></div>
+        <div class="ds-tab__item" data-tab-item=""><div class="ds-tab__item-inner"><span class="ds-tab__item-text">Title option F</span></div></div>
+        <div class="ds-tab__item" data-tab-item=""><div class="ds-tab__item-inner"><span class="ds-tab__item-text">Title option G</span></div></div>
+        <div class="ds-tab__item" data-tab-item=""><div class="ds-tab__item-inner"><span class="ds-tab__item-text">Title option H</span></div></div>
+        <div class="ds-tab__item" data-tab-item=""><div class="ds-tab__item-inner"><span class="ds-tab__item-text">Title option I</span></div></div>
+      </div>
+    </div>
+    <div class="demo-row">
+      <div class="demo-label">带 "All" 下拉按钮</div>
+      <div style="display: flex; gap: 12px; align-items: flex-start;">
+        <div class="ds-tab ds-tab--capsule" data-tab-current="capsule-atom" data-tab-group="">
+          <div class="ds-tab__item ds-tab__item--active" data-tab-item="">
+            <div class="ds-tab__item-inner">
+              <span class="ds-tab__item-text">Title option A</span>
+              <div class="ds-tab__indicator"></div>
+            </div>
+          </div>
+          <div class="ds-tab__item" data-tab-item=""><div class="ds-tab__item-inner"><span class="ds-tab__item-text">Title option B</span></div></div>
+          <div class="ds-tab__item" data-tab-item=""><div class="ds-tab__item-inner"><span class="ds-tab__item-text">Title option C</span></div></div>
+          <div class="ds-tab__item" data-tab-item=""><div class="ds-tab__item-inner"><span class="ds-tab__item-text">Title option D</span></div></div>
+          <div class="ds-tab__item" data-tab-item=""><div class="ds-tab__item-inner"><span class="ds-tab__item-text">Title option E</span></div></div>
+          <div class="ds-tab__item" data-tab-item=""><div class="ds-tab__item-inner"><span class="ds-tab__item-text">Title option F</span></div></div>
+          <div class="ds-tab__item" data-tab-item=""><div class="ds-tab__item-inner"><span class="ds-tab__item-text">Title option G</span></div></div>
+          <div class="ds-tab__item" data-tab-item=""><div class="ds-tab__item-inner"><span class="ds-tab__item-text">Title option H</span></div></div>
+          <div class="ds-tab__item" data-tab-item=""><div class="ds-tab__item-inner"><span class="ds-tab__item-text">Title option I</span></div></div>
+        </div>
+        <div class="ds-tab ds-tab--capsule" style="position: relative;">
+          <button class="ds-tab__all-btn" data-all-toggle="" type="button">
+            <span>All (8)</span>
+            <svg width="16" height="16" viewBox="0 0 12 12" fill="none"><path d="M3 4.5L6 7.5L9 4.5" stroke="#0060BF" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          </button>
+          <div class="ds-tab__all-dropdown" data-all-dropdown="">
+            <div class="ds-tab__all-dropdown-item">1st item</div>
+            <div class="ds-tab__all-dropdown-item">2nd item</div>
+            <div class="ds-tab__all-dropdown-item">3rd item</div>
+            <div class="ds-tab__all-dropdown-item">4th item</div>
+            <div class="ds-tab__all-dropdown-item">5th item</div>
+            <div class="ds-tab__all-dropdown-item">6th item</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 2: 首页产品导航 -->
+  <div class="section">
+    <div class="section-title">② 首页产品导航 (Product Nav)</div>
+    <p class="subtitle">布局要求：铺满父级版心，各项等宽，项内图标与文字居中；1200px 版心内 8 项各占 150px。整行浅灰底线与选中项红色短线独立保留，不采用内容宽度收缩居中。</p>
+    <div class="demo-row" style="max-width: 1200px; scroll-margin-top: 40px;" id="icon-usage-icon-placeholder-switch-tab">
+      <div class="ds-tab ds-tab--product" data-tab-group="" data-ai-example="ai-tab-product">
+        <div class="ds-tab__item ds-tab__item--active" data-tab-item="">
+          <div class="ds-tab__item-icon"><img src="../icons/icon-placeholder-switch.svg" alt=""></div>
+          <div class="ds-tab__item-inner"><span class="ds-tab__item-text">Title A</span><div class="ds-tab__indicator"></div></div>
+        </div>
+        <div class="ds-tab__item" data-tab-item="">
+          <div class="ds-tab__item-icon"><img src="../icons/icon-placeholder-switch.svg" alt=""></div>
+          <div class="ds-tab__item-inner"><span class="ds-tab__item-text">Title A</span></div>
+        </div>
+        <div class="ds-tab__item" data-tab-item="">
+          <div class="ds-tab__item-icon"><img src="../icons/icon-placeholder-switch.svg" alt=""></div>
+          <div class="ds-tab__item-inner"><span class="ds-tab__item-text">Title A</span></div>
+        </div>
+        <div class="ds-tab__item" data-tab-item="">
+          <div class="ds-tab__item-icon"><img src="../icons/icon-placeholder-switch.svg" alt=""></div>
+          <div class="ds-tab__item-inner"><span class="ds-tab__item-text">Title C</span></div>
+        </div>
+        <div class="ds-tab__item" data-tab-item="">
+          <div class="ds-tab__item-icon"><img src="../icons/icon-placeholder-switch.svg" alt=""></div>
+          <div class="ds-tab__item-inner"><span class="ds-tab__item-text">Title A</span></div>
+        </div>
+        <div class="ds-tab__item" data-tab-item="">
+          <div class="ds-tab__item-icon"><img src="../icons/icon-placeholder-switch.svg" alt=""></div>
+          <div class="ds-tab__item-inner"><span class="ds-tab__item-text">Title A</span></div>
+        </div>
+        <div class="ds-tab__item" data-tab-item="">
+          <div class="ds-tab__item-icon"><img src="../icons/icon-placeholder-switch.svg" alt=""></div>
+          <div class="ds-tab__item-inner"><span class="ds-tab__item-text">Title A</span></div>
+        </div>
+        <div class="ds-tab__item" data-tab-item="">
+          <div class="ds-tab__item-icon"><img src="../icons/icon-placeholder-switch.svg" alt=""></div>
+          <div class="ds-tab__item-inner"><span class="ds-tab__item-text">Title A</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 3: 常规 Tab -->
+  <div class="section">
+    <div class="section-title">③ 常规 Tab (Standard)</div>
+
+    <div class="demo-row">
+      <div class="demo-label">居左 — Default (14px)</div>
+      <div style="max-width: 1200px;"><div class="ds-tab ds-tab--standard" data-tab-current="regular-atom" data-tab-group="" data-ai-example="ai-tab-standard-default" data-tab-source-pc-default="official">
+        <div class="ds-tab__item ds-tab__item--active" data-tab-item="">
+          <div class="ds-tab__item-inner"><span class="ds-tab__item-text">Option</span><div class="ds-tab__indicator"></div></div>
+        </div>
+        <div class="ds-tab__item" data-tab-item="">
+          <div class="ds-tab__item-inner"><span class="ds-tab__item-text">Option</span></div>
+        </div>
+        <div class="ds-tab__item" data-tab-item="">
+          <div class="ds-tab__item-inner"><span class="ds-tab__item-text">Option</span></div>
+        </div>
+      </div></div>
+    </div>
+
+    <div class="demo-row">
+      <div class="demo-label">居左 — Large (16px)</div>
+      <div style="max-width: 1200px;"><div class="ds-tab ds-tab--standard ds-tab--standard-lg" data-tab-current="regular-atom" data-tab-group="" data-ai-example="ai-tab-standard-large" data-tab-source-pc-large="official">
+        <div class="ds-tab__item ds-tab__item--active" data-tab-item="">
+          <div class="ds-tab__item-inner"><span class="ds-tab__item-text">Option</span><div class="ds-tab__indicator"></div></div>
+        </div>
+        <div class="ds-tab__item" data-tab-item="">
+          <div class="ds-tab__item-inner"><span class="ds-tab__item-text">Option</span></div>
+        </div>
+        <div class="ds-tab__item" data-tab-item="">
+          <div class="ds-tab__item-inner"><span class="ds-tab__item-text">Option</span></div>
+        </div>
+      </div></div>
+    </div>
+
+    <div class="demo-row">
+      <div class="demo-label">居中 — Default (14px)</div>
+      <div class="ds-tab ds-tab--standard ds-tab--center" data-tab-source-pc-center-default="official" data-tab-current="regular-atom" data-tab-group="" data-ai-example="ai-tab-standard-center-default">
+        <div class="ds-tab__item ds-tab__item--active" data-tab-item="">
+          <div class="ds-tab__item-inner"><span class="ds-tab__item-text">Option</span><div class="ds-tab__indicator"></div></div>
+        </div>
+        <div class="ds-tab__item" data-tab-item="">
+          <div class="ds-tab__item-inner"><span class="ds-tab__item-text">Option</span></div>
+        </div>
+        <div class="ds-tab__item" data-tab-item="">
+          <div class="ds-tab__item-inner"><span class="ds-tab__item-text">Option</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-row">
+      <div class="demo-label">居中 — Large (16px)</div>
+      <div class="ds-tab ds-tab--standard ds-tab--standard-lg ds-tab--center" data-tab-source-pc-center-large="official" data-tab-current="regular-atom" data-tab-group="" data-ai-example="ai-tab-standard-center-large">
+        <div class="ds-tab__item ds-tab__item--active" data-tab-item="">
+          <div class="ds-tab__item-inner"><span class="ds-tab__item-text">Option</span><div class="ds-tab__indicator"></div></div>
+        </div>
+        <div class="ds-tab__item" data-tab-item="">
+          <div class="ds-tab__item-inner"><span class="ds-tab__item-text">Option</span></div>
+        </div>
+        <div class="ds-tab__item" data-tab-item="">
+          <div class="ds-tab__item-inner"><span class="ds-tab__item-text">Option</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../tab.js"></script>
+  
+  </div>
+  <script src="../preview/preview-link.js"></script>
+  <script src="../preview/reference-live.js"></script>
+
+
+<section class="section"><!-- local-page-review-20261113 --><h2>页面调用复核</h2><p class="subtitle">带图标分类导航保留 Product 的原图标槽和状态样式。替换图标只接受契约登记的文件；按名称、图形和业务含义逐项复核，不按示例序号循环。</p></section>
+</body></html>

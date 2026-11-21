@@ -1,0 +1,2130 @@
+{
+  "id": "comp_collapse_001",
+  "name": "Collapse",
+  "chineseName": "折叠面板",
+  "description": "折叠面板组件，一个组件四种类型：基础分割型（设置/信息组，右侧 Always Active 绿字或 toggle 开关，折叠指示器用 icon-collapse-plus/minus）/ 行内编辑型（账户信息，预览态⇄编辑态，复用 Input + Button）/ 数据预览型（订单行展开 Order Preview，两种形态：含/不含 Pickup Order 标签）/ 特征导引型（产品特征列表，默认展开首条，前导图标，联动右侧媒体，鼠标悬浮展开）。默认手风琴单开；仅 split 可通过 data-collapse-mode=multiple 显式多开。规范 v2.0。",
+  "category": "数据展示 Data Display",
+  "types": [
+    {
+      "name": "split",
+      "chineseName": "基础分割型",
+      "description": "普通信息/设置页的左侧加减号分割堆叠行。右侧业务状态或开关为可选槽，来源没有则省略且不留占位。v3独立FAQ使用右侧Up/Down，不属于当前split精确调用；历史FAQ沿锁定Plan保留。"
+    },
+    {
+      "name": "inline-edit",
+      "chineseName": "行内编辑型",
+      "description": "账户信息管理，预览态显示 label(270px)+值+Edit(icon-edit)，点击展开为编辑态：字段小标签 + Input 输入框 + 帮助文字 + Cancel/Save 按钮。"
+    },
+    {
+      "name": "data-preview",
+      "chineseName": "数据预览型",
+      "description": "账户中心订单列表行，展开显示 Order Preview 商品缩略图网格。两种形态：形态一含 Pickup Order 浅绿标签，形态二不含。行内含 chevron 箭头、状态 icon-info、View Order、最右侧 icon-more ⋯ 更多。"
+    },
+    {
+      "name": "feature",
+      "chineseName": "特征导引型",
+      "description": "产品页功能/技术特征列表，默认展开第 1 条（灰底圆角 + 正文），其余收起；鼠标悬浮条目展开，键盘可切换；每条带前导图标，配合右侧图文/视频媒体联动。"
+    },
+    {
+      "name": "v3-faq-atom-six-variants",
+      "chineseName": "FAQ原件六态（静态来源）",
+      "description": "仅有效库首中尾展开/收起六种真实行原件；不提供业务宿主或自动交互调用。"
+    }
+  ],
+  "variants": [
+    {
+      "name": "split",
+      "chineseName": "基础分割型",
+      "styleProperties": {
+        "item": "底边框 1px #EDEDF0，圆角 4px",
+        "header": "收起padding16px 20px；展开16px 20px 0；gap16",
+        "indicator": "icon-collapse-plus(收起)/icon-collapse-minus(展开) 14px",
+        "title": "#19191A / 13px / 600 / lh20",
+        "aside": "可选业务槽：Always Active 绿字(#10A300 12px) 或 ds-toggle 开关(30×16 开态绿)；来源没有时省略，不留空占位",
+        "body": "当前来源只读形态：padding12px 20px 16px，正文12px/20px/Gray3；复制区保留p.ds-collapse__copy-region，外部空白是收起热区"
+      },
+      "cssClass": "ds-collapse ds-collapse--split",
+      "isComplete": true,
+      "requiredChildren": [
+        "div.ds-collapse__item",
+        "button.ds-collapse__header",
+        "span.ds-collapse__title",
+        "div.ds-collapse__body",
+        "p.ds-collapse__copy-region"
+      ],
+      "selectionDecisionType": "基础分割型",
+      "whenToUse": "Cookies加减号只读说明，正文需复制。",
+      "whenNotToUse": "FAQ右箭头，区分首/中/尾行。",
+      "usage": "Cookies加减号只读说明，正文需复制。"
+    },
+    {
+      "name": "inline-edit",
+      "chineseName": "行内编辑型",
+      "styleProperties": {
+        "header": "padding 20px 24px，gap 24px，顶对齐",
+        "label": "270px / #19191A / 14px / 600 / lh22",
+        "value": "#19191A / 14px / lh22",
+        "edit": "TextButton inline-black/L 完整文字+左图标结构，原生button仅负责编辑面板切换；沿现行原子12px图标、2px gap、14px/lh22/400，hover保持黑色下划线。原稿16px图标差异见来源记录。",
+        "editPanel": "宿主字段/帮助文字/按钮装配槽380px；内部基础Input沿现行原子宽290px、标签14px/lh22、灰底字段高42/#F6F6F8/radius4。帮助文字#707070/13px/lh20；按钮组gap12 Cancel(outline-gray/XL)/Save(filled-black/XL)，Save按原生校验发送可取消意图，仅本地提交。原稿Input宽380差异见来源记录，宿主不覆盖原子。"
+      },
+      "selectionDecisionType": "行内编辑型",
+      "whenToUse": "PC账户资料原位查看、编辑与取消，需真实灰底Input及Save/Cancel。",
+      "whenNotToUse": "订单物料预览、FAQ或宣称服务器资料已保存。",
+      "usage": "本地草稿及原生校验；Save发送可取消的宿主意图，未阻止则仅提交本地预览值。",
+      "isComplete": true,
+      "pendingParts": [],
+      "cssClass": "ds-collapse ds-collapse--inline-edit",
+      "requiredChildren": [
+        "div.ds-collapse__item",
+        "button[data-collapse-edit]",
+        "form.ds-collapse__edit-panel",
+        "div.ds-input-field",
+        "button[data-collapse-save]"
+      ]
+    },
+    {
+      "name": "data-preview",
+      "chineseName": "数据预览型",
+      "styleProperties": {
+        "row": "padding 20px 24px，各列固定宽；hover/展开 行背景 #F6F6F8",
+        "rowArrow": "icon-chevron-down 12px，展开旋转 180°",
+        "status": "Canceled(#19191A 14px 600) + icon-info 16px",
+        "actions": "View Order(outline-black 高42) + icon-more 16px ⋯",
+        "rowTag": "可选 Pickup Order 标签，浅绿底 rgba(16,163,0,.1)，#10A300 12px",
+        "body": "灰底 #F6F6F8，内含白色 Order Preview 卡片(圆角12/padding 20 36)，商品项网格 gap36"
+      },
+      "selectionDecisionType": "数据预览型",
+      "whenToUse": "PC账户订单快照，或List折叠详情规范明确转引的订单物料预览。",
+      "whenNotToUse": "FAQ、资料编辑、任意树表、整行点击或未接业务后端。",
+      "usage": "订单行显式箭头单开，View Order/info/more只向宿主发送操作意图。",
+      "isComplete": true,
+      "pendingParts": [],
+      "cssClass": "ds-collapse ds-collapse--data-preview",
+      "requiredChildren": [
+        "div.ds-collapse__item",
+        "button.ds-collapse__order-toggle",
+        "div.ds-collapse__body",
+        "div.ds-collapse__preview-card"
+      ]
+    },
+    {
+      "name": "feature",
+      "chineseName": "特征导引型",
+      "styleProperties": {
+        "defaultOpen": "第 1 条",
+        "item": "圆角 8px",
+        "header": "padding 20px 24px，gap 8px",
+        "leadingIcon": "前导图标 20px",
+        "title": "收起 #707070 / 展开 #19191A，14px / 600 / lh22",
+        "openItem": "灰底 #F6F6F8 圆角 8px",
+        "body": "padding 0 24px 20px 52px，#707070 / 12px / lh20"
+      },
+      "cssClass": "ds-collapse ds-collapse--feature",
+      "isComplete": true,
+      "requiredChildren": [
+        "div.ds-collapse__item",
+        "button.ds-collapse__header",
+        "span.ds-collapse__title",
+        "div.ds-collapse__body"
+      ],
+      "selectionDecisionType": "特征导引型",
+      "whenToUse": "产品技术导引，图标语义匹配。",
+      "whenNotToUse": "教育、机构内容无匹配登记图标。",
+      "usage": "产品功能/技术导引，有匹配图标。"
+    },
+    {
+      "name": "v3-faq-atom-six-variants",
+      "chineseName": "FAQ原件六态（静态来源）",
+      "cssClass": "ds-collapse ds-collapse--faq-source-row",
+      "isComplete": false,
+      "styleProperties": {
+        "width": "1200px specimen",
+        "header": "16px/600/24; gap20, right Up/Down16",
+        "body": "14px/400/22; gap12",
+        "padding": "first0/0/16/0; middle/last16/0/16/0",
+        "divider": "inside bottom1pxEEE except last collapsed none",
+        "background": "no independent fill; radius0"
+      },
+      "requiredChildren": [
+        "div.ds-collapse__faq-source-header",
+        "p.ds-collapse__faq-source-title",
+        "img.ds-collapse__faq-source-arrow"
+      ],
+      "selectionDecisionType": "FAQ原件六态（静态来源）",
+      "whenToUse": "仅规范参考，当前不开放精确调用。",
+      "whenNotToUse": "",
+      "usage": "仅规范参考，当前不开放精确调用。"
+    },
+    {
+      "name": "faq",
+      "chineseName": "FAQ 问答组合",
+      "description": "复用已有FAQ首/中/尾六态原件的PC单项展开组合；标题与答案同属原件，不使用Cookies。",
+      "isComplete": true,
+      "pendingParts": [],
+      "cssClass": "ds-collapse ds-collapse--faq",
+      "requiredChildren": [
+        "div.ds-collapse__item",
+        "button.ds-collapse__faq-source-header",
+        "span.ds-collapse__faq-source-title",
+        "p.ds-collapse__faq-source-body",
+        "img.ds-collapse__faq-source-arrow"
+      ],
+      "selectionDecisionType": "FAQ 问答组合",
+      "whenToUse": "来源是明确的问题/答案，需要单项展开和FAQ右箭头。",
+      "whenNotToUse": "Cookies设置、产品技术图标导引、地图、账户编辑或订单预览。",
+      "usage": "来源是明确的问题/答案，需要单项展开和FAQ右箭头。"
+    }
+  ],
+  "states": [
+    {
+      "name": "collapsed",
+      "chineseName": "收起",
+      "styleOverrides": {
+        "body": "display:none",
+        "split-indicator": "icon-collapse-plus",
+        "data-preview-arrow": "不旋转"
+      },
+      "description": "默认收起态"
+    },
+    {
+      "name": "expanded",
+      "chineseName": "展开",
+      "styleOverrides": {
+        "body": "display:block",
+        "split-indicator": "icon-collapse-minus",
+        "data-preview-arrow": "旋转 180°",
+        "class": "ds-collapse__item--open"
+      },
+      "description": "默认单开；仅 split 显式 multiple 时多开，状态与加减号同步"
+    },
+    {
+      "name": "hover",
+      "chineseName": "悬停",
+      "styleOverrides": {
+        "header": "background #F6F6F8（整行变色，光标手型）",
+        "inline-edit": "Edit使用TextButton/inline-black/L原子悬停：黑色文字加下划线、鼠标手指状；不覆盖为蓝色"
+      },
+      "description": "各类型按对应规范与原子状态处理；行内Edit调用黑色TextButton下划线悬停。v3.0其他热区与BOM差异仍待定向比对，不从统一旧hover描述推断全部符合。"
+    },
+    {
+      "name": "preview",
+      "chineseName": "预览态（行内编辑型）",
+      "styleOverrides": {},
+      "description": "行内编辑型默认态：label + 值 + Edit"
+    },
+    {
+      "name": "edit",
+      "chineseName": "编辑态（行内编辑型）",
+      "styleOverrides": {
+        "body": "展开为 Input 输入框 + Cancel/Save 按钮"
+      },
+      "description": "点击 Edit 后进入编辑态"
+    }
+  ],
+  "commonProperties": {
+    "fontFamily": "Open Sans",
+    "borderRadius": "4px/8px/12px 按类型",
+    "display": "flex",
+    "flexDirection": "column"
+  },
+  "usageGuidelines": "默认同一 ds-collapse 组内只允许一个展开项；仅 split 的 data-collapse-mode=multiple 配置允许多开。基础分割型折叠指示器用图标 icon-collapse-plus(收起)/icon-collapse-minus(展开)，右侧业务槽可选：开关用 ds-toggle，只读项用 Always Active；来源没有时不渲染、不留占位。行内编辑型编辑态复用 Input(灰底) + Button（Save 用实心深灰、Cancel 用 outline）。数据预览型有两种形态（含/不含 Pickup Order 标签），状态点复用 Badge ds-badge-dot，状态旁 icon-info 提示，行尾 icon-more 更多菜单，展开箭头 icon-chevron-down 旋转 180°。特征导引型默认展开第 1 条，鼠标悬浮条目展开，键盘 Enter/Space 可切换，前导图标 20px，收起标题灰、展开标题黑。所有类型 hover 整行背景变 #F6F6F8。",
+  "tokenReferences": [
+    "color.gray-1",
+    "color.gray-3",
+    "color.gray-5",
+    "color.gray-6",
+    "color.gray-9",
+    "color.white",
+    "color.success",
+    "color.success-bg",
+    "color.blue",
+    "border-radius.md",
+    "typography.font-family-base",
+    "typography.font-size-h8",
+    "spacing.lg",
+    "spacing.20",
+    "spacing.sm",
+    "spacing.xl",
+    "spacing.2",
+    "spacing.md",
+    "spacing.6",
+    "spacing.collapse-status-indent",
+    "spacing.xs",
+    "spacing.48",
+    "spacing.36",
+    "spacing.9",
+    "spacing.collapse-body-indent",
+    "border.width.default",
+    "border.style.default",
+    "border.color.subtle",
+    "typography.font-weight-semibold",
+    "typography.font-size-sm",
+    "typography.font-weight-regular",
+    "typography.font-size-md",
+    "typography.h8-semibold",
+    "typography.h9-semibold",
+    "typography.h9-regular",
+    "typography.h7-semibold",
+    "typography.h7-regular",
+    "typography.h8-regular",
+    "border.style.none",
+    "border.color.strong",
+    "border.color.input-disabled",
+    "border.color.default",
+    "spacing.10",
+    "typography.font-size-h6",
+    "typography.h6-semibold",
+    "border.color.tag",
+    "border.color.emphasis"
+  ],
+  "constraints": {
+    "allowedChildren": [
+      "Text",
+      "Icon",
+      "Toggle",
+      "Input",
+      "Button",
+      "Badge"
+    ],
+    "requiredProperties": [
+      "type"
+    ],
+    "forbiddenCombinations": []
+  },
+  "relations": {
+    "variantDecisionsDescription": "先核对具体场景与原件，再排除不适用条件；候选只映射当前可调用变体，设计参考不开放调用。页面展示与 AI 读取同一份规则。",
+    "variantDecisions": [
+      {
+        "type": "基础分割型",
+        "className": "ds-collapse--split",
+        "whenToUse": "Cookies加减号只读说明，正文需复制。",
+        "whenNotToUse": "FAQ右箭头，区分首/中/尾行。",
+        "nestedComponents": [],
+        "status": "调用资格读取同版 catalog；来源范围和工程、视觉分别记录。",
+        "variant": "split",
+        "selectionCases": [
+          {
+            "id": "c1",
+            "kind": "use",
+            "condition": "Cookies加减号只读说明，正文需复制。",
+            "result": "默认单项；复制不收起。",
+            "targetVariant": "split"
+          },
+          {
+            "id": "c2",
+            "kind": "avoid",
+            "condition": "FAQ右箭头，区分首/中/尾行。",
+            "result": "不用Cookies替代。",
+            "targetVariant": "split"
+          },
+          {
+            "id": "c3",
+            "kind": "reference",
+            "condition": "明确要求多项同时展开。",
+            "result": "仅参考；未开放。",
+            "targetVariant": "split"
+          },
+          {
+            "id": "c4",
+            "kind": "reference",
+            "condition": "v3.1基础分割型地图联动。",
+            "result": "仅参考；未开放。",
+            "targetVariant": "split"
+          }
+        ]
+      },
+      {
+        "type": "行内编辑型",
+        "className": "ds-collapse--inline-edit",
+        "whenToUse": "PC账户资料原位查看、编辑与取消，需真实灰底Input及Save/Cancel。",
+        "whenNotToUse": "订单物料预览、FAQ或宣称服务器资料已保存。",
+        "nestedComponents": [
+          {
+            "component": "Input",
+            "href": "input.html"
+          },
+          {
+            "component": "Button",
+            "href": "button.html"
+          },
+          {
+            "component": "TextButton",
+            "href": "text-button.html"
+          }
+        ],
+        "status": "沿既有MG来源与现行原子完成有限PC调用；工程和视觉独立。",
+        "variant": "inline-edit",
+        "selectionCases": [
+          {
+            "id": "collapse.inline-edit.use",
+            "kind": "use",
+            "condition": "PC账户资料原位查看、编辑与取消，需真实灰底Input及Save/Cancel。",
+            "result": "本地草稿及原生校验；Save发送可取消的宿主意图，未阻止则仅提交本地预览值。",
+            "targetVariant": "inline-edit"
+          },
+          {
+            "id": "collapse.inline-edit.avoid",
+            "kind": "avoid",
+            "condition": "订单物料预览、FAQ或宣称服务器资料已保存。",
+            "result": "不扩大为其他场景或后台业务。",
+            "targetVariant": "inline-edit"
+          }
+        ]
+      },
+      {
+        "type": "数据预览型",
+        "className": "ds-collapse--data-preview",
+        "whenToUse": "PC账户订单快照，或List折叠详情规范明确转引的订单物料预览。",
+        "whenNotToUse": "FAQ、资料编辑、任意树表、整行点击或未接业务后端。",
+        "nestedComponents": [
+          {
+            "component": "Badge",
+            "label": "Badge(dot)",
+            "href": "badge.html"
+          },
+          {
+            "component": "Button",
+            "href": "button.html"
+          }
+        ],
+        "status": "调用资格读取同版 catalog；来源范围和工程、视觉分别记录。",
+        "variant": "data-preview",
+        "selectionCases": [
+          {
+            "id": "collapse-order-use",
+            "kind": "use",
+            "condition": "PC账户订单快照，或List折叠详情规范明确转引的订单物料预览。",
+            "result": "订单行显式箭头单开，View Order/info/more只向宿主发送操作意图。",
+            "targetVariant": "data-preview"
+          },
+          {
+            "id": "collapse-order-avoid",
+            "kind": "avoid",
+            "condition": "FAQ、资料编辑、任意树表、整行点击或未接业务后端。",
+            "result": "按实际场景另选，不扩大为任意折叠列表。",
+            "targetVariant": "data-preview"
+          }
+        ]
+      },
+      {
+        "type": "特征导引型",
+        "className": "ds-collapse--feature",
+        "whenToUse": "产品技术导引，图标语义匹配。",
+        "whenNotToUse": "教育、机构内容无匹配登记图标。",
+        "nestedComponents": [
+          {
+            "component": "无嵌套子组件（前导图标登记在依赖汇总表的图标列）"
+          }
+        ],
+        "status": "调用资格读取同版 catalog；来源范围和工程、视觉分别记录。",
+        "variant": "feature",
+        "selectionCases": [
+          {
+            "id": "c9",
+            "kind": "use",
+            "condition": "产品技术导引，图标语义匹配。",
+            "result": "默认首项展开。",
+            "targetVariant": "feature"
+          },
+          {
+            "id": "c10",
+            "kind": "avoid",
+            "condition": "教育、机构内容无匹配登记图标。",
+            "result": "禁止按序复用技术图标。",
+            "targetVariant": "feature"
+          },
+          {
+            "id": "c11",
+            "kind": "reference",
+            "condition": "联动左右图片或视频。",
+            "result": "仅参考；未开放。",
+            "targetVariant": "feature"
+          }
+        ]
+      },
+      {
+        "variant": "v3-faq-atom-six-variants",
+        "type": "FAQ原件六态（静态来源）",
+        "className": "ds-collapse ds-collapse--faq-source-row",
+        "whenToUse": "仅规范参考，当前不开放精确调用。",
+        "whenNotToUse": "",
+        "nestedComponents": [],
+        "status": "调用资格读取同版 catalog；来源范围和工程、视觉分别记录。",
+        "selectionCases": [
+          {
+            "id": "c12",
+            "kind": "reference",
+            "condition": "FAQ首/中/尾×展开/收起。",
+            "result": "仅参考；未开放。",
+            "targetVariant": "v3-faq-atom-six-variants"
+          }
+        ]
+      },
+      {
+        "variant": "faq",
+        "fragment": "faq",
+        "type": "FAQ 问答组合",
+        "className": "ds-collapse--faq",
+        "whenToUse": "来源是明确的问题/答案，需要单项展开和FAQ右箭头。",
+        "whenNotToUse": "Cookies设置、产品技术图标导引、地图、账户编辑或订单预览。",
+        "nestedComponents": [],
+        "status": "已有六态原件的有限PC组合，视觉批准独立。",
+        "selectionCases": [
+          {
+            "id": "faq-source-use",
+            "kind": "use",
+            "condition": "来源明确为FAQ，需展开原文答案。",
+            "result": "使用faq，首/中/末随位置确定。",
+            "targetVariant": "faq"
+          },
+          {
+            "id": "faq-source-avoid",
+            "kind": "avoid",
+            "condition": "Cookies、技术图标或业务编辑。",
+            "result": "不要套FAQ。",
+            "targetVariant": "faq"
+          }
+        ]
+      }
+    ],
+    "componentDependencies": [
+      {
+        "component": "Button",
+        "usage": "Cancel使用现行outline-gray/XL，Save使用filled-black/XL原生submit；保留原子默认样式，不从旧库复制覆盖。",
+        "slot": "body/row",
+        "requiredVariants": [
+          "outline-gray",
+          "filled-black"
+        ],
+        "implementationClasses": [
+          "ds-btn",
+          "ds-btn--outline-gray",
+          "ds-btn--filled-black",
+          "ds-btn--xl"
+        ],
+        "appliesTo": [
+          "inline-edit"
+        ],
+        "requiredSizes": [
+          {
+            "variant": "outline-gray",
+            "size": "xl"
+          },
+          {
+            "variant": "filled-black",
+            "size": "xl"
+          }
+        ],
+        "sourceEvidence": {
+          "review": "components/sources/collapse/inline-button-source-1010.json",
+          "basis": "user-confirmed-atom-first-assembly",
+          "originalHostMapping": "finite-instance-properties-and-retired-main-reference-confirmed",
+          "note": "Native original Cancel is gray-outline Default 69424:119931, Save black-fill Default 69424:119935, both 92x42; their referenced old library components have been deleted. Local current atom sizes/paint take precedence under user atom-first policy; do not claim pixel equivalence."
+        }
+      },
+      {
+        "component": "Button",
+        "usage": "当前MG描边黑色42px View Order；复用现行Button XL，保留原子优先取舍。",
+        "slot": "body/row",
+        "requiredVariants": [
+          "outline-black"
+        ],
+        "implementationClasses": [
+          "ds-btn",
+          "ds-btn--outline-black",
+          "ds-btn--xl"
+        ],
+        "appliesTo": [
+          "data-preview"
+        ],
+        "requiredSizes": [
+          {
+            "variant": "outline-black",
+            "size": "xl"
+          }
+        ],
+        "sourceEvidence": {
+          "review": "components/sources/list-option-mg-20261115/review.json",
+          "basis": "current-MG-instance-and-atom-first",
+          "originalHostMapping": "3:144776"
+        }
+      },
+      {
+        "component": "Input",
+        "usage": "行内编辑复用当前gray Input；本地Save原生校验并发送可取消意图，不包含后台持久化。",
+        "slot": "body",
+        "requiredVariants": [
+          "gray"
+        ],
+        "implementationClasses": [
+          "ds-input-field",
+          "ds-input-field__label",
+          "ds-input-field__input",
+          "ds-input-field__input--gray",
+          "ds-input-field__error",
+          "ds-input-field__error-icon",
+          "ds-input-field__error-text"
+        ],
+        "appliesTo": [
+          "inline-edit"
+        ],
+        "sourceEvidence": {
+          "review": "components/sources/collapse/inline-input-source-1010.json",
+          "originalHostMapping": "finite-instance-and-saved-atom-ancestry-confirmed",
+          "note": "Visible instance 69424:119941 child68908:022209 resolves to saved basic component68908:022199, background off/Input complete. Current atom width290 replaces original host380 under user atom-first policy; no pixel equivalence or browser acceptance."
+        }
+      },
+      {
+        "component": "Badge",
+        "usage": "MG Pending引用但实例文案Canceled，保留黄色FFD748，不能按文案改中性灰。",
+        "slot": "body",
+        "requiredVariants": [
+          "dot"
+        ],
+        "implementationClasses": [
+          "ds-badge-status",
+          "ds-badge-dot",
+          "ds-badge-dot--pending",
+          "ds-badge-status__text"
+        ],
+        "appliesTo": [
+          "data-preview"
+        ],
+        "part": "collapse-pending"
+      },
+      {
+        "component": "TextButton",
+        "usage": "当前行内编辑调用真实Edit私有动作原子，保留L及左侧图标；不开放为通用TextButton导航调用。",
+        "slot": "header",
+        "requiredVariants": [
+          "inline-black"
+        ],
+        "requiredSizes": [
+          {
+            "variant": "inline-black",
+            "size": "l"
+          }
+        ],
+        "implementationClasses": [
+          "ds-text-btn",
+          "ds-text-btn--inline",
+          "ds-text-btn--black",
+          "ds-text-btn--l",
+          "ds-text-btn__icon",
+          "ds-text-btn__text"
+        ],
+        "appliesTo": [
+          "inline-edit"
+        ],
+        "sourceEvidence": {
+          "review": "components/sources/collapse/text-button-nesting-1010.json",
+          "basis": "native-MasterGo-instance-and-saved-typed-atom-state",
+          "scope": "finite-preview-action-adapter; exact AI business-action calls remain unsupported",
+          "hostAdapterClasses": [
+            "ds-text-btn--icon-start"
+          ],
+          "previewBoundary": "Existing source-backed Collapse Edit icon-position adapter, not a standalone TextButton library variant; canonical implementationClasses refer only to original TextButton preview structure. Adapter class remains in the real host Preview and registered TextButton CSS/state rules."
+        },
+        "part": "collapse-edit-action"
+      },
+      {
+        "component": "Tag",
+        "part": "collapse-pickup",
+        "requiredVariants": [
+          "semantic"
+        ],
+        "implementationClasses": [
+          "ds-tag",
+          "ds-tag--pickup",
+          "ds-tag__label"
+        ],
+        "slot": "row-label",
+        "appliesTo": [
+          "data-preview"
+        ],
+        "usage": "原件浅绿Pickup Order，无Info槽；由Tag源维护。"
+      }
+    ],
+    "iconDependencies": [
+      {
+        "icon": "icon-collapse-plus",
+        "usage": "基础分割型收起态的折叠指示器（+）",
+        "required": true,
+        "appliesTo": [
+          "split"
+        ]
+      },
+      {
+        "icon": "icon-collapse-minus",
+        "usage": "基础分割型展开态的折叠指示器（−）",
+        "required": true,
+        "appliesTo": [
+          "split"
+        ]
+      },
+      {
+        "icon": "icon-edit",
+        "usage": "行内编辑型的 Edit 图标",
+        "required": false,
+        "appliesTo": [
+          "inline-edit"
+        ]
+      },
+      {
+        "icon": "icon-chevron-down",
+        "usage": "数据预览型订单行的展开箭头（展开旋转 180°）",
+        "required": false,
+        "appliesTo": [
+          "data-preview"
+        ]
+      },
+      {
+        "icon": "icon-more",
+        "usage": "数据预览型订单行最右侧的 ⋯ 更多菜单",
+        "required": false,
+        "appliesTo": [
+          "data-preview"
+        ]
+      },
+      {
+        "icon": "icon-info",
+        "usage": "数据预览型状态（如 Canceled）旁的说明提示图标",
+        "required": false,
+        "appliesTo": [
+          "data-preview"
+        ]
+      },
+      {
+        "icon": "icon-placeholder-switch",
+        "usage": "特征导引型前导图标占位之一（从库中现有图标选用）；仅说明现有素材，不证明业务语义匹配，禁止按选项序号循环调用。",
+        "required": false,
+        "appliesTo": [
+          "feature"
+        ]
+      },
+      {
+        "icon": "icon-demo-report",
+        "usage": "特征导引型前导图标占位之一（从库中现有图标选用）；仅说明现有素材，不证明业务语义匹配，禁止按选项序号循环调用。",
+        "required": false,
+        "appliesTo": [
+          "feature"
+        ]
+      },
+      {
+        "icon": "icon-grid-view",
+        "usage": "特征导引型前导图标占位之一（从库中现有图标选用）；仅说明现有素材，不证明业务语义匹配，禁止按选项序号循环调用。",
+        "required": false,
+        "appliesTo": [
+          "feature"
+        ]
+      },
+      {
+        "icon": "icon-list-view",
+        "usage": "特征导引型前导图标占位之一（从库中现有图标选用）；仅说明现有素材，不证明业务语义匹配，禁止按选项序号循环调用。",
+        "required": false,
+        "appliesTo": [
+          "feature"
+        ]
+      },
+      {
+        "icon": "icon-eye",
+        "usage": "特征导引型前导图标占位之一（从库中现有图标选用）；仅说明现有素材，不证明业务语义匹配，禁止按选项序号循环调用。",
+        "required": false,
+        "appliesTo": [
+          "feature"
+        ]
+      },
+      {
+        "icon": "icon-collapse-faq-up-current.svg",
+        "usage": "对应原件三种行位置的真实16px来源展示，不新增Hover或业务交互",
+        "required": false,
+        "appliesTo": [
+          "v3-faq-atom-six-variants"
+        ]
+      },
+      {
+        "icon": "icon-collapse-faq-down-current.svg",
+        "usage": "对应原件三种行位置的真实16px来源展示，不新增Hover或业务交互",
+        "required": false,
+        "appliesTo": [
+          "v3-faq-atom-six-variants"
+        ]
+      }
+    ],
+    "colorDependencies": [
+      {
+        "token": "color.gray-1",
+        "value": "#19191A",
+        "usage": "标题/正文主色、折叠指示器",
+        "appliesTo": [
+          "split",
+          "inline-edit",
+          "data-preview",
+          "feature"
+        ]
+      },
+      {
+        "token": "color.gray-3",
+        "value": "#707070",
+        "usage": "次要文字、展开正文、Qty",
+        "appliesTo": [
+          "split",
+          "inline-edit",
+          "data-preview",
+          "feature"
+        ]
+      },
+      {
+        "token": "color.gray-5",
+        "value": "#DEE0E3",
+        "usage": "ds-toggle 开关轨道底色（关态）",
+        "appliesTo": [
+          "split"
+        ]
+      },
+      {
+        "token": "color.gray-9",
+        "value": "#FAFBFB",
+        "usage": "hover/展开态整行底色、行内编辑输入框底、Order Preview 灰底",
+        "appliesTo": [
+          "split",
+          "inline-edit",
+          "data-preview",
+          "feature"
+        ]
+      },
+      {
+        "token": "color.gray-6",
+        "value": "#EDEDF0",
+        "usage": "基础分割型行分割线",
+        "appliesTo": [
+          "split"
+        ]
+      },
+      {
+        "token": "color.white",
+        "value": "#FFFFFF",
+        "usage": "订单行底色、Order Preview 卡片底色",
+        "appliesTo": [
+          "data-preview"
+        ]
+      },
+      {
+        "token": "color.success",
+        "value": "#10A300",
+        "usage": "Always Active 绿字、ds-toggle 开态、Pickup Order 标签文字",
+        "appliesTo": [
+          "split",
+          "data-preview"
+        ]
+      },
+      {
+        "token": "color.success-bg",
+        "value": "rgba(16,163,0,0.1)",
+        "usage": "Pickup Order 标签底色（success 10% 透明）",
+        "appliesTo": [
+          "data-preview"
+        ]
+      },
+      {
+        "token": "color.blue",
+        "value": "#0060BF",
+        "usage": "历史ds-collapse__edit悬停蓝色与链接色；当前Preview Edit使用TextButton原子黑色下划线，不调用该历史paint类。",
+        "appliesTo": [
+          "inline-edit"
+        ]
+      }
+    ],
+    "radiusDependencies": [
+      {
+        "token": "border-radius.md",
+        "value": "4px",
+        "usage": "折叠项圆角、基础分割型顶部圆角、Pickup Order 标签圆角",
+        "appliesTo": [
+          "split",
+          "data-preview"
+        ]
+      },
+      {
+        "token": "border-radius.lg",
+        "value": "8px",
+        "usage": "特征导引型 item/header/展开态圆角",
+        "appliesTo": [
+          "feature"
+        ]
+      },
+      {
+        "token": "border-radius.full",
+        "value": "9999px",
+        "usage": "ds-toggle 开关轨道（胶囊形）",
+        "appliesTo": [
+          "split"
+        ]
+      },
+      {
+        "token": "/",
+        "value": "50%",
+        "usage": "ds-toggle 开关圆钮（正圆），百分比圆角未 token 化，白名单登记",
+        "appliesTo": [
+          "split"
+        ]
+      },
+      {
+        "token": "/",
+        "value": "12px",
+        "usage": "数据预览型 Order Preview 卡片圆角，off-scale 值未 token 化，白名单登记",
+        "appliesTo": [
+          "data-preview"
+        ]
+      }
+    ],
+    "fontSizeDependencies": [
+      {
+        "token": "typography.font-size-sm",
+        "value": "12px",
+        "usage": "基础分割型展开正文、Always Active 与 Pickup Order 标签等次要字号",
+        "appliesTo": [
+          "split",
+          "data-preview"
+        ]
+      },
+      {
+        "token": "typography.font-size-md",
+        "value": "14px",
+        "usage": "行内编辑/数据预览的标签、值、单元格主字号",
+        "appliesTo": [
+          "inline-edit",
+          "data-preview",
+          "feature",
+          "v3-faq-atom-six-variants"
+        ]
+      },
+      {
+        "token": "typography.font-size-h8",
+        "value": "13px",
+        "usage": "H8 紧凑正文/组件文字，用于基础分割型标题、行内编辑 help 文案、preview 名称/数量等",
+        "appliesTo": [
+          "split",
+          "inline-edit",
+          "data-preview"
+        ]
+      },
+      {
+        "token": "typography.font-size-h6",
+        "value": "16px",
+        "usage": "六态FAQ原件标题16/600/24",
+        "appliesTo": [
+          "v3-faq-atom-six-variants"
+        ]
+      }
+    ],
+    "fontWeightDependencies": [
+      {
+        "token": "typography.font-weight-semibold",
+        "value": "600",
+        "usage": "折叠标题、状态与预览标题",
+        "appliesTo": [
+          "split",
+          "inline-edit",
+          "data-preview",
+          "feature",
+          "v3-faq-atom-six-variants"
+        ],
+        "properties": [
+          "font-weight"
+        ],
+        "selectors": [
+          ".ds-collapse__title",
+          ".ds-collapse__always",
+          ".ds-collapse--inline-edit .ds-collapse__label",
+          ".ds-collapse__status",
+          ".ds-collapse__preview-title",
+          ".ds-collapse__preview-status",
+          ".ds-collapse--feature .ds-collapse__title",
+          ".ds-collapse__faq-source-title"
+        ]
+      },
+      {
+        "token": "typography.font-weight-regular",
+        "value": "400",
+        "usage": "嵌套Input current资源的Token闭包；白底禁用选择器随原子资源加载，本宿主实际仅调用gray",
+        "properties": [
+          "font-weight"
+        ],
+        "selectors": [
+          "[data-input-current] .ds-input-field__label",
+          "[data-input-current] .ds-input-field__input",
+          "[data-input-current] .ds-input-field__error",
+          ".ds-collapse__faq-source-body"
+        ],
+        "appliesTo": [
+          "inline-edit",
+          "v3-faq-atom-six-variants"
+        ]
+      }
+    ],
+    "typographyDependencies": [
+      {
+        "token": "typography.h8-semibold",
+        "fontSizeToken": "typography.font-size-h8",
+        "fontSizeValue": "13px",
+        "fontWeightToken": "typography.font-weight-semibold",
+        "fontWeightValue": "600",
+        "weightEvidence": "explicit-css",
+        "usage": "基础分割型标题",
+        "appliesTo": [
+          "split"
+        ]
+      },
+      {
+        "token": "typography.h9-semibold",
+        "fontSizeToken": "typography.font-size-sm",
+        "fontSizeValue": "12px",
+        "fontWeightToken": "typography.font-weight-semibold",
+        "fontWeightValue": "600",
+        "weightEvidence": "explicit-css",
+        "usage": "Always Active 强调文字",
+        "appliesTo": [
+          "split"
+        ]
+      },
+      {
+        "token": "typography.h9-regular",
+        "fontSizeToken": "typography.font-size-sm",
+        "fontSizeValue": "12px",
+        "fontWeightToken": "typography.font-weight-regular",
+        "fontWeightValue": "400",
+        "weightEvidence": "inherited-regular",
+        "usage": "折叠正文与辅助文字",
+        "appliesTo": [
+          "split",
+          "data-preview",
+          "feature"
+        ]
+      },
+      {
+        "token": "typography.h7-semibold",
+        "fontSizeToken": "typography.font-size-md",
+        "fontSizeValue": "14px",
+        "fontWeightToken": "typography.font-weight-semibold",
+        "fontWeightValue": "600",
+        "weightEvidence": "explicit-css",
+        "usage": "编辑标签、状态与特征标题",
+        "appliesTo": [
+          "inline-edit",
+          "data-preview",
+          "feature"
+        ]
+      },
+      {
+        "token": "typography.h7-regular",
+        "fontSizeToken": "typography.font-size-md",
+        "fontSizeValue": "14px",
+        "fontWeightToken": "typography.font-weight-regular",
+        "fontWeightValue": "400",
+        "weightEvidence": "inherited-regular",
+        "usage": "编辑值与数据单元格；FAQ来源正文14/400/22",
+        "appliesTo": [
+          "inline-edit",
+          "data-preview",
+          "v3-faq-atom-six-variants"
+        ]
+      },
+      {
+        "token": "typography.h8-regular",
+        "fontSizeToken": "typography.font-size-h8",
+        "fontSizeValue": "13px",
+        "fontWeightToken": "typography.font-weight-regular",
+        "fontWeightValue": "400",
+        "weightEvidence": "inherited-regular",
+        "usage": "编辑帮助与预览文字",
+        "appliesTo": [
+          "inline-edit",
+          "data-preview"
+        ]
+      },
+      {
+        "token": "typography.h6-semibold",
+        "fontSizeToken": "typography.font-size-h6",
+        "fontSizeValue": "16px",
+        "fontWeightToken": "typography.font-weight-semibold",
+        "fontWeightValue": "600",
+        "weightEvidence": "explicit-css",
+        "usage": "FAQ来源标题16/600/24",
+        "appliesTo": [
+          "v3-faq-atom-six-variants"
+        ]
+      }
+    ],
+    "shadowDependencies": [
+      {
+        "token": "/",
+        "value": "0 1px 2px rgba(0,0,0,0.15)",
+        "usage": "ds-toggle 开关圆钮投影，无对应 token（shadow.sm 为 rgba(0,0,0,0.05)，透明度不同）",
+        "appliesTo": [
+          "split"
+        ]
+      }
+    ],
+    "commonlyEmbeddedIn": [
+      {
+        "component": "Form",
+        "usage": "设置页/账户页里的信息分组与开关项（基础分割型）",
+        "appliesTo": [
+          "split"
+        ],
+        "verified": false,
+        "verifiedNote": "2026-07-17 核查：form.json 未在 componentDependencies 声明依赖 Collapse。此条为设计意图/未来参考用法，保留手写。"
+      }
+    ],
+    "variantSelectionRules": [
+      "按同源变体决策和同版catalog调用资格选型。"
+    ],
+    "mutuallyExclusiveWith": [],
+    "notes": "四种类型共享 header/body 骨架，默认单开；仅 split 可显式 multiple，差异集中在右侧插槽与 body 内容。基础分割型折叠指示器改用图标 icon-collapse-plus/minus（规范 v2.0），开关 ds-toggle 为纯 CSS。数据预览型/行内编辑型不是新造子件，而是复用 Badge/Button/Input 组合。特征导引型前导图标当前用库中现有图标占位（icon-placeholder-switch/demo-report/grid-view/list-view/eye），右侧联动媒体在预览页用占位块表示。",
+    "splitTriggerRequirement": "split 变体的可交互 header 必须是 button.ds-collapse__header，并同步 aria-expanded / aria-controls；组件 CSS 负责清除原生 button 边框与背景。",
+    "splitContentSlots": {
+      "required": [
+        "root",
+        "item",
+        "buttonHeader",
+        "title",
+        "stateIndicator",
+        "body"
+      ],
+      "optional": [
+        "aside"
+      ],
+      "editable": [
+        "title",
+        "body"
+      ],
+      "numbering": "编号为 title 内容，不替代 icon-collapse-plus/minus；不得新增编号专属样式变体",
+      "asideAbsence": "来源没有业务状态/开关时不渲染 aside/always，不留空节点或固定宽度占位"
+    },
+    "expansionMode": {
+      "attribute": "data-collapse-mode",
+      "default": "single",
+      "allowed": [
+        "single",
+        "multiple"
+      ],
+      "multipleAppliesTo": [
+        "split"
+      ],
+      "requirement": "仅 split 在来源有多开证据且 Plan 登记时可显式使用 multiple；其他变体保持 single，非法值不得进入页面"
+    },
+    "enforcementStatus": {
+      "componentDependencies.implementationClasses-evidence": {
+        "enforced": true,
+        "mechanism": "check-contracts.js核对宿主具体Button变体和XL尺寸、Input(gray)、Badge(dot)及TextButton(inline-black/L)的真实结构、必需类与current资源；按componentDependencies定向核对。"
+      },
+      "accordionRule.single-open": {
+        "enforced": true,
+        "mechanism": "现行split/feature/FAQ沿原运行时；inline-edit用真实Input/Button/Edit部件，单字段草稿、回滚及可取消Save；data-preview用独立订单箭头。旧Preview禁用Save和legacy collapse.js仅留历史。",
+        "note": "默认 single；仅 split 显式 data-collapse-mode=multiple 可多开。初始化与点击均同步 class、aria-expanded、body.hidden、aria-hidden 和加减号。"
+      },
+      "splitStructure.preview-signature": {
+        "enforced": true,
+        "mechanism": "check-page-plan-output.js: collapseStructureIssues 检查 split 根节点/item/button/header/title 内加减号、aria-controls→body id、初始状态、显式模式与 Plan 配置；aside 可选，存在时不得为空；verify-component-instances.js 复用该检查"
+      },
+      "componentDependencies.reuse-badge-btn-input": {
+        "enforced": true,
+        "mechanism": "check-contracts.js: componentDependencies 引用的 Button/Input/Badge 及 Badge 的 dot variant 均校验存在"
+      },
+      "iconDependencies.reused-icons-exist": {
+        "enforced": true,
+        "mechanism": "check-contracts.js + generate-preview-tables.js 图标表实时核对 icon-collapse-plus/minus、icon-edit、icon-chevron-down、icon-more、icon-info 及特征前导图标存在"
+      },
+      "colorDependencies.tokens-exist": {
+        "enforced": true,
+        "mechanism": "check-contracts.js: colorDependencies 引用的 color.* token 必须存在于 token-specs/colors.json（缺失即 error），并校验 colors.json 与 tokens.css 的 --color-* 双源值一致（不一致告警）；generate-preview-tables.js 颜色依赖表实时展示色值/存在状态；Guard C 保证声明了 colorDependencies 就必须有颜色依赖表"
+      },
+      "colorDependencies.css-uses-var": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 2c：切出组件在 components.css 的样式段，校验用到的 var(--color-*) 都在 colorDependencies 声明过，且不出现未声明的裸色值（box-shadow/注释除外），违反即 error —— 保证颜色映射闭环、真·一一对应"
+      },
+      "radiusDependencies.tokens-exist": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 3a：radiusDependencies 引用的 border-radius.* token 必须存在于 token-specs/border-radius.json（缺失即 error），双源值一致由 validate-tokens.js 全量保证；generate-preview-tables.js 圆角依赖表实时展示；Guard D 保证声明了 radiusDependencies 就必须有圆角依赖表"
+      },
+      "radiusDependencies.css-uses-var": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 3b：切出组件样式段，校验 border-radius 用到的 var(--border-radius-*) 都在 radiusDependencies 声明过，且不出现未声明的裸圆角值（0 除外），违反即 error —— 保证圆角映射闭环"
+      },
+      "fontSizeDependencies.tokens-exist": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 4a：fontSizeDependencies 引用的 typography.font-size-* token 必须存在于 token-specs/typography.json（缺失即 error）；token 为 / 表示该字号值无对应正式 token，作白名单登记；generate-preview-tables.js 字号依赖表实时展示；Guard E 保证声明了 fontSizeDependencies 就必须有字号依赖表"
+      },
+      "fontSizeDependencies.css-uses-var": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 4b：切出组件样式段，校验 font-size 用到的 var(--font-size-*) 都在 fontSizeDependencies 声明过，且不出现未声明的裸字号值（token 为 / 的白名单值除外），违反即 error —— 保证字号映射闭环"
+      },
+      "shadowDependencies.tokens-exist": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 5a：shadowDependencies 引用的 shadow.* token 必须存在于 token-specs/shadows.json（缺失即 error）；token 为 / 表示该投影值无对应正式 token，作白名单登记；generate-preview-tables.js 投影依赖表实时展示；Guard F 保证声明了 shadowDependencies 就必须有投影依赖表"
+      },
+      "shadowDependencies.css-uses-var": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 5b：切出组件样式段，校验 box-shadow 用到的 var(--shadow-*) 都在 shadowDependencies 声明过，且不出现未声明的裸投影值（none 除外），违反即 error —— 保证投影映射闭环"
+      },
+      "spacingDependencies.tokens-and-css-closure": {
+        "enforced": true,
+        "mechanism": "check-contracts.js: spacingDependencies token/value/selector/property 与组件 CSS 双向闭环校验"
+      },
+      "borderDependencies.tokens-and-css-closure": {
+        "enforced": true,
+        "mechanism": "check-contracts.js: borderDependencies token/value/aspect/selector/property 与组件 CSS 双向闭环校验"
+      },
+      "fontWeightDependencies.tokens-and-css-closure": {
+        "enforced": true,
+        "mechanism": "check-contracts.js: fontWeightDependencies token/value/selector/property 与组件 CSS 双向闭环校验；仅允许 Regular 400 / SemiBold 600，禁止裸字重值"
+      },
+      "typographyDependencies.size-weight-pairing": {
+        "enforced": true,
+        "mechanism": "check-contracts.js: typographyDependencies.token 必须引用 token-specs/typography.json 中真实 composite typography token；该 token 同时锁定 fontSize、lineHeight、fontWeight，并核对底层字号/字重 primitive 与 CSS 证据，依赖汇总表只输出一个 Token 链接"
+      }
+    },
+    "spacingDependencies": [
+      {
+        "token": "spacing.lg",
+        "value": "16px",
+        "usage": "gap / padding / padding-left：.ds-collapse__header、.ds-collapse__body、.ds-collapse__cell",
+        "properties": [
+          "gap",
+          "padding",
+          "padding-left",
+          "padding-top"
+        ],
+        "selectors": [
+          ".ds-collapse__header",
+          ".ds-collapse__body",
+          ".ds-collapse__cell",
+          ".ds-collapse.ds-collapse--faq-source-row",
+          ".ds-collapse.ds-collapse--faq-source-row[data-faq-position=\"middle\"]",
+          ".ds-collapse.ds-collapse--faq-source-row[data-faq-position=\"last\"]"
+        ],
+        "appliesTo": [
+          "split",
+          "data-preview",
+          "v3-faq-atom-six-variants"
+        ]
+      },
+      {
+        "token": "spacing.20",
+        "value": "20px",
+        "usage": "padding / gap：.ds-collapse__header、.ds-collapse__body、.ds-collapse--inline-edit .ds-collapse__header、.ds-collapse__edit-panel、.ds-collapse__row、.ds-collapse__preview-card、.ds-collapse--feature .ds-collapse__header、.ds-collapse--feature .ds-collapse__body",
+        "properties": [
+          "padding",
+          "gap"
+        ],
+        "selectors": [
+          ".ds-collapse__header",
+          ".ds-collapse__body",
+          ".ds-collapse--inline-edit .ds-collapse__header",
+          ".ds-collapse__edit-panel",
+          ".ds-collapse__row",
+          ".ds-collapse__preview-card",
+          ".ds-collapse--feature .ds-collapse__header",
+          ".ds-collapse--feature .ds-collapse__body",
+          ".ds-collapse__faq-source-header"
+        ],
+        "appliesTo": [
+          "split",
+          "inline-edit",
+          "data-preview",
+          "feature",
+          "v3-faq-atom-six-variants"
+        ]
+      },
+      {
+        "token": "spacing.sm",
+        "value": "8px",
+        "usage": "gap：.ds-collapse__title、.ds-collapse__aside、.ds-collapse__edit-field、.ds-collapse__order、.ds-collapse--feature、.ds-collapse--feature .ds-collapse__header",
+        "properties": [
+          "gap"
+        ],
+        "selectors": [
+          ".ds-collapse__title",
+          ".ds-collapse__aside",
+          ".ds-collapse__edit-field",
+          ".ds-collapse__order",
+          ".ds-collapse--feature",
+          ".ds-collapse--feature .ds-collapse__header"
+        ],
+        "appliesTo": [
+          "split",
+          "inline-edit",
+          "data-preview",
+          "feature"
+        ]
+      },
+      {
+        "token": "spacing.xl",
+        "value": "24px",
+        "usage": "gap / padding：.ds-collapse--inline-edit .ds-collapse__header、.ds-collapse__row、.ds-collapse--data-preview .ds-collapse__body、.ds-collapse--feature .ds-collapse__header、.ds-collapse--feature .ds-collapse__body",
+        "properties": [
+          "gap",
+          "padding"
+        ],
+        "selectors": [
+          ".ds-collapse--inline-edit .ds-collapse__header",
+          ".ds-collapse__row",
+          ".ds-collapse--data-preview .ds-collapse__body",
+          ".ds-collapse--feature .ds-collapse__header",
+          ".ds-collapse--feature .ds-collapse__body"
+        ],
+        "appliesTo": [
+          "inline-edit",
+          "data-preview",
+          "feature"
+        ]
+      },
+      {
+        "token": "spacing.2",
+        "value": "2px",
+        "usage": "gap / padding：.ds-collapse__edit、.ds-collapse__row-tag",
+        "properties": [
+          "gap",
+          "padding"
+        ],
+        "selectors": [
+          ".ds-collapse__edit",
+          ".ds-collapse__row-tag"
+        ],
+        "appliesTo": [
+          "inline-edit",
+          "data-preview"
+        ]
+      },
+      {
+        "token": "spacing.md",
+        "value": "12px",
+        "usage": "gap / margin-bottom：.ds-collapse__edit-actions、.ds-collapse__actions、.ds-collapse__preview-title、.ds-collapse__preview-item；当前只读Cookies正文上内距12px",
+        "properties": [
+          "gap",
+          "margin-bottom",
+          "padding-top"
+        ],
+        "selectors": [
+          ".ds-collapse__edit-actions",
+          ".ds-collapse__actions",
+          ".ds-collapse__preview-title",
+          ".ds-collapse__preview-item",
+          "[data-collapse-source-cookies=\"official\"] > .ds-collapse__item > .ds-collapse__body",
+          ".ds-collapse.ds-collapse--faq-source-row"
+        ],
+        "appliesTo": [
+          "inline-edit",
+          "data-preview",
+          "split",
+          "v3-faq-atom-six-variants"
+        ]
+      },
+      {
+        "token": "spacing.6",
+        "value": "6px",
+        "usage": "gap：.ds-collapse__status",
+        "properties": [
+          "gap"
+        ],
+        "selectors": [
+          ".ds-collapse__status"
+        ],
+        "appliesTo": [
+          "data-preview"
+        ]
+      },
+      {
+        "token": "spacing.collapse-status-indent",
+        "value": "42px",
+        "usage": "padding-left：.ds-collapse__status",
+        "properties": [
+          "padding-left"
+        ],
+        "selectors": [
+          ".ds-collapse__status"
+        ],
+        "appliesTo": [
+          "data-preview"
+        ]
+      },
+      {
+        "token": "spacing.xs",
+        "value": "4px",
+        "usage": "padding / gap：.ds-collapse__row-tag、.ds-collapse__preview-thumb",
+        "properties": [
+          "padding",
+          "gap"
+        ],
+        "selectors": [
+          ".ds-collapse__row-tag",
+          ".ds-collapse__preview-thumb"
+        ],
+        "appliesTo": [
+          "data-preview"
+        ]
+      },
+      {
+        "token": "spacing.48",
+        "value": "48px",
+        "usage": "padding：.ds-collapse--data-preview .ds-collapse__body",
+        "properties": [
+          "padding"
+        ],
+        "selectors": [
+          ".ds-collapse--data-preview .ds-collapse__body"
+        ],
+        "appliesTo": [
+          "data-preview"
+        ]
+      },
+      {
+        "token": "spacing.36",
+        "value": "36px",
+        "usage": "padding / gap：.ds-collapse__preview-card、.ds-collapse__preview-grid",
+        "properties": [
+          "padding",
+          "gap"
+        ],
+        "selectors": [
+          ".ds-collapse__preview-card",
+          ".ds-collapse__preview-grid"
+        ],
+        "appliesTo": [
+          "data-preview"
+        ]
+      },
+      {
+        "token": "spacing.9",
+        "value": "9px",
+        "usage": "gap：.ds-collapse__preview-status",
+        "properties": [
+          "gap"
+        ],
+        "selectors": [
+          ".ds-collapse__preview-status"
+        ],
+        "appliesTo": [
+          "data-preview"
+        ]
+      },
+      {
+        "token": "spacing.collapse-body-indent",
+        "value": "52px",
+        "usage": "padding：.ds-collapse--feature .ds-collapse__body",
+        "properties": [
+          "padding"
+        ],
+        "selectors": [
+          ".ds-collapse--feature .ds-collapse__body"
+        ],
+        "appliesTo": [
+          "feature"
+        ]
+      },
+      {
+        "token": "spacing.10",
+        "value": "10px",
+        "usage": "Shared Input-family textarea CSS dependency; only data-input-kind=textarea activates it",
+        "appliesTo": [
+          "split",
+          "inline-edit",
+          "data-preview",
+          "feature"
+        ]
+      }
+    ],
+    "borderDependencies": [
+      {
+        "token": "border.width.default",
+        "value": "1px",
+        "usage": "border-bottom：.ds-collapse--split .ds-collapse__item",
+        "aspect": "width",
+        "properties": [
+          "border-bottom"
+        ],
+        "selectors": [
+          ".ds-collapse--split .ds-collapse__item",
+          ".ds-collapse.ds-collapse--faq-source-row[data-faq-divider=\"on\"]::after"
+        ],
+        "appliesTo": [
+          "split",
+          "v3-faq-atom-six-variants"
+        ]
+      },
+      {
+        "token": "border.style.default",
+        "value": "solid",
+        "usage": "border-bottom：.ds-collapse--split .ds-collapse__item",
+        "aspect": "style",
+        "properties": [
+          "border-bottom"
+        ],
+        "selectors": [
+          ".ds-collapse--split .ds-collapse__item",
+          ".ds-collapse.ds-collapse--faq-source-row[data-faq-divider=\"on\"]::after"
+        ],
+        "appliesTo": [
+          "split",
+          "v3-faq-atom-six-variants"
+        ]
+      },
+      {
+        "token": "border.color.subtle",
+        "value": "var(--color-gray-6)",
+        "usage": "border-bottom：.ds-collapse--split .ds-collapse__item",
+        "aspect": "color",
+        "properties": [
+          "border-bottom"
+        ],
+        "selectors": [
+          ".ds-collapse--split .ds-collapse__item"
+        ],
+        "appliesTo": [
+          "split"
+        ]
+      },
+      {
+        "token": "border.style.none",
+        "value": "none",
+        "usage": "嵌套Input current资源的Token闭包；白底禁用选择器随原子资源加载，本宿主实际仅调用gray；当前Cookies清除占尺寸的旧底border，用1px内部底线还原原件",
+        "aspect": "style",
+        "properties": [
+          "border",
+          "border-bottom"
+        ],
+        "selectors": [
+          "[data-input-current] .ds-input-field__input--gray",
+          "[data-input-current] .ds-input-field__input--gray:disabled",
+          "[data-collapse-source-cookies=\"official\"] > .ds-collapse__item"
+        ],
+        "appliesTo": [
+          "inline-edit",
+          "split"
+        ]
+      },
+      {
+        "token": "border.color.strong",
+        "value": "var(--color-gray-3)",
+        "usage": "嵌套Input current资源的Token闭包；白底禁用选择器随原子资源加载，本宿主实际仅调用gray",
+        "aspect": "color",
+        "properties": [
+          "border"
+        ],
+        "selectors": [
+          "[data-input-current] .ds-input-field__input--gray:not(:disabled):focus"
+        ],
+        "appliesTo": [
+          "inline-edit"
+        ]
+      },
+      {
+        "token": "border.color.input-disabled",
+        "value": "var(--color-input-disabled-border)",
+        "usage": "嵌套Input current资源的Token闭包；白底禁用选择器随原子资源加载，本宿主实际仅调用gray",
+        "aspect": "color",
+        "properties": [
+          "border"
+        ],
+        "selectors": [
+          "[data-input-current] .ds-input-field__input--white:disabled"
+        ],
+        "appliesTo": [
+          "inline-edit"
+        ]
+      },
+      {
+        "token": "border.color.default",
+        "value": "var(--color-gray-5)",
+        "aspect": "color",
+        "usage": "嵌套Input资源闭包",
+        "appliesTo": [
+          "inline-edit"
+        ],
+        "selectors": [
+          "[data-input-current] .ds-input-field__input--white"
+        ],
+        "properties": [
+          "border"
+        ]
+      },
+      {
+        "token": "border.color.tag",
+        "value": "var(--color-tag-border)",
+        "usage": "FAQ来源底线实际#EEEEEE，复用已存在同值边界Token；不将旧Gray5/Gray6别名冒称源码颜色名",
+        "aspect": "color",
+        "properties": [
+          "border-bottom"
+        ],
+        "selectors": [
+          ".ds-collapse.ds-collapse--faq-source-row[data-faq-divider=\"on\"]::after"
+        ],
+        "appliesTo": [
+          "v3-faq-atom-six-variants"
+        ]
+      },
+      {
+        "token": "border.color.emphasis",
+        "value": "var(--color-gray-1)",
+        "usage": "当前MG来源Tag配置项边框，随共享Tag源同步。",
+        "aspect": "color",
+        "properties": [
+          "border-color"
+        ],
+        "selectors": [
+          ".ds-select--open [data-tag-part=\"configuration-color\"]",
+          "label.ds-tag[data-tag-part=\"configuration-service\"]:has(input:checked)"
+        ],
+        "appliesTo": [
+          "data-preview"
+        ]
+      }
+    ],
+    "hardRules": [
+      {
+        "title": "展开模式：默认单开，split 可显式多开",
+        "description": "AI 生成页面时必须遵守（规范 v2.0）。左边是描述原文，右边是 AI 解析后写入 <code>collapse.json</code> 的字段值。",
+        "ruleContent": "<strong>默认 single，同组展开一项时其余收起；仅 split 可显式配置 <code>data-collapse-mode=\"multiple\"</code>，且须有来源证据和 Plan 登记。</strong>其他变体不开放多开。编号是标题内容，不能替代加减号状态指示器。",
+        "aiParse": "relations.enforcementStatus\n  [\"accordionRule.single-open\"]\n  = { enforced: true,\n      mechanism: \"components/collapse.js（事件委托：feature 鼠标悬浮展开、键盘激活切换；默认展开一项时收起同组其它项；仅 split 显式 multiple 时保留其它展开项；并处理 +/− 图标切换、ds-toggle 独立切换、行内编辑 Edit/Cancel/Save、数据预览行展开）\" }",
+        "enforcement": "components/collapse.js 实现；scripts/collapse.test.js 验证默认单开、多开和状态同步；check-page-plan-output.js 检查模式与 Plan 一致。"
+      },
+      {
+        "title": "基础分割型 header 使用语义按钮",
+        "ruleContent": "<strong><code>ds-collapse--split</code> 的可交互 header 必须使用 <code>button.ds-collapse__header</code>，同步 <code>aria-expanded</code> 与 <code>aria-controls</code>；组件 CSS 统一清除原生按钮边框和背景。</strong>",
+        "aiParse": "relations.splitTriggerRequirement = \"button.ds-collapse__header + aria-expanded + aria-controls\"",
+        "enforcement": "强制规则（<code>verify.js: COLLAPSE_TRIGGER_SEMANTICS</code>），使用 div/span 或原生按钮边框泄漏直接判 <strong style=\"color:#C00000;\">error</strong>。"
+      },
+      {
+        "title": "基础分割型核心结构必需，业务状态槽可选",
+        "ruleContent": "<strong>split 必须保留 root/item、button header、title 内加减号和 body，<code>aria-controls</code> 指向当前 body 的唯一 id。</strong>右侧 always/aside 为可选业务槽；来源没有时不渲染、不留占位。正文和标题按来源替换，编号可作为标题内容。",
+        "aiParse": "relations.enforcementStatus[\"splitStructure.preview-signature\"]",
+        "enforcement": "强制规则（<code>check-page-plan-output.js: collapseStructureIssues</code>，由 verify-component-instances.js 复用）；缺失核心结构、空业务占位、非法模式或状态不一致判 error。"
+      }
+    ],
+    "interactionRules": [
+      {
+        "name": "展开模式",
+        "rule": "v3.1 默认手风琴，同组最多一项展开；multiple 仅保留已有兼容扩展。",
+        "owner": "Collapse 运行时"
+      },
+      {
+        "name": "Cookies 热区",
+        "rule": "正文复制区域不切换；标题和已展开正文周围空白按既有来源切换。",
+        "owner": "split 原件与运行时"
+      },
+      {
+        "name": "特征导引",
+        "rule": "悬停展开，默认第一项；键盘激活可操作，不能把鼠标点击误作重复切换。",
+        "owner": "feature 运行时"
+      },
+      {
+        "name": "外部联动",
+        "rule": "媒体、地图、资料保存、订单操作不由静态展开自动完成。",
+        "owner": "页面宿主；未开放形态保持参考"
+      },
+      {
+        "name": "真实子组件",
+        "rule": "保留原 Input/Button/TextButton/Badge 依赖；只在对应编辑/订单形态中引用，不虚构普通 split 的开关子组件。",
+        "owner": "既有依赖和同步机制"
+      }
+    ]
+  },
+  "searchIntents": [
+    "折叠面板",
+    "手风琴",
+    "可折叠列表",
+    "行内编辑折叠",
+    "订单展开预览",
+    "特征导引折叠",
+    "Cookie 设置项"
+  ],
+  "history": [
+    {
+      "date": "2026-10-12",
+      "author": "Codex",
+      "change": "TextButton原子预览按用户要求移除额外能力演示；将ds-text-btn--icon-start从原始组件双向Preview调用类清单移到sourceEvidence.hostAdapterClasses，保留现有真实宿主适配及其来源/结构检查，不冒称原子新变体。"
+    },
+    {
+      "date": "2026-10-10",
+      "author": "Codex",
+      "change": "原生核对Cancel为灰色描边旧库实例，纠正两处黑色描边调用为现行outline-gray/XL并登记依赖；原稿旧库主组件已删除，不恢复。Save原稿Default仅作为来源事实，本地disabled业务边界保留。"
+    },
+    {
+      "date": "2026-10-10",
+      "author": "Codex",
+      "change": "Edit真实嵌套TextButton inline-black/L：保留文字/左图标结构，原生button由宿主管理展开；移除当前调用的旧host样式类，hover遵循黑色下划线。原稿16px图标按用户原子优先取舍沿现行12px原子，并记录差异。补齐面板身份与禁用字段组保护，inline-edit完整验收和AI精确支持仍pending。"
+    },
+    {
+      "date": "2026-10-07",
+      "change": "用户确认：split 右侧业务状态槽可选且不得空占位；仅 split 显式 data-collapse-mode=multiple 支持多开，默认及其他变体单开不变；编号为标题内容，不替代加减号。同步真实 Preview、运行时、静态检查与回归测试。",
+      "author": "Codex"
+    },
+    {
+      "date": "2026-07-23",
+      "author": "Kiro",
+      "change": "将字号与字重配对提升为正式 composite typography token；组件依赖以单一 token 引用完整字号、行高、字重，primitive 字段仅保留作 CSS 证据。"
+    },
+    {
+      "date": "2026-07-22",
+      "change": "新增 typographyDependencies 成对字体依赖：每条记录明确绑定字号与字重，依赖汇总表按“字号 · 层级 · 字重”整体展示，禁止拆列后猜测组合。",
+      "author": "Kiro"
+    },
+    {
+      "date": "2026-07-22",
+      "change": "新增 fontWeightDependencies：按组件 CSS 显式 font-weight 证据登记 Regular 400 / SemiBold 600；无显式声明的组件保留空数组，并纳入 token/value/selector/property 双向闭环校验。",
+      "author": "Kiro"
+    },
+    {
+      "date": "2026-07-20",
+      "change": "父子依赖治理：为 Collapse→Input(gray)、Button(outline-black/filled-black) 补齐 requiredVariants 与 preview implementationClasses 证据；Form 保留为 verified:false 参考关系。",
+      "author": "Kiro"
+    },
+    {
+      "date": "2026-07-10",
+      "change": "按官方规范 v2.0 分批投喂重建 Collapse 契约：四种类型（基础分割/行内编辑/数据预览/特征导引），手风琴单开；基础分割型折叠指示器改用图标 icon-collapse-plus/minus（新增），新增 icon-info（数据预览状态提示），复用 icon-edit/icon-chevron-down/icon-more 与 Button/Input/Badge；数据预览型补齐含/不含 Pickup Order 两形态；特征前导图标用库中现有图标占位",
+      "author": "TBD"
+    },
+    {
+      "date": "2026-07-10",
+      "change": "新增颜色关联：relations.colorDependencies 声明 7 个颜色 token（gray-1/2? 实际 gray-1/gray-3/gray-5/gray-9/white/success/blue）+ 未 token 化的分割线 #EDEDF0；配套 component.schema.json 增加 colorDependencies 字段、generate-preview-tables.js 增加 generateColorTable 生成器与 Guard C、preview 页加 AUTO-GENERATED-COLOR-TABLE 颜色依赖表。tokenReferences 修正 color.text-success→color.success。首个试点组件，后续可推广到全部组件",
+      "author": "TBD"
+    },
+    {
+      "date": "2026-07-14",
+      "change": "新增交互实现 components/collapse.js（事件委托的手风琴式折叠：点击展开/收起、同组单开、+/− 图标切换、ds-toggle 独立切换、行内编辑 Edit/Cancel/Save、数据预览整行展开且 View Order/更多/info 不触发）；components.css 增加行内编辑型预览态⇄编辑态切换 3 条规则；preview/collapse.html 演示区由静态双态并排改为自包含可交互 item 并引入 collapse.js，订单预览占位图改为内联 SVG 灰块。accordionRule.single-open 的 enforcementStatus 由 enforced:false/mechanism:无 更新为 enforced:true/mechanism:collapse.js",
+      "author": "TBD"
+    },
+    {
+      "date": "2026-07-14",
+      "change": "增加间距与描边 token 依赖、CSS 选择器/属性证据及机械闭环校验映射",
+      "author": "Kiro"
+    },
+    {
+      "date": "2026-07-14",
+      "change": "依据 Collapse 四种类型的实际 CSS 选择器与预览结构，补齐 spacingDependencies/borderDependencies 的 appliesTo；split 有间距和描边，inline-edit/data-preview/feature 有间距但无描边",
+      "author": "Kiro"
+    },
+    {
+      "date": "2026-10-09",
+      "author": "Codex",
+      "change": "统一规范维护质量标准：登记真实实现与选型规则入口、源变更重新验收、父子影响检查及历史页面隔离；不推断可编辑槽位或视觉批准。"
+    }
+  ],
+  "isComplete": true,
+  "createdAt": "2026-07-10T00:00:00Z",
+  "updatedAt": "2026-11-15",
+  "qualityProfile": {
+    "schemaVersion": "1.0.0",
+    "standard": "docs/component-quality-standard.md",
+    "implementation": "components/variants/collapse.html",
+    "selection": {
+      "mappingSource": "components/selection-mvp-policy.json",
+      "mappingPointer": "components.collapse.variantDecisionTypes",
+      "rulesPointer": "relations.variantDecisions"
+    },
+    "maintenance": {
+      "authority": "contract-preview-runtime-token-icon",
+      "generatedOnly": [
+        "preview-reference-tables",
+        "component-index",
+        "selection-catalog",
+        "design-reading-view",
+        "ai-reference"
+      ],
+      "changePolicy": "记录来源差异、兼容性与受影响父子组件；源文件变化后旧工程验收失效。",
+      "historicalPages": "不自动升级；新页面锁定本地组件运行资源版本。"
+    },
+    "acceptance": {
+      "report": "components/quality/report.json",
+      "proof": "components/quality/acceptance.json",
+      "declarationIsNotProof": true
+    }
+  },
+  "editable": [
+    "items",
+    "mode",
+    "actionCallback",
+    "saveCallback"
+  ],
+  "integration": {
+    "styles": [
+      "components/tokens.css",
+      "components/components.css",
+      "components/button-current.css",
+      "components/button-runtime-current.css",
+      "components/input-current.css",
+      "components/text-button-current.css",
+      "components/collapse-host-preview.css",
+      "components/collapse-current.css",
+      "components/collapse-faq-source.css",
+      "components/badge-current.css",
+      "components/tag-configuration-current.css",
+      "components/collapse-data-current.css",
+      "components/collapse-edit-current.css"
+    ],
+    "scripts": [
+      "components/collapse-current.js",
+      "components/input-current.js",
+      "components/collapse-host-preview.js",
+      "components/collapse-data-current.js"
+    ],
+    "fontStylesheets": [
+      "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+    ],
+    "fontFallback": "Open Sans stack; actual browser focus/visual pending."
+  },
+  "aiContract": {
+    "schemaVersion": "1.0.0",
+    "rootTag": "div",
+    "scope": "existing-desktop-split-feature-and-source-faq-and-PC-order-preview",
+    "supported": [
+      "split",
+      "feature",
+      "faq",
+      "data-preview",
+      "inline-edit"
+    ],
+    "unsupported": [
+      "toggle-aside-canonical-call",
+      "feature-media-synchronization",
+      "invented-change-event",
+      "mobile",
+      "v3-faq-atom-six-variants",
+      "map-synchronization"
+    ],
+    "reviewStatus": {
+      "engineering": "pending",
+      "visual": "pending",
+      "familyCoverage": "partial"
+    },
+    "previewAssets": [
+      "components/preview/reference-live.js",
+      "components/sources/collapse/faq-type-glyph-review-1015.json",
+      "components/sources/collapse/faq-up-official-1015.svg",
+      "components/sources/collapse/faq-down-official-1015.svg",
+      "components/sources/collapse/faq-six-source-preview-1015.json"
+    ],
+    "selectionPolicy": "按原件区分 Cookies、FAQ、账户编辑、订单预览、特征导引和地图联动。当前 split/feature/faq/data-preview 按各自来源可调用；参考形态不得套现有类名冒充。默认单项展开；媒体/地图/业务保存需真实宿主实现。 已有FAQ原件可用faq组合：首中尾随行数确定，原箭头与底线状态联动，默认全部收起，单项展开。 List折叠详情先转引本组件data-preview，仅账户订单快照适用，不能冒充FAQ或任意树表。 Current five-variant closure 20261115: only supported exact source examples and publication decisions permit local calls. Earlier preview-only or placeholder descriptions are historical; PC geometry and host boundaries remain explicit.",
+    "identity": {
+      "rule": "Every header is a type=button with aria-controls pointing to a globally unique body ID; body hidden/aria-hidden and expanded state agree. Copies must regenerate body IDs and paired controls. Default first item open only. Marker-only data-collapse-current calls; current script guards repeated registration and disabled headers. Exception: data-preview starts all closed and uses its explicitly paired order-toggle only.",
+      "labelRule": "items preserves header/title icon and body; replace title/body text and regenerate identity as a pair. Optional read-only aside can be omitted for source absence as a declared adaptation; no fake switch."
+    },
+    "locked": [
+      "Actual disclosure header/body structure",
+      "Single-open default and icon/ARIA/hidden state",
+      "Split plus/minus and Feature registered leading icons",
+      "Shared CSS and delegated collapse.js",
+      "No invented save action, media synchronization or callback"
+    ],
+    "behavior": {
+      "initialization": "Current runtime requires marker, registers one document delegate set and keeps declared initial hidden/ARIA/icon state. Legacy collapse.js unchanged; do not co-load both.",
+      "split": "Header click toggles. Single mode closes peers; only split data-collapse-mode=multiple allows multiple. Icons, aria-expanded and body hidden/aria-hidden update together.",
+      "feature": "Mouseover opens a row; pointer-generated click detail!=0 does not toggle. Native keyboard-generated click detail=0 can toggle. No dedicated keydown polyfill; actual keyboard activation remains browser pending.",
+      "events": "No dedicated disclosure-change event. Native click bubbles and is not a business-save or media-change signal.",
+      "repeatLoad": "Current marker-only runtime has one document guard and delegated listener set. Legacy collapse.js must not be co-loaded; old repeat-binding behavior is not the current contract.",
+      "hosts": "Current PC inline-edit and data-preview calls use explicit typed controls and current child atoms. Inline edits support cancel/IME-safe Escape, native validity, cancelable Save intent and local preview commit only.",
+      "nativeStateGuard": "Native fieldset/button disabled, hidden item/ancestor and ARIA-disabled header/ancestor block synthetic activation and feature hover without discarding open state. Availability restoration permits subsequent operation; no hidden disclosure mutation.",
+      "editAtom": "Preview-only Edit delegates structure, font, paint, icon dimensions and hover to TextButton inline-black/L. The host owns only placement and paired disclosure events. Original 16px icon differs from current 12px atom; use user-confirmed atom-first policy, preserve source difference. No new exact action variant or Save behavior.",
+      "sourceV3Boundary": "Retained FAQ six source rows are composed by the existing faq call; source variants remain evidence, not independent business calls. Source arrows, first/middle/last borders and hidden state stay source-owned. Visual approval and M/Pad are separate.",
+      "cookiesHotZone1014": "Readonly finite split uses paragraph copy-region; click inside stays open and text is selectable, body padding/item blank closes. Header keyboard/click and authored single/multiple semantics retained. Missing source marker or paragraph region rejected; no Switch upgrade.",
+      "sourceV31": "《新文件》折叠面板v3.1沿用默认单项手风琴，新增基础分割型地图联动。该规范场景不等于现有split已具备地图能力；FAQ、编辑、订单和地图继续按各自调用资格判断。 Current source order snapshot is now admitted as data-preview; previous historical unsupported statement is superseded for this finite PC call only.",
+      "faq": "Native button activation; all closed initially, single-open, first/middle/last source padding/divider and up/down SVGs; answers remain inside true row, copy does not toggle. No image/map/business linkage.",
+      "dataPreview": "Current MG v3.1 finite PC order snapshot; explicit arrow/native Enter/Space toggles, single-open. View/info/more emit action/orderId only; no whole-row toggle, popup or backend promise. Both Pickup/no-Pickup source forms retained. Fixed PC row is internally scrollable on narrow host; no M call.",
+      "inlineEdit": "All closed initially; one open field at a time, opening another cancels prior draft. Cancel/Escape rollback/refocus; composing Escape/submit do not commit. Save uses form validity and bubbles cancelable ds:collapse-save {field,values}; preventDefault keeps editor open. Without cancellation, local display is updated; no server persistence promised."
+    },
+    "evidence": {
+      "localImplementation": "components/variants/collapse.html",
+      "comparison": "components/sources/collapse/local-structure-review.json",
+      "nativeSpecificationReview": "components/sources/collapse/specification-v3-review-1011.json",
+      "faqFirstExpandedReview": "components/sources/collapse/faq-first-expanded-property-review-1013.json",
+      "faqFirstCollapsedReview": "components/sources/collapse/faq-first-collapsed-property-review-1013.json",
+      "faqMiddleLastReview": "components/sources/collapse/faq-middle-last-source-1014.json",
+      "cookiesReadonlySource": "components/sources/collapse/cookies-readonly-source-1014.json",
+      "currentMgReview": "components/sources/tab-collapse-mg-20261114/collapse-review.json",
+      "listOptionSource": "components/sources/list-option-mg-20261115/review.json",
+      "fiveVariantSource": "components/sources/five-variants-20261115/review.json"
+    },
+    "variants": {
+      "split": {
+        "purpose": "split-single-open-disclosure",
+        "exampleSelector": "[data-ai-example=\"ai-collapse-split\"]",
+        "allowedEdits": [
+          "items",
+          "mode"
+        ],
+        "slots": {
+          "items": {
+            "selector": ":scope",
+            "mode": "structured-content",
+            "required": true,
+            "preserve": [
+              "div.ds-collapse__item",
+              "button.ds-collapse__header",
+              "span.ds-collapse__title",
+              "div.ds-collapse__body",
+              "p.ds-collapse__copy-region"
+            ],
+            "rule": "Existing title/body text and paired unique identities only; preserve authored first-open state and icons. Split read-only aside optional with declared source-based adaptation. Current Cookies root preserves data-collapse-source-cookies=official and inner p copy-region. Text copying never toggles; paragraph padding closes; source sample heights are content-dependent."
+          }
+        },
+        "bindings": {
+          "mode": {
+            "mode": "native-attribute",
+            "target": "root",
+            "attribute": "data-collapse-mode",
+            "values": [
+              "single",
+              "multiple"
+            ],
+            "default": "single"
+          }
+        },
+        "runtime": {
+          "styles": [
+            "components/tokens.css",
+            "components/components.css",
+            "components/button-current.css",
+            "components/button-runtime-current.css",
+            "components/input-current.css",
+            "components/text-button-current.css",
+            "components/collapse-host-preview.css",
+            "components/collapse-current.css",
+            "components/collapse-faq-source.css"
+          ],
+          "scripts": [
+            "components/collapse-current.js",
+            "components/input-current.js",
+            "components/collapse-host-preview.js"
+          ]
+        }
+      },
+      "feature": {
+        "purpose": "feature-single-open-disclosure",
+        "exampleSelector": "[data-ai-example=\"ai-collapse-feature\"]",
+        "allowedEdits": [
+          "items"
+        ],
+        "slots": {
+          "items": {
+            "selector": ":scope",
+            "mode": "structured-content",
+            "required": true,
+            "preserve": [
+              "div.ds-collapse__item",
+              "button.ds-collapse__header",
+              "span.ds-collapse__title",
+              "div.ds-collapse__body"
+            ],
+            "rule": "Existing title/body text and paired unique identities only; preserve authored first-open state and icons. Split read-only aside optional with declared source-based adaptation."
+          }
+        },
+        "runtime": {
+          "styles": [
+            "components/tokens.css",
+            "components/components.css",
+            "components/button-current.css",
+            "components/button-runtime-current.css",
+            "components/input-current.css",
+            "components/text-button-current.css",
+            "components/collapse-host-preview.css",
+            "components/collapse-current.css",
+            "components/collapse-faq-source.css"
+          ],
+          "scripts": [
+            "components/collapse-current.js",
+            "components/input-current.js",
+            "components/collapse-host-preview.js"
+          ]
+        }
+      },
+      "faq": {
+        "purpose": "source-faq-first-middle-last-single-open",
+        "exampleSelector": "[data-ai-example=\"ai-collapse-faq\"]",
+        "allowedEdits": [
+          "items"
+        ],
+        "slots": {
+          "items": {
+            "selector": ":scope",
+            "mode": "structured-content",
+            "required": true,
+            "preserve": [
+              "div.ds-collapse__item",
+              "button.ds-collapse__faq-source-header",
+              "span.ds-collapse__faq-source-title",
+              "p.ds-collapse__faq-source-body",
+              "img.ds-collapse__faq-source-arrow"
+            ],
+            "rule": "At least two complete genuine source FAQ rows, first/middle/last positions, all initially closed; unique paired controls and answer IDs, original down/up SVGs. Title/answer plaintext only; no HTML, alternative icons or source-state class edits."
+          }
+        },
+        "bindings": {},
+        "runtime": {
+          "styles": [
+            "components/tokens.css",
+            "components/components.css",
+            "components/button-current.css",
+            "components/button-runtime-current.css",
+            "components/input-current.css",
+            "components/text-button-current.css",
+            "components/collapse-host-preview.css",
+            "components/collapse-current.css",
+            "components/collapse-faq-source.css"
+          ],
+          "scripts": [
+            "components/collapse-current.js",
+            "components/input-current.js",
+            "components/collapse-host-preview.js"
+          ]
+        }
+      },
+      "data-preview": {
+        "purpose": "current-MG-order-snapshot-and-List-referral",
+        "exampleSelector": "[data-ai-example=\"ai-collapse-data-source\"]",
+        "allowedEdits": [
+          "items",
+          "actionCallback"
+        ],
+        "slots": {
+          "items": {
+            "selector": ":scope",
+            "mode": "structured-content",
+            "required": true,
+            "preserve": [
+              "div.ds-collapse__item",
+              "button.ds-collapse__order-toggle",
+              "div.ds-collapse__body",
+              "div.ds-collapse__preview-card"
+            ],
+            "rule": "1..24 complete order rows, all initially closed; paired globally unique controls/body, fixed atom classes and registered icons. Product images/name/price/quantity are business content. Pickup label optional per source. Action intents do not navigate or persist by themselves."
+          }
+        },
+        "bindings": {
+          "actionCallback": {
+            "mode": "event-handler",
+            "target": "root",
+            "event": "ds:collapse-order-action"
+          }
+        },
+        "runtime": {
+          "styles": [
+            "components/tokens.css",
+            "components/components.css",
+            "components/button-current.css",
+            "components/button-runtime-current.css",
+            "components/badge-current.css",
+            "components/tag-configuration-current.css",
+            "components/collapse-data-current.css"
+          ],
+          "scripts": [
+            "components/collapse-data-current.js"
+          ]
+        }
+      },
+      "inline-edit": {
+        "purpose": "source-account-inline-edit-with-real-atoms",
+        "exampleSelector": "[data-ai-example=\"ai-collapse-inline-current\"]",
+        "allowedEdits": [
+          "items",
+          "saveCallback"
+        ],
+        "slots": {
+          "items": {
+            "selector": ":scope",
+            "mode": "structured-content",
+            "required": true,
+            "preserve": [
+              "div.ds-collapse__item",
+              "form.ds-collapse__edit-panel",
+              "input.ds-input-field__input",
+              "button[data-collapse-edit]",
+              "button[data-collapse-save]"
+            ],
+            "rule": "1..12 unique complete account fields, closed initially, paired panels/labels/help/error IDs and matching initial display/input values. Current Input/TextButton/Button atoms retained. Business content only; no new validation/design invented."
+          }
+        },
+        "bindings": {
+          "saveCallback": {
+            "mode": "event-handler",
+            "target": "root",
+            "event": "ds:collapse-save"
+          }
+        },
+        "runtime": {
+          "styles": [
+            "components/tokens.css",
+            "components/components.css",
+            "components/button-current.css",
+            "components/button-runtime-current.css",
+            "components/input-current.css",
+            "components/text-button-current.css",
+            "components/collapse-host-preview.css",
+            "components/collapse-current.css",
+            "components/collapse-faq-source.css",
+            "components/badge-current.css",
+            "components/tag-configuration-current.css",
+            "components/collapse-data-current.css",
+            "components/collapse-edit-current.css"
+          ],
+          "scripts": [
+            "components/input-current.js",
+            "components/collapse-host-preview.js"
+          ]
+        }
+      }
+    }
+  },
+  "faqSourceClosure1014": {
+    "scope": "补齐中/末行4态身份、尺寸/间距/描边声明与图文角色；集中集合返回中的首行作为上下文，既有结果复用",
+    "source": "components/sources/collapse/faq-middle-last-source-1014.json",
+    "closed": [
+      "中末4态已找到有效真实主组件",
+      "中末收起1200×56/展开1200×112；四向16/0/16/0、12根gap、20标题组gap",
+      "6态标题统一16px/600/24px；展开正文14px/22px/Gray3",
+      "末行收起无描边，展开1px底部Gray5，保留真实状态差异"
+    ],
+    "remaining": [
+      "真实外层FAQ宿主角色/完整调用与热区实现",
+      "用户实际视觉；适配暂缓"
+    ],
+    "noNewCall": true,
+    "noRenderChange": true
+  },
+  "cookiesReadonlyCorrection1014": {
+    "source": "components/sources/collapse/cookies-readonly-source-1014.json",
+    "scope": "仅现有只读split有限调用",
+    "changes": [
+      "源码段落复制区保持展开、外围空白收起",
+      "展开header去底内距，正文上内距12",
+      "底部内部描边不占用外尺寸；源码完整样例正文保留"
+    ],
+    "excluded": [
+      "Switch",
+      "FAQ",
+      "历史锁定页面",
+      "其他原子SVG升级"
+    ]
+  },
+  "faqTypeGlyphClosure1015": {
+    "source": "components/sources/collapse/faq-type-glyph-review-1015.json",
+    "closed": [
+      "三个展开原件正文独立14/400/22 Gray3",
+      "Up/Down完整16px官方SVG；原件临时导出设置已恢复"
+    ],
+    "remaining": [
+      "FAQ业务宿主角色/完整调用与热区实现",
+      "实际浏览器视觉"
+    ],
+    "noNewCall": true,
+    "noRenderChange": true
+  },
+  "faqSixSourcePreview1015": {
+    "source": "components/sources/collapse/faq-six-source-preview-1015.json",
+    "states": 6,
+    "staticOnly": true,
+    "automaticCall": "unsupported",
+    "visual": "pending",
+    "fullFamilyAcceptance": false
+  }
+}

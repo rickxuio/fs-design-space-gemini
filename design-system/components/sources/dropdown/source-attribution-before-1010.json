@@ -1,0 +1,1138 @@
+{
+  "id": "comp_dropdown_001",
+  "name": "Dropdown",
+  "chineseName": "下拉菜单",
+  "description": "下拉菜单组件，六种变体：基础下拉、带搜索、多选 Checkbox、分组、Filter 筛选（胶囊触发器）、品牌选择（小尺寸+搜索）",
+  "category": "导航 Navigation",
+  "variants": [
+    {
+      "name": "basic",
+      "chineseName": "基础下拉",
+      "structure": "ds-dropdown > ds-dropdown__trigger + ds-dropdown__panel > ds-dropdown__list > ds-dropdown__item",
+      "cssClass": "ds-dropdown",
+      "requiredChildren": [
+        "button.ds-dropdown__trigger",
+        "span.ds-dropdown__trigger-text",
+        "img.ds-dropdown__trigger-arrow",
+        "div.ds-dropdown__panel",
+        "div.ds-dropdown__list",
+        "button.ds-dropdown__item"
+      ],
+      "isComplete": true,
+      "pendingParts": []
+    },
+    {
+      "name": "with-search",
+      "chineseName": "带搜索",
+      "structure": "panel 内在 list 之前加 ds-dropdown__search",
+      "cssClass": "ds-dropdown",
+      "isComplete": true,
+      "pendingParts": [],
+      "requiredChildren": [
+        "button.ds-dropdown__trigger",
+        "span.ds-dropdown__trigger-text",
+        "img.ds-dropdown__trigger-arrow",
+        "div.ds-dropdown__panel",
+        "div.ds-dropdown__list",
+        "button.ds-dropdown__item",
+        "div.ds-dropdown__search",
+        "input",
+        "img.ds-dropdown__search-icon"
+      ]
+    },
+    {
+      "name": "multi-select-checkbox",
+      "chineseName": "多选 Checkbox",
+      "structure": "list item 内加 input[type=checkbox]，item 加 ds-dropdown__item--muted"
+    },
+    {
+      "name": "grouped",
+      "chineseName": "分组",
+      "structure": "用 ds-dropdown__group-title + ds-dropdown__divider 分隔多组，通常搭配 checkbox，底部可加 ds-dropdown__footer 确认/取消按钮"
+    },
+    {
+      "name": "filter",
+      "chineseName": "Filter 筛选",
+      "structure": "触发器用 ds-dropdown__filter-trigger（胶囊形，非常规 trigger），panel 内常为多组横向排列的 checkbox"
+    },
+    {
+      "name": "brand-select",
+      "chineseName": "品牌选择（小尺寸+搜索）",
+      "structure": "触发器加 ds-dropdown__trigger--sm（30px），panel 内 search 用 ds-dropdown__search--bordered",
+      "cssClass": "ds-dropdown",
+      "isComplete": true,
+      "pendingParts": [],
+      "requiredChildren": [
+        "button.ds-dropdown__trigger",
+        "span.ds-dropdown__trigger-text",
+        "img.ds-dropdown__trigger-arrow",
+        "div.ds-dropdown__panel",
+        "div.ds-dropdown__list",
+        "button.ds-dropdown__item",
+        "div.ds-dropdown__search",
+        "input",
+        "img.ds-dropdown__search-icon"
+      ]
+    }
+  ],
+  "sizeModifiers": {
+    "default": "trigger 高度 42px",
+    "sm": "ds-dropdown__trigger--sm，trigger 高度 30px"
+  },
+  "states": [
+    {
+      "name": "closed",
+      "chineseName": "关闭",
+      "styleOverrides": {},
+      "description": "panel display:none"
+    },
+    {
+      "name": "open",
+      "chineseName": "展开",
+      "styleOverrides": {
+        "trigger": "ds-dropdown__trigger--open，箭头自动旋转180°",
+        "panel": "ds-dropdown__panel--open，display:flex"
+      },
+      "description": "触发器加 --open class 后箭头旋转是 CSS 自动实现，无需再手动加 --up 等额外 class"
+    },
+    {
+      "name": "itemHover",
+      "chineseName": "选项悬停",
+      "styleOverrides": {
+        "background": "var(--color-gray-9)"
+      },
+      "description": "list item hover/active 态背景一致"
+    }
+  ],
+  "contentSlots": {
+    "trigger": {
+      "required": true,
+      "description": "触发器，文本+箭头图标"
+    },
+    "panel": {
+      "required": true,
+      "description": "下拉面板，absolute 定位 top:100%"
+    },
+    "search": {
+      "required": false,
+      "description": "仅 with-search / brand-select 变体使用"
+    },
+    "groupTitle": {
+      "required": false,
+      "description": "仅 grouped 变体使用"
+    },
+    "footer": {
+      "required": false,
+      "description": "确认/取消按钮行，常见于 grouped 变体"
+    }
+  },
+  "relations": {
+    "variantDecisionsDescription": "六种变体共享 trigger/panel 骨架；可选插槽和嵌套组件仅按契约的 componentDependencies 填写。",
+    "variantDecisions": [
+      {
+        "type": "基础下拉",
+        "className": "ds-dropdown",
+        "whenToUse": "只需触发器与选项列表。",
+        "whenNotToUse": "选项较多需检索 → 用带搜索。",
+        "nestedComponents": [],
+        "status": "已核实"
+      },
+      {
+        "type": "带搜索",
+        "className": "ds-dropdown__search",
+        "whenToUse": "列表需要搜索入口。",
+        "whenNotToUse": "无需搜索 → 用基础下拉。",
+        "nestedComponents": [],
+        "status": "已核实"
+      },
+      {
+        "type": "多选 Checkbox",
+        "className": "ds-dropdown__item--muted",
+        "whenToUse": "需要从选项中多选。",
+        "nestedComponents": [
+          {
+            "component": "Checkbox",
+            "label": "Checkbox（sm）",
+            "href": "checkbox.html"
+          }
+        ],
+        "status": "已核实",
+        "whenNotToUse": "只允许单选时不用；改用基础下拉或相应 Select 单选变体。"
+      },
+      {
+        "type": "分组",
+        "className": "ds-dropdown__group-title / __footer",
+        "whenToUse": "按组组织选项，可提供确认/取消操作。",
+        "nestedComponents": [
+          {
+            "component": "Checkbox",
+            "label": "Checkbox（sm）",
+            "href": "checkbox.html"
+          },
+          {
+            "component": "Button",
+            "href": "button.html"
+          }
+        ],
+        "status": "已核实",
+        "whenNotToUse": "选项无需分组且没有底部操作时用基础下拉；需要搜索时选择带搜索。"
+      },
+      {
+        "type": "Filter 筛选",
+        "className": "ds-dropdown__filter-trigger",
+        "whenToUse": "使用胶囊触发器的多组筛选。",
+        "nestedComponents": [
+          {
+            "component": "Checkbox",
+            "label": "Checkbox（sm）",
+            "href": "checkbox.html"
+          }
+        ],
+        "status": "已核实",
+        "whenNotToUse": "不是多组筛选、也不需要胶囊触发器时不用；单一选项选择用基础下拉。"
+      },
+      {
+        "type": "品牌选择",
+        "className": "ds-dropdown__trigger--sm / __search--bordered",
+        "whenToUse": "小尺寸品牌选择且需搜索。",
+        "nestedComponents": [],
+        "status": "已核实",
+        "whenNotToUse": "不是品牌选择或无需该小尺寸搜索结构时不用；一般检索选择用带搜索。"
+      }
+    ],
+    "radiusDependencies": [
+      {
+        "token": "border-radius.md",
+        "value": "4px",
+        "usage": "中圆角 - 按钮默认圆角",
+        "appliesTo": [
+          "basic",
+          "with-search",
+          "multi-select-checkbox",
+          "grouped",
+          "filter",
+          "brand-select"
+        ]
+      },
+      {
+        "token": "/",
+        "value": "30px",
+        "usage": "未 token 化的圆角值，白名单登记",
+        "appliesTo": [
+          "filter"
+        ]
+      }
+    ],
+    "fontSizeDependencies": [
+      {
+        "token": "typography.font-size-sm",
+        "value": "12px",
+        "usage": "小号字体 - M/S 按钮",
+        "appliesTo": [
+          "grouped",
+          "filter"
+        ]
+      },
+      {
+        "token": "typography.font-size-h8",
+        "value": "13px",
+        "usage": "H8 紧凑正文/组件文字",
+        "appliesTo": [
+          "basic",
+          "with-search",
+          "multi-select-checkbox",
+          "grouped",
+          "filter",
+          "brand-select"
+        ]
+      }
+    ],
+    "fontWeightDependencies": [
+      {
+        "token": "typography.font-weight-semibold",
+        "value": "600",
+        "usage": "分组与筛选菜单组标题",
+        "appliesTo": [
+          "grouped",
+          "filter"
+        ],
+        "properties": [
+          "font-weight"
+        ],
+        "selectors": [
+          ".ds-dropdown__group-title"
+        ]
+      },
+      {
+        "token": "typography.font-weight-regular",
+        "value": "400",
+        "usage": "Native trigger/options regular reset",
+        "selectors": [
+          ".ds-dropdown[data-dropdown-current] .ds-dropdown__trigger",
+          ".ds-dropdown[data-dropdown-current] .ds-dropdown__item"
+        ],
+        "properties": [
+          "font-weight"
+        ],
+        "appliesTo": [
+          "basic"
+        ],
+        "sourceResource": "components/dropdown-current.css"
+      }
+    ],
+    "typographyDependencies": [
+      {
+        "token": "typography.h8-regular",
+        "fontSizeToken": "typography.font-size-h8",
+        "fontSizeValue": "13px",
+        "fontWeightToken": "typography.font-weight-regular",
+        "fontWeightValue": "400",
+        "weightEvidence": "inherited-regular",
+        "usage": "下拉菜单项文字",
+        "appliesTo": [
+          "basic",
+          "with-search",
+          "multi-select-checkbox",
+          "grouped",
+          "filter",
+          "brand-select"
+        ]
+      },
+      {
+        "token": "typography.h9-semibold",
+        "fontSizeToken": "typography.font-size-sm",
+        "fontSizeValue": "12px",
+        "fontWeightToken": "typography.font-weight-semibold",
+        "fontWeightValue": "600",
+        "weightEvidence": "explicit-css",
+        "usage": "分组与筛选标题",
+        "appliesTo": [
+          "grouped",
+          "filter"
+        ]
+      }
+    ],
+    "shadowDependencies": [
+      {
+        "token": "/",
+        "value": "0px 2px 8px rgba(0,0,0,0.1)",
+        "usage": "无对应 token 的投影值，白名单登记",
+        "appliesTo": [
+          "basic",
+          "with-search",
+          "multi-select-checkbox",
+          "grouped",
+          "filter",
+          "brand-select"
+        ]
+      }
+    ],
+    "colorDependencies": [
+      {
+        "token": "color.gray-1",
+        "value": "#19191A",
+        "usage": "标题/深色文字 (Primary text)",
+        "appliesTo": [
+          "basic",
+          "with-search",
+          "multi-select-checkbox",
+          "grouped",
+          "filter",
+          "brand-select"
+        ]
+      },
+      {
+        "token": "color.gray-3",
+        "value": "#707070",
+        "usage": "次要/辅助文字 (Secondary/auxiliary text)",
+        "appliesTo": [
+          "basic",
+          "with-search",
+          "multi-select-checkbox",
+          "grouped",
+          "filter",
+          "brand-select"
+        ]
+      },
+      {
+        "token": "color.gray-5",
+        "value": "#DEE0E3",
+        "usage": "边框色 / 菜单项禁用色",
+        "appliesTo": [
+          "grouped",
+          "brand-select"
+        ]
+      },
+      {
+        "token": "color.gray-8",
+        "value": "#F6F6F8",
+        "usage": "输入框/下拉/图标按钮等表单类灰底（gray-9 旧值 #F6F6F8，收敛为正式 token；比 gray-9 #FAFBFB 略深）",
+        "appliesTo": [
+          "basic",
+          "with-search",
+          "multi-select-checkbox",
+          "grouped",
+          "filter",
+          "brand-select"
+        ]
+      },
+      {
+        "token": "color.gray-9",
+        "value": "#FAFBFB",
+        "usage": "最浅灰背景（hover/展开态整行底、输入框底、卡片区底）",
+        "appliesTo": [
+          "basic",
+          "with-search",
+          "multi-select-checkbox",
+          "grouped",
+          "filter",
+          "brand-select"
+        ]
+      },
+      {
+        "token": "color.hover-overlay-light",
+        "value": "rgba(25,25,26,0.04)",
+        "usage": "Hover 浅色叠加层（描边按钮用）",
+        "appliesTo": [
+          "basic",
+          "with-search",
+          "multi-select-checkbox",
+          "grouped",
+          "filter",
+          "brand-select"
+        ]
+      },
+      {
+        "token": "color.white",
+        "value": "#FFFFFF",
+        "usage": "白色 (深色背景上的文字)",
+        "appliesTo": [
+          "basic",
+          "with-search",
+          "multi-select-checkbox",
+          "grouped",
+          "filter",
+          "brand-select"
+        ]
+      }
+    ],
+    "componentDependencies": [
+      {
+        "component": "Button",
+        "usage": "现有宿主按钮采用已登记 XL 原子；宿主仅管理装配与事件，原稿对应关系待核实",
+        "slot": "footer",
+        "requiredVariants": [
+          "outline-gray",
+          "outline-black"
+        ],
+        "implementationClasses": [
+          "ds-btn",
+          "ds-btn--outline-gray",
+          "ds-btn--outline-black",
+          "ds-btn--xl"
+        ],
+        "appliesTo": [
+          "grouped"
+        ],
+        "requiredSizes": [
+          {
+            "variant": "outline-gray",
+            "size": "xl"
+          },
+          {
+            "variant": "outline-black",
+            "size": "xl"
+          }
+        ],
+        "sourceEvidence": {
+          "review": "components/sources/dropdown/button-nesting-1010.json",
+          "basis": "user-confirmed-atom-first-assembly",
+          "originalHostMapping": "pending",
+          "note": "XL follows the current registered atom; this does not certify the original host component or its source dimensions."
+        }
+      },
+      {
+        "component": "Checkbox",
+        "usage": "密集选项行使用sm完整带标签视觉原子；旧选中态静态保留，原生勾选行为未登记",
+        "slot": "list-item",
+        "requiredVariants": [
+          "sm"
+        ],
+        "implementationClasses": [
+          "ds-checkbox",
+          "ds-checkbox--sm",
+          "ds-checkbox__box",
+          "ds-checkbox__label"
+        ],
+        "appliesTo": [
+          "multi-select-checkbox",
+          "grouped",
+          "filter"
+        ]
+      }
+    ],
+    "iconDependencies": [
+      {
+        "icon": "icon-chevron-down",
+        "usage": "trigger 箭头、group-title 折叠箭头",
+        "required": true,
+        "appliesTo": [
+          "basic",
+          "with-search",
+          "multi-select-checkbox",
+          "grouped",
+          "filter",
+          "brand-select"
+        ]
+      },
+      {
+        "icon": "icon-search",
+        "usage": "with-search / brand-select 变体的搜索图标",
+        "required": false,
+        "appliesTo": [
+          "with-search",
+          "brand-select"
+        ]
+      }
+    ],
+    "positioningRequirement": {
+      "rule": "【2026-06-30 修正】此前描述有误——.ds-dropdown 在 components.css 里已内建 position: relative（见 components.css line 2004），只要页面正确使用 class=\"ds-dropdown\" 作为容器，panel 的 position:absolute 定位就有正确锚点，不需要额外声明。真正的风险点是：如果有人给 panel 加了非标准的外层 wrapper（比如再包一层 div 且不带 ds-dropdown class），才会导致定位脱锚——但这种情况属于'自造结构'，应由 ROGUE_CLASS 一类检查覆盖，不需要给 dropdown 单独开一条校验。",
+      "severity": "已澄清，非真实缺口"
+    },
+    "notes": "六个变体共享同一套 trigger/panel 基础结构，差异集中在 panel 内部内容（search/checkbox/分组/footer），投喂新变体时应在现有结构上叠加插槽，而不是重新定义 trigger/panel 骨架。",
+    "enforcementStatus": {
+      "componentDependencies.implementationClasses-evidence": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 8（证据链，2026-07-16）：componentDependencies[*].implementationClasses 声明的 class 必须在宿主 preview 的 class 属性里真实出现，缺证据即 error。Button(outline-gray/outline-black/xl) 与 Checkbox(sm) 依赖已声明。"
+      },
+      "colorDependencies.tokens-exist": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 2b：colorDependencies 引用的 color.* token 必须存在于 token-specs/colors.json（缺失即 error）；token 为 / 表示无对应 token 的白名单裸值；双源值一致由 validate-tokens.js 全量保证；Guard C 保证声明了就必须有颜色依赖表"
+      },
+      "colorDependencies.css-uses-var": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 2c：切出组件样式段，校验用到的 var(--color-*) 都在 colorDependencies 声明过，且无未声明裸色值（box-shadow/注释除外），违反即 error —— 保证颜色映射闭环"
+      },
+      "radiusDependencies.tokens-exist": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 3a：radiusDependencies 引用的 border-radius.* token 必须存在于 token-specs/border-radius.json（缺失即 error）；token 为 / 表示白名单裸值；Guard D 保证声明了就必须有圆角依赖表"
+      },
+      "radiusDependencies.css-uses-var": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 3b：校验 border-radius 用到的 var(--border-radius-*) 都在 radiusDependencies 声明过，且无未声明裸圆角值（0 除外），违反即 error —— 保证圆角映射闭环"
+      },
+      "fontSizeDependencies.tokens-exist": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 4a：fontSizeDependencies 引用的 typography.font-size-* token 必须存在于 token-specs/typography.json（缺失即 error）；token 为 / 表示无对应正式 token 的白名单值；Guard E 保证声明了就必须有字号依赖表"
+      },
+      "fontSizeDependencies.css-uses-var": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 4b：校验 font-size 用到的 var(--font-size-*) 都在 fontSizeDependencies 声明过，且无未声明裸字号值，违反即 error —— 保证字号映射闭环"
+      },
+      "shadowDependencies.tokens-exist": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 5a：shadowDependencies 引用的 shadow.* token 必须存在于 token-specs/shadows.json（缺失即 error）；token 为 / 表示无对应 token 的白名单值；Guard F 保证声明了就必须有投影依赖表"
+      },
+      "shadowDependencies.css-uses-var": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 5b：校验 box-shadow 用到的 var(--shadow-*) 都在 shadowDependencies 声明过，且无未声明裸投影值（none 除外），违反即 error —— 保证投影映射闭环"
+      },
+      "positioningRequirement.parent-must-be-position-relative": {
+        "enforced": true,
+        "mechanism": "components.css: .ds-dropdown 内建 position:relative（非 validate.js 校验，是组件实现本身保证）",
+        "note": "2026-06-30 核实后修正：此前误判为待开发的检查项，实际组件 CSS 已经保证该属性，只要正确使用 ds-dropdown class 即自动满足，不需要额外的页面级校验"
+      },
+      "componentDependencies.checkbox-sm": {
+        "enforced": true,
+        "mechanism": "verify.js: pageProbe DROPDOWN_NATIVE_CHECKBOX（2026-07-16 新增）——.ds-dropdown 内出现原生 <input type=checkbox> 即 error，必须改用 ds-checkbox ds-checkbox--sm。check-contracts.js 仍并行校验 Checkbox 组件及其 sm variant 真实存在。",
+        "note": "检查严格限定 .ds-dropdown 范围；表单的 .ds-form__checkbox 原生 input 不受影响。"
+      },
+      "spacingDependencies.tokens-and-css-closure": {
+        "enforced": true,
+        "mechanism": "check-contracts.js: spacingDependencies token/value/selector/property 与组件 CSS 双向闭环校验"
+      },
+      "borderDependencies.tokens-and-css-closure": {
+        "enforced": true,
+        "mechanism": "check-contracts.js: borderDependencies token/value/aspect/selector/property 与组件 CSS 双向闭环校验"
+      },
+      "fontWeightDependencies.tokens-and-css-closure": {
+        "enforced": true,
+        "mechanism": "check-contracts.js: fontWeightDependencies token/value/selector/property 与组件 CSS 双向闭环校验；仅允许 Regular 400 / SemiBold 600，禁止裸字重值"
+      },
+      "typographyDependencies.size-weight-pairing": {
+        "enforced": true,
+        "mechanism": "check-contracts.js: typographyDependencies.token 必须引用 token-specs/typography.json 中真实 composite typography token；该 token 同时锁定 fontSize、lineHeight、fontWeight，并核对底层字号/字重 primitive 与 CSS 证据，依赖汇总表只输出一个 Token 链接"
+      }
+    },
+    "spacingDependencies": [
+      {
+        "token": "spacing.sm",
+        "value": "8px",
+        "usage": "gap / padding / margin：.ds-dropdown__trigger、.ds-dropdown__trigger--sm、.ds-dropdown__search、.ds-dropdown__search--bordered、.ds-dropdown__list、.ds-dropdown__item、.ds-dropdown__group-title",
+        "properties": [
+          "gap",
+          "padding",
+          "margin"
+        ],
+        "selectors": [
+          ".ds-dropdown__trigger",
+          ".ds-dropdown__trigger--sm",
+          ".ds-dropdown__search",
+          ".ds-dropdown__search--bordered",
+          ".ds-dropdown__list",
+          ".ds-dropdown__item",
+          ".ds-dropdown__group-title"
+        ],
+        "appliesTo": [
+          "basic",
+          "with-search",
+          "multi-select-checkbox",
+          "grouped",
+          "filter",
+          "brand-select"
+        ]
+      },
+      {
+        "token": "spacing.md",
+        "value": "12px",
+        "usage": "padding / gap / margin：.ds-dropdown__trigger、.ds-dropdown__search、.ds-dropdown__item、.ds-dropdown__group-title、.ds-dropdown__divider、.ds-dropdown__footer、.ds-dropdown__filter-trigger",
+        "properties": [
+          "padding",
+          "gap",
+          "margin"
+        ],
+        "selectors": [
+          ".ds-dropdown__trigger",
+          ".ds-dropdown__search",
+          ".ds-dropdown__item",
+          ".ds-dropdown__group-title",
+          ".ds-dropdown__divider",
+          ".ds-dropdown__footer",
+          ".ds-dropdown__filter-trigger"
+        ],
+        "appliesTo": [
+          "basic",
+          "with-search",
+          "multi-select-checkbox",
+          "grouped",
+          "filter",
+          "brand-select"
+        ]
+      },
+      {
+        "token": "spacing.xs",
+        "value": "4px",
+        "usage": "margin-top / gap / padding：.ds-dropdown__panel、.ds-dropdown__filter-trigger",
+        "properties": [
+          "margin-top",
+          "gap",
+          "padding"
+        ],
+        "selectors": [
+          ".ds-dropdown__panel",
+          ".ds-dropdown__filter-trigger"
+        ],
+        "appliesTo": [
+          "basic",
+          "with-search",
+          "multi-select-checkbox",
+          "grouped",
+          "filter",
+          "brand-select"
+        ]
+      },
+      {
+        "token": "spacing.6",
+        "value": "6px",
+        "usage": "padding：.ds-dropdown__search、.ds-dropdown__search--bordered、.ds-dropdown__group-title",
+        "properties": [
+          "padding"
+        ],
+        "selectors": [
+          ".ds-dropdown__search",
+          ".ds-dropdown__search--bordered",
+          ".ds-dropdown__group-title"
+        ],
+        "appliesTo": [
+          "with-search",
+          "grouped",
+          "brand-select"
+        ]
+      },
+      {
+        "token": "spacing.10",
+        "value": "10px",
+        "usage": "gap：.ds-dropdown__footer",
+        "properties": [
+          "gap"
+        ],
+        "selectors": [
+          ".ds-dropdown__footer"
+        ],
+        "appliesTo": [
+          "grouped"
+        ]
+      }
+    ],
+    "borderDependencies": [
+      {
+        "token": "border.width.default",
+        "value": "1px",
+        "usage": "border / border-top：.ds-dropdown__trigger、.ds-dropdown__search--bordered、.ds-dropdown__footer",
+        "aspect": "width",
+        "properties": [
+          "border",
+          "border-top"
+        ],
+        "selectors": [
+          ".ds-dropdown__trigger",
+          ".ds-dropdown__search--bordered",
+          ".ds-dropdown__footer"
+        ],
+        "appliesTo": [
+          "basic",
+          "with-search",
+          "multi-select-checkbox",
+          "grouped",
+          "filter",
+          "brand-select"
+        ]
+      },
+      {
+        "token": "border.style.default",
+        "value": "solid",
+        "usage": "border / border-top：.ds-dropdown__trigger、.ds-dropdown__search--bordered、.ds-dropdown__footer",
+        "aspect": "style",
+        "properties": [
+          "border",
+          "border-top"
+        ],
+        "selectors": [
+          ".ds-dropdown__trigger",
+          ".ds-dropdown__search--bordered",
+          ".ds-dropdown__footer"
+        ],
+        "appliesTo": [
+          "basic",
+          "with-search",
+          "multi-select-checkbox",
+          "grouped",
+          "filter",
+          "brand-select"
+        ]
+      },
+      {
+        "token": "border.color.transparent",
+        "value": "transparent",
+        "usage": "border：.ds-dropdown__trigger",
+        "aspect": "color",
+        "properties": [
+          "border"
+        ],
+        "selectors": [
+          ".ds-dropdown__trigger"
+        ],
+        "appliesTo": [
+          "basic",
+          "with-search",
+          "multi-select-checkbox",
+          "grouped",
+          "filter",
+          "brand-select"
+        ]
+      },
+      {
+        "token": "border.color.strong",
+        "value": "var(--color-gray-3)",
+        "usage": "border-color：.ds-dropdown__trigger--open",
+        "aspect": "color",
+        "properties": [
+          "border-color"
+        ],
+        "selectors": [
+          ".ds-dropdown__trigger--open"
+        ],
+        "appliesTo": [
+          "basic",
+          "with-search",
+          "multi-select-checkbox",
+          "grouped",
+          "filter",
+          "brand-select"
+        ]
+      },
+      {
+        "token": "border.color.default",
+        "value": "var(--color-gray-5)",
+        "usage": "border / border-top：.ds-dropdown__search--bordered、.ds-dropdown__footer",
+        "aspect": "color",
+        "properties": [
+          "border",
+          "border-top"
+        ],
+        "selectors": [
+          ".ds-dropdown__search--bordered",
+          ".ds-dropdown__footer"
+        ],
+        "appliesTo": [
+          "grouped",
+          "brand-select"
+        ]
+      },
+      {
+        "token": "border.style.none",
+        "value": "none",
+        "usage": "border：.ds-dropdown__search input、.ds-dropdown__filter-trigger",
+        "aspect": "style",
+        "properties": [
+          "border"
+        ],
+        "selectors": [
+          ".ds-dropdown__search input",
+          ".ds-dropdown__filter-trigger"
+        ],
+        "appliesTo": [
+          "with-search",
+          "brand-select",
+          "filter"
+        ]
+      }
+    ]
+  },
+  "searchIntents": [
+    "下拉菜单",
+    "下拉选择",
+    "多选下拉",
+    "筛选下拉",
+    "Select组件",
+    "Filter筛选器",
+    "品牌选择器"
+  ],
+  "tokenReferences": [
+    "color.white",
+    "color.gray-1",
+    "color.gray-3",
+    "color.gray-5",
+    "color.gray-9",
+    "border-radius.md",
+    "typography.font-family-base",
+    "typography.font-size-h8",
+    "spacing.sm",
+    "spacing.md",
+    "spacing.xs",
+    "spacing.6",
+    "spacing.10",
+    "border.width.default",
+    "border.style.default",
+    "border.color.transparent",
+    "border.color.strong",
+    "border.color.default",
+    "border.style.none",
+    "typography.font-weight-semibold",
+    "typography.font-weight-regular",
+    "typography.font-size-sm",
+    "typography.h8-regular",
+    "typography.h9-semibold"
+  ],
+  "constraints": {
+    "allowedChildren": [
+      "Input(search)",
+      "Icon",
+      "Text",
+      "Button"
+    ],
+    "requiredProperties": [
+      "variant"
+    ],
+    "forbiddenCombinations": []
+  },
+  "history": [
+    {
+      "date": "2026-07-23",
+      "author": "Kiro",
+      "change": "将字号与字重配对提升为正式 composite typography token；组件依赖以单一 token 引用完整字号、行高、字重，primitive 字段仅保留作 CSS 证据。"
+    },
+    {
+      "date": "2026-07-22",
+      "change": "新增 typographyDependencies 成对字体依赖：每条记录明确绑定字号与字重，依赖汇总表按“字号 · 层级 · 字重”整体展示，禁止拆列后猜测组合。",
+      "author": "Kiro"
+    },
+    {
+      "date": "2026-07-22",
+      "change": "新增 fontWeightDependencies：按组件 CSS 显式 font-weight 证据登记 Regular 400 / SemiBold 600；无显式声明的组件保留空数组，并纳入 token/value/selector/property 双向闭环校验。",
+      "author": "Kiro"
+    },
+    {
+      "date": "2026-07-20",
+      "change": "父子依赖治理：Form→Dropdown(basic) 改由宿主 componentDependencies 自动反向推导；Button 依赖补齐 outline-gray/outline-black 目标变体。",
+      "author": "Kiro"
+    },
+    {
+      "date": "2026-06-30",
+      "change": "新建档案，记录 position:relative 结构性依赖及六变体共享骨架关系",
+      "author": "TBD"
+    },
+    {
+      "date": "2026-07-14",
+      "change": "增加间距与描边 token 依赖、CSS 选择器/属性证据及机械闭环校验映射",
+      "author": "Kiro"
+    },
+    {
+      "date": "2026-07-14",
+      "change": "依据契约语义、组件 CSS 选择器与预览结构，补齐全部现有依赖的 appliesTo 汇总行映射；仅使用真实 types/variants，不新增伪类型或不确定依赖",
+      "author": "Kiro"
+    },
+    {
+      "date": "2026-10-09",
+      "author": "Codex",
+      "change": "统一规范维护质量标准：登记真实实现与选型规则入口、源变更重新验收、父子影响检查及历史页面隔离；不推断可编辑槽位或视觉批准。"
+    },
+    {
+      "date": "2026-10-09",
+      "author": "Codex",
+      "change": "根据已有用途和实际结构补齐四种下拉变体的排除场景，避免 AI 将多选/分组/筛选/品牌结构混用。"
+    }
+  ],
+  "isComplete": true,
+  "createdAt": "2026-06-30T00:00:00Z",
+  "updatedAt": "2026-07-22T00:00:00Z",
+  "qualityProfile": {
+    "schemaVersion": "1.0.0",
+    "standard": "docs/component-quality-standard.md",
+    "implementation": "components/preview/dropdown.html",
+    "selection": {
+      "mappingSource": "components/selection-mvp-policy.json",
+      "mappingPointer": "components.dropdown.variantDecisionTypes",
+      "rulesPointer": "relations.variantDecisions"
+    },
+    "maintenance": {
+      "authority": "contract-preview-runtime-token-icon",
+      "generatedOnly": [
+        "preview-reference-tables",
+        "component-index",
+        "selection-catalog",
+        "design-reading-view",
+        "ai-reference"
+      ],
+      "changePolicy": "记录来源差异、兼容性与受影响父子组件；源文件变化后旧工程验收失效。",
+      "historicalPages": "不自动升级；新页面锁定本地组件运行资源版本。"
+    },
+    "acceptance": {
+      "report": "components/quality/report.json",
+      "proof": "components/quality/acceptance.json",
+      "declarationIsNotProof": true
+    }
+  },
+  "editable": [
+    "placeholder",
+    "options",
+    "panelIdentity",
+    "changeCallback"
+  ],
+  "integration": {
+    "styles": [
+      "components/tokens.css",
+      "components/components.css",
+      "components/dropdown-current.css",
+      "components/button-current.css"
+    ],
+    "scripts": [
+      "components/dropdown-current.js"
+    ],
+    "fontStylesheets": [
+      "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+    ]
+  },
+  "aiContract": {
+    "schemaVersion": "1.0.0",
+    "rootTag": "div",
+    "scope": "three-native-single-choice-current-shapes",
+    "supported": [
+      "basic",
+      "with-search",
+      "brand-select"
+    ],
+    "unsupported": [
+      "multi-select-checkbox",
+      "grouped",
+      "filter",
+      "native-form-submission",
+      "dynamic-options-after-initialization",
+      "custom-option-markup",
+      "preselected-canonical",
+      "full-family-source-and-visual-approval"
+    ],
+    "reviewStatus": {
+      "engineering": "pending",
+      "visual": "pending",
+      "familyCoverage": "partial"
+    },
+    "previewAssets": [
+      "components/preview/reference-live.js"
+    ],
+    "selectionPolicy": "Basic or searchable single choice; brand-select uses existing 30px trigger and bordered search. >=2 uniquely valued native plaintext options. Search is local case-insensitive substring filtering only; no data requests or business brand policy. Multi/group/filter remain pending.",
+    "identity": {
+      "rule": "Opt-in closed native trigger + unique paired hidden panel/listbox/native options. Search shapes preserve native labeled field, registered search icon and exact variant marker; brand adds 30px trigger/bordered-search. Keyboard behavior is local implementation upgrade, not original MG source proof."
+    },
+    "locked": [
+      "Real native trigger, listbox and option hierarchy",
+      "Closed authored state and unique panel identity",
+      "Current own reset/runtime resources",
+      "Existing shared FS colors/spacing/42px trigger"
+    ],
+    "behavior": {
+      "events": "ds:dropdown-change only for changed selected value, detail={value,label}. Filtering emits no value-change event and preserves selected value. No request/submission.",
+      "keyboard": "Native trigger Enter/Space click; arrows open/move and skip disabled, Home/End, Escape closes and returns focus, Tab/outside/focusout close.",
+      "initialization": "One document guard and one root guard. Options cannot be replaced after initialization; a page-owned bridge is needed for FormData.",
+      "search": "Search/brand opens to search input; ArrowDown/Up move to first/last visible enabled option, Enter selects first match (prevents implicit form submit), Escape/Tab/outside close. No matches leaves choices empty and search focused. Filter persists on close; reset restores empty query/unselected placeholder.",
+      "disabled": "Native disabled/fieldset guard ignores selection/search synthetic events and closes an open panel when disabled. No dynamic option insertion or remote filtering.",
+      "composition": "Track search compositionstart/end as well as event.isComposing; while active, intermediate input and trigger/option/search keys do not filter or select. compositionend filters the committed query only when search is available. Closing clears transient composition state while preserving query/selection; reset restores initial empty values. Actual browser IME behavior remains pending.",
+      "availability": "Native fieldset, ARIA-disabled or hidden host closes panel and rejects synthetic trigger/selection; selected value and query are retained. Disabled options do not enter the keyboard queue."
+    },
+    "evidence": {
+      "localImplementation": "components/preview/dropdown.html",
+      "comparison": "components/sources/dropdown/local-structure-review.json",
+      "legacy": "components/sources/dropdown/basic-preview-before.html"
+    },
+    "variants": {
+      "basic": {
+        "purpose": "finite-basic-native-single-choice",
+        "exampleSelector": "[data-ai-example=\"ai-dropdown-basic-current\"]",
+        "allowedEdits": [
+          "placeholder",
+          "options",
+          "panelIdentity",
+          "changeCallback"
+        ],
+        "slots": {
+          "placeholder": {
+            "selector": "span.ds-dropdown__trigger-text",
+            "mode": "text",
+            "required": true
+          },
+          "options": {
+            "selector": "div.ds-dropdown__list",
+            "mode": "structured-content",
+            "required": true,
+            "preserve": [
+              "button.ds-dropdown__item"
+            ],
+            "rule": ">=2 uniquely valued native buttons with nonempty plain labels; role option, tabindex -1 and aria-selected false authored. Disabled allowed. Keep named listbox."
+          }
+        },
+        "bindings": {
+          "panelIdentity": {
+            "mode": "linked-identity",
+            "target": "div.ds-dropdown__panel",
+            "attribute": "id",
+            "valueType": "safe-dom-id",
+            "unique": true,
+            "references": [
+              {
+                "selector": "button.ds-dropdown__trigger",
+                "attribute": "aria-controls"
+              }
+            ]
+          },
+          "changeCallback": {
+            "mode": "event-handler",
+            "target": "root",
+            "event": "ds:dropdown-change"
+          }
+        }
+      },
+      "with-search": {
+        "purpose": "finite-with-search-native-single-choice",
+        "exampleSelector": "[data-ai-example=\"ai-dropdown-with-search-current\"]",
+        "allowedEdits": [
+          "placeholder",
+          "options",
+          "panelIdentity",
+          "changeCallback"
+        ],
+        "slots": {
+          "placeholder": {
+            "selector": "span.ds-dropdown__trigger-text",
+            "mode": "text",
+            "required": true
+          },
+          "options": {
+            "selector": "div.ds-dropdown__list",
+            "mode": "structured-content",
+            "required": true,
+            "preserve": [
+              "button.ds-dropdown__item"
+            ],
+            "rule": ">=2 uniquely valued native buttons with nonempty plain labels; role option, tabindex -1 and aria-selected false authored. Disabled allowed. Keep named listbox."
+          }
+        },
+        "bindings": {
+          "panelIdentity": {
+            "mode": "linked-identity",
+            "target": "div.ds-dropdown__panel",
+            "attribute": "id",
+            "valueType": "safe-dom-id",
+            "unique": true,
+            "references": [
+              {
+                "selector": "button.ds-dropdown__trigger",
+                "attribute": "aria-controls"
+              }
+            ]
+          },
+          "changeCallback": {
+            "mode": "event-handler",
+            "target": "root",
+            "event": "ds:dropdown-change"
+          }
+        }
+      },
+      "brand-select": {
+        "purpose": "finite-brand-select-native-single-choice",
+        "exampleSelector": "[data-ai-example=\"ai-dropdown-brand-select-current\"]",
+        "allowedEdits": [
+          "placeholder",
+          "options",
+          "panelIdentity",
+          "changeCallback"
+        ],
+        "slots": {
+          "placeholder": {
+            "selector": "span.ds-dropdown__trigger-text",
+            "mode": "text",
+            "required": true
+          },
+          "options": {
+            "selector": "div.ds-dropdown__list",
+            "mode": "structured-content",
+            "required": true,
+            "preserve": [
+              "button.ds-dropdown__item"
+            ],
+            "rule": ">=2 uniquely valued native buttons with nonempty plain labels; role option, tabindex -1 and aria-selected false authored. Disabled allowed. Keep named listbox."
+          }
+        },
+        "bindings": {
+          "panelIdentity": {
+            "mode": "linked-identity",
+            "target": "div.ds-dropdown__panel",
+            "attribute": "id",
+            "valueType": "safe-dom-id",
+            "unique": true,
+            "references": [
+              {
+                "selector": "button.ds-dropdown__trigger",
+                "attribute": "aria-controls"
+              }
+            ]
+          },
+          "changeCallback": {
+            "mode": "event-handler",
+            "target": "root",
+            "event": "ds:dropdown-change"
+          }
+        }
+      }
+    }
+  }
+}

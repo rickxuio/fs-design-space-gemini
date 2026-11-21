@@ -1,0 +1,25 @@
+/* Existing light specimen geometry, explicitly opt-in; no homepage inset reuse. */
+.ds-carousel[data-carousel-current="light-five"] {
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+}
+.ds-carousel[data-carousel-current="light-five"] > .ds-carousel__btn--prev { left: var(--spacing-lg); }
+.ds-carousel[data-carousel-current="light-five"] > .ds-carousel__btn--next { right: var(--spacing-lg); }
+
+/* Isolated pagination specimen owns its intrinsic no-track inset. The host positions the wrapper. */
+.ds-carousel__dots[data-carousel-pagination-specimen] { padding-top: 0; }
+
+/* Official36 glyph bounds: Left x7, Right x9, y8 (20px); default flex centers at8. */
+.ds-carousel__btn--l[data-carousel-source-solid36] img { filter: none; position: relative; }
+.ds-carousel__btn--l[data-carousel-source-solid36^="left-"] img { left: calc(var(--spacing-xs) / -4); }
+.ds-carousel__btn--l[data-carousel-source-solid36^="right-"] img { left: calc(var(--spacing-xs) / 4); }
+
+/* Official48 glyph bounds: Left x9, Right x11, y10 (28px); flex centers at10. */
+.ds-carousel__btn--xl[data-carousel-source-solid48] img { filter: none; position: relative; }
+.ds-carousel__btn--xl[data-carousel-source-solid48^="left-"] img { left: calc(var(--spacing-xs) / -4); }
+.ds-carousel__btn--xl[data-carousel-source-solid48^="right-"] img { left: calc(var(--spacing-xs) / 4); }
+
+/* Current solid20 glyph frame12: Left x3 / Right x5 / y4; flex centers at4. */
+.ds-carousel__btn--s[data-carousel-source-solid20] img { filter: none; position: relative; }
+.ds-carousel__btn--s[data-carousel-source-solid20^="left-"] img { left: calc(var(--spacing-xs) / -4); }
+.ds-carousel__btn--s[data-carousel-source-solid20^="right-"] img { left: calc(var(--spacing-xs) / 4); }

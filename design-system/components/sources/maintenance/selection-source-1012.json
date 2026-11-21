@@ -1,0 +1,130 @@
+{
+  "schemaVersion": "fs-selection-source-binding-fix/1.0.0",
+  "date": "2026-10-12",
+  "scope": "A1 facts content binding -> current selection -> draft Plan -> generation Context freshness; no automatic remapping",
+  "before": {
+    "history": [
+      {
+        "file": "page-inputs/omada-home-rebuild-0930/reference-facts.json",
+        "sha256": "64143a86ca310be52083ee6d0f4c0edb9a7fb4524b99a4b6f39479cdfe2930f7",
+        "mtime": "2026-10-08T04:18:11.000Z",
+        "hasBinding": false
+      },
+      {
+        "file": "page-inputs/omada-home-rebuild-0930/component-selection.json",
+        "sha256": "28730c780a021314c19d8a81d49c9cdd5dd7989da849658f4a04084dc2e09679",
+        "mtime": "2026-09-30T06:32:23.000Z",
+        "hasBinding": false
+      }
+    ],
+    "probe": {
+      "selectionBinding": null,
+      "readinessAfterChangedFacts": "ready",
+      "blockedItems": []
+    }
+  },
+  "historyInterpretation": "Omada facts mtime is Oct 8 and selection mtime Sept 30; facts generatedAt itself is Sept 30. Dates do not prove incorrect mapping. Neither record supplied an actual source content binding. Both historical files remain byte-identical.",
+  "after": {
+    "binding": {
+      "field": "sourceFactsBinding",
+      "algorithm": "sha256-json-v1",
+      "meaning": "SHA256 of JSON.stringify(parsed facts), including persisted source facts fields; no mtime comparison",
+      "file": "actual facts file location recorded by selector CLI"
+    },
+    "schema": "Existing selection 1.0.0 and Plan 1.1.0 retained; additive metadata, no migration or saved-record rewrite",
+    "plan": "Missing binding or changed/missing bound content adds open BLOCK-SELECTION-SOURCE, blocks readiness and suppresses stale selected component invocation",
+    "context": "source binding rechecked against persisted file; selectionSource current/stale/unverified with reason. Bound file joins raw readSet fingerprints. Auto-selection Plans with missing binding fail closed. Explicit manual legacy Plans without automaticSelection provenance get unverified metadata; prior manual semantics retained.",
+    "runner": "Existing assertContext contentGate and readSet byte fingerprints enforce invalidation; runner implementation unchanged"
+  },
+  "modifiedFiles": [
+    "scripts/select-page-components.js",
+    "scripts/generate-page-plan-draft.js",
+    "scripts/prepare-page-generation-context.js",
+    "scripts/selection-source-freshness.test.js",
+    "package.json"
+  ],
+  "checks": [
+    {
+      "command": "node --test scripts/selection-source-freshness.test.js scripts/select-page-components.test.js",
+      "exitCode": 0,
+      "total": 26,
+      "passed": 26,
+      "failed": 0,
+      "log": "components/sources/maintenance/selection-source-1012-targeted.tap.txt"
+    },
+    {
+      "command": "node --test scripts/selection-source-freshness.test.js scripts/select-page-components.test.js scripts/run-page-generation.test.js scripts/prepare-page-generation-context.test.js",
+      "exitCode": 1,
+      "total": 43,
+      "passed": 42,
+      "failed": 1,
+      "log": "components/sources/maintenance/selection-source-1012-extended.tap.txt"
+    },
+    {
+      "command": "node --check scripts/select-page-components.js",
+      "exitCode": 0
+    },
+    {
+      "command": "node --check scripts/generate-page-plan-draft.js",
+      "exitCode": 0
+    },
+    {
+      "command": "node --check scripts/prepare-page-generation-context.js",
+      "exitCode": 0
+    }
+  ],
+  "newFixtureCases": [
+    "Real selector CLI and draft CLI persist equal source fingerprint; Context exposes current state",
+    "Source text changes with exactly retained mtime: draft blocked, rebuilt Context stale; previously prepared Context detects changed raw facts bytes at runner",
+    "Only mtime changes with unchanged contents: current Plan/Context binding and identical old runner error set preserved",
+    "Missing fingerprint legacy selection becomes explicitly unverified/blocked; missing bound file unverified with remapping reason; missing facts CLI fails explicitly"
+  ],
+  "unresolvedChecks": [
+    {
+      "name": "blocks direct component resolution when Preview misses its real variant structure",
+      "actualMissing": [
+        "ds-card--vertical",
+        "ds-card--no-border"
+      ],
+      "testExpected": [
+        "ds-card--vertical"
+      ],
+      "status": "outside batch, not changed",
+      "evidence": "components/sources/maintenance/selection-source-1012-card-probe.json",
+      "reason": "Standalone existing previewValidation directly using current Card contract reproduces mismatch; test does not call selection binding, buildPlanDraft or buildContext. No assertion weakened or Card fix attempted."
+    }
+  ],
+  "positiveBoundary": "Current source binding is a positive result for freshness only. Actual assertContext retains unrelated Navigation reference/engineering errors (captured as diagnostic in log); it is not full page generation approval.",
+  "toolAndSourceFingerprints": {
+    "scripts/select-page-components.js": "c020e7de6dfda39594a497f49ba1bf1177dbb669486c4b5289b887df3e630e5d",
+    "scripts/generate-page-plan-draft.js": "9ef21aee352346853b108629bb98efd23cb5fd5c11c8837504ed7393d9f84435",
+    "scripts/prepare-page-generation-context.js": "d082ea430ea913765a80f8eaf79e696a13ddf9be920a583e7c867d312a5b3602",
+    "scripts/run-page-generation.js": "2e90833303abab42759e06a8c87d41df7e28acddc6a380ce7ba612a657b17f12",
+    "scripts/selection-source-freshness.test.js": "5ecfdb636703b65b1392f91e0dae8068eafe6a603903d4a6a766f9d0c1016432",
+    "scripts/select-page-components.test.js": "0aa0abbd3a812a0dac5ab9dd7f1f89456925d62498364af895314f5ac9d3c55d",
+    "scripts/run-page-generation.test.js": "c3fba927dccb464b4515f374fde0b6ab3ad9edeff5451ddd06d7edb4d580049e",
+    "scripts/prepare-page-generation-context.test.js": "5e8cf68808e494f0a676e2fadb52d8d971481d1c5b81563b96e3c9bcc42bb3da",
+    "components/generation-index.json": "6b522b3b9e8b5a3298e4dd84f7ac2be03084afe041c55f933f62fbeb325942f9",
+    "components/component-selection-mvp.json": "4ad72f1a3f7dc554ed6ab7d45d10772a3b26e2afba1bd61c06c0001aae60795d",
+    "components/contracts/card.json": "7a6725e241e3d02fe62ff7e7e72fdf249283942afb900bdb8cde6ad8df85b55f",
+    "package.json": "b8d55152f4d658a04ffcc77b95b8ae72e69b3209d6edd8a9f7067fad2230d88f",
+    "AGENTS.md": "18e69cd3c00626bfbafff3026a17aa6f035e7442bca2eb8c99511f9274417cde"
+  },
+  "logFingerprints": {
+    "components/sources/maintenance/selection-source-1012-targeted.tap.txt": "f901002c780efea99fbf21008dab48c9b7fe932de8796c5048c9fc6a5987298d",
+    "components/sources/maintenance/selection-source-1012-extended.tap.txt": "94f2af7dbdc5cc3a4f454b8bfe51ed047e24a27eccf48edb2e0b44e777d495a4",
+    "components/sources/maintenance/selection-source-1012-card-probe.json": "46eeb72fc54e93479c0682b5a3637d0e2c898d1df50b2cfd63d005f8f54c7f5f"
+  },
+  "packagePreviousSha256": "fec1c5327ea5a588bbd6150644eb549a97e57fbc3a035253affec08ba77b0efa",
+  "limits": [
+    "No MasterGo/visual/browser verification, whole-page compliance or whole-library acceptance claim",
+    "Only source facts content binding addressed; index/contract freshness and exact variant review remain separate gates",
+    "Parsed JSON binding ignores whitespace-only changes; raw prepared Context fingerprint still observes file byte changes",
+    "Synthetic manifests isolate freshness mechanics; not proof of screenshot content or A1 visual approval",
+    "In-memory selector API creates content hash without file; persisted Context cannot certify it without source file location",
+    "No saved selections/Plans/history rewritten, dependency installations/service changes/Git/automation/caffeinate",
+    "Full npm page-generation suite not run; directly affected suites and syntax checks recorded; new test registered in existing npm suite",
+    "Initial mtime control mistakenly reserialized Plan bytes without original newline; fixed fixture to preserve exact Plan bytes. Input-mode error precedence preserved without weakening source gate."
+  ],
+  "next": "Stop for independent review; coordinator decides how to handle independent Card assertion mismatch and resume Form source work"
+}

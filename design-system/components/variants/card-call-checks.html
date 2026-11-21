@@ -1,0 +1,230 @@
+<!-- INTERNAL VARIANT SOURCE: for compile/sync scripts only. Human-facing spec: maintenance/foundation-prototypes-20261114/card.html -->
+<!DOCTYPE html><html data-card-call-checks="true" lang="zh-CN"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Card 调用核验 · 工程页面</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../tokens.css">
+  <link rel="stylesheet" href="../components.css?v=2">
+<link rel="stylesheet" href="../button-current.css">
+<link rel="stylesheet" href="../card-current.css">
+<link rel="stylesheet" href="../list-unordered-current.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: var(--font-family-base);
+      padding: 40px;
+      background: #FFFFFF;
+      color: var(--color-gray-1);
+    }
+    h1 { font-size: 24px; font-weight: 600; margin-bottom: 8px; }
+    .subtitle { font-size: 14px; color: var(--color-gray-3); margin-bottom: 40px; }
+    .section { margin-bottom: 48px; }
+    .section-title {
+      font-size: 18px; font-weight: 600; margin-bottom: 24px;
+      padding-bottom: 8px; border-bottom: 1px solid var(--color-gray-5);
+    }
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 285px);
+      gap: 20px;
+    }
+    .card-grid--2col {
+      grid-template-columns: repeat(2, 285px);
+    }
+    .card-grid--5col {
+      grid-template-columns: repeat(5, 285px);
+    }
+    .state-label {
+      font-size: 12px; color: var(--color-gray-3);
+      margin-bottom: 8px; text-align: center;
+    }
+    .card-col { display: flex; flex-direction: column; gap: 8px; }
+    /* placeholder image */
+    .placeholder-img {
+      width: 100%; height: 100%;
+      background: #E8E8E8;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px; color: #999; font-weight: 600;
+    }
+    .horizontal-section {
+      display: flex; flex-direction: column; gap: 24px;
+      max-width: 1200px;
+    }
+    /* 强制 hover 卡片内的 Learn more 显示下划线 */
+    .ds-card--hover .ds-text-btn__text,
+    .ds-card--hover .ds-card__link .ds-text-btn__text {
+      text-decoration: underline !important;
+    }
+
+
+    /* Category Badge（分类与左侧导航栏保持一致） */
+    .cat-badge { display: inline-flex; align-items: center; height: 22px; padding: 0 10px; border-radius: 11px; font-size: 11px; font-weight: 700; margin-bottom: 10px; }
+  [data-ai-example="ai-card-spliced-vertical-single-event"] { width:285px; }
+</style>
+  <script>
+    // Color swatch click-to-select
+    document.addEventListener('click', function(e) {
+      var swatch = e.target.closest('.ds-card__color-swatch');
+      if (swatch) {
+        var container = swatch.closest('.ds-card__color-tags');
+        if (!container) return;
+        container.querySelectorAll('.ds-card__color-swatch').forEach(function(s) {
+          s.classList.remove('ds-card__color-swatch--active');
+        });
+        swatch.classList.add('ds-card__color-swatch--active');
+        return;
+      }
+      // +N tag click to toggle dropdown
+      var moreTag = e.target.closest('.ds-card__compat-tag--more');
+      if (moreTag) {
+        var body = moreTag.closest('.ds-card__product-body');
+        if (!body) return;
+        var popup = body.querySelector('.ds-card__more-popup');
+        if (!popup) return;
+        var isOpen = popup.style.display === 'flex';
+        popup.style.display = isOpen ? 'none' : 'flex';
+        return;
+      }
+      // Compat tag click-to-select (text tags)
+      var compatTag = e.target.closest('.ds-card__compat-tag:not(.ds-card__compat-tag--more):not(.ds-card__compat-tag--custom)');
+      if (compatTag) {
+        var container = compatTag.closest('.ds-card__compat-tags');
+        if (!container) return;
+        container.querySelectorAll('.ds-card__compat-tag').forEach(function(t) {
+          t.classList.remove('ds-card__compat-tag--active');
+        });
+        compatTag.classList.add('ds-card__compat-tag--active');
+        return;
+      }
+      // Click outside closes popup
+      var popups = document.querySelectorAll('.ds-card__more-popup');
+      popups.forEach(function(p) {
+        if (!p.contains(e.target)) p.style.display = 'none';
+      });
+    });
+  </script>
+<link rel="stylesheet" href="../card-responsive.css">
+<link rel="stylesheet" href="../text-button-current.css">  <link rel="stylesheet" href="../cart-current.css">
+<link rel="stylesheet" href="../tag-current.css"><link rel="stylesheet" href="../menu-navigation-current.css">
+<link rel="stylesheet" href="../card-sidebar-current.css">
+</head>
+<body><h1>Card 调用核验</h1><p class="subtitle">供工程检查和AI调用提取使用；组件正式展示请查看 Card 预览。响应式例子不代表本轮恢复 Pad/M 验收，List12未闭合形态仍暂停自动调用。</p><p><a href="card.html">返回 Card 组件预览</a></p><section data-fs-page-custom=""><h2>Responsive full-width Card · opt-in MG Pad/M</h2><div class="ds-card ds-card--horizontal ds-card--source-responsive" data-preview-skeleton="horizontal-responsive" data-card-current="horizontal-unbordered" data-ai-example="ai-card-horizontal-current"><div class="ds-card__image"><img src="../sources/card/preview-assets/img-placeholder.svg" alt="Img 图片占位"></div><div class="ds-card__body"><div class="ds-card__content-stack"><p class="ds-card__title">Card title</p><p class="ds-card__desc">Card description.</p></div><div class="ds-card__link"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="#"><span class="ds-text-btn__text">Learn more</span><img class="ds-text-btn__icon" src="../icons/icon-text-button-arrow-right-regular.svg" alt=""></a></div></div></div></section>
+
+<section data-fs-page-custom=""><h2>spliced.horizontal.full-width · 有限PC调用</h2><div class="ds-card ds-card--horizontal" data-card-current="horizontal-unbordered" data-ai-example="ai-card-spliced-horizontal-full-width"><div class="ds-card__image"><img src="../sources/card/preview-assets/img-placeholder.svg" alt="Img 图片占位"></div><div class="ds-card__body"><div class="ds-card__content-stack"><p class="ds-card__title">Card title</p><p class="ds-card__desc">Card description.</p></div><div class="ds-card__link"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="#"><span class="ds-text-btn__text">Learn more</span><img class="ds-text-btn__icon" src="../icons/icon-text-button-arrow-right-regular.svg" alt=""></a></div></div></div></section><section data-fs-page-custom=""><h2>spliced.horizontal.full-width.bordered-background · 来源展示（List12已接入，滚动区域与视觉待核，暂停自动调用）</h2><div class="ds-card ds-card--horizontal ds-card--horizontal-bordered" data-card-source-layout-one-list="official" data-source-example="card-layout-one-pc-bordered" data-card-source-layout-one-title="official" data-ai-example="ai-card-completion-spliced-horizontal-full-width-bordered-background">
+        <div class="ds-card__image"><img src="../sources/card/preview-assets/img-placeholder.svg" alt="Img 图片占位"></div>
+        <div class="ds-card__body">
+          <div class="ds-card__content-stack">
+            <p class="ds-card__title ds-card__title--single-line">This is card title, This is card title, This is card title</p>
+            <p class="ds-card__desc">This is the description, This is the description, This is the description, This is the description.</p>
+            <div class="ds-list ds-list--unordered-12" data-list-current="unordered" data-list-source="legacy-fixed"><div class="ds-list__unordered-item"><span class="ds-list__unordered-dot" aria-hidden="true"></span><p class="ds-list__unordered-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div><div class="ds-list__unordered-item"><span class="ds-list__unordered-dot" aria-hidden="true"></span><p class="ds-list__unordered-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div><div class="ds-list__unordered-item"><span class="ds-list__unordered-dot" aria-hidden="true"></span><p class="ds-list__unordered-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div><div class="ds-list__unordered-item"><span class="ds-list__unordered-dot" aria-hidden="true"></span><p class="ds-list__unordered-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div></div>
+          </div>
+          <div class="ds-card__link">
+            <a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="#">
+              <span class="ds-text-btn__text">Learn more</span>
+              <img class="ds-text-btn__icon" src="../icons/icon-text-button-arrow-right-regular.svg" alt="">
+            </a>
+          </div>
+        </div>
+      </div></section><section data-fs-page-custom=""><h2>spliced.vertical.single-event · PC上下图文调用（本例285px四列参考；3列铺满1200，图片16:9）</h2><div class="ds-card ds-card--vertical ds-card--no-border" data-card-current="vertical-single-event" data-card-layout="parent-grid" data-ai-example="ai-card-spliced-vertical-single-event"><div class="ds-card__image"><img src="../sources/card/preview-assets/img-placeholder.svg" alt="Img 图片占位"></div><div class="ds-card__body"><div class="ds-card__meta"><span class="ds-card__category">Category</span></div><p class="ds-card__title">Card title</p><div class="ds-card__desc"><p>Card description.</p></div><div class="ds-card__link"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="#"><span class="ds-text-btn__text">Learn more</span><img class="ds-text-btn__icon" src="../icons/icon-text-button-arrow-right-regular.svg" alt=""></a></div></div></div></section><section data-fs-page-custom=""><h2>spliced.vertical.single-event · 原件描边on有限PC调用</h2><div class="card-grid"><div class="ds-card ds-card--vertical ds-card--bordered" data-card-current="vertical-single-event" data-ai-example="ai-card-spliced-vertical-single-event-bordered"><div class="ds-card__image"><img src="../sources/card/preview-assets/img-placeholder.svg" alt="Img 图片占位"></div><div class="ds-card__body"><div class="ds-card__meta"><span class="ds-card__category">Category</span></div><p class="ds-card__title">Card title</p><div class="ds-card__desc"><p>Card description.</p></div><div class="ds-card__link"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="#"><span class="ds-text-btn__text">Learn more</span><img class="ds-text-btn__icon" src="../icons/icon-text-button-arrow-right-regular.svg" alt=""></a></div></div></div></div></section>
+<section class="section"><h2>分类导航卡片调用</h2><div class="ds-card ds-card--vertical ds-card--no-border" data-card-current="category-nav" data-ai-example="ai-card-category-nav-current">
+          <div class="ds-card__image">
+            <img src="../sources/card/preview-assets/img-placeholder.svg" alt="Img 图片占位">
+          </div>
+          <div class="ds-card__body">
+            <span class="ds-card__title ds-card__title--single-line">This is a card title</span>
+            <div class="ds-card__sub-links">
+              <span class="ds-card__sub-link">10G Switches</span>
+              <span class="ds-card__sub-link">25G Switches</span>
+              <span class="ds-card__sub-link">40G Switches</span>
+              <span class="ds-card__sub-link">100G Switches</span>
+              <span class="ds-card__sub-link">400G Switches</span>
+            </div>
+          </div>
+        </div></section>
+<section class="section"><h2>产品小卡片调用</h2><div class="ds-card--embedded ds-card--embedded-small ds-card--embedded-bg-gray ds-card" data-card-current="embedded-small" data-ai-example="ai-card-embedded-small-current">
+          <img class="ds-card__product-image" src="../sources/card/preview-assets/img-placeholder.svg" alt="Img 图片占位">
+          <div class="ds-card__product-body">
+            <p class="ds-card__product-title">FMU 2-Slot 1U 19" Rack Chassis Unloaded, Holds up to 2 Units FMU Plug-in Module</p>
+            <p class="ds-card__product-price">US$ 160.00</p>
+          <div class="ds-card__add-btn ds-card__cart-slot"><button class="ds-cart ds-cart--product-card" type="button"><img class="ds-cart__icon" src="../icons/icon-cart-add.svg" alt=""><span class="ds-cart__text">Add</span></button></div></div>
+          
+        </div></section>
+<section class="section"><h2>产品卡片调用</h2><div class="ds-card ds-card--embedded ds-card--embedded-standard ds-card--embedded-standard-bg-white" data-card-current="embedded-standard" data-card-surface="white" data-ai-example="ai-card-embedded-standard-current">
+          <div class="ds-card__product-image"><img src="../sources/card/preview-assets/img-placeholder.svg" alt="Img 图片占位"></div>
+          <div class="ds-card__product-body">
+            <p class="ds-card__product-title">This is a card title</p>
+            <p class="ds-card__product-description">This is a card description. This is a card description. This is a card description.</p>
+            <div class="ds-card__product-link">
+              <a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="#">
+                <span class="ds-text-btn__text">Learn more</span>
+                <img class="ds-text-btn__icon" src="../icons/icon-text-button-arrow-right-regular.svg" alt="">
+              </a>
+            </div>
+          </div>
+        </div></section><script src="../card-current.js"></script>
+<section data-fs-page-custom=""><h2>embedded.product-detail · 当前调用</h2><div class="ds-card--embedded ds-card--embedded-detail ds-card" data-card-current="embedded-detail" data-ai-example="ai-card-completion-embedded-product-detail">
+          <div class="ds-card__product-image-wrap"><img class="ds-card__product-image" src="../sources/card/preview-assets/img-placeholder.svg" alt="Reference product image"></div>
+          <div class="ds-card__product-body">
+            <div>
+              <p class="ds-card__product-title">IPC301-5M-D</p>
+              <p class="ds-card__product-subtitle">Key Applications: shopping area, entrance and exit</p>
+            </div>
+            <div class="ds-list ds-list--unordered-12" data-list-current="unordered" data-list-source="legacy-fixed"><div class="ds-list__unordered-item"><span class="ds-list__unordered-dot" aria-hidden="true"></span><p class="ds-list__unordered-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div><div class="ds-list__unordered-item"><span class="ds-list__unordered-dot" aria-hidden="true"></span><p class="ds-list__unordered-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div><div class="ds-list__unordered-item"><span class="ds-list__unordered-dot" aria-hidden="true"></span><p class="ds-list__unordered-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div></div>
+          </div>
+        </div></section><section data-fs-page-custom=""><h2>embedded.product-full · 当前调用</h2><div class="ds-card--embedded ds-card--embedded-full ds-card--embedded-bg-gray ds-card" data-card-source-server-list="official" data-card-source-node="68908:037032" data-card-current="embedded-full" data-ai-example="ai-card-completion-embedded-product-full">
+          <div class="ds-card__product-image"><img class="ds-card__product-image" src="../sources/card/preview-assets/img-placeholder.svg" alt="Reference product image"></div>
+          <div class="ds-card__product-body">
+            <div class="ds-card__compat-tags">
+              <button class="ds-tag ds-tag--product-small" type="button" aria-pressed="false" data-tag-product="current" data-tag-image="false"><span class="ds-tag__product-label">Cisco</span></button>
+              <button class="ds-tag ds-tag--product-small" type="button" aria-pressed="true" data-tag-product="current" data-tag-image="false"><span class="ds-tag__product-label">Juniper</span></button>
+              <button class="ds-tag ds-tag--product-small" type="button" aria-pressed="false" data-tag-product="current" data-tag-image="false"><span class="ds-tag__product-label">Arista</span></button>
+              <button class="ds-tag ds-tag--product-small ds-tag--product-custom" type="button" aria-pressed="false" data-tag-product="current" data-tag-image="false"><span class="ds-tag__product-label">Customized</span></button>
+            </div>
+            <p class="ds-card__title">S5860-24XB-U, 24-Port Multi-Gigabit Ethernet L3 Fully Managed Pro Co…</p>
+            <p class="ds-card__price">US$ 9,502.00</p>
+            <div class="ds-list ds-list--unordered-12" data-list-current="unordered" data-list-source="legacy-fixed"><div class="ds-list__unordered-item"><span class="ds-list__unordered-dot" aria-hidden="true"></span><p class="ds-list__unordered-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div><div class="ds-list__unordered-item"><span class="ds-list__unordered-dot" aria-hidden="true"></span><p class="ds-list__unordered-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div><div class="ds-list__unordered-item"><span class="ds-list__unordered-dot" aria-hidden="true"></span><p class="ds-list__unordered-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div></div>
+            <div class="ds-card__stock">
+              <span class="ds-card__stock-text">Pre-order, Ship by 30 Jul, 2025</span>
+            </div>
+            <div class="ds-card__stats">
+              <span><span class="ds-card__sold-count">15</span><span class="ds-card__sold-label"> Sold</span></span>
+              <div class="ds-card__stats-divider"></div>
+              <span><span class="ds-card__review-count">10</span><span class="ds-card__review-label"> Reviews</span></span>
+              <div class="ds-card__add-btn ds-card__cart-slot"><button class="ds-cart ds-cart--product-card" type="button"><img class="ds-cart__icon" src="../icons/icon-cart-add.svg" alt=""><span class="ds-cart__text">Add</span></button></div>
+            </div>
+          </div>
+          <div class="ds-card__tag-slot"><span class="ds-tag ds-tag--semantic ds-tag--new ds-tag--emphasis" data-tag-source-new="official"><span class="ds-tag__label">New</span></span></div>
+        </div></section><script src="../menu-navigation-current.js"></script>
+<section data-five-current="20261115"><div class="ds-card--horizontal-sidebar" data-card-sidebar-current="plain" data-ai-example="ai-card-sidebar-plain"><div class="ds-card__sidebar-layout"><aside class="ds-card__sidebar-shell"><nav class="ds-menu-navigation ds-menu-navigation--single-level ds-menu-navigation--width-288" data-menu-navigation-current="menu-atom" data-menu-navigation="" aria-label="Product information sections" data-menu-card-sidebar="current">
+          <ul class="ds-menu-navigation__list">
+            <li><button class="ds-menu-navigation__item ds-menu-navigation__item--selected" type="button" data-value="fiber-optic-cables" aria-pressed="true"><span class="ds-menu-navigation__item-label">Fiber Optic Cables</span></button></li>
+            <li><button class="ds-menu-navigation__item" type="button" data-value="panels-enclosures-racks"><span class="ds-menu-navigation__item-label">Panels, Enclosures &amp; Racks</span></button></li>
+            <li><button class="ds-menu-navigation__item" type="button" data-value="testers-tools"><span class="ds-menu-navigation__item-label">Testers &amp; Tools</span></button></li>
+          </ul>
+        </nav></aside><div class="ds-card__content-area"><div class="ds-card ds-card--horizontal" data-card-sidebar-content="plain"><div class="ds-card__image"><img src="../sources/card/preview-assets/img-placeholder.svg" alt="Img 图片占位"></div><div class="ds-card__body"><div class="ds-card__content-stack"><p class="ds-card__title">Card title</p><p class="ds-card__desc">Card description.</p></div><div class="ds-card__link"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="#"><span class="ds-text-btn__text">Learn more</span><img class="ds-text-btn__icon" src="../icons/icon-text-button-arrow-right-regular.svg" alt=""></a></div></div></div></div></div></div></section>
+<section data-five-current="20261115"><div class="ds-card--horizontal-sidebar" data-card-sidebar-current="bordered" data-ai-example="ai-card-sidebar-bordered"><div class="ds-card__sidebar-layout"><aside class="ds-card__sidebar-shell"><nav class="ds-menu-navigation ds-menu-navigation--single-level ds-menu-navigation--width-288" data-menu-navigation-current="menu-atom" data-menu-navigation="" aria-label="Product information sections" data-menu-card-sidebar="current">
+          <ul class="ds-menu-navigation__list">
+            <li><button class="ds-menu-navigation__item ds-menu-navigation__item--selected" type="button" data-value="fiber-optic-cables" aria-pressed="true"><span class="ds-menu-navigation__item-label">Fiber Optic Cables</span></button></li>
+            <li><button class="ds-menu-navigation__item" type="button" data-value="panels-enclosures-racks"><span class="ds-menu-navigation__item-label">Panels, Enclosures &amp; Racks</span></button></li>
+            <li><button class="ds-menu-navigation__item" type="button" data-value="testers-tools"><span class="ds-menu-navigation__item-label">Testers &amp; Tools</span></button></li>
+          </ul>
+        </nav></aside><div class="ds-card__content-area"><div class="ds-card ds-card--horizontal ds-card--horizontal-bordered" data-card-source-layout-one-list="official" data-source-example="card-layout-one-pc-bordered" data-card-source-layout-one-title="official" data-card-sidebar-content="bordered">
+        <div class="ds-card__image"><img src="../sources/card/preview-assets/img-placeholder.svg" alt="Img 图片占位"></div>
+        <div class="ds-card__body">
+          <div class="ds-card__content-stack">
+            <p class="ds-card__title ds-card__title--single-line">This is card title, This is card title, This is card title</p>
+            <p class="ds-card__desc">This is the description, This is the description, This is the description, This is the description.</p>
+            <div class="ds-list ds-list--unordered-12" data-list-current="unordered" data-list-source="legacy-fixed"><div class="ds-list__unordered-item"><span class="ds-list__unordered-dot" aria-hidden="true"></span><p class="ds-list__unordered-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div><div class="ds-list__unordered-item"><span class="ds-list__unordered-dot" aria-hidden="true"></span><p class="ds-list__unordered-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div><div class="ds-list__unordered-item"><span class="ds-list__unordered-dot" aria-hidden="true"></span><p class="ds-list__unordered-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div><div class="ds-list__unordered-item"><span class="ds-list__unordered-dot" aria-hidden="true"></span><p class="ds-list__unordered-text">2x 2nd Gen Intel Xeon Scalable CPUs</p></div></div>
+          </div>
+          <div class="ds-card__link">
+            <a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="#">
+              <span class="ds-text-btn__text">Learn more</span>
+              <img class="ds-text-btn__icon" src="../icons/icon-text-button-arrow-right-regular.svg" alt="">
+            </a>
+          </div>
+        </div>
+      </div></div></div></div></section>
+</body></html>

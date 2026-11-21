@@ -1,0 +1,1743 @@
+{
+  "id": "comp_text_button_001",
+  "name": "TextButton",
+  "chineseName": "文字按钮",
+  "description": "文字按钮，当前AI调用范围为已核原始组件的7变体10尺寸组合；图标保留官方向右箭头与原有显示开关，不开放左图标、自定义图标或折叠控件用途。",
+  "category": "通用 General",
+  "types": [
+    {
+      "name": "inline",
+      "chineseName": "无背景",
+      "description": "无背景文字导航；当前独立调用只支持官方右箭头与原有显示开关。Default无下划线，Hover显示；左图标、自定义图标及折叠用途按其他组件或既有宿主契约处理。"
+    },
+    {
+      "name": "with-bg",
+      "chineseName": "带背景",
+      "description": "带背景色的文字链接；Icon 分子为可选项，可位于文本左侧或右侧，悬停时显示背景"
+    }
+  ],
+  "variants": [
+    {
+      "name": "inline-blue",
+      "type": "inline",
+      "chineseName": "蓝色链接（小）",
+      "sizes": [
+        {
+          "name": "s",
+          "styleProperties": {
+            "fontSize": "12px",
+            "lineHeight": "20px",
+            "fontWeight": "400",
+            "fontFamily": "Open Sans",
+            "color": "#0060BF",
+            "iconSize": "12x12px",
+            "gap": "2px",
+            "defaultIcon": "icon-text-button-arrow-right-blue-s.svg",
+            "iconOptional": true,
+            "iconFilter": "none"
+          }
+        }
+      ],
+      "cssClass": "ds-text-btn ds-text-btn--inline ds-text-btn--blue",
+      "requiredChildren": [
+        "span.ds-text-btn__text",
+        "img.ds-text-btn__icon"
+      ],
+      "isComplete": true,
+      "pendingParts": [],
+      "whenToUse": "来源需要12px蓝色紧凑导航，如表单隐私政策链接；当前仅处理导航目标",
+      "whenNotToUse": "不作为13/14px正文链接，也不代替复选框、折叠或业务动作触发器",
+      "selectionDecisionType": "Inline 蓝色（小）"
+    },
+    {
+      "name": "inline-gray",
+      "type": "inline",
+      "chineseName": "灰色链接（小）",
+      "sizes": [
+        {
+          "name": "s",
+          "styleProperties": {
+            "fontSize": "12px",
+            "lineHeight": "20px",
+            "fontWeight": "400",
+            "fontFamily": "Open Sans",
+            "color": "#707070",
+            "iconSize": "12x12px",
+            "gap": "2px",
+            "defaultIcon": "icon-text-button-arrow-right-gray-s-default.svg",
+            "iconOptional": true,
+            "iconFilter": "none"
+          }
+        }
+      ],
+      "cssClass": "ds-text-btn ds-text-btn--inline ds-text-btn--gray",
+      "requiredChildren": [
+        "span.ds-text-btn__text",
+        "img.ds-text-btn__icon"
+      ],
+      "isComplete": true,
+      "pendingParts": [],
+      "whenToUse": "来源为12px灰色次要导航，如公共导航或详情页评论入口",
+      "whenNotToUse": "明确需要蓝色、深色反白或带容器时不用本变体",
+      "selectionDecisionType": "灰色链接（小）"
+    },
+    {
+      "name": "inline-black",
+      "type": "inline",
+      "chineseName": "黑色",
+      "sizes": [
+        {
+          "name": "m",
+          "styleProperties": {
+            "fontSize": "13px",
+            "lineHeight": "20px",
+            "fontWeight": "400",
+            "fontFamily": "Open Sans",
+            "color": "#19191A",
+            "iconSize": "12x12px",
+            "gap": "2px",
+            "defaultIcon": "icon-text-button-arrow-right-regular.svg",
+            "iconOptional": true,
+            "iconFilter": "none"
+          }
+        },
+        {
+          "name": "l",
+          "styleProperties": {
+            "fontSize": "14px",
+            "lineHeight": "22px",
+            "fontWeight": "400",
+            "fontFamily": "Open Sans",
+            "color": "#19191A",
+            "iconSize": "12x12px",
+            "gap": "2px",
+            "defaultIcon": "icon-text-button-arrow-right-regular.svg",
+            "iconOptional": true,
+            "iconFilter": "none"
+          }
+        }
+      ],
+      "cssClass": "ds-text-btn ds-text-btn--inline ds-text-btn--black",
+      "requiredChildren": [
+        "span.ds-text-btn__text",
+        "img.ds-text-btn__icon"
+      ],
+      "isComplete": true,
+      "pendingParts": [],
+      "whenToUse": "来源与宿主需要13px常规黑色文字导航，如已登记卡片、表格或详情入口",
+      "whenNotToUse": "宿主明确需要蓝色、白色或14px加粗时，改按对应变体；不要仅凭“链接”默认黑色",
+      "selectionDecisionType": "Inline 黑色"
+    },
+    {
+      "name": "inline-black-bold",
+      "type": "inline",
+      "chineseName": "黑色加粗",
+      "sizes": [
+        {
+          "name": "l",
+          "styleProperties": {
+            "fontSize": "14px",
+            "lineHeight": "22px",
+            "fontWeight": "600",
+            "fontFamily": "Open Sans",
+            "color": "#19191A",
+            "iconSize": "12x12px",
+            "gap": "2px",
+            "defaultIcon": "icon-text-button-arrow-right-bold.svg",
+            "iconOptional": true,
+            "iconFilter": "none"
+          }
+        }
+      ],
+      "cssClass": "ds-text-btn ds-text-btn--inline ds-text-btn--black-bold",
+      "requiredChildren": [
+        "span.ds-text-btn__text",
+        "img.ds-text-btn__icon"
+      ],
+      "isComplete": true,
+      "pendingParts": [],
+      "whenToUse": "来源明确为14px加粗文字入口，如首页特定卡片中的Get more Information、FS Certified",
+      "whenNotToUse": "无加粗依据的普通链接，不凭“更重要”擅自加粗",
+      "selectionDecisionType": "Inline 黑色加粗"
+    },
+    {
+      "name": "inline-blue-link",
+      "type": "inline",
+      "chineseName": "蓝色链接",
+      "sizes": [
+        {
+          "name": "m",
+          "styleProperties": {
+            "fontSize": "13px",
+            "lineHeight": "20px",
+            "fontWeight": "400",
+            "fontFamily": "Open Sans",
+            "color": "#0060BF",
+            "iconSize": "12x12px",
+            "gap": "2px",
+            "defaultIcon": "icon-text-button-arrow-right-blue-s.svg",
+            "iconOptional": true,
+            "iconFilter": "none"
+          }
+        },
+        {
+          "name": "l",
+          "styleProperties": {
+            "fontSize": "14px",
+            "lineHeight": "22px",
+            "fontWeight": "400",
+            "fontFamily": "Open Sans",
+            "color": "#0060BF",
+            "iconSize": "12x12px",
+            "gap": "2px",
+            "defaultIcon": "icon-text-button-arrow-right-blue-s.svg",
+            "iconOptional": true,
+            "iconFilter": "none"
+          }
+        }
+      ],
+      "cssClass": "ds-text-btn ds-text-btn--inline ds-text-btn--blue-link",
+      "requiredChildren": [
+        "span.ds-text-btn__text",
+        "img.ds-text-btn__icon"
+      ],
+      "isComplete": true,
+      "pendingParts": [],
+      "whenToUse": "来源明确为13px蓝色导航，如详情、加购对话框、表格或外围页",
+      "whenNotToUse": "宿主明确使用黑色子组件、或来源指定12/14px时，不套用当前13px默认调用",
+      "selectionDecisionType": "Inline 蓝色链接"
+    },
+    {
+      "name": "inline-white",
+      "type": "inline",
+      "chineseName": "白色（深色背景）",
+      "sizes": [
+        {
+          "name": "l",
+          "styleProperties": {
+            "fontSize": "14px",
+            "lineHeight": "22px",
+            "fontWeight": "400",
+            "fontFamily": "Open Sans",
+            "color": "#FFFFFF",
+            "iconSize": "12x12px",
+            "gap": "2px",
+            "defaultIcon": "icon-text-button-arrow-right-white-l.svg",
+            "iconOptional": true,
+            "iconFilter": "none"
+          }
+        }
+      ],
+      "cssClass": "ds-text-btn ds-text-btn--inline ds-text-btn--white",
+      "requiredChildren": [
+        "span.ds-text-btn__text",
+        "img.ds-text-btn__icon"
+      ],
+      "isComplete": true,
+      "pendingParts": [],
+      "whenToUse": "深色背景上的14px白色导航，如有明确来源的专题页Banner入口",
+      "whenNotToUse": "浅色背景不使用白色；不据此增加第二个Banner入口",
+      "selectionDecisionType": "Inline 白色"
+    },
+    {
+      "name": "with-bg-default",
+      "type": "with-bg",
+      "chineseName": "带背景",
+      "sizes": [
+        {
+          "name": "s-bg",
+          "styleProperties": {
+            "fontSize": "12px",
+            "lineHeight": "20px",
+            "fontWeight": "400",
+            "fontFamily": "Open Sans",
+            "color": "#707070",
+            "height": "32px",
+            "padding": "0 12px",
+            "backgroundColor": "transparent",
+            "borderRadius": "4px",
+            "iconSize": "12x12px",
+            "gap": "2px",
+            "defaultIcon": "icon-text-button-arrow-right-gray-s-default.svg",
+            "iconOptional": true,
+            "iconFilter": "none"
+          }
+        },
+        {
+          "name": "l-bg",
+          "styleProperties": {
+            "fontSize": "14px",
+            "lineHeight": "22px",
+            "fontWeight": "400",
+            "fontFamily": "Open Sans",
+            "color": "#707070",
+            "height": "36px",
+            "padding": "0 16px",
+            "backgroundColor": "transparent",
+            "borderRadius": "4px",
+            "iconSize": "12x12px",
+            "gap": "2px",
+            "defaultIcon": "icon-text-button-arrow-right-gray-s-default.svg",
+            "iconOptional": true,
+            "iconFilter": "none"
+          }
+        }
+      ],
+      "cssClass": "ds-text-btn ds-text-btn--with-bg",
+      "requiredChildren": [
+        "span.ds-text-btn__text",
+        "img.ds-text-btn__icon"
+      ],
+      "isComplete": true,
+      "pendingParts": [],
+      "whenToUse": "来源需要12px、32px高的带容器文字入口，如社区场景中的导航动作",
+      "whenNotToUse": "正文行内链接不套用容器；不据此开放14px/36px或业务操作",
+      "selectionDecisionType": "带背景"
+    }
+  ],
+  "states": [
+    {
+      "name": "default",
+      "chineseName": "默认",
+      "styleOverrides": {},
+      "description": "正常显示状态；无背景 inline 变体默认不显示下划线，Hover/expanded 按各自状态声明，不把悬停下划线常驻默认态。"
+    },
+    {
+      "name": "hover",
+      "chineseName": "悬停",
+      "styleOverrides": {
+        "inline": "文字下划线，cursor: pointer",
+        "with-bg": "color: #19191A; background-color: #F2F2F2; icon-filter: none; icon: icon-text-button-arrow-right-gray-s-hover.svg"
+      },
+      "description": "无背景悬停显示文字下划线；带背景文字变深并出现背景。"
+    },
+    {
+      "name": "expanded",
+      "chineseName": "展开/选中",
+      "styleOverrides": {
+        "inlineTextDecoration": "underline",
+        "disclosureIcon": "icon-chevron-down.svg",
+        "disclosureIconTransform": "rotate(180deg)"
+      },
+      "description": "既有宿主适配记录：仅在对应宿主契约要求时表达展开状态；不开放独立TextButton折叠用途，不将该下划线套到普通Default链接。"
+    }
+  ],
+  "commonProperties": {
+    "display": "inline-flex",
+    "alignItems": "center",
+    "gap": "2px",
+    "cursor": "pointer",
+    "fontFamily": "Open Sans",
+    "border": "none",
+    "background": "none",
+    "transition": "color 0.2s ease, background-color 0.2s ease",
+    "padding": "0"
+  },
+  "iconHandling": {
+    "description": "当前原始库7变体10尺寸的普通右箭头使用各自官方Default/Hover矢量，filter:none，不通过滤镜近似颜色。以下旧滤镜规则只记录非canonical宿主适配，不能用于当前普通右箭头。可选Icon、左右位置和折叠Chevron是既有宿主能力，须按对应宿主来源与适配记录调用，不作为原始组件库新增形态。",
+    "rules": [
+      {
+        "textColor": "blue (#0060BF)",
+        "filter": "none",
+        "reason": "图标原色即为蓝色"
+      },
+      {
+        "textColor": "black (#19191A)",
+        "filter": "brightness(0)",
+        "reason": "将蓝色图标变为纯黑"
+      },
+      {
+        "textColor": "white (#FFFFFF)",
+        "filter": "brightness(0) invert(1)",
+        "reason": "先变黑再反转为白色"
+      },
+      {
+        "textColor": "gray (#707070)",
+        "filter": "brightness(0) opacity(0.45)",
+        "reason": "变黑后降低不透明度近似灰色"
+      }
+    ]
+  },
+  "usageGuidelines": "按当前 aiContract 与真实 Preview 选择7变体10尺寸组合。无背景 inline 默认无下划线，Hover按对应变体显示下划线；不得常驻Hover装饰。当前只开放官方右箭头及原有显示开关，不开放左图标、自定义图标或折叠控件用途。来源已有图标不能因组件箭头可隐藏而省略，也不能强制替换成右箭头；结构或语义不匹配时选择其他真实组件或沿页面级自定义边界处理，不用有框Button替代轻量入口。正文数据链接与独立动作分别判断，不按可点击这一点统一映射。",
+  "tokenReferences": [
+    "color.blue",
+    "color.gray-1",
+    "color.gray-3",
+    "color.gray-7",
+    "color.white",
+    "typography.font-family-base",
+    "typography.font-size-md",
+    "typography.font-size-h8",
+    "typography.font-size-sm",
+    "typography.font-weight-regular",
+    "typography.font-weight-semibold",
+    "border-radius.md",
+    "spacing.2",
+    "spacing.md",
+    "spacing.lg",
+    "border.style.none",
+    "typography.h7-regular",
+    "typography.h7-semibold",
+    "typography.h9-regular",
+    "typography.h8-regular"
+  ],
+  "constraints": {
+    "allowedChildren": [
+      "Text（必需）",
+      "Icon 分子（可选；使用已登记图标，位于文本左侧或右侧）"
+    ],
+    "requiredProperties": [
+      "type",
+      "variant",
+      "size"
+    ],
+    "forbiddenCombinations": [
+      "inline-blue 仅支持 S 尺寸",
+      "inline-black-bold 仅支持 L 尺寸",
+      "inline-white 仅支持 L 尺寸"
+    ],
+    "notes": "Text is required. Icon is an optional molecule, not an arrow-only slot. When present, use an available registered icon at 12×12px and place it before or after text with the corresponding icon-position class. Use icon-arrow-right.svg only when the reference content shows a right arrow; disclosure controls may use icon-chevron-down.svg rotated 180deg when an icon is needed to express state."
+  },
+  "iconMolecule": {
+    "elementClass": "ds-text-btn__icon",
+    "required": false,
+    "size": "12x12px",
+    "gap": "2px",
+    "assetRule": "Use a registered local icon that matches the reference content; icon-arrow-right.svg is only the default right-arrow example, not a fixed requirement.",
+    "positionVariants": [
+      {
+        "className": "ds-text-btn--icon-start",
+        "position": "before text"
+      },
+      {
+        "className": "ds-text-btn--icon-end",
+        "position": "after text"
+      }
+    ]
+  },
+  "relations": {
+    "iconDependencies": [
+      {
+        "icon": "icon-chevron-down.svg",
+        "usage": "折叠内容已展开时的 disclosure 图标；通过 ds-text-btn--expanded 旋转 180°朝上",
+        "required": false,
+        "appliesTo": [
+          "inline"
+        ]
+      },
+      {
+        "icon": "icon-text-button-arrow-right-regular",
+        "usage": "Official12px Gray1 arrow for source-verified black14px TextButton; ordinary/bold paths remain distinct; no frozen-page upgrade.",
+        "appliesTo": [
+          "inline"
+        ],
+        "required": false
+      },
+      {
+        "icon": "icon-text-button-arrow-right-bold",
+        "usage": "Official12px Gray1 arrow for source-verified black14px TextButton; ordinary/bold paths remain distinct; no frozen-page upgrade.",
+        "appliesTo": [
+          "inline"
+        ],
+        "required": false
+      },
+      {
+        "icon": "icon-text-button-arrow-right-blue-s",
+        "usage": "已核inline-blue/s及inline-blue-link/m/l的Default/Hover，同几何与Blue填色的官方12px原件。",
+        "appliesTo": [
+          "inline"
+        ],
+        "required": false
+      },
+      {
+        "icon": "icon-text-button-arrow-right-gray-s-default",
+        "usage": "已核inline-gray/s及with-bg-default/s-bg,l-bg；Default Gray3、Hover Gray1的官方12px实心轮廓。",
+        "appliesTo": [
+          "inline",
+          "with-bg"
+        ],
+        "required": false
+      },
+      {
+        "icon": "icon-text-button-arrow-right-gray-s-hover",
+        "usage": "已核inline-gray/s及with-bg-default/s-bg,l-bg；Default Gray3、Hover Gray1的官方12px实心轮廓。",
+        "appliesTo": [
+          "inline",
+          "with-bg"
+        ],
+        "required": false
+      },
+      {
+        "icon": "icon-text-button-arrow-right-white-l",
+        "usage": "inline-white/l Default/Hover官方12px白色实心箭头。",
+        "appliesTo": [
+          "inline"
+        ],
+        "required": false
+      }
+    ],
+    "variantDecisionsDescription": "每种 TextButton 变体：什么场景用 → 常被哪些组件嵌套使用。",
+    "variantDecisions": [
+      {
+        "type": "Inline 黑色",
+        "className": "ds-text-btn--inline ds-text-btn--black",
+        "whenToUse": "来源与宿主需要13px常规黑色文字导航，如已登记卡片、表格或详情入口",
+        "whenNotToUse": "宿主明确需要蓝色、白色或14px加粗时，改按对应变体；不要仅凭“链接”默认黑色",
+        "nestedComponents": [],
+        "status": "当前调用资格读取本地catalog；不是全族视觉批准。",
+        "variant": "inline-black",
+        "selectionCases": [
+          {
+            "id": "text-button.inline-black.use",
+            "kind": "use",
+            "strength": "candidate",
+            "condition": "来源与宿主需要13px常规黑色文字导航，如已登记卡片、表格或详情入口",
+            "result": "列入候选，再核对宿主和当前调用尺寸。",
+            "targetVariant": "inline-black"
+          },
+          {
+            "id": "text-button.inline-black.avoid",
+            "kind": "avoid",
+            "strength": "avoid",
+            "condition": "宿主明确需要蓝色、白色或14px加粗时，改按对应变体；不要仅凭“链接”默认黑色",
+            "result": "排除当前调用，不以改类、改字体或换图标适配。",
+            "targetVariant": "inline-black"
+          },
+          {
+            "id": "text-button.inline-black.reference-size",
+            "kind": "reference",
+            "strength": "reference",
+            "condition": "规范中另有14px原例",
+            "result": "保留资料；当前本地调用仅默认尺寸，size参数尚未开放。",
+            "targetVariant": "inline-black"
+          }
+        ],
+        "evidence": {
+          "source": "components/sources/text-button/mg-current-scope-20261114.json",
+          "nodes": [
+            "3:14716",
+            "3:24703",
+            "3:29386"
+          ]
+        }
+      },
+      {
+        "type": "灰色链接（小）",
+        "className": "ds-text-btn--inline ds-text-btn--gray ds-text-btn--s",
+        "whenToUse": "来源为12px灰色次要导航，如公共导航或详情页评论入口",
+        "whenNotToUse": "明确需要蓝色、深色反白或带容器时不用本变体",
+        "nestedComponents": [],
+        "status": "当前调用资格读取本地catalog；不是全族视觉批准。",
+        "variant": "inline-gray",
+        "selectionCases": [
+          {
+            "id": "text-button.inline-gray.use",
+            "kind": "use",
+            "strength": "candidate",
+            "condition": "来源为12px灰色次要导航，如公共导航或详情页评论入口",
+            "result": "列入候选，再核对宿主和当前调用尺寸。",
+            "targetVariant": "inline-gray"
+          },
+          {
+            "id": "text-button.inline-gray.avoid",
+            "kind": "avoid",
+            "strength": "avoid",
+            "condition": "明确需要蓝色、深色反白或带容器时不用本变体",
+            "result": "排除当前调用，不以改类、改字体或换图标适配。",
+            "targetVariant": "inline-gray"
+          }
+        ],
+        "evidence": {
+          "source": "components/sources/text-button/mg-current-scope-20261114.json",
+          "nodes": [
+            "3:14809",
+            "3:24696",
+            "3:29363"
+          ]
+        }
+      },
+      {
+        "type": "Inline 黑色加粗",
+        "className": "ds-text-btn--inline ds-text-btn--black-bold（独立使用）",
+        "whenToUse": "来源明确为14px加粗文字入口，如首页特定卡片中的Get more Information、FS Certified",
+        "whenNotToUse": "无加粗依据的普通链接，不凭“更重要”擅自加粗",
+        "nestedComponents": [],
+        "status": "当前调用资格读取本地catalog；不是全族视觉批准。",
+        "variant": "inline-black-bold",
+        "selectionCases": [
+          {
+            "id": "text-button.inline-black-bold.use",
+            "kind": "use",
+            "strength": "candidate",
+            "condition": "来源明确为14px加粗文字入口，如首页特定卡片中的Get more Information、FS Certified",
+            "result": "列入候选，再核对宿主和当前调用尺寸。",
+            "targetVariant": "inline-black-bold"
+          },
+          {
+            "id": "text-button.inline-black-bold.avoid",
+            "kind": "avoid",
+            "strength": "avoid",
+            "condition": "无加粗依据的普通链接，不凭“更重要”擅自加粗",
+            "result": "排除当前调用，不以改类、改字体或换图标适配。",
+            "targetVariant": "inline-black-bold"
+          }
+        ],
+        "evidence": {
+          "source": "components/sources/text-button/mg-current-scope-20261114.json",
+          "nodes": [
+            "3:14743",
+            "3:24738",
+            "3:29280"
+          ]
+        }
+      },
+      {
+        "type": "Inline 蓝色链接",
+        "className": "ds-text-btn--inline ds-text-btn--blue-link（独立使用）",
+        "whenToUse": "来源明确为13px蓝色导航，如详情、加购对话框、表格或外围页",
+        "whenNotToUse": "宿主明确使用黑色子组件、或来源指定12/14px时，不套用当前13px默认调用",
+        "nestedComponents": [],
+        "status": "当前调用资格读取本地catalog；不是全族视觉批准。",
+        "variant": "inline-blue-link",
+        "selectionCases": [
+          {
+            "id": "text-button.inline-blue-link.use",
+            "kind": "use",
+            "strength": "candidate",
+            "condition": "来源明确为13px蓝色导航，如详情、加购对话框、表格或外围页",
+            "result": "列入候选，再核对宿主和当前调用尺寸。",
+            "targetVariant": "inline-blue-link"
+          },
+          {
+            "id": "text-button.inline-blue-link.avoid",
+            "kind": "avoid",
+            "strength": "avoid",
+            "condition": "宿主明确使用黑色子组件、或来源指定12/14px时，不套用当前13px默认调用",
+            "result": "排除当前调用，不以改类、改字体或换图标适配。",
+            "targetVariant": "inline-blue-link"
+          },
+          {
+            "id": "text-button.inline-blue-link.reference-size",
+            "kind": "reference",
+            "strength": "reference",
+            "condition": "规范中另有14px原例",
+            "result": "保留资料；当前本地调用仅默认尺寸，size参数尚未开放。",
+            "targetVariant": "inline-blue-link"
+          }
+        ],
+        "evidence": {
+          "source": "components/sources/text-button/mg-current-scope-20261114.json",
+          "nodes": [
+            "3:14657",
+            "3:24745",
+            "3:29292"
+          ]
+        }
+      },
+      {
+        "type": "Inline 蓝色（小）",
+        "className": "ds-text-btn--inline ds-text-btn--blue ds-text-btn--s（独立使用）",
+        "whenToUse": "来源需要12px蓝色紧凑导航，如表单隐私政策链接；当前仅处理导航目标",
+        "whenNotToUse": "不作为13/14px正文链接，也不代替复选框、折叠或业务动作触发器",
+        "nestedComponents": [],
+        "status": "当前调用资格读取本地catalog；不是全族视觉批准。",
+        "variant": "inline-blue",
+        "selectionCases": [
+          {
+            "id": "text-button.inline-blue.use",
+            "kind": "use",
+            "strength": "candidate",
+            "condition": "来源需要12px蓝色紧凑导航，如表单隐私政策链接；当前仅处理导航目标",
+            "result": "列入候选，再核对宿主和当前调用尺寸。",
+            "targetVariant": "inline-blue"
+          },
+          {
+            "id": "text-button.inline-blue.avoid",
+            "kind": "avoid",
+            "strength": "avoid",
+            "condition": "不作为13/14px正文链接，也不代替复选框、折叠或业务动作触发器",
+            "result": "排除当前调用，不以改类、改字体或换图标适配。",
+            "targetVariant": "inline-blue"
+          }
+        ],
+        "evidence": {
+          "source": "components/sources/text-button/mg-current-scope-20261114.json",
+          "nodes": [
+            "3:14621",
+            "3:24660",
+            "3:29339"
+          ]
+        }
+      },
+      {
+        "type": "Inline 白色",
+        "className": "ds-text-btn--inline ds-text-btn--white（Banner 内链接）",
+        "whenToUse": "深色背景上的14px白色导航，如有明确来源的专题页Banner入口",
+        "whenNotToUse": "浅色背景不使用白色；不据此增加第二个Banner入口",
+        "nestedComponents": [],
+        "status": "当前调用资格读取本地catalog；不是全族视觉批准。",
+        "variant": "inline-white",
+        "selectionCases": [
+          {
+            "id": "text-button.inline-white.use",
+            "kind": "use",
+            "strength": "candidate",
+            "condition": "深色背景上的14px白色导航，如有明确来源的专题页Banner入口",
+            "result": "列入候选，再核对宿主和当前调用尺寸。",
+            "targetVariant": "inline-white"
+          },
+          {
+            "id": "text-button.inline-white.avoid",
+            "kind": "avoid",
+            "strength": "avoid",
+            "condition": "浅色背景不使用白色；不据此增加第二个Banner入口",
+            "result": "排除当前调用，不以改类、改字体或换图标适配。",
+            "targetVariant": "inline-white"
+          }
+        ],
+        "evidence": {
+          "source": "components/sources/text-button/mg-current-scope-20261114.json",
+          "nodes": [
+            "3:14693",
+            "3:24618",
+            "3:29351"
+          ]
+        }
+      },
+      {
+        "type": "带背景",
+        "className": "ds-text-btn--with-bg（独立使用）",
+        "whenToUse": "来源需要12px、32px高的带容器文字入口，如社区场景中的导航动作",
+        "whenNotToUse": "正文行内链接不套用容器；不据此开放14px/36px或业务操作",
+        "nestedComponents": [],
+        "status": "当前调用资格读取本地catalog；不是全族视觉批准。",
+        "variant": "with-bg-default",
+        "selectionCases": [
+          {
+            "id": "text-button.with-bg-default.use",
+            "kind": "use",
+            "strength": "candidate",
+            "condition": "来源需要12px、32px高的带容器文字入口，如社区场景中的导航动作",
+            "result": "列入候选，再核对宿主和当前调用尺寸。",
+            "targetVariant": "with-bg-default"
+          },
+          {
+            "id": "text-button.with-bg-default.avoid",
+            "kind": "avoid",
+            "strength": "avoid",
+            "condition": "正文行内链接不套用容器；不据此开放14px/36px或业务操作",
+            "result": "排除当前调用，不以改类、改字体或换图标适配。",
+            "targetVariant": "with-bg-default"
+          },
+          {
+            "id": "text-button.with-bg-default.reference-size",
+            "kind": "reference",
+            "strength": "reference",
+            "condition": "规范中另有14px/36px容器原例",
+            "result": "保留资料；当前本地调用仅默认尺寸，size参数尚未开放。",
+            "targetVariant": "with-bg-default"
+          }
+        ],
+        "evidence": {
+          "source": "components/sources/text-button/mg-current-scope-20261114.json",
+          "nodes": [
+            "3:14792",
+            "3:24611",
+            "3:29304"
+          ]
+        }
+      }
+    ],
+    "radiusDependencies": [
+      {
+        "token": "border-radius.md",
+        "value": "4px",
+        "usage": "中圆角 - 按钮默认圆角",
+        "appliesTo": [
+          "with-bg"
+        ]
+      }
+    ],
+    "fontSizeDependencies": [
+      {
+        "token": "typography.font-size-md",
+        "value": "14px",
+        "usage": "14px：Inline L 与带背景 L-bg",
+        "appliesTo": [
+          "inline",
+          "with-bg"
+        ]
+      },
+      {
+        "token": "typography.font-size-sm",
+        "value": "12px",
+        "usage": "12px：Inline S 与带背景 S-bg",
+        "appliesTo": [
+          "inline",
+          "with-bg"
+        ]
+      },
+      {
+        "token": "typography.font-size-h8",
+        "value": "13px",
+        "usage": "H8 紧凑正文/组件文字",
+        "appliesTo": [
+          "inline"
+        ]
+      }
+    ],
+    "fontWeightDependencies": [
+      {
+        "token": "typography.font-weight-regular",
+        "value": "400",
+        "usage": "标准文字按钮与带背景文字按钮",
+        "appliesTo": [
+          "inline",
+          "with-bg"
+        ],
+        "properties": [
+          "font-weight"
+        ],
+        "selectors": [
+          ".ds-text-btn--black .ds-text-btn__text",
+          ".ds-text-btn--blue-link .ds-text-btn__text",
+          ".ds-text-btn--white .ds-text-btn__text",
+          ".ds-text-btn--with-bg .ds-text-btn__text"
+        ]
+      },
+      {
+        "token": "typography.font-weight-semibold",
+        "value": "600",
+        "usage": "黑色强调文字按钮",
+        "appliesTo": [
+          "inline"
+        ],
+        "properties": [
+          "font-weight"
+        ],
+        "selectors": [
+          ".ds-text-btn--black-bold .ds-text-btn__text"
+        ]
+      }
+    ],
+    "typographyDependencies": [
+      {
+        "token": "typography.h7-regular",
+        "fontSizeToken": "typography.font-size-md",
+        "fontSizeValue": "14px",
+        "fontWeightToken": "typography.font-weight-regular",
+        "fontWeightValue": "400",
+        "weightEvidence": "explicit-css",
+        "usage": "L 号常规文字按钮",
+        "appliesTo": [
+          "inline",
+          "with-bg"
+        ]
+      },
+      {
+        "token": "typography.h7-semibold",
+        "fontSizeToken": "typography.font-size-md",
+        "fontSizeValue": "14px",
+        "fontWeightToken": "typography.font-weight-semibold",
+        "fontWeightValue": "600",
+        "weightEvidence": "explicit-css",
+        "usage": "L 号黑色强调文字按钮",
+        "appliesTo": [
+          "inline"
+        ]
+      },
+      {
+        "token": "typography.h9-regular",
+        "fontSizeToken": "typography.font-size-sm",
+        "fontSizeValue": "12px",
+        "fontWeightToken": "typography.font-weight-regular",
+        "fontWeightValue": "400",
+        "weightEvidence": "explicit-css",
+        "usage": "S 号常规文字按钮",
+        "appliesTo": [
+          "inline",
+          "with-bg"
+        ]
+      },
+      {
+        "token": "typography.h8-regular",
+        "fontSizeToken": "typography.font-size-h8",
+        "fontSizeValue": "13px",
+        "fontWeightToken": "typography.font-weight-regular",
+        "fontWeightValue": "400",
+        "weightEvidence": "explicit-css",
+        "usage": "M 号常规文字按钮",
+        "appliesTo": [
+          "inline"
+        ]
+      }
+    ],
+    "colorDependencies": [
+      {
+        "token": "color.blue",
+        "value": "#0060BF",
+        "usage": "强调蓝色 / 链接色 (Link)",
+        "appliesTo": [
+          "inline"
+        ]
+      },
+      {
+        "token": "color.gray-1",
+        "value": "#19191A",
+        "usage": "标题/深色文字 (Primary text)",
+        "appliesTo": [
+          "inline",
+          "with-bg"
+        ]
+      },
+      {
+        "token": "color.gray-3",
+        "value": "#707070",
+        "usage": "次要/辅助文字 (Secondary/auxiliary text)",
+        "appliesTo": [
+          "with-bg"
+        ]
+      },
+      {
+        "token": "color.gray-7",
+        "value": "#F2F2F2",
+        "usage": "灰色按钮背景",
+        "appliesTo": [
+          "with-bg"
+        ]
+      },
+      {
+        "token": "color.white",
+        "value": "#FFFFFF",
+        "usage": "白色 (深色背景上的文字)",
+        "appliesTo": [
+          "inline"
+        ]
+      }
+    ],
+    "commonlyEmbeddedIn": [],
+    "parentContext": {
+      "ds-nav-footer__col-links": {
+        "overrideColor": "#707070",
+        "reason": "历史Footer灰色覆盖记录；当前原子优先决定下不作为新调用例外。Footer无右箭头/旧S黑色结构尚未映射当前原子，需取得宿主来源后明确迁移。",
+        "status": "legacy-host-override-pending-source-and-atom-first-migration"
+      }
+    },
+    "variantSelectionRules": [
+      {
+        "condition": "正文内黑色文字链接（Icon 可无、可左、可右；以参考内容为准）",
+        "variant": "inline-black"
+      },
+      {
+        "condition": "标准蓝色文字链接（Icon 可无、可左、可右；以参考内容为准）",
+        "variant": "inline-blue-link"
+      },
+      {
+        "condition": "深色背景（banner/content-banner）内的链接",
+        "variant": "inline-white"
+      },
+      {
+        "condition": "需要更大点击区域（如工具栏按钮式链接）",
+        "variant": "with-bg-default"
+      }
+    ],
+    "notes": "独立TextButton调用以当前aiContract为准：原始7变体10尺寸组合、官方右箭头及原有显示开关；Default/Hover分别使用真实状态。可点击文字不自动成为TextButton；页面级原生anchor默认装饰由FS页面级文字链接规则决定，不能因不调用本组件而默认加下划线。既有Card/IconCard宿主的图标或展开适配仍只在对应宿主内有效，不代表独立组件支持左图标、自定义图标或折叠变体。",
+    "stateOnlyMode": {
+      "prop": "data-props.interactionMode",
+      "value": "state-only",
+      "skeleton": "Preview 的 ds-text-btn、ds-text-btn__text 结构不可变；ds-text-btn__icon 是可选 Icon 分子，存在时使用 ds-text-btn--icon-start 或 ds-text-btn--icon-end 保持在文本左侧或右侧",
+      "allowedLeafSubstitution": "仅 a → button type=button，移除 href",
+      "navigation": false
+    },
+    "enforcementStatus": {
+      "colorDependencies.tokens-exist": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 2b：colorDependencies 引用的 color.* token 必须存在于 token-specs/colors.json（缺失即 error）；token 为 / 表示无对应 token 的白名单裸值；双源值一致由 validate-tokens.js 全量保证；Guard C 保证声明了就必须有颜色依赖表"
+      },
+      "colorDependencies.css-uses-var": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 2c：切出组件样式段，校验用到的 var(--color-*) 都在 colorDependencies 声明过，且无未声明裸色值（box-shadow/注释除外），违反即 error —— 保证颜色映射闭环"
+      },
+      "radiusDependencies.tokens-exist": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 3a：radiusDependencies 引用的 border-radius.* token 必须存在于 token-specs/border-radius.json（缺失即 error）；token 为 / 表示白名单裸值；Guard D 保证声明了就必须有圆角依赖表"
+      },
+      "radiusDependencies.css-uses-var": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 3b：校验 border-radius 用到的 var(--border-radius-*) 都在 radiusDependencies 声明过，且无未声明裸圆角值（0 除外），违反即 error —— 保证圆角映射闭环"
+      },
+      "fontSizeDependencies.tokens-exist": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 4a：fontSizeDependencies 引用的 typography.font-size-* token 必须存在于 token-specs/typography.json（缺失即 error）；token 为 / 表示无对应正式 token 的白名单值；Guard E 保证声明了就必须有字号依赖表"
+      },
+      "fontSizeDependencies.css-uses-var": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 4b：校验 font-size 用到的 var(--font-size-*) 都在 fontSizeDependencies 声明过，且无未声明裸字号值，违反即 error —— 保证字号映射闭环"
+      },
+      "shadowDependencies": {
+        "enforced": true,
+        "mechanism": "/",
+        "note": "本组件无 box-shadow，无 shadowDependencies"
+      },
+      "commonlyEmbeddedIn": {
+        "enforced": false,
+        "mechanism": "无",
+        "note": "不会检查 Card/IconCard 的 Learn more 是否真的复用了本组件而非自造链接"
+      },
+      "parentContext.ds-nav-footer__col-links.overrideColor": {
+        "enforced": false,
+        "mechanism": "无"
+      },
+      "variantSelectionRules": {
+        "enforced": false,
+        "mechanism": "无",
+        "note": "语义型选择规则，机械检查难以判断'这里该用哪个 variant'"
+      },
+      "spacingDependencies.tokens-and-css-closure": {
+        "enforced": true,
+        "mechanism": "check-contracts.js: spacingDependencies token/value/selector/property 与组件 CSS 双向闭环校验"
+      },
+      "borderDependencies.tokens-and-css-closure": {
+        "enforced": true,
+        "mechanism": "check-contracts.js: borderDependencies token/value/aspect/selector/property 与组件 CSS 双向闭环校验"
+      },
+      "fontWeightDependencies.tokens-and-css-closure": {
+        "enforced": true,
+        "mechanism": "check-contracts.js: fontWeightDependencies token/value/selector/property 与组件 CSS 双向闭环校验；仅允许 Regular 400 / SemiBold 600，禁止裸字重值"
+      },
+      "typographyDependencies.size-weight-pairing": {
+        "enforced": true,
+        "mechanism": "check-contracts.js: typographyDependencies.token 必须引用 token-specs/typography.json 中真实 composite typography token；该 token 同时锁定 fontSize、lineHeight、fontWeight，并核对底层字号/字重 primitive 与 CSS 证据，依赖汇总表只输出一个 Token 链接"
+      }
+    },
+    "spacingDependencies": [
+      {
+        "token": "spacing.2",
+        "value": "2px",
+        "usage": "gap：.ds-text-btn",
+        "properties": [
+          "gap"
+        ],
+        "selectors": [
+          ".ds-text-btn"
+        ],
+        "appliesTo": [
+          "inline",
+          "with-bg"
+        ]
+      },
+      {
+        "token": "spacing.md",
+        "value": "12px",
+        "usage": "padding：.ds-text-btn--s-bg",
+        "properties": [
+          "padding"
+        ],
+        "selectors": [
+          ".ds-text-btn--s-bg"
+        ],
+        "appliesTo": [
+          "with-bg"
+        ]
+      },
+      {
+        "token": "spacing.lg",
+        "value": "16px",
+        "usage": "padding：.ds-text-btn--l-bg",
+        "properties": [
+          "padding"
+        ],
+        "selectors": [
+          ".ds-text-btn--l-bg"
+        ],
+        "appliesTo": [
+          "with-bg"
+        ]
+      }
+    ],
+    "borderDependencies": [
+      {
+        "token": "border.style.none",
+        "value": "none",
+        "usage": "border：.ds-text-btn",
+        "aspect": "style",
+        "properties": [
+          "border"
+        ],
+        "selectors": [
+          ".ds-text-btn"
+        ],
+        "appliesTo": [
+          "inline",
+          "with-bg"
+        ]
+      }
+    ],
+    "hardRules": [
+      {
+        "title": "卡片内 Learn more 固定变体",
+        "description": "AI 生成页面时必须遵守。左边是描述原文，右边是 AI 解析后写入 <code>text-button.json</code> 的字段值。",
+        "ruleContent": "<strong>Card / IconCard 的 Learn more 使用对应宿主契约规定的黑色常规文字按钮。</strong>独立TextButton只开放当前aiContract的真实变体、尺寸、官方右箭头和原有显示开关；不强套来源左图标或折叠控件。既有宿主的Chevron与展开态仅在该宿主契约范围保留，不作为独立TextButton新增能力。默认和Hover不能混用，不把下划线常驻Default。",
+        "aiParse": "relations.commonlyEmbeddedIn[0] = {\n  component: \"Card\",\n  usage: \"vertical/horizontal 卡片的 Learn more 链接，固定 ds-text-btn--inline ds-text-btn--black ds-text-btn--m，父级依赖 margin-top:auto 居底\"\n}\n\nrelations.commonlyEmbeddedIn[1] = {\n  component: \"IconCard\",\n  usage: \"单事件卡片的 Learn more 链接，同 Card 用法，位于 ds-icon-card__link 行内\"\n}",
+        "enforcement": "沿既有宿主依赖检查与TextButton状态验证，不新增页面生成步骤或独立验收清单。"
+      }
+    ]
+  },
+  "searchIntents": [
+    "文字链接",
+    "了解更多",
+    "查看详情",
+    "文字按钮",
+    "箭头链接",
+    "行内链接",
+    "纯文字链接",
+    "图标文字按钮",
+    "前置图标",
+    "后置图标"
+  ],
+  "history": [
+    {
+      "date": "2026-10-12",
+      "author": "Codex",
+      "change": "用户明确组件预览只能展示原始组件库内容；移除TextButton额外纯文字、编辑图标左右位置及折叠演示，保留来源已核七变体十尺寸Default/Hover。移除仅为编辑位置演示登记的icon-edit依赖；已有宿主适配与历史能力规则不扩为组件原件。"
+    },
+    {
+      "date": "2026-10-10",
+      "author": "Codex",
+      "change": "确认Collapse Edit原稿69424:119913关联黑色14px/off文字原子64858:84960；登记已有宿主Preview的有限button/左图标适配边界，七个导航变体/十个尺寸精确调用不扩大。"
+    },
+    {
+      "date": "2026-09-22",
+      "author": "Codex",
+      "change": "依据用户提供组件代码修正 Icon 规则：Icon 是可选的 TextButton 分子，不限右箭头，可替换为已登记图标，并由 icon-start/icon-end 变体保留在文本左侧或右侧。"
+    },
+    {
+      "date": "2026-09-22",
+      "author": "Codex",
+      "change": "修正文字按钮契约：右箭头图标改为可选，文字为必需结构；所有可见纯文字链接可直接映射为 TextButton，并在 Preview 中保留无图标真实 DOM 证据。"
+    },
+    {
+      "date": "2026-08-10",
+      "author": "Kiro",
+      "change": "新增 disclosure 展开/选中状态：文字下划线，icon-chevron-down.svg 旋转 180°朝上，并记录 ARIA 使用语义。"
+    },
+    {
+      "date": "2026-07-23",
+      "author": "Kiro",
+      "change": "将字号与字重配对提升为正式 composite typography token；组件依赖以单一 token 引用完整字号、行高、字重，primitive 字段仅保留作 CSS 证据。"
+    },
+    {
+      "date": "2026-07-22",
+      "change": "新增 typographyDependencies 成对字体依赖：每条记录明确绑定字号与字重，依赖汇总表按“字号 · 层级 · 字重”整体展示，禁止拆列后猜测组合。",
+      "author": "Kiro"
+    },
+    {
+      "date": "2026-07-22",
+      "change": "新增 fontWeightDependencies：按组件 CSS 显式 font-weight 证据登记 Regular 400 / SemiBold 600；无显式声明的组件保留空数组，并纳入 token/value/selector/property 双向闭环校验。",
+      "author": "Kiro"
+    },
+    {
+      "date": "2026-07-20",
+      "change": "父子依赖治理：Card/IconCard/Navigation 的已实现关系改为自动反向推导；Stepper 保留为 verified:false 的参考·未验证关系。",
+      "author": "Kiro"
+    },
+    {
+      "date": "2026-06-30",
+      "change": "新增 relations（commonlyEmbeddedIn/parentContext/variantSelectionRules）与 searchIntents 字段",
+      "author": "TBD"
+    },
+    {
+      "date": "2026-07-14",
+      "change": "增加间距与描边 token 依赖、CSS 选择器/属性证据及机械闭环校验映射",
+      "author": "Kiro"
+    },
+    {
+      "date": "2026-07-14",
+      "change": "依据契约语义、组件 CSS 选择器与预览结构，补齐全部现有依赖的 appliesTo 汇总行映射；仅使用真实 types/variants，不新增伪类型或不确定依赖",
+      "author": "Kiro"
+    },
+    {
+      "date": "2026-10-09",
+      "author": "Codex",
+      "change": "统一规范维护质量标准：登记真实实现与选型规则入口、源变更重新验收、父子影响检查及历史页面隔离；不推断可编辑槽位或视觉批准。"
+    },
+    {
+      "date": "2026-10-14",
+      "change": "补齐原件已有向右箭头显示开关的boolean AI绑定；普通右箭头保持官方颜色/filter:none，Card默认Learn more仍要求可见箭头。"
+    }
+  ],
+  "isComplete": true,
+  "createdAt": "2025-01-15T10:00:00Z",
+  "updatedAt": "2026-11-15",
+  "qualityProfile": {
+    "schemaVersion": "1.0.0",
+    "standard": "docs/component-quality-standard.md",
+    "implementation": "components/variants/text-button.html",
+    "selection": {
+      "mappingSource": "components/selection-mvp-policy.json",
+      "mappingPointer": "components.text-button.variantDecisionTypes",
+      "rulesPointer": "relations.variantDecisions"
+    },
+    "maintenance": {
+      "authority": "contract-preview-runtime-token-icon",
+      "generatedOnly": [
+        "preview-reference-tables",
+        "component-index",
+        "selection-catalog",
+        "design-reading-view",
+        "ai-reference"
+      ],
+      "changePolicy": "记录来源差异、兼容性与受影响父子组件；源文件变化后旧工程验收失效。",
+      "historicalPages": "不自动升级；新页面锁定本地组件运行资源版本。"
+    },
+    "acceptance": {
+      "report": "components/quality/report.json",
+      "proof": "components/quality/acceptance.json",
+      "declarationIsNotProof": true
+    }
+  },
+  "editable": [
+    "label",
+    "href",
+    "arrowHidden"
+  ],
+  "integration": {
+    "styles": [
+      "components/tokens.css",
+      "components/components.css",
+      "components/text-button-current.css"
+    ],
+    "scripts": [],
+    "businessBoundary": "导航目标按来源及原本地模块映射绑定；不新增Plan或页面流程。",
+    "fontStylesheets": [
+      "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+    ],
+    "fontFallback": "沿用 Token 的系统字体回退，精确视觉需确认字体加载。"
+  },
+  "aiContract": {
+    "schemaVersion": "1.0.0",
+    "scope": "mg-original-navigation-ten-sizes-arrow-visibility",
+    "rootTag": "a",
+    "supported": [
+      "inline-blue",
+      "inline-gray",
+      "inline-black",
+      "inline-black-bold",
+      "inline-blue-link",
+      "inline-white",
+      "with-bg-default"
+    ],
+    "unsupported": [
+      "state-only/disclosure",
+      "icon-start",
+      "custom-icon",
+      "business-actions"
+    ],
+    "reviewStatus": {
+      "engineering": "pending",
+      "visual": "pending",
+      "familyCoverage": "partial"
+    },
+    "previewAssets": [
+      "components/preview/reference-live.js"
+    ],
+    "selectionPolicy": "按本地工作流选择具体变体并核对真实宿主。当前7个独立调用只开放各自默认尺寸、label/href/arrowHidden；规范中另3个尺寸原例不等于本地已支持size参数。保留原官方箭头和显示开关；不开放Disabled、左图标、任意图标或折叠/业务动作。",
+    "identity": {
+      "rule": "取同变体/尺寸完整真实示例；href按本地页面来源与模块映射绑定；arrowHidden仅控制已有img的hidden布尔属性，禁止删节点、换src或自写样式。",
+      "labelRule": "label 对应唯一文字节点；普通正文/数据链接不可强套组件。"
+    },
+    "locked": [
+      "根类、颜色/尺寸类、文字节点",
+      "右箭头img结构及官方src、12px图标与2px间距；仅arrowHidden可控制原有箭头显隐",
+      "组件样式与宿主限制"
+    ],
+    "behavior": {
+      "navigation": "href 来自页面事实，预览 # 不得成为新页面目标。",
+      "displayOnly": "仅展示的外部入口在页面装配层取消导航并声明禁用，不伪造跳转。",
+      "hover": "Inline 显示下划线，带背景变体文字变深并出现灰色背景。",
+      "parent": "当前宿主遵循原子优先，不覆盖颜色、字号或状态。Footer历史gray-3覆盖只作为旧实现记录，未开放为当前TextButton精确调用；白字仍限符合规范的深色背景。",
+      "shape": "仅开放原有右箭头显隐：arrowHidden=true对应向右箭头false，保留img及官方src。左图标、非箭头、折叠按钮仍依各宿主来源，不开放为原始新增变体。",
+      "sourceInventory": "Saved typed set 64858:84505 has 20 COMPONENT nodes; 10 registered size calls match unique Default/Hover pairs for explicit fonts/textColor, gap and 12px right arrow declarations. Container height/padding/radius match the two with-bg calls. _color does not override explicit textColor. arrow-export-index-1012.json separately records all20 official SVG geometry/paint matches. browser-states-1014.json and browser-bg-terminal-states-1014.json record finite actual pointer/terminal paint evidence; they do not approve user visual, Footer adapters, all hosts or complete specification coverage.",
+      "specificationScope": "Saved Button update log and type section only: 4 explicit rule texts and 33 document usage rows paired by actual source ancestry. Original text-node IDs retained; document examples do not define new components or automatically approve hosts. There is no complete specification, browser or visual approval inferred.",
+      "hostAdapterBoundary": "Collapse Edit 原稿69424:119913实际调用黑色14px/off原子64858:84960，并打开左侧Edit图标、关闭右箭头。仅现有宿主Preview按已确认原子优先规则进行button语义/左图标适配，保留ds-text-btn文字和图标结构及current资源，不开放页面自动选型中的action/custom-icon变体。原稿16px图标与现行12px原子不同，来源记录不伪称逐像素一致。"
+    },
+    "evidence": {
+      "localPreview": "components/variants/text-button.html",
+      "sourceStatus": "2026-10-09 读取 MG 原始 COMPONENT_SET 64858:84505；规范说明不作为组件。远端修订时间未提供。",
+      "originalComponents": "components/sources/text-button/mastergo-original-components.json",
+      "inventory": "components/sources/text-button/design-inventory.json",
+      "specificationIndex": "components/sources/button/specification-index.json",
+      "arrowWeightReview": "components/sources/text-button/native-arrow-weight-review-1012.json",
+      "regularArrowSource": "components/sources/text-button/regular-arrow-official-1012.svg",
+      "boldArrowSource": "components/sources/text-button/bold-arrow-official-1012.svg",
+      "blueSmallArrowReview": "components/sources/text-button/blue-s-arrow-review-1012.json",
+      "blueSmallDefaultSvg": "components/sources/text-button/blue-s-default-official-1012.svg",
+      "blueSmallHoverSvg": "components/sources/text-button/blue-s-hover-official-1012.svg",
+      "graySmallDefaultSvg": "components/sources/text-button/gray-s-default-official-1012.svg",
+      "graySmallHoverSvg": "components/sources/text-button/gray-s-hover-official-1012.svg",
+      "graySmallArrowReview": "components/sources/text-button/gray-s-arrow-review-1012.json",
+      "blackMediumArrowReview": "components/sources/text-button/black-m-arrow-review-1012.json",
+      "blackMediumDefaultSvg": "components/sources/text-button/black-m-default-official-1012.svg",
+      "blackMediumHoverSvg": "components/sources/text-button/black-m-hover-official-1012.svg",
+      "blueLinkArrowReview": "components/sources/text-button/blue-link-arrow-review-1012.json",
+      "arrowBlueMDefault": "components/sources/text-button/blue-m-default-official-1012.svg",
+      "arrowBlueMHover": "components/sources/text-button/blue-m-hover-official-1012.svg",
+      "arrowBlueLDefault": "components/sources/text-button/blue-l-default-official-1012.svg",
+      "arrowBlueLHover": "components/sources/text-button/blue-l-hover-official-1012.svg",
+      "whiteContainerArrowReview": "components/sources/text-button/white-container-arrow-review-1012.json",
+      "arrowWhiteLDefault": "components/sources/text-button/white-l-default-official-1012.svg",
+      "arrowWhiteLHover": "components/sources/text-button/white-l-hover-official-1012.svg",
+      "arrowBgSDefault": "components/sources/text-button/bg-s-default-official-1012.svg",
+      "arrowBgSHover": "components/sources/text-button/bg-s-hover-official-1012.svg",
+      "arrowBgLDefault": "components/sources/text-button/bg-l-default-official-1012.svg",
+      "arrowBgLHover": "components/sources/text-button/bg-l-hover-official-1012.svg",
+      "currentScope": "components/sources/text-button/mg-current-scope-20261114.json",
+      "capabilityCompletion": "components/sources/capability-completion-20261115/first.json",
+      "fiveVariantSource": "components/sources/five-variants-20261115/review.json"
+    },
+    "variants": {
+      "inline-blue": {
+        "purpose": "navigation-inline-blue",
+        "exampleSelector": "[data-ai-example=\"ai-text-button-inline-blue-s\"]",
+        "defaultSize": "s",
+        "sizes": [
+          {
+            "name": "s",
+            "cssClass": "ds-text-btn--s",
+            "exampleSelector": "[data-ai-example=\"ai-text-button-inline-blue-s\"]"
+          }
+        ],
+        "allowedEdits": [
+          "label",
+          "href",
+          "arrowHidden"
+        ],
+        "slots": {
+          "label": {
+            "selector": ".ds-text-btn__text",
+            "mode": "text",
+            "required": true
+          }
+        },
+        "bindings": {
+          "href": {
+            "mode": "navigation-target",
+            "target": "root",
+            "attribute": "href",
+            "protocols": [
+              "https:",
+              "http:",
+              "mailto:",
+              "tel:"
+            ],
+            "relative": true,
+            "previewPlaceholder": "#"
+          },
+          "arrowHidden": {
+            "mode": "native-attribute",
+            "target": "img.ds-text-btn__icon",
+            "attribute": "hidden",
+            "values": [
+              false,
+              true
+            ],
+            "default": false,
+            "sourceProperty": "向右箭头",
+            "sourceInverted": true
+          }
+        }
+      },
+      "inline-black": {
+        "purpose": "navigation-inline-black",
+        "exampleSelector": "[data-ai-example=\"ai-text-button-inline-black-m\"]",
+        "defaultSize": "m",
+        "sizes": [
+          {
+            "name": "m",
+            "cssClass": "ds-text-btn--m",
+            "exampleSelector": "[data-ai-example=\"ai-text-button-inline-black-m\"]"
+          },
+          {
+            "name": "l",
+            "cssClass": "ds-text-btn--l",
+            "exampleSelector": "[data-ai-example=\"ai-text-button-inline-black-l\"]"
+          }
+        ],
+        "allowedEdits": [
+          "label",
+          "href",
+          "arrowHidden"
+        ],
+        "slots": {
+          "label": {
+            "selector": ".ds-text-btn__text",
+            "mode": "text",
+            "required": true
+          }
+        },
+        "bindings": {
+          "href": {
+            "mode": "navigation-target",
+            "target": "root",
+            "attribute": "href",
+            "protocols": [
+              "https:",
+              "http:",
+              "mailto:",
+              "tel:"
+            ],
+            "relative": true,
+            "previewPlaceholder": "#"
+          },
+          "arrowHidden": {
+            "mode": "native-attribute",
+            "target": "img.ds-text-btn__icon",
+            "attribute": "hidden",
+            "values": [
+              false,
+              true
+            ],
+            "default": false,
+            "sourceProperty": "向右箭头",
+            "sourceInverted": true
+          }
+        }
+      },
+      "inline-black-bold": {
+        "purpose": "navigation-inline-black-bold",
+        "exampleSelector": "[data-ai-example=\"ai-text-button-inline-black-bold-l\"]",
+        "defaultSize": "l",
+        "sizes": [
+          {
+            "name": "l",
+            "cssClass": "ds-text-btn--l",
+            "exampleSelector": "[data-ai-example=\"ai-text-button-inline-black-bold-l\"]"
+          }
+        ],
+        "allowedEdits": [
+          "label",
+          "href",
+          "arrowHidden"
+        ],
+        "slots": {
+          "label": {
+            "selector": ".ds-text-btn__text",
+            "mode": "text",
+            "required": true
+          }
+        },
+        "bindings": {
+          "href": {
+            "mode": "navigation-target",
+            "target": "root",
+            "attribute": "href",
+            "protocols": [
+              "https:",
+              "http:",
+              "mailto:",
+              "tel:"
+            ],
+            "relative": true,
+            "previewPlaceholder": "#"
+          },
+          "arrowHidden": {
+            "mode": "native-attribute",
+            "target": "img.ds-text-btn__icon",
+            "attribute": "hidden",
+            "values": [
+              false,
+              true
+            ],
+            "default": false,
+            "sourceProperty": "向右箭头",
+            "sourceInverted": true
+          }
+        }
+      },
+      "inline-blue-link": {
+        "purpose": "navigation-inline-blue-link",
+        "exampleSelector": "[data-ai-example=\"ai-text-button-inline-blue-link-m\"]",
+        "defaultSize": "m",
+        "sizes": [
+          {
+            "name": "m",
+            "cssClass": "ds-text-btn--m",
+            "exampleSelector": "[data-ai-example=\"ai-text-button-inline-blue-link-m\"]"
+          },
+          {
+            "name": "l",
+            "cssClass": "ds-text-btn--l",
+            "exampleSelector": "[data-ai-example=\"ai-text-button-inline-blue-link-l\"]"
+          }
+        ],
+        "allowedEdits": [
+          "label",
+          "href",
+          "arrowHidden"
+        ],
+        "slots": {
+          "label": {
+            "selector": ".ds-text-btn__text",
+            "mode": "text",
+            "required": true
+          }
+        },
+        "bindings": {
+          "href": {
+            "mode": "navigation-target",
+            "target": "root",
+            "attribute": "href",
+            "protocols": [
+              "https:",
+              "http:",
+              "mailto:",
+              "tel:"
+            ],
+            "relative": true,
+            "previewPlaceholder": "#"
+          },
+          "arrowHidden": {
+            "mode": "native-attribute",
+            "target": "img.ds-text-btn__icon",
+            "attribute": "hidden",
+            "values": [
+              false,
+              true
+            ],
+            "default": false,
+            "sourceProperty": "向右箭头",
+            "sourceInverted": true
+          }
+        }
+      },
+      "inline-white": {
+        "purpose": "navigation-inline-white",
+        "exampleSelector": "[data-ai-example=\"ai-text-button-inline-white-l\"]",
+        "defaultSize": "l",
+        "sizes": [
+          {
+            "name": "l",
+            "cssClass": "ds-text-btn--l",
+            "exampleSelector": "[data-ai-example=\"ai-text-button-inline-white-l\"]"
+          }
+        ],
+        "allowedEdits": [
+          "label",
+          "href",
+          "arrowHidden"
+        ],
+        "slots": {
+          "label": {
+            "selector": ".ds-text-btn__text",
+            "mode": "text",
+            "required": true
+          }
+        },
+        "bindings": {
+          "href": {
+            "mode": "navigation-target",
+            "target": "root",
+            "attribute": "href",
+            "protocols": [
+              "https:",
+              "http:",
+              "mailto:",
+              "tel:"
+            ],
+            "relative": true,
+            "previewPlaceholder": "#"
+          },
+          "arrowHidden": {
+            "mode": "native-attribute",
+            "target": "img.ds-text-btn__icon",
+            "attribute": "hidden",
+            "values": [
+              false,
+              true
+            ],
+            "default": false,
+            "sourceProperty": "向右箭头",
+            "sourceInverted": true
+          }
+        }
+      },
+      "with-bg-default": {
+        "purpose": "navigation-with-bg-default",
+        "exampleSelector": "[data-ai-example=\"ai-text-button-with-bg-default-s-bg\"]",
+        "defaultSize": "s-bg",
+        "sizes": [
+          {
+            "name": "s-bg",
+            "cssClass": "ds-text-btn--s-bg",
+            "exampleSelector": "[data-ai-example=\"ai-text-button-with-bg-default-s-bg\"]"
+          },
+          {
+            "name": "l-bg",
+            "cssClass": "ds-text-btn--l-bg",
+            "exampleSelector": "[data-ai-example=\"ai-text-button-with-bg-default-l-bg\"]"
+          }
+        ],
+        "allowedEdits": [
+          "label",
+          "href",
+          "arrowHidden"
+        ],
+        "slots": {
+          "label": {
+            "selector": ".ds-text-btn__text",
+            "mode": "text",
+            "required": true
+          }
+        },
+        "bindings": {
+          "href": {
+            "mode": "navigation-target",
+            "target": "root",
+            "attribute": "href",
+            "protocols": [
+              "https:",
+              "http:",
+              "mailto:",
+              "tel:"
+            ],
+            "relative": true,
+            "previewPlaceholder": "#"
+          },
+          "arrowHidden": {
+            "mode": "native-attribute",
+            "target": "img.ds-text-btn__icon",
+            "attribute": "hidden",
+            "values": [
+              false,
+              true
+            ],
+            "default": false,
+            "sourceProperty": "向右箭头",
+            "sourceInverted": true
+          }
+        }
+      },
+      "inline-gray": {
+        "purpose": "navigation-inline-gray",
+        "exampleSelector": "[data-ai-example=\"ai-text-button-inline-gray-s\"]",
+        "defaultSize": "s",
+        "sizes": [
+          {
+            "name": "s",
+            "cssClass": "ds-text-btn--s",
+            "exampleSelector": "[data-ai-example=\"ai-text-button-inline-gray-s\"]"
+          }
+        ],
+        "allowedEdits": [
+          "label",
+          "href",
+          "arrowHidden"
+        ],
+        "slots": {
+          "label": {
+            "selector": ".ds-text-btn__text",
+            "mode": "text",
+            "required": true
+          }
+        },
+        "bindings": {
+          "href": {
+            "mode": "navigation-target",
+            "target": "root",
+            "attribute": "href",
+            "protocols": [
+              "https:",
+              "http:",
+              "mailto:",
+              "tel:"
+            ],
+            "relative": true,
+            "previewPlaceholder": "#"
+          },
+          "arrowHidden": {
+            "mode": "native-attribute",
+            "target": "img.ds-text-btn__icon",
+            "attribute": "hidden",
+            "values": [
+              false,
+              true
+            ],
+            "default": false,
+            "sourceProperty": "向右箭头",
+            "sourceInverted": true
+          }
+        }
+      }
+    }
+  },
+  "changeHistory": [
+    {
+      "date": "2026-10-09",
+      "description": "核对六变体九尺寸右箭头导航结构及 label/href；Inline S 仅新调用加载 opt-in 字号修正，不改历史共享样式；悬停说明按现有实现修正。其他图标形态与 MG 来源仍独立核对。"
+    },
+    {
+      "date": "2026-10-09",
+      "description": "按 MG 原始组件补灰色12px导航；来源与规范说明分离，仅新调用加载当前修正资源。"
+    }
+  ],
+  "prototypeStandard": {
+    "version": 1,
+    "scope": "7 current default calls /14 Default-Hover states; no size, disabled or icon expansion",
+    "source": "components/sources/text-button/mg-current-scope-20261114.json",
+    "callability": "catalog is authoritative; document sizeOptions do not imply a size parameter",
+    "maintenance": "original component:sync; keep source Preview and all dependency records"
+  },
+  "parts": {
+    "icon-card-disclosure": {
+      "isComplete": true,
+      "pendingParts": [],
+      "colorVariants": [
+        "inline-blue-link"
+      ],
+      "scope": "MG IconCard See more/See less13px blue TextButton; same atom typography, official down/up arrows, semantic button host adaptation.",
+      "source": "components/sources/card-carousel-mg-20261114/card-icon-card.txt",
+      "previewSelector": "[data-text-button-part=\"icon-card-disclosure\"]",
+      "sourcePreview": "components/sources/text-button/icon-card-disclosure-current.html",
+      "requiredClasses": [
+        "ds-text-btn",
+        "ds-text-btn__text",
+        "ds-text-btn__icon"
+      ],
+      "allowedHosts": [
+        {
+          "component": "IconCard",
+          "variant": "center.multi-event-expandable"
+        },
+        {
+          "component": "IconCard",
+          "variant": "left.multi-event-expandable"
+        }
+      ]
+    },
+    "collapse-edit-action": {
+      "isComplete": true,
+      "pendingParts": [],
+      "colorVariants": [
+        "inline-black"
+      ],
+      "previewSelector": "[data-collapse-edit-atom=\"current\"]",
+      "requiredClasses": [
+        "ds-text-btn",
+        "ds-text-btn--inline",
+        "ds-text-btn--black",
+        "ds-text-btn--l",
+        "ds-text-btn__icon",
+        "ds-text-btn__text"
+      ],
+      "source": "components/sources/five-variants-20261115/review.json",
+      "sourcePreview": "components/sources/text-button/collapse-edit-current-1115.html",
+      "scope": "Existing source Edit left-icon action adapter; private native button, not a general TextButton navigation-call rewrite.",
+      "allowedHosts": [
+        {
+          "component": "Collapse",
+          "variant": "inline-edit"
+        }
+      ]
+    }
+  }
+}

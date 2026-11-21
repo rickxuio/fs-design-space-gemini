@@ -1,0 +1,2204 @@
+{
+  "id": "comp_carousel_001",
+  "name": "Carousel",
+  "chineseName": "走马灯",
+  "description": "轮播组件，圆形实心导航按钮（Prev/Next）+ 分页指示器（Dots），浅色/深色两套配色，支持叠加、版心两侧及首页 Banner 场景",
+  "category": "数据展示 Data Display",
+  "variants": [
+    {
+      "name": "light",
+      "chineseName": "浅色背景导航按钮",
+      "styleProperties": {
+        "default": "rgba(25,25,26,0.3) 底+白色直角箭头",
+        "hover": "rgba(25,25,26,0.5)",
+        "disabled": "rgba(25,25,26,0.04)，cursor:not-allowed"
+      },
+      "cssClass": "ds-carousel",
+      "isComplete": false,
+      "pendingParts": [
+        "仅留历史分类；完整组合需真实来源映射，不由本地演示证明"
+      ],
+      "requiredChildren": [
+        "div.ds-carousel__track",
+        "div.ds-carousel__slide",
+        "button.ds-carousel__btn--prev",
+        "button.ds-carousel__btn--next"
+      ]
+    },
+    {
+      "name": "dark",
+      "chineseName": "深色背景导航按钮",
+      "class": "ds-carousel__btn--dark",
+      "usage": "用于深色 Banner 背景",
+      "styleProperties": {
+        "default": "rgba(255,255,255,0.25) 底+白色箭头",
+        "hover": "rgba(255,255,255,0.45)",
+        "disabled": "rgba(255,255,255,0.1)"
+      },
+      "cssClass": "ds-carousel ds-carousel--homepage-banner",
+      "isComplete": false,
+      "pendingParts": [
+        "仅留历史分类；完整组合需真实来源映射，不由本地演示证明"
+      ],
+      "requiredChildren": [
+        "div.ds-carousel__track",
+        "div.ds-carousel__slide",
+        "button.ds-carousel__btn--prev",
+        "button.ds-carousel__btn--next",
+        "div.ds-carousel__dots",
+        "button.ds-carousel__dot"
+      ]
+    },
+    {
+      "name": "navigation.outlined-m.left",
+      "chineseName": "描边28独立左切换控制",
+      "cssClass": "ds-carousel__btn ds-carousel__btn--outlined-m",
+      "isComplete": true,
+      "pendingParts": [],
+      "requiredChildren": [
+        "img[src=\"../icons/icon-carousel-outline28-left-current.svg\"]"
+      ],
+      "selectionDecisionType": "独立描边28方向 · left",
+      "whenToUse": "明确描边28场景的上一项动作。",
+      "whenNotToUse": "卡片48或Banner56不降级替代。",
+      "usage": "明确描边28场景的上一项动作。"
+    },
+    {
+      "name": "navigation.outlined-m.right",
+      "chineseName": "描边28独立右切换控制",
+      "cssClass": "ds-carousel__btn ds-carousel__btn--outlined-m",
+      "isComplete": true,
+      "pendingParts": [],
+      "requiredChildren": [
+        "img[src=\"../icons/icon-carousel-outline28-right-current.svg\"]"
+      ],
+      "selectionDecisionType": "独立描边28方向 · right",
+      "whenToUse": "明确描边28场景的下一项动作。",
+      "whenNotToUse": "卡片48或Banner56不降级替代。",
+      "usage": "明确描边28场景的下一项动作。"
+    },
+    {
+      "name": "navigation.solid-xl.left",
+      "chineseName": "实心48独立左切换控制",
+      "cssClass": "ds-carousel__btn ds-carousel__btn--xl",
+      "isComplete": true,
+      "pendingParts": [],
+      "requiredChildren": [
+        "img[src=\"../icons/icon-carousel-solid48-left-current.svg\"]"
+      ],
+      "selectionDecisionType": "独立实心48方向 · left",
+      "whenToUse": "外部多卡片轮播上一项；排除详情与解决方案页。",
+      "whenNotToUse": "不是完整宿主；不替代内部36/20或Banner56。",
+      "usage": "外部多卡片轮播上一项；排除详情与解决方案页。"
+    },
+    {
+      "name": "navigation.solid-xl.right",
+      "chineseName": "实心48独立右切换控制",
+      "cssClass": "ds-carousel__btn ds-carousel__btn--xl",
+      "isComplete": true,
+      "pendingParts": [],
+      "requiredChildren": [
+        "img[src=\"../icons/icon-carousel-solid48-right-current.svg\"]"
+      ],
+      "selectionDecisionType": "独立实心48方向 · right",
+      "whenToUse": "外部多卡片轮播下一项；排除详情与解决方案页。",
+      "whenNotToUse": "不含分页和内容，不开放其他尺寸。",
+      "usage": "外部多卡片轮播下一项；排除详情与解决方案页。"
+    },
+    {
+      "name": "external-cards",
+      "chineseName": "普通外部多卡片轮播",
+      "type": "组合",
+      "cssClass": "ds-carousel-external",
+      "isComplete": true,
+      "pendingParts": [],
+      "requiredChildren": [
+        ".ds-carousel-external__viewport",
+        ".ds-carousel-external__track",
+        ".rail-prev button",
+        ".rail-next button",
+        ".ds-carousel-external__pagination",
+        ".ds-carousel-external__status"
+      ],
+      "whenToUse": "外部普通内容多卡片需左右切换；复用Card或IconCard及48px按钮。",
+      "whenNotToUse": "详情页、解决方案页、Banner、主多图、自动播放、横向图文卡及混合卡片类型。",
+      "selectionDecisionType": "普通外部多卡片轮播"
+    }
+  ],
+  "buttonVariants": [
+    {
+      "name": "solid-xl",
+      "chineseName": "实心 · XL",
+      "className": "ds-carousel__btn--xl",
+      "buttonSize": "48×48px",
+      "iconSize": "28×28px",
+      "usage": "卡片内容轮播一般默认优先使用48px实心款，具体角色与例外须审阅；Banner最新要求56px待核原件，不能再将本款固定推荐给新Banner。48左右独立方向有限开放；完整轮播仍受原准入限制。"
+    },
+    {
+      "name": "solid-l",
+      "chineseName": "实心 · L",
+      "className": "ds-carousel__btn--l",
+      "buttonSize": "36×36px",
+      "iconSize": "20×20px",
+      "usage": "明确要求 36px 标准切换控制时使用。"
+    },
+    {
+      "name": "solid-s",
+      "chineseName": "实心 · S",
+      "className": "ds-carousel__btn--s",
+      "buttonSize": "20×20px",
+      "iconSize": "12×12px",
+      "usage": "明确要求 20px 紧凑切换控制时使用。"
+    },
+    {
+      "name": "outlined-m",
+      "chineseName": "描边 · M",
+      "className": "ds-carousel__btn--outlined-m",
+      "buttonSize": "28×28px",
+      "iconSize": "16×16px",
+      "usage": "仅当场景明确需要28px白底浅描边、16px深箭头且有上一项/下一项行为时比较本款；不因能调用或存在左右切换就替代卡片轮播默认48。Default白底、Hover #F2F2F2、Disabled整体30%保持原件。"
+    }
+  ],
+  "buttonLayouts": {
+    "overlaid": {
+      "name": "叠加布局",
+      "description": "按钮绝对定位叠加在幻灯片两侧",
+      "styleProperties": {
+        "position": "absolute",
+        "top": "50%",
+        "transform": "translateY(-50%)",
+        "prevLeft": "12px",
+        "nextRight": "12px"
+      }
+    },
+    "container-flanking": {
+      "name": "版心两侧布局",
+      "description": "当走马灯内容铺满 1200px 版心时，Prev/Next 移到版心外侧两边",
+      "hardConstraint": "按钮内边缘距版心左右边缘固定 32px；外层 offset = 32px + 所选按钮宽度（XL 80px、L 68px、S 52px、描边 M 60px）",
+      "verticalAlign": "top:50%; transform:translateY(-50%)",
+      "clippingWarning": "按钮必须置于 .ds-carousel 的 overflow:hidden 范围之外，否则会被裁掉；此项由 verify.js CAROUSEL_BTN 几何校验自动检测"
+    },
+    "homepage-banner": {
+      "name": "首页 Banner 场景",
+      "description": "历史已保存的1920×420深色首页组合，当前实现为48px控制；2026-11-10用户要求Banner轮播56px，与旧记录有冲突，须核原件后同步。本次只更新选择规则，不修改历史运行几何。",
+      "rootClass": "ds-carousel--homepage-banner",
+      "requiredCombination": [
+        "dark",
+        "overlaid"
+      ],
+      "styleProperties": {
+        "designBaseline": "1920×420px；运行宽度 100%，场景高度 420px",
+        "buttonSize": "48×48px",
+        "buttonPosition": "1920px 基准下 Prev x=252px、Next x=1620px；响应式按左右 13.125% 定位",
+        "iconSize": "28×28px",
+        "dots": "激活项为 56×8px 灰色圆角轨道，内部左侧 28×8px 白色短段；其余 6 项为 8×8px 灰点；间距 10px，共 7 项",
+        "dotsPosition": "Banner 内底部 20px 水平居中"
+      },
+      "whenNotToUse": "新Banner不得以本地历史48px冒充最新56px要求；普通卡片轮播默认优先48实心，不套首页组合；静态Banner无切换不加控件。"
+    }
+  },
+  "dotsSpec": {
+    "default": {
+      "size": "8×8px 圆形",
+      "fill": "rgba(112,112,112,0.4)",
+      "light变体": true
+    },
+    "active": {
+      "size": "20×8px 胶囊（border-radius:4px)",
+      "fill": "#707070"
+    },
+    "wideActive": {
+      "class": "ds-carousel__dots--wide-active",
+      "size": "激活 56×8px，默认 8×8px",
+      "count": "7 项（1 个激活项 + 6 个默认项）",
+      "usage": "用于明确要求长条激活态的分页指示器；可与 Light/Dark 配色组合，普通走马灯继续使用 20×8px 激活态；首页 Banner 使用 homepageBanner 专属分段进度轨覆盖"
+    },
+    "homepageBanner": {
+      "rootClass": "ds-carousel--homepage-banner",
+      "track": "56×8px 灰色圆角轨道，fill rgba(255,255,255,0.4)，border-radius 4px",
+      "segment": "左侧 28×8px 白色短段，fill #FFFFFF，border-radius 4px",
+      "defaultDots": "其余 6 项为 8×8px 灰点，fill rgba(255,255,255,0.4)",
+      "count": "7 项",
+      "gap": "10px",
+      "behavior": "active class 切换时，分段进度轨随当前项移动"
+    },
+    "hover": {
+      "fill": "rgba(112,112,112,0.7)"
+    },
+    "darkVariant": {
+      "class": "ds-carousel__dots--dark",
+      "default": "rgba(255,255,255,0.4)",
+      "active": "#FFFFFF（普通 Dark）；首页 Banner 按 homepageBanner 分段进度轨覆盖",
+      "hover": "rgba(255,255,255,0.7)"
+    },
+    "gap": "10px",
+    "position": "轮播下方居中，padding-top:20px"
+  },
+  "states": [
+    {
+      "name": "default",
+      "chineseName": "默认",
+      "styleOverrides": {},
+      "description": "静态展示"
+    },
+    {
+      "name": "hover",
+      "chineseName": "悬停",
+      "styleOverrides": {},
+      "description": "按钮/圆点 hover 态加深不透明度"
+    },
+    {
+      "name": "disabled",
+      "chineseName": "首末张禁用",
+      "styleOverrides": {},
+      "description": "第一张幻灯片时 Prev 禁用，最后一张时 Next 禁用"
+    }
+  ],
+  "contentSlots": {
+    "track": {
+      "required": true,
+      "description": "幻灯片轨道容器，ds-carousel__track"
+    },
+    "slides": {
+      "required": true,
+      "description": "单张幻灯片，ds-carousel__slide"
+    },
+    "prevButton": {
+      "required": true,
+      "description": "上一张按钮"
+    },
+    "nextButton": {
+      "required": true,
+      "description": "下一张按钮"
+    },
+    "dots": {
+      "required": false,
+      "description": "分页指示器，非必须但常见"
+    }
+  },
+  "relations": {
+    "variantDecisionsDescription": "先按普通外部、内部、首页或主多图区分，再核尺寸和方向。当前开放四个方向原子及普通external-cards组合；后者直接复用真实Card/IconCard，其他完整轮播仍按各自准入。原稿/原件/用户要求的冲突单列。",
+    "variantDecisions": [
+      {
+        "type": "配色 · Light（浅色）",
+        "className": "ds-carousel--light（rgba(25,25,26,0.3) 底 + 白色直角箭头）",
+        "whenToUse": "仅规范参考；浅背景完整轮播的配色参考。",
+        "whenNotToUse": "不是已开放的完整轮播接口。",
+        "nestedComponents": [],
+        "status": "当前MG场景及交互已核对；文字与原件/用户要求有差异，按来源对照保留；调用资格读同版catalog。",
+        "variant": "light",
+        "fragment": "light",
+        "selectionCases": [
+          {
+            "id": "cr1u",
+            "kind": "reference",
+            "condition": "浅背景完整轮播的配色参考。",
+            "result": "仅规范参考，不开放调用。",
+            "targetVariant": "light"
+          },
+          {
+            "id": "cr1a",
+            "kind": "avoid",
+            "condition": "不是已开放的完整轮播接口。",
+            "result": "不据此选型。",
+            "targetVariant": "light"
+          }
+        ]
+      },
+      {
+        "type": "配色 · Dark（深色）",
+        "className": "ds-carousel--dark（rgba(255,255,255,0.25) 底 + 白色箭头）",
+        "whenToUse": "仅规范参考；深背景完整轮播的配色参考。",
+        "whenNotToUse": "不能据此开放新尺寸或整套宿主。",
+        "nestedComponents": [],
+        "status": "当前MG场景及交互已核对；文字与原件/用户要求有差异，按来源对照保留；调用资格读同版catalog。",
+        "variant": "dark",
+        "fragment": "dark",
+        "selectionCases": [
+          {
+            "id": "cr2u",
+            "kind": "reference",
+            "condition": "深背景完整轮播的配色参考。",
+            "result": "仅规范参考，不开放调用。",
+            "targetVariant": "dark"
+          },
+          {
+            "id": "cr2a",
+            "kind": "avoid",
+            "condition": "不能据此开放新尺寸或整套宿主。",
+            "result": "不据此选型。",
+            "targetVariant": "dark"
+          }
+        ]
+      },
+      {
+        "type": "尺寸/外观 · 实心 XL",
+        "className": "ds-carousel__btn--xl（48×48px / icon 28×28px）",
+        "whenToUse": "仅规范参考；外部多卡轮播，且不是详情页或解决方案页；候选实心48。",
+        "whenNotToUse": "详情/解决方案或Banner56要求不据此套48。",
+        "nestedComponents": [],
+        "status": "当前MG场景及交互已核对；文字与原件/用户要求有差异，按来源对照保留；调用资格读同版catalog。",
+        "variant": "light",
+        "fragment": "light",
+        "selectionCases": [
+          {
+            "id": "cr3u",
+            "kind": "reference",
+            "condition": "外部多卡轮播，且不是详情页或解决方案页；候选实心48。",
+            "result": "仅规范参考，不开放调用。",
+            "targetVariant": "light"
+          },
+          {
+            "id": "cr3a",
+            "kind": "avoid",
+            "condition": "详情/解决方案或Banner56要求不据此套48。",
+            "result": "不据此选型。",
+            "targetVariant": "light"
+          }
+        ]
+      },
+      {
+        "type": "尺寸/外观 · 实心 L",
+        "className": "ds-carousel__btn--l（36×36px / icon 20×20px）",
+        "whenToUse": "仅规范参考；Recently Viewed、Videos或My order等明确内部多图36场景。",
+        "whenNotToUse": "36仍未开放，不能缩放48替代。",
+        "nestedComponents": [],
+        "status": "当前MG场景及交互已核对；文字与原件/用户要求有差异，按来源对照保留；调用资格读同版catalog。",
+        "variant": "light",
+        "fragment": "light",
+        "selectionCases": [
+          {
+            "id": "cr4u",
+            "kind": "reference",
+            "condition": "Recently Viewed、Videos或My order等明确内部多图36场景。",
+            "result": "仅规范参考，不开放调用。",
+            "targetVariant": "light"
+          },
+          {
+            "id": "cr4a",
+            "kind": "avoid",
+            "condition": "36仍未开放，不能缩放48替代。",
+            "result": "不据此选型。",
+            "targetVariant": "light"
+          }
+        ]
+      },
+      {
+        "type": "尺寸/外观 · 实心 S",
+        "className": "ds-carousel__btn--s（20×20px / icon 12×12px）",
+        "whenToUse": "仅规范参考；商品详情页Banner内部单图自动轮播，原稿20。",
+        "whenNotToUse": "20仍未开放，不能由普通Banner推断。",
+        "nestedComponents": [],
+        "status": "当前MG场景及交互已核对；文字与原件/用户要求有差异，按来源对照保留；调用资格读同版catalog。",
+        "variant": "light",
+        "fragment": "light",
+        "selectionCases": [
+          {
+            "id": "cr5u",
+            "kind": "reference",
+            "condition": "商品详情页Banner内部单图自动轮播，原稿20。",
+            "result": "仅规范参考，不开放调用。",
+            "targetVariant": "light"
+          },
+          {
+            "id": "cr5a",
+            "kind": "avoid",
+            "condition": "20仍未开放，不能由普通Banner推断。",
+            "result": "不据此选型。",
+            "targetVariant": "light"
+          }
+        ]
+      },
+      {
+        "type": "尺寸/外观 · 描边 M",
+        "className": "ds-carousel__btn--outlined-m（28×28px / icon 16×16px）",
+        "whenToUse": "仅规范参考；原件明确要求白底描边28。",
+        "whenNotToUse": "不能因其他尺寸受限就降级选28。",
+        "nestedComponents": [],
+        "status": "当前MG场景及交互已核对；文字与原件/用户要求有差异，按来源对照保留；调用资格读同版catalog。",
+        "variant": "light",
+        "fragment": "light",
+        "selectionCases": [
+          {
+            "id": "cr6u",
+            "kind": "reference",
+            "condition": "原件明确要求白底描边28。",
+            "result": "仅规范参考，不开放调用。",
+            "targetVariant": "light"
+          },
+          {
+            "id": "cr6a",
+            "kind": "avoid",
+            "condition": "不能因其他尺寸受限就降级选28。",
+            "result": "不据此选型。",
+            "targetVariant": "light"
+          }
+        ]
+      },
+      {
+        "type": "分页 · 长条激活",
+        "className": "ds-carousel__dots--wide-active（56×8px / 8×8px，间距 10px）",
+        "whenToUse": "仅规范参考；来源明确要求长条激活分页。",
+        "whenNotToUse": "56×8分页不是56px方向按钮。",
+        "nestedComponents": [],
+        "status": "当前MG场景及交互已核对；文字与原件/用户要求有差异，按来源对照保留；调用资格读同版catalog。",
+        "variant": "light",
+        "fragment": "light",
+        "selectionCases": [
+          {
+            "id": "cr7u",
+            "kind": "reference",
+            "condition": "来源明确要求长条激活分页。",
+            "result": "仅规范参考，不开放调用。",
+            "targetVariant": "light"
+          },
+          {
+            "id": "cr7a",
+            "kind": "avoid",
+            "condition": "56×8分页不是56px方向按钮。",
+            "result": "不据此选型。",
+            "targetVariant": "light"
+          }
+        ]
+      },
+      {
+        "type": "布局 · 叠加型",
+        "className": "ds-carousel__btn--overlay（按钮在轮播内绝对定位左右两侧）",
+        "whenToUse": "仅规范参考；方向控件叠在图片/内容上。",
+        "whenNotToUse": "宿主定位，不属于方向按钮能力。",
+        "nestedComponents": [],
+        "status": "当前MG场景及交互已核对；文字与原件/用户要求有差异，按来源对照保留；调用资格读同版catalog。",
+        "variant": "light",
+        "fragment": "light",
+        "selectionCases": [
+          {
+            "id": "cr8u",
+            "kind": "reference",
+            "condition": "方向控件叠在图片/内容上。",
+            "result": "仅规范参考，不开放调用。",
+            "targetVariant": "light"
+          },
+          {
+            "id": "cr8a",
+            "kind": "avoid",
+            "condition": "宿主定位，不属于方向按钮能力。",
+            "result": "不据此选型。",
+            "targetVariant": "light"
+          }
+        ]
+      },
+      {
+        "type": "布局 · 版心两侧",
+        "className": "container-flanking（按钮在 .ds-carousel 的 overflow:hidden 之外，距版心左右各 32px）",
+        "whenToUse": "仅规范参考；1200px版心外侧32px放置控件。",
+        "whenNotToUse": "不能放入裁切容器内。",
+        "nestedComponents": [],
+        "status": "当前MG场景及交互已核对；文字与原件/用户要求有差异，按来源对照保留；调用资格读同版catalog。",
+        "variant": "light",
+        "fragment": "light",
+        "selectionCases": [
+          {
+            "id": "cr9u",
+            "kind": "reference",
+            "condition": "1200px版心外侧32px放置控件。",
+            "result": "仅规范参考，不开放调用。",
+            "targetVariant": "light"
+          },
+          {
+            "id": "cr9a",
+            "kind": "avoid",
+            "condition": "不能放入裁切容器内。",
+            "result": "不据此选型。",
+            "targetVariant": "light"
+          }
+        ]
+      },
+      {
+        "type": "场景 · 首页 Banner",
+        "className": "ds-carousel--homepage-banner（历史48px实现；当前用户要求56px，原件待核）",
+        "whenToUse": "仅规范参考；MG首页Banner写48；用户要求56；差异待确认。",
+        "whenNotToUse": "不擅自改为48、放大48或把56×8分页当按钮。",
+        "nestedComponents": [],
+        "status": "当前MG场景及交互已核对；文字与原件/用户要求有差异，按来源对照保留；调用资格读同版catalog。",
+        "variant": "dark",
+        "fragment": "dark",
+        "selectionCases": [
+          {
+            "id": "cr10u",
+            "kind": "reference",
+            "condition": "MG首页Banner写48；用户要求56；差异待确认。",
+            "result": "仅规范参考，不开放调用。",
+            "targetVariant": "dark"
+          },
+          {
+            "id": "cr10a",
+            "kind": "avoid",
+            "condition": "不擅自改为48、放大48或把56×8分页当按钮。",
+            "result": "不据此选型。",
+            "targetVariant": "dark"
+          }
+        ]
+      },
+      {
+        "type": "独立描边28方向 · left",
+        "className": "ds-carousel__btn ds-carousel__btn--outlined-m / left",
+        "whenToUse": "明确描边28场景的上一项动作。",
+        "whenNotToUse": "卡片48或Banner56不降级替代。",
+        "nestedComponents": [],
+        "status": "当前MG场景及交互已核对；文字与原件/用户要求有差异，按来源对照保留；调用资格读同版catalog。",
+        "variant": "navigation.outlined-m.left",
+        "fragment": "navigation-outlined-m-left",
+        "selectionCases": [
+          {
+            "id": "cr11u",
+            "kind": "use",
+            "condition": "明确描边28场景的上一项动作。",
+            "result": "按同版登记调用。",
+            "targetVariant": "navigation.outlined-m.left"
+          },
+          {
+            "id": "cr11a",
+            "kind": "avoid",
+            "condition": "卡片48或Banner56不降级替代。",
+            "result": "不据此选型。",
+            "targetVariant": "navigation.outlined-m.left"
+          }
+        ]
+      },
+      {
+        "type": "独立描边28方向 · right",
+        "className": "ds-carousel__btn ds-carousel__btn--outlined-m / right",
+        "whenToUse": "明确描边28场景的下一项动作。",
+        "whenNotToUse": "卡片48或Banner56不降级替代。",
+        "nestedComponents": [],
+        "status": "当前MG场景及交互已核对；文字与原件/用户要求有差异，按来源对照保留；调用资格读同版catalog。",
+        "variant": "navigation.outlined-m.right",
+        "fragment": "navigation-outlined-m-right",
+        "selectionCases": [
+          {
+            "id": "cr12u",
+            "kind": "use",
+            "condition": "明确描边28场景的下一项动作。",
+            "result": "按同版登记调用。",
+            "targetVariant": "navigation.outlined-m.right"
+          },
+          {
+            "id": "cr12a",
+            "kind": "avoid",
+            "condition": "卡片48或Banner56不降级替代。",
+            "result": "不据此选型。",
+            "targetVariant": "navigation.outlined-m.right"
+          }
+        ]
+      },
+      {
+        "type": "独立实心48方向 · left",
+        "className": "ds-carousel__btn ds-carousel__btn--xl / left",
+        "whenToUse": "外部多卡片轮播上一项；排除详情与解决方案页。",
+        "whenNotToUse": "不是完整宿主；不替代内部36/20或Banner56。",
+        "nestedComponents": [],
+        "status": "当前MG场景及交互已核对；文字与原件/用户要求有差异，按来源对照保留；调用资格读同版catalog。",
+        "variant": "navigation.solid-xl.left",
+        "fragment": "navigation-solid-xl-left",
+        "selectionCases": [
+          {
+            "id": "cr13u",
+            "kind": "use",
+            "condition": "外部多卡片轮播上一项；排除详情与解决方案页。",
+            "result": "按同版登记调用。",
+            "targetVariant": "navigation.solid-xl.left"
+          },
+          {
+            "id": "cr13a",
+            "kind": "avoid",
+            "condition": "不是完整宿主；不替代内部36/20或Banner56。",
+            "result": "不据此选型。",
+            "targetVariant": "navigation.solid-xl.left"
+          }
+        ]
+      },
+      {
+        "type": "独立实心48方向 · right",
+        "className": "ds-carousel__btn ds-carousel__btn--xl / right",
+        "whenToUse": "外部多卡片轮播下一项；排除详情与解决方案页。",
+        "whenNotToUse": "不含分页和内容，不开放其他尺寸。",
+        "nestedComponents": [],
+        "status": "当前MG场景及交互已核对；文字与原件/用户要求有差异，按来源对照保留；调用资格读同版catalog。",
+        "variant": "navigation.solid-xl.right",
+        "fragment": "navigation-solid-xl-right",
+        "selectionCases": [
+          {
+            "id": "cr14u",
+            "kind": "use",
+            "condition": "外部多卡片轮播下一项；排除详情与解决方案页。",
+            "result": "按同版登记调用。",
+            "targetVariant": "navigation.solid-xl.right"
+          },
+          {
+            "id": "cr14a",
+            "kind": "avoid",
+            "condition": "不含分页和内容，不开放其他尺寸。",
+            "result": "不据此选型。",
+            "targetVariant": "navigation.solid-xl.right"
+          }
+        ]
+      },
+      {
+        "type": "普通外部多卡片轮播",
+        "variant": "external-cards",
+        "fragment": "external-cards",
+        "whenToUse": "外部普通内容多卡片需左右切换；复用Card或IconCard及48px按钮。",
+        "whenNotToUse": "详情页、解决方案页、Banner、主多图、自动播放、横向图文卡及混合卡片类型。",
+        "status": "本地外部组合，继承当前MG普通外部规则；工程通过后按同版catalog调用。",
+        "selectionCases": [
+          {
+            "id": "cr15u",
+            "kind": "use",
+            "targetVariant": "external-cards",
+            "condition": "普通外部内容多卡片需切换，非详情/解决方案页；内容可填入真实Card或IconCard。",
+            "result": "调用external-cards；传同一种子变体items及2/3/4列，不自写轮播。"
+          },
+          {
+            "id": "cr15a",
+            "kind": "avoid",
+            "targetVariant": "external-cards",
+            "condition": "Banner自动播放、详情/解决方案页、主多图或混合卡片样式。",
+            "result": "不调用本变体，不把本轮组合外推。"
+          }
+        ]
+      }
+    ],
+    "radiusDependencies": [
+      {
+        "token": "border-radius.md",
+        "value": "4px",
+        "usage": "中圆角 - 按钮默认圆角",
+        "appliesTo": [
+          "light",
+          "dark"
+        ]
+      },
+      {
+        "token": "/",
+        "value": "50%",
+        "usage": "未 token 化的圆角值，白名单登记",
+        "appliesTo": [
+          "light",
+          "dark",
+          "navigation.outlined-m.left",
+          "navigation.outlined-m.right"
+        ]
+      },
+      {
+        "token": "border-radius.lg",
+        "value": "8px",
+        "usage": "Existing light viewport corner",
+        "appliesTo": [
+          "light"
+        ]
+      }
+    ],
+    "colorDependencies": [
+      {
+        "token": "color.gray-3",
+        "value": "#707070",
+        "usage": "次要/辅助文字 (Secondary/auxiliary text)",
+        "appliesTo": [
+          "light"
+        ]
+      },
+      {
+        "token": "color.gray-2",
+        "value": "#4B4B4D",
+        "usage": "描边 M 导航按钮 Default/Hover 的 Prev/Next 箭头",
+        "appliesTo": [
+          "light",
+          "navigation.outlined-m.left",
+          "navigation.outlined-m.right"
+        ]
+      },
+      {
+        "token": "color.hover-overlay-light",
+        "value": "rgba(25,25,26,0.04)",
+        "usage": "实心 XL/L/S 导航按钮 Disabled 低对比背景",
+        "appliesTo": [
+          "light"
+        ]
+      },
+      {
+        "token": "color.text-disabled",
+        "value": "rgba(25,25,26,0.3)",
+        "usage": "实心 XL/L/S 导航按钮 Default 30% 背景",
+        "appliesTo": [
+          "light"
+        ]
+      },
+      {
+        "token": "color.gray-7",
+        "value": "#F2F2F2",
+        "usage": "描边 M 导航按钮 Hover 背景",
+        "appliesTo": [
+          "light",
+          "navigation.outlined-m.left",
+          "navigation.outlined-m.right"
+        ]
+      },
+      {
+        "token": "color.white",
+        "value": "#FFFFFF",
+        "usage": "深色背景文字与描边 M 导航按钮 Default/Disabled 背景",
+        "appliesTo": [
+          "light",
+          "dark",
+          "navigation.outlined-m.left",
+          "navigation.outlined-m.right"
+        ]
+      },
+      {
+        "token": "color.white-translucent",
+        "value": "rgba(255,255,255,0.1)",
+        "usage": "白色描边按钮背景",
+        "appliesTo": [
+          "dark"
+        ]
+      },
+      {
+        "token": "/",
+        "value": "rgba(112,112,112,0.4)",
+        "usage": "一次性遮罩/渐变停靠色，未 token 化，白名单登记",
+        "appliesTo": [
+          "light"
+        ]
+      },
+      {
+        "token": "/",
+        "value": "rgba(112,112,112,0.7)",
+        "usage": "一次性遮罩/渐变停靠色，未 token 化，白名单登记",
+        "appliesTo": [
+          "light"
+        ]
+      },
+      {
+        "token": "/",
+        "value": "rgba(25,25,26,0.5)",
+        "usage": "一次性遮罩/渐变停靠色，未 token 化，白名单登记",
+        "appliesTo": [
+          "light"
+        ]
+      },
+      {
+        "token": "/",
+        "value": "rgba(255,255,255,0.25)",
+        "usage": "一次性遮罩/渐变停靠色，未 token 化，白名单登记",
+        "appliesTo": [
+          "dark"
+        ]
+      },
+      {
+        "token": "/",
+        "value": "rgba(255,255,255,0.4)",
+        "usage": "一次性遮罩/渐变停靠色，未 token 化，白名单登记",
+        "appliesTo": [
+          "dark"
+        ]
+      },
+      {
+        "token": "/",
+        "value": "rgba(255,255,255,0.45)",
+        "usage": "一次性遮罩/渐变停靠色，未 token 化，白名单登记",
+        "appliesTo": [
+          "dark"
+        ]
+      },
+      {
+        "token": "/",
+        "value": "rgba(255,255,255,0.7)",
+        "usage": "一次性遮罩/渐变停靠色，未 token 化，白名单登记",
+        "appliesTo": [
+          "dark"
+        ]
+      },
+      {
+        "token": "color.blue",
+        "value": "#0060BF",
+        "usage": "外部轮播真实子组件依赖：强调蓝色 / 链接色 (Link)",
+        "appliesTo": [
+          "external-cards"
+        ]
+      },
+      {
+        "token": "color.gray-1",
+        "value": "#19191A",
+        "usage": "外部轮播真实子组件依赖：标题/深色文字 (Primary text)",
+        "appliesTo": [
+          "external-cards"
+        ]
+      },
+      {
+        "token": "color.gray-5",
+        "value": "#DEE0E3",
+        "usage": "外部轮播真实子组件依赖：边框色 / 菜单项禁用色",
+        "appliesTo": [
+          "external-cards"
+        ]
+      },
+      {
+        "token": "color.gray-6",
+        "value": "#EDEDF0",
+        "usage": "外部轮播真实子组件依赖：浅灰分割线 / 弱边框（介于 gray-5 #DEE0E3 与 gray-7 #F2F2F2 之间）",
+        "appliesTo": [
+          "external-cards"
+        ]
+      },
+      {
+        "token": "color.gray-9",
+        "value": "#FAFBFB",
+        "usage": "外部轮播真实子组件依赖：最浅灰背景（hover/展开态整行底、输入框底、卡片区底）",
+        "appliesTo": [
+          "external-cards"
+        ]
+      },
+      {
+        "token": "color.sold-label",
+        "value": "#A65300",
+        "usage": "外部轮播真实子组件依赖：售罄标签文字色（深橙），Card 售罄态使用",
+        "appliesTo": [
+          "external-cards"
+        ]
+      },
+      {
+        "token": "color.success-tag-bg",
+        "value": "#D6F5DF",
+        "usage": "外部轮播真实子组件依赖：绿色标签实底背景（Badge 成功态标签底色），比 success-bg 更实",
+        "appliesTo": [
+          "external-cards"
+        ]
+      },
+      {
+        "token": "color.success-tag-text",
+        "value": "#09832A",
+        "usage": "外部轮播真实子组件依赖：绿色标签文字色（Badge 成功态标签文字），比 success #10A300 更深以保证对比度",
+        "appliesTo": [
+          "external-cards"
+        ]
+      },
+      {
+        "token": "color.tag-border",
+        "value": "#EEEEEE",
+        "usage": "外部轮播真实子组件依赖：已核PC051801侧栏占位原件Gray5；本地旧Gray6并非EEE，不新增Navigation调用",
+        "appliesTo": [
+          "external-cards"
+        ]
+      }
+    ],
+    "componentDependencies": [
+      {
+        "component": "Card",
+        "slot": "items",
+        "appliesTo": [
+          "external-cards"
+        ],
+        "requiredVariants": [
+          "spliced.vertical.single-event"
+        ],
+        "implementationClasses": [
+          "ds-card",
+          "ds-card--vertical"
+        ],
+        "usage": "按受控items真实调用普通竖向内容Card；与IconCard择一，不能混用或替换为产品卡。"
+      },
+      {
+        "component": "IconCard",
+        "slot": "items",
+        "appliesTo": [
+          "external-cards"
+        ],
+        "requiredVariants": [
+          "center.single-event",
+          "left.single-event"
+        ],
+        "implementationClasses": [
+          "ds-icon-card"
+        ],
+        "usage": "按受控items真实调用同一种居中或居左IconCard；图标语义及字段仍按子契约。"
+      }
+    ],
+    "iconDependencies": [
+      {
+        "icon": "icon-carousel-prev",
+        "usage": "上一张直角箭头；按变体显示为 28/20/12/16px；描边 M 可用态 SVG stroke 为 color.gray-2（#4B4B4D），Disabled 叠加整体 30% 不透明度",
+        "required": true,
+        "appliesTo": [
+          "light",
+          "dark"
+        ]
+      },
+      {
+        "icon": "icon-carousel-next",
+        "usage": "下一张直角箭头；按变体显示为 28/20/12/16px；描边 M 可用态 SVG stroke 为 color.gray-2（#4B4B4D），Disabled 叠加整体 30% 不透明度",
+        "required": true,
+        "appliesTo": [
+          "light",
+          "dark"
+        ]
+      },
+      {
+        "icon": "icon-carousel-outline28-left-current",
+        "usage": "Saved official16px left glyph, fixedGray2; source receipt tracks Default/Hover/Disabled originals.",
+        "required": true,
+        "appliesTo": [
+          "navigation.outlined-m.left"
+        ]
+      },
+      {
+        "icon": "icon-carousel-outline28-right-current",
+        "usage": "Saved official16px right glyph, fixedGray2; source receipt tracks Default/Hover/Disabled originals.",
+        "required": true,
+        "appliesTo": [
+          "navigation.outlined-m.right"
+        ]
+      },
+      {
+        "icon": "icon-carousel-solid48-left-current",
+        "usage": "普通外部多卡及独立48方向控件复用的已登记真实箭头；继承原子28px当前运行值，MG正文24px差异仍待视觉确认。",
+        "required": true,
+        "appliesTo": [
+          "external-cards",
+          "navigation.solid-xl.left"
+        ]
+      },
+      {
+        "icon": "icon-carousel-solid48-right-current",
+        "usage": "普通外部多卡及独立48方向控件复用的已登记真实箭头；继承原子28px当前运行值，MG正文24px差异仍待视觉确认。",
+        "required": true,
+        "appliesTo": [
+          "external-cards",
+          "navigation.solid-xl.right"
+        ]
+      }
+    ],
+    "colorConstraint": {
+      "rule": "走马灯导航按钮和圆点永远不使用红色（brand-red）",
+      "severity": "硬约束，validate.js 目前未对此单独机械校验，靠 design-spec 文档约束"
+    },
+    "variantContextRule": {
+      "rule": "dark 变体（按钮+dots）只能用在深色 Banner 背景上；浅色/白色背景一律用 light 变体",
+      "appliesTo": [
+        "light",
+        "dark"
+      ]
+    },
+    "geometryVerification": {
+      "tool": "verify.js",
+      "checks": [
+        "CAROUSEL_BTN：按钮可见性（width/height>0）",
+        "按钮垂直居中（与轮播中心误差<4px）",
+        "按钮未被 overflow:hidden 裁剪",
+        "按钮未跑出视口"
+      ]
+    },
+    "notes": "走马灯只有在源页面确实展示轮播交互行为时才使用；不要为了'填满一个网格视觉'而人为加走马灯（steering 文档 Step 4.1 审计表明确列出此项误用场景）。",
+    "enforcementStatus": {
+      "colorDependencies.tokens-exist": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 2b：colorDependencies 引用的 color.* token 必须存在于 token-specs/colors.json（缺失即 error）；token 为 / 表示无对应 token 的白名单裸值；双源值一致由 validate-tokens.js 全量保证；Guard C 保证声明了就必须有颜色依赖表"
+      },
+      "colorDependencies.css-uses-var": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 2c：切出组件样式段，校验用到的 var(--color-*) 都在 colorDependencies 声明过，且无未声明裸色值（box-shadow/注释除外），违反即 error —— 保证颜色映射闭环"
+      },
+      "radiusDependencies.tokens-exist": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 3a：radiusDependencies 引用的 border-radius.* token 必须存在于 token-specs/border-radius.json（缺失即 error）；token 为 / 表示白名单裸值；Guard D 保证声明了就必须有圆角依赖表"
+      },
+      "radiusDependencies.css-uses-var": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 3b：校验 border-radius 用到的 var(--border-radius-*) 都在 radiusDependencies 声明过，且无未声明裸圆角值（0 除外），违反即 error —— 保证圆角映射闭环"
+      },
+      "fontSizeDependencies": {
+        "enforced": true,
+        "mechanism": "/",
+        "note": "本组件段内无 font-size，无 fontSizeDependencies"
+      },
+      "shadowDependencies": {
+        "enforced": true,
+        "mechanism": "/",
+        "note": "本组件无 box-shadow，无 shadowDependencies"
+      },
+      "geometryVerification": {
+        "enforced": true,
+        "mechanism": "verify.js: pageProbe CAROUSEL_BTN（按钮可见性/居中/是否被裁/是否出视口）"
+      },
+      "colorConstraint.no-brand-red": {
+        "enforced": true,
+        "mechanism": "verify.js: pageProbe CAROUSEL_RED（2026-07-16 新增）——.ds-carousel 内出现 ds-btn--filled-red 即 error；导航按钮固定用 ds-carousel__btn 的 light/dark 配色。"
+      },
+      "misuseAsGridFiller": {
+        "enforced": false,
+        "mechanism": "无",
+        "note": "'是否该用走马灯'是语义选型判断，无法机械检查"
+      },
+      "spacingDependencies.tokens-and-css-closure": {
+        "enforced": true,
+        "mechanism": "check-contracts.js: spacingDependencies token/value/selector/property 与组件 CSS 双向闭环校验"
+      },
+      "borderDependencies.tokens-and-css-closure": {
+        "enforced": true,
+        "mechanism": "check-contracts.js: borderDependencies token/value/aspect/selector/property 与组件 CSS 双向闭环校验"
+      },
+      "fontWeightDependencies.tokens-and-css-closure": {
+        "enforced": true,
+        "mechanism": "check-contracts.js: fontWeightDependencies token/value/selector/property 与组件 CSS 双向闭环校验；仅允许 Regular 400 / SemiBold 600，禁止裸字重值"
+      },
+      "typographyDependencies.size-weight-pairing": {
+        "enforced": true,
+        "mechanism": "check-contracts.js: typographyDependencies 强制字号 token/value 与字重 token/value 成对，并核对同类型 fontSizeDependencies、显式 CSS 字重证据或 inherited-regular 来源"
+      }
+    },
+    "spacingDependencies": [
+      {
+        "token": "spacing.10",
+        "value": "10px",
+        "usage": "gap：.ds-carousel__dots",
+        "properties": [
+          "gap"
+        ],
+        "selectors": [
+          ".ds-carousel__dots"
+        ],
+        "appliesTo": [
+          "light",
+          "dark"
+        ]
+      },
+      {
+        "token": "spacing.20",
+        "value": "20px",
+        "usage": "padding-top：.ds-carousel__dots",
+        "properties": [
+          "padding-top"
+        ],
+        "selectors": [
+          ".ds-carousel__dots"
+        ],
+        "appliesTo": [
+          "light",
+          "dark"
+        ]
+      },
+      {
+        "token": "spacing.lg",
+        "value": "16px",
+        "usage": "Existing light controls inset moved from inline Preview to component-owned CSS",
+        "properties": [
+          "left",
+          "right"
+        ],
+        "selectors": [
+          ".ds-carousel[data-carousel-current=\"light-five\"] > .ds-carousel__btn--prev",
+          ".ds-carousel[data-carousel-current=\"light-five\"] > .ds-carousel__btn--next"
+        ],
+        "appliesTo": [
+          "light"
+        ]
+      },
+      {
+        "token": "spacing.xs",
+        "value": "4px",
+        "usage": "当前20/36/48官方图标的左右1px位置差，spacing.xs/4表达，限定已核六態展示单元。",
+        "properties": [
+          "left"
+        ],
+        "selectors": [
+          ".ds-carousel__btn--l[data-carousel-source-solid36^=\"left-\"] img",
+          ".ds-carousel__btn--l[data-carousel-source-solid36^=\"right-\"] img",
+          ".ds-carousel__btn--xl[data-carousel-source-solid48^=\"left-\"] img",
+          ".ds-carousel__btn--xl[data-carousel-source-solid48^=\"right-\"] img",
+          ".ds-carousel__btn--s[data-carousel-source-solid20^=\"left-\"] img",
+          ".ds-carousel__btn--s[data-carousel-source-solid20^=\"right-\"] img"
+        ],
+        "appliesTo": [
+          "light"
+        ]
+      },
+      {
+        "token": "spacing.40",
+        "value": "40px",
+        "usage": "外部轮播真实子组件依赖：gap：.ds-card--horizontal、.ds-card--horizontal-reverse、.ds-card--horizontal-sidebar .ds-card__content-area",
+        "appliesTo": [
+          "external-cards"
+        ]
+      },
+      {
+        "token": "spacing.md",
+        "value": "12px",
+        "usage": "外部轮播真实子组件依赖：padding-bottom / padding-top / gap：.ds-card__meta、横向 Card 标题→正文、.ds-card__bullets、.ds-card__info、.ds-card__link、.ds-card__sub-links、.ds-card--embedded-small .ds-card__product-body、.ds-card--embedded-detail、.ds-card--embedded-detail .ds-card__product-body、.ds-card--embedded-full .ds-card__product-body",
+        "appliesTo": [
+          "external-cards"
+        ]
+      },
+      {
+        "token": "spacing.sm",
+        "value": "8px",
+        "usage": "外部轮播真实子组件依赖：gap / padding：.ds-card__bullet-item、.ds-card__info、.ds-card__tags、.ds-card__sub-links、.ds-card--embedded-small、.ds-card__compat-tag",
+        "appliesTo": [
+          "external-cards"
+        ]
+      },
+      {
+        "token": "spacing.2",
+        "value": "2px",
+        "usage": "外部轮播真实子组件依赖：padding：.ds-card__tag、.ds-card__compat-tag",
+        "appliesTo": [
+          "external-cards"
+        ]
+      },
+      {
+        "token": "spacing.2xl",
+        "value": "32px",
+        "usage": "外部轮播真实子组件依赖：gap：.ds-card--horizontal-sidebar",
+        "appliesTo": [
+          "external-cards"
+        ]
+      },
+      {
+        "token": "spacing.xl",
+        "value": "24px",
+        "usage": "外部轮播真实子组件依赖：padding：.ds-card--embedded-full",
+        "appliesTo": [
+          "external-cards"
+        ]
+      },
+      {
+        "token": "spacing.6",
+        "value": "6px",
+        "usage": "外部轮播真实子组件依赖：gap：.ds-card__stats",
+        "appliesTo": [
+          "external-cards"
+        ]
+      }
+    ],
+    "borderDependencies": [
+      {
+        "token": "border.style.none",
+        "value": "none",
+        "usage": "border：.ds-carousel__btn、.ds-carousel__btn--dark、.ds-carousel__dot",
+        "aspect": "style",
+        "properties": [
+          "border"
+        ],
+        "selectors": [
+          ".ds-carousel__btn",
+          ".ds-carousel__btn--dark",
+          ".ds-carousel__dot"
+        ],
+        "appliesTo": [
+          "light",
+          "dark"
+        ]
+      },
+      {
+        "token": "border.width.default",
+        "value": "1px",
+        "usage": "描边 M 切换按钮 1px 边框",
+        "aspect": "width",
+        "properties": [
+          "border"
+        ],
+        "selectors": [
+          ".ds-carousel__btn--outlined-m"
+        ],
+        "appliesTo": [
+          "light",
+          "navigation.outlined-m.left",
+          "navigation.outlined-m.right"
+        ]
+      },
+      {
+        "token": "border.style.default",
+        "value": "solid",
+        "usage": "描边 M 切换按钮实线边框",
+        "aspect": "style",
+        "properties": [
+          "border"
+        ],
+        "selectors": [
+          ".ds-carousel__btn--outlined-m"
+        ],
+        "appliesTo": [
+          "light",
+          "navigation.outlined-m.left",
+          "navigation.outlined-m.right"
+        ]
+      },
+      {
+        "token": "border.color.default",
+        "value": "var(--color-gray-5)",
+        "usage": "描边 M 切换按钮 #DEE0E3 边框",
+        "aspect": "color",
+        "properties": [
+          "border"
+        ],
+        "selectors": [
+          ".ds-carousel__btn--outlined-m"
+        ],
+        "appliesTo": [
+          "light",
+          "navigation.outlined-m.left",
+          "navigation.outlined-m.right"
+        ]
+      },
+      {
+        "token": "border.color.subtle",
+        "value": "var(--color-gray-6)",
+        "usage": "外部轮播真实子组件依赖：border / border-color：.ds-card__compat-tag、.ds-card__compat-tag--more、.ds-card__color-swatch",
+        "aspect": "color",
+        "appliesTo": [
+          "external-cards"
+        ]
+      },
+      {
+        "token": "border.color.emphasis",
+        "value": "var(--color-gray-1)",
+        "usage": "外部轮播真实子组件依赖：border：.ds-card__compat-tag--active、.ds-card__color-swatch--active",
+        "aspect": "color",
+        "appliesTo": [
+          "external-cards"
+        ]
+      },
+      {
+        "token": "border.width.strong",
+        "value": "2px",
+        "usage": "外部轮播真实子组件依赖：border：.ds-card__color-swatch--active",
+        "aspect": "width",
+        "appliesTo": [
+          "external-cards"
+        ]
+      },
+      {
+        "token": "border.color.tag",
+        "value": "var(--color-tag-border)",
+        "usage": "外部轮播真实子组件依赖：当前真实Tag子组件资源的内描边依赖；Card不覆盖原子样式",
+        "aspect": "color",
+        "appliesTo": [
+          "external-cards"
+        ]
+      },
+      {
+        "token": "border.color.focus",
+        "value": "var(--color-blue)",
+        "usage": "外部轮播真实子组件依赖：当前真实Tag子组件资源的内描边依赖；Card不覆盖原子样式",
+        "aspect": "color",
+        "appliesTo": [
+          "external-cards"
+        ]
+      }
+    ],
+    "hardRules": [
+      {
+        "title": "版心两侧布局按钮距版心 32px + 不被裁剪",
+        "ruleContent": "<strong>版心两侧布局时，Prev/Next 按钮放在版心外侧两边，按钮内边缘距版心左右边缘固定 32px，垂直居中。</strong>按钮必须在 <code>.ds-carousel</code> 的 <code>overflow: hidden</code> 之外，否则会被裁掉。",
+        "aiParse": "buttonLayouts[\"container-flanking\"] = {\n  hardConstraint: \"按钮内边缘距版心左右边缘固定 32px；外层 offset = 32px + 所选按钮宽度（XL 80px、L 68px、S 52px、描边 M 60px）\",\n  verticalAlign: \"top:50%; transform:translateY(-50%)\",\n  clippingWarning: \"按钮必须置于 .ds-carousel 的 overflow:hidden 范围之外，否则会被裁掉；此项由 verify.js CAROUSEL_BTN 几何校验自动检测\"\n}",
+        "enforcement": "强制规则（<code>verify.js: CAROUSEL_BTN</code> 几何检查）：按钮可见性（width/height>0）、垂直居中、未被裁剪、未出视口。违反判 <strong style=\"color:#C00000;\">error</strong>。"
+      },
+      {
+        "title": "首页 Banner 场景固定使用 1920×420 基准与专属切换样式",
+        "ruleContent": "<strong>当前选择要求：Banner轮播按2026-11-10用户说明使用56px控制，对应原件/箭头/调用待核；禁止放大现有48px或以56×8px分页代替按钮依据。</strong>下列只描述已保存历史实现：1920×420、Dark + solid-xl + 叠加型，48×48px按钮/28px箭头、左右13.125%，8/56px分页。该历史运行值本次不改，不作为新Banner的默认推荐；卡片内容轮播一般优先真实48px实心款。",
+        "aiParse": "selection: card-content defaults to genuine solid-xl48; Banner requested56 is source-pending. Existing homepage runtime below is historical only, not a56px control: buttonLayouts[\"homepage-banner\"] = {\n  rootClass: \"ds-carousel--homepage-banner\",\n  requiredCombination: [\"dark\", \"overlaid\"],\n  styleProperties: { designBaseline: \"1920×420px\", buttonSize: \"48×48px\", buttonInset: \"13.125%\", dots: \"8×8px / active 56×8px\", exampleCount: 7 }\n}",
+        "enforcement": "历史运行尺寸由现有检查保留；新场景选型须遵循最新56px用户要求并先核原件/调用，本次不新增或开放56px变体。"
+      },
+      {
+        "title": "首页 Banner 文案内缩不得复用 Carousel 控件内缩",
+        "ruleContent": "<strong>Homepage Carousel 的 <code>13.125%</code> 仅用于左右切换按钮等 Carousel 控件定位。</strong>组件 Preview 中 <code>.homepage-banner-demo__slide</code> 的内容内缩只属于演示布局，不能直接套用到真实页面 Banner 文案；Banner 文案位置必须依据 Banner 自身版心和参考页面内容容器单独确定。",
+        "aiParse": "homepageBanner.geometry = {\n  controlInset: \"13.125%\",\n  contentInset: \"independent\",\n  previewContentPadding: \"demo-only; not a live Banner content-position contract\"\n}",
+        "enforcement": "本地映射、实现与渲染核对：分别确认 Banner 文案左边缘与 Carousel 控件位置，不得复用同一套内缩公式；不新增运行时检查。"
+      },
+      {
+        "title": "走马灯按钮/圆点永不使用红色",
+        "ruleContent": "<strong>走马灯导航按钮和分页指示器圆点永远不使用红色（brand-red #C00000）。</strong>实心 XL/L/S 默认使用 rgba(25,25,26,0.3)，Hover 使用 rgba(25,25,26,0.5)，Disabled 使用 rgba(25,25,26,0.04) 并保留 not-allowed 光标；描边 M 使用白底、#DEE0E3 描边和 #F2F2F2 Hover。",
+        "aiParse": "relations.colorConstraint = {\n  rule: \"走马灯导航按钮和圆点永远不使用红色（brand-red）\",\n  severity: \"硬约束，validate.js 目前未对此单独机械校验，靠 design-spec 文档约束\"\n}",
+        "enforcement": "设计规范硬约束。目前无独立机械检查，靠设计文档约束。"
+      },
+      {
+        "title": "常规内容轮播箭头显隐与普通分页",
+        "ruleContent": "<strong>普通内容轮播箭头默认隐藏，进入轮播区域后显示；键盘焦点可见时保持显示，移出且无键盘焦点后隐藏。</strong>隐藏由宿主管理，不改原子内部样式。普通指示器：未选中8×8圆点/Gray3的40%，当前20×8胶囊/Gray3，间距10px，面板下方20px；按真实内容数量显示。状态矩阵仅展示真实原子，保持可见；首页Banner沿对应来源。",
+        "aiParse": "regularHost.visibility = idle:hidden, hover:shown, keyboardFocusVisible:shown, leaveWithoutFocus:hidden; pagination = default8x8/Gray3@40%, current20x8/Gray3@100%, gap10, below20. Page-owned content count; no new published pagination family.",
+        "enforcement": "本地模块映射记录宿主/分页关系，页面实现保留原子并处理宿主显隐；默认属性用既有决定断言，Hover/恢复用现有computed-style opacity补充，原生键盘及视觉仍须实际观察。"
+      }
+    ],
+    "fontWeightDependencies": [
+      {
+        "token": "typography.font-weight-semibold",
+        "value": "600",
+        "usage": "外部轮播真实子组件依赖：卡片标题、徽标、产品标题与价格",
+        "appliesTo": [
+          "external-cards"
+        ],
+        "properties": [
+          "font-weight"
+        ],
+        "selectors": [
+          ".ds-card[data-card-current=\"category-nav\"] .ds-card__title"
+        ]
+      },
+      {
+        "token": "typography.font-weight-regular",
+        "value": "400",
+        "usage": "外部轮播真实子组件依赖：产品卡片描述",
+        "appliesTo": [
+          "external-cards"
+        ],
+        "properties": [
+          "font-weight"
+        ],
+        "selectors": [
+          ".ds-card[data-card-current=\"category-nav\"] .ds-card__sub-link"
+        ]
+      }
+    ],
+    "typographyDependencies": [
+      {
+        "token": "typography.h7-semibold",
+        "fontSizeToken": "typography.font-size-md",
+        "fontSizeValue": "14px",
+        "fontWeightToken": "typography.font-weight-semibold",
+        "fontWeightValue": "600",
+        "weightEvidence": "explicit-css",
+        "usage": "外部轮播真实子组件依赖：竖向与产品卡片标题",
+        "appliesTo": [
+          "external-cards"
+        ]
+      },
+      {
+        "token": "typography.h6-semibold",
+        "fontSizeToken": "/",
+        "fontSizeValue": "16px",
+        "fontWeightToken": "typography.font-weight-semibold",
+        "fontWeightValue": "600",
+        "weightEvidence": "explicit-css",
+        "usage": "外部轮播真实子组件依赖：产品完整卡片价格",
+        "appliesTo": [
+          "external-cards"
+        ]
+      },
+      {
+        "token": "typography.h7-regular",
+        "fontSizeToken": "typography.font-size-md",
+        "fontSizeValue": "14px",
+        "fontWeightToken": "typography.font-weight-regular",
+        "fontWeightValue": "400",
+        "weightEvidence": "inherited-regular",
+        "usage": "外部轮播真实子组件依赖：横向卡片正文",
+        "appliesTo": [
+          "external-cards"
+        ]
+      },
+      {
+        "token": "typography.h9-regular",
+        "fontSizeToken": "typography.font-size-sm",
+        "fontSizeValue": "12px",
+        "fontWeightToken": "typography.font-weight-regular",
+        "fontWeightValue": "400",
+        "weightEvidence": "inherited-regular",
+        "usage": "外部轮播真实子组件依赖：卡片辅助文字",
+        "appliesTo": [
+          "external-cards"
+        ]
+      },
+      {
+        "token": "typography.h8-regular",
+        "fontSizeToken": "typography.font-size-h8",
+        "fontSizeValue": "13px",
+        "fontWeightToken": "typography.font-weight-regular",
+        "fontWeightValue": "400",
+        "weightEvidence": "inherited-regular",
+        "usage": "外部轮播真实子组件依赖：单事件与横向卡片 Learn more 文字按钮（继承 TextButton black / M 变体）",
+        "appliesTo": [
+          "external-cards"
+        ]
+      }
+    ],
+    "variantSelectionRules": [
+      "先区分场景：卡片内容轮播、Banner轮播或有明确专项规格的其他切换；再判断布局、方向、背景与状态，不从上一项/下一项直接推断M。",
+      "MG外部多卡轮播正文指定48×48，排除详情页和解决方案页；48方向原子已有限开放，宿主管理内容、定位和禁用，不代表完整Carousel。其他角色须有具体来源依据，不以普通卡片含义外推。",
+      "Banner轮播按2026-11-10用户要求使用56px最大号；对应原件、箭头和新页调用待核。本地homepage-banner仍为历史48px实现，56×8px是分页轨道，不是56px按钮；不得以旧48或CSS放大冒充56，也不给静态Banner增加轮播。",
+      "MG内部多图36场景包括Recently Viewed、Videos与My order；内部单图商品详情Banner为20。原件可比较，当前精确新页调用均未开放；禁止缩放48替代。",
+      "outlined-m28px只用于已明确需要白底浅描边、16px深箭头的控制场景，且必须有真实上一项/下一项行为；这两个条件同时成立才是候选。单凭来源白底、存在左右切换或当前只有M可调用，都不足以确认适用。",
+      "完整四款真实Preview用于设计候选比较；本目录variants是发布准入后的可调用列表，不是全部设计选择。候选适用而调用未开放时记录精确缺口，不能自动退选M；本规则不开放完整Carousel或其他尺寸。",
+      "常规内容轮播的左右箭头由页面宿主控制：默认隐藏，鼠标进入轮播内容/控件/指示器组成的区域后显示，移出后隐藏；原生键盘focus-visible在控件内时保留可见，不增加额外焦点站点，不修改按钮内部尺寸/状态。首页Banner及静态Preview矩阵按各自来源处理，不套此隐藏条件。",
+      "普通分页遵循已保存FS属性：未选中8×8圆点、Gray3/40%；当前20×8胶囊、Gray3/100%；间距10px、面板下方20px。数量来自真实内容，本页两条评价保留两项；不得把全部项画成16×4短线，不虚构第三项或冒称已发布两项Pagination原件。"
+    ],
+    "interactionRules": [
+      {
+        "name": "先场景后方向",
+        "rule": "外部多卡轮播按MG正文候选48，排除详情和解决方案页；内部36/20与28描边另核来源及资格，左右动作本身不能决定尺寸。",
+        "owner": "变体决策"
+      },
+      {
+        "name": "按钮边界",
+        "rule": "四个精确调用只提供原生方向按钮、图标和disabled/click；没有幻灯片、分页或自动播放接口。",
+        "owner": "Carousel方向原子"
+      },
+      {
+        "name": "宿主与热区",
+        "rule": "内容宿主管理位置和切换；悬停区域必须包含按钮及通往按钮的间隙，键盘焦点可显示，不因离开内容框就消失。",
+        "owner": "本地页面宿主"
+      },
+      {
+        "name": "外侧定位",
+        "rule": "版心两侧场景距1200px版心边缘32px，按钮在overflow裁切层之外；叠加型另按对应来源。",
+        "owner": "宿主布局"
+      },
+      {
+        "name": "边界禁用",
+        "rule": "Prev/Next可用状态根据真实起止位置更新；不能按钮可点但内容不动。",
+        "owner": "宿主状态"
+      },
+      {
+        "name": "来源差异",
+        "rule": "当前Banner56要求与历史48实现分别记录；不得把分页长度当作按钮尺寸证据。",
+        "owner": "原规范与已有用户决定"
+      },
+      {
+        "name": "事件hook",
+        "rule": "actionCallback仅写入声明式名称；页面需监听原生click并读取data-library-event-actioncallback。仅填函数名不产生切换。",
+        "owner": "原有页面事件装配"
+      },
+      {
+        "name": "当前MG适配和播放",
+        "rule": "MG：左右按钮PC显示，Pad/M隐藏；PC分页点击不拖拽，Pad/M拖拽不点击分页。首页自动播放、箭头常驻、悬停暂停；常规默认隐藏、hover出现。当前方向原子不提供这些宿主能力，不把桌面试测当移动端通过。",
+        "owner": "原稿场景与原有页面宿主"
+      },
+      {
+        "name": "规范内差异",
+        "rule": "MG文字给48/36/20配24/18/10箭头与黑20%/40%/5%状态；同稿切换按钮原件及当前实现沿旧原子身份（48配28、Gray1的30%/50%/4%）。尺寸/配色待视觉确认，不自动覆盖。用户Banner56与MG48亦保留。",
+        "owner": "来源差异记录，非新增调用"
+      },
+      {
+        "name": "普通外部组合",
+        "rule": "external-cards传items真实子调用及列数，不能传HTML或代码。Card/IconCard同一类型和变体成组；不足一屏不显示无效控件。PC宽度不足以容纳外侧80px热区时，组件收窄内容，保留32px按钮间隙。",
+        "owner": "原Carousel父组件与现有本地渲染器"
+      }
+    ],
+    "prototypeRollout": {
+      "template": "component-spec-v1",
+      "sourceReview": "partial-source-scope",
+      "draftOnly": false,
+      "originalDependencies": "preserved-and-extended-with-real-external-children"
+    },
+    "fontSizeDependencies": [
+      {
+        "token": "typography.font-size-md",
+        "value": "14px",
+        "usage": "外部轮播真实子组件依赖：中号字体 - XL/L 按钮",
+        "appliesTo": [
+          "external-cards"
+        ]
+      },
+      {
+        "token": "typography.font-size-sm",
+        "value": "12px",
+        "usage": "外部轮播真实子组件依赖：小号字体 - M/S 按钮",
+        "appliesTo": [
+          "external-cards"
+        ]
+      },
+      {
+        "token": "typography.font-size-h8",
+        "value": "13px",
+        "usage": "外部轮播真实子组件依赖：H8 紧凑正文/组件文字",
+        "appliesTo": [
+          "external-cards"
+        ]
+      },
+      {
+        "token": "/",
+        "value": "16px",
+        "usage": "外部轮播真实子组件依赖：无对应正式 token 的字号值，白名单登记",
+        "appliesTo": [
+          "external-cards"
+        ]
+      }
+    ],
+    "shadowDependencies": [
+      {
+        "token": "/",
+        "value": "0px 15px 15px -10px rgba(0, 0, 0, 0.1)",
+        "usage": "外部轮播真实子组件依赖：无对应 token 的投影值，白名单登记",
+        "appliesTo": [
+          "external-cards"
+        ]
+      }
+    ]
+  },
+  "searchIntents": [
+    "走马灯",
+    "轮播图",
+    "轮播组件",
+    "图片轮播",
+    "内容轮播",
+    "Carousel",
+    "幻灯片切换"
+  ],
+  "tokenReferences": [
+    "color.gray-1",
+    "color.gray-2",
+    "color.gray-3",
+    "color.gray-5",
+    "opacity.disabled",
+    "border-radius.md",
+    "spacing.10",
+    "spacing.20",
+    "border.width.default",
+    "border.style.default",
+    "border.color.default",
+    "border.style.none",
+    "spacing.lg",
+    "border-radius.lg",
+    "spacing.xs",
+    "color.white",
+    "typography.font-family-base",
+    "typography.font-size-h8",
+    "typography.font-size-sm",
+    "typography.font-size-md",
+    "typography.font-size-h4",
+    "spacing.40",
+    "spacing.md",
+    "spacing.sm",
+    "spacing.2",
+    "spacing.2xl",
+    "spacing.xl",
+    "spacing.6",
+    "border.color.subtle",
+    "border.color.emphasis",
+    "border.width.strong",
+    "typography.font-weight-semibold",
+    "typography.font-weight-regular",
+    "typography.h7-semibold",
+    "typography.h6-semibold",
+    "typography.h7-regular",
+    "typography.h9-regular",
+    "typography.h8-regular",
+    "border.color.tag",
+    "border.color.focus",
+    "color.tag-border",
+    "color.blue"
+  ],
+  "constraints": {
+    "allowedChildren": [
+      "Icon",
+      "Image/Content slide"
+    ],
+    "requiredProperties": [
+      "colorVariant",
+      "buttonLayout"
+    ],
+    "forbiddenCombinations": [
+      [
+        "brand-red",
+        "任意走马灯元素"
+      ]
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-11-10",
+      "author": "Codex",
+      "change": "按用户补充和既存原规范明确常规内容轮播宿主默认隐藏箭头、悬浮/键盘焦点显示，普通分页20×8/8×8、间距10、下距20；仅宿主规则，不改真实按钮CSS或开放两项Pagination组件。",
+      "source": "components/sources/carousel/content-host-rules-user-1110.json"
+    },
+    {
+      "date": "2026-11-10",
+      "author": "Codex",
+      "change": "按用户授权接通已有实心48左右方向的有限新页调用；复用已保存六态/官方SVG，无CSS/JS或完整宿主开放。M原调用保留；36/20/56和历史页不升级。"
+    },
+    {
+      "date": "2026-11-10",
+      "author": "Codex",
+      "change": "按用户明确的场景口径修正选型：卡片轮播一般优先48px实心；Banner轮播56px要求待原件核对，旧48px运行值保留历史。收窄M为明确白底浅描边需求且有真实切换行为；候选适用与发布准入分开。本次不改CSS/JS、原子尺寸、调用开放范围或历史页面。",
+      "source": "components/sources/carousel/scene-selection-user-1110.json"
+    },
+    {
+      "date": "2026-10-19",
+      "change": "仅接通已有真实描边28左右控制的有限契约；原始六态与官方SVG仍为来源，完整宿主与其他尺寸不开放。"
+    },
+    {
+      "date": "2026-10-12",
+      "author": "Codex",
+      "change": "在线重新定位常规轮播11种组件，核Web外部多图043079为1920×512。移除彩色Slide及本地light-five/dark-seven完整演示；暂停全Carousel精确AI调用，保留有来源的静态分页子部件与原子展示。旧工程样例在维护档案用于回归，不冒称MG原件。"
+    },
+    {
+      "date": "2026-09-18",
+      "change": "按已确认规则移除轮播下方的内联 controls 布局及 ds-carousel__controls wrapper；普通 Carousel 控制器仅可使用轮播内左右叠加或版心外侧两侧布局。同步删除内联样式和 Preview 示例。",
+      "author": "Codex"
+    },
+    {
+      "date": "2026-08-26",
+      "change": "依据图片规范将图片轮播描边 M 的 Prev/Next 可用态箭头从纯黑 #19191A 调整为 color.gray-2（#4B4B4D）；Default/Hover 共用该色，Disabled 继续叠加整体 30% 不透明度，实心与 Dark 变体仍由滤镜反白。",
+      "author": "Kiro"
+    },
+    {
+      "date": "2026-08-26",
+      "change": "依据默认态视觉参考优化基础切换按钮：尺寸由 40×40px 调整为 44×44px，默认背景改为 #19191A，20×20px 左右 chevron 扩大有效路径并加粗至 2px；Hover/Disabled 配色和首页 Banner 48×48px 专属规格保持不变。",
+      "author": "Kiro"
+    },
+    {
+      "date": "2026-08-26",
+      "change": "新增长条激活分页形态：ds-carousel__dots--wide-active 使用 56×8px 激活条、8×8px 默认圆点与 10px 间距；Preview 按设计输入展示 7 项，204×76 仅作为规格画框。",
+      "author": "Kiro"
+    },
+    {
+      "date": "2026-08-26",
+      "change": "更新首页 Banner 场景参考：采用 1920×420px 设计基准与 420px 场景高度；48×48px 左右切换按钮按 13.125% 边距定位；分页改为默认 8×8px、激活 56×8px，并以 7 张幻灯片和 7 个分页按钮展示真实切换。普通 Carousel 规格保持不变。",
+      "author": "Kiro"
+    },
+    {
+      "date": "2026-08-26",
+      "change": "新增首页 Banner 场景修饰：固定组合 Dark + 叠加型，左右切换按钮 48×48px，分页沿用 8×8/20×8 深色规则并叠加在 Banner 底部。同步修正 dotsSpec 激活宽度为实现一致的 20px。",
+      "author": "Kiro"
+    },
+    {
+      "date": "2026-07-22",
+      "change": "新增 typographyDependencies 成对字体依赖：每条记录明确绑定字号与字重，依赖汇总表按“字号 · 层级 · 字重”整体展示，禁止拆列后猜测组合。",
+      "author": "Kiro"
+    },
+    {
+      "date": "2026-07-22",
+      "change": "新增 fontWeightDependencies：按组件 CSS 显式 font-weight 证据登记 Regular 400 / SemiBold 600；无显式声明的组件保留空数组，并纳入 token/value/selector/property 双向闭环校验。",
+      "author": "Kiro"
+    },
+    {
+      "date": "2026-07-20",
+      "change": "父子依赖治理：Banner→Carousel(dark) 已实现关系改由宿主 componentDependencies 自动反向推导，删除子组件侧重复手写声明。",
+      "author": "Kiro"
+    },
+    {
+      "date": "2026-06-30",
+      "change": "新建档案，记录三种按钮布局的结构性差异、verify.js 几何校验覆盖范围、走马灯误用场景约束",
+      "author": "TBD"
+    },
+    {
+      "date": "2026-07-14",
+      "change": "增加间距与描边 token 依赖、CSS 选择器/属性证据及机械闭环校验映射",
+      "author": "Kiro"
+    },
+    {
+      "date": "2026-07-14",
+      "change": "依据契约语义、组件 CSS 选择器与预览结构，补齐全部现有依赖的 appliesTo 汇总行映射；仅使用真实 types/variants，不新增伪类型或不确定依赖",
+      "author": "Kiro"
+    },
+    {
+      "date": "2026-10-09",
+      "author": "Codex",
+      "change": "统一规范维护质量标准：登记真实实现与选型规则入口、源变更重新验收、父子影响检查及历史页面隔离；不推断可编辑槽位或视觉批准。"
+    },
+    {
+      "date": "2026-10-14",
+      "change": "20px六態按当前有效原件官方12pxSVG与Left3/Right5/y4做有限图标修正；shared CSS和完整调用不开放。",
+      "source": "components/sources/carousel/solid20-current-source-review-1014.json",
+      "compatibility": "opt-in current markers only; source export settings restored, historical pages unchanged; local actual visual pending"
+    },
+    {
+      "date": "2026-10-14",
+      "change": "有限回查18个独立实心圆底，现有填充一致，无产品实现变更；不把overview省略字段冒称root opacity已验。",
+      "source": "components/sources/carousel/current-solid-circle-review-1014.json",
+      "compatibility": "只新增来源记录/状态元数据；未合并不同集合，无历史页面变更"
+    }
+  ],
+  "isComplete": false,
+  "createdAt": "2026-06-30T00:00:00Z",
+  "updatedAt": "2026-11-15",
+  "qualityProfile": {
+    "schemaVersion": "1.0.0",
+    "standard": "docs/component-quality-standard.md",
+    "implementation": "components/variants/carousel.html",
+    "selection": {
+      "mappingSource": "components/selection-mvp-policy.json",
+      "mappingPointer": "components.carousel.variantDecisionTypes",
+      "rulesPointer": "relations.variantDecisions"
+    },
+    "maintenance": {
+      "authority": "contract-preview-runtime-token-icon",
+      "generatedOnly": [
+        "preview-reference-tables",
+        "component-index",
+        "selection-catalog",
+        "design-reading-view",
+        "ai-reference"
+      ],
+      "changePolicy": "记录来源差异、兼容性与受影响父子组件；源文件变化后旧工程验收失效。",
+      "historicalPages": "不自动升级；新页面锁定本地组件运行资源版本。"
+    },
+    "acceptance": {
+      "report": "components/quality/report.json",
+      "proof": "components/quality/acceptance.json",
+      "declarationIsNotProof": true
+    }
+  },
+  "editable": [
+    "slides",
+    "accessibleLabel",
+    "disabled",
+    "actionCallback",
+    "items",
+    "columns"
+  ],
+  "integration": {
+    "styles": [
+      "components/tokens.css",
+      "components/components.css",
+      "components/card-responsive.css",
+      "components/text-button-current.css",
+      "components/button-current.css",
+      "components/button-runtime-current.css",
+      "components/card-current.css",
+      "components/cart-current.css",
+      "components/tag-current.css",
+      "components/list-unordered-current.css",
+      "components/tag-product-current.css",
+      "components/icon-card-current.css",
+      "components/carousel-current.css",
+      "components/carousel-external.css"
+    ],
+    "scripts": [
+      "components/card-current.js",
+      "components/tag-product-current.js",
+      "components/carousel-external.js"
+    ],
+    "fontStylesheets": [
+      "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+    ]
+  },
+  "parts": {
+    "pagination": {
+      "previewSelector": ".dots-row > .ds-carousel__dots",
+      "colorVariants": [
+        "light",
+        "dark"
+      ],
+      "requiredClasses": [
+        "ds-carousel__dots",
+        "ds-carousel__dot"
+      ],
+      "scope": "已登记来源分页子部件；仅复用完整静态dots结构，不表示完整Carousel组合已完成。",
+      "source": "components/sources/carousel/native-pagination-review-1011.json",
+      "boundaries": "Static Preview-only subpart. Mini remains AI-unsupported; no slide content/callback is inferred from dots. A two-quotation page may use page-owned decorative indicators following the saved basic20/8 geometry, without claiming a published two-item pagination component or adding dot actions.",
+      "isComplete": true,
+      "pendingParts": []
+    },
+    "navigationOutline28SourceReview": {
+      "isComplete": false,
+      "source": "components/sources/carousel/outline28-property-review-1013.json",
+      "scope": "Preview描边28左右×Default/Hover/Disabled六单元均调用对应官方16px箭头；未开放AI调用",
+      "assets": [
+        "icon-carousel-outline28-left-current.svg",
+        "icon-carousel-outline28-right-current.svg"
+      ],
+      "pendingParts": [
+        "描边28六态实际显示与用户视觉待验证",
+        "其他尺寸/方向未完成来源",
+        "11宿主组合逐一映射",
+        "24态视觉确认",
+        "完整调用仍撤回"
+      ],
+      "additionalSource": "components/sources/carousel/outline28-remaining-review-1014.json",
+      "callAdmission": {
+        "source": "components/sources/carousel/outlined28-call-source-1019.json",
+        "scope": [
+          "navigation.outlined-m.left",
+          "navigation.outlined-m.right"
+        ],
+        "fullCarousel": "withheld",
+        "engineering": "pending",
+        "visual": "pending"
+      }
+    },
+    "navigationSolid36SourceReview": {
+      "isComplete": false,
+      "source": "components/sources/carousel/solid36-source-review-1014.json",
+      "scope": "仅六个data-carousel-source-solid36现有Preview状态；20pxWhite官方轮廓，Left x7/Right x9/y8",
+      "assets": [
+        "icon-carousel-solid36-left-current.svg",
+        "icon-carousel-solid36-right-current.svg"
+      ],
+      "pendingParts": [
+        "circle独立子层几何/填充",
+        "实际六态精确截图和用户视觉",
+        "完整轮播调用与其他尺寸"
+      ]
+    },
+    "navigationSolid48SourceReview": {
+      "isComplete": false,
+      "source": "components/sources/carousel/solid48-current-identity-review-1014.json",
+      "scope": "仅六个data-carousel-source-solid48现有Preview状态；有效库当前71582集合、28pxWhite官方轮廓，Left x9/Right x11/y10",
+      "assets": [
+        "icon-carousel-solid48-left-current.svg",
+        "icon-carousel-solid48-right-current.svg"
+      ],
+      "pendingParts": [
+        "circle独立子层填充",
+        "实际六态精确截图和用户视觉",
+        "其他尺寸与11宿主组合；完整调用仍撤回"
+      ]
+    },
+    "navigationSolid20SourceReview": {
+      "isComplete": false,
+      "source": "components/sources/carousel/solid20-current-source-review-1014.json",
+      "scope": "仅现有六个data-carousel-source-solid20状态；当前有效71582集合，12pxWhite官方完整轮廓，Left x3/Right x5/y4",
+      "assets": [
+        "icon-carousel-solid20-left-current.svg",
+        "icon-carousel-solid20-right-current.svg"
+      ],
+      "pendingParts": [
+        "circle独立子层填充",
+        "实际六态精确截图和用户视觉",
+        "11宿主组合；完整调用仍撤回"
+      ]
+    },
+    "solidCircleSourceReview": {
+      "isComplete": false,
+      "source": "components/sources/carousel/current-solid-circle-review-1014.json",
+      "scope": "当前71582实心20/36/48三档18个独立circle填充，Default30%/Hover50%/Disabled4%；与现有CSS一致，不改产品样式。",
+      "pendingParts": [
+        "root/glyph完整独立opacity字段，当前仅20px左Disabled原生100%样本",
+        "实际本地几何/状态截图与用户视觉",
+        "28px不同来源集合不按同名自动合并"
+      ]
+    },
+    "desktopHostSourceMapping": {
+      "isComplete": false,
+      "source": "components/sources/carousel/desktop-host-source-review-1014.json",
+      "identities": "components/sources/carousel/host-identities-review-1014.json",
+      "scope": "4个Web宿主来源结构，11个原生轴已识别、其余7个Pad/M暂缓；单图1920×120原生身份确认。",
+      "pendingParts": [
+        "真实子实例公开主组件路径和完整原子对应",
+        "静态设计不作为frontend DOM/交互源码；完整Carousel调用仍撤回",
+        "4PC全体实际显示/布局与用户视觉批准"
+      ]
+    },
+    "banner-mini-pagination": {
+      "isComplete": true,
+      "pendingParts": [],
+      "colorVariants": [
+        "light"
+      ],
+      "previewSelector": "[data-carousel-mini-pagination]",
+      "requiredClasses": [
+        "ds-carousel__dots",
+        "ds-carousel__dot",
+        "ds-carousel__dot--active"
+      ],
+      "source": "components/sources/five-variants-20261115/review.json",
+      "sourcePreview": "components/sources/carousel/banner-mini-pagination-1115.html",
+      "scope": "Existing current Mini3-position normal pagination; Carousel controller owns switching, no autoplay or full homepage carousel admission.",
+      "allowedHosts": [
+        {
+          "component": "Banner",
+          "variant": "mini"
+        }
+      ]
+    }
+  },
+  "pendingParts": [
+    "完整轮播组合未逐项对齐原件；本地light-five/dark-seven架子已撤出展示和精确AI调用"
+  ],
+  "aiContract": {
+    "schemaVersion": "1.0.0",
+    "scope": "source-direction-controls-and-external-cards",
+    "rootTag": "button",
+    "supported": [
+      "navigation.outlined-m.left",
+      "navigation.outlined-m.right",
+      "navigation.solid-xl.left",
+      "navigation.solid-xl.right",
+      "external-cards"
+    ],
+    "unsupported": [
+      "light",
+      "dark",
+      "unregistered-icon",
+      "other-sizes",
+      "homepage-autoplay",
+      "detail-or-solution-carousel",
+      "mixed-card-families",
+      "arbitrary-html-items"
+    ],
+    "reviewStatus": {
+      "engineering": "pending",
+      "visual": "pending",
+      "familyCoverage": "partial"
+    },
+    "selectionPolicy": "先按MG外部多图/内部单图或多图/首页/主多图区分，再核尺寸、方向及准入。外部48排除详情与解决方案页；内部36/20未开放。Banner用户56与MG48冲突保留。四个方向原子不等于完整轮播，宿主管理定位、热区、切换和禁用。 普通外部内容多卡片已补external-cards：仅同一种普通竖向Card或IconCard，按items真实子调用，2/3/4列；禁止详情/解决方案、Banner、自动播放或混合类型。",
+    "identity": {
+      "rule": "Direction calls preserve native source button and official28/16 or48/28 SVG geometry. external-cards is a separate div host using those genuine48 controls and same-version typed Card/IconCard calls; preserve source child anatomy and scoped runtime."
+    },
+    "locked": [
+      "Direction atoms retain native button type, source direction, official SVG and geometry; no resized substitutes",
+      "external-cards retains its own div region, real child calls,48px controls, viewport/track/pagination/status anatomy",
+      "No arbitrary HTML, style overrides, mixed child types, Banner autoplay or detail/solution scenario substitution"
+    ],
+    "behavior": {
+      "click": "actionCallback是声明式hook名称，渲染为data-library-event-actioncallback；页面宿主监听原生click并按名称绑定动作，不会自动执行同名window函数。宿主管理native disabled，组件不推断slides或业务内容。",
+      "keyboard": "Native button focus and activation.",
+      "source": "Saved source dates explicitly retained; no online-latest or user visual approval inferred.",
+      "visibility": "Regular content carousel host hides direction atoms at rest, reveals on region hover or native keyboard focus-visible and hides after leave/blur; preserve atom geometry and native states. Static Preview matrix and source-specific homepage visibility are separate.",
+      "external": "external-cards自带可变内容轨道、48px按钮、首尾禁用和有效位置分页；普通默认隐藏控件，hover/focus显示。PC点击/键盘，Pad/M隐藏方向按钮并原生横向滑动，分页只指示。页内多实例独立，不改子组件内部视觉。"
+    },
+    "evidence": {
+      "outlined28": "components/sources/carousel/outlined28-call-source-1019.json",
+      "sceneSelectionGuidance": "components/sources/carousel/scene-selection-user-1110.json",
+      "solid48": "components/sources/carousel/solid48-call-source-1110.json",
+      "contentHostRules": "components/sources/carousel/content-host-rules-user-1110.json",
+      "currentMgReview": "components/sources/card-carousel-mg-20261114/carousel-review.json",
+      "externalAssembly": "components/sources/card-carousel-mg-20261114/external-assembly.json",
+      "fiveVariantSource": "components/sources/five-variants-20261115/review.json"
+    },
+    "variants": {
+      "navigation.outlined-m.left": {
+        "purpose": "outlined28-left-rail-control",
+        "exampleSelector": "[data-ai-example=\"ai-carousel-outlined28-left\"]",
+        "allowedEdits": [
+          "accessibleLabel",
+          "disabled",
+          "actionCallback"
+        ],
+        "slots": {},
+        "bindings": {
+          "accessibleLabel": {
+            "mode": "accessible-label",
+            "target": "root",
+            "attribute": "aria-label",
+            "nonEmpty": true
+          },
+          "disabled": {
+            "mode": "native-attribute",
+            "target": "root",
+            "attribute": "disabled",
+            "values": [
+              false,
+              true
+            ],
+            "default": false
+          },
+          "actionCallback": {
+            "mode": "event-handler",
+            "target": "root",
+            "event": "click"
+          }
+        },
+        "runtime": {
+          "styles": [
+            "components/tokens.css",
+            "components/components.css",
+            "components/carousel-current.css"
+          ],
+          "scripts": [],
+          "fontStylesheets": [
+            "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+          ]
+        }
+      },
+      "navigation.outlined-m.right": {
+        "purpose": "outlined28-right-rail-control",
+        "exampleSelector": "[data-ai-example=\"ai-carousel-outlined28-right\"]",
+        "allowedEdits": [
+          "accessibleLabel",
+          "disabled",
+          "actionCallback"
+        ],
+        "slots": {},
+        "bindings": {
+          "accessibleLabel": {
+            "mode": "accessible-label",
+            "target": "root",
+            "attribute": "aria-label",
+            "nonEmpty": true
+          },
+          "disabled": {
+            "mode": "native-attribute",
+            "target": "root",
+            "attribute": "disabled",
+            "values": [
+              false,
+              true
+            ],
+            "default": false
+          },
+          "actionCallback": {
+            "mode": "event-handler",
+            "target": "root",
+            "event": "click"
+          }
+        },
+        "runtime": {
+          "styles": [
+            "components/tokens.css",
+            "components/components.css",
+            "components/carousel-current.css"
+          ],
+          "scripts": [],
+          "fontStylesheets": [
+            "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+          ]
+        }
+      },
+      "navigation.solid-xl.left": {
+        "purpose": "solid48-left-card-control",
+        "exampleSelector": "[data-ai-example=\"ai-carousel-solid48-left\"]",
+        "allowedEdits": [
+          "accessibleLabel",
+          "disabled",
+          "actionCallback"
+        ],
+        "slots": {},
+        "bindings": {
+          "accessibleLabel": {
+            "mode": "accessible-label",
+            "target": "root",
+            "attribute": "aria-label",
+            "nonEmpty": true
+          },
+          "disabled": {
+            "mode": "native-attribute",
+            "target": "root",
+            "attribute": "disabled",
+            "values": [
+              false,
+              true
+            ],
+            "default": false
+          },
+          "actionCallback": {
+            "mode": "event-handler",
+            "target": "root",
+            "event": "click"
+          }
+        },
+        "runtime": {
+          "styles": [
+            "components/tokens.css",
+            "components/components.css",
+            "components/carousel-current.css"
+          ],
+          "scripts": [],
+          "fontStylesheets": [
+            "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+          ]
+        }
+      },
+      "navigation.solid-xl.right": {
+        "purpose": "solid48-right-card-control",
+        "exampleSelector": "[data-ai-example=\"ai-carousel-solid48-right\"]",
+        "allowedEdits": [
+          "accessibleLabel",
+          "disabled",
+          "actionCallback"
+        ],
+        "slots": {},
+        "bindings": {
+          "accessibleLabel": {
+            "mode": "accessible-label",
+            "target": "root",
+            "attribute": "aria-label",
+            "nonEmpty": true
+          },
+          "disabled": {
+            "mode": "native-attribute",
+            "target": "root",
+            "attribute": "disabled",
+            "values": [
+              false,
+              true
+            ],
+            "default": false
+          },
+          "actionCallback": {
+            "mode": "event-handler",
+            "target": "root",
+            "event": "click"
+          }
+        },
+        "runtime": {
+          "styles": [
+            "components/tokens.css",
+            "components/components.css",
+            "components/carousel-current.css"
+          ],
+          "scripts": [],
+          "fontStylesheets": [
+            "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+          ]
+        }
+      },
+      "external-cards": {
+        "purpose": "ordinary-external-multicard-content",
+        "rootTag": "div",
+        "exampleSelector": "[data-ai-example=\"ai-carousel-external-cards\"]",
+        "allowedEdits": [
+          "items",
+          "columns",
+          "accessibleLabel"
+        ],
+        "slots": {},
+        "bindings": {
+          "items": {
+            "mode": "component-list",
+            "target": ".ds-carousel-external__track",
+            "allowedComponents": {
+              "library-card": [
+                "spliced-vertical-single-event",
+                "spliced-vertical-single-event-bordered"
+              ],
+              "library-icon-card": [
+                "center-single-event",
+                "left-single-event"
+              ]
+            },
+            "minItems": 1,
+            "maxItems": 24,
+            "homogeneous": true
+          },
+          "columns": {
+            "mode": "native-attribute",
+            "target": "root",
+            "attribute": "data-carousel-columns",
+            "values": [
+              2,
+              3,
+              4
+            ],
+            "default": 3
+          },
+          "accessibleLabel": {
+            "mode": "accessible-label",
+            "target": "root",
+            "attribute": "aria-label",
+            "nonEmpty": true
+          }
+        },
+        "defaultItems": [
+          {
+            "component": "library-card",
+            "fragment": "spliced-vertical-single-event",
+            "props": {}
+          },
+          {
+            "component": "library-card",
+            "fragment": "spliced-vertical-single-event",
+            "props": {}
+          },
+          {
+            "component": "library-card",
+            "fragment": "spliced-vertical-single-event",
+            "props": {}
+          },
+          {
+            "component": "library-card",
+            "fragment": "spliced-vertical-single-event",
+            "props": {}
+          }
+        ]
+      }
+    }
+  }
+}

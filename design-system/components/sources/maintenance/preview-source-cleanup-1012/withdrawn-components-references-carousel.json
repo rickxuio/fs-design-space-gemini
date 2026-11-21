@@ -1,0 +1,355 @@
+{
+  "schemaVersion": "fs-component-reference/1.0.0",
+  "component": {
+    "id": "carousel",
+    "name": "Carousel",
+    "scope": "two-finite-static-desktop-carousel-scaffolds",
+    "reviewStatus": {
+      "engineering": "pending",
+      "visual": "pending",
+      "familyCoverage": "partial"
+    }
+  },
+  "selection": {
+    "policy": "Dark homepage seven slides/XL dark overlay with seven dots, or light five static slides/L overlay with no optional pagination. Exact registered calls only; slide bodies are page content, not implicit Banner.",
+    "supported": [
+      "dark",
+      "light"
+    ],
+    "unsupported": [
+      "other-dark-layouts",
+      "other-button-sizes",
+      "variable-slide-count",
+      "autoplay",
+      "swipe",
+      "keyboard-arrow-routing",
+      "interactive-slide-content",
+      "nested-carousel",
+      "mobile"
+    ]
+  },
+  "runtime": {
+    "styles": [
+      "components/tokens.css",
+      "components/components.css",
+      "components/carousel-current.css"
+    ],
+    "scripts": [
+      "components/carousel-current.js"
+    ],
+    "fontStylesheets": [
+      "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+    ]
+  },
+  "identity": {
+    "rule": "Complete ID-free track with safe native previous/next arrows. Exact dark seven-slide/dot mapping or light five-slide/no-dot shape. Current marker separates canonical types; no ready/default inline state.",
+    "slideContentBoundary": "The scaffold owns track/slide wrappers only. Existing demo body classes are Preview-only page content; replacements require page-level FS content mapping. Interactive contents are excluded because aria-hidden does not remove their focusability."
+  },
+  "locked": [
+    "Homepage root and dark XL overlay controls",
+    "Seven complete slide wrappers and one-to-one dots",
+    "Registered arrows, safe buttons and initial state",
+    "Shared CSS and current runtime",
+    "No inference of Banner component from slide demo content",
+    "Light five wrappers and L overlay controls, 16px inset and 8px corner from existing specimen; no optional dots in this finite call"
+  ],
+  "behavior": {
+    "navigation": "Previous/next clamp at boundaries; dots switch to matching slide. Track transform, dot active/current, slide aria-hidden and disabled controls synchronize. No dedicated event, autoplay, gestures or business navigation.",
+    "initialization": "New current runtime scans opt-in data-carousel-current roots at load/DOMContentLoaded; per-root guard prevents duplicate binding. Original Preview inline runtime archived.",
+    "content": "Only noninteractive slide content is within finite scope. Hidden-slide focusability, source image content and page Banner composition require separate checks.",
+    "geometry": "13.125% homepage control inset belongs to Carousel; does not supply Banner text inset. Actual browser geometry and animation remain unverified.",
+    "nativeStateGuard": "Current next/previous/dot native buttons ignore synthetic clicks while disabled or inside a disabled fieldset; no external slide API or new variant.",
+    "availability": "Current controls ignore native-disabled fieldset, ARIA-disabled or hidden host synthetic clicks, preserving current index. No autoplay, swipe or arrow-key navigation API."
+  },
+  "examples": [
+    {
+      "name": "dark",
+      "rootTag": "div",
+      "sizeOptions": [],
+      "purpose": "dark-homepage-seven-slide-xl-overlay-scaffold",
+      "rootClasses": "ds-carousel ds-carousel--homepage-banner",
+      "requiredStructure": [
+        "div.ds-carousel__track",
+        "div.ds-carousel__slide",
+        "button.ds-carousel__btn--prev",
+        "button.ds-carousel__btn--next",
+        "div.ds-carousel__dots",
+        "button.ds-carousel__dot"
+      ],
+      "slots": {
+        "slides": {
+          "selector": "div.ds-carousel__track",
+          "mode": "structured-content",
+          "required": true,
+          "preserve": [
+            "div.ds-carousel__slide"
+          ],
+          "rule": "Seven complete wrappers in order. Replace page-owned noninteractive body content using FS page rules; no new controls or nested carousel. Preview demo classes are not Banner or component internals."
+        }
+      },
+      "allowedEdits": [
+        "slides"
+      ],
+      "exampleHtml": "<div class=\"ds-carousel ds-carousel--homepage-banner\" aria-label=\"Homepage Banner carousel\" data-ai-example=\"ai-carousel-dark-homepage\" data-carousel-current=\"\">\n      <div class=\"ds-carousel__track\">\n        <div class=\"ds-carousel__slide\">\n          <div class=\"homepage-banner-demo__slide\">\n            <div class=\"homepage-banner-demo__content\">\n              <p class=\"homepage-banner-demo__title\">Homepage Banner slide 1</p>\n              <p class=\"homepage-banner-demo__desc\">1920×420px design baseline with a fluid runtime width.</p>\n            </div>\n          </div>\n        </div>\n        <div class=\"ds-carousel__slide\">\n          <div class=\"homepage-banner-demo__slide\">\n            <div class=\"homepage-banner-demo__content\">\n              <p class=\"homepage-banner-demo__title\">Homepage Banner slide 2</p>\n              <p class=\"homepage-banner-demo__desc\">48×48px overlay controls use the dark color variant.</p>\n            </div>\n          </div>\n        </div>\n        <div class=\"ds-carousel__slide\">\n          <div class=\"homepage-banner-demo__slide\">\n            <div class=\"homepage-banner-demo__content\">\n              <p class=\"homepage-banner-demo__title\">Homepage Banner slide 3</p>\n              <p class=\"homepage-banner-demo__desc\">The active pagination item expands from 8×8px to 56×8px.</p>\n            </div>\n          </div>\n        </div>\n        <div class=\"ds-carousel__slide\">\n          <div class=\"homepage-banner-demo__slide\">\n            <div class=\"homepage-banner-demo__content\">\n              <p class=\"homepage-banner-demo__title\">Homepage Banner slide 4</p>\n              <p class=\"homepage-banner-demo__desc\">Each pagination control switches to its matching slide.</p>\n            </div>\n          </div>\n        </div>\n        <div class=\"ds-carousel__slide\">\n          <div class=\"homepage-banner-demo__slide\">\n            <div class=\"homepage-banner-demo__content\">\n              <p class=\"homepage-banner-demo__title\">Homepage Banner slide 5</p>\n              <p class=\"homepage-banner-demo__desc\">The track keeps the existing 0.4s ease transition.</p>\n            </div>\n          </div>\n        </div>\n        <div class=\"ds-carousel__slide\">\n          <div class=\"homepage-banner-demo__slide\">\n            <div class=\"homepage-banner-demo__content\">\n              <p class=\"homepage-banner-demo__title\">Homepage Banner slide 6</p>\n              <p class=\"homepage-banner-demo__desc\">Current-slide and hidden-slide ARIA states update together.</p>\n            </div>\n          </div>\n        </div>\n        <div class=\"ds-carousel__slide\">\n          <div class=\"homepage-banner-demo__slide\">\n            <div class=\"homepage-banner-demo__content\">\n              <p class=\"homepage-banner-demo__title\">Homepage Banner slide 7</p>\n              <p class=\"homepage-banner-demo__desc\">Regular content carousels retain their base controls and pagination.</p>\n            </div>\n          </div>\n        </div>\n      </div>\n\n      <button class=\"ds-carousel__btn ds-carousel__btn--xl ds-carousel__btn--dark ds-carousel__btn--overlay ds-carousel__btn--prev\" type=\"button\" aria-label=\"Previous slide\" disabled=\"\">\n        <img src=\"../icons/icon-carousel-prev.svg\" alt=\"\">\n      </button>\n      <button class=\"ds-carousel__btn ds-carousel__btn--xl ds-carousel__btn--dark ds-carousel__btn--overlay ds-carousel__btn--next\" type=\"button\" aria-label=\"Next slide\">\n        <img src=\"../icons/icon-carousel-next.svg\" alt=\"\">\n      </button>\n\n      <div class=\"ds-carousel__dots ds-carousel__dots--dark\" aria-label=\"Choose slide\">\n        <button class=\"ds-carousel__dot ds-carousel__dot--active\" data-index=\"0\" type=\"button\" aria-label=\"Slide 1\" aria-current=\"true\"></button>\n        <button class=\"ds-carousel__dot\" data-index=\"1\" type=\"button\" aria-label=\"Slide 2\"></button>\n        <button class=\"ds-carousel__dot\" data-index=\"2\" type=\"button\" aria-label=\"Slide 3\"></button>\n        <button class=\"ds-carousel__dot\" data-index=\"3\" type=\"button\" aria-label=\"Slide 4\"></button>\n        <button class=\"ds-carousel__dot\" data-index=\"4\" type=\"button\" aria-label=\"Slide 5\"></button>\n        <button class=\"ds-carousel__dot\" data-index=\"5\" type=\"button\" aria-label=\"Slide 6\"></button>\n        <button class=\"ds-carousel__dot\" data-index=\"6\" type=\"button\" aria-label=\"Slide 7\"></button>\n      </div>\n    </div>"
+    },
+    {
+      "name": "light",
+      "rootTag": "div",
+      "sizeOptions": [],
+      "purpose": "light-five-static-slide-l-overlay-no-pagination",
+      "rootClasses": "ds-carousel",
+      "requiredStructure": [
+        "div.ds-carousel__track",
+        "div.ds-carousel__slide",
+        "button.ds-carousel__btn--prev",
+        "button.ds-carousel__btn--next"
+      ],
+      "slots": {
+        "slides": {
+          "selector": "div.ds-carousel__track",
+          "mode": "structured-content",
+          "required": true,
+          "preserve": [
+            "div.ds-carousel__slide"
+          ],
+          "rule": "Five complete ordered wrappers. Replace only noninteractive page-owned body content via FS page mapping. No optional dots in this finite call, no nested carousel or controls."
+        }
+      },
+      "allowedEdits": [
+        "slides"
+      ],
+      "exampleHtml": "<div class=\"ds-carousel\" data-carousel-current=\"light-five\" data-ai-example=\"ai-carousel-light-five\" aria-label=\"Light five-slide content carousel\">\n        <div class=\"ds-carousel__track\">\n          <div class=\"ds-carousel__slide\">\n            <div class=\"light-carousel-demo-body\">Slide 1</div>\n          </div>\n          <div class=\"ds-carousel__slide\">\n            <div class=\"light-carousel-demo-body\">Slide 2</div>\n          </div>\n          <div class=\"ds-carousel__slide\">\n            <div class=\"light-carousel-demo-body\">Slide 3</div>\n          </div>\n          <div class=\"ds-carousel__slide\">\n            <div class=\"light-carousel-demo-body\">Slide 4</div>\n          </div>\n          <div class=\"ds-carousel__slide\">\n            <div class=\"light-carousel-demo-body\">Slide 5</div>\n          </div>\n        </div>\n\n        <button class=\"ds-carousel__btn ds-carousel__btn--l ds-carousel__btn--overlay ds-carousel__btn--prev\" type=\"button\" aria-label=\"Previous slide\" disabled=\"\">\n          <img src=\"../icons/icon-carousel-prev.svg\" alt=\"\">\n        </button>\n        <button class=\"ds-carousel__btn ds-carousel__btn--l ds-carousel__btn--overlay ds-carousel__btn--next\" type=\"button\" aria-label=\"Next slide\">\n          <img src=\"../icons/icon-carousel-next.svg\" alt=\"\">\n        </button>\n      </div>"
+    }
+  ],
+  "relationships": {
+    "children": [],
+    "parents": [
+      {
+        "id": "banner",
+        "contract": "components/contracts/banner.json",
+        "preview": "components/preview/banner.html",
+        "status": "preview-class-evidence-only",
+        "evidence": {
+          "status": "preview-class-evidence-only",
+          "verified": false,
+          "previewExists": true,
+          "classEvidence": true,
+          "declaredClasses": [
+            "ds-carousel__dots",
+            "ds-carousel__dot",
+            "ds-carousel__dot--active"
+          ],
+          "missingClasses": [],
+          "exactStructure": "not-established",
+          "browserEvidence": "not-established",
+          "note": "宿主依赖声明及离线类名盘点；未证明具体变体、尺寸、必需子结构、宿主适配或浏览器行为。"
+        },
+        "usage": [
+          {
+            "component": "Carousel",
+            "slot": "mini-pagination",
+            "part": "pagination",
+            "requiredVariants": [
+              "light"
+            ],
+            "implementationClasses": [
+              "ds-carousel__dots",
+              "ds-carousel__dot",
+              "ds-carousel__dot--active"
+            ],
+            "appliesTo": [
+              "mini"
+            ],
+            "usage": "只复用已登记pagination子部件，light仅为配色。不代表调用整套light五张/左右按钮Carousel；本示例静态，无切换业务。"
+          }
+        ]
+      }
+    ],
+    "parentStatus": "declared-hosts",
+    "icons": [
+      {
+        "file": "components/icons/icon-carousel-prev.svg",
+        "registry": "components/icons/icons-manifest.json",
+        "appliesTo": [
+          "light",
+          "dark"
+        ],
+        "usage": "上一张直角箭头；按变体显示为 28/20/12/16px；描边 M 可用态 SVG stroke 为 color.gray-2（#4B4B4D），Disabled 叠加整体 30% 不透明度"
+      },
+      {
+        "file": "components/icons/icon-carousel-next.svg",
+        "registry": "components/icons/icons-manifest.json",
+        "appliesTo": [
+          "light",
+          "dark"
+        ],
+        "usage": "下一张直角箭头；按变体显示为 28/20/12/16px；描边 M 可用态 SVG stroke 为 color.gray-2（#4B4B4D），Disabled 叠加整体 30% 不透明度"
+      }
+    ],
+    "tokens": [
+      {
+        "name": "color.gray-1",
+        "value": "#19191A",
+        "unit": null,
+        "cssVar": "--color-gray-1",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.gray-2",
+        "value": "#4B4B4D",
+        "unit": null,
+        "cssVar": "--color-gray-2",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.gray-3",
+        "value": "#707070",
+        "unit": null,
+        "cssVar": "--color-gray-3",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.gray-5",
+        "value": "#DEE0E3",
+        "unit": null,
+        "cssVar": "--color-gray-5",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "opacity.disabled",
+        "value": 0.3,
+        "unit": null,
+        "cssVar": "--opacity-disabled",
+        "primitiveReferences": null,
+        "source": "components/token-specs/opacity.json"
+      },
+      {
+        "name": "border-radius.md",
+        "value": 4,
+        "unit": "px",
+        "cssVar": "--border-radius-md",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border-radius.json"
+      },
+      {
+        "name": "spacing.10",
+        "value": 10,
+        "unit": "px",
+        "cssVar": "--spacing-10",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.20",
+        "value": 20,
+        "unit": "px",
+        "cssVar": "--spacing-20",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "border.width.default",
+        "value": 1,
+        "unit": "px",
+        "cssVar": "--border-width-default",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.style.default",
+        "value": "solid",
+        "unit": null,
+        "cssVar": "--border-style-default",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.default",
+        "value": "var(--color-gray-5)",
+        "unit": null,
+        "cssVar": "--border-color-default",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.style.none",
+        "value": "none",
+        "unit": null,
+        "cssVar": "--border-style-none",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "spacing.lg",
+        "value": 16,
+        "unit": "px",
+        "cssVar": "--spacing-lg",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "border-radius.lg",
+        "value": 8,
+        "unit": "px",
+        "cssVar": "--border-radius-lg",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border-radius.json"
+      }
+    ]
+  },
+  "evidence": {
+    "localImplementation": "components/preview/carousel.html",
+    "comparison": "components/sources/carousel/local-structure-review.json",
+    "previousInlineRuntime": "components/sources/carousel/preview-inline-runtime-before.txt",
+    "originalPaginationReview": "components/sources/carousel/native-pagination-review-1011.json",
+    "specificationReview": "components/sources/carousel/native-specification-review-1011.json",
+    "originalArrowReview": "components/sources/carousel/native-arrow-review-1011.json",
+    "originalHostReview": "components/sources/carousel/native-host-review-1011.json"
+  },
+  "sourceValidation": {
+    "componentIdentity": {
+      "status": "not-established",
+      "files": []
+    },
+    "specificationBody": {
+      "status": "not-established",
+      "files": []
+    },
+    "originalOnlineFrontendCode": false,
+    "browserComputedStyles": false,
+    "completeSpecificationCoverage": false
+  },
+  "freshness": {
+    "fingerprints": {
+      "components/carousel-current.css": "28f41556ed2c668850be4a202b5d8713a1545b326ff6a606d26cd235f1c9c137",
+      "components/carousel-current.js": "c067063eb3ca5fa390a54056783877f736f26d64d56f59e97067a8349a7c176c",
+      "components/components.css": "a08b4fe2790b5ff2b784c6362a90f1b94e7535a03e863232ce6d620a52e85f73",
+      "components/contracts/carousel.json": "8fa4c236a94f0892ddcd840fb0e5cf13b9193a837a6f07e5fef27cfe29a341e7",
+      "components/icons/icon-carousel-next.svg": "32bc4993a22bc4fe94406f10692227843f334f71f804a000cdce30e5e94235fe",
+      "components/icons/icon-carousel-prev.svg": "0c3e3035fa72509b40f45298e7194eee211adb0b3a8c51730149d8363f3f55ba",
+      "components/icons/icons-manifest.json": "dd3a0b3f5ec5d2f082a98db31613f05487acb8c80643b14ccb53e8ffa1b86f05",
+      "components/preview/banner.html": "47a684482e8eb621223a5b4fb16ce289a6ef691aefc9613b670c6272bd4424f0",
+      "components/preview/carousel.html": "8844c4a318056af913283993bfcdc37a2c41817e2f8bf2c4f2e889c9fb79fb94",
+      "components/preview/reference-live.js": "4839383529a3ee82df1d8efe675d430567abc1986034499107aa429d21a18ea6",
+      "components/reference-policy.json": "9a2c54006968a27b3d04e03f0dac429a6e6c215e5e5936b7f65d66cfd9d5c660",
+      "components/sources/carousel/local-structure-review.json": "535ab199d31036180850e8bc98de50531b8ab88103c88b74752cf5df15892fe6",
+      "components/sources/carousel/native-arrow-review-1011.json": "901b42884978f56fead7f00a2ba625b7427b4743ab9ecb7380f39fe057e735da",
+      "components/sources/carousel/native-host-review-1011.json": "5242cf60a119b4bcc03bbb585823ca0555977bac6f18a12bfddf4a832fc75cef",
+      "components/sources/carousel/native-pagination-review-1011.json": "17a8c97517b989afbd2538b72bc6c9242e89b3bcf3404be0233b589795e6ab9e",
+      "components/sources/carousel/native-specification-review-1011.json": "638a6cb36e6e5b61a096ad5f779edff7b8f6e4b0383c1918b6db62fd70a09af2",
+      "components/sources/carousel/preview-inline-runtime-before.txt": "389e11035d93380879287446e593515fbea99e1e65d31dbf80f33d589931d7db",
+      "components/token-specs/border-radius.json": "77d9245e2504b7c0c605288290e938b2453a79b27d4312448d14a58692290791",
+      "components/token-specs/border.json": "d286ee4681deda1c7702c310b065c86f824539b3a8797efba05b24bc225ab322",
+      "components/token-specs/colors.json": "82cba8e4a6b3e1e5bc961e4039478b0dea4ba9b92a5291d579bb8d7a54db0d95",
+      "components/token-specs/opacity.json": "226088dc556be35b2b51766287a7d54f95eebd348cb80f6d8313e525cf2b70b7",
+      "components/token-specs/spacing.json": "351b14cfce4411248ad41e00eaaf2b1cab9b705997980dfed1fc65693740e65c",
+      "components/tokens.css": "2424558781ddfc12cad4d2b91e78451dc26fe5e126e6f24a3b9631753b644afa"
+    },
+    "graphFingerprint": "372626e581d138232ebe7880468597123e14d55ddb69afb59883d6a74f89b3d9",
+    "note": "从本地源文件生成；不是 MasterGo 在线实时状态。"
+  }
+}

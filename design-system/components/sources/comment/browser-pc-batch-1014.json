@@ -1,0 +1,24 @@
+{
+  "mainComponent": "Comment",
+  "scope": "已有PC产品评论展开Submit默认/悬浮/本地提交与现有画廊关闭动作",
+  "sourceRange": [
+    "components/sources/comment/pc-product-submit-review-1013.json",
+    "components/sources/comment/pc-gallery-close-closeout-1013.json"
+  ],
+  "status": "completed-finite-browser-behavior",
+  "completionConditions": [
+    "Submit真实Button/L默认/悬浮字形与几何",
+    "实际本地提交保留文案并清空输入，不向外部传输",
+    "画廊关闭后还原触发焦点；只验行为，不将未映射关闭Icon认作符合原件"
+  ],
+  "necessaryRelations": [
+    "真实Button调用；仅已有Comment实例"
+  ],
+  "remaining": [
+    "Input/Cancel及完整画廊原件到本地映射、用户视觉批准"
+  ],
+  "engineering": "无新的产品实现修改；旧33项取消/提交检查复用，不重跑",
+  "browser": "1920×1000 Submit36高/14Regular/水平16默认Hover同几何；空提交3→3，正常3→4且清空输入；画廊点击关闭/Esc均归还原触发焦点",
+  "evidence": "components/sources/comment/browser-pc-states-1014.json",
+  "fullFamilyAcceptance": false
+}

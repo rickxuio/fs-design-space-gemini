@@ -1,0 +1,103 @@
+{
+  "schemaVersion": "fs-select-source-review/1.0.0",
+  "date": "2026-10-15",
+  "scope": "Existing white Multi Default nested structure only",
+  "source": {
+    "fileId": "143880409387753",
+    "pageId": "68908:333208",
+    "nodeId": "69984:115148",
+    "remoteRevision": null
+  },
+  "overview": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"sections\":[{\"id\":\"69984:115149\",\"name\":\"容器 2606\",\"type\":\"FRAME\",\"nodeCount\":27,\"x\":0,\"y\":0,\"width\":225,\"height\":42,\"textPreview\":\"Item 1\",\"structureSiblingCount\":1}],\"totalSections\":1,\"totalNodes\":27,\"rootMetadata\":{\"width\":225,\"height\":42,\"name\":\"属性[au]=多选,状态[a0]=Default,颜色[a2]=白底+灰框\",\"type\":\"COMPONENT\",\"borderRadius\":\"4px\"},\"rootContainer\":{\"width\":\"225px\",\"minHeight\":\"42px\",\"background\":\"transparent\",\"overflow\":\"hidden\",\"position\":\"relative\",\"borderRadius\":\"4px\"},\"nextAction\":\"STOP. This section LIST is only a directory — it has NO DSL nodes,  NO rowTexts. You CANNOT generate HTML from this list alone. Your NEXT ACTION: call mcp__getDesignSections with sectionIndex=0, then sectionIndex=1, ... up to sectionIndex=0 (total 1 calls). Fetch ALL 1 sections in batches of 3-5 before writing ANY HTML. Sections with nodeCount=3 and empty name are NOT empty — they contain real menu items and content (resolved from INSTANCE overrides during DSL transfer). Skipping section DSL fetch is the #1 cause of missing menus, broken icons, and wrong data.\",\"rules\":[\"CRITICAL — Page positioning: the section LIST response contains splitContainers with page-absolute coordinates for each page region. Use splitContainers to construct the page skeleton (position:absolute with exact coordinates). Do NOT guess or stack with flex. IMPORTANT: splitContainers x/y are the container's absolute position on the canvas — they are NOT CSS margins/padding for child elements. Do NOT apply a container's y coordinate as top/margin-top on the main content wrapper. The main content area should start at top:0 within its own positioning context; sub-sections inside it use their own bbox y coordinates relative to the container, not to the page root.\",\"CRITICAL — Multi-column sidebar layout: render ALL sidebar levels as persistent visible columns positioned via splitContainers coordinates. Do NOT use position:absolute/fixed for submenu panels (they become floating overlays and break the main content width). Instead, lay out ALL columns (primary sidebar + submenu + main content) side-by-side using flex or absolute positioning that ACCOUNTS for every column's width. The main content area width = rootContainer.width minus ALL sidebar column widths. Do NOT use flex:1 for main content when there are multiple sidebar columns — it will expand into the submenu's space. Each sidebar column's width comes from its splitContainer entry.\",\"token filed must be generated as a variable (colors, shadows, fonts, etc.) and the token field must be displayed in the comment\",\"componentDocumentLinks is a list of frontend component documentation links. When it exists and is not empty, use mcp__getComponentLink to get the documentation.\",\"\",\"CRITICAL — SVG FROM PATH NODES (MUST FOLLOW): Every PATH node has a `svgShortKey` field (a short sequential ID like `S0#0`, `S0#1`). The SVG markup is NOT in the DSL. You MUST place a placeholder `@@SVG:{svgShortKey}@@` where each icon goes, then call `mcp__applyDesign` at the end to inject the real high-precision SVG. NEVER hand-write `<path d=\\\"...\\\">` — the DSL does NOT contain path data. NEVER leave a PATH node unrendered — every icon MUST have a `@@SVG:{svgShortKey}@@` placeholder.\",\"CRITICAL — RENDER EVERY ICON IN PATH NODES: Every PATH node has a `svgShortKey`. Place `@@SVG:{svgShortKey}@@` for each — sidebar menu icons, table header sort/filter/search icons, pagination prev/next/refresh icons, and action buttons. A header cell or menu item showing only plain text is a fidelity defect. After ALL placeholders are placed, call `mcp__applyDesign` to replace them with real SVG.\",\"\",\"CRITICAL — _placeholder TEXT handling: TEXT nodes with `_placeholder: true` (name==text) are listed in `dsl.placeholderTexts`. These are component-library boilerplate — NOT real column headers, labels, or data. Do NOT render them as table headers, column names, or visible UI labels. They appear alongside real text in the same section (e.g. a header cell has both realTitle='用户名称' and placeholder='Hillstone Design') — render ONLY the real title, omit the placeholder. EXCEPTION: if a placeholder text is the SOLE text in its section AND it reads as a legitimate brand name or page title (e.g. '智源智能安全运营平台'), it may be real content — render it in its proper context (logo area, page title), never as a table header.\",\"CRITICAL — CLOSED-SET TEXT: the section LIST response carries `rootMetadata.allTexts` — the complete whitelist of text strings in this design (including placeholder strings). Any visible string NOT in allTexts is a hallucination and MUST be removed. Use `dsl.placeholderTexts` in each section to identify which strings are component-library boilerplate.\",\"\",\"CRITICAL — INSTANCE fill color: when an INSTANCE has both `fill` and `_color`, use `_color` directly as the CSS value. Do NOT guess colors from _variantProps semantics.\",\"CRITICAL — INSTANCE _variantProps: compare across siblings for selected/hovered/disabled. Active class MUST match DSL variant state, NOT a default index.\",\"CRITICAL — Render count = structureSiblingCount: if ssc=1, that single instance IS complete — do NOT fabricate extra rows/items.\",\"CRITICAL — BACKGROUND FROM splitContainers: splitContainers[].background IS the exact CSS background-color. Copy verbatim, no changes.\",\"CRITICAL — FRAME/GROUP opacity: translate to rgba() on background only, NOT CSS opacity (would make children translucent).\",\"CRITICAL — rowTexts: each entry has parentType/parentName for context and `_placeholder: true` if boilerplate. Use parentName to place text correctly; skip _placeholder entries. IMPORTANT: if a short numeric text (like '8') has parentName matching a button INSTANCE (e.g. '分类[a3]=文本按钮,类型[aI]=危险'), it is likely a badge/count indicator overlaid on that button — NOT part of the button label. Do NOT render it inside the button text; render it as a separate badge element positioned on the button corner, OR omit it if the design does not show a visible badge on that specific button instance.\",\"Render ALL nodes recursively. Section root layoutStyle.width = section width. Do not call mcp__getDsl after completing section workflow.\",\"CRITICAL — ICON-TO-NODE BINDING: match PATH nodes to their UI position by the node's ancestor name. A PATH node under a menu item belongs in that menu's icon slot; one under a button/refresh belongs in that button. NEVER substitute a memorized icon — use the exact `@@SVG:{svgShortKey}@@` from the PATH node in its section. NEVER reuse a svgShortKey from a different section.\",\"CRITICAL — TEXT PROVENANCE SELF-CHECK: before finalizing output, verify every visible text string exists in allTexts. If you emit MORE distinct strings than allTexts.length, you are hallucinating. Typical hallucinations: fabricated table headers, invented data, brand tokens, generic labels not in the design.\",\"CRITICAL — DO NOT SKIP SECTION DSL FETCH: the section LIST response is ONLY a directory (id/name/nodeCount/textPreview). It does NOT contain DSL nodes, rowTexts, or any rendering data. You CANNOT generate correct HTML from the list alone. You MUST call mcp__getDesignSections with sectionIndex=0, then 1, ... up to totalSections-1 to get each section's DSL. Generating HTML without fetching ALL section DSLs will produce missing content (menus, table data, icons) and incorrect SVGs — this is the #1 cause of broken output.\"]}"
+      }
+    ]
+  },
+  "section": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"sectionIndex\":0,\"section\":{\"id\":\"69984:115149\",\"name\":\"容器 2606\",\"type\":\"FRAME\"},\"rootContainer\":{\"width\":\"225px\",\"minHeight\":\"42px\",\"background\":\"transparent\",\"overflow\":\"hidden\",\"position\":\"relative\",\"borderRadius\":\"4px\"},\"structureSiblingCount\":1,\"dsl\":{\"styles\":{\"font_69250:128538\":{\"value\":{\"family\":\"Open Sans\",\"size\":13,\"style\":\"{\\\"fontStyle\\\":\\\"Regular\\\",\\\"opsz\\\":\\\"auto\\\"}\",\"decoration\":\"none\",\"case\":\"none\",\"lineHeight\":\"20\",\"letterSpacing\":\"auto\",\"weight\":\"400\"},\"token\":\"Open Sans/13px-Regular\"},\"paint_1:8\":{\"value\":[\"#FFFFFF\"],\"token\":\"颜色系统/中性色/White-#FFFFFF\",\"description\":\"💚场景：白色背景\"},\"paint_66393:66637\":{\"value\":[\"#F6F6F8\"],\"token\":\"颜色系统/中性色/Gray8-#F6F6F8\"},\"paint_66685:77826\":{\"value\":[\"#DEE0E3\"],\"token\":\"颜色系统/中性色/Gray4-#DEE0E3\",\"description\":\"💚场景：分隔线(横&竖)\"},\"paint_69127:156375\":{\"value\":[\"#707070\"],\"token\":\"中性色/Gray3-#707070\",\"description\":\"💚场景：文本(弱)\"},\"paint_69250:140495\":{\"value\":[\"#19191A\"],\"token\":\"中性色/Gray1-#19191A\",\"description\":\"💚场景：文本(重)\"},\"paint_69369:147448\":{\"value\":[\"#707070\"],\"token\":\"中性色/Gray3-#707070\",\"description\":\"💚场景：文本(弱)\"}},\"nodes\":[{\"type\":\"FRAME\",\"id\":\"69984:115149\",\"name\":\"容器 2606\",\"layoutStyle\":{\"width\":225,\"height\":42,\"relativeX\":0,\"relativeY\":0},\"flexShrink\":1,\"fill\":\"paint_1:8\",\"_color\":\"#FFFFFF\",\"_token\":\"颜色系统/中性色/White-#FFFFFF\",\"strokeColor\":\"paint_66685:77826\",\"strokeType\":\"solid\",\"strokeAlign\":\"inside\",\"strokeWidth\":\"1px\",\"children\":[{\"type\":\"FRAME\",\"id\":\"69984:115189\",\"name\":\"容器 15105\",\"layoutStyle\":{\"width\":201,\"height\":28,\"relativeX\":12,\"relativeY\":7},\"flexGrow\":1,\"children\":[{\"type\":\"FRAME\",\"id\":\"69984:115190\",\"name\":\"容器 15517\",\"layoutStyle\":{\"width\":201,\"height\":28,\"relativeX\":0,\"relativeY\":0},\"children\":[{\"type\":\"FRAME\",\"id\":\"69984:115193\",\"name\":\"容器 14725\",\"layoutStyle\":{\"width\":148,\"height\":28,\"relativeX\":0,\"relativeY\":0},\"children\":[{\"type\":\"FRAME\",\"id\":\"69984:115194\",\"name\":\"标签/交互标签（25-Q1 Joann 迭代）\",\"layoutStyle\":{\"width\":75,\"height\":28,\"relativeX\":0,\"relativeY\":0},\"fill\":\"paint_66393:66637\",\"_color\":\"#F6F6F8\",\"_token\":\"颜色系统/中性色/Gray8-#F6F6F8\",\"children\":[{\"type\":\"TEXT\",\"id\":\"69984:115199\",\"name\":\"Item 1\",\"layoutStyle\":{\"width\":39,\"height\":20,\"relativeX\":8,\"relativeY\":4},\"fill\":\"paint_69250:140495\",\"_color\":\"#19191A\",\"_token\":\"中性色/Gray1-#19191A\",\"text\":[{\"text\":\"Item 1\",\"font\":\"font_69250:128538\"}],\"textColor\":[{\"start\":0,\"end\":6,\"color\":\"paint_69250:140495\"}],\"textAlign\":\"center\",\"textMode\":\"single-line\",\"_placeholder\":true},{\"type\":\"FRAME\",\"id\":\"69984:115198\",\"name\":\"容器 12311\",\"layoutStyle\":{\"width\":12,\"height\":12,\"relativeX\":55,\"relativeY\":8},\"children\":[{\"type\":\"INSTANCE\",\"id\":\"69984:115211\",\"name\":\"delete1\",\"layoutStyle\":{\"width\":12,\"height\":12,\"relativeX\":0,\"relativeY\":0},\"componentInfo\":{},\"children\":[{\"type\":\"GROUP\",\"id\":\"69984:115211/69064:114994\",\"name\":\"组 13305\",\"layoutStyle\":{\"width\":6.658533096313477,\"height\":6.594006061553955,\"relativeX\":1.670893669128418,\"relativeY\":1.7001171112060547},\"_mergedVector\":true,\"svgKey\":\"S0:delete1|69984:115211/69064:114994\",\"svgShortKey\":\"S0#0\",\"svgName\":\"delete1\"}],\"componentId\":\"69064:114991\"}],\"flexContainerInfo\":{\"flexDirection\":\"row\",\"justifyContent\":\"center\",\"alignItems\":\"center\",\"flexWrap\":\"wrap\",\"mainSizing\":\"fixed\",\"crossSizing\":\"fixed\",\"gap\":\"10px\",\"padding\":\"10px\"}}],\"flexContainerInfo\":{\"flexDirection\":\"row\",\"justifyContent\":\"center\",\"alignItems\":\"center\",\"mainSizing\":\"auto\",\"crossSizing\":\"auto\",\"gap\":\"8px\",\"padding\":\"4px 8px\"},\"borderRadius\":\"4px\"},{\"type\":\"FRAME\",\"id\":\"69984:115202\",\"name\":\"标签/交互标签（25-Q1 Joann 迭代）\",\"layoutStyle\":{\"width\":62,\"height\":28,\"relativeX\":83,\"relativeY\":0},\"fill\":\"paint_66393:66637\",\"_color\":\"#F6F6F8\",\"_token\":\"颜色系统/中性色/Gray8-#F6F6F8\",\"children\":[{\"type\":\"TEXT\",\"id\":\"69984:115207\",\"name\":\"+7...\",\"layoutStyle\":{\"width\":26,\"height\":20,\"relativeX\":8,\"relativeY\":4},\"fill\":\"paint_69250:140495\",\"_color\":\"#19191A\",\"_token\":\"中性色/Gray1-#19191A\",\"text\":[{\"text\":\"+7...\",\"font\":\"font_69250:128538\"}],\"textColor\":[{\"start\":0,\"end\":5,\"color\":\"paint_69250:140495\"}],\"textAlign\":\"center\",\"textMode\":\"single-line\",\"_placeholder\":true},{\"type\":\"FRAME\",\"id\":\"69984:115203\",\"name\":\"容器 12311\",\"layoutStyle\":{\"width\":12,\"height\":12,\"relativeX\":42,\"relativeY\":8},\"children\":[{\"type\":\"INSTANCE\",\"id\":\"69984:115212\",\"name\":\"delete1\",\"layoutStyle\":{\"width\":12,\"height\":12,\"relativeX\":0,\"relativeY\":0},\"componentInfo\":{},\"children\":[{\"type\":\"GROUP\",\"id\":\"69984:115212/69064:114994\",\"name\":\"组 13305\",\"layoutStyle\":{\"width\":6.658533096313477,\"height\":6.594006061553955,\"relativeX\":1.670893669128418,\"relativeY\":1.7001171112060547},\"_mergedVector\":true}],\"componentId\":\"69064:114991\"}],\"flexContainerInfo\":{\"flexDirection\":\"row\",\"justifyContent\":\"center\",\"alignItems\":\"center\",\"flexWrap\":\"wrap\",\"mainSizing\":\"fixed\",\"crossSizing\":\"fixed\",\"gap\":\"10px\",\"padding\":\"10px\"}}],\"flexContainerInfo\":{\"flexDirection\":\"row\",\"justifyContent\":\"center\",\"alignItems\":\"center\",\"mainSizing\":\"auto\",\"crossSizing\":\"auto\",\"gap\":\"8px\",\"padding\":\"4px 8px\"},\"borderRadius\":\"4px\"}],\"flexContainerInfo\":{\"flexDirection\":\"row\",\"mainSizing\":\"fixed\",\"crossSizing\":\"auto\",\"gap\":\"8px\"}},{\"type\":\"FRAME\",\"id\":\"69984:115191\",\"name\":\"图标组\",\"layoutStyle\":{\"width\":41,\"height\":12,\"relativeX\":160,\"relativeY\":8},\"children\":[{\"type\":\"FRAME\",\"id\":\"69984:115192\",\"name\":\"容器 12311\",\"layoutStyle\":{\"width\":12,\"height\":12,\"relativeX\":0,\"relativeY\":0},\"children\":[{\"type\":\"INSTANCE\",\"id\":\"69984:115210\",\"name\":\"delete1\",\"layoutStyle\":{\"width\":12,\"height\":12,\"relativeX\":0,\"relativeY\":0},\"componentInfo\":{},\"children\":[{\"type\":\"GROUP\",\"id\":\"69984:115210/69064:114994\",\"name\":\"组 13305\",\"layoutStyle\":{\"width\":6.658533096313477,\"height\":6.594006061553955,\"relativeX\":1.670893669128418,\"relativeY\":1.7001171112060547},\"_mergedVector\":true}],\"componentId\":\"69064:114991\"}],\"flexContainerInfo\":{\"flexDirection\":\"row\",\"justifyContent\":\"center\",\"alignItems\":\"center\",\"flexWrap\":\"wrap\",\"mainSizing\":\"fixed\",\"crossSizing\":\"fixed\",\"gap\":\"10px\",\"padding\":\"10px\"}},{\"type\":\"INSTANCE\",\"id\":\"69984:115213\",\"name\":\"分隔线\",\"layoutStyle\":{\"width\":100,\"height\":12,\"relativeX\":20,\"relativeY\":0},\"fill\":\"paint_66685:77826\",\"_color\":\"#DEE0E3\",\"_token\":\"颜色系统/中性色/Gray4-#DEE0E3\",\"componentInfo\":{\"description\":\"对不同章节的文本段落进行分割\",\"properties\":{\"布局\":\"水平\",\"是否带文字\":\"否\",\"样式\":\"水平分割线\"}},\"children\":[],\"componentId\":\"671:0391\",\"_variantProps\":{\"布局\":\"水平\",\"是否带文字\":\"否\",\"样式\":\"水平分割线\"}},{\"type\":\"INSTANCE\",\"id\":\"69984:115214\",\"name\":\"Icon/通用Icon/Down-向下\",\"layoutStyle\":{\"width\":12,\"height\":12,\"relativeX\":29,\"relativeY\":0},\"componentInfo\":{},\"children\":[{\"type\":\"PATH\",\"id\":\"69984:115214/66140:72598\",\"name\":\"路径（边框）\",\"layoutStyle\":{\"width\":6.875016212463379,\"height\":6.875001430511475,\"relativeX\":2.56,\"relativeY\":0.98,\"flipV\":true},\"svgKey\":\"S0:Icon/通用Icon/Down-向下|69984:115214/66140:72598\",\"svgShortKey\":\"S0#1\",\"svgName\":\"Icon/通用Icon/Down-向下\"}],\"componentId\":\"33189:59815\"}],\"flexContainerInfo\":{\"flexDirection\":\"row\",\"alignItems\":\"center\",\"mainSizing\":\"auto\",\"crossSizing\":\"auto\",\"gap\":\"8px\"}}],\"flexContainerInfo\":{\"flexDirection\":\"row\",\"alignItems\":\"center\",\"mainSizing\":\"auto\",\"crossSizing\":\"auto\",\"gap\":\"12px\"}}],\"flexContainerInfo\":{\"flexDirection\":\"column\",\"justifyContent\":\"center\",\"mainSizing\":\"auto\",\"crossSizing\":\"fixed\"}}],\"flexContainerInfo\":{\"flexDirection\":\"row\",\"alignItems\":\"center\",\"mainSizing\":\"fixed\",\"crossSizing\":\"fixed\",\"gap\":\"8px\",\"padding\":\"0px 12px\"},\"borderRadius\":\"4px\"}],\"components\":[],\"rowTexts\":[{\"text\":\"Item 1\",\"_placeholder\":true,\"parentType\":\"FRAME\",\"parentName\":\"标签/交互标签（25-Q1 Joann 迭代）\"},{\"text\":\"+7...\",\"_placeholder\":true,\"parentType\":\"FRAME\",\"parentName\":\"标签/交互标签（25-Q1 Joann 迭代）\"}],\"placeholderTexts\":[\"Item 1\",\"+7...\"]},\"nodeCount\":21,\"svgNodeCount\":4,\"hasStrippedSvgs\":true,\"componentDocumentLinks\":[],\"fetchProgress\":\"ALL 1 sections fetched. You can now generate the complete HTML.\"}"
+      }
+    ]
+  },
+  "findings": {
+    "control": {
+      "node": "69984:115149",
+      "size": [
+        225,
+        42
+      ],
+      "padding": "0px 12px",
+      "gap": 8,
+      "border": "inside 1px Gray4",
+      "fill": "White"
+    },
+    "content": {
+      "node": "69984:115189",
+      "size": [
+        201,
+        28
+      ],
+      "position": [
+        12,
+        7
+      ]
+    },
+    "row": {
+      "node": "69984:115190",
+      "gap": 12
+    },
+    "chips": {
+      "node": "69984:115193",
+      "size": [
+        148,
+        28
+      ],
+      "gap": 8,
+      "identities": "Internal FRAMEs, not Tag instances; source ownership closure reused"
+    },
+    "actions": {
+      "node": "69984:115191",
+      "size": [
+        41,
+        12
+      ],
+      "gap": 8,
+      "removeMaster": "69064:114991",
+      "dividerMaster": "671:0391",
+      "downMaster": "33189:59815"
+    },
+    "inheritedMismatch": "DSL divider width100 conflicts with native saved1×12; preserve native measured host geometry, do not promote inherited width100."
+  },
+  "boundaries": [
+    "Outer gap4 is between root regions, not chip gap or control padding",
+    "Source has one visible control; no validation slot displayed in this Default node",
+    "White canonical whole call not established; no inferred runtime changes or new AI variant",
+    "No new Divider component admission"
+  ],
+  "evidence": [
+    "components/sources/select/multi-white-default-root-review-1013.json",
+    "components/sources/select/multi-chip-ownership-review-1012.json",
+    "components/sources/select/multi-white-default-divider-native-1013.txt",
+    "components/sources/select/white-multi-control-native-1015.txt",
+    "components/sources/select/white-multi-control-confirmed-native-1015.txt"
+  ],
+  "nativeControlConfirmation": {
+    "url": "https://mastergo.com/file/143880409387753?page_id=68908%3A333208&layer_id=69984%3A115149",
+    "width": 225,
+    "height": 42,
+    "sizing": [
+      "Fill width",
+      "Fixed height"
+    ],
+    "gap": 8,
+    "padding": "0 vertical / 12 horizontal",
+    "fill": "White",
+    "border": "inside1 Gray4",
+    "evidence": "components/sources/select/white-multi-control-confirmed-native-1015.txt"
+  }
+}

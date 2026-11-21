@@ -1,0 +1,66 @@
+{
+  "fileId": "143880409387753",
+  "pageId": "68908:093269",
+  "readAt": "2026-10-13",
+  "scope": "新版插槽常规PC Large居左及Default/Large居中，仅独立底描边",
+  "hosts": [
+    {
+      "node": "68908:049804",
+      "layout": "left",
+      "size": [
+        1200,
+        56
+      ],
+      "outerGap": 4,
+      "strokeNode": "68908:049817",
+      "strokeType": "内部导航容器"
+    },
+    {
+      "node": "68908:049539",
+      "layout": "center-default",
+      "size": [
+        372,
+        40
+      ],
+      "widthMode": "auto",
+      "gap": 16,
+      "strokeNode": "68908:049539",
+      "strokeType": "宿主本体"
+    },
+    {
+      "node": "68908:049509",
+      "layout": "center-large",
+      "size": [
+        390,
+        56
+      ],
+      "widthMode": "auto",
+      "strokeNode": "68908:049509",
+      "strokeType": "宿主本体"
+    }
+  ],
+  "bottomStroke": {
+    "alignment": "outside",
+    "sidesPx": {
+      "left": 0,
+      "top": 0,
+      "right": 0,
+      "bottom": 1
+    },
+    "color": "#DEE0E3"
+  },
+  "implementation": "三个当前Preview来源标记限定底部非占位外绘制；Large有限调用必须保留独立来源标记；不新增居中AI调用，不固定宽高，不改共享CSS与历史",
+  "remaining": [
+    "居中auto-width来源与当前full-width centered展示的完整映射未关闭，372/390仅当前样例宽度",
+    "各宿主底线位置/高度/邻接内容实际视觉待验证",
+    "下拉项Radio隐藏实例及其他状态来源",
+    "胶囊停用后的完整来源与行为"
+  ],
+  "evidence": [
+    "pc-large-host-native-1013.txt",
+    "pc-large-bottom-native-1013.txt",
+    "pc-center-default-host-native-1013.txt",
+    "pc-center-large-bottom-native-1013.txt"
+  ],
+  "fullFamilyAcceptance": false
+}

@@ -1,0 +1,837 @@
+{
+  "schemaVersion": "fs-component-reference/1.0.0",
+  "component": {
+    "id": "tag",
+    "name": "Tag",
+    "scope": "existing-desktop-tag-finite-display-toggles-and-card-product-small",
+    "reviewStatus": {
+      "engineering": "pending",
+      "visual": "pending",
+      "familyCoverage": "partial"
+    }
+  },
+  "selection": {
+    "policy": "Use one finite authored example per supported family: two default marker-only button toggles, success 12px status, source-matched single metadata value or exactly two dual metadata values, fixed Individual neutral/info and fixed FEATURED/star. Not all colors, sizes, states or source/browser acceptance. 当前filter支持显式closeCallback，宿主移除；不自动移除业务对象。 2026-10-14按用户提供母组件补Card必要小号三种属性；原件产品图=false；颜色仅改data-tag-color的六位HEX选项内容，不开放任意CSS。 按relations.variantDecisions的具体场景选型；最终资格读同版catalog，未开放项不自动调用。当前MG核对状态见prototypeRollout，不将既有来源冒称本次在线核对。",
+    "supported": [
+      "selectable",
+      "filter",
+      "status-text",
+      "metadata",
+      "metadata-single",
+      "semantic",
+      "featured",
+      "semantic-new",
+      "product-regular-small",
+      "product-custom-small",
+      "product-color-small"
+    ],
+    "unsupported": [
+      "select-removal-tag",
+      "native-checkbox-submission",
+      "mobile",
+      "status-warning-or-large",
+      "semantic-other-colors-or-iconless",
+      "unrecorded-size-state-or-host-adaptation",
+      "implicit-business-removal-without-host-callback",
+      "product-configuration-color-source",
+      "product-accessory-pc-source"
+    ]
+  },
+  "runtime": {
+    "styles": [
+      "components/tokens.css",
+      "components/components.css",
+      "components/tag-current.css",
+      "components/tag-product-current.css",
+      "components/tag-configuration-current.css"
+    ],
+    "scripts": [
+      "components/tag-current.js",
+      "components/tag-product-current.js"
+    ],
+    "fontStylesheets": [
+      "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+    ],
+    "fontFallback": "沿用Open Sans字体栈；远端字体不可用时回退。"
+  },
+  "identity": {
+    "rule": "Default native button with data-tag-current, type=button and aria-pressed=false; current delegated runtime scopes standalone Tag toggles and excludes Select removal adapters. Static Tag examples are native spans; semantic/featured text and icon are frozen. No role/tabindex/button or toggle marker may be added.",
+    "labelRule": "selectable保留唯一label；filter保留唯一prefix/value及原关闭图标。filter必须保留data-tag-close=event与键盘说明；X保持img，不嵌套button。",
+    "product": "button.ds-tag--product-small[data-tag-product=current], type=button, default aria-pressed=false；文字唯一span.ds-tag__product-label，产品图=false；颜色唯一14px装饰chip及有效六位HEX内容/可访问名。Canonical forbids host action/state markers.",
+    "metadata": "Single mother017293 uses ds-tag-meta--single/data-tag-source-metadata=single and one value; dual019949 uses source markerdual and two values withDivider. Both are static spans; no inferred interaction."
+  },
+  "locked": [
+    "根button、类型、28px形态与共享CSS",
+    "默认状态与aria-pressed",
+    "filter关闭图标及前缀/值分组",
+    "tag-current.js选择事件语义",
+    "X只发关闭事件，宿主负责移除；不添加提交/通用业务删除",
+    "Static span structure, default semantic class and decorative assets; semantic Individual and FEATURED labels are literal",
+    "Product small22 frame, inside1px stroke and original variant state colours; image=false source Boolean",
+    "Customized literal label; colour content edits only on data-tag-color, never frame CSS"
+  ],
+  "behavior": {
+    "toggle": "点击button时切换ds-tag--checked，同步aria-pressed，派发冒泡ds:tag-change；detail.checked为布尔值。",
+    "disabled": "原生disabled禁止响应；本批默认实例不开放disabled编辑。",
+    "close": "用户2026-10-13最新决定：点击X删除已选择标签。当前filter X只派发可取消冒泡ds:tag-close/detail.checked，不切换checked、不派发tag-change；宿主closeCallback决定并移除。组件不会自行删除调用实例。聚焦filter后Delete/Backspace提供等效关闭；禁用/隐藏/Select移除适配不响应。",
+    "programmatic": "首次初始化同步既有checked类；动态button点击由事件委托处理，但动态插入的初始aria需宿主提供一致状态。",
+    "selectHost": "Current Tag excludes .ds-select / data-select-remove, avoiding accidental toggle events when mixed with select-current.js. This only resolves runtime interference; source/style adapter remains unapproved.",
+    "initialization": "One document guard; marker-only delegated current calls, including dynamically inserted exact calls. Do not load legacy tag.js alongside current Tag runtime.",
+    "display": "Static examples dispatch no Tag event and add no keyboard, link or form control semantics; only status label and two metadata texts are editable.",
+    "product": "tag-product-current.js隔离原有Tag切换；常规/颜色切换aria-pressed并发ds:tag-change；Customized或Card已登记+N适配仅发ds:tag-activate，宿主决定动作。状态矩阵data-tag-state为来源展示，不响应切换。颜色初始化/动态插入/属性更新仅写内部色块background-color。"
+  },
+  "examples": [
+    {
+      "name": "status-text",
+      "publication": {
+        "key": "tag/status-text",
+        "disposition": "restricted",
+        "newPages": true,
+        "reason": "Only exact authored shape. Product-small is Card-only. Filter close is host-owned. No arbitrary colors/sizes/business combinations.",
+        "constraints": [
+          "Only exact authored shape. Product-small is Card-only. Filter close is host-owned. No arbitrary colors/sizes/business combinations."
+        ],
+        "contractPolicy": "Use one finite authored example per supported family: two default marker-only button toggles, success 12px status, source-matched single metadata value or exactly two dual metadata values, fixed Individual neutral/info and fixed FEATURED/star. Not all colors, sizes, states or source/browser acceptance. 当前filter支持显式closeCallback，宿主移除；不自动移除业务对象。 2026-10-14按用户提供母组件补Card必要小号三种属性；原件产品图=false；颜色仅改data-tag-color的六位HEX选项内容，不开放任意CSS。",
+        "use": "finite-new-page-candidate",
+        "evidence": "components/contracts/tag.json#aiContract/evidence",
+        "requiresCurrentEngineering": true,
+        "visualApproval": "separate-not-granted"
+      },
+      "rootTag": "span",
+      "sizeOptions": [],
+      "bindings": {},
+      "purpose": "display-success-status-tag",
+      "whenToUse": "无底短状态文字，沿用当前success文字实例。",
+      "whenNotToUse": "需要其他颜色、14px大号或选择交互。",
+      "rootClasses": "ds-tag ds-tag--status-text",
+      "requiredStructure": [
+        ":scope"
+      ],
+      "slots": {
+        "label": {
+          "selector": ":scope",
+          "mode": "text",
+          "required": true
+        }
+      },
+      "allowedEdits": [
+        "label"
+      ],
+      "exampleHtml": "<span class=\"ds-tag ds-tag--status-text ds-tag--success\" data-ai-example=\"ai-tag-status-text\">New</span>"
+    }
+  ],
+  "relationships": {
+    "children": [],
+    "parents": [
+      {
+        "id": "card",
+        "contract": "components/contracts/card.json",
+        "preview": "components/variants/card.html",
+        "status": "preview-class-evidence-only",
+        "evidence": {
+          "status": "preview-class-evidence-only",
+          "verified": false,
+          "previewExists": true,
+          "classEvidence": true,
+          "declaredClasses": [
+            "ds-tag",
+            "ds-tag--semantic",
+            "ds-tag--new",
+            "ds-tag--emphasis",
+            "ds-tag--product-small",
+            "ds-tag--product-custom",
+            "ds-tag--product-color",
+            "ds-tag__product-label",
+            "ds-tag__product-chip",
+            "ds-tag-meta",
+            "ds-tag-meta__divider",
+            "ds-tag--featured",
+            "ds-tag__icon",
+            "ds-tag__label",
+            "ds-tag-meta--single",
+            "ds-tag--neutral"
+          ],
+          "missingClasses": [],
+          "exactStructure": "not-established",
+          "browserEvidence": "not-established",
+          "note": "宿主依赖声明及离线类名盘点；未证明具体变体、尺寸、必需子结构、宿主适配或浏览器行为。"
+        },
+        "usage": [
+          {
+            "component": "Tag",
+            "slot": "badge",
+            "usage": "完整产品卡绿色New使用真实Tag原子；宿主仅定位，不复制样式。",
+            "requiredVariants": [
+              "semantic-new"
+            ],
+            "implementationClasses": [
+              "ds-tag",
+              "ds-tag--semantic",
+              "ds-tag--new",
+              "ds-tag--emphasis"
+            ],
+            "appliesTo": [
+              "embedded.product-full"
+            ]
+          },
+          {
+            "component": "Tag",
+            "slot": "productAttributes",
+            "usage": "当前产品完整卡六个属性行真实调用22px常规/Customized/颜色原子；宿主仅选中协调/+N业务事件，不覆盖原子样式。仅有限原件属性槽，不开放整个Card产品完整卡自动生成。；原有+4浮层三个真实Tag原子亦已接入。",
+            "requiredVariants": [
+              "product-regular-small",
+              "product-custom-small",
+              "product-color-small"
+            ],
+            "implementationClasses": [
+              "ds-tag",
+              "ds-tag--product-small",
+              "ds-tag--product-custom",
+              "ds-tag--product-color",
+              "ds-tag__product-label",
+              "ds-tag__product-chip"
+            ],
+            "appliesTo": [
+              "embedded.product-full"
+            ],
+            "sourceEvidence": {
+              "hostSource": "components/sources/tag/card-product-host-review-1014.json",
+              "identities": "components/sources/tag/card-product-host-identities-1014.json",
+              "colorDefault": "components/sources/tag/card-product-color-default-host-1014.json",
+              "adapter": "+N为来源常规Tag文本，宿主data-tag-action=host只调用已有浮层；浮层内部旧标签不冒称本批已复核。",
+              "countPopup": "components/sources/tag/card-count-popup-review-1015.json"
+            }
+          },
+          {
+            "component": "Tag",
+            "slot": "metadata",
+            "usage": "四个上下结构单事件正式来源宿主调用已投喂metadata与Featured原子；仅槽位装配，完整宿主视觉仍待。；Education单值属性亦为真实017293原子调用。",
+            "requiredVariants": [
+              "metadata-single",
+              "metadata",
+              "featured"
+            ],
+            "implementationClasses": [
+              "ds-tag-meta",
+              "ds-tag-meta__divider",
+              "ds-tag",
+              "ds-tag--featured",
+              "ds-tag__icon",
+              "ds-tag__label",
+              "ds-tag-meta--single"
+            ],
+            "appliesTo": [
+              "spliced.vertical.single-event"
+            ],
+            "sourceEvidence": {
+              "host": "components/sources/card/vertical-list-host-review-1015.json",
+              "atom": "components/sources/tag/card-metadata-featured-review-1015.json",
+              "singleMetadata": "components/sources/tag/card-single-metadata-review-1015.json"
+            }
+          },
+          {
+            "component": "Tag",
+            "part": "cardGraySource",
+            "slot": "grayLabels",
+            "usage": "仅四个原件宿主中8枚灰色Tag的真实无Info适配；不新增Tag原子变体或AI调用。",
+            "requiredVariants": [
+              "semantic"
+            ],
+            "implementationClasses": [
+              "ds-tag",
+              "ds-tag--semantic",
+              "ds-tag--neutral",
+              "ds-tag__label"
+            ],
+            "appliesTo": [
+              "spliced.vertical.single-event"
+            ],
+            "sourceEvidence": {
+              "adaptation": "components/sources/tag/card-gray-label-adaptation-1015.json"
+            }
+          },
+          {
+            "component": "Tag",
+            "slot": "compatibility",
+            "appliesTo": [
+              "embedded.product-full"
+            ],
+            "requiredVariants": [
+              "product-regular-small",
+              "product-custom-small"
+            ],
+            "implementationClasses": [
+              "ds-tag",
+              "ds-tag__product-label"
+            ],
+            "usage": "真实兼容性Tag组；不以普通span模仿。"
+          }
+        ]
+      },
+      {
+        "id": "collapse",
+        "contract": "components/contracts/collapse.json",
+        "preview": "components/variants/collapse.html",
+        "status": "preview-class-evidence-only",
+        "evidence": {
+          "status": "preview-class-evidence-only",
+          "verified": false,
+          "previewExists": true,
+          "classEvidence": true,
+          "declaredClasses": [
+            "ds-tag",
+            "ds-tag--pickup",
+            "ds-tag__label"
+          ],
+          "missingClasses": [],
+          "exactStructure": "not-established",
+          "browserEvidence": "not-established",
+          "note": "宿主依赖声明及离线类名盘点；未证明具体变体、尺寸、必需子结构、宿主适配或浏览器行为。"
+        },
+        "usage": [
+          {
+            "component": "Tag",
+            "part": "collapse-pickup",
+            "requiredVariants": [
+              "semantic"
+            ],
+            "implementationClasses": [
+              "ds-tag",
+              "ds-tag--pickup",
+              "ds-tag__label"
+            ],
+            "slot": "row-label",
+            "appliesTo": [
+              "data-preview"
+            ],
+            "usage": "原件浅绿Pickup Order，无Info槽；由Tag源维护。"
+          }
+        ]
+      },
+      {
+        "id": "comment",
+        "contract": "components/contracts/comment.json",
+        "preview": "components/variants/comment.html",
+        "status": "preview-class-evidence-only",
+        "evidence": {
+          "status": "preview-class-evidence-only",
+          "verified": false,
+          "previewExists": true,
+          "classEvidence": true,
+          "declaredClasses": [
+            "ds-tag",
+            "ds-tag--selectable"
+          ],
+          "missingClasses": [],
+          "exactStructure": "not-established",
+          "browserEvidence": "not-established",
+          "note": "宿主依赖声明及离线类名盘点；未证明具体变体、尺寸、必需子结构、宿主适配或浏览器行为。"
+        },
+        "usage": [
+          {
+            "component": "Tag",
+            "usage": "评分总览中的 28px 分类筛选胶囊。",
+            "slot": "summary/filters",
+            "appliesTo": [
+              "rating-summary"
+            ],
+            "requiredVariants": [
+              "selectable"
+            ],
+            "implementationClasses": [
+              "ds-tag",
+              "ds-tag--selectable"
+            ],
+            "part": "comment-filter"
+          }
+        ]
+      },
+      {
+        "id": "option-selector",
+        "contract": "components/contracts/option-selector.json",
+        "preview": "components/variants/option-selector.html",
+        "status": "preview-class-evidence-only",
+        "evidence": {
+          "status": "preview-class-evidence-only",
+          "verified": false,
+          "previewExists": true,
+          "classEvidence": true,
+          "declaredClasses": [
+            "ds-tag",
+            "ds-tag--configuration-color",
+            "ds-tag--accessory-pc"
+          ],
+          "missingClasses": [],
+          "exactStructure": "not-established",
+          "browserEvidence": "not-established",
+          "note": "宿主依赖声明及离线类名盘点；未证明具体变体、尺寸、必需子结构、宿主适配或浏览器行为。"
+        },
+        "usage": [
+          {
+            "component": "Tag",
+            "part": "configuration-color",
+            "requiredVariants": [
+              "product-configuration-color-source"
+            ],
+            "implementationClasses": [
+              "ds-tag",
+              "ds-tag--configuration-color"
+            ],
+            "slot": "trigger",
+            "appliesTo": [
+              "color"
+            ],
+            "usage": "Tag产品属性原件306×30，14px色块与下拉箭头；私有来源部件。"
+          },
+          {
+            "component": "Tag",
+            "part": "configuration-service",
+            "requiredVariants": [
+              "product-accessory-pc-source"
+            ],
+            "implementationClasses": [
+              "ds-tag",
+              "ds-tag--accessory-pc"
+            ],
+            "slot": "accessory",
+            "appliesTo": [
+              "service"
+            ],
+            "usage": "Tag配件PC原件，64px图；不是新独立Tag变体。"
+          }
+        ]
+      }
+    ],
+    "parentStatus": "declared-hosts",
+    "icons": [],
+    "tokens": [
+      {
+        "name": "color.gray-1",
+        "value": "#19191A",
+        "unit": null,
+        "cssVar": "--color-gray-1",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.gray-2",
+        "value": "#4B4B4D",
+        "unit": null,
+        "cssVar": "--color-gray-2",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.gray-3",
+        "value": "#707070",
+        "unit": null,
+        "cssVar": "--color-gray-3",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.gray-5",
+        "value": "#DEE0E3",
+        "unit": null,
+        "cssVar": "--color-gray-5",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.gray-7",
+        "value": "#F2F2F2",
+        "unit": null,
+        "cssVar": "--color-gray-7",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.gray-8",
+        "value": "#F6F6F8",
+        "unit": null,
+        "cssVar": "--color-gray-8",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.white",
+        "value": "#FFFFFF",
+        "unit": null,
+        "cssVar": "--color-white",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.blue",
+        "value": "#0060BF",
+        "unit": null,
+        "cssVar": "--color-blue",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.hover-overlay-light",
+        "value": "rgba(25,25,26,0.04)",
+        "unit": null,
+        "cssVar": "--color-hover-overlay-light",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.success",
+        "value": "#10A300",
+        "unit": null,
+        "cssVar": "--color-success",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.success-bg",
+        "value": "rgba(16,163,0,0.1)",
+        "unit": null,
+        "cssVar": "--color-success-bg",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.success-tag-bg",
+        "value": "#D6F5DF",
+        "unit": null,
+        "cssVar": "--color-success-tag-bg",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.success-tag-text",
+        "value": "#09832A",
+        "unit": null,
+        "cssVar": "--color-success-tag-text",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.warning",
+        "value": "#F56300",
+        "unit": null,
+        "cssVar": "--color-warning",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.purple-tag",
+        "value": "#512971",
+        "unit": null,
+        "cssVar": "--color-text-purple",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.tag-blue-bg",
+        "value": "rgba(0,96,191,0.1)",
+        "unit": null,
+        "cssVar": "--color-tag-blue-bg",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.tag-warning-bg",
+        "value": "#FFEBDD",
+        "unit": null,
+        "cssVar": "--color-tag-warning-bg",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.tag-purple-bg",
+        "value": "#ECDCF9",
+        "unit": null,
+        "cssVar": "--color-tag-purple-bg",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.tag-border",
+        "value": "#EEEEEE",
+        "unit": null,
+        "cssVar": "--color-tag-border",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.yellow",
+        "value": "#FFD748",
+        "unit": null,
+        "cssVar": "--color-yellow",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "typography.font-family-base",
+        "value": "Open Sans",
+        "unit": null,
+        "cssVar": "--font-family-base",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-size-sm",
+        "value": 12,
+        "unit": "px",
+        "cssVar": "--font-size-sm",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-size-md",
+        "value": 14,
+        "unit": "px",
+        "cssVar": "--font-size-md",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-weight-regular",
+        "value": 400,
+        "unit": null,
+        "cssVar": "--font-weight-regular",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-weight-semibold",
+        "value": 600,
+        "unit": null,
+        "cssVar": "--font-weight-semibold",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.h9-regular",
+        "value": {
+          "fontSize": "12px",
+          "lineHeight": "20px",
+          "fontWeight": 400
+        },
+        "unit": null,
+        "cssVar": null,
+        "primitiveReferences": {
+          "fontSize": "typography.font-size-sm",
+          "fontWeight": "typography.font-weight-regular"
+        },
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.h9-semibold",
+        "value": {
+          "fontSize": "12px",
+          "lineHeight": "20px",
+          "fontWeight": 600
+        },
+        "unit": null,
+        "cssVar": null,
+        "primitiveReferences": {
+          "fontSize": "typography.font-size-sm",
+          "fontWeight": "typography.font-weight-semibold"
+        },
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.h7-regular",
+        "value": {
+          "fontSize": "14px",
+          "lineHeight": "22px",
+          "fontWeight": 400
+        },
+        "unit": null,
+        "cssVar": null,
+        "primitiveReferences": {
+          "fontSize": "typography.font-size-md",
+          "fontWeight": "typography.font-weight-regular"
+        },
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "spacing.2",
+        "value": 2,
+        "unit": "px",
+        "cssVar": "--spacing-2",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.xs",
+        "value": 4,
+        "unit": "px",
+        "cssVar": "--spacing-xs",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.sm",
+        "value": 8,
+        "unit": "px",
+        "cssVar": "--spacing-sm",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.10",
+        "value": 10,
+        "unit": "px",
+        "cssVar": "--spacing-10",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "border.width.default",
+        "value": 1,
+        "unit": "px",
+        "cssVar": "--border-width-default",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.style.default",
+        "value": "solid",
+        "unit": null,
+        "cssVar": "--border-style-default",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.tag",
+        "value": "var(--color-tag-border)",
+        "unit": null,
+        "cssVar": "--border-color-tag",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.emphasis",
+        "value": "var(--color-gray-1)",
+        "unit": null,
+        "cssVar": "--border-color-emphasis",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border-radius.md",
+        "value": 4,
+        "unit": "px",
+        "cssVar": "--border-radius-md",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border-radius.json"
+      },
+      {
+        "name": "border-radius.full",
+        "value": 9999,
+        "unit": "px",
+        "cssVar": "--border-radius-full",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border-radius.json"
+      },
+      {
+        "name": "border.color.focus",
+        "value": "var(--color-blue)",
+        "unit": null,
+        "cssVar": "--border-color-focus",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      }
+    ]
+  },
+  "evidence": {
+    "localImplementation": "components/variants/tag.html",
+    "comparison": "components/sources/tag/local-structure-review.json",
+    "nativeSpecification": "components/sources/tag/native-specification-review-1011.json",
+    "nativeComponent": "components/sources/tag/native-component-review-1011.json",
+    "filterCloseUserDecision": "components/sources/tag/filter-close-user-decision-1013.json",
+    "infoFeaturedSvg": "components/sources/tag/info-featured-svg-review-1013.json",
+    "semanticOwnInfo": "components/sources/tag/semantic-info-own-review-1014.json",
+    "splitOwnInfoSvg": "components/sources/tag/split-info16-official-1014.svg",
+    "pickupOwnInfoSvg": "components/sources/tag/pickup-info16-official-1014.svg",
+    "productSmall": "components/sources/tag/card-product-small-source-1014.json",
+    "productHosts": "components/sources/tag/card-product-host-review-1014.json",
+    "cardMetadataFeatured1015": "components/sources/tag/card-metadata-featured-review-1015.json",
+    "singleMetadata": "components/sources/tag/card-single-metadata-review-1015.json",
+    "currentMgReview": "components/sources/remaining-prototypes-mg-20261115/tag-review.json",
+    "listOptionSource": "components/sources/list-option-mg-20261115/review.json"
+  },
+  "sourceValidation": {
+    "componentIdentity": {
+      "status": "not-established",
+      "files": []
+    },
+    "specificationBody": {
+      "status": "not-established",
+      "files": []
+    },
+    "originalOnlineFrontendCode": false,
+    "browserComputedStyles": false,
+    "completeSpecificationCoverage": false,
+    "newTag": {
+      "source": "components/sources/tag/semantic-new-source-1014.json",
+      "node": "68908:016413"
+    }
+  },
+  "freshness": {
+    "fingerprints": {
+      "components/components.css": "a08b4fe2790b5ff2b784c6362a90f1b94e7535a03e863232ce6d620a52e85f73",
+      "components/contracts/checkbox.json": "ea3c1e3a082df421cafa2729384e7a7849e67048f51c3fde0979c0c3b0c94d63",
+      "components/contracts/tag.json": "bb8c4c7ca112feacb0af9aed188e4279df4fbab6b7774885f8e8e3508aa00cf5",
+      "components/icons/icon-close.svg": "226867654d63f99f548f7e25b2f0286c19aa5786f5b9497905474f3959704424",
+      "components/icons/icon-featured-star.svg": "3ff7625e9743df2f295b32dc8e7e12349839525ff1539d47c091b40d44188643",
+      "components/icons/icon-info.svg": "6e6c97d5d691758fe1b009b4dd6229e9dd20cda4641f341589e0e3fb1fde2bb6",
+      "components/icons/icons-manifest.json": "12c48af6d1dc59d50b76046bb0507005f565aa4224a6d8056ce4eaaf8050c43e",
+      "components/preview/reference-live.js": "4839383529a3ee82df1d8efe675d430567abc1986034499107aa429d21a18ea6",
+      "components/reference-policy.json": "4ae8f51f623386417e38d497caafb8bda4417c929159002a7ac088e6e526b482",
+      "components/sources/list-option-mg-20261115/review.json": "e8d424ddcef3f8c44413851d17943317e386c0f9cd8f8eaeec964ab3192194ae",
+      "components/sources/remaining-prototypes-mg-20261115/tag-review.json": "42787b3f6ce81c386ecc01cb387c9a33061b6799e9fdef02d90975f6c9da65ad",
+      "components/sources/tag/card-count-popup-review-1015.json": "b69a3b611b59ec116c88e3b292f9d41bf09329089605b770712397767fa1017c",
+      "components/sources/tag/card-gray-label-adaptation-1015.json": "b3485b9b47e6409a4a0be6d94f13bd5fde9fdd31c790e69ba5d4c5780868eeb8",
+      "components/sources/tag/card-gray-label-source-calls-1015.html": "964ea5ce271a1b41258c9bc0d5ed0ede7ef6ec33eb497690e959e9a759c001c1",
+      "components/sources/tag/card-metadata-featured-review-1015.json": "f3c6851e940ab2c8edbb79b4e63d0d84b6b3f28b9081bb64f6a2ea0184b4ddd0",
+      "components/sources/tag/card-product-color-default-host-1014.json": "ac49d704c3b3f28c373c124fcd4a1a5dfa61e9c44b1536a41ec4bacfd3dee02c",
+      "components/sources/tag/card-product-host-identities-1014.json": "1611314be245533a6e7ede136f8195047c0b0f92451982e398438678e4bb1be1",
+      "components/sources/tag/card-product-host-review-1014.json": "0720efb4aaa4ef6f4a824a482034a4a7d5d8007ea18bf068c2f80545ac0b4d12",
+      "components/sources/tag/card-product-small-source-1014.json": "c88d99298755bf587b5216320aa688cf604cfae52677093d7a71de7f7f6629bb",
+      "components/sources/tag/card-product-source-locator-1014.json": "289a3ad72b21047d9bfeb409c1c595015c49bc0670b32442369538481ac23bed",
+      "components/sources/tag/card-single-metadata-review-1015.json": "e68939418389fe720c8241dcb8a789efe9fc60b07c51618f0a0fb0604121cdae",
+      "components/sources/tag/collapse-pickup-1115.html": "9a439e021216fb81b9c154d16146fbb08528dcc13c0352565067d039dfe74945",
+      "components/sources/tag/configuration-color-1115.html": "b333e965e92442739f619c1e94a28989966c1aef56955bfa00f4a8814e82e953",
+      "components/sources/tag/configuration-service-1115.html": "261d7b0ed4e59e0d119596784b504ad0b63ccf668f4a19ce2cf3ec7031c4627c",
+      "components/sources/tag/filter-close-user-decision-1013.json": "45a217dded28cc8eb7978f113f87fb3efc6938d5ad738d5adedac7722c917c0b",
+      "components/sources/tag/info-featured-svg-review-1013.json": "adb9b3c98c9f374b7a2786cc49044283fd285cbaf85ab3320cb820f173655629",
+      "components/sources/tag/local-structure-review.json": "1052c8775f7997c3eb2612a59fa4a3e5d4b4a86122a34c0828aa44f658ae3f28",
+      "components/sources/tag/native-component-review-1011.json": "0d790319e73493737065f668be978116ea25c656f9b37864e32ddbf14c1219a1",
+      "components/sources/tag/native-specification-review-1011.json": "5598275f7b7eb136f4671e9c22b7aa32bd1de733239803b0dfbf401944d469c5",
+      "components/sources/tag/pickup-info16-official-1014.svg": "46d7aa067857862b322dfe2b4172a2572ee6d6f9b59bfdad967677979dc168fc",
+      "components/sources/tag/semantic-info-own-review-1014.json": "ba6009cd3ce9679c9ee9cb511b0c0c7a81f5ed2503ca3d5f5e820370fcd42898",
+      "components/sources/tag/semantic-new-source-1014.json": "6650e34ff9dec2b7d703df47d6b3794afe601a8715a41a08a3578fdfac55b505",
+      "components/sources/tag/split-info16-official-1014.svg": "85827f863a3d319e0544f9943a2e62287f57b6bfd1fa8664714324e41b69d4c8",
+      "components/tag-configuration-current.css": "6016d2be7ab1192477ac4630e51d8f02a0575c1553bc538e935aa5389c09f124",
+      "components/tag-current.css": "bdbf11b9a730d851ce640041874bced37b6e7e316b606c14719dfa72600d9aa7",
+      "components/tag-current.js": "9a36adf20ab586a0fb365e4551c0663f2f8752caf57bfae74796469f5be36443",
+      "components/tag-product-current.css": "b9edd951ef01a97794d55f8dd3bffaf9ab11b5b90b6e0256643bad0c92fc7ab5",
+      "components/tag-product-current.js": "bfcb8a4ec29cee2b3e3613aa73470f58440ae6b267c6dea8edb588ccbb883806",
+      "components/token-specs/border-radius.json": "b01e4c23fbc7e19983d9592b59b0303155b79d66c52459356eda0ea9f4ca74b5",
+      "components/token-specs/border.json": "d286ee4681deda1c7702c310b065c86f824539b3a8797efba05b24bc225ab322",
+      "components/token-specs/colors.json": "5267d59fdc687b54496977280c00c97f0beb6ffce013f87853504f5b736d3389",
+      "components/token-specs/spacing.json": "351b14cfce4411248ad41e00eaaf2b1cab9b705997980dfed1fc65693740e65c",
+      "components/token-specs/typography.json": "93b7dc07547218a33c075b7cdcd942f89094353a7847d483d8378b8883327e16",
+      "components/tokens.css": "f63f3c8fea511d8029902bc3905b01853ac5e92049c1b18ca35ebc9a680c3e69",
+      "components/variants/card.html": "b43e27ebba1815709741d779b54961fa6b11cf71f5d3235d578a4b2047aa1cd4",
+      "components/variants/checkbox.html": "7d99c4b8d7b3c89433a31d6a9205f89607c5cbd398abd76824ae7c92bbdf83f6",
+      "components/variants/collapse.html": "26f87a715552789e80ed66e1a7428719beddfaba67be4e165f5eb40b22c1e45c",
+      "components/variants/comment.html": "e0d983eb8704ddc84c51eb162cc7683d4aaca8ff6d94a6ca3ddcfa481b751e59",
+      "components/variants/option-selector.html": "e2afba24d5b67c306f264762dfea9b0d7ffd7c9db132feac6b6a29214cf1196e",
+      "components/variants/tag.html": "fcafd08ba11ca6faf2d41e185fc69099175769db0fa030ae9e9fa0ae7e410a04"
+    },
+    "graphFingerprint": "27f63a691b46998a07724ef7b770157c731d6dedd0876558e57ad8b36bbe133b",
+    "note": "从本地源文件生成；不是 MasterGo 在线实时状态。"
+  },
+  "readScope": {
+    "variant": "status-text",
+    "note": "只展开当前已选变体；其他变体没有被声明为不可用。尺寸继续按真实 sizeOptions 选择。"
+  }
+}

@@ -110,56 +110,14 @@ function collectTargets(args) {
   return targets;
 }
 
-async function main() {
-  const args = process.argv.slice(2);
-  const targets = collectTargets(args);
-  if (targets.length === 0) { console.log('No HTML to verify.'); process.exit(0); }
-
-  if (!fs.existsSync(CHROME_PATH)) {
-    console.error(`✗ 找不到 Chrome：${CHROME_PATH}\n  设置环境变量 CHROME_PATH 指向 Chrome 可执行文件后重试。`);
-    process.exit(2);
-  }
-
-  const browser = await puppeteer.launch({
-    executablePath: CHROME_PATH,
-    headless: true,
-    args: ['--no-sandbox', '--disable-setuid-sandbox'],
-  });
-
-  let totalErrors = 0;
-  let totalWarns = 0;
-
-  for (const file of targets) {
-    const rel = path.relative(__dirname, file);
-    const page = await browser.newPage();
-    await page.setViewport({ width: 1680, height: 1000, deviceScaleFactor: 1 });
-    let result = { errors: [], warns: [] };
-    try {
-      await page.goto('file://' + file, { waitUntil: 'networkidle2', timeout: 30000 });
-      result = await page.evaluate(pageProbe);
-    } catch (e) {
-      result.warns.push(`LOAD: 页面加载/求值异常（${String(e.message).slice(0, 80)}）`);
-    }
-    await page.close();
-
-    totalErrors += result.errors.length;
-    totalWarns += result.warns.length;
-    if (result.errors.length === 0 && result.warns.length === 0) {
-      console.log(`✓ ${rel} — 几何校验通过`);
-    } else {
-      console.log(`\n${rel}`);
-      result.errors.forEach((m) => console.log(`  ✗ ERROR ${m}`));
-      result.warns.forEach((m) => console.log(`  ⚠ WARN  ${m}`));
-    }
-  }
-
-  await browser.close();
-
-  console.log(`\n────────────────────────────────────`);
-  console.log(`几何校验完成：${targets.length} 个文件，${totalErrors} 个 error，${totalWarns} 个 warning`);
-  if (totalErrors > 0) { console.log('结果：未通过 ✗'); process.exit(1); }
-  console.log('结果：通过 ✓');
-  process.exit(0);
+async function run(files, options = {}) {
+  return require('./scripts/browser-page-check.cjs').runBrowserChecks(files,{...options,legacyProbe:pageProbe});
 }
-
-main().catch((e) => { console.error(e); process.exit(2); });
+function printResults(results) {
+  let errors=0,warns=0;
+  for(const r of results){errors+=r.errors.length;warns+=r.warns.length;console.log(`${r.errors.length?'✗':'✓'} ${path.relative(__dirname,r.file)} — 已覆盖检查${r.errors.length?'失败':'通过'}；${r.timings.totalMs}ms`);for(const e of r.errors)console.log('  ERROR '+e);for(const w of r.warns)console.log('  WARN '+w);for(const u of r.uncovered)console.log('  未覆盖 '+u);console.log('  尺寸 '+r.viewports.map(v=>v.width).join('/')+'；代表性交互 '+r.actions.filter(a=>a.status!=='uncovered').length+'/'+r.actions.length+'；'+(r.uncovered.length?'仍需补充核对':'仍需同次看图核对选型、图标含义、图文/引言归属和位置及来源完整性'));if(r.discovered)console.log('  发现/已测 '+Object.entries(r.discovered).map(([k,n])=>k+':'+n+'/'+r.actions.filter(a=>a.kind===k&&a.status!=='uncovered').length).join('，')+'（折叠、选择器按变体抽测；业务联动仍需专项核对）');if(r.screenshot)console.log('  截图 '+r.screenshot);}
+  console.log(`几何校验完成：${results.length} 个文件，${errors} 个 error，${warns} 个 warning`);return errors?1:0;
+}
+async function main(){const files=collectTargets(process.argv.slice(2));if(!files.length){console.log('No HTML to verify.');return;}const results=await run(files,{artifactsDir:require('path').join(require('os').tmpdir(),'fs-page-check-failures')});process.exitCode=printResults(results);}
+if(require.main===module)main().catch(e=>{console.error(e);process.exitCode=2;});
+module.exports={pageProbe,collectTargets,run,printResults};

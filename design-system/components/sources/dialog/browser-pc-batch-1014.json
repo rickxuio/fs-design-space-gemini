@@ -1,0 +1,21 @@
+{
+  "mainComponent": "Dialog",
+  "scope": "既有PC信息/确认实例的关闭、Esc、焦点归还与模态Tab约束",
+  "status": "completed-finite-browser-behavior",
+  "sourceRange": [
+    "components/sources/dialog/pc-header-current-review-1013.json",
+    "components/sources/dialog/local-structure-review.json"
+  ],
+  "completionConditions": [
+    "实际打开并核验焦点在dialog内",
+    "实际关闭/Esc还原开启按钮焦点",
+    "实际Tab/ShiftTab不进入背景；当前IconButton32/20沿已确认原子优先取舍"
+  ],
+  "remaining": [
+    "其他原件宿主/几何/状态与用户视觉批准"
+  ],
+  "fullFamilyAcceptance": false,
+  "browser": "1920×1000既有信息/确认弹窗打开焦点、关闭/Esc/取消/遮罩还原开启按钮；实际Tab经过BODY浏览器边界后回到弹窗，无背景控制焦点",
+  "engineering": "无产品修改；现有原生Dialog机制，未另造焦点循环；此前有限工程检查复用",
+  "evidence": "components/sources/dialog/browser-pc-states-1014.json"
+}

@@ -1,0 +1,917 @@
+{
+  "id": "comp_badge_001",
+  "name": "Badge",
+  "chineseName": "徽标数",
+  "description": "徽标数组件，一个组件三种类型：圆点徽标（8px 状态色圆点，可带文字）/ 数量徽标（红底白字未读数，使用已格式化数量，超量按场景展示 99+）/ 图案徽标（容器内放图标）。纯展示无交互状态。规范 v1.1.2603A。",
+  "category": "数据展示 Data Display",
+  "types": [
+    {
+      "name": "dot",
+      "chineseName": "圆点徽标",
+      "description": "8×8px 实心圆点，5 种状态色，弱化视觉、提示内容/位置/状态变更。可纯圆点，或圆点+文字。"
+    },
+    {
+      "name": "count",
+      "chineseName": "数量徽标",
+      "description": "红底白字，纯展示已格式化的未读数量。当前PC单/双数字原子均18×18px；99+显式使用--max为25×18px，组件不执行通用截断或自动变形。"
+    },
+    {
+      "name": "icon",
+      "chineseName": "图案徽标",
+      "description": "原稿图案徽标为红底白勾，PC/Pad18px与M12px各调用独立原始SVG；M适配验收暂缓。"
+    }
+  ],
+  "variants": [
+    {
+      "name": "dot",
+      "chineseName": "圆点徽标",
+      "styleProperties": {
+        "size": "8px",
+        "borderRadius": "50%",
+        "withText": "已核对success原子1673:51996：Open Sans14px SemiBold、22px行高、Gray1；gap6，嵌套Green状态点1673:52104为8×8。应用示例的其他文字层级不覆盖原子。"
+      },
+      "cssClass": "ds-badge-status",
+      "requiredChildren": [
+        "span.ds-badge-dot",
+        "span.ds-badge-status__text"
+      ],
+      "isComplete": true,
+      "whenToUse": "完成状态的8px绿色圆点与文字。",
+      "whenNotToUse": "要求其他状态色、无文字点或未读数量。",
+      "selectionDecisionType": "圆点徽标",
+      "usage": "完成状态的8px绿色圆点与文字。"
+    },
+    {
+      "name": "count",
+      "chineseName": "数量徽标",
+      "class": "ds-badge-count",
+      "styleProperties": {
+        "pcPad": "当前显式data-badge-current：0..99固定18×18px；99+必须ds-badge-count--max固定25×18px；12px Regular/9px行高，纯文本居中。",
+        "mobile": "ds-badge-count--m：高 12px，字号 10px SemiBold",
+        "backgroundColor": "brand-red (#C00000)",
+        "color": "white (#FFFFFF)",
+        "maxDisplay": "99+"
+      },
+      "cssClass": "ds-badge-count",
+      "requiredChildren": [],
+      "isComplete": true,
+      "selectionDecisionType": "数量徽标",
+      "whenToUse": "宿主已提供0–99或99+的显示数量。",
+      "whenNotToUse": "要求自动计数、自动截断或移动端尺寸。",
+      "usage": "宿主已提供0–99或99+的显示数量。"
+    },
+    {
+      "name": "icon",
+      "chineseName": "图案徽标",
+      "styleProperties": {
+        "pcPad": "18×18px完整原子SVG（红圆底白勾），内部勾形与裁切由原始SVG保留；不缩放整体SVG到内部图案尺寸。",
+        "mobile": "M原子19792:46477：12×12px完整红底白勾原始SVG；内部最大7×7为规范限制；素材已核对，适配走查暂缓，不开放M页面AI调用。",
+        "originalComponent": "MasterGo19792:46493，官方导出pc&pad.svg，原始字节保留"
+      },
+      "cssClass": "ds-badge-icon",
+      "requiredChildren": [
+        "img"
+      ],
+      "isComplete": true,
+      "selectionDecisionType": "图案徽标",
+      "whenToUse": "现有PC/Pad18px红底白勾图案。",
+      "whenNotToUse": "其他图标、账户轮廓或M端12px图案。",
+      "usage": "现有PC/Pad18px红底白勾图案。"
+    }
+  ],
+  "statusColors": [
+    {
+      "class": "ds-badge-dot--success",
+      "value": "#10A300",
+      "meaning": "完成 / 有货 / 已保存",
+      "example": "Completed、99 PCS in Stock"
+    },
+    {
+      "class": "ds-badge-dot--error",
+      "value": "#C00000",
+      "meaning": "紧急 / 错误",
+      "example": "异常提醒"
+    },
+    {
+      "class": "ds-badge-dot--active",
+      "value": "#F56300",
+      "meaning": "活跃",
+      "example": "Active"
+    },
+    {
+      "class": "ds-badge-dot--pending",
+      "value": "#FFD748",
+      "token": "color.yellow",
+      "meaning": "待定",
+      "example": "Pending（订单待处理）"
+    },
+    {
+      "class": "ds-badge-dot--default",
+      "value": "#707070",
+      "meaning": "未发货 / 已过期 / 中性",
+      "example": "Not yet shipped、Expired"
+    }
+  ],
+  "states": [
+    {
+      "name": "default",
+      "chineseName": "默认",
+      "styleOverrides": {},
+      "description": "徽标为纯展示组件，无 hover/disabled 等交互状态。"
+    }
+  ],
+  "commonProperties": {
+    "fontFamily": "Open Sans",
+    "display": "inline-flex"
+  },
+  "usageGuidelines": "叠加在宿主图标/按钮上时，徽标固定放右上角（禁止左上角）。圆点徽标 8px 单一尺寸，按状态语义选色；数量超量由宿主按场景先格式化为99+；当前组件不自行截断，PC&Pad 默认、M 端用 --m；图案徽标规范内部图案PC最大9×9px、M最大7×7px；PC当前完整原始SVG已保留内部路径；M独立原始SVG已取得，适配验收暂缓，不缩小整体SVG来模拟内部尺寸。数量徽标背景恒为品牌红，不换色。 3.2状态圆点只限定尺寸/颜色/文字间距；默认组合文字14pxSemiBold/22不代表全部业务场景文字。当前有限AI仍锁定已核对默认组合，其他文字角色需要契约范围对应真实调用。",
+  "tokenReferences": [
+    "color.success",
+    "color.brand-red",
+    "color.warning",
+    "color.yellow",
+    "color.gray-3",
+    "color.white",
+    "typography.font-family-base",
+    "spacing.6",
+    "spacing.5",
+    "spacing.3",
+    "typography.font-weight-semibold",
+    "typography.font-weight-regular",
+    "typography.font-size-md",
+    "typography.font-size-sm",
+    "typography.h7-semibold",
+    "typography.h9-regular",
+    "typography.10-semibold",
+    "color.error",
+    "color.gray-1"
+  ],
+  "constraints": {
+    "allowedChildren": [
+      "Icon",
+      "Text"
+    ],
+    "requiredProperties": [
+      "type"
+    ],
+    "forbiddenCombinations": []
+  },
+  "relations": {
+    "variantDecisionsDescription": "按内容与交互选具体变体，再核对同版调用资格。候选、不用、参考同时用于规范展示与AI；既有来源、当前MG核对、工程与视觉批准分开记录。",
+    "variantDecisions": [
+      {
+        "type": "圆点徽标",
+        "className": "ds-badge-dot",
+        "whenToUse": "完成状态的8px绿色圆点与文字。",
+        "whenNotToUse": "要求其他状态色、无文字点或未读数量。",
+        "nestedComponents": [
+          {
+            "component": "无嵌套（纯 CSS 圆点）"
+          }
+        ],
+        "status": "当前MG来源与现有有限调用已核对；资格读同版catalog，未开放和视觉批准不据此改变。",
+        "variant": "dot",
+        "fragment": "dot",
+        "selectionCases": [
+          {
+            "id": "badge.dot.1",
+            "kind": "use",
+            "condition": "完成状态的8px绿色圆点与文字。",
+            "result": "调用dot；当前仅success带文字；不切换类名。",
+            "targetVariant": "dot",
+            "strength": "candidate"
+          },
+          {
+            "id": "badge.dot.2",
+            "kind": "avoid",
+            "condition": "要求其他状态色、无文字点或未读数量。",
+            "result": "不使用此变体；先核对相邻组件和实际调用范围。",
+            "targetVariant": "dot",
+            "strength": "avoid"
+          }
+        ]
+      },
+      {
+        "type": "数量徽标",
+        "className": "ds-badge-count",
+        "whenToUse": "宿主已提供0–99或99+的显示数量。",
+        "whenNotToUse": "要求自动计数、自动截断或移动端尺寸。",
+        "nestedComponents": [
+          {
+            "component": "无嵌套（纯 CSS 胶囊）"
+          }
+        ],
+        "status": "当前MG来源与现有有限调用已核对；资格读同版catalog，未开放和视觉批准不据此改变。",
+        "variant": "count",
+        "fragment": "count",
+        "selectionCases": [
+          {
+            "id": "badge.count.1",
+            "kind": "use",
+            "condition": "宿主已提供0–99或99+的显示数量。",
+            "result": "调用count；超量先由宿主格式化为99+。",
+            "targetVariant": "count",
+            "strength": "candidate"
+          },
+          {
+            "id": "badge.count.2",
+            "kind": "avoid",
+            "condition": "要求自动计数、自动截断或移动端尺寸。",
+            "result": "不使用此变体；先核对相邻组件和实际调用范围。",
+            "targetVariant": "count",
+            "strength": "avoid"
+          }
+        ]
+      },
+      {
+        "type": "图案徽标",
+        "className": "ds-badge-icon",
+        "whenToUse": "现有PC/Pad18px红底白勾图案。",
+        "whenNotToUse": "其他图标、账户轮廓或M端12px图案。",
+        "nestedComponents": [],
+        "status": "当前MG来源与现有有限调用已核对；资格读同版catalog，未开放和视觉批准不据此改变。",
+        "variant": "icon",
+        "fragment": "icon",
+        "selectionCases": [
+          {
+            "id": "badge.icon.1",
+            "kind": "use",
+            "condition": "现有PC/Pad18px红底白勾图案。",
+            "result": "调用icon；只改iconAlt，叠加位置归宿主。",
+            "targetVariant": "icon",
+            "strength": "candidate"
+          },
+          {
+            "id": "badge.icon.2",
+            "kind": "avoid",
+            "condition": "其他图标、账户轮廓或M端12px图案。",
+            "result": "不使用此变体；先核对相邻组件和实际调用范围。",
+            "targetVariant": "icon",
+            "strength": "avoid"
+          }
+        ]
+      }
+    ],
+    "radiusDependencies": [
+      {
+        "token": "border-radius.full",
+        "value": "9999px",
+        "usage": "全圆角（胶囊形）",
+        "appliesTo": [
+          "count"
+        ]
+      },
+      {
+        "token": "/",
+        "value": "50%",
+        "usage": "未 token 化的圆角值，白名单登记",
+        "appliesTo": [
+          "dot"
+        ]
+      }
+    ],
+    "fontSizeDependencies": [
+      {
+        "token": "typography.font-size-md",
+        "value": "14px",
+        "usage": "中号字体 - XL/L 按钮",
+        "appliesTo": [
+          "dot"
+        ]
+      },
+      {
+        "token": "typography.font-size-sm",
+        "value": "12px",
+        "usage": "小号字体 - M/S 按钮",
+        "appliesTo": [
+          "count"
+        ]
+      },
+      {
+        "token": "/",
+        "value": "10px",
+        "usage": "无对应正式 token 的字号值，白名单登记",
+        "appliesTo": [
+          "count"
+        ]
+      }
+    ],
+    "fontWeightDependencies": [
+      {
+        "token": "typography.font-weight-semibold",
+        "value": "600",
+        "usage": "状态徽标文字与 M 端数量文字",
+        "appliesTo": [
+          "dot",
+          "count"
+        ],
+        "properties": [
+          "font-weight"
+        ],
+        "selectors": [
+          ".ds-badge-status__text",
+          ".ds-badge-count--m"
+        ]
+      },
+      {
+        "token": "typography.font-weight-regular",
+        "value": "400",
+        "usage": "数量徽标默认文字",
+        "appliesTo": [
+          "count"
+        ],
+        "properties": [
+          "font-weight"
+        ],
+        "selectors": [
+          ".ds-badge-count"
+        ]
+      }
+    ],
+    "typographyDependencies": [
+      {
+        "token": "typography.h7-semibold",
+        "fontSizeToken": "typography.font-size-md",
+        "fontSizeValue": "14px",
+        "fontWeightToken": "typography.font-weight-semibold",
+        "fontWeightValue": "600",
+        "weightEvidence": "explicit-css",
+        "usage": "状态徽标文字",
+        "appliesTo": [
+          "dot"
+        ]
+      },
+      {
+        "token": "typography.h9-regular",
+        "fontSizeToken": "typography.font-size-sm",
+        "fontSizeValue": "12px",
+        "fontWeightToken": "typography.font-weight-regular",
+        "fontWeightValue": "400",
+        "weightEvidence": "explicit-css",
+        "usage": "数量徽标默认文字",
+        "appliesTo": [
+          "count"
+        ]
+      },
+      {
+        "token": "typography.10-semibold",
+        "fontSizeToken": "/",
+        "fontSizeValue": "10px",
+        "fontWeightToken": "typography.font-weight-semibold",
+        "fontWeightValue": "600",
+        "weightEvidence": "explicit-css",
+        "usage": "M 端数量徽标文字",
+        "appliesTo": [
+          "count"
+        ]
+      }
+    ],
+    "colorDependencies": [
+      {
+        "token": "color.error",
+        "value": "#C00000",
+        "usage": "错误色 (Error)，可作文字/图标/状态点背景等表面色",
+        "appliesTo": [
+          "dot"
+        ]
+      },
+      {
+        "token": "color.gray-1",
+        "value": "#19191A",
+        "usage": "标题/深色文字 (Primary text)",
+        "appliesTo": [
+          "dot"
+        ]
+      },
+      {
+        "token": "color.gray-3",
+        "value": "#707070",
+        "usage": "次要/辅助文字 (Secondary/auxiliary text)",
+        "appliesTo": [
+          "dot"
+        ]
+      },
+      {
+        "token": "color.success",
+        "value": "#10A300",
+        "usage": "成功标签色 (Success tag)",
+        "appliesTo": [
+          "dot"
+        ]
+      },
+      {
+        "token": "color.warning",
+        "value": "#F56300",
+        "usage": "警告标签色 (Warning tag)，可作文字/状态点背景等表面色",
+        "appliesTo": [
+          "dot"
+        ]
+      },
+      {
+        "token": "color.white",
+        "value": "#FFFFFF",
+        "usage": "白色 (深色背景上的文字)",
+        "appliesTo": [
+          "count"
+        ]
+      },
+      {
+        "token": "color.yellow",
+        "value": "#FFD748",
+        "usage": "黄色强调色。用于 FEATURED 星标图标 + Badge 徽标 pending（待定）状态点。仅作状态/图标强调色，禁止用作 UI 表面背景。",
+        "appliesTo": [
+          "dot"
+        ]
+      },
+      {
+        "token": "color.brand-red",
+        "value": "#C00000",
+        "usage": "品牌红色，主操作按钮背景色",
+        "appliesTo": [
+          "count"
+        ]
+      }
+    ],
+    "componentDependencies": [],
+    "iconDependencies": [
+      {
+        "icon": "icon-badge-logged-in-pc",
+        "usage": "PC/Pad图案原子19792:46493官方导出完整红底白勾；不是账户轮廓或IconButton",
+        "required": true,
+        "appliesTo": [
+          "icon"
+        ]
+      },
+      {
+        "icon": "icon-badge-logged-in-m",
+        "usage": "同一icon类型的M12px Preview原始素材19792:46477；仅预览来源登记，AI仍限PC/Pad18px",
+        "required": false,
+        "appliesTo": [
+          "icon"
+        ]
+      }
+    ],
+    "commonlyEmbeddedIn": [
+      {
+        "component": "IconButton",
+        "usage": "数量/圆点徽标叠加在图标按钮右上角（购物车、铃铛、账户）",
+        "appliesTo": [
+          "count",
+          "dot"
+        ],
+        "verified": false,
+        "verifiedNote": "2026-07-17 核查：icon-button.html preview 目前没有叠加 Badge 的真实结构，icon-button.json 也未在 componentDependencies 声明依赖 Badge。此条为设计意图/未来参考用法，非当前已实现关系，保留手写。"
+      },
+      {
+        "component": "Navigation",
+        "usage": "header 购物车/账户图标的未读数量徽标",
+        "appliesTo": [
+          "count"
+        ],
+        "verified": false,
+        "verifiedNote": "2026-07-17 核查：navigation.html preview 的 header 购物车/账户图标目前没有叠加 Badge 的真实结构，navigation.json 也未声明依赖 Badge。此条为设计意图/未来参考用法，保留手写。"
+      }
+    ],
+    "variantSelectionRules": [
+      "需要提示'有新变更/状态'但不展示具体数字 → 圆点徽标 dot（按状态语义选色）。",
+      "需要展示未读数量 → 数量徽标 count，当前有限调用由宿主将超过99的数量先格式化为99+，组件只展示。",
+      "需要在容器内展示图标（账户/登录态） → 图案徽标 icon。",
+      "移动端（M 端）数量/图案徽标用 --m 小尺寸。"
+    ],
+    "mutuallyExclusiveWith": [],
+    "notes": "一个组件三种类型，共用'固定右上角、纯展示无交互'的规则。圆点的 5 种状态色是语义 enum，不是独立变体。当前PC数量徽标单/双数字均18px宽；99+由宿主先格式化并显式选--max的25px宽原子，不是组件自动变形。待定态 #FFD748 已于 2026-07-08 收敛为正式 token color.yellow（var(--color-yellow)），与 featured 星标同源。",
+    "enforcementStatus": {
+      "colorDependencies.tokens-exist": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 2b：colorDependencies 引用的 color.* token 必须存在于 token-specs/colors.json（缺失即 error）；token 为 / 表示无对应 token 的白名单裸值；双源值一致由 validate-tokens.js 全量保证；Guard C 保证声明了就必须有颜色依赖表"
+      },
+      "colorDependencies.css-uses-var": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 2c：切出组件样式段，校验用到的 var(--color-*) 都在 colorDependencies 声明过，且无未声明裸色值（box-shadow/注释除外），违反即 error —— 保证颜色映射闭环"
+      },
+      "radiusDependencies.tokens-exist": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 3a：radiusDependencies 引用的 border-radius.* token 必须存在于 token-specs/border-radius.json（缺失即 error）；token 为 / 表示白名单裸值；Guard D 保证声明了就必须有圆角依赖表"
+      },
+      "radiusDependencies.css-uses-var": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 3b：校验 border-radius 用到的 var(--border-radius-*) 都在 radiusDependencies 声明过，且无未声明裸圆角值（0 除外），违反即 error —— 保证圆角映射闭环"
+      },
+      "fontSizeDependencies.tokens-exist": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 4a：fontSizeDependencies 引用的 typography.font-size-* token 必须存在于 token-specs/typography.json（缺失即 error）；token 为 / 表示无对应正式 token 的白名单值；Guard E 保证声明了就必须有字号依赖表"
+      },
+      "fontSizeDependencies.css-uses-var": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 4b：校验 font-size 用到的 var(--font-size-*) 都在 fontSizeDependencies 声明过，且无未声明裸字号值，违反即 error —— 保证字号映射闭环"
+      },
+      "shadowDependencies": {
+        "enforced": true,
+        "mechanism": "/",
+        "note": "本组件无 box-shadow，无 shadowDependencies"
+      },
+      "positionRule.top-right-only": {
+        "enforced": false,
+        "mechanism": "无",
+        "note": "'徽标必须放右上角、禁止左上角'为规范要求，目前无机械校验，靠生成时自觉遵守"
+      },
+      "variantSelectionRules.type-selection": {
+        "enforced": false,
+        "mechanism": "无",
+        "note": "选圆点/数量/图案哪种类型是语义判断，无法机械校验"
+      },
+      "countBadge.max-99plus": {
+        "enforced": false,
+        "mechanism": "无",
+        "note": "数量超过 99 显示 99+ 为内容约定，无校验"
+      },
+      "spacingDependencies.tokens-and-css-closure": {
+        "enforced": true,
+        "mechanism": "check-contracts.js: spacingDependencies token/value/selector/property 与组件 CSS 双向闭环校验"
+      },
+      "borderDependencies.tokens-and-css-closure": {
+        "enforced": true,
+        "mechanism": "check-contracts.js: borderDependencies token/value/aspect/selector/property 与组件 CSS 双向闭环校验"
+      },
+      "fontWeightDependencies.tokens-and-css-closure": {
+        "enforced": true,
+        "mechanism": "check-contracts.js: fontWeightDependencies token/value/selector/property 与组件 CSS 双向闭环校验；仅允许 Regular 400 / SemiBold 600，禁止裸字重值"
+      },
+      "typographyDependencies.size-weight-pairing": {
+        "enforced": true,
+        "mechanism": "check-contracts.js: typographyDependencies.token 必须引用 token-specs/typography.json 中真实 composite typography token；该 token 同时锁定 fontSize、lineHeight、fontWeight，并核对底层字号/字重 primitive 与 CSS 证据，依赖汇总表只输出一个 Token 链接"
+      },
+      "iconDependencies.icon-badge-logged-in-pc-exists": {
+        "enforced": true,
+        "mechanism": "check-contracts.js: required原始PC图案SVG必须存在"
+      }
+    },
+    "spacingDependencies": [
+      {
+        "token": "spacing.6",
+        "value": "6px",
+        "usage": "gap：.ds-badge-status",
+        "properties": [
+          "gap"
+        ],
+        "selectors": [
+          ".ds-badge-status"
+        ],
+        "appliesTo": [
+          "dot"
+        ]
+      },
+      {
+        "token": "spacing.5",
+        "value": "5px",
+        "usage": "padding：.ds-badge-count",
+        "properties": [
+          "padding"
+        ],
+        "selectors": [
+          ".ds-badge-count"
+        ],
+        "appliesTo": [
+          "count"
+        ]
+      },
+      {
+        "token": "spacing.3",
+        "value": "3px",
+        "usage": "padding：.ds-badge-count--m",
+        "properties": [
+          "padding"
+        ],
+        "selectors": [
+          ".ds-badge-count--m"
+        ],
+        "appliesTo": [
+          "count"
+        ]
+      }
+    ],
+    "borderDependencies": [],
+    "hardRules": [
+      {
+        "title": "徽标叠加位置固定右上角（禁止左上角）",
+        "description": "AI 生成页面时必须遵守（规范 v1.1.2603A 注意事项 4.1）。左边是描述原文，右边是 AI 解析后写入 <code>badge.json</code> 的字段值。",
+        "ruleContent": "<strong>徽标叠加在宿主图标/按钮上时，固定放右上角，禁止放左上角。</strong>用 <code>ds-badge-anchor</code> 建立定位上下文，徽标绝对定位到右上角。图案徽标内部图标不得超出底盘尺寸。",
+        "aiParse": "relations.enforcementStatus\n  [\"positionRule.top-right-only\"]\n  = { enforced: false,\n      mechanism: \"无\" }",
+        "enforcement": "设计规范硬约束。目前无机械检查（<code>无</code>），依赖 AI/人工审查自觉遵守。"
+      }
+    ],
+    "prototypeRollout": {
+      "template": "docs/component-spec-template.html",
+      "source": "relations.variantDecisions",
+      "workflow": "existing-local-only",
+      "scope": "existing finite calls and original references; no publication expansion",
+      "currentMg": {
+        "status": "partial-source-scope",
+        "reason": "已读取《新文件》4.6 徽标数 Badge（3:130165），按现有有限调用核对；未开放原件与视觉批准仍分别保留。"
+      },
+      "retainedEvidence": [
+        {
+          "name": "comparison",
+          "file": "components/sources/badge/local-structure-review.json"
+        },
+        {
+          "name": "specificationReview",
+          "file": "components/sources/badge/native-specification-review-1011.json"
+        },
+        {
+          "name": "spec",
+          "file": "components/sources/badge/native-specification-review-1011.json"
+        },
+        {
+          "name": "original",
+          "file": "components/sources/badge/pc&pad.svg"
+        }
+      ]
+    },
+    "interactionRules": [
+      {
+        "name": "实际调用",
+        "rule": "仅使用同版catalog的callable变体和allowedEdits；参考示例不授予调用资格，不用改类或自绘控件绕过。",
+        "owner": "原本地选型与调用入口"
+      },
+      {
+        "name": "父子与同步",
+        "rule": "沿用原componentDependencies及反向父关系；改原规范后协调契约/实现，继续component:sync/watch；已交付页保留固定版本。",
+        "owner": "既有维护机制"
+      },
+      {
+        "name": "交互与业务",
+        "rule": "当前仅success带文字；不切换类名。；超量先由宿主格式化为99+。；只改iconAlt，叠加位置归宿主。",
+        "owner": "具体变体运行时与原页面宿主"
+      }
+    ]
+  },
+  "searchIntents": [
+    "徽标数",
+    "角标",
+    "红点提醒",
+    "未读数量徽标",
+    "圆点状态徽标",
+    "图案徽标",
+    "订单状态点"
+  ],
+  "history": [
+    {
+      "date": "2026-07-23",
+      "author": "Kiro",
+      "change": "将字号与字重配对提升为正式 composite typography token；组件依赖以单一 token 引用完整字号、行高、字重，primitive 字段仅保留作 CSS 证据。"
+    },
+    {
+      "date": "2026-07-22",
+      "change": "新增 typographyDependencies 成对字体依赖：每条记录明确绑定字号与字重，依赖汇总表按“字号 · 层级 · 字重”整体展示，禁止拆列后猜测组合。",
+      "author": "Kiro"
+    },
+    {
+      "date": "2026-07-22",
+      "change": "新增 fontWeightDependencies：按组件 CSS 显式 font-weight 证据登记 Regular 400 / SemiBold 600；无显式声明的组件保留空数组，并纳入 token/value/selector/property 双向闭环校验。",
+      "author": "Kiro"
+    },
+    {
+      "date": "2026-07-20",
+      "change": "父子依赖治理：Collapse 的已实现嵌套关系改由宿主 componentDependencies 自动反向推导；IconButton/Navigation 保留为 verified:false 的参考·未验证关系，避免冒充已实现依赖。",
+      "author": "Kiro"
+    },
+    {
+      "date": "2026-07-08",
+      "change": "新建 Badge 契约：按官方规范 v1.1.2603A 落盘，三种类型（圆点/数量/图案）；圆点 5 状态色、数量徽标 PC/M 端两尺寸、图案徽标复用 icon-account；记录右上角定位规则与 #FFD748 无 token 情况",
+      "author": "TBD"
+    },
+    {
+      "date": "2026-07-08",
+      "change": "#FFD748 提升为正式 token color.yellow（--color-yellow）：pending 圆点改用 var(--color-yellow)，同步 tokens.css / colors.json / tokens.html / fs-design-system.md",
+      "author": "TBD"
+    },
+    {
+      "date": "2026-07-14",
+      "change": "增加间距与描边 token 依赖、CSS 选择器/属性证据及机械闭环校验映射",
+      "author": "Kiro"
+    },
+    {
+      "date": "2026-07-14",
+      "change": "依据契约语义、组件 CSS 选择器与预览结构，补齐全部现有依赖的 appliesTo 汇总行映射；仅使用真实 types/variants，不新增伪类型或不确定依赖",
+      "author": "Kiro"
+    },
+    {
+      "date": "2026-10-09",
+      "author": "Codex",
+      "change": "统一规范维护质量标准：登记真实实现与选型规则入口、源变更重新验收、父子影响检查及历史页面隔离；不推断可编辑槽位或视觉批准。"
+    },
+    {
+      "date": "2026-10-10",
+      "author": "Codex",
+      "change": "补齐success带文字、PC计数及account图案三类现有精确实例；增加根文本槽，计数封顶和资产结构检查。其他圆点颜色、宿主定位、来源和浏览器仍待确认；未改CSS/JS及历史页。"
+    },
+    {
+      "date": "2026-10-10",
+      "author": "Codex",
+      "change": "精确清单检查发现tokenReferences仍引用不存在的color.text-success/text-warning；按实际CSS和既有colorDependencies改为color.success/warning，并补error/gray-1引用。未改Token或颜色值。"
+    }
+  ],
+  "isComplete": true,
+  "createdAt": "2026-07-08T00:00:00Z",
+  "updatedAt": "2026-11-15",
+  "qualityProfile": {
+    "schemaVersion": "1.0.0",
+    "standard": "docs/component-quality-standard.md",
+    "implementation": "components/variants/badge.html",
+    "selection": {
+      "mappingSource": "components/selection-mvp-policy.json",
+      "mappingPointer": "components.badge.variantDecisionTypes",
+      "rulesPointer": "relations.variantDecisions"
+    },
+    "maintenance": {
+      "authority": "contract-preview-runtime-token-icon",
+      "generatedOnly": [
+        "preview-reference-tables",
+        "component-index",
+        "selection-catalog",
+        "design-reading-view",
+        "ai-reference"
+      ],
+      "changePolicy": "记录来源差异、兼容性与受影响父子组件；源文件变化后旧工程验收失效。",
+      "historicalPages": "不自动升级；新页面锁定本地组件运行资源版本。"
+    },
+    "acceptance": {
+      "report": "components/quality/report.json",
+      "proof": "components/quality/acceptance.json",
+      "declarationIsNotProof": true
+    }
+  },
+  "editable": [
+    "statusText",
+    "displayCount",
+    "iconAlt"
+  ],
+  "integration": {
+    "styles": [
+      "components/tokens.css",
+      "components/components.css",
+      "components/badge-current.css"
+    ],
+    "scripts": [],
+    "fontStylesheets": [
+      "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+    ],
+    "fontFallback": "沿用Open Sans字体栈；实际字体与浏览器视觉待验。"
+  },
+  "aiContract": {
+    "schemaVersion": "1.0.0",
+    "rootTag": "span",
+    "scope": "existing-desktop-badge-success-status-count-logged-in-icon",
+    "supported": [
+      "dot",
+      "count",
+      "icon"
+    ],
+    "unsupported": [
+      "other-dot-colors",
+      "dot-without-text",
+      "other-icon-assets",
+      "mobile",
+      "automatic-count-formatting",
+      "host-positioning-proof"
+    ],
+    "reviewStatus": {
+      "engineering": "pending",
+      "visual": "pending",
+      "familyCoverage": "partial"
+    },
+    "previewAssets": [
+      "components/preview/reference-live.js"
+    ],
+    "selectionPolicy": "三种有限PC实例：dot只支持success圆点加文字；count接受已格式化0–99或99+；icon是原18px红底白勾。MG其他状态色、无文字点、M端及宿主定位仍是参考；格式化与右上角对角定位归宿主，不增改类名。",
+    "identity": {
+      "rule": "纯展示span，无额外ID或伪造交互角色；count只替换根节点文本，不包装新节点。",
+      "labelRule": "status保留文字；图案徽标按含义设置img.alt或装饰空alt。"
+    },
+    "locked": [
+      "span根节点与各形态CSS",
+      "success状态图及位置",
+      "count品牌红、封顶和纯文本",
+      "不新增交互/自动格式化JS",
+      "data-badge-current；尺寸类由displayCount按唯一规则决定，禁止手写尺寸/状态样式",
+      "PC图案原子SVG完整字节、18px容器与纯展示语义"
+    ],
+    "behavior": {
+      "display": "没有独立运行JS或click状态。数量源大于99时，宿主先格式化为99+；不是组件自动换算。 当前PC尺寸由已格式化文本决定：99+选--max，其余0..99不带该类；宿主不复制尺寸或添加格式化JS。",
+      "status": "此有限实例固定success颜色；其他状态需要对应真实实例，不只改类名。",
+      "host": "3.1明确依据宿主容器右上角对角对齐、沿X/Y各重叠一半；CSS基础规则匹配，实际浏览器宿主位置待验。原稿允许必要光学偏移，需对应证据/装配记录，不改原子尺寸。"
+    },
+    "evidence": {
+      "localImplementation": "components/variants/badge.html",
+      "comparison": "components/sources/badge/local-structure-review.json",
+      "specificationReview": "components/sources/badge/native-specification-review-1011.json",
+      "spec": "components/sources/badge/native-specification-review-1011.json",
+      "original": "components/sources/badge/pc&pad.svg",
+      "currentMgReview": "components/sources/remaining-prototypes-mg-20261115/badge-review.json",
+      "listOptionSource": "components/sources/list-option-mg-20261115/review.json"
+    },
+    "variants": {
+      "dot": {
+        "purpose": "success-status-with-dot",
+        "exampleSelector": "[data-ai-example=\"ai-badge-dot\"]",
+        "allowedEdits": [
+          "statusText"
+        ],
+        "slots": {
+          "statusText": {
+            "selector": "span.ds-badge-status__text",
+            "mode": "text",
+            "required": true
+          }
+        }
+      },
+      "count": {
+        "purpose": "formatted-desktop-count-badge",
+        "exampleSelector": "[data-ai-example=\"ai-badge-count\"]",
+        "allowedEdits": [
+          "displayCount"
+        ],
+        "slots": {
+          "displayCount": {
+            "selector": ":scope",
+            "mode": "text",
+            "required": true,
+            "format": "0..99 or 99+",
+            "derivedClass": {
+              "rule": "Use ds-badge-count--max if and only if displayCount is exactly 99+; no other class edits.",
+              "when": "99+",
+              "class": "ds-badge-count--max",
+              "otherwise": "remove"
+            }
+          }
+        }
+      },
+      "icon": {
+        "purpose": "canonical-logged-in-icon-badge",
+        "exampleSelector": "[data-ai-example=\"ai-badge-icon\"]",
+        "allowedEdits": [
+          "iconAlt"
+        ],
+        "slots": {},
+        "bindings": {
+          "iconAlt": {
+            "mode": "native-attribute",
+            "target": "img",
+            "attribute": "alt",
+            "valueType": "string"
+          }
+        }
+      }
+    }
+  },
+  "sourceSpecificationReview": "components/sources/badge/native-specification-review-1011.json",
+  "changeHistory": [
+    {
+      "date": "2026-10-11",
+      "change": "原生读取v1.1.2603A正文/日志及2.1–2.4部分；纠正图案内部尺寸和数量单/双数要求，区分来源规范与当前实现差异。记录外层v1.0标签冲突、原子素材/浏览器待验；不改历史CSS或扩大有限AI范围。 Canonical icon set19792:46463 and PC19792:46493 confirm red circular white check; incorrect account icon withheld from new AI calls."
+    },
+    {
+      "date": "2026-10-11",
+      "change": "数量原子Min1673:52030固定18×18、Max1673:52035宽25/高18、Open Sans12Regular/9行高确认；显式current资源锁定普通与99+尺寸，内容派生尺寸类校验，历史/M资源不升级。"
+    },
+    {
+      "date": "2026-10-11",
+      "change": "官方可见导出PC原子19792:46493为18px红底白勾完整SVG，保留原始文件/指纹，替换当前黑色account误配并恢复PC有限AI调用；临时导出设置撤回，历史资源/M示例不升级。"
+    },
+    {
+      "date": "2026-10-11",
+      "change": "M原子19792:46477官方12px独立SVG取得并替换当前错误account示例；来源与PC分开留存，导出临时设置已撤回；不开展适配走查/开放M AI或升级冻结页。"
+    }
+  ],
+  "sourcePropertyFollowup1013": {
+    "source": "components/sources/badge/dot-text-property-review-1013.json",
+    "status": "五种点/默认文字组合属性闭合，未扩大AI或整体验收",
+    "noRuntimeChange": true
+  },
+  "parts": {
+    "collapse-pending": {
+      "isComplete": true,
+      "pendingParts": [],
+      "colorVariants": [
+        "dot"
+      ],
+      "previewSelector": "[data-badge-part=\"collapse-pending\"]",
+      "requiredClasses": [
+        "ds-badge-status",
+        "ds-badge-dot",
+        "ds-badge-dot--pending",
+        "ds-badge-status__text"
+      ],
+      "source": "components/sources/list-option-mg-20261115/review.json",
+      "sourcePreview": "components/sources/badge/collapse-pending-1115.html",
+      "scope": "Finite current MG source part; host owns operational semantics. No standalone variant or independent visual approval.",
+      "allowedHosts": [
+        {
+          "component": "Collapse",
+          "variant": "data-preview"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,181 @@
+{
+  "date": "2026-10-11",
+  "source": {
+    "fileId": "143880409387753",
+    "pageId": "68908:251135",
+    "specificationNodeId": "71817:174823",
+    "title": "折叠面板 Collapse v3.0",
+    "visibleUpdateDate": "2026-09-07",
+    "remoteRevision": null,
+    "mode": "native-visible-canvas-at-63-percent"
+  },
+  "facts": [
+    {
+      "section": "2 组件样式",
+      "text": "目前 FS 前台所展示的折叠面板，交互上均为“手风琴”式，即只允许单个内容区域展开。"
+    },
+    {
+      "section": "2.1 基础分割型",
+      "text": "以同层级平铺列表为基础，通过条目间轻量分割线建立内容层级，并按需展开补充内容；适用于FAQ、设置项、产品/解决方案补充内容等页面场景。"
+    },
+    {
+      "section": "2.1 cookies热区",
+      "text": "展开项正文红区为文字复制热区，其外为折叠面板收起热区；收起项开关红区为关闭热区，其外为面板展开热区。"
+    },
+    {
+      "section": "2.1 FAQ热区",
+      "text": "展开项整行内容为收起热区；收起项整行内容为展开热区；尾行不展示分割线。"
+    },
+    {
+      "section": "2.2 行内编辑型",
+      "nodeId": "71817:174839",
+      "text": "用于账户信息管理，支持“预览态”与“编辑态”的就地切换，减少页面跳转。",
+      "hover": "edit按钮增加下划线，鼠标手指状；示例文字为黑色。"
+    },
+    {
+      "section": "2.3 数据预览型",
+      "text": "账户中心列表页的快照预览，允许用户在不离开列表的情况下，快速核对订单物料信息。",
+      "hover": "整行背景变色，区分操作按钮区域的光标；未取得整行点击展开的明确文字证据。"
+    },
+    {
+      "section": "2.4 特征导引型",
+      "text": "产品专业页的功能/技术特征展示，与左侧或右侧视觉媒体联动，默认左文右图，排版可交替使用。",
+      "hover": "整行背景变色、鼠标手指状；标题与图标变色、展示描述。"
+    }
+  ],
+  "correction": {
+    "contract": "Edit旧变蓝说明改为真实黑色TextButton下划线；不改原子样式。",
+    "retained": "split multiple remains an explicitly sourced Plan-bound extension; v3.0 default is single, not evidence for multiple.",
+    "pending": "Cookies和FAQ原子集合及有限节点已确认；正文复制/非正文收起热区尚未在本地复核，完整FAQ六状态/BOM角色冲突/原子Hover与媒体联动仍待验证。"
+  },
+  "evidenceLimit": "Native inline screenshots viewed, no raw screenshot saved. Partial readable normative transcription, not whole specification inventory or actual local runtime evidence.",
+  "bomReview": {
+    "nodeId": "71817:175506",
+    "mode": "native-visible-table-at-205-percent",
+    "rows": [
+      {
+        "property": "容器圆角",
+        "value": "8px",
+        "appliesTo": "All"
+      },
+      {
+        "property": "悬停背景色",
+        "value": "#F6F7F8",
+        "appliesTo": "All"
+      },
+      {
+        "property": "内间距",
+        "value": "16px vertical / 20px horizontal",
+        "appliesTo": "基础分割型"
+      },
+      {
+        "property": "内间距",
+        "value": "20px vertical / 24px horizontal",
+        "appliesTo": "基础分割型之外"
+      },
+      {
+        "property": "展开/收起按钮尺寸",
+        "value": "16×16px",
+        "appliesTo": "基础分割型-cookie之外"
+      },
+      {
+        "property": "展开/收起按钮尺寸",
+        "value": "14×14px",
+        "appliesTo": "基础分割型-cookie"
+      },
+      {
+        "property": "按钮与文本间距",
+        "value": "8px",
+        "appliesTo": "All"
+      },
+      {
+        "property": "面板投影",
+        "value": "传统小投影",
+        "appliesTo": "数据预览型",
+        "exactShadowValue": null
+      }
+    ],
+    "completeReadableTable": true,
+    "fullSpecificationIndexed": false
+  },
+  "nativeComponents": {
+    "cookies": {
+      "setId": "69424:119807",
+      "visibleVariableCount": 4,
+      "properties": {
+        "状态": [
+          "默认",
+          "展开"
+        ],
+        "面板头元素": [
+          "开关",
+          "文本"
+        ]
+      },
+      "expandedTextNodeId": "69424:119845",
+      "rootDimensions": [
+        702,
+        144
+      ],
+      "rootCornerValues": [
+        4,
+        4,
+        0,
+        0
+      ]
+    },
+    "faq": {
+      "setId": "71817:178072",
+      "visibleVariableCount": 6,
+      "properties": {
+        "位置": [
+          "首行",
+          "尾行",
+          "中间行"
+        ],
+        "状态": [
+          "展开",
+          "收起"
+        ]
+      },
+      "firstExpandedNodeId": "71817:178109",
+      "rootDimensions": [
+        1200,
+        96
+      ],
+      "indicator": "right chevron",
+      "rootCornerValue": 0
+    },
+    "identityBoundary": "紫色集合及父组件/可变组件属性界面确认；只登记可见节点，不保存隐藏DSL或推断所有子件的身份。"
+  },
+  "sourceConflicts": [
+    {
+      "property": "radius",
+      "normative": "BOM All 8px",
+      "component": "Cookies expanded root4/4/0/0；FAQ first expanded root0",
+      "status": "unresolved-source-role-conflict",
+      "action": "保留原子现行结构和尺寸，先区分根/行/可见背景角色，不改共享CSS。"
+    },
+    {
+      "property": "hover background",
+      "normative": "#F6F7F8",
+      "current": "共享Collapse CSS使用color.gray-9=#FAFBFB；部分旧说明写#F6F6F8",
+      "status": "source-to-implementation-difference-pending-local-visual",
+      "action": "记录不同来源值，不替换全局灰色Token或冻结页面；未取得原子hover变体 paint。"
+    },
+    {
+      "property": "FAQ anatomy",
+      "normative": "独立FAQ原子集合、右侧chevron、首/中/尾行、整行热区",
+      "current": "当前split精确示例是Cookies左侧加减号结构",
+      "status": "not-equivalent-family",
+      "action": "不能把当前Cookies split宣称完整覆盖v3 FAQ；保持新FAQ精确调用未开放，不新增组件投喂。"
+    }
+  ],
+  "faqComponentPriorityDecision1014": {
+    "source": "components/sources/collapse/faq-middle-last-source-1014.json",
+    "conflict": "规范2.1泛称尾行不展示分割线；尾行展开主组件71817:178091实有底部1px内部Gray5，收起178085无描边",
+    "decision": "依用户2026-10-12原始组件优先决定，当前解释分别按展开/收起登记；历史规范原文保留，不能用泛称尾行无分割线覆盖真实展开原件",
+    "status": "resolved-by-original-component",
+    "sourceFontClosure": "FAQ6态标题16/600/24、展开正文14/22已补，不再保持旧标题/行高未取得摘要"
+  }
+}

@@ -1,0 +1,815 @@
+{
+  "schemaVersion": "fs-component-reference/1.0.0",
+  "component": {
+    "id": "select",
+    "name": "Select",
+    "scope": "existing-desktop-select-nine-default-examples",
+    "reviewStatus": {
+      "engineering": "pending",
+      "visual": "pending",
+      "familyCoverage": "local-nine-variants-source-comparison-pending"
+    }
+  },
+  "selection": {
+    "policy": "仅表单预设值选择；≤5项改用Radio/Checkbox，导航或临时动作走Dropdown。先单/多选，再搜索/区号/标记/分组；这些是同一Select配置。当前9个有限调用保留，不任意叠加未登记配置。列表默认下展，空间不足时避让，距视口20px；常规最大232px，双列428px。",
+    "supported": [
+      "single-basic",
+      "single-radio",
+      "single-check",
+      "multi-basic",
+      "multi-checkbox",
+      "phone-search",
+      "search",
+      "two-column",
+      "grouped-combination"
+    ],
+    "unsupported": [
+      "mobile-bottom-panel",
+      "slider",
+      "size-overrides",
+      "business-submit",
+      "dynamic-option-insertion-after-initialization"
+    ]
+  },
+  "runtime": {
+    "styles": [
+      "components/tokens.css",
+      "components/components.css",
+      "components/button-current.css",
+      "components/button-runtime-current.css",
+      "components/input-current.css",
+      "components/checkbox-current.css",
+      "components/select-current.css"
+    ],
+    "scripts": [
+      "components/select-current.js"
+    ],
+    "businessBoundary": "ds:select-change回传值；确认型多选面板内为草稿，关闭后清除是立即动作。宿主负责业务提交，组件不生成字段名或请求。"
+  },
+  "identity": {
+    "rule": "为每次装配生成唯一根id、trigger id、panel id和option id，aria-controls同步；复制示例时不能复用原id。运行脚本初始化缺失id，但不修复宿主已有重复id。",
+    "labelRule": "触发器aria-label由已选项与占位文案同步；搜索input保留可访问名称。"
+  },
+  "locked": [
+    "根节点及变体类",
+    "data-select-mode与data-select-confirm",
+    "触发器/面板/搜索/页脚结构",
+    "组件CSS与select-current.js",
+    "当前42px触发器、图标及嵌套Checkbox/Tag/Button；single-basic可按已核auto原件填充宿主列宽",
+    "除options、已声明layout、placeholder/searchLabel与回调外的内容"
+  ],
+  "behavior": {
+    "selection": "单选立即回写并收起；多选逐项回写。ds:select-change包含multiple、values、labels，空字符串是合法值。",
+    "confirmation": "data-select-confirm多选面板先编辑草稿，OK提交，Cancel/Escape/离开焦点回滚；关闭态全部清除立即提交。",
+    "keyboard": "方向键导航、Escape收起、Tab离开、搜索过滤遵循现有脚本；禁用fieldset与触发器均阻止操作。",
+    "initialization": "Complete newly inserted roots initialize once through the existing observer. Assemble option lists before first initialization; replacing/inserting individual options in an initialized list is not an API guarantee. No native form-value binding or persistence.",
+    "values": "原始默认示例部分选项没有data-value，现有脚本回退到标签文字；宿主需在提交前按业务约束核对值、重复值和字段映射，组件不生成业务编码。",
+    "nativeStateGuard": "One document/root initialization guard. Native disabled/fieldset, hidden or ARIA-disabled ancestors block synthetic choose/search/commit. Hidden or disabled owner closes the panel and silently rolls back pending confirmation. Closed panel options and composing keys cannot select. Dynamic inserted groups initialize once; no native form-value binding or persistence added.",
+    "composition": "Track active search composition per owning root. Intermediate input does not filter, and unflagged navigation/Escape keys do not move focus, close or select during composition. End filters the committed query when open/available; closing clears transient composition state while preserving the query. Native browser IME remains pending.",
+    "footerButtonAtom": "当前组合分组面板使用outline-gray/xl与outline-black/xl；宿主只负责确认/取消事件和双列装配，不覆盖原子字号、圆角、padding或状态样式。已保存typed实例42px/24px是尺寸依据。",
+    "checkboxAtom": "Checkbox(sm)受控标记适配：省略独立input与data-checkbox-control，保留label.ds-checkbox、box和文字；宿主文本钩子只负责查找与截断。宿主管理role=option、选择与checked/disabled类同步，原子拥有尺寸和状态样式。独立Checkbox原生升级不自动给选项添加input；实际浏览器证据待验证。",
+    "hostWidth": "Existing single-basic gray source021318 has auto cross sizing; data-select-layout=fill allocates the real root to its host column. Trigger height42, radius, arrow, panel and states remain component-owned. Other variants keep their current sizes.",
+    "viewport": "Default down; prefer above when below space is insufficient. Recalculate while open on resize/scroll; preserve20px viewport clearance,232px regular and428px grouped cap.",
+    "inputFace": "Nine admitted trigger faces reuse Input paint/state through data-input-adapter. Native button triggers and multi-value control keep their own selection/actions and layout; no editable text field is inserted.",
+    "placeholder": "single-basic/search 可传非空纯文本 placeholder；只修改空值提示，不设置默认选项或业务值。search 可传非空 searchLabel，修改搜索输入的可访问名称。未传参保留原规范示例，旧版本不自动开放。"
+  },
+  "examples": [
+    {
+      "name": "single-radio",
+      "publication": {
+        "key": "select/single-radio",
+        "disposition": "restricted",
+        "newPages": true,
+        "reason": "Local normative Preview, typed contract and actual shared dependencies reviewed; finite PC call requires current browser engineering proof. No claim of independent latest MG/whole-family acceptance.",
+        "constraints": [
+          "只调用当前具体变体的完整PC默认示例；保留原选项标记、尺寸、Checkbox sm及组合页脚真实Button。搜索、单多选和确认/取消遵循现有事件契约，页面消费值；不自动改造Form区号，不提供后台提交或白底Multi新形态。",
+          "只允许契约列明的内容参数；工程验证必须当前有效，原规范视觉、子组件结构与资源版本保持。"
+        ],
+        "contractPolicy": "只调用当前具体变体的完整PC默认示例；保留原选项标记、尺寸、Checkbox sm及组合页脚真实Button。搜索、单多选和确认/取消遵循现有事件契约，页面消费值；不自动改造Form区号，不提供后台提交或白底Multi新形态。",
+        "use": "withheld",
+        "evidence": "components/contracts/select.json#aiContract/evidence",
+        "requiresCurrentEngineering": true,
+        "visualApproval": "separate-not-granted"
+      },
+      "rootTag": "div",
+      "sizeOptions": [],
+      "bindings": {
+        "changeCallback": {
+          "mode": "event-handler",
+          "target": "root",
+          "event": "ds:select-change"
+        },
+        "layout": {
+          "mode": "native-attribute",
+          "target": "root",
+          "attribute": "data-select-layout",
+          "values": [
+            "fill"
+          ],
+          "sourceProperty": "crossSizing:auto"
+        },
+        "placeholder": {
+          "mode": "native-attribute",
+          "target": "span.ds-select__value",
+          "attribute": "data-placeholder",
+          "valueType": "nonempty-string",
+          "nonEmpty": true,
+          "sourceProperty": "占位文案（内容）"
+        }
+      },
+      "runtimeSemantics": {
+        "mode": "single",
+        "confirmation": false
+      },
+      "purpose": "select-single-radio",
+      "whenToUse": "表单预设值单选，选项>5，以14px单选图标标识唯一选择。",
+      "whenNotToUse": "多选场景。",
+      "rootClasses": "ds-select--single-radio",
+      "requiredStructure": [
+        ".ds-select__trigger",
+        ".ds-select__panel",
+        ".ds-select__list",
+        ".ds-select__option-label",
+        ".ds-select__arrow",
+        ".ds-select__radio"
+      ],
+      "slots": {
+        "options": {
+          "selector": ".ds-select__list",
+          "mode": "structured-content",
+          "required": true,
+          "preserve": [
+            ".ds-select__option-label",
+            ".ds-select__radio"
+          ],
+          "boundary": "只替换原选项列表；每项保留role=option、aria-selected及当前变体的标记/组结构。有data-value则按宿主内容绑定保留；未提供时现有脚本以标签文字作为值，不把缺失值推断为业务编码。不改触发器、搜索框或页脚。"
+        }
+      },
+      "allowedEdits": [
+        "options",
+        "changeCallback",
+        "layout",
+        "placeholder"
+      ],
+      "exampleHtml": "<div class=\"ds-select ds-select--single-radio\" data-select-mode=\"single\" data-ai-example=\"ai-select-single-radio\" id=\"ai-select-single-radio\" data-input-current=\"\" data-input-adapter=\"select-trigger\">\n            <button class=\"ds-select__trigger ds-select__trigger--white ds-input-field__input ds-input-field__input--white\" type=\"button\" role=\"combobox\" aria-haspopup=\"listbox\" aria-expanded=\"false\" aria-controls=\"ai-select-single-radio-panel\" id=\"ai-select-single-radio-trigger\"><span class=\"ds-select__value\" data-placeholder=\"Select\">Select</span><img class=\"ds-select__arrow\" src=\"../icons/icon-chevron-down.svg\" alt=\"\"></button>\n            <div class=\"ds-select__panel\" role=\"listbox\" hidden=\"\" id=\"ai-select-single-radio-panel\" aria-labelledby=\"ai-select-single-radio-trigger\">\n              <div class=\"ds-select__list\">\n                <div class=\"ds-select__option\" role=\"option\" aria-selected=\"false\" id=\"ai-select-single-radio-option-0\"><span class=\"ds-select__radio\"></span><span class=\"ds-select__option-label\">1st item</span></div>\n                <div class=\"ds-select__option\" role=\"option\" aria-selected=\"true\" id=\"ai-select-single-radio-option-1\"><span class=\"ds-select__radio\"></span><span class=\"ds-select__option-label\">2nd item</span></div>\n                <div class=\"ds-select__option\" role=\"option\" aria-selected=\"false\" id=\"ai-select-single-radio-option-2\"><span class=\"ds-select__radio\"></span><span class=\"ds-select__option-label\">3rd item</span></div>\n                <div class=\"ds-select__option\" role=\"option\" aria-selected=\"false\" aria-disabled=\"true\" id=\"ai-select-single-radio-option-3\"><span class=\"ds-select__radio\"></span><span class=\"ds-select__option-label\">Disabled item</span></div>\n              </div>\n            </div>\n          </div>"
+    }
+  ],
+  "relationships": {
+    "children": [
+      {
+        "id": "input",
+        "contract": "components/contracts/input.json",
+        "variants": [
+          "gray",
+          "white"
+        ],
+        "appliesTo": [
+          "single-basic",
+          "single-radio",
+          "single-check",
+          "multi-basic",
+          "multi-checkbox",
+          "phone-search",
+          "search",
+          "two-column",
+          "grouped-combination"
+        ],
+        "slot": "trigger-face",
+        "preview": "components/variants/input.html"
+      }
+    ],
+    "parents": [
+      {
+        "id": "form",
+        "contract": "components/contracts/form.json",
+        "preview": "components/variants/form.html",
+        "status": "declared-unverified",
+        "evidence": {
+          "status": "declared-unverified",
+          "verified": false,
+          "previewExists": true,
+          "classEvidence": false,
+          "declaredClasses": [
+            "ds-select"
+          ],
+          "missingClasses": [
+            "ds-select"
+          ],
+          "exactStructure": "not-established",
+          "browserEvidence": "not-established",
+          "note": "宿主依赖声明及离线类名盘点；未证明具体变体、尺寸、必需子结构、宿主适配或浏览器行为。"
+        },
+        "usage": [
+          {
+            "component": "Select",
+            "slot": "sourceFieldsSelect",
+            "requiredVariants": [
+              "single-basic",
+              "search"
+            ],
+            "requiredWhen": "sourceFields",
+            "usage": "Source-reviewed initial options rendered through actual same-version Select; Form owns native serialization and required checks, atom owns popup and selection. Long source lists reuse existing search; ordinary lists reuse single-basic. No Select API changes.",
+            "implementationClasses": [
+              "ds-select"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "option-selector",
+        "contract": "components/contracts/option-selector.json",
+        "preview": "components/variants/option-selector.html",
+        "status": "preview-class-evidence-only",
+        "evidence": {
+          "status": "preview-class-evidence-only",
+          "verified": false,
+          "previewExists": true,
+          "classEvidence": true,
+          "declaredClasses": [
+            "ds-select__panel",
+            "ds-select__list",
+            "ds-select__option",
+            "ds-select__option-label"
+          ],
+          "missingClasses": [],
+          "exactStructure": "not-established",
+          "browserEvidence": "not-established",
+          "note": "宿主依赖声明及离线类名盘点；未证明具体变体、尺寸、必需子结构、宿主适配或浏览器行为。"
+        },
+        "usage": [
+          {
+            "component": "Select",
+            "requiredVariants": [
+              "single-basic"
+            ],
+            "implementationClasses": [
+              "ds-select__panel",
+              "ds-select__list",
+              "ds-select__option",
+              "ds-select__option-label"
+            ],
+            "slot": "color-options",
+            "appliesTo": [
+              "color"
+            ],
+            "usage": "复用现有单选panel与键盘、关闭/回焦逻辑，Tag负责触发面视觉。",
+            "part": "configuration-color-options"
+          }
+        ]
+      }
+    ],
+    "parentStatus": "declared-hosts",
+    "icons": [
+      {
+        "file": "components/icons/icon-chevron-down.svg",
+        "registry": "components/icons/icons-manifest.json",
+        "appliesTo": [
+          "single-radio",
+          "single-check",
+          "multi-basic",
+          "multi-checkbox",
+          "phone-search",
+          "search",
+          "two-column",
+          "grouped-combination"
+        ],
+        "usage": "触发器与分组标题展开指示"
+      },
+      {
+        "file": "components/icons/icon-radio-default-14.svg",
+        "registry": "components/icons/icons-manifest.json",
+        "appliesTo": [
+          "single-radio"
+        ],
+        "usage": "带选框单选默认态"
+      },
+      {
+        "file": "components/icons/icon-radio-hover-14.svg",
+        "registry": "components/icons/icons-manifest.json",
+        "appliesTo": [
+          "single-radio"
+        ],
+        "usage": "带选框单选悬停态"
+      },
+      {
+        "file": "components/icons/icon-radio-checked-14.svg",
+        "registry": "components/icons/icons-manifest.json",
+        "appliesTo": [
+          "single-radio"
+        ],
+        "usage": "带选框单选已选态"
+      },
+      {
+        "file": "components/icons/icon-radio-disabled-14.svg",
+        "registry": "components/icons/icons-manifest.json",
+        "appliesTo": [
+          "single-radio"
+        ],
+        "usage": "带选框单选禁用态"
+      }
+    ],
+    "tokens": [
+      {
+        "name": "color.gray-1",
+        "value": "#19191A",
+        "unit": null,
+        "cssVar": "--color-gray-1",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.gray-2",
+        "value": "#4B4B4D",
+        "unit": null,
+        "cssVar": "--color-gray-2",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.gray-3",
+        "value": "#707070",
+        "unit": null,
+        "cssVar": "--color-gray-3",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.gray-6",
+        "value": "#EDEDF0",
+        "unit": null,
+        "cssVar": "--color-gray-6",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.gray-7",
+        "value": "#F2F2F2",
+        "unit": null,
+        "cssVar": "--color-gray-7",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.gray-8",
+        "value": "#F6F6F8",
+        "unit": null,
+        "cssVar": "--color-gray-8",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.gray-9",
+        "value": "#FAFBFB",
+        "unit": null,
+        "cssVar": "--color-gray-9",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.white",
+        "value": "#FFFFFF",
+        "unit": null,
+        "cssVar": "--color-white",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.text-disabled",
+        "value": "rgba(25,25,26,0.3)",
+        "unit": null,
+        "cssVar": "--color-text-disabled",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.menu-disabled",
+        "value": "#DEE0E3",
+        "unit": null,
+        "cssVar": "--color-text-menu-disabled",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "spacing.xs",
+        "value": 4,
+        "unit": "px",
+        "cssVar": "--spacing-xs",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.sm",
+        "value": 8,
+        "unit": "px",
+        "cssVar": "--spacing-sm",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.md",
+        "value": 12,
+        "unit": "px",
+        "cssVar": "--spacing-md",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.2",
+        "value": 2,
+        "unit": "px",
+        "cssVar": "--spacing-2",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.6",
+        "value": 6,
+        "unit": "px",
+        "cssVar": "--spacing-6",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.10",
+        "value": 10,
+        "unit": "px",
+        "cssVar": "--spacing-10",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "border.width.default",
+        "value": 1,
+        "unit": "px",
+        "cssVar": "--border-width-default",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.style.default",
+        "value": "solid",
+        "unit": null,
+        "cssVar": "--border-style-default",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.style.none",
+        "value": "none",
+        "unit": null,
+        "cssVar": "--border-style-none",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.transparent",
+        "value": "transparent",
+        "unit": null,
+        "cssVar": "--border-color-transparent",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.default",
+        "value": "var(--color-gray-5)",
+        "unit": null,
+        "cssVar": "--border-color-default",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.strong",
+        "value": "var(--color-gray-3)",
+        "unit": null,
+        "cssVar": "--border-color-strong",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.focus",
+        "value": "var(--color-blue)",
+        "unit": null,
+        "cssVar": "--border-color-focus",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.subtle",
+        "value": "var(--color-gray-6)",
+        "unit": null,
+        "cssVar": "--border-color-subtle",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border-radius.sm",
+        "value": 2,
+        "unit": "px",
+        "cssVar": "--border-radius-sm",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border-radius.json"
+      },
+      {
+        "name": "border-radius.md",
+        "value": 4,
+        "unit": "px",
+        "cssVar": "--border-radius-md",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border-radius.json"
+      },
+      {
+        "name": "border-radius.full",
+        "value": 9999,
+        "unit": "px",
+        "cssVar": "--border-radius-full",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border-radius.json"
+      },
+      {
+        "name": "typography.font-family-base",
+        "value": "Open Sans",
+        "unit": null,
+        "cssVar": "--font-family-base",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-size-h8",
+        "value": 13,
+        "unit": "px",
+        "cssVar": "--font-size-h8",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-size-sm",
+        "value": 12,
+        "unit": "px",
+        "cssVar": "--font-size-sm",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-size-md",
+        "value": 14,
+        "unit": "px",
+        "cssVar": "--font-size-md",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-weight-regular",
+        "value": 400,
+        "unit": null,
+        "cssVar": "--font-weight-regular",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-weight-semibold",
+        "value": 600,
+        "unit": null,
+        "cssVar": "--font-weight-semibold",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.h7-regular",
+        "value": {
+          "fontSize": "14px",
+          "lineHeight": "22px",
+          "fontWeight": 400
+        },
+        "unit": null,
+        "cssVar": null,
+        "primitiveReferences": {
+          "fontSize": "typography.font-size-md",
+          "fontWeight": "typography.font-weight-regular"
+        },
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.h8-regular",
+        "value": {
+          "fontSize": "13px",
+          "lineHeight": "20px",
+          "fontWeight": 400
+        },
+        "unit": null,
+        "cssVar": null,
+        "primitiveReferences": {
+          "fontSize": "typography.font-size-h8",
+          "fontWeight": "typography.font-weight-regular"
+        },
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.h9-regular",
+        "value": {
+          "fontSize": "12px",
+          "lineHeight": "20px",
+          "fontWeight": 400
+        },
+        "unit": null,
+        "cssVar": null,
+        "primitiveReferences": {
+          "fontSize": "typography.font-size-sm",
+          "fontWeight": "typography.font-weight-regular"
+        },
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.h9-semibold",
+        "value": {
+          "fontSize": "12px",
+          "lineHeight": "20px",
+          "fontWeight": 600
+        },
+        "unit": null,
+        "cssVar": null,
+        "primitiveReferences": {
+          "fontSize": "typography.font-size-sm",
+          "fontWeight": "typography.font-weight-semibold"
+        },
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "shadow.list-panel",
+        "value": "0 2px 8px rgba(0, 0, 0, 0.1)",
+        "unit": null,
+        "cssVar": "--shadow-list-panel",
+        "primitiveReferences": null,
+        "source": "components/token-specs/shadows.json"
+      },
+      {
+        "name": "spacing.3",
+        "value": 3,
+        "unit": "px",
+        "cssVar": "--spacing-3",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.lg",
+        "value": 16,
+        "unit": "px",
+        "cssVar": "--spacing-lg",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "border.color.input-disabled",
+        "value": "var(--color-input-disabled-border)",
+        "unit": null,
+        "cssVar": "--border-color-input-disabled",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      }
+    ]
+  },
+  "evidence": {
+    "original": "components/sources/select/mastergo-original-components.json",
+    "localImplementation": "components/variants/select.html",
+    "comparison": "components/sources/select/exact-call-review.json",
+    "onlineRefresh": "docs/handoff/archives/2026-10-09-overnight/mastergo/select-component-region.json",
+    "inventory": "components/sources/select/source-inventory.json",
+    "sourceFacts": "components/sources/select/source-facts-review.json",
+    "checkboxNesting": "components/sources/select/checkbox-nesting-1010.json",
+    "whiteMultiDefaultRoot": "components/sources/select/multi-white-default-root-review-1013.json",
+    "whiteMultiNested1015": "components/sources/select/white-multi-nested-review-1015.json",
+    "currentMgReview": "components/sources/foundation-mg-20261114/select-review.json",
+    "listOptionSource": "components/sources/list-option-mg-20261115/review.json"
+  },
+  "sourceValidation": {
+    "componentIdentity": {
+      "status": "saved-typed-nodes-checked",
+      "files": [
+        "components/sources/select/source-inventory.json",
+        "components/sources/select/mastergo-original-components.json",
+        "docs/handoff/archives/2026-10-09-overnight/mastergo/select-component-region.json"
+      ],
+      "basis": "Original saved COMPONENT_SET/COMPONENT types and finite node identities; not screen position or container title."
+    },
+    "specificationBody": {
+      "status": "not-established",
+      "files": []
+    },
+    "originalOnlineFrontendCode": false,
+    "browserComputedStyles": false,
+    "completeSpecificationCoverage": false,
+    "buttonNesting": {
+      "scope": "finite-authored-button-nesting-only",
+      "checked": [
+        {
+          "variant": "grouped-combination",
+          "buttons": [
+            {
+              "variant": "outline-gray",
+              "size": "xl",
+              "type": "button"
+            },
+            {
+              "variant": "outline-black",
+              "size": "xl",
+              "type": "button"
+            }
+          ]
+        }
+      ],
+      "pending": [],
+      "browserVerified": false
+    },
+    "otherAtomNesting": {
+      "Checkbox": {
+        "scope": "local-finite-Checkbox-host-assemblies-including-legacy-Dropdown-markers",
+        "checked": [
+          {
+            "variant": "multi-checkbox",
+            "mode": "marker",
+            "count": 4
+          },
+          {
+            "variant": "two-column",
+            "mode": "marker",
+            "count": 8
+          },
+          {
+            "variant": "grouped-combination",
+            "mode": "marker",
+            "count": 5
+          }
+        ],
+        "pending": [],
+        "browserVerified": false,
+        "mastergoVerified": false,
+        "hostStyleCascadeVerified": false
+      }
+    },
+    "hostWidth": {
+      "nodeId": "68908:021318",
+      "crossSizing": "auto",
+      "specimenWidth": 225,
+      "scope": "single-basic gray root only;42px trigger and all other variants unchanged"
+    }
+  },
+  "freshness": {
+    "fingerprints": {
+      "components/button-current.css": "45e94e48ec97a34b4883ecc4f11b33301cdd6679445a3970cb16a2a87c6d8c9e",
+      "components/button-runtime-current.css": "caaa9b65a8d2fbebfa487ca3e0cf0c67d36e0219ffc55d4b0d801371a02da76c",
+      "components/checkbox-current.css": "81bace454b5f7612b84fd778d5596605dbce94f2bdc1784ba2636140622b168e",
+      "components/components.css": "a08b4fe2790b5ff2b784c6362a90f1b94e7535a03e863232ce6d620a52e85f73",
+      "components/contracts/button.json": "1f3092d74e19c1a840fbf2e8b8ecaf6115976b2941cc5484e4cda824025b1f73",
+      "components/contracts/checkbox.json": "ea3c1e3a082df421cafa2729384e7a7849e67048f51c3fde0979c0c3b0c94d63",
+      "components/contracts/input.json": "b367155c40d99807834add264130f574d150f95f09836fe70e84e3bf37a174d1",
+      "components/contracts/select.json": "351bf37ab7259d48bec9e4cdebbfea3054c5fc6dd4c5581fa4af64696dd5b293",
+      "components/icons/icon-check-8.svg": "dc6cf9d445bcc4685eadac41ef0532736924b1341d96a2df999e3bfadbb5b697",
+      "components/icons/icon-chevron-down.svg": "fe5df03acb1cb4b8a38a928357775416656fbf97cc54f3c6a5b7d0e4906f3e91",
+      "components/icons/icon-close.svg": "226867654d63f99f548f7e25b2f0286c19aa5786f5b9497905474f3959704424",
+      "components/icons/icon-filter.svg": "8a4911b2335d63b8c475a62d9a836500b772351ae6635c3513ed3b8b201351c4",
+      "components/icons/icon-radio-checked-14.svg": "b53f345fd343e6c85db5f49bb0f9cc17451e3a12f7685083de8619d26b7c52f6",
+      "components/icons/icon-radio-default-14.svg": "b14cd0e0bb098acea868b219b715af26c4df28c1535b637f5adf56f4f6aa2ad1",
+      "components/icons/icon-radio-disabled-14.svg": "a04bf6e85775d043b1d7983b40c4915d648cd30450d190cad914700ef318460c",
+      "components/icons/icon-radio-hover-14.svg": "be49228415dabf93d01a587421c450763c29d11db7ae50e1242c40f55e1cff35",
+      "components/icons/icon-search.svg": "11e01599b008320c723773284b56944f810762688a2928b37e6cb228fc9a3347",
+      "components/icons/icon-select-down-disabled.svg": "e36ae822e253ee33b4baa582d6f629d1dec690c35c4bed2f523c0151519a82c5",
+      "components/icons/icon-select-down.svg": "94e0ae408852211d6d0b3d0fb055b665132bfb7c89437c57f7199856d295cf66",
+      "components/icons/icon-select-remove.svg": "e5f6097bcc7e2d8db96eeef264c26d121030e91aad90b28bfe64beab3d8221af",
+      "components/icons/icon-select-up.svg": "81d9ca496b6c095f9d2079b97e027f73936cb66d38725f93ae5e77f0b85bbf42",
+      "components/icons/icons-manifest.json": "12c48af6d1dc59d50b76046bb0507005f565aa4224a6d8056ce4eaaf8050c43e",
+      "components/input-current.css": "81df82b74844b99bdb11674ed4ffe47c0e6e02595408a113fec9f4426d5f9d14",
+      "components/reference-policy.json": "4ae8f51f623386417e38d497caafb8bda4417c929159002a7ac088e6e526b482",
+      "components/select-current.css": "6d005b445b4f1d7a73d9e7dc432655bad4df8bfbbf032f98c46811006c2a94d5",
+      "components/select-current.js": "a725ea2c4f030bebed5d947e1fb84c521bb7441ae362df95d634482bc9f2ed31",
+      "components/sources/foundation-mg-20261114/select-review.json": "1fea99d5f68ec237dbb4b7fa64ec91005740627dc97893b0c862c9e3de2fa751",
+      "components/sources/list-option-mg-20261115/review.json": "e8d424ddcef3f8c44413851d17943317e386c0f9cd8f8eaeec964ab3192194ae",
+      "components/sources/select/checkbox-nesting-1010.json": "8db7f1642eccfba851c9f0dc944f6ce901c44482a23682efd7d4a7226621bede",
+      "components/sources/select/configuration-color-options-1115.html": "7713f173f0748d575a83c40a8190418ddfee74518d177bd5511b69dcad15f407",
+      "components/sources/select/exact-call-review.json": "17b138b81341bc2ac83108328296b0e3b23909fa6b8542d59827f18286e4765b",
+      "components/sources/select/mastergo-original-components.json": "1122e6dbd0fd4b4f84d311bf80bd6d261593b20be220f14062634bb461ea1d6d",
+      "components/sources/select/multi-white-default-root-review-1013.json": "bb5ff9566cf94898b59773f9876b7148c8c36d03d40443e3893c8926ca29c659",
+      "components/sources/select/source-facts-review.json": "df27e46168c64ec605c513fd9d1f9aaedc669e4fb40e087354c8d53635319155",
+      "components/sources/select/source-inventory.json": "ed695a07fa046b24bc01e7afe3c0954d754e306e87c2e36d6a3117bed5185aea",
+      "components/sources/select/white-multi-nested-review-1015.json": "c7db30ef48add6f8d81fd2c13dd497b35edf03b7d6d035e21142307cbe900d32",
+      "components/token-specs/border-radius.json": "b01e4c23fbc7e19983d9592b59b0303155b79d66c52459356eda0ea9f4ca74b5",
+      "components/token-specs/border.json": "d286ee4681deda1c7702c310b065c86f824539b3a8797efba05b24bc225ab322",
+      "components/token-specs/colors.json": "5267d59fdc687b54496977280c00c97f0beb6ffce013f87853504f5b736d3389",
+      "components/token-specs/shadows.json": "fe73ecce057e1219e0ea69a898f0610f78b9e623556d6be457dd3c2c8701eaf5",
+      "components/token-specs/spacing.json": "351b14cfce4411248ad41e00eaaf2b1cab9b705997980dfed1fc65693740e65c",
+      "components/token-specs/typography.json": "93b7dc07547218a33c075b7cdcd942f89094353a7847d483d8378b8883327e16",
+      "components/tokens.css": "f63f3c8fea511d8029902bc3905b01853ac5e92049c1b18ca35ebc9a680c3e69",
+      "components/variants/button.html": "6b6715b66e6c0b684c072dcdcbf7170aeb9f49a31bb32ca5b8986644d626cfe6",
+      "components/variants/checkbox.html": "7d99c4b8d7b3c89433a31d6a9205f89607c5cbd398abd76824ae7c92bbdf83f6",
+      "components/variants/form.html": "25d31960a440684ed7015f9dc5e628875090709d5001bffebd5972232e48d489",
+      "components/variants/input.html": "d34e9585cb00f4293912c199391e0b8328b13fe8db16ac4b4ea4b05b596d10c1",
+      "components/variants/option-selector.html": "e2afba24d5b67c306f264762dfea9b0d7ffd7c9db132feac6b6a29214cf1196e",
+      "components/variants/select.html": "0042deb9a302606c3a82505cafbd807753c3c6eb31e8b107e3ecb0fe0538bf7f",
+      "docs/handoff/archives/2026-10-09-overnight/mastergo/select-component-region.json": "500d972e212e17c1c3f4fcb166d14e22a93b7ef18f37d07cc896400d82ffb9aa"
+    },
+    "graphFingerprint": "84e4387289acbc46eceacdc169565b44887cd42064bec7d042cb9345aa7ca216",
+    "note": "从本地源文件生成；不是 MasterGo 在线实时状态。"
+  },
+  "readScope": {
+    "variant": "single-radio",
+    "note": "只展开当前已选变体；其他变体没有被声明为不可用。尺寸继续按真实 sizeOptions 选择。"
+  }
+}

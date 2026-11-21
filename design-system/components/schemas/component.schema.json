@@ -1,0 +1,438 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": ["id", "name", "description", "category", "variants", "states", "tokenReferences", "isComplete"],
+  "properties": {
+    "id": { "type": "string" },
+    "name": { "type": "string" },
+    "description": { "type": "string" },
+    "category": {
+      "type": "string",
+      "enum": [
+        "通用 General",
+        "全局样式 Global Styles",
+        "布局 Layout",
+        "导航 Navigation",
+        "数据展示 Data Display",
+        "数据录入 Data Entry",
+        "反馈 Feedback"
+      ],
+      "description": "仅用于候选召回、浏览和检索的软分类；不得覆盖 usageGuidelines、变体选择规则或依赖约束。"
+    },
+    "variants": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name"],
+        "properties": {
+          "name": { "type": "string" },
+          "whenToUse": { "type": "string", "description": "该变体的适用与禁用场景；页面生成时优先级高于 category。" },
+          "usage": { "type": "string", "description": "简版适用场景；与 whenToUse 二选一或配合使用。" },
+          "cssClass": { "type": "string" },
+          "class": { "type": "string" },
+          "cssSelectors": { "type": "array", "items": { "type": "string" }, "description": "可验证的 CSS 选择器证据；仅在选择器与该变体关系明确时填写。" },
+          "isComplete": { "type": "boolean", "description": "可选的变体级完成状态；存在时页面生成按所选变体门禁，不再由同组件其他未完成变体连带阻断。" },
+          "pendingParts": { "type": "array", "items": { "type": "string" }, "description": "该变体尚未完成的部分；isComplete=true 时必须为空。" },
+          "styleProperties": { "type": "object" },
+          "requiredPageStyleOverrides": {
+            "type": "object",
+            "additionalProperties": { "type": "string" },
+            "description": "页面使用该变体时必须在组件根节点覆盖的 CSS 属性；逐实例审计以此为最终期望值。"
+          },
+          "demo": { "type": "object" },
+          "textSpec": { "type": "object" }
+        }
+      }
+    },
+    "states": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "styleOverrides"],
+        "properties": {
+          "name": { "type": "string" },
+          "styleOverrides": { "type": "object" },
+          "demo": { "type": "object" },
+          "textSpec": { "type": "object" }
+        }
+      }
+    },
+    "usageGuidelines": { "type": "string" },
+    "tokenReferences": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "responsiveRules": { "type": "array" },
+    "constraints": { "type": "object" },
+    "relations": {
+      "type": "object",
+      "description": "组件关系的统一分组字段（二期治理机制新增）。用于机械化描述该组件与其他组件/容器/规范规则之间的依赖、互斥、嵌套约束，是 validate.js 未来生成动态关系校验的数据来源，也是 component-registry.json 派生生成的权威来源之一（manifest.json / intent-map.json 已于 2026-06-30 因零引用被删除，不再维护）。",
+      "properties": {
+        "parentContext": {
+          "type": "object",
+          "description": "组件放入某类父容器（如 page-section--white/gray、其他组件的具名容器）时必须/推荐/禁止采用的样式或子组件，key 为容器标识，value 描述规则。"
+        },
+        "componentDependencies": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["component", "usage", "requiredVariants", "implementationClasses"],
+            "properties": {
+              "component": { "type": "string", "minLength": 1 },
+              "usage": { "type": "string", "minLength": 1 },
+              "slot": { "type": "string" },
+              "requiredWhen": { "enum": ["body-row-count-over-six"], "description": "限定Table行线型超过六行才需要展开子组件；不删除组件族原有依赖。" },
+              "hostPreviewAnchor": { "type": "string", "pattern": "^[A-Za-z][A-Za-z0-9_:.-]*$", "description": "可选：父组件反向链接需要落到宿主 Preview 的具体区块时，填写宿主页面内真实存在的 id（不含 #）。" },
+              "appliesTo": { "type": "array", "items": { "type": "string", "minLength": 1 }, "minItems": 1, "description": "该嵌套依赖只适用的宿主变体；多变体组件必须填写，避免依赖泄漏到其他变体。" },
+              "requiredVariants": {
+                "type": "array",
+                "items": { "type": "string", "minLength": 1 },
+                "minItems": 1,
+                "description": "本组件实际使用了被引用组件的哪些 variant（填 variants[*].name）。check-contracts.js 会校验 variant 真实存在，并据此反向推导父组件关系的 appliesTo。"
+              },
+              "implementationClasses": {
+                "type": "array",
+                "items": { "type": "string", "minLength": 1 },
+                "minItems": 1,
+                "description": "宿主 preview 中真实出现的依赖组件 class 证据；check-contracts.js 会逐项核对。"
+              }
+            }
+          },
+          "description": "本组件内部插槽依赖的其他组件，是已实现父子关系的唯一事实源。每条必须锁定目标变体并提供宿主 preview class 证据。"
+        },
+        "iconDependencies": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["icon", "usage"],
+            "properties": {
+              "icon": { "type": "string" },
+              "requiredWhen": { "enum": ["body-row-count-over-six"], "description": "仅Table行线型超六行展开图标条件。" },
+              "usage": { "type": "string" },
+              "required": { "type": "boolean" },
+              "appliesTo": { "type": "array", "items": { "type": "string" } }
+            }
+          },
+          "description": "依赖的图标文件（须对应 icons/ 目录下真实文件），不允许手写内联 SVG 替代。"
+        },
+        "colorDependencies": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["token", "usage"],
+            "properties": {
+              "token": { "type": "string" },
+              "value": { "type": "string" },
+              "usage": { "type": "string" },
+              "appliesTo": { "type": "array", "items": { "type": "string" } }
+            }
+          },
+          "description": "依赖的颜色 token（须对应 token-specs/colors.json 里的真实 token）。用于生成「颜色依赖表」并实时核对色值与存在性；未 token 化的原始值也可登记，会被标为无对应 token。"
+        },
+        "spacingDependencies": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["token", "usage", "properties", "selectors"],
+            "properties": {
+              "token": { "type": "string", "pattern": "^spacing\\." },
+              "value": { "type": "string" },
+              "usage": { "type": "string" },
+              "appliesTo": { "type": "array", "items": { "type": "string" } },
+              "properties": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+              "selectors": { "type": "array", "minItems": 1, "items": { "type": "string" } }
+            }
+          },
+          "description": "组件 gap/padding/margin 使用的间距 token。properties 与 selectors 提供可机械核验的 CSS 证据；无法可靠映射变体时不得猜测 appliesTo。"
+        },
+        "borderDependencies": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["token", "usage", "aspect", "properties", "selectors"],
+            "properties": {
+              "token": { "type": "string", "pattern": "^border\\." },
+              "value": { "type": "string" },
+              "usage": { "type": "string" },
+              "aspect": { "type": "string", "enum": ["width", "style", "color"] },
+              "appliesTo": { "type": "array", "items": { "type": "string" } },
+              "properties": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+              "selectors": { "type": "array", "minItems": 1, "items": { "type": "string" } }
+            }
+          },
+          "description": "组件描边宽度、样式与颜色 token。空数组表示该组件没有描边声明；none 通过 border.style.none 明确登记。"
+        },
+        "radiusDependencies": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["token", "usage"],
+            "properties": {
+              "token": { "type": "string" },
+              "value": { "type": "string" },
+              "usage": { "type": "string" },
+              "appliesTo": { "type": "array", "items": { "type": "string" } }
+            }
+          },
+          "description": "依赖的圆角 token（须对应 token-specs/border-radius.json 里的真实 token）。用于生成「圆角依赖表」并实时核对值与存在性；未 token 化的原始值（如 50% / 12px）也可登记，会被标为无对应 token。"
+        },
+        "fontSizeDependencies": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["token", "usage"],
+            "properties": {
+              "token": { "type": "string", "description": "typography.font-size-* token 名；无对应正式 token 的字号值填 \"/\"（白名单）" },
+              "value": { "type": "string" },
+              "usage": { "type": "string" },
+              "appliesTo": { "type": "array", "items": { "type": "string" } }
+            }
+          },
+          "description": "依赖的字号 token（须对应 token-specs/typography.json 里的 font-size-* token）。用于生成「字号依赖表」；token 为 \"/\" 表示该字号值暂无对应正式 token。"
+        },
+        "fontWeightDependencies": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["token", "value", "usage", "appliesTo", "properties", "selectors"],
+            "properties": {
+              "token": { "type": "string", "pattern": "^typography\\.font-weight-" },
+              "value": { "type": "string", "enum": ["400", "600"] },
+              "usage": { "type": "string", "minLength": 1 },
+              "appliesTo": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } },
+              "properties": { "type": "array", "minItems": 1, "items": { "type": "string", "enum": ["font-weight"] } },
+              "selectors": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } }
+            }
+          },
+          "description": "组件显式 font-weight 使用的正式字重 token。只允许 Regular 400 / SemiBold 600；properties 与 selectors 提供可机械核验的 CSS 证据，空数组表示组件没有显式字重声明。"
+        },
+        "typographyDependencies": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["token", "fontSizeToken", "fontSizeValue", "fontWeightToken", "fontWeightValue", "weightEvidence", "usage", "appliesTo"],
+            "properties": {
+              "token": { "type": "string", "pattern": "^typography\\.[a-z0-9-]+-(regular|semibold)$", "description": "单一 composite typography token；其 value 同时包含 fontSize、lineHeight、fontWeight" },
+              "fontSizeToken": { "type": "string", "description": "底层字号 primitive 证据；无正式 primitive 时填 /" },
+              "fontSizeValue": { "type": "string", "pattern": "^[0-9]+(?:\\.[0-9]+)?px$" },
+              "fontWeightToken": { "type": "string", "pattern": "^typography\\.font-weight-(regular|semibold)$" },
+              "fontWeightValue": { "type": "string", "enum": ["400", "600"] },
+              "weightEvidence": { "type": "string", "enum": ["explicit-css", "inherited-regular"] },
+              "usage": { "type": "string", "minLength": 1 },
+              "appliesTo": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } }
+            }
+          },
+          "description": "字体整体依赖：token 指向单一 composite typography token（同时包含字号、行高、字重）；其余字段只保留为 primitive/CSS 机械证据，依赖汇总表禁止拆成多个 Token 链接。"
+        },
+        "shadowDependencies": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["token", "usage"],
+            "properties": {
+              "token": { "type": "string", "description": "shadow.* token 名；无对应正式 token 的投影值填 \"/\"（白名单）" },
+              "value": { "type": "string" },
+              "usage": { "type": "string" },
+              "appliesTo": { "type": "array", "items": { "type": "string" } }
+            }
+          },
+          "description": "依赖的投影 token（须对应 token-specs/shadows.json 里的真实 token）。用于生成「投影依赖表」；token 为 \"/\" 表示该投影值暂无对应正式 token。"
+        },
+        "mutuallyExclusiveWith": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["component", "reason"],
+            "properties": {
+              "component": { "type": "string" },
+              "reason": { "type": "string" }
+            }
+          },
+          "description": "语义上不可互相替代的组件/结构，标注原因，防止同一场景被错误组件覆盖。"
+        },
+        "commonlyEmbeddedIn": {
+          "type": "array",
+          "description": "仅记录尚未在宿主 preview 实现的参考关系。已实现关系禁止手写，必须由宿主 componentDependencies 自动反向推导。",
+          "items": {
+            "type": "object",
+            "required": ["component", "usage", "verified", "verifiedNote"],
+            "properties": {
+              "component": { "type": "string", "minLength": 1 },
+              "usage": { "type": "string", "minLength": 1 },
+              "appliesTo": {
+                "type": "array",
+                "items": { "type": "string", "minLength": 1 },
+                "minItems": 1
+              },
+              "verified": { "const": false },
+              "verifiedNote": { "type": "string", "minLength": 1 }
+            },
+            "additionalProperties": true
+          }
+        },
+        "hardRules": {
+          "type": "array",
+          "description": "「⚠️ 硬规则」表的机械数据源。声明后 preview 的 <!-- AUTO-GENERATED-PREVIEW:START/END --> 区块由该数组自动填充；契约变化后重跑生成器即可。允许每个组件有多条硬规则。",
+          "items": {
+            "type": "object",
+            "required": ["title", "ruleContent"],
+            "properties": {
+              "title": {
+                "type": "string",
+                "description": "硬规则标题，生成器会加上「⚠️ 硬规则：」前缀。"
+              },
+              "displayInVariant": {
+                "type": "string",
+                "description": "指定已呈现此要求的变体决策行，仅在该行标记检查，不重复展示硬规则说明。"
+              },
+              "description": {
+                "type": "string",
+                "description": "硬规则标题下方的说明段落（可选）。"
+              },
+              "ruleContent": {
+                "type": "string",
+                "description": "「👤 描述原文」列的原文，允许包含 HTML（strong/code/br 等）。"
+              },
+              "aiParse": {
+                "type": "string",
+                "description": "「🤖 AI 解析」列的契约字段快照，通常为 pre 格式的伪代码；允许 \\n 换行。"
+              },
+              "enforcement": {
+                "type": "string",
+                "description": "「约束作用」行的说明；如「设计规范硬约束，无机械检查」或指向具体 validate/verify 规则。"
+              },
+              "howToModify": {
+                "type": "string",
+                "description": "「如何修改」行的说明；可选，默认「改左边描述原文 → 跟 AI 说\"这条硬规则改了，同步一下\" → AI 转述确认 → 你确认 → AI 自动同步。」"
+              }
+            }
+          }
+        },
+        "variantDecisionsDescription": {
+          "type": "string",
+          "description": "「变体决策 + 关联关系表」上方的段落说明（可选）。生成器会渲染到表标题下方。"
+        },
+        "variantDecisions": {
+          "type": "array",
+          "description": "「变体决策 + 关联关系表」的机械数据源。声明后 preview 的关联关系表由 <!-- AUTO-GENERATED-DECISION-TABLE:START/END --> 标记自动同步；契约变化后重跑生成器即可。",
+          "items": {
+            "type": "object",
+            "required": ["type", "className", "nestedComponents"],
+            "anyOf": [{ "required": ["whenToUse"] }, { "required": ["selectionCases"] }],
+            "properties": {
+              "type": {
+                "type": "string",
+                "description": "决策行显示的类型/变体名（通常为中文）。"
+              },
+              "className": {
+                "type": "string",
+                "description": "该变体应使用的 class（可以是多值或 `A / B` 说明），渲染为 <code>。"
+              },
+              "whenToUse": {
+                "type": "string",
+                "description": "该变体的适用场景，渲染前会自动加上「用：」前缀。"
+              },
+              "whenNotToUse": {
+                "type": "string",
+                "description": "该变体的禁用/回避场景（可选），渲染前会自动加上「不用：」前缀并换行。"
+              },
+              "selectionCases": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "object",
+                  "required": ["condition", "result", "kind"],
+                  "properties": {
+                    "condition": { "type": "string", "minLength": 1 },
+                    "result": { "type": "string", "minLength": 1 },
+                    "automaticCheck": { "type": "string", "minLength": 1, "description": "实际校验该条场景要求的检查标识，仅在该行展示提示。" },
+                    "kind": { "enum": ["use", "avoid", "reference"] }
+                  }
+                }
+              },
+              "nestedComponents": {
+                "type": "array",
+                "description": "该变体嵌套的子组件列表；空数组渲染为「无嵌套子组件」。图标不允许出现在此列。",
+                "items": {
+                  "type": "object",
+                  "required": ["component"],
+                  "properties": {
+                    "component": { "type": "string", "description": "被嵌套组件的名称，用于交叉引用。" },
+                    "label": { "type": "string", "description": "在决策表中展示的文字（可选，默认使用 component）。" },
+                    "href": { "type": "string", "description": "跳转到目标组件 preview 页面的相对路径，例如 button.html（可选）。" }
+                  }
+                }
+              },
+              "status": {
+                "type": "string",
+                "description": "关联状态文案（可选，默认「已核实」）。生成器统一在前面加「✓ 」。"
+              }
+            }
+          }
+        },
+        "variantSelectionRules": {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              { "type": "string" },
+              {
+                "type": "object",
+                "required": ["condition", "variant"],
+                "properties": {
+                  "condition": { "type": "string" },
+                  "variant": { "type": "string", "description": "可指向精确 variant 名，或指向同名前缀的变体族。" },
+                  "cssClass": { "type": "string" }
+                }
+              }
+            ]
+          },
+          "description": "页面生成时的硬选择依据；category 只能帮助找到候选，不能覆盖这里的判断规则。"
+        },
+        "siblingRule": {
+          "type": "object",
+          "description": "记录本组件与其他组件之间共享同一实现模式但各自独立定义的'姐妹实现'关系（如多处 margin-top:auto 居底对齐），提示修改一处需要检查另一处是否同步。"
+        },
+        "enforcementStatus": {
+          "type": "object",
+          "description": "【核心字段，不可省略】逐条标注 relations 里的规则是否已经变成 validate.js/verify.js 里能自动报错的机械检查，还是目前只停留在本文档层面（靠 AI 生成时自觉遵守）。key 为规则的简短标识（自定义，建议对应 relations 里的字段名或规则要点），value 为 { enforced: boolean, mechanism: string, note?: string }。enforced=false 的规则代表'规范性 100%'目标尚未真正覆盖到这里，是投喂流程里需要持续追踪、逐条推动写进校验脚本的清单，不是写完就能忘记的文档。示例：{ \"parentContext.page-section--white\": { \"enforced\": false, \"mechanism\": \"无\", \"note\": \"目前只写在文档里，validate.js 未做背景色↔卡片边框类的联合校验\" } }",
+          "additionalProperties": {
+            "type": "object",
+            "required": ["enforced", "mechanism"],
+            "properties": {
+              "enforced": { "type": "boolean" },
+              "mechanism": { "type": "string", "description": "若 enforced=true，写清楚是哪个脚本的哪个检查函数（如 'validate.js: checkHeaderFooter'）；若为 false，写 '无' 或计划" },
+              "note": { "type": "string" }
+            }
+          }
+        },
+        "notes": { "type": "string" }
+      }
+    },
+    "searchIntents": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "意图词列表（意图 → 组件名的语义标注）。原计划用于生成 intent-map.json，该文件已于 2026-06-30 因全项目零引用被删除；本字段作为档案自身的语义索引保留，若未来有明确的下游消费需求（如智能组件检索），可从这里重新派生生成，不需要现在预先维护一份没有消费者的文件。"
+    },
+    "history": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["date", "change"],
+        "properties": {
+          "date": { "type": "string", "format": "date" },
+          "change": { "type": "string" },
+          "author": { "type": "string" }
+        }
+      },
+      "description": "关系/结构性字段的变更记录，尤其是 relations 分组的修改必须追加一条，说明变更原因，便于多人协作时追溯问题根源。"
+    },
+    "isComplete": { "type": "boolean" },
+    "pendingParts": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "尚未完成的部分。若此字段非空，isComplete 必须为 false（逻辑一致性约束，防止'标记完整但仍有未完成项'的自相矛盾——2026-06-30 已在 card.json 中发现并修正过一例真实违规）。"
+    },
+    "createdAt": { "type": "string", "format": "date-time" },
+    "updatedAt": { "type": "string", "format": "date-time" }
+  }
+}

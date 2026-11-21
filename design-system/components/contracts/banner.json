@@ -1,0 +1,1959 @@
+{
+  "id": "comp_banner_001",
+  "name": "Banner",
+  "chineseName": "横幅",
+  "description": "页面顶部横幅组件，包含 Hero/Sub/Search/Title-only/Mini 五个变体；各变体可按需使用面包屑，面包屑不参与变体判断。",
+  "category": "数据展示 Data Display",
+  "variants": [
+    {
+      "name": "hero",
+      "chineseName": "首页级 Hero",
+      "dimensions": "1920×420（PC原组件404px内容内缩）",
+      "styleProperties": {
+        "height": "420px",
+        "padding": "0 404px at the sole supported1920px desktop viewport; component-owned native inset",
+        "backgroundColor": "深色（蓝色系倾向）或背景图 + 深色遮罩",
+        "titleFontSize": "36px",
+        "titleLineHeight": "48px",
+        "titleMaxWidth": "620px",
+        "descFontSize": "16px",
+        "descMaxWidth": "560px",
+        "textColor": "#FFFFFF"
+      },
+      "requiredOverrideTemplate": false,
+      "notes": "2026-10-28 original desktop Hero68908:043035: single outline-white42px Button, native404px inset. No page display/padding overrides. Background image belongs to the surrounding source-bound image surface; native root stays transparent. Other Hero and responsive calls are not approved by this finite evidence.",
+      "cssClass": "ds-banner ds-banner--hero",
+      "isComplete": true,
+      "pendingParts": [],
+      "requiredChildren": [
+        "p.ds-banner__title",
+        "p.ds-banner__desc",
+        "div.ds-banner__actions",
+        "button.ds-btn",
+        "span.ds-btn__text"
+      ],
+      "selectionDecisionType": "Hero（首页级）",
+      "whenToUse": "仅1920桌面首页，完整标题、描述和一个白色描边XL按钮。",
+      "whenNotToUse": "需要搜索、无描述/按钮、图文并列内容卡或窄窗口。",
+      "usage": "仅1920桌面首页，完整标题、描述和一个白色描边XL按钮。"
+    },
+    {
+      "name": "sub",
+      "chineseName": "解决方案/产品线页 Sub Banner",
+      "dimensions": "1920×320",
+      "styleProperties": {
+        "height": "320px",
+        "padding": "0 360px",
+        "titleFontSize": "32px",
+        "titleLineHeight": "40px",
+        "titleMaxWidth": "620px",
+        "descMaxWidth": "560px",
+        "textColor": "#FFFFFF"
+      },
+      "notes": "面包屑为可选内容；深色背景使用 ds-breadcrumb--dark，位置由 Banner 的面包屑插槽规则统一管理。面包屑是否存在不影响 Sub 变体判断。",
+      "cssClass": "ds-banner ds-banner--sub",
+      "isComplete": true,
+      "pendingParts": [],
+      "requiredChildren": [
+        "p.ds-banner__title",
+        "nav.ds-breadcrumb",
+        "p.ds-banner__desc"
+      ],
+      "selectionDecisionType": "Sub（解决方案页）",
+      "whenToUse": "1920px解决方案页标题、描述与当前模板的深色面包屑。",
+      "whenNotToUse": "需要搜索、首页单CTA，或需要删除当前固定面包屑。",
+      "usage": "1920px解决方案页标题、描述与当前模板的深色面包屑。"
+    },
+    {
+      "name": "search",
+      "chineseName": "知识库/Case Studies Search Banner",
+      "dimensions": "1920×200（当前PC原组件；搜索嵌套待完成）",
+      "styleProperties": {
+        "height": "200px",
+        "titleFontSize": "32px",
+        "titleTextAlign": "center",
+        "titleWidth": "960px",
+        "descTextAlign": "center",
+        "descWidth": "960px",
+        "textColor": "#FFFFFF"
+      },
+      "requiredChildren": [
+        ".ds-banner__title",
+        ".ds-banner__desc",
+        "form.ds-input-search",
+        ".ds-banner__gpt"
+      ],
+      "searchBoxSpec": {
+        "width": "560px",
+        "height": "42px",
+        "background": "var(--color-gray-9)",
+        "submitButtonColor": "red（唯一允许在 banner 内出现的 filled-red 场景）"
+      },
+      "notes": "搜索框提交按钮是全站 filled-red 两个白名单场景之一（另一个是表单 submit），不要因为'banner 内禁止红色 CTA'的通用规则而误删。 Breadcrumb 是可选子组件，不用于判断 Search 变体。 来源纠偏（2026-10-11）：真实Banner集合68908:013173中的PC知识库/Case原子68908:050139为1920×200，独立规范表为320，冲突按原子优先登记。真实搜索框实例68908:050147引用搜索框-常规搜索（新），560×42、Gray8；本地span示例不是真实Input调用，本变体保持AI未支持，旧320px和span拼写搜索框展示已撤下；当前只保留来源说明，真实搜索框及整体装配待接入。",
+      "selectionDecisionType": "Search（知识库）",
+      "whenToUse": "知识库或案例页的关键词搜索顶部，42px真实搜索输入与FS GPT宿主入口。",
+      "whenNotToUse": "普通产品选择、自动搜索结果、已接入AI回答或手机布局。",
+      "usage": "知识库或案例页的关键词搜索顶部，42px真实搜索输入与FS GPT宿主入口。",
+      "isComplete": true,
+      "pendingParts": [],
+      "cssClass": "ds-banner ds-banner--search"
+    },
+    {
+      "name": "title-only",
+      "chineseName": "专题/活动页 Title-only Banner",
+      "dimensions": "1920×200",
+      "styleProperties": {
+        "height": "200px",
+        "titleFontSize": "32px",
+        "titleTextAlign": "center",
+        "titleWidth": "960px",
+        "textColor": "#FFFFFF"
+      },
+      "forbiddenChildren": [
+        "description",
+        "button"
+      ],
+      "notes": "核心内容仅标题；可附加 Breadcrumb。description 和 button 仍禁止出现，Breadcrumb 不影响 Title-only 变体判断。",
+      "cssClass": "ds-banner ds-banner--title-only",
+      "isComplete": true,
+      "pendingParts": [],
+      "requiredChildren": [
+        "p.ds-banner__title"
+      ],
+      "selectionDecisionType": "Title-only（专题页）",
+      "whenToUse": "1920×200专题/外围/分类页，核心内容只有标题。",
+      "whenNotToUse": "有描述、CTA或搜索输入，需要保留完整内容。",
+      "usage": "1920×200专题/外围/分类页，核心内容只有标题。"
+    },
+    {
+      "name": "mini",
+      "chineseName": "商品详情页内嵌提示 Mini Banner",
+      "dimensions": "1200×120（版心宽度，非全宽）",
+      "styleProperties": {
+        "height": "120px",
+        "paddingLeft": "320px within1200px PC atom",
+        "titleFontSize": "16px",
+        "titleFontWeight": "600",
+        "titleColor": "var(--color-gray-1)",
+        "descFontSize": "13px",
+        "descColor": "var(--color-gray-1)",
+        "backgroundColor": "浅色/图片，非深色",
+        "titleLineHeight": "24px",
+        "descLineHeight": "20px"
+      },
+      "notes": "2026-10-11新版原子结构样式已迁移到显式data-banner-mini-current：标题16/24SemiBold、描述13/20Regular同Black，内容680×72/x320y24/gap4；真实TextButton inline-blue-link/m 与Carousel分页子部件分别嵌套。来源冲突按原子优先。背景仍是演示渐变，分页仅结构状态示例，没有三张真实Banner内容或切换行为；Mini仍不在精确AI支持范围，实际浏览器待验。",
+      "selectionDecisionType": "Mini（商品详情页）",
+      "whenToUse": "PC商品详情内容中的120px窄幅信息，需真实三项分页切换。",
+      "whenNotToUse": "首页Hero、自动播放大图或未核对的M/Pad形态。",
+      "usage": "三项内容与同版Carousel分页联动，文字链接仍用TextButton。",
+      "isComplete": true,
+      "pendingParts": [],
+      "cssClass": "ds-banner ds-banner--mini",
+      "requiredChildren": [
+        "div.ds-banner__mini-slides",
+        "div.ds-banner__mini-slide",
+        "div.ds-carousel__dots"
+      ]
+    },
+    {
+      "name": "hero-responsive",
+      "chineseName": "响应式 Hero（完整文案）",
+      "cssClass": "ds-banner ds-banner--hero ds-banner--hero-responsive",
+      "requiredChildren": [
+        "div.ds-banner__responsive-inner",
+        "p.ds-banner__title",
+        "p.ds-banner__desc",
+        "div.ds-banner__actions",
+        "button.ds-btn",
+        "span.ds-btn__text"
+      ],
+      "isComplete": true,
+      "pendingParts": [],
+      "description": "Opt-in full-copy Hero: PC/Pad 420; mobile solution-like 440-min-height with 24/32 title,14/22 description and genuine Button. Mobile homepage233 has no body/button and cannot contain this source. CTA preservation is an explicit controlled adaptation.",
+      "sourceNodes": [
+        "68908:043035",
+        "68908:039650",
+        "68908:040482"
+      ],
+      "styleProperties": {
+        "desktop": "1200px centered content, title36/48, body16/24",
+        "tablet": "48px horizontal inset, title max460px, description max400px",
+        "mobile": "min-height440px, inset24px, top56px, gap12px, title24/32, description14/22"
+      },
+      "editable": [
+        "title",
+        "description",
+        "breadcrumb",
+        "button"
+      ],
+      "selectionDecisionType": "响应式 Hero（完整文案）",
+      "whenToUse": "来源标题、描述与单CTA均需完整保留的信息页，使用既有本地响应式实现。",
+      "whenNotToUse": "按MG首页M233原件原样还原，或缺少必需描述/CTA。",
+      "usage": "来源标题、描述与单CTA均需完整保留的信息页，使用既有本地响应式实现。"
+    }
+  ],
+  "variantSelectionDecisionTable": [
+    {
+      "sourceFeature": "大图+标题+描述+可选按钮，首页/落地页级别",
+      "variant": "hero",
+      "class": "ds-banner--hero"
+    },
+    {
+      "sourceFeature": "标题+描述，解决方案/产品线/分类页；面包屑可选",
+      "variant": "sub",
+      "class": "ds-banner--sub"
+    },
+    {
+      "sourceFeature": "标题+描述+搜索框，知识库/文档中心/Case Studies",
+      "variant": "search",
+      "class": "ds-banner--search"
+    },
+    {
+      "sourceFeature": "仅标题居中，专题/活动/话题页",
+      "variant": "title-only",
+      "class": "ds-banner--title-only"
+    },
+    {
+      "sourceFeature": "窄条（120px），商品详情页内嵌提示",
+      "variant": "mini",
+      "class": "ds-banner--mini"
+    }
+  ],
+  "variantSelectionRules": [
+    "位置限制：所有 Banner 变体仅允许出现在固定 Header / 公共导航之后的第 1 或第 2 个内容模块；第 3 个及之后的内容模块禁止使用 Banner。",
+    "不要默认用 Hero — 只有首页级别的大型落地页才用 Hero。",
+    "Breadcrumb 是所有 Banner 变体都支持的可选内容；有无面包屑不参与具体变体判断。",
+    "源页面有搜索框 → Search。",
+    "源页面 Banner 核心内容只有一行标题、无描述无按钮 → Title-only；可选 Breadcrumb 不改变此判断。",
+    "结合 Banner 核心内容、页面用途和实际尺寸判断：≥400px 通常用 Hero，200-320px 根据搜索框与内容布局选择 Sub/Search/Title-only。"
+  ],
+  "states": [
+    {
+      "name": "default",
+      "chineseName": "默认",
+      "styleOverrides": {},
+      "description": "静态展示"
+    }
+  ],
+  "contentSlots": {
+    "title": {
+      "required": true,
+      "description": "banner 标题，p.ds-banner__title"
+    },
+    "description": {
+      "required": false,
+      "description": "banner 描述，p.ds-banner__desc；title-only 变体禁止出现"
+    },
+    "button": {
+      "required": false,
+      "description": "可选 CTA，仅当源页明确展示时才加；多个 CTA 必须放入 ds-banner__actions，组件内置 12px 间距；单 CTA 用 outline-white，双 CTA 用 filled-gray 主操作 + outline-white 次操作"
+    },
+    "breadcrumb": {
+      "required": false,
+      "description": "所有 Banner 变体均可选；不参与具体变体判断。按 Banner 实际背景选择 Breadcrumb：深色背景用 ds-breadcrumb--dark，浅色背景用 ds-breadcrumb。直接作为 Banner 子节点放置，组件将其定位在内容版心左上方。"
+    },
+    "searchBox": {
+      "required": false,
+      "description": "仅 search 变体使用，ds-banner__search"
+    },
+    "dots": {
+      "required": false,
+      "description": "Banner 自有轮播指示器 ds-banner__dots，仅当 Hero Banner 承载多图轮播时出现；正式组件 Preview 不展示该可选效果，不建立 Carousel 组件依赖"
+    }
+  },
+  "dotsSpec": {
+    "scope": "Banner 自有分页指示器，不建立 Carousel 组件依赖",
+    "default": {
+      "size": "6×6px 圆形",
+      "fill": "rgba(255,255,255,0.4)"
+    },
+    "active": {
+      "size": "40×6px 胶囊（border-radius:4px）",
+      "fill": "#FFFFFF"
+    },
+    "gap": "6px",
+    "position": "Banner 底部 12px 水平居中",
+    "previewComposition": "正式组件 Preview 不展示分页指示器，避免将可选多图能力误解为 Hero 默认效果",
+    "countRule": "真实页面仅在 Hero Banner 确认承载多图轮播时使用；每张 Banner slide 对应 1 个指示器"
+  },
+  "relations": {
+    "radiusDependencies": [
+      {
+        "token": "border-radius.md",
+        "value": "4px",
+        "usage": "中圆角 - 按钮默认圆角",
+        "appliesTo": [
+          "hero",
+          "search"
+        ]
+      },
+      {
+        "token": "/",
+        "value": "50%",
+        "usage": "未 token 化的圆角值，白名单登记",
+        "appliesTo": [
+          "hero"
+        ]
+      }
+    ],
+    "fontSizeDependencies": [
+      {
+        "token": "typography.font-size-md",
+        "value": "14px",
+        "usage": "中号字体 - XL/L 按钮",
+        "appliesTo": [
+          "mini"
+        ]
+      },
+      {
+        "token": "typography.font-size-sm",
+        "value": "12px",
+        "usage": "小号字体 - M/S 按钮",
+        "appliesTo": [
+          "sub"
+        ]
+      },
+      {
+        "token": "typography.font-size-h8",
+        "value": "13px",
+        "usage": "H8 紧凑正文/组件文字",
+        "appliesTo": [
+          "search"
+        ]
+      },
+      {
+        "token": "/",
+        "value": "16px",
+        "usage": "无对应正式 token 的字号值，白名单登记",
+        "appliesTo": [
+          "hero",
+          "sub",
+          "search"
+        ]
+      },
+      {
+        "token": "/",
+        "value": "32px",
+        "usage": "无对应正式 token 的字号值，白名单登记",
+        "appliesTo": [
+          "sub",
+          "search",
+          "title-only"
+        ]
+      },
+      {
+        "token": "/",
+        "value": "36px",
+        "usage": "无对应正式 token 的字号值，白名单登记",
+        "appliesTo": [
+          "hero"
+        ]
+      }
+    ],
+    "fontWeightDependencies": [
+      {
+        "token": "typography.font-weight-semibold",
+        "value": "600",
+        "usage": "Hero/Sub/Search/Title-only 标题",
+        "appliesTo": [
+          "hero",
+          "sub",
+          "search",
+          "title-only"
+        ],
+        "properties": [
+          "font-weight"
+        ],
+        "selectors": [
+          ".ds-banner__title"
+        ]
+      },
+      {
+        "token": "typography.font-weight-regular",
+        "value": "400",
+        "usage": "Mini Banner 标题",
+        "appliesTo": [
+          "mini"
+        ],
+        "properties": [
+          "font-weight"
+        ],
+        "selectors": [
+          ".ds-banner--mini .ds-banner__title"
+        ]
+      }
+    ],
+    "typographyDependencies": [
+      {
+        "token": "typography.h1-semibold",
+        "fontSizeToken": "/",
+        "fontSizeValue": "36px",
+        "fontWeightToken": "typography.font-weight-semibold",
+        "fontWeightValue": "600",
+        "weightEvidence": "explicit-css",
+        "usage": "Hero 标题",
+        "appliesTo": [
+          "hero"
+        ]
+      },
+      {
+        "token": "typography.h2-semibold",
+        "fontSizeToken": "/",
+        "fontSizeValue": "32px",
+        "fontWeightToken": "typography.font-weight-semibold",
+        "fontWeightValue": "600",
+        "weightEvidence": "explicit-css",
+        "usage": "Sub/Search/Title-only 标题",
+        "appliesTo": [
+          "sub",
+          "search",
+          "title-only"
+        ]
+      },
+      {
+        "token": "typography.h6-regular",
+        "fontSizeToken": "/",
+        "fontSizeValue": "16px",
+        "fontWeightToken": "typography.font-weight-regular",
+        "fontWeightValue": "400",
+        "weightEvidence": "inherited-regular",
+        "usage": "Hero/Sub/Search 正文",
+        "appliesTo": [
+          "hero",
+          "sub",
+          "search"
+        ]
+      },
+      {
+        "token": "typography.h9-regular",
+        "fontSizeToken": "typography.font-size-sm",
+        "fontSizeValue": "12px",
+        "fontWeightToken": "typography.font-weight-regular",
+        "fontWeightValue": "400",
+        "weightEvidence": "inherited-regular",
+        "usage": "Sub 辅助文字",
+        "appliesTo": [
+          "sub"
+        ]
+      },
+      {
+        "token": "typography.h8-regular",
+        "fontSizeToken": "typography.font-size-h8",
+        "fontSizeValue": "13px",
+        "fontWeightToken": "typography.font-weight-regular",
+        "fontWeightValue": "400",
+        "weightEvidence": "inherited-regular",
+        "usage": "Search 紧凑文字",
+        "appliesTo": [
+          "search"
+        ]
+      },
+      {
+        "token": "typography.h7-regular",
+        "fontSizeToken": "typography.font-size-md",
+        "fontSizeValue": "14px",
+        "fontWeightToken": "typography.font-weight-regular",
+        "fontWeightValue": "400",
+        "weightEvidence": "explicit-css",
+        "usage": "Mini 标题",
+        "appliesTo": [
+          "mini"
+        ]
+      }
+    ],
+    "colorDependencies": [
+      {
+        "token": "color.gray-1",
+        "value": "#19191A",
+        "usage": "标题/深色文字 (Primary text)",
+        "appliesTo": [
+          "mini"
+        ]
+      },
+      {
+        "token": "color.gray-3",
+        "value": "#707070",
+        "usage": "次要/辅助文字 (Secondary/auxiliary text)",
+        "appliesTo": [
+          "search",
+          "mini"
+        ]
+      },
+      {
+        "token": "color.gray-9",
+        "value": "#FAFBFB",
+        "usage": "最浅灰背景（hover/展开态整行底、输入框底、卡片区底）",
+        "appliesTo": [
+          "search"
+        ]
+      },
+      {
+        "token": "color.white",
+        "value": "#FFFFFF",
+        "usage": "白色 (深色背景上的文字)",
+        "appliesTo": [
+          "hero",
+          "sub",
+          "search",
+          "title-only"
+        ]
+      },
+      {
+        "token": "/",
+        "value": "rgba(255,255,255,0.4)",
+        "usage": "一次性遮罩/渐变停靠色，未 token 化，白名单登记",
+        "appliesTo": [
+          "hero"
+        ]
+      },
+      {
+        "token": "color.gray-1",
+        "value": "#19191A",
+        "usage": "Current finite solid-dark Hero surface",
+        "properties": [
+          "background-color"
+        ],
+        "selectors": [
+          ".ds-banner[data-banner-current]"
+        ],
+        "appliesTo": [
+          "hero-responsive"
+        ],
+        "sourceResource": "components/banner-current.css"
+      },
+      {
+        "token": "color.gray-2",
+        "value": "#4B4B4D",
+        "usage": "当前来源支持的新增调用及真实原子资源",
+        "appliesTo": [
+          "search"
+        ]
+      },
+      {
+        "token": "color.gray-5",
+        "value": "#DEE0E3",
+        "usage": "当前来源支持的新增调用及真实原子资源",
+        "appliesTo": [
+          "search"
+        ]
+      },
+      {
+        "token": "color.gray-8",
+        "value": "#F6F6F8",
+        "usage": "当前来源支持的新增调用及真实原子资源",
+        "appliesTo": [
+          "search"
+        ]
+      },
+      {
+        "token": "color.blue",
+        "value": "#0060BF",
+        "usage": "当前来源支持的新增调用及真实原子资源",
+        "appliesTo": [
+          "search"
+        ]
+      }
+    ],
+    "componentDependencies": [
+      {
+        "component": "Button",
+        "usage": "Native single-action Hero: actual outline-white/xl Button atom14/22/400; no host typography override.",
+        "slot": "button",
+        "requiredVariants": [
+          "outline-white"
+        ],
+        "implementationClasses": [
+          "ds-btn",
+          "ds-btn--outline-white",
+          "ds-btn--xl"
+        ],
+        "appliesTo": [
+          "hero"
+        ],
+        "requiredSizes": [
+          {
+            "variant": "outline-white",
+            "size": "xl"
+          }
+        ]
+      },
+      {
+        "component": "Button",
+        "usage": "当前完整文案Hero单CTA：outline-white / xl regular",
+        "slot": "button",
+        "requiredVariants": [
+          "outline-white"
+        ],
+        "implementationClasses": [
+          "ds-btn",
+          "ds-btn--outline-white",
+          "ds-btn--xl"
+        ],
+        "appliesTo": [
+          "hero-responsive"
+        ],
+        "requiredSizes": [
+          {
+            "variant": "outline-white",
+            "size": "xl"
+          }
+        ]
+      },
+      {
+        "component": "Breadcrumb",
+        "usage": "深色Banner存在面包屑时直接使用dark；有限Title-only未放入此可选槽",
+        "slot": "breadcrumb",
+        "requiredVariants": [
+          "dark"
+        ],
+        "implementationClasses": [
+          "ds-breadcrumb",
+          "ds-breadcrumb--dark"
+        ],
+        "appliesTo": [
+          "hero",
+          "sub",
+          "search",
+          "title-only"
+        ]
+      },
+      {
+        "component": "TextButton",
+        "slot": "mini-action",
+        "requiredVariants": [
+          "inline-blue-link"
+        ],
+        "requiredSizes": [
+          {
+            "variant": "inline-blue-link",
+            "size": "m"
+          }
+        ],
+        "implementationClasses": [
+          "ds-text-btn",
+          "ds-text-btn--inline",
+          "ds-text-btn--blue-link",
+          "ds-text-btn--m",
+          "ds-text-btn__text",
+          "ds-text-btn__icon"
+        ],
+        "appliesTo": [
+          "mini"
+        ],
+        "usage": "新120px Mini独立13px蓝色文字按钮，完整调用当前原子；无宿主覆盖。"
+      },
+      {
+        "component": "Carousel",
+        "slot": "mini-pagination",
+        "part": "banner-mini-pagination",
+        "requiredVariants": [
+          "light"
+        ],
+        "implementationClasses": [
+          "ds-carousel__dots",
+          "ds-carousel__dot",
+          "ds-carousel__dot--active"
+        ],
+        "appliesTo": [
+          "mini"
+        ],
+        "usage": "真实Mini三位分页和现有Carousel控制器；不开放整套首页轮播。"
+      },
+      {
+        "component": "Input",
+        "part": "banner-search42",
+        "requiredVariants": [
+          "gray"
+        ],
+        "appliesTo": [
+          "search"
+        ],
+        "slot": "search",
+        "implementationClasses": [
+          "ds-input-search",
+          "ds-input-search__field",
+          "ds-icon-btn",
+          "ds-icon-btn__icon"
+        ],
+        "usage": "来源42px灰底搜索部件归Input维护；不是基础Input样例冒充Search。"
+      },
+      {
+        "component": "IconButton",
+        "requiredVariants": [
+          "plain-m"
+        ],
+        "appliesTo": [
+          "search"
+        ],
+        "slot": "search-submit",
+        "implementationClasses": [
+          "ds-icon-btn",
+          "ds-icon-btn--plain",
+          "ds-icon-btn--m",
+          "ds-icon-btn__icon"
+        ],
+        "usage": "来源Search16px图标/28px按钮，原子样式不覆盖。"
+      }
+    ],
+    "iconDependencies": [
+      {
+        "icon": "icon-search",
+        "usage": "search 变体搜索按钮",
+        "required": true,
+        "appliesTo": [
+          "search"
+        ]
+      },
+      {
+        "icon": "icon-text-button-arrow-right-blue-s",
+        "usage": "Mini当前嵌套TextButton inline-blue-link/m真实原子箭头；不表示Mini完整可调用或视觉通过。",
+        "required": false,
+        "appliesTo": [
+          "mini"
+        ]
+      }
+    ],
+    "mutuallyExclusiveWith": [
+      {
+        "component": "content-banner-dark",
+        "reason": "Banner 是页面顶部的页头组件，Content Banner 是页面中部的深色 CTA 条，二者用途不同不可互相替代；不要把 Content Banner 当成 Banner 的一个变体使用"
+      }
+    ],
+    "variantDecisionsDescription": "先匹配具体场景，再区分候选、不用与设计参考；展示和AI读取同一规则。MG来源事实、当前本地接口和视觉批准分别记录，不扩展既有调用范围。",
+    "variantDecisions": [
+      {
+        "type": "Hero（首页级）",
+        "className": "ds-banner--hero（尺寸 1920×420）",
+        "whenToUse": "仅1920桌面首页，完整标题、描述和一个白色描边XL按钮。",
+        "whenNotToUse": "需要搜索、无描述/按钮、图文并列内容卡或窄窗口。",
+        "nestedComponents": [
+          {
+            "component": "Button",
+            "label": "Button outline-white/xl regular（本轮唯一桌面Hero调用）",
+            "href": "button.html"
+          }
+        ],
+        "status": "当前MG规则与可见结构已核对；具体调用资格读同版catalog，参考不授权调用。",
+        "variant": "hero",
+        "fragment": "hero",
+        "selectionCases": [
+          {
+            "id": "bn11",
+            "kind": "use",
+            "condition": "1920首页单图，标题/描述/单CTA完整。",
+            "result": "hero；1920单图，已有白色描边XL按钮，深色背景由宿主提供。",
+            "strength": "candidate",
+            "targetVariant": "hero"
+          },
+          {
+            "id": "bn12",
+            "kind": "avoid",
+            "condition": "需要搜索，或只有标题。",
+            "result": "按Search/Title-only判断，不默认Hero。",
+            "strength": "avoid",
+            "targetVariant": "hero"
+          }
+        ]
+      },
+      {
+        "type": "Sub（解决方案页）",
+        "className": "ds-banner--sub（尺寸 1920×320）",
+        "whenToUse": "1920px解决方案页标题、描述与当前模板的深色面包屑。",
+        "whenNotToUse": "需要搜索、首页单CTA，或需要删除当前固定面包屑。",
+        "nestedComponents": [
+          {
+            "component": "Breadcrumb",
+            "label": "Breadcrumb (default / dark)（可选，不参与 Banner 变体判断）",
+            "href": "breadcrumb.html"
+          }
+        ],
+        "status": "当前MG规则与可见结构已核对；具体调用资格读同版catalog，参考不授权调用。",
+        "variant": "sub",
+        "fragment": "sub",
+        "selectionCases": [
+          {
+            "id": "bn21",
+            "kind": "use",
+            "condition": "1920×320解决方案，保留深色路径。",
+            "result": "sub；保留当前必需的完整深色面包屑。",
+            "strength": "candidate",
+            "targetVariant": "sub"
+          },
+          {
+            "id": "bn22",
+            "kind": "avoid",
+            "condition": "仅因有面包屑就选择Sub。",
+            "result": "先看用途和内容，面包屑不是选型条件。",
+            "strength": "avoid",
+            "targetVariant": "sub"
+          },
+          {
+            "id": "bn23",
+            "kind": "reference",
+            "condition": "需要无路径、播放或Pad/M。",
+            "result": "无面包屑、播放及适配仍未开放。",
+            "strength": "reference",
+            "targetVariant": "sub"
+          }
+        ]
+      },
+      {
+        "type": "Search（知识库）",
+        "className": "ds-banner--search（尺寸 1920×320）",
+        "whenToUse": "知识库或案例页的关键词搜索顶部，42px真实搜索输入与FS GPT宿主入口。",
+        "whenNotToUse": "普通产品选择、自动搜索结果、已接入AI回答或手机布局。",
+        "nestedComponents": [
+          {
+            "component": "Input",
+            "label": "Input (search)（必带）"
+          },
+          {
+            "component": "Breadcrumb",
+            "label": "Breadcrumb (default / dark)（可选，不参与 Banner 变体判断）",
+            "href": "breadcrumb.html"
+          }
+        ],
+        "status": "当前MG规则与可见结构已核对；具体调用资格读同版catalog，参考不授权调用。",
+        "variant": "search",
+        "fragment": "search",
+        "selectionCases": [
+          {
+            "id": "banner-search-content-use",
+            "kind": "use",
+            "condition": "知识库或案例页的关键词搜索顶部，42px真实搜索输入与FS GPT宿主入口。",
+            "result": "使用search并由宿主接搜索或GPT意图；不伪造搜索结果与AI回复。",
+            "targetVariant": "search"
+          },
+          {
+            "id": "banner-search-content-exclude",
+            "kind": "exclude",
+            "condition": "普通产品选择、自动搜索结果、已接入AI回答或手机布局。",
+            "result": "按实际内容另选，不用关键词搜索伪装配置选择。",
+            "targetVariant": "search"
+          }
+        ]
+      },
+      {
+        "type": "Title-only（专题页）",
+        "className": "ds-banner--title-only（尺寸 1920×200）",
+        "whenToUse": "1920×200专题/外围/分类页，核心内容只有标题。",
+        "whenNotToUse": "有描述、CTA或搜索输入，需要保留完整内容。",
+        "nestedComponents": [
+          {
+            "component": "Breadcrumb",
+            "label": "Breadcrumb (default / dark)（可选，不参与 Banner 变体判断）",
+            "href": "breadcrumb.html"
+          }
+        ],
+        "status": "当前MG规则与可见结构已核对；具体调用资格读同版catalog，参考不授权调用。",
+        "variant": "title-only",
+        "fragment": "title-only",
+        "selectionCases": [
+          {
+            "id": "bn41",
+            "kind": "use",
+            "condition": "桌面200px，仅完整标题。",
+            "result": "title-only；完整标题，不删来源描述或按钮。",
+            "strength": "candidate",
+            "targetVariant": "title-only"
+          },
+          {
+            "id": "bn42",
+            "kind": "avoid",
+            "condition": "来源有描述或CTA。",
+            "result": "重新选型，不能删内容适配组件。",
+            "strength": "avoid",
+            "targetVariant": "title-only"
+          }
+        ]
+      },
+      {
+        "type": "Mini（商品详情页）",
+        "className": "ds-banner--mini（尺寸 1200×120）",
+        "whenToUse": "PC商品详情内容中的120px窄幅信息，需真实三项分页切换。",
+        "whenNotToUse": "首页Hero、自动播放大图或未核对的M/Pad形态。",
+        "nestedComponents": [
+          {
+            "component": "Breadcrumb",
+            "label": "Breadcrumb (default / dark)（可选，不参与 Banner 变体判断）",
+            "href": "breadcrumb.html"
+          }
+        ],
+        "status": "沿既有MG来源与现行原子完成有限PC调用；工程和视觉独立。",
+        "variant": "mini",
+        "fragment": "mini",
+        "selectionCases": [
+          {
+            "id": "banner.mini.use",
+            "kind": "use",
+            "condition": "PC商品详情内容中的120px窄幅信息，需真实三项分页切换。",
+            "result": "三项内容与同版Carousel分页联动，文字链接仍用TextButton。",
+            "targetVariant": "mini"
+          },
+          {
+            "id": "banner.mini.avoid",
+            "kind": "avoid",
+            "condition": "首页Hero、自动播放大图或未核对的M/Pad形态。",
+            "result": "不扩大为其他场景或后台业务。",
+            "targetVariant": "mini"
+          }
+        ]
+      },
+      {
+        "type": "响应式 Hero（完整文案）",
+        "className": "ds-banner--hero-responsive",
+        "whenToUse": "来源标题、描述与单CTA均需完整保留的信息页，使用既有本地响应式实现。",
+        "whenNotToUse": "按MG首页M233原件原样还原，或缺少必需描述/CTA。",
+        "nestedComponents": [
+          {
+            "component": "Button",
+            "href": "button.html"
+          },
+          {
+            "component": "Breadcrumb",
+            "href": "breadcrumb.html"
+          }
+        ],
+        "status": "当前MG规则与可见结构已核对；具体调用资格读同版catalog，参考不授权调用。",
+        "variant": "hero-responsive",
+        "fragment": "hero-responsive",
+        "selectionCases": [
+          {
+            "id": "bn61",
+            "kind": "use",
+            "condition": "多窗口信息页，标题/描述/单CTA完整。",
+            "result": "hero-responsive；已有本地完整文案适配；图片/遮罩由宿主维护。",
+            "strength": "candidate",
+            "targetVariant": "hero-responsive"
+          },
+          {
+            "id": "bn62",
+            "kind": "avoid",
+            "condition": "仅为适配而编造描述或CTA。",
+            "result": "不编造描述或CTA，按来源重新选型。",
+            "strength": "avoid",
+            "targetVariant": "hero-responsive"
+          }
+        ]
+      }
+    ],
+    "parentContext": {
+      "page-top": {
+        "note": "Banner 永远是 header 之后、页面内容区之前的第一个元素，不出现在 page-section 内部"
+      }
+    },
+    "childRequirement": {
+      "hero": "buttons OPTIONAL；breadcrumb OPTIONAL",
+      "sub": "breadcrumb OPTIONAL",
+      "search": "searchBox REQUIRED；breadcrumb OPTIONAL",
+      "title-only": "description/button 禁止出现；breadcrumb OPTIONAL",
+      "mini": "breadcrumb OPTIONAL"
+    },
+    "notes": "banner 组件通常整页只出现一次（在 header 之后），不与其他 banner 变体在同一页面重复出现。state-only 时保留 Preview 的根节点、wrapper、class 和顺序；Mini 的不可用 CTA 允许将 Preview 的描述叶节点替换为同 class 的 disabled button。",
+    "stateOnlyMode": {
+      "prop": "data-props.interactionMode",
+      "value": "state-only",
+      "skeleton": "Preview 的 Banner 根节点和内部层级不可变",
+      "allowedLeafSubstitution": "Mini 仅允许 ds-banner__desc span → disabled button",
+      "navigation": false
+    },
+    "enforcementStatus": {
+      "componentDependencies.implementationClasses-evidence": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 8：componentDependencies[*].implementationClasses 声明的 class 必须在宿主 Preview 中真实出现。Breadcrumb(default/dark) 在 Banner 各变体中均为可选依赖。"
+      },
+      "colorDependencies.tokens-exist": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 2b：colorDependencies 引用的 color.* token 必须存在于 token-specs/colors.json（缺失即 error）；token 为 / 表示无对应 token 的白名单裸值；双源值一致由 validate-tokens.js 全量保证；Guard C 保证声明了就必须有颜色依赖表"
+      },
+      "colorDependencies.css-uses-var": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 2c：切出组件样式段，校验用到的 var(--color-*) 都在 colorDependencies 声明过，且无未声明裸色值（box-shadow/注释除外），违反即 error —— 保证颜色映射闭环"
+      },
+      "radiusDependencies.tokens-exist": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 3a：radiusDependencies 引用的 border-radius.* token 必须存在于 token-specs/border-radius.json（缺失即 error）；token 为 / 表示白名单裸值；Guard D 保证声明了就必须有圆角依赖表"
+      },
+      "radiusDependencies.css-uses-var": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 3b：校验 border-radius 用到的 var(--border-radius-*) 都在 radiusDependencies 声明过，且无未声明裸圆角值（0 除外），违反即 error —— 保证圆角映射闭环"
+      },
+      "fontSizeDependencies.tokens-exist": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 4a：fontSizeDependencies 引用的 typography.font-size-* token 必须存在于 token-specs/typography.json（缺失即 error）；token 为 / 表示无对应正式 token 的白名单值；Guard E 保证声明了就必须有字号依赖表"
+      },
+      "fontSizeDependencies.css-uses-var": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 4b：校验 font-size 用到的 var(--font-size-*) 都在 fontSizeDependencies 声明过，且无未声明裸字号值，违反即 error —— 保证字号映射闭环"
+      },
+      "shadowDependencies": {
+        "enforced": true,
+        "mechanism": "/",
+        "note": "本组件无 box-shadow，无 shadowDependencies"
+      },
+      "darkTextOverlayRequiresScrim": {
+        "enforced": true,
+        "mechanism": "validate.js: checkImageOverlay (IMG_OVERLAY)",
+        "note": "通用检查，非 banner 专属，但主要命中场景就是 banner 背景图+白字"
+      },
+      "variantSelectionRules": {
+        "enforced": false,
+        "mechanism": "无",
+        "note": "选哪个 banner 变体是语义判断，无法机械检查"
+      },
+      "childRequirement.perVariant": {
+        "enforced": true,
+        "mechanism": "verify.js: pageProbe BANNER_TITLE_ONLY + BANNER_SEARCH_INPUT（2026-07-16 新增）——title-only 内不得含 .ds-banner__desc 或 .ds-btn；search 必须含 .ds-banner__search。（部分强制，见 note）",
+        "note": "已强制：title-only 无描述/按钮、search 必带搜索框。Breadcrumb 对所有 Banner 变体可选，不参与变体选择；存在时按实际表面明暗校验 Breadcrumb 变体。"
+      },
+      "mutuallyExclusiveWith.content-banner-dark": {
+        "enforced": false,
+        "mechanism": "无"
+      },
+      "spacingDependencies.tokens-and-css-closure": {
+        "enforced": true,
+        "mechanism": "check-contracts.js: spacingDependencies token/value/selector/property 与组件 CSS 双向闭环校验"
+      },
+      "borderDependencies.tokens-and-css-closure": {
+        "enforced": true,
+        "mechanism": "check-contracts.js: borderDependencies token/value/aspect/selector/property 与组件 CSS 双向闭环校验"
+      },
+      "fontWeightDependencies.tokens-and-css-closure": {
+        "enforced": true,
+        "mechanism": "check-contracts.js: fontWeightDependencies token/value/selector/property 与组件 CSS 双向闭环校验；仅允许 Regular 400 / SemiBold 600，禁止裸字重值"
+      },
+      "typographyDependencies.size-weight-pairing": {
+        "enforced": true,
+        "mechanism": "check-contracts.js: typographyDependencies.token 必须引用 token-specs/typography.json 中真实 composite typography token；该 token 同时锁定 fontSize、lineHeight、fontWeight，并核对底层字号/字重 primitive 与 CSS 证据，依赖汇总表只输出一个 Token 链接"
+      }
+    },
+    "spacingDependencies": [
+      {
+        "token": "spacing.banner-hero-inset",
+        "value": "404px",
+        "usage": "padding：.ds-banner--hero",
+        "properties": [
+          "padding"
+        ],
+        "selectors": [
+          ".ds-banner--hero"
+        ],
+        "appliesTo": [
+          "hero"
+        ]
+      },
+      {
+        "token": "spacing.20",
+        "value": "20px",
+        "usage": "gap：.ds-banner--hero",
+        "properties": [
+          "gap"
+        ],
+        "selectors": [
+          ".ds-banner--hero"
+        ],
+        "appliesTo": [
+          "hero"
+        ]
+      },
+      {
+        "token": "spacing.banner-content-inset",
+        "value": "360px",
+        "usage": "padding / padding-left：.ds-banner--sub、.ds-banner--mini",
+        "properties": [
+          "padding",
+          "padding-left"
+        ],
+        "selectors": [
+          ".ds-banner--sub",
+          ".ds-banner--mini"
+        ],
+        "appliesTo": [
+          "sub",
+          "mini"
+        ]
+      },
+      {
+        "token": "spacing.lg",
+        "value": "16px",
+        "usage": "gap：.ds-banner--sub",
+        "properties": [
+          "gap"
+        ],
+        "selectors": [
+          ".ds-banner--sub"
+        ],
+        "appliesTo": [
+          "sub"
+        ]
+      },
+      {
+        "token": "spacing.xl",
+        "value": "24px",
+        "usage": "gap：.ds-banner--search",
+        "properties": [
+          "gap"
+        ],
+        "selectors": [
+          ".ds-banner--search"
+        ],
+        "appliesTo": [
+          "search"
+        ]
+      },
+      {
+        "token": "spacing.xs",
+        "value": "4px",
+        "usage": "gap：.ds-banner--mini .ds-banner__title、.ds-banner__breadcrumb",
+        "properties": [
+          "gap"
+        ],
+        "selectors": [
+          ".ds-banner--mini .ds-banner__title",
+          ".ds-banner__breadcrumb"
+        ],
+        "appliesTo": [
+          "sub",
+          "mini"
+        ]
+      },
+      {
+        "token": "spacing.md",
+        "value": "12px",
+        "usage": "gap / padding：.ds-banner__search；gap：.ds-banner__actions",
+        "properties": [
+          "gap",
+          "padding"
+        ],
+        "selectors": [
+          ".ds-banner__search",
+          ".ds-banner__actions"
+        ],
+        "appliesTo": [
+          "hero",
+          "search",
+          "sub"
+        ]
+      },
+      {
+        "token": "spacing.6",
+        "value": "6px",
+        "usage": "gap：.ds-banner__dots；padding：.ds-banner__search、.ds-banner__search-btn",
+        "properties": [
+          "gap",
+          "padding"
+        ],
+        "selectors": [
+          ".ds-banner__dots",
+          ".ds-banner__search",
+          ".ds-banner__search-btn"
+        ],
+        "appliesTo": [
+          "hero",
+          "search"
+        ]
+      },
+      {
+        "token": "spacing.20",
+        "value": "20px",
+        "usage": "top：Banner 内可选 Breadcrumb 的定位",
+        "properties": [
+          "top"
+        ],
+        "selectors": [
+          ".ds-banner > .ds-breadcrumb"
+        ],
+        "appliesTo": [
+          "hero",
+          "sub",
+          "search",
+          "title-only",
+          "mini"
+        ]
+      },
+      {
+        "token": "spacing.xl",
+        "value": "24px",
+        "usage": "left：Banner 内可选 Breadcrumb 的最小版心边距",
+        "properties": [
+          "left"
+        ],
+        "selectors": [
+          ".ds-banner > .ds-breadcrumb"
+        ],
+        "appliesTo": [
+          "hero",
+          "sub",
+          "search",
+          "title-only",
+          "mini"
+        ]
+      },
+      {
+        "token": "spacing.20",
+        "value": "20px",
+        "usage": "padding-top：Mini Banner 有面包屑时为正文预留位置",
+        "properties": [
+          "padding-top"
+        ],
+        "selectors": [
+          ".ds-banner--mini:has(> .ds-breadcrumb)"
+        ],
+        "appliesTo": [
+          "mini"
+        ]
+      },
+      {
+        "token": "spacing.2xl",
+        "value": "32px",
+        "usage": "既有响应式 Hero 内边距，同值归一化；本批仅核对 desktop 实例",
+        "properties": [
+          "padding"
+        ],
+        "selectors": [
+          ".ds-banner--hero-responsive .ds-banner__responsive-inner"
+        ],
+        "appliesTo": [
+          "hero-responsive"
+        ],
+        "sourceResource": "components/banner-responsive.css"
+      },
+      {
+        "token": "spacing.56",
+        "value": "56px",
+        "usage": "既有响应式 Hero 内边距，同值归一化；本批仅核对 desktop 实例",
+        "properties": [
+          "padding"
+        ],
+        "selectors": [
+          ".ds-banner--hero-responsive .ds-banner__responsive-inner"
+        ],
+        "appliesTo": [
+          "hero-responsive"
+        ],
+        "sourceResource": "components/banner-responsive.css"
+      },
+      {
+        "token": "spacing.sm",
+        "value": "8px",
+        "usage": "新版Mini分页容器距底部8px，仅定位外层，不覆盖分页原子",
+        "properties": [
+          "bottom"
+        ],
+        "selectors": [
+          ".ds-banner[data-banner-mini-current] > .ds-banner__mini-pagination"
+        ],
+        "appliesTo": [
+          "mini"
+        ]
+      },
+      {
+        "token": "spacing.2",
+        "value": "2px",
+        "usage": "嵌套Button共享运行资源的可选左图标组内距；原子拥有，宿主不得覆盖。本宿主未新增可见图标调用。",
+        "appliesTo": [
+          "hero",
+          "hero-responsive"
+        ]
+      },
+      {
+        "token": "spacing.3",
+        "value": "3px",
+        "usage": "当前来源支持的新增调用及真实原子资源",
+        "appliesTo": [
+          "search"
+        ]
+      }
+    ],
+    "borderDependencies": [
+      {
+        "token": "border.style.none",
+        "value": "none",
+        "usage": "border：.ds-banner__search-input、.ds-banner__search-btn",
+        "aspect": "style",
+        "properties": [
+          "border"
+        ],
+        "selectors": [
+          ".ds-banner__search-input",
+          ".ds-banner__search-btn"
+        ],
+        "appliesTo": [
+          "search"
+        ]
+      },
+      {
+        "token": "border.width.default",
+        "value": "1px",
+        "usage": "当前来源支持的新增调用及真实原子资源",
+        "aspect": "width",
+        "appliesTo": [
+          "search"
+        ]
+      },
+      {
+        "token": "border.style.default",
+        "value": "solid",
+        "usage": "当前来源支持的新增调用及真实原子资源",
+        "aspect": "style",
+        "appliesTo": [
+          "search"
+        ]
+      },
+      {
+        "token": "border.color.default",
+        "value": "var(--color-gray-5)",
+        "usage": "当前来源支持的新增调用及真实原子资源",
+        "aspect": "color",
+        "appliesTo": [
+          "search"
+        ]
+      },
+      {
+        "token": "border.color.emphasis",
+        "value": "var(--color-gray-1)",
+        "usage": "当前来源支持的新增调用及真实原子资源",
+        "aspect": "color",
+        "appliesTo": [
+          "search"
+        ]
+      }
+    ],
+    "hardRules": [
+      {
+        "title": "桌面Hero采用原组件404px内容内缩",
+        "description": "当前精确调用仅1920px桌面原件；不在页面覆盖组件display/padding。",
+        "ruleContent": "<strong>1920×420桌面Hero沿原组件404px内容内缩，单个白色描边42px Button。页面不得覆盖组件display或padding；图片在同一模块的页面级外层装配。</strong>",
+        "aiParse": "hero -> native1920x420; inset404; single outline-white/xl; background via pageLevelContent",
+        "enforcement": "真实原件与组件优先；finite DOM/source/browser checks；其他旧调用保持受限。"
+      },
+      {
+        "title": "Banner 仅允许位于公共导航后的前一到两个内容模块",
+        "description": "Banner 是页面头部层级组件，只能出现在固定 Header / 公共导航之后的第 1 或第 2 个内容模块位置；不包括 Header、Footer 本身。",
+        "ruleContent": "<strong>Banner 的位置只能是固定 Header / 公共导航之后的第 1 或第 2 个内容模块；第 3 个及之后的模块、Footer 之前的其他深层内容，以及公共导航之前，均禁止使用 Banner。</strong>",
+        "aiParse": "section.positionAfterPublicHeader\n  = 1 || 2\n\nsection.positionAfterPublicHeader >= 3\n  -> Banner 禁止\n\npositionBeforePublicHeader || positionInsideFooter\n  -> Banner 禁止",
+        "enforcement": "组件映射与 A5 规范检查必须核对 Banner 相对于固定公共 Header 的内容模块序号；位置不满足时，即使内容结构像 Banner，也必须改用其他匹配组件或页面级自定义。"
+      },
+      {
+        "title": "白字压背景图必须加深色遮罩",
+        "ruleContent": "<strong>白色文字叠在背景图上（Hero/Sub/Search/Title-only）时，图片必须加纯色半透明深色遮罩（<code>box-shadow: inset 0 0 0 2000px rgba(0,0,0,0.5)</code>），禁止用 gradient。</strong>",
+        "aiParse": "relations.enforcementStatus\n  .darkTextOverlayRequiresScrim\n  = { enforced: true,\n      mechanism: \"validate.js: checkImageOverlay (IMG_OVERLAY)\" }",
+        "enforcement": "强制规则（<code>validate.js: checkImageOverlay (IMG_OVERLAY)</code>），用 gradient 或不加遮罩会直接判 <strong style=\"color:#C00000;\">error</strong>。"
+      },
+      {
+        "title": "Banner CTA 主次层级",
+        "ruleContent": "<strong>深色 Banner 只有一个 CTA 时用 <code>outline-white</code>；有两个 CTA 时，主操作用 <code>filled-gray</code>，次操作用 <code>outline-white</code>。</strong>禁止 filled-red；唯一例外是 Search 变体的搜索提交按钮。",
+        "aiParse": "relations.componentDependencies[0]\n  .requiredVariants = [\"filled-gray\", \"outline-white\"]\n\nvariants[2].searchBoxSpec\n  .submitButtonColor = \"red\n    （唯一允许的 filled-red 场景）\"",
+        "enforcement": "设计规范硬约束。深色 Banner 文字为白色；双 CTA 必须形成 filled-gray / outline-white 主次层级。"
+      }
+    ],
+    "interactionRules": [
+      {
+        "name": "宿主与子组件",
+        "rule": "Button/Breadcrumb/TextButton和分页的原依赖保持；规范有子槽不表示每个有限调用可增删。",
+        "owner": "原契约及具体调用"
+      },
+      {
+        "name": "背景与适配",
+        "rule": "真实图片和遮罩由页面宿主负责；固定1920调用不装作响应式。",
+        "owner": "原页面宿主"
+      },
+      {
+        "name": "交互边界",
+        "rule": "单CTA保留真实Button回调；播放、搜索、轮播和瀑布流未因本次整理而开放。",
+        "owner": "既有组件运行时/宿主"
+      }
+    ],
+    "prototypeRollout": {
+      "template": "docs/component-spec-template.html",
+      "source": "relations.variantDecisions",
+      "workflow": "existing-local-only",
+      "scope": "existing admitted calls; selection/dependency documentation only"
+    }
+  },
+  "searchIntents": [
+    "页面横幅",
+    "首页大图",
+    "Hero区域",
+    "顶部大图",
+    "面包屑横幅",
+    "搜索横幅",
+    "专题页标题条",
+    "商品详情页提示条"
+  ],
+  "tokenReferences": [
+    "color.white",
+    "color.gray-1",
+    "color.gray-3",
+    "color.gray-9",
+    "typography.font-family-base",
+    "typography.font-size-h8",
+    "border-radius.md",
+    "spacing.banner-hero-inset",
+    "spacing.20",
+    "spacing.banner-content-inset",
+    "spacing.lg",
+    "spacing.xl",
+    "spacing.xs",
+    "spacing.sm",
+    "spacing.md",
+    "spacing.6",
+    "border.style.none",
+    "typography.font-weight-semibold",
+    "typography.font-weight-regular",
+    "typography.font-size-sm",
+    "typography.font-size-md",
+    "typography.h1-semibold",
+    "typography.h2-semibold",
+    "typography.h6-regular",
+    "typography.h9-regular",
+    "typography.h8-regular",
+    "typography.h7-regular",
+    "spacing.2xl",
+    "spacing.56",
+    "spacing.2",
+    "color.gray-2",
+    "color.gray-5",
+    "color.gray-8",
+    "color.blue",
+    "spacing.3",
+    "border.width.default",
+    "border.style.default",
+    "border.color.default",
+    "border.color.emphasis"
+  ],
+  "constraints": {
+    "allowedChildren": [
+      "Button",
+      "Breadcrumb",
+      "Input(search)",
+      "Text"
+    ],
+    "requiredProperties": [
+      "variant"
+    ],
+    "forbiddenCombinations": [
+      [
+        "title-only",
+        "description"
+      ],
+      [
+        "title-only",
+        "button"
+      ]
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-08-26",
+      "author": "Kiro",
+      "change": "移除首页 Hero Banner 正式 Preview 中的静态轮播分页器展示，避免将多图场景下的可选能力误解为 Hero 默认效果；分页器契约与共享样式继续保留供已确认的真实轮播页面使用。"
+    },
+    {
+      "date": "2026-08-26",
+      "author": "Kiro",
+      "change": "参考首页商品 Banner 静态效果收紧 Hero 走马灯分页器：激活条 40×6px、默认点 6×6px、间距 6px、距底 12px，总宽由 164px 调整为 112px；数量、居中方式与颜色保持不变。"
+    },
+    {
+      "date": "2026-08-26",
+      "author": "Kiro",
+      "change": "商品详情页 Mini Banner 高度由 90px 调整为 120px；同步更新版心尺寸、背景图片区域和变体选择说明，标题与描述保持 14px/22px 并在新高度内垂直居中。"
+    },
+    {
+      "date": "2026-07-23",
+      "author": "Kiro",
+      "change": "将字号与字重配对提升为正式 composite typography token；组件依赖以单一 token 引用完整字号、行高、字重，primitive 字段仅保留作 CSS 证据。"
+    },
+    {
+      "date": "2026-07-22",
+      "change": "新增 typographyDependencies 成对字体依赖：每条记录明确绑定字号与字重，依赖汇总表按“字号 · 层级 · 字重”整体展示，禁止拆列后猜测组合。",
+      "author": "Kiro"
+    },
+    {
+      "date": "2026-07-22",
+      "change": "新增 fontWeightDependencies：按组件 CSS 显式 font-weight 证据登记 Regular 400 / SemiBold 600；无显式声明的组件保留空数组，并纳入 token/value/selector/property 双向闭环校验。",
+      "author": "Kiro"
+    },
+    {
+      "date": "2026-07-20",
+      "change": "父子依赖治理：Button(outline-white)、Breadcrumb(dark)、Carousel(dark) 依赖补齐 requiredVariants，作为子组件宿主清单的唯一事实源。",
+      "author": "Kiro"
+    },
+    {
+      "date": "2026-06-30",
+      "change": "新建档案，覆盖 hero/sub/search/title-only/mini 五个变体，补全 relations/searchIntents",
+      "author": "TBD"
+    },
+    {
+      "date": "2026-07-14",
+      "change": "增加间距与描边 token 依赖、CSS 选择器/属性证据及机械闭环校验映射",
+      "author": "Kiro"
+    },
+    {
+      "date": "2026-07-14",
+      "change": "依据契约语义、组件 CSS 选择器与预览结构，补齐全部现有依赖的 appliesTo 汇总行映射；仅使用真实 types/variants，不新增伪类型或不确定依赖",
+      "author": "Kiro"
+    },
+    {
+      "date": "2026-10-09",
+      "author": "Codex",
+      "change": "统一规范维护质量标准：登记真实实现与选型规则入口、源变更重新验收、父子影响检查及历史页面隔离；不推断可编辑槽位或视觉批准。"
+    },
+    {
+      "date": "2026-10-11",
+      "author": "Codex",
+      "change": "Breadcrumb原子准确12px路径/反白50%变更后同步当前Preview和AI宿主资源/marker；宿主不复制原子尺寸或颜色，完整浏览器验收仍待验证，冻结页面不升级。"
+    },
+    {
+      "date": "2026-10-28",
+      "author": "Codex",
+      "change": "定向纠正hero精确调用为真实桌面单CTA结构；移除旧必需Breadcrumb/双CTA，恢复组件原生404px内缩。实际照片在页面级外层同模块装配；冻结页不升级，其他Banner调用不开放。"
+    }
+  ],
+  "isComplete": true,
+  "createdAt": "2026-06-30T00:00:00Z",
+  "updatedAt": "2026-11-15",
+  "qualityProfile": {
+    "schemaVersion": "1.0.0",
+    "standard": "docs/component-quality-standard.md",
+    "implementation": "components/variants/banner.html",
+    "selection": {
+      "mappingSource": "components/selection-mvp-policy.json",
+      "mappingPointer": "components.banner.variantDecisionTypes",
+      "rulesPointer": "relations.variantDecisions"
+    },
+    "maintenance": {
+      "authority": "contract-preview-runtime-token-icon",
+      "generatedOnly": [
+        "preview-reference-tables",
+        "component-index",
+        "selection-catalog",
+        "design-reading-view",
+        "ai-reference"
+      ],
+      "changePolicy": "记录来源差异、兼容性与受影响父子组件；源文件变化后旧工程验收失效。",
+      "historicalPages": "不自动升级；新页面锁定本地组件运行资源版本。"
+    },
+    "acceptance": {
+      "report": "components/quality/report.json",
+      "proof": "components/quality/acceptance.json",
+      "declarationIsNotProof": true
+    }
+  },
+  "responsiveExtension": {
+    "source": "page-inputs/bdcom-oem-m2/component-sources/banner.json",
+    "stylesheet": "components/banner-responsive.css",
+    "adaptation": "M solution content structure is closest; source OEM CTA retained through real Button, no pagination invented. Breadcrumb hidden below desktop according to MG. Desktop title400 is user-authorized only at page assembly.",
+    "evidenceIndex": "components/sources/banner/source-index.json",
+    "sourceFormat": "mastergo-tool-generated-html-not-original-frontend",
+    "originalNodeTypesConfirmed": false,
+    "sourceRole": "composition-candidates-await-original-node-type"
+  },
+  "editable": [
+    "title",
+    "description",
+    "actionLabel",
+    "actionCallback",
+    "breadcrumb",
+    "primaryActionLabel",
+    "secondaryActionLabel",
+    "primaryActionCallback",
+    "secondaryActionCallback",
+    "surface",
+    "placeholder",
+    "searchLabel",
+    "searchCallback",
+    "gptCallback",
+    "slides"
+  ],
+  "integration": {
+    "styles": [
+      "components/tokens.css",
+      "components/components.css",
+      "components/banner-responsive.css",
+      "components/banner-current.css",
+      "components/button-current.css",
+      "components/button-runtime-current.css",
+      "components/breadcrumb-current.css",
+      "components/text-button-current.css",
+      "components/carousel-current.css",
+      "components/icon-button-current.css",
+      "components/input-search-current.css",
+      "components/banner-search-current.css",
+      "components/banner-mini-current.css"
+    ],
+    "scripts": [
+      "components/input-search-current.js",
+      "components/banner-search-current.js",
+      "components/carousel-current.js"
+    ],
+    "fontStylesheets": [
+      "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+    ]
+  },
+  "aiContract": {
+    "schemaVersion": "1.0.0",
+    "rootTag": "div",
+    "scope": "five-finite-PC-banner-calls-including-owned-search",
+    "supported": [
+      "hero-responsive",
+      "sub",
+      "title-only",
+      "hero",
+      "search",
+      "mini"
+    ],
+    "unsupported": [
+      "image-gradient-background-canonical",
+      "breadcrumb-canonical",
+      "multiple-cta-canonical",
+      "mobile-tablet-acceptance"
+    ],
+    "reviewStatus": {
+      "engineering": "pending",
+      "visual": "pending",
+      "familyCoverage": "partial"
+    },
+    "previewAssets": [
+      "components/preview/reference-live.js",
+      "components/sources/banner/search42-gpt-nested-source-1015.json",
+      "components/sources/banner/native-hero-review-1028.json",
+      "components/sources/banner/assets/home-hero-original-1028.png",
+      "components/sources/banner/hero-browser-1028/result.json",
+      "components/sources/banner/hero-browser-1028/default.png",
+      "components/sources/banner/hero-browser-1028/hover.png"
+    ],
+    "selectionPolicy": "按来源内容选Hero、Sub、Search、Title-only或Mini，再查当前catalog。Search已接真实42px Input私有部件、IconButton和官方FS GPT资源；本地纯白表面及GPT导出图在28px槽内的位置单列待视觉确认。Mini现有120px PC原件使用真实三位分页和手动切换；不代表整套首页轮播或自动播放。Hero单CTA、Sub深色Breadcrumb、Title-only仅标题等原边界保持；不把本地响应式当MG移动原件。 Current five-variant closure 20261115: only supported exact source examples and publication decisions permit local calls. Earlier preview-only or placeholder descriptions are historical; PC geometry and host boundaries remain explicit.",
+    "identity": {
+      "rule": "For hero take the complete native single-action root with data-banner-native-hero. Other finite roots retain their prior declared identities and withheld admission.",
+      "boundary": "Each finite root owns its solid FS Token surface. Hero-responsive alone uses existing layout corrections; other roots keep their original PC layout. Image/gradient backgrounds and source-less omissions remain excluded."
+    },
+    "locked": [
+      "Real Hero inner/title/description/actions structure",
+      "Component-owned layout correction and solid Token surface",
+      "Real Button outline-white/XL ds-btn__text",
+      "No Carousel control-inset formula in Banner content",
+      "Existing responsive CSS spacing.56 remains equal to old 56px; no new breakpoint or Pad/M acceptance",
+      "Existing PC Sub/Title-only layout; solid-dark Token surface",
+      "Native hero1920x420,404px inset and20px gaps; single genuine outline-white/XL Button atom400",
+      "Dark source-bound parent image/color surface; no inline component style or extra CTA/Breadcrumb in hero",
+      "Sub dark Breadcrumb structure and Title-only no extra content"
+    ],
+    "behavior": {
+      "action": "Native Button click callback supplied by page; no built-in navigation or business result.",
+      "location": "Banner only first/second content module after Header. Full-copy Hero keeps title/description/actions; Sub title/description; Title-only just title. Never infer absent source slots.",
+      "source": "Desktop home Hero original COMPONENT and Button reference now established by native-hero-review-1028; other variants retain their prior source limitations.",
+      "geometry": "Existing 1200px inner and desktop type styles retained; actual browser centering/geometry/contrast remains pending. This does not approve new Pad/M behavior.",
+      "sub": "Existing 320px Sub layout and component content inset with complete dark Breadcrumb; no CTA in canonical call. Child default/dark family relation remains source-scoped, no arbitrary cross-surface styling.",
+      "titleOnly": "Existing 200px centered-title layout with no other content in finite call; Breadcrumb optional at family level, omitted here to keep one exact title-only assembly.",
+      "visual": "Only authored structures and local Token CSS proven. Actual 320/200px geometry, 1200 inset, centered 960 title and color contrast still require allowed PC browser proof.",
+      "hero": "Native1920 desktop single-image home Hero. Parent supplies evidence-backed image and applicable FS scrim or dark FS surface. Title/description/one real outline-white42px Button; callback binds native click. Source dots are excluded from this finite single-image use, not migrated as invented Banner pagination.",
+      "search": "Input负责原生搜索字段及Enter/搜索按钮；Banner发出搜索/GPT意图，不提供后端搜索或AI回答。",
+      "mini": "Source three-position PC120px Mini. Actual slide content, original TextButton and Carousel pagination; manual click/Arrow/Home/End, hidden/inert inactive content,600ms horizontal content motion with reduced-motion support. No inferred autoplay."
+    },
+    "evidence": {
+      "localImplementation": "components/variants/banner.html",
+      "comparison": "components/sources/banner/local-structure-review.json",
+      "exportIndex": "components/sources/banner/source-index.json",
+      "specificationReview": "components/sources/banner/native-specification-review-1011.json",
+      "originalComponentReview": "components/sources/banner/native-component-review-1011.json",
+      "sourceDifferenceReconciliation": "components/sources/banner/source-difference-reconciliation-1013.json",
+      "nativeHeroReview": "components/sources/banner/native-hero-review-1028.json",
+      "nativeHeroBrowser": "components/sources/banner/hero-browser-1028/result.json",
+      "nativeTitleOnlyReview": "components/sources/banner/native-title-only-review-1113.json",
+      "currentMgReview": "components/sources/banner-navigation-mg-20261114/banner-review.json",
+      "fiveVariantSource": "components/sources/five-variants-20261115/review.json"
+    },
+    "variants": {
+      "hero-responsive": {
+        "purpose": "desktop-full-copy-solid-dark-hero-one-outline-white-action",
+        "exampleSelector": "[data-ai-example=\"ai-banner-hero-current\"]",
+        "allowedEdits": [
+          "title",
+          "description",
+          "actionLabel",
+          "actionCallback",
+          "surface"
+        ],
+        "slots": {
+          "title": {
+            "selector": "p.ds-banner__title",
+            "mode": "text",
+            "required": true
+          },
+          "description": {
+            "selector": "p.ds-banner__desc",
+            "mode": "text",
+            "required": true
+          },
+          "actionLabel": {
+            "selector": "span.ds-btn__text",
+            "mode": "text",
+            "required": true
+          }
+        },
+        "bindings": {
+          "actionCallback": {
+            "mode": "event-handler",
+            "target": "button.ds-btn",
+            "event": "click"
+          },
+          "surface": {
+            "mode": "native-attribute",
+            "target": "root",
+            "attribute": "data-banner-surface",
+            "values": [
+              "image"
+            ],
+            "sourceProperty": "Existing dark background image and mandatory host overlay"
+          }
+        },
+        "runtime": {
+          "styles": [
+            "components/tokens.css",
+            "components/components.css",
+            "components/banner-responsive.css",
+            "components/banner-current.css",
+            "components/button-current.css",
+            "components/button-runtime-current.css",
+            "components/breadcrumb-current.css",
+            "components/text-button-current.css",
+            "components/carousel-current.css"
+          ],
+          "scripts": []
+        }
+      },
+      "sub": {
+        "purpose": "finite-sub-solid-dark-static",
+        "exampleSelector": "[data-ai-example=\"ai-banner-sub-static\"]",
+        "allowedEdits": [
+          "title",
+          "description",
+          "breadcrumb"
+        ],
+        "slots": {
+          "title": {
+            "selector": "p.ds-banner__title",
+            "mode": "text",
+            "required": true
+          },
+          "description": {
+            "selector": "p.ds-banner__desc",
+            "mode": "text",
+            "required": true
+          },
+          "breadcrumb": {
+            "selector": "nav.ds-breadcrumb",
+            "mode": "structured-content",
+            "required": true,
+            "preserve": [
+              "div.ds-breadcrumb__item",
+              "a.ds-breadcrumb__link",
+              "span.ds-breadcrumb__separator",
+              "span.ds-breadcrumb__current"
+            ],
+            "rule": "Complete dark Breadcrumb; plaintext labels and safe href or display-only disabled anchors. Final item current, slash separators and aria label locked."
+          }
+        },
+        "runtime": {
+          "styles": [
+            "components/tokens.css",
+            "components/components.css",
+            "components/banner-responsive.css",
+            "components/banner-current.css",
+            "components/button-current.css",
+            "components/button-runtime-current.css",
+            "components/breadcrumb-current.css",
+            "components/text-button-current.css",
+            "components/carousel-current.css"
+          ],
+          "scripts": []
+        }
+      },
+      "title-only": {
+        "purpose": "finite-title-only-solid-dark-static",
+        "exampleSelector": "[data-ai-example=\"ai-banner-title-only-static\"]",
+        "allowedEdits": [
+          "title"
+        ],
+        "slots": {
+          "title": {
+            "selector": "p.ds-banner__title",
+            "mode": "text",
+            "required": true
+          }
+        },
+        "runtime": {
+          "styles": [
+            "components/tokens.css",
+            "components/components.css",
+            "components/banner-responsive.css",
+            "components/banner-current.css",
+            "components/button-current.css",
+            "components/button-runtime-current.css",
+            "components/breadcrumb-current.css",
+            "components/text-button-current.css",
+            "components/carousel-current.css"
+          ],
+          "scripts": []
+        }
+      },
+      "hero": {
+        "purpose": "native-desktop-home-hero-single-outline-white-action",
+        "exampleSelector": "[data-ai-example=\"ai-banner-hero-static\"]",
+        "allowedEdits": [
+          "title",
+          "description",
+          "actionLabel",
+          "actionCallback"
+        ],
+        "slots": {
+          "title": {
+            "selector": "p.ds-banner__title",
+            "mode": "text",
+            "required": true
+          },
+          "description": {
+            "selector": "p.ds-banner__desc",
+            "mode": "text",
+            "required": true
+          },
+          "actionLabel": {
+            "selector": "span.ds-btn__text",
+            "mode": "text",
+            "required": true
+          }
+        },
+        "bindings": {
+          "actionCallback": {
+            "mode": "event-handler",
+            "target": "button.ds-btn",
+            "event": "click"
+          }
+        },
+        "runtime": {
+          "styles": [
+            "components/tokens.css",
+            "components/components.css",
+            "components/banner-responsive.css",
+            "components/banner-current.css",
+            "components/button-current.css",
+            "components/button-runtime-current.css",
+            "components/breadcrumb-current.css",
+            "components/text-button-current.css",
+            "components/carousel-current.css"
+          ],
+          "scripts": []
+        }
+      },
+      "search": {
+        "purpose": "source-pc200-search42-and-gpt-intents-solid-local-surface",
+        "exampleSelector": "[data-ai-example=\"ai-banner-search-current\"]",
+        "allowedEdits": [
+          "title",
+          "description",
+          "placeholder",
+          "searchLabel",
+          "searchCallback",
+          "gptCallback"
+        ],
+        "slots": {
+          "title": {
+            "selector": "p.ds-banner__title",
+            "mode": "text",
+            "required": true
+          },
+          "description": {
+            "selector": "p.ds-banner__desc",
+            "mode": "text",
+            "required": true
+          }
+        },
+        "bindings": {
+          "placeholder": {
+            "mode": "native-attribute",
+            "target": "input.ds-input-search__field",
+            "attribute": "placeholder",
+            "valueType": "nonempty-string",
+            "sourceProperty": "Search placeholder content"
+          },
+          "searchLabel": {
+            "mode": "native-attribute",
+            "target": "input.ds-input-search__field",
+            "attribute": "aria-label",
+            "valueType": "nonempty-string",
+            "sourceProperty": "Search accessible name"
+          },
+          "searchCallback": {
+            "mode": "event-handler",
+            "target": "root",
+            "event": "ds:banner-search"
+          },
+          "gptCallback": {
+            "mode": "event-handler",
+            "target": "root",
+            "event": "ds:banner-gpt"
+          }
+        }
+      },
+      "mini": {
+        "purpose": "source-product-mini-three-position-carousel",
+        "exampleSelector": "[data-ai-example=\"ai-banner-mini-current\"]",
+        "allowedEdits": [
+          "slides"
+        ],
+        "slots": {
+          "slides": {
+            "selector": ".ds-banner__mini-slides",
+            "mode": "structured-content",
+            "required": true,
+            "preserve": [
+              "div.ds-banner__mini-slide",
+              "p.ds-banner__title",
+              "p.ds-banner__desc",
+              "a.ds-text-btn"
+            ],
+            "rule": "Exactly3 complete slides, unique paired IDs and declared initial hidden/inert; content image/title/description/href only. No invented shape, classes, autoplay or number of positions."
+          }
+        },
+        "bindings": {},
+        "runtime": {
+          "styles": [
+            "components/tokens.css",
+            "components/components.css",
+            "components/banner-responsive.css",
+            "components/banner-current.css",
+            "components/button-current.css",
+            "components/button-runtime-current.css",
+            "components/breadcrumb-current.css",
+            "components/text-button-current.css",
+            "components/carousel-current.css",
+            "components/icon-button-current.css",
+            "components/input-search-current.css",
+            "components/banner-search-current.css",
+            "components/banner-mini-current.css"
+          ],
+          "scripts": [
+            "components/carousel-current.js"
+          ]
+        }
+      }
+    }
+  },
+  "searchRequiredIdentity1015": {
+    "source": "components/sources/banner/search42-gpt-nested-source-1015.json",
+    "closed": [
+      "Native03282542 Default/off component matched",
+      "Nested genuine Search IconButton28 with16 glyph mapped",
+      "GPT115291 is host Frame with GPT28 and right14; ordinary Button claim rejected",
+      "Host internal field actual560x42 fill verified; inherited400 DSL not used as runtime width"
+    ],
+    "remaining": [
+      "Complete original Search/GPT icon assets and genuine atom admission; no new standalone Search family",
+      "Whole Search Banner runtime/source assembly and actual visual remain withdrawn"
+    ],
+    "noRenderChange": true,
+    "noNewFamily": true,
+    "fullFamilyAcceptance": false
+  }
+}

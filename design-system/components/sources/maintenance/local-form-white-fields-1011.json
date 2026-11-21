@@ -1,0 +1,38 @@
+{
+  "date": "2026-10-11",
+  "scope": "PC白第五与第六",
+  "source": "components/sources/form/native-component-review-1011.json",
+  "nodes": [
+    "71181:107908",
+    "71181:107940"
+  ],
+  "implementation": "白第五有箭头，白第六箭头关闭，按各自MG节点迁移真实输入框。表单移除错误下拉菜单、自编选项与隐藏桥接。最新28项定向检查及同步、health通过；真实浏览器白两字段输入和Tab顺序正常，箭头区别可见，刷新清理测试输入。",
+  "counts": {
+    "inputGray": 3,
+    "inputWhite": 5,
+    "dropdown": 0,
+    "button": 2,
+    "remainingLegacyInput": 4,
+    "checkbox": 6,
+    "prefix": 2,
+    "textarea": 2
+  },
+  "offline": {
+    "tests": 28,
+    "log": "/tmp/fs-form-white-fields-final-test.log",
+    "sync": "/tmp/fs-form-white-fields-sync.log",
+    "health": "/tmp/fs-form-white-fields-health.log",
+    "result": "通过，0错误2既有警告"
+  },
+  "browser": {
+    "method": "原生Chrome实际输入、Tab和内联截图",
+    "observed": [
+      "白第五接受White fifth并有箭头",
+      "白第六接受White sixth且无箭头",
+      "刷新清理输入与计数"
+    ],
+    "limits": "未核精确几何、全部状态或矢量字节；内联截图未保存项目PNG。"
+  },
+  "pending": "剩余4个PC普通输入、6个复选框、2个电话前缀、2个文本域及联系/协议装配；原子全状态、固定尺寸实际验收及M来源实现对应。白底前缀本地Gray9与MG Gray8差异待正确原子层修正；箭头矢量字节待核；适配走查暂缓。",
+  "frozenPages": "unchanged"
+}

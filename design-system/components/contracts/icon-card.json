@@ -1,0 +1,1923 @@
+{
+  "id": "comp_icon_card_001",
+  "name": "IconCard",
+  "chineseName": "图标卡片",
+  "description": "以图标代替图片的卡片组件，图标直接暴露在卡片表面（不加圆形/圆角容器），支持居中/居左两种布局，单事件/跳转型两种内容形态，以及多事件的折叠展开",
+  "category": "数据展示 Data Display",
+  "layouts": {
+    "center": {
+      "name": "居中",
+      "description": "标题、描述和链接保持视觉居中；bullets 列表铺满内容区并左对齐",
+      "class": "ds-icon-card--center",
+      "styleProperties": {
+        "flexDirection": "column",
+        "alignItems": "center",
+        "bulletsAlignSelf": "stretch",
+        "bulletsTextAlign": "left",
+        "gap": "12px",
+        "padding": "32px"
+      }
+    },
+    "left": {
+      "name": "居左",
+      "description": "内容多（标题+描述+bullets/链接）",
+      "class": "ds-icon-card--left",
+      "styleProperties": {
+        "flexDirection": "row",
+        "alignItems": "flex-start",
+        "gap": "16px",
+        "padding": "32px"
+      }
+    }
+  },
+  "contentForms": {
+    "single-event": {
+      "name": "单事件",
+      "description": "图标+标题必需；描述、bullets 和普通操作链接按来源可选，不为套用示例补内容",
+      "requiredSlots": [
+        "title"
+      ],
+      "optionalSlots": [
+        "icon",
+        "description",
+        "bullets",
+        "link"
+      ]
+    },
+    "jump-type": {
+      "name": "跳转型",
+      "description": "标题+一组蓝色链接列表（ds-icon-card__blue-links），无描述无 bullets",
+      "requiredSlots": [
+        "icon",
+        "title",
+        "blueLinks"
+      ]
+    },
+    "multi-event-expandable": {
+      "name": "多事件折叠展开",
+      "description": "bullets 列表超过容器高度时折叠显示（max-height:176px + 渐隐遮罩），底部 See more/See less 切换",
+      "requiredSlots": [
+        "icon",
+        "title",
+        "description",
+        "bullets",
+        "toggle"
+      ]
+    }
+  },
+  "variants": [
+    {
+      "name": "center.single-event",
+      "chineseName": "居中 · 单事件",
+      "description": "标题、描述和链接居中，bullets 列表铺满内容区并左对齐",
+      "styleProperties": {
+        "class": "ds-icon-card--center",
+        "flexDirection": "column",
+        "alignItems": "center",
+        "bulletsAlignSelf": "stretch",
+        "bulletsTextAlign": "left",
+        "gap": "12px",
+        "padding": "32px"
+      },
+      "cssClass": "ds-icon-card ds-icon-card--center",
+      "isComplete": true,
+      "requiredChildren": [
+        "img.ds-icon-card__icon",
+        "div.ds-icon-card__body",
+        "div.ds-icon-card__title-slot",
+        "p.ds-icon-card__desc",
+        "div.ds-icon-card__bullets",
+        "div.ds-icon-card__link",
+        "a.ds-text-btn",
+        "span.ds-text-btn__text",
+        "img.ds-text-btn__icon"
+      ],
+      "selectionDecisionType": "居中 · 单事件",
+      "whenToUse": "居中单事件，图标和描述槽齐备。",
+      "whenNotToUse": "图标语义不符、需省略图标/描述或其他事件结构。",
+      "usage": "居中单事件；标题必须，其余按来源。"
+    },
+    {
+      "name": "center.multi-event-expandable",
+      "chineseName": "居中 · 多事件折叠展开",
+      "description": "居中布局下的折叠展开形态；标题、描述和触发器居中，bullets 列表铺满内容区并左对齐",
+      "styleProperties": {
+        "class": "ds-icon-card--center",
+        "flexDirection": "column",
+        "alignItems": "center",
+        "bulletsAlignSelf": "stretch",
+        "bulletsTextAlign": "left",
+        "gap": "12px",
+        "padding": "32px"
+      },
+      "selectionDecisionType": "居中 · 多事件折叠展开",
+      "whenToUse": "居中灰色图标卡片明确需要长列表展开/收起，完整说明保持可见。",
+      "whenNotToUse": "普通短列表、单跳转链接，或仅因文字长就擅自折叠。",
+      "usage": "居中灰色图标卡片明确需要长列表展开/收起，完整说明保持可见。",
+      "cssClass": "ds-icon-card ds-icon-card--center ds-icon-card--bg-gray",
+      "isComplete": true,
+      "pendingParts": [],
+      "requiredChildren": [
+        "img.ds-icon-card__icon",
+        ".ds-icon-card__title-slot",
+        ".ds-list--unordered-12",
+        "[data-text-button-part=\"icon-card-disclosure\"]"
+      ]
+    },
+    {
+      "name": "left.single-event",
+      "chineseName": "居左 · 单事件",
+      "description": "内容多，居左布局；标题+描述+可选 bullets 列表+Learn more 链接",
+      "styleProperties": {
+        "class": "ds-icon-card--left",
+        "flexDirection": "row",
+        "alignItems": "flex-start",
+        "gap": "16px",
+        "padding": "32px"
+      },
+      "cssClass": "ds-icon-card ds-icon-card--left",
+      "isComplete": true,
+      "requiredChildren": [
+        "img.ds-icon-card__icon",
+        "div.ds-icon-card__body",
+        "div.ds-icon-card__title-slot",
+        "p.ds-icon-card__desc",
+        "div.ds-icon-card__bullets",
+        "div.ds-icon-card__link",
+        "a.ds-text-btn",
+        "span.ds-text-btn__text",
+        "img.ds-text-btn__icon"
+      ],
+      "selectionDecisionType": "居左 · 单事件",
+      "whenToUse": "居左单事件，图标和描述槽齐备。",
+      "whenNotToUse": "图标语义不符、需省略图标/描述或其他事件结构。",
+      "usage": "图标居左的单事件内容布局。"
+    },
+    {
+      "name": "left.jump-type",
+      "chineseName": "居左 · 跳转型",
+      "description": "居左布局，标题+一组蓝色链接列表，无描述无 bullets",
+      "styleProperties": {
+        "class": "ds-icon-card--left",
+        "flexDirection": "row",
+        "alignItems": "flex-start",
+        "gap": "16px",
+        "padding": "32px"
+      },
+      "cssClass": "ds-icon-card ds-icon-card--left ds-icon-card--bg-white ds-icon-card--bordered",
+      "isComplete": true,
+      "pendingParts": [],
+      "requiredChildren": [
+        "img.ds-icon-card__icon",
+        ".ds-icon-card__title-slot",
+        ".ds-list--unordered-links-12"
+      ],
+      "selectionDecisionType": "居左 · 多入口跳转型",
+      "whenToUse": "白色图标卡片标题下有多个独立蓝色链接，使用真实List12子组件。",
+      "whenNotToUse": "单个Learn more入口、纯说明或需要折叠的长列表。",
+      "usage": "白色图标卡片标题下有多个独立蓝色链接，使用真实List12子组件。"
+    },
+    {
+      "name": "left.multi-event-expandable",
+      "chineseName": "居左 · 多事件折叠展开",
+      "description": "居左布局下的折叠展开形态，bullets 超长时折叠+See more/See less",
+      "styleProperties": {
+        "class": "ds-icon-card--left",
+        "flexDirection": "row",
+        "alignItems": "flex-start",
+        "gap": "16px",
+        "padding": "32px"
+      },
+      "selectionDecisionType": "居左 · 多事件折叠展开",
+      "whenToUse": "居左灰色图标卡片明确需要长列表展开/收起，完整说明保持可见。",
+      "whenNotToUse": "普通短列表、单跳转链接，或仅因文字长就擅自折叠。",
+      "usage": "居左灰色图标卡片明确需要长列表展开/收起，完整说明保持可见。",
+      "cssClass": "ds-icon-card ds-icon-card--left ds-icon-card--bg-gray",
+      "isComplete": true,
+      "pendingParts": [],
+      "requiredChildren": [
+        "img.ds-icon-card__icon",
+        ".ds-icon-card__title-slot",
+        ".ds-list--unordered-12",
+        "[data-text-button-part=\"icon-card-disclosure\"]"
+      ]
+    }
+  ],
+  "variantSelectionDecisionTable": [
+    {
+      "sourceFeature": "来源为居中布局；支持图标+标题，以及可选短描述、左对齐 bullets、普通操作链接",
+      "layout": "center",
+      "class": "ds-icon-card--center"
+    },
+    {
+      "sourceFeature": "来源为图标居左、内容居右布局；内容形态再按普通内容、链接列表或可见折叠行为判断",
+      "layout": "left",
+      "class": "ds-icon-card--left"
+    }
+  ],
+  "backgroundBorderRules": [
+    {
+      "variants": [
+        "center.single-event",
+        "left.single-event"
+      ],
+      "class": "ds-icon-card--bg-gray",
+      "reason": "当前已核实的居中/居左单事件原件自身是Gray9灰底、无描边；这不是对所在section颜色的限制。外部白色或灰色板块不自动改变原件。"
+    }
+  ],
+  "states": [
+    {
+      "name": "default",
+      "chineseName": "默认",
+      "styleOverrides": {},
+      "description": "静态展示"
+    },
+    {
+      "name": "hover",
+      "chineseName": "悬停",
+      "styleOverrides": {
+        "boxShadow": "0px 15px 15px -10px rgba(0,0,0,0.1)"
+      },
+      "description": "与 Card 组件共用同一 hover 阴影规格"
+    },
+    {
+      "name": "collapsed",
+      "chineseName": "折叠态（多事件）",
+      "styleOverrides": {
+        "maxHeight": "176px"
+      },
+      "description": "bullets 超长时的默认折叠状态，底部渐隐遮罩"
+    },
+    {
+      "name": "expanded",
+      "chineseName": "展开态（多事件）",
+      "styleOverrides": {
+        "maxHeight": "none"
+      },
+      "description": "点击 See more 后的展开状态"
+    }
+  ],
+  "contentSlots": {
+    "icon": {
+      "required": false,
+      "description": "规范允许按来源省略图标；当前两个精确调用尚未开放icon省略。现有36×36px图标槽仅能从登记资源替换并核对语义；无真实适用图标时报告缺口，不补占位或删结构。"
+    },
+    "title": {
+      "required": true,
+      "description": "标题，14px/600"
+    },
+    "description": {
+      "required": false,
+      "description": "描述，12px/400/20px；完整正文自然撑高，不限行或隐藏截断。"
+    },
+    "bullets": {
+      "required": false,
+      "description": "要点列表，复用 Card 组件的 bullet 样式（icon-bullet 圆点）"
+    },
+    "blueLinks": {
+      "required": false,
+      "description": "跳转型专用，一组蓝色链接文字，必须是 <p class=\"ds-icon-card__blue-link\">"
+    },
+    "link": {
+      "required": false,
+      "description": "Learn more 链接，复用 TextButton 组件，ds-text-btn--inline ds-text-btn--black ds-text-btn--m"
+    },
+    "toggle": {
+      "required": false,
+      "description": "See more/See less 折叠展开按钮，仅多事件折叠形态使用"
+    }
+  },
+  "relations": {
+    "variantDecisionsDescription": "按内容角色与实际行为选型，再核对布局、父级背景及同版调用资格。原变体和本地fragment明确对应；参考不授权调用。《新文件》已核对可见结构分类；交互执行结合原契约及本地实测。",
+    "variantSelectionRules": [
+      "当前两个单事件精确调用保留36×36px已登记图标；必须核业务含义，不按示例次序选图标。原稿可选不等于当前接口已支持省略。",
+      "先核对center或left可见布局，再区分单事件、多个独立链接或明确折叠；bullets本身不决定布局，文案有See more不证明交互。",
+      "单事件规范要求title，其余按来源可选；当前受控sourceAbsent只接受bullets/link。缺少图标或描述时不编造、不直接删结构，记录具体调用缺口。跳转及折叠仍按各自requiredSlots与原准入。",
+      "必要布局、内容或交互证据不清时保留候选；居中蓝色多链接无现成精确调用，不自动改成居左。"
+    ],
+    "contentAssemblyRules": {
+      "singleEventRequiredStructure": [
+        "ds-icon-card",
+        "ds-icon-card__body",
+        "ds-icon-card__title-slot"
+      ],
+      "optionalRegionAbsence": "规范允许的可选内容不等于已开放接口：当前单事件sourceAbsent仅登记bullets/link。icon/description省略尚未开放；缺少它们时报告能力缺口，不编造、不保留空图标、不直接删除节点。",
+      "spacing": "保留组件 padding、图标到正文 gap、实际存在区域的 FS 间距；省略内容不保留其空节点间距，也不在页面新增 min-height/height 补回空白",
+      "variantSpecificRequiredSlots": "contentForms.requiredSlots 优先于全局 contentSlots；jump-type 的 blueLinks 和折叠型的 description/bullets/toggle 不得当作可选删除",
+      "interaction": "有 link 时使用完整 TextButton Preview；无 link 时省略整块。折叠型保留原有状态和交互实现；不将内容裁切自动解释为可折叠交互"
+    },
+    "variantDecisions": [
+      {
+        "type": "居中 · 单事件",
+        "className": "ds-icon-card--center",
+        "whenToUse": "居中单事件，图标和描述槽齐备。",
+        "whenNotToUse": "图标语义不符、需省略图标/描述或其他事件结构。",
+        "nestedComponents": [
+          {
+            "component": "TextButton",
+            "label": "TextButton (inline-black / M)",
+            "href": "text-button.html"
+          }
+        ],
+        "status": "《新文件》结构分类已核对；调用资格仍读同版catalog，未开放组合保留为参考。",
+        "variant": "center.single-event",
+        "fragment": "center-single-event",
+        "selectionCases": [
+          {
+            "id": "ic1u",
+            "kind": "use",
+            "condition": "居中单事件，图标和描述槽齐备。",
+            "result": "按同版登记调用。",
+            "targetVariant": "center.single-event"
+          },
+          {
+            "id": "ic1a",
+            "kind": "avoid",
+            "condition": "图标语义不符、需省略图标/描述或其他事件结构。",
+            "result": "不据此选型。",
+            "targetVariant": "center.single-event"
+          }
+        ]
+      },
+      {
+        "type": "居中 · 多事件折叠展开",
+        "className": "ds-icon-card--center",
+        "whenToUse": "居中灰色图标卡片明确需要长列表展开/收起，完整说明保持可见。",
+        "whenNotToUse": "普通短列表、单跳转链接，或仅因文字长就擅自折叠。",
+        "nestedComponents": [
+          {
+            "component": "TextButton",
+            "label": "TextButton (inline-blue-link / M)",
+            "href": "text-button.html"
+          }
+        ],
+        "status": "《新文件》结构分类已核对；调用资格仍读同版catalog，未开放组合保留为参考。",
+        "variant": "center.multi-event-expandable",
+        "fragment": "center-multi-event-expandable",
+        "selectionCases": [
+          {
+            "id": "icon-card-center-multi-event-expandable-completion-use",
+            "kind": "use",
+            "condition": "居中灰色图标卡片明确需要长列表展开/收起，完整说明保持可见。",
+            "result": "调用center.multi-event-expandable；遵守allowedEdits和依赖。",
+            "targetVariant": "center.multi-event-expandable"
+          },
+          {
+            "id": "icon-card-center-multi-event-expandable-completion-exclude",
+            "kind": "exclude",
+            "condition": "普通短列表、单跳转链接，或仅因文字长就擅自折叠。",
+            "result": "按实际需求另选变体。",
+            "targetVariant": "center.multi-event-expandable"
+          }
+        ]
+      },
+      {
+        "type": "居左 · 单事件",
+        "className": "ds-icon-card--left",
+        "whenToUse": "居左单事件，图标和描述槽齐备。",
+        "whenNotToUse": "图标语义不符、需省略图标/描述或其他事件结构。",
+        "nestedComponents": [
+          {
+            "component": "TextButton",
+            "label": "TextButton (inline-black / M)",
+            "href": "text-button.html"
+          }
+        ],
+        "status": "《新文件》结构分类已核对；调用资格仍读同版catalog，未开放组合保留为参考。",
+        "variant": "left.single-event",
+        "fragment": "left-single-event",
+        "selectionCases": [
+          {
+            "id": "ic3u",
+            "kind": "use",
+            "condition": "居左单事件，图标和描述槽齐备。",
+            "result": "按同版登记调用。",
+            "targetVariant": "left.single-event"
+          },
+          {
+            "id": "ic3a",
+            "kind": "avoid",
+            "condition": "图标语义不符、需省略图标/描述或其他事件结构。",
+            "result": "不据此选型。",
+            "targetVariant": "left.single-event"
+          }
+        ]
+      },
+      {
+        "type": "居左 · 多入口跳转型",
+        "className": "ds-icon-card--left",
+        "whenToUse": "白色图标卡片标题下有多个独立蓝色链接，使用真实List12子组件。",
+        "whenNotToUse": "单个Learn more入口、纯说明或需要折叠的长列表。",
+        "nestedComponents": [],
+        "status": "《新文件》结构分类已核对；调用资格仍读同版catalog，未开放组合保留为参考。",
+        "variant": "left.jump-type",
+        "fragment": "left-jump-type",
+        "selectionCases": [
+          {
+            "id": "icon-card-left-jump-type-completion-use",
+            "kind": "use",
+            "condition": "白色图标卡片标题下有多个独立蓝色链接，使用真实List12子组件。",
+            "result": "调用left.jump-type；遵守allowedEdits和依赖。",
+            "targetVariant": "left.jump-type"
+          },
+          {
+            "id": "icon-card-left-jump-type-completion-exclude",
+            "kind": "exclude",
+            "condition": "单个Learn more入口、纯说明或需要折叠的长列表。",
+            "result": "按实际需求另选变体。",
+            "targetVariant": "left.jump-type"
+          }
+        ]
+      },
+      {
+        "type": "居左 · 多事件折叠展开",
+        "className": "ds-icon-card--left",
+        "whenToUse": "居左灰色图标卡片明确需要长列表展开/收起，完整说明保持可见。",
+        "whenNotToUse": "普通短列表、单跳转链接，或仅因文字长就擅自折叠。",
+        "nestedComponents": [
+          {
+            "component": "TextButton",
+            "label": "TextButton (inline-blue-link / M)",
+            "href": "text-button.html"
+          }
+        ],
+        "status": "《新文件》结构分类已核对；调用资格仍读同版catalog，未开放组合保留为参考。",
+        "variant": "left.multi-event-expandable",
+        "fragment": "left-multi-event-expandable",
+        "selectionCases": [
+          {
+            "id": "icon-card-left-multi-event-expandable-completion-use",
+            "kind": "use",
+            "condition": "居左灰色图标卡片明确需要长列表展开/收起，完整说明保持可见。",
+            "result": "调用left.multi-event-expandable；遵守allowedEdits和依赖。",
+            "targetVariant": "left.multi-event-expandable"
+          },
+          {
+            "id": "icon-card-left-multi-event-expandable-completion-exclude",
+            "kind": "exclude",
+            "condition": "普通短列表、单跳转链接，或仅因文字长就擅自折叠。",
+            "result": "按实际需求另选变体。",
+            "targetVariant": "left.multi-event-expandable"
+          }
+        ]
+      }
+    ],
+    "radiusDependencies": [
+      {
+        "token": "border-radius.lg",
+        "value": "8px",
+        "usage": "大圆角",
+        "appliesTo": [
+          "center.single-event",
+          "center.multi-event-expandable",
+          "left.single-event",
+          "left.jump-type",
+          "left.multi-event-expandable"
+        ]
+      }
+    ],
+    "fontSizeDependencies": [
+      {
+        "token": "typography.font-size-md",
+        "value": "14px",
+        "usage": "中号字体 - XL/L 按钮",
+        "appliesTo": [
+          "center.single-event",
+          "center.multi-event-expandable",
+          "left.single-event",
+          "left.jump-type",
+          "left.multi-event-expandable"
+        ]
+      },
+      {
+        "token": "typography.font-size-sm",
+        "value": "12px",
+        "usage": "小号字体 - M/S 按钮",
+        "appliesTo": [
+          "center.single-event",
+          "center.multi-event-expandable",
+          "left.single-event",
+          "left.jump-type",
+          "left.multi-event-expandable"
+        ]
+      },
+      {
+        "token": "typography.font-size-h8",
+        "value": "13px",
+        "usage": "TextButton M 号文字（单事件 inline-black / M；多事件 disclosure inline-blue-link / M）",
+        "appliesTo": [
+          "center.single-event",
+          "center.multi-event-expandable",
+          "left.single-event",
+          "left.multi-event-expandable"
+        ]
+      }
+    ],
+    "fontWeightDependencies": [
+      {
+        "token": "typography.font-weight-semibold",
+        "value": "600",
+        "usage": "图标卡片标题",
+        "appliesTo": [
+          "center.single-event",
+          "center.multi-event-expandable",
+          "left.single-event",
+          "left.jump-type",
+          "left.multi-event-expandable"
+        ],
+        "properties": [
+          "font-weight"
+        ],
+        "selectors": [
+          ".ds-icon-card__title"
+        ]
+      },
+      {
+        "token": "typography.font-weight-regular",
+        "value": "400",
+        "usage": "已加载的TextButton当前运行资源使用常规字重；子变体具体适用范围仍由TextButton契约管理。",
+        "appliesTo": [
+          "center.single-event",
+          "left.single-event"
+        ],
+        "sourceResource": "components/text-button-current.css",
+        "properties": [
+          "font-weight"
+        ],
+        "selectors": [
+          ".ds-text-btn--inline.ds-text-btn--blue.ds-text-btn--s .ds-text-btn__text",
+          ".ds-text-btn--inline.ds-text-btn--gray .ds-text-btn__text"
+        ]
+      }
+    ],
+    "typographyDependencies": [
+      {
+        "token": "typography.h7-semibold",
+        "fontSizeToken": "typography.font-size-md",
+        "fontSizeValue": "14px",
+        "fontWeightToken": "typography.font-weight-semibold",
+        "fontWeightValue": "600",
+        "weightEvidence": "explicit-css",
+        "usage": "图标卡片标题",
+        "appliesTo": [
+          "center.single-event",
+          "center.multi-event-expandable",
+          "left.single-event",
+          "left.jump-type",
+          "left.multi-event-expandable"
+        ]
+      },
+      {
+        "token": "typography.h9-regular",
+        "fontSizeToken": "typography.font-size-sm",
+        "fontSizeValue": "12px",
+        "fontWeightToken": "typography.font-weight-regular",
+        "fontWeightValue": "400",
+        "weightEvidence": "inherited-regular",
+        "usage": "图标卡片辅助文字",
+        "appliesTo": [
+          "center.single-event",
+          "center.multi-event-expandable",
+          "left.single-event",
+          "left.jump-type",
+          "left.multi-event-expandable"
+        ]
+      },
+      {
+        "token": "typography.h8-regular",
+        "fontSizeToken": "typography.font-size-h8",
+        "fontSizeValue": "13px",
+        "fontWeightToken": "typography.font-weight-regular",
+        "fontWeightValue": "400",
+        "weightEvidence": "inherited-regular",
+        "usage": "TextButton M 号常规文字（单事件 Learn more 与多事件 See more / See less）",
+        "appliesTo": [
+          "center.single-event",
+          "center.multi-event-expandable",
+          "left.single-event",
+          "left.multi-event-expandable"
+        ]
+      }
+    ],
+    "shadowDependencies": [
+      {
+        "token": "/",
+        "value": "0px 15px 15px -10px rgba(0, 0, 0, 0.1)",
+        "usage": "仅 Hover 状态使用的底部投影；五类变体均支持 Hover，默认态不显示",
+        "appliesTo": [
+          "center.single-event",
+          "center.multi-event-expandable",
+          "left.single-event",
+          "left.jump-type",
+          "left.multi-event-expandable"
+        ]
+      }
+    ],
+    "colorDependencies": [
+      {
+        "token": "color.blue",
+        "value": "#0060BF",
+        "usage": "强调蓝色 / 链接色 (Link)",
+        "appliesTo": [
+          "center.multi-event-expandable",
+          "left.jump-type",
+          "left.multi-event-expandable"
+        ]
+      },
+      {
+        "token": "color.gray-1",
+        "value": "#19191A",
+        "usage": "标题/深色文字 (Primary text)",
+        "appliesTo": [
+          "center.single-event",
+          "center.multi-event-expandable",
+          "left.single-event",
+          "left.jump-type",
+          "left.multi-event-expandable"
+        ]
+      },
+      {
+        "token": "color.gray-3",
+        "value": "#707070",
+        "usage": "次要/辅助文字 (Secondary/auxiliary text)",
+        "appliesTo": [
+          "center.single-event",
+          "center.multi-event-expandable",
+          "left.single-event",
+          "left.multi-event-expandable"
+        ]
+      },
+      {
+        "token": "color.gray-5",
+        "value": "#DEE0E3",
+        "usage": "边框色 / 菜单项禁用色",
+        "appliesTo": [
+          "center.single-event",
+          "center.multi-event-expandable",
+          "left.single-event",
+          "left.jump-type",
+          "left.multi-event-expandable"
+        ]
+      },
+      {
+        "token": "color.gray-9",
+        "value": "#FAFBFB",
+        "usage": "最浅灰背景（hover/展开态整行底、输入框底、卡片区底）",
+        "appliesTo": [
+          "center.single-event",
+          "center.multi-event-expandable",
+          "left.single-event",
+          "left.jump-type",
+          "left.multi-event-expandable"
+        ]
+      },
+      {
+        "token": "color.white",
+        "value": "#FFFFFF",
+        "usage": "白色 (深色背景上的文字)",
+        "appliesTo": [
+          "center.single-event",
+          "center.multi-event-expandable",
+          "left.single-event",
+          "left.jump-type",
+          "left.multi-event-expandable"
+        ]
+      },
+      {
+        "token": "/",
+        "value": "rgba(250,251,251,0)",
+        "usage": "灰色卡面多事件折叠态渐隐遮罩的透明停靠色",
+        "appliesTo": [
+          "center.multi-event-expandable",
+          "left.multi-event-expandable"
+        ]
+      },
+      {
+        "token": "/",
+        "value": "rgba(255,255,255,0)",
+        "usage": "白色卡面多事件折叠态渐隐遮罩的透明停靠色",
+        "appliesTo": [
+          "center.multi-event-expandable",
+          "left.multi-event-expandable"
+        ]
+      }
+    ],
+    "componentDependencies": [
+      {
+        "component": "TextButton",
+        "usage": "居中/居左单事件卡片 Learn more 链接（inline-black / M）",
+        "slot": "link",
+        "requiredVariants": [
+          "inline-black"
+        ],
+        "implementationClasses": [
+          "ds-text-btn",
+          "ds-text-btn--inline",
+          "ds-text-btn--black",
+          "ds-text-btn--m"
+        ],
+        "appliesTo": [
+          "center.single-event",
+          "left.single-event"
+        ],
+        "requiredSizes": [
+          {
+            "variant": "inline-black",
+            "size": "m"
+          }
+        ]
+      },
+      {
+        "component": "TextButton",
+        "usage": "居中/居左多事件卡片 See more / See less 折叠触发器（inline-blue-link / M）",
+        "slot": "toggle",
+        "requiredVariants": [
+          "inline-blue-link"
+        ],
+        "implementationClasses": [
+          "ds-text-btn",
+          "ds-text-btn--inline",
+          "ds-text-btn--blue-link",
+          "ds-text-btn--m"
+        ],
+        "appliesTo": [
+          "center.multi-event-expandable",
+          "left.multi-event-expandable"
+        ],
+        "requiredSizes": [
+          {
+            "variant": "inline-blue-link",
+            "size": "m"
+          }
+        ]
+      },
+      {
+        "component": "TextButton",
+        "usage": "三种当前有限灰底标题均真实TextButton14黑加粗、无箭头",
+        "slot": "title",
+        "requiredVariants": [
+          "inline-black-bold"
+        ],
+        "implementationClasses": [
+          "ds-text-btn",
+          "ds-text-btn--inline",
+          "ds-text-btn--black-bold",
+          "ds-text-btn--l"
+        ],
+        "appliesTo": [
+          "center.single-event",
+          "left.single-event",
+          "left.jump-type",
+          "center.multi-event-expandable",
+          "left.multi-event-expandable"
+        ],
+        "requiredSizes": [
+          {
+            "variant": "inline-black-bold",
+            "size": "l"
+          }
+        ],
+        "iconMode": "absent"
+      },
+      {
+        "component": "TextButton",
+        "part": "icon-card-disclosure",
+        "slot": "disclosure/center.multi-event-expandable",
+        "appliesTo": [
+          "center.multi-event-expandable"
+        ],
+        "requiredVariants": [
+          "inline-blue-link"
+        ],
+        "implementationClasses": [
+          "ds-text-btn",
+          "ds-text-btn__text",
+          "ds-text-btn__icon"
+        ],
+        "usage": "来源13px蓝色See more/See less，保留原子样式与官方箭头。",
+        "requiredSizes": [
+          {
+            "variant": "inline-blue-link",
+            "size": "m"
+          }
+        ]
+      },
+      {
+        "component": "TextButton",
+        "part": "icon-card-disclosure",
+        "slot": "disclosure/left.multi-event-expandable",
+        "appliesTo": [
+          "left.multi-event-expandable"
+        ],
+        "requiredVariants": [
+          "inline-blue-link"
+        ],
+        "implementationClasses": [
+          "ds-text-btn",
+          "ds-text-btn__text",
+          "ds-text-btn__icon"
+        ],
+        "usage": "来源13px蓝色See more/See less，保留原子样式与官方箭头。",
+        "requiredSizes": [
+          {
+            "variant": "inline-blue-link",
+            "size": "m"
+          }
+        ]
+      },
+      {
+        "component": "List",
+        "slot": "multiple-links",
+        "part": "icon-card-links-12",
+        "appliesTo": [
+          "left.jump-type"
+        ],
+        "requiredVariants": [
+          "unordered-12"
+        ],
+        "implementationClasses": [
+          "ds-list",
+          "ds-list__unordered-item",
+          "ds-list__unordered-link"
+        ],
+        "usage": "来源锁定的12px蓝色List宿主覆盖；不开放独立母体调用。"
+      },
+      {
+        "component": "List",
+        "slot": "disclosure-content",
+        "appliesTo": [
+          "center.multi-event-expandable",
+          "left.multi-event-expandable"
+        ],
+        "requiredVariants": [
+          "unordered-12"
+        ],
+        "implementationClasses": [
+          "ds-list",
+          "ds-list__unordered-item",
+          "ds-list__unordered-text"
+        ],
+        "usage": "真实12px无序列表原子正文。"
+      }
+    ],
+    "iconDependencies": [
+      {
+        "icon": "icon-placeholder-switch",
+        "usage": "单事件与跳转型默认卡片图标",
+        "required": false,
+        "appliesTo": [
+          "center.single-event",
+          "left.single-event",
+          "left.jump-type"
+        ]
+      },
+      {
+        "icon": "icon-benefit-development",
+        "usage": "当前多事件预览使用的 36×36px 示例主图标；图标槽位必需，但不强制使用该具体图标",
+        "required": false,
+        "appliesTo": [
+          "center.multi-event-expandable",
+          "left.multi-event-expandable"
+        ]
+      },
+      {
+        "icon": "icon-bullet",
+        "usage": "bullets 列表 4×4px 圆点",
+        "required": false,
+        "appliesTo": [
+          "center.single-event",
+          "center.multi-event-expandable",
+          "left.single-event",
+          "left.multi-event-expandable"
+        ]
+      },
+      {
+        "icon": "icon-arrow-right",
+        "usage": "Learn more 箭头（随 TextButton 组件带出）",
+        "required": false,
+        "appliesTo": [
+          "center.single-event",
+          "left.single-event"
+        ]
+      },
+      {
+        "icon": "icon-chevron-down",
+        "usage": "多事件 See more / See less 的 12×12px 展开箭头",
+        "required": true,
+        "appliesTo": [
+          "center.multi-event-expandable",
+          "left.multi-event-expandable"
+        ]
+      }
+    ],
+    "siblingRule": {
+      "cls": "ds-icon-card__link",
+      "sibling": "ds-card__link / ds-card__tags",
+      "sharedPattern": "margin-top: auto",
+      "reason": "与 Card 组件的 ds-card__link / ds-card__tags 是同一居底对齐模式的姐妹实现，三处在 components.css 里各自独立定义 margin-top:auto，改动其中一处的对齐逻辑时要检查另外两处是否也需要同步"
+    },
+    "mandatoryTagRule": {
+      "cls": "ds-icon-card__blue-link",
+      "requiredTag": "p",
+      "enforcedBy": "validate.js: COMPONENT_TAG_RULES / checkComponentTag (WRONG_TAG)",
+      "reason": "跳转型卡片的蓝色链接文字必须用 <p> 标签，用 <a> 或 <span> 会被 validate.js 直接判定为 error"
+    },
+    "layoutContainerRule": {
+      "note": "ds-icon-card 无固定 width，必须放入 CSS grid（1fr 列宽）或 flex 容器内才能正确铺满，不要给单个 icon-card 手动设置固定 width"
+    },
+    "notes": "图标必须暴露直接展示，禁止外包圆形/圆角背景容器（design-spec Do/Don't 明确禁止 icon 包裹装饰容器）；补充新变体时不得删除图标改成纯文字块。",
+    "enforcementStatus": {
+      "componentDependencies.implementationClasses-evidence": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 8（证据链，2026-07-16 新增）：componentDependencies[*].implementationClasses 声明的每个 class 必须在宿主 icon-card.html 的 class 属性里真实出现，缺证据即 error。TextButton(inline-black) 依赖已声明 implementationClasses。",
+        "note": "只覆盖'声明的 class 是否真实存在于本组件 preview'这一机械事实；'该不该依赖'仍靠人核对。"
+      },
+      "colorDependencies.tokens-exist": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 2b：colorDependencies 引用的 color.* token 必须存在于 token-specs/colors.json（缺失即 error）；token 为 / 表示无对应 token 的白名单裸值；双源值一致由 validate-tokens.js 全量保证；Guard C 保证声明了就必须有颜色依赖表"
+      },
+      "colorDependencies.css-uses-var": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 2c：切出组件样式段，校验用到的 var(--color-*) 都在 colorDependencies 声明过，且无未声明裸色值（box-shadow/注释除外），违反即 error —— 保证颜色映射闭环"
+      },
+      "radiusDependencies.tokens-exist": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 3a：radiusDependencies 引用的 border-radius.* token 必须存在于 token-specs/border-radius.json（缺失即 error）；token 为 / 表示白名单裸值；Guard D 保证声明了就必须有圆角依赖表"
+      },
+      "radiusDependencies.css-uses-var": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 3b：校验 border-radius 用到的 var(--border-radius-*) 都在 radiusDependencies 声明过，且无未声明裸圆角值（0 除外），违反即 error —— 保证圆角映射闭环"
+      },
+      "fontSizeDependencies.tokens-exist": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 4a：fontSizeDependencies 引用的 typography.font-size-* token 必须存在于 token-specs/typography.json（缺失即 error）；token 为 / 表示无对应正式 token 的白名单值；Guard E 保证声明了就必须有字号依赖表"
+      },
+      "fontSizeDependencies.css-uses-var": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 4b：校验 font-size 用到的 var(--font-size-*) 都在 fontSizeDependencies 声明过，且无未声明裸字号值，违反即 error —— 保证字号映射闭环"
+      },
+      "shadowDependencies.tokens-exist": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 5a：shadowDependencies 引用的 shadow.* token 必须存在于 token-specs/shadows.json（缺失即 error）；token 为 / 表示无对应 token 的白名单值；Guard F 保证声明了就必须有投影依赖表"
+      },
+      "shadowDependencies.css-uses-var": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 5b：校验 box-shadow 用到的 var(--shadow-*) 都在 shadowDependencies 声明过，且无未声明裸投影值（none 除外），违反即 error —— 保证投影映射闭环"
+      },
+      "mandatoryTagRule.blue-link-must-be-p": {
+        "enforced": true,
+        "mechanism": "validate.js: checkComponentTag (WRONG_TAG)"
+      },
+      "siblingRule.margin-top-auto": {
+        "enforced": true,
+        "mechanism": "verify.js: pageProbe CARD_ALIGN",
+        "note": "选择器包含 .ds-icon-card__link，与 Card 的检查共用同一段几何断言逻辑"
+      },
+      "layoutContainerRule": {
+        "enforced": false,
+        "mechanism": "无"
+      },
+      "iconMustBeExposed": {
+        "enforced": false,
+        "mechanism": "无",
+        "note": "'图标不得被去除/包装成装饰容器'是语义规则，validate.js 无法判断某张图是不是被过度装饰了"
+      },
+      "spacingDependencies.tokens-and-css-closure": {
+        "enforced": true,
+        "mechanism": "check-contracts.js: spacingDependencies token/value/selector/property 与组件 CSS 双向闭环校验"
+      },
+      "borderDependencies.tokens-and-css-closure": {
+        "enforced": true,
+        "mechanism": "check-contracts.js: borderDependencies token/value/aspect/selector/property 与组件 CSS 双向闭环校验"
+      },
+      "fontWeightDependencies.tokens-and-css-closure": {
+        "enforced": true,
+        "mechanism": "check-contracts.js: fontWeightDependencies token/value/selector/property 与组件 CSS 双向闭环校验；仅允许 Regular 400 / SemiBold 600，禁止裸字重值"
+      },
+      "typographyDependencies.size-weight-pairing": {
+        "enforced": true,
+        "mechanism": "check-contracts.js: typographyDependencies.token 必须引用 token-specs/typography.json 中真实 composite typography token；该 token 同时锁定 fontSize、lineHeight、fontWeight，并核对底层字号/字重 primitive 与 CSS 证据，依赖汇总表只输出一个 Token 链接"
+      },
+      "componentSurface.current-gray": {
+        "enforced": true,
+        "mechanism": "原件背景/token/契约一致性检查；A2拒绝借白底限制排除灰底候选；verify.js核当前原件自身表面。"
+      }
+    },
+    "spacingDependencies": [
+      {
+        "token": "spacing.md",
+        "value": "12px",
+        "usage": "gap / padding-top：.ds-icon-card--center、.ds-icon-card__bullets、.ds-icon-card__link",
+        "properties": [
+          "gap",
+          "padding-top"
+        ],
+        "selectors": [
+          ".ds-icon-card--center",
+          ".ds-icon-card__bullets",
+          ".ds-icon-card__link"
+        ],
+        "appliesTo": [
+          "center.single-event",
+          "center.multi-event-expandable",
+          "left.single-event",
+          "left.multi-event-expandable"
+        ]
+      },
+      {
+        "token": "spacing.2xl",
+        "value": "32px",
+        "usage": "padding：.ds-icon-card--center、.ds-icon-card--left",
+        "properties": [
+          "padding"
+        ],
+        "selectors": [
+          ".ds-icon-card--center",
+          ".ds-icon-card--left"
+        ],
+        "appliesTo": [
+          "center.single-event",
+          "center.multi-event-expandable",
+          "left.single-event",
+          "left.jump-type",
+          "left.multi-event-expandable"
+        ]
+      },
+      {
+        "token": "spacing.lg",
+        "value": "16px",
+        "usage": "gap：.ds-icon-card--left",
+        "properties": [
+          "gap"
+        ],
+        "selectors": [
+          ".ds-icon-card--left"
+        ],
+        "appliesTo": [
+          "left.single-event",
+          "left.jump-type",
+          "left.multi-event-expandable"
+        ]
+      },
+      {
+        "token": "spacing.xs",
+        "value": "4px",
+        "usage": "padding-top / gap：.ds-icon-card__desc、.ds-icon-card__bullets",
+        "properties": [
+          "padding-top",
+          "gap"
+        ],
+        "selectors": [
+          ".ds-icon-card__desc",
+          ".ds-icon-card__bullets"
+        ],
+        "appliesTo": [
+          "center.single-event",
+          "center.multi-event-expandable",
+          "left.single-event",
+          "left.multi-event-expandable"
+        ]
+      },
+      {
+        "token": "spacing.2",
+        "value": "2px",
+        "usage": "gap：.ds-icon-card__link、.ds-icon-card__toggle",
+        "properties": [
+          "gap"
+        ],
+        "selectors": [
+          ".ds-icon-card__link",
+          ".ds-icon-card__toggle"
+        ],
+        "appliesTo": [
+          "center.single-event",
+          "center.multi-event-expandable",
+          "left.single-event",
+          "left.multi-event-expandable"
+        ]
+      },
+      {
+        "token": "spacing.sm",
+        "value": "8px",
+        "usage": "bullets 圆点图标与文字间距",
+        "properties": [
+          "gap"
+        ],
+        "selectors": [
+          ".ds-icon-card .ds-card__bullet-item"
+        ],
+        "appliesTo": [
+          "center.single-event",
+          "center.multi-event-expandable",
+          "left.single-event",
+          "left.multi-event-expandable"
+        ]
+      },
+      {
+        "token": "spacing.sm",
+        "value": "8px",
+        "usage": "跳转型蓝色链接列表项间距与顶部内边距",
+        "properties": [
+          "gap",
+          "padding-top"
+        ],
+        "selectors": [
+          ".ds-icon-card__blue-links"
+        ],
+        "appliesTo": [
+          "left.jump-type"
+        ]
+      }
+    ],
+    "borderDependencies": [
+      {
+        "token": "border.width.default",
+        "value": "1px",
+        "usage": "width：仅白色 section / 白底有描边示例使用 .ds-icon-card--bordered；灰色 section 无描边",
+        "aspect": "width",
+        "properties": [
+          "border"
+        ],
+        "selectors": [
+          ".ds-icon-card--bordered"
+        ],
+        "appliesTo": [
+          "center.single-event",
+          "center.multi-event-expandable",
+          "left.single-event",
+          "left.jump-type",
+          "left.multi-event-expandable"
+        ]
+      },
+      {
+        "token": "border.style.default",
+        "value": "solid",
+        "usage": "style：仅白色 section / 白底有描边示例使用 .ds-icon-card--bordered；灰色 section 无描边",
+        "aspect": "style",
+        "properties": [
+          "border"
+        ],
+        "selectors": [
+          ".ds-icon-card--bordered"
+        ],
+        "appliesTo": [
+          "center.single-event",
+          "center.multi-event-expandable",
+          "left.single-event",
+          "left.jump-type",
+          "left.multi-event-expandable"
+        ]
+      },
+      {
+        "token": "border.color.default",
+        "value": "var(--color-gray-5)",
+        "usage": "color：仅白色 section / 白底有描边示例使用 .ds-icon-card--bordered；灰色 section 无描边",
+        "aspect": "color",
+        "properties": [
+          "border"
+        ],
+        "selectors": [
+          ".ds-icon-card--bordered"
+        ],
+        "appliesTo": [
+          "center.single-event",
+          "center.multi-event-expandable",
+          "left.single-event",
+          "left.jump-type",
+          "left.multi-event-expandable"
+        ]
+      },
+      {
+        "token": "border.style.none",
+        "value": "none",
+        "usage": "border：.ds-icon-card__toggle",
+        "aspect": "style",
+        "properties": [
+          "border"
+        ],
+        "selectors": [
+          ".ds-icon-card__toggle"
+        ],
+        "appliesTo": [
+          "center.multi-event-expandable",
+          "left.multi-event-expandable"
+        ]
+      }
+    ],
+    "hardRules": [
+      {
+        "title": "图标卡片自身表面与父板块分开",
+        "description": "AI 生成页面时必须遵守的强制规则。左边是描述原文，右边是 AI 解析后写入 <code>icon-card.json</code> 的字段值。",
+        "ruleContent": "<strong>当前居中/居左单事件调用保持原件Gray9 #FAFBFB、无描边、8px圆角。</strong>可放在白色或灰色板块中；不能按section颜色自动换白底或添加描边。真实白底、跳转及折叠的未开放范围仍保留。图标、内容槽与状态按各自实际调用边界核对。",
+        "aiParse": "backgroundBorderRules[].variants -> selected native gray Card class; section.surface does not choose the Card surface.",
+        "enforcement": "原件背景/token/契约一致性检查；本地组件映射不得借白底限制排除灰底候选；verify.js核当前原件自身表面。"
+      },
+      {
+        "title": "跳转型蓝色链接必须用 &lt;p&gt; 标签",
+        "ruleContent": "<strong>跳转型卡片的蓝色链接文字必须用 <code>&lt;p class=\"ds-icon-card__blue-link\"&gt;</code>，不能用 <code>&lt;a&gt;</code> 或 <code>&lt;span&gt;</code>。</strong>",
+        "aiParse": "relations.mandatoryTagRule = {\n  cls: \"ds-icon-card__blue-link\",\n  requiredTag: \"p\"\n}",
+        "enforcement": "强制规则（<code>validate.js: WRONG_TAG</code>），用 <code>&lt;a&gt;</code> 或 <code>&lt;span&gt;</code> 会直接判 <strong style=\"color:#C00000;\">error</strong>。"
+      },
+      {
+        "title": "单事件图标卡片文字按钮必须保留完整 TextButton 结构",
+        "ruleContent": "<strong><code>ds-icon-card__link</code> 内必须使用真实 TextButton Preview DOM，并包含 <code>ds-text-btn__text</code> 与 inline 变体要求的 <code>ds-text-btn__icon</code>。</strong>禁止放入实心/描边 Button，也禁止用 span 或纯文字模拟文字按钮。",
+        "aiParse": "relations.notes +=\n  \"IconCard 的 link slot 必须复用 TextButton Preview 完整 DOM，不得简化嵌套子组件\"",
+        "enforcement": "强制规则（<code>verify.js: CARD_TEXT_BUTTON_STRUCTURE</code>），结构缺失直接判 <strong style=\"color:#C00000;\">error</strong>。"
+      }
+    ],
+    "interactionRules": [
+      {
+        "name": "图标",
+        "rule": "登记文件只证明资源合法，不证明适用业务。先核对含义和图形，不按项目序号循环复用示例图标。",
+        "owner": "登记图标及实际来源"
+      },
+      {
+        "name": "可选内容",
+        "rule": "原稿可选内容与当前接口分开：当前sourceAbsent仅登记bullets/link。图标和描述虽在原稿可选，当前精确调用尚未开放其省略；缺少真实内容不得编造或直接删结构。",
+        "owner": "原契约"
+      },
+      {
+        "name": "折叠与链接",
+        "rule": "多事件折叠是操作按钮，不是普通导航TextButton；缺少真实行为时不能仅增加See more文字。",
+        "owner": "原件与宿主"
+      },
+      {
+        "name": "表面与父背景",
+        "rule": "当前可调用灰卡不由页面白/灰背景自动决定是否描边；白卡和跳转型继续按原准入范围。",
+        "owner": "组件源与调用状态"
+      },
+      {
+        "name": "文字与子组件",
+        "rule": "完整文字自然增长，不恢复历史64px截断；标题和普通链接沿用真实TextButton。",
+        "owner": "TextButton与原布局"
+      }
+    ],
+    "prototypeRollout": {
+      "template": "component-spec-v1",
+      "sourceReview": "partial-source-scope",
+      "draftOnly": false,
+      "originalDependencies": "preserved"
+    }
+  },
+  "searchIntents": [
+    "图标卡片",
+    "图标+标题+描述",
+    "功能特性卡片",
+    "图标网格",
+    "服务介绍卡片",
+    "跳转链接卡片"
+  ],
+  "tokenReferences": [
+    "color.white",
+    "color.gray-1",
+    "color.gray-3",
+    "color.gray-5",
+    "color.blue",
+    "border-radius.lg",
+    "typography.font-family-base",
+    "typography.font-size-h8",
+    "spacing.md",
+    "spacing.2xl",
+    "spacing.lg",
+    "spacing.xs",
+    "spacing.2",
+    "spacing.sm",
+    "border.width.default",
+    "border.style.default",
+    "border.color.default",
+    "border.style.none",
+    "typography.font-weight-semibold",
+    "typography.font-size-md",
+    "typography.font-size-sm",
+    "typography.font-weight-regular",
+    "typography.h7-semibold",
+    "typography.h9-regular",
+    "typography.h8-regular"
+  ],
+  "constraints": {
+    "allowedChildren": [
+      "Icon",
+      "Text",
+      "TextButton"
+    ],
+    "requiredProperties": [
+      "layout",
+      "background"
+    ],
+    "forbiddenCombinations": [
+      [
+        "jump-type",
+        "bullets"
+      ],
+      [
+        "jump-type",
+        "description"
+      ]
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-10-07",
+      "change": "用户确认选型修正：居中单事件支持图标+标题及可选 bullets；布局与内容形态独立判断，不按条数添加折叠；来源没有的可选区域整块省略、不留空位，必需插槽和交互不放宽。",
+      "author": "Codex"
+    },
+    {
+      "date": "2026-08-11",
+      "author": "Kiro",
+      "change": "审计并修正五类 IconCard 依赖汇总：补齐单事件 H8 与 TextButton / M 标签，限制折叠渐隐色归属，拆分 8px 间距用途，并澄清边框、Hover 阴影及示例主图标条件。"
+    },
+    {
+      "date": "2026-07-23",
+      "author": "Kiro",
+      "change": "将字号与字重配对提升为正式 composite typography token；组件依赖以单一 token 引用完整字号、行高、字重，primitive 字段仅保留作 CSS 证据。"
+    },
+    {
+      "date": "2026-07-22",
+      "change": "新增 typographyDependencies 成对字体依赖：每条记录明确绑定字号与字重，依赖汇总表按“字号 · 层级 · 字重”整体展示，禁止拆列后猜测组合。",
+      "author": "Kiro"
+    },
+    {
+      "date": "2026-07-22",
+      "change": "新增 fontWeightDependencies：按组件 CSS 显式 font-weight 证据登记 Regular 400 / SemiBold 600；无显式声明的组件保留空数组，并纳入 token/value/selector/property 双向闭环校验。",
+      "author": "Kiro"
+    },
+    {
+      "date": "2026-06-30",
+      "change": "新建档案，记录与 Card 组件 margin-top:auto 姐妹实现关系、blue-link 强制标签规则、图标不可去除的硬约束",
+      "author": "TBD"
+    },
+    {
+      "date": "2026-06-30",
+      "change": "字段命名统一治理（方向A）：新增 variants 数组，把 layouts（居中/居左）× contentForms（单事件/跳转型/多事件）两个正交维度的实际组合拍平列出（居中不支持跳转型，故为5种组合而非6种）；layouts/contentForms 原字段保留作为维度说明，无信息丢失",
+      "author": "TBD"
+    },
+    {
+      "date": "2026-06-30",
+      "change": "parentContext.background-border-rules 从 enforced:false 升级为 true：在 verify.js 新增 CARD_BORDER_CTX 机械检查（与 Card 组件共用同一段逻辑，已用本地 fixture 验证）",
+      "author": "TBD"
+    },
+    {
+      "date": "2026-07-14",
+      "change": "增加间距与描边 token 依赖、CSS 选择器/属性证据及机械闭环校验映射",
+      "author": "Kiro"
+    },
+    {
+      "date": "2026-07-14",
+      "change": "依据契约语义、组件 CSS 选择器与预览结构，补齐全部现有依赖的 appliesTo 汇总行映射；仅使用真实 types/variants，不新增伪类型或不确定依赖",
+      "author": "Kiro"
+    },
+    {
+      "date": "2026-10-09",
+      "author": "Codex",
+      "change": "统一规范维护质量标准：登记真实实现与选型规则入口、源变更重新验收、父子影响检查及历史页面隔离；不推断可编辑槽位或视觉批准。"
+    }
+  ],
+  "isComplete": false,
+  "createdAt": "2026-06-30T00:00:00Z",
+  "updatedAt": "2026-11-10T00:00:00Z",
+  "qualityProfile": {
+    "schemaVersion": "1.0.0",
+    "standard": "docs/component-quality-standard.md",
+    "implementation": "components/variants/icon-card.html",
+    "selection": {
+      "mappingSource": "components/selection-mvp-policy.json",
+      "mappingPointer": "components.icon-card.variantDecisionTypes",
+      "rulesPointer": "relations.variantDecisions"
+    },
+    "maintenance": {
+      "authority": "contract-preview-runtime-token-icon",
+      "generatedOnly": [
+        "preview-reference-tables",
+        "component-index",
+        "selection-catalog",
+        "design-reading-view",
+        "ai-reference"
+      ],
+      "changePolicy": "记录来源差异、兼容性与受影响父子组件；源文件变化后旧工程验收失效。",
+      "historicalPages": "不自动升级；新页面锁定本地组件运行资源版本。"
+    },
+    "acceptance": {
+      "report": "components/quality/report.json",
+      "proof": "components/quality/acceptance.json",
+      "declarationIsNotProof": true
+    }
+  },
+  "editable": [
+    "icon",
+    "title",
+    "description",
+    "bullets",
+    "link",
+    "links",
+    "titleHref",
+    "sourceAbsent",
+    "items"
+  ],
+  "integration": {
+    "styles": [
+      "components/tokens.css",
+      "components/components.css",
+      "components/text-button-current.css",
+      "components/icon-card-current.css",
+      "components/list-unordered-current.css",
+      "components/list-links-current.css",
+      "components/icon-card-disclosure-current.css"
+    ],
+    "scripts": [
+      "components/icon-card-current.js"
+    ],
+    "fontStylesheets": [
+      "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+    ],
+    "fontFallback": "Open Sans stack; actual browser geometry/visual proof pending."
+  },
+  "aiContract": {
+    "schemaVersion": "1.0.0",
+    "rootTag": "div",
+    "scope": "five-finite-PC-icon-card-calls-with-owned-list-and-disclosure",
+    "supported": [
+      "center.single-event",
+      "left.single-event",
+      "left.jump-type",
+      "center.multi-event-expandable",
+      "left.multi-event-expandable"
+    ],
+    "unsupported": [
+      "white-surface-canonical-call",
+      "mobile",
+      "unregistered-main-icon"
+    ],
+    "reviewStatus": {
+      "engineering": "pending",
+      "visual": "pending",
+      "familyCoverage": "partial"
+    },
+    "previewAssets": [
+      "components/preview/reference-live.js"
+    ],
+    "selectionPolicy": "先区分单事件、多链接或明确折叠，再选居中/居左及背景。当前center/left单事件、白底left.jump-type、灰底center/left可展开均已登记；跳转依赖当前IconCard原件中的List12私有覆盖，不开放独立蓝色List族。不按次序分配图标或截断源文案。",
+    "identity": {
+      "rule": "Exact native gray center/left root, icon, description and body/title anatomy retained. Current sourceAbsent permits bullets/link only; icon/description omission is not exposed. Keep36px registered artwork and exact inline-black/m link anatomy. No root IDs, inline sizing or expandable identity.",
+      "labelRule": "Edit only registered fields and child TextButton allowed label/href. Preserve registered right arrow and36px main icon; verify asset identity and actual source role in the existing local mapping. Registered resource legality alone does not establish business meaning."
+    },
+    "locked": [
+      "Gray surface without border and selected layout",
+      "36px native icon geometry; registered artwork is editable",
+      "Shared Card bullet fragment with local bullet icon",
+      "Exact TextButton/inline-black/m root and two children",
+      "Component CSS and no added interaction runtime",
+      "Jump primitive is own native blue-link list; no fictitious TextButton, added arrow or description/bullets",
+      "Current gray center title genuine TextButton/inline-black-bold/L, no arrow; title host only positions it",
+      "All three finite titles are genuine TextButton14-bold/no-arrow; existing blue list substitute stays pending actual12px List admission."
+    ],
+    "behavior": {
+      "display": "单事件静态；折叠调用加载已有组件同步链中的icon-card-current.js。",
+      "links": "Child navigation follows the original TextButton contract and local page workflow. Preview href=# is fixture-only; resolve or disable real targets according to existing page rules.",
+      "disclosure": "真实List12配TextButton私有蓝色13px部件；176px折叠列表，按钮和键盘原生激活，See more/less和aria-expanded同步；不折叠完整描述。",
+      "jump": "Native link navigation uses safe source target only when explicitly requested by page rules; default no href plus aria-disabled/role=link displays source-less entry without false navigation, custom click handler or alert.",
+      "optional": "原稿可选内容与当前接口分开：当前sourceAbsent仅登记bullets/link。图标和描述虽在原稿可选，当前精确调用尚未开放其省略；缺少真实内容不得编造或直接删结构。",
+      "visual": "The component owns Gray9 fill, no border and8px radius. Its surrounding section may be white or gray. Equal-height, hover shadow, text fit and fonts still require actual browser proof.",
+      "titleSource": "所有当前标题引用真实TextButton/inline-black-bold/L，原件隐藏箭头；图标、标题和List依实际变体装配。",
+      "jumpSourceBoundary": "当前3:084742中的12px蓝色List覆盖作为List私有part，限定IconCard/left.jump-type。并非新建List母变体或原13px手写替身。",
+      "content": "Description text grows naturally without a fixed/max height or hidden clipping. User explicitly removed the64px limit on2026-11-10; this supersedes the saved specimen setting only for current description flow. Preserve typography, spacing, surface, radius and complete source text."
+    },
+    "evidence": {
+      "localImplementation": "components/variants/icon-card.html",
+      "comparison": "components/sources/icon-card/local-structure-review.json",
+      "originalSpecification": "components/sources/icon-card/native-specification-review-1011.json",
+      "originalCurrentComponent": "components/sources/icon-card/native-component-review-1011.json",
+      "currentGrayParent": "components/sources/icon-card/center-parent-source-review-1013.json",
+      "currentMgReview": "components/sources/card-carousel-mg-20261114/icon-card-review.json",
+      "capabilityCompletion": "components/sources/capability-completion-20261115/first.json"
+    },
+    "variants": {
+      "center.single-event": {
+        "purpose": "gray-center.single-event",
+        "exampleSelector": "[data-ai-example=\"ai-icon-card-center\"]",
+        "allowedEdits": [
+          "icon",
+          "title",
+          "description",
+          "bullets",
+          "link",
+          "titleHref",
+          "sourceAbsent"
+        ],
+        "slots": {
+          "title": {
+            "selector": "div.ds-icon-card__title-slot span.ds-text-btn__text",
+            "mode": "text",
+            "required": true
+          },
+          "description": {
+            "selector": "p.ds-icon-card__desc",
+            "mode": "text",
+            "required": true
+          },
+          "bullets": {
+            "selector": "div.ds-icon-card__bullets",
+            "mode": "structured-content",
+            "required": true,
+            "preserve": [
+              "div.ds-card__bullet-item",
+              "img.ds-card__bullet-icon",
+              "p.ds-card__bullet-text"
+            ],
+            "rule": "At least one existing bullet fragment; text/count only, no synthetic Card root."
+          },
+          "link": {
+            "selector": "div.ds-icon-card__link",
+            "mode": "structured-content",
+            "required": true,
+            "preserve": [
+              "a.ds-text-btn",
+              "span.ds-text-btn__text",
+              "img.ds-text-btn__icon"
+            ],
+            "rule": "Child TextButton/inline-black/m only; label/href per child contract and Plan, retain registered right arrow."
+          }
+        },
+        "bindings": {
+          "icon": {
+            "mode": "registered-icon",
+            "target": "img.ds-icon-card__icon",
+            "attribute": "src",
+            "values": [
+              "components/icons/icon-placeholder-switch.svg",
+              "components/icons/mastergo-library/定制Icon/33189-58768.svg",
+              "components/icons/mastergo-library/定制Icon/33189-58740.svg",
+              "components/icons/mastergo-library/定制Icon/33189-58763.svg",
+              "components/icons/mastergo-library/定制Icon/2632-3490.svg",
+              "components/icons/mastergo-library/定制Icon/33189-58732.svg",
+              "components/icons/mastergo-library/定制Icon/33189-58777.svg",
+              "components/icons/mastergo-library/定制Icon/66567-76227.svg",
+              "components/icons/mastergo-library/定制Icon/62712-75472.svg",
+              "components/icons/mastergo-library/定制Icon/33189-58745.svg",
+              "components/icons/icon-stepper-document-display.svg",
+              "components/icons/icon-grid-view.svg",
+              "components/icons/icon-demo-report.svg",
+              "components/icons/icon-benefit-community.svg",
+              "components/icons/mastergo-library/定制Icon/66567-76458.svg",
+              "components/icons/icon-benefit-development.svg"
+            ],
+            "sourceProperty": "图标切换占位符"
+          },
+          "titleHref": {
+            "mode": "navigation-target",
+            "target": "div.ds-icon-card__title-slot > a.ds-text-btn",
+            "attribute": "href",
+            "relative": true,
+            "protocols": [
+              "https:",
+              "http:",
+              "mailto:",
+              "tel:"
+            ]
+          },
+          "sourceAbsent": {
+            "mode": "source-absence",
+            "target": "root",
+            "sourceProperty": "规范5.2可选内容",
+            "regions": {
+              "bullets": "div.ds-icon-card__bullets",
+              "link": "div.ds-icon-card__link"
+            }
+          }
+        },
+        "runtime": {
+          "styles": [
+            "components/tokens.css",
+            "components/components.css",
+            "components/text-button-current.css",
+            "components/icon-card-current.css"
+          ],
+          "scripts": []
+        }
+      },
+      "left.single-event": {
+        "purpose": "gray-left.single-event",
+        "exampleSelector": "[data-ai-example=\"ai-icon-card-left\"]",
+        "allowedEdits": [
+          "icon",
+          "title",
+          "description",
+          "bullets",
+          "link",
+          "titleHref",
+          "sourceAbsent"
+        ],
+        "slots": {
+          "title": {
+            "selector": "div.ds-icon-card__title-slot span.ds-text-btn__text",
+            "mode": "text",
+            "required": true
+          },
+          "description": {
+            "selector": "p.ds-icon-card__desc",
+            "mode": "text",
+            "required": true
+          },
+          "bullets": {
+            "selector": "div.ds-icon-card__bullets",
+            "mode": "structured-content",
+            "required": true,
+            "preserve": [
+              "div.ds-card__bullet-item",
+              "img.ds-card__bullet-icon",
+              "p.ds-card__bullet-text"
+            ],
+            "rule": "At least one existing bullet fragment; text/count only, no synthetic Card root."
+          },
+          "link": {
+            "selector": "div.ds-icon-card__link",
+            "mode": "structured-content",
+            "required": true,
+            "preserve": [
+              "a.ds-text-btn",
+              "span.ds-text-btn__text",
+              "img.ds-text-btn__icon"
+            ],
+            "rule": "Child TextButton/inline-black/m only; label/href per child contract and Plan, retain registered right arrow."
+          }
+        },
+        "bindings": {
+          "icon": {
+            "mode": "registered-icon",
+            "target": "img.ds-icon-card__icon",
+            "attribute": "src",
+            "values": [
+              "components/icons/icon-placeholder-switch.svg",
+              "components/icons/mastergo-library/定制Icon/33189-58768.svg",
+              "components/icons/mastergo-library/定制Icon/33189-58740.svg",
+              "components/icons/mastergo-library/定制Icon/33189-58763.svg",
+              "components/icons/mastergo-library/定制Icon/2632-3490.svg",
+              "components/icons/mastergo-library/定制Icon/33189-58732.svg",
+              "components/icons/mastergo-library/定制Icon/33189-58777.svg",
+              "components/icons/mastergo-library/定制Icon/66567-76227.svg",
+              "components/icons/mastergo-library/定制Icon/62712-75472.svg",
+              "components/icons/mastergo-library/定制Icon/33189-58745.svg",
+              "components/icons/icon-stepper-document-display.svg",
+              "components/icons/icon-grid-view.svg",
+              "components/icons/icon-demo-report.svg",
+              "components/icons/icon-benefit-community.svg",
+              "components/icons/mastergo-library/定制Icon/66567-76458.svg",
+              "components/icons/icon-benefit-development.svg"
+            ],
+            "sourceProperty": "图标切换占位符"
+          },
+          "titleHref": {
+            "mode": "navigation-target",
+            "target": "div.ds-icon-card__title-slot > a.ds-text-btn",
+            "attribute": "href",
+            "relative": true,
+            "protocols": [
+              "https:",
+              "http:",
+              "mailto:",
+              "tel:"
+            ]
+          },
+          "sourceAbsent": {
+            "mode": "source-absence",
+            "target": "root",
+            "sourceProperty": "规范5.2可选内容",
+            "regions": {
+              "bullets": "div.ds-icon-card__bullets",
+              "link": "div.ds-icon-card__link"
+            }
+          }
+        },
+        "runtime": {
+          "styles": [
+            "components/tokens.css",
+            "components/components.css",
+            "components/text-button-current.css",
+            "components/icon-card-current.css"
+          ],
+          "scripts": []
+        }
+      },
+      "left.jump-type": {
+        "purpose": "source-white-multiple-destinations-list12",
+        "allowedEdits": [
+          "icon",
+          "title",
+          "links",
+          "titleHref"
+        ],
+        "slots": {
+          "title": {
+            "selector": "div.ds-icon-card__title-slot span.ds-text-btn__text",
+            "mode": "text",
+            "required": true
+          },
+          "links": {
+            "selector": "div.ds-icon-card__blue-links",
+            "mode": "structured-content",
+            "required": true,
+            "preserve": [
+              "div.ds-list",
+              "div.ds-list__unordered-item",
+              "a.ds-list__unordered-link"
+            ],
+            "rule": "One real List/unordered-links-12; only complete safe linked rows."
+          }
+        },
+        "bindings": {
+          "icon": {
+            "mode": "registered-icon",
+            "target": "img.ds-icon-card__icon",
+            "attribute": "src",
+            "values": [
+              "components/icons/icon-placeholder-switch.svg",
+              "components/icons/mastergo-library/定制Icon/33189-58768.svg",
+              "components/icons/mastergo-library/定制Icon/33189-58740.svg",
+              "components/icons/mastergo-library/定制Icon/33189-58763.svg",
+              "components/icons/mastergo-library/定制Icon/2632-3490.svg",
+              "components/icons/mastergo-library/定制Icon/33189-58732.svg",
+              "components/icons/mastergo-library/定制Icon/33189-58777.svg",
+              "components/icons/mastergo-library/定制Icon/66567-76227.svg",
+              "components/icons/mastergo-library/定制Icon/62712-75472.svg",
+              "components/icons/mastergo-library/定制Icon/33189-58745.svg",
+              "components/icons/icon-stepper-document-display.svg",
+              "components/icons/icon-grid-view.svg",
+              "components/icons/icon-demo-report.svg",
+              "components/icons/icon-benefit-community.svg",
+              "components/icons/mastergo-library/定制Icon/66567-76458.svg",
+              "components/icons/icon-benefit-development.svg"
+            ],
+            "sourceProperty": "图标切换占位符"
+          },
+          "titleHref": {
+            "mode": "navigation-target",
+            "target": "div.ds-icon-card__title-slot > a.ds-text-btn",
+            "attribute": "href",
+            "relative": true,
+            "protocols": [
+              "https:",
+              "http:",
+              "mailto:",
+              "tel:"
+            ]
+          }
+        },
+        "exampleSelector": "[data-ai-example=\"ai-icon-card-completion-left-jump-type\"]"
+      },
+      "center.multi-event-expandable": {
+        "purpose": "source-gray-center-list-disclosure",
+        "allowedEdits": [
+          "icon",
+          "title",
+          "description",
+          "items"
+        ],
+        "slots": {
+          "title": {
+            "selector": "div.ds-icon-card__title-slot span.ds-text-btn__text",
+            "mode": "text",
+            "required": true
+          },
+          "description": {
+            "selector": "p.ds-icon-card__desc",
+            "mode": "text",
+            "required": true
+          },
+          "items": {
+            "selector": "div.ds-icon-card__bullets div.ds-list",
+            "mode": "structured-content",
+            "required": true,
+            "preserve": [
+              "div.ds-list__unordered-item",
+              "span.ds-list__unordered-dot",
+              "p.ds-list__unordered-text"
+            ],
+            "rule": "Complete List/unordered-12 rows. Disclosure remains source-owned and is never replaced by arbitrary links."
+          }
+        },
+        "bindings": {
+          "icon": {
+            "mode": "registered-icon",
+            "target": "img.ds-icon-card__icon",
+            "attribute": "src",
+            "values": [
+              "components/icons/icon-placeholder-switch.svg",
+              "components/icons/mastergo-library/定制Icon/33189-58768.svg",
+              "components/icons/mastergo-library/定制Icon/33189-58740.svg",
+              "components/icons/mastergo-library/定制Icon/33189-58763.svg",
+              "components/icons/mastergo-library/定制Icon/2632-3490.svg",
+              "components/icons/mastergo-library/定制Icon/33189-58732.svg",
+              "components/icons/mastergo-library/定制Icon/33189-58777.svg",
+              "components/icons/mastergo-library/定制Icon/66567-76227.svg",
+              "components/icons/mastergo-library/定制Icon/62712-75472.svg",
+              "components/icons/mastergo-library/定制Icon/33189-58745.svg",
+              "components/icons/icon-stepper-document-display.svg",
+              "components/icons/icon-grid-view.svg",
+              "components/icons/icon-demo-report.svg",
+              "components/icons/icon-benefit-community.svg",
+              "components/icons/mastergo-library/定制Icon/66567-76458.svg",
+              "components/icons/icon-benefit-development.svg"
+            ],
+            "sourceProperty": "图标切换占位符"
+          }
+        },
+        "exampleSelector": "[data-ai-example=\"ai-icon-card-completion-center-multi-event-expandable\"]"
+      },
+      "left.multi-event-expandable": {
+        "purpose": "source-gray-left-list-disclosure",
+        "allowedEdits": [
+          "icon",
+          "title",
+          "description",
+          "items"
+        ],
+        "slots": {
+          "title": {
+            "selector": "div.ds-icon-card__title-slot span.ds-text-btn__text",
+            "mode": "text",
+            "required": true
+          },
+          "description": {
+            "selector": "p.ds-icon-card__desc",
+            "mode": "text",
+            "required": true
+          },
+          "items": {
+            "selector": "div.ds-icon-card__bullets div.ds-list",
+            "mode": "structured-content",
+            "required": true,
+            "preserve": [
+              "div.ds-list__unordered-item",
+              "span.ds-list__unordered-dot",
+              "p.ds-list__unordered-text"
+            ],
+            "rule": "Complete List/unordered-12 rows. Disclosure remains source-owned and is never replaced by arbitrary links."
+          }
+        },
+        "bindings": {
+          "icon": {
+            "mode": "registered-icon",
+            "target": "img.ds-icon-card__icon",
+            "attribute": "src",
+            "values": [
+              "components/icons/icon-placeholder-switch.svg",
+              "components/icons/mastergo-library/定制Icon/33189-58768.svg",
+              "components/icons/mastergo-library/定制Icon/33189-58740.svg",
+              "components/icons/mastergo-library/定制Icon/33189-58763.svg",
+              "components/icons/mastergo-library/定制Icon/2632-3490.svg",
+              "components/icons/mastergo-library/定制Icon/33189-58732.svg",
+              "components/icons/mastergo-library/定制Icon/33189-58777.svg",
+              "components/icons/mastergo-library/定制Icon/66567-76227.svg",
+              "components/icons/mastergo-library/定制Icon/62712-75472.svg",
+              "components/icons/mastergo-library/定制Icon/33189-58745.svg",
+              "components/icons/icon-stepper-document-display.svg",
+              "components/icons/icon-grid-view.svg",
+              "components/icons/icon-demo-report.svg",
+              "components/icons/icon-benefit-community.svg",
+              "components/icons/mastergo-library/定制Icon/66567-76458.svg",
+              "components/icons/icon-benefit-development.svg"
+            ],
+            "sourceProperty": "图标切换占位符"
+          }
+        },
+        "exampleSelector": "[data-ai-example=\"ai-icon-card-completion-left-multi-event-expandable\"]"
+      }
+    },
+    "notes": {
+      "sourceBoundary": "单事件沿用既有来源；多链接和折叠据《新文件》原件及真实List/TextButton私有部件补齐，工程资格与视觉确认分开。"
+    }
+  },
+  "changeLog": [
+    {
+      "date": "2026-10-12",
+      "change": "原件展示边界清理：最小内容演示及未真实调用12px List的追加jump样例撤回，保留两个有限title原子调用，jump AI暂停"
+    },
+    {
+      "date": "2026-10-14",
+      "change": "修正仍将当前灰底原件写成白底的旧规范正文/parentContext；已有有限gray调用保留Gray9无描边，A2/A5不扩大白色父级准入；无渲染与冻结页修改。"
+    },
+    {
+      "date": "2026-11-10",
+      "change": "移除IconCard按section背景自动换底色/描边的错误关联，删除重复parentContext；现有backgroundBorderRules按已核变体登记自身灰底。选型与几何检查分别纠正，不开放其他变体/图标，不升级历史页。"
+    },
+    {
+      "date": "2026-11-10",
+      "change": "用户明确删除图标卡片描述区64px限高及隐藏截断。当前正文随内容自然增高，字体、行高、内距、表面和圆角保持；保存的旧原件导出仍作历史，不再把该样例限高当当前强制规则。",
+      "sourceQuote": "我没见过这个限制，删掉吧"
+    },
+    {
+      "date": "2026-11-10",
+      "change": "依据已有原件可编辑图标槽与规范5.2，打通36px有限调用中三枚已核FS业务图标替换；保留占位示例与尺寸，不开放其他尺寸、白底、折叠或跳转变体。"
+    }
+  ],
+  "generationScopeClarification": {
+    "rule": "contentSlots.required 表示通用槽是否必需；variants.requiredChildren是完整canonical结构。aiContract.supported/unsupported表示当前已核实可调用范围，三者不可互相替代。",
+    "adaptation": "来源没有可选槽时必须逐项登记omittedSlots/reason/保留结构；unsupported范围仍不自动开放，不得以缺少可选链接/列表笼统判整个家族不可用。",
+    "fallback": "页面级自定义需明确具体未开放范围或来源缺口；复用已登记图标等原子资源时须带入其展示尺寸和数量，不用素材原始尺寸。"
+  },
+  "changelog": [
+    {
+      "date": "2026-11-10",
+      "change": "Correct single-event icon required/optional conflict using saved section5.2; retain full native Preview and36px geometry when present. Register already-reviewed Chat36 artwork. Source-absent page omission is adaptation, not a new source variant."
+    }
+  ]
+}

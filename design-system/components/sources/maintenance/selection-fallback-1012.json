@@ -1,0 +1,284 @@
+{
+  "schemaVersion": "fs-selection-fallback-regression/1.0.0",
+  "date": "2026-10-12",
+  "scope": "Generic variants[0] fallback and empty registered variant branch only",
+  "before": {
+    "fixtures": {
+      "table": {
+        "id": "M-TABLE",
+        "name": "Table",
+        "text": "table",
+        "structure": {
+          "hasTable": true
+        }
+      },
+      "badge": {
+        "id": "M-BADGE",
+        "name": "徽标数",
+        "text": "角标 红点提醒 未读数量徽标 圆点状态徽标 图案徽标 订单状态点"
+      }
+    },
+    "results": {
+      "table": {
+        "moduleId": "M-TABLE",
+        "moduleName": "Table",
+        "role": "custom",
+        "mappingLabel": "直接调用",
+        "confidence": "medium",
+        "selected": {
+          "component": "Table",
+          "variant": "vertical-double",
+          "quantity": 1,
+          "adaptation": null,
+          "reason": [
+            "模块事实匹配 table 场景",
+            "使用首个已登记变体 vertical-double"
+          ],
+          "sourceFacts": [
+            "Table"
+          ],
+          "matchedDecisionTypes": []
+        },
+        "candidates": [
+          {
+            "component": "Table",
+            "score": 12,
+            "reasons": [
+              "模块事实匹配 table 场景"
+            ]
+          }
+        ],
+        "rejectedCandidates": [],
+        "pageLevelCustom": null
+      },
+      "badge": {
+        "moduleId": "M-BADGE",
+        "moduleName": "徽标数",
+        "role": "custom",
+        "mappingLabel": "直接调用",
+        "confidence": "medium",
+        "selected": {
+          "component": "Badge",
+          "variant": "dot",
+          "quantity": 1,
+          "adaptation": null,
+          "reason": [
+            "命中检索词：徽标数",
+            "命中检索词：角标",
+            "命中检索词：红点提醒",
+            "命中检索词：未读数量徽标",
+            "命中检索词：圆点状态徽标",
+            "命中检索词：图案徽标",
+            "命中检索词：订单状态点",
+            "使用首个已登记变体 dot"
+          ],
+          "sourceFacts": [
+            "徽标数"
+          ],
+          "matchedDecisionTypes": []
+        },
+        "candidates": [
+          {
+            "component": "Badge",
+            "score": 14,
+            "reasons": [
+              "命中检索词：徽标数",
+              "命中检索词：角标",
+              "命中检索词：红点提醒",
+              "命中检索词：未读数量徽标",
+              "命中检索词：圆点状态徽标",
+              "命中检索词：图案徽标",
+              "命中检索词：订单状态点"
+            ]
+          }
+        ],
+        "rejectedCandidates": [],
+        "pageLevelCustom": null
+      }
+    },
+    "fingerprints": {
+      "scripts/select-page-components.js": "351ee761bb1d163e453d55c782c9713f3ab86228c673910ae20b6f483d7763d5",
+      "scripts/select-page-components.test.js": "10348ca3ab0b34f1f752a0aac83c7499ec820f80e4a51867b27684dd6bb306af",
+      "components/generation-index.json": "6b522b3b9e8b5a3298e4dd84f7ac2be03084afe041c55f933f62fbeb325942f9",
+      "components/component-selection-mvp.json": "4ad72f1a3f7dc554ed6ab7d45d10772a3b26e2afba1bd61c06c0001aae60795d",
+      "scripts/generate-page-plan-draft.js": "4dca86976ab30fbcf23e8c31d8da43ab5c75078d53bb6a5cb00117173598c6e7",
+      "scripts/run-page-generation.js": "2e90833303abab42759e06a8c87d41df7e28acddc6a380ce7ba612a657b17f12"
+    }
+  },
+  "after": {
+    "results": {
+      "table": {
+        "moduleId": "M-TABLE",
+        "moduleName": "Table",
+        "role": "custom",
+        "mappingLabel": "页面级自定义",
+        "confidence": "conservative-fallback",
+        "selected": null,
+        "recommendedCandidate": {
+          "component": "Table",
+          "variant": null,
+          "reason": "模块事实仅召回组件，尚无具体变体的用途与匹配依据；登记顺序或只有一个变体不能证明直接调用",
+          "compatibilityChecks": [
+            "根据可见来源事实确认变体用途与排除条件",
+            "核对具体契约、Preview 必需结构及允许编辑字段"
+          ],
+          "missingObservations": [
+            "variantSelectionEvidence"
+          ]
+        },
+        "candidates": [
+          {
+            "component": "Table",
+            "score": 12,
+            "reasons": [
+              "模块事实匹配 table 场景"
+            ]
+          }
+        ],
+        "rejectedCandidates": [],
+        "pageLevelCustom": {
+          "reason": "模块事实仅召回组件，尚无具体变体的用途与匹配依据；登记顺序或只有一个变体不能证明直接调用；这是候选推荐，契约和交互兼容性未确认前保持页面级自定义，不生成 ds-* 调用",
+          "fsRules": [
+            "page-level surface",
+            "1200px content width",
+            "FS typography and spacing tokens",
+            "no invented ds-* component structure"
+          ]
+        }
+      },
+      "badge": {
+        "moduleId": "M-BADGE",
+        "moduleName": "徽标数",
+        "role": "custom",
+        "mappingLabel": "页面级自定义",
+        "confidence": "conservative-fallback",
+        "selected": null,
+        "recommendedCandidate": {
+          "component": "Badge",
+          "variant": null,
+          "reason": "模块事实仅召回组件，尚无具体变体的用途与匹配依据；登记顺序或只有一个变体不能证明直接调用",
+          "compatibilityChecks": [
+            "根据可见来源事实确认变体用途与排除条件",
+            "核对具体契约、Preview 必需结构及允许编辑字段"
+          ],
+          "missingObservations": [
+            "variantSelectionEvidence"
+          ]
+        },
+        "candidates": [
+          {
+            "component": "Badge",
+            "score": 14,
+            "reasons": [
+              "命中检索词：徽标数",
+              "命中检索词：角标",
+              "命中检索词：红点提醒",
+              "命中检索词：未读数量徽标",
+              "命中检索词：圆点状态徽标",
+              "命中检索词：图案徽标",
+              "命中检索词：订单状态点"
+            ]
+          }
+        ],
+        "rejectedCandidates": [],
+        "pageLevelCustom": {
+          "reason": "模块事实仅召回组件，尚无具体变体的用途与匹配依据；登记顺序或只有一个变体不能证明直接调用；这是候选推荐，契约和交互兼容性未确认前保持页面级自定义，不生成 ds-* 调用",
+          "fsRules": [
+            "page-level surface",
+            "1200px content width",
+            "FS typography and spacing tokens",
+            "no invented ds-* component structure"
+          ]
+        }
+      }
+    },
+    "behavior": "No matched registered preferred variant -> requiresContractReview, variant null, missingObservations and compatibilityChecks. chooseModule retains existing recommendedCandidate, selected null and page-level custom provisional mapping.",
+    "schemaUnchanged": "fs-page-component-selection/1.0.0"
+  },
+  "tests": {
+    "command": "node --test scripts/select-page-components.test.js",
+    "exitCode": 0,
+    "total": 22,
+    "passed": 22,
+    "failed": 0,
+    "new": 5,
+    "cases": [
+      "Actual local Table structural recall lacks variant facts; reversing registration order stays pending",
+      "Actual local Badge keywords mixing variant intents stay pending",
+      "Single registered Rate with visible stars but no variant-usage resolution stays pending; empty facts never directly call",
+      "Existing explicit Banner/hero match retained; unavailable preferred/empty variant lists pending",
+      "Existing Plan draft emits BLOCK-COMPONENT-REVIEW; real temporary buildContext carries blocked readiness; actual assertContext rejects readiness"
+    ],
+    "log": "components/sources/maintenance/selection-fallback-1012.tap.txt"
+  },
+  "checks": [
+    {
+      "command": "node scripts/generate-component-index.js --check",
+      "exitCode": 0,
+      "log": "components/sources/maintenance/selection-fallback-1012-index.txt"
+    },
+    {
+      "command": "node scripts/compile-component-selection-mvp.js --check",
+      "exitCode": 0,
+      "log": "components/sources/maintenance/selection-fallback-1012-mvp.txt"
+    },
+    {
+      "command": "node --check scripts/select-page-components.js",
+      "exitCode": 0
+    }
+  ],
+  "fingerprints": {
+    "scripts/select-page-components.js": "f2857a712b92b0aae8d353ee2e74844f6cb081352fd43366b69a883b3cab724b",
+    "scripts/select-page-components.test.js": "0aa0abbd3a812a0dac5ab9dd7f1f89456925d62498364af895314f5ac9d3c55d",
+    "scripts/generate-page-plan-draft.js": "4dca86976ab30fbcf23e8c31d8da43ab5c75078d53bb6a5cb00117173598c6e7",
+    "scripts/prepare-page-generation-context.js": "65bd6056e85fce4a8b55b00c9825a46263d6acd10c58d0427149551d3a88313c",
+    "scripts/run-page-generation.js": "2e90833303abab42759e06a8c87d41df7e28acddc6a380ce7ba612a657b17f12",
+    "components/generation-index.json": "6b522b3b9e8b5a3298e4dd84f7ac2be03084afe041c55f933f62fbeb325942f9",
+    "components/component-selection-mvp.json": "4ad72f1a3f7dc554ed6ab7d45d10772a3b26e2afba1bd61c06c0001aae60795d",
+    "components/contracts/table.json": "3bab28f209c3381b4b3b1d5fa38c3ad353abae8fb0db1d0090e0061e2a7eb7dc",
+    "components/contracts/badge.json": "65a40e19eabd5acf98113ee5139af77cf92b00b1973c638a86d70e83868d9a9a",
+    "components/contracts/rate.json": "8f75871d2b588b62d2294e27cd1829c18c99f7c554da946d7ba172bdd3b28135",
+    "AGENTS.md": "18e69cd3c00626bfbafff3026a17aa6f035e7442bca2eb8c99511f9274417cde",
+    "docs/component-quality-standard.md": "19dd2a87bc7235eef0b82c768e50dfc5f54498d22fdcb2d33374aedec0d3d20c"
+  },
+  "logFingerprints": {
+    "components/sources/maintenance/selection-fallback-1012.tap.txt": "13b4bab5ab0e425227c80fd2933b23fcc955b5daa5f93f5c97e2fcc5a474a651",
+    "components/sources/maintenance/selection-fallback-1012-index.txt": "f5984241039a9070c8040401d9337a9a5e9cd7cdc2791685c3216bd61952e573",
+    "components/sources/maintenance/selection-fallback-1012-mvp.txt": "4bac69b93c917daf93f087b4d9faa388cee022eae7a304140676bf7a4436f326"
+  },
+  "unchangedInputs": {
+    "components/generation-index.json": true,
+    "components/component-selection-mvp.json": true,
+    "scripts/generate-page-plan-draft.js": true,
+    "scripts/run-page-generation.js": true
+  },
+  "modifiedImplementation": [
+    "scripts/select-page-components.js"
+  ],
+  "modifiedTests": [
+    "scripts/select-page-components.test.js"
+  ],
+  "consumerCompatibility": {
+    "schemaChange": false,
+    "consumerEdits": false,
+    "existingFields": [
+      "recommendedCandidate",
+      "missingObservations",
+      "compatibilityChecks",
+      "selected",
+      "mappingLabel"
+    ],
+    "planGate": "BLOCK-COMPONENT-REVIEW-SEC-001",
+    "contextGate": "implementationReadiness=blocked",
+    "runner": "assertContext returns readiness error"
+  },
+  "limits": [
+    "Local registration/contract source only; no MasterGo or browser/visual verification",
+    "Other existing keyword/preferred variant branches unchanged and not certified by this batch",
+    "No regenerated saved selections, Plans, pages or component references; no whole-page compliance claim",
+    "Candidate pending is not certification that no component fits; no new design rule inferred",
+    "An initial test wrongly expected assertGenerationPolicy to throw; existing API returns errors and readiness is enforced by assertContext. Test corrected to exercise actual Plan->Context->runner readiness path, no consumer code changed.",
+    "No dependency installs, service changes, automations/caffeinate, Git commits or pushes"
+  ],
+  "next": "Stop for independent review; no Form source task resumed"
+}

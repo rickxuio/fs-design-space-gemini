@@ -1,0 +1,40 @@
+/* PC product-matrix source: group 12126 owns a 40px white ellipse and a
+   20px arrow instance. This is a Table control, not an IconButton variant.
+   Default Next shadow and canonical placement are source-backed; other states remain pending.
+   Opt-in only: shared legacy styles and frozen resources stay unchanged. */
+.ds-table--matrix-products[data-table-current] > [data-table-scroll-controls] > .ds-table__scroll-control {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--border-radius-full);
+}
+
+/* Canonical product-heading atom 68908:016303: 200×140, gap 4,
+   padding top0/right8/bottom16/left8. Its 100px media +20px label
+   and 4px gap occupy 124px; ordinary body-cell 8/10 padding is not its rule. */
+.ds-table--matrix-products[data-table-current] > .ds-table__scroll > .ds-table__table > thead > tr > th {
+  padding: 0 var(--spacing-sm) var(--spacing-lg);
+}
+.ds-table--matrix-products[data-table-current] .ds-table__product {
+  height: 124px;
+}
+
+/* Canonical yes/pc group is 40×40 at 1140/122 in 1200×284;
+   source constraints center it vertically, with 20px right inset.
+   Row count is editable, so preserve the constraint rather than hardcode 122. */
+.ds-table--matrix-products[data-table-current] > [data-table-scroll-controls] {
+  top: 50%;
+  right: var(--spacing-20);
+  transform: translateY(-50%);
+}
+
+/* Default next instance68908:036230: original20px filled path/#707070.
+   Other directions, hover/disabled, plain matrices and legacy calls keep fallback. */
+.ds-table--matrix-products[data-table-current] > [data-table-scroll-controls] > [data-table-scroll="next"]:not(:disabled):not(:hover) > img {
+  content: url("./icons/icon-table-matrix-next-current-20.svg");
+}
+
+/* Circle68908:036229 official SVG: dx0/dy2, Gaussian sigma4, black alpha0.1;
+   CSS blur8 corresponds to sigma4; no morphology/spread. Existing exact token reused. */
+.ds-table--matrix-products[data-table-current] > [data-table-scroll-controls] > [data-table-scroll="next"]:not(:disabled):not(:hover) {
+  box-shadow: var(--shadow-list-panel);
+}

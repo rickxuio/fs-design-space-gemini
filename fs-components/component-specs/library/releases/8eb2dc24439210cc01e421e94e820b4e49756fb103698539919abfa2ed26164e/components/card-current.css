@@ -1,0 +1,129 @@
+/* Current opt-in grid sizing: user clarification2026-11-10, source image Fill.
+   The285x160 specimen is the four-column example, not a universal lock.
+   Existing callers without this marker retain their published geometry. */
+.ds-card--vertical[data-card-current="vertical-single-event"][data-card-layout="parent-grid"] {
+  width: 100%;
+  min-width: 0;
+}
+.ds-card--vertical[data-card-current="vertical-single-event"][data-card-layout="parent-grid"] > .ds-card__image {
+  position: relative;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+}
+.ds-card--vertical[data-card-current="vertical-single-event"][data-card-layout="parent-grid"] > .ds-card__image > img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+/* Current PC layout-one source specimen only; archived Card titles stay versioned. */
+.ds-card[data-card-source-layout-one-title="official"] .ds-card__title {
+  font-size: var(--font-size-md);
+  line-height: 22px;
+}
+
+/* Source 1258:48284/48224: inside strokes do not consume body padding. */
+.ds-card--vertical.ds-card--bordered[data-card-current="vertical-single-event"] .ds-card__body {
+  position: relative;
+  border: var(--border-style-none);
+}
+.ds-card--vertical.ds-card--bordered[data-card-current="vertical-single-event"] .ds-card__body::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: var(--border-width-default) var(--border-style-default) var(--border-color-default);
+  border-top: var(--border-style-none);
+  border-bottom-left-radius: var(--border-radius-lg);
+  border-bottom-right-radius: var(--border-radius-lg);
+  pointer-events: none;
+}
+/* Original product-display set013438: white/gray x Default/Hover.
+   Only current explicit calls; historic embedded examples stay on their release. */
+.ds-card[data-card-current="embedded-standard"][data-card-surface="white"] { background: var(--color-white); }
+.ds-card[data-card-current="embedded-standard"][data-card-surface="gray"] { background: var(--color-gray-9); }
+.ds-card[data-card-current="embedded-standard"] .ds-card__product-image > img { display: block; width: 180px; height: 180px; object-fit: cover; mix-blend-mode: multiply; }
+
+/* Recent-view source013426 /035265 /035246. Cart32 vs price22 => center offset5. */
+.ds-card[data-card-current="embedded-small"] { position:relative; }
+.ds-card[data-card-current="embedded-small"] > img.ds-card__product-image { display:block; flex:none; width:140px; height:140px; object-fit:cover; mix-blend-mode:multiply; }
+.ds-card[data-card-current="embedded-small"] .ds-card__product-body { position:relative; }
+.ds-card[data-card-current="embedded-small"] .ds-card__cart-slot { position:absolute; right:0; bottom:-5px; }
+.ds-card[data-card-current="embedded-small"][data-card-state="hover"] { background:var(--color-white); box-shadow:0px 2px 8px 0px rgba(0,0,0,.1); }
+
+/* Host-owned layout only; no anonymous inline baseline around the20px atom. */
+.ds-card[data-card-current="embedded-standard"] .ds-card__product-link { display:flex; }
+
+/* Host owns placement only; original New appearance belongs to Tag. */
+.ds-card--embedded-full > .ds-card__tag-slot {
+  position: absolute;
+  left: 20px;
+  top: 24px;
+}
+
+/* PC285 original category-nav members: no TextButton, List or folded controls. */
+.ds-card[data-card-current="category-nav"] {
+  width: 285px;
+  height: 366px;
+  border: var(--border-style-none);
+  background: var(--color-white);
+  overflow: hidden;
+}
+.ds-card[data-card-current="category-nav"] .ds-card__image { height: 160px; }
+.ds-card[data-card-current="category-nav"] .ds-card__body { padding: var(--spacing-20); position: relative; border: var(--border-style-none); }
+.ds-card[data-card-current="category-nav"] .ds-card__title { font-size: var(--font-size-md); font-weight: var(--font-weight-semibold); line-height: 22px; }
+.ds-card[data-card-current="category-nav"] .ds-card__sub-link { font-weight: var(--font-weight-regular); text-decoration: none; }
+.ds-card.ds-card--bordered[data-card-current="category-nav"] .ds-card__body::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: 0 0 var(--border-radius-lg) var(--border-radius-lg);
+  box-shadow: inset 1px 0 var(--border-color-default), inset -1px 0 var(--border-color-default), inset 0 -1px var(--border-color-default);
+}
+
+.ds-card[data-card-current="category-nav"]:hover,
+.ds-card.ds-card--hover[data-card-current="category-nav"] { box-shadow: 0px 15px 15px -10px rgba(0,0,0,0.15); }
+
+/* PC051710 only: real List12 in the 037147 text stack; host placement only. */
+.ds-card[data-card-source-layout-one-list="official"] .ds-card__content-stack {
+  gap: var(--spacing-sm);
+}
+.ds-card[data-card-source-layout-one-list="official"] .ds-card__desc {
+  padding-top: 0;
+}
+/* Inside top/right/bottom stroke preserves the source 560px content width. */
+.ds-card[data-card-source-layout-one-list="official"] .ds-card__body {
+  position: relative;
+  border: var(--border-style-none);
+}
+.ds-card[data-card-source-layout-one-list="official"] .ds-card__body::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: var(--border-width-default) var(--border-style-default) var(--border-color-default);
+  border-left: var(--border-style-none);
+  border-radius: 0 var(--border-radius-lg) var(--border-radius-lg) 0;
+  pointer-events: none;
+}
+
+/* Mirrored PC051833 only: inside top/left/bottom, left corners8. */
+.ds-card--horizontal-reverse[data-card-source-layout-one-list="official"] .ds-card__body::before {
+  border-left: var(--border-width-default) var(--border-style-default) var(--border-color-default);
+  border-right: var(--border-style-none);
+  border-radius: var(--border-radius-lg) 0 0 var(--border-radius-lg);
+}
+
+/* PC051801 sidebar source specimen; slot clipping/scroll remains unverified. */
+.ds-card--horizontal-sidebar[data-card-source-sidebar-layout-one="official"] .ds-card__content-area.ds-card--horizontal-bordered .ds-card__image {
+  height: 246px;
+}
+.ds-card--horizontal-sidebar[data-card-source-sidebar-layout-one="official"] .ds-card__sidebar-placeholder {
+  background: var(--color-tag-border);
+}
+
+/* Vertical single-event host owns the old instance's12px top placement.
+   List row geometry and paint remain entirely on the shared atom. */
+.ds-card[data-card-source-vertical-list="official"] .ds-card__list-slot {
+  padding-top: var(--spacing-md);
+}

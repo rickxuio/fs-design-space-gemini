@@ -1,0 +1,702 @@
+<!DOCTYPE html><html data-component-reference="carousel" lang="zh-CN"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carousel 走马灯 - 组件预览</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../tokens.css">
+  <link rel="stylesheet" href="../components.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: var(--font-family-base); padding: 40px; background: #FFF; color: var(--color-gray-1); }
+    h1 { font-size: 24px; font-weight: 600; margin-bottom: 8px; }
+    .subtitle { font-size: 14px; color: var(--color-gray-3); margin-bottom: 40px; }
+
+    /* Category Badge（分类与左侧导航栏保持一致） */
+    .cat-badge { display: inline-flex; align-items: center; height: 22px; padding: 0 10px; border-radius: 11px; font-size: 11px; font-weight: 700; margin-bottom: 10px; }
+
+    .section { margin-bottom: 56px; }
+    .section-title { font-size: 18px; font-weight: 600; margin-bottom: 8px; padding-bottom: 8px; border-bottom: 1px solid var(--color-gray-5); }
+    .section-desc { font-size: 12px; color: var(--color-gray-3); margin-bottom: 24px; }
+
+    /* State grid — buttons are static here, not overlaid */
+    .state-grid {
+      display: flex;
+      align-items: flex-end;
+      gap: 32px;
+    }
+    .state-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+    .state-label {
+      font-size: 12px;
+      color: var(--color-gray-3);
+      text-align: center;
+      white-space: nowrap;
+    }
+    /* Override absolute positioning for state display */
+    .state-grid .ds-carousel__btn {
+      position: static;
+      transform: none;
+    }
+    .state-divider {
+      width: 1px;
+      height: 48px;
+      background: var(--color-gray-5);
+      align-self: flex-end;
+    }
+    .size-specimen + .size-specimen { margin-top: 32px; }
+    .size-specimen-title {
+      margin-bottom: 12px;
+      color: var(--color-gray-1);
+      font-size: 13px;
+      font-weight: var(--font-weight-semibold);
+      line-height: 20px;
+    }
+
+    /* Dark panel */
+    .dark-panel {
+      background: #1a2b3c;
+      border-radius: 8px;
+      padding: 28px 32px;
+      display: inline-flex;
+      align-items: flex-end;
+      gap: 32px;
+    }
+    .dark-panel .state-label { color: rgba(255,255,255,0.45); }
+    .dark-panel .state-divider { background: rgba(255,255,255,0.15); }
+    .dark-panel .ds-carousel__btn {
+      position: static;
+      transform: none;
+    }
+
+    /* Dots demo */
+    .dots-row {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 16px;
+    }
+    .dots-row-label {
+      font-size: 12px;
+      color: var(--color-gray-3);
+      width: 72px;
+      flex-shrink: 0;
+    }
+    .dots-wide-specimen {
+      width: 204px;
+      height: 76px;
+      display: flex;
+      align-items: flex-start;
+      padding: var(--spacing-20);
+    }
+
+    /* Homepage Banner scene demo content (component controls remain in components.css) */
+    .homepage-banner-demo__slide {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      padding: 0 calc(13.125% + var(--spacing-80));
+      color: var(--color-white);
+      background: #707070;
+    }
+    .homepage-banner-demo__content { max-width: 520px; }
+    .homepage-banner-demo__title { font-size: 28px; line-height: 38px; font-weight: var(--font-weight-semibold); }
+    .homepage-banner-demo__desc { margin-top: 8px; font-size: 14px; line-height: 22px; color: rgba(255,255,255,0.72); }
+
+  
+.light-carousel-demo-body { height: 260px; display: flex; align-items: center; justify-content: center; background: var(--color-gray-8); color: var(--color-gray-1); font-size: var(--font-size-xl); font-weight: var(--font-weight-semibold); line-height: 28px; }
+</style>
+<link rel="stylesheet" href="../carousel-current.css"></head>
+<body>
+  <span class="cat-badge" style="background:#FBEAEA;color:#C00000;">数据展示 Data Display</span>
+  <h1>Carousel 走马灯 <span class="version-badge" style="font-size:18px;font-weight:600;color:#707070;vertical-align:middle;margin-left:10px;">v1.2.2608A</span></h1>
+  <p class="subtitle">轮播组件 — 圆形实心导航按钮（Prev / Next）+ 分页指示器（Dots），含首页 Banner 场景</p>
+
+  <!-- 变体决策 + 关联关系表 -->
+  <div style="margin-bottom: 0; padding: 24px; background: #FAFBFC; border: 1px solid var(--color-gray-5); border-radius: 8px;">
+    <!-- AUTO-GENERATED-PREVIEW:START -->
+<!-- 合并模式：硬规则已并入下方合并表 -->
+    <!-- AUTO-GENERATED-PREVIEW:END -->
+    <!-- AUTO-GENERATED-DECISION-TABLE:START -->
+    <p style="font-size: 14px; font-weight: 600; margin-bottom: 4px;">变体决策</p>
+    <p style="font-size: 12px; color: #707070; margin-bottom: 12px;">Carousel 含四个切换按钮规格（实心 XL/L/S、描边 M）、Light/Dark 配色、标准/长条激活分页、叠加/版心两侧布局及首页 Banner；首页场景固定 Dark + solid-xl + 首页专属分段进度轨 + 叠加。</p>
+    <table style="width:100%;border-collapse:collapse;table-layout:fixed;">
+      <colgroup>
+        <col style="width:50%;">
+        <col style="width:50%;">
+      </colgroup>
+      <tbody>
+        <tr>
+          <th style="background:#F6F6F8;font-size:12px;font-weight:600;text-align:left;padding:8px 10px;border:1px solid #DEE0E3;">类型</th>
+          <th style="background:#F6F6F8;font-size:12px;font-weight:600;text-align:left;padding:8px 10px;border:1px solid #DEE0E3;">变体决策（什么场景用）</th>
+        </tr>
+        <tr>
+          <td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;" rowspan="2">配色 · Light（浅色）</td>
+          <td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>用：</strong>浅色/白色背景上的轮播。</td>
+        </tr>
+        <tr>
+          <td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong style="color:#707070;">不用：</strong>深色 Banner 背景 → 用 Dark 变体。</td>
+        </tr>
+        <tr>
+          <td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;" rowspan="2">配色 · Dark（深色）</td>
+          <td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>用：</strong>深色 Banner 背景上的轮播。</td>
+        </tr>
+        <tr>
+          <td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong style="color:#707070;">不用：</strong>浅色背景 → 用 Light 变体。</td>
+        </tr>
+        <tr>
+          <td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;" rowspan="2">尺寸/外观 · 实心 XL</td>
+          <td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>用：</strong>输入证据明确要求 48px 大型切换按钮；首页 Banner 固定使用。</td>
+        </tr>
+        <tr>
+          <td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong style="color:#707070;">不用：</strong>36px、20px 或白底描边规格 → 选择对应变体。</td>
+        </tr>
+        <tr>
+          <td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;" rowspan="2">尺寸/外观 · 实心 L</td>
+          <td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>用：</strong>输入证据明确要求 36px 切换按钮。</td>
+        </tr>
+        <tr>
+          <td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong style="color:#707070;">不用：</strong>不得仅凭视觉近似替代其他三个规格。</td>
+        </tr>
+        <tr>
+          <td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;" rowspan="2">尺寸/外观 · 实心 S</td>
+          <td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>用：</strong>输入证据明确要求 20px 紧凑切换按钮。</td>
+        </tr>
+        <tr>
+          <td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong style="color:#707070;">不用：</strong>常规或大型控制使用 L/XL；白底描边使用 outlined-m。</td>
+        </tr>
+        <tr>
+          <td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;" rowspan="2">尺寸/外观 · 描边 M</td>
+          <td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>用：</strong>输入证据明确要求 28px 白底描边切换按钮；Default/Hover 的 16px 箭头固定使用 color.gray-2（#4B4B4D）。</td>
+        </tr>
+        <tr>
+          <td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong style="color:#707070;">不用：</strong>实心圆形控制使用 XL/L/S。</td>
+        </tr>
+        <tr>
+          <td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;" rowspan="2">分页 · 长条激活</td>
+          <td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>用：</strong>明确要求长条激活分页；7 项为 1 条 + 6 点。</td>
+        </tr>
+        <tr>
+          <td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong style="color:#707070;">不用：</strong>普通轮播（激活态 20×8px）。</td>
+        </tr>
+        <tr>
+          <td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;" rowspan="2">布局 · 叠加型</td>
+          <td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>用：</strong>按钮直接叠加在轮播主体上，浮在图片左右边缘。</td>
+        </tr>
+        <tr>
+          <td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong style="color:#707070;">不用：</strong>需要按钮位于轮播外部的版心两侧 → 用版心两侧型。</td>
+        </tr>
+        <tr>
+          <td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;" rowspan="2">布局 · 版心两侧</td>
+          <td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>用：</strong>版心 1200px 内容配左右外侧按钮，视觉不被轮播主体遮挡。</td>
+        </tr>
+        <tr>
+          <td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong style="color:#707070;">不用：</strong>按钮要贴在轮播主体上 → 用叠加型。</td>
+        </tr>
+        <tr>
+          <td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;" rowspan="2">场景 · 首页 Banner</td>
+          <td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>用：</strong>首页多内容 Banner 有真实切换时，使用 13.125% 按钮边距与底部分页。</td>
+        </tr>
+        <tr>
+          <td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong style="color:#707070;">不用：</strong>静态 Banner、浅色背景或普通内容轮播。</td>
+        </tr>
+        <tr>
+          <td colspan="2" style="background:#FFF3E0;color:#F56300;font-size:12px;font-weight:600;padding:10px 12px;border:1px solid #DEE0E3;">⚠️ 硬规则： 版心两侧布局按钮距版心 32px + 不被裁剪</td>
+        </tr>
+        <tr>
+          <td style="border:1px solid #DEE0E3;padding:12px;font-size:12px;line-height:20px;vertical-align:top;word-break:break-word;">
+            <p style="font-size:11px;font-weight:600;color:#707070;margin-bottom:6px;">👤 描述原文</p>
+            <div><strong>版心两侧布局时，Prev/Next 按钮放在版心外侧两边，按钮内边缘距版心左右边缘固定 32px，垂直居中。</strong>按钮必须在 <code>.ds-carousel</code> 的 <code>overflow: hidden</code> 之外，否则会被裁掉。</div>
+          </td>
+          <td style="border:1px solid #DEE0E3;padding:12px;font-size:12px;line-height:20px;vertical-align:top;word-break:break-word;">
+            <p style="font-size:11px;font-weight:600;color:#707070;margin-bottom:6px;">🤖 AI 解析（写入契约 JSON 的字段）</p>
+            <pre style="margin:0;font-family:'SF Mono',Consolas,monospace;font-size:11px;line-height:18px;white-space:pre-wrap;word-break:break-all;overflow-wrap:anywhere;color:#19191A;">buttonLayouts["container-flanking"] = {
+  hardConstraint: "按钮内边缘距版心左右边缘固定 32px；外层 offset = 32px + 所选按钮宽度（XL 80px、L 68px、S 52px、描边 M 60px）",
+  verticalAlign: "top:50%; transform:translateY(-50%)",
+  clippingWarning: "按钮必须置于 .ds-carousel 的 overflow:hidden 范围之外，否则会被裁掉；此项由 verify.js CAROUSEL_BTN 几何校验自动检测"
+}</pre>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" style="background:#FFF3E0;color:#F56300;font-size:12px;font-weight:600;padding:10px 12px;border:1px solid #DEE0E3;">⚠️ 硬规则： 首页 Banner 场景固定使用 1920×420 基准与专属切换样式</td>
+        </tr>
+        <tr>
+          <td style="border:1px solid #DEE0E3;padding:12px;font-size:12px;line-height:20px;vertical-align:top;word-break:break-word;">
+            <p style="font-size:11px;font-weight:600;color:#707070;margin-bottom:6px;">👤 描述原文</p>
+            <div><strong>首页 Banner 轮播必须在 <code>.ds-carousel</code> 根节点添加 <code>ds-carousel--homepage-banner</code>，并组合 Dark + solid-xl + 叠加型。</strong>场景高度固定 420px；左右切换按钮固定 48×48px、箭头 28×28px，并按 1920px 设计基准的左右 13.125% 定位；分页默认 8×8px、激活 56×8px，示例的 7 张幻灯片必须与 7 个分页按钮一一对应。普通内容轮播必须按输入证据选择四个正式按钮规格。</div>
+          </td>
+          <td style="border:1px solid #DEE0E3;padding:12px;font-size:12px;line-height:20px;vertical-align:top;word-break:break-word;">
+            <p style="font-size:11px;font-weight:600;color:#707070;margin-bottom:6px;">🤖 AI 解析（写入契约 JSON 的字段）</p>
+            <pre style="margin:0;font-family:'SF Mono',Consolas,monospace;font-size:11px;line-height:18px;white-space:pre-wrap;word-break:break-all;overflow-wrap:anywhere;color:#19191A;">buttonLayouts["homepage-banner"] = {
+  rootClass: "ds-carousel--homepage-banner",
+  requiredCombination: ["dark", "overlaid"],
+  styleProperties: { designBaseline: "1920×420px", buttonSize: "48×48px", buttonInset: "13.125%", dots: "8×8px / active 56×8px", exampleCount: 7 }
+}</pre>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" style="background:#FFF3E0;color:#F56300;font-size:12px;font-weight:600;padding:10px 12px;border:1px solid #DEE0E3;">⚠️ 硬规则： 首页 Banner 文案内缩不得复用 Carousel 控件内缩</td>
+        </tr>
+        <tr>
+          <td style="border:1px solid #DEE0E3;padding:12px;font-size:12px;line-height:20px;vertical-align:top;word-break:break-word;">
+            <p style="font-size:11px;font-weight:600;color:#707070;margin-bottom:6px;">👤 描述原文</p>
+            <div><strong>Homepage Carousel 的 <code>13.125%</code> 仅用于左右切换按钮等 Carousel 控件定位。</strong>组件 Preview 中 <code>.homepage-banner-demo__slide</code> 的内容内缩只属于演示布局，不能直接套用到真实页面 Banner 文案；Banner 文案位置必须依据 Banner 自身版心和参考页面内容容器单独确定。</div>
+          </td>
+          <td style="border:1px solid #DEE0E3;padding:12px;font-size:12px;line-height:20px;vertical-align:top;word-break:break-word;">
+            <p style="font-size:11px;font-weight:600;color:#707070;margin-bottom:6px;">🤖 AI 解析（写入契约 JSON 的字段）</p>
+            <pre style="margin:0;font-family:'SF Mono',Consolas,monospace;font-size:11px;line-height:18px;white-space:pre-wrap;word-break:break-all;overflow-wrap:anywhere;color:#19191A;">homepageBanner.geometry = {
+  controlInset: "13.125%",
+  contentInset: "independent",
+  previewContentPadding: "demo-only; not a live Banner content-position contract"
+}</pre>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" style="background:#FFF3E0;color:#F56300;font-size:12px;font-weight:600;padding:10px 12px;border:1px solid #DEE0E3;">⚠️ 硬规则： 走马灯按钮/圆点永不使用红色</td>
+        </tr>
+        <tr>
+          <td style="border:1px solid #DEE0E3;padding:12px;font-size:12px;line-height:20px;vertical-align:top;word-break:break-word;">
+            <p style="font-size:11px;font-weight:600;color:#707070;margin-bottom:6px;">👤 描述原文</p>
+            <div><strong>走马灯导航按钮和分页指示器圆点永远不使用红色（brand-red #C00000）。</strong>实心 XL/L/S 默认使用 rgba(25,25,26,0.3)，Hover 使用 rgba(25,25,26,0.5)，Disabled 使用 rgba(25,25,26,0.04) 并保留 not-allowed 光标；描边 M 使用白底、#DEE0E3 描边和 #F2F2F2 Hover。</div>
+          </td>
+          <td style="border:1px solid #DEE0E3;padding:12px;font-size:12px;line-height:20px;vertical-align:top;word-break:break-word;">
+            <p style="font-size:11px;font-weight:600;color:#707070;margin-bottom:6px;">🤖 AI 解析（写入契约 JSON 的字段）</p>
+            <pre style="margin:0;font-family:'SF Mono',Consolas,monospace;font-size:11px;line-height:18px;white-space:pre-wrap;word-break:break-all;overflow-wrap:anywhere;color:#19191A;">relations.colorConstraint = {
+  rule: "走马灯导航按钮和圆点永远不使用红色（brand-red）",
+  severity: "硬约束，validate.js 目前未对此单独机械校验，靠 design-spec 文档约束"
+}</pre>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <!-- AUTO-GENERATED-DECISION-TABLE:END -->
+  </div>
+
+    <!-- DEPENDENCY-SUMMARY-SPACING -->
+    <div style="height:24px;"></div>
+    <!-- AUTO-GENERATED-DEPENDENCY-SUMMARY-TABLE:START -->
+    <div style="margin-bottom: 0; padding: 24px; background: #FAFBFC; border: 1px solid var(--color-gray-5); border-radius: 8px;">
+      <p style="font-size: 14px; font-weight: 600; margin-bottom: 4px;">依赖汇总表</p>
+      <p style="font-size: 12px; color: #707070; margin-bottom: 12px;">按组件类型汇总组件关系、颜色、字体、间距、描边、圆角、阴影和图标依赖；未填写 <code>appliesTo</code> 的组件级依赖不猜测变体归属，不参与本表归类。「组件关系」列用标签区分：<span style="display:inline-block;font-size:11px;line-height:16px;padding:0 5px;border-radius:3px;background:#EAF2FF;color:#0060BF;">子组件</span> = 嵌入本组件内部；<span style="display:inline-block;font-size:11px;line-height:16px;padding:0 5px;border-radius:3px;background:#F3EEFA;color:#512971;">父组件·类名证据／仅声明</span> = 从宿主 <code>componentDependencies</code> 自动推导；类名出现不等于具体变体、尺寸、必需结构或交互已验证，链接仅供打开 Preview 复核；<span style="display:inline-block;font-size:11px;line-height:16px;padding:0 5px;border-radius:3px;background:#FFF3E0;color:#A65300;">参考·未验证</span> = 仅保留设计意图，宿主 preview 尚无真实结构，不可作为已实现依赖。</p>
+      <div class="dep-summary-scroll">
+        <div class="dep-summary-grid" style="grid-template-columns:minmax(max-content, auto) repeat(8, minmax(max-content, 1fr));">
+          <div class="dep-cell dep-cell--sticky dep-cell--head" role="columnheader">组件类型</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">颜色</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">字体</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">间距</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">描边</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">圆角</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">阴影</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">图标</div>
+          <div class="dep-cell dep-cell--head dep-cell--right-edge" role="columnheader">组件关系</div>
+          <div class="dep-cell dep-cell--sticky" role="rowheader"><strong>浅色背景导航按钮</strong><br><code>light</code></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#707070;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-3" style="color:#0060BF;text-decoration:underline;"><code>color.gray-3</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#4B4B4D;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-2" style="color:#0060BF;text-decoration:underline;"><code>color.gray-2</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:rgba(25,25,26,0.04);vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-hover-overlay-light" style="color:#0060BF;text-decoration:underline;"><code>color.hover-overlay-light</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:rgba(25,25,26,0.3);vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-text-disabled" style="color:#0060BF;text-decoration:underline;"><code>color.text-disabled</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#F2F2F2;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-7" style="color:#0060BF;text-decoration:underline;"><code>color.gray-7</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#FFFFFF;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-white" style="color:#0060BF;text-decoration:underline;"><code>color.white</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:rgba(112,112,112,0.4);vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span>rgba(112,112,112,0.4) <span style="color:#707070;">（未 token 化）</span></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:rgba(112,112,112,0.7);vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span>rgba(112,112,112,0.7) <span style="color:#707070;">（未 token 化）</span></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:rgba(25,25,26,0.5);vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span>rgba(25,25,26,0.5) <span style="color:#707070;">（未 token 化）</span></span></div>
+          <div class="dep-cell" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">10px</span><a href="spacing.html#tok-spacing-10" style="color:#0060BF;text-decoration:underline;"><code>spacing.10</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">20px</span><a href="spacing.html#tok-spacing-20" style="color:#0060BF;text-decoration:underline;"><code>spacing.20</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">16px</span><a href="spacing.html#tok-spacing-lg" style="color:#0060BF;text-decoration:underline;"><code>spacing.lg</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;color:#A6A6A6;font-size:11px;margin-right:8px;vertical-align:-3px;flex:0 0 auto;">∅</span><a href="stroke.html#tok-border-style-none" style="color:#0060BF;text-decoration:underline;"><code>border.style.none</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:1px;background:#707070;margin-right:8px;vertical-align:middle;flex:0 0 auto;"></span><a href="stroke.html#tok-border-width-default" style="color:#0060BF;text-decoration:underline;"><code>border.width.default</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:0;border-top:2px solid #707070;margin-right:8px;vertical-align:middle;flex:0 0 auto;"></span><a href="stroke.html#tok-border-style-default" style="color:#0060BF;text-decoration:underline;"><code>border.style.default</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;box-sizing:border-box;border:2px solid var(--color-gray-5);background:transparent;margin-right:8px;vertical-align:-3px;flex:0 0 auto;"></span><a href="stroke.html#tok-border-color-default" style="color:#0060BF;text-decoration:underline;"><code>border.color.default</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">4px</span><a href="radius.html#tok-border-radius-md" style="color:#0060BF;text-decoration:underline;"><code>border-radius.md</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;">50% <span style="color:#707070;">（未 token 化）</span></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">8px</span><a href="radius.html#tok-border-radius-lg" style="color:#0060BF;text-decoration:underline;"><code>border-radius.lg</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><img src="../icons/icon-carousel-prev.svg?v=0c3e3035fa72" alt="" style="display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;"><a href="icon-map.html#icon-carousel-prev" style="color:#0060BF;text-decoration:underline;"><code>icon-carousel-prev.svg</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><img src="../icons/icon-carousel-next.svg?v=32bc4993a22b" alt="" style="display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;"><a href="icon-map.html#icon-carousel-next" style="color:#0060BF;text-decoration:underline;"><code>icon-carousel-next.svg</code></a></span></div>
+          <div class="dep-cell dep-cell--right-edge" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:normal;overflow-wrap:anywhere;"><span style="display:inline-block;flex-shrink:0;font-size:11px;line-height:16px;padding:0 5px;margin-right:6px;border-radius:3px;background:#F3EEFA;color:#512971;">父组件·仅声明</span><a href="banner.html" style="color:#0060BF;text-decoration:underline;">Banner</a></span></div>
+          <div class="dep-cell dep-cell--sticky dep-cell--bottom-edge" role="rowheader"><strong>深色背景导航按钮</strong><br><code>dark</code></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#FFFFFF;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-white" style="color:#0060BF;text-decoration:underline;"><code>color.white</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:rgba(255,255,255,0.1);vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-white-translucent" style="color:#0060BF;text-decoration:underline;"><code>color.white-translucent</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:rgba(255,255,255,0.25);vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span>rgba(255,255,255,0.25) <span style="color:#707070;">（未 token 化）</span></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:rgba(255,255,255,0.4);vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span>rgba(255,255,255,0.4) <span style="color:#707070;">（未 token 化）</span></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:rgba(255,255,255,0.45);vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span>rgba(255,255,255,0.45) <span style="color:#707070;">（未 token 化）</span></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:rgba(255,255,255,0.7);vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span>rgba(255,255,255,0.7) <span style="color:#707070;">（未 token 化）</span></span></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">10px</span><a href="spacing.html#tok-spacing-10" style="color:#0060BF;text-decoration:underline;"><code>spacing.10</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">20px</span><a href="spacing.html#tok-spacing-20" style="color:#0060BF;text-decoration:underline;"><code>spacing.20</code></a></span></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;color:#A6A6A6;font-size:11px;margin-right:8px;vertical-align:-3px;flex:0 0 auto;">∅</span><a href="stroke.html#tok-border-style-none" style="color:#0060BF;text-decoration:underline;"><code>border.style.none</code></a></span></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">4px</span><a href="radius.html#tok-border-radius-md" style="color:#0060BF;text-decoration:underline;"><code>border-radius.md</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;">50% <span style="color:#707070;">（未 token 化）</span></span></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><img src="../icons/icon-carousel-prev.svg?v=0c3e3035fa72" alt="" style="display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;"><a href="icon-map.html#icon-carousel-prev" style="color:#0060BF;text-decoration:underline;"><code>icon-carousel-prev.svg</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><img src="../icons/icon-carousel-next.svg?v=32bc4993a22b" alt="" style="display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;"><a href="icon-map.html#icon-carousel-next" style="color:#0060BF;text-decoration:underline;"><code>icon-carousel-next.svg</code></a></span></div>
+          <div class="dep-cell dep-cell--right-edge dep-cell--bottom-edge" role="cell"><span style="color:#A6A6A6;">—</span></div>
+        </div>
+      </div>
+    </div>
+    <!-- AUTO-GENERATED-DEPENDENCY-SUMMARY-TABLE:END -->
+
+  <!-- TEMPLATE-DEMO-SPACING -->
+  <div style="height:24px;"></div>
+
+
+
+<div style="margin-top: 48px; font-family: var(--font-family-base);">
+
+<!-- ============================================
+       SECTION 1: 导航按钮 — 浅色背景
+       ============================================ -->
+  <div class="section">
+    <div class="section-title">① 导航按钮 — 四尺寸状态矩阵 (Light)</div>
+    <p class="section-desc">
+      实心型 Default：rgba(25,25,26,0.3)，Hover：rgba(25,25,26,0.5)，Disabled：rgba(25,25,26,0.04) 并显示 not-allowed 光标。描边型为 28×28px 白底，Hover #F2F2F2，Disabled 整体 30% 不透明度。
+    </p>
+
+    <div class="size-specimen">
+      <div class="size-specimen-title">XL · 实心 48×48px / 箭头 28×28px</div>
+      <div class="state-grid">
+        <div class="state-col"><div class="state-label">Prev<br>Disabled</div><button class="ds-carousel__btn ds-carousel__btn--xl" type="button" aria-label="Previous slide" disabled=""><img src="../icons/icon-carousel-prev.svg" alt=""></button></div>
+        <div class="state-col"><div class="state-label">Next<br>Disabled</div><button class="ds-carousel__btn ds-carousel__btn--xl" type="button" aria-label="Next slide" disabled=""><img src="../icons/icon-carousel-next.svg" alt=""></button></div>
+        <div class="state-divider"></div>
+        <div class="state-col"><div class="state-label">Prev<br>Default</div><button id="icon-usage-icon-carousel-prev" class="ds-carousel__btn ds-carousel__btn--xl" type="button" aria-label="Previous slide" style="scroll-margin-top: 40px;"><img src="../icons/icon-carousel-prev.svg" alt=""></button></div>
+        <div class="state-col"><div class="state-label">Next<br>Default</div><button id="icon-usage-icon-carousel-next" class="ds-carousel__btn ds-carousel__btn--xl" type="button" aria-label="Next slide" style="scroll-margin-top: 40px;"><img src="../icons/icon-carousel-next.svg" alt=""></button></div>
+        <div class="state-divider"></div>
+        <div class="state-col"><div class="state-label">Prev<br>Hover</div><button class="ds-carousel__btn ds-carousel__btn--xl ds-carousel__btn--hover" type="button" aria-label="Previous slide"><img src="../icons/icon-carousel-prev.svg" alt=""></button></div>
+        <div class="state-col"><div class="state-label">Next<br>Hover</div><button class="ds-carousel__btn ds-carousel__btn--xl ds-carousel__btn--hover" type="button" aria-label="Next slide"><img src="../icons/icon-carousel-next.svg" alt=""></button></div>
+      </div>
+    </div>
+
+    <div class="size-specimen">
+      <div class="size-specimen-title">L · 实心 36×36px / 箭头 20×20px</div>
+      <div class="state-grid">
+        <div class="state-col"><div class="state-label">Prev<br>Disabled</div><button class="ds-carousel__btn ds-carousel__btn--l" type="button" aria-label="Previous slide" disabled=""><img src="../icons/icon-carousel-prev.svg" alt=""></button></div>
+        <div class="state-col"><div class="state-label">Next<br>Disabled</div><button class="ds-carousel__btn ds-carousel__btn--l" type="button" aria-label="Next slide" disabled=""><img src="../icons/icon-carousel-next.svg" alt=""></button></div>
+        <div class="state-divider"></div>
+        <div class="state-col"><div class="state-label">Prev<br>Default</div><button class="ds-carousel__btn ds-carousel__btn--l" type="button" aria-label="Previous slide"><img src="../icons/icon-carousel-prev.svg" alt=""></button></div>
+        <div class="state-col"><div class="state-label">Next<br>Default</div><button class="ds-carousel__btn ds-carousel__btn--l" type="button" aria-label="Next slide"><img src="../icons/icon-carousel-next.svg" alt=""></button></div>
+        <div class="state-divider"></div>
+        <div class="state-col"><div class="state-label">Prev<br>Hover</div><button class="ds-carousel__btn ds-carousel__btn--l ds-carousel__btn--hover" type="button" aria-label="Previous slide"><img src="../icons/icon-carousel-prev.svg" alt=""></button></div>
+        <div class="state-col"><div class="state-label">Next<br>Hover</div><button class="ds-carousel__btn ds-carousel__btn--l ds-carousel__btn--hover" type="button" aria-label="Next slide"><img src="../icons/icon-carousel-next.svg" alt=""></button></div>
+      </div>
+    </div>
+
+    <div class="size-specimen">
+      <div class="size-specimen-title">S · 实心 20×20px / 箭头 12×12px</div>
+      <div class="state-grid">
+        <div class="state-col"><div class="state-label">Prev<br>Disabled</div><button class="ds-carousel__btn ds-carousel__btn--s" type="button" aria-label="Previous slide" disabled=""><img src="../icons/icon-carousel-prev.svg" alt=""></button></div>
+        <div class="state-col"><div class="state-label">Next<br>Disabled</div><button class="ds-carousel__btn ds-carousel__btn--s" type="button" aria-label="Next slide" disabled=""><img src="../icons/icon-carousel-next.svg" alt=""></button></div>
+        <div class="state-divider"></div>
+        <div class="state-col"><div class="state-label">Prev<br>Default</div><button class="ds-carousel__btn ds-carousel__btn--s" type="button" aria-label="Previous slide"><img src="../icons/icon-carousel-prev.svg" alt=""></button></div>
+        <div class="state-col"><div class="state-label">Next<br>Default</div><button class="ds-carousel__btn ds-carousel__btn--s" type="button" aria-label="Next slide"><img src="../icons/icon-carousel-next.svg" alt=""></button></div>
+        <div class="state-divider"></div>
+        <div class="state-col"><div class="state-label">Prev<br>Hover</div><button class="ds-carousel__btn ds-carousel__btn--s ds-carousel__btn--hover" type="button" aria-label="Previous slide"><img src="../icons/icon-carousel-prev.svg" alt=""></button></div>
+        <div class="state-col"><div class="state-label">Next<br>Hover</div><button class="ds-carousel__btn ds-carousel__btn--s ds-carousel__btn--hover" type="button" aria-label="Next slide"><img src="../icons/icon-carousel-next.svg" alt=""></button></div>
+      </div>
+    </div>
+
+    <div class="size-specimen">
+      <div class="size-specimen-title">M · 描边 28×28px / 箭头 16×16px</div>
+      <div class="state-grid">
+        <div class="state-col"><div class="state-label">Prev<br>Disabled</div><button class="ds-carousel__btn ds-carousel__btn--outlined-m" type="button" aria-label="Previous slide" disabled=""><img src="../icons/icon-carousel-prev.svg" alt=""></button></div>
+        <div class="state-col"><div class="state-label">Next<br>Disabled</div><button class="ds-carousel__btn ds-carousel__btn--outlined-m" type="button" aria-label="Next slide" disabled=""><img src="../icons/icon-carousel-next.svg" alt=""></button></div>
+        <div class="state-divider"></div>
+        <div class="state-col"><div class="state-label">Prev<br>Default</div><button class="ds-carousel__btn ds-carousel__btn--outlined-m" type="button" aria-label="Previous slide"><img src="../icons/icon-carousel-prev.svg" alt=""></button></div>
+        <div class="state-col"><div class="state-label">Next<br>Default</div><button class="ds-carousel__btn ds-carousel__btn--outlined-m" type="button" aria-label="Next slide"><img src="../icons/icon-carousel-next.svg" alt=""></button></div>
+        <div class="state-divider"></div>
+        <div class="state-col"><div class="state-label">Prev<br>Hover</div><button class="ds-carousel__btn ds-carousel__btn--outlined-m ds-carousel__btn--hover" type="button" aria-label="Previous slide"><img src="../icons/icon-carousel-prev.svg" alt=""></button></div>
+        <div class="state-col"><div class="state-label">Next<br>Hover</div><button class="ds-carousel__btn ds-carousel__btn--outlined-m ds-carousel__btn--hover" type="button" aria-label="Next slide"><img src="../icons/icon-carousel-next.svg" alt=""></button></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================
+       SECTION 2: 导航按钮 — 深色背景
+       ============================================ -->
+  <div class="section">
+    <div class="section-title">② 导航按钮 — 深色背景 (Dark)</div>
+    <p class="section-desc">用于深色 Banner 背景。白色半透明圆形底，图标反白。</p>
+
+    <div class="dark-panel">
+      <!-- Prev Default -->
+      <div class="state-col">
+        <div class="state-label">Prev<br>Default</div>
+        <button class="ds-carousel__btn ds-carousel__btn--xl ds-carousel__btn--dark" type="button" aria-label="Previous slide">
+          <img src="../icons/icon-carousel-prev.svg" alt="">
+        </button>
+      </div>
+      <!-- Prev Hover -->
+      <div class="state-col">
+        <div class="state-label">Prev<br>Hover</div>
+        <button class="ds-carousel__btn ds-carousel__btn--xl ds-carousel__btn--dark ds-carousel__btn--hover" type="button" aria-label="Previous slide">
+          <img src="../icons/icon-carousel-prev.svg" alt="">
+        </button>
+      </div>
+      <!-- Prev Disabled -->
+      <div class="state-col">
+        <div class="state-label">Prev<br>Disabled</div>
+        <button class="ds-carousel__btn ds-carousel__btn--xl ds-carousel__btn--dark" type="button" aria-label="Previous slide" disabled="">
+          <img src="../icons/icon-carousel-prev.svg" alt="">
+        </button>
+      </div>
+
+      <div class="state-divider"></div>
+
+      <!-- Next Default -->
+      <div class="state-col">
+        <div class="state-label">Next<br>Default</div>
+        <button class="ds-carousel__btn ds-carousel__btn--xl ds-carousel__btn--dark" type="button" aria-label="Next slide">
+          <img src="../icons/icon-carousel-next.svg" alt="">
+        </button>
+      </div>
+      <!-- Next Hover -->
+      <div class="state-col">
+        <div class="state-label">Next<br>Hover</div>
+        <button class="ds-carousel__btn ds-carousel__btn--xl ds-carousel__btn--dark ds-carousel__btn--hover" type="button" aria-label="Next slide">
+          <img src="../icons/icon-carousel-next.svg" alt="">
+        </button>
+      </div>
+      <!-- Next Disabled -->
+      <div class="state-col">
+        <div class="state-label">Next<br>Disabled</div>
+        <button class="ds-carousel__btn ds-carousel__btn--xl ds-carousel__btn--dark" type="button" aria-label="Next slide" disabled="">
+          <img src="../icons/icon-carousel-next.svg" alt="">
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================
+       SECTION 3: 分页指示器 Dots
+       ============================================ -->
+  <div class="section">
+    <div class="section-title">③ 分页指示器 (Pagination Dots)</div>
+    <p class="section-desc">默认圆点 8×8px，标准激活态为 20×8px；长条激活态为 56×8px。间距均为 10px。浅色：选中 #707070，默认 rgba(112,112,112,0.4)。</p>
+
+    <div class="dots-row">
+      <span class="dots-row-label">浅色 Light</span>
+      <div class="ds-carousel__dots" style="padding-top: 0;">
+        <button class="ds-carousel__dot ds-carousel__dot--active" aria-label="Slide 1"></button>
+        <button class="ds-carousel__dot" aria-label="Slide 2"></button>
+        <button class="ds-carousel__dot" aria-label="Slide 3"></button>
+        <button class="ds-carousel__dot" aria-label="Slide 4"></button>
+        <button class="ds-carousel__dot" aria-label="Slide 5"></button>
+      </div>
+    </div>
+
+    <div class="dots-row">
+      <span class="dots-row-label">长条激活 Wide</span>
+      <div class="dots-wide-specimen">
+        <div class="ds-carousel__dots ds-carousel__dots--wide-active" style="padding-top: 0;" aria-label="Wide active pagination specimen">
+          <button class="ds-carousel__dot ds-carousel__dot--active" type="button" aria-label="Slide 1" aria-current="true"></button>
+          <button class="ds-carousel__dot" type="button" aria-label="Slide 2"></button>
+          <button class="ds-carousel__dot" type="button" aria-label="Slide 3"></button>
+          <button class="ds-carousel__dot" type="button" aria-label="Slide 4"></button>
+          <button class="ds-carousel__dot" type="button" aria-label="Slide 5"></button>
+          <button class="ds-carousel__dot" type="button" aria-label="Slide 6"></button>
+          <button class="ds-carousel__dot" type="button" aria-label="Slide 7"></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="dots-row" style="background: #1a2b3c; border-radius: 8px; padding: 16px 20px; display: inline-flex;">
+      <span class="dots-row-label" style="color: rgba(255,255,255,0.45);">深色 Dark</span>
+      <div class="ds-carousel__dots ds-carousel__dots--dark" style="padding-top: 0;">
+        <button class="ds-carousel__dot ds-carousel__dot--active" aria-label="Slide 1"></button>
+        <button class="ds-carousel__dot" aria-label="Slide 2"></button>
+        <button class="ds-carousel__dot" aria-label="Slide 3"></button>
+        <button class="ds-carousel__dot" aria-label="Slide 4"></button>
+        <button class="ds-carousel__dot" aria-label="Slide 5"></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================
+       SECTION 4: 完整走马灯（可交互）
+       ============================================ -->
+  <div class="section">
+    <div class="section-title">④ 完整走马灯示例（可交互）</div>
+    <p class="section-desc">圆形实心按钮叠加在幻灯片两侧，Dots 居中显示在轮播下方。首张 Prev 禁用，末张 Next 禁用。</p>
+
+    <div style="max-width: 800px;">
+      <div class="ds-carousel" id="demo-carousel" style="border-radius: 8px; overflow: hidden;">
+        <div class="ds-carousel__track" id="demo-track">
+          <div class="ds-carousel__slide">
+            <div style="height: 260px; background: #D6E4F0; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 600; color: #4B4B4D;">Slide 1</div>
+          </div>
+          <div class="ds-carousel__slide">
+            <div style="height: 260px; background: #D6F0E4; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 600; color: #4B4B4D;">Slide 2</div>
+          </div>
+          <div class="ds-carousel__slide">
+            <div style="height: 260px; background: #F0E4D6; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 600; color: #4B4B4D;">Slide 3</div>
+          </div>
+          <div class="ds-carousel__slide">
+            <div style="height: 260px; background: #E4D6F0; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 600; color: #4B4B4D;">Slide 4</div>
+          </div>
+          <div class="ds-carousel__slide">
+            <div style="height: 260px; background: #F0D6D6; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 600; color: #4B4B4D;">Slide 5</div>
+          </div>
+        </div>
+
+        <button class="ds-carousel__btn ds-carousel__btn--l ds-carousel__btn--overlay ds-carousel__btn--prev" id="demo-prev" type="button" aria-label="Previous slide" disabled="" style="left: 16px;">
+          <img src="../icons/icon-carousel-prev.svg" alt="">
+        </button>
+        <button class="ds-carousel__btn ds-carousel__btn--l ds-carousel__btn--overlay ds-carousel__btn--next" id="demo-next" type="button" aria-label="Next slide" style="right: 16px;">
+          <img src="../icons/icon-carousel-next.svg" alt="">
+        </button>
+      </div>
+
+      <div class="ds-carousel__dots" id="demo-dots">
+        <button class="ds-carousel__dot ds-carousel__dot--active" data-index="0" aria-label="Slide 1"></button>
+        <button class="ds-carousel__dot" data-index="1" aria-label="Slide 2"></button>
+        <button class="ds-carousel__dot" data-index="2" aria-label="Slide 3"></button>
+        <button class="ds-carousel__dot" data-index="3" aria-label="Slide 4"></button>
+        <button class="ds-carousel__dot" data-index="4" aria-label="Slide 5"></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================
+       SECTION 5: 首页 Banner 场景（可交互）
+       ============================================ -->
+  <div class="section">
+    <div class="section-title">⑥ 首页 Banner 场景 (Homepage Banner)</div>
+    <p class="section-desc">1920×420px 设计基准，固定组合 Dark + 叠加型。左右 48×48px 切换按钮按基准宽度的 13.125% 边距定位；深色分页叠加在 Banner 底部居中，默认 8×8px、激活 56×8px，共 7 项。</p>
+
+    <div class="ds-carousel ds-carousel--homepage-banner" aria-label="Homepage Banner carousel" data-ai-example="ai-carousel-dark-homepage" data-carousel-current="">
+      <div class="ds-carousel__track">
+        <div class="ds-carousel__slide">
+          <div class="homepage-banner-demo__slide">
+            <div class="homepage-banner-demo__content">
+              <p class="homepage-banner-demo__title">Homepage Banner slide 1</p>
+              <p class="homepage-banner-demo__desc">1920×420px design baseline with a fluid runtime width.</p>
+            </div>
+          </div>
+        </div>
+        <div class="ds-carousel__slide">
+          <div class="homepage-banner-demo__slide">
+            <div class="homepage-banner-demo__content">
+              <p class="homepage-banner-demo__title">Homepage Banner slide 2</p>
+              <p class="homepage-banner-demo__desc">48×48px overlay controls use the dark color variant.</p>
+            </div>
+          </div>
+        </div>
+        <div class="ds-carousel__slide">
+          <div class="homepage-banner-demo__slide">
+            <div class="homepage-banner-demo__content">
+              <p class="homepage-banner-demo__title">Homepage Banner slide 3</p>
+              <p class="homepage-banner-demo__desc">The active pagination item expands from 8×8px to 56×8px.</p>
+            </div>
+          </div>
+        </div>
+        <div class="ds-carousel__slide">
+          <div class="homepage-banner-demo__slide">
+            <div class="homepage-banner-demo__content">
+              <p class="homepage-banner-demo__title">Homepage Banner slide 4</p>
+              <p class="homepage-banner-demo__desc">Each pagination control switches to its matching slide.</p>
+            </div>
+          </div>
+        </div>
+        <div class="ds-carousel__slide">
+          <div class="homepage-banner-demo__slide">
+            <div class="homepage-banner-demo__content">
+              <p class="homepage-banner-demo__title">Homepage Banner slide 5</p>
+              <p class="homepage-banner-demo__desc">The track keeps the existing 0.4s ease transition.</p>
+            </div>
+          </div>
+        </div>
+        <div class="ds-carousel__slide">
+          <div class="homepage-banner-demo__slide">
+            <div class="homepage-banner-demo__content">
+              <p class="homepage-banner-demo__title">Homepage Banner slide 6</p>
+              <p class="homepage-banner-demo__desc">Current-slide and hidden-slide ARIA states update together.</p>
+            </div>
+          </div>
+        </div>
+        <div class="ds-carousel__slide">
+          <div class="homepage-banner-demo__slide">
+            <div class="homepage-banner-demo__content">
+              <p class="homepage-banner-demo__title">Homepage Banner slide 7</p>
+              <p class="homepage-banner-demo__desc">Regular content carousels retain their base controls and pagination.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button class="ds-carousel__btn ds-carousel__btn--xl ds-carousel__btn--dark ds-carousel__btn--overlay ds-carousel__btn--prev" type="button" aria-label="Previous slide" disabled="">
+        <img src="../icons/icon-carousel-prev.svg" alt="">
+      </button>
+      <button class="ds-carousel__btn ds-carousel__btn--xl ds-carousel__btn--dark ds-carousel__btn--overlay ds-carousel__btn--next" type="button" aria-label="Next slide">
+        <img src="../icons/icon-carousel-next.svg" alt="">
+      </button>
+
+      <div class="ds-carousel__dots ds-carousel__dots--dark" aria-label="Choose slide">
+        <button class="ds-carousel__dot ds-carousel__dot--active" data-index="0" type="button" aria-label="Slide 1" aria-current="true"></button>
+        <button class="ds-carousel__dot" data-index="1" type="button" aria-label="Slide 2"></button>
+        <button class="ds-carousel__dot" data-index="2" type="button" aria-label="Slide 3"></button>
+        <button class="ds-carousel__dot" data-index="3" type="button" aria-label="Slide 4"></button>
+        <button class="ds-carousel__dot" data-index="4" type="button" aria-label="Slide 5"></button>
+        <button class="ds-carousel__dot" data-index="5" type="button" aria-label="Slide 6"></button>
+        <button class="ds-carousel__dot" data-index="6" type="button" aria-label="Slide 7"></button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      function initCarousel(trackId, prevId, nextId, dotsId) {
+        var track = document.getElementById(trackId);
+        var prevBtn = document.getElementById(prevId);
+        var nextBtn = document.getElementById(nextId);
+        var dots = document.getElementById(dotsId).querySelectorAll('.ds-carousel__dot');
+        var slides = track.querySelectorAll('.ds-carousel__slide');
+        var total = slides.length;
+        var current = 0;
+
+        if (dots.length !== total) {
+          throw new Error('Carousel slides and dots must have a one-to-one mapping.');
+        }
+
+        function goTo(index) {
+          current = index;
+          track.style.transform = 'translateX(-' + (current * 100) + '%)';
+          dots.forEach(function (dot, i) {
+            var active = i === current;
+            dot.classList.toggle('ds-carousel__dot--active', active);
+            if (active) dot.setAttribute('aria-current', 'true');
+            else dot.removeAttribute('aria-current');
+          });
+          slides.forEach(function (slide, i) {
+            slide.setAttribute('aria-hidden', i === current ? 'false' : 'true');
+          });
+          prevBtn.disabled = current === 0;
+          nextBtn.disabled = current === total - 1;
+        }
+
+        prevBtn.addEventListener('click', function () { if (current > 0) goTo(current - 1); });
+        nextBtn.addEventListener('click', function () { if (current < total - 1) goTo(current + 1); });
+        dots.forEach(function (dot) {
+          dot.addEventListener('click', function () {
+            goTo(parseInt(dot.getAttribute('data-index'), 10));
+          });
+        });
+        goTo(0);
+      }
+
+      initCarousel('demo-track', 'demo-prev', 'demo-next', 'demo-dots');
+
+    })();
+  </script>
+  
+  </div>
+  <script src="../carousel-current.js"></script>
+  <script src="preview-link.js"></script>
+  <script src="reference-live.js"></script>
+
+
+<section data-fs-page-custom=""><h2>Light content Carousel · five static slides</h2><div class="ds-carousel" data-carousel-current="light-five" data-ai-example="ai-carousel-light-five" aria-label="Light five-slide content carousel">
+        <div class="ds-carousel__track">
+          <div class="ds-carousel__slide">
+            <div class="light-carousel-demo-body">Slide 1</div>
+          </div>
+          <div class="ds-carousel__slide">
+            <div class="light-carousel-demo-body">Slide 2</div>
+          </div>
+          <div class="ds-carousel__slide">
+            <div class="light-carousel-demo-body">Slide 3</div>
+          </div>
+          <div class="ds-carousel__slide">
+            <div class="light-carousel-demo-body">Slide 4</div>
+          </div>
+          <div class="ds-carousel__slide">
+            <div class="light-carousel-demo-body">Slide 5</div>
+          </div>
+        </div>
+
+        <button class="ds-carousel__btn ds-carousel__btn--l ds-carousel__btn--overlay ds-carousel__btn--prev" type="button" aria-label="Previous slide" disabled="">
+          <img src="../icons/icon-carousel-prev.svg" alt="">
+        </button>
+        <button class="ds-carousel__btn ds-carousel__btn--l ds-carousel__btn--overlay ds-carousel__btn--next" type="button" aria-label="Next slide">
+          <img src="../icons/icon-carousel-next.svg" alt="">
+        </button>
+      </div></section></body></html>

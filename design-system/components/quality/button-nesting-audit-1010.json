@@ -1,0 +1,740 @@
+{
+  "schemaVersion": "fs-button-nesting-audit/1.0.0",
+  "date": "2026-10-10",
+  "scope": "Button原子保存来源与已登记宿主的有限静态嵌套；原子优先，宿主不复制样式",
+  "atomSummary": {
+    "designComponents": 60,
+    "localSizeCalls": 14,
+    "matchedDefaults": 14,
+    "matchedStateDeclarations": 42,
+    "matchedDefaultLayoutDeclarations": 14,
+    "matchedStateLayoutDeclarations": 42,
+    "matchedHeightPaddingDeclarations": 56,
+    "matchedGapDeclarations": 42,
+    "uncomparedProcessingGapDeclarations": 14
+  },
+  "hosts": [
+    {
+      "id": "anchor-nav",
+      "name": "AnchorNav",
+      "dependencies": [
+        {
+          "component": "Button",
+          "usage": "右侧 CTA，固定 ds-btn--filled-black ds-btn--xl",
+          "slot": "action",
+          "requiredVariants": [
+            "filled-black"
+          ],
+          "implementationClasses": [
+            "ds-btn",
+            "ds-btn--filled-black",
+            "ds-btn--xl"
+          ],
+          "requiredSizes": [
+            {
+              "variant": "filled-black",
+              "size": "xl"
+            }
+          ],
+          "appliesTo": [
+            "anchor-nav"
+          ]
+        }
+      ],
+      "currentCanonicalChecks": [
+        {
+          "variant": "anchor-nav",
+          "buttons": [
+            {
+              "variant": "filled-black",
+              "size": "xl",
+              "type": "button"
+            }
+          ]
+        }
+      ],
+      "pendingCanonicalChecks": [],
+      "nonCanonicalPending": [],
+      "sourceFingerprints": {
+        "components/anchor-nav-current.js": "6fbc4f2d44ba1ab532d991b5e368cc43669aeb5043a4e4bb5147a9de5f66de3a",
+        "components/components.css": "a08b4fe2790b5ff2b784c6362a90f1b94e7535a03e863232ce6d620a52e85f73",
+        "components/contracts/anchor-nav.json": "f8c5787b97e9473a373d70543b54f897e1ae4a203f6249f1e4804cd1ffeb9bc4",
+        "components/contracts/button.json": "fab0452634be29af67f30c913f487cb39a8a61e9a018518c885554ae67c2374a",
+        "components/preview/anchor-nav.html": "56c755608b5b81521889b34d1d59eb84756f795d1a5307b8289d13a291469d34",
+        "components/preview/button.html": "3a50b30571727f6b03a6e7324ffed84f81dfd32208349c2cab33af30f1e76737",
+        "components/preview/reference-live.js": "4839383529a3ee82df1d8efe675d430567abc1986034499107aa429d21a18ea6",
+        "components/reference-policy.json": "9a2c54006968a27b3d04e03f0dac429a6e6c215e5e5936b7f65d66cfd9d5c660",
+        "components/sources/anchor-nav/local-structure-review.json": "6448d7155f28bb79affaa716c5ff32e5d592213a1046c99d5bd69e8d8e5fbbeb",
+        "components/sources/anchor-nav/preview-inline-runtime-before.txt": "89d3b801f293f869838dc377de610f1b532e5092662f461fa7753e9ea46d2623",
+        "components/token-specs/border.json": "d286ee4681deda1c7702c310b065c86f824539b3a8797efba05b24bc225ab322",
+        "components/token-specs/colors.json": "82cba8e4a6b3e1e5bc961e4039478b0dea4ba9b92a5291d579bb8d7a54db0d95",
+        "components/token-specs/spacing.json": "351b14cfce4411248ad41e00eaaf2b1cab9b705997980dfed1fc65693740e65c",
+        "components/token-specs/typography.json": "93b7dc07547218a33c075b7cdcd942f89094353a7847d483d8378b8883327e16",
+        "components/tokens.css": "2424558781ddfc12cad4d2b91e78451dc26fe5e126e6f24a3b9631753b644afa"
+      }
+    },
+    {
+      "id": "banner",
+      "name": "Banner",
+      "dependencies": [
+        {
+          "component": "Button",
+          "usage": "完整Hero双CTA：filled-gray / xl-bold，outline-white / xl regular。旧白描边xl-bold未登记，不作为精确调用。",
+          "slot": "button",
+          "requiredVariants": [
+            "filled-gray",
+            "outline-white"
+          ],
+          "implementationClasses": [
+            "ds-btn",
+            "ds-btn--filled-gray",
+            "ds-btn--outline-white",
+            "ds-btn--xl-bold",
+            "ds-btn--xl"
+          ],
+          "appliesTo": [
+            "hero"
+          ],
+          "requiredSizes": [
+            {
+              "variant": "filled-gray",
+              "size": "xl-bold"
+            },
+            {
+              "variant": "outline-white",
+              "size": "xl"
+            }
+          ]
+        },
+        {
+          "component": "Button",
+          "usage": "当前完整文案Hero单CTA：outline-white / xl regular",
+          "slot": "button",
+          "requiredVariants": [
+            "outline-white"
+          ],
+          "implementationClasses": [
+            "ds-btn",
+            "ds-btn--outline-white",
+            "ds-btn--xl"
+          ],
+          "appliesTo": [
+            "hero-responsive"
+          ],
+          "requiredSizes": [
+            {
+              "variant": "outline-white",
+              "size": "xl"
+            }
+          ]
+        }
+      ],
+      "currentCanonicalChecks": [
+        {
+          "variant": "hero-responsive",
+          "buttons": [
+            {
+              "variant": "outline-white",
+              "size": "xl",
+              "type": "button"
+            }
+          ]
+        },
+        {
+          "variant": "hero",
+          "buttons": [
+            {
+              "variant": "filled-gray",
+              "size": "xl-bold",
+              "type": "button"
+            },
+            {
+              "variant": "outline-white",
+              "size": "xl",
+              "type": "button"
+            }
+          ]
+        }
+      ],
+      "pendingCanonicalChecks": [],
+      "nonCanonicalPending": [],
+      "sourceFingerprints": {
+        "components/banner-current.css": "f6a401ea754ae121eebe53d7ff10059ecd4e7ad345fd455654ee538a25c629b2",
+        "components/banner-responsive.css": "17a86352a4941c80c734a8c2e64a235f7e4321b5dcb1db821803255e6b0fc908",
+        "components/components.css": "a08b4fe2790b5ff2b784c6362a90f1b94e7535a03e863232ce6d620a52e85f73",
+        "components/contracts/banner.json": "8b7661bbd0a88815aa86491a64e27307bdc4595dc9211404607b1cd4d25191fd",
+        "components/contracts/breadcrumb.json": "38872acaabcd0151c44e90c9db0660031e71467247f50ecba14cdef6211713f8",
+        "components/contracts/button.json": "fab0452634be29af67f30c913f487cb39a8a61e9a018518c885554ae67c2374a",
+        "components/icons/icon-arrow-right.svg": "f14aa7f363b6e2ffe83389f0fc2b01a96bbc2e4cae9d29fa42203d408f9eb3b8",
+        "components/icons/icon-search.svg": "11e01599b008320c723773284b56944f810762688a2928b37e6cb228fc9a3347",
+        "components/icons/icons-manifest.json": "07851a18214f0adc2f974c681ea193d8886d35ee780480dbab3315fc15da9cc4",
+        "components/preview/banner.html": "9db341af98ffe815ca09fb1654518c889a36488e07445aff980548daae6f0993",
+        "components/preview/breadcrumb.html": "c79cc8d2a577f69c31b2c8104d472438c153575be1daa27322c0c25c37fd5c0b",
+        "components/preview/button.html": "3a50b30571727f6b03a6e7324ffed84f81dfd32208349c2cab33af30f1e76737",
+        "components/preview/reference-live.js": "4839383529a3ee82df1d8efe675d430567abc1986034499107aa429d21a18ea6",
+        "components/reference-policy.json": "9a2c54006968a27b3d04e03f0dac429a6e6c215e5e5936b7f65d66cfd9d5c660",
+        "components/sources/banner/local-structure-review.json": "343702bbb497fd7566effbc7417870ab3a1019cca2240e4393e2ba53663be1fa",
+        "components/sources/banner/source-index.json": "44caa135f47cad8aa142a4dc45f38920dbc00f9cc478d44145862e535969846f",
+        "components/token-specs/border-radius.json": "77d9245e2504b7c0c605288290e938b2453a79b27d4312448d14a58692290791",
+        "components/token-specs/border.json": "d286ee4681deda1c7702c310b065c86f824539b3a8797efba05b24bc225ab322",
+        "components/token-specs/colors.json": "82cba8e4a6b3e1e5bc961e4039478b0dea4ba9b92a5291d579bb8d7a54db0d95",
+        "components/token-specs/spacing.json": "351b14cfce4411248ad41e00eaaf2b1cab9b705997980dfed1fc65693740e65c",
+        "components/token-specs/typography.json": "93b7dc07547218a33c075b7cdcd942f89094353a7847d483d8378b8883327e16",
+        "components/tokens.css": "2424558781ddfc12cad4d2b91e78451dc26fe5e126e6f24a3b9631753b644afa",
+        "page-inputs/bdcom-oem-m2/component-sources/banner.json": "b894f09cb1ed630b06adc01cb0c11eae59258945d7a4fdbb0207911deebcae36"
+      }
+    },
+    {
+      "id": "card",
+      "name": "Card",
+      "dependencies": [
+        {
+          "component": "Button",
+          "usage": "仅嵌入式产品卡的 Add 按钮使用 filled-red / s；横向图文 Card 的操作入口统一使用黑色 TextButton",
+          "slot": "actionButton",
+          "requiredVariants": [
+            "filled-red"
+          ],
+          "implementationClasses": [
+            "ds-btn",
+            "ds-btn--filled-red",
+            "ds-btn--s"
+          ],
+          "appliesTo": [
+            "embedded.product-small",
+            "embedded.product-full"
+          ],
+          "requiredSizes": [
+            {
+              "variant": "filled-red",
+              "size": "s"
+            }
+          ]
+        }
+      ],
+      "currentCanonicalChecks": [],
+      "pendingCanonicalChecks": [],
+      "nonCanonicalPending": [
+        "embedded.product-small",
+        "embedded.product-full"
+      ],
+      "sourceFingerprints": {
+        "components/card-responsive.css": "8db3d768860898ee87d0c07ab1c9f9e85d493243a3ebfe679a651ecd810feec7",
+        "components/components.css": "a08b4fe2790b5ff2b784c6362a90f1b94e7535a03e863232ce6d620a52e85f73",
+        "components/contracts/button.json": "fab0452634be29af67f30c913f487cb39a8a61e9a018518c885554ae67c2374a",
+        "components/contracts/card.json": "b30c6e6e2639b1d6d32b89f25e9aa95c963a7adf24260d05418826da1a1553ee",
+        "components/contracts/text-button.json": "f757f6e2270f3868ef7d8a0650ab24fcb8b30f2bbbf10574c03e720e6b635d02",
+        "components/icons/icon-bullet.svg": "d97e82725de89af391e3c14c5a14d541f8171b1cd714e57b2768edfcab773dbd",
+        "components/icons/icon-cart-add.svg": "ec9abb0e806f0d23db0e279cc5a8935bab0619d0c2c8b71d8b56b0945e3b8377",
+        "components/icons/icon-featured-star.svg": "3ff7625e9743df2f295b32dc8e7e12349839525ff1539d47c091b40d44188643",
+        "components/icons/icons-manifest.json": "07851a18214f0adc2f974c681ea193d8886d35ee780480dbab3315fc15da9cc4",
+        "components/preview/button.html": "3a50b30571727f6b03a6e7324ffed84f81dfd32208349c2cab33af30f1e76737",
+        "components/preview/card.html": "6ba412f7a8890fce15c9eb4229ebf407ee85e5f5e7932b9fda3fadd6b2cae4bb",
+        "components/preview/reference-live.js": "4839383529a3ee82df1d8efe675d430567abc1986034499107aa429d21a18ea6",
+        "components/preview/text-button.html": "10aabbe4321ea96d87a2d7d72a2b546b62956362925776721b549e231e2749f8",
+        "components/reference-policy.json": "9a2c54006968a27b3d04e03f0dac429a6e6c215e5e5936b7f65d66cfd9d5c660",
+        "components/sources/card/local-structure-review.json": "6defd5eb7adc26044c693ee2bc329b9cb8977f92a9aaf0d8db91e58f4754e42d",
+        "components/sources/card/source-index.json": "2d296d45eb0c9c4ed760fda8d756729346af0bd03071c6dfb99932fa2768251e",
+        "components/text-button-current.css": "662a90320af28ef4d38b2adf121972e7e380cc7c33fcdeb0597a5bfd36b218a9",
+        "components/token-specs/border.json": "d286ee4681deda1c7702c310b065c86f824539b3a8797efba05b24bc225ab322",
+        "components/token-specs/colors.json": "82cba8e4a6b3e1e5bc961e4039478b0dea4ba9b92a5291d579bb8d7a54db0d95",
+        "components/token-specs/spacing.json": "351b14cfce4411248ad41e00eaaf2b1cab9b705997980dfed1fc65693740e65c",
+        "components/token-specs/typography.json": "93b7dc07547218a33c075b7cdcd942f89094353a7847d483d8378b8883327e16",
+        "components/tokens.css": "2424558781ddfc12cad4d2b91e78451dc26fe5e126e6f24a3b9631753b644afa",
+        "page-inputs/bdcom-oem-m2/component-sources/card.json": "3da107a30840ec9f242a6d089c48b0b2dd09b8b7da94cd9d60af0bdef5c7a78e",
+        "pages/assets/bdcom-oem-pc-1009/product-engineering.jpg": "e0c3259bf5cadf9cb398864425f2dbc8c33af0c00add13264778275a0219758e"
+      }
+    },
+    {
+      "id": "collapse",
+      "name": "Collapse",
+      "dependencies": [
+        {
+          "component": "Button",
+          "usage": "行内编辑型编辑态的 Cancel/Save；数据预览型的 View Order",
+          "slot": "body/row",
+          "requiredVariants": [
+            "outline-black",
+            "filled-black"
+          ],
+          "implementationClasses": [
+            "ds-btn",
+            "ds-btn--outline-black",
+            "ds-btn--filled-black",
+            "ds-btn--l"
+          ],
+          "appliesTo": [
+            "inline-edit",
+            "data-preview"
+          ]
+        }
+      ],
+      "currentCanonicalChecks": [],
+      "pendingCanonicalChecks": [],
+      "nonCanonicalPending": [
+        "inline-edit",
+        "data-preview"
+      ],
+      "sourceFingerprints": {
+        "components/collapse-current.js": "c713b068817bd7a5908ebae630e31129358449d5193bbb8a07a849b8369a054d",
+        "components/components.css": "a08b4fe2790b5ff2b784c6362a90f1b94e7535a03e863232ce6d620a52e85f73",
+        "components/contracts/badge.json": "9d54bcb4134084651f5ba37f5faf8ddcbd1df6502787d794890faaf64a6d66d9",
+        "components/contracts/button.json": "fab0452634be29af67f30c913f487cb39a8a61e9a018518c885554ae67c2374a",
+        "components/contracts/collapse.json": "22fc2829fb6c9ad39918dc28798e3e4bd7b65f7b4d83365d0b06f638f91c27b4",
+        "components/contracts/input.json": "ab7bb477d89eaafbe6d4bbea17c0e213b23871f2f80f4947569289bb108afab9",
+        "components/icons/icon-chevron-down.svg": "fe5df03acb1cb4b8a38a928357775416656fbf97cc54f3c6a5b7d0e4906f3e91",
+        "components/icons/icon-collapse-minus.svg": "3c8b4366c99b7dcea96fcb152eaf1a875e1928a5650931089017f736106a9e1c",
+        "components/icons/icon-collapse-plus.svg": "830e77b12afd6cc838afc23aa482437a0a5ae801874a98f2bc8a91b2b4251649",
+        "components/icons/icon-demo-report.svg": "9e9702fcf8d17d19541934a5ae57c6ed7c4e3949a77df7573dc06a016bfd26c3",
+        "components/icons/icon-edit.svg": "c6076863bfb71113c79317b5218b7d6e17a547c00c7c87e8e9baea3be11b8f6b",
+        "components/icons/icon-eye.svg": "11c57eb3fa61bb24b072d8bb8a785f58bd1371a6543338902e39607097378db6",
+        "components/icons/icon-grid-view.svg": "7337e2156917d2c0db7a77a62d0c0f7e5748253a928ae996d68130eaa1d2e284",
+        "components/icons/icon-info.svg": "6e6c97d5d691758fe1b009b4dd6229e9dd20cda4641f341589e0e3fb1fde2bb6",
+        "components/icons/icon-list-view.svg": "321faa85653328e3b319e2512c8e984c90809f5a39b8499128c36f7943d034b3",
+        "components/icons/icon-more.svg": "20f6e039a56fa1b3decd4430ce56186f85fd7190416eef9d4c434a5cab4332c8",
+        "components/icons/icon-placeholder-switch.svg": "0f52c5a675441071196593d5d90c3f97f29b0b43719170d8a7df7ac9a974b5d5",
+        "components/icons/icons-manifest.json": "07851a18214f0adc2f974c681ea193d8886d35ee780480dbab3315fc15da9cc4",
+        "components/preview/badge.html": "5692ae96c9c3b53865dfcbd6c0705e8d6d8f15c4ebdf71fe23abf8680f1a3344",
+        "components/preview/button.html": "3a50b30571727f6b03a6e7324ffed84f81dfd32208349c2cab33af30f1e76737",
+        "components/preview/collapse.html": "ae4af859fd6a6949d1cfe2d661ea7d65fe65c097223f9c6a8348123034a5d858",
+        "components/preview/input.html": "23182c8612747f303b85338f6a60384f7e5c58a8afb15ac9f50e30add570bcff",
+        "components/preview/reference-live.js": "4839383529a3ee82df1d8efe675d430567abc1986034499107aa429d21a18ea6",
+        "components/reference-policy.json": "9a2c54006968a27b3d04e03f0dac429a6e6c215e5e5936b7f65d66cfd9d5c660",
+        "components/sources/collapse/local-structure-review.json": "0368ea7ea4a8b8e3b99d10725455d2f35d845b2b726681e2443d364752cc7023",
+        "components/token-specs/border-radius.json": "77d9245e2504b7c0c605288290e938b2453a79b27d4312448d14a58692290791",
+        "components/token-specs/border.json": "d286ee4681deda1c7702c310b065c86f824539b3a8797efba05b24bc225ab322",
+        "components/token-specs/colors.json": "82cba8e4a6b3e1e5bc961e4039478b0dea4ba9b92a5291d579bb8d7a54db0d95",
+        "components/token-specs/spacing.json": "351b14cfce4411248ad41e00eaaf2b1cab9b705997980dfed1fc65693740e65c",
+        "components/token-specs/typography.json": "93b7dc07547218a33c075b7cdcd942f89094353a7847d483d8378b8883327e16",
+        "components/tokens.css": "2424558781ddfc12cad4d2b91e78451dc26fe5e126e6f24a3b9631753b644afa"
+      }
+    },
+    {
+      "id": "comment",
+      "name": "Comment",
+      "dependencies": [
+        {
+          "component": "Button",
+          "usage": "问答与评论输入区的 Submit 主操作。",
+          "slot": "composer/actions",
+          "appliesTo": [
+            "qa-thread",
+            "review-thread"
+          ],
+          "requiredVariants": [
+            "filled-red"
+          ],
+          "implementationClasses": [
+            "ds-btn",
+            "ds-btn--filled-red",
+            "ds-btn--l"
+          ],
+          "requiredSizes": [
+            {
+              "variant": "filled-red",
+              "size": "l"
+            }
+          ]
+        }
+      ],
+      "currentCanonicalChecks": [
+        {
+          "variant": "qa-thread",
+          "buttons": [
+            {
+              "variant": "filled-red",
+              "size": "l",
+              "type": "submit"
+            }
+          ]
+        }
+      ],
+      "pendingCanonicalChecks": [],
+      "nonCanonicalPending": [
+        "review-thread"
+      ],
+      "sourceFingerprints": {
+        "components/comment-current.js": "2eb899017facc0c355357d7bd629bd363c19e99b010f61d0d0a6be6c12d8d67a",
+        "components/components.css": "a08b4fe2790b5ff2b784c6362a90f1b94e7535a03e863232ce6d620a52e85f73",
+        "components/contracts/button.json": "fab0452634be29af67f30c913f487cb39a8a61e9a018518c885554ae67c2374a",
+        "components/contracts/comment.json": "4a0257821cdec3881ac6df7508a568ea5e5d44e403ef122541e940c6069f4e1a",
+        "components/contracts/icon-button.json": "381b398f61a6c05e2e36f15f77242f69c817c92452cabaed68b9983fdd85c549",
+        "components/contracts/rate.json": "92058eb353653dbb69b3ec3e807923d59384196f293bd8e7421eeca6754f879c",
+        "components/contracts/tag.json": "785fedf7d78a48d2f03929a7b6cd14f6cd605984a620439c5bcfae1a1bcca42b",
+        "components/icons/icon-carousel-next.svg": "32bc4993a22bc4fe94406f10692227843f334f71f804a000cdce30e5e94235fe",
+        "components/icons/icon-carousel-prev.svg": "0c3e3035fa72509b40f45298e7194eee211adb0b3a8c51730149d8363f3f55ba",
+        "components/icons/icon-close.svg": "226867654d63f99f548f7e25b2f0286c19aa5786f5b9497905474f3959704424",
+        "components/icons/icon-comment-active.svg": "c6e32e6d2d14488ce89f66f2a4825c571bf17e503561c5eb66477e4e40a7d159",
+        "components/icons/icon-comment.svg": "d66bd06023440cbf3ed6b2d25d3853eba2f162a964984f88c2261ddd8b0e99c1",
+        "components/icons/icon-helpful-active.svg": "98c2421f8f280e022c172b29767da95dc81614708b0472a3e063b92a945aad05",
+        "components/icons/icon-helpful.svg": "423468d64fd1bf42c2cde5493ddba32d0d5ed5a40146551a5b63483dd8449409",
+        "components/icons/icon-rating-star.svg": "5bf0c005c95578d13ce31dd78ab7cb350a0e851a1e77ea38187de0baf1424763",
+        "components/icons/icon-verified.svg": "98f6480e2521c785b59f7ed36f491c647a65d56ff9d801b95f79943b8e6179c7",
+        "components/icons/icons-manifest.json": "07851a18214f0adc2f974c681ea193d8886d35ee780480dbab3315fc15da9cc4",
+        "components/preview/button.html": "3a50b30571727f6b03a6e7324ffed84f81dfd32208349c2cab33af30f1e76737",
+        "components/preview/comment.html": "58053d7b81f56ceb9088f71c707ff8a912ef68bf3103ba1db43c692715bd86ef",
+        "components/preview/icon-button.html": "38701b8e20e658ef45c162fcaa5d8b13b4a999c0d573afa05d8a6c60fc43f4b9",
+        "components/preview/rate.html": "f3d91ee86e36f4ab22ce8f39206dd27396a4fc4c78f532f9383a98ee3030e225",
+        "components/preview/reference-live.js": "4839383529a3ee82df1d8efe675d430567abc1986034499107aa429d21a18ea6",
+        "components/preview/tag.html": "52994ef5fe3f169dc3668acd90b0d2fb76485c06faa412884b7b88b71f8f15bc",
+        "components/reference-policy.json": "9a2c54006968a27b3d04e03f0dac429a6e6c215e5e5936b7f65d66cfd9d5c660",
+        "components/sources/comment/local-structure-review.json": "01ff69ce586ef52dd2ddbe72f3b111a79b90e7613740e7842629601d07c6e17d",
+        "components/token-specs/border-radius.json": "77d9245e2504b7c0c605288290e938b2453a79b27d4312448d14a58692290791",
+        "components/token-specs/border.json": "d286ee4681deda1c7702c310b065c86f824539b3a8797efba05b24bc225ab322",
+        "components/token-specs/colors.json": "82cba8e4a6b3e1e5bc961e4039478b0dea4ba9b92a5291d579bb8d7a54db0d95",
+        "components/token-specs/spacing.json": "351b14cfce4411248ad41e00eaaf2b1cab9b705997980dfed1fc65693740e65c",
+        "components/token-specs/typography.json": "93b7dc07547218a33c075b7cdcd942f89094353a7847d483d8378b8883327e16",
+        "components/tokens.css": "2424558781ddfc12cad4d2b91e78451dc26fe5e126e6f24a3b9631753b644afa"
+      }
+    },
+    {
+      "id": "dialog",
+      "name": "Dialog",
+      "dependencies": [
+        {
+          "component": "Button",
+          "usage": "删除确认底部 42px 灰色取消按钮与红色确认按钮，直接使用现有按钮 DOM/CSS",
+          "requiredVariants": [
+            "filled-gray",
+            "filled-red"
+          ],
+          "implementationClasses": [
+            "ds-btn",
+            "ds-btn--filled-gray",
+            "ds-btn--filled-red",
+            "ds-btn--xl-regular"
+          ],
+          "appliesTo": [
+            "confirmation"
+          ],
+          "slot": "footer",
+          "hostPreviewAnchor": "demo-confirmation",
+          "requiredSizes": [
+            {
+              "variant": "filled-gray",
+              "size": "xl-regular"
+            },
+            {
+              "variant": "filled-red",
+              "size": "xl-regular"
+            }
+          ],
+          "sourceEvidence": {
+            "inventory": "components/sources/dialog/source-inventory.json",
+            "scope": "saved-instance-component-reference-and-contract-size-only",
+            "instanceIds": [
+              "68908:052339/68908:041272",
+              "68908:052339/68908:041268"
+            ],
+            "componentIds": [
+              "hj66450:99105",
+              "hj66450:98573"
+            ],
+            "inheritedPositionsResolved": false
+          }
+        }
+      ],
+      "currentCanonicalChecks": [
+        {
+          "variant": "confirmation",
+          "buttons": [
+            {
+              "variant": "filled-gray",
+              "size": "xl-regular",
+              "type": "button"
+            },
+            {
+              "variant": "filled-red",
+              "size": "xl-regular",
+              "type": "button"
+            }
+          ]
+        }
+      ],
+      "pendingCanonicalChecks": [],
+      "nonCanonicalPending": [],
+      "sourceFingerprints": {
+        "components/components.css": "a08b4fe2790b5ff2b784c6362a90f1b94e7535a03e863232ce6d620a52e85f73",
+        "components/contracts/button.json": "fab0452634be29af67f30c913f487cb39a8a61e9a018518c885554ae67c2374a",
+        "components/contracts/dialog.json": "3a3ac5b34e45906e971950f4c36cb8f3ae7d9b4bc30c2f6c8bed631d8e8f6a3c",
+        "components/contracts/icon-button.json": "381b398f61a6c05e2e36f15f77242f69c817c92452cabaed68b9983fdd85c549",
+        "components/dialog-current.css": "d69386bcf39aa40c3c698c40d725b189c683f2d74b8e0f0ad4254bd7aac682b2",
+        "components/dialog-current.js": "a3807d4f9647411e602829a8382e9b33b4a9ef0ada7baa17b912876eba6aa441",
+        "components/icon-button-current.css": "445637d458e8d76ce8cc773020f319f683764846d8732c7170df3426073484dd",
+        "components/icons/icon-close.svg": "226867654d63f99f548f7e25b2f0286c19aa5786f5b9497905474f3959704424",
+        "components/icons/icons-manifest.json": "07851a18214f0adc2f974c681ea193d8886d35ee780480dbab3315fc15da9cc4",
+        "components/preview/button.html": "3a50b30571727f6b03a6e7324ffed84f81dfd32208349c2cab33af30f1e76737",
+        "components/preview/dialog.html": "06c921e0c24ddd41e2d76fcca022c9859ead62d954c17d95272970db745c327d",
+        "components/preview/icon-button.html": "38701b8e20e658ef45c162fcaa5d8b13b4a999c0d573afa05d8a6c60fc43f4b9",
+        "components/preview/reference-live.js": "4839383529a3ee82df1d8efe675d430567abc1986034499107aa429d21a18ea6",
+        "components/reference-policy.json": "9a2c54006968a27b3d04e03f0dac429a6e6c215e5e5936b7f65d66cfd9d5c660",
+        "components/sources/dialog/local-structure-review.json": "e87c24e0551f4572c08af5de84ac37f82970429756b0e08bfda22d2293bbcecb",
+        "components/sources/dialog/mastergo-components.json": "57c90ff018152f38def21661737415c245edb7c53e7ee5acebf21c0f77c143d1",
+        "components/sources/dialog/mastergo-spec.json": "4fadfa04db400a6b5e2166ee5672dc0cb6259ea67278e24a56b56be845fd4574",
+        "components/sources/dialog/source-inventory.json": "f587c02a211f0d141f571d3a5bd4bf6133e0e630ef827c6a67538df0a75e9b7c",
+        "components/sources/icon-button/mastergo-original-components.json": "825a7ab5731310b020c0dfe81d40056d5cc745544e4058ce719fd68c5aed19a7",
+        "components/token-specs/border-radius.json": "77d9245e2504b7c0c605288290e938b2453a79b27d4312448d14a58692290791",
+        "components/token-specs/border.json": "d286ee4681deda1c7702c310b065c86f824539b3a8797efba05b24bc225ab322",
+        "components/token-specs/colors.json": "82cba8e4a6b3e1e5bc961e4039478b0dea4ba9b92a5291d579bb8d7a54db0d95",
+        "components/token-specs/spacing.json": "351b14cfce4411248ad41e00eaaf2b1cab9b705997980dfed1fc65693740e65c",
+        "components/token-specs/typography.json": "93b7dc07547218a33c075b7cdcd942f89094353a7847d483d8378b8883327e16",
+        "components/tokens.css": "2424558781ddfc12cad4d2b91e78451dc26fe5e126e6f24a3b9631753b644afa",
+        "docs/handoff/archives/2026-10-09-overnight/mastergo/button-shape-component-set.json": "97baa8363f81381597e5e8874efcfe0897017be8cab528e21ff712e45cf5b925"
+      }
+    },
+    {
+      "id": "dropdown",
+      "name": "Dropdown",
+      "dependencies": [
+        {
+          "component": "Button",
+          "usage": "grouped 变体 footer 的 Cancel/OK 按钮，outline-gray 和 outline-black，l 尺寸",
+          "slot": "footer",
+          "requiredVariants": [
+            "outline-gray",
+            "outline-black"
+          ],
+          "implementationClasses": [
+            "ds-btn",
+            "ds-btn--outline-gray",
+            "ds-btn--outline-black",
+            "ds-btn--l"
+          ],
+          "appliesTo": [
+            "grouped"
+          ]
+        }
+      ],
+      "currentCanonicalChecks": [],
+      "pendingCanonicalChecks": [],
+      "nonCanonicalPending": [
+        "grouped"
+      ],
+      "sourceFingerprints": {
+        "components/components.css": "a08b4fe2790b5ff2b784c6362a90f1b94e7535a03e863232ce6d620a52e85f73",
+        "components/contracts/button.json": "fab0452634be29af67f30c913f487cb39a8a61e9a018518c885554ae67c2374a",
+        "components/contracts/checkbox.json": "82239d1f9614bb6b8898a50f2bb766a24421db3a1f1b688ffc698c1a1e6a5f73",
+        "components/contracts/dropdown.json": "79aecb5ec2a6781616eea517ee1083963c57b8d872ada197facde3b71d18de5c",
+        "components/dropdown-current.css": "6349f1f88a6dd08da429d821ce0560c97d6b3db9996543818b6b5c40fbb4b5e1",
+        "components/dropdown-current.js": "7753dd5329eea45e6e0db9b88f0ff1fa6d5ef7adb3817be7748a7ddfd57932d1",
+        "components/icons/icon-chevron-down.svg": "fe5df03acb1cb4b8a38a928357775416656fbf97cc54f3c6a5b7d0e4906f3e91",
+        "components/icons/icon-search.svg": "11e01599b008320c723773284b56944f810762688a2928b37e6cb228fc9a3347",
+        "components/icons/icons-manifest.json": "07851a18214f0adc2f974c681ea193d8886d35ee780480dbab3315fc15da9cc4",
+        "components/preview/button.html": "3a50b30571727f6b03a6e7324ffed84f81dfd32208349c2cab33af30f1e76737",
+        "components/preview/checkbox.html": "a70447d6b4050f3b223a6ec561e5c7ddd25c87a19c6e012669976616571a277e",
+        "components/preview/dropdown.html": "6940ba688fc4eec9cb09edd1e5a6423878d6bb3581e14d7d02f65dcd17d5bd6e",
+        "components/preview/form.html": "d2d0952530ae1b4086d36997bff4b046cf6d93e778db8a65bd70516f34c67897",
+        "components/preview/reference-live.js": "4839383529a3ee82df1d8efe675d430567abc1986034499107aa429d21a18ea6",
+        "components/reference-policy.json": "9a2c54006968a27b3d04e03f0dac429a6e6c215e5e5936b7f65d66cfd9d5c660",
+        "components/sources/dropdown/basic-preview-before.html": "51ab6829f716157960e6dd70ff380b98223605e579af8549125ab8fdad5c7224",
+        "components/sources/dropdown/local-structure-review.json": "c5a3d3915d545b6983ec5fdf344bfa1e70bf9d92b257884f16179c3570bebde7",
+        "components/token-specs/border-radius.json": "77d9245e2504b7c0c605288290e938b2453a79b27d4312448d14a58692290791",
+        "components/token-specs/border.json": "d286ee4681deda1c7702c310b065c86f824539b3a8797efba05b24bc225ab322",
+        "components/token-specs/colors.json": "82cba8e4a6b3e1e5bc961e4039478b0dea4ba9b92a5291d579bb8d7a54db0d95",
+        "components/token-specs/spacing.json": "351b14cfce4411248ad41e00eaaf2b1cab9b705997980dfed1fc65693740e65c",
+        "components/token-specs/typography.json": "93b7dc07547218a33c075b7cdcd942f89094353a7847d483d8378b8883327e16",
+        "components/tokens.css": "2424558781ddfc12cad4d2b91e78451dc26fe5e126e6f24a3b9631753b644afa"
+      }
+    },
+    {
+      "id": "form",
+      "name": "Form",
+      "dependencies": [
+        {
+          "component": "Button",
+          "usage": "Submit 按钮，固定 filled-red xl-bold，任何情况不例外",
+          "slot": "submitButton",
+          "requiredVariants": [
+            "filled-red"
+          ],
+          "implementationClasses": [
+            "ds-btn",
+            "ds-btn--filled-red",
+            "ds-btn--xl-bold"
+          ],
+          "requiredSizes": [
+            {
+              "variant": "filled-red",
+              "size": "xl-bold"
+            }
+          ],
+          "appliesTo": [
+            "gray",
+            "white",
+            "white-responsive"
+          ]
+        }
+      ],
+      "currentCanonicalChecks": [
+        {
+          "variant": "gray",
+          "buttons": [
+            {
+              "variant": "filled-red",
+              "size": "xl-bold",
+              "type": "submit"
+            }
+          ]
+        },
+        {
+          "variant": "white",
+          "buttons": [
+            {
+              "variant": "filled-red",
+              "size": "xl-bold",
+              "type": "submit"
+            }
+          ]
+        }
+      ],
+      "pendingCanonicalChecks": [],
+      "nonCanonicalPending": [
+        "white-responsive"
+      ],
+      "sourceFingerprints": {
+        "components/components.css": "a08b4fe2790b5ff2b784c6362a90f1b94e7535a03e863232ce6d620a52e85f73",
+        "components/contracts/button.json": "fab0452634be29af67f30c913f487cb39a8a61e9a018518c885554ae67c2374a",
+        "components/contracts/dropdown.json": "79aecb5ec2a6781616eea517ee1083963c57b8d872ada197facde3b71d18de5c",
+        "components/contracts/form.json": "726cbe36b8380647e6cecf5560a770754f47531ef1acdfd34fdb8732c1fcb475",
+        "components/dropdown-current.css": "6349f1f88a6dd08da429d821ce0560c97d6b3db9996543818b6b5c40fbb4b5e1",
+        "components/dropdown-current.js": "7753dd5329eea45e6e0db9b88f0ff1fa6d5ef7adb3817be7748a7ddfd57932d1",
+        "components/form-current.css": "00eeb3a1670d49cfc499ae10fb01d1dc32134710e8b95ef855dba02775e6eb88",
+        "components/form-current.js": "e835557fe05c7a846e2dae84a3da7028fc8c6f8d18d17cb8ee9369019548eb9f",
+        "components/icons/icon-chevron-down.svg": "fe5df03acb1cb4b8a38a928357775416656fbf97cc54f3c6a5b7d0e4906f3e91",
+        "components/icons/icons-manifest.json": "07851a18214f0adc2f974c681ea193d8886d35ee780480dbab3315fc15da9cc4",
+        "components/preview/button.html": "3a50b30571727f6b03a6e7324ffed84f81dfd32208349c2cab33af30f1e76737",
+        "components/preview/dropdown.html": "6940ba688fc4eec9cb09edd1e5a6423878d6bb3581e14d7d02f65dcd17d5bd6e",
+        "components/preview/form.html": "d2d0952530ae1b4086d36997bff4b046cf6d93e778db8a65bd70516f34c67897",
+        "components/preview/reference-live.js": "4839383529a3ee82df1d8efe675d430567abc1986034499107aa429d21a18ea6",
+        "components/reference-policy.json": "9a2c54006968a27b3d04e03f0dac429a6e6c215e5e5936b7f65d66cfd9d5c660",
+        "components/sources/form/gray-preview-before.html": "12c622e2d766ddb7914af61f5228e5f651a0682d9b7851a46387fa71fa5be246",
+        "components/sources/form/local-structure-review.json": "00be78048de15c6729c241b60ef0c39a5abff6c0fb86fc7278667ff202b248ee",
+        "components/sources/form/source-index.json": "b94f582568091b80e91d4e0f125527f7531c3ace358f7d17593a0d7d3e46e69a",
+        "components/token-specs/border-radius.json": "77d9245e2504b7c0c605288290e938b2453a79b27d4312448d14a58692290791",
+        "components/token-specs/border.json": "d286ee4681deda1c7702c310b065c86f824539b3a8797efba05b24bc225ab322",
+        "components/token-specs/colors.json": "82cba8e4a6b3e1e5bc961e4039478b0dea4ba9b92a5291d579bb8d7a54db0d95",
+        "components/token-specs/spacing.json": "351b14cfce4411248ad41e00eaaf2b1cab9b705997980dfed1fc65693740e65c",
+        "components/token-specs/typography.json": "93b7dc07547218a33c075b7cdcd942f89094353a7847d483d8378b8883327e16",
+        "components/tokens.css": "2424558781ddfc12cad4d2b91e78451dc26fe5e126e6f24a3b9631753b644afa",
+        "page-inputs/bdcom-oem-m2/component-sources/form.json": "71e99b54e068c22ee81e3d64c6838b99f69c314cb36260d1891e40455bb300d7"
+      }
+    },
+    {
+      "id": "select",
+      "name": "Select",
+      "dependencies": [
+        {
+          "component": "Button",
+          "usage": "组合分组面板Cancel/OK真实调用描边XL原子；已保存宿主INSTANCE明确42px/24px，旧L36px为本地装配偏差",
+          "slot": "footer",
+          "appliesTo": [
+            "grouped-combination"
+          ],
+          "requiredVariants": [
+            "outline-gray",
+            "outline-black"
+          ],
+          "implementationClasses": [
+            "ds-btn",
+            "ds-btn--outline-gray",
+            "ds-btn--outline-black",
+            "ds-btn--xl"
+          ],
+          "requiredSizes": [
+            {
+              "variant": "outline-gray",
+              "size": "xl"
+            },
+            {
+              "variant": "outline-black",
+              "size": "xl"
+            }
+          ],
+          "sourceEvidence": {
+            "inventory": "components/sources/select/source-inventory.json",
+            "hostComponentId": "68908:053450",
+            "instanceIds": [
+              "68908:053469/68908:037485",
+              "68908:053469/68908:037489"
+            ],
+            "referencedComponentIds": [
+              "68908:026435",
+              "68908:026423"
+            ],
+            "sourceSize": "42px/24px",
+            "basis": "宿主真实INSTANCE尺寸与颜色/描边属性 + 已登记Button原子XL；旧引用ID与新原子节点不同，未宣称同版同ID",
+            "parentOverrides": "宿主旧字体/间距等声明保留为来源事实；用户确认原子优先，样式由Button负责"
+          }
+        }
+      ],
+      "currentCanonicalChecks": [
+        {
+          "variant": "grouped-combination",
+          "buttons": [
+            {
+              "variant": "outline-gray",
+              "size": "xl",
+              "type": "button"
+            },
+            {
+              "variant": "outline-black",
+              "size": "xl",
+              "type": "button"
+            }
+          ]
+        }
+      ],
+      "pendingCanonicalChecks": [],
+      "nonCanonicalPending": [],
+      "sourceFingerprints": {
+        "components/components.css": "a08b4fe2790b5ff2b784c6362a90f1b94e7535a03e863232ce6d620a52e85f73",
+        "components/contracts/button.json": "fab0452634be29af67f30c913f487cb39a8a61e9a018518c885554ae67c2374a",
+        "components/contracts/checkbox.json": "82239d1f9614bb6b8898a50f2bb766a24421db3a1f1b688ffc698c1a1e6a5f73",
+        "components/contracts/select.json": "624f886b989be5192b0da619e94f7f15fd1cf9a906fe61ded0aed87a487c1a57",
+        "components/contracts/tag.json": "785fedf7d78a48d2f03929a7b6cd14f6cd605984a620439c5bcfae1a1bcca42b",
+        "components/icons/icon-check-8.svg": "dc6cf9d445bcc4685eadac41ef0532736924b1341d96a2df999e3bfadbb5b697",
+        "components/icons/icon-chevron-down.svg": "fe5df03acb1cb4b8a38a928357775416656fbf97cc54f3c6a5b7d0e4906f3e91",
+        "components/icons/icon-close.svg": "226867654d63f99f548f7e25b2f0286c19aa5786f5b9497905474f3959704424",
+        "components/icons/icon-filter.svg": "8a4911b2335d63b8c475a62d9a836500b772351ae6635c3513ed3b8b201351c4",
+        "components/icons/icon-radio-checked-14.svg": "b53f345fd343e6c85db5f49bb0f9cc17451e3a12f7685083de8619d26b7c52f6",
+        "components/icons/icon-radio-default-14.svg": "b14cd0e0bb098acea868b219b715af26c4df28c1535b637f5adf56f4f6aa2ad1",
+        "components/icons/icon-radio-disabled-14.svg": "a04bf6e85775d043b1d7983b40c4915d648cd30450d190cad914700ef318460c",
+        "components/icons/icon-radio-hover-14.svg": "be49228415dabf93d01a587421c450763c29d11db7ae50e1242c40f55e1cff35",
+        "components/icons/icon-search.svg": "11e01599b008320c723773284b56944f810762688a2928b37e6cb228fc9a3347",
+        "components/icons/icons-manifest.json": "07851a18214f0adc2f974c681ea193d8886d35ee780480dbab3315fc15da9cc4",
+        "components/preview/button.html": "3a50b30571727f6b03a6e7324ffed84f81dfd32208349c2cab33af30f1e76737",
+        "components/preview/checkbox.html": "a70447d6b4050f3b223a6ec561e5c7ddd25c87a19c6e012669976616571a277e",
+        "components/preview/select.html": "32913a0aa6a04e5da310319ebfc6d6767ba4c6f3ee31539582d1217397428a18",
+        "components/preview/tag.html": "52994ef5fe3f169dc3668acd90b0d2fb76485c06faa412884b7b88b71f8f15bc",
+        "components/reference-policy.json": "9a2c54006968a27b3d04e03f0dac429a6e6c215e5e5936b7f65d66cfd9d5c660",
+        "components/select-current.js": "3e608842e8e9cdadadea428ae6b3403627cb757a685f5bc81248cc605cfcd88c",
+        "components/sources/select/exact-call-review.json": "3db225c479256d0c81e267c602fcc6d69ff267a828a3e0aef8642b8ddd64b06f",
+        "components/sources/select/mastergo-original-components.json": "1122e6dbd0fd4b4f84d311bf80bd6d261593b20be220f14062634bb461ea1d6d",
+        "components/sources/select/source-facts-review.json": "df27e46168c64ec605c513fd9d1f9aaedc669e4fb40e087354c8d53635319155",
+        "components/sources/select/source-inventory.json": "ed695a07fa046b24bc01e7afe3c0954d754e306e87c2e36d6a3117bed5185aea",
+        "components/token-specs/border-radius.json": "77d9245e2504b7c0c605288290e938b2453a79b27d4312448d14a58692290791",
+        "components/token-specs/border.json": "d286ee4681deda1c7702c310b065c86f824539b3a8797efba05b24bc225ab322",
+        "components/token-specs/colors.json": "82cba8e4a6b3e1e5bc961e4039478b0dea4ba9b92a5291d579bb8d7a54db0d95",
+        "components/token-specs/shadows.json": "fe73ecce057e1219e0ea69a898f0610f78b9e623556d6be457dd3c2c8701eaf5",
+        "components/token-specs/spacing.json": "351b14cfce4411248ad41e00eaaf2b1cab9b705997980dfed1fc65693740e65c",
+        "components/token-specs/typography.json": "93b7dc07547218a33c075b7cdcd942f89094353a7847d483d8378b8883327e16",
+        "components/tokens.css": "2424558781ddfc12cad4d2b91e78451dc26fe5e126e6f24a3b9631753b644afa",
+        "docs/handoff/archives/2026-10-09-overnight/mastergo/select-component-region.json": "500d972e212e17c1c3f4fcb166d14e22a93b7ef18f37d07cc896400d82ffb9aa"
+      }
+    }
+  ],
+  "changes": [
+    "Card的Button关联限定到实际含Add按钮的小卡与完整卡，登记filled-red/s",
+    "旧Card/Collapse/Dropdown演示Button显式type=button，防止嵌入表单时意外提交",
+    "Select组合分组原始typed按钮明确42px/24px，取消和确认改为outline-gray/xl与outline-black/xl；来源ID与旧引用组件ID独立记录，不冒称同一版本",
+    "当前有精确尺寸依据的宿主检查真实Button结构与允许的装配样式；缺尺寸依据的宿主保持pending"
+  ],
+  "toolSha256": "e9ec1c6a1fced1e2f0ecc212f363bc05aecaff5cf9eb473ee326f47ea48fb01d",
+  "unverified": [
+    "原生hover/disabled/processing、字体及宿主计算样式",
+    "Processing单loader来源与本地隐藏文字保宽的布局差异",
+    "未建立精确调用的历史宿主形态",
+    "Dropdown/Collapse描边L及黑色L在Button原子中未登记，必须先补来源再完善尺寸；不得擅自改为XL",
+    "完整当前工程证明、视觉批准和全家族覆盖"
+  ]
+}

@@ -1,0 +1,479 @@
+<!-- INTERNAL VARIANT SOURCE: for compile/sync scripts only. Human-facing spec: maintenance/button-prototype-20261113/preview.html -->
+<!DOCTYPE html>
+<html data-component-reference="button" lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Button 按钮 - 组件预览</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../tokens.css">
+  <link rel="stylesheet" href="../components.css">
+  <link rel="stylesheet" href="../button-current.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: var(--font-family-base);
+      padding: 40px;
+      background: #FFFFFF;
+      color: var(--color-gray-1);
+    }
+    h1 {
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .subtitle {
+      font-size: 14px;
+      color: var(--color-gray-3);
+      margin-bottom: 40px;
+    }
+
+    /* Category Badge（分类与左侧导航栏保持一致） */
+    .cat-badge { display: inline-flex; align-items: center; height: 22px; padding: 0 10px; border-radius: 11px; font-size: 11px; font-weight: 700; margin-bottom: 10px; }
+
+    /* Section */
+    .section {
+      margin-bottom: 48px;
+    }
+    .section-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 24px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--color-gray-5);
+    }
+    .section-subtitle {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--color-gray-2);
+      margin-bottom: 16px;
+    }
+
+    /* Grid layout for state columns */
+    .state-header {
+      display: grid;
+      grid-template-columns: 120px repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+    }
+    .state-header span {
+      font-size: 12px;
+      color: var(--color-gray-3);
+      text-align: center;
+    }
+    .state-header span:first-child {
+      text-align: left;
+    }
+
+    .btn-row {
+      display: grid;
+      grid-template-columns: 120px repeat(4, 1fr);
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+    .btn-row .label {
+      font-size: 12px;
+      color: var(--color-gray-3);
+    }
+    .btn-row .cell {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Dark background for white outline buttons */
+    .dark-bg {
+      background: var(--color-gray-1);
+      border-radius: 8px;
+      padding: 24px 0;
+    }
+    .dark-bg .state-header span {
+      color: rgba(255,255,255,0.5);
+    }
+    .dark-bg .btn-row .label {
+      color: rgba(255,255,255,0.5);
+      padding-left: 16px;
+    }
+    .dark-bg .state-header span:first-child {
+      padding-left: 16px;
+    }
+
+  </style>
+<link rel="stylesheet" href="../cart-current.css"><style>#cart-product-card .row{display:flex;gap:40px}</style></head>
+<body>
+<p class="subtitle"><a href="../../../maintenance/button-prototype-20261113/preview.html">查看当前 Button 完整样板：变体决策、15 种规格、状态与左右图标</a>。下方保留原规范示例作为来源对照；当前调用按已确认MG图标与加载规则。</p>
+
+  <span class="cat-badge" style="background:#EEE8F3;color:#512971;">通用 General</span>
+  <h1>Button 按钮组件 <span class="version-badge" style="font-size:18px;font-weight:600;color:#707070;vertical-align:middle;margin-left:10px;">v1.0</span></h1>
+  <p class="subtitle">Button 按钮 — 填充、描边与 Cart 加购类型，各自保留原件尺寸和状态</p>
+
+  <!-- 变体决策 + 关联关系表 -->
+  <div style="margin-bottom: 0; padding: 24px; background: #FAFBFC; border: 1px solid var(--color-gray-5); border-radius: 8px;">
+    <!-- AUTO-GENERATED-PREVIEW:START -->
+<!-- 合并模式：硬规则已并入下方合并表 -->
+    <!-- AUTO-GENERATED-PREVIEW:END -->
+    <!-- AUTO-GENERATED-DECISION-TABLE:START -->
+    <p style="font-size:14px;font-weight:600;margin-bottom:4px;">变体决策</p>
+    <p style="font-size:12px;color:#707070;margin-bottom:12px;">按场景核对按钮款式。设计参考用于比较，实际调用仍须核对对应组件。</p>
+    <table style="width:100%;border-collapse:collapse;table-layout:fixed;">
+      <colgroup><col style="width:18%"><col style="width:38%"><col style="width:44%"></colgroup>
+      <thead><tr><th scope="col" style="background:#F6F6F8;font-size:12px;font-weight:600;text-align:left;padding:8px 10px;border:1px solid #DEE0E3;">变体</th><th scope="col" style="background:#F6F6F8;font-size:12px;font-weight:600;text-align:left;padding:8px 10px;border:1px solid #DEE0E3;">匹配条件</th><th scope="col" style="background:#F6F6F8;font-size:12px;font-weight:600;text-align:left;padding:8px 10px;border:1px solid #DEE0E3;">选型结论</th></tr></thead>
+<tbody><tr><th scope="rowgroup" rowspan="4" style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">红色填充</th><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">商品详情页顶部购买区的主加购</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>必须使用 · </strong>必须用红色填充。</td></tr>
+<tr><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">表单提交、搜索提交、指定确认弹窗底部确认；已登记锚点导航的42px主CTA</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>候选 · </strong>可用，按具体宿主核对。锚点导航主CTA采用红色XL Regular（42px、左右24px）；不要沿用旧L标签。</td></tr>
+<tr><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">Header普通操作、Banner普通CTA及未取得对应宿主依据的普通内容操作</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>不用 · </strong>不可将主操作笼统映射成红色；已明确登记的锚点导航42px主CTA按前一条处理，其余加购和宿主按各自契约核对。</td></tr>
+<tr><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">登录气泡或订单摘要的双填充组合</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>设计参考 · </strong>登录气泡用红色 L＋灰色 L；订单摘要用红色 XL Bold＋灰色 XL Bold。仅供设计参考，尚未开放调用。</td></tr></tbody>
+<tbody><tr><th scope="rowgroup" rowspan="3" style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">黑色填充</th><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">需要较高视觉权重的操作</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>候选 · </strong>列入黑色填充候选，核对操作角色及所在组件。</td></tr>
+<tr><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">解决方案详情页的双入口组合</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>设计参考 · </strong>规范示例为黑色填充 XL＋带右箭头的黑色文字按钮。</td></tr>
+<tr><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">只知道这是主操作</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>候选 · </strong>继续比较候选，不能据此改用红色。</td></tr></tbody>
+<tbody><tr><th scope="rowgroup" rowspan="2" style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">灰色填充</th><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">辅助或次要操作</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>候选 · </strong>列入灰色填充候选，结合同组层级比较。</td></tr>
+<tr><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">需要高视觉权重的操作</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>不用 · </strong>优先比较黑色填充，红色仅在允许的场景考虑。</td></tr></tbody>
+<tbody><tr><th scope="rowgroup" rowspan="3" style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">白色描边</th><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">已开放的深色单图桌面 Hero，只有一个操作入口</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>候选 · </strong>按 Hero 调用白色描边 XL。</td></tr>
+<tr><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">首页 Banner 双入口</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>设计参考 · </strong>规范示例为两个白色描边 XL，第二个带右箭头。仅供设计参考，当前有限 Hero 仍只支持单入口。</td></tr>
+<tr><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">浅色背景</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>不用 · </strong>排除白色描边；深色宿主仍须核对对应组件契约。</td></tr></tbody>
+<tbody><tr><th scope="rowgroup" rowspan="2" style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">黑色描边</th><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">浅色背景上的辅助操作，需要醒目的边框</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>候选 · </strong>列入黑色描边候选。</td></tr>
+<tr><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">深色背景上边框难以辨认</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>不用 · </strong>排除黑色描边。</td></tr></tbody>
+<tbody><tr><th scope="rowgroup" rowspan="3" style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">灰色描边</th><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">政策页或技术文档里的小型辅助入口</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>候选 · </strong>可比较灰色描边 M（高 32px，文字 12px 常规字重）。</td></tr>
+<tr><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">购物车页面的矩形操作，具体动作未定</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>设计参考 · </strong>规范展示灰色描边 XL，列入候选。</td></tr>
+<tr><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">只知道是低强调的辅助操作</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>候选 · </strong>继续比较黑色与灰色描边。</td></tr></tbody>
+<tbody><tr><th scope="rowgroup" rowspan="2" style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">蓝色描边</th><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">明确需要蓝色强调的链接式按钮</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>候选 · </strong>列入蓝色描边候选。</td></tr>
+<tr><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">普通辅助操作</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>不用 · </strong>优先比较灰色或黑色描边。</td></tr></tbody>
+<tbody><tr><th scope="rowgroup" rowspan="2" style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">Cart产品卡片加购</th><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">已核对的产品小卡片或完整产品卡片内的 Add 入口</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>候选 · </strong>按对应卡片核对 Cart 加购。</td></tr>
+<tr><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">普通按钮、气泡 Cart 或未定义状态</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>不用 · </strong>排除产品卡片 Cart 变体。</td></tr></tbody>
+    </table>
+    <!-- AUTO-GENERATED-DECISION-TABLE:END -->
+  </div>
+
+    <!-- DEPENDENCY-SUMMARY-SPACING -->
+    <div style="height:24px;"></div>
+    <!-- AUTO-GENERATED-DEPENDENCY-SUMMARY-TABLE:START -->
+    <div style="margin-bottom: 0; padding: 24px; background: #FAFBFC; border: 1px solid var(--color-gray-5); border-radius: 8px;">
+      <p style="font-size: 14px; font-weight: 600; margin-bottom: 4px;">依赖汇总表</p>
+      <p style="font-size: 12px; color: #707070; margin-bottom: 12px;">按组件类型汇总组件关系、颜色、字体、间距、描边、圆角、阴影和图标依赖；未填写 <code>appliesTo</code> 的组件级依赖不猜测变体归属，不参与本表归类。「组件关系」列用标签区分：<span style="display:inline-block;font-size:11px;line-height:16px;padding:0 5px;border-radius:3px;background:#EAF2FF;color:#0060BF;">子组件</span> = 嵌入本组件内部；<span style="display:inline-block;font-size:11px;line-height:16px;padding:0 5px;border-radius:3px;background:#F3EEFA;color:#512971;">父组件·类名证据／仅声明</span> = 从宿主 <code>componentDependencies</code> 自动推导；类名出现不等于具体变体、尺寸、必需结构或交互已验证，链接仅供打开 Preview 复核；<span style="display:inline-block;font-size:11px;line-height:16px;padding:0 5px;border-radius:3px;background:#FFF3E0;color:#A65300;">参考·未验证</span> = 仅保留设计意图，宿主 preview 尚无真实结构，不可作为已实现依赖。</p>
+      <div class="dep-summary-scroll">
+        <div class="dep-summary-grid" style="grid-template-columns:minmax(max-content, auto) repeat(8, minmax(max-content, 1fr));">
+          <div class="dep-cell dep-cell--sticky dep-cell--head" role="columnheader">组件类型</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">颜色</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">字体</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">间距</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">描边</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">圆角</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">阴影</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">图标</div>
+          <div class="dep-cell dep-cell--head dep-cell--right-edge" role="columnheader">组件关系</div>
+          <div class="dep-cell dep-cell--sticky" role="rowheader"><strong>填充按钮</strong><br><code>filled</code></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#19191A;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-1" style="color:#0060BF;text-decoration:underline;"><code>color.gray-1</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#4B4B4D;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-2" style="color:#0060BF;text-decoration:underline;"><code>color.gray-2</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#707070;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-3" style="color:#0060BF;text-decoration:underline;"><code>color.gray-3</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#F2F2F2;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-7" style="color:#0060BF;text-decoration:underline;"><code>color.gray-7</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#F6F6F8;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-8" style="color:#0060BF;text-decoration:underline;"><code>color.gray-8</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:rgba(25,25,26,0.2);vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-hover-overlay" style="color:#0060BF;text-decoration:underline;"><code>color.hover-overlay</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#FFFFFF;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-white" style="color:#0060BF;text-decoration:underline;"><code>color.white</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#C00000;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-brand-red" style="color:#0060BF;text-decoration:underline;"><code>color.brand-red</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:rgba(25,25,26,0.6);vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-black-button-hover-overlay" style="color:#0060BF;text-decoration:underline;"><code>color.black-button-hover-overlay</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">14px · md · Regular 400</span><a href="font.html#tok-typography-h7-regular" style="color:#0060BF;text-decoration:underline;"><code>typography.h7-regular</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">14px · md · SemiBold 600</span><a href="font.html#tok-typography-h7-semibold" style="color:#0060BF;text-decoration:underline;"><code>typography.h7-semibold</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">12px · sm · Regular 400</span><a href="font.html#tok-typography-h9-regular" style="color:#0060BF;text-decoration:underline;"><code>typography.h9-regular</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">24px</span><a href="spacing.html#tok-spacing-xl" style="color:#0060BF;text-decoration:underline;"><code>spacing.xl</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">16px</span><a href="spacing.html#tok-spacing-lg" style="color:#0060BF;text-decoration:underline;"><code>spacing.lg</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">12px</span><a href="spacing.html#tok-spacing-md" style="color:#0060BF;text-decoration:underline;"><code>spacing.md</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">8px</span><a href="spacing.html#tok-spacing-sm" style="color:#0060BF;text-decoration:underline;"><code>spacing.sm</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">2px</span><a href="spacing.html#tok-spacing-2" style="color:#0060BF;text-decoration:underline;"><code>spacing.2</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;color:#A6A6A6;font-size:11px;margin-right:8px;vertical-align:-3px;flex:0 0 auto;">∅</span><a href="stroke.html#tok-border-style-none" style="color:#0060BF;text-decoration:underline;"><code>border.style.none</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">4px</span><a href="radius.html#tok-border-radius-md" style="color:#0060BF;text-decoration:underline;"><code>border-radius.md</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><img src="../icons/icon-loading.svg?v=eacc5498fda7" alt="" style="display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;"><a href="icon-map.html#icon-loading" style="color:#0060BF;text-decoration:underline;"><code>icon-loading.svg</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><img src="../icons/icon-cart-add.svg?v=ec9abb0e806f" alt="" style="display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;"><a href="icon-map.html#icon-cart-add" style="color:#0060BF;text-decoration:underline;"><code>icon-cart-add.svg</code></a></span></div>
+          <div class="dep-cell dep-cell--right-edge" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:normal;overflow-wrap:anywhere;"><span style="display:inline-block;flex-shrink:0;font-size:11px;line-height:16px;padding:0 5px;margin-right:6px;border-radius:3px;background:#F3EEFA;color:#512971;">父组件·仅声明</span><a href="anchor-nav.html" style="color:#0060BF;text-decoration:underline;">AnchorNav</a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:normal;overflow-wrap:anywhere;"><span style="display:inline-block;flex-shrink:0;font-size:11px;line-height:16px;padding:0 5px;margin-right:6px;border-radius:3px;background:#F3EEFA;color:#512971;">父组件·仅声明</span><a href="collapse.html" style="color:#0060BF;text-decoration:underline;">Collapse</a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:normal;overflow-wrap:anywhere;"><span style="display:inline-block;flex-shrink:0;font-size:11px;line-height:16px;padding:0 5px;margin-right:6px;border-radius:3px;background:#F3EEFA;color:#512971;">父组件·仅声明</span><a href="comment.html" style="color:#0060BF;text-decoration:underline;">Comment</a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:normal;overflow-wrap:anywhere;"><span style="display:inline-block;flex-shrink:0;font-size:11px;line-height:16px;padding:0 5px;margin-right:6px;border-radius:3px;background:#F3EEFA;color:#512971;">父组件·仅声明</span><a href="dialog.html#demo-confirmation" style="color:#0060BF;text-decoration:underline;">Dialog</a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:normal;overflow-wrap:anywhere;"><span style="display:inline-block;flex-shrink:0;font-size:11px;line-height:16px;padding:0 5px;margin-right:6px;border-radius:3px;background:#F3EEFA;color:#512971;">父组件·仅声明</span><a href="dropdown.html" style="color:#0060BF;text-decoration:underline;">Dropdown</a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:normal;overflow-wrap:anywhere;"><span style="display:inline-block;flex-shrink:0;font-size:11px;line-height:16px;padding:0 5px;margin-right:6px;border-radius:3px;background:#F3EEFA;color:#512971;">父组件·仅声明</span><a href="form.html" style="color:#0060BF;text-decoration:underline;">Form</a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:normal;overflow-wrap:anywhere;"><span style="display:inline-block;flex-shrink:0;font-size:11px;line-height:16px;padding:0 5px;margin-right:6px;border-radius:3px;background:#F3EEFA;color:#512971;">父组件·仅声明</span><a href="navigation.html" style="color:#0060BF;text-decoration:underline;">Navigation</a></span></div>
+          <div class="dep-cell dep-cell--sticky" role="rowheader"><strong>描边按钮</strong><br><code>outline</code></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#0060BF;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-blue" style="color:#0060BF;text-decoration:underline;"><code>color.blue</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:rgba(0,96,191,0.04);vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-blue-hover-overlay" style="color:#0060BF;text-decoration:underline;"><code>color.blue-hover-overlay</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#19191A;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-1" style="color:#0060BF;text-decoration:underline;"><code>color.gray-1</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#DEE0E3;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-5" style="color:#0060BF;text-decoration:underline;"><code>color.gray-5</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:rgba(25,25,26,0.04);vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-hover-overlay-light" style="color:#0060BF;text-decoration:underline;"><code>color.hover-overlay-light</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#FFFFFF;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-white" style="color:#0060BF;text-decoration:underline;"><code>color.white</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:rgba(255,255,255,0.1);vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-white-translucent" style="color:#0060BF;text-decoration:underline;"><code>color.white-translucent</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:rgba(255,255,255,0.2);vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span>rgba(255,255,255,0.2) <span style="color:#707070;">（未 token 化）</span></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">14px · md · Regular 400</span><a href="font.html#tok-typography-h7-regular" style="color:#0060BF;text-decoration:underline;"><code>typography.h7-regular</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">24px</span><a href="spacing.html#tok-spacing-xl" style="color:#0060BF;text-decoration:underline;"><code>spacing.xl</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">2px</span><a href="spacing.html#tok-spacing-2" style="color:#0060BF;text-decoration:underline;"><code>spacing.2</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;color:#A6A6A6;font-size:11px;margin-right:8px;vertical-align:-3px;flex:0 0 auto;">∅</span><a href="stroke.html#tok-border-style-none" style="color:#0060BF;text-decoration:underline;"><code>border.style.none</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:1px;background:#707070;margin-right:8px;vertical-align:middle;flex:0 0 auto;"></span><a href="stroke.html#tok-border-width-default" style="color:#0060BF;text-decoration:underline;"><code>border.width.default</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:0;border-top:2px solid #707070;margin-right:8px;vertical-align:middle;flex:0 0 auto;"></span><a href="stroke.html#tok-border-style-default" style="color:#0060BF;text-decoration:underline;"><code>border.style.default</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;box-sizing:border-box;border:2px solid var(--color-gray-1);background:transparent;margin-right:8px;vertical-align:-3px;flex:0 0 auto;"></span><a href="stroke.html#tok-border-color-emphasis" style="color:#0060BF;text-decoration:underline;"><code>border.color.emphasis</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;box-sizing:border-box;border:2px solid var(--color-gray-5);background:transparent;margin-right:8px;vertical-align:-3px;flex:0 0 auto;"></span><a href="stroke.html#tok-border-color-default" style="color:#0060BF;text-decoration:underline;"><code>border.color.default</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;box-sizing:border-box;border:2px solid var(--color-white);background:transparent;margin-right:8px;vertical-align:-3px;flex:0 0 auto;"></span><a href="stroke.html#tok-border-color-inverse" style="color:#0060BF;text-decoration:underline;"><code>border.color.inverse</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;box-sizing:border-box;border:2px solid var(--color-blue);background:transparent;margin-right:8px;vertical-align:-3px;flex:0 0 auto;"></span><a href="stroke.html#tok-border-color-focus" style="color:#0060BF;text-decoration:underline;"><code>border.color.focus</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">4px</span><a href="radius.html#tok-border-radius-md" style="color:#0060BF;text-decoration:underline;"><code>border-radius.md</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><img src="../icons/icon-loading.svg?v=eacc5498fda7" alt="" style="display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;"><a href="icon-map.html#icon-loading" style="color:#0060BF;text-decoration:underline;"><code>icon-loading.svg</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><img src="../icons/icon-fs-download-black-16.svg?v=a967c41357f8" alt="" style="display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;"><a href="icon-map.html#icon-fs-download-black-16" style="color:#0060BF;text-decoration:underline;"><code>icon-fs-download-black-16.svg</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><img src="../icons/icon-fs-quotes-black-16.svg?v=1b7692468dad" alt="" style="display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;"><a href="icon-map.html#icon-fs-quotes-black-16" style="color:#0060BF;text-decoration:underline;"><code>icon-fs-quotes-black-16.svg</code></a></span></div>
+          <div class="dep-cell dep-cell--right-edge" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:normal;overflow-wrap:anywhere;"><span style="display:inline-block;flex-shrink:0;font-size:11px;line-height:16px;padding:0 5px;margin-right:6px;border-radius:3px;background:#F3EEFA;color:#512971;">父组件·仅声明</span><a href="banner.html" style="color:#0060BF;text-decoration:underline;">Banner</a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:normal;overflow-wrap:anywhere;"><span style="display:inline-block;flex-shrink:0;font-size:11px;line-height:16px;padding:0 5px;margin-right:6px;border-radius:3px;background:#F3EEFA;color:#512971;">父组件·仅声明</span><a href="collapse.html" style="color:#0060BF;text-decoration:underline;">Collapse</a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:normal;overflow-wrap:anywhere;"><span style="display:inline-block;flex-shrink:0;font-size:11px;line-height:16px;padding:0 5px;margin-right:6px;border-radius:3px;background:#F3EEFA;color:#512971;">父组件·仅声明</span><a href="dropdown.html" style="color:#0060BF;text-decoration:underline;">Dropdown</a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:normal;overflow-wrap:anywhere;"><span style="display:inline-block;flex-shrink:0;font-size:11px;line-height:16px;padding:0 5px;margin-right:6px;border-radius:3px;background:#F3EEFA;color:#512971;">父组件·仅声明</span><a href="list.html" style="color:#0060BF;text-decoration:underline;">List</a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:normal;overflow-wrap:anywhere;"><span style="display:inline-block;flex-shrink:0;font-size:11px;line-height:16px;padding:0 5px;margin-right:6px;border-radius:3px;background:#F3EEFA;color:#512971;">父组件·仅声明</span><a href="select.html" style="color:#0060BF;text-decoration:underline;">Select</a></span></div>
+          <div class="dep-cell dep-cell--sticky dep-cell--bottom-edge" role="rowheader"><strong>Cart加购按钮</strong><br><code>cart</code></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#C00000;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-brand-red" style="color:#0060BF;text-decoration:underline;"><code>color.brand-red</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#FFFFFF;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-white" style="color:#0060BF;text-decoration:underline;"><code>color.white</code></a></span></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">12px · sm · Regular 400</span><a href="font.html#tok-typography-h9-regular" style="color:#0060BF;text-decoration:underline;"><code>typography.h9-regular</code></a></span></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">4px</span><a href="spacing.html#tok-spacing-xs" style="color:#0060BF;text-decoration:underline;"><code>spacing.xs</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">6px</span><a href="spacing.html#tok-spacing-6" style="color:#0060BF;text-decoration:underline;"><code>spacing.6</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">8px</span><a href="spacing.html#tok-spacing-sm" style="color:#0060BF;text-decoration:underline;"><code>spacing.sm</code></a></span></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;color:#A6A6A6;font-size:11px;margin-right:8px;vertical-align:-3px;flex:0 0 auto;">∅</span><a href="stroke.html#tok-border-style-none" style="color:#0060BF;text-decoration:underline;"><code>border.style.none</code></a></span></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">4px</span><a href="radius.html#tok-border-radius-md" style="color:#0060BF;text-decoration:underline;"><code>border-radius.md</code></a></span></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><img src="../icons/icon-cart-add.svg?v=ec9abb0e806f" alt="" style="display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;"><a href="icon-map.html#icon-cart-add" style="color:#0060BF;text-decoration:underline;"><code>icon-cart-add.svg</code></a></span></div>
+          <div class="dep-cell dep-cell--right-edge dep-cell--bottom-edge" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:normal;overflow-wrap:anywhere;"><span style="display:inline-block;flex-shrink:0;font-size:11px;line-height:16px;padding:0 5px;margin-right:6px;border-radius:3px;background:#F3EEFA;color:#512971;">父组件·类名证据</span><a href="card.html" style="color:#0060BF;text-decoration:underline;">Card</a></span></div>
+        </div>
+      </div>
+    </div>
+    <!-- AUTO-GENERATED-DEPENDENCY-SUMMARY-TABLE:END -->
+
+  <!-- TEMPLATE-DEMO-SPACING -->
+  <div style="height:24px;"></div>
+
+
+
+<!-- ============================================
+       SECTION 1: 填充按钮 - 红色 (Filled Red)
+       ============================================ -->
+  <div class="section">
+    <div class="section-title">填充按钮 — 红色 (Filled Red)</div>
+
+    <div class="state-header">
+      <span>尺寸</span>
+      <span>默认 Default</span>
+      <span>悬停 Hover</span>
+      <span>禁用 Disabled</span>
+      <span>加载中 Processing</span>
+    </div>
+
+    <!-- XL Bold -->
+    <div class="btn-row">
+      <span class="label">XL Bold</span>
+      <div class="cell"><button id="ai-button-filled-red-xl-bold" type="button" class="ds-btn ds-btn--filled-red ds-btn--xl-bold"><span class="ds-btn__text">按钮</span></button></div>
+      <div class="cell"><button class="ds-btn ds-btn--filled-red ds-btn--xl-bold ds-btn--hover" type="button"><span class="ds-btn__text">按钮</span></button></div>
+      <div class="cell"><button class="ds-btn ds-btn--filled-red ds-btn--xl-bold" disabled="" type="button"><span class="ds-btn__text">按钮</span></button></div>
+      <div class="cell"><button id="icon-usage-icon-loading" class="ds-btn ds-btn--filled-red ds-btn--xl-bold ds-btn--processing" data-button-source-red-xl-bold-processing="official" style="scroll-margin-top: 40px;" type="button" disabled="" aria-busy="true" aria-label="按钮"><span class="ds-btn__text">按钮</span><img class="ds-btn__icon-loading" src="../icons/icon-loading.svg" alt="" aria-hidden="true"></button></div>
+    </div>
+
+    <!-- XL Regular -->
+    <div class="btn-row">
+      <span class="label">XL Regular</span>
+      <div class="cell"><button id="ai-button-filled-red-xl-regular" type="button" class="ds-btn ds-btn--filled-red ds-btn--xl-regular"><span class="ds-btn__leading" hidden><img class="ds-btn__leading-icon" src="../icons/icon-cart-add.svg" alt="" aria-hidden="true"></span><span class="ds-btn__text">按钮</span></button></div>
+      <div class="cell"><button class="ds-btn ds-btn--filled-red ds-btn--xl-regular ds-btn--hover" type="button"><span class="ds-btn__text">按钮</span></button></div>
+      <div class="cell"><button class="ds-btn ds-btn--filled-red ds-btn--xl-regular" disabled="" type="button"><span class="ds-btn__text">按钮</span></button></div>
+      <div class="cell"><button class="ds-btn ds-btn--filled-red ds-btn--xl-regular ds-btn--processing" type="button" disabled="" aria-busy="true" aria-label="按钮"><span class="ds-btn__text">按钮</span><img class="ds-btn__icon-loading" src="../icons/icon-loading.svg" alt="" aria-hidden="true"></button></div>
+    </div>
+
+    <!-- L -->
+    <div class="btn-row">
+      <span class="label">L</span>
+      <div class="cell"><button id="ai-button-filled-red-l" type="button" class="ds-btn ds-btn--filled-red ds-btn--l"><span class="ds-btn__text">按钮</span></button></div>
+      <div class="cell"><button class="ds-btn ds-btn--filled-red ds-btn--l ds-btn--hover" type="button"><span class="ds-btn__text">按钮</span></button></div>
+      <div class="cell"><button class="ds-btn ds-btn--filled-red ds-btn--l" disabled="" type="button"><span class="ds-btn__text">按钮</span></button></div>
+      <div class="cell"><button class="ds-btn ds-btn--filled-red ds-btn--l ds-btn--processing" type="button" disabled="" aria-busy="true" aria-label="按钮"><span class="ds-btn__text">按钮</span><img class="ds-btn__icon-loading" src="../icons/icon-loading.svg" alt="" aria-hidden="true"></button></div>
+    </div>
+
+    <!-- M -->
+    <div class="btn-row">
+      <span class="label">M</span>
+      <div class="cell"><button id="ai-button-filled-red-m" type="button" class="ds-btn ds-btn--filled-red ds-btn--m"><span class="ds-btn__text">按钮</span></button></div>
+      <div class="cell"><button class="ds-btn ds-btn--filled-red ds-btn--m ds-btn--hover" type="button"><span class="ds-btn__text">按钮</span></button></div>
+      <div class="cell"><button class="ds-btn ds-btn--filled-red ds-btn--m" disabled="" type="button"><span class="ds-btn__text">按钮</span></button></div>
+      <div class="cell"><button class="ds-btn ds-btn--filled-red ds-btn--m ds-btn--processing" type="button" disabled="" aria-busy="true" aria-label="按钮"><span class="ds-btn__text">按钮</span><img class="ds-btn__icon-loading" src="../icons/icon-loading.svg" alt="" aria-hidden="true"></button></div>
+    </div>
+
+    <!-- S -->
+    <div class="btn-row">
+      <span class="label">S</span>
+      <div class="cell"><button id="ai-button-filled-red-s" type="button" class="ds-btn ds-btn--filled-red ds-btn--s"><span class="ds-btn__text">按钮</span></button></div>
+      <div class="cell"><button class="ds-btn ds-btn--filled-red ds-btn--s ds-btn--hover" type="button"><span class="ds-btn__text">按钮</span></button></div>
+      <div class="cell"><button class="ds-btn ds-btn--filled-red ds-btn--s" disabled="" type="button"><span class="ds-btn__text">按钮</span></button></div>
+      <div class="cell"><button class="ds-btn ds-btn--filled-red ds-btn--s ds-btn--processing" type="button" disabled="" aria-busy="true" aria-label="按钮"><span class="ds-btn__text">按钮</span><img class="ds-btn__icon-loading" src="../icons/icon-loading.svg" alt="" aria-hidden="true"></button></div>
+    </div>
+  </div>
+
+  <!-- ============================================
+       SECTION 2: 填充按钮 - 黑色 (Filled Black)
+       ============================================ -->
+  <div class="section">
+    <div class="section-title">填充按钮 — 黑色 (Filled Black)</div>
+
+    <div class="state-header">
+      <span>尺寸</span>
+      <span>默认 Default</span>
+      <span>悬停 Hover</span>
+      <span>禁用 Disabled</span>
+      <span>加载中 Processing</span>
+    </div>
+
+    <div class="btn-row">
+      <span class="label">XL</span>
+      <div class="cell"><button id="ai-button-filled-black-xl" type="button" class="ds-btn ds-btn--filled-black ds-btn--xl"><span class="ds-btn__text">按钮</span></button></div>
+      <div class="cell"><button class="ds-btn ds-btn--filled-black ds-btn--xl ds-btn--hover" type="button"><span class="ds-btn__text">按钮</span></button></div>
+      <div class="cell"><button class="ds-btn ds-btn--filled-black ds-btn--xl" disabled="" type="button"><span class="ds-btn__text">按钮</span></button></div>
+      <div class="cell"><button class="ds-btn ds-btn--filled-black ds-btn--xl ds-btn--processing" type="button" disabled="" aria-busy="true" aria-label="按钮"><span class="ds-btn__text">按钮</span><img class="ds-btn__icon-loading" src="../icons/icon-loading.svg" alt="" aria-hidden="true"></button></div>
+    </div>
+  </div>
+
+  <!-- ============================================
+       SECTION 3: 填充按钮 - 灰色 (Filled Gray)
+       ============================================ -->
+  <div class="section">
+    <div class="section-title">填充按钮 — 灰色 (Filled Gray)</div>
+
+    <div class="state-header">
+      <span>尺寸</span>
+      <span>默认 Default</span>
+      <span>悬停 Hover</span>
+      <span>禁用 Disabled</span>
+      <span>加载中 Processing</span>
+    </div>
+
+    <!-- XL Bold -->
+    <div class="btn-row">
+      <span class="label">XL Bold</span>
+      <div class="cell"><button id="ai-button-filled-gray-xl-bold" type="button" class="ds-btn ds-btn--filled-gray ds-btn--xl-bold"><span class="ds-btn__text">按钮</span></button></div>
+      <div class="cell"><button class="ds-btn ds-btn--filled-gray ds-btn--xl-bold ds-btn--hover" type="button"><span class="ds-btn__text">按钮</span></button></div>
+      <div class="cell"><button class="ds-btn ds-btn--filled-gray ds-btn--xl-bold" disabled="" type="button"><span class="ds-btn__text">按钮</span></button></div>
+      <div class="cell"><button class="ds-btn ds-btn--filled-gray ds-btn--xl-bold ds-btn--processing" type="button" disabled="" aria-busy="true" aria-label="按钮"><span class="ds-btn__text">按钮</span><img class="ds-btn__icon-loading" src="../icons/icon-loading.svg" alt="" aria-hidden="true"></button></div>
+    </div>
+
+    <!-- XL Regular -->
+    <div class="btn-row">
+      <span class="label">XL Regular</span>
+      <div class="cell"><button id="ai-button-filled-gray-xl-regular" type="button" class="ds-btn ds-btn--filled-gray ds-btn--xl-regular"><span class="ds-btn__text">按钮</span></button></div>
+      <div class="cell"><button class="ds-btn ds-btn--filled-gray ds-btn--xl-regular ds-btn--hover" type="button"><span class="ds-btn__text">按钮</span></button></div>
+      <div class="cell"><button class="ds-btn ds-btn--filled-gray ds-btn--xl-regular" disabled="" type="button"><span class="ds-btn__text">按钮</span></button></div>
+      <div class="cell"><button class="ds-btn ds-btn--filled-gray ds-btn--xl-regular ds-btn--processing" type="button" disabled="" aria-busy="true" aria-label="按钮"><span class="ds-btn__text">按钮</span><img class="ds-btn__icon-loading" src="../icons/icon-loading.svg" alt="" aria-hidden="true"></button></div>
+    </div>
+
+    <!-- L -->
+    <div class="btn-row">
+      <span class="label">L</span>
+      <div class="cell"><button id="ai-button-filled-gray-l" type="button" class="ds-btn ds-btn--filled-gray ds-btn--l"><span class="ds-btn__text">按钮</span></button></div>
+      <div class="cell"><button class="ds-btn ds-btn--filled-gray ds-btn--l ds-btn--hover" type="button"><span class="ds-btn__text">按钮</span></button></div>
+      <div class="cell"><button class="ds-btn ds-btn--filled-gray ds-btn--l" disabled="" type="button"><span class="ds-btn__text">按钮</span></button></div>
+      <div class="cell"><button class="ds-btn ds-btn--filled-gray ds-btn--l ds-btn--processing" type="button" disabled="" aria-busy="true" aria-label="按钮"><span class="ds-btn__text">按钮</span><img class="ds-btn__icon-loading" src="../icons/icon-loading.svg" alt="" aria-hidden="true"></button></div>
+    </div>
+
+    <!-- M -->
+    <div class="btn-row">
+      <span class="label">M</span>
+      <div class="cell"><button id="ai-button-filled-gray-m" type="button" class="ds-btn ds-btn--filled-gray ds-btn--m"><span class="ds-btn__text">按钮</span></button></div>
+      <div class="cell"><button class="ds-btn ds-btn--filled-gray ds-btn--m ds-btn--hover" type="button"><span class="ds-btn__text">按钮</span></button></div>
+      <div class="cell"><button class="ds-btn ds-btn--filled-gray ds-btn--m" disabled="" type="button"><span class="ds-btn__text">按钮</span></button></div>
+      <div class="cell"><button class="ds-btn ds-btn--filled-gray ds-btn--m ds-btn--processing" type="button" disabled="" aria-busy="true" aria-label="按钮"><span class="ds-btn__text">按钮</span><img class="ds-btn__icon-loading" src="../icons/icon-loading.svg" alt="" aria-hidden="true"></button></div>
+    </div>
+  </div>
+
+  <!-- ============================================
+       SECTION 4: 描边按钮 (Outline Buttons)
+       ============================================ -->
+  <div class="section">
+    <div class="section-title">描边按钮 — 黑色 (Outline Black)</div>
+
+    <div class="state-header">
+      <span>尺寸</span>
+      <span>默认 Default</span>
+      <span>悬停 Hover</span>
+      <span>禁用 Disabled</span>
+      <span>加载中 Processing</span>
+    </div>
+
+    <div class="btn-row">
+      <span class="label">XL</span>
+      <div class="cell"><button id="ai-button-outline-black-xl" type="button" class="ds-btn ds-btn--outline-black ds-btn--xl"><span class="ds-btn__leading" hidden><img class="ds-btn__leading-icon" src="../icons/icon-fs-download-black-16.svg" alt="" aria-hidden="true"></span><span class="ds-btn__text">按钮</span></button></div>
+      <div class="cell"><button class="ds-btn ds-btn--outline-black ds-btn--xl ds-btn--hover" type="button"><span class="ds-btn__text">按钮</span></button></div>
+      <div class="cell"><button class="ds-btn ds-btn--outline-black ds-btn--xl ds-btn--disabled" type="button" disabled=""><span class="ds-btn__text">按钮</span></button></div>
+      <div class="cell"><button class="ds-btn ds-btn--outline-black ds-btn--xl ds-btn--processing" type="button" disabled="" aria-busy="true" aria-label="按钮"><span class="ds-btn__text">按钮</span><img class="ds-btn__icon-loading" src="../icons/icon-loading.svg" alt="" aria-hidden="true"></button></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">描边按钮 — 灰色 (Outline Gray)</div>
+
+    <div class="state-header">
+      <span>尺寸</span>
+      <span>默认 Default</span>
+      <span>悬停 Hover</span>
+      <span>禁用 Disabled</span>
+      <span>加载中 Processing</span>
+    </div>
+
+    <div class="btn-row">
+      <span class="label">XL</span>
+      <div class="cell"><button id="ai-button-outline-gray-xl" type="button" class="ds-btn ds-btn--outline-gray ds-btn--xl"><span class="ds-btn__text">按钮</span></button></div>
+      <div class="cell"><button class="ds-btn ds-btn--outline-gray ds-btn--xl ds-btn--hover" type="button"><span class="ds-btn__text">按钮</span></button></div>
+      <div class="cell"><button class="ds-btn ds-btn--outline-gray ds-btn--xl ds-btn--disabled" type="button" disabled=""><span class="ds-btn__text">按钮</span></button></div>
+      <div class="cell"><button class="ds-btn ds-btn--outline-gray ds-btn--xl ds-btn--processing" type="button" disabled="" aria-busy="true" aria-label="按钮"><span class="ds-btn__text">按钮</span><img class="ds-btn__icon-loading" src="../icons/icon-loading.svg" alt="" aria-hidden="true"></button></div>
+    </div>
+    <div class="btn-row">
+      <span class="label">M</span>
+      <div class="cell"><button id="ai-button-outline-gray-m" type="button" class="ds-btn ds-btn--outline-gray ds-btn--m"><span class="ds-btn__text">按钮</span></button></div>
+      <div class="cell"><button type="button" class="ds-btn ds-btn--outline-gray ds-btn--m ds-btn--hover"><span class="ds-btn__text">按钮</span></button></div>
+      <div class="cell"><button type="button" class="ds-btn ds-btn--outline-gray ds-btn--m ds-btn--disabled" disabled><span class="ds-btn__text">按钮</span></button></div>
+      <div class="cell"><button type="button" class="ds-btn ds-btn--outline-gray ds-btn--m ds-btn--processing" disabled aria-busy="true" aria-label="按钮"><span class="ds-btn__text">按钮</span><img class="ds-btn__icon-loading" src="../icons/icon-loading.svg" alt="" aria-hidden="true"></button></div>
+    </div>
+  </div>
+
+  <!-- White outline on dark background -->
+  <div class="section">
+    <div class="section-title">描边按钮 — 白色 (Outline White)</div>
+    <div class="dark-bg">
+      <div class="state-header">
+        <span>尺寸</span>
+        <span>默认 Default</span>
+        <span>悬停 Hover</span>
+        <span>禁用 Disabled</span>
+        <span>加载中 Processing</span>
+      </div>
+
+      <div class="btn-row">
+        <span class="label">XL</span>
+        <div class="cell"><button id="ai-button-outline-white-xl" type="button" class="ds-btn ds-btn--outline-white ds-btn--xl"><span class="ds-btn__text">按钮</span></button></div>
+        <div class="cell"><button class="ds-btn ds-btn--outline-white ds-btn--xl ds-btn--hover" type="button"><span class="ds-btn__text">按钮</span></button></div>
+        <div class="cell"><button class="ds-btn ds-btn--outline-white ds-btn--xl ds-btn--disabled" type="button" disabled=""><span class="ds-btn__text">按钮</span></button></div>
+        <div class="cell"><button class="ds-btn ds-btn--outline-white ds-btn--xl ds-btn--processing" type="button" disabled="" aria-busy="true" aria-label="按钮"><span class="ds-btn__text">按钮</span><img class="ds-btn__icon-loading" src="../icons/icon-loading.svg" alt="" aria-hidden="true"></button></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">描边按钮 — 蓝色 (Outline Blue)</div>
+
+    <div class="state-header">
+      <span>尺寸</span>
+      <span>默认 Default</span>
+      <span>悬停 Hover</span>
+      <span>禁用 Disabled</span>
+      <span>加载中 Processing</span>
+    </div>
+
+    <div class="btn-row">
+      <span class="label">XL</span>
+      <div class="cell"><button id="ai-button-outline-blue-xl" type="button" class="ds-btn ds-btn--outline-blue ds-btn--xl"><span class="ds-btn__text">按钮</span></button></div>
+      <div class="cell"><button class="ds-btn ds-btn--outline-blue ds-btn--xl ds-btn--hover" type="button"><span class="ds-btn__text">按钮</span></button></div>
+      <div class="cell"><button class="ds-btn ds-btn--outline-blue ds-btn--xl ds-btn--disabled" type="button" disabled=""><span class="ds-btn__text">按钮</span></button></div>
+      <div class="cell"><button class="ds-btn ds-btn--outline-blue ds-btn--xl ds-btn--processing" type="button" disabled="" aria-busy="true" aria-label="按钮"><span class="ds-btn__text">按钮</span><img class="ds-btn__icon-loading" src="../icons/icon-loading.svg" alt="" aria-hidden="true"></button></div>
+    </div>
+  
+  </div>
+
+  <!-- DS_PREVIEW_AUTOHEIGHT: 供 component-library.html 堆叠合并视图自撑高，勿删 -->
+  <script>
+    (function () {
+      // 嵌入组件库 iframe 时，关闭自身竖向滚动条：高度由父页按内容精确设定，
+      // 避免出现「父页滚动条 + iframe 自身滚动条」两条滚动条。
+      if (window.parent !== window && document.documentElement) {
+        document.documentElement.style.overflow = 'hidden';
+      }
+      // 用 body 最后一个可视元素的 bottom 作为高度，去掉 body padding-bottom / 尾部 section
+      // margin-bottom 等空白，避免合并视图（stage--stacked）里两个 iframe 之间出现过大间隙。
+      // rAF 节流合并 ResizeObserver 抖动，减少视觉上的高度反复变化。
+      var reportPending = false;
+      function measure() {
+        var last = null;
+        if (document.body) {
+          for (var i = document.body.children.length - 1; i >= 0; i--) {
+            var c = document.body.children[i];
+            if (c.tagName === 'SCRIPT' || c.tagName === 'STYLE') continue;
+            last = c;
+            break;
+          }
+        }
+        if (last) {
+          var rect = last.getBoundingClientRect();
+          var scrollY = window.scrollY || window.pageYOffset || 0;
+          return Math.ceil(rect.bottom + scrollY);
+        }
+        return Math.max(document.body ? document.body.scrollHeight : 0, document.documentElement.scrollHeight);
+      }
+      function report() {
+        parent.postMessage({ __dsPreviewHeight: measure(), __dsUrl: location.href }, '*');
+      }
+      function scheduleReport() {
+        if (reportPending) return;
+        reportPending = true;
+        requestAnimationFrame(function () { reportPending = false; report(); });
+      }
+      window.addEventListener('load', scheduleReport);
+      window.addEventListener('resize', scheduleReport);
+      setTimeout(report, 300);
+      if (window.ResizeObserver && document.body) {
+        new ResizeObserver(scheduleReport).observe(document.body);
+      }
+    })();
+  </script>
+  <script src="../preview/preview-link.js"></script>
+  <script src="../preview/reference-live.js"></script>
+<section class="section" id="cart-product-card"><h2>Cart 加购按钮 · 产品卡片</h2><p>Button中的Cart按钮类型；原件Default/Hover，独立尺寸和状态。</p><div class="row"><div><p>Default</p><button class="ds-cart ds-cart--product-card" type="button" data-ai-example="ai-button-cart-product-card"><img class="ds-cart__icon" src="../icons/icon-cart-add.svg" alt=""><span class="ds-cart__text">Add</span></button></div><div><p>Hover 原件</p><button class="ds-cart ds-cart--product-card ds-cart--hover" type="button"><img class="ds-cart__icon" src="../icons/icon-cart-add.svg" alt=""><span class="ds-cart__text">Add</span></button></div></div></section><section class="section" id="source-button-left-icon"><h2>42px 左图标槽 · 原件示例</h2><p>MasterGo 68268:63477；实际Download原件。槽位支持不等于新增业务专用按钮。</p><button type="button" class="ds-btn ds-btn--outline-black ds-btn--xl"><span class="ds-btn__leading"><img class="ds-btn__leading-icon" src="../icons/icon-fs-download-black-16.svg" alt="" aria-hidden="true"></span><span class="ds-btn__text">Button Name</span></button></section></body>
+</html>

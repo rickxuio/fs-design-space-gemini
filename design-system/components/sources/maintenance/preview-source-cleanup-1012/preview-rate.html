@@ -1,0 +1,328 @@
+<!DOCTYPE html><html data-component-reference="rate" lang="zh-CN"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>评分 Rate - FS Design System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../tokens.css">
+  <link rel="stylesheet" href="../components.css?v=20260831-rate-v1">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { padding: 40px; background: #FFF; color: var(--color-gray-1); font-family: var(--font-family-base); }
+    h1 { margin-bottom: 8px; font-size: 24px; font-weight: 600; }
+    .subtitle { margin-bottom: 40px; color: var(--color-gray-3); font-size: 14px; }
+    .cat-badge { display: inline-flex; height: 22px; align-items: center; margin-bottom: 10px; padding: 0 10px; border-radius: 11px; background: #E8F5F3; color: #00695C; font-size: 11px; font-weight: 600; }
+    .section { margin-bottom: 48px; }
+    .section-title { margin-bottom: 8px; padding-bottom: 8px; border-bottom: 1px solid var(--color-gray-5); font-size: 18px; font-weight: 600; }
+    .section-desc { margin-bottom: 20px; color: #707070; font-size: 13px; line-height: 20px; }
+    .sub-label { margin: 20px 0 8px; font-size: 13px; font-weight: 600; }
+    .demo-row { display: flex; align-items: center; gap: 40px; padding: 24px; border-radius: 8px; background: #FAFBFC; }
+    .demo-stack { display: flex; align-items: flex-start; flex-direction: column; gap: 24px; padding: 24px; border-radius: 8px; background: #FAFBFC; }
+    .demo-item { display: flex; min-width: 250px; align-items: center; gap: 16px; }
+    .demo-caption { width: 88px; flex: none; color: var(--color-gray-3); font-size: 12px; line-height: 20px; }
+    .demo-note { color: var(--color-gray-3); font-size: 12px; line-height: 20px; }
+    .preview-status { min-height: 20px; color: var(--color-gray-3); font-size: 12px; line-height: 20px; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { padding: 8px 10px; border: 1px solid #DEE0E3; font-size: 12px; line-height: 18px; text-align: left; vertical-align: top; }
+    th { background: #F6F6F8; font-weight: 600; }
+    code { font-family: "SF Mono", Consolas, monospace; }
+  </style>
+</head>
+<body>
+  <span class="cat-badge">数据录入 Data Entry</span>
+  <h1>评分 Rate <span style="margin-left:10px;color:#707070;font-size:18px;font-weight:600;vertical-align:middle;">v1.0</span></h1>
+  <p class="subtitle">单值评分展示、1–5 星输入与精简评分汇总；支持 16px、20px、24px 三档完整星。</p>
+
+  <div style="margin-bottom:0;padding:24px;border:1px solid var(--color-gray-5);border-radius:8px;background:#FAFBFC;">
+    <!-- AUTO-GENERATED-PREVIEW:START -->
+<!-- 合并模式：硬规则已并入下方合并表 -->
+    <!-- AUTO-GENERATED-PREVIEW:END -->
+    <!-- AUTO-GENERATED-DECISION-TABLE:START -->
+    <p style="font-size: 14px; font-weight: 600; margin-bottom: 4px;">变体决策</p>
+    <p style="font-size: 12px; color: #707070; margin-bottom: 12px;">先区分单值展示、用户评分输入和精简聚合；尺寸是 display/input 的正交修饰，不复制设计画板的绝对坐标。</p>
+    <table style="width:100%;border-collapse:collapse;table-layout:fixed;">
+      <colgroup>
+        <col style="width:50%;">
+        <col style="width:50%;">
+      </colgroup>
+      <tbody>
+        <tr>
+          <th style="background:#F6F6F8;font-size:12px;font-weight:600;text-align:left;padding:8px 10px;border:1px solid #DEE0E3;">类型</th>
+          <th style="background:#F6F6F8;font-size:12px;font-weight:600;text-align:left;padding:8px 10px;border:1px solid #DEE0E3;">变体决策（什么场景用）</th>
+        </tr>
+        <tr>
+          <td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;" rowspan="2">评分展示 display</td>
+          <td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>用：</strong>单个既有评分只读展示，可带数值或业务已提供的文案。</td>
+        </tr>
+        <tr>
+          <td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong style="color:#707070;">不用：</strong>用户需要修改评分时使用 input；需要数量分布时使用 summary。</td>
+        </tr>
+        <tr>
+          <td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;" rowspan="2">评分输入 input</td>
+          <td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>用：</strong>当前页面内选择、修改或 Clear 清除 1–5 星评分。</td>
+        </tr>
+        <tr>
+          <td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong style="color:#707070;">不用：</strong>只读结果使用 display；商品配置或套餐选择使用 OptionSelector。</td>
+        </tr>
+        <tr>
+          <td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;" rowspan="2">精简评分汇总 summary</td>
+          <td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>用：</strong>仅展示综合分值、评论总数和 5→1 星数量分布。</td>
+        </tr>
+        <tr>
+          <td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong style="color:#707070;">不用：</strong>包含评论媒体、标签筛选或评论列表联动时使用 Comment/rating-summary。</td>
+        </tr>
+        <tr>
+          <td colspan="2" style="background:#FFF3E0;color:#F56300;font-size:12px;font-weight:600;padding:10px 12px;border:1px solid #DEE0E3;">⚠️ 硬规则： 固定完整五星，并区分评分输入与评论聚合</td>
+        </tr>
+        <tr>
+          <td style="border:1px solid #DEE0E3;padding:12px;font-size:12px;line-height:20px;vertical-align:top;word-break:break-word;">
+            <p style="font-size:11px;font-weight:600;color:#707070;margin-bottom:6px;">👤 描述原文</p>
+            <div><strong>Rate 固定为 5 颗完整星，不支持半星。</strong><code>input</code> 必须使用 <code>radiogroup + button[role=radio]</code>，支持 hover 预览、点击提交、Clear 重置和键盘操作；<code>display</code>/<code>summary</code> 只读。包含评论媒体、分类筛选或评论列表联动时必须改用 <code>Comment/rating-summary</code>。</div>
+          </td>
+          <td style="border:1px solid #DEE0E3;padding:12px;font-size:12px;line-height:20px;vertical-align:top;word-break:break-word;">
+            <p style="font-size:11px;font-weight:600;color:#707070;margin-bottom:6px;">🤖 AI 解析（写入契约 JSON 的字段）</p>
+            <pre style="margin:0;font-family:'SF Mono',Consolas,monospace;font-size:11px;line-height:18px;white-space:pre-wrap;word-break:break-all;overflow-wrap:anywhere;color:#19191A;">scale = [1, 2, 3, 4, 5]
+halfStar = false
+variants = ["display", "input", "summary"]
+input = { sizes: ["md", "lg"], semantics: "radiogroup", clear: true }
+summary = { media: false, filters: false, commentList: false }</pre>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <!-- AUTO-GENERATED-DECISION-TABLE:END -->
+  </div>
+
+  <div style="height:24px;"></div>
+
+  <!-- AUTO-GENERATED-DEPENDENCY-SUMMARY-TABLE:START -->
+    <div style="margin-bottom: 0; padding: 24px; background: #FAFBFC; border: 1px solid var(--color-gray-5); border-radius: 8px;">
+      <p style="font-size: 14px; font-weight: 600; margin-bottom: 4px;">依赖汇总表</p>
+      <p style="font-size: 12px; color: #707070; margin-bottom: 12px;">按组件类型汇总组件关系、颜色、字体、间距、描边、圆角、阴影和图标依赖；未填写 <code>appliesTo</code> 的组件级依赖不猜测变体归属，不参与本表归类。「组件关系」列用标签区分：<span style="display:inline-block;font-size:11px;line-height:16px;padding:0 5px;border-radius:3px;background:#EAF2FF;color:#0060BF;">子组件</span> = 嵌入本组件内部；<span style="display:inline-block;font-size:11px;line-height:16px;padding:0 5px;border-radius:3px;background:#F3EEFA;color:#512971;">父组件·类名证据／仅声明</span> = 从宿主 <code>componentDependencies</code> 自动推导；类名出现不等于具体变体、尺寸、必需结构或交互已验证，链接仅供打开 Preview 复核；<span style="display:inline-block;font-size:11px;line-height:16px;padding:0 5px;border-radius:3px;background:#FFF3E0;color:#A65300;">参考·未验证</span> = 仅保留设计意图，宿主 preview 尚无真实结构，不可作为已实现依赖。</p>
+      <div class="dep-summary-scroll">
+        <div class="dep-summary-grid" style="grid-template-columns:minmax(max-content, auto) repeat(8, minmax(max-content, 1fr));">
+          <div class="dep-cell dep-cell--sticky dep-cell--head" role="columnheader">组件类型</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">颜色</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">字体</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">间距</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">描边</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">圆角</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">阴影</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">图标</div>
+          <div class="dep-cell dep-cell--head dep-cell--right-edge" role="columnheader">组件关系</div>
+          <div class="dep-cell dep-cell--sticky" role="rowheader"><strong>评分展示</strong><br><code>display</code></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#19191A;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-1" style="color:#0060BF;text-decoration:underline;"><code>color.gray-1</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#707070;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-3" style="color:#0060BF;text-decoration:underline;"><code>color.gray-3</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">14px · md · Regular 400</span><a href="font.html#tok-typography-h7-regular" style="color:#0060BF;text-decoration:underline;"><code>typography.h7-regular</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">2px</span><a href="spacing.html#tok-spacing-2" style="color:#0060BF;text-decoration:underline;"><code>spacing.2</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">4px</span><a href="spacing.html#tok-spacing-xs" style="color:#0060BF;text-decoration:underline;"><code>spacing.xs</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">10px</span><a href="spacing.html#tok-spacing-10" style="color:#0060BF;text-decoration:underline;"><code>spacing.10</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">12px</span><a href="spacing.html#tok-spacing-md" style="color:#0060BF;text-decoration:underline;"><code>spacing.md</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><img src="../icons/icon-rate-on-16.svg?v=192d611269ae" alt="" style="display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;"><a href="icon-map.html#icon-rate-on-16" style="color:#0060BF;text-decoration:underline;"><code>icon-rate-on-16.svg</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><img src="../icons/icon-rate-off-16.svg?v=ccf5da299919" alt="" style="display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;"><a href="icon-map.html#icon-rate-off-16" style="color:#0060BF;text-decoration:underline;"><code>icon-rate-off-16.svg</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><img src="../icons/icon-rate-on-20.svg?v=7f07344b22ac" alt="" style="display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;"><a href="icon-map.html#icon-rate-on-20" style="color:#0060BF;text-decoration:underline;"><code>icon-rate-on-20.svg</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><img src="../icons/icon-rate-off-20.svg?v=c07d24ad2ceb" alt="" style="display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;"><a href="icon-map.html#icon-rate-off-20" style="color:#0060BF;text-decoration:underline;"><code>icon-rate-off-20.svg</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><img src="../icons/icon-rate-on-24.svg?v=cc3462b981e5" alt="" style="display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;"><a href="icon-map.html#icon-rate-on-24" style="color:#0060BF;text-decoration:underline;"><code>icon-rate-on-24.svg</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><img src="../icons/icon-rate-off-24.svg?v=839e20904fb1" alt="" style="display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;"><a href="icon-map.html#icon-rate-off-24" style="color:#0060BF;text-decoration:underline;"><code>icon-rate-off-24.svg</code></a></span></div>
+          <div class="dep-cell dep-cell--right-edge" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:normal;overflow-wrap:anywhere;"><span style="display:inline-block;flex-shrink:0;font-size:11px;line-height:16px;padding:0 5px;margin-right:6px;border-radius:3px;background:#F3EEFA;color:#512971;">父组件·仅声明</span><a href="comment.html#comment-rating-summary" style="color:#0060BF;text-decoration:underline;">Comment</a></span></div>
+          <div class="dep-cell dep-cell--sticky" role="rowheader"><strong>评分输入</strong><br><code>input</code></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#19191A;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-1" style="color:#0060BF;text-decoration:underline;"><code>color.gray-1</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#0060BF;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-blue" style="color:#0060BF;text-decoration:underline;"><code>color.blue</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">14px · md · Regular 400</span><a href="font.html#tok-typography-h7-regular" style="color:#0060BF;text-decoration:underline;"><code>typography.h7-regular</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">13px · H8 · Regular 400</span><a href="font.html#tok-typography-h8-regular" style="color:#0060BF;text-decoration:underline;"><code>typography.h8-regular</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">4px</span><a href="spacing.html#tok-spacing-xs" style="color:#0060BF;text-decoration:underline;"><code>spacing.xs</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">10px</span><a href="spacing.html#tok-spacing-10" style="color:#0060BF;text-decoration:underline;"><code>spacing.10</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">12px</span><a href="spacing.html#tok-spacing-md" style="color:#0060BF;text-decoration:underline;"><code>spacing.md</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;color:#A6A6A6;font-size:11px;margin-right:8px;vertical-align:-3px;flex:0 0 auto;">∅</span><a href="stroke.html#tok-border-style-none" style="color:#0060BF;text-decoration:underline;"><code>border.style.none</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">2px</span><a href="radius.html#tok-border-radius-sm" style="color:#0060BF;text-decoration:underline;"><code>border-radius.sm</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><img src="../icons/icon-rate-on-20.svg?v=7f07344b22ac" alt="" style="display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;"><a href="icon-map.html#icon-rate-on-20" style="color:#0060BF;text-decoration:underline;"><code>icon-rate-on-20.svg</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><img src="../icons/icon-rate-off-20.svg?v=c07d24ad2ceb" alt="" style="display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;"><a href="icon-map.html#icon-rate-off-20" style="color:#0060BF;text-decoration:underline;"><code>icon-rate-off-20.svg</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><img src="../icons/icon-rate-on-24.svg?v=cc3462b981e5" alt="" style="display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;"><a href="icon-map.html#icon-rate-on-24" style="color:#0060BF;text-decoration:underline;"><code>icon-rate-on-24.svg</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><img src="../icons/icon-rate-off-24.svg?v=839e20904fb1" alt="" style="display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;"><a href="icon-map.html#icon-rate-off-24" style="color:#0060BF;text-decoration:underline;"><code>icon-rate-off-24.svg</code></a></span></div>
+          <div class="dep-cell dep-cell--right-edge" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell dep-cell--sticky dep-cell--bottom-edge" role="rowheader"><strong>精简评分汇总</strong><br><code>summary</code></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#19191A;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-1" style="color:#0060BF;text-decoration:underline;"><code>color.gray-1</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#707070;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-3" style="color:#0060BF;text-decoration:underline;"><code>color.gray-3</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#F6F6F8;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-8" style="color:#0060BF;text-decoration:underline;"><code>color.gray-8</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#FFD748;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-yellow" style="color:#0060BF;text-decoration:underline;"><code>color.yellow</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#FAFAFB;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-comment-score-bg" style="color:#0060BF;text-decoration:underline;"><code>color.comment-score-bg</code></a></span></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">24px · H3 · SemiBold 600</span><a href="font.html#tok-typography-h3-semibold" style="color:#0060BF;text-decoration:underline;"><code>typography.h3-semibold</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">13px · H8 · Regular 400</span><a href="font.html#tok-typography-h8-regular" style="color:#0060BF;text-decoration:underline;"><code>typography.h8-regular</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">12px · sm · Regular 400</span><a href="font.html#tok-typography-h9-regular" style="color:#0060BF;text-decoration:underline;"><code>typography.h9-regular</code></a></span></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">2px</span><a href="spacing.html#tok-spacing-2" style="color:#0060BF;text-decoration:underline;"><code>spacing.2</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">4px</span><a href="spacing.html#tok-spacing-xs" style="color:#0060BF;text-decoration:underline;"><code>spacing.xs</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">8px</span><a href="spacing.html#tok-spacing-sm" style="color:#0060BF;text-decoration:underline;"><code>spacing.sm</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">12px</span><a href="spacing.html#tok-spacing-md" style="color:#0060BF;text-decoration:underline;"><code>spacing.md</code></a></span></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">8px</span><a href="radius.html#tok-border-radius-lg" style="color:#0060BF;text-decoration:underline;"><code>border-radius.lg</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">9999px</span><a href="radius.html#tok-border-radius-full" style="color:#0060BF;text-decoration:underline;"><code>border-radius.full</code></a></span></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><img src="../icons/icon-rate-on-16.svg?v=192d611269ae" alt="" style="display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;"><a href="icon-map.html#icon-rate-on-16" style="color:#0060BF;text-decoration:underline;"><code>icon-rate-on-16.svg</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><img src="../icons/icon-rate-off-16.svg?v=ccf5da299919" alt="" style="display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;"><a href="icon-map.html#icon-rate-off-16" style="color:#0060BF;text-decoration:underline;"><code>icon-rate-off-16.svg</code></a></span></div>
+          <div class="dep-cell dep-cell--right-edge dep-cell--bottom-edge" role="cell"><span style="color:#A6A6A6;">—</span></div>
+        </div>
+      </div>
+    </div>
+    <!-- AUTO-GENERATED-DEPENDENCY-SUMMARY-TABLE:END -->
+
+  <!-- TEMPLATE-DEMO-SPACING -->
+  <div style="height:24px;"></div>
+
+
+
+<!-- TEMPLATE-DEMO:START -->
+  <div class="section" id="rate-display">
+    <div class="section-title">① 评分展示 display</div>
+    <p class="section-desc">只读展示单个完整星评分。16px 可带数值，20px/24px 可带业务已提供的等级文案。</p>
+    <div class="demo-stack">
+      <div class="demo-item">
+        <span class="demo-caption">sm · 16px</span>
+        <div class="ds-rate ds-rate--display ds-rate--sm" data-ai-example="ai-rate-display-sm" role="img" aria-label="5 out of 5 stars">
+          <span class="ds-rate__stars" aria-hidden="true">
+            <img class="ds-rate__star" src="../icons/icon-rate-on-16.svg" alt="">
+            <img class="ds-rate__star" src="../icons/icon-rate-on-16.svg" alt="">
+            <img class="ds-rate__star" src="../icons/icon-rate-on-16.svg" alt="">
+            <img class="ds-rate__star" src="../icons/icon-rate-on-16.svg" alt="">
+            <img class="ds-rate__star" src="../icons/icon-rate-on-16.svg" alt="">
+          </span>
+          <span class="ds-rate__label ds-rate__label--muted">5.0</span>
+        </div>
+      </div>
+      <div class="demo-item">
+        <span class="demo-caption">md · 20px</span>
+        <div class="ds-rate ds-rate--display ds-rate--md" data-ai-example="ai-rate-display-md" role="img" aria-label="5 out of 5 stars, Excellent">
+          <span class="ds-rate__stars" aria-hidden="true">
+            <img class="ds-rate__star" src="../icons/icon-rate-on-20.svg" alt="">
+            <img class="ds-rate__star" src="../icons/icon-rate-on-20.svg" alt="">
+            <img class="ds-rate__star" src="../icons/icon-rate-on-20.svg" alt="">
+            <img class="ds-rate__star" src="../icons/icon-rate-on-20.svg" alt="">
+            <img class="ds-rate__star" src="../icons/icon-rate-on-20.svg" alt="">
+          </span>
+          <span class="ds-rate__label">Excellent</span>
+        </div>
+      </div>
+      <div class="demo-item">
+        <span class="demo-caption">lg · 24px</span>
+        <div class="ds-rate ds-rate--display ds-rate--lg" data-ai-example="ai-rate-display-lg" role="img" aria-label="4 out of 5 stars">
+          <span class="ds-rate__stars" aria-hidden="true">
+            <img class="ds-rate__star" src="../icons/icon-rate-on-24.svg" alt="">
+            <img class="ds-rate__star" src="../icons/icon-rate-on-24.svg" alt="">
+            <img class="ds-rate__star" src="../icons/icon-rate-on-24.svg" alt="">
+            <img class="ds-rate__star" src="../icons/icon-rate-on-24.svg" alt="">
+            <img class="ds-rate__star" src="../icons/icon-rate-off-24.svg" alt="">
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" id="rate-input">
+    <div class="section-title">② 评分输入 input</div>
+    <p class="section-desc">悬停预览，单击提交，Clear 重置；方向键调整，Home/End 跳至首尾，Enter/Space 提交当前星。</p>
+    <div class="demo-stack">
+      <div class="demo-item">
+        <span class="demo-caption">md · 20px</span>
+        <div class="ds-rate ds-rate--input ds-rate--md" data-ai-example="ai-rate-input-md" data-rate-current="" data-rate="" data-value="5" data-rate-labels="[&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;Excellent&quot;]" aria-disabled="false">
+          <div class="ds-rate__control" role="radiogroup" aria-label="Product rating">
+            <button class="ds-rate__star-button" type="button" role="radio" aria-checked="false" data-value="1" aria-label="1 star"><img class="ds-rate__star" src="../icons/icon-rate-on-20.svg" alt=""></button>
+            <button class="ds-rate__star-button" type="button" role="radio" aria-checked="false" data-value="2" aria-label="2 stars"><img class="ds-rate__star" src="../icons/icon-rate-on-20.svg" alt=""></button>
+            <button class="ds-rate__star-button" type="button" role="radio" aria-checked="false" data-value="3" aria-label="3 stars"><img class="ds-rate__star" src="../icons/icon-rate-on-20.svg" alt=""></button>
+            <button class="ds-rate__star-button" type="button" role="radio" aria-checked="false" data-value="4" aria-label="4 stars"><img class="ds-rate__star" src="../icons/icon-rate-on-20.svg" alt=""></button>
+            <button class="ds-rate__star-button" type="button" role="radio" aria-checked="true" data-value="5" aria-label="5 stars"><img class="ds-rate__star" src="../icons/icon-rate-on-20.svg" alt=""></button>
+          </div>
+          <span class="ds-rate__label" data-rate-output="">Excellent</span>
+          <button class="ds-rate__clear" type="button">Clear</button>
+        </div>
+      </div>
+      <div class="demo-item">
+        <span class="demo-caption">lg · 24px</span>
+        <div class="ds-rate ds-rate--input ds-rate--lg" data-ai-example="ai-rate-input-lg" data-rate-current="" data-rate="" data-value="3" aria-disabled="false">
+          <div class="ds-rate__control" role="radiogroup" aria-label="Service rating">
+            <button class="ds-rate__star-button" type="button" role="radio" aria-checked="false" data-value="1" aria-label="1 star"><img class="ds-rate__star" src="../icons/icon-rate-on-24.svg" alt=""></button>
+            <button class="ds-rate__star-button" type="button" role="radio" aria-checked="false" data-value="2" aria-label="2 stars"><img class="ds-rate__star" src="../icons/icon-rate-on-24.svg" alt=""></button>
+            <button class="ds-rate__star-button" type="button" role="radio" aria-checked="true" data-value="3" aria-label="3 stars"><img class="ds-rate__star" src="../icons/icon-rate-on-24.svg" alt=""></button>
+            <button class="ds-rate__star-button" type="button" role="radio" aria-checked="false" data-value="4" aria-label="4 stars"><img class="ds-rate__star" src="../icons/icon-rate-off-24.svg" alt=""></button>
+            <button class="ds-rate__star-button" type="button" role="radio" aria-checked="false" data-value="5" aria-label="5 stars"><img class="ds-rate__star" src="../icons/icon-rate-off-24.svg" alt=""></button>
+          </div>
+          <span class="ds-rate__label" data-rate-output="">3.0</span>
+          <button class="ds-rate__clear" type="button">Clear</button>
+        </div>
+      </div>
+      <div class="demo-item">
+        <span class="demo-caption">disabled</span>
+        <div class="ds-rate ds-rate--input ds-rate--md ds-rate--disabled" data-rate="" data-value="4" aria-disabled="true">
+          <div class="ds-rate__control" role="radiogroup" aria-label="Disabled rating">
+            <button class="ds-rate__star-button" type="button" role="radio" aria-checked="false" data-value="1" aria-label="1 star"><img class="ds-rate__star" src="../icons/icon-rate-on-20.svg" alt=""></button>
+            <button class="ds-rate__star-button" type="button" role="radio" aria-checked="false" data-value="2" aria-label="2 stars"><img class="ds-rate__star" src="../icons/icon-rate-on-20.svg" alt=""></button>
+            <button class="ds-rate__star-button" type="button" role="radio" aria-checked="false" data-value="3" aria-label="3 stars"><img class="ds-rate__star" src="../icons/icon-rate-on-20.svg" alt=""></button>
+            <button class="ds-rate__star-button" type="button" role="radio" aria-checked="true" data-value="4" aria-label="4 stars"><img class="ds-rate__star" src="../icons/icon-rate-on-20.svg" alt=""></button>
+            <button class="ds-rate__star-button" type="button" role="radio" aria-checked="false" data-value="5" aria-label="5 stars"><img class="ds-rate__star" src="../icons/icon-rate-off-20.svg" alt=""></button>
+          </div>
+          <span class="ds-rate__label" data-rate-output="">4.0</span>
+          <button class="ds-rate__clear" type="button">Clear</button>
+        </div>
+      </div>
+      <p id="rate-status" class="preview-status" aria-live="polite">交互状态：5.0 · Excellent</p>
+    </div>
+  </div>
+
+  <div class="section" id="rate-summary">
+    <div class="section-title">③ 精简评分汇总 summary</div>
+    <p class="section-desc">只包含综合分值、评论总数和 5→1 星数量分布；需要媒体、筛选和评论列表时使用 Comment/rating-summary。</p>
+    <div class="demo-row">
+      <div class="ds-rate ds-rate--summary" aria-label="Rating summary: 4.0 out of 5 from 42 reviews">
+        <div class="ds-rate__score-card">
+          <span class="ds-rate__summary-score">4.0</span>
+          <span class="ds-rate__stars" role="img" aria-label="4 out of 5 stars">
+            <img class="ds-rate__star" src="../icons/icon-rate-on-16.svg" alt="">
+            <img class="ds-rate__star" src="../icons/icon-rate-on-16.svg" alt="">
+            <img class="ds-rate__star" src="../icons/icon-rate-on-16.svg" alt="">
+            <img class="ds-rate__star" src="../icons/icon-rate-on-16.svg" alt="">
+            <img class="ds-rate__star" src="../icons/icon-rate-off-16.svg" alt="">
+          </span>
+          <span class="ds-rate__review-count">（42 reviews）</span>
+        </div>
+        <div class="ds-rate__distribution" aria-label="Rating distribution">
+          <div class="ds-rate__distribution-row ds-rate__distribution-row--available">
+            <span>5 stars</span><span class="ds-rate__progress" role="progressbar" aria-label="5 stars: 28 reviews" aria-valuemin="0" aria-valuemax="42" aria-valuenow="28"><span class="ds-rate__progress-fill" style="width:66.67%;"></span></span><span class="ds-rate__distribution-count">28</span>
+          </div>
+          <div class="ds-rate__distribution-row ds-rate__distribution-row--available">
+            <span>4 stars</span><span class="ds-rate__progress" role="progressbar" aria-label="4 stars: 14 reviews" aria-valuemin="0" aria-valuemax="42" aria-valuenow="14"><span class="ds-rate__progress-fill" style="width:33.33%;"></span></span><span class="ds-rate__distribution-count">14</span>
+          </div>
+          <div class="ds-rate__distribution-row">
+            <span>3 stars</span><span class="ds-rate__progress" role="progressbar" aria-label="3 stars: 0 reviews" aria-valuemin="0" aria-valuemax="42" aria-valuenow="0"><span class="ds-rate__progress-fill" style="width:0;"></span></span><span class="ds-rate__distribution-count">0</span>
+          </div>
+          <div class="ds-rate__distribution-row">
+            <span>2 stars</span><span class="ds-rate__progress" role="progressbar" aria-label="2 stars: 0 reviews" aria-valuemin="0" aria-valuemax="42" aria-valuenow="0"><span class="ds-rate__progress-fill" style="width:0;"></span></span><span class="ds-rate__distribution-count">0</span>
+          </div>
+          <div class="ds-rate__distribution-row">
+            <span>1 star</span><span class="ds-rate__progress" role="progressbar" aria-label="1 star: 0 reviews" aria-valuemin="0" aria-valuemax="42" aria-valuenow="0"><span class="ds-rate__progress-fill" style="width:0;"></span></span><span class="ds-rate__distribution-count">0</span>
+          </div>
+        </div>
+      </div>
+      <p class="demo-note">源数据：4.0 / 42 reviews / 28、14、0、0、0。</p>
+    </div>
+  </div>
+  <!-- TEMPLATE-DEMO:END -->
+
+  <script src="../rate-current.js"></script>
+  <script>
+    document.addEventListener('ds:rate-change', function (event) {
+      var status = document.getElementById('rate-status');
+      if (!status || !event.target.closest('#rate-input')) return;
+      var detail = event.detail;
+      status.textContent = '交互状态：' + (detail.value ? detail.value.toFixed(1) : '未评分') + (detail.label && detail.label !== detail.value.toFixed(1) ? ' · ' + detail.label : '') + ' · ' + detail.source;
+    });
+  </script>
+  <script src="preview-link.js"></script>
+  <script src="reference-live.js"></script>
+
+
+<section data-fs-page-custom=""><h2>Read-only Rate summary · integer mean demo</h2><div class="ds-rate ds-rate--summary" aria-label="Rating summary: 4.0 out of 5 from 42 reviews" data-ai-example="ai-rate-summary-integer" data-rate-summary="">
+        <div class="ds-rate__score-card">
+          <span class="ds-rate__summary-score">4.0</span>
+          <span class="ds-rate__stars" role="img" aria-label="4 out of 5 stars">
+            <img class="ds-rate__star" src="../icons/icon-rate-on-16.svg" alt="">
+            <img class="ds-rate__star" src="../icons/icon-rate-on-16.svg" alt="">
+            <img class="ds-rate__star" src="../icons/icon-rate-on-16.svg" alt="">
+            <img class="ds-rate__star" src="../icons/icon-rate-on-16.svg" alt="">
+            <img class="ds-rate__star" src="../icons/icon-rate-off-16.svg" alt="">
+          </span>
+          <span class="ds-rate__review-count">（42 reviews）</span>
+        </div>
+        <div class="ds-rate__distribution" aria-label="Rating distribution">
+          <div class="ds-rate__distribution-row ds-rate__distribution-row--available">
+            <span>5 stars</span><span class="ds-rate__progress" role="progressbar" aria-label="5 stars: 14 reviews" aria-valuemin="0" aria-valuemax="42" aria-valuenow="14"><span class="ds-rate__progress-fill"></span></span><span class="ds-rate__distribution-count">14</span>
+          </div>
+          <div class="ds-rate__distribution-row ds-rate__distribution-row--available">
+            <span>4 stars</span><span class="ds-rate__progress" role="progressbar" aria-label="4 stars: 14 reviews" aria-valuemin="0" aria-valuemax="42" aria-valuenow="14"><span class="ds-rate__progress-fill"></span></span><span class="ds-rate__distribution-count">14</span>
+          </div>
+          <div class="ds-rate__distribution-row ds-rate__distribution-row--available">
+            <span>3 stars</span><span class="ds-rate__progress" role="progressbar" aria-label="3 stars: 14 reviews" aria-valuemin="0" aria-valuemax="42" aria-valuenow="14"><span class="ds-rate__progress-fill"></span></span><span class="ds-rate__distribution-count">14</span>
+          </div>
+          <div class="ds-rate__distribution-row">
+            <span>2 stars</span><span class="ds-rate__progress" role="progressbar" aria-label="2 stars: 0 reviews" aria-valuemin="0" aria-valuemax="42" aria-valuenow="0"><span class="ds-rate__progress-fill"></span></span><span class="ds-rate__distribution-count">0</span>
+          </div>
+          <div class="ds-rate__distribution-row">
+            <span>1 star</span><span class="ds-rate__progress" role="progressbar" aria-label="1 star: 0 reviews" aria-valuemin="0" aria-valuemax="42" aria-valuenow="0"><span class="ds-rate__progress-fill"></span></span><span class="ds-rate__distribution-count">0</span>
+          </div>
+        </div>
+      </div></section></body></html>

@@ -1,0 +1,105 @@
+{
+  "schemaVersion": "fs-button-rule-review/1.0.0",
+  "requestedSource": {
+    "url": "https://mastergo.com/goto/XCE2K8kP?page_id=M&file=209944605602401",
+    "fileId": "209944605602401",
+    "status": "finite-nodes-verified",
+    "checkedOnline": true,
+    "reason": "已通过MG get_selection_node读取3:11394；只核对本轮相关规范、实际原子及上下文。",
+    "nodeId": "3:11394",
+    "evidence": "components/sources/button/mg-rule-review-20261113.json"
+  },
+  "conflicts": [
+    {
+      "id": "button.anchor-nav.color",
+      "status": "resolved-from-mg",
+      "title": "锚点导航按钮颜色规则冲突",
+      "affectedVariants": [
+        "filled-red"
+      ],
+      "affectedHosts": [
+        "anchor-nav/anchor-nav"
+      ],
+      "buttonRule": {
+        "file": "components/contracts/button.json",
+        "pointer": "relations.variantDecisions[0].selectionCases[2]",
+        "fact": "锚点导航禁止红色填充。"
+      },
+      "hostRule": {
+        "file": "components/contracts/anchor-nav.json",
+        "pointer": "relations.componentDependencies[0]",
+        "fact": "锚点CTA固定Button filled-red/L。"
+      },
+      "historicalEvidence": [
+        "components/sources/anchor-nav/native-component-review-1011.json",
+        "components/sources/anchor-nav/native-specification-review-1011.json"
+      ],
+      "historicalFact": "旧文件143880409387753的历史核对记录为红色、42px高、左右24px；不等于当前新文件已核实。",
+      "resolution": {
+        "basis": "指定新文件的Button选型表3:14917/3:14936明确42px红色锚点导航；实际42px/24px常规红色原子3:23920。原L标签是本地映射错误，改为已有xl-regular。",
+        "evidence": "components/sources/button/mg-rule-review-20261113.json",
+        "sourceNodes": [
+          "3:14917",
+          "3:14936",
+          "3:14944",
+          "3:23920"
+        ]
+      },
+      "guidance": "锚点导航的已登记主CTA采用Button filled-red/xl-regular（42px/左右24px）；不扩大到未核对宿主。"
+    },
+    {
+      "id": "button.anchor-nav.size",
+      "status": "resolved-from-mg",
+      "title": "锚点CTA的L标签与实际尺寸不一致",
+      "affectedVariants": [
+        "filled-red"
+      ],
+      "affectedHosts": [
+        "anchor-nav/anchor-nav"
+      ],
+      "buttonRule": {
+        "file": "components/contracts/button.json",
+        "fact": "当前filled-red的L为36px，XL Regular为42px。"
+      },
+      "hostRule": {
+        "file": "components/contracts/anchor-nav.json",
+        "fact": "宿主声明L；历史MG核对记录实际为42px高、左右24px。"
+      },
+      "historicalEvidence": [
+        "components/sources/anchor-nav/native-component-review-1011.json"
+      ],
+      "resolution": {
+        "basis": "指定新文件的Button选型表3:14917/3:14936明确42px红色锚点导航；实际42px/24px常规红色原子3:23920。原L标签是本地映射错误，改为已有xl-regular。",
+        "evidence": "components/sources/button/mg-rule-review-20261113.json",
+        "sourceNodes": [
+          "3:14917",
+          "3:14936",
+          "3:14944",
+          "3:23920"
+        ]
+      },
+      "guidance": "锚点导航的已登记主CTA采用Button filled-red/xl-regular（42px/左右24px）；不扩大到未核对宿主。"
+    }
+  ],
+  "policy": "未核实不自动覆盖原规范、发布资格或已交付页面。规则冲突与技术上可调用分开展示；只核对本轮Button及相关宿主。",
+  "loadingWidth": {
+    "status": "scoped-not-general",
+    "sourceNodes": [
+      "3:11432",
+      "3:11461"
+    ],
+    "context": "账户中心（宽度固定），红色/灰色描边，高42px，多行文案18px行高。",
+    "conclusion": "Processing宽度固定属于该账户中心固定宽度场景，不是全部自适应Button的默认保宽规则。当前本地调用尚未实现该场景的宽度/多行/省略和提示，不宣称支持，也不把所有按钮改成固定宽。",
+    "engineeringCheck": "浏览器记录普通调用的Default/Loading宽度及同高，明确自动宽度可能变化。"
+  },
+  "cartBoundary": {
+    "status": "source-has-more-than-call",
+    "sourceNodes": [
+      "3:22524",
+      "3:22526"
+    ],
+    "source": "新MG集合包含气泡卡片及产品卡片Processing；产品Processing 57×32、12px加载图标。",
+    "local": "保留既有产品卡片Cart Default/Hover，未开放Processing或气泡场景。",
+    "reason": "本轮只明确差异，不推定所有父组件的交互与调用契约已完成。"
+  }
+}

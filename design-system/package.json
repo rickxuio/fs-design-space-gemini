@@ -1,0 +1,39 @@
+{
+  "name": "fs-design-specs",
+  "version": "1.0.0",
+  "private": true,
+  "description": "FS Design System — local page-generation reference + compliance gates",
+  "scripts": {
+    "generate:component-index": "node scripts/generate-component-index.js",
+    "check:component-index": "node scripts/generate-component-index.js --check",
+    "generate:component-styles": "node scripts/compile-component-style-manifest.js",
+    "check:component-styles": "node scripts/compile-component-style-manifest.js --check",
+    "generate:component-selection-mvp": "node scripts/compile-component-selection-mvp.js",
+    "check:component-selection-mvp": "node scripts/compile-component-selection-mvp.js --check",
+    "check:component-library": "node scripts/check-component-library-registration.js",
+    "check:component-library-sidebar": "node scripts/check-component-library-sidebar.js",
+    "check-contracts": "node scripts/check-contracts.js",
+    "icon-usage": "node scripts/check-contracts.js --icon-usage",
+    "validate-schema": "node scripts/validate-schema.js",
+    "validate-tokens": "node scripts/validate-tokens.js",
+    "generate-docs": "node scripts/generate-docs.js",
+    "generate-preview": "node scripts/generate-preview-tables.js",
+    "check-docs-sync": "node scripts/generate-docs.js --check",
+    "check-preview-sync": "node scripts/generate-preview-tables.js --check",
+    "check:component-reference": "node scripts/compile-component-reference.js --check",
+    "component:quality": "node scripts/component-quality.js",
+    "check:component-quality": "node scripts/component-quality.js --check",
+    "component:acceptance": "node scripts/record-component-acceptance.js",
+    "check:component-token-annotations": "node scripts/check-component-token-annotations.js",
+    "component:sync": "node ../scripts/local-component-maintenance.cjs",
+    "component:watch": "node ../scripts/local-component-maintenance.cjs --watch",
+    "preview": "node ../scripts/local-preview.cjs --page design-system/component-library.html"
+  },
+  "devDependencies": {
+    "jsdom": "30.1.2"
+  },
+  "dependencies": {
+    "marked": "18.0.7",
+    "puppeteer-core": "25.1.0"
+  }
+}

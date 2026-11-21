@@ -1,0 +1,2316 @@
+{
+  "id": "comp_list_001",
+  "name": "List",
+  "chineseName": "列表",
+  "description": "List 列表组件。结构化数据型、操作密集型、商品内容型、属性键值型和内容信息流型已依据用户提供的 PC/M 原始 HTML 核实；折叠详情型等待源码投喂。",
+  "category": "数据展示 Data Display",
+  "specVersion": "v1.0.2603A",
+  "types": [
+    {
+      "name": "structured-data",
+      "chineseName": "结构化数据型",
+      "description": "带横向表头，数据按列对齐，用于账户中心的结构化记录。"
+    },
+    {
+      "name": "operation-intensive",
+      "chineseName": "操作密集型",
+      "description": "包含复选框、批量操作、已读/未读及整行交互状态。"
+    },
+    {
+      "name": "product-content",
+      "chineseName": "商品内容型",
+      "description": "包含图片、可变高度内容和数量控件，用于购物车等商品列表。"
+    },
+    {
+      "name": "attribute-key-value",
+      "chineseName": "属性键值型",
+      "description": "标签—内容结构，用于账户设置和详情展示。"
+    },
+    {
+      "name": "collapsible-detail",
+      "chineseName": "折叠详情型",
+      "description": "父项作为开关，展开子项详情，用于订单、报价和消息设置。"
+    },
+    {
+      "name": "content-stream",
+      "chineseName": "内容信息流型",
+      "description": "高阅读密度，由标题、长摘要、元信息和链接组成。"
+    },
+    {
+      "name": "unordered-12",
+      "chineseName": "无序正文12px",
+      "description": "Card必要嵌套，用户允许旧库固定原件；只读圆点与正文。"
+    },
+    {
+      "name": "unordered-14",
+      "chineseName": "无序正文14px",
+      "description": "Card必要嵌套，用户允许旧库固定原件；只读圆点与正文。"
+    }
+  ],
+  "variants": [
+    {
+      "name": "structured-data",
+      "chineseName": "结构化数据型",
+      "cssClass": "ds-list ds-list--structured",
+      "whenToUse": "四列对齐的有限账户数据列表。",
+      "isComplete": true,
+      "pendingParts": [],
+      "requiredChildren": [
+        "div.ds-list__head",
+        "div.ds-list__row",
+        "span.ds-list__status",
+        "span.ds-list__action"
+      ],
+      "selectionDecisionType": "结构化数据型",
+      "whenNotToUse": "复杂表格、动态列、分页或信息流长摘要。",
+      "usage": "四列对齐的有限账户数据列表。"
+    },
+    {
+      "name": "operation-intensive",
+      "chineseName": "操作密集型",
+      "cssClass": "ds-list--operations",
+      "whenToUse": "带选择和批量操作的消息列表。",
+      "isComplete": true,
+      "pendingParts": [],
+      "selectionDecisionType": "操作密集型",
+      "whenNotToUse": "只读内容、无批量操作，或生产数据持久化。",
+      "usage": "带选择和批量操作的消息列表。"
+    },
+    {
+      "name": "product-content",
+      "chineseName": "商品内容型",
+      "cssClass": "ds-list--products",
+      "whenToUse": "现有PC商品行，数量、金额及本地删除。",
+      "isComplete": true,
+      "pendingParts": [],
+      "selectionDecisionType": "商品内容型",
+      "whenNotToUse": "完整购物车/结算或任意产品卡片。",
+      "usage": "现有PC商品行，数量、金额及本地删除。"
+    },
+    {
+      "name": "attribute-key-value",
+      "chineseName": "属性键值型",
+      "cssClass": "ds-list--key-value",
+      "whenToUse": "PC账户资料的属性和值展示，照片/认证/编辑操作交由宿主处理实际请求。",
+      "isComplete": true,
+      "pendingParts": [],
+      "selectionDecisionType": "属性键值型",
+      "whenNotToUse": "直接保存账户信息、自动上传头像、无来源的弹窗表单或移动适配。",
+      "usage": "PC账户资料的属性和值展示，照片/认证/编辑操作交由宿主处理实际请求。",
+      "requiredChildren": [
+        ".ds-list__key-value-profile",
+        ".ds-list__key-value-fields",
+        ".ds-list__key-value-row",
+        "[data-list-profile-action=\"edit\"]"
+      ]
+    },
+    {
+      "name": "collapsible-detail",
+      "chineseName": "折叠详情型",
+      "cssClass": "ds-list--collapsible",
+      "whenToUse": "父项展开子详情；订单快照按MG转引Collapse/data-preview。",
+      "isComplete": false,
+      "pendingParts": [
+        "PC/M 源码"
+      ],
+      "selectionDecisionType": "折叠详情型",
+      "whenNotToUse": "通用树表、FAQ或把转引算作独立List原子。",
+      "usage": "父项展开子详情；订单快照按MG转引Collapse/data-preview。"
+    },
+    {
+      "name": "content-stream",
+      "chineseName": "内容信息流型",
+      "cssClass": "ds-list ds-list--stream",
+      "whenToUse": "只读文章、搜索结果长摘要与元信息。",
+      "isComplete": true,
+      "pendingParts": [],
+      "requiredChildren": [
+        "article.ds-list__stream-source-item",
+        "h3.ds-list__stream-source-title",
+        "p.ds-list__stream-source-summary",
+        "div.ds-list__stream-source-meta",
+        "time"
+      ],
+      "selectionDecisionType": "内容信息流型",
+      "whenNotToUse": "严格列对齐、批量操作或推断链接。",
+      "usage": "只读文章、搜索结果长摘要与元信息。"
+    },
+    {
+      "name": "unordered-12",
+      "chineseName": "无序正文列表12px",
+      "cssClass": "ds-list ds-list--unordered-12",
+      "whenToUse": "已确认Card宿主的12px无序正文。",
+      "isComplete": true,
+      "pendingParts": [],
+      "requiredChildren": [
+        "div.ds-list__unordered-item",
+        "span.ds-list__unordered-dot",
+        "p.ds-list__unordered-text"
+      ],
+      "selectionDecisionType": "无序正文12px",
+      "whenNotToUse": "有序、链接、编辑列表或其他字号。",
+      "usage": "已确认Card宿主的12px无序正文。"
+    },
+    {
+      "name": "unordered-14",
+      "chineseName": "无序正文列表14px",
+      "cssClass": "ds-list ds-list--unordered-14",
+      "whenToUse": "已确认Card宿主的14px无序正文。",
+      "isComplete": true,
+      "pendingParts": [],
+      "requiredChildren": [
+        "div.ds-list__unordered-item",
+        "span.ds-list__unordered-dot",
+        "p.ds-list__unordered-text"
+      ],
+      "selectionDecisionType": "无序正文14px",
+      "whenNotToUse": "有序、链接、编辑列表或其他字号。",
+      "usage": "已确认Card宿主的14px无序正文。"
+    }
+  ],
+  "states": [
+    {
+      "name": "unread",
+      "styleOverrides": {
+        "background": "#FFFFFF",
+        "color": "#19191A"
+      },
+      "description": "操作密集型深色标题与正文，日期仍为 #707070。"
+    },
+    {
+      "name": "read",
+      "styleOverrides": {
+        "background": "#FFFFFF",
+        "color": "#707070"
+      },
+      "description": "操作密集型标题、正文和日期均为 #707070。"
+    },
+    {
+      "name": "hover",
+      "styleOverrides": {
+        "background": "#F6F6F8",
+        "color": "#707070"
+      },
+      "description": "操作密集型 PC 源码中的灰底浅色文字状态。"
+    },
+    {
+      "name": "selected",
+      "styleOverrides": {
+        "background": "#FFFFFF",
+        "color": "#19191A"
+      },
+      "description": "操作密集型源码的 svg_75657ce4.svg 已按选中语义与 18px 几何映射到本地 icon-checkbox-checked-18.svg。"
+    },
+    {
+      "name": "editing",
+      "styleOverrides": {
+        "background": "#F6F6F8",
+        "outline": "2px solid #0060BF"
+      },
+      "description": "结构化数据型标题或属性键值型内容进入行内编辑；Enter/Save 提交，Escape 恢复。"
+    },
+    {
+      "name": "quantity-updated",
+      "styleOverrides": {
+        "min": 1,
+        "max": 99
+      },
+      "description": "商品内容型数量减/加实时更新数量和 Item Total，数量限制为 1–99。"
+    },
+    {
+      "name": "removed",
+      "styleOverrides": {
+        "display": "none"
+      },
+      "description": "结构化数据、操作密集和商品内容型的删除操作会移除对应项；批量操作支持选中项和全部项。"
+    }
+  ],
+  "responsiveRules": [
+    {
+      "breakpoint": "M",
+      "rule": "结构化数据型外层宽 382px、内部宽 975px，保留全部四列并横向滚动；Title 固定 140px，Status 固定 160px。"
+    },
+    {
+      "breakpoint": "M",
+      "rule": "操作密集型外层宽 382px、内间距 20px；顶部选择区宽 342px，批量操作收纳为 28×28px 图标区；列表项纵向堆叠，正文左缩进 26px。"
+    },
+    {
+      "breakpoint": "M",
+      "rule": "商品内容型宽 382px、高 516px；商品图 72px，图文间距 16px；标题两行截断，删除资源位 27.43px，数量与总价在底部同行。"
+    },
+    {
+      "breakpoint": "container",
+      "rule": "商品内容型 Web 内容超出所在容器时，必须由 .ds-list__product-source-scroll 提供横向滚动，不得裁切 Price、Qty、Item Total 或删除操作。"
+    },
+    {
+      "breakpoint": "M",
+      "rule": "属性键值型面板 382×784px、水平内距 24px；资料头由 Web 水平排列改为间距 20px 的纵向排列；标签与内容垂直间距 8px，Edit 保持行右对齐。"
+    },
+    {
+      "breakpoint": "M",
+      "rule": "内容信息流型宽 382px、高 526px，展示 3 条内容；摘要均限制 3 行；第三条日期使用单行省略，标签组保持不换行。"
+    }
+  ],
+  "usageGuidelines": "先判断内容关系，再选择六种类型。结构化数据型已核实：Web 内容宽 1146px，M 端 382px 视口内保留 975px 内容并横向滚动；Edit 进入行内编辑，Delete 删除当前行。操作密集型已核实：Web 宽 1146px、行 20px 24px、列间距 20px、8px 圆角；M 宽 382px、容器内间距 20px、列表项上下 12px；Checkbox 支持逐项/全选，批量支持删除、标记已读、全部已读和全部删除，M 端从更多菜单触发。商品内容型已核实：Web 880×474px、M 382×516px，标题两行截断，数量区高 32px；Web 内容超出容器时必须保留完整列并横向滚动，数量限制 1–99 并联动总价，删除操作移除当前商品。属性键值型已核实：Web 1146×532px、M 382×784px，Web 标签宽 200px且列间距 80px，M 标签与内容纵向排列；Edit/Save 支持行内编辑，Update Photo 支持选择本地图片预览。内容信息流型已核实：Web 1200×546px 展示 4 条，M 382×526px 展示 3 条且摘要限 3 行；源码未提供链接目标，因此暂不虚构跳转。折叠详情型在源码到齐前不得将 PDF 参考样式当成正式实现。",
+  "tokenReferences": [
+    "color.gray-1",
+    "color.gray-2",
+    "color.gray-3",
+    "color.gray-4",
+    "color.gray-5",
+    "color.gray-7",
+    "color.white",
+    "color.blue",
+    "color.brand-red",
+    "color.warning",
+    "color.list-hover-bg",
+    "color.list-header-bg",
+    "color.list-state-bg",
+    "color.list-item-divider",
+    "color.list-product-divider",
+    "color.table-divider",
+    "color.hover-overlay-light",
+    "color.success",
+    "color.success-bg",
+    "typography.font-family-base",
+    "typography.font-size-md",
+    "typography.font-size-sm",
+    "typography.font-size-h6",
+    "typography.font-size-h8",
+    "typography.font-weight-regular",
+    "typography.font-weight-semibold",
+    "typography.h7-regular",
+    "typography.h7-semibold",
+    "typography.h6-semibold",
+    "typography.h8-regular",
+    "typography.h9-regular",
+    "spacing.xs",
+    "spacing.3",
+    "spacing.6",
+    "spacing.10",
+    "spacing.sm",
+    "spacing.md",
+    "spacing.lg",
+    "spacing.20",
+    "spacing.26",
+    "spacing.xl",
+    "spacing.40",
+    "spacing.80",
+    "border.width.default",
+    "border.style.default",
+    "border.color.default",
+    "border.color.emphasis",
+    "border.color.table-divider",
+    "border.color.list-product-divider",
+    "border.color.list-item-divider",
+    "border-radius.md",
+    "border-radius.lg",
+    "border-radius.full",
+    "border-radius.avatar",
+    "shadow.sm",
+    "shadow.list-panel",
+    "spacing.2",
+    "spacing.25",
+    "spacing.48",
+    "spacing.2xl",
+    "spacing.14",
+    "spacing.banner-hero-inset",
+    "spacing.banner-content-inset",
+    "spacing.5",
+    "spacing.collapse-status-indent",
+    "spacing.36",
+    "spacing.9",
+    "spacing.collapse-body-indent",
+    "spacing.68",
+    "spacing.menu-navigation-left-gutter",
+    "border.style.none",
+    "border.color.inverse",
+    "border.color.focus",
+    "border.color.subtle",
+    "border.width.strong",
+    "border.color.strong",
+    "border.color.transparent",
+    "border.color.brand",
+    "border.color.option",
+    "border.color.tag",
+    "border.color.table-header",
+    "border.color.comment-divider",
+    "color.text-disabled"
+  ],
+  "relations": {
+    "variantDecisionsDescription": "按实际内容与交互选择具体变体，再核对同版调用资格；候选/不用/参考同源展示给设计师和AI，不把MG原件范围当成完整运行能力。",
+    "variantDecisions": [
+      {
+        "type": "结构化数据型",
+        "className": "ds-list--structured",
+        "whenToUse": "四列对齐的有限账户数据列表。",
+        "whenNotToUse": "复杂表格、动态列、分页或信息流长摘要。",
+        "nestedComponents": [],
+        "status": "当前MG规则/结构与有限本地调用分开记录；视觉待确认。",
+        "variant": "structured-data",
+        "fragment": "structured-data",
+        "selectionCases": [
+          {
+            "id": "ls11",
+            "kind": "use",
+            "condition": "字段需按现有四列对齐。",
+            "result": "structured-data；保留列和原操作结构。",
+            "strength": "candidate",
+            "targetVariant": "structured-data"
+          },
+          {
+            "id": "ls12",
+            "kind": "avoid",
+            "condition": "需要复杂表格能力或可变列。",
+            "result": "核对Table或明确缺口，不手改列结构。",
+            "strength": "avoid",
+            "targetVariant": "structured-data"
+          }
+        ]
+      },
+      {
+        "type": "操作密集型",
+        "className": "ds-list--operations",
+        "whenToUse": "带选择和批量操作的消息列表。",
+        "whenNotToUse": "只读内容、无批量操作，或生产数据持久化。",
+        "nestedComponents": [
+          {
+            "component": "Checkbox",
+            "href": "checkbox.html"
+          }
+        ],
+        "status": "当前MG规则/结构与有限本地调用分开记录；视觉待确认。",
+        "variant": "operation-intensive",
+        "fragment": "operation-intensive",
+        "selectionCases": [
+          {
+            "id": "ls21",
+            "kind": "use",
+            "condition": "消息全选、已读/未读及本地删除。",
+            "result": "operation-intensive；使用Checkbox和Button。",
+            "strength": "candidate",
+            "targetVariant": "operation-intensive"
+          },
+          {
+            "id": "ls22",
+            "kind": "avoid",
+            "condition": "把本地演示当服务端删除/保存。",
+            "result": "只改变本地列表，不承诺持久化。",
+            "strength": "avoid",
+            "targetVariant": "operation-intensive"
+          }
+        ]
+      },
+      {
+        "type": "商品内容型",
+        "className": "ds-list--products",
+        "whenToUse": "现有PC商品行，数量、金额及本地删除。",
+        "whenNotToUse": "完整购物车/结算或任意产品卡片。",
+        "nestedComponents": [
+          {
+            "component": "InputNumber",
+            "label": "InputNumber（outline-sm）",
+            "href": "input-number.html"
+          }
+        ],
+        "status": "当前MG规则/结构与有限本地调用分开记录；视觉待确认。",
+        "variant": "product-content",
+        "fragment": "product-content",
+        "selectionCases": [
+          {
+            "id": "ls31",
+            "kind": "use",
+            "condition": "商品行需要数量与价格联动。",
+            "result": "product-content；复用InputNumber/IconButton。",
+            "strength": "candidate",
+            "targetVariant": "product-content"
+          },
+          {
+            "id": "ls32",
+            "kind": "avoid",
+            "condition": "需要库存、优惠、结算或服务端订单。",
+            "result": "不把局部列表当完整电商能力。",
+            "strength": "avoid",
+            "targetVariant": "product-content"
+          },
+          {
+            "id": "ls33",
+            "kind": "reference",
+            "condition": "MG嵌套原件尺寸与当前共享原子有差异。",
+            "result": "沿用原子及已存差异，不在宿主改样式。",
+            "strength": "reference",
+            "targetVariant": "product-content"
+          }
+        ]
+      },
+      {
+        "type": "属性键值型",
+        "className": "ds-list--key-value",
+        "whenToUse": "PC账户资料的属性和值展示，照片/认证/编辑操作交由宿主处理实际请求。",
+        "whenNotToUse": "直接保存账户信息、自动上传头像、无来源的弹窗表单或移动适配。",
+        "nestedComponents": [],
+        "status": "当前MG规则/结构与有限本地调用分开记录；视觉待确认。",
+        "variant": "attribute-key-value",
+        "fragment": "attribute-key-value",
+        "selectionCases": [
+          {
+            "id": "list-profile-value-use",
+            "kind": "use",
+            "condition": "PC账户资料的属性和值展示，照片/认证/编辑操作交由宿主处理实际请求。",
+            "result": "调用attribute-key-value并接actionCallback，资料更新属于宿主业务。",
+            "targetVariant": "attribute-key-value"
+          },
+          {
+            "id": "list-profile-value-exclude",
+            "kind": "exclude",
+            "condition": "直接保存账户信息、自动上传头像、无来源的弹窗表单或移动适配。",
+            "result": "不将资料展示与操作意图声称为已保存或完整编辑流程。",
+            "targetVariant": "attribute-key-value"
+          }
+        ]
+      },
+      {
+        "type": "折叠详情型",
+        "className": "ds-list--collapsible",
+        "whenToUse": "父项展开子详情；订单快照按MG转引Collapse/data-preview。",
+        "whenNotToUse": "通用树表、FAQ或把转引算作独立List原子。",
+        "nestedComponents": [
+          {
+            "component": "Collapse",
+            "href": "collapse.html"
+          },
+          {
+            "component": "Button",
+            "label": "Button（View Order）",
+            "href": "button.html"
+          },
+          {
+            "component": "Badge",
+            "href": "badge.html"
+          }
+        ],
+        "status": "原规范转引已接通；独立List/collapsible-detail不重复开放。",
+        "variant": "collapsible-detail",
+        "fragment": "collapsible-detail",
+        "selectionCases": [
+          {
+            "id": "ls51",
+            "kind": "reference",
+            "condition": "父子层级需要展开详情。",
+            "result": "读取library-collapse/data-preview的具体决策并实际调用；非订单场景另核对，不拼装假List。",
+            "strength": "reference",
+            "targetVariant": "collapsible-detail",
+            "relatedCall": {
+              "component": "collapse",
+              "variant": "data-preview",
+              "fragment": "data-preview"
+            }
+          }
+        ],
+        "relatedCall": {
+          "component": "collapse",
+          "variant": "data-preview",
+          "fragment": "data-preview"
+        }
+      },
+      {
+        "type": "内容信息流型",
+        "className": "ds-list--stream",
+        "whenToUse": "只读文章、搜索结果长摘要与元信息。",
+        "whenNotToUse": "严格列对齐、批量操作或推断链接。",
+        "nestedComponents": [],
+        "status": "当前MG规则/结构与有限本地调用分开记录；视觉待确认。",
+        "variant": "content-stream",
+        "fragment": "content-stream",
+        "selectionCases": [
+          {
+            "id": "ls61",
+            "kind": "use",
+            "condition": "标题、摘要和元信息为主。",
+            "result": "content-stream；保留原文，不推断跳转。",
+            "strength": "candidate",
+            "targetVariant": "content-stream"
+          },
+          {
+            "id": "ls62",
+            "kind": "avoid",
+            "condition": "需要四列字段或批量操作。",
+            "result": "分别核对结构化或操作密集型。",
+            "strength": "avoid",
+            "targetVariant": "content-stream"
+          }
+        ]
+      },
+      {
+        "type": "无序正文12px",
+        "className": "ds-list ds-list--unordered-12",
+        "whenToUse": "已确认Card宿主的12px无序正文。",
+        "whenNotToUse": "有序、链接、编辑列表或其他字号。",
+        "nestedComponents": [],
+        "status": "当前MG规则/结构与有限本地调用分开记录；视觉待确认。",
+        "variant": "unordered-12",
+        "fragment": "unordered-12",
+        "selectionCases": [
+          {
+            "id": "ls71",
+            "kind": "use",
+            "condition": "宿主明确引用既有12px无序原件。",
+            "result": "unordered-12；保留获准固定来源。",
+            "strength": "candidate",
+            "targetVariant": "unordered-12"
+          },
+          {
+            "id": "ls72",
+            "kind": "avoid",
+            "condition": "把MG六类业务列表都简化成圆点。",
+            "result": "无序正文不替代数据/商品/操作列表。",
+            "strength": "avoid",
+            "targetVariant": "unordered-12"
+          }
+        ]
+      },
+      {
+        "type": "无序正文14px",
+        "className": "ds-list ds-list--unordered-14",
+        "whenToUse": "已确认Card宿主的14px无序正文。",
+        "whenNotToUse": "有序、链接、编辑列表或其他字号。",
+        "nestedComponents": [],
+        "status": "当前MG规则/结构与有限本地调用分开记录；视觉待确认。",
+        "variant": "unordered-14",
+        "fragment": "unordered-14",
+        "selectionCases": [
+          {
+            "id": "ls81",
+            "kind": "use",
+            "condition": "宿主明确引用既有14px无序原件。",
+            "result": "unordered-14；不据此开放任意字号。",
+            "strength": "candidate",
+            "targetVariant": "unordered-14"
+          },
+          {
+            "id": "ls82",
+            "kind": "avoid",
+            "condition": "需要链接、编号或操作控件。",
+            "result": "按实际角色重新选型，不手搓子结构。",
+            "strength": "avoid",
+            "targetVariant": "unordered-14"
+          }
+        ]
+      }
+    ],
+    "componentDependencies": [
+      {
+        "component": "Checkbox",
+        "usage": "当前PC操作列表保留完整原生Checkbox(lg)的input/box/标题label；toolbar为省略文字槽的有名称全选原子。原生checked/indeterminate由宿主协调，不复制原子样式。M仍历史box-only适配、暂不升级。",
+        "slot": "toolbar/list-item",
+        "appliesTo": [
+          "operation-intensive"
+        ],
+        "requiredVariants": [
+          "lg"
+        ],
+        "implementationClasses": [
+          "ds-checkbox",
+          "ds-checkbox__input",
+          "ds-checkbox__box",
+          "ds-checkbox__label"
+        ]
+      },
+      {
+        "component": "InputNumber",
+        "usage": "商品PC数量真实current outline-sm原子，1–99为现有演示范围；宿主监听原子归一化后的change/blur联动总价。原稿root140、inner88与现行原子88差异按原子优先记录；M保持历史适配、未迁移。",
+        "slot": "product-item/quantity",
+        "hostPreviewAnchor": "list-product-content",
+        "appliesTo": [
+          "product-content"
+        ],
+        "requiredVariants": [
+          "outline-sm"
+        ],
+        "implementationClasses": [
+          "ds-input-number",
+          "ds-input-number--outline",
+          "ds-input-number--sm",
+          "ds-input-number__button",
+          "ds-input-number__input"
+        ]
+      },
+      {
+        "component": "Button",
+        "usage": "PC操作列表四个批量动作真实调用outline-black/XL（42px）；宿主只绑定本地演示动作及gap8装配，保持原子结构/状态。",
+        "slot": "operation-toolbar",
+        "appliesTo": [
+          "operation-intensive"
+        ],
+        "requiredVariants": [
+          "outline-black"
+        ],
+        "implementationClasses": [
+          "ds-btn",
+          "ds-btn--outline-black",
+          "ds-btn--xl",
+          "ds-btn__text"
+        ],
+        "requiredSizes": [
+          {
+            "variant": "outline-black",
+            "size": "xl"
+          }
+        ]
+      },
+      {
+        "component": "IconButton",
+        "usage": "PC商品删除为当前plain-m真实button+img，原稿24px/12px与BOM28px差异记录，原子优先使用28px/16px；M未迁移。宿主只删除本地演示行。",
+        "slot": "product-item/delete",
+        "hostPreviewAnchor": "list-product-content",
+        "appliesTo": [
+          "product-content"
+        ],
+        "requiredVariants": [
+          "plain-m"
+        ],
+        "implementationClasses": [
+          "ds-icon-btn",
+          "ds-icon-btn--plain",
+          "ds-icon-btn--m",
+          "ds-icon-btn__icon"
+        ]
+      }
+    ],
+    "commonlyEmbeddedIn": [],
+    "mutuallyExclusiveWith": [
+      {
+        "component": "Table",
+        "reason": "List 用于记录、内容和操作项；Table 用于规则化表格与产品参数矩阵，两者不可仅因视觉近似互相替代。"
+      }
+    ],
+    "iconDependencies": [
+      {
+        "icon": "icon-checkbox-default-18",
+        "usage": "操作密集型未选中框；映射源码 svg_1901aefb.svg。",
+        "required": true,
+        "appliesTo": [
+          "operation-intensive"
+        ]
+      },
+      {
+        "icon": "icon-checkbox-checked-18",
+        "usage": "操作密集型选中框；映射源码 svg_75657ce4.svg。",
+        "required": true,
+        "appliesTo": [
+          "operation-intensive"
+        ]
+      },
+      {
+        "icon": "icon-more",
+        "usage": "操作密集型 M 端更多操作；映射源码 svg_25c85bbd.svg。",
+        "required": true,
+        "appliesTo": [
+          "operation-intensive"
+        ]
+      },
+      {
+        "icon": "icon-delete",
+        "usage": "商品内容型 PC/M 删除当前商品；映射源码 svg_bfa1b941.svg、svg_95a87f6c.svg、svg_2ab7cc1e.svg 与 svg_f8fefd22.svg。",
+        "required": true,
+        "appliesTo": [
+          "product-content"
+        ]
+      },
+      {
+        "icon": "goods-包裹",
+        "usage": "商品内容型 M 端仓库信息。",
+        "required": true,
+        "appliesTo": [
+          "product-content"
+        ]
+      },
+      {
+        "icon": "icon-edit",
+        "usage": "属性键值型 Edit 前导图标；以 16px 资源位渲染并映射源码 svg_0b37bd4b.svg。",
+        "required": true,
+        "appliesTo": [
+          "attribute-key-value"
+        ]
+      },
+      {
+        "icon": "icon-arrow-right",
+        "usage": "属性键值型认证入口尾部箭头；以 16px 资源位渲染并映射源码 svg_f95a60c8.svg。",
+        "required": true,
+        "appliesTo": [
+          "attribute-key-value"
+        ]
+      }
+    ],
+    "colorDependencies": [
+      {
+        "token": "color.gray-1",
+        "value": "#19191A",
+        "usage": "标题、正文和操作文字",
+        "appliesTo": [
+          "structured-data",
+          "operation-intensive",
+          "product-content",
+          "attribute-key-value",
+          "collapsible-detail",
+          "content-stream"
+        ]
+      },
+      {
+        "token": "color.gray-2",
+        "value": "#4B4B4D",
+        "usage": "商品内容型 Web 表头、单价和商品总价",
+        "appliesTo": [
+          "product-content"
+        ]
+      },
+      {
+        "token": "color.gray-3",
+        "value": "#707070",
+        "usage": "摘要和辅助信息",
+        "appliesTo": [
+          "operation-intensive",
+          "product-content",
+          "content-stream"
+        ]
+      },
+      {
+        "token": "color.gray-4",
+        "value": "#646466",
+        "usage": "商品内容型 M 端仓库信息",
+        "appliesTo": [
+          "product-content"
+        ]
+      },
+      {
+        "token": "color.gray-5",
+        "value": "#DEE0E3",
+        "usage": "列表项分隔线",
+        "appliesTo": [
+          "structured-data",
+          "product-content",
+          "attribute-key-value",
+          "collapsible-detail",
+          "content-stream"
+        ]
+      },
+      {
+        "token": "color.gray-7",
+        "value": "#F2F2F2",
+        "usage": "属性键值型头像灰色色块占位",
+        "appliesTo": [
+          "attribute-key-value"
+        ]
+      },
+      {
+        "token": "color.white",
+        "value": "#FFFFFF",
+        "usage": "列表和容器背景",
+        "appliesTo": [
+          "structured-data",
+          "operation-intensive",
+          "product-content",
+          "attribute-key-value",
+          "collapsible-detail",
+          "content-stream"
+        ]
+      },
+      {
+        "token": "color.list-header-bg",
+        "value": "#F7F7F7",
+        "usage": "结构化数据型表头背景",
+        "appliesTo": [
+          "structured-data"
+        ]
+      },
+      {
+        "token": "color.brand-red",
+        "value": "#C00000",
+        "usage": "Pending Activation 状态点",
+        "appliesTo": [
+          "structured-data"
+        ]
+      },
+      {
+        "token": "color.warning",
+        "value": "#F56300",
+        "usage": "Text 状态点",
+        "appliesTo": [
+          "structured-data"
+        ]
+      },
+      {
+        "token": "color.list-state-bg",
+        "value": "#F6F6F8",
+        "usage": "操作密集型源码灰底状态的语义 Token",
+        "appliesTo": [
+          "operation-intensive"
+        ]
+      },
+      {
+        "token": "color.list-item-divider",
+        "value": "#E5E5E5",
+        "usage": "操作密集型的显式分隔块与属性键值型 PC/M 行分隔线",
+        "appliesTo": [
+          "operation-intensive",
+          "attribute-key-value"
+        ]
+      },
+      {
+        "token": "color.list-product-divider",
+        "value": "#EEEEEE",
+        "usage": "商品内容型 PC/M 行分隔线",
+        "appliesTo": [
+          "product-content"
+        ]
+      },
+      {
+        "token": "color.table-divider",
+        "value": "#EEEEEE",
+        "usage": "操作密集型 M 端顶部选择区底部分隔线",
+        "appliesTo": [
+          "operation-intensive"
+        ]
+      },
+      {
+        "token": "color.hover-overlay-light",
+        "value": "rgba(25,25,26,0.04)",
+        "usage": "商品内容型 Web 删除资源位的源码灰底状态",
+        "appliesTo": [
+          "product-content"
+        ]
+      },
+      {
+        "token": "color.list-hover-bg",
+        "value": "#F6F7F8",
+        "usage": "待核实折叠详情型的参考悬停背景；属性键值型源码未提供 hover",
+        "appliesTo": [
+          "collapsible-detail"
+        ]
+      },
+      {
+        "token": "color.blue",
+        "value": "#0060BF",
+        "usage": "属性键值型资料头链接；内容信息流型源码未提供链接色或 hover",
+        "appliesTo": [
+          "attribute-key-value"
+        ]
+      },
+      {
+        "token": "color.success",
+        "value": "#10A300",
+        "usage": "Pickup Order 等成功状态文字",
+        "appliesTo": [
+          "collapsible-detail"
+        ]
+      },
+      {
+        "token": "color.success-bg",
+        "value": "rgba(16,163,0,0.1)",
+        "usage": "成功状态标签背景",
+        "appliesTo": [
+          "collapsible-detail"
+        ]
+      },
+      {
+        "token": "color.gray-3",
+        "value": "#707070",
+        "usage": "无序原子圆点和正文",
+        "appliesTo": [
+          "unordered-12",
+          "unordered-14"
+        ]
+      },
+      {
+        "token": "color.text-disabled",
+        "value": "rgba(25,25,26,0.3)",
+        "usage": "当前来源支持的新增调用及真实原子资源",
+        "appliesTo": [
+          "attribute-key-value"
+        ]
+      }
+    ],
+    "spacingDependencies": [
+      {
+        "token": "spacing.xs",
+        "value": "4px",
+        "usage": "操作密集型 M 端区块间距、商品内容详情间距、属性键值型链接图标间距",
+        "properties": [
+          "gap"
+        ],
+        "selectors": [
+          ".ds-list__operation-mobile-row",
+          ".ds-list__product-source-info",
+          ".ds-list__product-mobile-top",
+          ".ds-list__product-mobile-info",
+          ".ds-list__product-mobile-warehouse",
+          ".ds-list__key-value-certify",
+          ".ds-list__key-value-edit"
+        ],
+        "appliesTo": [
+          "operation-intensive",
+          "product-content",
+          "attribute-key-value"
+        ]
+      },
+      {
+        "token": "spacing.3",
+        "value": "3px",
+        "usage": "商品内容型 M 端 12px 仓库图标的垂直内距",
+        "properties": [
+          "padding",
+          "margin-top"
+        ],
+        "selectors": [
+          ".ds-list__product-mobile-warehouse-icon",
+          ".ds-checkbox[data-checkbox-current].ds-checkbox--sm .ds-checkbox__box"
+        ],
+        "appliesTo": [
+          "product-content"
+        ]
+      },
+      {
+        "token": "spacing.6",
+        "value": "6px",
+        "usage": "结构化数据型状态圆点与文字间距",
+        "properties": [
+          "gap"
+        ],
+        "selectors": [
+          ".ds-list__status"
+        ],
+        "appliesTo": [
+          "structured-data"
+        ]
+      },
+      {
+        "token": "spacing.6",
+        "value": "6px",
+        "usage": "操作密集型 M 端操作图标位内距",
+        "properties": [
+          "padding"
+        ],
+        "selectors": [
+          ".ds-list__source-menu-slot"
+        ],
+        "appliesTo": [
+          "operation-intensive"
+        ]
+      },
+      {
+        "token": "spacing.6",
+        "value": "6px",
+        "usage": "商品内容型 PC/M 删除资源位内距",
+        "properties": [
+          "padding"
+        ],
+        "selectors": [
+          ".ds-list__product-source-delete",
+          ".ds-list__product-mobile-delete"
+        ],
+        "appliesTo": [
+          "product-content"
+        ]
+      },
+      {
+        "token": "spacing.10",
+        "value": "10px",
+        "usage": "操作密集型 PC 批量操作按钮垂直内距",
+        "properties": [
+          "padding"
+        ],
+        "selectors": [
+          ".ds-list__batch-button"
+        ],
+        "appliesTo": [
+          "operation-intensive"
+        ]
+      },
+      {
+        "token": "spacing.sm",
+        "value": "8px",
+        "usage": "操作密集型选择图标间距；商品内容型元数据/M 端间距；属性键值型介绍与 M 端标签—内容间距；内容信息流标签间距",
+        "properties": [
+          "gap",
+          "row-gap"
+        ],
+        "selectors": [
+          ".ds-list__operations-toolbar",
+          ".ds-list__operation-title",
+          ".ds-list__product-source-meta",
+          ".ds-list__product-mobile-content",
+          ".ds-list__key-value-intro",
+          ".ds-list--key-value-mobile .ds-list__key-value-row",
+          ".ds-list--key-value-mobile .ds-list__key-value-field",
+          ".ds-list__stream-source-tags"
+        ],
+        "appliesTo": [
+          "operation-intensive",
+          "product-content",
+          "attribute-key-value",
+          "content-stream"
+        ]
+      },
+      {
+        "token": "spacing.md",
+        "value": "12px",
+        "usage": "结构化表头内距；操作密集型批量操作/M 端间距；商品元数据列间距；属性键值型头像与介绍间距",
+        "properties": [
+          "gap",
+          "column-gap",
+          "padding",
+          "padding-bottom"
+        ],
+        "selectors": [
+          ".ds-list--structured .ds-list__head",
+          ".ds-list__operations-toolbar",
+          ".ds-list__batch-actions",
+          ".ds-list__operation-mobile-row",
+          ".ds-list__operation-mobile-body",
+          ".ds-list__product-source-meta",
+          ".ds-list__key-value-identity"
+        ],
+        "appliesTo": [
+          "structured-data",
+          "operation-intensive",
+          "product-content",
+          "attribute-key-value"
+        ]
+      },
+      {
+        "token": "spacing.md",
+        "value": "12px",
+        "usage": "内容信息流标题、摘要与元信息的项内间距",
+        "properties": [
+          "gap"
+        ],
+        "selectors": [
+          ".ds-list__stream-source-item"
+        ],
+        "appliesTo": [
+          "content-stream"
+        ]
+      },
+      {
+        "token": "spacing.lg",
+        "value": "16px",
+        "usage": "商品内容型图文间距",
+        "properties": [
+          "gap"
+        ],
+        "selectors": [
+          ".ds-list__product-source-head-item",
+          ".ds-list__product-source-item",
+          ".ds-list__product-mobile-row"
+        ],
+        "appliesTo": [
+          "product-content"
+        ]
+      },
+      {
+        "token": "spacing.20",
+        "value": "20px",
+        "usage": "操作密集型行/面板间距；商品内容型行内距/列间距；属性键值型行内距/M 端资料头间距；内容信息流项与元信息间距",
+        "properties": [
+          "padding",
+          "padding-bottom",
+          "gap"
+        ],
+        "selectors": [
+          ".ds-list__operation-row",
+          ".ds-list--operations-mobile",
+          ".ds-list__product-source-grid",
+          ".ds-list__product-source-head",
+          ".ds-list__product-source-row",
+          ".ds-list__product-mobile-row",
+          ".ds-list__key-value-profile",
+          ".ds-list__key-value-row",
+          ".ds-list--key-value-mobile .ds-list__key-value-profile",
+          ".ds-list--stream",
+          ".ds-list__stream-source-meta"
+        ],
+        "appliesTo": [
+          "operation-intensive",
+          "product-content",
+          "attribute-key-value",
+          "content-stream"
+        ]
+      },
+      {
+        "token": "spacing.26",
+        "value": "26px",
+        "usage": "操作密集型 M 端正文左缩进，对齐标题文字",
+        "properties": [
+          "padding-left"
+        ],
+        "selectors": [
+          ".ds-list__operation-mobile-body"
+        ],
+        "appliesTo": [
+          "operation-intensive"
+        ]
+      },
+      {
+        "token": "spacing.xl",
+        "value": "24px",
+        "usage": "结构化表头/数据行、操作密集型 PC 工具栏/行及属性键值型面板水平内间距",
+        "properties": [
+          "padding"
+        ],
+        "selectors": [
+          ".ds-list--structured .ds-list__head",
+          ".ds-list--structured .ds-list__row",
+          ".ds-list__operations-toolbar",
+          ".ds-list__operation-row",
+          ".ds-list__batch-button",
+          ".ds-list--key-value"
+        ],
+        "appliesTo": [
+          "structured-data",
+          "operation-intensive",
+          "attribute-key-value"
+        ]
+      },
+      {
+        "token": "spacing.40",
+        "value": "40px",
+        "usage": "结构化数据型四列间距",
+        "properties": [
+          "gap"
+        ],
+        "selectors": [
+          ".ds-list__structured-grid"
+        ],
+        "appliesTo": [
+          "structured-data"
+        ]
+      },
+      {
+        "token": "spacing.80",
+        "value": "80px",
+        "usage": "属性键值型 Web 端标签、内容与编辑区列间距",
+        "properties": [
+          "gap"
+        ],
+        "selectors": [
+          ".ds-list__key-value-row"
+        ],
+        "appliesTo": [
+          "attribute-key-value"
+        ]
+      },
+      {
+        "token": "spacing.2",
+        "value": "2px",
+        "usage": "Checkbox原子首行位置；宿主仅引用同一资源，不覆盖样式",
+        "properties": [
+          "margin-top"
+        ],
+        "selectors": [
+          ".ds-checkbox[data-checkbox-current] .ds-checkbox__box"
+        ],
+        "appliesTo": [
+          "operation-intensive"
+        ]
+      },
+      {
+        "token": "spacing.xs",
+        "value": "4px",
+        "usage": "无序原子圆点及条目间距4px、圆点到文字8px",
+        "appliesTo": [
+          "unordered-12",
+          "unordered-14"
+        ]
+      },
+      {
+        "token": "spacing.sm",
+        "value": "8px",
+        "usage": "无序原子圆点及条目间距4px、圆点到文字8px",
+        "appliesTo": [
+          "unordered-12",
+          "unordered-14"
+        ]
+      }
+    ],
+    "borderDependencies": [
+      {
+        "token": "border.width.default",
+        "value": "1px",
+        "usage": "列表项分隔线与操作描边宽度；内容信息流型将同一 1px 值用于 #DEE0E3 分隔块高度",
+        "aspect": "width",
+        "properties": [
+          "border",
+          "border-bottom"
+        ],
+        "selectors": [
+          ".ds-list__batch-button",
+          ".ds-list__operations-mobile-head",
+          ".ds-list__product-source-head",
+          ".ds-list__product-source-row",
+          ".ds-list__product-mobile-row",
+          ".ds-list__key-value-profile",
+          ".ds-list__key-value-row",
+          ".ds-list__row"
+        ],
+        "appliesTo": [
+          "structured-data",
+          "operation-intensive",
+          "product-content",
+          "attribute-key-value",
+          "collapsible-detail",
+          "content-stream"
+        ]
+      },
+      {
+        "token": "border.style.default",
+        "value": "solid",
+        "usage": "列表项分隔线与操作描边样式",
+        "aspect": "style",
+        "properties": [
+          "border",
+          "border-bottom"
+        ],
+        "selectors": [
+          ".ds-list__batch-button",
+          ".ds-list__operations-mobile-head",
+          ".ds-list__product-source-head",
+          ".ds-list__product-source-row",
+          ".ds-list__product-mobile-row",
+          ".ds-list__key-value-profile",
+          ".ds-list__key-value-row",
+          ".ds-list__row"
+        ],
+        "appliesTo": [
+          "structured-data",
+          "operation-intensive",
+          "product-content",
+          "attribute-key-value",
+          "collapsible-detail"
+        ]
+      },
+      {
+        "token": "border.color.default",
+        "value": "var(--color-gray-5)",
+        "usage": "待核实折叠详情型的 #DEE0E3 描边",
+        "aspect": "color",
+        "properties": [
+          "border",
+          "border-bottom"
+        ],
+        "selectors": [
+          ".ds-list__row"
+        ],
+        "appliesTo": [
+          "structured-data",
+          "collapsible-detail"
+        ]
+      },
+      {
+        "token": "border.color.emphasis",
+        "value": "var(--color-gray-1)",
+        "usage": "操作密集型 PC 批量操作按钮黑色描边",
+        "aspect": "color",
+        "properties": [
+          "border"
+        ],
+        "selectors": [
+          ".ds-list__batch-button"
+        ],
+        "appliesTo": [
+          "operation-intensive"
+        ]
+      },
+      {
+        "token": "border.color.table-divider",
+        "value": "var(--color-table-divider)",
+        "usage": "操作密集型 M 端顶部选择区 #EEEEEE 底部分隔线",
+        "aspect": "color",
+        "properties": [
+          "border-bottom"
+        ],
+        "selectors": [
+          ".ds-list__operations-mobile-head"
+        ],
+        "appliesTo": [
+          "operation-intensive"
+        ]
+      },
+      {
+        "token": "border.color.list-product-divider",
+        "value": "var(--color-list-product-divider)",
+        "usage": "商品内容型 PC/M #EEEEEE 行分隔线",
+        "aspect": "color",
+        "properties": [
+          "border-bottom"
+        ],
+        "selectors": [
+          ".ds-list__product-source-head",
+          ".ds-list__product-source-row",
+          ".ds-list__product-mobile-row"
+        ],
+        "appliesTo": [
+          "product-content"
+        ]
+      },
+      {
+        "token": "border.color.list-item-divider",
+        "value": "var(--color-list-item-divider)",
+        "usage": "属性键值型 PC/M #E5E5E5 资料头与字段行分隔线",
+        "aspect": "color",
+        "properties": [
+          "border-bottom"
+        ],
+        "selectors": [
+          ".ds-list__key-value-profile",
+          ".ds-list__key-value-row"
+        ],
+        "appliesTo": [
+          "attribute-key-value"
+        ]
+      }
+    ],
+    "radiusDependencies": [
+      {
+        "token": "border-radius.md",
+        "value": "4px",
+        "usage": "操作密集型批量操作和图标位圆角",
+        "appliesTo": [
+          "operation-intensive"
+        ]
+      },
+      {
+        "token": "border-radius.lg",
+        "value": "8px",
+        "usage": "操作密集型容器与属性键值型面板圆角",
+        "appliesTo": [
+          "operation-intensive",
+          "attribute-key-value"
+        ]
+      },
+      {
+        "token": "/",
+        "value": "3.43px",
+        "usage": "商品内容型 PC/M 删除资源位的源码生成圆角",
+        "appliesTo": [
+          "product-content"
+        ]
+      },
+      {
+        "token": "border-radius.full",
+        "value": "9999px",
+        "usage": "结构化数据型 8px 状态点圆形",
+        "appliesTo": [
+          "structured-data"
+        ]
+      },
+      {
+        "token": "border-radius.avatar",
+        "value": "48px",
+        "usage": "属性键值型 PC/M 58px 头像资源位圆角",
+        "appliesTo": [
+          "attribute-key-value"
+        ]
+      },
+      {
+        "token": "/",
+        "value": "12px",
+        "usage": "结构化数据型源码容器圆角；折叠详情仍待源码复核",
+        "appliesTo": [
+          "structured-data",
+          "collapsible-detail"
+        ]
+      },
+      {
+        "token": "border-radius.full",
+        "value": "9999px",
+        "usage": "4px圆点的圆形轮廓",
+        "appliesTo": [
+          "unordered-12",
+          "unordered-14"
+        ]
+      }
+    ],
+    "shadowDependencies": [
+      {
+        "token": "shadow.list-panel",
+        "value": "0 2px 8px rgba(0, 0, 0, 0.1)",
+        "usage": "结构化数据型源码面板投影",
+        "appliesTo": [
+          "structured-data"
+        ]
+      },
+      {
+        "token": "shadow.list-panel",
+        "value": "0 2px 8px rgba(0, 0, 0, 0.1)",
+        "usage": "操作密集型源码 PC/M 面板投影",
+        "appliesTo": [
+          "operation-intensive"
+        ]
+      },
+      {
+        "token": "shadow.list-panel",
+        "value": "0 2px 8px rgba(0, 0, 0, 0.1)",
+        "usage": "属性键值型源码 PC/M 面板投影",
+        "appliesTo": [
+          "attribute-key-value"
+        ]
+      },
+      {
+        "token": "shadow.sm",
+        "value": "0 1px 2px rgba(0, 0, 0, 0.05)",
+        "usage": "折叠详情参考投影，等待源码复核；商品内容型源码无投影",
+        "appliesTo": [
+          "collapsible-detail"
+        ]
+      }
+    ],
+    "fontSizeDependencies": [
+      {
+        "token": "typography.font-size-md",
+        "value": "14px",
+        "usage": "列表正文与标题",
+        "appliesTo": [
+          "structured-data",
+          "operation-intensive",
+          "product-content",
+          "attribute-key-value",
+          "collapsible-detail",
+          "content-stream"
+        ]
+      },
+      {
+        "token": "typography.font-size-sm",
+        "value": "12px",
+        "usage": "商品内容型型号、SKU 与 M 端仓库信息；内容信息流摘要和元信息",
+        "appliesTo": [
+          "product-content",
+          "content-stream"
+        ]
+      },
+      {
+        "token": "typography.font-size-h6",
+        "value": "16px",
+        "usage": "属性键值型资料头问候语",
+        "appliesTo": [
+          "attribute-key-value"
+        ]
+      },
+      {
+        "token": "typography.font-size-h8",
+        "value": "13px",
+        "usage": "属性键值型 Edit 文字",
+        "appliesTo": [
+          "attribute-key-value"
+        ]
+      },
+      {
+        "token": "typography.font-size-sm",
+        "value": "12px",
+        "usage": "无序正文",
+        "appliesTo": [
+          "unordered-12"
+        ]
+      },
+      {
+        "token": "typography.font-size-md",
+        "value": "14px",
+        "usage": "无序正文",
+        "appliesTo": [
+          "unordered-14"
+        ]
+      }
+    ],
+    "fontWeightDependencies": [
+      {
+        "token": "typography.font-weight-regular",
+        "value": "400",
+        "usage": "列表正文",
+        "appliesTo": [
+          "structured-data",
+          "operation-intensive",
+          "product-content",
+          "attribute-key-value",
+          "collapsible-detail",
+          "content-stream"
+        ],
+        "properties": [
+          "font-weight"
+        ],
+        "selectors": [
+          ".ds-list"
+        ]
+      },
+      {
+        "token": "typography.font-weight-semibold",
+        "value": "600",
+        "usage": "表头、字段标签和标题；商品内容型标题/总价；属性键值型问候语/标签；内容信息流标题；操作密集型源码全部为 Regular 400",
+        "appliesTo": [
+          "structured-data",
+          "product-content",
+          "attribute-key-value",
+          "collapsible-detail",
+          "content-stream"
+        ],
+        "properties": [
+          "font-weight"
+        ],
+        "selectors": [
+          ".ds-list__head",
+          ".ds-list__product-source-title",
+          ".ds-list__product-source-total-price",
+          ".ds-list__product-mobile-total",
+          ".ds-list__key-value-greeting",
+          ".ds-list__key-value-label",
+          ".ds-list__stream-source-title"
+        ]
+      },
+      {
+        "token": "typography.font-weight-regular",
+        "value": "400",
+        "usage": "固定来源无序正文",
+        "appliesTo": [
+          "unordered-12",
+          "unordered-14"
+        ],
+        "properties": [
+          "font-weight"
+        ],
+        "selectors": [
+          ".ds-list[data-list-current=\"unordered\"] .ds-list__unordered-text"
+        ]
+      }
+    ],
+    "typographyDependencies": [
+      {
+        "token": "typography.h7-regular",
+        "fontSizeToken": "typography.font-size-md",
+        "fontSizeValue": "14px",
+        "fontWeightToken": "typography.font-weight-regular",
+        "fontWeightValue": "400",
+        "weightEvidence": "explicit-css",
+        "usage": "列表正文",
+        "appliesTo": [
+          "structured-data",
+          "operation-intensive",
+          "product-content",
+          "attribute-key-value",
+          "collapsible-detail"
+        ]
+      },
+      {
+        "token": "typography.h7-semibold",
+        "fontSizeToken": "typography.font-size-md",
+        "fontSizeValue": "14px",
+        "fontWeightToken": "typography.font-weight-semibold",
+        "fontWeightValue": "600",
+        "weightEvidence": "explicit-css",
+        "usage": "表头、字段标签和标题",
+        "appliesTo": [
+          "structured-data",
+          "product-content",
+          "attribute-key-value",
+          "collapsible-detail",
+          "content-stream"
+        ]
+      },
+      {
+        "token": "typography.h6-semibold",
+        "fontSizeToken": "typography.font-size-h6",
+        "fontSizeValue": "16px",
+        "fontWeightToken": "typography.font-weight-semibold",
+        "fontWeightValue": "600",
+        "weightEvidence": "explicit-css",
+        "usage": "属性键值型资料头问候语",
+        "appliesTo": [
+          "attribute-key-value"
+        ]
+      },
+      {
+        "token": "typography.h8-regular",
+        "fontSizeToken": "typography.font-size-h8",
+        "fontSizeValue": "13px",
+        "fontWeightToken": "typography.font-weight-regular",
+        "fontWeightValue": "400",
+        "weightEvidence": "explicit-css",
+        "usage": "属性键值型 Edit 文字",
+        "appliesTo": [
+          "attribute-key-value"
+        ]
+      },
+      {
+        "token": "typography.h9-regular",
+        "fontSizeToken": "typography.font-size-sm",
+        "fontSizeValue": "12px",
+        "fontWeightToken": "typography.font-weight-regular",
+        "fontWeightValue": "400",
+        "weightEvidence": "explicit-css",
+        "usage": "商品内容型型号、SKU 与 M 端仓库信息；内容信息流摘要与元信息",
+        "appliesTo": [
+          "product-content",
+          "content-stream"
+        ]
+      },
+      {
+        "token": "typography.h9-regular",
+        "fontSizeValue": "12px",
+        "fontWeightValue": "400",
+        "lineHeightValue": "20px",
+        "usage": "固定旧来源无序List12正文",
+        "appliesTo": [
+          "unordered-12"
+        ],
+        "fontSizeToken": "typography.font-size-sm",
+        "fontWeightToken": "typography.font-weight-regular",
+        "weightEvidence": "explicit-css"
+      },
+      {
+        "token": "typography.h7-regular",
+        "fontSizeValue": "14px",
+        "fontWeightValue": "400",
+        "lineHeightValue": "22px",
+        "usage": "固定旧来源无序List14正文",
+        "appliesTo": [
+          "unordered-14"
+        ],
+        "fontSizeToken": "typography.font-size-md",
+        "fontWeightToken": "typography.font-weight-regular",
+        "weightEvidence": "explicit-css"
+      }
+    ],
+    "variantSelectionRules": [
+      "稳定字段按列扫描 → structured-data。",
+      "多选、批量操作、已读/未读 → operation-intensive。",
+      "商品图、数量与金额 → product-content。",
+      "账户字段的标签—内容 → attribute-key-value。",
+      "父项摘要按需展开详情 → collapsible-detail。",
+      "标题、长摘要和元信息连续阅读 → content-stream。"
+    ],
+    "enforcementStatus": {
+      "variantSelectionRules.six-types": {
+        "enforced": false,
+        "mechanism": "契约与 Preview 人工核对"
+      },
+      "componentDependencies.preview-evidence": {
+        "enforced": true,
+        "mechanism": "scripts/check-contracts.js"
+      },
+      "mutuallyExclusiveWith.table": {
+        "enforced": false,
+        "mechanism": "无"
+      },
+      "colorDependencies.tokens-and-css-closure": {
+        "enforced": true,
+        "mechanism": "check-contracts.js + validate-tokens.js"
+      },
+      "spacingDependencies.tokens-and-css-closure": {
+        "enforced": true,
+        "mechanism": "check-contracts.js"
+      },
+      "borderDependencies.tokens-and-css-closure": {
+        "enforced": true,
+        "mechanism": "check-contracts.js"
+      },
+      "radiusDependencies.tokens-and-css-closure": {
+        "enforced": true,
+        "mechanism": "check-contracts.js"
+      },
+      "fontWeightDependencies.tokens-and-css-closure": {
+        "enforced": true,
+        "mechanism": "check-contracts.js"
+      },
+      "typographyDependencies.size-weight-pairing": {
+        "enforced": true,
+        "mechanism": "check-contracts.js"
+      }
+    },
+    "notes": "List 与 Table 为两个独立组件。结构化数据型只按用户原始 HTML 实现，状态点与 Action 不登记为 Badge/TextButton；Action 已做键盘可达的 Edit/Delete 示例。操作密集型已按第二批 PC/M 原始 HTML 实现，三个哈希 SVG 已分别映射本地 Checkbox 默认/选中图标和 icon-more，并补齐逐项/全选与四种批量操作。商品内容型 Web 端必须使用 ds-list__product-source-scroll 保留横向滑动查看完整列；截图标注位置不使用 Badge，M 端仓库使用 goods-包裹.svg，数量减/加使用 minus/plus，删除入口使用 icon-delete。属性键值型头像按用户决定使用中性灰色色块占位，仍支持选择本地图片预览。内容信息流型按已核实源码使用 CSS 分隔线；因无 URL 不虚构跳转。只有折叠详情型继续等待源码投喂。",
+    "prototypeRollout": {
+      "template": "docs/component-spec-template.html",
+      "source": "relations.variantDecisions",
+      "workflow": "existing-local-only",
+      "scope": "preserved calls; solution Stepper restriction reconciled with current MG"
+    },
+    "interactionRules": [
+      {
+        "name": "实际调用边界",
+        "rule": "先区分四列数据、批量消息、商品数量、长摘要信息流及宿主无序正文。六个既有调用各有结构约束，不能互相删改类模拟。操作和商品列表只提供已声明的本地演示交互，不含服务端持久化或结算。属性键值/折叠详情仍是MG参考；12/14无序正文沿已获准固定来源，不能冒称当前MG六类业务列表。",
+        "owner": "原契约与既有运行时"
+      },
+      {
+        "name": "父子维护",
+        "rule": "保留原依赖、共享实现和维护来源；原component:sync/watch更新调用、选型、依赖及规范页，旧页面不自动升级。",
+        "owner": "原维护入口"
+      }
+    ]
+  },
+  "searchIntents": [
+    "列表组件",
+    "账户中心列表",
+    "消息列表",
+    "购物车列表",
+    "属性列表",
+    "折叠详情列表",
+    "搜索结果列表"
+  ],
+  "history": [
+    {
+      "date": "2026-08-13",
+      "author": "Codex",
+      "change": "依据 FS《列表规范 v1.0.2603A》新增独立 List 契约，纠正将 List 与 Table 三类八形态混用的问题，并同步六类变体、依赖和响应式规则。"
+    },
+    {
+      "date": "2026-08-13",
+      "author": "Codex",
+      "change": "依据用户首批投喂的结构化数据型 PC/M 原始 HTML，校正 1146/382/975px 几何、12/20×24px 内间距、40px 列间距、#F7F7F7 表头、12px 圆角、精确投影和 M 端横向滚动；移除该型未经源码证明的 Badge、TextButton 与隐藏列推断。"
+    },
+    {
+      "date": "2026-08-13",
+      "author": "Codex",
+      "change": "依据用户第二批投喂的操作密集型 PC/M 原始 HTML，校正 1146/382px 几何、PC 三列宽度与批量操作区、M 端 20px 容器内距和 26px 正文缩进、已读/未读文字色、#F6F6F8 灰底状态、#E5E5E5/#EEEEEE 分隔线；三个引用 SVG 因资源未附暂列待补。"
+    },
+    {
+      "date": "2026-08-13",
+      "author": "Codex",
+      "change": "依据用户第三批投喂的商品内容型 PC/M 原始 HTML，校正 Web 880×474px、M 382×516px、68/72px 商品图、两行标题、32px 数量区、#EEEEEE 分隔线、#4B4B4D/#646466 文字色与删除资源位灰底状态；2 张 PNG 与 8 个 SVG 因资源未附暂列待补。"
+    },
+    {
+      "date": "2026-08-13",
+      "author": "Codex",
+      "change": "依据用户第四批投喂的属性键值型 PC/M 原始 HTML，校正 Web 1146×532px、M 382×784px、24px 面板水平内距、200px 标签宽、80px Web 列间距、M 端标签—内容纵向排列、58px 头像、#E5E5E5 分隔线和精确投影；1 张 JPG 与 2 个 SVG 因资源未附暂列待补。"
+    },
+    {
+      "date": "2026-08-13",
+      "author": "Codex",
+      "change": "依据用户第五批投喂的内容信息流型 PC/M 原始 HTML，校正 Web 1200×546px 四条内容、M 382×526px 三条内容、12px 项内与 20px 项间/元信息间距、#DEE0E3 分隔块、14px SemiBold 标题、12px Regular 摘要和元信息、Web 第二条及 M 全部摘要三行截断；0px 宽 svg_e7f98577.svg 因资源未附暂列待补。"
+    },
+    {
+      "date": "2026-08-13",
+      "author": "Codex",
+      "change": "复查本地图标库并建立哈希资源语义映射：操作密集型使用 18px Checkbox 默认/选中及 icon-more；商品数量使用 minus/plus；属性键值型使用 icon-edit/icon-arrow-right。同步缩减真正缺失的资源清单和组件/图标依赖。"
+    },
+    {
+      "date": "2026-08-13",
+      "author": "Codex",
+      "change": "为已核实 List 类型补齐可交互示例：结构化行 Edit/Delete；操作密集型逐项/全选、删除/标记已读/全部已读/全部删除及 M 端更多菜单；商品数量 1–99、总价联动和删除；属性值 Edit/Save、Enter/Escape 与本地头像预览。所有自定义控件补齐键盘和 ARIA 状态。"
+    },
+    {
+      "date": "2026-08-13",
+      "author": "Codex",
+      "change": "接入用户补充的商品资源：PC/M 商品图统一使用 20250901105611h7ydr7.jpg.webp；删除图标规范化为 icon-delete.svg 并映射 Web 默认/悬停及 M 端删除入口，同步图标清单、依赖与待补资源状态。"
+    },
+    {
+      "date": "2026-08-21",
+      "author": "Codex",
+      "change": "仓库资源映射 goods-包裹.svg、头像改为灰色色块，并启用变体级完成门禁：开放五个已核实变体，仅阻断折叠详情型。"
+    },
+    {
+      "date": "2026-08-21",
+      "author": "Codex",
+      "change": "依据用户截图纠正商品内容型：P/N 与 SKU 后方没有徽标，移除误加的 Badge DOM、样式与组件依赖，防止页面生成继续添加该元素。"
+    },
+    {
+      "date": "2026-08-21",
+      "author": "Codex",
+      "change": "为商品内容型 Web 预览增加键盘可达的横向滚动容器，窄容器内仍可查看 Price、Qty、Item Total 和删除操作，并将其写入响应式契约。"
+    },
+    {
+      "date": "2026-10-09",
+      "author": "Codex",
+      "change": "统一规范维护质量标准：登记真实实现与选型规则入口、源变更重新验收、父子影响检查及历史页面隔离；不推断可编辑槽位或视觉批准。"
+    }
+  ],
+  "isComplete": false,
+  "pendingParts": [
+    "折叠详情型 PC/M 源码"
+  ],
+  "createdAt": "2026-08-13T00:00:00Z",
+  "updatedAt": "2026-11-15",
+  "qualityProfile": {
+    "schemaVersion": "1.0.0",
+    "standard": "docs/component-quality-standard.md",
+    "implementation": "components/variants/list.html",
+    "selection": {
+      "mappingSource": "components/selection-mvp-policy.json",
+      "mappingPointer": "components.list.variantDecisionTypes",
+      "rulesPointer": "relations.variantDecisions"
+    },
+    "maintenance": {
+      "authority": "contract-preview-runtime-token-icon",
+      "generatedOnly": [
+        "preview-reference-tables",
+        "component-index",
+        "selection-catalog",
+        "design-reading-view",
+        "ai-reference"
+      ],
+      "changePolicy": "记录来源差异、兼容性与受影响父子组件；源文件变化后旧工程验收失效。",
+      "historicalPages": "不自动升级；新页面锁定本地组件运行资源版本。"
+    },
+    "acceptance": {
+      "report": "components/quality/report.json",
+      "proof": "components/quality/acceptance.json",
+      "declarationIsNotProof": true
+    }
+  },
+  "editable": [
+    "items",
+    "greeting",
+    "actionCallback"
+  ],
+  "integration": {
+    "styles": [
+      "components/tokens.css",
+      "components/components.css",
+      "components/checkbox-current.css",
+      "components/button-current.css",
+      "components/button-runtime-current.css",
+      "components/list-operations-current.css",
+      "components/icon-button-current.css",
+      "components/input-number-current.css",
+      "components/list-unordered-current.css",
+      "components/list-dialog-cart.css",
+      "components/list-links-current.css",
+      "components/list-profile-current.css"
+    ],
+    "scripts": [
+      "components/checkbox-current.js",
+      "components/input-number-current.js",
+      "components/list-current.js",
+      "components/list-operations-current.js",
+      "components/list-products-current.js",
+      "components/list-profile-current.js"
+    ],
+    "fontStylesheets": [
+      "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+    ],
+    "fontFallback": "Open Sans stack; actual browser proof pending."
+  },
+  "aiContract": {
+    "schemaVersion": "1.0.0",
+    "rootTag": "div",
+    "scope": "seven-finite-PC-list-calls-and-source-locked-private-parts",
+    "supported": [
+      "structured-data",
+      "content-stream",
+      "unordered-12",
+      "unordered-14",
+      "operation-intensive",
+      "product-content",
+      "attribute-key-value"
+    ],
+    "unsupported": [
+      "collapsible-detail",
+      "mobile",
+      "localized-action-routing",
+      "dynamic-insertion-api",
+      "business-persistence"
+    ],
+    "reviewStatus": {
+      "engineering": "pending",
+      "visual": "pending",
+      "familyCoverage": "partial"
+    },
+    "previewAssets": [
+      "components/preview/reference-live.js",
+      "components/preview/list-legacy-adapter.js",
+      "components/sources/list/current-mother-instance-tree-review-1015.json"
+    ],
+    "selectionPolicy": "按结构化数据、操作密集、商品内容、资料属性或信息流区分；属性键值PC已提供照片/认证/编辑意图，实际保存归宿主。12/14无序正文沿原获准来源；IconCard蓝色链接是限宿主私有覆盖，不是通用母组件变体。折叠详情仍缺实际源码，不借FAQ替代。",
+    "identity": {
+      "rule": "Full desktop div root, authored columns or article/meta/tag hierarchy. No initialized role/tabindex/contentEditable/data-list-interactive; action literals Edit/Delete are runtime routing keys. Structured canonical has data-list-current=structured; other generated state remains forbidden. 无序正文列表限定div.ds-list.ds-list--unordered-12或-14、data-list-current=unordered和data-list-source=legacy-fixed；圆点/正文逐条保留。",
+      "labelRule": "items replaces visible data and count within the existing complete structures; preserve action semantics, status modifier and stream separators."
+    },
+    "locked": [
+      "Actual four-column or article structure",
+      "Edit/Delete action routing literals",
+      "Status-dot and stream-clamp classes",
+      "Marker-only list-current.js and shared CSS",
+      "No backend, callback or invented navigation"
+    ],
+    "behavior": {
+      "structured": "Marker-only current runtime turns existing Edit/Delete spans into keyboard controls. Enter/Save commits local text; Escape restores original and announces cancellation. Composition Enter does not save. Delete removes only its own row. No request or custom persistence event.",
+      "initialization": "Document and root guards prevent duplicate loading; only marked structured roots initialize. Legacy Preview adapter preserves unmarked examples, is excluded from AI runtime. No dynamic insertion API.",
+      "announcements": "Root-scoped polite live region and one replaceable delayed timer. Disabled or hidden control/ancestor suspends actions, cancels current edit to original, and removes its tabstop; re-enable restores access.",
+      "stream": "Read-only article content. Source-less URLs and actions are absent.",
+      "dependencies": "Excluded operation family current PC Checkbox/Button and product family3 current PC InputNumber are real atoms; M historical unchanged. Product delete confirmed IconButton plain-m; operation hotspots and finite AI contracts remain pending.",
+      "composition": "The existing structured editor tracks compositionstart/end per edit session. Enter/Escape and keyboard Save do not commit or cancel while composition is active, even without isComposing. End does not save automatically. Finish removes composition listeners; hidden/disabled cancellation restores the original and a later edit starts fresh. Native browser contentEditable/IME behavior remains pending.",
+      "operationAtoms": "PC有限调用保留原生Checkbox lg及全选标题省略适配、Button outline-black/XL；宿主负责全选/半选和本地读/删动作。M及后台持久化不在此范围。",
+      "productAtoms": "PC有限调用保留InputNumber outline-sm、IconButton plain-m及真实商品行；数量变更/blur由原子归一化后更新本地总价，删除仅作用本行。无动态插入或后台提交。",
+      "unordered": "只读原子；无操作、链接、选中、编辑、初始化或业务回调。12px首行圆点y8，14px首行y9；长文圆点跟随首行，不按整段高度居中。",
+      "finiteNewCalls": "PC操作型和商品型从原有真实示例提取，使用当前Checkbox/Button/InputNumber/IconButton与其原运行脚本；默认内容与受控条目编辑，操作仅本地，不增加后台接口。"
+    },
+    "evidence": {
+      "localImplementation": "components/variants/list.html",
+      "comparison": "components/sources/list/local-structure-review.json",
+      "specificationReview": "components/sources/list/native-operation-review-1011.json",
+      "unordered12FixedSource": "components/sources/list/card-unordered12-fixed-source-1014.json",
+      "unordered14FixedSource": "components/sources/list/card-unordered14-fixed-source-1014.json",
+      "currentMgReview": "components/sources/form-stepper-list-mg-20261115/list-review.json",
+      "dialogPartSource": "components/sources/dialog-mg-20261115/review.json",
+      "capabilityCompletion": "components/sources/capability-completion-20261115/first.json",
+      "listOptionSource": "components/sources/list-option-mg-20261115/review.json"
+    },
+    "variants": {
+      "structured-data": {
+        "purpose": "four-column-local-editable-records",
+        "exampleSelector": "[data-ai-example=\"ai-list-structured-data\"]",
+        "allowedEdits": [
+          "items"
+        ],
+        "slots": {
+          "items": {
+            "selector": ":scope",
+            "mode": "structured-content",
+            "required": true,
+            "preserve": [
+              "div.ds-list__head",
+              "div.ds-list__row",
+              "span.ds-list__status",
+              "span.ds-list__action"
+            ],
+            "rule": "Keep complete canonical structure; text and item count only. No new navigation, controls or initialized state. Structured action labels remain Edit/Delete."
+          }
+        },
+        "runtime": {
+          "styles": [
+            "components/tokens.css",
+            "components/components.css",
+            "components/checkbox-current.css",
+            "components/button-current.css",
+            "components/button-runtime-current.css",
+            "components/list-operations-current.css",
+            "components/icon-button-current.css",
+            "components/input-number-current.css",
+            "components/list-unordered-current.css",
+            "components/list-dialog-cart.css"
+          ],
+          "scripts": [
+            "components/checkbox-current.js",
+            "components/input-number-current.js",
+            "components/list-current.js",
+            "components/list-operations-current.js",
+            "components/list-products-current.js"
+          ]
+        }
+      },
+      "content-stream": {
+        "purpose": "read-only-title-summary-meta-stream",
+        "exampleSelector": "[data-ai-example=\"ai-list-content-stream\"]",
+        "allowedEdits": [
+          "items"
+        ],
+        "slots": {
+          "items": {
+            "selector": ":scope",
+            "mode": "structured-content",
+            "required": true,
+            "preserve": [
+              "article.ds-list__stream-source-item",
+              "h3.ds-list__stream-source-title",
+              "p.ds-list__stream-source-summary",
+              "div.ds-list__stream-source-meta",
+              "time"
+            ],
+            "rule": "Keep complete canonical structure; text and item count only. No new navigation, controls or initialized state. Structured action labels remain Edit/Delete."
+          }
+        },
+        "runtime": {
+          "styles": [
+            "components/tokens.css",
+            "components/components.css",
+            "components/checkbox-current.css",
+            "components/button-current.css",
+            "components/button-runtime-current.css",
+            "components/list-operations-current.css",
+            "components/icon-button-current.css",
+            "components/input-number-current.css",
+            "components/list-unordered-current.css",
+            "components/list-dialog-cart.css"
+          ],
+          "scripts": [
+            "components/checkbox-current.js",
+            "components/input-number-current.js",
+            "components/list-current.js",
+            "components/list-operations-current.js",
+            "components/list-products-current.js"
+          ]
+        }
+      },
+      "unordered-12": {
+        "purpose": "card-read-only-unordered-12-fixed-source",
+        "exampleSelector": "[data-ai-example=\"ai-list-unordered-12\"]",
+        "allowedEdits": [
+          "items"
+        ],
+        "slots": {
+          "items": {
+            "selector": ":scope",
+            "mode": "structured-content",
+            "required": true,
+            "preserve": [
+              "div.ds-list__unordered-item",
+              "span.ds-list__unordered-dot",
+              "p.ds-list__unordered-text"
+            ],
+            "rule": "保持每条圆点和正文结构；只替换条目数量/原文。没有链接、状态、编辑或业务事件。原件空白尾槽不编造条目。"
+          }
+        },
+        "runtime": {
+          "styles": [
+            "components/tokens.css",
+            "components/components.css",
+            "components/checkbox-current.css",
+            "components/button-current.css",
+            "components/button-runtime-current.css",
+            "components/list-operations-current.css",
+            "components/icon-button-current.css",
+            "components/input-number-current.css",
+            "components/list-unordered-current.css",
+            "components/list-dialog-cart.css"
+          ],
+          "scripts": [
+            "components/checkbox-current.js",
+            "components/input-number-current.js",
+            "components/list-current.js",
+            "components/list-operations-current.js",
+            "components/list-products-current.js"
+          ]
+        }
+      },
+      "unordered-14": {
+        "purpose": "card-read-only-unordered-14-fixed-source",
+        "exampleSelector": "[data-ai-example=\"ai-list-unordered-14\"]",
+        "allowedEdits": [
+          "items"
+        ],
+        "slots": {
+          "items": {
+            "selector": ":scope",
+            "mode": "structured-content",
+            "required": true,
+            "preserve": [
+              "div.ds-list__unordered-item",
+              "span.ds-list__unordered-dot",
+              "p.ds-list__unordered-text"
+            ],
+            "rule": "保持每条圆点和正文结构；只替换条目数量/原文。没有链接、状态、编辑或业务事件。原件空白尾槽不编造条目。"
+          }
+        },
+        "runtime": {
+          "styles": [
+            "components/tokens.css",
+            "components/components.css",
+            "components/checkbox-current.css",
+            "components/button-current.css",
+            "components/button-runtime-current.css",
+            "components/list-operations-current.css",
+            "components/icon-button-current.css",
+            "components/input-number-current.css",
+            "components/list-unordered-current.css",
+            "components/list-dialog-cart.css"
+          ],
+          "scripts": [
+            "components/checkbox-current.js",
+            "components/input-number-current.js",
+            "components/list-current.js",
+            "components/list-operations-current.js",
+            "components/list-products-current.js"
+          ]
+        }
+      },
+      "operation-intensive": {
+        "purpose": "existing-native-PC-operation-intensive",
+        "exampleSelector": "[data-ai-example=\"ai-list-operations-pc\"]",
+        "allowedEdits": [
+          "items"
+        ],
+        "slots": {
+          "items": {
+            "selector": ":scope",
+            "mode": "structured-content",
+            "required": true,
+            "preserve": [
+              "div.ds-list__operations-toolbar",
+              "label.ds-checkbox",
+              "button.ds-btn",
+              "div.ds-list__operation-row"
+            ],
+            "rule": "Preserve exact native anatomy, atomic controls, action routing keys and states; edit source content and complete row count only. Product media, price and quantity must stay consistent; no backend behavior."
+          }
+        },
+        "runtime": {
+          "styles": [
+            "components/tokens.css",
+            "components/components.css",
+            "components/checkbox-current.css",
+            "components/button-current.css",
+            "components/button-runtime-current.css",
+            "components/list-operations-current.css",
+            "components/icon-button-current.css",
+            "components/input-number-current.css",
+            "components/list-unordered-current.css",
+            "components/list-dialog-cart.css"
+          ],
+          "scripts": [
+            "components/checkbox-current.js",
+            "components/input-number-current.js",
+            "components/list-current.js",
+            "components/list-operations-current.js",
+            "components/list-products-current.js"
+          ]
+        }
+      },
+      "product-content": {
+        "purpose": "existing-native-PC-product-content",
+        "exampleSelector": "[data-ai-example=\"ai-list-products-pc\"]",
+        "allowedEdits": [
+          "items"
+        ],
+        "slots": {
+          "items": {
+            "selector": ":scope",
+            "mode": "structured-content",
+            "required": true,
+            "preserve": [
+              "div.ds-list__product-source-head",
+              "div.ds-list__product-source-row",
+              "div.ds-input-number",
+              "button.ds-icon-btn"
+            ],
+            "rule": "Preserve exact native anatomy, atomic controls, action routing keys and states; edit source content and complete row count only. Product media, price and quantity must stay consistent; no backend behavior."
+          }
+        },
+        "runtime": {
+          "styles": [
+            "components/tokens.css",
+            "components/components.css",
+            "components/checkbox-current.css",
+            "components/button-current.css",
+            "components/button-runtime-current.css",
+            "components/list-operations-current.css",
+            "components/icon-button-current.css",
+            "components/input-number-current.css",
+            "components/list-unordered-current.css",
+            "components/list-dialog-cart.css"
+          ],
+          "scripts": [
+            "components/checkbox-current.js",
+            "components/input-number-current.js",
+            "components/list-current.js",
+            "components/list-operations-current.js",
+            "components/list-products-current.js"
+          ]
+        }
+      },
+      "attribute-key-value": {
+        "purpose": "source-pc-profile-values-and-explicit-action-intent",
+        "exampleSelector": "[data-ai-example=\"ai-list-key-value-current\"]",
+        "allowedEdits": [
+          "greeting",
+          "items",
+          "actionCallback"
+        ],
+        "slots": {
+          "greeting": {
+            "selector": ".ds-list__key-value-greeting",
+            "mode": "text",
+            "required": true
+          },
+          "items": {
+            "selector": ".ds-list__key-value-fields",
+            "mode": "structured-content",
+            "required": true,
+            "preserve": [
+              "div.ds-list__key-value-row",
+              "p.ds-list__key-value-label",
+              "p.ds-list__key-value-content",
+              "button.ds-list__key-value-edit"
+            ],
+            "rule": "1..12 complete source rows; preserve owned edit button and actual icon; content text only. No invented upload/save or cloned third-party widget."
+          }
+        },
+        "bindings": {
+          "actionCallback": {
+            "mode": "event-handler",
+            "target": "root",
+            "event": "ds:list-profile-action"
+          }
+        }
+      }
+    }
+  },
+  "parts": {
+    "unorderedFixedSource": {
+      "isComplete": false,
+      "sourceAuthority": "用户允许的旧库固定原件143880524770062；不称当前有效库最新版",
+      "sizes": [
+        12,
+        14
+      ],
+      "engineering": "通过限定12/14原子与5个Card正式宿主；母组件当前路线未核验，不改变固定旧库来源身份",
+      "visual": "pending",
+      "fullFamilyAcceptance": false
+    },
+    "currentMotherTreeReview1015": {
+      "isComplete": false,
+      "source": "components/sources/list/current-mother-instance-tree-review-1015.json",
+      "closed": [
+        "母体返回内部树三行Gray3圆点+空尾槽",
+        "IconCard实例返回三行Blue无圆点，与母体样式/结构覆盖差异已分开"
+      ],
+      "remaining": [
+        "原生当前可维护主组件定位",
+        "宿主实际几何与原子覆盖处理",
+        "实际视觉"
+      ],
+      "noRenderChange": true
+    },
+    "dialog-cart-products": {
+      "isComplete": true,
+      "pendingParts": [],
+      "colorVariants": [
+        "product-content"
+      ],
+      "scope": "MG750 cart Dialog List-owned row with real InputNumber/outline-sm, no delete action; existing product runtime calculates total.",
+      "source": "components/sources/dialog-mg-20261115/review.json",
+      "selector": "[data-list-part=\"dialog-cart-products\"]",
+      "styles": [
+        "components/list-dialog-cart.css"
+      ],
+      "previewSelector": "[data-list-part=\"dialog-cart-products\"]",
+      "sourcePreview": "components/sources/list/dialog-cart-products-current.html",
+      "requiredClasses": [
+        "ds-list",
+        "ds-input-number"
+      ],
+      "allowedHosts": [
+        {
+          "component": "Dialog",
+          "variant": "cart"
+        }
+      ]
+    },
+    "icon-card-links-12": {
+      "isComplete": true,
+      "pendingParts": [],
+      "colorVariants": [
+        "unordered-12"
+      ],
+      "scope": "IconCard current-file3:084742 nested List12 host override only; not standalone current List mother admission.",
+      "source": "components/sources/card-carousel-mg-20261114/card-icon-card.txt",
+      "previewSelector": "[data-list-part=\"icon-card-links-12\"]",
+      "sourcePreview": "components/sources/list/icon-card-links-12-current.html",
+      "requiredClasses": [
+        "ds-list",
+        "ds-list__unordered-item",
+        "ds-list__unordered-link"
+      ],
+      "allowedHosts": [
+        {
+          "component": "IconCard",
+          "variant": "left.jump-type"
+        }
+      ]
+    }
+  }
+}

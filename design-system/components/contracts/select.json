@@ -1,0 +1,2210 @@
+{
+  "id": "comp_select_001",
+  "name": "Select",
+  "chineseName": "选择器",
+  "description": "Select v2.1.2608A PC 组件，保留单选、多选、搜索筛选与多列分组九种形态，并补齐触发器状态、组合与确认交互。",
+  "category": "数据录入 Data Entry",
+  "usageGuidelines": "用于在当前表单或筛选流程中从候选集合选择值；Dropdown 保留动作菜单语义，不作为表单值选择器。",
+  "variants": [
+    {
+      "name": "single-basic",
+      "chineseName": "常规单选",
+      "whenToUse": "表单预设值单选，选项>5，无需选框或勾标记。",
+      "cssClass": "ds-select--single-basic",
+      "isComplete": true,
+      "pendingParts": [],
+      "requiredChildren": [
+        ".ds-select__trigger",
+        ".ds-select__panel",
+        ".ds-select__list",
+        ".ds-select__option-label",
+        ".ds-select__arrow[src=\"../icons/icon-select-down.svg\"]"
+      ],
+      "whenNotToUse": "需要持续显示单选框或勾选标记。",
+      "selectionDecisionType": "常规单选"
+    },
+    {
+      "name": "single-radio",
+      "chineseName": "带选框单选",
+      "whenToUse": "表单预设值单选，选项>5，以14px单选图标标识唯一选择。",
+      "cssClass": "ds-select--single-radio",
+      "isComplete": true,
+      "pendingParts": [],
+      "requiredChildren": [
+        ".ds-select__trigger",
+        ".ds-select__panel",
+        ".ds-select__list",
+        ".ds-select__option-label",
+        ".ds-select__arrow",
+        ".ds-select__radio"
+      ],
+      "whenNotToUse": "多选场景。",
+      "selectionDecisionType": "带选框单选"
+    },
+    {
+      "name": "single-check",
+      "chineseName": "带勾单选",
+      "whenToUse": "表单预设值单选，选项>5，以8px行尾勾标识唯一选择。",
+      "cssClass": "ds-select--single-check",
+      "isComplete": true,
+      "pendingParts": [],
+      "requiredChildren": [
+        ".ds-select__trigger",
+        ".ds-select__panel",
+        ".ds-select__list",
+        ".ds-select__option-label",
+        ".ds-select__arrow",
+        ".ds-select__check"
+      ],
+      "whenNotToUse": "需要展示未选控件边界。",
+      "selectionDecisionType": "带勾单选"
+    },
+    {
+      "name": "multi-basic",
+      "chineseName": "常规多选",
+      "whenToUse": "表单预设值多选，选项>5，以行底色及标签回写状态。",
+      "cssClass": "ds-select--multi-basic",
+      "isComplete": true,
+      "pendingParts": [],
+      "requiredChildren": [
+        ".ds-select__trigger",
+        ".ds-select__panel",
+        ".ds-select__list",
+        ".ds-select__option-label",
+        ".ds-select__arrow",
+        ".ds-select__control",
+        ".ds-select__tags"
+      ],
+      "whenNotToUse": "必须逐项显示复选框。",
+      "selectionDecisionType": "常规多选"
+    },
+    {
+      "name": "multi-checkbox",
+      "chineseName": "带选框多选",
+      "whenToUse": "表单预设值多选，选项>5，逐项显示复选框。",
+      "cssClass": "ds-select--multi-checkbox",
+      "isComplete": true,
+      "pendingParts": [],
+      "requiredChildren": [
+        ".ds-select__trigger",
+        ".ds-select__panel",
+        ".ds-select__list",
+        ".ds-select__option-label",
+        ".ds-select__arrow",
+        ".ds-checkbox--sm",
+        ".ds-checkbox__box",
+        ".ds-checkbox__label"
+      ],
+      "whenNotToUse": "唯一选择。",
+      "selectionDecisionType": "带选框多选"
+    },
+    {
+      "name": "phone-search",
+      "chineseName": "区号选择",
+      "whenToUse": "国家或地区区号搜索单选，候选>5。",
+      "cssClass": "ds-select--phone-search",
+      "isComplete": true,
+      "pendingParts": [],
+      "requiredChildren": [
+        ".ds-select__trigger",
+        ".ds-select__panel",
+        ".ds-select__list",
+        ".ds-select__option-label",
+        ".ds-select__arrow",
+        ".ds-select__search-input"
+      ],
+      "whenNotToUse": "普通文本值。",
+      "selectionDecisionType": "区号选择"
+    },
+    {
+      "name": "search",
+      "chineseName": "搜索选择",
+      "whenToUse": "预设值列表>5项，需要关键词过滤。",
+      "cssClass": "ds-select--search",
+      "isComplete": true,
+      "pendingParts": [],
+      "requiredChildren": [
+        ".ds-select__trigger",
+        ".ds-select__panel",
+        ".ds-select__list",
+        ".ds-select__option-label",
+        ".ds-select__arrow",
+        ".ds-select__search-input"
+      ],
+      "whenNotToUse": "短列表无需搜索。",
+      "selectionDecisionType": "搜索选择"
+    },
+    {
+      "name": "two-column",
+      "chineseName": "双列分组",
+      "whenToUse": "预设值多选>5项，需要分组双列展示；宽度按宿主。",
+      "cssClass": "ds-select--two-column",
+      "isComplete": true,
+      "pendingParts": [],
+      "requiredChildren": [
+        ".ds-select__trigger",
+        ".ds-select__panel",
+        ".ds-select__list",
+        ".ds-select__option-label",
+        ".ds-select__arrow",
+        ".ds-checkbox--sm",
+        ".ds-checkbox__box",
+        ".ds-select__group-title",
+        ".ds-checkbox__label"
+      ],
+      "whenNotToUse": "单列即可完整阅读。",
+      "selectionDecisionType": "双列分组"
+    },
+    {
+      "name": "grouped-combination",
+      "chineseName": "双列与组合分组",
+      "whenToUse": "预设值多选>5项，需要分组及Cancel/OK确认；宽度按宿主。",
+      "cssClass": "ds-select--grouped-combination",
+      "isComplete": true,
+      "pendingParts": [],
+      "requiredChildren": [
+        ".ds-select__trigger",
+        ".ds-select__panel",
+        ".ds-select__list",
+        ".ds-select__option-label",
+        ".ds-select__arrow",
+        ".ds-select__footer",
+        "[data-select-cancel]",
+        "[data-select-close]",
+        ".ds-checkbox--sm",
+        ".ds-checkbox__box",
+        ".ds-select__group-title",
+        ".ds-checkbox__label"
+      ],
+      "whenNotToUse": "选择后立即提交。",
+      "selectionDecisionType": "双列与组合分组"
+    }
+  ],
+  "sizeModifiers": {
+    "default": "触发框 42px",
+    "compact": "触发框 30px",
+    "filterSmall": "筛选触发器 32px",
+    "filter": "筛选触发器 36px",
+    "filterLarge": "筛选触发器 40px"
+  },
+  "states": [
+    {
+      "name": "closed",
+      "chineseName": "收起",
+      "styleOverrides": {
+        "trigger": "aria-expanded=false",
+        "panel": "hidden"
+      }
+    },
+    {
+      "name": "hover",
+      "chineseName": "悬停",
+      "styleOverrides": {
+        "background": "color.gray-7"
+      }
+    },
+    {
+      "name": "open",
+      "chineseName": "展开",
+      "styleOverrides": {
+        "trigger": "aria-expanded=true",
+        "panel": "visible",
+        "arrow": "rotate(180deg)"
+      }
+    },
+    {
+      "name": "selected",
+      "chineseName": "已选择",
+      "styleOverrides": {
+        "option": "aria-selected=true",
+        "trigger": "同步值或数量"
+      }
+    },
+    {
+      "name": "disabled",
+      "chineseName": "禁用",
+      "styleOverrides": {
+        "trigger": "disabled",
+        "option": "aria-disabled=true"
+      }
+    }
+  ],
+  "contentSlots": {
+    "trigger": {
+      "required": true,
+      "description": "button[role=combobox] 触发器"
+    },
+    "panel": {
+      "required": true,
+      "description": "与触发器 aria-controls 绑定的选项浮层"
+    },
+    "search": {
+      "required": false,
+      "description": "phone-search 与 search 的搜索输入"
+    },
+    "options": {
+      "required": true,
+      "description": "role=option 选项集合"
+    },
+    "leadingIcon": {
+      "required": false,
+      "description": "触发器前置 16px 图标，使用 ds-select__leading-icon"
+    },
+    "selectedTags": {
+      "required": false,
+      "description": "多选结果复用 Tag(selectable)，支持单项、折叠项和全部清除"
+    },
+    "overflowTooltip": {
+      "required": false,
+      "description": "折叠标签 hover/focus 时展示隐藏选项名称"
+    },
+    "footer": {
+      "required": false,
+      "description": "组合分组面板的 Cancel/OK 操作区"
+    }
+  },
+  "relations": {
+    "variantDecisionsDescription": "按原规范的具体场景逐项判断，先排除禁用条件，再在候选中核对宿主、内容与调用范围；资料不足保留待确认。设计参考不开放调用。展示与本地AI索引使用同一份规则。",
+    "variantDecisions": [
+      {
+        "type": "常规单选",
+        "className": "ds-select--single-basic",
+        "whenToUse": "表单预设值单选，选项>5，无需选框或勾标记。",
+        "whenNotToUse": "需要持续显示单选框或勾选标记。",
+        "nestedComponents": [],
+        "status": "当前调用资格与限制读取同版catalog；原来源核对记录保留，视觉确认由设计负责人独立维护。",
+        "variant": "single-basic",
+        "selectionCases": [
+          {
+            "id": "select.single-basic.use",
+            "kind": "use",
+            "condition": "表单预设值单选，选项>5，无需选框或勾标记。",
+            "result": "按登记接口调用。",
+            "targetVariant": "single-basic"
+          },
+          {
+            "id": "select.single-basic.avoid",
+            "kind": "avoid",
+            "condition": "需要持续显示单选框或勾选标记。",
+            "result": "不用此变体。",
+            "targetVariant": "single-basic"
+          }
+        ],
+        "evidence": {
+          "review": "components/sources/foundation-mg-20261114/select-review.json",
+          "nodes": [
+            "3:286872",
+            "3:286878",
+            "3:286831"
+          ]
+        }
+      },
+      {
+        "type": "带选框单选",
+        "className": "ds-select--single-radio",
+        "whenToUse": "表单预设值单选，选项>5，以14px单选图标标识唯一选择。",
+        "whenNotToUse": "多选场景。",
+        "nestedComponents": [],
+        "status": "当前调用资格与限制读取同版catalog；原来源核对记录保留，视觉确认由设计负责人独立维护。",
+        "variant": "single-radio",
+        "selectionCases": [
+          {
+            "id": "select.single-radio.use",
+            "kind": "use",
+            "condition": "表单预设值单选，选项>5，以14px单选图标标识唯一选择。",
+            "result": "按登记接口调用。",
+            "targetVariant": "single-radio"
+          },
+          {
+            "id": "select.single-radio.avoid",
+            "kind": "avoid",
+            "condition": "多选场景。",
+            "result": "不用此变体。",
+            "targetVariant": "single-radio"
+          }
+        ],
+        "evidence": {
+          "review": "components/sources/foundation-mg-20261114/select-review.json",
+          "nodes": [
+            "3:286872",
+            "3:286878",
+            "3:286831"
+          ]
+        }
+      },
+      {
+        "type": "带勾单选",
+        "className": "ds-select--single-check",
+        "whenToUse": "表单预设值单选，选项>5，以8px行尾勾标识唯一选择。",
+        "whenNotToUse": "需要展示未选控件边界。",
+        "nestedComponents": [],
+        "status": "当前调用资格与限制读取同版catalog；原来源核对记录保留，视觉确认由设计负责人独立维护。",
+        "variant": "single-check",
+        "selectionCases": [
+          {
+            "id": "select.single-check.use",
+            "kind": "use",
+            "condition": "表单预设值单选，选项>5，以8px行尾勾标识唯一选择。",
+            "result": "按登记接口调用。",
+            "targetVariant": "single-check"
+          },
+          {
+            "id": "select.single-check.avoid",
+            "kind": "avoid",
+            "condition": "需要展示未选控件边界。",
+            "result": "不用此变体。",
+            "targetVariant": "single-check"
+          }
+        ],
+        "evidence": {
+          "review": "components/sources/foundation-mg-20261114/select-review.json",
+          "nodes": [
+            "3:286872",
+            "3:286878",
+            "3:286831"
+          ]
+        }
+      },
+      {
+        "type": "常规多选",
+        "className": "ds-select--multi-basic",
+        "whenToUse": "表单预设值多选，选项>5，以行底色及标签回写状态。",
+        "whenNotToUse": "必须逐项显示复选框。",
+        "nestedComponents": [],
+        "status": "当前调用资格与限制读取同版catalog；原来源核对记录保留，视觉确认由设计负责人独立维护。",
+        "variant": "multi-basic",
+        "selectionCases": [
+          {
+            "id": "select.multi-basic.use",
+            "kind": "use",
+            "condition": "表单预设值多选，选项>5，以行底色及标签回写状态。",
+            "result": "按登记接口调用。",
+            "targetVariant": "multi-basic"
+          },
+          {
+            "id": "select.multi-basic.avoid",
+            "kind": "avoid",
+            "condition": "必须逐项显示复选框。",
+            "result": "不用此变体。",
+            "targetVariant": "multi-basic"
+          }
+        ],
+        "evidence": {
+          "review": "components/sources/foundation-mg-20261114/select-review.json",
+          "nodes": [
+            "3:286872",
+            "3:286878",
+            "3:286831"
+          ]
+        }
+      },
+      {
+        "type": "带选框多选",
+        "className": "ds-select--multi-checkbox",
+        "whenToUse": "表单预设值多选，选项>5，逐项显示复选框。",
+        "whenNotToUse": "唯一选择。",
+        "nestedComponents": [
+          {
+            "component": "Checkbox",
+            "label": "Checkbox（sm）",
+            "href": "checkbox.html"
+          }
+        ],
+        "status": "当前调用资格与限制读取同版catalog；原来源核对记录保留，视觉确认由设计负责人独立维护。",
+        "variant": "multi-checkbox",
+        "selectionCases": [
+          {
+            "id": "select.multi-checkbox.use",
+            "kind": "use",
+            "condition": "表单预设值多选，选项>5，逐项显示复选框。",
+            "result": "按登记接口调用。",
+            "targetVariant": "multi-checkbox"
+          },
+          {
+            "id": "select.multi-checkbox.avoid",
+            "kind": "avoid",
+            "condition": "唯一选择。",
+            "result": "不用此变体。",
+            "targetVariant": "multi-checkbox"
+          }
+        ],
+        "evidence": {
+          "review": "components/sources/foundation-mg-20261114/select-review.json",
+          "nodes": [
+            "3:286872",
+            "3:286878",
+            "3:286831"
+          ]
+        }
+      },
+      {
+        "type": "区号选择",
+        "className": "ds-select--phone-search",
+        "whenToUse": "国家或地区区号搜索单选，候选>5。",
+        "whenNotToUse": "普通文本值。",
+        "nestedComponents": [],
+        "status": "当前调用资格与限制读取同版catalog；原来源核对记录保留，视觉确认由设计负责人独立维护。",
+        "variant": "phone-search",
+        "selectionCases": [
+          {
+            "id": "select.phone-search.use",
+            "kind": "use",
+            "condition": "国家或地区区号搜索单选，候选>5。",
+            "result": "按登记接口调用。",
+            "targetVariant": "phone-search"
+          },
+          {
+            "id": "select.phone-search.avoid",
+            "kind": "avoid",
+            "condition": "普通文本值。",
+            "result": "不用此变体。",
+            "targetVariant": "phone-search"
+          }
+        ],
+        "evidence": {
+          "review": "components/sources/foundation-mg-20261114/select-review.json",
+          "nodes": [
+            "3:286872",
+            "3:286878",
+            "3:286831"
+          ]
+        }
+      },
+      {
+        "type": "搜索选择",
+        "className": "ds-select--search",
+        "whenToUse": "预设值列表>5项，需要关键词过滤。",
+        "whenNotToUse": "短列表无需搜索。",
+        "nestedComponents": [],
+        "status": "当前调用资格与限制读取同版catalog；原来源核对记录保留，视觉确认由设计负责人独立维护。",
+        "variant": "search",
+        "selectionCases": [
+          {
+            "id": "select.search.use",
+            "kind": "use",
+            "condition": "预设值列表>5项，需要关键词过滤。",
+            "result": "按登记接口调用。",
+            "targetVariant": "search"
+          },
+          {
+            "id": "select.search.avoid",
+            "kind": "avoid",
+            "condition": "短列表无需搜索。",
+            "result": "不用此变体。",
+            "targetVariant": "search"
+          }
+        ],
+        "evidence": {
+          "review": "components/sources/foundation-mg-20261114/select-review.json",
+          "nodes": [
+            "3:286872",
+            "3:286878",
+            "3:286831"
+          ]
+        }
+      },
+      {
+        "type": "双列分组",
+        "className": "ds-select--two-column",
+        "whenToUse": "预设值多选>5项，需要分组双列展示；宽度按宿主。",
+        "whenNotToUse": "单列即可完整阅读。",
+        "nestedComponents": [
+          {
+            "component": "Checkbox",
+            "label": "Checkbox（sm）",
+            "href": "checkbox.html"
+          }
+        ],
+        "status": "当前调用资格与限制读取同版catalog；原来源核对记录保留，视觉确认由设计负责人独立维护。",
+        "variant": "two-column",
+        "selectionCases": [
+          {
+            "id": "select.two-column.use",
+            "kind": "use",
+            "condition": "预设值多选>5项，需要分组双列展示；宽度按宿主。",
+            "result": "按登记接口调用。",
+            "targetVariant": "two-column"
+          },
+          {
+            "id": "select.two-column.avoid",
+            "kind": "avoid",
+            "condition": "单列即可完整阅读。",
+            "result": "不用此变体。",
+            "targetVariant": "two-column"
+          }
+        ],
+        "evidence": {
+          "review": "components/sources/foundation-mg-20261114/select-review.json",
+          "nodes": [
+            "3:286872",
+            "3:286878",
+            "3:286831"
+          ]
+        }
+      },
+      {
+        "type": "双列与组合分组",
+        "className": "ds-select--grouped-combination",
+        "whenToUse": "预设值多选>5项，需要分组及Cancel/OK确认；宽度按宿主。",
+        "whenNotToUse": "选择后立即提交。",
+        "nestedComponents": [
+          {
+            "component": "Checkbox",
+            "label": "Checkbox（sm）",
+            "href": "checkbox.html"
+          },
+          {
+            "component": "Button",
+            "href": "button.html"
+          }
+        ],
+        "status": "当前调用资格与限制读取同版catalog；原来源核对记录保留，视觉确认由设计负责人独立维护。",
+        "variant": "grouped-combination",
+        "selectionCases": [
+          {
+            "id": "select.grouped-combination.use",
+            "kind": "use",
+            "condition": "预设值多选>5项，需要分组及Cancel/OK确认；宽度按宿主。",
+            "result": "按登记接口调用。",
+            "targetVariant": "grouped-combination"
+          },
+          {
+            "id": "select.grouped-combination.avoid",
+            "kind": "avoid",
+            "condition": "选择后立即提交。",
+            "result": "不用此变体。",
+            "targetVariant": "grouped-combination"
+          }
+        ],
+        "evidence": {
+          "review": "components/sources/foundation-mg-20261114/select-review.json",
+          "nodes": [
+            "3:286872",
+            "3:286878",
+            "3:286831"
+          ]
+        }
+      }
+    ],
+    "variantSelectionRules": [
+      {
+        "condition": "唯一选择且无额外标记",
+        "variant": "single-basic",
+        "cssClass": "ds-select--single-basic"
+      },
+      {
+        "condition": "唯一选择且需要圆形选框",
+        "variant": "single-radio",
+        "cssClass": "ds-select--single-radio"
+      },
+      {
+        "condition": "唯一选择且需要行尾勾",
+        "variant": "single-check",
+        "cssClass": "ds-select--single-check"
+      },
+      {
+        "condition": "多选且以行底色表达",
+        "variant": "multi-basic",
+        "cssClass": "ds-select--multi-basic"
+      },
+      {
+        "condition": "多选且必须显示复选框",
+        "variant": "multi-checkbox",
+        "cssClass": "ds-select--multi-checkbox"
+      },
+      {
+        "condition": "区号搜索",
+        "variant": "phone-search",
+        "cssClass": "ds-select--phone-search"
+      },
+      {
+        "condition": "通用关键词过滤",
+        "variant": "search",
+        "cssClass": "ds-select--search"
+      },
+      {
+        "condition": "宽面板双列分组筛选",
+        "variant": "two-column",
+        "cssClass": "ds-select--two-column"
+      },
+      {
+        "condition": "分组复选并需确认取消",
+        "variant": "grouped-combination",
+        "cssClass": "ds-select--grouped-combination"
+      }
+    ],
+    "hardRules": [
+      {
+        "title": "选择器语义与键盘闭环",
+        "ruleContent": "触发器必须为 <strong>button[role=combobox]</strong>，选项必须使用 <strong>role=option</strong>；展开、选择、禁用、焦点与键盘状态必须同步 ARIA。",
+        "aiParse": "trigger.role = combobox\ntrigger.ariaExpanded ↔ panel.hidden\noption.ariaSelected ↔ visual selected\nArrow/Home/End/Enter/Space/Escape supported",
+        "enforcement": "components/select-current.js 提供运行时机制；契约与 Preview 结构由 schema、check-contracts 和浏览器交互验收共同核对。"
+      },
+      {
+        "title": "PC-only 与 Dropdown 分界",
+        "ruleContent": "本版本只实现 PC；Select 用于值选择，Dropdown 只用于动作或导航菜单，两者不得互相替代。",
+        "aiParse": "platform = desktop\nSelect = value input\nDropdown = action/navigation menu",
+        "enforcement": "组件选型策略 contrasts 与 searchIntents 约束。"
+      }
+    ],
+    "componentDependencies": [
+      {
+        "component": "Checkbox",
+        "usage": "Checkbox(sm)受控标记适配：省略独立input与data-checkbox-control，保留data-checkbox-current、box和label及原子状态资源。宿主管理role=option、选择事件与checked/disabled类同步；不得叠加原生input事件或复制样式。实际浏览器验收待验证。",
+        "slot": "option-marker",
+        "appliesTo": [
+          "multi-checkbox",
+          "two-column",
+          "grouped-combination"
+        ],
+        "requiredVariants": [
+          "sm"
+        ],
+        "implementationClasses": [
+          "ds-checkbox",
+          "ds-checkbox--sm"
+        ]
+      },
+      {
+        "component": "Button",
+        "usage": "组合分组面板Cancel/OK真实调用描边XL原子；已保存宿主INSTANCE明确42px/24px，旧L36px为本地装配偏差",
+        "slot": "footer",
+        "appliesTo": [
+          "grouped-combination"
+        ],
+        "requiredVariants": [
+          "outline-gray",
+          "outline-black"
+        ],
+        "implementationClasses": [
+          "ds-btn",
+          "ds-btn--outline-gray",
+          "ds-btn--outline-black",
+          "ds-btn--xl"
+        ],
+        "requiredSizes": [
+          {
+            "variant": "outline-gray",
+            "size": "xl"
+          },
+          {
+            "variant": "outline-black",
+            "size": "xl"
+          }
+        ],
+        "sourceEvidence": {
+          "inventory": "components/sources/select/source-inventory.json",
+          "hostComponentId": "68908:053450",
+          "instanceIds": [
+            "68908:053469/68908:037485",
+            "68908:053469/68908:037489"
+          ],
+          "referencedComponentIds": [
+            "68908:026435",
+            "68908:026423"
+          ],
+          "sourceSize": "42px/24px",
+          "basis": "宿主真实INSTANCE尺寸与颜色/描边属性 + 已登记Button原子XL；旧引用ID与新原子节点不同，未宣称同版同ID",
+          "parentOverrides": "宿主旧字体/间距等声明保留为来源事实；用户确认原子优先，样式由Button负责",
+          "currentReview": {
+            "file": "components/sources/foundation-mg-20261114/select-review.json",
+            "nodes": [
+              "3:289812",
+              "3:289808"
+            ]
+          }
+        }
+      },
+      {
+        "component": "Input",
+        "usage": "当前MG选择框的Input受控面部适配：九个现有调用的按钮或多值容器复用Input共享CSS及状态，Select保留combobox、标签、清除与选择事件。",
+        "slot": "trigger-face",
+        "appliesTo": [
+          "single-basic",
+          "single-radio",
+          "single-check",
+          "multi-basic",
+          "multi-checkbox",
+          "phone-search",
+          "search",
+          "two-column",
+          "grouped-combination"
+        ],
+        "requiredVariants": [
+          "gray",
+          "white"
+        ],
+        "implementationClasses": [
+          "ds-input-field__input",
+          "ds-input-field__input--gray",
+          "ds-input-field__input--white"
+        ],
+        "sourceEvidence": {
+          "review": "components/sources/foundation-mg-20261114/select-review.json",
+          "nodes": [
+            "3:290005",
+            "3:290064"
+          ],
+          "scope": "current-nine-admitted-trigger-face-adapters"
+        }
+      }
+    ],
+    "iconDependencies": [
+      {
+        "icon": "icon-chevron-down",
+        "usage": "触发器与分组标题展开指示",
+        "required": true,
+        "appliesTo": [
+          "single-radio",
+          "single-check",
+          "multi-basic",
+          "multi-checkbox",
+          "phone-search",
+          "search",
+          "two-column",
+          "grouped-combination"
+        ]
+      },
+      {
+        "icon": "icon-search",
+        "usage": "区号与搜索选择输入",
+        "required": false,
+        "appliesTo": [
+          "phone-search",
+          "search"
+        ]
+      },
+      {
+        "icon": "icon-close",
+        "usage": "多选值清除入口",
+        "required": false,
+        "appliesTo": [
+          "multi-basic",
+          "multi-checkbox"
+        ]
+      },
+      {
+        "icon": "icon-radio-default-14",
+        "usage": "带选框单选默认态",
+        "required": false,
+        "appliesTo": [
+          "single-radio"
+        ]
+      },
+      {
+        "icon": "icon-radio-hover-14",
+        "usage": "带选框单选悬停态",
+        "required": false,
+        "appliesTo": [
+          "single-radio"
+        ]
+      },
+      {
+        "icon": "icon-radio-checked-14",
+        "usage": "带选框单选已选态",
+        "required": false,
+        "appliesTo": [
+          "single-radio"
+        ]
+      },
+      {
+        "icon": "icon-radio-disabled-14",
+        "usage": "带选框单选禁用态",
+        "required": false,
+        "appliesTo": [
+          "single-radio"
+        ]
+      },
+      {
+        "icon": "icon-check-8",
+        "usage": "带勾单选行尾标记",
+        "required": false,
+        "appliesTo": [
+          "single-check"
+        ]
+      },
+      {
+        "icon": "icon-filter",
+        "usage": "双列筛选触发器",
+        "required": false,
+        "appliesTo": [
+          "two-column"
+        ]
+      },
+      {
+        "icon": "icon-select-down",
+        "usage": "Finite gray/white single-basic official12px Gray3 default/hover Down; open uses official Gray1 Up.",
+        "required": true,
+        "appliesTo": [
+          "single-basic"
+        ]
+      },
+      {
+        "icon": "icon-select-down-disabled",
+        "usage": "Finite gray single-basic official12px Gray1 with native30% alpha in disabled trigger; no double opacity.",
+        "required": false,
+        "appliesTo": [
+          "single-basic"
+        ]
+      },
+      {
+        "icon": "icon-select-up",
+        "usage": "Finite gray/white single-basic official12px Gray1 Up for open state, no extra transform.",
+        "required": false,
+        "appliesTo": [
+          "single-basic"
+        ]
+      },
+      {
+        "icon": "icon-select-remove",
+        "usage": "Official12px Gray3 close vector for Select-owned value removal chip only; clear-all retains its existing unverified glyph.",
+        "required": false,
+        "appliesTo": [
+          "multi-basic"
+        ]
+      }
+    ],
+    "colorDependencies": [
+      {
+        "token": "color.gray-1",
+        "value": "#19191A",
+        "usage": "正文、触发器、选项与分组标题",
+        "appliesTo": [
+          "single-basic",
+          "single-radio",
+          "single-check",
+          "multi-basic",
+          "multi-checkbox",
+          "phone-search",
+          "search",
+          "two-column",
+          "grouped-combination"
+        ]
+      },
+      {
+        "token": "color.gray-2",
+        "value": "#4B4B4D",
+        "usage": "多选计数徽标",
+        "appliesTo": [
+          "multi-basic",
+          "multi-checkbox",
+          "two-column",
+          "grouped-combination"
+        ]
+      },
+      {
+        "token": "color.gray-3",
+        "value": "#707070",
+        "usage": "辅助文字与前缀",
+        "appliesTo": [
+          "phone-search",
+          "search"
+        ]
+      },
+      {
+        "token": "color.gray-6",
+        "value": "#EDEDF0",
+        "usage": "多选标签背景",
+        "appliesTo": [
+          "multi-basic",
+          "multi-checkbox"
+        ]
+      },
+      {
+        "token": "color.gray-7",
+        "value": "#F2F2F2",
+        "usage": "触发器悬停和展开背景",
+        "appliesTo": [
+          "single-basic",
+          "single-radio",
+          "single-check",
+          "multi-basic",
+          "multi-checkbox",
+          "phone-search",
+          "search",
+          "two-column",
+          "grouped-combination"
+        ]
+      },
+      {
+        "token": "color.gray-8",
+        "value": "#F6F6F8",
+        "usage": "默认触发器与选项反馈背景",
+        "appliesTo": [
+          "single-basic",
+          "single-radio",
+          "single-check",
+          "multi-basic",
+          "multi-checkbox",
+          "phone-search",
+          "search",
+          "two-column",
+          "grouped-combination"
+        ]
+      },
+      {
+        "token": "color.gray-9",
+        "value": "#FAFBFB",
+        "usage": "搜索与筛选浅底、禁用触发器",
+        "appliesTo": [
+          "phone-search",
+          "search",
+          "two-column",
+          "grouped-combination"
+        ]
+      },
+      {
+        "token": "color.white",
+        "value": "#FFFFFF",
+        "usage": "面板、白底触发器、禁用选项与计数文字",
+        "appliesTo": [
+          "single-basic",
+          "single-radio",
+          "single-check",
+          "multi-basic",
+          "multi-checkbox",
+          "phone-search",
+          "search",
+          "two-column",
+          "grouped-combination"
+        ]
+      },
+      {
+        "token": "color.text-disabled",
+        "value": "rgba(25,25,26,0.3)",
+        "usage": "禁用触发器文字",
+        "appliesTo": [
+          "single-basic",
+          "single-radio",
+          "single-check",
+          "multi-basic",
+          "multi-checkbox",
+          "phone-search",
+          "search"
+        ]
+      },
+      {
+        "token": "color.menu-disabled",
+        "value": "#DEE0E3",
+        "usage": "禁用选项文字",
+        "appliesTo": [
+          "single-basic",
+          "single-radio",
+          "single-check",
+          "multi-basic",
+          "multi-checkbox",
+          "phone-search",
+          "search"
+        ]
+      }
+    ],
+    "spacingDependencies": [
+      {
+        "token": "spacing.xs",
+        "value": "4px",
+        "usage": "标签间距、面板偏移与清除计数内边距",
+        "properties": [
+          "gap",
+          "padding"
+        ],
+        "selectors": [
+          ".ds-select__tags",
+          ".ds-select__count"
+        ],
+        "appliesTo": [
+          "multi-basic",
+          "multi-checkbox"
+        ]
+      },
+      {
+        "token": "spacing.sm",
+        "value": "8px",
+        "usage": "触发器、标签、搜索和选项间距",
+        "properties": [
+          "gap",
+          "padding",
+          "margin"
+        ],
+        "selectors": [
+          ".ds-select__trigger",
+          "button.ds-select__tag.ds-tag--selectable",
+          ".ds-select__search",
+          ".ds-select__option",
+          ".ds-select__group-title"
+        ],
+        "appliesTo": [
+          "single-basic",
+          "single-radio",
+          "single-check",
+          "multi-basic",
+          "multi-checkbox",
+          "phone-search",
+          "search",
+          "two-column",
+          "grouped-combination"
+        ]
+      },
+      {
+        "token": "spacing.md",
+        "value": "12px",
+        "usage": "触发器、搜索、选项、分组和页脚标准内边距",
+        "properties": [
+          "gap",
+          "padding",
+          "margin"
+        ],
+        "selectors": [
+          ".ds-select__trigger",
+          ".ds-select__search",
+          ".ds-select__option",
+          ".ds-select__group-title",
+          ".ds-select__divider",
+          ".ds-select__footer"
+        ],
+        "appliesTo": [
+          "single-basic",
+          "single-radio",
+          "single-check",
+          "multi-basic",
+          "multi-checkbox",
+          "phone-search",
+          "search",
+          "two-column",
+          "grouped-combination"
+        ]
+      },
+      {
+        "token": "spacing.6",
+        "value": "6px",
+        "usage": "分组标题垂直内边距",
+        "properties": [
+          "padding"
+        ],
+        "selectors": [
+          ".ds-select__group-title"
+        ],
+        "appliesTo": [
+          "two-column",
+          "grouped-combination"
+        ]
+      },
+      {
+        "token": "spacing.10",
+        "value": "10px",
+        "usage": "页脚按钮间距",
+        "properties": [
+          "gap"
+        ],
+        "selectors": [
+          ".ds-select__footer"
+        ],
+        "appliesTo": [
+          "grouped-combination"
+        ]
+      },
+      {
+        "token": "spacing.2",
+        "value": "2px",
+        "usage": "折叠标签 Tooltip 垂直内边距",
+        "properties": [
+          "padding",
+          "margin-top"
+        ],
+        "selectors": [
+          ".ds-select__tooltip",
+          ".ds-checkbox[data-checkbox-current] .ds-checkbox__box"
+        ],
+        "appliesTo": [
+          "multi-basic"
+        ]
+      },
+      {
+        "token": "spacing.3",
+        "value": "3px",
+        "usage": "Checkbox原子首行位置；宿主仅引用同一资源，不覆盖样式",
+        "properties": [
+          "margin-top"
+        ],
+        "selectors": [
+          ".ds-checkbox[data-checkbox-current].ds-checkbox--sm .ds-checkbox__box"
+        ],
+        "appliesTo": [
+          "grouped-combination",
+          "multi-checkbox",
+          "two-column"
+        ]
+      },
+      {
+        "token": "spacing.lg",
+        "value": "16px",
+        "usage": "Input共享样式的传递资源依赖；仅加载该资源，不表示Select启用了Input文本域或全部状态。",
+        "appliesTo": [
+          "single-basic",
+          "single-radio",
+          "single-check",
+          "multi-basic",
+          "multi-checkbox",
+          "phone-search",
+          "search",
+          "two-column",
+          "grouped-combination"
+        ]
+      }
+    ],
+    "borderDependencies": [
+      {
+        "token": "border.width.default",
+        "value": "1px",
+        "usage": "触发器、搜索与页脚描边",
+        "aspect": "width",
+        "properties": [
+          "border",
+          "border-top"
+        ],
+        "selectors": [
+          ".ds-select__trigger",
+          ".ds-select__search--compact",
+          ".ds-select__footer"
+        ],
+        "appliesTo": [
+          "single-basic",
+          "single-radio",
+          "single-check",
+          "multi-basic",
+          "multi-checkbox",
+          "phone-search",
+          "search",
+          "two-column",
+          "grouped-combination"
+        ]
+      },
+      {
+        "token": "border.style.default",
+        "value": "solid",
+        "usage": "触发器、搜索与页脚描边样式",
+        "aspect": "style",
+        "properties": [
+          "border",
+          "border-top"
+        ],
+        "selectors": [
+          ".ds-select__trigger",
+          ".ds-select__search--compact",
+          ".ds-select__footer"
+        ],
+        "appliesTo": [
+          "single-basic",
+          "single-radio",
+          "single-check",
+          "multi-basic",
+          "multi-checkbox",
+          "phone-search",
+          "search",
+          "two-column",
+          "grouped-combination"
+        ]
+      },
+      {
+        "token": "border.style.none",
+        "value": "none",
+        "usage": "搜索输入和清除按钮无描边",
+        "aspect": "style",
+        "properties": [
+          "border"
+        ],
+        "selectors": [
+          ".ds-select__search-input",
+          ".ds-select__clear"
+        ],
+        "appliesTo": [
+          "multi-basic",
+          "multi-checkbox",
+          "phone-search",
+          "search"
+        ]
+      },
+      {
+        "token": "border.color.transparent",
+        "value": "transparent",
+        "usage": "默认触发器透明描边",
+        "aspect": "color",
+        "properties": [
+          "border"
+        ],
+        "selectors": [
+          ".ds-select__trigger"
+        ],
+        "appliesTo": [
+          "single-basic",
+          "single-radio",
+          "single-check",
+          "multi-basic",
+          "multi-checkbox",
+          "phone-search",
+          "search",
+          "two-column",
+          "grouped-combination"
+        ]
+      },
+      {
+        "token": "border.color.default",
+        "value": "var(--color-gray-5)",
+        "usage": "白底触发器、紧凑搜索与页脚描边",
+        "aspect": "color",
+        "properties": [
+          "border",
+          "border-top"
+        ],
+        "selectors": [
+          ".ds-select__trigger--white",
+          ".ds-select__search--compact",
+          ".ds-select__footer"
+        ],
+        "appliesTo": [
+          "phone-search",
+          "search",
+          "grouped-combination"
+        ]
+      },
+      {
+        "token": "border.color.strong",
+        "value": "var(--color-gray-3)",
+        "usage": "展开触发器描边",
+        "aspect": "color",
+        "properties": [
+          "border-color"
+        ],
+        "selectors": [
+          ".ds-select__trigger[aria-expanded=\"true\"]"
+        ],
+        "appliesTo": [
+          "single-basic",
+          "single-radio",
+          "single-check",
+          "multi-basic",
+          "multi-checkbox",
+          "phone-search",
+          "search",
+          "two-column",
+          "grouped-combination"
+        ]
+      },
+      {
+        "token": "border.color.focus",
+        "value": "var(--color-blue)",
+        "usage": "键盘聚焦描边",
+        "aspect": "color",
+        "properties": [
+          "border-color"
+        ],
+        "selectors": [
+          ".ds-select__trigger:focus-visible"
+        ],
+        "appliesTo": [
+          "single-basic",
+          "single-radio",
+          "single-check",
+          "multi-basic",
+          "multi-checkbox",
+          "phone-search",
+          "search",
+          "two-column",
+          "grouped-combination"
+        ]
+      },
+      {
+        "token": "border.color.subtle",
+        "value": "var(--color-gray-6)",
+        "usage": "禁用触发器描边",
+        "aspect": "color",
+        "properties": [
+          "border-color"
+        ],
+        "selectors": [
+          ".ds-select__trigger:disabled"
+        ],
+        "appliesTo": [
+          "single-basic",
+          "single-radio",
+          "single-check",
+          "multi-basic",
+          "multi-checkbox",
+          "phone-search",
+          "search"
+        ]
+      },
+      {
+        "token": "border.color.input-disabled",
+        "value": "var(--color-input-disabled-border)",
+        "usage": "Input共享样式的传递资源依赖；仅加载该资源，不表示Select启用了Input文本域或全部状态。",
+        "appliesTo": [
+          "single-basic",
+          "single-radio",
+          "single-check",
+          "multi-basic",
+          "multi-checkbox",
+          "phone-search",
+          "search",
+          "two-column",
+          "grouped-combination"
+        ],
+        "aspect": "color"
+      }
+    ],
+    "radiusDependencies": [
+      {
+        "token": "border-radius.sm",
+        "value": "2px",
+        "usage": "多选标签",
+        "appliesTo": [
+          "multi-basic",
+          "multi-checkbox"
+        ]
+      },
+      {
+        "token": "border-radius.md",
+        "value": "4px",
+        "usage": "触发器、面板和搜索框",
+        "appliesTo": [
+          "single-basic",
+          "single-radio",
+          "single-check",
+          "multi-basic",
+          "multi-checkbox",
+          "phone-search",
+          "search",
+          "two-column",
+          "grouped-combination"
+        ]
+      },
+      {
+        "token": "border-radius.full",
+        "value": "9999px",
+        "usage": "筛选触发器与计数徽标",
+        "appliesTo": [
+          "two-column",
+          "multi-basic",
+          "multi-checkbox"
+        ]
+      }
+    ],
+    "fontSizeDependencies": [
+      {
+        "token": "typography.font-size-h8",
+        "value": "13px",
+        "usage": "选择器主体文字",
+        "appliesTo": [
+          "single-basic",
+          "single-radio",
+          "single-check",
+          "multi-basic",
+          "multi-checkbox",
+          "phone-search",
+          "search",
+          "two-column",
+          "grouped-combination"
+        ]
+      },
+      {
+        "token": "typography.font-size-sm",
+        "value": "12px",
+        "usage": "计数与分组标题",
+        "appliesTo": [
+          "multi-basic",
+          "multi-checkbox",
+          "two-column",
+          "grouped-combination"
+        ]
+      },
+      {
+        "token": "typography.font-size-md",
+        "value": "14px",
+        "usage": "40px 筛选胶囊文字",
+        "appliesTo": [
+          "two-column"
+        ]
+      }
+    ],
+    "fontWeightDependencies": [
+      {
+        "token": "typography.font-weight-regular",
+        "value": "400",
+        "usage": "选择器主体文字",
+        "appliesTo": [
+          "single-basic",
+          "single-radio",
+          "single-check",
+          "multi-basic",
+          "multi-checkbox",
+          "phone-search",
+          "search",
+          "two-column",
+          "grouped-combination"
+        ],
+        "properties": [
+          "font-weight"
+        ],
+        "selectors": [
+          ".ds-select"
+        ]
+      },
+      {
+        "token": "typography.font-weight-semibold",
+        "value": "600",
+        "usage": "分组标题",
+        "appliesTo": [
+          "two-column",
+          "grouped-combination"
+        ],
+        "properties": [
+          "font-weight"
+        ],
+        "selectors": [
+          ".ds-select__group-title"
+        ]
+      }
+    ],
+    "typographyDependencies": [
+      {
+        "token": "typography.h8-regular",
+        "fontSizeToken": "typography.font-size-h8",
+        "fontSizeValue": "13px",
+        "fontWeightToken": "typography.font-weight-regular",
+        "fontWeightValue": "400",
+        "weightEvidence": "explicit-css",
+        "usage": "触发器、搜索与选项主体文字",
+        "appliesTo": [
+          "single-basic",
+          "single-radio",
+          "single-check",
+          "multi-basic",
+          "multi-checkbox",
+          "phone-search",
+          "search",
+          "two-column",
+          "grouped-combination"
+        ]
+      },
+      {
+        "token": "typography.h9-regular",
+        "fontSizeToken": "typography.font-size-sm",
+        "fontSizeValue": "12px",
+        "fontWeightToken": "typography.font-weight-regular",
+        "fontWeightValue": "400",
+        "weightEvidence": "inherited-regular",
+        "usage": "多选计数",
+        "appliesTo": [
+          "multi-basic",
+          "multi-checkbox",
+          "two-column",
+          "grouped-combination"
+        ]
+      },
+      {
+        "token": "typography.h9-semibold",
+        "fontSizeToken": "typography.font-size-sm",
+        "fontSizeValue": "12px",
+        "fontWeightToken": "typography.font-weight-semibold",
+        "fontWeightValue": "600",
+        "weightEvidence": "explicit-css",
+        "usage": "分组标题",
+        "appliesTo": [
+          "two-column",
+          "grouped-combination"
+        ]
+      },
+      {
+        "token": "typography.h7-regular",
+        "fontSizeToken": "typography.font-size-md",
+        "fontSizeValue": "14px",
+        "fontWeightToken": "typography.font-weight-regular",
+        "fontWeightValue": "400",
+        "weightEvidence": "inherited-regular",
+        "usage": "40px 筛选胶囊",
+        "appliesTo": [
+          "two-column"
+        ]
+      }
+    ],
+    "shadowDependencies": [
+      {
+        "token": "shadow.list-panel",
+        "value": "0 2px 8px rgba(0, 0, 0, 0.1)",
+        "usage": "下拉面板阴影",
+        "appliesTo": [
+          "single-basic",
+          "single-radio",
+          "single-check",
+          "multi-basic",
+          "multi-checkbox",
+          "phone-search",
+          "search",
+          "two-column",
+          "grouped-combination"
+        ]
+      }
+    ],
+    "mutuallyExclusiveWith": [
+      {
+        "component": "Dropdown",
+        "reason": "Dropdown 表达动作或导航菜单；Select 表达表单或筛选值选择。"
+      },
+      {
+        "component": "OptionSelector",
+        "reason": "OptionSelector 在页面内持续展示选项；Select 将候选项收纳在浮层中。"
+      }
+    ],
+    "enforcementStatus": {
+      "componentDependencies.preview-evidence": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 校验 implementationClasses 在 Select Preview 中真实存在。"
+      },
+      "token-and-css-closure": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 与 compile-component-style-manifest.js 校验颜色、间距、描边、圆角、字体和阴影依赖闭环。"
+      },
+      "interaction.combobox-listbox": {
+        "enforced": false,
+        "mechanism": "components/select-current.js + 本地专项交互检查；MG原始组件复核待补",
+        "note": "仓库尚无正式组件 Preview 通用行为 runner，需浏览器证据补足。"
+      },
+      "platform.pc-only": {
+        "enforced": true,
+        "mechanism": "契约仅声明 PC 结构，CSS 无 Tablet/Mobile 断点。"
+      }
+    },
+    "notes": "依据用户投喂的规范图补齐触发器状态矩阵；鼠标指针 SVG 仅为设计标注不导入。电话区号与输入框组合复用 Form 的 ds-form__phone-row，已选标签复用 Tag(selectable)。"
+  },
+  "searchIntents": [
+    "表单选择器",
+    "单选选择器",
+    "多选选择器",
+    "带勾选择",
+    "区号搜索选择",
+    "双列分组选择"
+  ],
+  "tokenReferences": [
+    "color.gray-1",
+    "color.gray-2",
+    "color.gray-3",
+    "color.gray-6",
+    "color.gray-7",
+    "color.gray-8",
+    "color.gray-9",
+    "color.white",
+    "color.text-disabled",
+    "color.menu-disabled",
+    "spacing.xs",
+    "spacing.sm",
+    "spacing.md",
+    "spacing.2",
+    "spacing.6",
+    "spacing.10",
+    "border.width.default",
+    "border.style.default",
+    "border.style.none",
+    "border.color.transparent",
+    "border.color.default",
+    "border.color.strong",
+    "border.color.focus",
+    "border.color.subtle",
+    "border-radius.sm",
+    "border-radius.md",
+    "border-radius.full",
+    "typography.font-family-base",
+    "typography.font-size-h8",
+    "typography.font-size-sm",
+    "typography.font-size-md",
+    "typography.font-weight-regular",
+    "typography.font-weight-semibold",
+    "typography.h7-regular",
+    "typography.h8-regular",
+    "typography.h9-regular",
+    "typography.h9-semibold",
+    "shadow.list-panel",
+    "spacing.3",
+    "spacing.lg",
+    "border.color.input-disabled"
+  ],
+  "constraints": {
+    "allowedChildren": [
+      "Text",
+      "Icon",
+      "Tag(selectable)",
+      "Checkbox(sm)",
+      "Button(outline-gray|outline-black)"
+    ],
+    "requiredProperties": [
+      "variant",
+      "data-select-mode"
+    ],
+    "forbiddenCombinations": [
+      "移动端底部面板",
+      "可导航链接",
+      "内联SVG"
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-08-24",
+      "author": "Kiro",
+      "change": "依据 Select v2.0.2605A 规范图及用户投喂的 PC 静态源码，建立四类九形态正式契约、ARIA 交互和本地图标依赖。"
+    },
+    {
+      "date": "2026-08-24",
+      "author": "Codex",
+      "change": "补齐灰/白底五态、30/32/36/40px 尺寸、前置图标、电话组合、多标签清除与 Tooltip，并修复确认回滚和键盘边界。"
+    },
+    {
+      "date": "2026-10-09",
+      "author": "Codex",
+      "change": "统一规范维护质量标准：登记真实实现与选型规则入口、源变更重新验收、父子影响检查及历史页面隔离；不推断可编辑槽位或视觉批准。"
+    },
+    {
+      "date": "2026-10-09",
+      "author": "Codex",
+      "change": "本地选择事件、确认/取消、禁用、焦点及空值；不证明MG变体完整或AI精确调用就绪"
+    },
+    {
+      "date": "2026-10-10",
+      "author": "Codex",
+      "change": "九个既有桌面变体补完整闭合实例、选项列表编辑边界和选择事件；仅迁移调用契约，不改共享样式或历史页面，不声明视觉通过。"
+    },
+    {
+      "date": "2026-10-10",
+      "author": "Codex",
+      "change": "补齐AI示例的单/多选模式及确认型语义检查，防止结构完整但行为属性被误改；不改运行样式和历史页面。"
+    }
+  ],
+  "isComplete": true,
+  "pendingParts": [],
+  "createdAt": "2026-08-24T00:00:00Z",
+  "updatedAt": "2026-11-15",
+  "qualityProfile": {
+    "schemaVersion": "1.0.0",
+    "standard": "docs/component-quality-standard.md",
+    "implementation": "components/variants/select.html",
+    "selection": {
+      "mappingSource": "components/selection-mvp-policy.json",
+      "mappingPointer": "components.select.variantDecisionTypes",
+      "rulesPointer": "relations.variantDecisions"
+    },
+    "maintenance": {
+      "authority": "contract-preview-runtime-token-icon",
+      "generatedOnly": [
+        "preview-reference-tables",
+        "component-index",
+        "selection-catalog",
+        "design-reading-view",
+        "ai-reference"
+      ],
+      "changePolicy": "记录来源差异、兼容性与受影响父子组件；源文件变化后旧工程验收失效。",
+      "historicalPages": "不自动升级；新页面锁定本地组件运行资源版本。"
+    },
+    "acceptance": {
+      "report": "components/quality/report.json",
+      "proof": "components/quality/acceptance.json",
+      "declarationIsNotProof": true
+    }
+  },
+  "maintenanceReview": {
+    "date": "2026-10-09",
+    "sourceStatus": "原始区域68961:089603已读取，按COMPONENT_SET类型确认7集合；仅既有桌面Select九变体精确调用迁移，MG视觉/规范逐项对照仍待完成。",
+    "engineeringScope": "本地选择事件、确认/取消、禁用、焦点及空值；不证明MG变体完整或AI精确调用就绪",
+    "historicalPages": "保留旧共享运行资源；当前Select预览只加载select-current.js",
+    "downArrowEvidence": "components/sources/select/down-arrow-export-review-1012.json",
+    "selectionChipOwnership": {
+      "source": "components/sources/select/multi-chip-ownership-review-1012.json",
+      "scope": "Existing multi-basic selected value/removal chips; not an admitted Tag variant",
+      "structure": "button.ds-select__tag > span.ds-select__tag-label + span.ds-select__tag-close; optional existing count tooltip retained",
+      "sourceIdentity": "Native75x28 FRAME115194 owned by Select; text115199 Open Sans13Regular/Gray1; close11521112pxGray3 actualIcon INSTANCE. No Tag INSTANCE or false Tag relationship.",
+      "behavior": "Existing Select removal event/data/options semantics unchanged; no ds:tag-change or aria-pressed toggle invented",
+      "limits": "Divider nested instance and full multi host correspondence still under review; no full visual approval",
+      "removedFalseDependency": {
+        "component": "Tag",
+        "usage": "常规多选触发器中的 28px 已选项与折叠项",
+        "slot": "selectedTags",
+        "appliesTo": [
+          "multi-basic"
+        ],
+        "requiredVariants": [
+          "selectable"
+        ],
+        "implementationClasses": [
+          "ds-tag",
+          "ds-tag--selectable"
+        ]
+      }
+    }
+  },
+  "integration": {
+    "styles": [
+      "components/tokens.css",
+      "components/components.css",
+      "components/button-current.css",
+      "components/button-runtime-current.css",
+      "components/input-current.css",
+      "components/checkbox-current.css",
+      "components/select-current.css"
+    ],
+    "scripts": [
+      "components/select-current.js"
+    ],
+    "businessBoundary": "ds:select-change回传值；确认型多选面板内为草稿，关闭后清除是立即动作。宿主负责业务提交，组件不生成字段名或请求。"
+  },
+  "editable": [
+    "options",
+    "changeCallback",
+    "layout",
+    "placeholder",
+    "searchLabel"
+  ],
+  "aiContract": {
+    "schemaVersion": "1.0.0",
+    "scope": "existing-desktop-select-nine-default-examples",
+    "rootTag": "div",
+    "supported": [
+      "single-basic",
+      "single-radio",
+      "single-check",
+      "multi-basic",
+      "multi-checkbox",
+      "phone-search",
+      "search",
+      "two-column",
+      "grouped-combination"
+    ],
+    "unsupported": [
+      "mobile-bottom-panel",
+      "slider",
+      "size-overrides",
+      "business-submit",
+      "dynamic-option-insertion-after-initialization"
+    ],
+    "reviewStatus": {
+      "engineering": "pending",
+      "visual": "pending",
+      "familyCoverage": "local-nine-variants-source-comparison-pending"
+    },
+    "selectionPolicy": "仅表单预设值选择；≤5项改用Radio/Checkbox，导航或临时动作走Dropdown。先单/多选，再搜索/区号/标记/分组；这些是同一Select配置。当前9个有限调用保留，不任意叠加未登记配置。列表默认下展，空间不足时避让，距视口20px；常规最大232px，双列428px。",
+    "identity": {
+      "rule": "为每次装配生成唯一根id、trigger id、panel id和option id，aria-controls同步；复制示例时不能复用原id。运行脚本初始化缺失id，但不修复宿主已有重复id。",
+      "labelRule": "触发器aria-label由已选项与占位文案同步；搜索input保留可访问名称。"
+    },
+    "locked": [
+      "根节点及变体类",
+      "data-select-mode与data-select-confirm",
+      "触发器/面板/搜索/页脚结构",
+      "组件CSS与select-current.js",
+      "当前42px触发器、图标及嵌套Checkbox/Tag/Button；single-basic可按已核auto原件填充宿主列宽",
+      "除options、已声明layout、placeholder/searchLabel与回调外的内容"
+    ],
+    "behavior": {
+      "selection": "单选立即回写并收起；多选逐项回写。ds:select-change包含multiple、values、labels，空字符串是合法值。",
+      "confirmation": "data-select-confirm多选面板先编辑草稿，OK提交，Cancel/Escape/离开焦点回滚；关闭态全部清除立即提交。",
+      "keyboard": "方向键导航、Escape收起、Tab离开、搜索过滤遵循现有脚本；禁用fieldset与触发器均阻止操作。",
+      "initialization": "Complete newly inserted roots initialize once through the existing observer. Assemble option lists before first initialization; replacing/inserting individual options in an initialized list is not an API guarantee. No native form-value binding or persistence.",
+      "values": "原始默认示例部分选项没有data-value，现有脚本回退到标签文字；宿主需在提交前按业务约束核对值、重复值和字段映射，组件不生成业务编码。",
+      "nativeStateGuard": "One document/root initialization guard. Native disabled/fieldset, hidden or ARIA-disabled ancestors block synthetic choose/search/commit. Hidden or disabled owner closes the panel and silently rolls back pending confirmation. Closed panel options and composing keys cannot select. Dynamic inserted groups initialize once; no native form-value binding or persistence added.",
+      "composition": "Track active search composition per owning root. Intermediate input does not filter, and unflagged navigation/Escape keys do not move focus, close or select during composition. End filters the committed query when open/available; closing clears transient composition state while preserving the query. Native browser IME remains pending.",
+      "footerButtonAtom": "当前组合分组面板使用outline-gray/xl与outline-black/xl；宿主只负责确认/取消事件和双列装配，不覆盖原子字号、圆角、padding或状态样式。已保存typed实例42px/24px是尺寸依据。",
+      "checkboxAtom": "Checkbox(sm)受控标记适配：省略独立input与data-checkbox-control，保留label.ds-checkbox、box和文字；宿主文本钩子只负责查找与截断。宿主管理role=option、选择与checked/disabled类同步，原子拥有尺寸和状态样式。独立Checkbox原生升级不自动给选项添加input；实际浏览器证据待验证。",
+      "hostWidth": "Existing single-basic gray source021318 has auto cross sizing; data-select-layout=fill allocates the real root to its host column. Trigger height42, radius, arrow, panel and states remain component-owned. Other variants keep their current sizes.",
+      "viewport": "Default down; prefer above when below space is insufficient. Recalculate while open on resize/scroll; preserve20px viewport clearance,232px regular and428px grouped cap.",
+      "inputFace": "Nine admitted trigger faces reuse Input paint/state through data-input-adapter. Native button triggers and multi-value control keep their own selection/actions and layout; no editable text field is inserted.",
+      "placeholder": "single-basic/search 可传非空纯文本 placeholder；只修改空值提示，不设置默认选项或业务值。search 可传非空 searchLabel，修改搜索输入的可访问名称。未传参保留原规范示例，旧版本不自动开放。"
+    },
+    "evidence": {
+      "original": "components/sources/select/mastergo-original-components.json",
+      "localImplementation": "components/variants/select.html",
+      "comparison": "components/sources/select/exact-call-review.json",
+      "onlineRefresh": "docs/handoff/archives/2026-10-09-overnight/mastergo/select-component-region.json",
+      "inventory": "components/sources/select/source-inventory.json",
+      "sourceFacts": "components/sources/select/source-facts-review.json",
+      "checkboxNesting": "components/sources/select/checkbox-nesting-1010.json",
+      "whiteMultiDefaultRoot": "components/sources/select/multi-white-default-root-review-1013.json",
+      "whiteMultiNested1015": "components/sources/select/white-multi-nested-review-1015.json",
+      "currentMgReview": "components/sources/foundation-mg-20261114/select-review.json",
+      "listOptionSource": "components/sources/list-option-mg-20261115/review.json"
+    },
+    "variants": {
+      "single-basic": {
+        "purpose": "select-single-basic",
+        "exampleSelector": "[data-ai-example=\"ai-select-single-basic\"]",
+        "allowedEdits": [
+          "options",
+          "changeCallback",
+          "layout",
+          "placeholder"
+        ],
+        "slots": {
+          "options": {
+            "selector": ".ds-select__list",
+            "mode": "structured-content",
+            "required": true,
+            "preserve": [
+              ".ds-select__option-label"
+            ],
+            "boundary": "只替换原选项列表；每项保留role=option、aria-selected及当前变体的标记/组结构。有data-value则按宿主内容绑定保留；未提供时现有脚本以标签文字作为值，不把缺失值推断为业务编码。不改触发器、搜索框或页脚。"
+          }
+        },
+        "bindings": {
+          "changeCallback": {
+            "mode": "event-handler",
+            "target": "root",
+            "event": "ds:select-change"
+          },
+          "layout": {
+            "mode": "native-attribute",
+            "target": "root",
+            "attribute": "data-select-layout",
+            "values": [
+              "fill"
+            ],
+            "sourceProperty": "crossSizing:auto"
+          },
+          "placeholder": {
+            "mode": "native-attribute",
+            "target": "span.ds-select__value",
+            "attribute": "data-placeholder",
+            "valueType": "nonempty-string",
+            "sourceProperty": "占位文案（内容）"
+          }
+        },
+        "runtimeSemantics": {
+          "mode": "single",
+          "confirmation": false
+        }
+      },
+      "single-radio": {
+        "purpose": "select-single-radio",
+        "exampleSelector": "[data-ai-example=\"ai-select-single-radio\"]",
+        "allowedEdits": [
+          "options",
+          "changeCallback",
+          "layout",
+          "placeholder"
+        ],
+        "slots": {
+          "options": {
+            "selector": ".ds-select__list",
+            "mode": "structured-content",
+            "required": true,
+            "preserve": [
+              ".ds-select__option-label",
+              ".ds-select__radio"
+            ],
+            "boundary": "只替换原选项列表；每项保留role=option、aria-selected及当前变体的标记/组结构。有data-value则按宿主内容绑定保留；未提供时现有脚本以标签文字作为值，不把缺失值推断为业务编码。不改触发器、搜索框或页脚。"
+          }
+        },
+        "bindings": {
+          "changeCallback": {
+            "mode": "event-handler",
+            "target": "root",
+            "event": "ds:select-change"
+          },
+          "layout": {
+            "mode": "native-attribute",
+            "target": "root",
+            "attribute": "data-select-layout",
+            "values": [
+              "fill"
+            ],
+            "sourceProperty": "crossSizing:auto"
+          },
+          "placeholder": {
+            "mode": "native-attribute",
+            "target": "span.ds-select__value",
+            "attribute": "data-placeholder",
+            "valueType": "nonempty-string",
+            "nonEmpty": true,
+            "sourceProperty": "占位文案（内容）"
+          }
+        },
+        "runtimeSemantics": {
+          "mode": "single",
+          "confirmation": false
+        }
+      },
+      "single-check": {
+        "purpose": "select-single-check",
+        "exampleSelector": "[data-ai-example=\"ai-select-single-check\"]",
+        "allowedEdits": [
+          "options",
+          "changeCallback"
+        ],
+        "slots": {
+          "options": {
+            "selector": ".ds-select__list",
+            "mode": "structured-content",
+            "required": true,
+            "preserve": [
+              ".ds-select__option-label",
+              ".ds-select__check"
+            ],
+            "boundary": "只替换原选项列表；每项保留role=option、aria-selected及当前变体的标记/组结构。有data-value则按宿主内容绑定保留；未提供时现有脚本以标签文字作为值，不把缺失值推断为业务编码。不改触发器、搜索框或页脚。"
+          }
+        },
+        "bindings": {
+          "changeCallback": {
+            "mode": "event-handler",
+            "target": "root",
+            "event": "ds:select-change"
+          }
+        },
+        "runtimeSemantics": {
+          "mode": "single",
+          "confirmation": false
+        }
+      },
+      "multi-basic": {
+        "purpose": "select-multi-basic",
+        "exampleSelector": "[data-ai-example=\"ai-select-multi-basic\"]",
+        "allowedEdits": [
+          "options",
+          "changeCallback"
+        ],
+        "slots": {
+          "options": {
+            "selector": ".ds-select__list",
+            "mode": "structured-content",
+            "required": true,
+            "preserve": [
+              ".ds-select__option-label"
+            ],
+            "boundary": "只替换原选项列表；每项保留role=option、aria-selected及当前变体的标记/组结构。有data-value则按宿主内容绑定保留；未提供时现有脚本以标签文字作为值，不把缺失值推断为业务编码。不改触发器、搜索框或页脚。"
+          }
+        },
+        "bindings": {
+          "changeCallback": {
+            "mode": "event-handler",
+            "target": "root",
+            "event": "ds:select-change"
+          }
+        },
+        "runtimeSemantics": {
+          "mode": "multiple",
+          "confirmation": false
+        }
+      },
+      "multi-checkbox": {
+        "purpose": "select-multi-checkbox",
+        "exampleSelector": "[data-ai-example=\"ai-select-multi-checkbox\"]",
+        "allowedEdits": [
+          "options",
+          "changeCallback",
+          "layout"
+        ],
+        "slots": {
+          "options": {
+            "selector": ".ds-select__list",
+            "mode": "structured-content",
+            "required": true,
+            "preserve": [
+              ".ds-select__option-label",
+              ".ds-checkbox--sm",
+              ".ds-checkbox__box",
+              ".ds-checkbox__label"
+            ],
+            "boundary": "只替换原选项列表；每项保留role=option、aria-selected及当前变体的标记/组结构。有data-value则按宿主内容绑定保留；未提供时现有脚本以标签文字作为值，不把缺失值推断为业务编码。不改触发器、搜索框或页脚。"
+          }
+        },
+        "bindings": {
+          "changeCallback": {
+            "mode": "event-handler",
+            "target": "root",
+            "event": "ds:select-change"
+          },
+          "layout": {
+            "mode": "native-attribute",
+            "target": "root",
+            "attribute": "data-select-layout",
+            "values": [
+              "fill"
+            ],
+            "sourceProperty": "crossSizing:auto"
+          }
+        },
+        "runtimeSemantics": {
+          "mode": "multiple",
+          "confirmation": false
+        }
+      },
+      "phone-search": {
+        "purpose": "select-phone-search",
+        "exampleSelector": "[data-ai-example=\"ai-select-phone-search\"]",
+        "allowedEdits": [
+          "options",
+          "changeCallback"
+        ],
+        "slots": {
+          "options": {
+            "selector": ".ds-select__list",
+            "mode": "structured-content",
+            "required": true,
+            "preserve": [
+              ".ds-select__option-label"
+            ],
+            "boundary": "只替换原选项列表；每项保留role=option、aria-selected及当前变体的标记/组结构。有data-value则按宿主内容绑定保留；未提供时现有脚本以标签文字作为值，不把缺失值推断为业务编码。不改触发器、搜索框或页脚。"
+          }
+        },
+        "bindings": {
+          "changeCallback": {
+            "mode": "event-handler",
+            "target": "root",
+            "event": "ds:select-change"
+          }
+        },
+        "runtimeSemantics": {
+          "mode": "single",
+          "confirmation": false
+        }
+      },
+      "search": {
+        "purpose": "select-search",
+        "exampleSelector": "[data-ai-example=\"ai-select-search\"]",
+        "allowedEdits": [
+          "options",
+          "changeCallback",
+          "placeholder",
+          "searchLabel"
+        ],
+        "slots": {
+          "options": {
+            "selector": ".ds-select__list",
+            "mode": "structured-content",
+            "required": true,
+            "preserve": [
+              ".ds-select__option-label"
+            ],
+            "boundary": "只替换原选项列表；每项保留role=option、aria-selected及当前变体的标记/组结构。有data-value则按宿主内容绑定保留；未提供时现有脚本以标签文字作为值，不把缺失值推断为业务编码。不改触发器、搜索框或页脚。"
+          }
+        },
+        "bindings": {
+          "changeCallback": {
+            "mode": "event-handler",
+            "target": "root",
+            "event": "ds:select-change"
+          },
+          "placeholder": {
+            "mode": "native-attribute",
+            "target": "span.ds-select__value",
+            "attribute": "data-placeholder",
+            "valueType": "nonempty-string",
+            "sourceProperty": "占位文案（内容）"
+          },
+          "searchLabel": {
+            "mode": "native-attribute",
+            "target": "input.ds-select__search-input",
+            "attribute": "aria-label",
+            "valueType": "nonempty-string",
+            "sourceProperty": "搜索输入可访问名称（内容）"
+          }
+        },
+        "runtimeSemantics": {
+          "mode": "single",
+          "confirmation": false
+        }
+      },
+      "two-column": {
+        "purpose": "select-two-column",
+        "exampleSelector": "[data-ai-example=\"ai-select-two-column\"]",
+        "allowedEdits": [
+          "options",
+          "changeCallback"
+        ],
+        "slots": {
+          "options": {
+            "selector": ".ds-select__list",
+            "mode": "structured-content",
+            "required": true,
+            "preserve": [
+              ".ds-select__option-label",
+              ".ds-checkbox--sm",
+              ".ds-checkbox__box",
+              ".ds-select__group-title",
+              ".ds-checkbox__label"
+            ],
+            "boundary": "只替换原选项列表；每项保留role=option、aria-selected及当前变体的标记/组结构。有data-value则按宿主内容绑定保留；未提供时现有脚本以标签文字作为值，不把缺失值推断为业务编码。不改触发器、搜索框或页脚。"
+          }
+        },
+        "bindings": {
+          "changeCallback": {
+            "mode": "event-handler",
+            "target": "root",
+            "event": "ds:select-change"
+          }
+        },
+        "runtimeSemantics": {
+          "mode": "multiple",
+          "confirmation": false
+        }
+      },
+      "grouped-combination": {
+        "purpose": "select-grouped-combination",
+        "exampleSelector": "[data-ai-example=\"ai-select-grouped-combination\"]",
+        "allowedEdits": [
+          "options",
+          "changeCallback"
+        ],
+        "slots": {
+          "options": {
+            "selector": ".ds-select__list",
+            "mode": "structured-content",
+            "required": true,
+            "preserve": [
+              ".ds-select__option-label",
+              ".ds-checkbox--sm",
+              ".ds-checkbox__box",
+              ".ds-select__group-title",
+              ".ds-checkbox__label"
+            ],
+            "boundary": "只替换原选项列表；每项保留role=option、aria-selected及当前变体的标记/组结构。有data-value则按宿主内容绑定保留；未提供时现有脚本以标签文字作为值，不把缺失值推断为业务编码。不改触发器、搜索框或页脚。"
+          }
+        },
+        "bindings": {
+          "changeCallback": {
+            "mode": "event-handler",
+            "target": "root",
+            "event": "ds:select-change"
+          }
+        },
+        "runtimeSemantics": {
+          "mode": "multiple",
+          "confirmation": true
+        }
+      }
+    }
+  },
+  "changeLog": [
+    {
+      "date": "2026-11-10",
+      "change": "当前常规单选灰底原件021318的auto宽度接入已有宿主装配：data-select-layout=fill，仅分配列宽；225px示例和其他变体保持，42px与状态不变。"
+    }
+  ],
+  "parts": {
+    "configuration-color-options": {
+      "isComplete": true,
+      "pendingParts": [],
+      "colorVariants": [
+        "single-basic"
+      ],
+      "previewSelector": "[data-select-part=\"configuration-color-options\"]",
+      "requiredClasses": [
+        "ds-select__panel",
+        "ds-select__list",
+        "ds-select__option",
+        "ds-select__option-label"
+      ],
+      "source": "components/sources/list-option-mg-20261115/review.json",
+      "sourcePreview": "components/sources/select/configuration-color-options-1115.html",
+      "scope": "Existing native single-basic listbox with business color content; private finite OptionSelector host part.",
+      "allowedHosts": [
+        {
+          "component": "OptionSelector",
+          "variant": "color"
+        }
+      ]
+    }
+  }
+}

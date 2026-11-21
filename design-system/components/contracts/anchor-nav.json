@@ -1,0 +1,705 @@
+{
+  "id": "comp_anchor_nav_001",
+  "name": "AnchorNav",
+  "chineseName": "锚点导航",
+  "description": "页面内锚点跳转导航条，固定在 Banner 之后，左侧 Tab 选项用于滚动定位页面内区块，右侧固定一个 CTA 按钮",
+  "category": "导航 Navigation",
+  "variants": [
+    {
+      "name": "anchor-nav",
+      "chineseName": "标准锚点导航",
+      "styleProperties": {
+        "height": "56px",
+        "background": "#EEEEEE",
+        "position": "sticky",
+        "top": "0"
+      },
+      "cssClass": "ds-anchor-nav",
+      "isComplete": true,
+      "requiredChildren": [
+        "div.ds-anchor-nav__inner",
+        "div.ds-anchor-nav__tabs",
+        "div.ds-anchor-nav__tab[data-anchor-tab]",
+        "div.ds-anchor-nav__action",
+        "button.ds-btn",
+        "span.ds-btn__text"
+      ],
+      "selectionDecisionType": "标准锚点导航",
+      "whenToUse": "同一长页多个真实章节，需要横向章节入口及现有单CTA。",
+      "whenNotToUse": "切换内容面板、跳去其他页面、纵向导航或溢出菜单。当前接口也不支持移除CTA。",
+      "usage": "同一长页多个真实章节，需要横向章节入口及现有单CTA。"
+    }
+  ],
+  "states": [
+    {
+      "name": "default",
+      "chineseName": "未激活项",
+      "styleOverrides": {
+        "color": "var(--color-gray-3)",
+        "borderBottom": "2px solid transparent"
+      },
+      "description": "非当前锚点"
+    },
+    {
+      "name": "active",
+      "chineseName": "激活项",
+      "styleOverrides": {
+        "color": "var(--color-gray-1)",
+        "borderBottomColor": "var(--brand-red)"
+      },
+      "description": "当前所在锚点区块对应的 tab"
+    },
+    {
+      "name": "hover",
+      "chineseName": "悬停",
+      "styleOverrides": {
+        "color": "var(--color-gray-1)"
+      },
+      "description": "非激活项 hover 时文字变深，不加下划线"
+    }
+  ],
+  "contentSlots": {
+    "tabs": {
+      "required": true,
+      "description": "左侧锚点跳转选项列表，ds-anchor-nav__tab，14px/600"
+    },
+    "action": {
+      "required": false,
+      "description": "右侧固定 CTA 按钮，ds-anchor-nav__action"
+    }
+  },
+  "relations": {
+    "fontSizeDependencies": [
+      {
+        "token": "typography.font-size-md",
+        "value": "14px",
+        "usage": "中号字体 - XL/L 按钮",
+        "appliesTo": [
+          "anchor-nav"
+        ]
+      }
+    ],
+    "fontWeightDependencies": [
+      {
+        "token": "typography.font-weight-semibold",
+        "value": "600",
+        "usage": "锚点导航标签",
+        "appliesTo": [
+          "anchor-nav"
+        ],
+        "properties": [
+          "font-weight"
+        ],
+        "selectors": [
+          ".ds-anchor-nav__tab"
+        ]
+      },
+      {
+        "token": "typography.font-weight-regular",
+        "value": "400",
+        "usage": "真实Button子组件的Regular字体依赖；不改变锚点标签自身的字重",
+        "appliesTo": [
+          "anchor-nav"
+        ],
+        "properties": [
+          "font-weight"
+        ],
+        "selectors": [
+          ".ds-btn[data-button-current=\"mg-20261112\"].ds-btn--filled-red.ds-btn--xl-regular .ds-btn__text"
+        ]
+      }
+    ],
+    "typographyDependencies": [
+      {
+        "token": "typography.h7-semibold",
+        "fontSizeToken": "typography.font-size-md",
+        "fontSizeValue": "14px",
+        "fontWeightToken": "typography.font-weight-semibold",
+        "fontWeightValue": "600",
+        "weightEvidence": "explicit-css",
+        "usage": "锚点导航标签",
+        "appliesTo": [
+          "anchor-nav"
+        ]
+      }
+    ],
+    "colorDependencies": [
+      {
+        "token": "color.gray-1",
+        "value": "#19191A",
+        "usage": "标题/深色文字 (Primary text)",
+        "appliesTo": [
+          "anchor-nav"
+        ]
+      },
+      {
+        "token": "color.gray-3",
+        "value": "#707070",
+        "usage": "次要/辅助文字 (Secondary/auxiliary text)",
+        "appliesTo": [
+          "anchor-nav"
+        ]
+      },
+      {
+        "token": "color.gray-6",
+        "value": "#EDEDF0",
+        "usage": "浅灰分割线 / 弱边框（介于 gray-5 #DEE0E3 与 gray-7 #F2F2F2 之间）",
+        "appliesTo": [
+          "anchor-nav"
+        ]
+      },
+      {
+        "token": "color.brand-red",
+        "value": "#C00000",
+        "usage": "品牌红色，主操作按钮背景色",
+        "appliesTo": [
+          "anchor-nav"
+        ]
+      }
+    ],
+    "componentDependencies": [
+      {
+        "component": "Button",
+        "usage": "已核对42px锚点主CTA：Button filled-red/xl-regular，左右24px；修正旧L名称映射。",
+        "slot": "action",
+        "requiredVariants": [
+          "filled-red"
+        ],
+        "implementationClasses": [
+          "ds-btn",
+          "ds-btn--filled-red",
+          "ds-btn--xl-regular"
+        ],
+        "requiredSizes": [
+          {
+            "variant": "filled-red",
+            "size": "xl-regular"
+          }
+        ],
+        "appliesTo": [
+          "anchor-nav"
+        ],
+        "sourceEvidence": {
+          "review": "components/sources/button/local-rule-review-20261113.json",
+          "nodes": [
+            "3:14936",
+            "3:14944",
+            "3:23920"
+          ],
+          "scope": "Button规范中的锚点CTA规则和42px原子；不宣称整个AnchorNav新文件家族已验收。"
+        }
+      }
+    ],
+    "parentContext": {
+      "page-top": {
+        "note": "AnchorNav 位于 Banner 之后、页面主内容区之前，必须 sticky 固定在视口顶部（滚动时保持可见），不嵌套在 page-section 内部"
+      }
+    },
+    "variantDecisionsDescription": "先匹配具体场景，再区分候选、不用与设计参考；展示和AI读取同一规则。MG来源事实、当前本地接口和视觉批准分别记录，不扩展既有调用范围。",
+    "variantDecisions": [
+      {
+        "type": "标准锚点导航",
+        "className": "ds-anchor-nav（位置：Banner 之后、主内容区之前；sticky 固定视口顶部）",
+        "whenToUse": "同一长页多个真实章节，需要横向章节入口及现有单CTA。",
+        "whenNotToUse": "切换内容面板、跳去其他页面、纵向导航或溢出菜单。当前接口也不支持移除CTA。",
+        "nestedComponents": [
+          {
+            "component": "Button",
+            "label": "Button（红色XL Regular，42px）",
+            "href": "button.html"
+          }
+        ],
+        "status": "当前MG规则与可见结构已核对；具体调用资格读同版catalog，参考不授权调用。",
+        "variant": "anchor-nav",
+        "fragment": "anchor-nav",
+        "selectionCases": [
+          {
+            "id": "an11",
+            "kind": "use",
+            "condition": "同页多章节，横向入口无需溢出。",
+            "result": "anchor-nav；至少两项、现有红色42px CTA；宿主接章节滚动。",
+            "strength": "candidate",
+            "targetVariant": "anchor-nav"
+          },
+          {
+            "id": "an12",
+            "kind": "avoid",
+            "condition": "面板切换或跨页跳转。",
+            "result": "面板切换查Tab，跨页查Navigation。",
+            "strength": "avoid",
+            "targetVariant": "anchor-nav"
+          },
+          {
+            "id": "an14",
+            "kind": "reference",
+            "condition": "需要溢出菜单、遮罩或自动居中。",
+            "result": "溢出菜单、遮罩和自动居中未开放。",
+            "strength": "reference",
+            "targetVariant": "anchor-nav"
+          },
+          {
+            "id": "an15",
+            "kind": "reference",
+            "condition": "需要纵向FAQ/RMA或M端。",
+            "result": "不覆盖纵向、M端或原生Tab键盘。",
+            "strength": "reference",
+            "targetVariant": "anchor-nav"
+          }
+        ]
+      }
+    ],
+    "coOccursWith": [
+      {
+        "component": "page-section",
+        "reason": "每个 tab 对应页面下方一个 page-section 的 id，用于锚点跳转；tab 数量与 section 数量应一致"
+      }
+    ],
+    "notes": "AnchorNav 的 tab 项数量必须和页面实际的 section 锚点数量匹配，新增/删减页面 section 时要同步检查 AnchorNav 的 tab 列表，否则会出现跳转不到对应区块的问题（这是一种跨组件的数据一致性关系，不能只检查单个组件的样式）。",
+    "enforcementStatus": {
+      "componentDependencies.implementationClasses-evidence": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 8（证据链，2026-07-16）：componentDependencies[*].implementationClasses 声明的 class 必须在宿主 preview 的 class 属性里真实出现，缺证据即 error。Button(filled-red/xl-regular) 依赖已声明。"
+      },
+      "colorDependencies.tokens-exist": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 2b：colorDependencies 引用的 color.* token 必须存在于 token-specs/colors.json（缺失即 error）；token 为 / 表示无对应 token 的白名单裸值；双源值一致由 validate-tokens.js 全量保证；Guard C 保证声明了就必须有颜色依赖表"
+      },
+      "colorDependencies.css-uses-var": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 2c：切出组件样式段，校验用到的 var(--color-*) 都在 colorDependencies 声明过，且无未声明裸色值（box-shadow/注释除外），违反即 error —— 保证颜色映射闭环"
+      },
+      "radiusDependencies": {
+        "enforced": true,
+        "mechanism": "/",
+        "note": "本组件无圆角，无 radiusDependencies"
+      },
+      "fontSizeDependencies.tokens-exist": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 4a：fontSizeDependencies 引用的 typography.font-size-* token 必须存在于 token-specs/typography.json（缺失即 error）；token 为 / 表示无对应正式 token 的白名单值；Guard E 保证声明了就必须有字号依赖表"
+      },
+      "fontSizeDependencies.css-uses-var": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 4b：校验 font-size 用到的 var(--font-size-*) 都在 fontSizeDependencies 声明过，且无未声明裸字号值，违反即 error —— 保证字号映射闭环"
+      },
+      "shadowDependencies": {
+        "enforced": true,
+        "mechanism": "/",
+        "note": "本组件无 box-shadow，无 shadowDependencies"
+      },
+      "componentDependencies.Button-CTA": {
+        "enforced": false,
+        "mechanism": "无"
+      },
+      "coOccursWith.page-section-id-matching": {
+        "enforced": false,
+        "mechanism": "无（阻塞于结构：markup 未编码 tab→section 映射）",
+        "note": "2026-07-16 评估：当前 anchor-nav tab 为 data-anchor-tab 的纯文本 div，markup 里不含 href=#id / data-anchor-target 之类指向 section 的目标属性，因此无法机械匹配 tab 与 section。要机械化需先约定目标属性（如 data-anchor-target=\"#sec-id\"），届时再补 validate.js 检查（tab 目标必须存在对应 id、数量一致）。"
+      },
+      "spacingDependencies.tokens-and-css-closure": {
+        "enforced": true,
+        "mechanism": "check-contracts.js: spacingDependencies token/value/selector/property 与组件 CSS 双向闭环校验"
+      },
+      "borderDependencies.tokens-and-css-closure": {
+        "enforced": true,
+        "mechanism": "check-contracts.js: borderDependencies token/value/aspect/selector/property 与组件 CSS 双向闭环校验"
+      },
+      "fontWeightDependencies.tokens-and-css-closure": {
+        "enforced": true,
+        "mechanism": "check-contracts.js: fontWeightDependencies token/value/selector/property 与组件 CSS 双向闭环校验；仅允许 Regular 400 / SemiBold 600，禁止裸字重值"
+      },
+      "typographyDependencies.size-weight-pairing": {
+        "enforced": true,
+        "mechanism": "check-contracts.js: typographyDependencies.token 必须引用 token-specs/typography.json 中真实 composite typography token；该 token 同时锁定 fontSize、lineHeight、fontWeight，并核对底层字号/字重 primitive 与 CSS 证据，依赖汇总表只输出一个 Token 链接"
+      }
+    },
+    "spacingDependencies": [
+      {
+        "token": "spacing.lg",
+        "value": "16px",
+        "usage": "gap / padding：.ds-anchor-nav__tabs、.ds-anchor-nav__tab",
+        "properties": [
+          "gap",
+          "padding"
+        ],
+        "selectors": [
+          ".ds-anchor-nav__tabs",
+          ".ds-anchor-nav__tab"
+        ],
+        "appliesTo": [
+          "anchor-nav"
+        ]
+      },
+      {
+        "token": "spacing.sm",
+        "value": "8px",
+        "usage": "padding-left：.ds-anchor-nav__action",
+        "properties": [
+          "padding-left"
+        ],
+        "selectors": [
+          ".ds-anchor-nav__action"
+        ],
+        "appliesTo": [
+          "anchor-nav"
+        ]
+      },
+      {
+        "token": "spacing.2",
+        "value": "2px",
+        "usage": "嵌套Button共享运行资源的可选左图标组内距；原子拥有，宿主不得覆盖。本宿主未新增可见图标调用。",
+        "appliesTo": [
+          "anchor-nav"
+        ]
+      }
+    ],
+    "borderDependencies": [
+      {
+        "token": "border.width.strong",
+        "value": "2px",
+        "usage": "border-bottom：.ds-anchor-nav__tab",
+        "aspect": "width",
+        "properties": [
+          "border-bottom"
+        ],
+        "selectors": [
+          ".ds-anchor-nav__tab"
+        ],
+        "appliesTo": [
+          "anchor-nav"
+        ]
+      },
+      {
+        "token": "border.style.default",
+        "value": "solid",
+        "usage": "border-bottom：.ds-anchor-nav__tab",
+        "aspect": "style",
+        "properties": [
+          "border-bottom"
+        ],
+        "selectors": [
+          ".ds-anchor-nav__tab"
+        ],
+        "appliesTo": [
+          "anchor-nav"
+        ]
+      },
+      {
+        "token": "border.color.transparent",
+        "value": "transparent",
+        "usage": "border-bottom：.ds-anchor-nav__tab",
+        "aspect": "color",
+        "properties": [
+          "border-bottom"
+        ],
+        "selectors": [
+          ".ds-anchor-nav__tab"
+        ],
+        "appliesTo": [
+          "anchor-nav"
+        ]
+      },
+      {
+        "token": "border.color.brand",
+        "value": "var(--brand-red)",
+        "usage": "border-bottom-color：.ds-anchor-nav__tab--active",
+        "aspect": "color",
+        "properties": [
+          "border-bottom-color"
+        ],
+        "selectors": [
+          ".ds-anchor-nav__tab--active"
+        ],
+        "appliesTo": [
+          "anchor-nav"
+        ]
+      }
+    ],
+    "hardRules": [
+      {
+        "title": "Tab 数量必须与页面 section 锚点数量一致",
+        "ruleContent": "<strong>AnchorNav 的 tab 项数量必须和页面实际的 section 锚点数量匹配。</strong>新增/删减页面 section 时要同步检查 AnchorNav 的 tab 列表。",
+        "aiParse": "relations.coOccursWith[0] = {\n  component: \"page-section\",\n  reason: \"每个 tab 对应页面下方一个 page-section 的 id，用于锚点跳转；tab 数量与 section 数量应一致\"\n}",
+        "enforcement": "跨组件数据一致性约束。目前无机械检查，依赖 AI/人工审查。"
+      },
+      {
+        "title": "保留 Preview 的 div 标签并允许页面补充锚点跳转",
+        "ruleContent": "<strong>AnchorNav 的 tab 必须保留 Preview 的 div.ds-anchor-nav__tab 结构与组件样式。</strong>参考页面确有锚点跳转且 本地模块映射记录目标 section 时，页面 JS 可补充滚动定位与选中态同步，此用法仍算直接调用。不得将 tab 改为 a；文字不得出现浏览器默认下划线，激活态红色底边线必须保留。",
+        "aiParse": "保留 Preview 的 div.ds-anchor-nav__tab 与既有选中态；仅在来源有可见跳转证据且本地模块映射记录目标 section 时，允许页面 JS 补充滚动定位/选中态同步并标为直接调用；禁止 a 标签和文字默认下划线，保留激活态底边线。",
+        "enforcement": "目前无机械检查，由本地实际渲染、计算样式及交互复核。"
+      },
+      {
+        "title": "滚动时必须吸顶并保持可见",
+        "ruleContent": "<strong>AnchorNav 在 Banner 之后、页面主内容区之前；页面向下滚动后必须以 position: sticky、top: 0 固定在视口顶部。</strong>导航需保持可见并位于页面内容之上；锚点跳转落点不得被 56px 导航遮挡。",
+        "aiParse": "ds-anchor-nav 必须由组件 CSS 实现 position: sticky; top: 0，并具有足够层级；页面滚动后导航顶边贴合视口顶边，锚点目标内容在导航下方可见。",
+        "enforcement": "目前无机械检查，由本地实际渲染进行滚动与锚点跳转核对。"
+      }
+    ],
+    "interactionRules": [
+      {
+        "name": "章节目标",
+        "rule": "按来源映射真实section并由宿主处理跳转；只切激活态不能称页面定位已接通。",
+        "owner": "原页面宿主"
+      },
+      {
+        "name": "按钮与Tab关系",
+        "rule": "保留既有Button真实依赖。MG含Tab原子相关属性，不据此伪造本地直接Tab运行引用。",
+        "owner": "原契约及共享子组件"
+      },
+      {
+        "name": "溢出与键盘",
+        "rule": "MG溢出菜单/遮罩和M端保留参考；当前div选项不声明原生Tab键盘或完整移动导航支持。",
+        "owner": "当前调用边界"
+      }
+    ],
+    "prototypeRollout": {
+      "template": "docs/component-spec-template.html",
+      "source": "relations.variantDecisions",
+      "workflow": "existing-local-only",
+      "scope": "existing admitted calls; selection/dependency documentation only"
+    }
+  },
+  "searchIntents": [
+    "锚点导航",
+    "页内导航",
+    "楼层导航",
+    "页面内跳转",
+    "固定导航条",
+    "sticky导航"
+  ],
+  "tokenReferences": [
+    "color.gray-1",
+    "color.gray-3",
+    "color.brand-red",
+    "typography.font-family-base",
+    "spacing.lg",
+    "spacing.sm",
+    "border.width.strong",
+    "border.style.default",
+    "border.color.transparent",
+    "border.color.brand",
+    "typography.font-weight-semibold",
+    "typography.font-size-md",
+    "typography.h7-semibold",
+    "spacing.2",
+    "typography.font-weight-regular"
+  ],
+  "constraints": {
+    "allowedChildren": [
+      "Tab item",
+      "Button"
+    ],
+    "requiredProperties": [
+      "tabs"
+    ],
+    "forbiddenCombinations": []
+  },
+  "isComplete": true,
+  "createdAt": "2026-06-30T00:00:00Z",
+  "updatedAt": "2026-10-10T01:45:00+08:00",
+  "qualityProfile": {
+    "schemaVersion": "1.0.0",
+    "standard": "docs/component-quality-standard.md",
+    "implementation": "components/variants/anchor-nav.html",
+    "selection": {
+      "mappingSource": "components/selection-mvp-policy.json",
+      "mappingPointer": "components.anchor-nav.variantDecisionTypes",
+      "rulesPointer": "relations.variantDecisions"
+    },
+    "maintenance": {
+      "authority": "contract-preview-runtime-token-icon",
+      "generatedOnly": [
+        "preview-reference-tables",
+        "component-index",
+        "selection-catalog",
+        "design-reading-view",
+        "ai-reference"
+      ],
+      "changePolicy": "记录来源差异、兼容性与受影响父子组件；源文件变化后旧工程验收失效。",
+      "historicalPages": "不自动升级；新页面锁定本地组件运行资源版本。"
+    },
+    "acceptance": {
+      "report": "components/quality/report.json",
+      "proof": "components/quality/acceptance.json",
+      "declarationIsNotProof": true
+    }
+  },
+  "editable": [
+    "tabs",
+    "actionLabel",
+    "actionCallback"
+  ],
+  "integration": {
+    "styles": [
+      "components/tokens.css",
+      "components/components.css",
+      "components/button-current.css",
+      "components/button-runtime-current.css"
+    ],
+    "scripts": [
+      "components/anchor-nav-current.js"
+    ],
+    "fontStylesheets": [
+      "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+    ],
+    "fontFallback": "沿用Open Sans；实际字体与浏览器定位待验。"
+  },
+  "aiContract": {
+    "schemaVersion": "1.0.0",
+    "rootTag": "div",
+    "scope": "existing-desktop-multitab-anchor-nav-selection-and-red-cta",
+    "supported": [
+      "anchor-nav"
+    ],
+    "unsupported": [
+      "single-tab",
+      "anchor-tag-tabs",
+      "custom-cta-variant",
+      "built-in-scroll-target",
+      "dynamic-insertion",
+      "keyboard-tabs",
+      "mobile"
+    ],
+    "reviewStatus": {
+      "engineering": "pending",
+      "visual": "pending",
+      "familyCoverage": "partial"
+    },
+    "previewAssets": [
+      "components/preview/reference-live.js"
+    ],
+    "selectionPolicy": "横向同页章节导航；保留实际div tabs、一个激活项及现有Button子组件（红色XL Regular，42px/左右24px）。组件只维护激活态，章节目标、滚动定位和sticky偏移由原页面宿主实现。MG的纵向、溢出菜单、自动居中和M端原件仍为参考，不冒充接口已实现；不代替Tab面板或跨页Navigation。",
+    "identity": {
+      "rule": "保留data-anchor-group和各tab数据标记；默认只有一个激活项。不要复制运行后data-anchor-nav-ready。组件自身不要求额外ID；页面锚点由本地页面映射管理。",
+      "labelRule": "tabs仅替换文字与已登记目标数据，保留div；CTA只替换其文字并通过真实button绑定click。"
+    },
+    "locked": [
+      "根/inner/tabs/action结构",
+      "div tab及激活底边线",
+      "红色Button/xl-regular真实结构与安全type",
+      "sticky及共享CSS",
+      "运行选择逻辑与页面滚动边界"
+    ],
+    "behavior": {
+      "selection": "marker-only运行脚本在本group切换唯一激活类；隐藏或ARIA禁用不切换。页面按根目录本地流程协调章节滚动，CTA事件单独处理。",
+      "initialization": "首次加载或DOMContentLoaded初始化，防止重复绑定；不提供动态插入扫描API。",
+      "scroll": "页面有明确章节目标时，由本地页面JS建立目标与选中/滚动对应；组件不自行生成目标或页面流程。",
+      "action": "CTA为Button/filled-red/xl-regular，type=button避免宿主form意外提交；actionCallback只绑定CTA自身click，不绑定所有tab点击。",
+      "keyboard": "原Preview tab为div，没有键盘tab控件实现；本批不声称已验证完整键盘语义。"
+    },
+    "evidence": {
+      "localImplementation": "components/variants/anchor-nav.html",
+      "comparison": "components/sources/anchor-nav/local-structure-review.json",
+      "previousInlineRuntime": "components/sources/anchor-nav/preview-inline-runtime-before.txt",
+      "nativeSpecification": "components/sources/anchor-nav/native-specification-review-1011.json",
+      "nativeComponents": "components/sources/anchor-nav/native-component-review-1011.json",
+      "buttonRuleResolution": "components/sources/button/local-rule-review-20261113.json",
+      "currentMgReview": "components/sources/banner-navigation-mg-20261114/anchor-nav-review.json"
+    },
+    "variants": {
+      "anchor-nav": {
+        "purpose": "sticky-section-tabs-with-red-cta",
+        "exampleSelector": "[data-ai-example=\"ai-anchor-nav\"]",
+        "allowedEdits": [
+          "tabs",
+          "actionLabel",
+          "actionCallback"
+        ],
+        "slots": {
+          "tabs": {
+            "selector": "div.ds-anchor-nav__tabs",
+            "mode": "structured-content",
+            "required": true,
+            "preserve": [
+              "div.ds-anchor-nav__tab"
+            ],
+            "rule": "至少2个div tab，保留data-anchor-tab和一个激活态。"
+          },
+          "actionLabel": {
+            "selector": "span.ds-btn__text",
+            "mode": "text",
+            "required": true
+          }
+        },
+        "bindings": {
+          "actionCallback": {
+            "mode": "event-handler",
+            "target": "button.ds-btn",
+            "event": "click"
+          }
+        }
+      }
+    }
+  },
+  "history": [
+    {
+      "date": "2026-09-18",
+      "author": "Codex",
+      "change": "将 AnchorNav 滚动吸顶从通常情况明确为硬规则，并要求锚点跳转目标不被导航遮挡。"
+    },
+    {
+      "date": "2026-09-18",
+      "author": "Codex",
+      "change": "明确页面锚点跳转特例：保留 Preview 的 div tab 与组件视觉，允许页面 JS 补充滚动定位和选中态同步；禁止链接默认下划线。"
+    },
+    {
+      "date": "2026-07-23",
+      "author": "Kiro",
+      "change": "将字号与字重配对提升为正式 composite typography token；组件依赖以单一 token 引用完整字号、行高、字重，primitive 字段仅保留作 CSS 证据。"
+    },
+    {
+      "date": "2026-07-22",
+      "change": "新增 typographyDependencies 成对字体依赖：每条记录明确绑定字号与字重，依赖汇总表按“字号 · 层级 · 字重”整体展示，禁止拆列后猜测组合。",
+      "author": "Kiro"
+    },
+    {
+      "date": "2026-07-22",
+      "change": "新增 fontWeightDependencies：按组件 CSS 显式 font-weight 证据登记 Regular 400 / SemiBold 600；无显式声明的组件保留空数组，并纳入 token/value/selector/property 双向闭环校验。",
+      "author": "Kiro"
+    },
+    {
+      "date": "2026-07-20",
+      "change": "父子依赖治理：AnchorNav→Button 依赖补齐 filled-black requiredVariants，供父关系自动反向推导。",
+      "author": "Kiro"
+    },
+    {
+      "date": "2026-06-30",
+      "change": "新建档案，记录与 page-section 锚点 id 的数量一致性关系",
+      "author": "TBD"
+    },
+    {
+      "date": "2026-07-14",
+      "change": "增加间距与描边 token 依赖、CSS 选择器/属性证据及机械闭环校验映射",
+      "author": "Kiro"
+    },
+    {
+      "date": "2026-07-14",
+      "change": "依据契约语义、组件 CSS 选择器与预览结构，补齐全部现有依赖的 appliesTo 汇总行映射；仅使用真实 types/variants，不新增伪类型或不确定依赖",
+      "author": "Kiro"
+    },
+    {
+      "date": "2026-10-09",
+      "author": "Codex",
+      "change": "统一规范维护质量标准：登记真实实现与选型规则入口、源变更重新验收、父子影响检查及历史页面隔离；不推断可编辑槽位或视觉批准。"
+    },
+    {
+      "date": "2026-10-10",
+      "author": "Codex",
+      "change": "修正tokenReferences中的旧别名，改用Token注册表实际名称；依据既有CSS变量--brand-red/--font-family-base及明确映射，不改Token值、CSS或历史页。新增健康检查阻止未知/重复Token引用。"
+    },
+    {
+      "date": "2026-10-10",
+      "author": "Codex",
+      "change": "现有Preview选择脚本整理为可复用anchor-nav.js，加入精确tabs/CTA槽、Button xl尺寸依赖及反例；CTA补type=button防宿主误提交。组件CSS与历史页未改，滚动目标/实际浏览器/键盘及来源验收仍待完成。"
+    },
+    {
+      "date": "2026-10-11",
+      "author": "Codex",
+      "change": "原生当前Web锚点CTA121496确认红色/42px/横24，修正旧black/XL投喂为真实Button filled-red/L。历史锁定资源不变，整体视觉及溢出仍待验。"
+    },
+    {
+      "date": "2026-11-13",
+      "author": "Codex",
+      "change": "按指定新MG的锚点CTA使用行和42px/24px红色原子，保留红色，修正旧L映射为已有XL Regular；只更新维护来源和新调用，固定旧页不升级。"
+    }
+  ]
+}

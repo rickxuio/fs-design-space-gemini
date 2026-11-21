@@ -1,0 +1,10 @@
+'use strict';
+const fs=require('node:fs'),path=require('node:path'),{JSDOM}=require('jsdom');
+const entries=[
+ {owner:'list',part:'icon-card-links-12',hosts:'[data-icon-card-current="jump"] .ds-list'},
+ {owner:'list',variant:'unordered-12',hosts:'[data-icon-card-expandable] .ds-list'},
+ {owner:'text-button',part:'icon-card-disclosure',hosts:'[data-icon-card-expandable] [data-text-button-part="icon-card-disclosure"]'},
+];
+function run(root,write){const file=path.join(root,'components/variants/icon-card.html');let html=fs.readFileSync(file,'utf8');const parent=new JSDOM(html),files=[];let changed=false;try{for(const item of entries){const contractPath='components/contracts/'+item.owner+'.json',previewPath='components/variants/'+item.owner+'.html',c=JSON.parse(fs.readFileSync(path.join(root,contractPath))),rule=item.part?c.parts[item.part]:c.aiContract.variants[item.variant],selector=item.part?rule.previewSelector:rule.exampleSelector,source=new JSDOM(fs.readFileSync(path.join(root,previewPath),'utf8'));files.push(contractPath,previewPath);try{const candidates=source.window.document.querySelectorAll(selector),hosts=parent.window.document.querySelectorAll(item.hosts);if(candidates.length!==1||!hosts.length)throw Error('IconCard owned source/host missing or ambiguous: '+selector);const canonical=candidates[0].cloneNode(true);canonical.removeAttribute('data-ai-example');if(item.part){const proof=path.join(root,rule.sourcePreview),value=canonical.outerHTML+'\n';if(write)fs.writeFileSync(proof,value);else if(fs.readFileSync(proof,'utf8')!==value)throw Error('IconCard atom render evidence is stale');}for(const host of hosts)if(host.outerHTML!==canonical.outerHTML){if(!write)throw Error('IconCard owned child is stale: '+selector);html=html.replace(host.outerHTML,canonical.outerHTML);changed=true;}}finally{source.window.close();}}if(write&&changed)fs.writeFileSync(file,html);return files;}finally{parent.window.close();}}
+module.exports={sync:root=>run(root,true),validate:root=>run(root,false)};
+if(require.main===module)module.exports.sync(path.resolve(__dirname,'..'));

@@ -1,0 +1,198 @@
+<!-- INTERNAL VARIANT SOURCE: for compile/sync scripts only. Human-facing spec: maintenance/foundation-prototypes-20261114/badge.html -->
+<!DOCTYPE html>
+<html data-component-reference="badge" lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Badge 徽标数 - 组件预览</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../tokens.css">
+  <link rel="stylesheet" href="../components.css?v=2">
+  <link rel="stylesheet" href="../badge-current.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: var(--font-family-base); padding: 40px; background: #FFF; color: var(--color-gray-1); }
+    /* 关联关系表：与依赖表统一表头浅灰底 + 方格描边 */
+    .rel-table { width: 100%; border-collapse: collapse; }
+    .rel-table th { background: #F6F6F8; font-size: 12px; font-weight: 600; text-align: left; padding: 8px 10px; border: 1px solid #DEE0E3; vertical-align: top; }
+    .rel-table td { font-size: 12px; padding: 8px 10px; border: 1px solid #DEE0E3; vertical-align: top; }
+    h1 { font-size: 24px; font-weight: 600; margin-bottom: 8px; }
+    .subtitle { font-size: 14px; color: var(--color-gray-3); margin-bottom: 40px; }
+    .section { margin-bottom: 48px; }
+    .section-title { font-size: 18px; font-weight: 600; margin-bottom: 24px; padding-bottom: 8px; border-bottom: 1px solid var(--color-gray-5); }
+    .row { display: flex; align-items: center; gap: 32px; flex-wrap: wrap; margin-bottom: 20px; }
+    .cell { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+    .cell__label { font-size: 12px; color: var(--color-gray-3); }
+    .host { width: 40px; height: 40px; border-radius: 4px; background: #F2F2F2; display: inline-flex; align-items: center; justify-content: center; }
+    .host img { width: 24px; height: 24px; }
+
+    /* Category Badge（分类与左侧导航栏保持一致） */
+    .cat-badge { display: inline-flex; align-items: center; height: 22px; padding: 0 10px; border-radius: 11px; font-size: 11px; font-weight: 700; margin-bottom: 10px; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { font-size: 12px; text-align: left; padding: 8px 10px; border: 1px solid #DEE0E3; }
+    th { background: #F6F6F8; font-weight: 600; }
+  </style>
+</head>
+<body>
+  <span class="cat-badge" style="background:#FBEAEA;color:#C00000;">数据展示 Data Display</span>
+  <h1>Badge 徽标数 <span class="version-badge" style="font-size:18px;font-weight:600;color:#707070;vertical-align:middle;margin-left:10px;">v1.0</span></h1>
+  <p class="subtitle">徽标数组件 — 一个组件三种类型：圆点徽标 / 数量徽标 / 图案徽标（规范 v1.1.2603A）</p>
+  <!-- 变体决策 + 关联关系表 -->
+  <div style="margin-bottom: 0; padding: 24px; background: #FAFBFC; border: 1px solid var(--color-gray-5); border-radius: 8px;">
+    <!-- AUTO-GENERATED-PREVIEW:START -->
+<!-- 合并模式：硬规则已并入下方合并表 -->
+    <!-- AUTO-GENERATED-PREVIEW:END -->
+    <!-- AUTO-GENERATED-DECISION-TABLE:START -->
+    <p style="font-size:14px;font-weight:600;margin-bottom:4px;">变体决策</p>
+    <p style="font-size:12px;color:#707070;margin-bottom:12px;">按内容与交互选具体变体，再核对同版调用资格。候选、不用、参考同时用于规范展示与AI；既有来源、当前MG核对、工程与视觉批准分开记录。</p>
+    <table style="width:100%;border-collapse:collapse;table-layout:fixed;">
+      <colgroup><col style="width:18%"><col style="width:38%"><col style="width:44%"></colgroup>
+      <thead><tr><th scope="col" style="background:#F6F6F8;font-size:12px;font-weight:600;text-align:left;padding:8px 10px;border:1px solid #DEE0E3;">变体</th><th scope="col" style="background:#F6F6F8;font-size:12px;font-weight:600;text-align:left;padding:8px 10px;border:1px solid #DEE0E3;">匹配条件</th><th scope="col" style="background:#F6F6F8;font-size:12px;font-weight:600;text-align:left;padding:8px 10px;border:1px solid #DEE0E3;">选型结论</th></tr></thead>
+<tbody><tr><th scope="rowgroup" rowspan="2" style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">圆点徽标</th><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">完成状态的8px绿色圆点与文字。</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>候选 · </strong>调用dot；当前仅success带文字；不切换类名。</td></tr>
+<tr><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">要求其他状态色、无文字点或未读数量。</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>不用 · </strong>不使用此变体；先核对相邻组件和实际调用范围。</td></tr></tbody>
+<tbody><tr><th scope="rowgroup" rowspan="2" style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">数量徽标</th><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">宿主已提供0–99或99+的显示数量。</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>候选 · </strong>调用count；超量先由宿主格式化为99+。</td></tr>
+<tr><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">要求自动计数、自动截断或移动端尺寸。</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>不用 · </strong>不使用此变体；先核对相邻组件和实际调用范围。</td></tr></tbody>
+<tbody><tr><th scope="rowgroup" rowspan="2" style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">图案徽标</th><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">现有PC/Pad18px红底白勾图案。</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>候选 · </strong>调用icon；只改iconAlt，叠加位置归宿主。</td></tr>
+<tr><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">其他图标、账户轮廓或M端12px图案。</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>不用 · </strong>不使用此变体；先核对相邻组件和实际调用范围。</td></tr></tbody>
+<tbody><tr><th colspan="3" style="background:#F6F6F8;font-size:12px;font-weight:600;text-align:left;padding:8px 10px;border:1px solid #DEE0E3;">⚠️ 硬规则：徽标叠加位置固定右上角（禁止左上角）</th></tr><tr><td colspan="2" style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>描述原文</strong><div><strong>徽标叠加在宿主图标/按钮上时，固定放右上角，禁止放左上角。</strong>用 <code>ds-badge-anchor</code> 建立定位上下文，徽标绝对定位到右上角。图案徽标内部图标不得超出底盘尺寸。</div></td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>AI 解析（写入契约 JSON 的字段）</strong><pre style="white-space:pre-wrap;word-break:break-all;">relations.enforcementStatus
+  [&quot;positionRule.top-right-only&quot;]
+  = { enforced: false,
+      mechanism: &quot;无&quot; }</pre></td></tr></tbody>
+    </table>
+    <!-- AUTO-GENERATED-DECISION-TABLE:END -->
+  </div>
+  <!-- DEPENDENCY-SUMMARY-SPACING -->
+  <div style="height:24px;"></div>
+  <!-- AUTO-GENERATED-DEPENDENCY-SUMMARY-TABLE:START -->
+    <div style="margin-bottom: 0; padding: 24px; background: #FAFBFC; border: 1px solid var(--color-gray-5); border-radius: 8px;">
+      <p style="font-size: 14px; font-weight: 600; margin-bottom: 4px;">依赖汇总表</p>
+      <p style="font-size: 12px; color: #707070; margin-bottom: 12px;">按组件类型汇总组件关系、颜色、字体、间距、描边、圆角、阴影和图标依赖；未填写 <code>appliesTo</code> 的组件级依赖不猜测变体归属，不参与本表归类。「组件关系」列用标签区分：<span style="display:inline-block;font-size:11px;line-height:16px;padding:0 5px;border-radius:3px;background:#EAF2FF;color:#0060BF;">子组件</span> = 嵌入本组件内部；<span style="display:inline-block;font-size:11px;line-height:16px;padding:0 5px;border-radius:3px;background:#F3EEFA;color:#512971;">父组件·类名证据／仅声明</span> = 从宿主 <code>componentDependencies</code> 自动推导；类名出现不等于具体变体、尺寸、必需结构或交互已验证，链接仅供打开 Preview 复核；<span style="display:inline-block;font-size:11px;line-height:16px;padding:0 5px;border-radius:3px;background:#FFF3E0;color:#A65300;">参考·未验证</span> = 仅保留设计意图，宿主 preview 尚无真实结构，不可作为已实现依赖。</p>
+      <div class="dep-summary-scroll">
+        <div class="dep-summary-grid" style="grid-template-columns:minmax(max-content, auto) repeat(8, minmax(max-content, 1fr));">
+          <div class="dep-cell dep-cell--sticky dep-cell--head" role="columnheader">组件类型</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">颜色</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">字体</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">间距</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">描边</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">圆角</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">阴影</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">图标</div>
+          <div class="dep-cell dep-cell--head dep-cell--right-edge" role="columnheader">组件关系</div>
+          <div class="dep-cell dep-cell--sticky" role="rowheader"><strong>圆点徽标</strong><br><code>dot</code></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#C00000;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-error" style="color:#0060BF;text-decoration:underline;"><code>color.error</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#19191A;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-1" style="color:#0060BF;text-decoration:underline;"><code>color.gray-1</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#707070;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-3" style="color:#0060BF;text-decoration:underline;"><code>color.gray-3</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#10A300;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-success" style="color:#0060BF;text-decoration:underline;"><code>color.success</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#F56300;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-warning" style="color:#0060BF;text-decoration:underline;"><code>color.warning</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#FFD748;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-yellow" style="color:#0060BF;text-decoration:underline;"><code>color.yellow</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">14px · md · SemiBold 600</span><a href="font.html#tok-typography-h7-semibold" style="color:#0060BF;text-decoration:underline;"><code>typography.h7-semibold</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">6px</span><a href="spacing.html#tok-spacing-6" style="color:#0060BF;text-decoration:underline;"><code>spacing.6</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;">50% <span style="color:#707070;">（未 token 化）</span></span></div>
+          <div class="dep-cell" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell dep-cell--right-edge" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:normal;overflow-wrap:anywhere;"><span style="color:#A6A6A6;">无嵌套（纯 CSS 圆点）</span></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:normal;overflow-wrap:anywhere;"><span style="display:inline-block;flex-shrink:0;font-size:11px;line-height:16px;padding:0 5px;margin-right:6px;border-radius:3px;background:#F3EEFA;color:#512971;">父组件·仅声明</span><a href="collapse.html" style="color:#0060BF;text-decoration:underline;">Collapse</a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:normal;overflow-wrap:anywhere;"><span style="display:inline-block;flex-shrink:0;font-size:11px;line-height:16px;padding:0 5px;margin-right:6px;border-radius:3px;background:#FFF3E0;color:#A65300;">参考·未验证</span><span style="color:#19191A;" title="2026-07-17 核查：icon-button.html preview 目前没有叠加 Badge 的真实结构，icon-button.json 也未在 componentDependencies 声明依赖 Badge。此条为设计意图/未来参考用法，非当前已实现关系，保留手写。">IconButton</span></span></div>
+          <div class="dep-cell dep-cell--sticky" role="rowheader"><strong>数量徽标</strong><br><code>count</code></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#FFFFFF;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-white" style="color:#0060BF;text-decoration:underline;"><code>color.white</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#C00000;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-brand-red" style="color:#0060BF;text-decoration:underline;"><code>color.brand-red</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">12px · sm · Regular 400</span><a href="font.html#tok-typography-h9-regular" style="color:#0060BF;text-decoration:underline;"><code>typography.h9-regular</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">10px · SemiBold 600</span><a href="font.html#tok-typography-10-semibold" style="color:#0060BF;text-decoration:underline;"><code>typography.10-semibold</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">5px</span><a href="spacing.html#tok-spacing-5" style="color:#0060BF;text-decoration:underline;"><code>spacing.5</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">3px</span><a href="spacing.html#tok-spacing-3" style="color:#0060BF;text-decoration:underline;"><code>spacing.3</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">9999px</span><a href="radius.html#tok-border-radius-full" style="color:#0060BF;text-decoration:underline;"><code>border-radius.full</code></a></span></div>
+          <div class="dep-cell" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell dep-cell--right-edge" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:normal;overflow-wrap:anywhere;"><span style="color:#A6A6A6;">无嵌套（纯 CSS 胶囊）</span></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:normal;overflow-wrap:anywhere;"><span style="display:inline-block;flex-shrink:0;font-size:11px;line-height:16px;padding:0 5px;margin-right:6px;border-radius:3px;background:#FFF3E0;color:#A65300;">参考·未验证</span><span style="color:#19191A;" title="2026-07-17 核查：icon-button.html preview 目前没有叠加 Badge 的真实结构，icon-button.json 也未在 componentDependencies 声明依赖 Badge。此条为设计意图/未来参考用法，非当前已实现关系，保留手写。">IconButton</span></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:normal;overflow-wrap:anywhere;"><span style="display:inline-block;flex-shrink:0;font-size:11px;line-height:16px;padding:0 5px;margin-right:6px;border-radius:3px;background:#FFF3E0;color:#A65300;">参考·未验证</span><span style="color:#19191A;" title="2026-07-17 核查：navigation.html preview 的 header 购物车/账户图标目前没有叠加 Badge 的真实结构，navigation.json 也未声明依赖 Badge。此条为设计意图/未来参考用法，保留手写。">Navigation</span></span></div>
+          <div class="dep-cell dep-cell--sticky dep-cell--bottom-edge" role="rowheader"><strong>图案徽标</strong><br><code>icon</code></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><img src="../icons/icon-badge-logged-in-pc.svg?v=65f771d94bcb" alt="" style="display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;"><a href="icon-map.html#icon-badge-logged-in-pc" style="color:#0060BF;text-decoration:underline;"><code>icon-badge-logged-in-pc.svg</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><img src="../icons/icon-badge-logged-in-m.svg?v=dd0c742f4762" alt="" style="display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-3px;object-fit:contain;"><a href="icon-map.html#icon-badge-logged-in-m" style="color:#0060BF;text-decoration:underline;"><code>icon-badge-logged-in-m.svg</code></a></span></div>
+          <div class="dep-cell dep-cell--right-edge dep-cell--bottom-edge" role="cell"><span style="color:#A6A6A6;">—</span></div>
+        </div>
+      </div>
+    </div>
+    <!-- AUTO-GENERATED-DEPENDENCY-SUMMARY-TABLE:END -->
+
+  <!-- TEMPLATE-DEMO-SPACING -->
+  <div style="height:24px;"></div>
+
+
+
+<!-- 类型 1：圆点徽标 -->
+  <div class="section">
+    <div class="section-title">① 圆点徽标（8×8px，5 状态色）</div>
+    <div class="row">
+      <div class="cell"><span class="ds-badge-dot ds-badge-dot--success"></span><span class="cell__label">success #10A300</span></div>
+      <div class="cell"><span class="ds-badge-dot ds-badge-dot--error"></span><span class="cell__label">error #C00000</span></div>
+      <div class="cell"><span class="ds-badge-dot ds-badge-dot--active"></span><span class="cell__label">active #F56300</span></div>
+      <div class="cell"><span class="ds-badge-dot ds-badge-dot--pending"></span><span class="cell__label">pending #FFD748</span></div>
+      <div class="cell"><span class="ds-badge-dot ds-badge-dot--default"></span><span class="cell__label">default #707070</span></div>
+    </div>
+
+    <div class="section-title" style="font-size: 14px; border: none; margin-bottom: 16px;">圆点 + 文字，及状态定义</div>
+    <table class="rel-table">
+      <thead>
+        <tr><th>状态色</th><th>色值</th><th>状态定义</th><th>场景举例</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><span class="ds-badge-status" data-ai-example="ai-badge-dot"><span class="ds-badge-dot ds-badge-dot--success"></span><span class="ds-badge-status__text">Completed</span></span></td><td>#10A300</td><td>完成 / 有货 / 已保存</td><td>Completed、99 PCS in Stock、Chat with Us</td></tr>
+        <tr><td><span class="ds-badge-status"><span class="ds-badge-dot ds-badge-dot--error"></span><span class="ds-badge-status__text">Urgent</span></span></td><td>#C00000</td><td>紧急 / 错误</td><td>异常提醒</td></tr>
+        <tr><td><span class="ds-badge-status"><span class="ds-badge-dot ds-badge-dot--active"></span><span class="ds-badge-status__text">Active</span></span></td><td>#F56300</td><td>活跃</td><td>Active</td></tr>
+        <tr><td><span class="ds-badge-status"><span class="ds-badge-dot ds-badge-dot--pending"></span><span class="ds-badge-status__text">Pending</span></span></td><td>#FFD748</td><td>待定</td><td>Pending（订单待处理）</td></tr>
+        <tr><td><span class="ds-badge-status"><span class="ds-badge-dot ds-badge-dot--default"></span><span class="ds-badge-status__text">Expired</span></span></td><td>#707070</td><td>未发货 / 已过期 / 中性</td><td>Not yet shipped、Expired</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 类型 2：数量徽标 -->
+  <div class="section">
+    <div class="section-title">② 数量徽标（红底白字，封顶 99+）</div>
+    <div class="row">
+      <div class="cell"><span class="ds-badge-count" data-badge-current data-ai-example="ai-badge-count">1</span><span class="cell__label">PC&Pad 单数字 18px</span></div>
+      <div class="cell"><span class="ds-badge-count ds-badge-count--max" data-badge-current>99+</span><span class="cell__label">PC&Pad 超大值 胶囊</span></div>
+      <div class="cell"><span class="ds-badge-count ds-badge-count--m">1</span><span class="cell__label">M端 单数字 12px</span></div>
+      <div class="cell"><span class="ds-badge-count ds-badge-count--m">99+</span><span class="cell__label">M端 超大值</span></div>
+    </div>
+  </div>
+
+  <!-- 类型 3：图案徽标 -->
+  <div class="section">
+    <div class="section-title">③ 图案徽标（容器内放图标）</div>
+    <div class="row">
+      <div class="cell"><span class="ds-badge-icon" data-ai-example="ai-badge-icon"><img src="../icons/icon-badge-logged-in-pc.svg" alt=""></span><span class="cell__label">PC&Pad 18px · 原始红底白勾</span></div>
+      <div class="cell"><span class="ds-badge-icon ds-badge-icon--m"><img src="../icons/icon-badge-logged-in-m.svg" alt=""></span><span class="cell__label">M端 12px · 原始素材，适配走查暂缓</span></div>
+    </div>
+  </div>
+
+  <!-- 场景：叠加在宿主右上角 -->
+  <div class="section">
+    <div class="section-title">④ 位置规则：叠加在宿主图标右上角（禁止左上角）</div>
+    <div class="row">
+      <div class="cell">
+        <span class="ds-badge-anchor host">
+          <img src="../icons/icon-cart.svg" alt="">
+          <span class="ds-badge-count" data-badge-current>3</span>
+        </span>
+        <span class="cell__label">购物车 + 数量徽标</span>
+      </div>
+      <div class="cell">
+        <span class="ds-badge-anchor host">
+          <img src="../icons/icon-account.svg" alt="">
+          <span class="ds-badge-dot ds-badge-dot--error"></span>
+        </span>
+        <span class="cell__label">账户 + 圆点徽标</span>
+      </div>
+      <div class="cell">
+        <span class="ds-badge-anchor host">
+          <img src="../icons/icon-search.svg" alt="">
+          <span class="ds-badge-count ds-badge-count--max" data-badge-current>99+</span>
+        </span>
+        <span class="cell__label">超大值胶囊</span>
+      </div>
+    </div>
+  
+  </div>
+  <script src="../preview/preview-link.js"></script>
+  <script src="../preview/reference-live.js"></script>
+<section class="section" data-list-option-source="20261115"><span class="ds-badge-status" data-badge-part="collapse-pending"><span class="ds-badge-dot ds-badge-dot--pending"></span><span class="ds-badge-status__text">Canceled</span></span></section>
+</body>
+</html>

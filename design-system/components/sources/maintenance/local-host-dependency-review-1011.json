@@ -1,0 +1,948 @@
+{
+  "date": "2026-10-11",
+  "scope": "local finite canonical TextButton/IconButton hosts and existing Button checks; no MasterGo review",
+  "entries": [
+    {
+      "id": "dialog",
+      "canonicalVariants": [
+        "information",
+        "confirmation"
+      ],
+      "atomChecks": {
+        "IconButton": {
+          "scope": "finite-canonical-IconButton-default-calls",
+          "checked": [
+            {
+              "variant": "information",
+              "children": [
+                {
+                  "variant": "plain-l"
+                }
+              ]
+            },
+            {
+              "variant": "confirmation",
+              "children": [
+                {
+                  "variant": "plain-l"
+                }
+              ]
+            }
+          ],
+          "inactive": [],
+          "browserVerified": false,
+          "hostStyleCascadeVerified": false
+        }
+      },
+      "declaredButNotChecked": [],
+      "buttonChecks": {
+        "scope": "finite-authored-button-nesting-only",
+        "checked": [
+          {
+            "variant": "confirmation",
+            "buttons": [
+              {
+                "variant": "filled-gray",
+                "size": "xl-regular",
+                "type": "button"
+              },
+              {
+                "variant": "filled-red",
+                "size": "xl-regular",
+                "type": "button"
+              }
+            ]
+          }
+        ],
+        "pending": [],
+        "browserVerified": false
+      },
+      "fingerprints": {
+        "components/button-current.css": "ef5e3f58b33327c94a53696a244e99f1bf597d54129891eec338010df5626f48",
+        "components/components.css": "a08b4fe2790b5ff2b784c6362a90f1b94e7535a03e863232ce6d620a52e85f73",
+        "components/contracts/button.json": "e26fac543ee6721753a9bda7410eb0ff583bcb26d4c06a89927cc5be36e8f1d1",
+        "components/contracts/dialog.json": "417136c2bbab7f20ca96e1605bbb3846928b06faebf115ee0ed25db8eaaf2991",
+        "components/contracts/icon-button.json": "2f652681359c24c2d70d837387347033638e3b414d96246077a3f72e5b8ff92d",
+        "components/dialog-current.css": "d69386bcf39aa40c3c698c40d725b189c683f2d74b8e0f0ad4254bd7aac682b2",
+        "components/dialog-current.js": "a3807d4f9647411e602829a8382e9b33b4a9ef0ada7baa17b912876eba6aa441",
+        "components/icon-button-current.css": "445637d458e8d76ce8cc773020f319f683764846d8732c7170df3426073484dd",
+        "components/icons/icon-close.svg": "226867654d63f99f548f7e25b2f0286c19aa5786f5b9497905474f3959704424",
+        "components/icons/icons-manifest.json": "b52692a6b019a2571097b4a5de82600a7e668989427f31095d52b2cd01267d89",
+        "components/preview/button.html": "390757353969beca094eda9097cf1375d6da39225447daf1c80a98fd5c35ce5c",
+        "components/preview/dialog.html": "ca4c7974c18b04afe26d5fb83cc37fdc4f71707b453bc00435b33a675e17b439",
+        "components/preview/icon-button.html": "7360594e64909dc02330045cb964b5da1cf27b826bc198a565fed56e031f63d1",
+        "components/preview/reference-live.js": "4839383529a3ee82df1d8efe675d430567abc1986034499107aa429d21a18ea6",
+        "components/reference-policy.json": "9a2c54006968a27b3d04e03f0dac429a6e6c215e5e5936b7f65d66cfd9d5c660",
+        "components/sources/dialog/local-structure-review.json": "e87c24e0551f4572c08af5de84ac37f82970429756b0e08bfda22d2293bbcecb",
+        "components/sources/dialog/mastergo-components.json": "57c90ff018152f38def21661737415c245edb7c53e7ee5acebf21c0f77c143d1",
+        "components/sources/dialog/mastergo-spec.json": "4fadfa04db400a6b5e2166ee5672dc0cb6259ea67278e24a56b56be845fd4574",
+        "components/sources/dialog/source-inventory.json": "7b92253ff225743773f8377482bcc4bb04e80d4da7e4c0e6ea5fe375437c6b7a",
+        "components/sources/icon-button/mastergo-original-components.json": "825a7ab5731310b020c0dfe81d40056d5cc745544e4058ce719fd68c5aed19a7",
+        "components/token-specs/border-radius.json": "77d9245e2504b7c0c605288290e938b2453a79b27d4312448d14a58692290791",
+        "components/token-specs/border.json": "d286ee4681deda1c7702c310b065c86f824539b3a8797efba05b24bc225ab322",
+        "components/token-specs/colors.json": "82cba8e4a6b3e1e5bc961e4039478b0dea4ba9b92a5291d579bb8d7a54db0d95",
+        "components/token-specs/spacing.json": "351b14cfce4411248ad41e00eaaf2b1cab9b705997980dfed1fc65693740e65c",
+        "components/token-specs/typography.json": "93b7dc07547218a33c075b7cdcd942f89094353a7847d483d8378b8883327e16",
+        "components/tokens.css": "2424558781ddfc12cad4d2b91e78451dc26fe5e126e6f24a3b9631753b644afa",
+        "docs/handoff/archives/2026-10-09-overnight/mastergo/button-shape-component-set.json": "97baa8363f81381597e5e8874efcfe0897017be8cab528e21ff712e45cf5b925"
+      }
+    },
+    {
+      "id": "card",
+      "canonicalVariants": [
+        "spliced.horizontal.full-width.responsive",
+        "spliced.horizontal.full-width",
+        "spliced.horizontal.full-width.bordered-background",
+        "spliced.vertical.single-event"
+      ],
+      "atomChecks": {
+        "TextButton": {
+          "scope": "finite-canonical-TextButton-default-calls",
+          "checked": [
+            {
+              "variant": "spliced.horizontal.full-width.responsive",
+              "children": [
+                {
+                  "variant": "inline-black",
+                  "size": "m"
+                }
+              ]
+            },
+            {
+              "variant": "spliced.horizontal.full-width",
+              "children": [
+                {
+                  "variant": "inline-black",
+                  "size": "m"
+                }
+              ]
+            },
+            {
+              "variant": "spliced.horizontal.full-width.bordered-background",
+              "children": [
+                {
+                  "variant": "inline-black",
+                  "size": "m"
+                }
+              ]
+            },
+            {
+              "variant": "spliced.vertical.single-event",
+              "children": [
+                {
+                  "variant": "inline-black",
+                  "size": "m"
+                }
+              ]
+            }
+          ],
+          "inactive": [],
+          "browserVerified": false,
+          "hostStyleCascadeVerified": false
+        }
+      },
+      "declaredButNotChecked": [
+        {
+          "component": "TextButton",
+          "variant": "spliced.vertical.category-nav",
+          "reason": "outside current callable examples"
+        },
+        {
+          "component": "TextButton",
+          "variant": "spliced.horizontal.with-sidebar",
+          "reason": "outside current callable examples"
+        },
+        {
+          "component": "TextButton",
+          "variant": "spliced.horizontal.with-sidebar.bordered-background",
+          "reason": "outside current callable examples"
+        },
+        {
+          "component": "TextButton",
+          "variant": "embedded.product-small",
+          "reason": "outside current callable examples"
+        },
+        {
+          "component": "TextButton",
+          "variant": "embedded.product-standard",
+          "reason": "outside current callable examples"
+        },
+        {
+          "component": "TextButton",
+          "variant": "embedded.product-detail",
+          "reason": "outside current callable examples"
+        },
+        {
+          "component": "TextButton",
+          "variant": "embedded.product-full",
+          "reason": "outside current callable examples"
+        }
+      ],
+      "buttonChecks": {
+        "scope": "finite-authored-button-nesting-only",
+        "checked": [],
+        "pending": [],
+        "browserVerified": false
+      },
+      "fingerprints": {
+        "components/button-current.css": "ef5e3f58b33327c94a53696a244e99f1bf597d54129891eec338010df5626f48",
+        "components/card-current.js": "180221c3b02a6b2ef6c4c7213ac40799c573316aa338c013702062285fd9b82f",
+        "components/card-responsive.css": "8b5e2bb425816ac031e93224fdb61f13bcb46006cccc27641de04d499803fc3c",
+        "components/components.css": "a08b4fe2790b5ff2b784c6362a90f1b94e7535a03e863232ce6d620a52e85f73",
+        "components/contracts/button.json": "e26fac543ee6721753a9bda7410eb0ff583bcb26d4c06a89927cc5be36e8f1d1",
+        "components/contracts/card.json": "7a6725e241e3d02fe62ff7e7e72fdf249283942afb900bdb8cde6ad8df85b55f",
+        "components/contracts/text-button.json": "c7171f7fd137a62c02a84b958b2c2fef45f62864a162b8e841ca328ae912920a",
+        "components/icons/icon-bullet.svg": "d97e82725de89af391e3c14c5a14d541f8171b1cd714e57b2768edfcab773dbd",
+        "components/icons/icon-cart-add.svg": "ec9abb0e806f0d23db0e279cc5a8935bab0619d0c2c8b71d8b56b0945e3b8377",
+        "components/icons/icon-featured-star.svg": "3ff7625e9743df2f295b32dc8e7e12349839525ff1539d47c091b40d44188643",
+        "components/icons/icons-manifest.json": "b52692a6b019a2571097b4a5de82600a7e668989427f31095d52b2cd01267d89",
+        "components/preview/button.html": "390757353969beca094eda9097cf1375d6da39225447daf1c80a98fd5c35ce5c",
+        "components/preview/card.html": "af50f6ec9b5cc189c97d65d9e1c6587366f55bb162b1ad27e258f044f6457089",
+        "components/preview/reference-live.js": "4839383529a3ee82df1d8efe675d430567abc1986034499107aa429d21a18ea6",
+        "components/preview/text-button.html": "f0d1c4713d1826f05903addf08c698781577c4a935f64b9740dbe07c16f68feb",
+        "components/reference-policy.json": "9a2c54006968a27b3d04e03f0dac429a6e6c215e5e5936b7f65d66cfd9d5c660",
+        "components/sources/card/local-structure-review.json": "54a801525f6f273f9f5db9a8c794935bcfd612f5cb601d88ab13e7657b0b8cfd",
+        "components/sources/card/native-component-review-1011.json": "3711eb10992b6d7d9f41b66ace6a430df88aff55a988bed7bbc6f9e07e35d520",
+        "components/sources/card/native-specification-review-1011.json": "cd37623275f33ba243dba8dfe70eec15f9ac5bb62a86146ec6493122b8849835",
+        "components/sources/card/native-vertical-review-1011.json": "af3528dffc264d921b8311e28a63b03defff245ea9f6e41f3618f65d4ab7f480",
+        "components/sources/card/source-index.json": "2d296d45eb0c9c4ed760fda8d756729346af0bd03071c6dfb99932fa2768251e",
+        "components/text-button-current.css": "662a90320af28ef4d38b2adf121972e7e380cc7c33fcdeb0597a5bfd36b218a9",
+        "components/token-specs/border.json": "d286ee4681deda1c7702c310b065c86f824539b3a8797efba05b24bc225ab322",
+        "components/token-specs/colors.json": "82cba8e4a6b3e1e5bc961e4039478b0dea4ba9b92a5291d579bb8d7a54db0d95",
+        "components/token-specs/spacing.json": "351b14cfce4411248ad41e00eaaf2b1cab9b705997980dfed1fc65693740e65c",
+        "components/token-specs/typography.json": "93b7dc07547218a33c075b7cdcd942f89094353a7847d483d8378b8883327e16",
+        "components/tokens.css": "2424558781ddfc12cad4d2b91e78451dc26fe5e126e6f24a3b9631753b644afa",
+        "page-inputs/bdcom-oem-m2/component-sources/card.json": "3da107a30840ec9f242a6d089c48b0b2dd09b8b7da94cd9d60af0bdef5c7a78e",
+        "pages/assets/bdcom-oem-pc-1009/product-engineering.jpg": "e0c3259bf5cadf9cb398864425f2dbc8c33af0c00add13264778275a0219758e"
+      }
+    },
+    {
+      "id": "icon-card",
+      "canonicalVariants": [
+        "center.single-event",
+        "left.single-event",
+        "left.jump-type"
+      ],
+      "atomChecks": {
+        "TextButton": {
+          "scope": "finite-canonical-TextButton-default-calls",
+          "checked": [
+            {
+              "variant": "center.single-event",
+              "children": [
+                {
+                  "variant": "inline-black-bold",
+                  "size": "l"
+                },
+                {
+                  "variant": "inline-black",
+                  "size": "m"
+                }
+              ]
+            },
+            {
+              "variant": "left.single-event",
+              "children": [
+                {
+                  "variant": "inline-black-bold",
+                  "size": "l"
+                },
+                {
+                  "variant": "inline-black",
+                  "size": "m"
+                }
+              ]
+            },
+            {
+              "variant": "left.jump-type",
+              "children": [
+                {
+                  "variant": "inline-black-bold",
+                  "size": "l"
+                }
+              ]
+            }
+          ],
+          "inactive": [],
+          "browserVerified": false,
+          "hostStyleCascadeVerified": false
+        }
+      },
+      "declaredButNotChecked": [
+        {
+          "component": "TextButton",
+          "variant": "center.multi-event-expandable",
+          "reason": "outside current callable examples"
+        },
+        {
+          "component": "TextButton",
+          "variant": "left.multi-event-expandable",
+          "reason": "outside current callable examples"
+        }
+      ],
+      "buttonChecks": null,
+      "fingerprints": {
+        "components/components.css": "a08b4fe2790b5ff2b784c6362a90f1b94e7535a03e863232ce6d620a52e85f73",
+        "components/contracts/icon-card.json": "d244000aab63ab8676d9a132e992110cf5b0278c6e31537ed71468106df09bcc",
+        "components/contracts/text-button.json": "c7171f7fd137a62c02a84b958b2c2fef45f62864a162b8e841ca328ae912920a",
+        "components/icon-card-current.css": "a58d5967288cddaa11a6f196c5f470caed0ef998daa296bcd3974a7dff5c58d1",
+        "components/icons/icon-arrow-right.svg": "f14aa7f363b6e2ffe83389f0fc2b01a96bbc2e4cae9d29fa42203d408f9eb3b8",
+        "components/icons/icon-benefit-development.svg": "76385f5a902547f68428e1810fc8d2c10c38d84c9e74b68c990adf0c669e8a73",
+        "components/icons/icon-bullet.svg": "d97e82725de89af391e3c14c5a14d541f8171b1cd714e57b2768edfcab773dbd",
+        "components/icons/icon-chevron-down.svg": "fe5df03acb1cb4b8a38a928357775416656fbf97cc54f3c6a5b7d0e4906f3e91",
+        "components/icons/icon-placeholder-switch.svg": "0f52c5a675441071196593d5d90c3f97f29b0b43719170d8a7df7ac9a974b5d5",
+        "components/icons/icons-manifest.json": "b52692a6b019a2571097b4a5de82600a7e668989427f31095d52b2cd01267d89",
+        "components/preview/icon-card.html": "ba6b0b6b7309dbfa40f5d23d54c7191432bf5ed0a24b3289ba26b0b5b0fc99c5",
+        "components/preview/reference-live.js": "4839383529a3ee82df1d8efe675d430567abc1986034499107aa429d21a18ea6",
+        "components/preview/text-button.html": "f0d1c4713d1826f05903addf08c698781577c4a935f64b9740dbe07c16f68feb",
+        "components/reference-policy.json": "9a2c54006968a27b3d04e03f0dac429a6e6c215e5e5936b7f65d66cfd9d5c660",
+        "components/sources/icon-card/local-structure-review.json": "ef407c33ea9a17f7f6131af364b190ed7745988820ac65492d201df5c7da9636",
+        "components/sources/icon-card/native-component-review-1011.json": "1cc374165de59cc95d8afd97642ec2574e5d0c9dee1dd212af582da7e2bc0602",
+        "components/sources/icon-card/native-specification-review-1011.json": "34c21a3ec1e62f3907b01850b80bf824dfc774893274126d2a3b43fe08cc4d98",
+        "components/text-button-current.css": "662a90320af28ef4d38b2adf121972e7e380cc7c33fcdeb0597a5bfd36b218a9",
+        "components/token-specs/border-radius.json": "77d9245e2504b7c0c605288290e938b2453a79b27d4312448d14a58692290791",
+        "components/token-specs/border.json": "d286ee4681deda1c7702c310b065c86f824539b3a8797efba05b24bc225ab322",
+        "components/token-specs/colors.json": "82cba8e4a6b3e1e5bc961e4039478b0dea4ba9b92a5291d579bb8d7a54db0d95",
+        "components/token-specs/spacing.json": "351b14cfce4411248ad41e00eaaf2b1cab9b705997980dfed1fc65693740e65c",
+        "components/token-specs/typography.json": "93b7dc07547218a33c075b7cdcd942f89094353a7847d483d8378b8883327e16",
+        "components/tokens.css": "2424558781ddfc12cad4d2b91e78451dc26fe5e126e6f24a3b9631753b644afa"
+      }
+    },
+    {
+      "id": "stepper",
+      "canonicalVariants": [
+        "circle-centered-solution",
+        "circle-centered-order",
+        "icon-regular",
+        "icon-divider"
+      ],
+      "atomChecks": {
+        "TextButton": {
+          "scope": "finite-canonical-TextButton-default-calls",
+          "checked": [
+            {
+              "variant": "icon-divider",
+              "children": [
+                {
+                  "variant": "inline-black-bold",
+                  "size": "l"
+                },
+                {
+                  "variant": "inline-black-bold",
+                  "size": "l"
+                },
+                {
+                  "variant": "inline-black-bold",
+                  "size": "l"
+                },
+                {
+                  "variant": "inline-black-bold",
+                  "size": "l"
+                }
+              ]
+            }
+          ],
+          "inactive": [],
+          "browserVerified": false,
+          "hostStyleCascadeVerified": false
+        }
+      },
+      "declaredButNotChecked": [],
+      "buttonChecks": null,
+      "fingerprints": {
+        "components/components.css": "a08b4fe2790b5ff2b784c6362a90f1b94e7535a03e863232ce6d620a52e85f73",
+        "components/contracts/stepper.json": "f21b92f2a46101ca49954f92ff2716f3ea9473ce3d1ec9ad1eec5c861e14bc4f",
+        "components/contracts/text-button.json": "c7171f7fd137a62c02a84b958b2c2fef45f62864a162b8e841ca328ae912920a",
+        "components/icons/icon-demo-report.svg": "9e9702fcf8d17d19541934a5ae57c6ed7c4e3949a77df7573dc06a016bfd26c3",
+        "components/icons/icon-stepper-completed.svg": "d1a93c98cc65e7d979d3e148e8e75842aa15b6321b71731091a75b40a4339faf",
+        "components/icons/icon-stepper-divider-next.svg": "2e67be0d1a01736a2049b7e183efc1d5ef7afe0a91396fbd05ac6e8a7a3183ac",
+        "components/icons/icon-stepper-title-chevron.svg": "fc5d2e6711c1c6495d5c5d6916662d060e0ff3e7a7dfc1dd9d8f8edd1979eb0d",
+        "components/icons/icons-manifest.json": "b52692a6b019a2571097b4a5de82600a7e668989427f31095d52b2cd01267d89",
+        "components/preview/reference-live.js": "4839383529a3ee82df1d8efe675d430567abc1986034499107aa429d21a18ea6",
+        "components/preview/stepper.html": "e693a47457828ddfbef56b3075a12ae1860666e4b4111f297d01de2ac2eadb63",
+        "components/preview/text-button.html": "f0d1c4713d1826f05903addf08c698781577c4a935f64b9740dbe07c16f68feb",
+        "components/reference-policy.json": "9a2c54006968a27b3d04e03f0dac429a6e6c215e5e5936b7f65d66cfd9d5c660",
+        "components/sources/stepper/local-structure-review.json": "2619c2d23eb23b202634a12beca955e66fd17d98731ddb3ee74d6f0e561a3329",
+        "components/sources/stepper/native-component-review-1011.json": "2ae17fc41979893ec4987477b722ffbd92a2dc4fe3f70586ad0055615aab06a5",
+        "components/sources/stepper/native-specification-review-1011.json": "c73763106337b0ec180fbdbf0d92e4f11c64a978297cdc9d317cd841495c613c",
+        "components/stepper-current.css": "669cbb87541f45d6565b40bbdf40239efb44bdf42380c1bc8dddd65cecb46eb1",
+        "components/stepper-current.js": "e66b454b212276c976845812947ba7f6d28f21208260ae2afd9cd4866fab7d9c",
+        "components/text-button-current.css": "662a90320af28ef4d38b2adf121972e7e380cc7c33fcdeb0597a5bfd36b218a9",
+        "components/token-specs/border-radius.json": "77d9245e2504b7c0c605288290e938b2453a79b27d4312448d14a58692290791",
+        "components/token-specs/colors.json": "82cba8e4a6b3e1e5bc961e4039478b0dea4ba9b92a5291d579bb8d7a54db0d95",
+        "components/token-specs/spacing.json": "351b14cfce4411248ad41e00eaaf2b1cab9b705997980dfed1fc65693740e65c",
+        "components/token-specs/typography.json": "93b7dc07547218a33c075b7cdcd942f89094353a7847d483d8378b8883327e16",
+        "components/tokens.css": "2424558781ddfc12cad4d2b91e78451dc26fe5e126e6f24a3b9631753b644afa"
+      }
+    },
+    {
+      "id": "comment",
+      "canonicalVariants": [
+        "qa-thread"
+      ],
+      "atomChecks": {
+        "IconButton": {
+          "scope": "finite-canonical-IconButton-default-calls",
+          "checked": [],
+          "inactive": [],
+          "browserVerified": false,
+          "hostStyleCascadeVerified": false
+        }
+      },
+      "declaredButNotChecked": [
+        {
+          "component": "IconButton",
+          "variant": "customer-gallery",
+          "reason": "outside current callable examples"
+        }
+      ],
+      "buttonChecks": {
+        "scope": "finite-authored-button-nesting-only",
+        "checked": [
+          {
+            "variant": "qa-thread",
+            "buttons": [
+              {
+                "variant": "filled-red",
+                "size": "l",
+                "type": "submit"
+              }
+            ]
+          }
+        ],
+        "pending": [],
+        "browserVerified": false
+      },
+      "fingerprints": {
+        "components/button-current.css": "ef5e3f58b33327c94a53696a244e99f1bf597d54129891eec338010df5626f48",
+        "components/comment-current.css": "f7cc5500b377fdbb48740b1de912d81a42d7472c9b9c45666f32ad8b3771bdae",
+        "components/comment-current.js": "2eb899017facc0c355357d7bd629bd363c19e99b010f61d0d0a6be6c12d8d67a",
+        "components/components.css": "a08b4fe2790b5ff2b784c6362a90f1b94e7535a03e863232ce6d620a52e85f73",
+        "components/contracts/button.json": "e26fac543ee6721753a9bda7410eb0ff583bcb26d4c06a89927cc5be36e8f1d1",
+        "components/contracts/comment.json": "dc8de4a985d3175e4d887355a98f0443c6eae80a2adc99c182a22819bb5f8b8e",
+        "components/contracts/icon-button.json": "2f652681359c24c2d70d837387347033638e3b414d96246077a3f72e5b8ff92d",
+        "components/contracts/rate.json": "8f75871d2b588b62d2294e27cd1829c18c99f7c554da946d7ba172bdd3b28135",
+        "components/contracts/tag.json": "4c06d390ce2c036d0104b986e25d941dc762648839b53909b714fd4aa7174c9e",
+        "components/icon-button-current.css": "445637d458e8d76ce8cc773020f319f683764846d8732c7170df3426073484dd",
+        "components/icons/icon-carousel-next.svg": "32bc4993a22bc4fe94406f10692227843f334f71f804a000cdce30e5e94235fe",
+        "components/icons/icon-carousel-prev.svg": "0c3e3035fa72509b40f45298e7194eee211adb0b3a8c51730149d8363f3f55ba",
+        "components/icons/icon-close.svg": "226867654d63f99f548f7e25b2f0286c19aa5786f5b9497905474f3959704424",
+        "components/icons/icon-comment-active.svg": "c6e32e6d2d14488ce89f66f2a4825c571bf17e503561c5eb66477e4e40a7d159",
+        "components/icons/icon-comment.svg": "d66bd06023440cbf3ed6b2d25d3853eba2f162a964984f88c2261ddd8b0e99c1",
+        "components/icons/icon-helpful-active.svg": "98c2421f8f280e022c172b29767da95dc81614708b0472a3e063b92a945aad05",
+        "components/icons/icon-helpful.svg": "423468d64fd1bf42c2cde5493ddba32d0d5ed5a40146551a5b63483dd8449409",
+        "components/icons/icon-rating-star.svg": "5bf0c005c95578d13ce31dd78ab7cb350a0e851a1e77ea38187de0baf1424763",
+        "components/icons/icon-verified.svg": "98f6480e2521c785b59f7ed36f491c647a65d56ff9d801b95f79943b8e6179c7",
+        "components/icons/icons-manifest.json": "b52692a6b019a2571097b4a5de82600a7e668989427f31095d52b2cd01267d89",
+        "components/preview/button.html": "390757353969beca094eda9097cf1375d6da39225447daf1c80a98fd5c35ce5c",
+        "components/preview/comment.html": "072a8fbae809087aae89f8c271a05fcea030850e9aa79bac0e1db9a195568176",
+        "components/preview/icon-button.html": "7360594e64909dc02330045cb964b5da1cf27b826bc198a565fed56e031f63d1",
+        "components/preview/rate.html": "f3d91ee86e36f4ab22ce8f39206dd27396a4fc4c78f532f9383a98ee3030e225",
+        "components/preview/reference-live.js": "4839383529a3ee82df1d8efe675d430567abc1986034499107aa429d21a18ea6",
+        "components/preview/tag.html": "52994ef5fe3f169dc3668acd90b0d2fb76485c06faa412884b7b88b71f8f15bc",
+        "components/reference-policy.json": "9a2c54006968a27b3d04e03f0dac429a6e6c215e5e5936b7f65d66cfd9d5c660",
+        "components/sources/comment/local-structure-review.json": "f227c898ada8462d053864da8e394cc1ef1ed85537785f938c8a6165fe7baadf",
+        "components/sources/comment/native-component-review-1011.json": "fc4f6c42842c9d57ca70a67e156c89e9fa9e38ca02ed67de8f9270864afe2ed7",
+        "components/sources/comment/native-specification-review-1011.json": "baf0d84c4ccbba4c26d982d54fb0d566a5ba6e0a0ef0aa08d2c1acaa67e5cf6a",
+        "components/token-specs/border-radius.json": "77d9245e2504b7c0c605288290e938b2453a79b27d4312448d14a58692290791",
+        "components/token-specs/border.json": "d286ee4681deda1c7702c310b065c86f824539b3a8797efba05b24bc225ab322",
+        "components/token-specs/colors.json": "82cba8e4a6b3e1e5bc961e4039478b0dea4ba9b92a5291d579bb8d7a54db0d95",
+        "components/token-specs/spacing.json": "351b14cfce4411248ad41e00eaaf2b1cab9b705997980dfed1fc65693740e65c",
+        "components/token-specs/typography.json": "93b7dc07547218a33c075b7cdcd942f89094353a7847d483d8378b8883327e16",
+        "components/tokens.css": "2424558781ddfc12cad4d2b91e78451dc26fe5e126e6f24a3b9631753b644afa"
+      }
+    },
+    {
+      "id": "list",
+      "canonicalVariants": [
+        "structured-data",
+        "content-stream"
+      ],
+      "atomChecks": {
+        "IconButton": {
+          "scope": "finite-canonical-IconButton-default-calls",
+          "checked": [],
+          "inactive": [],
+          "browserVerified": false,
+          "hostStyleCascadeVerified": false
+        }
+      },
+      "declaredButNotChecked": [
+        {
+          "component": "IconButton",
+          "variant": "product-content",
+          "reason": "outside current callable examples"
+        }
+      ],
+      "buttonChecks": {
+        "scope": "finite-authored-button-nesting-only",
+        "checked": [],
+        "pending": [],
+        "browserVerified": false
+      },
+      "fingerprints": {
+        "components/button-current.css": "ef5e3f58b33327c94a53696a244e99f1bf597d54129891eec338010df5626f48",
+        "components/checkbox-current.css": "bf26c2103d905597e22a0e817dc5d4e8ded02f351690399f5229ec44f35717ac",
+        "components/checkbox-current.js": "f17c17e8200809ae486de4cdcd392dc787769fad828f433adb8023d86890dae8",
+        "components/components.css": "a08b4fe2790b5ff2b784c6362a90f1b94e7535a03e863232ce6d620a52e85f73",
+        "components/contracts/button.json": "e26fac543ee6721753a9bda7410eb0ff583bcb26d4c06a89927cc5be36e8f1d1",
+        "components/contracts/checkbox.json": "24aa0d68d19b5a37387788303d9de000fcac5509d785bff118ada4356b4510ca",
+        "components/contracts/icon-button.json": "2f652681359c24c2d70d837387347033638e3b414d96246077a3f72e5b8ff92d",
+        "components/contracts/input-number.json": "8aa8dfc2d034f7b8dc2bd903ab6f26b84ec36fd8d4b9cee8d96a088ea8f04972",
+        "components/contracts/list.json": "25aad3a725d012695466faf7fcdf67b5f305faab39483a90c2cc55ec6e5fa5e4",
+        "components/icon-button-current.css": "445637d458e8d76ce8cc773020f319f683764846d8732c7170df3426073484dd",
+        "components/icons/goods-包裹.svg": "a821cf30c7f6b99b079f8d4fdbba34e69f47f58883b6ec5bfbecf6665d0775e2",
+        "components/icons/icon-arrow-right.svg": "f14aa7f363b6e2ffe83389f0fc2b01a96bbc2e4cae9d29fa42203d408f9eb3b8",
+        "components/icons/icon-checkbox-checked-18.svg": "59290914956ef1e69bf45754e5cf944d11366d7916c2cf7e28a98af349dffc7b",
+        "components/icons/icon-checkbox-default-18.svg": "a2b81f44fd5fb1c4813cbb634411ea81da4da0b11bf26114b00db201ddeef0fa",
+        "components/icons/icon-delete.svg": "3b8807c395d1d4b94ceeb14e6c8318b5128880bc4d2c9350e60411b8377c9fa5",
+        "components/icons/icon-edit.svg": "c6076863bfb71113c79317b5218b7d6e17a547c00c7c87e8e9baea3be11b8f6b",
+        "components/icons/icon-more.svg": "20f6e039a56fa1b3decd4430ce56186f85fd7190416eef9d4c434a5cab4332c8",
+        "components/icons/icons-manifest.json": "b52692a6b019a2571097b4a5de82600a7e668989427f31095d52b2cd01267d89",
+        "components/input-number-current.css": "ca654b5b6074c539c053e798c258233d25bf0583feeee8c52a8d736aa67491b6",
+        "components/input-number-current.js": "672e54d4e0a2fe7dfa8218b2c8f287bccd4fc6042bf86bd2c172475954feca5e",
+        "components/list-current.js": "a277e40415f231b39883183a152a9c6045981f7b94cb1c1f33868d51d8e3fdd7",
+        "components/list-operations-current.css": "41b00c24c29c54c016d6749493389f84faafe59c65ebbe4729df24a6c008d82d",
+        "components/list-operations-current.js": "bb5e4e40c682e7744e4864ffcfe82eb3625556141f58b2049192e37c9bef287e",
+        "components/list-products-current.js": "272c321b1e4e5fc2afb20b1ca49a18f5934505e5915490c6bfa9832703467c86",
+        "components/preview/button.html": "390757353969beca094eda9097cf1375d6da39225447daf1c80a98fd5c35ce5c",
+        "components/preview/checkbox.html": "6c71ae54008ad01283fa3af8b683475b3dfac4aabeca54f4bd7925efb93c7f6c",
+        "components/preview/icon-button.html": "7360594e64909dc02330045cb964b5da1cf27b826bc198a565fed56e031f63d1",
+        "components/preview/input-number.html": "0fc4db5db89d1f4adb9f03dcf7cb7f37e86e3fc3dd4c20a778a4ce914654f3bd",
+        "components/preview/list-legacy-adapter.js": "48383905bdbdb83c4f344876050bbc8c2931b408dcaf3d3c4992657dbd25793d",
+        "components/preview/list.html": "37640006ec0444120c992903cefcce35b2eb8a80dbb91375ffe34db7b455f491",
+        "components/preview/reference-live.js": "4839383529a3ee82df1d8efe675d430567abc1986034499107aa429d21a18ea6",
+        "components/reference-policy.json": "9a2c54006968a27b3d04e03f0dac429a6e6c215e5e5936b7f65d66cfd9d5c660",
+        "components/sources/list/local-structure-review.json": "adcd857172aadae75d97e91f9427113b140ff2f803ed8481d2196dce0988eb37",
+        "components/sources/list/native-operation-review-1011.json": "34d55a9606f238a60aa124b143be05b43996149dcc27144ed65dba2e1157f54d",
+        "components/token-specs/border-radius.json": "77d9245e2504b7c0c605288290e938b2453a79b27d4312448d14a58692290791",
+        "components/token-specs/border.json": "d286ee4681deda1c7702c310b065c86f824539b3a8797efba05b24bc225ab322",
+        "components/token-specs/colors.json": "82cba8e4a6b3e1e5bc961e4039478b0dea4ba9b92a5291d579bb8d7a54db0d95",
+        "components/token-specs/shadows.json": "fe73ecce057e1219e0ea69a898f0610f78b9e623556d6be457dd3c2c8701eaf5",
+        "components/token-specs/spacing.json": "351b14cfce4411248ad41e00eaaf2b1cab9b705997980dfed1fc65693740e65c",
+        "components/token-specs/typography.json": "93b7dc07547218a33c075b7cdcd942f89094353a7847d483d8378b8883327e16",
+        "components/tokens.css": "2424558781ddfc12cad4d2b91e78451dc26fe5e126e6f24a3b9631753b644afa"
+      }
+    },
+    {
+      "id": "banner",
+      "canonicalVariants": [
+        "hero-responsive",
+        "sub",
+        "title-only",
+        "hero"
+      ],
+      "atomChecks": {
+        "TextButton": {
+          "scope": "finite-canonical-TextButton-default-calls",
+          "checked": [],
+          "inactive": [],
+          "browserVerified": false,
+          "hostStyleCascadeVerified": false
+        }
+      },
+      "declaredButNotChecked": [
+        {
+          "component": "TextButton",
+          "variant": "mini",
+          "reason": "outside current callable examples"
+        }
+      ],
+      "buttonChecks": {
+        "scope": "finite-authored-button-nesting-only",
+        "checked": [
+          {
+            "variant": "hero-responsive",
+            "buttons": [
+              {
+                "variant": "outline-white",
+                "size": "xl",
+                "type": "button"
+              }
+            ]
+          },
+          {
+            "variant": "hero",
+            "buttons": [
+              {
+                "variant": "filled-gray",
+                "size": "xl-bold",
+                "type": "button"
+              },
+              {
+                "variant": "outline-white",
+                "size": "xl",
+                "type": "button"
+              }
+            ]
+          }
+        ],
+        "pending": [],
+        "browserVerified": false
+      },
+      "fingerprints": {
+        "components/banner-current.css": "0d067134ff4693cdc914490f3e64091aa38046bb1c8e8d1206a9871915f2da40",
+        "components/banner-responsive.css": "17a86352a4941c80c734a8c2e64a235f7e4321b5dcb1db821803255e6b0fc908",
+        "components/breadcrumb-current.css": "3d37f0a467ba86900b02e0efa27b693180d956f5f0ba8714b7f9fb1dc3134f2b",
+        "components/button-current.css": "ef5e3f58b33327c94a53696a244e99f1bf597d54129891eec338010df5626f48",
+        "components/carousel-current.css": "28f41556ed2c668850be4a202b5d8713a1545b326ff6a606d26cd235f1c9c137",
+        "components/components.css": "a08b4fe2790b5ff2b784c6362a90f1b94e7535a03e863232ce6d620a52e85f73",
+        "components/contracts/banner.json": "f21751379e6534c118f0c4fd4704c538491b5949ba670afea68443ddef54beb1",
+        "components/contracts/breadcrumb.json": "f8ebc7d0c1fc3682e4c119a37c14b991c1aaac0c9bb66dc34a20405565c11afe",
+        "components/contracts/button.json": "e26fac543ee6721753a9bda7410eb0ff583bcb26d4c06a89927cc5be36e8f1d1",
+        "components/contracts/carousel.json": "8fa4c236a94f0892ddcd840fb0e5cf13b9193a837a6f07e5fef27cfe29a341e7",
+        "components/contracts/text-button.json": "c7171f7fd137a62c02a84b958b2c2fef45f62864a162b8e841ca328ae912920a",
+        "components/icons/icon-arrow-right.svg": "f14aa7f363b6e2ffe83389f0fc2b01a96bbc2e4cae9d29fa42203d408f9eb3b8",
+        "components/icons/icon-search.svg": "11e01599b008320c723773284b56944f810762688a2928b37e6cb228fc9a3347",
+        "components/icons/icons-manifest.json": "b52692a6b019a2571097b4a5de82600a7e668989427f31095d52b2cd01267d89",
+        "components/preview/banner.html": "04ee2772a20a1726842b2ca40d58960efd5b2751e145deccc84a94e9e22a2004",
+        "components/preview/breadcrumb.html": "ad8119c275f909644ab1fd9d31379492723d47eb4bf04e6b204c00408b288372",
+        "components/preview/button.html": "390757353969beca094eda9097cf1375d6da39225447daf1c80a98fd5c35ce5c",
+        "components/preview/carousel.html": "8844c4a318056af913283993bfcdc37a2c41817e2f8bf2c4f2e889c9fb79fb94",
+        "components/preview/reference-live.js": "4839383529a3ee82df1d8efe675d430567abc1986034499107aa429d21a18ea6",
+        "components/preview/text-button.html": "f0d1c4713d1826f05903addf08c698781577c4a935f64b9740dbe07c16f68feb",
+        "components/reference-policy.json": "9a2c54006968a27b3d04e03f0dac429a6e6c215e5e5936b7f65d66cfd9d5c660",
+        "components/sources/banner/local-structure-review.json": "39d8eb9c9678110b4062af4bea8f7191e8a780bb91883650484154d5625b1a4c",
+        "components/sources/banner/native-component-review-1011.json": "c00ff95a9fe1efe9eaa083faa148de117aa4a72057704f978096d477e981e543",
+        "components/sources/banner/native-specification-review-1011.json": "d87da5826b1d21a6065b0b3b6e85a975dd4603515dce0e681318bb5aa7f7a87c",
+        "components/sources/banner/source-index.json": "44caa135f47cad8aa142a4dc45f38920dbc00f9cc478d44145862e535969846f",
+        "components/text-button-current.css": "662a90320af28ef4d38b2adf121972e7e380cc7c33fcdeb0597a5bfd36b218a9",
+        "components/token-specs/border-radius.json": "77d9245e2504b7c0c605288290e938b2453a79b27d4312448d14a58692290791",
+        "components/token-specs/border.json": "d286ee4681deda1c7702c310b065c86f824539b3a8797efba05b24bc225ab322",
+        "components/token-specs/colors.json": "82cba8e4a6b3e1e5bc961e4039478b0dea4ba9b92a5291d579bb8d7a54db0d95",
+        "components/token-specs/spacing.json": "351b14cfce4411248ad41e00eaaf2b1cab9b705997980dfed1fc65693740e65c",
+        "components/token-specs/typography.json": "93b7dc07547218a33c075b7cdcd942f89094353a7847d483d8378b8883327e16",
+        "components/tokens.css": "2424558781ddfc12cad4d2b91e78451dc26fe5e126e6f24a3b9631753b644afa",
+        "page-inputs/bdcom-oem-m2/component-sources/banner.json": "b894f09cb1ed630b06adc01cb0c11eae59258945d7a4fdbb0207911deebcae36"
+      }
+    },
+    {
+      "id": "collapse",
+      "canonicalVariants": [
+        "split",
+        "feature"
+      ],
+      "atomChecks": {
+        "TextButton": {
+          "scope": "finite-canonical-TextButton-default-calls",
+          "checked": [],
+          "inactive": [],
+          "browserVerified": false,
+          "hostStyleCascadeVerified": false
+        }
+      },
+      "declaredButNotChecked": [
+        {
+          "component": "TextButton",
+          "variant": "inline-edit",
+          "reason": "outside current callable examples"
+        }
+      ],
+      "buttonChecks": {
+        "scope": "finite-authored-button-nesting-only",
+        "checked": [],
+        "pending": [],
+        "browserVerified": false
+      },
+      "fingerprints": {
+        "components/button-current.css": "ef5e3f58b33327c94a53696a244e99f1bf597d54129891eec338010df5626f48",
+        "components/collapse-current.js": "c713b068817bd7a5908ebae630e31129358449d5193bbb8a07a849b8369a054d",
+        "components/collapse-host-preview.css": "806531e65a6a68a475c8278aa1e4c4665a65c0f64cfbd71e74da5e0a0913307a",
+        "components/collapse-host-preview.js": "593866e579c178ad6521279d4075471718af9774b894db28571533924fca84da",
+        "components/components.css": "a08b4fe2790b5ff2b784c6362a90f1b94e7535a03e863232ce6d620a52e85f73",
+        "components/contracts/badge.json": "65a40e19eabd5acf98113ee5139af77cf92b00b1973c638a86d70e83868d9a9a",
+        "components/contracts/button.json": "e26fac543ee6721753a9bda7410eb0ff583bcb26d4c06a89927cc5be36e8f1d1",
+        "components/contracts/collapse.json": "3194c8325371750c24ca9af26edbf9db1d6e15447f3287bacee24ed7d3591c1a",
+        "components/contracts/input.json": "8b3005ecf613036bb80b6e7efea821cb208fb43f19f0c0411d39fbeb809d2a0f",
+        "components/contracts/text-button.json": "c7171f7fd137a62c02a84b958b2c2fef45f62864a162b8e841ca328ae912920a",
+        "components/icons/icon-chevron-down.svg": "fe5df03acb1cb4b8a38a928357775416656fbf97cc54f3c6a5b7d0e4906f3e91",
+        "components/icons/icon-collapse-minus.svg": "3c8b4366c99b7dcea96fcb152eaf1a875e1928a5650931089017f736106a9e1c",
+        "components/icons/icon-collapse-plus.svg": "830e77b12afd6cc838afc23aa482437a0a5ae801874a98f2bc8a91b2b4251649",
+        "components/icons/icon-demo-report.svg": "9e9702fcf8d17d19541934a5ae57c6ed7c4e3949a77df7573dc06a016bfd26c3",
+        "components/icons/icon-edit.svg": "c6076863bfb71113c79317b5218b7d6e17a547c00c7c87e8e9baea3be11b8f6b",
+        "components/icons/icon-eye.svg": "11c57eb3fa61bb24b072d8bb8a785f58bd1371a6543338902e39607097378db6",
+        "components/icons/icon-grid-view.svg": "7337e2156917d2c0db7a77a62d0c0f7e5748253a928ae996d68130eaa1d2e284",
+        "components/icons/icon-info.svg": "6e6c97d5d691758fe1b009b4dd6229e9dd20cda4641f341589e0e3fb1fde2bb6",
+        "components/icons/icon-list-view.svg": "321faa85653328e3b319e2512c8e984c90809f5a39b8499128c36f7943d034b3",
+        "components/icons/icon-more.svg": "20f6e039a56fa1b3decd4430ce56186f85fd7190416eef9d4c434a5cab4332c8",
+        "components/icons/icon-placeholder-switch.svg": "0f52c5a675441071196593d5d90c3f97f29b0b43719170d8a7df7ac9a974b5d5",
+        "components/icons/icons-manifest.json": "b52692a6b019a2571097b4a5de82600a7e668989427f31095d52b2cd01267d89",
+        "components/input-current.css": "32cff85634700907a05a56828ae17ea4f2152da0cf11ed7c26a734fc62a26260",
+        "components/input-current.js": "8c86d4db5d986b78dcf23b9ca1ec70e7cc430f905def6737fb423dc47c73fb92",
+        "components/preview/badge.html": "5ac5bba812ac153d736b770ed0fde75d24daf27a8be452f519ce636b3f7a7ef4",
+        "components/preview/button.html": "390757353969beca094eda9097cf1375d6da39225447daf1c80a98fd5c35ce5c",
+        "components/preview/collapse.html": "8e62f007e5ccbb9505db83e3d3ac2965b4f0eb1d5f39a1d27bf7ee0c0bfbfbb2",
+        "components/preview/input.html": "ec7b835c0132017c207071b1b80471c878090f8ced46f49e558f38b0dadc7121",
+        "components/preview/reference-live.js": "4839383529a3ee82df1d8efe675d430567abc1986034499107aa429d21a18ea6",
+        "components/preview/text-button.html": "f0d1c4713d1826f05903addf08c698781577c4a935f64b9740dbe07c16f68feb",
+        "components/reference-policy.json": "9a2c54006968a27b3d04e03f0dac429a6e6c215e5e5936b7f65d66cfd9d5c660",
+        "components/sources/collapse/local-structure-review.json": "2f23c478029c962b201a4354b00d464cbda8d6369c6aaca5b14b5aac785c4da6",
+        "components/sources/collapse/specification-v3-review-1011.json": "6c170c91602e70346095e408cb651987526d2863a6874dcf3f3b255af289d680",
+        "components/text-button-current.css": "662a90320af28ef4d38b2adf121972e7e380cc7c33fcdeb0597a5bfd36b218a9",
+        "components/token-specs/border-radius.json": "77d9245e2504b7c0c605288290e938b2453a79b27d4312448d14a58692290791",
+        "components/token-specs/border.json": "d286ee4681deda1c7702c310b065c86f824539b3a8797efba05b24bc225ab322",
+        "components/token-specs/colors.json": "82cba8e4a6b3e1e5bc961e4039478b0dea4ba9b92a5291d579bb8d7a54db0d95",
+        "components/token-specs/spacing.json": "351b14cfce4411248ad41e00eaaf2b1cab9b705997980dfed1fc65693740e65c",
+        "components/token-specs/typography.json": "93b7dc07547218a33c075b7cdcd942f89094353a7847d483d8378b8883327e16",
+        "components/tokens.css": "2424558781ddfc12cad4d2b91e78451dc26fe5e126e6f24a3b9631753b644afa"
+      }
+    },
+    {
+      "id": "navigation",
+      "canonicalVariants": [
+        "header"
+      ],
+      "atomChecks": {
+        "TextButton": {
+          "scope": "finite-canonical-TextButton-default-calls",
+          "checked": [],
+          "inactive": [],
+          "browserVerified": false,
+          "hostStyleCascadeVerified": false
+        }
+      },
+      "declaredButNotChecked": [
+        {
+          "component": "TextButton",
+          "variant": "footer",
+          "reason": "outside current callable examples"
+        },
+        {
+          "component": "TextButton",
+          "variant": "footer-responsive",
+          "reason": "outside current callable examples"
+        }
+      ],
+      "buttonChecks": null,
+      "fingerprints": {
+        "components/components.css": "a08b4fe2790b5ff2b784c6362a90f1b94e7535a03e863232ce6d620a52e85f73",
+        "components/contracts/navigation.json": "4c7cd4e6171f1ccfe8f0c9d4ce044c15f00f1ff2e5e8e054746a47cb4d944d61",
+        "components/contracts/text-button.json": "c7171f7fd137a62c02a84b958b2c2fef45f62864a162b8e841ca328ae912920a",
+        "components/icons/icon-account.svg": "66168fc8ec0493c9775fbfaf182f6ac3314eb7e2b9104e0db092ec3d1d4d8cf1",
+        "components/icons/icon-cart.svg": "b86811904a2144428d62db5374820e8f76a06e2f120c03e1ec87ca35c90753db",
+        "components/icons/icon-logo-fs.svg": "1bb8085713718c9ad56a52665f382944a844266155f6d33476a02f4ace76ff4e",
+        "components/icons/icon-search.svg": "11e01599b008320c723773284b56944f810762688a2928b37e6cb228fc9a3347",
+        "components/icons/icon-social-facebook.svg": "fc0eb42dd7f748704e846d2ffdd182e24fab3f51aaf7c7aa7ab857ca6274a716",
+        "components/icons/icon-social-instagram.svg": "f89366d1630e936492a156f1becc215103876b4d28418ad149d1568f88973903",
+        "components/icons/icon-social-linkedin.svg": "b731a14e60fc99c1c800e73a231449efdaed1c7120ff74d50dcc6cce2d801b58",
+        "components/icons/icon-social-reddit.svg": "84c32e869fa0e3aec2c929fe61c30178014b35c7dc23532f6fdf34720d91cdd9",
+        "components/icons/icon-social-x.svg": "0ce4cc2b9491e46b1307f23f4b82ccab8f5eddce45e8b40017fc410301331c39",
+        "components/icons/icon-social-youtube.svg": "e0c4a5232f15fea93023aca6cf2bbe22fe2e922491bcd288654e0e798e97d7e2",
+        "components/icons/icons-manifest.json": "b52692a6b019a2571097b4a5de82600a7e668989427f31095d52b2cd01267d89",
+        "components/icons/img-app-store.svg": "77ab4f618b0103bc358a6805e395e5b821c4d476631fa8d7ff37fdad2dccfd5c",
+        "components/icons/img-badge-bbb.svg": "f3742db8a6001357bc358d521f56743316b33e5791274b1b51aa165b382a4d83",
+        "components/icons/img-badge-google.svg": "18bf48be483753df8eabe6d3c15afe8f241a411a47c6616d3a7196f5ece65601",
+        "components/icons/img-badge-trustedsite.svg": "9718228016716b43f3e4cdc648d19f4a62d69fdedb321d44563c4efa6fee5d48",
+        "components/icons/img-badge-trustpilot.svg": "76e5eaca52379eade966e9b80db8d31a70e4ab8f8efe3a287530b7512e8e426b",
+        "components/icons/img-google-play.svg": "a344c8d5149a7944620d850ea019803e3f890be50ef88ac90bb541d2e782a1cb",
+        "components/preview/navigation.html": "d61467a9c7dcfa37e4cc6b5c70a97eb8140281cf71444b47ae1926404390a865",
+        "components/preview/reference-live.js": "4839383529a3ee82df1d8efe675d430567abc1986034499107aa429d21a18ea6",
+        "components/preview/text-button.html": "f0d1c4713d1826f05903addf08c698781577c4a935f64b9740dbe07c16f68feb",
+        "components/reference-policy.json": "9a2c54006968a27b3d04e03f0dac429a6e6c215e5e5936b7f65d66cfd9d5c660",
+        "components/sources/navigation/fixed-header-baseline.html": "62db09fbc1a037b01d284e5c88655fe8ecbd3edaf251ff887c39dee5562b73ea",
+        "components/sources/navigation/local-structure-review.json": "04d8e569457c16d5d08cc2ed032b7e09fe37056ee2a8e68353c10774e4d4d8fc",
+        "components/sources/navigation/source-index.json": "1def1cbba8dc5d0b110878c41f4db2e7c9c483a5f2f61ec7534b4b0221670441",
+        "components/token-specs/border-radius.json": "77d9245e2504b7c0c605288290e938b2453a79b27d4312448d14a58692290791",
+        "components/token-specs/border.json": "d286ee4681deda1c7702c310b065c86f824539b3a8797efba05b24bc225ab322",
+        "components/token-specs/colors.json": "82cba8e4a6b3e1e5bc961e4039478b0dea4ba9b92a5291d579bb8d7a54db0d95",
+        "components/token-specs/spacing.json": "351b14cfce4411248ad41e00eaaf2b1cab9b705997980dfed1fc65693740e65c",
+        "components/token-specs/typography.json": "93b7dc07547218a33c075b7cdcd942f89094353a7847d483d8378b8883327e16",
+        "components/tokens.css": "2424558781ddfc12cad4d2b91e78451dc26fe5e126e6f24a3b9631753b644afa",
+        "page-inputs/bdcom-oem-m2/component-sources/navigation.json": "4b7460bf9a3f67c6f706304235bfb39f152ffefd827efe54d5493b0ac7d3e10a"
+      }
+    },
+    {
+      "id": "table",
+      "canonicalVariants": [
+        "vertical-double",
+        "vertical-single",
+        "horizontal-zebra",
+        "horizontal-grid-13",
+        "horizontal-grid-12-gpt",
+        "horizontal-row-line",
+        "matrix-products",
+        "matrix-plain"
+      ],
+      "atomChecks": {
+        "TextButton": {
+          "scope": "finite-canonical-TextButton-default-calls",
+          "checked": [],
+          "inactive": [
+            {
+              "variant": "horizontal-row-line",
+              "reason": "declared row-count condition not met",
+              "bodyRowCount": 6
+            }
+          ],
+          "browserVerified": false,
+          "hostStyleCascadeVerified": false
+        }
+      },
+      "declaredButNotChecked": [
+        {
+          "component": "TextButton",
+          "variant": "horizontal-row-line",
+          "reason": "canonical condition inactive"
+        }
+      ],
+      "buttonChecks": null,
+      "fingerprints": {
+        "components/components.css": "a08b4fe2790b5ff2b784c6362a90f1b94e7535a03e863232ce6d620a52e85f73",
+        "components/contracts/table.json": "3bab28f209c3381b4b3b1d5fa38c3ad353abae8fb0db1d0090e0061e2a7eb7dc",
+        "components/contracts/text-button.json": "c7171f7fd137a62c02a84b958b2c2fef45f62864a162b8e841ca328ae912920a",
+        "components/icons/icon-carousel-next.svg": "32bc4993a22bc4fe94406f10692227843f334f71f804a000cdce30e5e94235fe",
+        "components/icons/icon-carousel-prev.svg": "0c3e3035fa72509b40f45298e7194eee211adb0b3a8c51730149d8363f3f55ba",
+        "components/icons/icon-chevron-down.svg": "fe5df03acb1cb4b8a38a928357775416656fbf97cc54f3c6a5b7d0e4906f3e91",
+        "components/icons/icons-manifest.json": "b52692a6b019a2571097b4a5de82600a7e668989427f31095d52b2cd01267d89",
+        "components/preview/reference-live.js": "4839383529a3ee82df1d8efe675d430567abc1986034499107aa429d21a18ea6",
+        "components/preview/table-legacy-adapter.js": "0e333d7f4ce4d83842703bfb47d50bf3d984cff902b0fc3f9ffbfe36805df2ba",
+        "components/preview/table.html": "4053b3617b1f14858d61d201de23f20e8848e3ba05ae114b877c70f7a1de72ad",
+        "components/preview/text-button.html": "f0d1c4713d1826f05903addf08c698781577c4a935f64b9740dbe07c16f68feb",
+        "components/reference-policy.json": "9a2c54006968a27b3d04e03f0dac429a6e6c215e5e5936b7f65d66cfd9d5c660",
+        "components/sources/table/local-structure-review.json": "5b58fdf30ece631ca06b0ce4b2e69e90c74d6025646f29e5ed1c4d64aaa3a3f8",
+        "components/sources/table/native-specification-review-1011.json": "e997c6e91af426335f8185a2402e947d7d56ee1a70fd9382f21b4ecfc0c76ea6",
+        "components/table-current.css": "28fff88fc1a1744aa8c3ac1fd837d7fdc2cafbd569e88d331d8203370c3a7a7a",
+        "components/table-current.js": "cf4052650da0f8021d4b17f3688b6d4d84b269b8dfb0cbf77f1d1c9f70d93c8c",
+        "components/text-button-current.css": "662a90320af28ef4d38b2adf121972e7e380cc7c33fcdeb0597a5bfd36b218a9",
+        "components/token-specs/border-radius.json": "77d9245e2504b7c0c605288290e938b2453a79b27d4312448d14a58692290791",
+        "components/token-specs/border.json": "d286ee4681deda1c7702c310b065c86f824539b3a8797efba05b24bc225ab322",
+        "components/token-specs/colors.json": "82cba8e4a6b3e1e5bc961e4039478b0dea4ba9b92a5291d579bb8d7a54db0d95",
+        "components/token-specs/opacity.json": "226088dc556be35b2b51766287a7d54f95eebd348cb80f6d8313e525cf2b70b7",
+        "components/token-specs/spacing.json": "351b14cfce4411248ad41e00eaaf2b1cab9b705997980dfed1fc65693740e65c",
+        "components/token-specs/typography.json": "93b7dc07547218a33c075b7cdcd942f89094353a7847d483d8378b8883327e16",
+        "components/tokens.css": "2424558781ddfc12cad4d2b91e78451dc26fe5e126e6f24a3b9631753b644afa",
+        "docs/assets/20250901105611h7ydr7.jpg.webp": "59bd259e8bbfd62b028d5612f4de1333f571e1cf12ee18d4b783ea1aa323b50f"
+      }
+    }
+  ],
+  "styles": [
+    {
+      "host": "dialog",
+      "file": "components/components.css",
+      "sha256": "a08b4fe2790b5ff2b784c6362a90f1b94e7535a03e863232ce6d620a52e85f73",
+      "directDefaultAtomMatches": [],
+      "skippedStateOrUnsupportedSelectors": [
+        ".ds-dialog::backdrop",
+        ".ds-dialog__close:hover",
+        ".ds-dialog__close:focus-visible"
+      ],
+      "scope": "top-level default authored selectors matching actual atom nodes only; no inheritance, conditional cascade or browser computation"
+    },
+    {
+      "host": "dialog",
+      "file": "components/dialog-current.css",
+      "sha256": "d69386bcf39aa40c3c698c40d725b189c683f2d74b8e0f0ad4254bd7aac682b2",
+      "directDefaultAtomMatches": [
+        {
+          "variant": "information",
+          "selector": ".ds-dialog__close-position",
+          "properties": [
+            "position",
+            "top",
+            "right"
+          ]
+        },
+        {
+          "variant": "confirmation",
+          "selector": ".ds-dialog__close-position",
+          "properties": [
+            "position",
+            "top",
+            "right"
+          ]
+        }
+      ],
+      "skippedStateOrUnsupportedSelectors": [],
+      "scope": "top-level default authored selectors matching actual atom nodes only; no inheritance, conditional cascade or browser computation"
+    },
+    {
+      "host": "card",
+      "file": "components/components.css",
+      "sha256": "a08b4fe2790b5ff2b784c6362a90f1b94e7535a03e863232ce6d620a52e85f73",
+      "directDefaultAtomMatches": [],
+      "skippedStateOrUnsupportedSelectors": [
+        ".ds-card:hover",
+        ".ds-card--horizontal:hover",
+        ".ds-card--horizontal-reverse:hover",
+        ".ds-card--horizontal-sidebar:hover",
+        ".ds-card__sub-link:hover",
+        ".ds-card--embedded-standard:hover",
+        ".ds-card--embedded-bg-gray:hover",
+        ".ds-card--embedded-bg-gray:hover .ds-card__add-btn",
+        ".ds-card--embedded-detail:hover",
+        ".ds-card--embedded-full.ds-card--embedded-bg-gray:hover"
+      ],
+      "scope": "top-level default authored selectors matching actual atom nodes only; no inheritance, conditional cascade or browser computation"
+    },
+    {
+      "host": "card",
+      "file": "components/card-responsive.css",
+      "sha256": "8b5e2bb425816ac031e93224fdb61f13bcb46006cccc27641de04d499803fc3c",
+      "directDefaultAtomMatches": [],
+      "skippedStateOrUnsupportedSelectors": [],
+      "scope": "top-level default authored selectors matching actual atom nodes only; no inheritance, conditional cascade or browser computation"
+    },
+    {
+      "host": "icon-card",
+      "file": "components/components.css",
+      "sha256": "a08b4fe2790b5ff2b784c6362a90f1b94e7535a03e863232ce6d620a52e85f73",
+      "directDefaultAtomMatches": [],
+      "skippedStateOrUnsupportedSelectors": [
+        ".ds-icon-card:hover",
+        ".ds-icon-card__blue-link:hover",
+        ".ds-icon-card__toggle:hover"
+      ],
+      "scope": "top-level default authored selectors matching actual atom nodes only; no inheritance, conditional cascade or browser computation"
+    },
+    {
+      "host": "icon-card",
+      "file": "components/icon-card-current.css",
+      "sha256": "a58d5967288cddaa11a6f196c5f470caed0ef998daa296bcd3974a7dff5c58d1",
+      "directDefaultAtomMatches": [],
+      "skippedStateOrUnsupportedSelectors": [
+        ".ds-icon-card[data-icon-card-current=\"jump\"] a.ds-icon-card__blue-link:hover"
+      ],
+      "scope": "top-level default authored selectors matching actual atom nodes only; no inheritance, conditional cascade or browser computation"
+    },
+    {
+      "host": "stepper",
+      "file": "components/components.css",
+      "sha256": "a08b4fe2790b5ff2b784c6362a90f1b94e7535a03e863232ce6d620a52e85f73",
+      "directDefaultAtomMatches": [],
+      "skippedStateOrUnsupportedSelectors": [
+        ".ds-stepper__item:hover",
+        ".ds-stepper:not(.ds-stepper--circle-centered):not(.ds-stepper--circle-order) .ds-stepper__item:hover .ds-stepper__title",
+        ".ds-stepper--circle-centered[data-stepper-interactive] .ds-stepper__item:hover .ds-stepper__title",
+        ".ds-stepper__item--completed > .ds-stepper__marker::before",
+        ".ds-stepper--circle-centered[data-stepper-interactive] .ds-stepper__item:focus-visible",
+        ".ds-stepper--circle-centered[data-stepper-interactive] .ds-stepper__item:focus-visible > .ds-stepper__marker",
+        ".ds-stepper--circle-centered .ds-stepper__item:not(.ds-stepper__item--completed):not(.ds-stepper__item--current) .ds-stepper__title",
+        ".ds-stepper--circle-centered .ds-stepper__item:not(.ds-stepper__item--completed):not(.ds-stepper__item--current) > .ds-stepper__marker",
+        ".ds-stepper--circle-order[data-stepper-interactive] .ds-stepper__item:focus-visible",
+        ".ds-stepper--circle-order[data-stepper-interactive] .ds-stepper__item:focus-visible > .ds-stepper__marker",
+        ".ds-stepper--circle-order .ds-stepper__item:first-child .ds-stepper__order-bar",
+        ".ds-stepper--circle-order .ds-stepper__item:last-child .ds-stepper__order-bar",
+        ".ds-stepper--circle-order .ds-stepper__item:not(.ds-stepper__item--completed):not(.ds-stepper__item--current) .ds-stepper__title",
+        ".ds-stepper--circle-order .ds-stepper__item:not(.ds-stepper__item--completed):not(.ds-stepper__item--current) > .ds-stepper__marker",
+        ".ds-stepper--circle-order .ds-stepper__item--completed > .ds-stepper__marker::before",
+        ".ds-stepper--circle-order .ds-stepper__item--current > .ds-stepper__marker::before"
+      ],
+      "scope": "top-level default authored selectors matching actual atom nodes only; no inheritance, conditional cascade or browser computation"
+    },
+    {
+      "host": "stepper",
+      "file": "components/stepper-current.css",
+      "sha256": "669cbb87541f45d6565b40bbdf40239efb44bdf42380c1bc8dddd65cecb46eb1",
+      "directDefaultAtomMatches": [],
+      "skippedStateOrUnsupportedSelectors": [],
+      "scope": "top-level default authored selectors matching actual atom nodes only; no inheritance, conditional cascade or browser computation"
+    }
+  ],
+  "limits": [
+    "Historical/non-callable variants not validated",
+    "Conditional inactive calls not approved",
+    "Static default selector observations do not prove full cascade or browser visuals",
+    "M normative work remains paused",
+    "Frozen pages unchanged"
+  ]
+}

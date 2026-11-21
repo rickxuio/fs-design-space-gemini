@@ -1,0 +1,712 @@
+{
+  "schemaVersion": "fs-component-reference/1.0.0",
+  "component": {
+    "id": "icon-card",
+    "name": "IconCard",
+    "scope": "five-finite-PC-icon-card-calls-with-owned-list-and-disclosure",
+    "reviewStatus": {
+      "engineering": "pending",
+      "visual": "pending",
+      "familyCoverage": "partial"
+    }
+  },
+  "selection": {
+    "policy": "先区分单事件、多链接或明确折叠，再选居中/居左及背景。当前center/left单事件、白底left.jump-type、灰底center/left可展开均已登记；跳转依赖当前IconCard原件中的List12私有覆盖，不开放独立蓝色List族。不按次序分配图标或截断源文案。",
+    "supported": [
+      "center.single-event",
+      "left.single-event",
+      "left.jump-type",
+      "center.multi-event-expandable",
+      "left.multi-event-expandable"
+    ],
+    "unsupported": [
+      "white-surface-canonical-call",
+      "mobile",
+      "unregistered-main-icon"
+    ]
+  },
+  "runtime": {
+    "styles": [
+      "components/tokens.css",
+      "components/components.css",
+      "components/text-button-current.css",
+      "components/icon-card-current.css",
+      "components/list-unordered-current.css",
+      "components/list-links-current.css",
+      "components/icon-card-disclosure-current.css"
+    ],
+    "scripts": [
+      "components/icon-card-current.js"
+    ],
+    "fontStylesheets": [
+      "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+    ],
+    "fontFallback": "Open Sans stack; actual browser geometry/visual proof pending."
+  },
+  "identity": {
+    "rule": "Exact native gray center/left root, icon, description and body/title anatomy retained. Current sourceAbsent permits bullets/link only; icon/description omission is not exposed. Keep36px registered artwork and exact inline-black/m link anatomy. No root IDs, inline sizing or expandable identity.",
+    "labelRule": "Edit only registered fields and child TextButton allowed label/href. Preserve registered right arrow and36px main icon; verify asset identity and actual source role in the existing local mapping. Registered resource legality alone does not establish business meaning."
+  },
+  "locked": [
+    "Gray surface without border and selected layout",
+    "36px native icon geometry; registered artwork is editable",
+    "Shared Card bullet fragment with local bullet icon",
+    "Exact TextButton/inline-black/m root and two children",
+    "Component CSS and no added interaction runtime",
+    "Jump primitive is own native blue-link list; no fictitious TextButton, added arrow or description/bullets",
+    "Current gray center title genuine TextButton/inline-black-bold/L, no arrow; title host only positions it",
+    "All three finite titles are genuine TextButton14-bold/no-arrow; existing blue list substitute stays pending actual12px List admission."
+  ],
+  "behavior": {
+    "display": "单事件静态；折叠调用加载已有组件同步链中的icon-card-current.js。",
+    "links": "Child navigation follows the original TextButton contract and local page workflow. Preview href=# is fixture-only; resolve or disable real targets according to existing page rules.",
+    "disclosure": "真实List12配TextButton私有蓝色13px部件；176px折叠列表，按钮和键盘原生激活，See more/less和aria-expanded同步；不折叠完整描述。",
+    "jump": "Native link navigation uses safe source target only when explicitly requested by page rules; default no href plus aria-disabled/role=link displays source-less entry without false navigation, custom click handler or alert.",
+    "optional": "原稿可选内容与当前接口分开：当前sourceAbsent仅登记bullets/link。图标和描述虽在原稿可选，当前精确调用尚未开放其省略；缺少真实内容不得编造或直接删结构。",
+    "visual": "The component owns Gray9 fill, no border and8px radius. Its surrounding section may be white or gray. Equal-height, hover shadow, text fit and fonts still require actual browser proof.",
+    "titleSource": "所有当前标题引用真实TextButton/inline-black-bold/L，原件隐藏箭头；图标、标题和List依实际变体装配。",
+    "jumpSourceBoundary": "当前3:084742中的12px蓝色List覆盖作为List私有part，限定IconCard/left.jump-type。并非新建List母变体或原13px手写替身。",
+    "content": "Description text grows naturally without a fixed/max height or hidden clipping. User explicitly removed the64px limit on2026-11-10; this supersedes the saved specimen setting only for current description flow. Preserve typography, spacing, surface, radius and complete source text."
+  },
+  "examples": [
+    {
+      "name": "center.single-event",
+      "runtime": {
+        "styles": [
+          "components/tokens.css",
+          "components/components.css",
+          "components/text-button-current.css",
+          "components/icon-card-current.css"
+        ],
+        "scripts": []
+      },
+      "publication": {
+        "key": "icon-card/center.single-event",
+        "disposition": "restricted",
+        "newPages": true,
+        "reason": "Gray center/left single-event only; genuine TextButton title/LearnMore. No white/jump List/disclosure.",
+        "constraints": [
+          "Gray center/left single-event only; genuine TextButton title/LearnMore. No white/jump List/disclosure."
+        ],
+        "contractPolicy": "Gray surface: existing center/left single-event canonical only, with genuine14-bold title and13-Regular LearnMore TextButton. White, jump-type and disclosure remain excluded.",
+        "use": "finite-new-page-candidate",
+        "evidence": "components/contracts/icon-card.json#aiContract/evidence",
+        "requiresCurrentEngineering": true,
+        "visualApproval": "separate-not-granted"
+      },
+      "rootTag": "div",
+      "sizeOptions": [],
+      "bindings": {
+        "icon": {
+          "mode": "registered-icon",
+          "target": "img.ds-icon-card__icon",
+          "attribute": "src",
+          "values": [
+            "components/icons/icon-placeholder-switch.svg",
+            "components/icons/mastergo-library/定制Icon/33189-58768.svg",
+            "components/icons/mastergo-library/定制Icon/33189-58740.svg",
+            "components/icons/mastergo-library/定制Icon/33189-58763.svg",
+            "components/icons/mastergo-library/定制Icon/2632-3490.svg",
+            "components/icons/mastergo-library/定制Icon/33189-58732.svg",
+            "components/icons/mastergo-library/定制Icon/33189-58777.svg",
+            "components/icons/mastergo-library/定制Icon/66567-76227.svg",
+            "components/icons/mastergo-library/定制Icon/62712-75472.svg",
+            "components/icons/mastergo-library/定制Icon/33189-58745.svg",
+            "components/icons/icon-stepper-document-display.svg",
+            "components/icons/icon-grid-view.svg",
+            "components/icons/icon-demo-report.svg",
+            "components/icons/icon-benefit-community.svg",
+            "components/icons/mastergo-library/定制Icon/66567-76458.svg",
+            "components/icons/icon-benefit-development.svg"
+          ],
+          "sourceProperty": "图标切换占位符"
+        },
+        "titleHref": {
+          "mode": "navigation-target",
+          "target": "div.ds-icon-card__title-slot > a.ds-text-btn",
+          "attribute": "href",
+          "relative": true,
+          "protocols": [
+            "https:",
+            "http:",
+            "mailto:",
+            "tel:"
+          ]
+        },
+        "sourceAbsent": {
+          "mode": "source-absence",
+          "target": "root",
+          "sourceProperty": "规范5.2可选内容",
+          "regions": {
+            "bullets": "div.ds-icon-card__bullets",
+            "link": "div.ds-icon-card__link"
+          }
+        }
+      },
+      "purpose": "gray-center.single-event",
+      "whenToUse": "居中单事件，图标和描述槽齐备。",
+      "whenNotToUse": "图标语义不符、需省略图标/描述或其他事件结构。",
+      "rootClasses": "ds-icon-card ds-icon-card--center",
+      "requiredStructure": [
+        "img.ds-icon-card__icon",
+        "div.ds-icon-card__body",
+        "div.ds-icon-card__title-slot",
+        "p.ds-icon-card__desc",
+        "div.ds-icon-card__bullets",
+        "div.ds-icon-card__link",
+        "a.ds-text-btn",
+        "span.ds-text-btn__text",
+        "img.ds-text-btn__icon"
+      ],
+      "slots": {
+        "title": {
+          "selector": "div.ds-icon-card__title-slot span.ds-text-btn__text",
+          "mode": "text",
+          "required": true
+        },
+        "description": {
+          "selector": "p.ds-icon-card__desc",
+          "mode": "text",
+          "required": true
+        },
+        "bullets": {
+          "selector": "div.ds-icon-card__bullets",
+          "mode": "structured-content",
+          "required": true,
+          "preserve": [
+            "div.ds-card__bullet-item",
+            "img.ds-card__bullet-icon",
+            "p.ds-card__bullet-text"
+          ],
+          "rule": "At least one existing bullet fragment; text/count only, no synthetic Card root."
+        },
+        "link": {
+          "selector": "div.ds-icon-card__link",
+          "mode": "structured-content",
+          "required": true,
+          "preserve": [
+            "a.ds-text-btn",
+            "span.ds-text-btn__text",
+            "img.ds-text-btn__icon"
+          ],
+          "rule": "Child TextButton/inline-black/m only; label/href per child contract and Plan, retain registered right arrow."
+        }
+      },
+      "allowedEdits": [
+        "icon",
+        "title",
+        "description",
+        "bullets",
+        "link",
+        "titleHref",
+        "sourceAbsent"
+      ],
+      "exampleHtml": "<div class=\"ds-icon-card ds-icon-card--center ds-icon-card--bg-gray\" data-icon-card-current=\"center-atom\" data-ai-example=\"ai-icon-card-center\">\n          <img class=\"ds-icon-card__icon\" src=\"../icons/icon-placeholder-switch.svg\" alt=\"\">\n          <div class=\"ds-icon-card__body\">\n            <div class=\"ds-icon-card__title-slot\"><a class=\"ds-text-btn ds-text-btn--inline ds-text-btn--black-bold ds-text-btn--l\" aria-disabled=\"true\"><span class=\"ds-text-btn__text\">This is a card title</span></a></div>\n            <p class=\"ds-icon-card__desc\">This is a card description. This is a card description. This is a card description.</p>\n            <div class=\"ds-icon-card__bullets\">\n              <div class=\"ds-card__bullet-item\"><img class=\"ds-card__bullet-icon\" src=\"../icons/icon-bullet.svg\" alt=\"\"><p class=\"ds-card__bullet-text\">2x 2nd Gen Intel Xeon Scalable CPUs</p></div>\n              <div class=\"ds-card__bullet-item\"><img class=\"ds-card__bullet-icon\" src=\"../icons/icon-bullet.svg\" alt=\"\"><p class=\"ds-card__bullet-text\">2x 2nd Gen Intel Xeon Scalable CPUs</p></div>\n              <div class=\"ds-card__bullet-item\"><img class=\"ds-card__bullet-icon\" src=\"../icons/icon-bullet.svg\" alt=\"\"><p class=\"ds-card__bullet-text\">2x 2nd Gen Intel Xeon Scalable CPUs</p></div>\n            </div>\n            <div class=\"ds-icon-card__link\">\n              <a class=\"ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m\" href=\"#\">\n                <span class=\"ds-text-btn__text\">Learn more</span>\n                <img class=\"ds-text-btn__icon\" src=\"../icons/icon-text-button-arrow-right-regular.svg\" alt=\"\">\n              </a>\n            </div>\n          </div>\n        </div>"
+    }
+  ],
+  "relationships": {
+    "children": [
+      {
+        "id": "text-button",
+        "contract": "components/contracts/text-button.json",
+        "variants": [
+          "inline-black"
+        ],
+        "sizes": [
+          {
+            "variant": "inline-black",
+            "size": "m"
+          }
+        ],
+        "appliesTo": [
+          "center.single-event",
+          "left.single-event"
+        ],
+        "slot": "link",
+        "preview": "components/variants/text-button.html"
+      },
+      {
+        "id": "text-button",
+        "contract": "components/contracts/text-button.json",
+        "variants": [
+          "inline-black-bold"
+        ],
+        "sizes": [
+          {
+            "variant": "inline-black-bold",
+            "size": "l"
+          }
+        ],
+        "appliesTo": [
+          "center.single-event",
+          "left.single-event",
+          "left.jump-type",
+          "center.multi-event-expandable",
+          "left.multi-event-expandable"
+        ],
+        "slot": "title",
+        "preview": "components/variants/text-button.html"
+      }
+    ],
+    "parents": [
+      {
+        "id": "carousel",
+        "contract": "components/contracts/carousel.json",
+        "preview": "components/variants/carousel.html",
+        "status": "declared-unverified",
+        "evidence": {
+          "status": "declared-unverified",
+          "verified": false,
+          "previewExists": true,
+          "classEvidence": false,
+          "declaredClasses": [
+            "ds-icon-card"
+          ],
+          "missingClasses": [
+            "ds-icon-card"
+          ],
+          "exactStructure": "not-established",
+          "browserEvidence": "not-established",
+          "note": "宿主依赖声明及离线类名盘点；未证明具体变体、尺寸、必需子结构、宿主适配或浏览器行为。"
+        },
+        "usage": [
+          {
+            "component": "IconCard",
+            "slot": "items",
+            "appliesTo": [
+              "external-cards"
+            ],
+            "requiredVariants": [
+              "center.single-event",
+              "left.single-event"
+            ],
+            "implementationClasses": [
+              "ds-icon-card"
+            ],
+            "usage": "按受控items真实调用同一种居中或居左IconCard；图标语义及字段仍按子契约。"
+          }
+        ]
+      }
+    ],
+    "parentStatus": "declared-hosts",
+    "icons": [
+      {
+        "file": "components/icons/icon-placeholder-switch.svg",
+        "registry": "components/icons/icons-manifest.json",
+        "appliesTo": [
+          "center.single-event",
+          "left.single-event",
+          "left.jump-type"
+        ],
+        "usage": "单事件与跳转型默认卡片图标"
+      },
+      {
+        "file": "components/icons/icon-bullet.svg",
+        "registry": "components/icons/icons-manifest.json",
+        "appliesTo": [
+          "center.single-event",
+          "center.multi-event-expandable",
+          "left.single-event",
+          "left.multi-event-expandable"
+        ],
+        "usage": "bullets 列表 4×4px 圆点"
+      },
+      {
+        "file": "components/icons/icon-arrow-right.svg",
+        "registry": "components/icons/icons-manifest.json",
+        "appliesTo": [
+          "center.single-event",
+          "left.single-event"
+        ],
+        "usage": "Learn more 箭头（随 TextButton 组件带出）"
+      }
+    ],
+    "tokens": [
+      {
+        "name": "color.white",
+        "value": "#FFFFFF",
+        "unit": null,
+        "cssVar": "--color-white",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.gray-1",
+        "value": "#19191A",
+        "unit": null,
+        "cssVar": "--color-gray-1",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.gray-3",
+        "value": "#707070",
+        "unit": null,
+        "cssVar": "--color-gray-3",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.gray-5",
+        "value": "#DEE0E3",
+        "unit": null,
+        "cssVar": "--color-gray-5",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.blue",
+        "value": "#0060BF",
+        "unit": null,
+        "cssVar": "--color-blue",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "border-radius.lg",
+        "value": 8,
+        "unit": "px",
+        "cssVar": "--border-radius-lg",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border-radius.json"
+      },
+      {
+        "name": "typography.font-family-base",
+        "value": "Open Sans",
+        "unit": null,
+        "cssVar": "--font-family-base",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-size-h8",
+        "value": 13,
+        "unit": "px",
+        "cssVar": "--font-size-h8",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "spacing.md",
+        "value": 12,
+        "unit": "px",
+        "cssVar": "--spacing-md",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.2xl",
+        "value": 32,
+        "unit": "px",
+        "cssVar": "--spacing-2xl",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.lg",
+        "value": 16,
+        "unit": "px",
+        "cssVar": "--spacing-lg",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.xs",
+        "value": 4,
+        "unit": "px",
+        "cssVar": "--spacing-xs",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.2",
+        "value": 2,
+        "unit": "px",
+        "cssVar": "--spacing-2",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.sm",
+        "value": 8,
+        "unit": "px",
+        "cssVar": "--spacing-sm",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "border.width.default",
+        "value": 1,
+        "unit": "px",
+        "cssVar": "--border-width-default",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.style.default",
+        "value": "solid",
+        "unit": null,
+        "cssVar": "--border-style-default",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.default",
+        "value": "var(--color-gray-5)",
+        "unit": null,
+        "cssVar": "--border-color-default",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.style.none",
+        "value": "none",
+        "unit": null,
+        "cssVar": "--border-style-none",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "typography.font-weight-semibold",
+        "value": 600,
+        "unit": null,
+        "cssVar": "--font-weight-semibold",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-size-md",
+        "value": 14,
+        "unit": "px",
+        "cssVar": "--font-size-md",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-size-sm",
+        "value": 12,
+        "unit": "px",
+        "cssVar": "--font-size-sm",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-weight-regular",
+        "value": 400,
+        "unit": null,
+        "cssVar": "--font-weight-regular",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.h7-semibold",
+        "value": {
+          "fontSize": "14px",
+          "lineHeight": "22px",
+          "fontWeight": 600
+        },
+        "unit": null,
+        "cssVar": null,
+        "primitiveReferences": {
+          "fontSize": "typography.font-size-md",
+          "fontWeight": "typography.font-weight-semibold"
+        },
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.h9-regular",
+        "value": {
+          "fontSize": "12px",
+          "lineHeight": "20px",
+          "fontWeight": 400
+        },
+        "unit": null,
+        "cssVar": null,
+        "primitiveReferences": {
+          "fontSize": "typography.font-size-sm",
+          "fontWeight": "typography.font-weight-regular"
+        },
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.h8-regular",
+        "value": {
+          "fontSize": "13px",
+          "lineHeight": "20px",
+          "fontWeight": 400
+        },
+        "unit": null,
+        "cssVar": null,
+        "primitiveReferences": {
+          "fontSize": "typography.font-size-h8",
+          "fontWeight": "typography.font-weight-regular"
+        },
+        "source": "components/token-specs/typography.json"
+      }
+    ]
+  },
+  "evidence": {
+    "localImplementation": "components/variants/icon-card.html",
+    "comparison": "components/sources/icon-card/local-structure-review.json",
+    "originalSpecification": "components/sources/icon-card/native-specification-review-1011.json",
+    "originalCurrentComponent": "components/sources/icon-card/native-component-review-1011.json",
+    "currentGrayParent": "components/sources/icon-card/center-parent-source-review-1013.json",
+    "currentMgReview": "components/sources/card-carousel-mg-20261114/icon-card-review.json",
+    "capabilityCompletion": "components/sources/capability-completion-20261115/first.json"
+  },
+  "sourceValidation": {
+    "componentIdentity": {
+      "status": "not-established",
+      "files": []
+    },
+    "specificationBody": {
+      "status": "not-established",
+      "files": []
+    },
+    "originalOnlineFrontendCode": false,
+    "browserComputedStyles": false,
+    "completeSpecificationCoverage": false,
+    "otherAtomNesting": {
+      "TextButton": {
+        "scope": "finite-canonical-TextButton-default-calls",
+        "checked": [
+          {
+            "variant": "center.single-event",
+            "children": [
+              {
+                "variant": "inline-black-bold",
+                "size": "l"
+              },
+              {
+                "variant": "inline-black",
+                "size": "m"
+              }
+            ]
+          },
+          {
+            "variant": "left.single-event",
+            "children": [
+              {
+                "variant": "inline-black-bold",
+                "size": "l"
+              },
+              {
+                "variant": "inline-black",
+                "size": "m"
+              }
+            ]
+          },
+          {
+            "variant": "left.jump-type",
+            "children": [
+              {
+                "variant": "inline-black-bold",
+                "size": "l"
+              }
+            ]
+          },
+          {
+            "variant": "center.multi-event-expandable",
+            "children": [
+              {
+                "variant": "inline-black-bold",
+                "size": "l"
+              },
+              {
+                "variant": "inline-blue-link",
+                "size": "m"
+              }
+            ]
+          },
+          {
+            "variant": "left.multi-event-expandable",
+            "children": [
+              {
+                "variant": "inline-black-bold",
+                "size": "l"
+              },
+              {
+                "variant": "inline-blue-link",
+                "size": "m"
+              }
+            ]
+          }
+        ],
+        "inactive": [],
+        "browserVerified": false,
+        "hostStyleCascadeVerified": false
+      }
+    },
+    "currentSurface": {
+      "source": "components/sources/icon-card/center-parent-source-review-1013.json",
+      "sourceNode": "68908:042293",
+      "color": "#FAFBFB",
+      "token": "color.gray-9",
+      "class": "ds-icon-card--bg-gray",
+      "radius": 8,
+      "borderWidth": 0,
+      "scope": "existing gray center/left single-event cards on white or gray sections; white-card variants remain excluded"
+    }
+  },
+  "freshness": {
+    "fingerprints": {
+      "components/components.css": "a08b4fe2790b5ff2b784c6362a90f1b94e7535a03e863232ce6d620a52e85f73",
+      "components/contracts/icon-card.json": "51896aa6e9e0670eab889f167ddbd980d45af495afa4d7e559624ad5cd87af5f",
+      "components/contracts/list.json": "42201beb4d1d142d5192f5397169e408632eedbbcb641c53b7840e31c9446162",
+      "components/contracts/text-button.json": "323301e3a3438778dd29d5d6c32fd7e661846707ce711b5c0ec82d11fea12fc5",
+      "components/icon-card-current.css": "4382dd60e46c9ceb5b1ed3490c3122ae5d6459373b8e92d691b7e5264dd3cdc9",
+      "components/icon-card-current.js": "8c2b64ea8cdd32fd3d9d54f228164f31dbc6d02494d66c4edc127e458006d980",
+      "components/icon-card-disclosure-current.css": "d455b50003ac0d4f3cbb700b3fdb5edfbbce208ff6599207c79827e404166dc8",
+      "components/icons/icon-arrow-right.svg": "f14aa7f363b6e2ffe83389f0fc2b01a96bbc2e4cae9d29fa42203d408f9eb3b8",
+      "components/icons/icon-benefit-community.svg": "d07c1a9a3f009bd3e3e7128fd0b102e2dd977332794a82860fa6b1e7573b1371",
+      "components/icons/icon-benefit-development.svg": "76385f5a902547f68428e1810fc8d2c10c38d84c9e74b68c990adf0c669e8a73",
+      "components/icons/icon-bullet.svg": "d97e82725de89af391e3c14c5a14d541f8171b1cd714e57b2768edfcab773dbd",
+      "components/icons/icon-chevron-down.svg": "fe5df03acb1cb4b8a38a928357775416656fbf97cc54f3c6a5b7d0e4906f3e91",
+      "components/icons/icon-demo-report.svg": "9e9702fcf8d17d19541934a5ae57c6ed7c4e3949a77df7573dc06a016bfd26c3",
+      "components/icons/icon-grid-view.svg": "7337e2156917d2c0db7a77a62d0c0f7e5748253a928ae996d68130eaa1d2e284",
+      "components/icons/icon-placeholder-switch.svg": "0f52c5a675441071196593d5d90c3f97f29b0b43719170d8a7df7ac9a974b5d5",
+      "components/icons/icon-stepper-document-display.svg": "534089da1be81169846e8866a36f25fd3d262d0ee2754ef07a65291f6ca2d64e",
+      "components/icons/icons-manifest.json": "12c48af6d1dc59d50b76046bb0507005f565aa4224a6d8056ce4eaaf8050c43e",
+      "components/icons/mastergo-library/定制Icon/2632-3490.svg": "d2c0f23a0ac980fc237aa9dc103de631b2e7e6d2f0ca66529a9c2f7d7d399daf",
+      "components/icons/mastergo-library/定制Icon/33189-58732.svg": "15bc1f03c5f30dc1c26d0f48a378b76af572355b23340b84a9b28822f2b2cda0",
+      "components/icons/mastergo-library/定制Icon/33189-58740.svg": "719f8519bdaca4c860a72813c3dbc4e76e464cc534246ba342b96f677bea92f8",
+      "components/icons/mastergo-library/定制Icon/33189-58745.svg": "16d4e3980291789679cad713faf35c2dd1e33ce800aaa4c275178df545f940e4",
+      "components/icons/mastergo-library/定制Icon/33189-58763.svg": "5189568dfe3d4449aef4e757c601fd3accb1ea9bb72df493a1c889d4e9b693a2",
+      "components/icons/mastergo-library/定制Icon/33189-58768.svg": "37c8ad0e82ba0815f0e8e9b0701d16d8fccfefe15f133a930de5440001ace1d9",
+      "components/icons/mastergo-library/定制Icon/33189-58777.svg": "c8a4992edf8a290c19ad00cd385f7a5d5346a24f034ad5ac7367a7bde9f967d2",
+      "components/icons/mastergo-library/定制Icon/62712-75472.svg": "7600e0d6e4f660648441eef2d2ce6e04fcbf45d45d58a290bfe4d3f5e4898d2a",
+      "components/icons/mastergo-library/定制Icon/66567-76227.svg": "6ead165f2195d20cbaeb618a519b66f3df272a27a85fa1ec85cb90e87fc8997d",
+      "components/icons/mastergo-library/定制Icon/66567-76458.svg": "ac7e1f7d85d61ef8c96518cf57168194e147c2a7b26f2863e2b07d6e1a8fb25c",
+      "components/list-links-current.css": "3c4e5b765d99414b38e758c7419dee8b1affcab214b06fa0a8a5d53e3a85b649",
+      "components/list-unordered-current.css": "4b257420500aab077912b1687d45246d29f959dd05f36ef8a92115306c984e8c",
+      "components/preview/reference-live.js": "4839383529a3ee82df1d8efe675d430567abc1986034499107aa429d21a18ea6",
+      "components/reference-policy.json": "4ae8f51f623386417e38d497caafb8bda4417c929159002a7ac088e6e526b482",
+      "components/sources/capability-completion-20261115/first.json": "02e23097b721152443417c08cafae86dab324acd607b0a5acd8aca2256c637a0",
+      "components/sources/card-carousel-mg-20261114/card-icon-card.txt": "21d65be253d35339ec97b30ef9890b32fc720bf97c6032713b7592ed2044d9ac",
+      "components/sources/card-carousel-mg-20261114/icon-card-review.json": "7e3932e71e9065a7a943dcc214440b06e632c099dd6d59cdf59e618f00ea0379",
+      "components/sources/icon-card/center-parent-source-review-1013.json": "c98034335816cca8930ba6a37ee13669ffbffba0dcc55d8910eecc91fd56bfe7",
+      "components/sources/icon-card/local-structure-review.json": "be5fc1d1a7b5f33631df58b5b94468967716246ccbb6c860e085ae267973ef77",
+      "components/sources/icon-card/native-component-review-1011.json": "3623336a9ad5137937e0e5d5064e1ca45e19dafe4d7814b06d9ddd6775aacf14",
+      "components/sources/icon-card/native-specification-review-1011.json": "34c21a3ec1e62f3907b01850b80bf824dfc774893274126d2a3b43fe08cc4d98",
+      "components/sources/list/icon-card-links-12-current.html": "386135a684b56116b3de981ba72b55f6c5dd1eef3f3b10c105dfe0e240722a63",
+      "components/sources/text-button/icon-card-disclosure-current.html": "50cf47ed7f151d209b0c7776ccb1a4439884886d1a38c2e4a02c5c14db1185e2",
+      "components/text-button-current.css": "b38b1b1ad0099d580f7676be7cb2def987753a8eaebd86348ab965768696eb1d",
+      "components/token-specs/border-radius.json": "b01e4c23fbc7e19983d9592b59b0303155b79d66c52459356eda0ea9f4ca74b5",
+      "components/token-specs/border.json": "d286ee4681deda1c7702c310b065c86f824539b3a8797efba05b24bc225ab322",
+      "components/token-specs/colors.json": "5267d59fdc687b54496977280c00c97f0beb6ffce013f87853504f5b736d3389",
+      "components/token-specs/spacing.json": "351b14cfce4411248ad41e00eaaf2b1cab9b705997980dfed1fc65693740e65c",
+      "components/token-specs/typography.json": "93b7dc07547218a33c075b7cdcd942f89094353a7847d483d8378b8883327e16",
+      "components/tokens.css": "f63f3c8fea511d8029902bc3905b01853ac5e92049c1b18ca35ebc9a680c3e69",
+      "components/variants/carousel.html": "96c79a0f343f6e7e6f26efcce99a2a8d7f7ebdd3fc3fa7bc9349155c6c0cc6ed",
+      "components/variants/icon-card.html": "2e837261adda417d216df7d113785c5c74ad0c5b085c5d7206e1c78fa306171a",
+      "components/variants/list.html": "51f7f184f06b1e0a334887d65cf352e2c89a43a5ac72358b88bf405500f0d98e",
+      "components/variants/text-button.html": "6295056d973b26231a68158bd758ebde321d8a105326a740f159006a1a7bd2f8"
+    },
+    "graphFingerprint": "3a0229c3dc1ecb082b24adafa0ae8ba7ab4ccc8949b586449f46c83dcb43790a",
+    "note": "从本地源文件生成；不是 MasterGo 在线实时状态。"
+  },
+  "readScope": {
+    "variant": "center.single-event",
+    "note": "只展开当前已选变体；其他变体没有被声明为不可用。尺寸继续按真实 sizeOptions 选择。"
+  }
+}

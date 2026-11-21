@@ -1,0 +1,966 @@
+{
+  "schemaVersion": "fs-component-reference/1.0.0",
+  "component": {
+    "id": "dialog",
+    "name": "Dialog",
+    "version": "v2.3.2607A",
+    "scope": "five-source-backed-desktop-templates",
+    "reviewStatus": {
+      "engineering": "pending",
+      "visual": "pending",
+      "familyCoverage": "partial"
+    }
+  },
+  "selection": {
+    "policy": "按内容任务选择information只读说明、confirmation简短删除、form资料填写、cart750px商品表格、message已确认成功消息；禁止通过改宽度/原站嵌入绕过。每种模板只编辑其登记字段，生产动作由宿主接事件，移动和未登记状态不自动开放。",
+    "supported": [
+      "information",
+      "confirmation",
+      "form",
+      "cart",
+      "message"
+    ],
+    "unsupported": [
+      "special-business",
+      "mobile",
+      "attachment-upload",
+      "message-error",
+      "message-warning"
+    ]
+  },
+  "runtime": {
+    "styles": [
+      "components/tokens.css",
+      "components/components.css",
+      "components/dialog-current.css",
+      "components/form-current.css",
+      "components/button-current.css",
+      "components/button-runtime-current.css",
+      "components/input-current.css",
+      "components/checkbox-current.css",
+      "components/icon-button-current.css",
+      "components/input-number-current.css",
+      "components/form-dialog-content.css",
+      "components/list-dialog-cart.css",
+      "components/dialog-templates-current.css"
+    ],
+    "scripts": [
+      "components/dialog-current.js",
+      "components/input-current.js",
+      "components/checkbox-current.js",
+      "components/form-current.js",
+      "components/input-number-current.js",
+      "components/list-products-current.js",
+      "components/dialog-templates-current.js"
+    ],
+    "trigger": "button[data-dialog-open=\"<dialog-id>\"]",
+    "close": "[data-dialog-close]",
+    "confirm": "[data-dialog-confirm] → cancelable fs-dialog-confirm event",
+    "backdropDismiss": "默认开启；data-dialog-backdrop=\"false\" 可关闭",
+    "businessBoundary": "接入方负责业务动作；组件本身不删除、不保存数据。",
+    "fontStylesheets": [
+      "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+    ],
+    "fontFallback": "在线字体不可用时使用 tokens.css 已声明的系统字体回退；精确视觉审阅需确认 Open Sans 实际加载。"
+  },
+  "identity": {
+    "rule": "为每个实例生成唯一 id，标题 id 同步 aria-labelledby，触发按钮 data-dialog-open 指向实例 id。",
+    "attributes": [
+      "id",
+      "aria-labelledby",
+      "data-dialog-open"
+    ],
+    "labelRule": "替换底部按钮文案时，同步对应 aria-label；关闭图标必须保留可读的无障碍名称。"
+  },
+  "locked": [
+    "dialog 根元素与变体类名",
+    "必需结构",
+    "组件 CSS / JS",
+    "按钮变体与尺寸",
+    "关闭图标路径与尺寸",
+    "data-dialog-* 行为属性",
+    "IconButton/plain-l真实嵌套结构与独立原子样式"
+  ],
+  "behavior": {
+    "open": "使用 data-dialog-open 指向唯一实例 id；调用原生 showModal。",
+    "cancel": "关闭、取消、Esc 与普通遮罩关闭均不执行确认动作。",
+    "confirm": "监听 fs-dialog-confirm；业务由宿主处理。异步或校验失败时 preventDefault，成功后由宿主 close。",
+    "focus": "打开时背景不可交互；关闭后焦点返回触发按钮。",
+    "overflow": "只让正文区滚动，不移动头部和底部。",
+    "engineeringStatus": "Engineering qualification is derived from components/quality/acceptance.json source/tool fingerprints; current finite browser observations are separate evidence, never a replacement for the original engineering suite or visual approval.",
+    "currentRuntime": "One document delegate set, including cancelled confirmations; native/ARIA disabled actions are guarded. Actual two-PC-instance modal/focus/Escape/backdrop/overflow observations are in currentBrowserReview; full business and browser coverage remains unverified. Do not co-load legacy dialog.js.",
+    "backdropGesture": "Each click consumes the outside-pointer-start state; pointercancel/close/reopen clear it. Only a fresh outside-start/outside-click closes the enabled backdrop. Actual default click-to-dismiss observed for both PC calls; exhaustive pointer gestures not claimed.",
+    "closeAtom": "头部关闭真实调用IconButton/plain-l；宿主仅定位与关闭路由，原子样式修改使Dialog引用过期，重新同步复核；冻结页面保持旧版。"
+  },
+  "examples": [
+    {
+      "name": "confirmation",
+      "publication": {
+        "key": "dialog/confirmation",
+        "disposition": "restricted",
+        "newPages": true,
+        "reason": "只在两种已实现类型范围内选择；不匹配时返回 unsupported，不猜变体。",
+        "constraints": [
+          "只在两种已实现类型范围内选择；不匹配时返回 unsupported，不猜变体。"
+        ],
+        "contractPolicy": "只在两种已实现类型范围内选择；不匹配时返回 unsupported，不猜变体。",
+        "use": "finite-new-page-candidate",
+        "evidence": "components/contracts/dialog.json#aiContract/evidence",
+        "requiresCurrentEngineering": true,
+        "visualApproval": "separate-not-granted"
+      },
+      "rootTag": "dialog",
+      "type": "confirmation",
+      "sizeOptions": [],
+      "bindings": {
+        "confirmCallback": {
+          "mode": "event-handler",
+          "event": "fs-dialog-confirm",
+          "target": "root"
+        }
+      },
+      "purpose": "confirm-deletion",
+      "whenToUse": "普通简短删除确认，采用480px原模板，提供取消与确认操作。",
+      "whenNotToUse": "表单提交、任意业务确认、成功反馈，或750px加购页删除等专用模板。",
+      "rootClasses": "ds-dialog ds-dialog--confirmation",
+      "requiredStructure": [
+        "header.ds-dialog__header",
+        "h2.ds-dialog__title",
+        "button.ds-dialog__close-position.ds-icon-btn.ds-icon-btn--plain.ds-icon-btn--l[data-dialog-close]",
+        "button.ds-dialog__close-position.ds-icon-btn.ds-icon-btn--plain.ds-icon-btn--l img.ds-icon-btn__icon[src=\"../icons/icon-close.svg\"]",
+        "div.ds-dialog__body",
+        "footer.ds-dialog__footer",
+        "button[data-dialog-close].ds-btn--filled-gray",
+        "button[data-dialog-confirm].ds-btn--filled-red",
+        "button[data-dialog-close].ds-btn--xl-regular",
+        "button[data-dialog-confirm].ds-btn--xl-regular"
+      ],
+      "slots": {
+        "title": {
+          "selector": ".ds-dialog__title",
+          "mode": "text",
+          "required": true
+        },
+        "body": {
+          "selector": ".ds-dialog__body",
+          "mode": "structured-content",
+          "required": true
+        },
+        "footer.cancelLabel": {
+          "selector": ".ds-dialog__footer [data-dialog-close] .ds-btn__text",
+          "mode": "text",
+          "required": true
+        },
+        "footer.confirmLabel": {
+          "selector": ".ds-dialog__footer [data-dialog-confirm] .ds-btn__text",
+          "mode": "text",
+          "required": true
+        }
+      },
+      "allowedEdits": [
+        "title",
+        "body",
+        "footer.cancelLabel",
+        "footer.confirmLabel",
+        "confirmCallback"
+      ],
+      "exampleHtml": "<dialog id=\"dialog-confirm\" class=\"ds-dialog ds-dialog--confirmation\" aria-labelledby=\"dialog-confirm-title\"><header class=\"ds-dialog__header\"><h2 id=\"dialog-confirm-title\" class=\"ds-dialog__title\">Confirmation</h2><button class=\"ds-dialog__close-position ds-icon-btn ds-icon-btn--plain ds-icon-btn--l\" type=\"button\" aria-label=\"Close\" data-dialog-close><img class=\"ds-icon-btn__icon\" src=\"../icons/icon-close.svg\" alt=\"\"></button></header><div class=\"ds-dialog__body\"><p>Delete all products？</p></div><footer class=\"ds-dialog__footer\"><button type=\"button\" class=\"ds-btn ds-btn--filled-gray ds-btn--xl-regular\" data-dialog-close autofocus aria-label=\"Cancel\"><span class=\"ds-btn__text\">Button</span></button><button type=\"button\" class=\"ds-btn ds-btn--filled-red ds-btn--xl-regular\" data-dialog-confirm aria-label=\"Confirm\"><span class=\"ds-btn__text\">Button</span></button></footer></dialog>"
+    }
+  ],
+  "relationships": {
+    "children": [
+      {
+        "id": "button",
+        "contract": "components/contracts/button.json",
+        "variants": [
+          "filled-gray",
+          "filled-red"
+        ],
+        "sizes": [
+          {
+            "variant": "filled-gray",
+            "size": "xl-regular"
+          },
+          {
+            "variant": "filled-red",
+            "size": "xl-regular"
+          }
+        ],
+        "appliesTo": [
+          "confirmation",
+          "form",
+          "cart"
+        ],
+        "slot": "footer",
+        "preview": "components/variants/button.html"
+      },
+      {
+        "id": "icon-button",
+        "contract": "components/contracts/icon-button.json",
+        "variants": [
+          "plain-l"
+        ],
+        "appliesTo": [
+          "information",
+          "confirmation",
+          "form",
+          "cart",
+          "message"
+        ],
+        "slot": "header.close",
+        "preview": "components/variants/icon-button.html"
+      }
+    ],
+    "parents": [],
+    "parentStatus": "no-declared-hosts",
+    "icons": [
+      {
+        "file": "components/icons/icon-close.svg",
+        "registry": "components/icons/icons-manifest.json",
+        "appliesTo": [
+          "information",
+          "confirmation"
+        ],
+        "usage": "右上角必选关闭图标，20px；复用现有 SVG"
+      }
+    ],
+    "tokens": [
+      {
+        "name": "border-radius.lg",
+        "value": 8,
+        "unit": "px",
+        "cssVar": "--border-radius-lg",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border-radius.json"
+      },
+      {
+        "name": "border-radius.md",
+        "value": 4,
+        "unit": "px",
+        "cssVar": "--border-radius-md",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border-radius.json"
+      },
+      {
+        "name": "border.style.none",
+        "value": "none",
+        "unit": null,
+        "cssVar": "--border-style-none",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "color.blue",
+        "value": "#0060BF",
+        "unit": null,
+        "cssVar": "--color-blue",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.gray-1",
+        "value": "#19191A",
+        "unit": null,
+        "cssVar": "--color-gray-1",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.gray-3",
+        "value": "#707070",
+        "unit": null,
+        "cssVar": "--color-gray-3",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.hover-overlay-light",
+        "value": "rgba(25,25,26,0.04)",
+        "unit": null,
+        "cssVar": "--color-hover-overlay-light",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.white",
+        "value": "#FFFFFF",
+        "unit": null,
+        "cssVar": "--color-white",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "spacing.20",
+        "value": 20,
+        "unit": "px",
+        "cssVar": "--spacing-20",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.2xl",
+        "value": 32,
+        "unit": "px",
+        "cssVar": "--spacing-2xl",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.lg",
+        "value": 16,
+        "unit": "px",
+        "cssVar": "--spacing-lg",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.md",
+        "value": 12,
+        "unit": "px",
+        "cssVar": "--spacing-md",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.sm",
+        "value": 8,
+        "unit": "px",
+        "cssVar": "--spacing-sm",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.xl",
+        "value": 24,
+        "unit": "px",
+        "cssVar": "--spacing-xl",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.xs",
+        "value": 4,
+        "unit": "px",
+        "cssVar": "--spacing-xs",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "typography.font-family-base",
+        "value": "Open Sans",
+        "unit": null,
+        "cssVar": "--font-family-base",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-size-h5",
+        "value": 18,
+        "unit": "px",
+        "cssVar": "--font-size-h5",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-size-h6",
+        "value": 16,
+        "unit": "px",
+        "cssVar": "--font-size-h6",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-size-md",
+        "value": 14,
+        "unit": "px",
+        "cssVar": "--font-size-md",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-weight-regular",
+        "value": 400,
+        "unit": null,
+        "cssVar": "--font-weight-regular",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-weight-semibold",
+        "value": 600,
+        "unit": null,
+        "cssVar": "--font-weight-semibold",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.h5-semibold",
+        "value": {
+          "fontSize": "18px",
+          "lineHeight": "26px",
+          "fontWeight": 600
+        },
+        "unit": null,
+        "cssVar": null,
+        "primitiveReferences": {
+          "fontSize": "typography.font-size-h5",
+          "fontWeight": "typography.font-weight-semibold"
+        },
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.h6-regular",
+        "value": {
+          "fontSize": "16px",
+          "lineHeight": "24px",
+          "fontWeight": 400
+        },
+        "unit": null,
+        "cssVar": null,
+        "primitiveReferences": {
+          "fontSize": "typography.font-size-h6",
+          "fontWeight": "typography.font-weight-regular"
+        },
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.h7-regular",
+        "value": {
+          "fontSize": "14px",
+          "lineHeight": "22px",
+          "fontWeight": 400
+        },
+        "unit": null,
+        "cssVar": null,
+        "primitiveReferences": {
+          "fontSize": "typography.font-size-md",
+          "fontWeight": "typography.font-weight-regular"
+        },
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "color.dialog-backdrop",
+        "value": "rgba(0,0,0,0.3)",
+        "unit": null,
+        "cssVar": "--color-dialog-backdrop",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "spacing.3",
+        "value": 3,
+        "unit": "px",
+        "cssVar": "--spacing-3",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.6",
+        "value": 6,
+        "unit": "px",
+        "cssVar": "--spacing-6",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "border.color.emphasis",
+        "value": "var(--color-gray-1)",
+        "unit": null,
+        "cssVar": "--border-color-emphasis",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "spacing.2",
+        "value": 2,
+        "unit": "px",
+        "cssVar": "--spacing-2",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.25",
+        "value": 25,
+        "unit": "px",
+        "cssVar": "--spacing-25",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.48",
+        "value": 48,
+        "unit": "px",
+        "cssVar": "--spacing-48",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.40",
+        "value": 40,
+        "unit": "px",
+        "cssVar": "--spacing-40",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.10",
+        "value": 10,
+        "unit": "px",
+        "cssVar": "--spacing-10",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.14",
+        "value": 14,
+        "unit": "px",
+        "cssVar": "--spacing-14",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.banner-hero-inset",
+        "value": 404,
+        "unit": "px",
+        "cssVar": "--spacing-banner-hero-inset",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.banner-content-inset",
+        "value": 360,
+        "unit": "px",
+        "cssVar": "--spacing-banner-content-inset",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.5",
+        "value": 5,
+        "unit": "px",
+        "cssVar": "--spacing-5",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.collapse-status-indent",
+        "value": 42,
+        "unit": "px",
+        "cssVar": "--spacing-collapse-status-indent",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.36",
+        "value": 36,
+        "unit": "px",
+        "cssVar": "--spacing-36",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.9",
+        "value": 9,
+        "unit": "px",
+        "cssVar": "--spacing-9",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.collapse-body-indent",
+        "value": 52,
+        "unit": "px",
+        "cssVar": "--spacing-collapse-body-indent",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.26",
+        "value": 26,
+        "unit": "px",
+        "cssVar": "--spacing-26",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.80",
+        "value": 80,
+        "unit": "px",
+        "cssVar": "--spacing-80",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.68",
+        "value": 68,
+        "unit": "px",
+        "cssVar": "--spacing-68",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.menu-navigation-left-gutter",
+        "value": 15,
+        "unit": "px",
+        "cssVar": "--spacing-menu-navigation-left-gutter",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "border.width.default",
+        "value": 1,
+        "unit": "px",
+        "cssVar": "--border-width-default",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.style.default",
+        "value": "solid",
+        "unit": null,
+        "cssVar": "--border-style-default",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.default",
+        "value": "var(--color-gray-5)",
+        "unit": null,
+        "cssVar": "--border-color-default",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.inverse",
+        "value": "var(--color-white)",
+        "unit": null,
+        "cssVar": "--border-color-inverse",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.focus",
+        "value": "var(--color-blue)",
+        "unit": null,
+        "cssVar": "--border-color-focus",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.subtle",
+        "value": "var(--color-gray-6)",
+        "unit": null,
+        "cssVar": "--border-color-subtle",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.width.strong",
+        "value": 2,
+        "unit": "px",
+        "cssVar": "--border-width-strong",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.strong",
+        "value": "var(--color-gray-3)",
+        "unit": null,
+        "cssVar": "--border-color-strong",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.transparent",
+        "value": "transparent",
+        "unit": null,
+        "cssVar": "--border-color-transparent",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.brand",
+        "value": "var(--brand-red)",
+        "unit": null,
+        "cssVar": "--border-color-brand",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.option",
+        "value": "var(--color-option-border)",
+        "unit": null,
+        "cssVar": "--border-color-option",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.tag",
+        "value": "var(--color-tag-border)",
+        "unit": null,
+        "cssVar": "--border-color-tag",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.table-header",
+        "value": "var(--color-table-header-bg)",
+        "unit": null,
+        "cssVar": "--border-color-table-header",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.table-divider",
+        "value": "var(--color-table-divider)",
+        "unit": null,
+        "cssVar": "--border-color-table-divider",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.list-product-divider",
+        "value": "var(--color-list-product-divider)",
+        "unit": null,
+        "cssVar": "--border-color-list-product-divider",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.list-item-divider",
+        "value": "var(--color-list-item-divider)",
+        "unit": null,
+        "cssVar": "--border-color-list-item-divider",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.comment-divider",
+        "value": "var(--color-comment-divider)",
+        "unit": null,
+        "cssVar": "--border-color-comment-divider",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.input-disabled",
+        "value": "var(--color-input-disabled-border)",
+        "unit": null,
+        "cssVar": "--border-color-input-disabled",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      }
+    ]
+  },
+  "source": {
+    "fileId": "143880409387753",
+    "specLayerId": "70971:200121",
+    "originalSectionId": "68908:469905",
+    "informationComponentId": "68908:048976",
+    "confirmationComponentId": "68908:052338",
+    "specVersion": "v2.3.2607A",
+    "originalSectionLabel": "v2.1.2508A",
+    "versionNote": "原始区域标签较旧；本批两种组件的关键结构/尺寸与新规范一致。未验证其他模板。"
+  },
+  "evidence": {
+    "original": "components/sources/dialog/mastergo-components.json",
+    "spec": "components/sources/dialog/mastergo-spec.json",
+    "refresh": "MasterGo 为来源快照；重新读取后仍需核对差异，不自动覆盖已确认规范。",
+    "runtimeReview": "components/sources/dialog/local-structure-review.json",
+    "inventory": "components/sources/dialog/source-inventory.json",
+    "pcHeaderCurrentReview": "components/sources/dialog/pc-header-current-review-1013.json",
+    "tokenPreview": "components/preview/tokens-data.js",
+    "currentMgReview": "components/sources/dialog-mg-20261115/review.json",
+    "currentBrowserReview": "components/sources/dialog-mg-20261115/browser-review.json"
+  },
+  "sourceValidation": {
+    "componentIdentity": {
+      "status": "saved-typed-nodes-checked",
+      "files": [
+        "components/sources/dialog/source-inventory.json",
+        "components/sources/dialog/mastergo-components.json"
+      ],
+      "basis": "Original saved COMPONENT_SET/COMPONENT types and finite node identities; not screen position or container title."
+    },
+    "specificationBody": {
+      "status": "selected-saved-body-texts-checked",
+      "scope": "selected-dialog-body-texts-only",
+      "files": [
+        "components/sources/dialog/source-inventory.json",
+        "components/sources/dialog/mastergo-spec.json"
+      ]
+    },
+    "originalOnlineFrontendCode": false,
+    "browserComputedStyles": false,
+    "completeSpecificationCoverage": false,
+    "buttonNesting": {
+      "scope": "finite-authored-button-nesting-only",
+      "checked": [
+        {
+          "variant": "confirmation",
+          "buttons": [
+            {
+              "variant": "filled-gray",
+              "size": "xl-regular",
+              "type": "button"
+            },
+            {
+              "variant": "filled-red",
+              "size": "xl-regular",
+              "type": "button"
+            }
+          ]
+        },
+        {
+          "variant": "form",
+          "buttons": [
+            {
+              "variant": "filled-gray",
+              "size": "xl-regular",
+              "type": "button"
+            },
+            {
+              "variant": "filled-red",
+              "size": "xl-regular",
+              "type": "button"
+            }
+          ]
+        },
+        {
+          "variant": "cart",
+          "buttons": [
+            {
+              "variant": "filled-gray",
+              "size": "xl-regular",
+              "type": "button"
+            },
+            {
+              "variant": "filled-red",
+              "size": "xl-regular",
+              "type": "button"
+            }
+          ]
+        }
+      ],
+      "pending": [],
+      "browserVerified": false
+    },
+    "otherAtomNesting": {
+      "IconButton": {
+        "scope": "finite-canonical-IconButton-default-calls",
+        "checked": [
+          {
+            "variant": "information",
+            "children": [
+              {
+                "variant": "plain-l"
+              }
+            ]
+          },
+          {
+            "variant": "confirmation",
+            "children": [
+              {
+                "variant": "plain-l"
+              }
+            ]
+          },
+          {
+            "variant": "form",
+            "children": [
+              {
+                "variant": "plain-l"
+              }
+            ]
+          },
+          {
+            "variant": "cart",
+            "children": [
+              {
+                "variant": "plain-l"
+              }
+            ]
+          },
+          {
+            "variant": "message",
+            "children": [
+              {
+                "variant": "plain-l"
+              }
+            ]
+          }
+        ],
+        "inactive": [],
+        "browserVerified": false,
+        "hostStyleCascadeVerified": false
+      }
+    }
+  },
+  "freshness": {
+    "fingerprints": {
+      "components/button-current.css": "45e94e48ec97a34b4883ecc4f11b33301cdd6679445a3970cb16a2a87c6d8c9e",
+      "components/button-runtime-current.css": "caaa9b65a8d2fbebfa487ca3e0cf0c67d36e0219ffc55d4b0d801371a02da76c",
+      "components/checkbox-current.css": "81bace454b5f7612b84fd778d5596605dbce94f2bdc1784ba2636140622b168e",
+      "components/checkbox-current.js": "742518c24ba917376a24e0338be88cc6d8d9ae65e74f8c1c1ee215abb1088eee",
+      "components/components.css": "a08b4fe2790b5ff2b784c6362a90f1b94e7535a03e863232ce6d620a52e85f73",
+      "components/contracts/button.json": "1f3092d74e19c1a840fbf2e8b8ecaf6115976b2941cc5484e4cda824025b1f73",
+      "components/contracts/checkbox.json": "ea3c1e3a082df421cafa2729384e7a7849e67048f51c3fde0979c0c3b0c94d63",
+      "components/contracts/dialog.json": "9e71d974ca0d252d681283708188e8f7b8176e18670651de4205a348b2ea044b",
+      "components/contracts/form.json": "c9bdb5006244b53c97fe44ca80f98bde385823376dfc382e2027251ce0fa3c27",
+      "components/contracts/icon-button.json": "19f3ce860f24650fba7fbc0b43b59c80255feae164b8d24d9ed71cb4d39d782d",
+      "components/contracts/input-number.json": "7669303c1c7d43d01f368efc105b316bfc8b7f831fbfebf8332f6d483ffca4f4",
+      "components/contracts/input.json": "b367155c40d99807834add264130f574d150f95f09836fe70e84e3bf37a174d1",
+      "components/contracts/list.json": "42201beb4d1d142d5192f5397169e408632eedbbcb641c53b7840e31c9446162",
+      "components/dialog-current.css": "d69386bcf39aa40c3c698c40d725b189c683f2d74b8e0f0ad4254bd7aac682b2",
+      "components/dialog-current.js": "7399925c745799c2337f7c24d2d1125c49f0ddaf069a741b348b60d65b39db01",
+      "components/dialog-templates-current.css": "6d06c6710bf3b840d6232ebe91c129beb47dce94c4846209ad2dd007879f09ae",
+      "components/dialog-templates-current.js": "50a0bcc5a3f6f7a777e21b67532bd5753ddf5ffe400639c4c2c23454f339dbe7",
+      "components/form-current.css": "5ffd82dad4e6ad58e4993f67b3b7b0352f7f8076a37a762eb8adb72014f49d1e",
+      "components/form-current.js": "818b6cfb276a444f4c79ceac548f50ef6d526e1e66415e6032b528e9cb30fb6f",
+      "components/form-dialog-content.css": "12d7a7d438272aae0fd5849e59a4503969b0631fcee302e0cac51cb226ea88f5",
+      "components/icon-button-current.css": "5a4d55cf3817c9491473c1db1df6690cd9a06faf89663a7116e4b044ac5bbd2d",
+      "components/icons/icon-close.svg": "226867654d63f99f548f7e25b2f0286c19aa5786f5b9497905474f3959704424",
+      "components/icons/icons-manifest.json": "12c48af6d1dc59d50b76046bb0507005f565aa4224a6d8056ce4eaaf8050c43e",
+      "components/input-current.css": "81df82b74844b99bdb11674ed4ffe47c0e6e02595408a113fec9f4426d5f9d14",
+      "components/input-current.js": "e218bd2029d632ce9d9564fa67a25cfb05819e5cf9668a25333d7fd04cfc7acc",
+      "components/input-number-current.css": "d5e8da28b2c83edcd9ef96d811fc24ed6070fd0682084733be46075d05adedd7",
+      "components/input-number-current.js": "ba986d5c4796d86ea1097610caa593bed1039996b4dd43a75a4cb8db15d482df",
+      "components/list-dialog-cart.css": "b8dc9d8d45138db25775db56263c3fc307406fbe6e923c00a499163d54b6c001",
+      "components/list-products-current.js": "acccca5b32fd6823c3db3b9921668ed4f66a10ffade9ff75a7725b014e5797a3",
+      "components/preview/reference-live.js": "4839383529a3ee82df1d8efe675d430567abc1986034499107aa429d21a18ea6",
+      "components/preview/tokens-data.js": "772ce14582cec760689173c881cfb3a698f473fb758297685dd8672e020b209c",
+      "components/reference-policy.json": "4ae8f51f623386417e38d497caafb8bda4417c929159002a7ac088e6e526b482",
+      "components/sources/dialog-mg-20261115/browser-review.json": "d5d6d266dd93c3fdc59e16348d937fc1c7d953282f70cd7d357fe088034610fc",
+      "components/sources/dialog-mg-20261115/review.json": "ea3311dc815cb0fda4b71ceccb1d64900700e2460a706a8847a5a5e95ae127b7",
+      "components/sources/dialog/local-structure-review.json": "e87c24e0551f4572c08af5de84ac37f82970429756b0e08bfda22d2293bbcecb",
+      "components/sources/dialog/mastergo-components.json": "57c90ff018152f38def21661737415c245edb7c53e7ee5acebf21c0f77c143d1",
+      "components/sources/dialog/mastergo-spec.json": "4fadfa04db400a6b5e2166ee5672dc0cb6259ea67278e24a56b56be845fd4574",
+      "components/sources/dialog/pc-header-current-review-1013.json": "13cc20d5f9679808b52a53e83b8b35221ff8078b63bcbe7d83454ac300bb4b12",
+      "components/sources/dialog/source-inventory.json": "24f254f9308c3c5ffb0792c6445d0d4446d17da01b81514bb6364c4cd3f8dbd9",
+      "components/sources/form/dialog-content-current.html": "428efd86c2a48e183ff7f9436abf501156330974eed482e4e790dde0b83a467e",
+      "components/sources/icon-button/mastergo-original-components.json": "825a7ab5731310b020c0dfe81d40056d5cc745544e4058ce719fd68c5aed19a7",
+      "components/sources/list/dialog-cart-products-current.html": "d0656772036b56635662f17da17c97feb86aa831e333c62d35f63ce650194e44",
+      "components/token-specs/border-radius.json": "b01e4c23fbc7e19983d9592b59b0303155b79d66c52459356eda0ea9f4ca74b5",
+      "components/token-specs/border.json": "d286ee4681deda1c7702c310b065c86f824539b3a8797efba05b24bc225ab322",
+      "components/token-specs/colors.json": "5267d59fdc687b54496977280c00c97f0beb6ffce013f87853504f5b736d3389",
+      "components/token-specs/spacing.json": "351b14cfce4411248ad41e00eaaf2b1cab9b705997980dfed1fc65693740e65c",
+      "components/token-specs/typography.json": "93b7dc07547218a33c075b7cdcd942f89094353a7847d483d8378b8883327e16",
+      "components/tokens.css": "f63f3c8fea511d8029902bc3905b01853ac5e92049c1b18ca35ebc9a680c3e69",
+      "components/variants/button.html": "6b6715b66e6c0b684c072dcdcbf7170aeb9f49a31bb32ca5b8986644d626cfe6",
+      "components/variants/checkbox.html": "7d99c4b8d7b3c89433a31d6a9205f89607c5cbd398abd76824ae7c92bbdf83f6",
+      "components/variants/dialog.html": "40132b51264249e10a92ea5f24730d989ca1415daa62f9ef42d391aadff7f21f",
+      "components/variants/form.html": "25d31960a440684ed7015f9dc5e628875090709d5001bffebd5972232e48d489",
+      "components/variants/icon-button.html": "91c84e01916ffb0fb58a102a83123aa24b16263a9d3a744dc0316ec19f2f317f",
+      "components/variants/input-number.html": "502b6b905d7f911bd7ae924d104b45a8aa23409749f94ae634a27fbb3c73ef81",
+      "components/variants/input.html": "d34e9585cb00f4293912c199391e0b8328b13fe8db16ac4b4ea4b05b596d10c1",
+      "components/variants/list.html": "51f7f184f06b1e0a334887d65cf352e2c89a43a5ac72358b88bf405500f0d98e",
+      "docs/handoff/archives/2026-10-09-overnight/mastergo/button-shape-component-set.json": "97baa8363f81381597e5e8874efcfe0897017be8cab528e21ff712e45cf5b925"
+    },
+    "graphFingerprint": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "note": "从本地源文件生成；不是 MasterGo 在线实时状态。"
+  },
+  "readScope": {
+    "variant": "confirmation",
+    "note": "只展开当前已选变体；其他变体没有被声明为不可用。尺寸继续按真实 sizeOptions 选择。"
+  }
+}

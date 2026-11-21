@@ -1,0 +1,21 @@
+{
+  "id": "tab",
+  "mainComponent": "Tab",
+  "scope": "PC常规/Default14px/居左，选项间距与底部外描边",
+  "closed": [
+    "当前宿主049852/选项组049858真实来源：外层gap4与选项gap16分开，gap16与现有规则一致",
+    "内部049853容器1200×40底部1px外描边Gray4，非Divider",
+    "只给当前Default居左有限样例添加来源标记并改为不占布局的底部外绘制；大号/居中/历史保持原版本",
+    "13项定向检查有效通过（12项首轮通过、1项色值大小写断言修正后通过）；最终同步通过"
+  ],
+  "completedSummary": "常规PC默认居左选项gap16来源已闭合；底线属于内部容器1px外描边，当前一个有限样例改用非占位外绘制，未外推其他Tab形态",
+  "engineering": "13项定向检查有效通过，最终同步通过；源菜单/其他形态未通过本批",
+  "visual": "待验证：Tab当前Default居左底线位置、导航高度和与邻接内容间距；用户视觉确认不阻塞下一独立批次",
+  "newItems": [
+    "Large/居中底描边来源仍待独立核对；本批未由默认态推断通过"
+  ],
+  "next": "Tab：溢出菜单下拉项原子及Radio真实引用，仅补现有来源缺口",
+  "sourceReceipt": "components/sources/tab/pc-regular-bottom-closeout-1013.json",
+  "supersededSource": "胶囊停用后的来源、隐藏选项/Radio、底线与选项间距版本差异",
+  "sourceRemainder": "常规PC默认居左gap16与1px外底描边已关闭；Large/居中底线、胶囊停用后的来源、隐藏选项/Radio及其余版本差异待核对"
+}

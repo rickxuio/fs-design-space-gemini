@@ -1,0 +1,111 @@
+TAP version 13
+# Subtest: Tab provides exact capsule/product plus two standard sizes and reusable runtime
+ok 1 - Tab provides exact capsule/product plus two standard sizes and reusable runtime
+  ---
+  duration_ms: 121.187166
+  type: 'test'
+  ...
+# Subtest: Tab rejects incomplete inner structure, duplicate indicators, initialized identity and wrong size
+ok 2 - Tab rejects incomplete inner structure, duplicate indicators, initialized identity and wrong size
+  ---
+  duration_ms: 1157.02425
+  type: 'test'
+  ...
+# Subtest: Tab copies switch independently with one indicator and preserve local URL
+ok 3 - Tab copies switch independently with one indicator and preserve local URL
+  ---
+  duration_ms: 119.737917
+  type: 'test'
+  ...
+# Subtest: Tab boundary Home/End defaults are consumed and focus requests preventScroll
+ok 4 - Tab boundary Home/End defaults are consumed and focus requests preventScroll
+  ---
+  duration_ms: 158.140709
+  type: 'test'
+  ...
+# Subtest: Tab arrow wrapping/Enter/Space state survives repeated initialization without duplicate handlers
+ok 5 - Tab arrow wrapping/Enter/Space state survives repeated initialization without duplicate handlers
+  ---
+  duration_ms: 124.1
+  type: 'test'
+  ...
+# Subtest: Tab has no implicit dynamic insertion initializer or business panel generation
+ok 6 - Tab has no implicit dynamic insertion initializer or business panel generation
+  ---
+  duration_ms: 94.116583
+  type: 'test'
+  ...
+# Subtest: Current standard atom padding keeps first and subsequent items while legacy CSS stays unchanged
+ok 7 - Current standard atom padding keeps first and subsequent items while legacy CSS stays unchanged
+  ---
+  duration_ms: 14.7815
+  type: 'test'
+  ...
+# Subtest: Finite standard calls reject missing current atom marker
+ok 8 - Finite standard calls reject missing current atom marker
+  ---
+  duration_ms: 111.968041
+  type: 'test'
+  ...
+# Subtest: Capsule active padding does not add vertical inset outside the real30px atom
+ok 9 - Capsule active padding does not add vertical inset outside the real30px atom
+  ---
+  duration_ms: 11.534208
+  type: 'test'
+  ...
+# Subtest: Finite capsule rejects missing current atom marker
+ok 10 - Finite capsule rejects missing current atom marker
+  ---
+  duration_ms: 109.747667
+  type: 'test'
+  ...
+# Subtest: Tab respects canceled item click and keyboard events and preserves other groups
+ok 11 - Tab respects canceled item click and keyboard events and preserves other groups
+  ---
+  duration_ms: 100.347458
+  type: 'test'
+  ...
+# Subtest: Tab default outside bottom paint is scoped and does not replace legacy border
+not ok 12 - Tab default outside bottom paint is scoped and does not replace legacy border
+  ---
+  duration_ms: 52.730209
+  type: 'test'
+  location: '/Users/rick/Library/Mobile Documents/com~apple~CloudDocs/FS 设计规范系统/scripts/tab-reference.test.js:27:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + '0 1px 0 #dee0e3'
+    - '0 1px 0 #DEE0E3'
+                ^
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: '0 1px 0 #DEE0E3'
+  actual: '0 1px 0 #dee0e3'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (/Users/rick/Library/Mobile Documents/com~apple~CloudDocs/FS 设计规范系统/scripts/tab-reference.test.js:27:1095)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: Tab finite Default rejects missing source paint marker and Large rejects copying it
+ok 13 - Tab finite Default rejects missing source paint marker and Large rejects copying it
+  ---
+  duration_ms: 311.940833
+  type: 'test'
+  ...
+1..13
+# tests 13
+# suites 0
+# pass 12
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 3059.381958

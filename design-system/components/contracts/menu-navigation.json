@@ -1,0 +1,1385 @@
+{
+  "id": "comp_menu_navigation_001",
+  "name": "MenuNavigation",
+  "chineseName": "菜单导航",
+  "version": "v2.3.2605B",
+  "description": "PC 端侧边菜单导航。支持单层级、多层级、多层级加搜索和公共头部产品菜单四种形态；叶子项维护唯一选中态，父项只负责单一展开，搜索仅派发输入事件。",
+  "category": "导航 Navigation",
+  "variants": [
+    {
+      "name": "single-level",
+      "chineseName": "单层级",
+      "whenToUse": "PC250px侧栏只有同级叶子入口。",
+      "cssClass": "ds-menu-navigation ds-menu-navigation--single-level",
+      "isComplete": true,
+      "pendingParts": [],
+      "styleProperties": {
+        "desktopWidths": "288px / 250px",
+        "itemMinHeight": "48px",
+        "title": "可选",
+        "graySurfaceGutter": "current top/bottom20px; left16px (legacy shared left15px)"
+      },
+      "requiredChildren": [
+        "ul.ds-menu-navigation__list",
+        "button.ds-menu-navigation__item",
+        "span.ds-menu-navigation__item-label"
+      ],
+      "selectionDecisionType": "单层级 single-level",
+      "whenNotToUse": "需要子层级、288px精确调用或页面滚动。",
+      "usage": "PC250px侧栏只有同级叶子入口。"
+    },
+    {
+      "name": "multi-level",
+      "chineseName": "多层级",
+      "whenToUse": "PC288px侧栏有一级父项和二级叶子。",
+      "cssClass": "ds-menu-navigation ds-menu-navigation--multi-level",
+      "isComplete": true,
+      "pendingParts": [],
+      "styleProperties": {
+        "desktopWidths": "288px / 250px",
+        "itemMinHeight": "48px",
+        "childIndent": "40px",
+        "graySurfaceGutter": "current top/bottom20px; left16px (legacy shared left15px)"
+      },
+      "requiredChildren": [
+        "ul.ds-menu-navigation__list",
+        "button.ds-menu-navigation__item",
+        "span.ds-menu-navigation__item-label",
+        "ul.ds-menu-navigation__panel",
+        "img.ds-menu-navigation__chevron"
+      ],
+      "selectionDecisionType": "多层级 multi-level",
+      "whenNotToUse": "三级层级、250px调用或自动过滤。",
+      "usage": "PC288px侧栏有一级父项和二级叶子。"
+    },
+    {
+      "name": "multi-level-search",
+      "chineseName": "多层级＋搜索",
+      "whenToUse": "250px PC二级菜单，配真实42px搜索部件，向宿主发出查询意图。",
+      "cssClass": "ds-menu-navigation ds-menu-navigation--multi-level-search",
+      "isComplete": true,
+      "pendingParts": [],
+      "styleProperties": {
+        "desktopWidths": "288px / 250px",
+        "searchHeight": "42px",
+        "childIndent": "40px",
+        "graySurfaceGutter": "current top/bottom20px; left16px (legacy shared left15px)"
+      },
+      "requiredChildren": [
+        "ul.ds-menu-navigation__list",
+        "button.ds-menu-navigation__item",
+        "span.ds-menu-navigation__item-label",
+        "ul.ds-menu-navigation__panel",
+        "img.ds-menu-navigation__chevron",
+        "input.ds-input-search__field",
+        "button.ds-icon-btn"
+      ],
+      "selectionDecisionType": "多层级＋搜索 multi-level-search",
+      "whenNotToUse": "自动生成搜索结果、未接业务的数据过滤、三级导航或移动端。",
+      "usage": "250px PC二级菜单，配真实42px搜索部件，向宿主发出查询意图。"
+    },
+    {
+      "name": "public-header",
+      "chineseName": "公共头部",
+      "whenToUse": "固定英文Header中All Products的240px产品菜单子组件维护与调用。",
+      "cssClass": "ds-menu-navigation ds-menu-navigation--public-header",
+      "isComplete": true,
+      "pendingParts": [],
+      "styleProperties": {
+        "desktopWidth": "240px",
+        "iconSize": "22px",
+        "sticky": false
+      },
+      "requiredChildren": [
+        "ul.ds-menu-navigation__list",
+        "button.ds-menu-navigation__item",
+        "span.ds-menu-navigation__item-label",
+        "img.ds-menu-navigation__product-icon"
+      ],
+      "selectionDecisionType": "公共头部 public-header",
+      "whenNotToUse": "普通页面侧栏、整个多栏MegaMenu或替换固定Header。",
+      "usage": "真实嵌入Navigation/header；叶节点发原有菜单选择事件，路由仍由宿主处理。"
+    }
+  ],
+  "states": [
+    {
+      "name": "default",
+      "chineseName": "默认",
+      "styleOverrides": {
+        "background": "#F6F6F8",
+        "text": "#19191A"
+      }
+    },
+    {
+      "name": "hover",
+      "chineseName": "悬停",
+      "styleOverrides": {
+        "itemBackground": "#FFFFFF",
+        "text": "#19191A"
+      }
+    },
+    {
+      "name": "pressed",
+      "chineseName": "按下",
+      "styleOverrides": {
+        "itemBackground": "#FFFFFF",
+        "indicator": "2px #C00000"
+      }
+    },
+    {
+      "name": "selected",
+      "chineseName": "已选",
+      "styleOverrides": {
+        "itemBackground": "#FFFFFF",
+        "indicator": "2px #C00000",
+        "selection": "每个组件唯一叶子项"
+      }
+    },
+    {
+      "name": "expanded",
+      "chineseName": "展开",
+      "styleOverrides": {
+        "chevron": "旋转 180deg",
+        "panel": "显示",
+        "selection": "父项不进入 selected"
+      }
+    }
+  ],
+  "contentSlots": {
+    "title": {
+      "required": false,
+      "description": "标准三种变体可选的 16px/24px SemiBold 标题；public-header 不使用。"
+    },
+    "itemLabel": {
+      "required": true,
+      "description": "完整展示，允许自然换行，禁止省略和截断。"
+    },
+    "itemIcon": {
+      "required": false,
+      "description": "public-header 产品项使用的本地 22×22px SVG。"
+    },
+    "search": {
+      "required": false,
+      "description": "仅 multi-level-search 使用的原生 input[type=search]。"
+    }
+  },
+  "commonProperties": {
+    "element": "nav > optional title/search + ul > li > button；父项通过 aria-expanded/aria-controls 控制子 ul[hidden]",
+    "selection": "一级或二级叶子项在当前组件内唯一 selected；父项只展开/收起",
+    "keyboard": "ArrowUp/ArrowDown 在可见项间移动；Home/End 到首尾；Enter/Space 使用原生按钮激活；Escape 收起当前层级并回到父项",
+    "events": "叶子选择派发 ds:menu-navigation-change；搜索输入派发 ds:menu-navigation-search；父项展开派发 ds:menu-navigation-toggle"
+  },
+  "usageGuidelines": "页面侧栏同级入口使用 single-level；具有父子层级时使用 multi-level；只有确有搜索输入时使用 multi-level-search；三种标准侧栏变体必须保留灰色底上/下 20px、左侧 15px 的留白，公共头部产品菜单不使用这组侧栏留白；既有 Navigation/header 的产品菜单使用 public-header。锚点目录、内容标签页、通用折叠内容和树形层级分别使用 AnchorNav、Tab、Collapse 和 Tree Navigation，不得仅因视觉相近互相替代。",
+  "responsiveRules": [
+    "当前版本只实现和验收 PC desktop，不生成 Tablet/Mobile 断点、重排或交互。",
+    "single-level、multi-level、multi-level-search 使用同一 DOM 的 288px 或 250px 宽度修饰；public-header 仅使用 240px。",
+    "标准三种变体 sticky top 为 16px；public-header 不 sticky。",
+    "M 端已决定 deferred；重新触发条件是后续补充 M 端代码并明确要求实现。"
+  ],
+  "tokenReferences": [
+    "color.brand-red",
+    "color.gray-1",
+    "color.gray-3",
+    "color.gray-8",
+    "color.white",
+    "typography.font-family-base",
+    "typography.font-size-h6",
+    "typography.font-size-md",
+    "typography.font-size-h8",
+    "typography.font-weight-regular",
+    "typography.font-weight-semibold",
+    "typography.h6-semibold",
+    "typography.h7-regular",
+    "typography.h8-regular",
+    "spacing.sm",
+    "spacing.md",
+    "spacing.lg",
+    "spacing.20",
+    "spacing.2xl",
+    "spacing.40",
+    "spacing.menu-navigation-left-gutter",
+    "border.width.default",
+    "border.width.strong",
+    "border.style.default",
+    "border.style.none",
+    "border.color.default",
+    "border.color.focus",
+    "border-radius.md",
+    "color.gray-5",
+    "color.blue",
+    "spacing.3",
+    "border.color.emphasis"
+  ],
+  "constraints": {
+    "allowedChildren": [
+      "Title",
+      "SearchInput",
+      "MenuItem",
+      "Submenu"
+    ],
+    "requiredProperties": [
+      "aria-label"
+    ],
+    "forbiddenCombinations": [
+      [
+        "public-header",
+        "sticky"
+      ],
+      [
+        "single-level",
+        "parent-item"
+      ],
+      [
+        "multi-level-search",
+        "internal-filtering"
+      ]
+    ]
+  },
+  "relations": {
+    "variantDecisionsDescription": "按内容与交互选具体变体，再核对同版调用资格。候选、不用、参考同时用于规范展示与AI；既有来源、当前MG核对、工程与视觉批准分开记录。",
+    "variantDecisions": [
+      {
+        "type": "单层级 single-level",
+        "className": "ds-menu-navigation ds-menu-navigation--single-level",
+        "whenToUse": "PC250px侧栏只有同级叶子入口。",
+        "whenNotToUse": "需要子层级、288px精确调用或页面滚动。",
+        "nestedComponents": [],
+        "status": "当前MG来源与现有有限调用已核对；资格读同版catalog，未开放和视觉批准不据此改变。",
+        "variant": "single-level",
+        "fragment": "single-level",
+        "selectionCases": [
+          {
+            "id": "menu-navigation.single-level.1",
+            "kind": "use",
+            "condition": "PC250px侧栏只有同级叶子入口。",
+            "result": "调用single-level；只改变选中态并派发change。",
+            "targetVariant": "single-level",
+            "strength": "candidate"
+          },
+          {
+            "id": "menu-navigation.single-level.2",
+            "kind": "avoid",
+            "condition": "需要子层级、288px精确调用或页面滚动。",
+            "result": "不使用此变体；先核对相邻组件和实际调用范围。",
+            "targetVariant": "single-level",
+            "strength": "avoid"
+          }
+        ]
+      },
+      {
+        "type": "多层级 multi-level",
+        "className": "ds-menu-navigation ds-menu-navigation--multi-level",
+        "whenToUse": "PC288px侧栏有一级父项和二级叶子。",
+        "whenNotToUse": "三级层级、250px调用或自动过滤。",
+        "nestedComponents": [],
+        "status": "当前MG来源与现有有限调用已核对；资格读同版catalog，未开放和视觉批准不据此改变。",
+        "variant": "multi-level",
+        "fragment": "multi-level",
+        "selectionCases": [
+          {
+            "id": "menu-navigation.multi-level.1",
+            "kind": "use",
+            "condition": "PC288px侧栏有一级父项和二级叶子。",
+            "result": "调用multi-level；父项展开，叶子选中；不执行页面跳转。",
+            "targetVariant": "multi-level",
+            "strength": "candidate"
+          },
+          {
+            "id": "menu-navigation.multi-level.2",
+            "kind": "avoid",
+            "condition": "三级层级、250px调用或自动过滤。",
+            "result": "不使用此变体；先核对相邻组件和实际调用范围。",
+            "targetVariant": "multi-level",
+            "strength": "avoid"
+          }
+        ]
+      },
+      {
+        "type": "多层级＋搜索 multi-level-search",
+        "className": "ds-menu-navigation ds-menu-navigation--multi-level-search",
+        "whenToUse": "250px PC二级菜单，配真实42px搜索部件，向宿主发出查询意图。",
+        "whenNotToUse": "自动生成搜索结果、未接业务的数据过滤、三级导航或移动端。",
+        "nestedComponents": [],
+        "status": "当前MG来源与现有有限调用已核对；资格读同版catalog，未开放和视觉批准不据此改变。",
+        "variant": "multi-level-search",
+        "fragment": "multi-level-search",
+        "selectionCases": [
+          {
+            "id": "menu-search-PC-source-use",
+            "kind": "use",
+            "condition": "250px PC二级菜单，配真实42px搜索部件，向宿主发出查询意图。",
+            "result": "使用multi-level-search并接查询事件；结果与路由属于宿主。",
+            "targetVariant": "multi-level-search"
+          },
+          {
+            "id": "menu-search-PC-source-exclude",
+            "kind": "exclude",
+            "condition": "自动生成搜索结果、未接业务的数据过滤、三级导航或移动端。",
+            "result": "不把本地查询意图声称为后端搜索完成。",
+            "targetVariant": "multi-level-search"
+          }
+        ]
+      },
+      {
+        "type": "公共头部 public-header",
+        "className": "ds-menu-navigation ds-menu-navigation--public-header",
+        "whenToUse": "固定英文Header中All Products的240px产品菜单子组件维护与调用。",
+        "whenNotToUse": "普通页面侧栏、整个多栏MegaMenu或替换固定Header。",
+        "nestedComponents": [],
+        "status": "沿既有MG来源与现行原子完成有限PC调用；工程和视觉独立。",
+        "variant": "public-header",
+        "fragment": "public-header",
+        "selectionCases": [
+          {
+            "id": "menu-navigation.public-header.use",
+            "kind": "use",
+            "condition": "固定英文Header中All Products的240px产品菜单子组件维护与调用。",
+            "result": "真实嵌入Navigation/header；叶节点发原有菜单选择事件，路由仍由宿主处理。",
+            "targetVariant": "public-header"
+          },
+          {
+            "id": "menu-navigation.public-header.avoid",
+            "kind": "avoid",
+            "condition": "普通页面侧栏、整个多栏MegaMenu或替换固定Header。",
+            "result": "不扩大为其他场景或后台业务。",
+            "targetVariant": "public-header"
+          }
+        ]
+      }
+    ],
+    "fontSizeDependencies": [
+      {
+        "token": "typography.font-size-h6",
+        "value": "16px",
+        "usage": "可选 Title",
+        "appliesTo": [
+          "single-level",
+          "multi-level",
+          "multi-level-search"
+        ]
+      },
+      {
+        "token": "typography.font-size-md",
+        "value": "14px",
+        "usage": "全部菜单项文字",
+        "appliesTo": [
+          "single-level",
+          "multi-level",
+          "multi-level-search",
+          "public-header"
+        ]
+      },
+      {
+        "token": "typography.font-size-h8",
+        "value": "13px",
+        "usage": "搜索输入文字",
+        "appliesTo": [
+          "multi-level-search"
+        ]
+      }
+    ],
+    "fontWeightDependencies": [
+      {
+        "token": "typography.font-weight-semibold",
+        "value": "600",
+        "usage": "可选 Title",
+        "appliesTo": [
+          "single-level",
+          "multi-level",
+          "multi-level-search"
+        ],
+        "properties": [
+          "font-weight"
+        ],
+        "selectors": [
+          ".ds-menu-navigation__title"
+        ]
+      },
+      {
+        "token": "typography.font-weight-regular",
+        "value": "400",
+        "usage": "菜单项文字",
+        "appliesTo": [
+          "single-level",
+          "multi-level",
+          "multi-level-search",
+          "public-header"
+        ],
+        "properties": [
+          "font-weight"
+        ],
+        "selectors": [
+          ".ds-menu-navigation__item"
+        ]
+      },
+      {
+        "token": "typography.font-weight-regular",
+        "value": "400",
+        "usage": "搜索输入文字",
+        "appliesTo": [
+          "multi-level-search"
+        ],
+        "properties": [
+          "font-weight"
+        ],
+        "selectors": [
+          ".ds-menu-navigation__search-input"
+        ]
+      }
+    ],
+    "typographyDependencies": [
+      {
+        "token": "typography.h6-semibold",
+        "fontSizeToken": "typography.font-size-h6",
+        "fontSizeValue": "16px",
+        "fontWeightToken": "typography.font-weight-semibold",
+        "fontWeightValue": "600",
+        "weightEvidence": "explicit-css",
+        "usage": "可选 Title",
+        "appliesTo": [
+          "single-level",
+          "multi-level",
+          "multi-level-search"
+        ]
+      },
+      {
+        "token": "typography.h7-regular",
+        "fontSizeToken": "typography.font-size-md",
+        "fontSizeValue": "14px",
+        "fontWeightToken": "typography.font-weight-regular",
+        "fontWeightValue": "400",
+        "weightEvidence": "explicit-css",
+        "usage": "全部菜单项文字",
+        "appliesTo": [
+          "single-level",
+          "multi-level",
+          "multi-level-search",
+          "public-header"
+        ]
+      },
+      {
+        "token": "typography.h8-regular",
+        "fontSizeToken": "typography.font-size-h8",
+        "fontSizeValue": "13px",
+        "fontWeightToken": "typography.font-weight-regular",
+        "fontWeightValue": "400",
+        "weightEvidence": "explicit-css",
+        "usage": "搜索输入文字",
+        "appliesTo": [
+          "multi-level-search"
+        ]
+      }
+    ],
+    "colorDependencies": [
+      {
+        "token": "color.gray-1",
+        "value": "#19191A",
+        "usage": "标题、菜单项和公共头部产品图标",
+        "appliesTo": [
+          "single-level",
+          "multi-level",
+          "multi-level-search",
+          "public-header"
+        ]
+      },
+      {
+        "token": "color.gray-3",
+        "value": "#707070",
+        "usage": "搜索图标与 placeholder",
+        "appliesTo": [
+          "multi-level-search"
+        ]
+      },
+      {
+        "token": "color.gray-8",
+        "value": "#F6F6F8",
+        "usage": "菜单容器默认背景",
+        "appliesTo": [
+          "single-level",
+          "multi-level",
+          "multi-level-search",
+          "public-header"
+        ]
+      },
+      {
+        "token": "color.white",
+        "value": "#FFFFFF",
+        "usage": "Hover、Pressed 与 Selected 菜单项背景",
+        "appliesTo": [
+          "single-level",
+          "multi-level",
+          "multi-level-search",
+          "public-header"
+        ]
+      },
+      {
+        "token": "color.brand-red",
+        "value": "#C00000",
+        "usage": "Pressed 与 Selected 文字下方指示线",
+        "appliesTo": [
+          "single-level",
+          "multi-level",
+          "multi-level-search",
+          "public-header"
+        ]
+      },
+      {
+        "token": "color.gray-5",
+        "value": "#DEE0E3",
+        "usage": "当前来源支持的新增调用及真实原子资源",
+        "appliesTo": [
+          "multi-level-search"
+        ]
+      },
+      {
+        "token": "color.blue",
+        "value": "#0060BF",
+        "usage": "当前来源支持的新增调用及真实原子资源",
+        "appliesTo": [
+          "multi-level-search"
+        ]
+      }
+    ],
+    "spacingDependencies": [
+      {
+        "token": "spacing.sm",
+        "value": "8px",
+        "usage": "Title 下内边距",
+        "properties": [
+          "padding"
+        ],
+        "selectors": [
+          ".ds-menu-navigation__title"
+        ],
+        "appliesTo": [
+          "single-level",
+          "multi-level",
+          "multi-level-search"
+        ]
+      },
+      {
+        "token": "spacing.md",
+        "value": "12px",
+        "usage": "菜单项垂直内边距和图标文字间距",
+        "properties": [
+          "padding",
+          "gap"
+        ],
+        "selectors": [
+          ".ds-menu-navigation__item"
+        ],
+        "appliesTo": [
+          "single-level",
+          "multi-level",
+          "multi-level-search",
+          "public-header"
+        ]
+      },
+      {
+        "token": "spacing.lg",
+        "value": "16px",
+        "usage": "菜单项水平内边距与搜索区水平内边距",
+        "properties": [
+          "padding"
+        ],
+        "selectors": [
+          ".ds-menu-navigation__item",
+          ".ds-menu-navigation__search"
+        ],
+        "appliesTo": [
+          "single-level",
+          "multi-level",
+          "multi-level-search"
+        ]
+      },
+      {
+        "token": "spacing.20",
+        "value": "20px",
+        "usage": "标准侧栏灰色底上下留白，以及搜索与菜单之间间距",
+        "properties": [
+          "padding",
+          "margin-top"
+        ],
+        "selectors": [
+          ".ds-menu-navigation:not(.ds-menu-navigation--public-header)",
+          ".ds-menu-navigation--multi-level-search > .ds-menu-navigation__list"
+        ],
+        "appliesTo": [
+          "single-level",
+          "multi-level",
+          "multi-level-search"
+        ]
+      },
+      {
+        "token": "spacing.menu-navigation-left-gutter",
+        "value": "15px",
+        "usage": "历史共享普通侧栏左15px；当前menu-atom使用spacing.lg16px",
+        "properties": [
+          "padding"
+        ],
+        "selectors": [
+          ".ds-menu-navigation:not(.ds-menu-navigation--public-header)"
+        ],
+        "appliesTo": [
+          "single-level",
+          "multi-level",
+          "multi-level-search"
+        ]
+      },
+      {
+        "token": "spacing.40",
+        "value": "40px",
+        "usage": "二级菜单左缩进和搜索输入左内边距",
+        "properties": [
+          "padding-left"
+        ],
+        "selectors": [
+          ".ds-menu-navigation__panel .ds-menu-navigation__item",
+          ".ds-menu-navigation__search-input"
+        ],
+        "appliesTo": [
+          "multi-level",
+          "multi-level-search"
+        ]
+      },
+      {
+        "token": "spacing.2xl",
+        "value": "32px",
+        "usage": "搜索图标左侧定位偏移",
+        "properties": [
+          "left"
+        ],
+        "selectors": [
+          ".ds-menu-navigation__search-icon"
+        ],
+        "appliesTo": [
+          "multi-level-search"
+        ]
+      },
+      {
+        "token": "spacing.lg",
+        "value": "16px",
+        "usage": "当前真实组合根左侧留白16；旧共享15保持历史",
+        "properties": [
+          "padding-left"
+        ],
+        "selectors": [
+          ".ds-menu-navigation[data-menu-navigation-current=\"menu-atom\"]"
+        ],
+        "appliesTo": [
+          "single-level",
+          "multi-level",
+          "multi-level-search"
+        ]
+      },
+      {
+        "token": "spacing.3",
+        "value": "3px",
+        "usage": "当前来源支持的新增调用及真实原子资源",
+        "appliesTo": [
+          "multi-level-search"
+        ]
+      }
+    ],
+    "borderDependencies": [
+      {
+        "token": "border.width.default",
+        "value": "1px",
+        "usage": "搜索输入默认描边",
+        "aspect": "width",
+        "properties": [
+          "border"
+        ],
+        "selectors": [
+          ".ds-menu-navigation__search-input"
+        ],
+        "appliesTo": [
+          "multi-level-search"
+        ]
+      },
+      {
+        "token": "border.style.default",
+        "value": "solid",
+        "usage": "搜索输入默认描边",
+        "aspect": "style",
+        "properties": [
+          "border"
+        ],
+        "selectors": [
+          ".ds-menu-navigation__search-input"
+        ],
+        "appliesTo": [
+          "multi-level-search"
+        ]
+      },
+      {
+        "token": "border.style.none",
+        "value": "none",
+        "usage": "菜单按钮移除浏览器默认边框",
+        "aspect": "style",
+        "properties": [
+          "border"
+        ],
+        "selectors": [
+          ".ds-menu-navigation__item"
+        ],
+        "appliesTo": [
+          "single-level",
+          "multi-level",
+          "multi-level-search",
+          "public-header"
+        ]
+      },
+      {
+        "token": "border.color.default",
+        "value": "var(--color-gray-5)",
+        "usage": "搜索输入默认描边",
+        "aspect": "color",
+        "properties": [
+          "border"
+        ],
+        "selectors": [
+          ".ds-menu-navigation__search-input"
+        ],
+        "appliesTo": [
+          "multi-level-search"
+        ]
+      },
+      {
+        "token": "border.color.emphasis",
+        "value": "var(--color-gray-1)",
+        "usage": "当前来源支持的新增调用及真实原子资源",
+        "aspect": "color",
+        "appliesTo": [
+          "multi-level-search"
+        ]
+      }
+    ],
+    "radiusDependencies": [
+      {
+        "token": "border-radius.md",
+        "value": "4px",
+        "usage": "菜单容器与搜索输入圆角",
+        "appliesTo": [
+          "single-level",
+          "multi-level",
+          "multi-level-search",
+          "public-header"
+        ]
+      }
+    ],
+    "shadowDependencies": [],
+    "componentDependencies": [
+      {
+        "component": "Input",
+        "part": "menu-search42",
+        "appliesTo": [
+          "multi-level-search"
+        ],
+        "requiredVariants": [
+          "white"
+        ],
+        "slot": "search",
+        "implementationClasses": [
+          "ds-input-search",
+          "ds-input-search__field",
+          "ds-icon-btn",
+          "ds-icon-btn__icon"
+        ],
+        "usage": "来源42px白底搜索部件归Input维护；不复制普通搜索假样式。"
+      },
+      {
+        "component": "IconButton",
+        "appliesTo": [
+          "multi-level-search"
+        ],
+        "requiredVariants": [
+          "plain-m"
+        ],
+        "slot": "search-submit",
+        "implementationClasses": [
+          "ds-icon-btn",
+          "ds-icon-btn--plain",
+          "ds-icon-btn--m",
+          "ds-icon-btn__icon"
+        ],
+        "usage": "当前28/16px Search原子，不把源层名称当作业务语义。"
+      }
+    ],
+    "iconDependencies": [
+      {
+        "icon": "icon-search",
+        "usage": "multi-level-search 搜索输入前置图标，以 16×16px 显示",
+        "required": true,
+        "appliesTo": [
+          "multi-level-search"
+        ]
+      },
+      {
+        "icon": "icon-chevron-down",
+        "usage": "多层级父项展开指示，以 16×16px 显示",
+        "required": true,
+        "appliesTo": [
+          "multi-level",
+          "multi-level-search"
+        ]
+      },
+      {
+        "icon": "icon-menu-switches",
+        "usage": "公共头部 Switches 产品入口",
+        "required": true,
+        "appliesTo": [
+          "public-header"
+        ]
+      },
+      {
+        "icon": "icon-menu-networking",
+        "usage": "公共头部 Networking 产品入口",
+        "required": true,
+        "appliesTo": [
+          "public-header"
+        ]
+      },
+      {
+        "icon": "icon-menu-optical-transceivers",
+        "usage": "公共头部 Optical Transceivers 产品入口",
+        "required": true,
+        "appliesTo": [
+          "public-header"
+        ]
+      },
+      {
+        "icon": "icon-menu-fiber-optic-cables",
+        "usage": "公共头部 Fiber Optic Cables 产品入口",
+        "required": true,
+        "appliesTo": [
+          "public-header"
+        ]
+      },
+      {
+        "icon": "icon-menu-panels-enclosures-racks",
+        "usage": "公共头部 Panels, Enclosures & Racks 产品入口",
+        "required": true,
+        "appliesTo": [
+          "public-header"
+        ]
+      },
+      {
+        "icon": "icon-menu-optical-networking",
+        "usage": "公共头部 Optical Networking 产品入口",
+        "required": true,
+        "appliesTo": [
+          "public-header"
+        ]
+      },
+      {
+        "icon": "icon-menu-copper-systems",
+        "usage": "公共头部 Copper Systems 产品入口",
+        "required": true,
+        "appliesTo": [
+          "public-header"
+        ]
+      },
+      {
+        "icon": "icon-menu-testers-tools",
+        "usage": "公共头部 Testers & Tools 产品入口",
+        "required": true,
+        "appliesTo": [
+          "public-header"
+        ]
+      }
+    ],
+    "commonlyEmbeddedIn": [],
+    "variantSelectionRules": [
+      "同级叶子入口 → single-level；出现父子层级且无搜索 → multi-level；父子层级且有真实搜索输入 → multi-level-search。",
+      "既有 Navigation/header 的产品菜单场景 → public-header；不得因此修改 Rule 0 Navigation/header。",
+      "288px 与 250px 是标准变体的宽度修饰，240px 只属于 public-header；宽度不得登记为独立变体。",
+      "Title 只是标准变体的可选内容，不得登记为独立变体。",
+      "一级父项只负责 disclosure，不得进入 selected；叶子项在当前组件内必须保持唯一 selected。",
+      "搜索只派发 ds:menu-navigation-search，禁止组件内部发明过滤、零结果、自动展开或高亮行为。",
+      "长文本必须完整换行，禁止 ellipsis、line-clamp 或固定高度截断。",
+      "当前只允许 desktop 实现；没有 M 端代码时禁止自行推导移动端样式。"
+    ],
+    "mutuallyExclusiveWith": [
+      {
+        "component": "AnchorNav",
+        "reason": "AnchorNav 对应页内 section 定位；MenuNavigation 管理侧栏菜单的选中或层级展开。"
+      },
+      {
+        "component": "Tab",
+        "reason": "Tab 切换同一区域内容面板；MenuNavigation 是垂直侧栏菜单。"
+      },
+      {
+        "component": "Collapse",
+        "reason": "Collapse 展开通用正文内容；MenuNavigation 的展开只服务于菜单层级，不能复用 Collapse DOM。"
+      },
+      {
+        "component": "Tree Navigation",
+        "reason": "Tree Navigation 面向可递归树形数据；当前 MenuNavigation 只实现规范已核实的两级菜单。"
+      }
+    ],
+    "hardRules": [
+      {
+        "title": "父项只展开，叶子项唯一选中",
+        "description": "层级 disclosure 与 selection 必须分离。",
+        "ruleContent": "一级父项点击只展开或收起，不得进入 selected；同一组件内只展开一个父项。一级或二级叶子项点击后必须成为唯一 selected，二级叶子的所属父项保持展开。",
+        "aiParse": "parent.click = toggleOnly\nparent.selected = false\nexpandedParent.max = 1\nleaf.selected.max = 1\nchildSelection.keepParentExpanded = true",
+        "enforcement": "menu-navigation.js 统一维护 aria-expanded、hidden、aria-pressed 和唯一状态 class；浏览器烟测逐项核验。"
+      },
+      {
+        "title": "搜索只派发事件，不实现隐式过滤",
+        "description": "避免用静态输入证据推导未提供的业务逻辑。",
+        "ruleContent": "multi-level-search 必须使用真实 <code>input type=\"search\"</code>。输入时只派发 <code>ds:menu-navigation-search</code>；不得在组件内部实现过滤、零结果、自动展开或关键词高亮。",
+        "aiParse": "search.element = input[type=search]\nsearch.event = ds:menu-navigation-search\nsearch.internalFilter = false\nsearch.autoExpand = false\nsearch.highlight = false",
+        "enforcement": "menu-navigation.js 仅监听 input 并派发 CustomEvent；不读取或隐藏菜单项。"
+      },
+      {
+        "title": "仅 PC，公共头部不 sticky",
+        "description": "移动端已明确暂缓。",
+        "ruleContent": "标准变体只允许 288px/250px，sticky top 为 16px；public-header 只允许 240px 且不得 sticky。M 端在补充代码并明确要求前保持 deferred。",
+        "aiParse": "standard.width = [288,250]\nstandard.stickyTop = 16\npublicHeader.width = 240\npublicHeader.sticky = false\nmobile.status = deferred",
+        "enforcement": "共享 CSS 不包含媒体查询；契约和 Preview 固定展示已核实 PC 尺寸。"
+      },
+      {
+        "title": "选中指示线与文字等宽",
+        "description": "叶子Hover/Pressed/Selected强调文字；父项只展开不显示选中线。",
+        "ruleContent": "当前普通叶子项 Hover/Pressed/Selected 的红线锚定 item-label，与文字等宽；一级 disclosure 父项各状态不显示选中线。",
+        "aiParse": "leaf.indicator = hover | pressed | selected\nparent.indicator = false\nindicator.anchor = itemLabel",
+        "enforcement": "menu-navigation-current.css 当前标记调用；实际浏览器线宽待验。"
+      },
+      {
+        "title": "标准侧栏灰色底留白",
+        "description": "依据用户提供的菜单导航设计截图。",
+        "ruleContent": "当前普通菜单灰底上/下20px、左16px；历史共享资源左15px保留。public-header另行核对。",
+        "aiParse": "current.standard.gutter = [20,0,20,16]\nlegacy.leftGutter = 15",
+        "enforcement": "menu-navigation-current.css 标记普通根；真实组合list144345的x16/y20来源。"
+      }
+    ],
+    "notes": "设计规范版本 v2.3.2605B。公共头部只复用既有 Navigation/header 场景，不修改 Navigation 契约、Preview 或 Rule 0。Collapse 与 Input 均不作为嵌套依赖；八个产品 SVG 是 iconDependencies。",
+    "enforcementStatus": {
+      "interaction.unique-selection-and-expansion": {
+        "enforced": true,
+        "mechanism": "components/menu-navigation.js 初始化和点击处理维护唯一 selected 与唯一 expanded，并同步 ARIA/hidden"
+      },
+      "interaction.keyboard": {
+        "enforced": true,
+        "mechanism": "components/menu-navigation.js 实现可见项 ArrowUp/ArrowDown、Home/End、Escape；Enter/Space 使用原生 button 激活"
+      },
+      "interaction.search-event-only": {
+        "enforced": true,
+        "mechanism": "components/menu-navigation.js 只派发 ds:menu-navigation-search，不包含过滤实现"
+      },
+      "responsive.desktop-only": {
+        "enforced": true,
+        "mechanism": "components.css 仅声明 288/250/240 PC 尺寸且无 MenuNavigation 媒体查询"
+      },
+      "relation.navigation-host": {
+        "enforced": false,
+        "mechanism": "无",
+        "note": "Navigation/header Preview 尚未包含 MenuNavigation DOM，因此只保留 verified:false 参考关系"
+      },
+      "typographyDependencies.size-weight-pairing": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 校验 h6/h7/h8 composite typography 与 CSS 字号、行高、字重证据"
+      },
+      "spacingDependencies.tokens-and-css-closure": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 校验 spacingDependencies 与组件 CSS 双向闭环"
+      },
+      "borderDependencies.tokens-and-css-closure": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 校验 borderDependencies 与组件 CSS 双向闭环"
+      },
+      "iconDependencies.local-svg": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 与 Preview 生成器校验 10 个本地 SVG 存在"
+      }
+    },
+    "prototypeRollout": {
+      "template": "docs/component-spec-template.html",
+      "source": "relations.variantDecisions",
+      "workflow": "existing-local-only",
+      "scope": "existing finite calls and original references; no publication expansion",
+      "currentMg": {
+        "status": "partial-source-scope",
+        "reason": "已读取《新文件》【菜单导航 】设计规范v2.3.2605B（3:017579），按现有有限调用核对；未开放原件与视觉批准仍分别保留。"
+      },
+      "retainedEvidence": [
+        {
+          "name": "comparison",
+          "file": "components/sources/menu-navigation/local-structure-review.json"
+        },
+        {
+          "name": "originalSpecification",
+          "file": "components/sources/menu-navigation/native-specification-review-1011.json"
+        },
+        {
+          "name": "originalMenuAtom",
+          "file": "components/sources/menu-navigation/native-component-review-1011.json"
+        }
+      ]
+    },
+    "interactionRules": [
+      {
+        "name": "实际调用",
+        "rule": "仅使用同版catalog的callable变体和allowedEdits；参考示例不授予调用资格，不用改类或自绘控件绕过。",
+        "owner": "原本地选型与调用入口"
+      },
+      {
+        "name": "父子与同步",
+        "rule": "沿用原componentDependencies及反向父关系；改原规范后协调契约/实现，继续component:sync/watch；已交付页保留固定版本。",
+        "owner": "既有维护机制"
+      },
+      {
+        "name": "交互与业务",
+        "rule": "只改变选中态并派发change。；父项展开，叶子选中；不执行页面跳转。；现有250px原件未开放新页调用；搜索仅派发query。；保留规范参考，不改公共头部壳。",
+        "owner": "具体变体运行时与原页面宿主"
+      }
+    ]
+  },
+  "searchIntents": [
+    "菜单导航",
+    "Menu Navigation",
+    "侧边菜单",
+    "二级菜单",
+    "多层级菜单",
+    "带搜索菜单",
+    "公共头部产品菜单"
+  ],
+  "history": [
+    {
+      "date": "2026-09-22",
+      "author": "Codex",
+      "change": "依据用户提供的菜单导航设计截图，为三种标准侧栏变体补充灰色底上/下 20px、左侧 15px 留白；public-header 保持原有布局。"
+    },
+    {
+      "date": "2026-09-01",
+      "author": "Kiro",
+      "change": "依据 MenuNavigation v2.3.2605B 设计图、PC 静态代码、图标资源和用户确认新增独立组件；M 端 deferred，不修改 Navigation/header。"
+    },
+    {
+      "date": "2026-10-09",
+      "author": "Codex",
+      "change": "统一规范维护质量标准：登记真实实现与选型规则入口、源变更重新验收、父子影响检查及历史页面隔离；不推断可编辑槽位或视觉批准。"
+    },
+    {
+      "date": "2026-10-11",
+      "change": "实际当前菜单原子和组合来源纠正普通叶Hover/父Press指示线、左侧16px及左圆角4；当前opt-in样式，历史资源保留。"
+    }
+  ],
+  "isComplete": true,
+  "pendingParts": [],
+  "qualityProfile": {
+    "schemaVersion": "1.0.0",
+    "standard": "docs/component-quality-standard.md",
+    "implementation": "components/variants/menu-navigation.html",
+    "selection": {
+      "mappingSource": "components/selection-mvp-policy.json",
+      "mappingPointer": "components.menu-navigation.variantDecisionTypes",
+      "rulesPointer": "relations.variantDecisions"
+    },
+    "maintenance": {
+      "authority": "contract-preview-runtime-token-icon",
+      "generatedOnly": [
+        "preview-reference-tables",
+        "component-index",
+        "selection-catalog",
+        "design-reading-view",
+        "ai-reference"
+      ],
+      "changePolicy": "记录来源差异、兼容性与受影响父子组件；源文件变化后旧工程验收失效。",
+      "historicalPages": "不自动升级；新页面锁定本地组件运行资源版本。"
+    },
+    "acceptance": {
+      "report": "components/quality/report.json",
+      "proof": "components/quality/acceptance.json",
+      "declarationIsNotProof": true
+    }
+  },
+  "editable": [
+    "menuContent",
+    "changeCallback",
+    "toggleCallback",
+    "searchCallback"
+  ],
+  "integration": {
+    "styles": [
+      "components/tokens.css",
+      "components/components.css",
+      "components/menu-navigation-current.css",
+      "components/icon-button-current.css",
+      "components/input-search-current.css"
+    ],
+    "scripts": [
+      "components/menu-navigation-current.js",
+      "components/input-search-current.js"
+    ],
+    "fontStylesheets": [
+      "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+    ],
+    "fontFallback": "Open Sans stack; actual browser native keyboard and visual proof pending."
+  },
+  "aiContract": {
+    "schemaVersion": "1.0.0",
+    "rootTag": "nav",
+    "scope": "existing-desktop-native-button-menu-four-exact-width-shapes",
+    "supported": [
+      "single-level",
+      "multi-level",
+      "multi-level-search",
+      "public-header"
+    ],
+    "unsupported": [
+      "single-level-interactive-288-canonical",
+      "multi-level-250-canonical",
+      "multi-level-search-288-canonical",
+      "third-level",
+      "native-links",
+      "automatic-search-filtering",
+      "hidden-li-filter-keyboard",
+      "mobile"
+    ],
+    "reviewStatus": {
+      "engineering": "pending",
+      "visual": "pending",
+      "familyCoverage": "partial"
+    },
+    "previewAssets": [
+      "components/preview/reference-live.js"
+    ],
+    "selectionPolicy": "PC single250、multi288和search250可调用；Search真实引用42px Input私有部件与IconButton。父项单一展开、叶子唯一选中、查询只发事件；不自动路由、过滤或开放移动。public-header240仍参考，不能替换固定Navigation/header。 Current five-variant closure 20261115: only supported exact source examples and publication decisions permit local calls. Earlier preview-only or placeholder descriptions are historical; PC geometry and host boundaries remain explicit.",
+    "identity": {
+      "rule": "Root nav/data-menu-navigation, safe native buttons with distinct data-values, globally unique panel IDs paired with aria-controls. At most one parent open and one visible selected leaf. Regenerate panel IDs for copies; never copy data-menu-navigation-ready or runtime tabindex.",
+      "labelRule": "menuContent edits actual labels/value identities, optional title, search placeholder/name and paired panel IDs while retaining required structure and valid state. Product icons stay registered and matched to product values."
+    },
+    "locked": [
+      "Exact root width/surface and native button structure",
+      "Two-level maximum and unique values/panel identities",
+      "Parent chevron and public product icons",
+      "Current opt-in runtime and actual custom events",
+      "No real navigation or implicit filtering"
+    ],
+    "behavior": {
+      "initialization": "FSMenuNavigation.initialize/initializeAll are actual APIs for authored dynamically inserted menus; data-menu-navigation-ready guards repeats. Do not copy initialized DOM.",
+      "selection": "Leaf selection is unique per root; change detail=value/label. Parent toggles single-open panels and emits toggle detail=expanded/value/label.",
+      "focusCorrection": "Current opt-in runtime moves the tab stop to an activated parent, including after closing selected descendants. Initial focus only chooses visible items. Legacy runtime is unchanged for historical pages.",
+      "keyboard": "ArrowUp/Down wrap through visible panel items; Home/End first/last; Escape closes current panel and focuses parent. Enter/Space rely on native button activation; actual browser validation pending.",
+      "search": "Search input emits query only; no internal filtering, highlight or auto-expand. Host hidden-li filtering is outside current keyboard visibility logic.",
+      "business": "Buttons are local controls. Host listens to events; component does not open links, submit forms or call APIs.",
+      "publicHeader": "Source240px product menu is now actually embedded in the fixed English Navigation/header; original leaf events and keyboard behavior retained. Not an arbitrary sidebar/MegaMenu.",
+      "nativeStateGuard": "Native disabled items and fieldsets block synthetic click/keyboard/search; roving focus skips disabled items and restores one enabled tab stop. Existing selected/open state preserved, no new business filtering.",
+      "composition": "Search composition intermediate input emits no query callback. A changed committed query emits once on compositionend; its identical following input is suppressed once. Ordinary input callbacks remain; unavailable completion emits nothing. No filtering, request or business submission; actual browser IME/event ordering pending.",
+      "atomStates": "Current ordinary menu atoms: Hover leaf red text-width indicator; parent Hover/Press has no selection indicator. Actual atom white states retained where norm gray conflicts. Public-header source pending.",
+      "searchSourceBoundary": "PC250px搜索菜单现引用Input/menu-search42私有部件与真实IconButton；input/composition继续原查询语义，Enter/搜索按钮补发submitted查询意图。原独立搜索框旧来源、业务过滤及M端范围分开，不混作本次准入。"
+    },
+    "evidence": {
+      "localImplementation": "components/variants/menu-navigation.html",
+      "comparison": "components/sources/menu-navigation/local-structure-review.json",
+      "legacyRuntime": "components/menu-navigation.js",
+      "originalSpecification": "components/sources/menu-navigation/native-specification-review-1011.json",
+      "originalMenuAtom": "components/sources/menu-navigation/native-component-review-1011.json",
+      "currentMgReview": "components/sources/remaining-prototypes-mg-20261115/menu-navigation-review.json",
+      "fiveVariantSource": "components/sources/five-variants-20261115/review.json"
+    },
+    "variants": {
+      "single-level": {
+        "purpose": "native-single-level-menu",
+        "exampleSelector": "[data-ai-example=\"ai-menu-single-level\"]",
+        "allowedEdits": [
+          "menuContent",
+          "changeCallback"
+        ],
+        "slots": {
+          "menuContent": {
+            "selector": ":scope",
+            "mode": "structured-content",
+            "required": true,
+            "preserve": [
+              "ul.ds-menu-navigation__list",
+              "button.ds-menu-navigation__item",
+              "span.ds-menu-navigation__item-label"
+            ],
+            "rule": "Retain exact native item structure, states and paired IDs; label/value text only, optional title, search metadata where present. No extra levels or source-less controls."
+          }
+        },
+        "bindings": {
+          "changeCallback": {
+            "mode": "event-handler",
+            "target": "root",
+            "event": "ds:menu-navigation-change"
+          }
+        },
+        "runtime": {
+          "styles": [
+            "components/tokens.css",
+            "components/components.css",
+            "components/menu-navigation-current.css"
+          ],
+          "scripts": [
+            "components/menu-navigation-current.js"
+          ]
+        }
+      },
+      "multi-level": {
+        "purpose": "native-multi-level-menu",
+        "exampleSelector": "[data-ai-example=\"ai-menu-multi-level\"]",
+        "allowedEdits": [
+          "menuContent",
+          "changeCallback",
+          "toggleCallback"
+        ],
+        "slots": {
+          "menuContent": {
+            "selector": ":scope",
+            "mode": "structured-content",
+            "required": true,
+            "preserve": [
+              "ul.ds-menu-navigation__list",
+              "button.ds-menu-navigation__item",
+              "span.ds-menu-navigation__item-label",
+              "ul.ds-menu-navigation__panel",
+              "img.ds-menu-navigation__chevron"
+            ],
+            "rule": "Retain exact native item structure, states and paired IDs; label/value text only, optional title, search metadata where present. No extra levels or source-less controls."
+          }
+        },
+        "bindings": {
+          "changeCallback": {
+            "mode": "event-handler",
+            "target": "root",
+            "event": "ds:menu-navigation-change"
+          },
+          "toggleCallback": {
+            "mode": "event-handler",
+            "target": "root",
+            "event": "ds:menu-navigation-toggle"
+          }
+        },
+        "runtime": {
+          "styles": [
+            "components/tokens.css",
+            "components/components.css",
+            "components/menu-navigation-current.css"
+          ],
+          "scripts": [
+            "components/menu-navigation-current.js"
+          ]
+        }
+      },
+      "multi-level-search": {
+        "purpose": "native-multi-level-search-menu",
+        "exampleSelector": "[data-ai-example=\"ai-menu-multi-level-search\"]",
+        "allowedEdits": [
+          "menuContent",
+          "changeCallback",
+          "toggleCallback",
+          "searchCallback"
+        ],
+        "slots": {
+          "menuContent": {
+            "selector": ":scope",
+            "mode": "structured-content",
+            "required": true,
+            "preserve": [
+              "ul.ds-menu-navigation__list",
+              "button.ds-menu-navigation__item",
+              "span.ds-menu-navigation__item-label",
+              "ul.ds-menu-navigation__panel",
+              "img.ds-menu-navigation__chevron",
+              "input.ds-input-search__field",
+              "button.ds-icon-btn"
+            ],
+            "rule": "Retain exact native item structure, states and paired IDs; label/value text only, optional title, search metadata where present. No extra levels or source-less controls."
+          }
+        },
+        "bindings": {
+          "changeCallback": {
+            "mode": "event-handler",
+            "target": "root",
+            "event": "ds:menu-navigation-change"
+          },
+          "toggleCallback": {
+            "mode": "event-handler",
+            "target": "root",
+            "event": "ds:menu-navigation-toggle"
+          },
+          "searchCallback": {
+            "mode": "event-handler",
+            "target": "root",
+            "event": "ds:menu-navigation-search"
+          }
+        }
+      },
+      "public-header": {
+        "purpose": "native-public-header-menu",
+        "exampleSelector": "[data-ai-example=\"ai-menu-public-header\"]",
+        "allowedEdits": [
+          "menuContent",
+          "changeCallback"
+        ],
+        "slots": {
+          "menuContent": {
+            "selector": ":scope",
+            "mode": "structured-content",
+            "required": true,
+            "preserve": [
+              "ul.ds-menu-navigation__list",
+              "button.ds-menu-navigation__item",
+              "span.ds-menu-navigation__item-label",
+              "img.ds-menu-navigation__product-icon"
+            ],
+            "rule": "Retain exact native item structure, states and paired IDs; label/value text only, optional title, search metadata where present. No extra levels or source-less controls."
+          }
+        },
+        "bindings": {
+          "changeCallback": {
+            "mode": "event-handler",
+            "target": "root",
+            "event": "ds:menu-navigation-change"
+          }
+        },
+        "runtime": {
+          "styles": [
+            "components/tokens.css",
+            "components/components.css",
+            "components/menu-navigation-current.css"
+          ],
+          "scripts": [
+            "components/menu-navigation-current.js"
+          ]
+        }
+      }
+    }
+  },
+  "parts": {
+    "card-sidebar-288": {
+      "isComplete": true,
+      "pendingParts": [],
+      "colorVariants": [
+        "single-level"
+      ],
+      "previewSelector": "[data-menu-card-sidebar=\"current\"]",
+      "requiredClasses": [
+        "ds-menu-navigation",
+        "ds-menu-navigation--single-level",
+        "ds-menu-navigation--width-288",
+        "ds-menu-navigation__item",
+        "ds-menu-navigation__item-label"
+      ],
+      "source": "components/sources/five-variants-20261115/review.json",
+      "sourcePreview": "components/sources/menu-navigation/card-sidebar-288-1115.html",
+      "scope": "Current single-level menu source supports288/250; finite288 host part, content height remains menu-owned.",
+      "allowedHosts": [
+        {
+          "component": "Card",
+          "variant": "spliced.horizontal.with-sidebar"
+        },
+        {
+          "component": "Card",
+          "variant": "spliced.horizontal.with-sidebar.bordered-background"
+        }
+      ]
+    }
+  },
+  "updatedAt": "2026-11-15"
+}

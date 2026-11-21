@@ -1,0 +1,1178 @@
+{
+  "schemaVersion": "fs-component-reference/1.0.0",
+  "component": {
+    "id": "comment",
+    "name": "Comment",
+    "scope": "source-backed-desktop-comment-calls",
+    "reviewStatus": {
+      "engineering": "pending",
+      "visual": "pending",
+      "familyCoverage": "partial"
+    }
+  },
+  "selection": {
+    "policy": "按已有回答/未回答、产品评论、汇总、媒体查看选择具体PC变体。QA主回答始终展开；提交只发可取消事件，宿主确认后才更新业务数据。媒体以真实调用数据填充；默认产品图片仅为规范演示，不标为原客户实拍。普通FAQ不可替代。",
+    "supported": [
+      "qa-thread",
+      "qa-unanswered",
+      "review-thread",
+      "rating-summary",
+      "customer-gallery"
+    ],
+    "unsupported": [
+      "business-persistence",
+      "mobile",
+      "remote-filtering-pagination",
+      "moderation-authentication"
+    ]
+  },
+  "runtime": {
+    "styles": [
+      "components/tokens.css",
+      "components/components.css",
+      "components/button-current.css",
+      "components/button-runtime-current.css",
+      "components/text-button-current.css",
+      "components/icon-button-current.css",
+      "components/tag-current.css",
+      "components/rate-summary-current.css",
+      "components/comment-current.css",
+      "components/comment-call-current.css"
+    ],
+    "scripts": [
+      "components/rate-current.js",
+      "components/rate-summary-current.js",
+      "components/comment-current.js",
+      "components/comment-call-current.js"
+    ],
+    "fontStylesheets": [
+      "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+    ],
+    "atomicResourceBoundary": "当前PC调用使用真实IconButton/plain-l关闭、Button/L回复提交、TextButton取消/展开、review/gallery使用Rate/display，评分汇总实际引用Rate/summary（官方图标、浅灰卡及统计条归Rate维护），以及Tag/selectable来源锁定子部件。Tag保留原子CSS，互斥筛选由Comment宿主管理，不启动独立Tag切换。旧标本和来源记录保留，视觉批准单列。"
+  },
+  "identity": {
+    "rule": "Complete question, empty-answer prompt and hidden composer. Safe unique panel ID matches trigger aria-controls; copies replace panelIdentity and linked control atomically. No initialized local answer or open composer in canonical markup.",
+    "labelRule": "Only explicit text fields and linked panel identity may change; preserved Q: marker, native form/textarea, required data markers and true Button child structure."
+  },
+  "locked": [
+    "Answered QA keeps its main answer visible; only the child reply composer starts hidden",
+    "Unanswered QA issues a host answer request, without inventing an answer or form",
+    "Real Rate, Tag, Button, TextButton and IconButton children retain their atomic styles and allowed finite scope",
+    "Reply draft remains until the host confirms persistence; no invented saved comment or backend request",
+    "Only current PC source templates are callable; mobile and visual approval remain separate"
+  ],
+  "behavior": {
+    "answer": "answer it toggles composer and focuses textarea. Cancel clears/hides composer and returns focus. Blank submit retains composer and focuses input. Nonempty submit replaces empty prompt with local answer using textContent; no server request.",
+    "repeat": "Current runtime guards document delegate registration. Repeated legacy loading toggles panel twice; current loading only once. Do not co-load scripts.",
+    "identity": "Global aria-controls lookup requires unique safe IDs. Duplicate IDs are rejected in canonical inspection; regenerate paired IDs for copies.",
+    "limits": "Native submission and browser textarea focus remain pending. Answer author/time are existing demo placeholders, not business data. Other comment features stay outside finite canonical scope.",
+    "nativeStateGuard": "Native/ARIA disabled buttons do not handle synthetic clicks. Hidden composers, disabled textareas or disabled submitters do not accept synthetic submit events; values remain intact. No business policy or requests added.",
+    "submit": "ds:comment-submit contains kind/content; draft remains until host acknowledges; no fabricated saved answer, author or success."
+  },
+  "examples": [
+    {
+      "name": "customer-gallery",
+      "publication": {
+        "key": "comment/customer-gallery",
+        "disposition": "restricted",
+        "newPages": true,
+        "reason": "Source-backed PC Comment, complete editable slots, genuine child atoms and host intent events.",
+        "constraints": [
+          "No saved-business claims, remote transport or mobile admission; finite authored state only."
+        ],
+        "contractPolicy": "按已有回答/未回答、产品评论、汇总、媒体查看选择具体PC变体。QA主回答始终展开；提交只发可取消事件，宿主确认后才更新业务数据。媒体以真实调用数据填充；默认产品图片仅为规范演示，不标为原客户实拍。普通FAQ不可替代。",
+        "use": "source-pc-comment",
+        "evidence": "components/contracts/comment.json#aiContract/evidence",
+        "requiresCurrentEngineering": true,
+        "visualApproval": "separate-not-granted"
+      },
+      "rootTag": "dialog",
+      "type": "customer-gallery",
+      "sizeOptions": [],
+      "bindings": {
+        "helpfulCallback": {
+          "mode": "event-handler",
+          "target": "root",
+          "event": "ds:comment-helpful"
+        },
+        "images": {
+          "mode": "comment-media-list",
+          "target": "root",
+          "minItems": 1,
+          "maxItems": 24
+        }
+      },
+      "purpose": "source-pc-customer-gallery",
+      "whenToUse": "展示客户媒体网格与单图详情，支持缩略图、前后切换及关闭返回。",
+      "whenNotToUse": "普通FAQ、营销卡片或伪造已提交/已保存评论；不接后端持久化、登录或移动端。",
+      "rootClasses": "ds-comment ds-comment--customer-gallery",
+      "requiredStructure": [
+        ".ds-comment__gallery",
+        "[data-gallery-view=\"grid\"]",
+        "[data-gallery-view=\"detail\"]"
+      ],
+      "slots": {
+        "ratingContent": {
+          "selector": ".ds-rate",
+          "mode": "structured-content",
+          "required": true,
+          "preserve": [
+            ".ds-rate__stars",
+            ".ds-rate__label"
+          ]
+        },
+        "author": {
+          "selector": ".ds-comment__gallery-user-copy .ds-comment__review-title",
+          "mode": "text",
+          "required": true
+        },
+        "body": {
+          "selector": ".ds-comment__gallery-copy .ds-comment__text",
+          "mode": "text",
+          "required": true
+        }
+      },
+      "allowedEdits": [
+        "ratingContent",
+        "helpfulCallback",
+        "images",
+        "author",
+        "body"
+      ],
+      "exampleHtml": "<dialog class=\"ds-comment ds-comment--customer-gallery\" id=\"current-customer-gallery-comment-gallery-call\" data-comment-gallery-source=\"pc-grid-029476\" aria-label=\"Customer Gallery\" data-comment-call=\"customer-gallery\" data-ai-example=\"ai-comment-call-customer-gallery\">\n    <div class=\"ds-comment__gallery\">\n      <div class=\"ds-comment__gallery-view ds-comment__gallery-view--grid\" data-gallery-view=\"grid\">\n        <header class=\"ds-comment__gallery-header\">\n          <div class=\"ds-comment__gallery-source-header-row\">\n            <h2 class=\"ds-comment__gallery-title\">Customer Gallery</h2>\n            <button class=\"ds-icon-btn ds-icon-btn--plain ds-icon-btn--l\" type=\"button\" data-comment-gallery-close=\"\" aria-label=\"Close customer gallery\"><img class=\"ds-icon-btn__icon\" src=\"../icons/icon-close.svg\" alt=\"\"></button>\n          </div>\n          <div class=\"ds-comment__gallery-detail-divider\" aria-hidden=\"true\"></div>\n        </header>\n        <div class=\"ds-comment__gallery-body\">\n          <div class=\"ds-comment__gallery-grid\">\n            <button class=\"ds-comment__media-button\" type=\"button\" data-gallery-item=\"0\" aria-label=\"Open customer image 1\"><span class=\"ds-comment__media\" data-comment-image-source=\"168-default-no-border\" data-comment-source-node=\"68908:029488\" data-component-source-main=\"68908:016292\"><img class=\"\" src=\"../../docs/assets/20250901105611h7ydr7.jpg.webp\" alt=\"示例产品媒体 1\"></span></button>\n            <button class=\"ds-comment__media-button\" type=\"button\" data-gallery-item=\"1\" aria-label=\"Open customer image 2\"><span class=\"ds-comment__media\" data-comment-image-source=\"168-default-no-border\" data-comment-source-node=\"68908:029483\" data-component-source-main=\"68908:016292\"><img class=\"\" src=\"../../docs/assets/20250901105611h7ydr7.jpg.webp\" alt=\"示例产品媒体 2\"></span></button>\n            <button class=\"ds-comment__media-button\" type=\"button\" data-gallery-item=\"2\" aria-label=\"Open customer image 3\"><span class=\"ds-comment__media\" data-comment-image-source=\"168-default-no-border\" data-comment-source-node=\"68908:029490\" data-component-source-main=\"68908:016292\"><img class=\"\" src=\"../../docs/assets/20250901105611h7ydr7.jpg.webp\" alt=\"示例产品媒体 3\"></span></button>\n            \n            \n            \n            \n            \n            \n            \n            \n            \n          </div>\n        </div>\n        <span class=\"ds-comment__scrollbar\" data-comment-scrollbar-source=\"style3\" data-comment-source-node=\"68908:029503\" data-component-source-main=\"68908:016577\" aria-hidden=\"true\"><span class=\"ds-comment__scrollbar-thumb\"></span></span>\n      </div>\n      <div class=\"ds-comment__gallery-view ds-comment__gallery-view--detail\" data-gallery-view=\"detail\" hidden=\"\">\n        <header class=\"ds-comment__gallery-detail-header\">\n          <div class=\"ds-comment__gallery-detail-header-row\">\n            <button class=\"ds-comment__gallery-back\" type=\"button\" data-gallery-back=\"\"><span class=\"ds-comment__gallery-back-icon\"><img src=\"../icons/icon-carousel-prev.svg\" alt=\"\"></span><span>View All Customer Gallery</span></button>\n            <button class=\"ds-icon-btn ds-icon-btn--plain ds-icon-btn--l\" type=\"button\" data-comment-gallery-close=\"\" aria-label=\"Close customer gallery\"><img class=\"ds-icon-btn__icon\" src=\"../icons/icon-close.svg\" alt=\"\"></button>\n          </div>\n          <div class=\"ds-comment__gallery-detail-divider\"></div>\n        </header>\n        <div class=\"ds-comment__gallery-detail\">\n          <div class=\"ds-comment__gallery-carousel\" data-gallery-carousel=\"\" data-index=\"0\">\n            <div class=\"ds-comment__gallery-track\">\n              <div class=\"ds-comment__gallery-slide\"><div class=\"ds-comment__gallery-stage\"><span class=\"ds-comment__gallery-media\"><img class=\"\" src=\"../../docs/assets/20250901105611h7ydr7.jpg.webp\" alt=\"示例产品媒体 1\"></span></div></div>\n              <div class=\"ds-comment__gallery-slide\"><div class=\"ds-comment__gallery-stage\"><span class=\"ds-comment__gallery-media\"><img class=\"\" src=\"../../docs/assets/20250901105611h7ydr7.jpg.webp\" alt=\"示例产品媒体 2\"></span></div></div>\n              <div class=\"ds-comment__gallery-slide\"><div class=\"ds-comment__gallery-stage\"><span class=\"ds-comment__gallery-media\"><img class=\"\" src=\"../../docs/assets/20250901105611h7ydr7.jpg.webp\" alt=\"示例产品媒体 3\"></span></div></div>\n            </div>\n            <button class=\"ds-comment__gallery-nav ds-comment__gallery-nav--prev\" type=\"button\" data-gallery-prev=\"\" aria-label=\"Previous customer image\"><img src=\"../icons/icon-carousel-prev.svg\" alt=\"\"></button>\n            <button class=\"ds-comment__gallery-nav ds-comment__gallery-nav--next\" type=\"button\" data-gallery-next=\"\" aria-label=\"Next customer image\"><img src=\"../icons/icon-carousel-next.svg\" alt=\"\"></button>\n          </div>\n          <div class=\"ds-comment__gallery-review\">\n            <div class=\"ds-comment__gallery-user\">\n              <span class=\"ds-comment__avatar\" aria-hidden=\"true\">P</span>\n              <div class=\"ds-comment__gallery-user-copy\">\n                <h3 class=\"ds-comment__review-title\">P***l</h3>\n                <p class=\"ds-comment__meta\"><span class=\"ds-comment__gallery-date\">Dec 22, 2022</span><span>United States</span></p>\n              </div>\n            </div>\n            <div class=\"ds-rate ds-rate--display ds-rate--sm\" role=\"img\" aria-label=\"5 out of 5 stars\">\n              <span class=\"ds-rate__stars\" aria-hidden=\"true\">\n                <img class=\"ds-rate__star\" src=\"../icons/icon-rate-on-16.svg\" alt=\"\">\n                <img class=\"ds-rate__star\" src=\"../icons/icon-rate-on-16.svg\" alt=\"\">\n                <img class=\"ds-rate__star\" src=\"../icons/icon-rate-on-16.svg\" alt=\"\">\n                <img class=\"ds-rate__star\" src=\"../icons/icon-rate-on-16.svg\" alt=\"\">\n                <img class=\"ds-rate__star\" src=\"../icons/icon-rate-on-16.svg\" alt=\"\">\n              </span>\n              <span class=\"ds-rate__label ds-rate__label--muted\">5.0</span>\n            </div>\n            <div class=\"ds-comment__gallery-copy\">\n              <p class=\"ds-comment__text ds-comment__text--clamped\" id=\"current-customer-gallery-comment-gallery-review-text\">Product was reasonably priced, it arrived on time and was of good quality. Product was reasonably priced, it arrived on time and was of good quality. Product was reasonably priced, it arrived Product was reasonably priced, it arrived</p>\n              <a class=\"ds-text-btn ds-text-btn--inline ds-text-btn--blue-link ds-text-btn--m\" href=\"#\" role=\"button\" data-comment-text-toggle=\"\" aria-expanded=\"false\" aria-controls=\"current-customer-gallery-comment-gallery-review-text\">\n          <span class=\"ds-text-btn__text\">See more</span>\n          \n        </a>\n            </div>\n            <div class=\"ds-comment__gallery-thumbs\"><button class=\"ds-comment__gallery-thumb ds-comment__gallery-thumb--active\" type=\"button\" data-gallery-thumb=\"0\" aria-label=\"Show customer image 1\" aria-pressed=\"true\"><span class=\"ds-comment__media\"><img class=\"\" src=\"../../docs/assets/20250901105611h7ydr7.jpg.webp\" alt=\"示例产品媒体 1\"></span></button><button class=\"ds-comment__gallery-thumb\" type=\"button\" data-gallery-thumb=\"1\" aria-label=\"Show customer image 2\" aria-pressed=\"false\"><span class=\"ds-comment__media\"><img class=\"\" src=\"../../docs/assets/20250901105611h7ydr7.jpg.webp\" alt=\"示例产品媒体 2\"></span></button><button class=\"ds-comment__gallery-thumb\" type=\"button\" data-gallery-thumb=\"2\" aria-label=\"Show customer image 3\" aria-pressed=\"false\"><span class=\"ds-comment__media\"><img class=\"\" src=\"../../docs/assets/20250901105611h7ydr7.jpg.webp\" alt=\"示例产品媒体 3\"></span></button></div>\n            <span class=\"ds-comment__verified\"><img src=\"../icons/icon-verified.svg\" alt=\"\">Verified Purchase</span>\n            <button class=\"ds-comment__action\" type=\"button\" data-comment-action=\"helpful\" aria-pressed=\"false\"><span class=\"ds-comment__action-icon ds-comment__action-icon--helpful\" aria-hidden=\"true\"><img class=\"ds-comment__action-icon-shape ds-comment__action-icon-shape--default\" src=\"../icons/icon-helpful.svg\" alt=\"\"><img class=\"ds-comment__action-icon-shape ds-comment__action-icon-shape--active\" src=\"../icons/icon-helpful-active.svg\" alt=\"\"></span><span class=\"ds-comment__action-label\">Helpful</span><span data-comment-count=\"\">6</span></button>\n          </div>\n        </div>\n      </div>\n    </div>\n  </dialog>"
+    }
+  ],
+  "relationships": {
+    "children": [
+      {
+        "id": "rate",
+        "contract": "components/contracts/rate.json",
+        "variants": [
+          "display"
+        ],
+        "appliesTo": [
+          "review-thread",
+          "customer-gallery"
+        ],
+        "slot": "review/rating",
+        "preview": "components/variants/rate.html"
+      },
+      {
+        "id": "icon-button",
+        "contract": "components/contracts/icon-button.json",
+        "variants": [
+          "plain-l"
+        ],
+        "appliesTo": [
+          "customer-gallery"
+        ],
+        "slot": "gallery/header",
+        "preview": "components/variants/icon-button.html"
+      },
+      {
+        "id": "text-button",
+        "contract": "components/contracts/text-button.json",
+        "variants": [
+          "inline-blue-link"
+        ],
+        "sizes": [
+          {
+            "variant": "inline-blue-link",
+            "size": "m"
+          }
+        ],
+        "appliesTo": [
+          "customer-gallery"
+        ],
+        "slot": "gallery-expand",
+        "preview": "components/variants/text-button.html"
+      }
+    ],
+    "parents": [],
+    "parentStatus": "no-declared-hosts",
+    "icons": [
+      {
+        "file": "components/icons/icon-helpful.svg",
+        "registry": "components/icons/icons-manifest.json",
+        "appliesTo": [
+          "qa-thread",
+          "review-thread",
+          "customer-gallery"
+        ],
+        "usage": "Helpful 默认态灰色线性拇指，hover/focus 通过 currentColor 变黑"
+      },
+      {
+        "file": "components/icons/icon-helpful-active.svg",
+        "registry": "components/icons/icons-manifest.json",
+        "appliesTo": [
+          "qa-thread",
+          "review-thread",
+          "customer-gallery"
+        ],
+        "usage": "Helpful 选中态黑色实心拇指"
+      },
+      {
+        "file": "components/icons/icon-verified.svg",
+        "registry": "components/icons/icons-manifest.json",
+        "appliesTo": [
+          "review-thread",
+          "customer-gallery"
+        ],
+        "usage": "Verified Purchase 前 14px 绿色实心圆与白色对勾"
+      },
+      {
+        "file": "components/icons/icon-close.svg",
+        "registry": "components/icons/icons-manifest.json",
+        "appliesTo": [
+          "customer-gallery"
+        ],
+        "usage": "客户画廊关闭按钮"
+      },
+      {
+        "file": "components/icons/icon-carousel-prev.svg",
+        "registry": "components/icons/icons-manifest.json",
+        "appliesTo": [
+          "customer-gallery"
+        ],
+        "usage": "客户画廊返回网格与 36px 循环上一张操作"
+      },
+      {
+        "file": "components/icons/icon-carousel-next.svg",
+        "registry": "components/icons/icons-manifest.json",
+        "appliesTo": [
+          "customer-gallery"
+        ],
+        "usage": "客户画廊 36px 循环下一张操作"
+      }
+    ],
+    "tokens": [
+      {
+        "name": "color.gray-1",
+        "value": "#19191A",
+        "unit": null,
+        "cssVar": "--color-gray-1",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.gray-2",
+        "value": "#4B4B4D",
+        "unit": null,
+        "cssVar": "--color-gray-2",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.gray-3",
+        "value": "#707070",
+        "unit": null,
+        "cssVar": "--color-gray-3",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.gray-5",
+        "value": "#DEE0E3",
+        "unit": null,
+        "cssVar": "--color-gray-5",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.gray-8",
+        "value": "#F6F6F8",
+        "unit": null,
+        "cssVar": "--color-gray-8",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.white",
+        "value": "#FFFFFF",
+        "unit": null,
+        "cssVar": "--color-white",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.blue",
+        "value": "#0060BF",
+        "unit": null,
+        "cssVar": "--color-blue",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.yellow",
+        "value": "#FFD748",
+        "unit": null,
+        "cssVar": "--color-yellow",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.text-disabled",
+        "value": "rgba(25,25,26,0.3)",
+        "unit": null,
+        "cssVar": "--color-text-disabled",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.hover-overlay-light",
+        "value": "rgba(25,25,26,0.04)",
+        "unit": null,
+        "cssVar": "--color-hover-overlay-light",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.hover-overlay",
+        "value": "rgba(25,25,26,0.2)",
+        "unit": null,
+        "cssVar": "--color-hover-overlay",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.comment-score-bg",
+        "value": "#FAFAFB",
+        "unit": null,
+        "cssVar": "--color-comment-score-bg",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.comment-media-overlay",
+        "value": "rgba(25,25,26,0.5)",
+        "unit": null,
+        "cssVar": "--color-comment-media-overlay",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.comment-avatar-bg",
+        "value": "#F7F7F7",
+        "unit": null,
+        "cssVar": "--color-comment-avatar-bg",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.comment-divider",
+        "value": "#E5E5E5",
+        "unit": null,
+        "cssVar": "--color-comment-divider",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.comment-date",
+        "value": "#89898C",
+        "unit": null,
+        "cssVar": "--color-comment-date",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "typography.font-family-base",
+        "value": "Open Sans",
+        "unit": null,
+        "cssVar": "--font-family-base",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-size-sm",
+        "value": 12,
+        "unit": "px",
+        "cssVar": "--font-size-sm",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-size-h3",
+        "value": 24,
+        "unit": "px",
+        "cssVar": "--font-size-h3",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-size-h5",
+        "value": 18,
+        "unit": "px",
+        "cssVar": "--font-size-h5",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-size-h6",
+        "value": 16,
+        "unit": "px",
+        "cssVar": "--font-size-h6",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-size-md",
+        "value": 14,
+        "unit": "px",
+        "cssVar": "--font-size-md",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-size-h8",
+        "value": 13,
+        "unit": "px",
+        "cssVar": "--font-size-h8",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-weight-regular",
+        "value": 400,
+        "unit": null,
+        "cssVar": "--font-weight-regular",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-weight-semibold",
+        "value": 600,
+        "unit": null,
+        "cssVar": "--font-weight-semibold",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.h3-semibold",
+        "value": {
+          "fontSize": "24px",
+          "lineHeight": "32px",
+          "fontWeight": 600
+        },
+        "unit": null,
+        "cssVar": null,
+        "primitiveReferences": {
+          "fontSize": "typography.font-size-h3",
+          "fontWeight": "typography.font-weight-semibold"
+        },
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.h5-semibold",
+        "value": {
+          "fontSize": "18px",
+          "lineHeight": "26px",
+          "fontWeight": 600
+        },
+        "unit": null,
+        "cssVar": null,
+        "primitiveReferences": {
+          "fontSize": "typography.font-size-h5",
+          "fontWeight": "typography.font-weight-semibold"
+        },
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.h6-regular",
+        "value": {
+          "fontSize": "16px",
+          "lineHeight": "24px",
+          "fontWeight": 400
+        },
+        "unit": null,
+        "cssVar": null,
+        "primitiveReferences": {
+          "fontSize": "typography.font-size-h6",
+          "fontWeight": "typography.font-weight-regular"
+        },
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.h7-regular",
+        "value": {
+          "fontSize": "14px",
+          "lineHeight": "22px",
+          "fontWeight": 400
+        },
+        "unit": null,
+        "cssVar": null,
+        "primitiveReferences": {
+          "fontSize": "typography.font-size-md",
+          "fontWeight": "typography.font-weight-regular"
+        },
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.h7-semibold",
+        "value": {
+          "fontSize": "14px",
+          "lineHeight": "22px",
+          "fontWeight": 600
+        },
+        "unit": null,
+        "cssVar": null,
+        "primitiveReferences": {
+          "fontSize": "typography.font-size-md",
+          "fontWeight": "typography.font-weight-semibold"
+        },
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.h8-regular",
+        "value": {
+          "fontSize": "13px",
+          "lineHeight": "20px",
+          "fontWeight": 400
+        },
+        "unit": null,
+        "cssVar": null,
+        "primitiveReferences": {
+          "fontSize": "typography.font-size-h8",
+          "fontWeight": "typography.font-weight-regular"
+        },
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.h8-semibold",
+        "value": {
+          "fontSize": "13px",
+          "lineHeight": "20px",
+          "fontWeight": 600
+        },
+        "unit": null,
+        "cssVar": null,
+        "primitiveReferences": {
+          "fontSize": "typography.font-size-h8",
+          "fontWeight": "typography.font-weight-semibold"
+        },
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.h9-regular",
+        "value": {
+          "fontSize": "12px",
+          "lineHeight": "20px",
+          "fontWeight": 400
+        },
+        "unit": null,
+        "cssVar": null,
+        "primitiveReferences": {
+          "fontSize": "typography.font-size-sm",
+          "fontWeight": "typography.font-weight-regular"
+        },
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "spacing.2",
+        "value": 2,
+        "unit": "px",
+        "cssVar": "--spacing-2",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.xs",
+        "value": 4,
+        "unit": "px",
+        "cssVar": "--spacing-xs",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.sm",
+        "value": 8,
+        "unit": "px",
+        "cssVar": "--spacing-sm",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.10",
+        "value": 10,
+        "unit": "px",
+        "cssVar": "--spacing-10",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.md",
+        "value": 12,
+        "unit": "px",
+        "cssVar": "--spacing-md",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.lg",
+        "value": 16,
+        "unit": "px",
+        "cssVar": "--spacing-lg",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.20",
+        "value": 20,
+        "unit": "px",
+        "cssVar": "--spacing-20",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.xl",
+        "value": 24,
+        "unit": "px",
+        "cssVar": "--spacing-xl",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.68",
+        "value": 68,
+        "unit": "px",
+        "cssVar": "--spacing-68",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "border.width.default",
+        "value": 1,
+        "unit": "px",
+        "cssVar": "--border-width-default",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.style.default",
+        "value": "solid",
+        "unit": null,
+        "cssVar": "--border-style-default",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.style.none",
+        "value": "none",
+        "unit": null,
+        "cssVar": "--border-style-none",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.default",
+        "value": "var(--color-gray-5)",
+        "unit": null,
+        "cssVar": "--border-color-default",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.emphasis",
+        "value": "var(--color-gray-1)",
+        "unit": null,
+        "cssVar": "--border-color-emphasis",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.comment-divider",
+        "value": "var(--color-comment-divider)",
+        "unit": null,
+        "cssVar": "--border-color-comment-divider",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border-radius.md",
+        "value": 4,
+        "unit": "px",
+        "cssVar": "--border-radius-md",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border-radius.json"
+      },
+      {
+        "name": "border-radius.lg",
+        "value": 8,
+        "unit": "px",
+        "cssVar": "--border-radius-lg",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border-radius.json"
+      },
+      {
+        "name": "border-radius.full",
+        "value": 9999,
+        "unit": "px",
+        "cssVar": "--border-radius-full",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border-radius.json"
+      },
+      {
+        "name": "spacing.3",
+        "value": 3,
+        "unit": "px",
+        "cssVar": "--spacing-3",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.56",
+        "value": 56,
+        "unit": "px",
+        "cssVar": "--spacing-56",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.25",
+        "value": 25,
+        "unit": "px",
+        "cssVar": "--spacing-25",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.6",
+        "value": 6,
+        "unit": "px",
+        "cssVar": "--spacing-6",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.48",
+        "value": 48,
+        "unit": "px",
+        "cssVar": "--spacing-48",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.2xl",
+        "value": 32,
+        "unit": "px",
+        "cssVar": "--spacing-2xl",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.40",
+        "value": 40,
+        "unit": "px",
+        "cssVar": "--spacing-40",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.14",
+        "value": 14,
+        "unit": "px",
+        "cssVar": "--spacing-14",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.banner-hero-inset",
+        "value": 404,
+        "unit": "px",
+        "cssVar": "--spacing-banner-hero-inset",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.banner-content-inset",
+        "value": 360,
+        "unit": "px",
+        "cssVar": "--spacing-banner-content-inset",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.5",
+        "value": 5,
+        "unit": "px",
+        "cssVar": "--spacing-5",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.collapse-status-indent",
+        "value": 42,
+        "unit": "px",
+        "cssVar": "--spacing-collapse-status-indent",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.36",
+        "value": 36,
+        "unit": "px",
+        "cssVar": "--spacing-36",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.9",
+        "value": 9,
+        "unit": "px",
+        "cssVar": "--spacing-9",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.collapse-body-indent",
+        "value": 52,
+        "unit": "px",
+        "cssVar": "--spacing-collapse-body-indent",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.26",
+        "value": 26,
+        "unit": "px",
+        "cssVar": "--spacing-26",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.80",
+        "value": 80,
+        "unit": "px",
+        "cssVar": "--spacing-80",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.menu-navigation-left-gutter",
+        "value": 15,
+        "unit": "px",
+        "cssVar": "--spacing-menu-navigation-left-gutter",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "border.color.inverse",
+        "value": "var(--color-white)",
+        "unit": null,
+        "cssVar": "--border-color-inverse",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.focus",
+        "value": "var(--color-blue)",
+        "unit": null,
+        "cssVar": "--border-color-focus",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.subtle",
+        "value": "var(--color-gray-6)",
+        "unit": null,
+        "cssVar": "--border-color-subtle",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.width.strong",
+        "value": 2,
+        "unit": "px",
+        "cssVar": "--border-width-strong",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.strong",
+        "value": "var(--color-gray-3)",
+        "unit": null,
+        "cssVar": "--border-color-strong",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.transparent",
+        "value": "transparent",
+        "unit": null,
+        "cssVar": "--border-color-transparent",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.brand",
+        "value": "var(--brand-red)",
+        "unit": null,
+        "cssVar": "--border-color-brand",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.option",
+        "value": "var(--color-option-border)",
+        "unit": null,
+        "cssVar": "--border-color-option",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.tag",
+        "value": "var(--color-tag-border)",
+        "unit": null,
+        "cssVar": "--border-color-tag",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.table-header",
+        "value": "var(--color-table-header-bg)",
+        "unit": null,
+        "cssVar": "--border-color-table-header",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.table-divider",
+        "value": "var(--color-table-divider)",
+        "unit": null,
+        "cssVar": "--border-color-table-divider",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.list-product-divider",
+        "value": "var(--color-list-product-divider)",
+        "unit": null,
+        "cssVar": "--border-color-list-product-divider",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.list-item-divider",
+        "value": "var(--color-list-item-divider)",
+        "unit": null,
+        "cssVar": "--border-color-list-item-divider",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "color.gray-7",
+        "value": "#F2F2F2",
+        "unit": null,
+        "cssVar": "--color-gray-7",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.success-tag-bg",
+        "value": "#D6F5DF",
+        "unit": null,
+        "cssVar": "--color-success-tag-bg",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.success-tag-text",
+        "value": "#09832A",
+        "unit": null,
+        "cssVar": "--color-success-tag-text",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.rate-summary-track",
+        "value": "#EEEEEE",
+        "unit": null,
+        "cssVar": "--color-rate-summary-track",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.rate-summary-bg",
+        "value": "#FAFAFB",
+        "unit": null,
+        "cssVar": "--color-rate-summary-bg",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      }
+    ]
+  },
+  "evidence": {
+    "localImplementation": "components/variants/comment.html",
+    "comparison": "components/sources/comment/local-structure-review.json",
+    "nativeSpecification": "components/sources/comment/native-specification-review-1011.json",
+    "nativeComponents": "components/sources/comment/native-component-review-1011.json",
+    "nativeProductSubmitCurrent": "components/sources/comment/pc-product-submit-review-1013.json",
+    "nativeGalleryCloseCurrent": "components/sources/comment/pc-gallery-close-review-1013.json",
+    "nativeQaExpandedSubmitCurrent": "components/sources/comment/qa-pc-expanded-submit-review-1013.json",
+    "pcGridCurrent": "components/sources/comment/pc-grid-source-mapping-1015.json",
+    "currentMgReview": "components/sources/remaining-prototypes-mg-20261115/comment-review.json",
+    "summaryIntegration": "components/sources/rate/summary-integration-20261115.json"
+  },
+  "sourceValidation": {
+    "componentIdentity": {
+      "status": "not-established",
+      "files": []
+    },
+    "specificationBody": {
+      "status": "not-established",
+      "files": []
+    },
+    "originalOnlineFrontendCode": false,
+    "browserComputedStyles": false,
+    "completeSpecificationCoverage": false,
+    "buttonNesting": {
+      "scope": "finite-authored-button-nesting-only",
+      "checked": [
+        {
+          "variant": "qa-thread",
+          "buttons": [
+            {
+              "variant": "filled-red",
+              "size": "l",
+              "type": "submit"
+            }
+          ]
+        },
+        {
+          "variant": "review-thread",
+          "buttons": [
+            {
+              "variant": "filled-red",
+              "size": "l",
+              "type": "submit"
+            }
+          ]
+        }
+      ],
+      "pending": [],
+      "browserVerified": false
+    },
+    "otherAtomNesting": {
+      "TextButton": {
+        "scope": "finite-canonical-TextButton-default-calls",
+        "checked": [
+          {
+            "variant": "qa-thread",
+            "children": [
+              {
+                "variant": "with-bg-default",
+                "size": "l-bg"
+              }
+            ]
+          },
+          {
+            "variant": "review-thread",
+            "children": [
+              {
+                "variant": "with-bg-default",
+                "size": "l-bg"
+              }
+            ]
+          },
+          {
+            "variant": "customer-gallery",
+            "children": [
+              {
+                "variant": "inline-blue-link",
+                "size": "m"
+              }
+            ]
+          }
+        ],
+        "inactive": [],
+        "browserVerified": false,
+        "hostStyleCascadeVerified": false
+      },
+      "IconButton": {
+        "scope": "finite-canonical-IconButton-default-calls",
+        "checked": [
+          {
+            "variant": "customer-gallery",
+            "children": [
+              {
+                "variant": "plain-l"
+              },
+              {
+                "variant": "plain-l"
+              }
+            ]
+          }
+        ],
+        "inactive": [],
+        "browserVerified": false,
+        "hostStyleCascadeVerified": false
+      }
+    }
+  },
+  "freshness": {
+    "fingerprints": {
+      "components/button-current.css": "45e94e48ec97a34b4883ecc4f11b33301cdd6679445a3970cb16a2a87c6d8c9e",
+      "components/button-runtime-current.css": "caaa9b65a8d2fbebfa487ca3e0cf0c67d36e0219ffc55d4b0d801371a02da76c",
+      "components/comment-call-current.css": "05a863d7fd52481d416b45f00e462a7852fb79d7ee3a0e3fefd0d22cf31433d8",
+      "components/comment-call-current.js": "d3c2e1b91cc8bf99089029570640e4cbec1b272676d3142d0e4bd8d1b94e2314",
+      "components/comment-current.css": "58e099c8fc4bdc513b26d40d2cc22602d5d11f12e7f251d30e436ee76b4bd337",
+      "components/comment-current.js": "3898f36345ef0bf2832756478719ac9825a1285d127876261d25102fb31a506b",
+      "components/components.css": "a08b4fe2790b5ff2b784c6362a90f1b94e7535a03e863232ce6d620a52e85f73",
+      "components/contracts/button.json": "1f3092d74e19c1a840fbf2e8b8ecaf6115976b2941cc5484e4cda824025b1f73",
+      "components/contracts/comment.json": "a73a8296b8014ee737bcc9562dee8df7a636ad0f9d23d17e343bd09749e8d97f",
+      "components/contracts/icon-button.json": "19f3ce860f24650fba7fbc0b43b59c80255feae164b8d24d9ed71cb4d39d782d",
+      "components/contracts/rate.json": "6f51f27f471884ee26e2aef7f7e173cbf87370173ee0a6468ccf03771cc3c854",
+      "components/contracts/tag.json": "bb8c4c7ca112feacb0af9aed188e4279df4fbab6b7774885f8e8e3508aa00cf5",
+      "components/contracts/text-button.json": "323301e3a3438778dd29d5d6c32fd7e661846707ce711b5c0ec82d11fea12fc5",
+      "components/icon-button-current.css": "5a4d55cf3817c9491473c1db1df6690cd9a06faf89663a7116e4b044ac5bbd2d",
+      "components/icons/icon-carousel-next.svg": "32bc4993a22bc4fe94406f10692227843f334f71f804a000cdce30e5e94235fe",
+      "components/icons/icon-carousel-prev.svg": "0c3e3035fa72509b40f45298e7194eee211adb0b3a8c51730149d8363f3f55ba",
+      "components/icons/icon-close.svg": "226867654d63f99f548f7e25b2f0286c19aa5786f5b9497905474f3959704424",
+      "components/icons/icon-comment-active.svg": "c6e32e6d2d14488ce89f66f2a4825c571bf17e503561c5eb66477e4e40a7d159",
+      "components/icons/icon-comment.svg": "d66bd06023440cbf3ed6b2d25d3853eba2f162a964984f88c2261ddd8b0e99c1",
+      "components/icons/icon-helpful-active.svg": "98c2421f8f280e022c172b29767da95dc81614708b0472a3e063b92a945aad05",
+      "components/icons/icon-helpful.svg": "423468d64fd1bf42c2cde5493ddba32d0d5ed5a40146551a5b63483dd8449409",
+      "components/icons/icon-rating-star.svg": "5bf0c005c95578d13ce31dd78ab7cb350a0e851a1e77ea38187de0baf1424763",
+      "components/icons/icon-verified.svg": "98f6480e2521c785b59f7ed36f491c647a65d56ff9d801b95f79943b8e6179c7",
+      "components/icons/icons-manifest.json": "12c48af6d1dc59d50b76046bb0507005f565aa4224a6d8056ce4eaaf8050c43e",
+      "components/preview/reference-live.js": "4839383529a3ee82df1d8efe675d430567abc1986034499107aa429d21a18ea6",
+      "components/rate-current.js": "ed3bd4ebd26ae96483d8a480d2bf549b4a90f762ac8168a775556dda37586a66",
+      "components/rate-summary-current.css": "3c79bb0a53d154da7cb9cd12beee5729a203b2b3d71afa3a805fc1cd3cd5e579",
+      "components/rate-summary-current.js": "a3e8fce80337c7438cbd54920fc721a19855ad211640e63b0e03762601a711ec",
+      "components/reference-policy.json": "4ae8f51f623386417e38d497caafb8bda4417c929159002a7ac088e6e526b482",
+      "components/sources/comment/local-structure-review.json": "f227c898ada8462d053864da8e394cc1ef1ed85537785f938c8a6165fe7baadf",
+      "components/sources/comment/native-component-review-1011.json": "fc4f6c42842c9d57ca70a67e156c89e9fa9e38ca02ed67de8f9270864afe2ed7",
+      "components/sources/comment/native-specification-review-1011.json": "baf0d84c4ccbba4c26d982d54fb0d566a5ba6e0a0ef0aa08d2c1acaa67e5cf6a",
+      "components/sources/comment/pc-gallery-close-review-1013.json": "4a308dc6bae90bb126665b42856011b7bb88905b24403d3dd5dd0821b1b658db",
+      "components/sources/comment/pc-grid-close20-native-official-1015.svg": "acd0d91911668581b9443af15b4aa6175c269b4201885b592f96e410bb2281c1",
+      "components/sources/comment/pc-grid-close20-native-restored-1015.txt": "fe27bee26249c20f2ac1b0613b5b81d6770455f7631dcae581d2677791218853",
+      "components/sources/comment/pc-grid-image168-native-1015.txt": "99fafbb0d203b801271f16639f89bb67c7c0cdb4879ecf0d7525e63e3dbce5db",
+      "components/sources/comment/pc-grid-source-calls-1015.html": "f107a52c31e7e7d2d6ae8d87da607351bebb602279c08a347764fd906dba4754",
+      "components/sources/comment/pc-grid-source-mapping-1015.json": "0c5b4e77c654bd7b6324d7277111ed8ca005275f36e9a60da8682a0fc0cabebf",
+      "components/sources/comment/pc-product-submit-review-1013.json": "2a60b567be3155e13ac4ea5adeba3305ef72f2b6ccde46b4d04f0b1397bb591a",
+      "components/sources/comment/qa-pc-expanded-submit-review-1013.json": "23a7154b2c42e8bb7ac9e1c761184f1d571f4803c0628b1776cb5ce0de883148",
+      "components/sources/rate/summary-integration-20261115.json": "95faf30ac8891cd524e75a370a1d714bbf228d3cee1c71d787850261451b1157",
+      "components/sources/remaining-prototypes-mg-20261115/comment-review.json": "67c645b748eaa004bc2ab113e8d26dd959d7ef40ffdf36482d6fdbebbb7bd490",
+      "components/sources/tag/comment-filter-current.html": "f761171b8c4521ef41544c661d72c85325061eb1fe672844b135512cbeb5b446",
+      "components/tag-current.css": "bdbf11b9a730d851ce640041874bced37b6e7e316b606c14719dfa72600d9aa7",
+      "components/text-button-current.css": "b38b1b1ad0099d580f7676be7cb2def987753a8eaebd86348ab965768696eb1d",
+      "components/token-specs/border-radius.json": "b01e4c23fbc7e19983d9592b59b0303155b79d66c52459356eda0ea9f4ca74b5",
+      "components/token-specs/border.json": "d286ee4681deda1c7702c310b065c86f824539b3a8797efba05b24bc225ab322",
+      "components/token-specs/colors.json": "5267d59fdc687b54496977280c00c97f0beb6ffce013f87853504f5b736d3389",
+      "components/token-specs/spacing.json": "351b14cfce4411248ad41e00eaaf2b1cab9b705997980dfed1fc65693740e65c",
+      "components/token-specs/typography.json": "93b7dc07547218a33c075b7cdcd942f89094353a7847d483d8378b8883327e16",
+      "components/tokens.css": "f63f3c8fea511d8029902bc3905b01853ac5e92049c1b18ca35ebc9a680c3e69",
+      "components/variants/button.html": "6b6715b66e6c0b684c072dcdcbf7170aeb9f49a31bb32ca5b8986644d626cfe6",
+      "components/variants/comment.html": "e0d983eb8704ddc84c51eb162cc7683d4aaca8ff6d94a6ca3ddcfa481b751e59",
+      "components/variants/icon-button.html": "91c84e01916ffb0fb58a102a83123aa24b16263a9d3a744dc0316ec19f2f317f",
+      "components/variants/rate.html": "5b63d4c74b64e48afba2f8ec18415b35d6a2f8d0b5ea006e55bc7e3694dbc3fe",
+      "components/variants/tag.html": "fcafd08ba11ca6faf2d41e185fc69099175769db0fa030ae9e9fa0ae7e410a04",
+      "components/variants/text-button.html": "6295056d973b26231a68158bd758ebde321d8a105326a740f159006a1a7bd2f8"
+    },
+    "graphFingerprint": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "note": "从本地源文件生成；不是 MasterGo 在线实时状态。"
+  },
+  "readScope": {
+    "variant": "customer-gallery",
+    "note": "只展开当前已选变体；其他变体没有被声明为不可用。尺寸继续按真实 sizeOptions 选择。"
+  }
+}

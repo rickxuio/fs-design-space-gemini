@@ -1,0 +1,102 @@
+TAP version 13
+# Subtest: Card finite call contains real image and full TextButton/M with required resources
+ok 1 - Card finite call contains real image and full TextButton/M with required resources
+  ---
+  duration_ms: 224.30475
+  type: 'test'
+  ...
+# Subtest: Card rejects fake media, missing child arrow, wrong size and inline variant overrides
+ok 2 - Card rejects fake media, missing child arrow, wrong size and inline variant overrides
+  ---
+  duration_ms: 1488.534541
+  type: 'test'
+  ...
+# Subtest: Card editable text preserves complete stack rather than enforcing specimen wording
+ok 3 - Card editable text preserves complete stack rather than enforcing specimen wording
+  ---
+  duration_ms: 282.9005
+  type: 'test'
+  ...
+# Subtest: Card source image/resource deletion blocks compilation and archived wrappers are not component proof
+ok 4 - Card source image/resource deletion blocks compilation and archived wrappers are not component proof
+  ---
+  duration_ms: 152.79825
+  type: 'test'
+  ...
+# Subtest: Card supported finite shapes preserve real TextButton and vertical category; bordered is withdrawn
+ok 5 - Card supported finite shapes preserve real TextButton and vertical category; bordered is withdrawn
+  ---
+  duration_ms: 148.732625
+  type: 'test'
+  ...
+# Subtest: Card new finite shapes reject omitted content and unregistered border or child structure
+ok 6 - Card new finite shapes reject omitted content and unregistered border or child structure
+  ---
+  duration_ms: 544.800125
+  type: 'test'
+  ...
+# Subtest: Card external display-only link keeps semantics while absent targets and unsafe protocols are blocked
+ok 7 - Card external display-only link keeps semantics while absent targets and unsafe protocols are blocked
+  ---
+  duration_ms: 716.046042
+  type: 'test'
+  ...
+# Subtest: Card current PC geometry preserves legacy dimensions and binds actual source
+ok 8 - Card current PC geometry preserves legacy dimensions and binds actual source
+  ---
+  duration_ms: 289.266375
+  type: 'test'
+  ...
+# Subtest: Card source title correction is opt-in to one specimen and preserves legacy horizontal typography
+ok 9 - Card source title correction is opt-in to one specimen and preserves legacy horizontal typography
+  ---
+  duration_ms: 183.864792
+  type: 'test'
+  ...
+# Subtest: Card incomplete List12 nesting cannot be re-enabled by restoring supported entry alone
+not ok 10 - Card incomplete List12 nesting cannot be re-enabled by restoring supported entry alone
+  ---
+  duration_ms: 50.861666
+  type: 'test'
+  location: '/Users/rick/Library/Mobile Documents/com~apple~CloudDocs/FS 设计规范系统/scripts/card-reference.test.js:25:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    The input did not match the regular expression /unavailable variant/. Input:
+    
+    'Error: card: ambiguous variant coverage'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual:
+  error: 'card: ambiguous variant coverage'
+  stack: |-
+    buildReference (/Users/rick/Library/Mobile Documents/com~apple~CloudDocs/FS 设计规范系统/scripts/compile-component-reference.js:30:140)
+    /Users/rick/Library/Mobile Documents/com~apple~CloudDocs/FS 设计规范系统/scripts/card-reference.test.js:25:351
+    getActual (node:assert:531:5)
+    Function.throws (node:assert:677:24)
+    TestContext.<anonymous> (/Users/rick/Library/Mobile Documents/com~apple~CloudDocs/FS 设计规范系统/scripts/card-reference.test.js:25:340)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+  operator: 'throws'
+  stack: |-
+    TestContext.<anonymous> (/Users/rick/Library/Mobile Documents/com~apple~CloudDocs/FS 设计规范系统/scripts/card-reference.test.js:25:340)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+1..10
+# tests 10
+# suites 0
+# pass 9
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 4656.526166

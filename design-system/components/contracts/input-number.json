@@ -1,0 +1,938 @@
+{
+  "id": "comp_input_number_001",
+  "name": "InputNumber",
+  "chineseName": "数字输入框",
+  "description": "数字输入框规范 v1.0.2602A：用于在明确范围内快速增减正整数，提供白底线框分离式 32px/42px 与灰底一体式 42px 三种形态。",
+  "category": "数据录入 Data Entry",
+  "canonicalClassNames": {
+    "root": "ds-input-number（需带 data-input-number）",
+    "input": "ds-input-number__input",
+    "button": "ds-input-number__button",
+    "decrement": "data-input-number-decrement",
+    "increment": "data-input-number-increment"
+  },
+  "variants": [
+    {
+      "name": "outline-sm",
+      "chineseName": "白底线框分离式／小号",
+      "whenToUse": "紧凑商品数量，现有32px线框原件。",
+      "cssClass": "ds-input-number ds-input-number--outline ds-input-number--sm",
+      "isComplete": true,
+      "requiredChildren": [
+        "button.ds-input-number__button--decrement[data-input-number-decrement]",
+        "input.ds-input-number__input",
+        "button.ds-input-number__button--increment[data-input-number-increment]"
+      ],
+      "selectionDecisionType": "白底线框分离式／小号",
+      "whenNotToUse": "常规42px表单、负数或小数。",
+      "usage": "紧凑商品数量，现有32px线框原件。"
+    },
+    {
+      "name": "outline-lg",
+      "chineseName": "白底线框分离式／大号",
+      "whenToUse": "商品详情或白底表单的42px数量。",
+      "cssClass": "ds-input-number ds-input-number--outline",
+      "isComplete": true,
+      "requiredChildren": [
+        "button.ds-input-number__button--decrement[data-input-number-decrement]",
+        "input.ds-input-number__input",
+        "button.ds-input-number__button--increment[data-input-number-increment]"
+      ],
+      "selectionDecisionType": "白底线框分离式／大号",
+      "whenNotToUse": "紧凑购物车或灰底一体式控件。",
+      "usage": "商品详情或白底表单的42px数量。"
+    },
+    {
+      "name": "filled-lg",
+      "chineseName": "灰底一体式／大号",
+      "whenToUse": "灰底表单里的42px一体式数量。",
+      "cssClass": "ds-input-number ds-input-number--filled",
+      "isComplete": true,
+      "requiredChildren": [
+        "button.ds-input-number__button--decrement[data-input-number-decrement]",
+        "input.ds-input-number__input",
+        "button.ds-input-number__button--increment[data-input-number-increment]"
+      ],
+      "selectionDecisionType": "灰底一体式／大号",
+      "whenNotToUse": "白底线框、小数或无限范围。",
+      "usage": "灰底表单里的42px一体式数量。"
+    }
+  ],
+  "states": [
+    {
+      "name": "default",
+      "chineseName": "默认",
+      "styleOverrides": {}
+    },
+    {
+      "name": "input-hover",
+      "chineseName": "输入区悬停",
+      "styleOverrides": {
+        "outline": "输入框描边加深；灰底一体式不变"
+      }
+    },
+    {
+      "name": "button-hover",
+      "chineseName": "按钮悬停",
+      "styleOverrides": {
+        "button": "Own outline Hover: glyph deepens and button background19191A4%; filled42 Hover: glyph deepens, button background stays transparent."
+      }
+    },
+    {
+      "name": "inputting",
+      "chineseName": "输入中",
+      "styleOverrides": {
+        "outline": "白底输入框描边加深"
+      }
+    },
+    {
+      "name": "completed",
+      "chineseName": "输入完成",
+      "styleOverrides": {
+        "appearance": "恢复默认"
+      }
+    },
+    {
+      "name": "disabled",
+      "chineseName": "禁用",
+      "styleOverrides": {
+        "textAndIcons": "30% 黑",
+        "interaction": "不可操作"
+      }
+    },
+    {
+      "name": "readonly",
+      "chineseName": "只读",
+      "styleOverrides": {
+        "value": "White outline text #19191A full opacity; filled42 own text layer #19191A at70%; icons remain disabled30% per source.",
+        "interaction": "不可编辑或增减"
+      }
+    }
+  ],
+  "usageGuidelines": "仅用于有明确上下限且需要快速增减的正整数。默认范围为 1–9999；小于最小值或大于最大值时回写边界。小数、负数、任意字符或未定义范围应使用 Input；低精度可视范围调整使用 Slider。",
+  "relations": {
+    "variantDecisionsDescription": "按内容与交互选具体变体，再核对同版调用资格。候选、不用、参考同时用于规范展示与AI；既有来源、当前MG核对、工程与视觉批准分开记录。",
+    "variantDecisions": [
+      {
+        "type": "白底线框分离式／小号",
+        "className": "ds-input-number--outline ds-input-number--sm",
+        "whenToUse": "紧凑商品数量，现有32px线框原件。",
+        "whenNotToUse": "常规42px表单、负数或小数。",
+        "nestedComponents": [],
+        "status": "当前MG来源与现有有限调用已核对；资格读同版catalog，未开放和视觉批准不据此改变。",
+        "variant": "outline-sm",
+        "fragment": "outline-sm",
+        "selectionCases": [
+          {
+            "id": "input-number.outline-sm.1",
+            "kind": "use",
+            "condition": "紧凑商品数量，现有32px线框原件。",
+            "result": "调用outline-sm；初始化正整数范围；价格由List宿主联动。",
+            "targetVariant": "outline-sm",
+            "strength": "candidate"
+          },
+          {
+            "id": "input-number.outline-sm.2",
+            "kind": "avoid",
+            "condition": "常规42px表单、负数或小数。",
+            "result": "不使用此变体；先核对相邻组件和实际调用范围。",
+            "targetVariant": "outline-sm",
+            "strength": "avoid"
+          }
+        ]
+      },
+      {
+        "type": "白底线框分离式／大号",
+        "className": "ds-input-number--outline",
+        "whenToUse": "商品详情或白底表单的42px数量。",
+        "whenNotToUse": "紧凑购物车或灰底一体式控件。",
+        "nestedComponents": [],
+        "status": "当前MG来源与现有有限调用已核对；资格读同版catalog，未开放和视觉批准不据此改变。",
+        "variant": "outline-lg",
+        "fragment": "outline-lg",
+        "selectionCases": [
+          {
+            "id": "input-number.outline-lg.1",
+            "kind": "use",
+            "condition": "商品详情或白底表单的42px数量。",
+            "result": "调用outline-lg；先设value/min/max/step，再初始化。",
+            "targetVariant": "outline-lg",
+            "strength": "candidate"
+          },
+          {
+            "id": "input-number.outline-lg.2",
+            "kind": "avoid",
+            "condition": "紧凑购物车或灰底一体式控件。",
+            "result": "不使用此变体；先核对相邻组件和实际调用范围。",
+            "targetVariant": "outline-lg",
+            "strength": "avoid"
+          }
+        ]
+      },
+      {
+        "type": "灰底一体式／大号",
+        "className": "ds-input-number--filled",
+        "whenToUse": "灰底表单里的42px一体式数量。",
+        "whenNotToUse": "白底线框、小数或无限范围。",
+        "nestedComponents": [],
+        "status": "当前MG来源与现有有限调用已核对；资格读同版catalog，未开放和视觉批准不据此改变。",
+        "variant": "filled-lg",
+        "fragment": "filled-lg",
+        "selectionCases": [
+          {
+            "id": "input-number.filled-lg.1",
+            "kind": "use",
+            "condition": "灰底表单里的42px一体式数量。",
+            "result": "调用filled-lg；只用已声明正整数配置和事件。",
+            "targetVariant": "filled-lg",
+            "strength": "candidate"
+          },
+          {
+            "id": "input-number.filled-lg.2",
+            "kind": "avoid",
+            "condition": "白底线框、小数或无限范围。",
+            "result": "不使用此变体；先核对相邻组件和实际调用范围。",
+            "targetVariant": "filled-lg",
+            "strength": "avoid"
+          }
+        ]
+      }
+    ],
+    "variantSelectionRules": [
+      {
+        "condition": "购物车紧凑数量调整",
+        "variant": "outline-sm"
+      },
+      {
+        "condition": "商品详情或白底表单",
+        "variant": "outline-lg"
+      },
+      {
+        "condition": "灰底表单",
+        "variant": "filled-lg"
+      }
+    ],
+    "interaction": {
+      "all": {
+        "trigger": "点击加减按钮、ArrowUp/ArrowDown 或直接输入/粘贴。",
+        "initialState": "默认值 1，默认范围 1–9999。",
+        "result": "仅保留数字并在失焦或按钮操作时回写到合法边界；最小值禁用减按钮，最大值禁用加按钮。",
+        "keyboard": "Tab 聚焦输入框；ArrowUp/ArrowDown 按 step 增减；聚焦时全选当前值。"
+      }
+    },
+    "componentDependencies": [],
+    "mutuallyExclusiveWith": [
+      {
+        "component": "Input",
+        "reason": "InputNumber 只接受有范围的正整数；小数、负数和任意字符使用 Input。"
+      },
+      {
+        "component": "Slider",
+        "reason": "需要低精度可视范围选择时使用 Slider。"
+      }
+    ],
+    "colorDependencies": [
+      {
+        "token": "color.gray-1",
+        "value": "#19191A",
+        "usage": "数值、焦点描边和按钮悬停图标",
+        "appliesTo": [
+          "outline-sm",
+          "outline-lg",
+          "filled-lg"
+        ]
+      },
+      {
+        "token": "color.gray-3",
+        "value": "#707070",
+        "usage": "默认加减图标",
+        "appliesTo": [
+          "outline-sm",
+          "outline-lg",
+          "filled-lg"
+        ]
+      },
+      {
+        "token": "color.gray-8",
+        "value": "#F6F6F8",
+        "usage": "灰底一体式及白底禁用输入区",
+        "appliesTo": [
+          "outline-sm",
+          "outline-lg",
+          "filled-lg"
+        ]
+      },
+      {
+        "token": "color.white",
+        "value": "#FFFFFF",
+        "usage": "白底线框输入区",
+        "appliesTo": [
+          "outline-sm",
+          "outline-lg"
+        ]
+      },
+      {
+        "token": "color.hover-overlay-light",
+        "value": "rgba(25,25,26,0.04)",
+        "usage": "Outline button Hover only; filled42 own source has no overlay",
+        "appliesTo": [
+          "outline-sm",
+          "outline-lg"
+        ]
+      },
+      {
+        "token": "color.text-disabled",
+        "value": "rgba(25,25,26,0.3)",
+        "usage": "禁用数值与图标",
+        "appliesTo": [
+          "outline-sm",
+          "outline-lg",
+          "filled-lg"
+        ]
+      }
+    ],
+    "radiusDependencies": [
+      {
+        "token": "border-radius.md",
+        "value": "4px",
+        "usage": "按钮热区和灰底一体式容器",
+        "appliesTo": [
+          "outline-sm",
+          "outline-lg",
+          "filled-lg"
+        ]
+      },
+      {
+        "token": "border-radius.lg",
+        "value": "8px",
+        "usage": "白底线框输入区",
+        "appliesTo": [
+          "outline-sm",
+          "outline-lg"
+        ]
+      }
+    ],
+    "fontSizeDependencies": [
+      {
+        "token": "typography.font-size-md",
+        "value": "14px",
+        "usage": "输入数值",
+        "appliesTo": [
+          "outline-sm",
+          "outline-lg",
+          "filled-lg"
+        ]
+      }
+    ],
+    "fontWeightDependencies": [
+      {
+        "token": "typography.font-weight-regular",
+        "value": "400",
+        "usage": "输入数值",
+        "appliesTo": [
+          "outline-sm",
+          "outline-lg",
+          "filled-lg"
+        ],
+        "properties": [
+          "font-weight"
+        ],
+        "selectors": [
+          ".ds-input-number__input"
+        ]
+      }
+    ],
+    "typographyDependencies": [
+      {
+        "token": "typography.h7-regular",
+        "fontSizeToken": "typography.font-size-md",
+        "fontSizeValue": "14px",
+        "fontWeightToken": "typography.font-weight-regular",
+        "fontWeightValue": "400",
+        "weightEvidence": "explicit-css",
+        "usage": "输入数值",
+        "appliesTo": [
+          "outline-sm",
+          "outline-lg",
+          "filled-lg"
+        ]
+      }
+    ],
+    "spacingDependencies": [
+      {
+        "token": "spacing.xs",
+        "value": "4px",
+        "usage": "加减按钮与输入区间距",
+        "properties": [
+          "gap"
+        ],
+        "selectors": [
+          ".ds-input-number"
+        ],
+        "appliesTo": [
+          "outline-sm",
+          "outline-lg",
+          "filled-lg"
+        ]
+      },
+      {
+        "token": "spacing.sm",
+        "value": "8px",
+        "usage": "灰底一体式左右内边距",
+        "properties": [
+          "padding"
+        ],
+        "selectors": [
+          ".ds-input-number--filled"
+        ],
+        "appliesTo": [
+          "filled-lg"
+        ]
+      }
+    ],
+    "borderDependencies": [
+      {
+        "token": "border.width.default",
+        "value": "1px",
+        "usage": "白底输入区描边",
+        "aspect": "width",
+        "properties": [
+          "border"
+        ],
+        "selectors": [
+          ".ds-input-number--outline .ds-input-number__input"
+        ],
+        "appliesTo": [
+          "outline-sm",
+          "outline-lg"
+        ]
+      },
+      {
+        "token": "border.style.default",
+        "value": "solid",
+        "usage": "白底输入区描边",
+        "aspect": "style",
+        "properties": [
+          "border"
+        ],
+        "selectors": [
+          ".ds-input-number--outline .ds-input-number__input"
+        ],
+        "appliesTo": [
+          "outline-sm",
+          "outline-lg"
+        ]
+      },
+      {
+        "token": "border.color.default",
+        "value": "var(--color-gray-5)",
+        "usage": "默认白底输入区描边",
+        "aspect": "color",
+        "properties": [
+          "border"
+        ],
+        "selectors": [
+          ".ds-input-number--outline .ds-input-number__input"
+        ],
+        "appliesTo": [
+          "outline-sm",
+          "outline-lg"
+        ]
+      },
+      {
+        "token": "border.color.emphasis",
+        "value": "var(--color-gray-1)",
+        "usage": "白底输入区悬停与输入中描边",
+        "aspect": "color",
+        "properties": [
+          "border-color"
+        ],
+        "selectors": [
+          ".ds-input-number--outline .ds-input-number__input:hover:not(:disabled):not([readonly])",
+          ".ds-input-number--outline .ds-input-number__input:focus:not([readonly])",
+          ".ds-input-number--input-hover .ds-input-number__input",
+          ".ds-input-number--inputting .ds-input-number__input"
+        ],
+        "appliesTo": [
+          "outline-sm",
+          "outline-lg"
+        ]
+      },
+      {
+        "token": "border.style.none",
+        "value": "none",
+        "usage": "按钮和灰底输入区无描边",
+        "aspect": "style",
+        "properties": [
+          "border"
+        ],
+        "selectors": [
+          ".ds-input-number__button",
+          ".ds-input-number--filled .ds-input-number__input"
+        ],
+        "appliesTo": [
+          "outline-sm",
+          "outline-lg",
+          "filled-lg"
+        ]
+      }
+    ],
+    "shadowDependencies": [],
+    "iconDependencies": [
+      {
+        "icon": "icon-collapse-minus",
+        "usage": "减量按钮图形，复用既有减号资产",
+        "required": true,
+        "appliesTo": [
+          "outline-sm",
+          "outline-lg",
+          "filled-lg"
+        ]
+      },
+      {
+        "icon": "icon-collapse-plus",
+        "usage": "增量按钮图形，复用既有加号资产",
+        "required": true,
+        "appliesTo": [
+          "outline-sm",
+          "outline-lg",
+          "filled-lg"
+        ]
+      }
+    ],
+    "enforcementStatus": {
+      "variantSelection": {
+        "enforced": false,
+        "mechanism": "由页面语义人工或 AI 审查。"
+      },
+      "tokenDependencies": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 校验 Token 与 CSS 证据闭环。"
+      },
+      "numericBehavior": {
+        "enforced": false,
+        "mechanism": "共享脚本已实现；由浏览器行为校验覆盖。"
+      }
+    },
+    "prototypeRollout": {
+      "template": "docs/component-spec-template.html",
+      "source": "relations.variantDecisions",
+      "workflow": "existing-local-only",
+      "scope": "existing finite calls and original references; no publication expansion",
+      "currentMg": {
+        "status": "partial-source-scope",
+        "reason": "已读取《新文件》数字输入框规范（3:196154），按现有有限调用核对；未开放原件与视觉批准仍分别保留。"
+      },
+      "retainedEvidence": [
+        {
+          "name": "comparison",
+          "file": "components/sources/input-number/local-structure-review.json"
+        },
+        {
+          "name": "specificationReview",
+          "file": "components/sources/input-number/native-specification-review-1011.json"
+        },
+        {
+          "name": "outline32HoverDisabledReview",
+          "file": "components/sources/input-number/outline32-hover-disabled-review-1013.json"
+        }
+      ]
+    },
+    "interactionRules": [
+      {
+        "name": "实际调用",
+        "rule": "仅使用同版catalog的callable变体和allowedEdits；参考示例不授予调用资格，不用改类或自绘控件绕过。",
+        "owner": "原本地选型与调用入口"
+      },
+      {
+        "name": "父子与同步",
+        "rule": "沿用原componentDependencies及反向父关系；改原规范后协调契约/实现，继续component:sync/watch；已交付页保留固定版本。",
+        "owner": "既有维护机制"
+      },
+      {
+        "name": "交互与业务",
+        "rule": "初始化正整数范围；价格由List宿主联动。；先设value/min/max/step，再初始化。；只用已声明正整数配置和事件。",
+        "owner": "具体变体运行时与原页面宿主"
+      }
+    ]
+  },
+  "searchIntents": [
+    "数字输入框",
+    "数量加减",
+    "购物车数量",
+    "正整数输入",
+    "InputNumber"
+  ],
+  "tokenReferences": [
+    "color.gray-1",
+    "color.gray-3",
+    "color.gray-8",
+    "color.white",
+    "color.hover-overlay-light",
+    "color.text-disabled",
+    "border-radius.md",
+    "border-radius.lg",
+    "typography.font-size-md",
+    "typography.font-weight-regular",
+    "typography.h7-regular",
+    "spacing.xs",
+    "spacing.sm",
+    "border.width.default",
+    "border.style.default",
+    "border.style.none",
+    "border.color.default",
+    "border.color.emphasis"
+  ],
+  "constraints": {
+    "requiredProperties": [
+      "value",
+      "min",
+      "max"
+    ],
+    "forbiddenCombinations": [
+      "小数",
+      "负数",
+      "未定义范围",
+      "任意字符"
+    ]
+  },
+  "isComplete": true,
+  "pendingParts": [],
+  "createdAt": "2026-08-24T00:00:00Z",
+  "updatedAt": "2026-10-15",
+  "qualityProfile": {
+    "schemaVersion": "1.0.0",
+    "standard": "docs/component-quality-standard.md",
+    "implementation": "components/variants/input-number.html",
+    "selection": {
+      "mappingSource": "components/selection-mvp-policy.json",
+      "mappingPointer": "components.input-number.variantDecisionTypes",
+      "rulesPointer": "relations.variantDecisions"
+    },
+    "maintenance": {
+      "authority": "contract-preview-runtime-token-icon",
+      "generatedOnly": [
+        "preview-reference-tables",
+        "component-index",
+        "selection-catalog",
+        "design-reading-view",
+        "ai-reference"
+      ],
+      "changePolicy": "记录来源差异、兼容性与受影响父子组件；源文件变化后旧工程验收失效。",
+      "historicalPages": "不自动升级；新页面锁定本地组件运行资源版本。"
+    },
+    "acceptance": {
+      "report": "components/quality/report.json",
+      "proof": "components/quality/acceptance.json",
+      "declarationIsNotProof": true
+    }
+  },
+  "history": [
+    {
+      "date": "2026-10-09",
+      "author": "Codex",
+      "change": "统一规范维护质量标准：登记真实实现与选型规则入口、源变更重新验收、父子影响检查及历史页面隔离；不推断可编辑槽位或视觉批准。"
+    },
+    {
+      "date": "2026-10-10",
+      "author": "Codex",
+      "change": "为三种现有默认数量控件补精确实例、正整数属性绑定和反例检查；记录范围仅初始化时读取、blur不额外发change及动态插入未支持。共享CSS/JS、业务宿主和历史页未改；原始来源及浏览器验收待完成。"
+    }
+  ],
+  "editable": [
+    "value",
+    "min",
+    "max",
+    "step",
+    "name",
+    "accessibleLabel",
+    "inputCallback",
+    "changeCallback"
+  ],
+  "integration": {
+    "styles": [
+      "components/tokens.css",
+      "components/components.css",
+      "components/input-number-current.css"
+    ],
+    "scripts": [
+      "components/input-number-current.js"
+    ],
+    "fontStylesheets": [
+      "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+    ],
+    "fontFallback": "沿用现有Open Sans字体栈；未验证离线字体一致。"
+  },
+  "aiContract": {
+    "schemaVersion": "1.0.0",
+    "rootTag": "div",
+    "scope": "existing-desktop-positive-integer-three-default-controls",
+    "supported": [
+      "outline-sm",
+      "outline-lg",
+      "filled-lg"
+    ],
+    "unsupported": [
+      "negative",
+      "decimal",
+      "unbounded",
+      "dynamic-insertion",
+      "dynamic-range-change",
+      "business-price-recalculation",
+      "mobile"
+    ],
+    "reviewStatus": {
+      "engineering": "pending",
+      "visual": "pending",
+      "familyCoverage": "partial"
+    },
+    "previewAssets": [
+      "components/preview/reference-live.js",
+      "components/sources/input-number/glyph42-source-review-1015.json",
+      "components/sources/input-number/hover42-add-official-1015.svg",
+      "components/sources/input-number/disabled42-move-official-1015.svg",
+      "components/sources/input-number/glyph42-comparison-1015.json"
+    ],
+    "selectionPolicy": "outline-sm用于紧凑数量，outline-lg用于白底常规数量，filled-lg用于灰底表单。取实际默认实例；仅在初始化前替换正整数配置，不通过新增CSS造尺寸。 按relations.variantDecisions的具体场景选型；最终资格读同版catalog，未开放项不自动调用。当前MG核对状态见prototypeRollout，不将既有来源冒称本次在线核对。",
+    "identity": {
+      "rule": "保留唯一text输入及左右button，输入必须有非空aria-label；增减按钮名称由现有运行代码提供。初始化前设置范围及初值，禁止复制data-input-number-ready。",
+      "labelRule": "accessibleLabel替换输入aria-label；若保留根节点同名aria-label，需同时同步。"
+    },
+    "locked": [
+      "根类、默认形态和子节点顺序",
+      "button类型与增减数据标记",
+      "text输入及数值模式由运行代码初始化",
+      "图标与共享CSS/JS",
+      "正整数范围和初始化时机",
+      "data-input-number-current opt-in marker"
+    ],
+    "behavior": {
+      "initialization": "首次DOMContentLoaded或脚本载入时扫描；初始化后绑定每个实例，未提供动态插入扫描API。",
+      "range": "初始化前min/max/step均为JS安全正整数，min<=value<=max；范围缺省运行值1-9999，step缺省1。初始化后更改data范围不会重新绑定。",
+      "adjust": "点击增减或ArrowUp/ArrowDown按step调整并限制到边界；变化时派发原生input与change，边界按钮禁用。",
+      "typing": "输入时删除非数字，可能暂时为空或超过范围；blur时回写范围内整数，不派发额外的change。不能视作完整业务验证。",
+      "readonly": "既有input.disabled/readOnly禁止调整；本批默认调用未开放状态编辑，其他状态仍按原Preview确认。",
+      "business": "不计算价格，不提交表单；宿主监听input/change并自行处理业务。",
+      "disabledContainer": "Native :disabled includes disabled fieldsets; synthetic adjustments/typing cannot change disabled or readonly values. Range remains captured once at initialization.",
+      "nativeStateGuard": "Current marker-only runtime observes native readonly/disabled and containing fieldsets to restore control state; no repeated document initialization, no dynamic range/insertion extension."
+    },
+    "evidence": {
+      "localImplementation": "components/variants/input-number.html",
+      "comparison": "components/sources/input-number/local-structure-review.json",
+      "specificationReview": "components/sources/input-number/native-specification-review-1011.json",
+      "outline32HoverDisabledReview": "components/sources/input-number/outline32-hover-disabled-review-1013.json",
+      "outline32DisabledChildren": "components/sources/input-number/outline32-disabled-children-review-1013.json",
+      "readonly42": "components/sources/input-number/readonly42-source-review-1014.json",
+      "disabled42": "components/sources/input-number/disabled42-source-review-1014.json",
+      "hoverButton42": "components/sources/input-number/hover-button42-source-review-1014.json",
+      "currentMgReview": "components/sources/remaining-prototypes-mg-20261115/input-number-review.json"
+    },
+    "variants": {
+      "outline-sm": {
+        "purpose": "bounded-positive-quantity-outline-sm",
+        "exampleSelector": "[data-ai-example=\"ai-input-number-outline-sm\"]",
+        "allowedEdits": [
+          "value",
+          "min",
+          "max",
+          "step",
+          "name",
+          "accessibleLabel",
+          "inputCallback",
+          "changeCallback"
+        ],
+        "slots": {},
+        "bindings": {
+          "min": {
+            "mode": "native-attribute",
+            "target": "root",
+            "attribute": "data-min",
+            "valueType": "positive-integer"
+          },
+          "max": {
+            "mode": "native-attribute",
+            "target": "root",
+            "attribute": "data-max",
+            "valueType": "positive-integer"
+          },
+          "step": {
+            "mode": "native-attribute",
+            "target": "root",
+            "attribute": "data-step",
+            "valueType": "positive-integer"
+          },
+          "value": {
+            "mode": "native-attribute",
+            "target": "input.ds-input-number__input",
+            "attribute": "value",
+            "valueType": "positive-integer"
+          },
+          "name": {
+            "mode": "native-attribute",
+            "target": "input.ds-input-number__input",
+            "attribute": "name",
+            "valueType": "string"
+          },
+          "accessibleLabel": {
+            "mode": "native-attribute",
+            "target": "input.ds-input-number__input",
+            "attribute": "aria-label",
+            "valueType": "nonempty-string"
+          },
+          "inputCallback": {
+            "mode": "event-handler",
+            "target": "root",
+            "event": "input"
+          },
+          "changeCallback": {
+            "mode": "event-handler",
+            "target": "root",
+            "event": "change"
+          }
+        }
+      },
+      "outline-lg": {
+        "purpose": "bounded-positive-quantity-outline-lg",
+        "exampleSelector": "[data-ai-example=\"ai-input-number-outline-lg\"]",
+        "allowedEdits": [
+          "value",
+          "min",
+          "max",
+          "step",
+          "name",
+          "accessibleLabel",
+          "inputCallback",
+          "changeCallback"
+        ],
+        "slots": {},
+        "bindings": {
+          "min": {
+            "mode": "native-attribute",
+            "target": "root",
+            "attribute": "data-min",
+            "valueType": "positive-integer"
+          },
+          "max": {
+            "mode": "native-attribute",
+            "target": "root",
+            "attribute": "data-max",
+            "valueType": "positive-integer"
+          },
+          "step": {
+            "mode": "native-attribute",
+            "target": "root",
+            "attribute": "data-step",
+            "valueType": "positive-integer"
+          },
+          "value": {
+            "mode": "native-attribute",
+            "target": "input.ds-input-number__input",
+            "attribute": "value",
+            "valueType": "positive-integer"
+          },
+          "name": {
+            "mode": "native-attribute",
+            "target": "input.ds-input-number__input",
+            "attribute": "name",
+            "valueType": "string"
+          },
+          "accessibleLabel": {
+            "mode": "native-attribute",
+            "target": "input.ds-input-number__input",
+            "attribute": "aria-label",
+            "valueType": "nonempty-string"
+          },
+          "inputCallback": {
+            "mode": "event-handler",
+            "target": "root",
+            "event": "input"
+          },
+          "changeCallback": {
+            "mode": "event-handler",
+            "target": "root",
+            "event": "change"
+          }
+        }
+      },
+      "filled-lg": {
+        "purpose": "bounded-positive-quantity-filled-lg",
+        "exampleSelector": "[data-ai-example=\"ai-input-number-filled-lg\"]",
+        "allowedEdits": [
+          "value",
+          "min",
+          "max",
+          "step",
+          "name",
+          "accessibleLabel",
+          "inputCallback",
+          "changeCallback"
+        ],
+        "slots": {},
+        "bindings": {
+          "min": {
+            "mode": "native-attribute",
+            "target": "root",
+            "attribute": "data-min",
+            "valueType": "positive-integer"
+          },
+          "max": {
+            "mode": "native-attribute",
+            "target": "root",
+            "attribute": "data-max",
+            "valueType": "positive-integer"
+          },
+          "step": {
+            "mode": "native-attribute",
+            "target": "root",
+            "attribute": "data-step",
+            "valueType": "positive-integer"
+          },
+          "value": {
+            "mode": "native-attribute",
+            "target": "input.ds-input-number__input",
+            "attribute": "value",
+            "valueType": "positive-integer"
+          },
+          "name": {
+            "mode": "native-attribute",
+            "target": "input.ds-input-number__input",
+            "attribute": "name",
+            "valueType": "string"
+          },
+          "accessibleLabel": {
+            "mode": "native-attribute",
+            "target": "input.ds-input-number__input",
+            "attribute": "aria-label",
+            "valueType": "nonempty-string"
+          },
+          "inputCallback": {
+            "mode": "event-handler",
+            "target": "root",
+            "event": "input"
+          },
+          "changeCallback": {
+            "mode": "event-handler",
+            "target": "root",
+            "event": "change"
+          }
+        }
+      }
+    }
+  },
+  "glyph42SourceClosure1015": {
+    "scope": "Only42 HoverButton outline/filled Add and outline Disabled Add/Move",
+    "source": "components/sources/input-number/glyph42-source-review-1015.json",
+    "comparison": "components/sources/input-number/glyph42-comparison-1015.json",
+    "closed": [
+      "Native10 full Add/Move exports restored",
+      "Three Add paths match returned reference; source state colors retained",
+      "Existing10 masks compatible to0.00000015px"
+    ],
+    "noRenderChange": true,
+    "remaining": [
+      "Other glyph instances and Focus",
+      "Actual full visual approval"
+    ],
+    "fullFamilyAcceptance": false
+  }
+}

@@ -1,0 +1,1121 @@
+{
+  "schemaVersion": "fs-component-reference/1.0.0",
+  "component": {
+    "id": "input",
+    "name": "Input",
+    "scope": "desktop-basic-input-two-surfaces-seven-states",
+    "reviewStatus": {
+      "engineering": "pending",
+      "visual": "pending",
+      "familyCoverage": "partial"
+    }
+  },
+  "selection": {
+    "policy": "按MG当前基础录入规则，白背景用gray、灰背景用white；当前接口仅42px基础单行输入。30px仅详情属性、34px密集场景及密码/图标/属性/文本域为来源扩展，不因出现原稿而开放。",
+    "supported": [
+      "gray",
+      "white"
+    ],
+    "unsupported": [
+      "password",
+      "search",
+      "textarea",
+      "input-with-property",
+      "clear-action",
+      "mobile",
+      "business-validation",
+      "legacy-form-upgrade",
+      "mini-30px",
+      "small-34px"
+    ]
+  },
+  "runtime": {
+    "styles": [
+      "components/tokens.css",
+      "components/components.css",
+      "components/input-current.css"
+    ],
+    "scripts": [
+      "components/input-current.js"
+    ],
+    "fontStylesheets": [
+      "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+    ],
+    "fontFallback": "Open Sans 来自已有项目字体规则；远端字体不可用时按项目字体栈回退，不宣称完全离线。"
+  },
+  "identity": {
+    "rule": "每个实例生成唯一输入id和错误行id，label.for同步；aria-describedby仅关联该实例可见错误行并保留宿主其他描述id。默认示例无错误，宿主可设置aria-invalid为true/false。",
+    "labelRule": "独立调用保留内部label/for；仅已核灰/白电话拼接能力同时声明external/start/fill，使用唯一外部原生label.ds-input-field__label及for。不得无标签或用placeholder替代；白色033233同样已核并准入。"
+  },
+  "locked": [
+    "根类及data-input-current",
+    "input[type=text]及背景类",
+    "42px高度/4px圆角/12px内边距",
+    "label/for/id关联",
+    "错误行信息图标与文字槽",
+    "运行CSS/JS"
+  ],
+  "behavior": {
+    "input": "原生输入与input/change事件；不添加清除按钮，不处理业务提交。",
+    "focus": "禁用优先；空焦点activated、有值焦点inputting，即使宿主仍声明aria-invalid；失焦时优先恢复宿主error，否则按值default/filled。聚焦不自动清除业务错误。",
+    "disabled": "使用原生disabled或fieldset，不允许禁用状态产生输入。",
+    "error": "宿主设置aria-invalid=true；错误内容由errorMessage槽提供；移除/改为false隐藏错误并移除其描述id。禁用时隐藏错误，解除禁用后恢复宿主声明。",
+    "programmatic": "程序设置.value后派发input/change通知；form.reset会同步状态；动态插入实例自动同步。",
+    "preview": "data-input-preview-state仅为状态展示辅助，新调用不得复制；静态描边不代表真实焦点或光标。",
+    "legacyHosts": "白底Form第一基础槽已真实调用；其他Form/Collapse旧字段仍待来源核对，不宣称已迁移。",
+    "nativeStateGuard": "Current script has one document guard and observer; repeated loading preserves one listener set. Dynamic field-state updates remain supported.",
+    "sourceReview": "Saved source is tool-generated HTML with component metadata, not independently typed original DSL or frontend source. Fourteen basic state markers and raw style/text/icon declarations are rechecked against basic-input-review and original bytes during compilation. Missing font-weight does not establish source 400; local typography is explicit library implementation. Full spec, SVG contour and browser proof remain pending. 2026-10-11原生画布定向核对基础状态，Error点击进入Activated，修正状态标记优先级；v2.5图层名与v2.4正文冲突独立记录，全文/浏览器/视觉仍待验证。",
+    "disabledBorderToken": "The existing white basic Disabled #EEEEEE border is now a component-scoped Token with the same value, sourced from saved tool HTML node 68908:022328. No substitution with gray-6 or approval for other Input families.",
+    "exactCallStructure": "当前精确调用为根div直接依次装配label、原生text input和隐藏错误行；错误行仅含装饰信息图标及纯文字消息。拒绝额外包装/控件、inline样式、额外文字类和未开放原生属性。ID唯一、label.for与错误行结构同时核对；这只是当前本地调用结构检查，不证明原始typed来源或浏览器效果。",
+    "selectTriggerFace": "Select九个有限调用可复用基础Input面部与default/activated/disabled状态；Select仅装配原生combobox及多值动作，不实例化独立可编辑Input。",
+    "searchParts": "banner-search42/menu-search42仅在登记宿主内使用；独立基础调用不加载搜索资源。原生Enter/搜索按钮受空值、IME、disabled及hidden约束，派发查询意图。"
+  },
+  "examples": [
+    {
+      "name": "gray",
+      "publication": {
+        "key": "input/gray",
+        "disposition": "restricted",
+        "newPages": true,
+        "reason": "仅基础集合68908:013958；按宿主背景选择gray/white。取完整原生示例和显式当前资源；状态由焦点、值、disabled和宿主aria-invalid驱动。",
+        "constraints": [
+          "仅基础集合68908:013958；按宿主背景选择gray/white。取完整原生示例和显式当前资源；状态由焦点、值、disabled和宿主aria-invalid驱动。"
+        ],
+        "contractPolicy": "仅基础集合68908:013958；按宿主背景选择gray/white。取完整原生示例和显式当前资源；状态由焦点、值、disabled和宿主aria-invalid驱动。",
+        "use": "finite-new-page-candidate",
+        "evidence": "components/contracts/input.json#aiContract/evidence",
+        "requiresCurrentEngineering": true,
+        "visualApproval": "separate-not-granted"
+      },
+      "rootTag": "div",
+      "sizeOptions": [],
+      "bindings": {
+        "placeholder": {
+          "mode": "native-attribute",
+          "target": "input.ds-input-field__input",
+          "attribute": "placeholder",
+          "valueType": "string"
+        },
+        "value": {
+          "mode": "native-attribute",
+          "target": "input.ds-input-field__input",
+          "attribute": "value",
+          "valueType": "string"
+        },
+        "name": {
+          "mode": "native-attribute",
+          "target": "input.ds-input-field__input",
+          "attribute": "name",
+          "valueType": "string"
+        },
+        "disabled": {
+          "mode": "native-attribute",
+          "target": "input.ds-input-field__input",
+          "attribute": "disabled",
+          "values": [
+            false,
+            true
+          ],
+          "default": false
+        },
+        "inputCallback": {
+          "mode": "event-handler",
+          "target": "root",
+          "event": "input"
+        },
+        "changeCallback": {
+          "mode": "event-handler",
+          "target": "root",
+          "event": "change"
+        },
+        "aria-invalid": {
+          "mode": "native-attribute",
+          "target": "input.ds-input-field__input",
+          "attribute": "aria-invalid",
+          "values": [
+            "false",
+            "true"
+          ],
+          "default": "false"
+        },
+        "type": {
+          "mode": "native-attribute",
+          "target": "input.ds-input-field__input",
+          "attribute": "type",
+          "values": [
+            "text",
+            "email",
+            "tel"
+          ],
+          "default": "text",
+          "sourceProperty": "Native input semantics; appearance unchanged"
+        },
+        "required": {
+          "mode": "native-attribute",
+          "target": "input.ds-input-field__input",
+          "attribute": "required",
+          "values": [
+            false,
+            true
+          ],
+          "default": false,
+          "sourceProperty": "Native required constraint from original form"
+        }
+      },
+      "purpose": "basic-text-input-gray",
+      "whenToUse": "白色背景上的42px基础单行录入。",
+      "whenNotToUse": "灰色背景区域 → 用白底描边。",
+      "rootClasses": "ds-input-field",
+      "requiredStructure": [
+        "label.ds-input-field__label",
+        "input.ds-input-field__input--gray",
+        "div.ds-input-field__error",
+        "span.ds-input-field__error-icon",
+        "span.ds-input-field__error-text"
+      ],
+      "slots": {
+        "label": {
+          "selector": ".ds-input-field__label",
+          "mode": "text",
+          "required": true
+        },
+        "errorMessage": {
+          "selector": ".ds-input-field__error-text",
+          "mode": "text",
+          "required": true
+        }
+      },
+      "allowedEdits": [
+        "label",
+        "placeholder",
+        "value",
+        "name",
+        "disabled",
+        "errorMessage",
+        "inputCallback",
+        "changeCallback",
+        "aria-invalid",
+        "type",
+        "required"
+      ],
+      "exampleHtml": "<div class=\"ds-input-field\" data-input-current data-ai-example=\"ai-input-gray\">\n<label class=\"ds-input-field__label\" for=\"input-gray-default\">Lable</label>\n<input id=\"input-gray-default\" class=\"ds-input-field__input ds-input-field__input--gray\" type=\"text\" placeholder=\"Please enter text\">\n<div class=\"ds-input-field__error\" id=\"input-gray-default-error\" hidden>\n<span class=\"ds-input-field__error-icon\" aria-hidden=\"true\">\n</span>\n<span class=\"ds-input-field__error-text\">Please enter Prompt word.</span>\n</div>\n</div>"
+    }
+  ],
+  "relationships": {
+    "children": [],
+    "parents": [
+      {
+        "id": "banner",
+        "contract": "components/contracts/banner.json",
+        "preview": "components/variants/banner.html",
+        "status": "preview-class-evidence-only",
+        "evidence": {
+          "status": "preview-class-evidence-only",
+          "verified": false,
+          "previewExists": true,
+          "classEvidence": true,
+          "declaredClasses": [
+            "ds-input-search",
+            "ds-input-search__field",
+            "ds-icon-btn",
+            "ds-icon-btn__icon"
+          ],
+          "missingClasses": [],
+          "exactStructure": "not-established",
+          "browserEvidence": "not-established",
+          "note": "宿主依赖声明及离线类名盘点；未证明具体变体、尺寸、必需子结构、宿主适配或浏览器行为。"
+        },
+        "usage": [
+          {
+            "component": "Input",
+            "part": "banner-search42",
+            "requiredVariants": [
+              "gray"
+            ],
+            "appliesTo": [
+              "search"
+            ],
+            "slot": "search",
+            "implementationClasses": [
+              "ds-input-search",
+              "ds-input-search__field",
+              "ds-icon-btn",
+              "ds-icon-btn__icon"
+            ],
+            "usage": "来源42px灰底搜索部件归Input维护；不是基础Input样例冒充Search。"
+          }
+        ]
+      },
+      {
+        "id": "collapse",
+        "contract": "components/contracts/collapse.json",
+        "preview": "components/variants/collapse.html",
+        "status": "preview-class-evidence-only",
+        "evidence": {
+          "status": "preview-class-evidence-only",
+          "verified": false,
+          "previewExists": true,
+          "classEvidence": true,
+          "declaredClasses": [
+            "ds-input-field",
+            "ds-input-field__label",
+            "ds-input-field__input",
+            "ds-input-field__input--gray",
+            "ds-input-field__error",
+            "ds-input-field__error-icon",
+            "ds-input-field__error-text"
+          ],
+          "missingClasses": [],
+          "exactStructure": "not-established",
+          "browserEvidence": "not-established",
+          "note": "宿主依赖声明及离线类名盘点；未证明具体变体、尺寸、必需子结构、宿主适配或浏览器行为。"
+        },
+        "usage": [
+          {
+            "component": "Input",
+            "usage": "行内编辑复用当前gray Input；本地Save原生校验并发送可取消意图，不包含后台持久化。",
+            "slot": "body",
+            "requiredVariants": [
+              "gray"
+            ],
+            "implementationClasses": [
+              "ds-input-field",
+              "ds-input-field__label",
+              "ds-input-field__input",
+              "ds-input-field__input--gray",
+              "ds-input-field__error",
+              "ds-input-field__error-icon",
+              "ds-input-field__error-text"
+            ],
+            "appliesTo": [
+              "inline-edit"
+            ],
+            "sourceEvidence": {
+              "review": "components/sources/collapse/inline-input-source-1010.json",
+              "originalHostMapping": "finite-instance-and-saved-atom-ancestry-confirmed",
+              "note": "Visible instance 69424:119941 child68908:022209 resolves to saved basic component68908:022199, background off/Input complete. Current atom width290 replaces original host380 under user atom-first policy; no pixel equivalence or browser acceptance."
+            }
+          }
+        ]
+      },
+      {
+        "id": "dialog",
+        "contract": "components/contracts/dialog.json",
+        "preview": "components/variants/dialog.html",
+        "status": "preview-class-evidence-only",
+        "evidence": {
+          "status": "preview-class-evidence-only",
+          "verified": false,
+          "previewExists": true,
+          "classEvidence": true,
+          "declaredClasses": [
+            "ds-input-field"
+          ],
+          "missingClasses": [],
+          "exactStructure": "not-established",
+          "browserEvidence": "not-established",
+          "note": "宿主依赖声明及离线类名盘点；未证明具体变体、尺寸、必需子结构、宿主适配或浏览器行为。"
+        },
+        "usage": [
+          {
+            "component": "Input",
+            "slot": "form-inputs",
+            "requiredVariants": [
+              "white"
+            ],
+            "implementationClasses": [
+              "ds-input-field"
+            ],
+            "appliesTo": [
+              "form"
+            ],
+            "usage": "Form-owned Dialog部件真实白底Input与文本域，保持原子结构和资源。"
+          }
+        ]
+      },
+      {
+        "id": "form",
+        "contract": "components/contracts/form.json",
+        "preview": "components/variants/form.html",
+        "status": "preview-class-evidence-only",
+        "evidence": {
+          "status": "preview-class-evidence-only",
+          "verified": false,
+          "previewExists": true,
+          "classEvidence": true,
+          "declaredClasses": [
+            "ds-input-field",
+            "ds-input-prefix",
+            "ds-input-field__header",
+            "ds-input-field__count",
+            "ds-input-field__input"
+          ],
+          "missingClasses": [],
+          "exactStructure": "not-established",
+          "browserEvidence": "not-established",
+          "note": "宿主依赖声明及离线类名盘点；未证明具体变体、尺寸、必需子结构、宿主适配或浏览器行为。"
+        },
+        "usage": [
+          {
+            "component": "Input",
+            "usage": "Finite white first and second basic fields, native70918:202597/202608 confirmed via actual main-set jump; complete atomic DOM with fill placement. Other fields pending.",
+            "slot": "firstTwoBasicFields",
+            "requiredVariants": [
+              "white"
+            ],
+            "implementationClasses": [
+              "ds-input-field"
+            ],
+            "appliesTo": [
+              "white"
+            ]
+          },
+          {
+            "component": "Input",
+            "usage": "Current PC phone external/start/fill Input and Input-owned static59x42 prefix, Gray8 both colors/white internal stroke; current official source read; no Select search/options admission.",
+            "slot": "phoneInnerInput",
+            "requiredVariants": [
+              "gray"
+            ],
+            "implementationClasses": [
+              "ds-input-field",
+              "ds-input-prefix"
+            ],
+            "appliesTo": [
+              "gray"
+            ]
+          },
+          {
+            "component": "Input",
+            "usage": "Current PC phone external/start/fill Input and Input-owned static59x42 prefix, Gray8 both colors/white internal stroke; current official source read; no Select search/options admission.",
+            "slot": "phoneInnerInput",
+            "requiredVariants": [
+              "white"
+            ],
+            "implementationClasses": [
+              "ds-input-field",
+              "ds-input-prefix"
+            ],
+            "appliesTo": [
+              "white"
+            ]
+          },
+          {
+            "component": "Input",
+            "usage": "PC gray sixth185394/022134 actual basic Input with decorative Down icon; atom owns styles.",
+            "slot": "sixthArrowBasicField",
+            "requiredVariants": [
+              "gray"
+            ],
+            "implementationClasses": [
+              "ds-input-field"
+            ],
+            "appliesTo": [
+              "gray"
+            ]
+          },
+          {
+            "component": "Input",
+            "usage": "PC gray fifth185348/022134 native visible source text Please enter text and decorative Down icon; replaces wrongly mapped Dropdown.",
+            "slot": "fifthArrowBasicField",
+            "requiredVariants": [
+              "gray"
+            ],
+            "implementationClasses": [
+              "ds-input-field"
+            ],
+            "appliesTo": [
+              "gray"
+            ]
+          },
+          {
+            "component": "Input",
+            "usage": "PC white fifth107908/022300: actual basic Input with decorative Down arrow, White/Gray4 face; incorrect Dropdown/options removed.",
+            "slot": "fifthArrowBasicField",
+            "requiredVariants": [
+              "white"
+            ],
+            "implementationClasses": [
+              "ds-input-field"
+            ],
+            "appliesTo": [
+              "white"
+            ]
+          },
+          {
+            "component": "Input",
+            "usage": "PC white sixth107940/022293 actual basic white Input; native arrow flag false, unlike gray sixth.",
+            "slot": "sixthBasicField",
+            "requiredVariants": [
+              "white"
+            ],
+            "implementationClasses": [
+              "ds-input-field"
+            ],
+            "appliesTo": [
+              "white"
+            ]
+          },
+          {
+            "component": "Input",
+            "usage": "PC gray181555/181544 own root, face022133 and text independently read; complete basic Input, fill, no arrow.",
+            "slot": "firstTwoBasicFields",
+            "requiredVariants": [
+              "gray"
+            ],
+            "implementationClasses": [
+              "ds-input-field"
+            ],
+            "appliesTo": [
+              "gray"
+            ]
+          },
+          {
+            "component": "Input",
+            "usage": "PC gray185306 own root, face022133 and text confirmed; complete basic gray Input, no arrow.",
+            "slot": "thirdBasicField",
+            "requiredVariants": [
+              "gray"
+            ],
+            "implementationClasses": [
+              "ds-input-field"
+            ],
+            "appliesTo": [
+              "gray"
+            ]
+          },
+          {
+            "component": "Input",
+            "usage": "PC white103789 own root, face022293 and text confirmed; complete basic white Input, no arrow.",
+            "slot": "thirdBasicField",
+            "requiredVariants": [
+              "white"
+            ],
+            "implementationClasses": [
+              "ds-input-field"
+            ],
+            "appliesTo": [
+              "white"
+            ]
+          },
+          {
+            "component": "Input",
+            "slot": "commentsTextarea",
+            "requiredVariants": [
+              "gray"
+            ],
+            "appliesTo": [
+              "gray"
+            ],
+            "capability": "finite-PC-textarea",
+            "source": "components/sources/form/native-textarea-structure-review-1011.json",
+            "usage": "PC gray comments native Input-family textarea; atom owns count, reset and paint",
+            "implementationClasses": [
+              "ds-input-field",
+              "ds-input-field__header",
+              "ds-input-field__count",
+              "ds-input-field__input"
+            ]
+          },
+          {
+            "component": "Input",
+            "slot": "commentsTextarea",
+            "requiredVariants": [
+              "white"
+            ],
+            "appliesTo": [
+              "white"
+            ],
+            "capability": "finite-PC-textarea",
+            "source": "components/sources/form/native-textarea-structure-review-1011.json",
+            "usage": "PC white comments native Input-family textarea; atom owns count, reset and paint",
+            "implementationClasses": [
+              "ds-input-field",
+              "ds-input-field__header",
+              "ds-input-field__count",
+              "ds-input-field__input"
+            ]
+          },
+          {
+            "component": "Input",
+            "slot": "mobileWhiteFifthSixthSourceSlots",
+            "usage": "Partial M source slots203557/203568 genuinely call white basic Input013958/022275; fifth arrow on, sixth off; fill width only.",
+            "requiredVariants": [
+              "white"
+            ],
+            "implementationClasses": [
+              "ds-input-field"
+            ],
+            "appliesTo": [
+              "mobile-source-slots",
+              "mobile-integrated"
+            ]
+          },
+          {
+            "component": "Input",
+            "slot": "mobileFiveBasicSourceSlots",
+            "usage": "Own gray2/3/6 offDefault022120 and white2/3 onDefault022275; real canonical Input fill DOM, originalLable text.",
+            "requiredVariants": [
+              "gray",
+              "white"
+            ],
+            "implementationClasses": [
+              "ds-input-field"
+            ],
+            "appliesTo": [
+              "mobile-source-slots",
+              "mobile-integrated"
+            ]
+          },
+          {
+            "component": "Input",
+            "slot": "mobileStaticPhonePrefix",
+            "usage": "Input有限静态前缀part与external/start/fill内Input真实拼接；来源为属性Input中的Select面板，未伪装完整Select/搜索调用",
+            "requiredVariants": [
+              "gray",
+              "white"
+            ],
+            "implementationClasses": [
+              "ds-input-prefix",
+              "ds-input-field"
+            ],
+            "appliesTo": [
+              "mobile-integrated"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "menu-navigation",
+        "contract": "components/contracts/menu-navigation.json",
+        "preview": "components/variants/menu-navigation.html",
+        "status": "preview-class-evidence-only",
+        "evidence": {
+          "status": "preview-class-evidence-only",
+          "verified": false,
+          "previewExists": true,
+          "classEvidence": true,
+          "declaredClasses": [
+            "ds-input-search",
+            "ds-input-search__field",
+            "ds-icon-btn",
+            "ds-icon-btn__icon"
+          ],
+          "missingClasses": [],
+          "exactStructure": "not-established",
+          "browserEvidence": "not-established",
+          "note": "宿主依赖声明及离线类名盘点；未证明具体变体、尺寸、必需子结构、宿主适配或浏览器行为。"
+        },
+        "usage": [
+          {
+            "component": "Input",
+            "part": "menu-search42",
+            "appliesTo": [
+              "multi-level-search"
+            ],
+            "requiredVariants": [
+              "white"
+            ],
+            "slot": "search",
+            "implementationClasses": [
+              "ds-input-search",
+              "ds-input-search__field",
+              "ds-icon-btn",
+              "ds-icon-btn__icon"
+            ],
+            "usage": "来源42px白底搜索部件归Input维护；不复制普通搜索假样式。"
+          }
+        ]
+      },
+      {
+        "id": "navigation",
+        "contract": "components/contracts/navigation.json",
+        "preview": "components/variants/navigation.html",
+        "status": "preview-class-evidence-only",
+        "evidence": {
+          "status": "preview-class-evidence-only",
+          "verified": false,
+          "previewExists": true,
+          "classEvidence": true,
+          "declaredClasses": [
+            "ds-input-footer-source"
+          ],
+          "missingClasses": [],
+          "exactStructure": "not-established",
+          "browserEvidence": "not-established",
+          "note": "宿主依赖声明及离线类名盘点；未证明具体变体、尺寸、必需子结构、宿主适配或浏览器行为。"
+        },
+        "usage": [
+          {
+            "component": "Input",
+            "part": "navigation-us-retained-default",
+            "requiredVariants": [
+              "gray"
+            ],
+            "implementationClasses": [
+              "ds-input-footer-source"
+            ],
+            "slot": "footer.subscribeInput",
+            "appliesTo": [
+              "footer"
+            ],
+            "usage": "新文件3:85040确认Email/Default插槽；保留已闭合实例047152的32px专属子部分，不升级基础42px Input或宣称活母组件/其他状态已核对。"
+          }
+        ]
+      },
+      {
+        "id": "select",
+        "contract": "components/contracts/select.json",
+        "preview": "components/variants/select.html",
+        "status": "preview-class-evidence-only",
+        "evidence": {
+          "status": "preview-class-evidence-only",
+          "verified": false,
+          "previewExists": true,
+          "classEvidence": true,
+          "declaredClasses": [
+            "ds-input-field__input",
+            "ds-input-field__input--gray",
+            "ds-input-field__input--white"
+          ],
+          "missingClasses": [],
+          "exactStructure": "not-established",
+          "browserEvidence": "not-established",
+          "note": "宿主依赖声明及离线类名盘点；未证明具体变体、尺寸、必需子结构、宿主适配或浏览器行为。"
+        },
+        "usage": [
+          {
+            "component": "Input",
+            "usage": "当前MG选择框的Input受控面部适配：九个现有调用的按钮或多值容器复用Input共享CSS及状态，Select保留combobox、标签、清除与选择事件。",
+            "slot": "trigger-face",
+            "appliesTo": [
+              "single-basic",
+              "single-radio",
+              "single-check",
+              "multi-basic",
+              "multi-checkbox",
+              "phone-search",
+              "search",
+              "two-column",
+              "grouped-combination"
+            ],
+            "requiredVariants": [
+              "gray",
+              "white"
+            ],
+            "implementationClasses": [
+              "ds-input-field__input",
+              "ds-input-field__input--gray",
+              "ds-input-field__input--white"
+            ],
+            "sourceEvidence": {
+              "review": "components/sources/foundation-mg-20261114/select-review.json",
+              "nodes": [
+                "3:290005",
+                "3:290064"
+              ],
+              "scope": "current-nine-admitted-trigger-face-adapters"
+            }
+          }
+        ]
+      }
+    ],
+    "parentStatus": "declared-hosts",
+    "icons": [
+      {
+        "file": "components/icons/icon-info.svg",
+        "registry": "components/icons/icons-manifest.json",
+        "appliesTo": [
+          "gray",
+          "white"
+        ],
+        "usage": "Basic Input错误状态14px红色Info；mask内嵌原始登记字节支持file预览，基础输入框轮廓不受Textarea Warning修正影响"
+      },
+      {
+        "file": "components/icons/icon-input-down.svg",
+        "registry": "components/icons/icons-manifest.json",
+        "appliesTo": [
+          "gray",
+          "white"
+        ],
+        "usage": "Official 12px Gray3 Down vector: finite current Form basic Input decorative arrows and PC/M static prefixes. No dropdown or search behavior."
+      },
+      {
+        "file": "components/icons/icon-warning.svg",
+        "registry": "components/icons/icons-manifest.json",
+        "appliesTo": [
+          "gray",
+          "white"
+        ],
+        "usage": "仅data-input-kind=textarea错误区域的14px圆圈感叹号；用户从有效白Textarea054167官方导出。灰共享Error此前已核同一Warning引用；不替换Basic Input Info，不开放通用Textarea AI。"
+      }
+    ],
+    "tokens": [
+      {
+        "name": "color.white",
+        "value": "#FFFFFF",
+        "unit": null,
+        "cssVar": "--color-white",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.gray-1",
+        "value": "#19191A",
+        "unit": null,
+        "cssVar": "--color-gray-1",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.gray-3",
+        "value": "#707070",
+        "unit": null,
+        "cssVar": "--color-gray-3",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.gray-5",
+        "value": "#DEE0E3",
+        "unit": null,
+        "cssVar": "--color-gray-5",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.gray-9",
+        "value": "#FAFBFB",
+        "unit": null,
+        "cssVar": "--color-gray-9",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.brand-red",
+        "value": "#C00000",
+        "unit": null,
+        "cssVar": "--brand-red",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "border-radius.md",
+        "value": 4,
+        "unit": "px",
+        "cssVar": "--border-radius-md",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border-radius.json"
+      },
+      {
+        "name": "typography.font-family-base",
+        "value": "Open Sans",
+        "unit": null,
+        "cssVar": "--font-family-base",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-size-h8",
+        "value": 13,
+        "unit": "px",
+        "cssVar": "--font-size-h8",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "spacing.xs",
+        "value": 4,
+        "unit": "px",
+        "cssVar": "--spacing-xs",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.md",
+        "value": 12,
+        "unit": "px",
+        "cssVar": "--spacing-md",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "border.style.none",
+        "value": "none",
+        "unit": null,
+        "cssVar": "--border-style-none",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.width.default",
+        "value": 1,
+        "unit": "px",
+        "cssVar": "--border-width-default",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.style.default",
+        "value": "solid",
+        "unit": null,
+        "cssVar": "--border-style-default",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.strong",
+        "value": "var(--color-gray-3)",
+        "unit": null,
+        "cssVar": "--border-color-strong",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.default",
+        "value": "var(--color-gray-5)",
+        "unit": null,
+        "cssVar": "--border-color-default",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.subtle",
+        "value": "var(--color-gray-6)",
+        "unit": null,
+        "cssVar": "--border-color-subtle",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "typography.font-weight-regular",
+        "value": 400,
+        "unit": null,
+        "cssVar": "--font-weight-regular",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.h8-regular",
+        "value": {
+          "fontSize": "13px",
+          "lineHeight": "20px",
+          "fontWeight": 400
+        },
+        "unit": null,
+        "cssVar": null,
+        "primitiveReferences": {
+          "fontSize": "typography.font-size-h8",
+          "fontWeight": "typography.font-weight-regular"
+        },
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-size-md",
+        "value": 14,
+        "unit": "px",
+        "cssVar": "--font-size-md",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.h7-regular",
+        "value": {
+          "fontSize": "14px",
+          "lineHeight": "22px",
+          "fontWeight": 400
+        },
+        "unit": null,
+        "cssVar": null,
+        "primitiveReferences": {
+          "fontSize": "typography.font-size-md",
+          "fontWeight": "typography.font-weight-regular"
+        },
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "color.gray-8",
+        "value": "#F6F6F8",
+        "unit": null,
+        "cssVar": "--color-gray-8",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.text-disabled",
+        "value": "rgba(25,25,26,0.3)",
+        "unit": null,
+        "cssVar": "--color-text-disabled",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.hover-overlay-light",
+        "value": "rgba(25,25,26,0.04)",
+        "unit": null,
+        "cssVar": "--color-hover-overlay-light",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.gray-6",
+        "value": "#EDEDF0",
+        "unit": null,
+        "cssVar": "--color-gray-6",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.input-disabled-border",
+        "value": "#EEEEEE",
+        "unit": null,
+        "cssVar": "--color-input-disabled-border",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "border.color.input-disabled",
+        "value": "var(--color-input-disabled-border)",
+        "unit": null,
+        "cssVar": "--border-color-input-disabled",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "spacing.10",
+        "value": 10,
+        "unit": "px",
+        "cssVar": "--spacing-10",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.lg",
+        "value": 16,
+        "unit": "px",
+        "cssVar": "--spacing-lg",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "typography.font-size-sm",
+        "value": 12,
+        "unit": "px",
+        "cssVar": "--font-size-sm",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "spacing.sm",
+        "value": 8,
+        "unit": "px",
+        "cssVar": "--spacing-sm",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "color.blue",
+        "value": "#0060BF",
+        "unit": null,
+        "cssVar": "--color-blue",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "spacing.3",
+        "value": 3,
+        "unit": "px",
+        "cssVar": "--spacing-3",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "border.color.emphasis",
+        "value": "var(--color-gray-1)",
+        "unit": null,
+        "cssVar": "--border-color-emphasis",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      }
+    ]
+  },
+  "source": {
+    "fileId": "143880409387753",
+    "pageId": "68908:290576",
+    "originalSectionId": "68908:307411",
+    "componentSetId": "68908:013958",
+    "capturedDate": "2026-10-09",
+    "remoteRevision": null,
+    "scope": "basic-text-input-only"
+  },
+  "evidence": {
+    "original": "components/sources/input/mastergo-original-components.json",
+    "comparison": "components/sources/input/basic-input-review.json",
+    "nativeSpecificationReview": "components/sources/input/specification-basic-review-1011.json",
+    "nativeNestedPhoneReview": "components/sources/form/native-phone-structure-review-1011.json",
+    "currentMgReview": "components/sources/foundation-mg-20261114/input-review.json"
+  },
+  "sourceValidation": {
+    "componentIdentity": {
+      "status": "saved-tool-markers-checked",
+      "files": [
+        "components/sources/input/mastergo-original-components.json",
+        "components/sources/input/basic-input-review.json"
+      ],
+      "basis": "Finite saved tool HTML marker/state provenance; independent original DSL types are not established."
+    },
+    "specificationBody": {
+      "status": "not-established",
+      "files": []
+    },
+    "originalOnlineFrontendCode": false,
+    "browserComputedStyles": false,
+    "completeSpecificationCoverage": false
+  },
+  "freshness": {
+    "fingerprints": {
+      "components/components.css": "a08b4fe2790b5ff2b784c6362a90f1b94e7535a03e863232ce6d620a52e85f73",
+      "components/contracts/button.json": "1f3092d74e19c1a840fbf2e8b8ecaf6115976b2941cc5484e4cda824025b1f73",
+      "components/contracts/collapse.json": "e723bf5d2e055846a15f14036d2711334b77408f64000ba0b5956383b1351c61",
+      "components/contracts/input.json": "b367155c40d99807834add264130f574d150f95f09836fe70e84e3bf37a174d1",
+      "components/contracts/text-button.json": "323301e3a3438778dd29d5d6c32fd7e661846707ce711b5c0ec82d11fea12fc5",
+      "components/icons/icon-info.svg": "6e6c97d5d691758fe1b009b4dd6229e9dd20cda4641f341589e0e3fb1fde2bb6",
+      "components/icons/icon-input-down.svg": "cfa301aa5e55d0be8e7ed545fe7c9ac2c59a0f69dd7a04e6c6c540e3355fc6f1",
+      "components/icons/icon-warning.svg": "feb238e0433be9d36ba733fe080b94a106c03664f54d5fc938dfea5f9d664164",
+      "components/icons/icons-manifest.json": "12c48af6d1dc59d50b76046bb0507005f565aa4224a6d8056ce4eaaf8050c43e",
+      "components/input-current.css": "81df82b74844b99bdb11674ed4ffe47c0e6e02595408a113fec9f4426d5f9d14",
+      "components/input-current.js": "e218bd2029d632ce9d9564fa67a25cfb05819e5cf9668a25333d7fd04cfc7acc",
+      "components/preview/reference-live.js": "4839383529a3ee82df1d8efe675d430567abc1986034499107aa429d21a18ea6",
+      "components/reference-policy.json": "4ae8f51f623386417e38d497caafb8bda4417c929159002a7ac088e6e526b482",
+      "components/sources/five-variants-20261115/review.json": "821baac5e00e60f1a796ae8d0a1881ae122da740e477666a54b3e94a13a7556f",
+      "components/sources/form/native-phone-structure-review-1011.json": "fd9ad7a12df00b836197c0cd4cc9cc440b2824ad8f6b7615fec4939cccdf36a6",
+      "components/sources/foundation-mg-20261114/input-review.json": "249387b44158c23d64345670aaecf5def2f26827404794be62f39dcc1dabe4f6",
+      "components/sources/input/basic-input-review.json": "de542d84aacf990575f5d3b254f8ab338d669248f83f6907b3f4c36a2adb982f",
+      "components/sources/input/mastergo-original-components.json": "c94a367166f83cdd93446425920118e79bd51b0f64eafd9849b27f7ee44ebb20",
+      "components/sources/input/specification-basic-review-1011.json": "e1332391965bdfd11de4d7ebb3587293bf33684736c8413fa7e46ace0a65946f",
+      "components/sources/text-button/collapse-edit-current-1115.html": "dbea123d730d8495e2b43599a02f384d81b9a60a30192f12d08801958aa2df0c",
+      "components/token-specs/border-radius.json": "b01e4c23fbc7e19983d9592b59b0303155b79d66c52459356eda0ea9f4ca74b5",
+      "components/token-specs/border.json": "d286ee4681deda1c7702c310b065c86f824539b3a8797efba05b24bc225ab322",
+      "components/token-specs/colors.json": "5267d59fdc687b54496977280c00c97f0beb6ffce013f87853504f5b736d3389",
+      "components/token-specs/spacing.json": "351b14cfce4411248ad41e00eaaf2b1cab9b705997980dfed1fc65693740e65c",
+      "components/token-specs/typography.json": "93b7dc07547218a33c075b7cdcd942f89094353a7847d483d8378b8883327e16",
+      "components/tokens.css": "f63f3c8fea511d8029902bc3905b01853ac5e92049c1b18ca35ebc9a680c3e69",
+      "components/variants/banner.html": "fa9af2a1b48a9b7fe7f8720a6935613bcd52aebb44313a77dbfd94f2f273c6e6",
+      "components/variants/button.html": "6b6715b66e6c0b684c072dcdcbf7170aeb9f49a31bb32ca5b8986644d626cfe6",
+      "components/variants/collapse.html": "26f87a715552789e80ed66e1a7428719beddfaba67be4e165f5eb40b22c1e45c",
+      "components/variants/dialog.html": "40132b51264249e10a92ea5f24730d989ca1415daa62f9ef42d391aadff7f21f",
+      "components/variants/form.html": "25d31960a440684ed7015f9dc5e628875090709d5001bffebd5972232e48d489",
+      "components/variants/input.html": "d34e9585cb00f4293912c199391e0b8328b13fe8db16ac4b4ea4b05b596d10c1",
+      "components/variants/menu-navigation.html": "6238b924e7c62295141a5dba9b8900cd5eb39779a19ce00fb307aac928900462",
+      "components/variants/navigation.html": "300042ed2992013e57983a3895b164ae4499712707e8aa5a5bffe67ac0660081",
+      "components/variants/select.html": "0042deb9a302606c3a82505cafbd807753c3c6eb31e8b107e3ecb0fe0538bf7f",
+      "components/variants/text-button.html": "6295056d973b26231a68158bd758ebde321d8a105326a740f159006a1a7bd2f8"
+    },
+    "graphFingerprint": "d554ed6a0466d465a3888f8d9cb2c52cfbe64504fb4db777a7f2110fb79350f7",
+    "note": "从本地源文件生成；不是 MasterGo 在线实时状态。"
+  },
+  "readScope": {
+    "variant": "gray",
+    "note": "只展开当前已选变体；其他变体没有被声明为不可用。尺寸继续按真实 sizeOptions 选择。"
+  }
+}

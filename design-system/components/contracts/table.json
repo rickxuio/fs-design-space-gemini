@@ -1,0 +1,1515 @@
+{
+  "id": "comp_table_001",
+  "name": "Table",
+  "chineseName": "表格",
+  "description": "Table 表格组件，依据 v2.2.2511A 规范与用户提供的垂直型、水平型、矩阵型 PC/M 原始代码统一落地八个形态。12px GPT 与行线型由用户授权按规范补齐。",
+  "category": "数据展示 Data Display",
+  "types": [
+    {
+      "name": "vertical",
+      "chineseName": "垂直型",
+      "description": "纵向表头，适合属性—值对照，可为单列或双列；PC/M 几何由用户原始代码核实。"
+    },
+    {
+      "name": "horizontal",
+      "chineseName": "水平型",
+      "description": "横向表头，源码核实基础型和内部网格 13px 的 PC 880px、M 382px/内部 880px；12px GPT 与行线型按用户授权依据规范补齐。"
+    },
+    {
+      "name": "matrix",
+      "chineseName": "矩阵型",
+      "description": "纵向与横向表头并存；源码核实有产品图和无产品图的 PC 1200px 与 M 382px 几何。"
+    }
+  ],
+  "variants": [
+    {
+      "name": "vertical-double",
+      "type": "vertical",
+      "chineseName": "垂直型·蓝色斑马纹·双列",
+      "cssClass": "ds-table ds-table--vertical ds-table--vertical-double",
+      "whenToUse": "同一行对照两组属性与值。",
+      "isComplete": true,
+      "pendingParts": [],
+      "requiredChildren": [
+        "div.ds-table__scroll",
+        "table.ds-table__table",
+        "tbody",
+        "tr",
+        "td",
+        "th"
+      ],
+      "selectionDecisionType": "垂直型·双列",
+      "whenNotToUse": "每行一组或希望可变列、合并单元格。",
+      "usage": "同一行对照两组属性与值。"
+    },
+    {
+      "name": "vertical-single",
+      "type": "vertical",
+      "chineseName": "垂直型·蓝色斑马纹·单列",
+      "cssClass": "ds-table ds-table--vertical ds-table--vertical-single",
+      "whenToUse": "每行只表达一组属性和值。",
+      "isComplete": true,
+      "pendingParts": [],
+      "requiredChildren": [
+        "div.ds-table__scroll",
+        "table.ds-table__table",
+        "tbody",
+        "tr",
+        "td",
+        "th"
+      ],
+      "selectionDecisionType": "垂直型·单列",
+      "whenNotToUse": "需要双组对照或自由添加控件。",
+      "usage": "每行只表达一组属性和值。"
+    },
+    {
+      "name": "horizontal-zebra",
+      "type": "horizontal",
+      "chineseName": "水平型·蓝色表头基础型",
+      "cssClass": "ds-table ds-table--horizontal",
+      "whenToUse": "常规列标题与横向静态数据。",
+      "isComplete": true,
+      "pendingParts": [],
+      "requiredChildren": [
+        "div.ds-table__scroll",
+        "table.ds-table__table",
+        "tbody",
+        "tr",
+        "td",
+        "th"
+      ],
+      "selectionDecisionType": "水平型·蓝色表头基础型",
+      "whenNotToUse": "单元格必须明显网格或需排序筛选。",
+      "usage": "常规列标题与横向静态数据。"
+    },
+    {
+      "name": "horizontal-grid-13",
+      "type": "horizontal",
+      "chineseName": "水平型·内部网格描边·13px",
+      "cssClass": "ds-table ds-table--horizontal ds-table--grid",
+      "whenToUse": "普通数据需要内部单元格边界。",
+      "isComplete": true,
+      "pendingParts": [],
+      "requiredChildren": [
+        "div.ds-table__scroll",
+        "table.ds-table__table",
+        "tbody",
+        "tr",
+        "td",
+        "th"
+      ],
+      "selectionDecisionType": "水平型·内部网格 13px",
+      "whenNotToUse": "仅为挤入更多内容而改为12px。",
+      "usage": "普通数据需要内部单元格边界。"
+    },
+    {
+      "name": "horizontal-grid-12-gpt",
+      "type": "horizontal",
+      "chineseName": "水平型·内部网格描边·12px（GPT）",
+      "cssClass": "ds-table ds-table--horizontal ds-table--grid ds-table--grid-compact",
+      "whenToUse": "现有GPT等高密度内部网格场景。",
+      "isComplete": true,
+      "pendingParts": [],
+      "requiredChildren": [
+        "div.ds-table__scroll",
+        "table.ds-table__table",
+        "thead",
+        "tbody",
+        "tr",
+        "th",
+        "td"
+      ],
+      "finiteCallBoundary": "Only 1–6 complete plaintext rows in AI contract. Variant registration is not source/browser/complete family engineering acceptance.",
+      "selectionDecisionType": "水平型·内部网格 12px（GPT）",
+      "whenNotToUse": "普通数据表或为了视觉任意改字号。",
+      "usage": "现有GPT等高密度内部网格场景。"
+    },
+    {
+      "name": "horizontal-row-line",
+      "type": "horizontal",
+      "chineseName": "水平型·行线",
+      "cssClass": "ds-table ds-table--horizontal ds-table--row-line",
+      "whenToUse": "按行阅读、不强调列边界的静态表。",
+      "isComplete": true,
+      "pendingParts": [],
+      "requiredChildren": [
+        "div.ds-table__scroll",
+        "table.ds-table__table",
+        "thead",
+        "tbody",
+        "tr",
+        "th",
+        "td"
+      ],
+      "finiteCallBoundary": "Only 1–6 complete plaintext rows in AI contract. Variant registration is not source/browser/complete family engineering acceptance.",
+      "selectionDecisionType": "水平型·行线",
+      "whenNotToUse": "超过六行需展开或要求列内复杂控件。",
+      "usage": "按行阅读、不强调列边界的静态表。"
+    },
+    {
+      "name": "matrix-products",
+      "type": "matrix",
+      "chineseName": "矩阵型·有产品图",
+      "cssClass": "ds-table ds-table--matrix ds-table--matrix-products",
+      "whenToUse": "需要产品图识别的六列对比矩阵。",
+      "isComplete": true,
+      "pendingParts": [],
+      "requiredChildren": [
+        "div.ds-table__scroll",
+        "table.ds-table__table",
+        "thead",
+        "tbody",
+        "tr",
+        "th",
+        "td",
+        "div.ds-table__scroll-controls",
+        "button.ds-table__scroll-control"
+      ],
+      "finiteCallBoundary": "PC/LTR six columns and 1–6 complete body rows, current native scroll controls; not complete family/browser/source acceptance.",
+      "selectionDecisionType": "矩阵型·有产品图",
+      "whenNotToUse": "没有产品图或需要可变列、移动端适配。",
+      "usage": "需要产品图识别的六列对比矩阵。"
+    },
+    {
+      "name": "matrix-plain",
+      "type": "matrix",
+      "chineseName": "矩阵型·无产品图",
+      "cssClass": "ds-table ds-table--matrix ds-table--matrix-plain",
+      "whenToUse": "不依赖产品图的六列文字对比矩阵。",
+      "isComplete": true,
+      "pendingParts": [],
+      "requiredChildren": [
+        "div.ds-table__scroll",
+        "table.ds-table__table",
+        "thead",
+        "tbody",
+        "tr",
+        "th",
+        "td",
+        "div.ds-table__scroll-controls",
+        "button.ds-table__scroll-control"
+      ],
+      "finiteCallBoundary": "PC/LTR six columns and 1–6 complete body rows, current native scroll controls; not complete family/browser/source acceptance.",
+      "selectionDecisionType": "矩阵型·无产品图",
+      "whenNotToUse": "产品必须靠缩略图识别或列数不符。",
+      "usage": "不依赖产品图的六列文字对比矩阵。"
+    }
+  ],
+  "states": [
+    {
+      "name": "default",
+      "chineseName": "默认",
+      "styleOverrides": {},
+      "description": "完整表格默认状态。"
+    },
+    {
+      "name": "scrollable",
+      "chineseName": "可滚动",
+      "styleOverrides": {
+        "wrapper": "overflow:auto"
+      },
+      "description": "水平型或矩阵型内容超出容器时横向、纵向或双向滚动。"
+    },
+    {
+      "name": "collapsed",
+      "chineseName": "收起",
+      "styleOverrides": {
+        "visibleRows": "6",
+        "ariaExpanded": "false"
+      },
+      "description": "数据超过 6 行时默认仅展示前 6 行。"
+    },
+    {
+      "name": "expanded",
+      "chineseName": "展开",
+      "styleOverrides": {
+        "visibleRows": "all",
+        "ariaExpanded": "true"
+      },
+      "description": "See more 后展示全部数据，可通过 See less 恢复。"
+    }
+  ],
+  "commonProperties": {
+    "fontFamily": "Open Sans",
+    "rowHeight": "36px",
+    "cellPadding": "8px 10px",
+    "textColor": "#19191A",
+    "defaultTypography": "13px / 20px / Regular 400",
+    "headerTypography": "13px / 20px / SemiBold 600"
+  },
+  "usageGuidelines": "先按表头方向选择垂直型、水平型或矩阵型，再按信息密度选择真实变体。默认 13px，仅 GPT 内部网格使用 12px；单元格统一 8px×10px并形成 36px 行高。垂直型按源码使用 1200/880/382px 精确几何；水平型 PC 内部 880px、M 外层 382px且横向滚动，行线型在浅蓝表头后从白色 tbody 行开始按白/浅蓝交替；矩阵 PC 内部 1200px，M 有图为 955px、无图为 1200px。数据超过 6 行时默认收起并在表格下方居中提供正式 TextButton Disclosure / M（inline-black / M）作为 See more / See less 触发器；矩阵控制器仅在实际 overflow 时显示。 原生通用矩阵yes/pc及其行头原子确认200px列；规范3.3应用例184px单独记录，不作为通用原子宽度覆写。",
+  "responsiveRules": [
+    {
+      "viewport": "M",
+      "rule": "垂直双列 382px，按 40%/60% 将两组数据上下堆叠；垂直单列 382px、表头 160px。水平型外层 382px、内部 880px。矩阵有产品图外层 382px、内部 955px、5 个产品列各 191px且行头独占一行；矩阵无产品图外层 382px、内部 1200px。"
+    },
+    {
+      "viewport": "PC/Pad",
+      "rule": "垂直双列 1200px/表头 240px/组间 2px，垂直单列 880px/表头 200px；水平型内部 880px；矩阵内部1200px，通用原子首列与其余5列各200px；规范3.3产品详情应用例184px另记来源，非通用组件覆写。Pad尚未本轮复核。"
+    }
+  ],
+  "tokenReferences": [
+    "color.gray-1",
+    "color.white",
+    "color.table-header-bg",
+    "color.table-divider",
+    "spacing.xs",
+    "spacing.sm",
+    "spacing.10",
+    "border.width.default",
+    "border.width.strong",
+    "border.style.default",
+    "border.style.none",
+    "border.color.transparent",
+    "border.color.table-divider",
+    "typography.font-family-base",
+    "typography.font-size-h8",
+    "typography.font-size-sm",
+    "typography.font-weight-regular",
+    "typography.font-weight-semibold",
+    "typography.h8-regular",
+    "typography.h8-semibold",
+    "typography.h9-regular",
+    "color.gray-5",
+    "border.color.table-header",
+    "border-radius.sm",
+    "opacity.disabled",
+    "border-radius.full",
+    "spacing.20",
+    "spacing.lg"
+  ],
+  "constraints": {
+    "allowedChildren": [
+      "caption",
+      "thead",
+      "tbody",
+      "tr",
+      "th",
+      "td",
+      "div",
+      "button",
+      "img",
+      "TextButton",
+      "Text",
+      "span"
+    ],
+    "requiredProperties": [
+      "type"
+    ],
+    "forbiddenCombinations": [
+      "12px 紧凑字体用于非 horizontal-grid-12-gpt 形态",
+      "矩阵没有实际 overflow 时显示滚动控制",
+      "垂直双列 M 端删除或隐藏 PC 的第二组属性和值",
+      "矩阵有产品图 M 端保留 PC 空白角或压缩 191px 产品列",
+      "行线型浅蓝表头后继续使用浅蓝首行",
+      "行线型 See more / See less 靠左或靠右而非水平居中"
+    ]
+  },
+  "relations": {
+    "variantDecisionsDescription": "按内容与交互选具体变体，再核对同版调用资格。候选、不用、参考同时用于规范展示与AI；既有来源、当前MG核对、工程与视觉批准分开记录。",
+    "variantDecisions": [
+      {
+        "type": "垂直型·双列",
+        "className": "ds-table--vertical ds-table--vertical-double",
+        "whenToUse": "同一行对照两组属性与值。",
+        "whenNotToUse": "每行一组或希望可变列、合并单元格。",
+        "nestedComponents": [],
+        "status": "当前MG来源与现有有限调用已核对；资格读同版catalog，未开放和视觉批准不据此改变。",
+        "variant": "vertical-double",
+        "fragment": "vertical-double",
+        "selectionCases": [
+          {
+            "id": "table.vertical-double.1",
+            "kind": "use",
+            "condition": "同一行对照两组属性与值。",
+            "result": "调用vertical-double；固定四列；完整1–6行数据。",
+            "targetVariant": "vertical-double",
+            "strength": "candidate"
+          },
+          {
+            "id": "table.vertical-double.2",
+            "kind": "avoid",
+            "condition": "每行一组或希望可变列、合并单元格。",
+            "result": "不使用此变体；先核对相邻组件和实际调用范围。",
+            "targetVariant": "vertical-double",
+            "strength": "avoid"
+          }
+        ]
+      },
+      {
+        "type": "垂直型·单列",
+        "className": "ds-table--vertical ds-table--vertical-single",
+        "whenToUse": "每行只表达一组属性和值。",
+        "whenNotToUse": "需要双组对照或自由添加控件。",
+        "nestedComponents": [],
+        "status": "当前MG来源与现有有限调用已核对；资格读同版catalog，未开放和视觉批准不据此改变。",
+        "variant": "vertical-single",
+        "fragment": "vertical-single",
+        "selectionCases": [
+          {
+            "id": "table.vertical-single.1",
+            "kind": "use",
+            "condition": "每行只表达一组属性和值。",
+            "result": "调用vertical-single；固定两列；完整1–6行数据。",
+            "targetVariant": "vertical-single",
+            "strength": "candidate"
+          },
+          {
+            "id": "table.vertical-single.2",
+            "kind": "avoid",
+            "condition": "需要双组对照或自由添加控件。",
+            "result": "不使用此变体；先核对相邻组件和实际调用范围。",
+            "targetVariant": "vertical-single",
+            "strength": "avoid"
+          }
+        ]
+      },
+      {
+        "type": "水平型·蓝色表头基础型",
+        "className": "ds-table--horizontal",
+        "whenToUse": "常规列标题与横向静态数据。",
+        "whenNotToUse": "单元格必须明显网格或需排序筛选。",
+        "nestedComponents": [],
+        "status": "当前MG来源与现有有限调用已核对；资格读同版catalog，未开放和视觉批准不据此改变。",
+        "variant": "horizontal-zebra",
+        "fragment": "horizontal-zebra",
+        "selectionCases": [
+          {
+            "id": "table.horizontal-zebra.1",
+            "kind": "use",
+            "condition": "常规列标题与横向静态数据。",
+            "result": "调用horizontal-zebra；固定两列，1–6行，不内嵌控件。",
+            "targetVariant": "horizontal-zebra",
+            "strength": "candidate"
+          },
+          {
+            "id": "table.horizontal-zebra.2",
+            "kind": "avoid",
+            "condition": "单元格必须明显网格或需排序筛选。",
+            "result": "不使用此变体；先核对相邻组件和实际调用范围。",
+            "targetVariant": "horizontal-zebra",
+            "strength": "avoid"
+          }
+        ]
+      },
+      {
+        "type": "水平型·内部网格 13px",
+        "className": "ds-table--horizontal ds-table--grid",
+        "whenToUse": "普通数据需要内部单元格边界。",
+        "whenNotToUse": "仅为挤入更多内容而改为12px。",
+        "nestedComponents": [],
+        "status": "当前MG来源与现有有限调用已核对；资格读同版catalog，未开放和视觉批准不据此改变。",
+        "variant": "horizontal-grid-13",
+        "fragment": "horizontal-grid-13",
+        "selectionCases": [
+          {
+            "id": "table.horizontal-grid-13.1",
+            "kind": "use",
+            "condition": "普通数据需要内部单元格边界。",
+            "result": "调用horizontal-grid-13；现有13px网格，1–6行。",
+            "targetVariant": "horizontal-grid-13",
+            "strength": "candidate"
+          },
+          {
+            "id": "table.horizontal-grid-13.2",
+            "kind": "avoid",
+            "condition": "仅为挤入更多内容而改为12px。",
+            "result": "不使用此变体；先核对相邻组件和实际调用范围。",
+            "targetVariant": "horizontal-grid-13",
+            "strength": "avoid"
+          }
+        ]
+      },
+      {
+        "type": "水平型·内部网格 12px（GPT）",
+        "className": "ds-table--horizontal ds-table--grid ds-table--grid-compact",
+        "whenToUse": "现有GPT等高密度内部网格场景。",
+        "whenNotToUse": "普通数据表或为了视觉任意改字号。",
+        "nestedComponents": [],
+        "status": "当前MG来源与现有有限调用已核对；资格读同版catalog，未开放和视觉批准不据此改变。",
+        "variant": "horizontal-grid-12-gpt",
+        "fragment": "horizontal-grid-12-gpt",
+        "selectionCases": [
+          {
+            "id": "table.horizontal-grid-12-gpt.1",
+            "kind": "use",
+            "condition": "现有GPT等高密度内部网格场景。",
+            "result": "调用horizontal-grid-12-gpt；保留用户授权补齐来源，不冒称新MG原件。",
+            "targetVariant": "horizontal-grid-12-gpt",
+            "strength": "candidate"
+          },
+          {
+            "id": "table.horizontal-grid-12-gpt.2",
+            "kind": "avoid",
+            "condition": "普通数据表或为了视觉任意改字号。",
+            "result": "不使用此变体；先核对相邻组件和实际调用范围。",
+            "targetVariant": "horizontal-grid-12-gpt",
+            "strength": "avoid"
+          }
+        ]
+      },
+      {
+        "type": "水平型·行线",
+        "className": "ds-table--horizontal ds-table--row-line",
+        "whenToUse": "按行阅读、不强调列边界的静态表。",
+        "whenNotToUse": "超过六行需展开或要求列内复杂控件。",
+        "nestedComponents": [
+          {
+            "component": "TextButton",
+            "label": "TextButton (Disclosure / M)",
+            "href": "text-button.html#text-button-disclosure-m"
+          }
+        ],
+        "status": "当前MG来源与现有有限调用已核对；资格读同版catalog，未开放和视觉批准不据此改变。",
+        "variant": "horizontal-row-line",
+        "fragment": "horizontal-row-line",
+        "selectionCases": [
+          {
+            "id": "table.horizontal-row-line.1",
+            "kind": "use",
+            "condition": "按行阅读、不强调列边界的静态表。",
+            "result": "调用horizontal-row-line；最多六行；TextButton展开规范仍是参考。",
+            "targetVariant": "horizontal-row-line",
+            "strength": "candidate"
+          },
+          {
+            "id": "table.horizontal-row-line.2",
+            "kind": "avoid",
+            "condition": "超过六行需展开或要求列内复杂控件。",
+            "result": "不使用此变体；先核对相邻组件和实际调用范围。",
+            "targetVariant": "horizontal-row-line",
+            "strength": "avoid"
+          }
+        ]
+      },
+      {
+        "type": "矩阵型·有产品图",
+        "className": "ds-table--matrix ds-table--matrix-products",
+        "whenToUse": "需要产品图识别的六列对比矩阵。",
+        "whenNotToUse": "没有产品图或需要可变列、移动端适配。",
+        "nestedComponents": [],
+        "status": "当前MG来源与现有有限调用已核对；资格读同版catalog，未开放和视觉批准不据此改变。",
+        "variant": "matrix-products",
+        "fragment": "matrix-products",
+        "selectionCases": [
+          {
+            "id": "table.matrix-products.1",
+            "kind": "use",
+            "condition": "需要产品图识别的六列对比矩阵。",
+            "result": "调用matrix-products；保留媒体容器及原PC/LTR滚动按钮。",
+            "targetVariant": "matrix-products",
+            "strength": "candidate"
+          },
+          {
+            "id": "table.matrix-products.2",
+            "kind": "avoid",
+            "condition": "没有产品图或需要可变列、移动端适配。",
+            "result": "不使用此变体；先核对相邻组件和实际调用范围。",
+            "targetVariant": "matrix-products",
+            "strength": "avoid"
+          }
+        ]
+      },
+      {
+        "type": "矩阵型·无产品图",
+        "className": "ds-table--matrix ds-table--matrix-plain",
+        "whenToUse": "不依赖产品图的六列文字对比矩阵。",
+        "whenNotToUse": "产品必须靠缩略图识别或列数不符。",
+        "nestedComponents": [],
+        "status": "当前MG来源与现有有限调用已核对；资格读同版catalog，未开放和视觉批准不据此改变。",
+        "variant": "matrix-plain",
+        "fragment": "matrix-plain",
+        "selectionCases": [
+          {
+            "id": "table.matrix-plain.1",
+            "kind": "use",
+            "condition": "不依赖产品图的六列文字对比矩阵。",
+            "result": "调用matrix-plain；完整1–6行，保留原滚动控制。",
+            "targetVariant": "matrix-plain",
+            "strength": "candidate"
+          },
+          {
+            "id": "table.matrix-plain.2",
+            "kind": "avoid",
+            "condition": "产品必须靠缩略图识别或列数不符。",
+            "result": "不使用此变体；先核对相邻组件和实际调用范围。",
+            "targetVariant": "matrix-plain",
+            "strength": "avoid"
+          }
+        ]
+      }
+    ],
+    "componentDependencies": [
+      {
+        "component": "TextButton",
+        "usage": "行线型超过六行时的 See more / See less disclosure 触发器；使用 Disclosure / M（inline-black / M），由 ds-table__toggle-row 在表格下方水平居中，展开时追加 ds-text-btn--hover ds-text-btn--expanded。",
+        "slot": "toggle",
+        "requiredVariants": [
+          "inline-black"
+        ],
+        "implementationClasses": [
+          "ds-text-btn",
+          "ds-text-btn--inline",
+          "ds-text-btn--black",
+          "ds-text-btn--m"
+        ],
+        "appliesTo": [
+          "horizontal-row-line"
+        ],
+        "requiredWhen": "body-row-count-over-six"
+      }
+    ],
+    "commonlyEmbeddedIn": [],
+    "mutuallyExclusiveWith": [],
+    "iconDependencies": [
+      {
+        "icon": "icon-chevron-down",
+        "usage": "See more / See less 展开收起指示器",
+        "required": true,
+        "appliesTo": [
+          "horizontal"
+        ],
+        "requiredWhen": "body-row-count-over-six"
+      },
+      {
+        "icon": "icon-carousel-prev",
+        "usage": "矩阵实际 overflow 时向左滚动",
+        "required": true,
+        "appliesTo": [
+          "matrix"
+        ]
+      },
+      {
+        "icon": "icon-carousel-next",
+        "usage": "矩阵实际 overflow 时向右滚动",
+        "required": true,
+        "appliesTo": [
+          "matrix"
+        ]
+      },
+      {
+        "icon": "icon-table-matrix-next-current-20",
+        "usage": "仅当前PC有产品图矩阵可用非Hover右按钮的Default SVG；既有img保留未核对状态fallback",
+        "required": true,
+        "appliesTo": [
+          "matrix/products"
+        ]
+      }
+    ],
+    "colorDependencies": [
+      {
+        "token": "color.gray-1",
+        "value": "#19191A",
+        "usage": "表格正文与表头文字",
+        "appliesTo": [
+          "vertical",
+          "horizontal",
+          "matrix"
+        ]
+      },
+      {
+        "token": "color.white",
+        "value": "#FFFFFF",
+        "usage": "表格白色内容行与滚动控制背景",
+        "appliesTo": [
+          "vertical",
+          "horizontal",
+          "matrix"
+        ]
+      },
+      {
+        "token": "color.gray-5",
+        "value": "#DEE0E3",
+        "usage": "超宽表格 4px 滚动条指示",
+        "appliesTo": [
+          "horizontal",
+          "matrix"
+        ]
+      },
+      {
+        "token": "color.table-header-bg",
+        "value": "rgba(64,128,255,0.06)",
+        "usage": "表头、垂直型与矩阵型浅蓝行背景",
+        "appliesTo": [
+          "vertical",
+          "horizontal",
+          "matrix"
+        ]
+      },
+      {
+        "token": "color.table-divider",
+        "value": "#EEEEEE",
+        "usage": "水平内部网格与行线分隔色",
+        "appliesTo": [
+          "horizontal"
+        ]
+      }
+    ],
+    "spacingDependencies": [
+      {
+        "token": "spacing.xs",
+        "value": "4px",
+        "usage": "产品列头内部间距",
+        "properties": [
+          "gap"
+        ],
+        "selectors": [
+          ".ds-table__product"
+        ],
+        "appliesTo": [
+          "matrix"
+        ]
+      },
+      {
+        "token": "spacing.sm",
+        "value": "8px",
+        "usage": "单元格垂直内边距与展开按钮居中行上间距",
+        "properties": [
+          "padding",
+          "margin-top"
+        ],
+        "selectors": [
+          ".ds-table__table th",
+          ".ds-table__table td",
+          ".ds-table__toggle-row",
+          ".ds-table--matrix-products[data-table-current] > .ds-table__scroll > .ds-table__table > thead > tr > th"
+        ],
+        "appliesTo": [
+          "vertical",
+          "horizontal",
+          "matrix"
+        ]
+      },
+      {
+        "token": "spacing.10",
+        "value": "10px",
+        "usage": "单元格水平内边距",
+        "properties": [
+          "padding"
+        ],
+        "selectors": [
+          ".ds-table__table th",
+          ".ds-table__table td"
+        ],
+        "appliesTo": [
+          "vertical",
+          "horizontal",
+          "matrix"
+        ]
+      },
+      {
+        "token": "spacing.20",
+        "value": "20px",
+        "usage": "通用PC有产品图矩阵滚动按钮父组距右侧20px",
+        "properties": [
+          "right"
+        ],
+        "selectors": [
+          ".ds-table--matrix-products[data-table-current] > [data-table-scroll-controls]"
+        ],
+        "appliesTo": [
+          "matrix/products"
+        ]
+      },
+      {
+        "token": "spacing.lg",
+        "value": "16px",
+        "usage": "当前PC产品列头原子底部内距16px；上0/左右8",
+        "properties": [
+          "padding"
+        ],
+        "selectors": [
+          ".ds-table--matrix-products[data-table-current] > .ds-table__scroll > .ds-table__table > thead > tr > th"
+        ],
+        "appliesTo": [
+          "matrix/products"
+        ]
+      }
+    ],
+    "borderDependencies": [
+      {
+        "token": "border.width.default",
+        "value": "1px",
+        "usage": "水平网格与行线宽度",
+        "aspect": "width",
+        "properties": [
+          "border-left",
+          "border-bottom",
+          "border-top",
+          "border-right"
+        ],
+        "selectors": [
+          ".ds-table--grid .ds-table__table th",
+          ".ds-table--grid .ds-table__table td",
+          ".ds-table--row-line .ds-table__table tbody tr"
+        ],
+        "appliesTo": [
+          "horizontal"
+        ]
+      },
+      {
+        "token": "border.width.strong",
+        "value": "2px",
+        "usage": "垂直双列 PC 两组之间的 2px 布局间隔",
+        "aspect": "width",
+        "properties": [
+          "border-left"
+        ],
+        "selectors": [
+          ".ds-table--vertical-double .ds-table__table tr > :nth-child(3)"
+        ],
+        "appliesTo": [
+          "vertical"
+        ]
+      },
+      {
+        "token": "border.style.default",
+        "value": "solid",
+        "usage": "水平网格、行线与垂直双列组间隔样式",
+        "aspect": "style",
+        "properties": [
+          "border-left",
+          "border-bottom",
+          "border-top",
+          "border-right"
+        ],
+        "selectors": [
+          ".ds-table--grid .ds-table__table th",
+          ".ds-table--grid .ds-table__table td",
+          ".ds-table--row-line .ds-table__table tbody tr",
+          ".ds-table--vertical-double .ds-table__table tr > :nth-child(3)"
+        ],
+        "appliesTo": [
+          "vertical",
+          "horizontal"
+        ]
+      },
+      {
+        "token": "border.color.transparent",
+        "value": "transparent",
+        "usage": "垂直双列 PC 的 2px 组间隔仅占位",
+        "aspect": "color",
+        "properties": [
+          "border-left"
+        ],
+        "selectors": [
+          ".ds-table--vertical-double .ds-table__table tr > :nth-child(3)"
+        ],
+        "appliesTo": [
+          "vertical"
+        ]
+      },
+      {
+        "token": "border.color.table-divider",
+        "value": "var(--color-table-divider)",
+        "usage": "水平网格内容与行线的 #EEEEEE 分隔色",
+        "aspect": "color",
+        "properties": [
+          "border-left",
+          "border-bottom",
+          "border-right"
+        ],
+        "selectors": [
+          ".ds-table--grid .ds-table__table td",
+          ".ds-table--grid .ds-table__table tr > :last-child",
+          ".ds-table--row-line .ds-table__table tbody tr"
+        ],
+        "appliesTo": [
+          "horizontal"
+        ]
+      },
+      {
+        "token": "border.color.table-header",
+        "value": "var(--color-table-header-bg)",
+        "usage": "水平网格表头浅蓝描边",
+        "aspect": "color",
+        "properties": [
+          "border-left",
+          "border-bottom",
+          "border-top",
+          "border-right-color"
+        ],
+        "selectors": [
+          ".ds-table--grid .ds-table__table th",
+          ".ds-table--grid .ds-table__table thead tr:first-child > *",
+          ".ds-table--grid .ds-table__table thead tr > :last-child"
+        ],
+        "appliesTo": [
+          "horizontal"
+        ]
+      },
+      {
+        "token": "border.style.none",
+        "value": "none",
+        "usage": "矩阵滚动按钮移除默认描边",
+        "aspect": "style",
+        "properties": [
+          "border"
+        ],
+        "selectors": [
+          ".ds-table__scroll-control"
+        ],
+        "appliesTo": [
+          "matrix"
+        ]
+      }
+    ],
+    "radiusDependencies": [
+      {
+        "token": "border-radius.sm",
+        "value": "2px",
+        "usage": "4px 滚动条指示圆角",
+        "properties": [
+          "border-radius"
+        ],
+        "selectors": [
+          ".ds-table__scroll::-webkit-scrollbar-thumb"
+        ],
+        "appliesTo": [
+          "horizontal",
+          "matrix"
+        ]
+      },
+      {
+        "token": "border-radius.full",
+        "value": "9999px",
+        "usage": "当前PC有产品图矩阵40×40圆形底板；不是表格圆角",
+        "properties": [
+          "border-radius"
+        ],
+        "selectors": [
+          ".ds-table--matrix-products[data-table-current] > [data-table-scroll-controls] > .ds-table__scroll-control"
+        ],
+        "appliesTo": [
+          "matrix/products"
+        ]
+      }
+    ],
+    "shadowDependencies": [
+      {
+        "token": "shadow.list-panel",
+        "value": "0 2px 8px rgba(0, 0, 0, 0.1)",
+        "usage": "当前PC有产品图矩阵可用非Hover Default Next圆底的原件气泡卡片投影；复用数值相同的现有token，非List调用",
+        "properties": [
+          "box-shadow"
+        ],
+        "selectors": [
+          ".ds-table--matrix-products[data-table-current] > [data-table-scroll-controls] > [data-table-scroll=\"next\"]:not(:disabled):not(:hover)"
+        ],
+        "appliesTo": [
+          "matrix/products"
+        ]
+      }
+    ],
+    "fontSizeDependencies": [
+      {
+        "token": "typography.font-size-h8",
+        "value": "13px",
+        "usage": "默认表格文字",
+        "appliesTo": [
+          "vertical",
+          "horizontal",
+          "matrix"
+        ]
+      },
+      {
+        "token": "typography.font-size-sm",
+        "value": "12px",
+        "usage": "GPT 内部网格紧凑文字",
+        "appliesTo": [
+          "horizontal"
+        ]
+      }
+    ],
+    "fontWeightDependencies": [
+      {
+        "token": "typography.font-weight-regular",
+        "value": "400",
+        "usage": "默认数据单元格",
+        "appliesTo": [
+          "vertical",
+          "horizontal",
+          "matrix"
+        ],
+        "properties": [
+          "font-weight"
+        ],
+        "selectors": [
+          ".ds-table__table"
+        ]
+      },
+      {
+        "token": "typography.font-weight-semibold",
+        "value": "600",
+        "usage": "表头与纵向行头",
+        "appliesTo": [
+          "vertical",
+          "horizontal",
+          "matrix"
+        ],
+        "properties": [
+          "font-weight"
+        ],
+        "selectors": [
+          ".ds-table__table th",
+          ".ds-table__row-header"
+        ]
+      }
+    ],
+    "typographyDependencies": [
+      {
+        "token": "typography.h8-regular",
+        "fontSizeToken": "typography.font-size-h8",
+        "fontSizeValue": "13px",
+        "fontWeightToken": "typography.font-weight-regular",
+        "fontWeightValue": "400",
+        "weightEvidence": "explicit-css",
+        "usage": "默认数据单元格",
+        "appliesTo": [
+          "vertical",
+          "horizontal",
+          "matrix"
+        ]
+      },
+      {
+        "token": "typography.h8-semibold",
+        "fontSizeToken": "typography.font-size-h8",
+        "fontSizeValue": "13px",
+        "fontWeightToken": "typography.font-weight-semibold",
+        "fontWeightValue": "600",
+        "weightEvidence": "explicit-css",
+        "usage": "默认表头与行头",
+        "appliesTo": [
+          "vertical",
+          "horizontal",
+          "matrix"
+        ]
+      },
+      {
+        "token": "typography.h9-regular",
+        "fontSizeToken": "typography.font-size-sm",
+        "fontSizeValue": "12px",
+        "fontWeightToken": "typography.font-weight-regular",
+        "fontWeightValue": "400",
+        "weightEvidence": "explicit-css",
+        "usage": "GPT 内部网格紧凑数据",
+        "appliesTo": [
+          "horizontal"
+        ]
+      }
+    ],
+    "variantSelectionRules": [
+      "纵向表头且一行一组属性和值 → vertical-single。",
+      "纵向表头且一行并排两组属性和值 → vertical-double；M 端必须保留两组数据并按 40%/60% 上下堆叠。",
+      "横向表头按分隔需求选择 zebra / grid-13 / grid-12-gpt / row-line；12px 只允许 GPT 内部网格。",
+      "同时存在纵向与横向表头 → matrix；按是否需要产品缩略图选择 products / plain。"
+    ],
+    "hardRules": [
+      {
+        "title": "默认 6 行与展开收起",
+        "description": "数据行超过 6 行时必须提供完整可逆交互，并复用正式 TextButton 且水平居中。",
+        "ruleContent": "<strong>默认只展示前 6 行。</strong>See more / See less 必须嵌套 <code>TextButton Disclosure / M（inline-black / M）</code>，并由 <code>ds-table__toggle-row</code> 在表格下方水平居中；展开时同步 <code>ds-text-btn--hover ds-text-btn--expanded</code>、文字下划线和向上 Chevron。行线型浅蓝表头后的首条数据行必须为白色，再按白/浅蓝交替。URL 不变化，hidden 与 aria-expanded 同步。",
+        "aiParse": "states.collapsed / states.expanded\nrelations.componentDependencies: TextButton Disclosure / M (inline-black / M)\ncomponents/table.js: data-table-toggle + TextButton state classes\n.ds-table__toggle-row: centered layout",
+        "enforcement": "components/table.js 事件委托处理；共享 CSS 控制白/浅蓝斑马与居中 wrapper；浏览器验证行数、ARIA、hidden、TextButton 展开态、居中几何与 URL。"
+      },
+      {
+        "title": "垂直型源码几何",
+        "description": "垂直型 PC/M 必须服从用户原始代码。",
+        "ruleContent": "双列 PC <strong>1200/240/2px</strong>，M <strong>382/40%</strong>且两组上下堆叠，重排后的每组必须连续按蓝/白交替，不得出现蓝蓝白白；单列 PC <strong>880/200px</strong>，M <strong>382/160px</strong>。",
+        "aiParse": "responsiveRules[PC/Pad|M]\nvertical-double / vertical-single",
+        "enforcement": "共享 CSS 容器查询与四组 Preview 源码证据实例。"
+      },
+      {
+        "title": "水平型源码几何",
+        "description": "基础型与 13px 网格 PC/M 必须保持源码宽度。",
+        "ruleContent": "PC 内部 <strong>880px</strong>；M 外层 <strong>382px</strong>、内部仍为 <strong>880px</strong>并可横向滚动。12px GPT 只改变字体组合。",
+        "aiParse": "horizontal-zebra / horizontal-grid-13 / horizontal-grid-12-gpt\nresponsiveRules",
+        "enforcement": "共享 CSS 固定 880px 表格；Preview 同时展示 PC 与 M。"
+      },
+      {
+        "title": "矩阵型源码几何",
+        "description": "有图与无图矩阵必须保持源码列宽、响应式结构与整行斑马顺序。",
+        "ruleContent": "PC内部<strong>1200px</strong>、六列各200px（已核对通用矩阵及表头原子；3.3应用例184px不覆盖原子）；有图 M 为 <strong>382/955/191px</strong>且行头独占一行，所有属性标题固定白底，数值行从浅蓝开始按浅蓝/白色交替；无图 M 内部仍为 1200px。产品槽 100×100px、内容图 112×34px。有产品图 PC 的 tbody 从浅蓝开始按整行浅蓝/白色交替；无产品图因表头已为浅蓝，tbody 必须从白色开始按整行白/浅蓝交替。",
+        "aiParse": "matrix-products / matrix-plain\nresponsiveRules\nmobile: white row headers + blue/white value rows\ndesktop whole-row zebra sequence",
+        "enforcement": "共享 CSS 按 matrix-products / matrix-plain 声明 PC 整行奇偶背景，并在有图矩阵 M 端将行头覆盖为白色、保留数值行浅蓝/白色斑马；通过容器查询切换有图矩阵 M 结构；Preview 提供四个源码实例。"
+      },
+      {
+        "title": "滚动控制服从真实 overflow",
+        "description": "不得按产品数量猜测是否显示控制器。",
+        "ruleContent": "水平型与矩阵型超宽时使用 ds-table__scroll；矩阵控制器仅在 <code>scrollWidth &gt; clientWidth</code> 时显示，并同步首尾 disabled。",
+        "aiParse": "components/table.js: syncScroll\n.ds-table__scroll",
+        "enforcement": "components/table.js 按实际 overflow 与 scrollLeft 计算；ResizeObserver 与 resize 同步状态。"
+      }
+    ],
+    "enforcementStatus": {
+      "variantSelectionRules.type-and-density": {
+        "enforced": false,
+        "mechanism": "人工审查",
+        "note": "语义选型无法仅靠机械检查"
+      },
+      "rowLimit.six-and-toggle": {
+        "enforced": true,
+        "mechanism": "components/table.js"
+      },
+      "responsiveRules.vertical-source-geometry": {
+        "enforced": true,
+        "mechanism": "components/components.css 容器查询"
+      },
+      "responsiveRules.horizontal-source-geometry": {
+        "enforced": true,
+        "mechanism": "components/components.css 880/382px 几何"
+      },
+      "responsiveRules.matrix-source-geometry": {
+        "enforced": true,
+        "mechanism": "components/components.css 1200/955/191px 几何"
+      },
+      "responsiveRules.real-overflow-controls": {
+        "enforced": true,
+        "mechanism": "components/table.js syncScroll"
+      },
+      "colorDependencies.tokens-and-css-closure": {
+        "enforced": true,
+        "mechanism": "check-contracts.js + validate-tokens.js"
+      },
+      "spacingDependencies.tokens-and-css-closure": {
+        "enforced": true,
+        "mechanism": "check-contracts.js"
+      },
+      "borderDependencies.tokens-and-css-closure": {
+        "enforced": true,
+        "mechanism": "check-contracts.js"
+      },
+      "radiusDependencies.tokens-and-css-closure": {
+        "enforced": true,
+        "mechanism": "check-contracts.js"
+      },
+      "fontWeightDependencies.tokens-and-css-closure": {
+        "enforced": true,
+        "mechanism": "check-contracts.js"
+      },
+      "typographyDependencies.size-weight-pairing": {
+        "enforced": true,
+        "mechanism": "check-contracts.js"
+      }
+    },
+    "notes": "垂直型、水平基础/13px 网格、矩阵有图/无图的 PC/M 尺寸均来自用户原始代码；12px GPT、行线型及缺失行为由用户明确授权按规范补齐。粘贴源码标签空格丢失，因此 Preview 重建语义化 table。水平网格 PC/M 示例文字颜色冲突时保守使用普通正文色，不猜测链接。矩阵产品内容图按用户明确指定使用本地 docs/assets/20250901105611h7ydr7.jpg.webp（1600×1600 WebP），在 100×100px 槽内以 112×34px、object-fit: contain 展示；它是内容素材，不登记为 Table UI 图标依赖。箭头继续使用已登记本地图标。",
+    "prototypeRollout": {
+      "template": "docs/component-spec-template.html",
+      "source": "relations.variantDecisions",
+      "workflow": "existing-local-only",
+      "scope": "existing finite calls and original references; no publication expansion",
+      "currentMg": {
+        "status": "partial-source-scope",
+        "reason": "已读取《新文件》表格规范v2.2.2511A（3:120331），按现有有限调用核对；未开放原件与视觉批准仍分别保留。"
+      },
+      "retainedEvidence": [
+        {
+          "name": "comparison",
+          "file": "components/sources/table/local-structure-review.json"
+        },
+        {
+          "name": "nativeSpecificationReview",
+          "file": "components/sources/table/native-specification-review-1011.json"
+        }
+      ]
+    },
+    "interactionRules": [
+      {
+        "name": "实际调用",
+        "rule": "仅使用同版catalog的callable变体和allowedEdits；参考示例不授予调用资格，不用改类或自绘控件绕过。",
+        "owner": "原本地选型与调用入口"
+      },
+      {
+        "name": "父子与同步",
+        "rule": "沿用原componentDependencies及反向父关系；改原规范后协调契约/实现，继续component:sync/watch；已交付页保留固定版本。",
+        "owner": "既有维护机制"
+      },
+      {
+        "name": "交互与业务",
+        "rule": "固定四列；完整1–6行数据。；固定两列；完整1–6行数据。；固定两列，1–6行，不内嵌控件。；现有13px网格，1–6行。；保留用户授权补齐来源，不冒称新MG原件。；最多六行；TextButton展开规范仍是参考。；保留媒体容器及原PC/LTR滚动按钮。；完整1–6行，保留原滚动控制。",
+        "owner": "具体变体运行时与原页面宿主"
+      }
+    ]
+  },
+  "searchIntents": [
+    "表格组件",
+    "纵向表头表格",
+    "横向表头表格",
+    "矩阵对比表",
+    "六行展开表格",
+    "GPT 紧凑表格"
+  ],
+  "history": [
+    {
+      "date": "2026-08-12",
+      "author": "Kiro",
+      "change": "依据用户投喂的 Table v2.2.2511A 截图新建正式契约，落地三大类型、八个形态、精确颜色/描边 Token、六行折叠与矩阵滚动规则。"
+    },
+    {
+      "date": "2026-08-12",
+      "author": "Kiro",
+      "change": "Correction：依据用户补充的垂直型原始布局代码，移除 480px 横向滚动和比例列宽推测，校正 PC/M 精确宽度、表头宽度、2px 组间隔、36px 行高、蓝白整行斑马纹及证据边界。"
+    },
+    {
+      "date": "2026-08-12",
+      "author": "Kiro",
+      "change": "依据用户补齐的水平型、矩阵型 PC/M 原始代码及直接实现授权，统一校正 880/382px 水平几何、1200/955/191px 矩阵几何、100×100px 产品槽、112×34px 内容图和真实 overflow 控制；12px GPT 与行线型按规范补齐。"
+    },
+    {
+      "date": "2026-08-12",
+      "author": "Kiro",
+      "change": "Correction：修复垂直双列 M 端重排后按原 PC tr 着色导致的蓝蓝白白；改为每个属性/值组连续按蓝、白、蓝、白交替。"
+    },
+    {
+      "date": "2026-08-12",
+      "author": "Kiro",
+      "change": "按用户明确指定，将矩阵型 PC/M 十个产品内容图从 icon-placeholder-switch.svg 替换为 docs/assets/20250901105611h7ydr7.jpg.webp，并保留 112×34px contain 展示。"
+    },
+    {
+      "date": "2026-08-12",
+      "author": "Kiro",
+      "change": "Correction：依据用户补充的设计规范截图，将矩阵型有产品图的产品图片区改为白底，仅产品名称条保留浅蓝底；左上角交叉格改为白底且不显示可见文字，无产品图矩阵不受影响。"
+    },
+    {
+      "date": "2026-08-12",
+      "author": "Kiro",
+      "change": "Correction：依据用户指出的规范遗漏，将行线型 See more / See less 改为嵌套正式 TextButton inline-blue-link / M，展开态同步 hover/expanded class；恢复 tbody 浅蓝/白逐行斑马纹并保留行分隔线。"
+    },
+    {
+      "date": "2026-08-12",
+      "author": "Kiro",
+      "change": "Correction：依据用户 PC/M 截图修复无产品图矩阵连续蓝块；浅蓝表头后的首个 tbody 行改为整行白色，后续整行按白/浅蓝交替，行头列不再独立保持连续浅蓝。有产品图矩阵继续从浅蓝数据行开始并按整行浅蓝/白交替。"
+    },
+    {
+      "date": "2026-08-13",
+      "author": "Kiro",
+      "change": "Correction：依据用户行线型截图修复浅蓝表头与首条数据行连续浅蓝；tbody 改为从整行白色开始，再按白/浅蓝交替。See more / See less 正式 TextButton 增加 ds-table__toggle-row 外层，在表格下方水平居中，展开收起行为不变。"
+    },
+    {
+      "date": "2026-08-13",
+      "author": "Codex",
+      "change": "Correction：依据用户反馈，将有图矩阵的产品名称条从首列开始按浅蓝/白色交替；移除 M 端将行头与数据单元格拆分着色的覆盖规则，恢复每个数据组整组浅蓝/白色交替。"
+    },
+    {
+      "date": "2026-08-13",
+      "author": "Codex",
+      "change": "Correction：纠正对用户反馈位置的误解。产品名称条恢复统一浅蓝；有图矩阵 M 端改为每个属性组内部一蓝一白，即属性标题行浅蓝、其数值行白色。"
+    },
+    {
+      "date": "2026-08-13",
+      "author": "Codex",
+      "change": "Correction：依据用户最终参考图，将有图矩阵 M 端规则校正为属性标题始终白底，仅数值行从浅蓝开始按浅蓝/白色交替；产品名称条保持统一浅蓝。"
+    },
+    {
+      "date": "2026-08-13",
+      "author": "Codex",
+      "change": "Correction：核对依赖汇总后，将 icon-chevron-down 收窄到实际包含 See more / TextButton 的水平型；补全 spacing.sm 与 spacing.10 对 th/td 的选择器证据，并补记 CSS 实际使用的 font-family.base 与 opacity.disabled Token 引用。"
+    },
+    {
+      "date": "2026-08-13",
+      "author": "Codex",
+      "change": "Correction：依据用户指定，将 Table 行线型的展开触发器依赖从 TextButton inline-blue-link / M 更正为 Disclosure / M（inline-black / M），并将依赖链接绑定到文字按钮 Preview 的 Disclosure / M 实例锚点。"
+    },
+    {
+      "date": "2026-10-09",
+      "author": "Codex",
+      "change": "统一规范维护质量标准：登记真实实现与选型规则入口、源变更重新验收、父子影响检查及历史页面隔离；不推断可编辑槽位或视觉批准。"
+    },
+    {
+      "date": "2026-10-10",
+      "author": "Codex",
+      "change": "修正tokenReferences中的旧别名，改用Token注册表实际名称；依据既有CSS变量--brand-red/--font-family-base及明确映射，不改Token值、CSS或历史页。新增健康检查阻止未知/重复Token引用。"
+    },
+    {
+      "date": "2026-10-11",
+      "author": "Codex",
+      "change": "原生Table通用矩阵yes/pc68908:036227、行头原子68908:024657确认200px列。3.3产品详情应用例184px与通用原子区分，撤回尚未交付的宽度草稿，不覆盖原子；40px圆形底板保留来源修正。See more蓝M主节点与用户黑色Disclosure取舍分别记录。 产品列头原子200×140、gap4、padding0/8/16/8明确，current样式修正列头内包装124px及专属padding，3行预览目标248px；真实计算样式未验收。"
+    },
+    {
+      "date": "2026-10-13",
+      "change": "仅current matrix-products默认可用非Hover next改用原件20px/#707070 SVG的CSS替换；既有DOM/运行时/其他状态及历史保留。来源与代码差异已确认，真实浏览器视觉待验证。"
+    }
+  ],
+  "isComplete": true,
+  "pendingParts": [],
+  "createdAt": "2026-08-12T00:00:00Z",
+  "updatedAt": "2026-08-13T03:00:00Z",
+  "qualityProfile": {
+    "schemaVersion": "1.0.0",
+    "standard": "docs/component-quality-standard.md",
+    "implementation": "components/variants/table.html",
+    "selection": {
+      "mappingSource": "components/selection-mvp-policy.json",
+      "mappingPointer": "components.table.variantDecisionTypes",
+      "rulesPointer": "relations.variantDecisions"
+    },
+    "maintenance": {
+      "authority": "contract-preview-runtime-token-icon",
+      "generatedOnly": [
+        "preview-reference-tables",
+        "component-index",
+        "selection-catalog",
+        "design-reading-view",
+        "ai-reference"
+      ],
+      "changePolicy": "记录来源差异、兼容性与受影响父子组件；源文件变化后旧工程验收失效。",
+      "historicalPages": "不自动升级；新页面锁定本地组件运行资源版本。"
+    },
+    "acceptance": {
+      "report": "components/quality/report.json",
+      "proof": "components/quality/acceptance.json",
+      "declarationIsNotProof": true
+    }
+  },
+  "editable": [
+    "data"
+  ],
+  "integration": {
+    "styles": [
+      "components/tokens.css",
+      "components/components.css",
+      "components/table-current.css"
+    ],
+    "scripts": [
+      "components/table-current.js"
+    ],
+    "fontStylesheets": [
+      "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+    ]
+  },
+  "aiContract": {
+    "schemaVersion": "1.0.0",
+    "rootTag": "div",
+    "scope": "eight-finite-native-table-shapes",
+    "supported": [
+      "vertical-double",
+      "vertical-single",
+      "horizontal-zebra",
+      "horizontal-grid-13",
+      "horizontal-grid-12-gpt",
+      "horizontal-row-line",
+      "matrix-products",
+      "matrix-plain"
+    ],
+    "unsupported": [
+      "more-than-six-rows",
+      "colspan-rowspan",
+      "cell-links-controls",
+      "mobile",
+      "business-sorting-filtering",
+      "horizontal-row-line-more-than-six-rows",
+      "rtl",
+      "dynamic-inserted-matrices"
+    ],
+    "reviewStatus": {
+      "engineering": "pending",
+      "visual": "pending",
+      "familyCoverage": "partial"
+    },
+    "previewAssets": [
+      "components/preview/reference-live.js",
+      "docs/assets/20250901105611h7ydr7.jpg.webp",
+      "components/preview/table-legacy-adapter.js",
+      "components/text-button-current.css"
+    ],
+    "selectionPolicy": "Six finite static shapes plus two six-column PC/LTR matrices with 1–6 complete body rows. Compact GPT/row-line keep local authorized-fill provenance. No sorting, filtering, cell links or >6-row disclosure. Matrices retain exact native scroll controls and product media wrappers. 按relations.variantDecisions的具体场景选型；最终资格读同版catalog，未开放项不自动调用。当前MG核对状态见prototypeRollout，不将既有来源冒称本次在线核对。",
+    "identity": {
+      "rule": "Full root > scroll > native table with correct scopes and complete columns. Matrix roots also retain current marker and two safe locked registered-arrow controls outside editable table; first data cell is a row header. Canonical controls hidden/disabled until measured initialization.",
+      "dataRule": "Replace plaintext headers/cells; vary one to six complete rows. 13px default versus locked 12px GPT CSS stays variant-owned. No editing classes to simulate density."
+    },
+    "locked": [
+      "Native table/header scopes and consistent columns",
+      "Existing shared CSS, including ds-table [hidden] display rule",
+      "Static shapes without invented controls; matrix safe scroll controls outside data slot",
+      "Six-column matrix media wrappers and registered scroll arrow assets",
+      "Current product-matrix control size/shape from Table-owned group; no host overrides of an IconButton atom",
+      "Current product-heading atom140px with0/8/16/8 padding; current control vertical centering/right20px stays Table-owned.",
+      "当前matrix-products可用非Hover的next使用20px原件路径；不推及Prev、Hover、Disabled、无图或历史实例"
+    ],
+    "behavior": {
+      "static": "Static table data has no sort/filter/selection. table-current.js ignores non-matrix/unmarked roots; six static shapes require no binding.",
+      "limits": "More than six rows is excluded from finite call until disclosure structure/dependency is separately confirmed. No automatic sort/filter or new actions.",
+      "dependency": "TextButton host adaptation applies only to >6-row row-line tables, not the finite ≤6-row static call. Disclosure remains unsupported. Native specification example 68908:260501 is blue 13px Default with a down arrow; previous user-directed black Disclosure remains the local row-line decision. Record scope/color difference instead of claiming source equivalence.",
+      "matrix": "Opt-in current LTR controls appear only when measured overflow >1px; prev/next clamp to measured endpoints, resize/scroll synchronize state, disabled fieldset and hidden controls reject synthetic click. Document/root guards prevent duplicate listeners/observers. Legacy table.js unchanged.",
+      "geometry": "Node tests use explicit scroll/client width inputs only, not browser layout. PC width, grid/row alignment, real overflow, ResizeObserver scheduling, imagery and computed styles still pending. No three-device expansion. Native component yes/pc68908:036227 and its header atom200×36 confirm canonical200px columns. Spec3.3 product-detail application example184px is recorded separately, not a generic atom override. Canonical product-heading source68908:016303 is200×140 with0/8/16/8 padding and4px gap; current resource replaces generic body-cell padding and160px inner height with this header assembly. Preview3rows implies248px target, actual browser geometry pending.",
+      "controlSource": "Native canonical product matrix68908:036227 contains next arrow instance68908:03623020×20 inside40×40 Table-owned group at1140/122 of1200×284; vertical-center constraint/right20 inset source current CSS. Norm application sample68908:259667 is distinct. No IconButton identity invented. Shadow, contours/arrow color, prev/end states and plain-matrix control remain pending."
+    },
+    "evidence": {
+      "localImplementation": "components/variants/table.html",
+      "comparison": "components/sources/table/local-structure-review.json",
+      "nativeSpecificationReview": "components/sources/table/native-specification-review-1011.json",
+      "productMatrixControlBoundary1015": "components/sources/table/product-matrix-control-boundary-1015.json",
+      "currentMgReview": "components/sources/remaining-prototypes-mg-20261115/table-review.json"
+    },
+    "variants": {
+      "vertical-double": {
+        "purpose": "vertical-double-static-table",
+        "exampleSelector": "[data-ai-example=\"ai-table-vertical-double\"]",
+        "allowedEdits": [
+          "data"
+        ],
+        "slots": {
+          "data": {
+            "selector": "table.ds-table__table",
+            "mode": "structured-content",
+            "required": true,
+            "preserve": [
+              "tbody",
+              "tr",
+              "th",
+              "td"
+            ],
+            "rule": "Keep native headers/scopes and matching columns. Plaintext only; 1–6 complete body rows. No merged cells, actions or other styles."
+          }
+        }
+      },
+      "vertical-single": {
+        "purpose": "vertical-single-static-table",
+        "exampleSelector": "[data-ai-example=\"ai-table-vertical-single\"]",
+        "allowedEdits": [
+          "data"
+        ],
+        "slots": {
+          "data": {
+            "selector": "table.ds-table__table",
+            "mode": "structured-content",
+            "required": true,
+            "preserve": [
+              "tbody",
+              "tr",
+              "th",
+              "td"
+            ],
+            "rule": "Keep native headers/scopes and matching columns. Plaintext only; 1–6 complete body rows. No merged cells, actions or other styles."
+          }
+        }
+      },
+      "horizontal-zebra": {
+        "purpose": "horizontal-zebra-static-table",
+        "exampleSelector": "[data-ai-example=\"ai-table-horizontal-zebra\"]",
+        "allowedEdits": [
+          "data"
+        ],
+        "slots": {
+          "data": {
+            "selector": "table.ds-table__table",
+            "mode": "structured-content",
+            "required": true,
+            "preserve": [
+              "tbody",
+              "tr",
+              "th",
+              "td"
+            ],
+            "rule": "Keep native headers/scopes and matching columns. Plaintext only; 1–6 complete body rows. No merged cells, actions or other styles."
+          }
+        }
+      },
+      "horizontal-grid-13": {
+        "purpose": "horizontal-grid-13-static-table",
+        "exampleSelector": "[data-ai-example=\"ai-table-horizontal-grid-13\"]",
+        "allowedEdits": [
+          "data"
+        ],
+        "slots": {
+          "data": {
+            "selector": "table.ds-table__table",
+            "mode": "structured-content",
+            "required": true,
+            "preserve": [
+              "tbody",
+              "tr",
+              "th",
+              "td"
+            ],
+            "rule": "Keep native headers/scopes and matching columns. Plaintext only; 1–6 complete body rows. No merged cells, actions or other styles."
+          }
+        }
+      },
+      "horizontal-grid-12-gpt": {
+        "purpose": "horizontal-grid-12-gpt-static-table",
+        "exampleSelector": "[data-ai-example=\"ai-table-horizontal-grid-12-gpt\"]",
+        "allowedEdits": [
+          "data"
+        ],
+        "slots": {
+          "data": {
+            "selector": "table.ds-table__table",
+            "mode": "structured-content",
+            "required": true,
+            "preserve": [
+              "tbody",
+              "tr",
+              "th",
+              "td"
+            ],
+            "rule": "Keep native headers/scopes and matching columns. Plaintext only; 1–6 complete body rows. No merged cells, actions or other styles."
+          }
+        }
+      },
+      "horizontal-row-line": {
+        "purpose": "horizontal-row-line-static-table",
+        "exampleSelector": "[data-ai-example=\"ai-table-horizontal-row-line\"]",
+        "allowedEdits": [
+          "data"
+        ],
+        "slots": {
+          "data": {
+            "selector": "table.ds-table__table",
+            "mode": "structured-content",
+            "required": true,
+            "preserve": [
+              "tbody",
+              "tr",
+              "th",
+              "td"
+            ],
+            "rule": "Keep native headers/scopes and matching columns. Plaintext only; 1–6 complete body rows. No merged cells, actions or other styles."
+          }
+        }
+      },
+      "matrix-products": {
+        "purpose": "matrix-products-six-column-scroll-table",
+        "exampleSelector": "[data-ai-example=\"ai-table-matrix-products\"]",
+        "allowedEdits": [
+          "data"
+        ],
+        "slots": {
+          "data": {
+            "selector": "table.ds-table__table",
+            "mode": "structured-content",
+            "required": true,
+            "preserve": [
+              "tbody",
+              "tr",
+              "th",
+              "td"
+            ],
+            "rule": "Six complete native columns: first row header and five data/product columns. 1–6 body rows; plaintext cells. Products preserve five media/name wrappers and safe image src/alt; controls outside table stay locked."
+          }
+        }
+      },
+      "matrix-plain": {
+        "purpose": "matrix-plain-six-column-scroll-table",
+        "exampleSelector": "[data-ai-example=\"ai-table-matrix-plain\"]",
+        "allowedEdits": [
+          "data"
+        ],
+        "slots": {
+          "data": {
+            "selector": "table.ds-table__table",
+            "mode": "structured-content",
+            "required": true,
+            "preserve": [
+              "tbody",
+              "tr",
+              "th",
+              "td"
+            ],
+            "rule": "Six complete native columns: first row header and five data/product columns. 1–6 body rows; plaintext cells. Products preserve five media/name wrappers and safe image src/alt; controls outside table stay locked."
+          }
+        }
+      }
+    }
+  }
+}

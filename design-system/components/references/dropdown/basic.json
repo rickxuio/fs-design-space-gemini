@@ -1,0 +1,775 @@
+{
+  "schemaVersion": "fs-component-reference/1.0.0",
+  "component": {
+    "id": "dropdown",
+    "name": "Dropdown",
+    "scope": "historical-choice-and-source-pc-command-menus",
+    "reviewStatus": {
+      "engineering": "pending",
+      "visual": "pending",
+      "familyCoverage": "partial"
+    }
+  },
+  "selection": {
+    "policy": "新页面只选command-text、command-dot、account-guest、account-signed-in命令菜单；按实际入口与账户状态选择，placement只用各自来源枚举。basic等旧选择型保留兼容但不推荐；值选择用Select。命令通过可取消ds:dropdown-action交给宿主，不执行认证、删除或远程业务。",
+    "supported": [
+      "basic",
+      "with-search",
+      "brand-select",
+      "command-text",
+      "command-dot",
+      "account-guest",
+      "account-signed-in"
+    ],
+    "unsupported": [
+      "multi-select-checkbox",
+      "grouped",
+      "filter",
+      "native-form-submission",
+      "dynamic-options-after-initialization",
+      "custom-option-markup",
+      "preselected-canonical",
+      "full-family-source-and-visual-approval"
+    ]
+  },
+  "runtime": {
+    "styles": [
+      "components/tokens.css",
+      "components/components.css",
+      "components/button-current.css",
+      "components/button-runtime-current.css",
+      "components/checkbox-current.css",
+      "components/icon-button-current.css",
+      "components/dropdown-current.css",
+      "components/dropdown-command-current.css"
+    ],
+    "scripts": [
+      "components/dropdown-current.js",
+      "components/dropdown-command-current.js"
+    ],
+    "fontStylesheets": [
+      "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+    ]
+  },
+  "identity": {
+    "rule": "Opt-in closed native trigger + unique paired hidden panel/listbox/native options. Search shapes preserve native labeled field, registered search icon and exact variant marker; brand adds 30px trigger/bordered-search. Keyboard behavior is local implementation upgrade, not original MG source proof."
+  },
+  "locked": [
+    "Real native trigger, listbox and option hierarchy",
+    "Closed authored state and unique panel identity",
+    "Current own reset/runtime resources",
+    "Existing shared FS colors/spacing/42px trigger"
+  ],
+  "behavior": {
+    "events": "ds:dropdown-change only for changed selected value, detail={value,label}. Filtering emits no value-change event and preserves selected value. No request/submission.",
+    "keyboard": "Native trigger Enter/Space click; arrows open/move and skip disabled, Home/End, Escape closes and returns focus, Tab/outside/focusout close.",
+    "initialization": "One document guard and one root guard. Options cannot be replaced after initialization; a page-owned bridge is needed for FormData.",
+    "search": "Search/brand opens to search input; ArrowDown/Up move to first/last visible enabled option, Enter selects first match (prevents implicit form submit), Escape/Tab/outside close. No matches leaves choices empty and search focused. Filter persists on close; reset restores empty query/unselected placeholder.",
+    "disabled": "Native disabled/fieldset guard ignores selection/search synthetic events and closes an open panel when disabled. No dynamic option insertion or remote filtering.",
+    "composition": "Track search compositionstart/end as well as event.isComposing; while active, intermediate input and trigger/option/search keys do not filter or select. compositionend filters the committed query only when search is available. Closing clears transient composition state while preserving query/selection; reset restores initial empty values. Actual browser IME behavior remains pending.",
+    "availability": "Native fieldset, ARIA-disabled or hidden host closes panel and rejects synthetic trigger/selection; selected value and query are retained. Disabled options do not enter the keyboard queue.",
+    "commands": "Hover/click, outside/Escape/Tab dismissal, keyboard navigation and viewport-safe placement; pointer can reach menu without losing hover. Intent event does not change trigger copy."
+  },
+  "examples": [
+    {
+      "name": "basic",
+      "publication": {
+        "key": "dropdown/basic",
+        "disposition": "restricted",
+        "newPages": false,
+        "reason": "Historical explicit compatibility only; excluded from all new-page candidates.",
+        "constraints": [
+          "Historical explicit compatibility only; excluded from all new-page candidates."
+        ],
+        "contractPolicy": "新页面不自动召回本历史选择型Dropdown；选择型需求先确认Select的具体契约/Preview。保留basic/with-search/brand-select三个显式历史兼容调用；六种本地来源形态属于Select组合，不能冒称MasterGo动作Dropdown。动作菜单无完整来源/调用时保持待确认，不借用选择型实现。",
+        "use": "compatibility-or-source-display-only",
+        "evidence": "components/contracts/dropdown.json#aiContract/evidence",
+        "requiresCurrentEngineering": false,
+        "visualApproval": "separate-not-granted"
+      },
+      "rootTag": "div",
+      "sizeOptions": [],
+      "bindings": {
+        "panelIdentity": {
+          "mode": "linked-identity",
+          "target": "div.ds-dropdown__panel",
+          "attribute": "id",
+          "valueType": "safe-dom-id",
+          "unique": true,
+          "references": [
+            {
+              "selector": "button.ds-dropdown__trigger",
+              "attribute": "aria-controls"
+            }
+          ]
+        },
+        "changeCallback": {
+          "mode": "event-handler",
+          "target": "root",
+          "event": "ds:dropdown-change"
+        }
+      },
+      "purpose": "finite-basic-native-single-choice",
+      "whenToUse": "历史选择型基础示例的归档对照。",
+      "whenNotToUse": "新页面选择需求或动作菜单。",
+      "rootClasses": "ds-dropdown",
+      "requiredStructure": [
+        "button.ds-dropdown__trigger",
+        "span.ds-dropdown__trigger-text",
+        "img.ds-dropdown__trigger-arrow",
+        "div.ds-dropdown__panel",
+        "div.ds-dropdown__list",
+        "button.ds-dropdown__item"
+      ],
+      "slots": {
+        "placeholder": {
+          "selector": "span.ds-dropdown__trigger-text",
+          "mode": "text",
+          "required": true
+        },
+        "options": {
+          "selector": "div.ds-dropdown__list",
+          "mode": "structured-content",
+          "required": true,
+          "preserve": [
+            "button.ds-dropdown__item"
+          ],
+          "rule": ">=2 uniquely valued native buttons with nonempty plain labels; role option, tabindex -1 and aria-selected false authored. Disabled allowed. Keep named listbox."
+        }
+      },
+      "allowedEdits": [
+        "placeholder",
+        "options",
+        "panelIdentity",
+        "changeCallback"
+      ],
+      "exampleHtml": "<div class=\"ds-dropdown\" data-dropdown-current=\"\" data-ai-example=\"ai-dropdown-basic-current\" data-value=\"\"><button class=\"ds-dropdown__trigger\" type=\"button\" aria-haspopup=\"listbox\" aria-expanded=\"false\" aria-controls=\"dropdown-basic-current-panel\"><span class=\"ds-dropdown__trigger-text\">Select</span><img class=\"ds-dropdown__trigger-arrow\" src=\"../icons/icon-chevron-down.svg\" alt=\"\"></button><div class=\"ds-dropdown__panel\" id=\"dropdown-basic-current-panel\" hidden=\"\"><div class=\"ds-dropdown__list\" role=\"listbox\" aria-label=\"Available choices\"><button class=\"ds-dropdown__item\" type=\"button\" role=\"option\" aria-selected=\"false\" tabindex=\"-1\" value=\"item-1\">1st item</button><button class=\"ds-dropdown__item\" type=\"button\" role=\"option\" aria-selected=\"false\" tabindex=\"-1\" value=\"item-2\">2nd item</button><button class=\"ds-dropdown__item\" type=\"button\" role=\"option\" aria-selected=\"false\" tabindex=\"-1\" value=\"item-3\">3rd item</button><button class=\"ds-dropdown__item\" type=\"button\" role=\"option\" aria-selected=\"false\" tabindex=\"-1\" value=\"item-4\">4th item</button><button class=\"ds-dropdown__item\" type=\"button\" role=\"option\" aria-selected=\"false\" tabindex=\"-1\" value=\"item-5\">5th item</button></div></div></div>"
+    }
+  ],
+  "relationships": {
+    "children": [],
+    "parents": [],
+    "parentStatus": "no-declared-hosts",
+    "icons": [
+      {
+        "file": "components/icons/icon-chevron-down.svg",
+        "registry": "components/icons/icons-manifest.json",
+        "appliesTo": [
+          "basic",
+          "with-search",
+          "multi-select-checkbox",
+          "grouped",
+          "filter",
+          "brand-select"
+        ],
+        "usage": "trigger 箭头、group-title 折叠箭头"
+      }
+    ],
+    "tokens": [
+      {
+        "name": "color.white",
+        "value": "#FFFFFF",
+        "unit": null,
+        "cssVar": "--color-white",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.gray-1",
+        "value": "#19191A",
+        "unit": null,
+        "cssVar": "--color-gray-1",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.gray-3",
+        "value": "#707070",
+        "unit": null,
+        "cssVar": "--color-gray-3",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.gray-5",
+        "value": "#DEE0E3",
+        "unit": null,
+        "cssVar": "--color-gray-5",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.gray-9",
+        "value": "#FAFBFB",
+        "unit": null,
+        "cssVar": "--color-gray-9",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "border-radius.md",
+        "value": 4,
+        "unit": "px",
+        "cssVar": "--border-radius-md",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border-radius.json"
+      },
+      {
+        "name": "typography.font-family-base",
+        "value": "Open Sans",
+        "unit": null,
+        "cssVar": "--font-family-base",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-size-h8",
+        "value": 13,
+        "unit": "px",
+        "cssVar": "--font-size-h8",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "spacing.sm",
+        "value": 8,
+        "unit": "px",
+        "cssVar": "--spacing-sm",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.md",
+        "value": 12,
+        "unit": "px",
+        "cssVar": "--spacing-md",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.xs",
+        "value": 4,
+        "unit": "px",
+        "cssVar": "--spacing-xs",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.6",
+        "value": 6,
+        "unit": "px",
+        "cssVar": "--spacing-6",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.10",
+        "value": 10,
+        "unit": "px",
+        "cssVar": "--spacing-10",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "border.width.default",
+        "value": 1,
+        "unit": "px",
+        "cssVar": "--border-width-default",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.style.default",
+        "value": "solid",
+        "unit": null,
+        "cssVar": "--border-style-default",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.transparent",
+        "value": "transparent",
+        "unit": null,
+        "cssVar": "--border-color-transparent",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.strong",
+        "value": "var(--color-gray-3)",
+        "unit": null,
+        "cssVar": "--border-color-strong",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.default",
+        "value": "var(--color-gray-5)",
+        "unit": null,
+        "cssVar": "--border-color-default",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.style.none",
+        "value": "none",
+        "unit": null,
+        "cssVar": "--border-style-none",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "typography.font-weight-semibold",
+        "value": 600,
+        "unit": null,
+        "cssVar": "--font-weight-semibold",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-weight-regular",
+        "value": 400,
+        "unit": null,
+        "cssVar": "--font-weight-regular",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-size-sm",
+        "value": 12,
+        "unit": "px",
+        "cssVar": "--font-size-sm",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.h8-regular",
+        "value": {
+          "fontSize": "13px",
+          "lineHeight": "20px",
+          "fontWeight": 400
+        },
+        "unit": null,
+        "cssVar": null,
+        "primitiveReferences": {
+          "fontSize": "typography.font-size-h8",
+          "fontWeight": "typography.font-weight-regular"
+        },
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.h9-semibold",
+        "value": {
+          "fontSize": "12px",
+          "lineHeight": "20px",
+          "fontWeight": 600
+        },
+        "unit": null,
+        "cssVar": null,
+        "primitiveReferences": {
+          "fontSize": "typography.font-size-sm",
+          "fontWeight": "typography.font-weight-semibold"
+        },
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "spacing.2",
+        "value": 2,
+        "unit": "px",
+        "cssVar": "--spacing-2",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.3",
+        "value": 3,
+        "unit": "px",
+        "cssVar": "--spacing-3",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.xl",
+        "value": 24,
+        "unit": "px",
+        "cssVar": "--spacing-xl",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.lg",
+        "value": 16,
+        "unit": "px",
+        "cssVar": "--spacing-lg",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.25",
+        "value": 25,
+        "unit": "px",
+        "cssVar": "--spacing-25",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.48",
+        "value": 48,
+        "unit": "px",
+        "cssVar": "--spacing-48",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.2xl",
+        "value": 32,
+        "unit": "px",
+        "cssVar": "--spacing-2xl",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.20",
+        "value": 20,
+        "unit": "px",
+        "cssVar": "--spacing-20",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.40",
+        "value": 40,
+        "unit": "px",
+        "cssVar": "--spacing-40",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.14",
+        "value": 14,
+        "unit": "px",
+        "cssVar": "--spacing-14",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.banner-hero-inset",
+        "value": 404,
+        "unit": "px",
+        "cssVar": "--spacing-banner-hero-inset",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.banner-content-inset",
+        "value": 360,
+        "unit": "px",
+        "cssVar": "--spacing-banner-content-inset",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.5",
+        "value": 5,
+        "unit": "px",
+        "cssVar": "--spacing-5",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.collapse-status-indent",
+        "value": 42,
+        "unit": "px",
+        "cssVar": "--spacing-collapse-status-indent",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.36",
+        "value": 36,
+        "unit": "px",
+        "cssVar": "--spacing-36",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.9",
+        "value": 9,
+        "unit": "px",
+        "cssVar": "--spacing-9",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.collapse-body-indent",
+        "value": 52,
+        "unit": "px",
+        "cssVar": "--spacing-collapse-body-indent",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.26",
+        "value": 26,
+        "unit": "px",
+        "cssVar": "--spacing-26",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.80",
+        "value": 80,
+        "unit": "px",
+        "cssVar": "--spacing-80",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.68",
+        "value": 68,
+        "unit": "px",
+        "cssVar": "--spacing-68",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "spacing.menu-navigation-left-gutter",
+        "value": 15,
+        "unit": "px",
+        "cssVar": "--spacing-menu-navigation-left-gutter",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "border.color.emphasis",
+        "value": "var(--color-gray-1)",
+        "unit": null,
+        "cssVar": "--border-color-emphasis",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.inverse",
+        "value": "var(--color-white)",
+        "unit": null,
+        "cssVar": "--border-color-inverse",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.focus",
+        "value": "var(--color-blue)",
+        "unit": null,
+        "cssVar": "--border-color-focus",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.subtle",
+        "value": "var(--color-gray-6)",
+        "unit": null,
+        "cssVar": "--border-color-subtle",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.width.strong",
+        "value": 2,
+        "unit": "px",
+        "cssVar": "--border-width-strong",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.brand",
+        "value": "var(--brand-red)",
+        "unit": null,
+        "cssVar": "--border-color-brand",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.option",
+        "value": "var(--color-option-border)",
+        "unit": null,
+        "cssVar": "--border-color-option",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.tag",
+        "value": "var(--color-tag-border)",
+        "unit": null,
+        "cssVar": "--border-color-tag",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.table-header",
+        "value": "var(--color-table-header-bg)",
+        "unit": null,
+        "cssVar": "--border-color-table-header",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.table-divider",
+        "value": "var(--color-table-divider)",
+        "unit": null,
+        "cssVar": "--border-color-table-divider",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.list-product-divider",
+        "value": "var(--color-list-product-divider)",
+        "unit": null,
+        "cssVar": "--border-color-list-product-divider",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.list-item-divider",
+        "value": "var(--color-list-item-divider)",
+        "unit": null,
+        "cssVar": "--border-color-list-item-divider",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      },
+      {
+        "name": "border.color.comment-divider",
+        "value": "var(--color-comment-divider)",
+        "unit": null,
+        "cssVar": "--border-color-comment-divider",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border.json"
+      }
+    ]
+  },
+  "evidence": {
+    "localImplementation": "components/variants/dropdown.html",
+    "comparison": "components/sources/dropdown/local-structure-review.json",
+    "legacy": "components/sources/dropdown/basic-preview-before.html",
+    "sourceAttribution": "components/sources/dropdown/source-attribution-1010.json",
+    "currentMgReview": "components/sources/remaining-prototypes-mg-20261115/dropdown-review.json"
+  },
+  "sourceValidation": {
+    "componentIdentity": {
+      "status": "not-established",
+      "files": []
+    },
+    "specificationBody": {
+      "status": "not-established",
+      "files": []
+    },
+    "originalOnlineFrontendCode": false,
+    "browserComputedStyles": false,
+    "completeSpecificationCoverage": false,
+    "buttonNesting": {
+      "scope": "finite-authored-button-nesting-only",
+      "checked": [
+        {
+          "variant": "account-guest",
+          "buttons": [
+            {
+              "variant": "filled-red",
+              "size": "l",
+              "type": "button"
+            },
+            {
+              "variant": "filled-gray",
+              "size": "l",
+              "type": "button"
+            }
+          ]
+        }
+      ],
+      "pending": [],
+      "browserVerified": false
+    },
+    "otherAtomNesting": {
+      "IconButton": {
+        "scope": "finite-canonical-IconButton-default-calls",
+        "checked": [
+          {
+            "variant": "command-dot",
+            "children": [
+              {
+                "variant": "plain-m"
+              }
+            ]
+          }
+        ],
+        "inactive": [],
+        "browserVerified": false,
+        "hostStyleCascadeVerified": false
+      },
+      "Checkbox": {
+        "scope": "local-finite-Checkbox-host-assemblies-including-legacy-Dropdown-markers",
+        "checked": [
+          {
+            "variant": "multi-select-checkbox",
+            "mode": "legacy-dropdown-marker",
+            "count": 6
+          },
+          {
+            "variant": "grouped",
+            "mode": "legacy-dropdown-marker",
+            "count": 5
+          },
+          {
+            "variant": "filter",
+            "mode": "legacy-dropdown-marker",
+            "count": 8
+          }
+        ],
+        "pending": [],
+        "browserVerified": false,
+        "mastergoVerified": false,
+        "hostStyleCascadeVerified": false
+      }
+    }
+  },
+  "freshness": {
+    "fingerprints": {
+      "components/button-current.css": "45e94e48ec97a34b4883ecc4f11b33301cdd6679445a3970cb16a2a87c6d8c9e",
+      "components/button-runtime-current.css": "caaa9b65a8d2fbebfa487ca3e0cf0c67d36e0219ffc55d4b0d801371a02da76c",
+      "components/checkbox-current.css": "81bace454b5f7612b84fd778d5596605dbce94f2bdc1784ba2636140622b168e",
+      "components/components.css": "a08b4fe2790b5ff2b784c6362a90f1b94e7535a03e863232ce6d620a52e85f73",
+      "components/contracts/button.json": "1f3092d74e19c1a840fbf2e8b8ecaf6115976b2941cc5484e4cda824025b1f73",
+      "components/contracts/checkbox.json": "ea3c1e3a082df421cafa2729384e7a7849e67048f51c3fde0979c0c3b0c94d63",
+      "components/contracts/dropdown.json": "ed56fa3f3da0ff3e70a9ec3038c01552e247b70f9d0b2739cf156bd6d1921436",
+      "components/contracts/icon-button.json": "19f3ce860f24650fba7fbc0b43b59c80255feae164b8d24d9ed71cb4d39d782d",
+      "components/dropdown-command-current.css": "605bd48272f788600969b98f385dc25ca3ab94119662e393df8ce5209ea8b2f2",
+      "components/dropdown-command-current.js": "3a6a18fb3cabd2ec2a0183b0f7f1780c0ac9fe76df2563ff0a947a306ed26804",
+      "components/dropdown-current.css": "6349f1f88a6dd08da429d821ce0560c97d6b3db9996543818b6b5c40fbb4b5e1",
+      "components/dropdown-current.js": "e2627ba0de10f0f937f522bc7734c8672d1be5ddf87789af0db898ae2f5b38ab",
+      "components/icon-button-current.css": "5a4d55cf3817c9491473c1db1df6690cd9a06faf89663a7116e4b044ac5bbd2d",
+      "components/icons/icon-chevron-down.svg": "fe5df03acb1cb4b8a38a928357775416656fbf97cc54f3c6a5b7d0e4906f3e91",
+      "components/icons/icon-search.svg": "11e01599b008320c723773284b56944f810762688a2928b37e6cb228fc9a3347",
+      "components/icons/icons-manifest.json": "12c48af6d1dc59d50b76046bb0507005f565aa4224a6d8056ce4eaaf8050c43e",
+      "components/preview/reference-live.js": "4839383529a3ee82df1d8efe675d430567abc1986034499107aa429d21a18ea6",
+      "components/reference-policy.json": "4ae8f51f623386417e38d497caafb8bda4417c929159002a7ac088e6e526b482",
+      "components/sources/dropdown/basic-preview-before.html": "51ab6829f716157960e6dd70ff380b98223605e579af8549125ab8fdad5c7224",
+      "components/sources/dropdown/local-structure-review.json": "494d414174b096df3c4275243c9c844db6c87e07228a7035a20f824fb0125146",
+      "components/sources/dropdown/source-attribution-1010.json": "846255d1e774f6310f91ff28e76192b962852f5f6c84ae0ac475e50e52bc6fe1",
+      "components/sources/remaining-prototypes-mg-20261115/dropdown-review.json": "a6e2bb53d16b086967e12c0b9dd91d17a9509430d6b68d787891917f955bb1a8",
+      "components/token-specs/border-radius.json": "b01e4c23fbc7e19983d9592b59b0303155b79d66c52459356eda0ea9f4ca74b5",
+      "components/token-specs/border.json": "d286ee4681deda1c7702c310b065c86f824539b3a8797efba05b24bc225ab322",
+      "components/token-specs/colors.json": "5267d59fdc687b54496977280c00c97f0beb6ffce013f87853504f5b736d3389",
+      "components/token-specs/spacing.json": "351b14cfce4411248ad41e00eaaf2b1cab9b705997980dfed1fc65693740e65c",
+      "components/token-specs/typography.json": "93b7dc07547218a33c075b7cdcd942f89094353a7847d483d8378b8883327e16",
+      "components/tokens.css": "f63f3c8fea511d8029902bc3905b01853ac5e92049c1b18ca35ebc9a680c3e69",
+      "components/variants/button.html": "6b6715b66e6c0b684c072dcdcbf7170aeb9f49a31bb32ca5b8986644d626cfe6",
+      "components/variants/checkbox.html": "7d99c4b8d7b3c89433a31d6a9205f89607c5cbd398abd76824ae7c92bbdf83f6",
+      "components/variants/dropdown.html": "44354e67c711c48da210aa5e5abe899eb15bfbf49688fdf485090caee0b07ce5",
+      "components/variants/icon-button.html": "91c84e01916ffb0fb58a102a83123aa24b16263a9d3a744dc0316ec19f2f317f"
+    },
+    "graphFingerprint": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "note": "从本地源文件生成；不是 MasterGo 在线实时状态。"
+  },
+  "readScope": {
+    "variant": "basic",
+    "note": "只展开当前已选变体；其他变体没有被声明为不可用。尺寸继续按真实 sizeOptions 选择。"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "date": "2026-10-12",
+  "scope": "Inline Hover preview cells, seven erroneous opacity simulations",
+  "userReply": "不正常，默认展示的悬浮不正常",
+  "screenshot": {
+    "file": "components/sources/text-button/hover-preview-user-before-1012.png",
+    "sha256": "e0f9dd39c7b1f0d89abeb99ecb5a0bd71e0c61e8d8ded76c965ee08113517747",
+    "size": [
+      1708,
+      1072
+    ],
+    "annotation": "Original user red frame, no geometry/viewport measurement inferred"
+  },
+  "sourceBasis": "Saved typed original TextButton Hover text decoration and colors via inventory-text-button-source; existing real hover/simulation class CSS agrees. No new online source review or glyph replacement.",
+  "cause": "Seven Hover preview anchors had opacity0.8 and lacked ds-text-btn--hover",
+  "fix": "Replace artificial inline opacity with existing atomic hover class; shared/current CSS, icons, contracts, default calls and frozen pages unchanged",
+  "limits": [
+    "User screenshot proves wrong static Hover display in visible rows, not live pointer transitions",
+    "White14px same code defect fixed; below screenshot crop and not visually confirmed",
+    "Post-fix display pending user review",
+    "No whole family acceptance"
+  ],
+  "verification": {
+    "status": "finite offline checks passed; post-fix visual feedback pending",
+    "offlineTests": 9,
+    "pass": 9,
+    "fail": 0,
+    "command": "node --test scripts/text-button-source-inventory.test.js",
+    "log": "components/sources/text-button/hover-preview-offline-tests-1012.log",
+    "previewStatePairsChecked": 7,
+    "dependencySync": "passed",
+    "syncLog": "components/sources/text-button/hover-preview-source-sync-1012.log"
+  },
+  "fingerprints": {
+    "components/preview/text-button.html": "317c1e34975fd7abcf5adfdce472192fb5b0efae3a867746686ea2caff0990f2",
+    "components/components.css": "a08b4fe2790b5ff2b784c6362a90f1b94e7535a03e863232ce6d620a52e85f73",
+    "components/text-button-current.css": "ee18c6dc7f7e281db9fab0f33d0caede9dbe6a1918023c3c875536c4fa226069",
+    "scripts/text-button-source-inventory.test.js": "fd53164059b572d8c4b8efdeca9c266d71e39e2b49974f77e66c0997c8b72692"
+  }
+}

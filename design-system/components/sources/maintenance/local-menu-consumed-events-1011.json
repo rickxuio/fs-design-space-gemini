@@ -1,0 +1,32 @@
+{
+  "date": "2026-10-11",
+  "scope": "菜单导航既有本地事件边界",
+  "problem": "子按钮已取消click或keydown，父菜单仍展开或折叠",
+  "fix": "点击和键盘处理入口尊重defaultPrevented，正常操作继续",
+  "verification": {
+    "redCaseReproduced": true,
+    "offlinePassed": 13,
+    "syncPassed": true,
+    "healthPassed": true,
+    "healthErrors": 0,
+    "existingWarnings": 2,
+    "logs": [
+      "/tmp/fs-menu-consumed-event-before.log",
+      "/tmp/fs-menu-consumed-event-final-test.log",
+      "/tmp/fs-menu-consumed-event-sync.log",
+      "/tmp/fs-menu-consumed-event-health.log"
+    ]
+  },
+  "fingerprints": {
+    "components/menu-navigation-current.js": "1dc27742e1d1962ebe26d2d02fd889b84ca113e8b013855296239d3accbf9a05",
+    "scripts/menu-navigation-reference.test.js": "186bbcdd4b06504afece2df525d623b55f2335eeae9f419d94b566d4f82a9a11"
+  },
+  "boundaries": {
+    "mastergoVerified": false,
+    "browserVerified": false,
+    "visualVerified": false,
+    "familyComplete": false,
+    "frozenPagesChanged": false,
+    "newCanonicalAdmission": false
+  }
+}

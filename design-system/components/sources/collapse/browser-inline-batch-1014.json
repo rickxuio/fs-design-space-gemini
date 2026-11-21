@@ -1,0 +1,29 @@
+{
+  "mainComponent": "Collapse",
+  "scope": "现有行内编辑宿主的编辑、取消/Escape、禁用保存实际交互",
+  "status": "existing-host-browser-scope-checked-user-visual-pending",
+  "sourceRange": [
+    "components/sources/maintenance/local-collapse-host-interaction-1011.json",
+    "既有真实Input/TextButton/Button调用来源及已关闭状态"
+  ],
+  "completionConditions": [
+    "现有2行真实编辑打开和焦点定位",
+    "取消及普通Escape回滚且互不影响",
+    "禁用保存实际不能提交；不更改未经确认的保存规则"
+  ],
+  "remaining": [
+    "真实输入法状态未验证",
+    "Input底层值被浏览器隐去，仅确认显示值/取消收起及既有离线回滚结果",
+    "完整宿主来源与用户视觉批准仍待"
+  ],
+  "necessaryRelations": [
+    "现有行内编辑预览宿主，只在发现真实缺陷时修正"
+  ],
+  "directionalChecks": [
+    "真实Input和Button状态",
+    "取消回滚与焦点",
+    "多个行独立/手风琴"
+  ],
+  "browser": "components/sources/collapse/browser-inline-states-1014.json",
+  "engineering": "未修改实现，复用既有15项离线检查；不重复运行"
+}

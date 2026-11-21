@@ -1,0 +1,1306 @@
+{
+  "id": "comp_icon_button_001",
+  "name": "IconButton",
+  "chineseName": "图标按钮",
+  "description": "仅包含图标的按钮，用于关闭、搜索、编辑、下载等操作，支持带边框和无边框两种类型",
+  "category": "通用 General",
+  "types": [
+    {
+      "name": "bordered",
+      "chineseName": "带边框",
+      "description": "带边框和背景色的图标按钮，仅 XL 尺寸",
+      "sizes": [
+        "xl"
+      ]
+    },
+    {
+      "name": "plain",
+      "chineseName": "无边框",
+      "description": "无边框透明背景的图标按钮，L/M/S/XS 尺寸",
+      "sizes": [
+        "l",
+        "m",
+        "s",
+        "xs"
+      ]
+    }
+  ],
+  "variants": [
+    {
+      "name": "bordered-xl",
+      "chineseName": "带边框 · XL",
+      "type": "bordered",
+      "buttonSize": "40x40px",
+      "iconSize": "16x16px",
+      "padding": "8px 16px",
+      "styleProperties": {
+        "width": "40px",
+        "height": "40px",
+        "padding": "8px 16px",
+        "background": "#F6F6F8",
+        "border": "1px solid #DEE0E3",
+        "borderRadius": "4px",
+        "iconWidth": "16px",
+        "iconHeight": "16px"
+      },
+      "cssClass": "ds-icon-btn ds-icon-btn--bordered ds-icon-btn--xl",
+      "requiredChildren": [
+        "img.ds-icon-btn__icon"
+      ],
+      "isComplete": true,
+      "pendingParts": [],
+      "whenToUse": "筛选条件未启用，40px容器、16px筛选图标",
+      "whenNotToUse": "不是搜索、关闭或任意加边框操作"
+    },
+    {
+      "name": "plain-l",
+      "chineseName": "无边框 · L",
+      "type": "plain",
+      "buttonSize": "32x32px",
+      "iconSize": "20x20px",
+      "padding": "6px",
+      "styleProperties": {
+        "width": "32px",
+        "height": "32px",
+        "padding": "6px",
+        "background": "transparent",
+        "border": "none",
+        "borderRadius": "4px",
+        "iconWidth": "20px",
+        "iconHeight": "20px"
+      },
+      "cssClass": "ds-icon-btn ds-icon-btn--plain ds-icon-btn--l",
+      "requiredChildren": [
+        "img.ds-icon-btn__icon"
+      ],
+      "isComplete": true,
+      "pendingParts": [],
+      "whenToUse": "宫格、列表或关闭操作，32px容器、20px图标",
+      "whenNotToUse": "不是按名称放大其他图标；仅3个已登记图标"
+    },
+    {
+      "name": "plain-m",
+      "chineseName": "无边框 · M",
+      "type": "plain",
+      "buttonSize": "28x28px",
+      "iconSize": "16x16px",
+      "padding": "6px",
+      "styleProperties": {
+        "width": "28px",
+        "height": "28px",
+        "padding": "6px",
+        "background": "transparent",
+        "border": "none",
+        "borderRadius": "4px",
+        "iconWidth": "16px",
+        "iconHeight": "16px"
+      },
+      "cssClass": "ds-icon-btn ds-icon-btn--plain ds-icon-btn--m",
+      "requiredChildren": [
+        "img.ds-icon-btn__icon"
+      ],
+      "isComplete": true,
+      "pendingParts": [],
+      "whenToUse": "下载、删除、关闭、搜索、显示、隐藏或更多操作，28px容器、16px图标",
+      "whenNotToUse": "不是任意16px图标；仅7个已登记图标"
+    },
+    {
+      "name": "plain-s",
+      "chineseName": "无边框 · S",
+      "type": "plain",
+      "buttonSize": "20x20px",
+      "iconSize": "14x14px",
+      "padding": "3px",
+      "styleProperties": {
+        "width": "20px",
+        "height": "20px",
+        "padding": "3px",
+        "background": "transparent",
+        "border": "none",
+        "borderRadius": "4px",
+        "iconWidth": "14px",
+        "iconHeight": "14px",
+        "flex": "none"
+      },
+      "cssClass": "ds-icon-btn ds-icon-btn--plain ds-icon-btn--s",
+      "requiredChildren": [
+        "img.ds-icon-btn__icon"
+      ],
+      "isComplete": true,
+      "pendingParts": [],
+      "whenToUse": "关闭或搜索操作，20px容器、14px图标",
+      "whenNotToUse": "不能因S名称假定点击区大于XS，也不用于12px图标"
+    },
+    {
+      "name": "plain-xs",
+      "chineseName": "无边框 · XS",
+      "type": "plain",
+      "buttonSize": "24x24px",
+      "iconSize": "12x12px",
+      "padding": "6px",
+      "styleProperties": {
+        "width": "24px",
+        "height": "24px",
+        "padding": "6px",
+        "background": "transparent",
+        "border": "none",
+        "borderRadius": "4px",
+        "iconWidth": "12px",
+        "iconHeight": "12px"
+      },
+      "cssClass": "ds-icon-btn ds-icon-btn--plain ds-icon-btn--xs",
+      "requiredChildren": [
+        "img.ds-icon-btn__icon"
+      ],
+      "isComplete": true,
+      "pendingParts": [],
+      "whenToUse": "编辑操作，24px容器、12px图标",
+      "whenNotToUse": "不是任意极小操作；置顶等原稿图标未登记不能替换"
+    },
+    {
+      "name": "bordered-xl-checked",
+      "chineseName": "筛选 · XL · 已选中",
+      "type": "bordered",
+      "buttonSize": "40x40px",
+      "iconSize": "16x16px",
+      "padding": "8px 16px",
+      "styleProperties": {
+        "width": "40px",
+        "height": "40px",
+        "padding": "8px 16px",
+        "background": "#F6F6F8",
+        "border": "1px solid #19191A",
+        "borderRadius": "4px",
+        "iconWidth": "16px",
+        "iconHeight": "16px"
+      },
+      "cssClass": "ds-icon-btn ds-icon-btn--bordered ds-icon-btn--xl ds-icon-btn--checked",
+      "requiredChildren": [
+        "img.ds-icon-btn__icon"
+      ],
+      "isComplete": true,
+      "pendingParts": [],
+      "whenToUse": "筛选条件已启用，40px容器、16px筛选图标",
+      "whenNotToUse": "未选中筛选用bordered-xl；其他角色不套此变体"
+    }
+  ],
+  "states": [
+    {
+      "name": "default",
+      "chineseName": "默认",
+      "description": "正常显示状态",
+      "styleOverrides": {}
+    },
+    {
+      "name": "hover",
+      "chineseName": "悬停",
+      "description": "鼠标悬停状态",
+      "styleOverrides": {
+        "bordered": {
+          "background": "#F6F6F8",
+          "border": "1px solid #19191A"
+        },
+        "plain": {
+          "background": "rgba(25,25,26,0.04)"
+        }
+      }
+    },
+    {
+      "name": "checked",
+      "chineseName": "选中（筛选）",
+      "description": "仅 bordered-xl，aria-pressed=true；宿主控制筛选状态。",
+      "styleOverrides": {
+        "bordered": {
+          "border": "1px solid #19191A"
+        }
+      }
+    }
+  ],
+  "commonProperties": {
+    "display": "flex",
+    "justifyContent": "center",
+    "alignItems": "center",
+    "flexDirection": "column",
+    "borderRadius": "4px",
+    "cursor": "pointer",
+    "iconColor": "#707070"
+  },
+  "iconHandling": {
+    "description": "默认颜色按具体已登记SVG和来源状态核对，不将#707070套给所有图标。筛选及S关闭保留现有深色原件；Hover由组件切换官方状态资源，不使用页面filter改色。",
+    "rules": [
+      {
+        "state": "default",
+        "iconFill": "#707070",
+        "filter": "none",
+        "exceptions": [
+          "bordered-xl / bordered-xl-checked 的筛选图标为既有深色原件",
+          "plain-s 关闭Default/Hover为官方Gray1原件"
+        ]
+      }
+    ]
+  },
+  "usageGuidelines": "按原始组件的尺寸与图标组合选择，不开放图标和尺寸的任意排列。XL 用于筛选；Plain 用于对应的宫格、列表、删除、搜索、下载、显示/隐藏、更多、编辑等操作。未迁入的置顶和日历需补齐原始图标后再开放。",
+  "tokenReferences": [
+    "color.gray-3",
+    "color.gray-5",
+    "color.gray-9",
+    "color.gray-1",
+    "color.hover-overlay-light",
+    "border-radius.md",
+    "spacing.sm",
+    "spacing.lg",
+    "spacing.6",
+    "border.style.none",
+    "border.width.default",
+    "border.style.default",
+    "border.color.default",
+    "border.color.emphasis",
+    "spacing.3"
+  ],
+  "constraints": {
+    "allowedChildren": [
+      "Icon"
+    ],
+    "requiredProperties": [
+      "type",
+      "size",
+      "icon"
+    ],
+    "forbiddenCombinations": [
+      "bordered 类型仅支持 XL 尺寸",
+      "plain 类型仅支持 L/M/S/XS 尺寸"
+    ],
+    "notes": "Icon is centered. Use only variant-scoped registered icons; do not infer combinations from similar geometry."
+  },
+  "relations": {
+    "variantDecisionsDescription": "类型、尺寸范围和互斥规则均以组件契约为准；实际图标属于图标库选择，不在嵌套子组件列登记。",
+    "variantDecisions": [
+      {
+        "type": "带边框 XL",
+        "className": "ds-icon-btn--bordered ds-icon-btn--xl",
+        "whenToUse": "筛选条件未启用，40px容器、16px筛选图标",
+        "whenNotToUse": "不是搜索、关闭或任意加边框操作",
+        "nestedComponents": [],
+        "status": "调用资格读取本地catalog；不是全族视觉批准。",
+        "variant": "bordered-xl",
+        "selectionCases": [
+          {
+            "id": "icon-button.bordered-xl.use",
+            "kind": "use",
+            "strength": "candidate",
+            "condition": "筛选条件未启用，40px容器、16px筛选图标",
+            "result": "aria-pressed=false；宿主处理筛选动作。",
+            "targetVariant": "bordered-xl"
+          },
+          {
+            "id": "icon-button.bordered-xl.avoid",
+            "kind": "avoid",
+            "strength": "avoid",
+            "condition": "不是搜索、关闭或任意加边框操作",
+            "result": "排除本变体；不能靠改尺寸、改类或换未登记图标适配。",
+            "targetVariant": "bordered-xl"
+          }
+        ],
+        "evidence": {
+          "source": "components/sources/icon-button/mg-current-scope-20261114.json",
+          "ruleNodes": [
+            "3:11779",
+            "3:14510"
+          ]
+        }
+      },
+      {
+        "type": "无边框 L",
+        "className": "ds-icon-btn--plain ds-icon-btn--l",
+        "whenToUse": "宫格、列表或关闭操作，32px容器、20px图标",
+        "whenNotToUse": "不是按名称放大其他图标；仅3个已登记图标",
+        "nestedComponents": [],
+        "status": "调用资格读取本地catalog；不是全族视觉批准。",
+        "variant": "plain-l",
+        "selectionCases": [
+          {
+            "id": "icon-button.plain-l.use",
+            "kind": "use",
+            "strength": "candidate",
+            "condition": "宫格、列表或关闭操作，32px容器、20px图标",
+            "result": "与真实宿主核对，再作为候选。",
+            "targetVariant": "plain-l"
+          },
+          {
+            "id": "icon-button.plain-l.avoid",
+            "kind": "avoid",
+            "strength": "avoid",
+            "condition": "不是按名称放大其他图标；仅3个已登记图标",
+            "result": "排除本变体；不能靠改尺寸、改类或换未登记图标适配。",
+            "targetVariant": "plain-l"
+          }
+        ],
+        "evidence": {
+          "source": "components/sources/icon-button/mg-current-scope-20261114.json",
+          "ruleNodes": [
+            "3:11779",
+            "3:14510"
+          ]
+        }
+      },
+      {
+        "type": "无边框 M",
+        "className": "ds-icon-btn--plain ds-icon-btn--m",
+        "whenToUse": "下载、删除、关闭、搜索、显示、隐藏或更多操作，28px容器、16px图标",
+        "whenNotToUse": "不是任意16px图标；仅7个已登记图标",
+        "nestedComponents": [],
+        "status": "调用资格读取本地catalog；不是全族视觉批准。",
+        "variant": "plain-m",
+        "selectionCases": [
+          {
+            "id": "icon-button.plain-m.use",
+            "kind": "use",
+            "strength": "candidate",
+            "condition": "下载、删除、关闭、搜索、显示、隐藏或更多操作，28px容器、16px图标",
+            "result": "与真实宿主核对，再作为候选。",
+            "targetVariant": "plain-m"
+          },
+          {
+            "id": "icon-button.plain-m.avoid",
+            "kind": "avoid",
+            "strength": "avoid",
+            "condition": "不是任意16px图标；仅7个已登记图标",
+            "result": "排除本变体；不能靠改尺寸、改类或换未登记图标适配。",
+            "targetVariant": "plain-m"
+          }
+        ],
+        "evidence": {
+          "source": "components/sources/icon-button/mg-current-scope-20261114.json",
+          "ruleNodes": [
+            "3:11779",
+            "3:14510"
+          ]
+        }
+      },
+      {
+        "type": "无边框 S",
+        "className": "ds-icon-btn--plain ds-icon-btn--s",
+        "whenToUse": "关闭或搜索操作，20px容器、14px图标",
+        "whenNotToUse": "不能因S名称假定点击区大于XS，也不用于12px图标",
+        "nestedComponents": [],
+        "status": "调用资格读取本地catalog；不是全族视觉批准。",
+        "variant": "plain-s",
+        "selectionCases": [
+          {
+            "id": "icon-button.plain-s.use",
+            "kind": "use",
+            "strength": "candidate",
+            "condition": "关闭或搜索操作，20px容器、14px图标",
+            "result": "保持现有3px实现内距，不改类缩放。",
+            "targetVariant": "plain-s"
+          },
+          {
+            "id": "icon-button.plain-s.avoid",
+            "kind": "avoid",
+            "strength": "avoid",
+            "condition": "不能因S名称假定点击区大于XS，也不用于12px图标",
+            "result": "排除本变体；不能靠改尺寸、改类或换未登记图标适配。",
+            "targetVariant": "plain-s"
+          }
+        ],
+        "evidence": {
+          "source": "components/sources/icon-button/mg-current-scope-20261114.json",
+          "ruleNodes": [
+            "3:11779",
+            "3:14510"
+          ]
+        }
+      },
+      {
+        "type": "无边框 XS",
+        "className": "ds-icon-btn--plain ds-icon-btn--xs",
+        "whenToUse": "编辑操作，24px容器、12px图标",
+        "whenNotToUse": "不是任意极小操作；置顶等原稿图标未登记不能替换",
+        "nestedComponents": [],
+        "status": "调用资格读取本地catalog；不是全族视觉批准。",
+        "variant": "plain-xs",
+        "selectionCases": [
+          {
+            "id": "icon-button.plain-xs.use",
+            "kind": "use",
+            "strength": "candidate",
+            "condition": "编辑操作，24px容器、12px图标",
+            "result": "按实际24px热区选择，不按XS字面缩小。",
+            "targetVariant": "plain-xs"
+          },
+          {
+            "id": "icon-button.plain-xs.avoid",
+            "kind": "avoid",
+            "strength": "avoid",
+            "condition": "不是任意极小操作；置顶等原稿图标未登记不能替换",
+            "result": "排除本变体；不能靠改尺寸、改类或换未登记图标适配。",
+            "targetVariant": "plain-xs"
+          }
+        ],
+        "evidence": {
+          "source": "components/sources/icon-button/mg-current-scope-20261114.json",
+          "ruleNodes": [
+            "3:11779",
+            "3:14510"
+          ]
+        }
+      },
+      {
+        "type": "筛选XL已选中",
+        "className": "ds-icon-btn--bordered ds-icon-btn--xl ds-icon-btn--checked",
+        "whenToUse": "筛选条件已启用，40px容器、16px筛选图标",
+        "whenNotToUse": "未选中筛选用bordered-xl；其他角色不套此变体",
+        "nestedComponents": [],
+        "status": "调用资格读取本地catalog；不是全族视觉批准。",
+        "variant": "bordered-xl-checked",
+        "selectionCases": [
+          {
+            "id": "icon-button.bordered-xl-checked.use",
+            "kind": "use",
+            "strength": "candidate",
+            "condition": "筛选条件已启用，40px容器、16px筛选图标",
+            "result": "aria-pressed=true；宿主更新状态。",
+            "targetVariant": "bordered-xl-checked"
+          },
+          {
+            "id": "icon-button.bordered-xl-checked.avoid",
+            "kind": "avoid",
+            "strength": "avoid",
+            "condition": "未选中筛选用bordered-xl；其他角色不套此变体",
+            "result": "排除本变体；不能靠改尺寸、改类或换未登记图标适配。",
+            "targetVariant": "bordered-xl-checked"
+          }
+        ],
+        "evidence": {
+          "source": "components/sources/icon-button/mg-current-scope-20261114.json",
+          "ruleNodes": [
+            "3:11779",
+            "3:14510"
+          ]
+        }
+      }
+    ],
+    "radiusDependencies": [
+      {
+        "token": "border-radius.md",
+        "value": "4px",
+        "usage": "中圆角 - 按钮默认圆角",
+        "appliesTo": [
+          "bordered",
+          "plain"
+        ]
+      }
+    ],
+    "colorDependencies": [
+      {
+        "token": "color.gray-1",
+        "value": "#19191A",
+        "usage": "标题/深色文字 (Primary text)",
+        "appliesTo": [
+          "bordered"
+        ]
+      },
+      {
+        "token": "color.gray-5",
+        "value": "#DEE0E3",
+        "usage": "边框色 / 菜单项禁用色",
+        "appliesTo": [
+          "bordered"
+        ]
+      },
+      {
+        "token": "color.gray-8",
+        "value": "#F6F6F8",
+        "usage": "输入框/下拉/图标按钮等表单类灰底（gray-9 旧值 #F6F6F8，收敛为正式 token；比 gray-9 #FAFBFB 略深）",
+        "appliesTo": [
+          "bordered"
+        ]
+      },
+      {
+        "token": "color.hover-overlay-light",
+        "value": "rgba(25,25,26,0.04)",
+        "usage": "Hover 浅色叠加层（描边按钮用）",
+        "appliesTo": [
+          "plain"
+        ]
+      }
+    ],
+    "commonlyEmbeddedIn": [
+      {
+        "component": "Card",
+        "usage": "产品卡片的 +N 更多标签弹出层里可能出现关闭按钮（如有）",
+        "verified": false,
+        "verifiedNote": "2026-07-17 核查：card.html preview 里没有 ds-icon-btn 真实结构，card.json 也未声明依赖 IconButton。此条为设计意图/未来参考用法（如有才出现），保留手写。"
+      }
+    ],
+    "mutuallyExclusiveWith": [],
+    "notes": "IconButton为基础原子；宿主必须登记实际变体、图标和槽位，真实调用原子结构与运行样式。父关系由宿主componentDependencies反向生成，不将视觉相似视为嵌套证明。",
+    "enforcementStatus": {
+      "colorDependencies.tokens-exist": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 2b：colorDependencies 引用的 color.* token 必须存在于 token-specs/colors.json（缺失即 error）；token 为 / 表示无对应 token 的白名单裸值；双源值一致由 validate-tokens.js 全量保证；Guard C 保证声明了就必须有颜色依赖表"
+      },
+      "colorDependencies.css-uses-var": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 2c：切出组件样式段，校验用到的 var(--color-*) 都在 colorDependencies 声明过，且无未声明裸色值（box-shadow/注释除外），违反即 error —— 保证颜色映射闭环"
+      },
+      "radiusDependencies.tokens-exist": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 3a：radiusDependencies 引用的 border-radius.* token 必须存在于 token-specs/border-radius.json（缺失即 error）；token 为 / 表示白名单裸值；Guard D 保证声明了就必须有圆角依赖表"
+      },
+      "radiusDependencies.css-uses-var": {
+        "enforced": true,
+        "mechanism": "check-contracts.js 检查 3b：校验 border-radius 用到的 var(--border-radius-*) 都在 radiusDependencies 声明过，且无未声明裸圆角值（0 除外），违反即 error —— 保证圆角映射闭环"
+      },
+      "fontSizeDependencies": {
+        "enforced": true,
+        "mechanism": "/",
+        "note": "本组件段内无 font-size，无 fontSizeDependencies"
+      },
+      "shadowDependencies": {
+        "enforced": true,
+        "mechanism": "/",
+        "note": "本组件无 box-shadow，无 shadowDependencies"
+      },
+      "iconMustComeFromLibrary": {
+        "enforced": true,
+        "mechanism": "validate.js: checkIconExists (ICON_MISSING，2026-07-16 新增)——任何 <img src> 指向 components/icons/ 的引用，其文件必须在磁盘上真实存在，否则 error。防止编造图标名/引用不存在的图标。全站页面通用。",
+        "note": "INLINE_SVG 仍并行告警手写内联 <svg>；本检查补齐 <img> 引用图标文件的真实性。"
+      },
+      "spacingDependencies.tokens-and-css-closure": {
+        "enforced": true,
+        "mechanism": "check-contracts.js: spacingDependencies token/value/selector/property 与组件 CSS 双向闭环校验"
+      },
+      "borderDependencies.tokens-and-css-closure": {
+        "enforced": true,
+        "mechanism": "check-contracts.js: borderDependencies token/value/aspect/selector/property 与组件 CSS 双向闭环校验"
+      },
+      "fontWeightDependencies.tokens-and-css-closure": {
+        "enforced": true,
+        "mechanism": "check-contracts.js: fontWeightDependencies token/value/selector/property 与组件 CSS 双向闭环校验；仅允许 Regular 400 / SemiBold 600，禁止裸字重值"
+      },
+      "typographyDependencies.size-weight-pairing": {
+        "enforced": true,
+        "mechanism": "check-contracts.js: typographyDependencies 强制字号 token/value 与字重 token/value 成对，并核对同类型 fontSizeDependencies、显式 CSS 字重证据或 inherited-regular 来源"
+      }
+    },
+    "spacingDependencies": [
+      {
+        "token": "spacing.sm",
+        "value": "8px",
+        "usage": "padding：.ds-icon-btn--xl",
+        "properties": [
+          "padding"
+        ],
+        "selectors": [
+          ".ds-icon-btn--xl"
+        ],
+        "appliesTo": [
+          "bordered"
+        ]
+      },
+      {
+        "token": "spacing.lg",
+        "value": "16px",
+        "usage": "padding：.ds-icon-btn--xl",
+        "properties": [
+          "padding"
+        ],
+        "selectors": [
+          ".ds-icon-btn--xl"
+        ],
+        "appliesTo": [
+          "bordered"
+        ]
+      },
+      {
+        "token": "spacing.6",
+        "value": "6px",
+        "usage": "padding：.ds-icon-btn--l、.ds-icon-btn--m、.ds-icon-btn--s、.ds-icon-btn--xs",
+        "properties": [
+          "padding"
+        ],
+        "selectors": [
+          ".ds-icon-btn--l",
+          ".ds-icon-btn--m",
+          ".ds-icon-btn--s",
+          ".ds-icon-btn--xs"
+        ],
+        "appliesTo": [
+          "plain"
+        ]
+      },
+      {
+        "token": "spacing.3",
+        "value": "3px",
+        "usage": "当前 S 容器20px / 图标14px，四边各3px",
+        "properties": [
+          "padding"
+        ],
+        "selectors": [
+          ".ds-icon-btn--plain.ds-icon-btn--s"
+        ],
+        "appliesTo": [
+          "plain/s"
+        ]
+      }
+    ],
+    "borderDependencies": [
+      {
+        "token": "border.style.none",
+        "value": "none",
+        "usage": "border：.ds-icon-btn、.ds-icon-btn--plain",
+        "aspect": "style",
+        "properties": [
+          "border"
+        ],
+        "selectors": [
+          ".ds-icon-btn",
+          ".ds-icon-btn--plain"
+        ],
+        "appliesTo": [
+          "bordered",
+          "plain"
+        ]
+      },
+      {
+        "token": "border.width.default",
+        "value": "1px",
+        "usage": "border：.ds-icon-btn--bordered",
+        "aspect": "width",
+        "properties": [
+          "border"
+        ],
+        "selectors": [
+          ".ds-icon-btn--bordered"
+        ],
+        "appliesTo": [
+          "bordered"
+        ]
+      },
+      {
+        "token": "border.style.default",
+        "value": "solid",
+        "usage": "border：.ds-icon-btn--bordered",
+        "aspect": "style",
+        "properties": [
+          "border"
+        ],
+        "selectors": [
+          ".ds-icon-btn--bordered"
+        ],
+        "appliesTo": [
+          "bordered"
+        ]
+      },
+      {
+        "token": "border.color.default",
+        "value": "var(--color-gray-5)",
+        "usage": "border：.ds-icon-btn--bordered",
+        "aspect": "color",
+        "properties": [
+          "border"
+        ],
+        "selectors": [
+          ".ds-icon-btn--bordered"
+        ],
+        "appliesTo": [
+          "bordered"
+        ]
+      },
+      {
+        "token": "border.color.emphasis",
+        "value": "var(--color-gray-1)",
+        "usage": "border-color：.ds-icon-btn--bordered:hover、.ds-icon-btn--bordered.ds-icon-btn--hover",
+        "aspect": "color",
+        "properties": [
+          "border-color"
+        ],
+        "selectors": [
+          ".ds-icon-btn--bordered:hover",
+          ".ds-icon-btn--bordered.ds-icon-btn--hover"
+        ],
+        "appliesTo": [
+          "bordered"
+        ]
+      }
+    ],
+    "fontWeightDependencies": [],
+    "typographyDependencies": [],
+    "iconDependencies": [
+      {
+        "icon": "icon-filter.svg",
+        "usage": "原始组件中对应操作；本地 SVG 轮廓待视觉复核，替换时同步 aria-label。",
+        "appliesTo": [
+          "bordered/xl"
+        ]
+      },
+      {
+        "icon": "icon-grid-view.svg",
+        "usage": "原始组件中对应操作；本地 SVG 轮廓待视觉复核，替换时同步 aria-label。",
+        "appliesTo": [
+          "plain/l"
+        ]
+      },
+      {
+        "icon": "icon-list-view.svg",
+        "usage": "原始组件中对应操作；本地 SVG 轮廓待视觉复核，替换时同步 aria-label。",
+        "appliesTo": [
+          "plain/l"
+        ]
+      },
+      {
+        "icon": "icon-close.svg",
+        "usage": "原始组件中对应操作；本地 SVG 轮廓待视觉复核，替换时同步 aria-label。",
+        "appliesTo": [
+          "plain/l",
+          "plain/m"
+        ]
+      },
+      {
+        "icon": "icon-download.svg",
+        "usage": "原始组件中对应操作；本地 SVG 轮廓待视觉复核，替换时同步 aria-label。",
+        "appliesTo": [
+          "plain/m"
+        ]
+      },
+      {
+        "icon": "icon-delete.svg",
+        "usage": "原始组件中对应操作；本地 SVG 轮廓待视觉复核，替换时同步 aria-label。",
+        "appliesTo": [
+          "plain/m"
+        ]
+      },
+      {
+        "icon": "icon-search.svg",
+        "usage": "原始组件中对应操作；本地 SVG 轮廓待视觉复核，替换时同步 aria-label。",
+        "appliesTo": [
+          "plain/s"
+        ]
+      },
+      {
+        "icon": "icon-eye.svg",
+        "usage": "原始组件中对应操作；本地 SVG 轮廓待视觉复核，替换时同步 aria-label。",
+        "appliesTo": [
+          "plain/m"
+        ]
+      },
+      {
+        "icon": "icon-eye-off.svg",
+        "usage": "原始组件中对应操作；本地 SVG 轮廓待视觉复核，替换时同步 aria-label。",
+        "appliesTo": [
+          "plain/m"
+        ]
+      },
+      {
+        "icon": "icon-more.svg",
+        "usage": "原始组件中对应操作；本地 SVG 轮廓待视觉复核，替换时同步 aria-label。",
+        "appliesTo": [
+          "plain/m"
+        ]
+      },
+      {
+        "icon": "icon-edit.svg",
+        "usage": "原始组件中对应操作；本地 SVG 轮廓待视觉复核，替换时同步 aria-label。",
+        "appliesTo": [
+          "plain/xs"
+        ]
+      },
+      {
+        "icon": "icon-button-close-s.svg",
+        "usage": "MG S 关闭实例官方14×14 SVG，Default/Hover Gray1；仅 plain/s。",
+        "appliesTo": [
+          "plain/s"
+        ]
+      },
+      {
+        "icon": "icon-button-search-s-hover.svg",
+        "usage": "仅 plain/s Search Hover 状态绘制；Default 保留 Gray3 icon-search.svg。",
+        "appliesTo": [
+          "plain/s"
+        ]
+      },
+      {
+        "icon": "icon-button-search-m-hover.svg",
+        "usage": "仅 plain/m Search Hover 官方16px Gray1状态资源；Default 保留现有图标。",
+        "appliesTo": [
+          "plain/m"
+        ]
+      },
+      {
+        "icon": "icon-button-search-m-default.svg",
+        "usage": "plain/m Search Default 官方16px Gray3资源；Hover由原子CSS切换状态资源。",
+        "appliesTo": [
+          "plain/m"
+        ]
+      },
+      {
+        "icon": "icon-button-close-m-hover.svg",
+        "usage": "仅 plain/m Close Hover 官方16px Gray1状态资源；Default保留原资源。",
+        "appliesTo": [
+          "plain/m"
+        ]
+      },
+      {
+        "icon": "icon-button-close-l-hover.svg",
+        "usage": "仅 plain/l Close Hover 官方20px Gray1状态资源，宿主沿真实原子调用继承。",
+        "appliesTo": [
+          "plain/l"
+        ]
+      },
+      {
+        "icon": "icon-button-download-m-hover.svg",
+        "usage": "仅 plain/m Download Hover 官方16px Gray1资源，Default保留原资源。",
+        "appliesTo": [
+          "plain/m"
+        ]
+      },
+      {
+        "icon": "icon-button-delete-m-hover.svg",
+        "usage": "仅 plain/m 删除 Hover官方16px Gray1状态资源。",
+        "appliesTo": [
+          "plain/m"
+        ]
+      },
+      {
+        "icon": "icon-button-more-m-hover.svg",
+        "usage": "仅 plain/m 更多 Hover官方16px Gray1状态资源。",
+        "appliesTo": [
+          "plain/m"
+        ]
+      },
+      {
+        "icon": "icon-button-eye-off-m-hover.svg",
+        "usage": "仅 plain/m 隐藏 Hover官方16px Gray1状态资源。",
+        "appliesTo": [
+          "plain/m"
+        ]
+      },
+      {
+        "icon": "icon-button-eye-m-hover.svg",
+        "usage": "仅 plain/m 显示 Hover官方16px Gray1状态资源。",
+        "appliesTo": [
+          "plain/m"
+        ]
+      },
+      {
+        "icon": "icon-button-edit-xs-hover.svg",
+        "usage": "仅 plain/xs 编辑 Hover官方12px Gray1状态资源。",
+        "appliesTo": [
+          "plain/xs"
+        ]
+      },
+      {
+        "icon": "icon-button-grid-l-hover.svg",
+        "usage": "仅 plain/l 宫格 Hover官方20px Gray1状态资源。",
+        "appliesTo": [
+          "plain/l"
+        ]
+      },
+      {
+        "icon": "icon-button-list-l-hover.svg",
+        "usage": "仅 plain/l 列表 Hover官方20px Gray1状态资源。",
+        "appliesTo": [
+          "plain/l"
+        ]
+      }
+    ]
+  },
+  "searchIntents": [
+    "图标按钮",
+    "关闭按钮",
+    "搜索按钮图标",
+    "编辑图标按钮",
+    "工具栏图标按钮",
+    "纯图标操作按钮"
+  ],
+  "history": [
+    {
+      "date": "2026-07-22",
+      "change": "新增 typographyDependencies 成对字体依赖：每条记录明确绑定字号与字重，依赖汇总表按“字号 · 层级 · 字重”整体展示，禁止拆列后猜测组合。",
+      "author": "Kiro"
+    },
+    {
+      "date": "2026-07-22",
+      "change": "新增 fontWeightDependencies：按组件 CSS 显式 font-weight 证据登记 Regular 400 / SemiBold 600；无显式声明的组件保留空数组，并纳入 token/value/selector/property 双向闭环校验。",
+      "author": "Kiro"
+    },
+    {
+      "date": "2026-07-20",
+      "change": "父子依赖治理：Dropdown/Card 尚无真实 IconButton 结构，明确标记为 verified:false 的参考·未验证关系。",
+      "author": "Kiro"
+    },
+    {
+      "date": "2026-06-30",
+      "change": "补齐 relations/searchIntents 字段（此前投喂时遗漏，本次一致性治理中发现并补齐）",
+      "author": "TBD"
+    },
+    {
+      "date": "2026-06-30",
+      "change": "字段命名统一治理（方向A）：原 sizes 数组改名为 variants，每项 name 从纯尺寸名（xl/l/m/s/xs）改为 类型-尺寸 组合（bordered-xl/plain-l/...），避免和 types 分组语义重复且更明确；types 字段保留作为分组说明，无信息丢失",
+      "author": "TBD"
+    },
+    {
+      "date": "2026-07-14",
+      "change": "增加间距与描边 token 依赖、CSS 选择器/属性证据及机械闭环校验映射",
+      "author": "Kiro"
+    },
+    {
+      "date": "2026-07-14",
+      "change": "依据契约语义、组件 CSS 选择器与预览结构，补齐全部现有依赖的 appliesTo 汇总行映射；仅使用真实 types/variants，不新增伪类型或不确定依赖",
+      "author": "Kiro"
+    },
+    {
+      "date": "2026-10-09",
+      "author": "Codex",
+      "change": "统一规范维护质量标准：登记真实实现与选型规则入口、源变更重新验收、父子影响检查及历史页面隔离；不推断可编辑槽位或视觉批准。"
+    }
+  ],
+  "isComplete": true,
+  "createdAt": "2025-01-15T10:00:00Z",
+  "updatedAt": "2026-07-22T00:00:00Z",
+  "qualityProfile": {
+    "schemaVersion": "1.0.0",
+    "standard": "docs/component-quality-standard.md",
+    "implementation": "components/variants/icon-button.html",
+    "selection": {
+      "mappingSource": "components/selection-mvp-policy.json",
+      "mappingPointer": "components.icon-button.variantDecisionTypes",
+      "rulesPointer": "relations.variantDecisions"
+    },
+    "maintenance": {
+      "authority": "contract-preview-runtime-token-icon",
+      "generatedOnly": [
+        "preview-reference-tables",
+        "component-index",
+        "selection-catalog",
+        "design-reading-view",
+        "ai-reference"
+      ],
+      "changePolicy": "记录来源差异、兼容性与受影响父子组件；源文件变化后旧工程验收失效。",
+      "historicalPages": "不自动升级；新页面锁定本地组件运行资源版本。"
+    },
+    "acceptance": {
+      "report": "components/quality/report.json",
+      "proof": "components/quality/acceptance.json",
+      "declarationIsNotProof": true
+    }
+  },
+  "editable": [
+    "icon",
+    "accessibleLabel",
+    "actionCallback"
+  ],
+  "integration": {
+    "styles": [
+      "components/tokens.css",
+      "components/components.css",
+      "components/icon-button-current.css"
+    ],
+    "scripts": [],
+    "businessBoundary": "宿主绑定 click；默认 type=button 不提交表单。",
+    "fontStylesheets": [],
+    "fontFallback": "无可见文字，图标为本地 SVG。"
+  },
+  "aiContract": {
+    "schemaVersion": "1.0.0",
+    "scope": "mg-original-five-geometries-supported-icon-subset",
+    "rootTag": "button",
+    "supported": [
+      "bordered-xl",
+      "plain-l",
+      "plain-m",
+      "plain-s",
+      "plain-xs",
+      "bordered-xl-checked"
+    ],
+    "unsupported": [
+      "unregistered-icon",
+      "unverified-variant-icon-combination",
+      "dialog-close-28x20",
+      "mobile",
+      "business-logic",
+      "unevidenced-size-icon-pair",
+      "pinned-icon-missing",
+      "calendar-icon-missing",
+      "invented-bordered-hover-outside-local-norm"
+    ],
+    "reviewStatus": {
+      "engineering": "pending",
+      "visual": "pending",
+      "familyCoverage": "partial"
+    },
+    "previewAssets": [
+      "components/preview/reference-live.js"
+    ],
+    "selectionPolicy": "按本地工作流核对真实宿主、图标语义与实际容器/图标尺寸；只用6个变体和各自登记图标。S20/14、XS24/12不可按名称推断大小；筛选选中由宿主控制。仅icon、accessibleLabel、actionCallback可编辑；不开放任意图标、尺寸、禁用或加载。",
+    "identity": {
+      "rule": "保留 button type=button、尺寸与图标节点；替换图标同时修改 aria-label。",
+      "labelRule": "accessibleLabel 必须非空并说明操作。"
+    },
+    "locked": [
+      "原生 button 与 type=button",
+      "变体、容器/图标尺寸和图标节点",
+      "组件 CSS 与 hover",
+      "筛选默认变体 aria-pressed=false，选中变体 aria-pressed=true；宿主状态变化时整体切换对应变体。"
+    ],
+    "behavior": {
+      "click": "宿主监听原生 click；组件不自带下载、删除、数据切换。",
+      "keyboard": "使用原生 button 与非空 aria-label。",
+      "size": "S 为20px容器/14px图标，XS为24px容器/12px图标，不按名称重排。",
+      "dialog": "Dialog头部关闭真实调用plain-l；宿主只定位和绑定关闭事件，不覆盖原子尺寸、圆角和悬停。旧28px/icon20宿主设计差异已由用户确认按原子统一。",
+      "checked": "带边框 XL 为筛选按钮。aria-pressed=false/true 对应未选中/选中；宿主负责更新该属性，组件不推断筛选业务。",
+      "specificationScope": "Saved Button update log and type section only: 4 explicit rule texts and 33 document usage rows paired by actual source ancestry. Original text-node IDs retained; document examples do not define new components or automatically approve hosts. There is no complete specification, browser or visual approval inferred.",
+      "sourceGeometry": "32 saved COMPONENT nodes; 15 registered icon/variant pairs each map to one source hover-off/checked-state node. Container/icon dimensions, surface/radius/border are saved design declarations, not computed styles. S preserves existing current padding 3px matching saved realized insets, while source flex padding declares 6px: explicit adaptation, actual browser flex/layout pending.",
+      "smallIconPaint": "plain/s：关闭 Default/Hover 使用官方14px Gray1 SVG；搜索 Default Gray3，:hover/显式模拟悬停由组件 CSS 切换官方 Gray1 SVG，宿主不得改写。"
+    },
+    "evidence": {
+      "localPreview": "components/variants/icon-button.html",
+      "sourceStatus": "2026-10-09 读取 MG 原始 COMPONENT_SET 56279:012691。尺寸、图标角色和 checked 来源已核对；本地 SVG 轮廓待视觉复核。 2026-10-11原生界面复核记录components/sources/icon-button/native-geometry-review-1011.json：两个S源均20/14、实际坐标3/3但声明padding6；集合32个变体中筛选只见Default/checked，不当作Hover来源。当前padding3适配与待验收边界保持。 2026-10-14：无自身独立Hover证据的描边静态样例移出展示，Default/Checked保留；编译闸门拒绝重新混入无来源静态Hover，真实悬浮源码维持待来源状态。 2026-11-13：按用户确认以本地新版规范为实现基线，明确的Hover规范经真实浏览器验证后开放有限筛选调用；未声称新增独立远端Hover身份。",
+      "originalComponents": "components/sources/icon-button/mastergo-original-components.json",
+      "specificationIndex": "components/sources/button/specification-index.json",
+      "inventory": "components/sources/icon-button/design-inventory.json",
+      "smallIconExportReview": "components/sources/icon-button/small-icon-export-review-1012.json",
+      "smallCloseSvg": "components/sources/icon-button/close-s-official-1012.svg",
+      "smallSearchSvg": "components/sources/icon-button/search-s-official-1012.svg",
+      "smallSearchHoverSvg": "components/sources/icon-button/search-s-hover-official-1012.svg",
+      "mediumSearchHoverSvg": "components/sources/icon-button/search-m-hover-official-1012.svg",
+      "mediumSearchPaintReview": "components/sources/icon-button/search-m-paint-review-1012.json",
+      "mediumSearchDefaultSvg": "components/sources/icon-button/search-m-default-official-1012.svg",
+      "mediumCloseHoverSvg": "components/sources/icon-button/close-m-hover-official-1012.svg",
+      "mediumClosePaintReview": "components/sources/icon-button/close-m-paint-review-1012.json",
+      "largeCloseHoverSvg": "components/sources/icon-button/close-l-hover-official-1012.svg",
+      "largeClosePaintReview": "components/sources/icon-button/close-l-paint-review-1012.json",
+      "mediumDownloadHoverSvg": "components/sources/icon-button/download-m-hover-official-1012.svg",
+      "mediumDownloadPaintReview": "components/sources/icon-button/download-m-paint-review-1012.json",
+      "hoverSvgDeleteMHover": "components/sources/icon-button/delete-m-hover-official-1012.svg",
+      "hoverSvgMoreMHover": "components/sources/icon-button/more-m-hover-official-1012.svg",
+      "hoverSvgEyeOffMHover": "components/sources/icon-button/eye-off-m-hover-official-1012.svg",
+      "hoverSvgEyeMHover": "components/sources/icon-button/eye-m-hover-official-1012.svg",
+      "hoverSvgEditXsHover": "components/sources/icon-button/edit-xs-hover-official-1012.svg",
+      "hoverSvgGridLHover": "components/sources/icon-button/grid-l-hover-official-1012.svg",
+      "hoverSvgListLHover": "components/sources/icon-button/list-l-hover-official-1012.svg",
+      "remainingHoverPaintReview": "components/sources/icon-button/remaining-hover-paint-review-1012.json",
+      "currentScope": "components/sources/icon-button/mg-current-scope-20261114.json"
+    },
+    "variants": {
+      "bordered-xl": {
+        "purpose": "filter-unselected",
+        "exampleSelector": "[data-ai-example=\"ai-icon-button-bordered-xl\"]",
+        "allowedEdits": [
+          "icon",
+          "accessibleLabel",
+          "actionCallback"
+        ],
+        "slots": {},
+        "bindings": {
+          "icon": {
+            "mode": "registered-icon",
+            "target": ".ds-icon-btn__icon",
+            "attribute": "src",
+            "values": [
+              "components/icons/icon-filter.svg"
+            ]
+          },
+          "accessibleLabel": {
+            "mode": "accessible-label",
+            "target": "root",
+            "attribute": "aria-label",
+            "nonEmpty": true
+          },
+          "actionCallback": {
+            "mode": "event-handler",
+            "target": "root",
+            "event": "click"
+          }
+        }
+      },
+      "plain-l": {
+        "purpose": "icon-operation-plain-l",
+        "exampleSelector": "[data-ai-example=\"ai-icon-button-plain-l\"]",
+        "allowedEdits": [
+          "icon",
+          "accessibleLabel",
+          "actionCallback"
+        ],
+        "slots": {},
+        "bindings": {
+          "icon": {
+            "mode": "registered-icon",
+            "target": ".ds-icon-btn__icon",
+            "attribute": "src",
+            "values": [
+              "components/icons/icon-grid-view.svg",
+              "components/icons/icon-list-view.svg",
+              "components/icons/icon-close.svg"
+            ]
+          },
+          "accessibleLabel": {
+            "mode": "accessible-label",
+            "target": "root",
+            "attribute": "aria-label",
+            "nonEmpty": true
+          },
+          "actionCallback": {
+            "mode": "event-handler",
+            "target": "root",
+            "event": "click"
+          }
+        }
+      },
+      "plain-m": {
+        "purpose": "icon-operation-plain-m",
+        "exampleSelector": "[data-ai-example=\"ai-icon-button-plain-m\"]",
+        "allowedEdits": [
+          "icon",
+          "accessibleLabel",
+          "actionCallback"
+        ],
+        "slots": {},
+        "bindings": {
+          "icon": {
+            "mode": "registered-icon",
+            "target": ".ds-icon-btn__icon",
+            "attribute": "src",
+            "values": [
+              "components/icons/icon-download.svg",
+              "components/icons/icon-delete.svg",
+              "components/icons/icon-close.svg",
+              "components/icons/icon-button-search-m-default.svg",
+              "components/icons/icon-eye.svg",
+              "components/icons/icon-eye-off.svg",
+              "components/icons/icon-more.svg"
+            ]
+          },
+          "accessibleLabel": {
+            "mode": "accessible-label",
+            "target": "root",
+            "attribute": "aria-label",
+            "nonEmpty": true
+          },
+          "actionCallback": {
+            "mode": "event-handler",
+            "target": "root",
+            "event": "click"
+          }
+        }
+      },
+      "plain-s": {
+        "purpose": "icon-operation-plain-s",
+        "exampleSelector": "[data-ai-example=\"ai-icon-button-plain-s\"]",
+        "allowedEdits": [
+          "icon",
+          "accessibleLabel",
+          "actionCallback"
+        ],
+        "slots": {},
+        "bindings": {
+          "icon": {
+            "mode": "registered-icon",
+            "target": ".ds-icon-btn__icon",
+            "attribute": "src",
+            "values": [
+              "components/icons/icon-button-close-s.svg",
+              "components/icons/icon-search.svg"
+            ]
+          },
+          "accessibleLabel": {
+            "mode": "accessible-label",
+            "target": "root",
+            "attribute": "aria-label",
+            "nonEmpty": true
+          },
+          "actionCallback": {
+            "mode": "event-handler",
+            "target": "root",
+            "event": "click"
+          }
+        }
+      },
+      "plain-xs": {
+        "purpose": "icon-operation-plain-xs",
+        "exampleSelector": "[data-ai-example=\"ai-icon-button-plain-xs\"]",
+        "allowedEdits": [
+          "icon",
+          "accessibleLabel",
+          "actionCallback"
+        ],
+        "slots": {},
+        "bindings": {
+          "icon": {
+            "mode": "registered-icon",
+            "target": ".ds-icon-btn__icon",
+            "attribute": "src",
+            "values": [
+              "components/icons/icon-edit.svg"
+            ]
+          },
+          "accessibleLabel": {
+            "mode": "accessible-label",
+            "target": "root",
+            "attribute": "aria-label",
+            "nonEmpty": true
+          },
+          "actionCallback": {
+            "mode": "event-handler",
+            "target": "root",
+            "event": "click"
+          }
+        }
+      },
+      "bordered-xl-checked": {
+        "purpose": "filter-selected",
+        "exampleSelector": "[data-ai-example=\"ai-icon-button-bordered-xl-checked\"]",
+        "allowedEdits": [
+          "icon",
+          "accessibleLabel",
+          "actionCallback"
+        ],
+        "slots": {},
+        "bindings": {
+          "icon": {
+            "mode": "registered-icon",
+            "target": ".ds-icon-btn__icon",
+            "attribute": "src",
+            "values": [
+              "components/icons/icon-filter.svg"
+            ]
+          },
+          "accessibleLabel": {
+            "mode": "accessible-label",
+            "target": "root",
+            "attribute": "aria-label",
+            "nonEmpty": true
+          },
+          "actionCallback": {
+            "mode": "event-handler",
+            "target": "root",
+            "event": "click"
+          }
+        }
+      }
+    }
+  },
+  "changeHistory": [
+    {
+      "date": "2026-10-09",
+      "description": "五尺寸按实际图标组合精确绑定资源、aria-label 和 click；记录 S/XS 非单调尺寸及 Dialog 关闭的差异。"
+    },
+    {
+      "date": "2026-10-09",
+      "description": "MG 原始组件核对：收紧尺寸/图标组合，XL 改为筛选角色并展示 checked，当前 S padding 修正为3px；历史共享CSS保持原样。"
+    }
+  ],
+  "prototypeStandard": {
+    "version": 1,
+    "source": "components/sources/icon-button/mg-current-scope-20261114.json",
+    "scope": "6 variants/15 registered icon-state calls; existing scope only",
+    "maintenance": "Original component:sync/watch, original dependency table and original parent records",
+    "boundaries": [
+      "SVG contours retain earlier official exports; some current MG icon names are reused aliases and not identity proof.",
+      "SourceS declares padding6 although20-14 geometry realizes3px inset; keep existing explicit3px adaptation.",
+      "Filter has Default and Checked source identities, no independent Hover; its admitted Hover follows existing local specification.",
+      "Weak-function/share/info/calendar/top and arbitrary icons are not new independent calls."
+    ]
+  }
+}

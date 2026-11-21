@@ -1,0 +1,201 @@
+{
+  "date": "2026-10-12",
+  "status": "finite-M-static-prefix-implemented-awaiting-independent-review",
+  "scope": "Existing integrated M gray/white Form only; no PC prefix migration or historical-page upgrade",
+  "source": {
+    "path": "components/sources/form/native-authority-review-1012/mobile-source-closeout-1012.json",
+    "sha256": "4a12cc94d05f6de8c44ac5ba713d401a3f72896dd34521bfc8d693f468c74053",
+    "bytes": 17302
+  },
+  "directEvidence": [
+    {
+      "path": "components/sources/form/native-authority-review-1012/m-gray-phone-root-closeout.ax.txt",
+      "sha256": "7c0d3fbf4c259474033e42fd65b7b5860b3fa9a4d80ca790242b0748ccdf54c0",
+      "bytes": 20825
+    },
+    {
+      "path": "components/sources/form/native-authority-review-1012/m-white-phone-root-closeout.ax.txt",
+      "sha256": "03d0c0899a342dbd07b5ef55bd502aaaa4c0ed5e730502fb1b1c614208f7547d",
+      "bytes": 20521
+    },
+    {
+      "path": "components/sources/form/native-authority-review-1012/m-gray-phone-prefix-closeout.ax.txt",
+      "sha256": "e78c03929051407e8ff9145f561a48193721266dd75d3226e23654d199d0eb51",
+      "bytes": 22209
+    },
+    {
+      "path": "components/sources/form/native-authority-review-1012/m-white-phone-prefix-closeout.ax.txt",
+      "sha256": "a3175a63a33dbbe42ff614f820cda9bcb0f5805cff730e2aa202d4bb6836335c",
+      "bytes": 23332
+    }
+  ],
+  "implementation": {
+    "part": "ds-input-prefix[data-input-current][data-input-prefix=static][data-input-color=gray|white]",
+    "ownership": "Input-owned bounded property-prefix presentation adapter; genuine existing external/start/fill Input still manages native field/errors. Form owns row allocation/data only.",
+    "sourceIdentityBoundary": "MG prefix exists inside property Input as Select face. Local finite static part explicitly adapts that presentation; it does not claim genuine complete Select/search call.",
+    "paint": "Gray8 both; white internal Gray4 left/top/bottom strokes via inset shadows so source35px content area remains within59x42. Atom owns13Regular/20 existing typography/gap8/pad12/left4 corners and decorative12px Down.",
+    "ordinaryInput": "Canonical gray/white basic AI examples and ordinary states unchanged; presentation adapter not standalone AI-admitted.",
+    "pc": "Existing gray/white ds-form__phone-prefix retained; no PC source extrapolation or paint migration.",
+    "preview": "Existing Input preview adds two finite source-backed presentation parts so declared ds-input-prefix dependency has actual target DOM evidence; no new component/demo page/family.",
+    "runtime": "No JS changes, new business rules, dropdown, country options or API.",
+    "remaining": [
+      "Actual local M browser visual/geometry/keyboard acceptance",
+      "Exact SVG contour / full prefix-state paint",
+      "Full property Input/Select/phone search family excluded",
+      "Textarea1px pending user decision"
+    ]
+  },
+  "verification": [
+    {
+      "command": "node --test scripts/form-mobile-integrated.test.js scripts/input-phone-assembly.test.js scripts/form-reference.test.js",
+      "result": "41/41 passed; actual integrated M paint/DOM negatives and production Input identity, whole-form behavior and PC gate protection",
+      "log": {
+        "path": "components/sources/form/native-authority-review-1012/static-prefix-tests.log",
+        "sha256": "5ccde025de5469359f14007c5915964b2d5115150840da69fb048c3989b90ffd",
+        "bytes": 10413
+      }
+    },
+    {
+      "command": "node scripts/sync-component-reference.js",
+      "result": "passed; contract spacing closure, dependencies/reverse relations/resources/derived docs",
+      "log": {
+        "path": "components/sources/form/native-authority-review-1012/static-prefix-sync.log",
+        "sha256": "19c00856bdc3e273bf49b380603c578931bde1c3a96478155d3ad1da53f3ffe5",
+        "bytes": 104
+      }
+    },
+    {
+      "command": "node --test --test-name-pattern='^(?!browser)' scripts/input-quality.test.js scripts/collapse-reference.test.js",
+      "result": "14/14 historical process results:12 offline checks and2 inadvertently executed HTTP/headless Chrome tests. Both browser results are excluded from M acceptance; not rerun for accounting correction.",
+      "log": {
+        "path": "components/sources/form/native-authority-review-1012/static-prefix-affected-tests.log",
+        "sha256": "29bd9592622ee39a32851d6f42c7fc658175ce838c24e8051cd1195ca477f44d",
+        "bytes": 3601
+      }
+    }
+  ],
+  "executionCorrection": {
+    "fault": "Two browser-capable tests were inadvertently selected. First title matched the negative lookahead at later substring positions; second browser test has a non-browser-prefixed title and matched even at start. Both use serve()/puppeteer-core.launch().",
+    "excludedTests": [
+      {
+        "file": "scripts/input-quality.test.js",
+        "line": 86,
+        "title": "browser verifies all source states, keyboard input, focus and disabled precedence",
+        "logResult": "ok13"
+      },
+      {
+        "file": "scripts/input-quality.test.js",
+        "line": 102,
+        "title": "independent assembly supports duplicate instances and native form values without preview helpers",
+        "logResult": "ok14"
+      }
+    ],
+    "originalLog": {
+      "path": "components/sources/form/native-authority-review-1012/static-prefix-affected-tests.log",
+      "sha256": "29bd9592622ee39a32851d6f42c7fc658175ce838c24e8051cd1195ca477f44d",
+      "bytes": 3601
+    },
+    "cleanup": "Both source tests await browser.close/server.close in finally and historical command exited0. These are code/log facts, not an on-site absence-of-residue verification. No whole-system process inventory was obtained.",
+    "boundary": "Unauthorized HTTP/headless execution violated this batch boundary. Both outcomes and/tmp/fs-basic-input-review.png excluded from M/browser-approval evidence. No raw logs deleted/edited. No repeat runs or substitute browser routes.",
+    "futureExecution": "Only checksum-bound explicit file/test-title whitelist, full anchors^...$; no negative/ambiguous substring filter or whole mixed Input quality file."
+  },
+  "initialFailures": [
+    "Production prefix attrs initially required None for marker, while real DOM serialization produced empty string; normalized the two legal empty boolean forms, preserving exact other attrs and actual negative rejection.",
+    "Sync caught missing spacing.sm dependency and tokenReferences; fixed declarations, reran sync successfully."
+  ],
+  "currentFingerprints": [
+    {
+      "path": "components/preview/form.html",
+      "sha256": "038147ef46fc1126f505c23f2ee83585d7f7f96a2d5881100ae18c2d2e47ca08",
+      "bytes": 75983
+    },
+    {
+      "path": "components/preview/input.html",
+      "sha256": "580d04e52180fdd9d9c8a5c72636339fbaf73873f99b1752dc1fc2fbfda9150f",
+      "bytes": 41112
+    },
+    {
+      "path": "components/input-current.css",
+      "sha256": "57184fdc6e66f7655efbb99d986e7590be5e36d5bb3ef2d039a655e18fe90d32",
+      "bytes": 7119
+    },
+    {
+      "path": "components/contracts/input.json",
+      "sha256": "80fd901c363d3186efb0328e02ef732535531f9a75411b17d87ab895f8b8743e",
+      "bytes": 40218
+    },
+    {
+      "path": "components/contracts/form.json",
+      "sha256": "06f466416c4a01cb61c3401c68c51a34b1c438825bf4b1a457cf4e1a483d0103",
+      "bytes": 64409
+    },
+    {
+      "path": "scripts/component_reference_input.py",
+      "sha256": "9a93a82546e19bfd65e8f492e94c1b434c0195fbe4cc4cf78ed4d27481de2b76",
+      "bytes": 4714
+    },
+    {
+      "path": "scripts/component-reference-dom.py",
+      "sha256": "3519304ee67c082e280c1c90bf6abffadc5649598a0e9d335c7a4dad0ef1d890",
+      "bytes": 18804
+    },
+    {
+      "path": "scripts/form-mobile-integrated.test.js",
+      "sha256": "7383243e7428d88960c03f65fb511a2e44e7fa4edb54229571add9a563c57053",
+      "bytes": 10532
+    },
+    {
+      "path": "scripts/input-phone-assembly.test.js",
+      "sha256": "0248c5f8abd327a4e93be66db761674fe120fae9dcd0831b799ce9c72a7a12ad",
+      "bytes": 3664
+    },
+    {
+      "path": "scripts/form-reference.test.js",
+      "sha256": "926901b4a3f2c68f275feccb3d813905a7564c73d72ba3b23833a7f0cd50856a",
+      "bytes": 32792
+    },
+    {
+      "path": "scripts/input-quality.test.js",
+      "sha256": "8ce6d9ba5de3d152851c7a9bb8340ecb0e40b1f2fceda7791c74901a034bb3ec",
+      "bytes": 16088
+    },
+    {
+      "path": "scripts/collapse-reference.test.js",
+      "sha256": "b3cbf92135890b852d52df64a9013d1f2ebc31071e012a6b2c1b5aabf4704be2",
+      "bytes": 6083
+    },
+    {
+      "path": "scripts/sync-component-reference.js",
+      "sha256": "0fe4b3c08f57a8997f72b693cfd85dc0c8f8ad1d7dfd62708786311b37d9f3c1",
+      "bytes": 5268
+    },
+    {
+      "path": "components/form-current.css",
+      "sha256": "8368acb47f492f40844768a01c950a57950a31c9f7621ed1949dd4b971d3ea13",
+      "bytes": 2413
+    },
+    {
+      "path": "components/form-current.js",
+      "sha256": "df375ef4cb76b71ea80cd5710aacfd026d04acb50a1f38b29fa5baa1bd884979",
+      "bytes": 1404
+    },
+    {
+      "path": "components/components.css",
+      "sha256": "a08b4fe2790b5ff2b784c6362a90f1b94e7535a03e863232ce6d620a52e85f73",
+      "bytes": 210335
+    }
+  ],
+  "oldProofReplacement": "mobile-integrated-implementation.json 59-test hash snapshot and mobile-source-closeout-1012 prior hashes now historical after actual M prefix/atom/contract changes. Current bounded41+12 offline and sync evidence above replace affected coverage only, not entire30 acceptance.",
+  "fullMAIAdmission": false,
+  "realMFormBrowserAcceptance": false,
+  "next": "Independent coordinator review static adapter ownership/validator/CSS token closure. Then permitted whole-M browser acceptance when route is authorized; textarea decision may progress separately; search remains user-deferred.",
+  "correctedAccounting": {
+    "staticPrefixOnly": {
+      "mainOffline": 41,
+      "supplementOffline": 12,
+      "totalOffline": 53,
+      "excludedBrowser": 2
+    },
+    "notCurrentErrorBatch": "Subsequent M textarea40/40 result remains separate and unchanged."
+  }
+}

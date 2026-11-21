@@ -1,0 +1,44 @@
+{
+  "mainComponent": "Tag",
+  "scope": "现有第5节Industry关闭/切换热区、Delete/Backspace及Individual Info16实际显示",
+  "status": "finite-browser-and-source-preview-cleanup-closed-user-visual-pending",
+  "reason": "用户已确认X删除当前标签、文字切换，工程修正已完成；补真实指针和键盘焦点证据，复用源Glyph",
+  "sourceRange": [
+    "components/preview/tag.html",
+    "components/sources/tag",
+    "2026-10-13用户已确认行为"
+  ],
+  "necessaryRelations": [
+    "当前Preview宿主的关闭事件处理"
+  ],
+  "completionConditions": [
+    "1920×1000真实文字点击只切换、X只删除当前标签",
+    "Delete/Backspace实际删除及剩余邻项焦点实测",
+    "Info16实际图标尺寸/加载/位置",
+    "不把最后无邻项的焦点、其他语义态/宿主或用户视觉推断通过"
+  ],
+  "remaining": [
+    "第5节切换/删除与有邻项焦点、Individual Info16已实际观察；用户视觉批准仍待",
+    "最后无邻项删除后activeElement=BODY，独立焦点目标未定义，不冒称符合或新增假控件",
+    "其他Semantic Icon/语义态与宿主未验证"
+  ],
+  "directionalChecks": [
+    "来源静态矩阵与真实可用控件区分",
+    "删除只发生临时Preview DOM，不触及业务数据",
+    "不新增来源外演示"
+  ],
+  "scopeAdjustment": {
+    "reason": "实际浏览器显示额外“交互与内容宽度”含LiveSelectable、任意长文案和自行组合group；当前规范只认六类来源展示且本地无该区独立原件记录，阻塞Preview展示边界，作为必要关联删除",
+    "affected": "第7节自行能力演示及其live-status监听；真实六个canonical调用不变",
+    "completionCondition": "只保留六节来源展示、关闭宿主仍正常、无脚本错误，定向回归"
+  },
+  "result": "第5节在1920×1000真实文字点击只切换，X只移除对应标签，其余pressed不变；Delete/Backspace分别移除当前聚焦标签，有邻项时焦点移至邻项。原生指针文字点击几何与scroll不变。Individual原始完整mask实际16×16、20px标签内顶部2px、#4B4B4D已显示。必要清理：移除无原件对应的第7节LiveSelectable/长文字/受限组合能力演示，六节canonical与关闭宿主保留；17项定向检查及同步通过，浏览器无错误。",
+  "browser": "components/sources/tag/browser-states-1014.json",
+  "engineering": {
+    "status": "passed-scoped",
+    "scope": "Preview来源展示边界及第5节关闭宿主，非全家族",
+    "tests": 17,
+    "log": "components/sources/tag/browser-cleanup-tests-1014.log",
+    "fullFamilyAcceptance": false
+  }
+}
