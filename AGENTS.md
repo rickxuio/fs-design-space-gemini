@@ -35,7 +35,7 @@ node build.js --inspect library-card            # 查看某组件全部变体的
 node build.js --inspect library-card spliced-vertical-single-event  # 查看单变体允许字段、依赖与真实示例
 ```
 
-只定向读取相关变体，不加载全库历史报告或回查已退役的旧预览。调用资格以当前catalog的`callable`和发布限制为准。`variantReviews.state`是历史复核快照；`ready`、工程候选、文件存在或`summary.gaps=0`都不能替代当前调用资格。
+只定向读取相关变体，不加载全库历史报告或回查已退役的旧预览。调用资格以当前catalog的`callable`和发布限制为准。`variantReviews.state`是历史复核快照；`ready`、工程候选、文件存在或`summary.gaps=0`都不能替代当前调用资格。**如本地组件实现与线上页面出现排版/间距疑点（例如首页 Banner 1920×420px 内缩 `404px` vs 其他 Banner `360px`），优先通过 `mastergo-magic-mcp` 核对《英文站组件库》原件参数，确认是场景特例还是全局规范，不凭猜测改动通用规则。**
 
 ## Step 2 — Declare Read Confirmation
 

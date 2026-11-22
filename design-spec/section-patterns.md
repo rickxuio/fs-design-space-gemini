@@ -235,6 +235,10 @@
 
 ## Pattern 10：FS 官网首页专属黄金区块（提炼自 `fs-homepage-pc.html`）
 
+> **首页特例边界（仅限平台首页，不外溢至其他页面）**：
+> - **首页 Hero 左内缩 `44px`**：MasterGo 原件《英文站组件库》`平台首页 1920×420px` 明确规定 `padding: 0 404px`（相对 `360px` 版心左边缘内缩 `44px`，`≤1280px` 内缩 `76px` 避让 `56×56px` 箭头）；**除首页外，所有其他页面（解决方案/专题/PLP/PDP）的 Banner 一律 `0` 缩进（`360px` 起笔，齐平 `1200px` 版心）**。
+> - **首页特例视觉**：Hero `40×8px` 3 秒进度胶囊、白底区块放 `#FAFAFA` 无描边灰卡及 `#F2F2F2` 浅描边，均仅作为首页特殊样式区保留；其他页面继续执行通用规范（`20×8px` 胶囊、白底加 `#DEE0E3` 描边白卡）。
+
 1. **7 屏 Hero 轮播 + 左右方向按钮 + 首屏双操作按钮（`library-banner/hero-responsive` + `library-carousel/navigation-solid-xl-left/right`）**：
    - 使用 `library-banner/hero-responsive` 承载标题、副标题与主按钮 `Learn more`（`outline-white / xl`），在 `.ds-banner__actions` 内通过 `data-fs-extend="hero-watch-video-action"` 注入同尺寸 `Watch video ▶` 描边白按钮（仅 Slide 0 显示，切换至其他屏自动隐藏）；
    - 左右两侧挂载 `library-carousel/navigation-solid-xl-left` 与 `navigation-solid-xl-right`（置于 `.ds-carousel__controls` 宿主容器内，点击可循环切换 7 屏），底部配 7 颗白色胶囊轮播点。

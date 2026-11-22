@@ -277,13 +277,21 @@ const heroDotsHtml = HERO_SLIDES.map(
 const pageCss = `${H.basePageCss()}
 .hero-surface { min-height: 420px; display: flex; align-items: center; }
 .hero-surface__scrim { background: rgba(0, 0, 0, 0.22); }
-.hero-surface__inner { width: 100%; }
-.hero-nav-control { position: absolute; top: 50%; transform: translateY(-50%); z-index: 3; }
-.hero-nav-control--prev { left: max(16px, calc((100% - 1200px) / 2 - 80px)); }
-.hero-nav-control--next { right: max(16px, calc((100% - 1200px) / 2 - 80px)); }
+.hero-surface__inner { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 44px; box-sizing: border-box; }
+.hero-nav-control { position: absolute; top: 50%; transform: translateY(-50%); width: 56px; height: 56px; z-index: 3; }
+.hero-nav-control--prev { left: max(12px, calc((100% - 1200px) / 2 - 108px)); }
+.hero-nav-control--next { right: max(12px, calc((100% - 1200px) / 2 - 108px)); }
+@media (max-width: 1280px) {
+  .hero-surface__inner { padding: 0 76px; }
+  .hero-nav-control--prev { left: 16px; }
+  .hero-nav-control--next { right: 16px; }
+}
 .hero-dots-bar { position: absolute; left: 0; right: 0; bottom: 16px; z-index: 3; display: flex; justify-content: center; align-items: center; gap: 10px; }
-.hero-dots-bar .testimonial-dot { background: #FFFFFF; opacity: 0.5; }
-.hero-dots-bar .testimonial-dot.is-active { width: 40px; opacity: 1; }
+.hero-dots-bar .testimonial-dot { position: relative; overflow: hidden; background: rgba(255, 255, 255, 0.5); opacity: 1; }
+.hero-dots-bar .testimonial-dot.is-active { width: 40px; background: rgba(255, 255, 255, 0.4); opacity: 1; }
+.hero-dots-bar .testimonial-dot.is-active::after { content: ''; position: absolute; inset: 0; background: #FFFFFF; border-radius: inherit; transform: translateX(-100%); animation: homeHeroProgress 3s linear forwards; }
+.hero-surface:hover .hero-dots-bar .testimonial-dot.is-active::after { animation-play-state: paused; }
+@keyframes homeHeroProgress { from { transform: translateX(-100%); } to { transform: translateX(0); } }
 .hero-watch-btn { appearance: none; display: inline-flex; align-items: center; justify-content: center; gap: 6px; height: 42px; padding: 0 24px; border-radius: 4px; border: 1px solid #FFFFFF; background: rgba(255, 255, 255, 0.1); color: #FFFFFF; font-family: inherit; font-size: 14px; line-height: 22px; font-weight: 600; text-decoration: none; cursor: pointer; box-sizing: border-box; transition: background-color 0.2s ease; }
 .hero-watch-btn:hover { background: rgba(255, 255, 255, 0.2); }
 .hero-watch-btn__play { display: inline-flex; align-items: center; justify-content: center; width: 12px; height: 12px; font-size: 10px; line-height: 1; }
@@ -540,6 +548,36 @@ const pageSource = `<!DOCTYPE html>
         }
       });
 
+      // 4.5. Live fs.com card hover behavior: pointer cursor + title underline + lift shadow across New Products, Recommended, PicOS, Feature Solutions & Case Studies
+      var newProdHrefs = ${JSON.stringify(NEW_PRODUCTS.map((p) => p.href))};
+      var recProdHrefs = ${JSON.stringify(RECOMMENDED.map((p) => p.href))};
+      function bindProductCardClick(selector, hrefs) {
+        document.querySelectorAll(selector).forEach(function (card, idx) {
+          card.style.cursor = 'pointer';
+          if (hrefs[idx]) {
+            card.addEventListener('click', function () {
+              window.open(hrefs[idx], '_blank', 'noopener');
+            });
+          }
+        });
+      }
+      bindProductCardClick('#new-products [data-library-component="library-card"]', newProdHrefs);
+      bindProductCardClick('#recommended [data-library-component="library-card"]', recProdHrefs);
+
+      document.querySelectorAll('#new-products [data-library-component="library-card"], #recommended [data-library-component="library-card"], #picos-platform [data-library-component="library-card"], #feature-solutions [data-library-component="library-card"], #case-studies [data-library-component="library-card"]').forEach(function (card) {
+        card.style.cursor = 'pointer';
+        card.style.transition = 'box-shadow 0.2s ease';
+        var titleNode = card.querySelector('.ds-card__title');
+        card.addEventListener('mouseenter', function () {
+          card.style.boxShadow = '0 15px 15px -10px rgba(0, 0, 0, 0.15)';
+          if (titleNode) titleNode.style.textDecoration = 'underline';
+        });
+        card.addEventListener('mouseleave', function () {
+          card.style.boxShadow = '';
+          if (titleNode) titleNode.style.textDecoration = '';
+        });
+      });
+
       // 5. FS Certified & Get more Information: exact 64x64 / 36x36 icons & 12px/20px desc on #FAFAFA cards
       document.querySelectorAll('#fs-certified [data-library-component="library-icon-card"]').forEach(function (card) {
         card.style.background = '#FAFAFA';
@@ -566,9 +604,23 @@ const pageSource = `<!DOCTYPE html>
         if (descEl) descEl.textContent = s.subtitle;
         if (watchBtn) watchBtn.style.display = s.hasVideoBtn ? 'inline-flex' : 'none';
         dots.forEach(function (d, i) {
-          d.classList.toggle('is-active', i === currentSlide);
+          d.classList.remove('is-active');
+          if (i === currentSlide) {
+            void d.offsetWidth;
+            d.classList.add('is-active');
+          }
         });
       }
+
+      var heroEl = document.getElementById('hero');
+      var heroHovered = false;
+      if (heroEl) {
+        heroEl.addEventListener('mouseenter', function () { heroHovered = true; });
+        heroEl.addEventListener('mouseleave', function () { heroHovered = false; });
+      }
+      setInterval(function () {
+        if (!heroHovered) setHeroSlide(currentSlide + 1);
+      }, 3000);
 
       if (prevHeroBtn) {
         prevHeroBtn.addEventListener('click', function () {
