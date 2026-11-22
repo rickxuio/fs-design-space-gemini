@@ -1,6 +1,6 @@
 # FS PC 页面黄金区块样板库（Section Patterns）
 
-本样板库提炼自已通过自动门禁与视觉验收的 [xtool-education-v2-pc.html](../pages/xtool-education-v2-pc.html) 与 [xtool-store-pc.html](../pages/xtool-store-pc.html)。合成新页面时，遇到同类业务模块**直接整块复用对应骨架与表面规则**，不在单页临时发明新构图。
+本样板库提炼自已通过自动门禁与逐帧视觉验收的 FS 原生标杆页 [fs-campus-fabric-network-pc.html](../pages/fs-campus-fabric-network-pc.html) 与 [xtool-store-pc.html](../pages/xtool-store-pc.html)。合成新页面时，遇到同类业务模块**直接整块复用对应骨架与表面规则**，不在单页临时发明新构图。
 
 ---
 
@@ -212,4 +212,41 @@
   opacity: 1;
 }
 ```
+
+---
+
+## Pattern 9：FS 原生解决方案 / 专题页专属黄金区块（提炼自 `fs-campus-fabric-network-pc.html`）
+
+1. **5 步官方服务流程（`library-stepper/icon-divider`）**：
+   - 支持 **3~6 步**并排展示，每步 `.ds-stepper__placeholder` 传入独立的官方流程 SVG 图标与 `alt`，严禁把第 5 步拆到组件外。
+2. **Product List 无圆点 SKU 产品分类卡（灰底 `#FAFBFB`）**：
+   - 使用无描边白卡 `library-card/spliced-vertical-single-event`，通过 `sourceAbsent` 合法省略 `["category", "description", "link"]`（严禁塞 `"3 verified models:"` 等凑数描述），在 `.ds-card__body` 内用 `data-fs-extend="product-sku-links"` 注入**无圆点、灰色 `#707070`（`13px/20px/400`，悬停 `#0060BF` 下划线）** 的 SKU 链接列表。
+3. **左右交替多要点图文（Explore the Benefits）**：
+   - 使用 `library-card/spliced-horizontal-full-width-responsive`（`sourceAbsent: ["link"]`），第 1 条要点与 `data-fs-extend="benefit-extra-bullets"` 注入的后续要点**统一使用 `#707070` / `14px` / `400` 常规体 + `• ` 前缀**，严禁把小标题局部加粗成黑色导致字色割裂。
+4. **1200px 全宽架构 / 软件大图 + 底部居中蓝链**：
+   - 架构拓扑图、PicOS® / AmpCon 全宽软件架构图**严禁塞入 50/50 左右图文卡**（会导致 `object-fit: cover` 裁断两侧文字）；必须用 `1200px` 全宽 `.software-panel`（`width: 100%; height: auto; box-sizing: border-box`）完整展示，且 `Try PicOS-V free >` / `Try FS Design Center >`（`library-text-button/inline-blue-link`）置于**图片正下方居中**（`margin-top: 24px`）。
+5. **3×2 居中无框认证网格（`FS Certified`，灰底 `#FAFBFB`）**：
+   - 单元格保持透明无边框、居中对齐：顶部 `48×48px` 官方 SVG 图标 + 中部 `library-text-button/inline-black-bold`（标题自带 `>`，无底部多余 `Learn more >`）+ 底部 `max-width: 320px` 的 `#707070` 描述。
+6. **左联系渠道 + 右白卡留资表单（`Ready to get started?`，灰底 `#FAFBFB`）**：
+   - 左侧直接落于灰底（**不加白色卡片框**）：深色 `#19191A` `CONTACT US` 眉题 + 标题 + 描述 + `1px solid #DEE0E3` 分割线 + 3 条官方 SVG 图标配 `library-text-button/inline-black-bold` 标题（`+1 (888) 468-9910 >`、`Email >`、`Live Chat >`）；
+   - 右侧无描边白卡内调用 `library-form/gray` + `sourceFields`：奇数字段（如 `email`）设 `fullWidth: true` 跨列对齐消除孤儿半行，在 `content.json` 设 `consent: true` 原生渲染官方 Terms & Privacy 勾选框。
+
+---
+
+## Pattern 10：FS 官网首页专属黄金区块（提炼自 `fs-homepage-pc.html`）
+
+1. **7 屏 Hero 轮播 + 左右方向按钮 + 首屏双操作按钮（`library-banner/hero-responsive` + `library-carousel/navigation-solid-xl-left/right`）**：
+   - 使用 `library-banner/hero-responsive` 承载标题、副标题与主按钮 `Learn more`（`outline-white / xl`），在 `.ds-banner__actions` 内通过 `data-fs-extend="hero-watch-video-action"` 注入同尺寸 `Watch video ▶` 描边白按钮（仅 Slide 0 显示，切换至其他屏自动隐藏）；
+   - 左右两侧挂载 `library-carousel/navigation-solid-xl-left` 与 `navigation-solid-xl-right`（置于 `.ds-carousel__controls` 宿主容器内，点击可循环切换 7 屏），底部配 7 颗白色胶囊轮播点。
+2. **8 大产品线双色图标 Tab + 单一可见 4 列分类轮播（`library-tab/product` + `library-carousel/external-cards`）**：
+   - 顶部调用 `library-tab/product` 展示 8 大产品线 SVG 图标与分类名：清理下载 SVG 中自带的 `<rect width="64" height="64" fill="#FFFFFF"/>` 白色底板，并通过运行时 `img.style.filter = 'none'` 保留官网原生**红黑双色图标**（默认态非灰色滤镜）；
+   - **下方只渲染 1 个可见的 `library-carousel/external-cards`**（严禁在 DOM 中同时放 7 个 `hidden` 的 `[data-rail]` 轮播，否则 `browser-page-check.cjs` 会对隐藏轮播执行 `elementFromPoint` 报悬停断区错误），点击任一 Tab 时通过 JS 动态切换该轮播内卡片的分类图、标题与 `data-fs-extend="category-sublinks"` 子分类链接列表（子链接默认 `#707070`，**悬停变为 `#19191A` 无下划线**；卡片下半部分采用 `1px solid #EDEDF0` 浅灰细描边）。
+3. **白底区块上的浅灰商品卡与实拍图防裁切铁律（`New Products` & `Recommended`）**：
+   - `New Products` 与 `Recommended` 区块本身保持**白底（`#FFFFFF`）**，内部商品卡片使用**无描边浅灰底（`#FAFBFB`）**，图片区设置 `padding: 20px 28px 8px; box-sizing: border-box` 且 `img { object-fit: contain; mix-blend-mode: multiply }`，严禁把整块区域做成灰底白卡或用 `object-fit: cover` 裁切立式工业交换机上下两端。
+4. **白底区块上的灰底 IconCard 标题尾部箭头（`FS Certified` & `Get more Information`）**：
+   - 在白底区块（`#FFFFFF`）上调用原生自带浅灰底的 `library-icon-card/center-single-event`（3×2）与 `library-icon-card/left-single-event`（3 列），传入 `titleHref` 并在 `.ds-icon-card__title-slot > a` 内通过 `data-fs-extend="icon-card-title-arrow"` 追加官方 `icon-text-button-arrow-right-regular.svg`（`12×12px`），还原官网标题右侧紧跟 `>` 箭头的视觉规范。
+5. **客户案例 3 列卡片（`Case Studies`）**：
+   - 使用整卡 `<a>` 外包 `library-card/spliced-vertical-single-event-bordered`，`category` 槽传入国家/地区（`United States` / `Germany` / `Japan`），在 `.ds-card__body` 底部通过 `data-fs-extend="case-industry-tags"` 注入以 `|` 分隔的单行不换行（`flex-wrap: nowrap; white-space: nowrap; gap: 6px`）行业标签行。
+
+
 

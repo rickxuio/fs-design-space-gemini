@@ -16,7 +16,11 @@ const crypto = require('node:crypto');
 const ROOT = path.resolve(__dirname, '..');
 const { JSDOM } = require(path.join(ROOT, 'design-system/node_modules/jsdom'));
 
-const ACTIVE_RELEASE = '933a6b6faee4d0de370bf96ae6424cbc1f2690705676abc48b314c4897c7df6a';
+const CATALOG_PATH = path.join(ROOT, 'fs-components/component-specs/library/catalog.json');
+function getActiveRelease() {
+  return JSON.parse(fs.readFileSync(CATALOG_PATH, 'utf8')).version;
+}
+const ACTIVE_RELEASE = getActiveRelease();
 
 // 100% 48px FS Red/Black Dual-Tone Business Icons (all whitelisted in icon-card.json; zero 16px UI control icons)
 const OFFICIAL_ICON_CARD_ICONS = {
@@ -66,7 +70,7 @@ function unorderedListItemsHtml(lines) {
     .join('');
 }
 
-function faqItemsHtml(prefix, items, release = ACTIVE_RELEASE) {
+function faqItemsHtml(prefix, items, release = getActiveRelease()) {
   const arrow = `../fs-components/component-specs/library/releases/${release}/components/icons/icon-collapse-faq-down-current.svg`;
   return items
     .map((item, idx) => {
@@ -279,7 +283,7 @@ function extractOfficialTagSnippets(buildMod, registry, targetDir) {
 
 function basePageCss() {
   return `
-body { margin: 0; font-family: "Open Sans", Arial, sans-serif; color: #19191A; background: #FFFFFF; }
+body { margin: 0; font-family: "Open Sans", Arial, sans-serif; color: #19191A; background: #FFFFFF; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
 .container { max-width: 1200px; width: 100%; margin: 0 auto; padding: 0; box-sizing: border-box; }
 .page-section { padding: 40px 0; background: #FFFFFF; }
 .page-section--gray { background: #FAFBFB; }
@@ -313,6 +317,7 @@ body { margin: 0; font-family: "Open Sans", Arial, sans-serif; color: #19191A; b
 
 module.exports = {
   ACTIVE_RELEASE,
+  getActiveRelease,
   OFFICIAL_ICON_CARD_ICONS,
   esc,
   compTag,

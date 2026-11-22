@@ -47,7 +47,7 @@
 
 新版组件规范与维护来源为 `design-system/`，统一调用登记为 `fs-components/component-registry.json`；新页面使用 `library-*`。原未加前缀的组件登记和旧预览依赖已退役，新调用只使用已登记的`library-*`变体；既有5个回归页面继续使用其原固定版本。
 
-首次安装执行 `npm ci` 和 `npm run design:install`。`npm run preview` 启动本地预览，默认端口5188，以终端实际地址为准。
+首次安装执行 `npm ci` 和 `npm run design:install`。`npm run preview` 启动本地预览，默认端口5188，以终端实际地址为准；`npm run preview:live` 启动带共享 CSS 实时热更新与页面组件 Inspector 浮层的预览；`npm run design:preview` 直接打开统一组件库与阅读中心 `design-system/component-library.html`。
 
 普通页面保存在 `pages/`，使用现有调用语法：
 
@@ -55,7 +55,7 @@
 <div data-component="library-button" data-fragment="outline-black" data-props='{"label":"Download"}'></div>
 ```
 
-可使用 `build.js` 导出的 `assemblePage(source, loadRegistry(), new Map(), sourceName, { targetDir })` 完成片段装配。只有页面级标杆规范走 `fs-components/page-sources/ → build.js → fs-components/page-specs/`；普通页面不进入该批量构建管线。
+可使用 `build.js` 导出的 `assemblePage(source, loadRegistry(), new Map(), sourceName, { targetDir })` 或辅助库 `scripts/page-helpers.cjs`（提供 `assembleLocalPage`、`cardProps`、`iconCardProps`、`faqItemsHtml` 等，自动读取当前 `catalog.json` 版本）完成片段装配。只有页面级标杆规范走 `fs-components/page-sources/ → build.js → fs-components/page-specs/`；普通页面不进入该批量构建管线。
 
 ### 纯新版查询与原页预扫描
 
@@ -126,7 +126,9 @@ npm run check -- pages/目标页面.html
 ```bash
 npm run impact -- button
 npm run component:check
+npm run component:check:impact   # 按 git status 变更自动推导受影响组件并增量运行回归测试
 npm run component:sync
+npm run variants:slim            # 清理 variants/*.html 内部编译源中的冗余历史说明区块
 ```
 
 `component:check` 只检查当前导出；过期时先查来源差异。`component:sync` 更新父组件预览、本地片段、选型、依赖、统一规范页和固定资源版本；`component:watch` 使用同一同步链。新调用取当前资源，已交付页保持原版本。保留当前调用、规范展示和回归检查所需的固定版本。不自动清理版本，也不为清理或消除过期提示而重新发布。

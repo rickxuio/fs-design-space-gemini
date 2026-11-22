@@ -1,9 +1,11 @@
 # FS Page Generation — Mandatory Workflow
 
+> **多机协作与进度延续**：本项目根目录维护持续更新的进度账本 [PROGRESS.md](PROGRESS.md)（含已完成标杆页、未解决的组件库差异清单、技术避坑点与换机接续步骤）。每次新开会话或换电脑拉取代码后，请先阅读 [PROGRESS.md](PROGRESS.md)；每次阶段性完成并准备提交 Git 前，同步更新其中的进展与变更日志。
+
 ## 首版直出 10 条必过红线 Checklist（生成与交付前逐项核对）
 
 1. **Rule 0 固定头尾**：必须原样调用 `library-navigation/header` 与 `footer`，严禁扩展（`data-fs-extend` 禁用）、严禁混入原站头尾/Logo/品牌色/渐变。
-2. **仅面向 PC 桌面端**：视口固定 `1085 / 1440 / 1920px`（0 横向滚动条）；版心 `1200px` 居中无水平 padding，区块上下 `40px` 白（`#FFFFFF`）灰（`#FAFBFB`）交替，网格 `20px`（最多 4 列）。
+2. **仅面向 PC 桌面端**：视口固定 `1085 / 1440 / 1920px`（0 横向滚动条）；版心 `1200px` 居中无水平 padding，区块上下 `40px` 白（`#FFFFFF`）/灰（`#FAFBFB`）按视觉层次自然搭配（不强求机械交替），网格 `20px`（最多 4 列）。
 3. **表面与描边铁律**：**灰底区块（`#FAFBFB`）上的白卡/白容器严禁加描边**；**白底区块（`#FFFFFF`）上的同色卡片必须加描边**（如 `*-bordered` 变体或合规容器描边）。
 4. **表单控件同套系、全宽与原生表单优先**：含多行长文本（`Message`/`Comments`）的留资表单优先使用 `library-form/gray` + `sourceFields`（置于 `1200px` 无描边白卡内，通过 `#section-id .inquiry-form-card > form { width: 100%; }` 撑满版心，原生自带全宽 `textarea` 与**左下角对齐**提交按钮），严禁裸写 `<textarea>` 或手写居中提交按钮；组合单行表单内严禁白底描边与灰底控件混用，网格内控件必传 `layout: "fill"` 严格等宽，顶部 label 统一 `14px/400/#4B4B4D`。
 5. **严禁杜撰按钮文案**：原站卡片无显式 CTA 按钮文案时，必须通过 `sourceAbsent` 省略 `link` 插槽并将整卡外包 `<a>`，严禁硬造 `Explore >` / `Learn More >`。

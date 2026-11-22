@@ -313,7 +313,7 @@ function compile(root = ROOT, { check = false } = {}) {
   }
   output.set(
     rel + "/local-fonts.css",
-    "@font-face{font-family:'Open Sans';font-style:normal;font-weight:400;font-display:swap;src:url('pages/fonts/bdcom-oem-pc-1009-open-sans-400.woff2') format('woff2')}\n@font-face{font-family:'Open Sans';font-style:normal;font-weight:600;font-display:swap;src:url('pages/fonts/bdcom-oem-pc-1009-open-sans-600.woff2') format('woff2')}\n",
+    "@font-face{font-family:'Open Sans';font-style:normal;font-weight:400;font-display:swap;src:url('pages/fonts/bdcom-oem-pc-1009-open-sans-400.woff2') format('woff2')}\n@font-face{font-family:'Open Sans';font-style:normal;font-weight:600;font-display:swap;src:url('pages/fonts/bdcom-oem-pc-1009-open-sans-600.woff2') format('woff2')}\nhtml,body{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}\n",
   );
   const selection = {
     version,
@@ -542,11 +542,17 @@ function applyLibraryProps(el, v, props, root, data, targetDir) {
       node.removeAttribute("aria-disabled");
       node.removeAttribute("role");
     } else if (binding.mode === "registered-icon") {
-      if (!binding.values?.includes(value))
+      const isLocalSvg =
+        typeof value === "string" &&
+        /^assets\/[a-z0-9_-]+\/[a-z0-9_.-]+\.svg$/i.test(value) &&
+        fs.existsSync(path.join(root, "pages", value));
+      if (!binding.values?.includes(value) && !isLocalSvg)
         throw Error("Icon is outside the registered binding");
       node.setAttribute(
         binding.attribute,
-        relativeURL(path.join(root, data.release, value), targetDir),
+        isLocalSvg
+          ? value
+          : relativeURL(path.join(root, data.release, value), targetDir),
       );
     } else if (
       binding.mode === "native-attribute" ||

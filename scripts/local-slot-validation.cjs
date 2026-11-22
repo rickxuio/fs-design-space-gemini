@@ -7,8 +7,9 @@ const signature=n=>n.tagName+'|'+[...n.classList].sort().join(' ');
 const contentAttributes=new Set(['id','for','aria-controls','aria-labelledby','aria-describedby','aria-label','name','value','placeholder','href','alt','datetime','title','data-value','data-trigger-label']);
 function structured(node,before,slot,field,root,variant,resources={}){
  const registeredImage=n=>!!slot.registeredIcons&&n.matches(slot.registeredIcons.selector);
+ const localAssetSvg=src=>typeof src==='string'&&/^assets\/[a-z0-9_-]+\/[a-z0-9_.-]+\.svg$/i.test(src)&&require('node:fs').existsSync(path.join(path.resolve(__dirname,'..'),'pages',src));
  const id=root.dataset.libraryComponent?.slice(8);
- const contentImage=n=>n.tagName==='IMG'&&((id==='banner'&&variant.name==='mini'&&n.matches('img.ds-banner__mini-image'))||(id==='collapse'&&variant.name==='data-preview'&&n.matches('img.ds-collapse__product-image'))||(id==='dialog'&&variant.name==='cart'&&n.matches('img.ds-list__product-source-image'))||(id==='list'&&variant.name==='product-content'&&n.matches('img.ds-list__product-source-image'))||(id==='table'&&variant.name==='matrix-products'&&n.closest('span.ds-table__product-media')));
+ const contentImage=n=>n.tagName==='IMG'&&((id==='banner'&&variant.name==='mini'&&n.matches('img.ds-banner__mini-image'))||(id==='collapse'&&variant.name==='data-preview'&&n.matches('img.ds-collapse__product-image'))||(id==='dialog'&&variant.name==='cart'&&n.matches('img.ds-list__product-source-image'))||(id==='list'&&variant.name==='product-content'&&n.matches('img.ds-list__product-source-image'))||(id==='table'&&variant.name==='matrix-products'&&n.closest('span.ds-table__product-media'))||(id==='stepper'&&n.matches('img.ds-stepper__placeholder')));
  if(node.querySelector('script,style,iframe,object,embed')||[...node.querySelectorAll('*')].some(n=>[...n.attributes].some(a=>/^on/i.test(a.name)||a.name==='style')))throw Error('Unsafe structured slot');
  for(const s of slot.preserve||[])if(!node.querySelector(s))throw Error('Structured slot missing '+s);
  const templates=[before,...before.querySelectorAll('*')],parents=new Set(templates.slice(1).map(n=>signature(n.parentElement)+'>'+signature(n)));
@@ -20,7 +21,7 @@ function structured(node,before,slot,field,root,variant,resources={}){
   if(n.tagName==='IMG'){
    const src=n.getAttribute('src');if(!src)throw Error('Image resource missing');
    if(field==='image'||contentImage(n)){if(!n.getAttribute('alt')?.trim()&&(field==='image'||!matches.some(t=>t.getAttribute('src')===src)))throw Error('Content image needs descriptive alt');navigation(src);}
-   else if(registeredImage(n)){if(!matches.some(t=>t.getAttribute('src')===src)&&!(resources.registeredIconURLs||[]).includes(src))throw Error('Structured slot icon is outside the finite registry');}
+   else if(registeredImage(n)){if(!matches.some(t=>t.getAttribute('src')===src)&&!(resources.registeredIconURLs||[]).includes(src)&&!localAssetSvg(src))throw Error('Structured slot icon is outside the finite registry');}
    else if(field==='ratingContent'){const originals=[...before.querySelectorAll('img')].map(i=>i.getAttribute('src'));if(!originals.some(s=>s.replace(/icon-rate-(?:on|off)-/,'icon-rate-state-')===src.replace(/icon-rate-(?:on|off)-/,'icon-rate-state-')))throw Error('Rating icon outside native size/state pair');}
    else if(!matches.some(t=>t.getAttribute('src')===src))throw Error('Structured slot changed registered icon');
   }
@@ -57,7 +58,7 @@ function structured(node,before,slot,field,root,variant,resources={}){
  }
  if(id==='breadcrumb'){const parts=[...node.querySelectorAll('.ds-breadcrumb__item')];if(parts.length<2||node.querySelectorAll('.ds-breadcrumb__current').length!==1||!parts.at(-1).querySelector('.ds-breadcrumb__current'))throw Error('Breadcrumb needs preceding links and one final current item');}
  if(id==='tab'){const items=node.querySelectorAll('.ds-tab__item');if(items.length<2||node.querySelectorAll('.ds-tab__indicator').length!==1||!items[0].classList.contains('ds-tab__item--active'))throw Error('Tabs require at least two complete items and one initial indicator');}
- if(id==='stepper'&&(node.querySelectorAll('.ds-stepper__item').length!==4||node.querySelector('a[href]')))throw Error('Finite Stepper preserves four native stages and authored state');
+ if(id==='stepper'&&(node.querySelectorAll('.ds-stepper__item').length<3||node.querySelectorAll('.ds-stepper__item').length>6||node.querySelector('a[href]')))throw Error('Finite Stepper preserves 3..6 native stages and authored state');
  if(id==='select'){const opts=[...node.querySelectorAll('[role="option"]')];if(!opts.length||opts.some(n=>!n.classList.contains('ds-select__option')||!['true','false'].includes(n.getAttribute('aria-selected'))))throw Error('Select options require native option identity and state');}
  if(id==='anchor-nav'){const items=node.querySelectorAll('[data-anchor-tab]');if(items.length<2||node.querySelectorAll('.ds-anchor-nav__tab--active').length!==1)throw Error('Anchor navigation needs multiple native items and one active item');}
  if(id==='list'&&variant.name==='operation-intensive'){

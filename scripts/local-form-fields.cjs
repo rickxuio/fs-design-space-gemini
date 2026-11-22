@@ -5,11 +5,11 @@ function readFields(root,value){
  const file=path.resolve(root,value.reference);if(!fs.realpathSync(file).startsWith(fs.realpathSync(root)+path.sep))throw Error('Form source reference escapes project');
  const source=JSON.parse(fs.readFileSync(file)),record=(source.modules||[]).flatMap(m=>m.items||[]).find(x=>x.objectId===value.objectId);
  if(source.kind!=='original-page-content-reference'||!record||!Array.isArray(record.fields)||record.fields.length<1||record.fields.length>32)throw Error('Form needs1..32 source fields');
- const names=new Set();for(const f of record.fields){if(!f||Object.keys(f).some(k=>!['name','label','kind','required','description','placeholder','options'].includes(k))||!['text','email','textarea','select'].includes(f.kind)||!/^\w[\w-]*$/.test(f.name||'')||names.has(f.name)||typeof f.label!=='string'||!f.label.trim()||typeof f.required!=='boolean')throw Error('Invalid or duplicate source Form field');names.add(f.name);for(const k of ['description','placeholder'])if(f[k]!==undefined&&typeof f[k]!=='string')throw Error('Invalid source field copy');if(f.kind==='select'&&(!Array.isArray(f.options)||f.options.length<2||f.options.length>300||f.options.some(o=>typeof o!=='string'||!o.trim())||new Set(f.options).size!==f.options.length))throw Error('Select needs unique source options');if(f.kind!=='select'&&f.options!==undefined)throw Error('Options require a real Select');}
- return record.fields;
+ const names=new Set();for(const f of record.fields){if(!f||Object.keys(f).some(k=>!['name','label','kind','required','description','placeholder','options','fullWidth'].includes(k))||!['text','email','textarea','select'].includes(f.kind)||!/^\w[\w-]*$/.test(f.name||'')||names.has(f.name)||typeof f.label!=='string'||!f.label.trim()||typeof f.required!=='boolean')throw Error('Invalid or duplicate source Form field');if(f.fullWidth!==undefined&&typeof f.fullWidth!=='boolean')throw Error('Invalid fullWidth flag');names.add(f.name);for(const k of ['description','placeholder'])if(f[k]!==undefined&&typeof f[k]!=='string')throw Error('Invalid source field copy');if(f.kind==='select'&&(!Array.isArray(f.options)||f.options.length<2||f.options.length>300||f.options.some(o=>typeof o!=='string'||!o.trim())||new Set(f.options).size!==f.options.length))throw Error('Select needs unique source options');if(f.kind!=='select'&&f.options!==undefined)throw Error('Options require a real Select');}
+ const out=record.fields.slice();out.consent=record.consent===true;return out;
 }
 function assemble(el,fields,{render,root,data,targetDir,variant}){
- const doc=el.ownerDocument,basic=el.querySelector('.ds-input-field[data-input-layout="fill"]'),textarea=el.querySelector('[data-input-kind="textarea"]'),submit=el.querySelector('button[type="submit"]').parentElement.cloneNode(true);
+ const doc=el.ownerDocument,basic=el.querySelector('.ds-input-field[data-input-layout="fill"]'),textarea=el.querySelector('[data-input-kind="textarea"]'),consent=el.querySelector('.ds-form__consent')?.cloneNode(true),submit=el.querySelector('button[type="submit"]').parentElement.cloneNode(true);
  if(!basic||!textarea)throw Error('Canonical Form lost native Input/textarea');
  el.replaceChildren();el.setAttribute('data-form-fields-source','v1');let row,count=0;
  for(const f of fields){const wrapper=doc.createElement('div');wrapper.className='ds-form__field';wrapper.dataset.formFieldName=f.name;wrapper.dataset.formRequired=String(f.required);const id='source-field-'+(++count)+'-'+f.name;
@@ -24,8 +24,9 @@ function assemble(el,fields,{render,root,data,targetDir,variant}){
    wrapper.append(atom);
   }
   if(f.description){const copy=doc.createElement('p');copy.className='ds-form__field-description';copy.textContent=f.description;copy.id=id+'-help';wrapper.append(copy);wrapper.querySelector('input,textarea,button').setAttribute('aria-describedby',[wrapper.querySelector('input,textarea,button').getAttribute('aria-describedby'),copy.id].filter(Boolean).join(' '));}
-  if(f.kind==='textarea'){el.append(wrapper);row=null;}else{if(!row||row.children.length===2){row=doc.createElement('div');row.className='ds-form__row';el.append(row);}row.append(wrapper);}
+  if(f.kind==='textarea'||f.fullWidth){el.append(wrapper);row=null;}else{if(!row||row.children.length===2){row=doc.createElement('div');row.className='ds-form__row';el.append(row);}row.append(wrapper);}
  }
+ if(fields.consent&&consent)el.append(consent);
  el.append(submit);const status=doc.createElement('p');status.className='ds-form__status';status.setAttribute('role','status');status.hidden=true;el.append(status);
 }
 module.exports={readFields,assemble};

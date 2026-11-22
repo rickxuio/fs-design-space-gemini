@@ -1,4 +1,4 @@
-<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>项目阅读资料</title><meta name="fs-reading-source-sha256" content="f75ed4856845b684fc03e22b88c7f7b54387126f0c5c94cdf8fa90e3dee37fb1"><link rel="stylesheet" href="../components/tokens.css"><style>body{margin:0;color:#19191a;background:#fff;font:14px/1.8 var(--font-family-base);overflow-wrap:anywhere}main{max-width:1100px;margin:32px auto;padding:0 24px}.reading-document[hidden]{display:none}.reading-source{border-bottom:1px solid #dee0e3;padding-bottom:16px;margin-bottom:24px;color:#707070;font-size:12px}.reading-source p{margin:0 0 4px}h1{font-size:28px;line-height:38px;margin:0 0 24px}h2{font-size:22px;line-height:30px;margin:32px 0 16px}h3{font-size:18px;margin:24px 0 12px}a{color:#0060bf;text-underline-offset:3px}p,ul,ol{margin:0 0 16px}code{font-size:12px;background:#fafbfb;padding:2px 4px}pre{max-width:100%;overflow:auto;padding:16px;background:#fafbfb}pre code{padding:0}table{width:100%;table-layout:fixed;border-collapse:collapse;margin:20px 0}th,td{border:1px solid #dee0e3;padding:10px;text-align:left;vertical-align:top}th{background:#fafbfb}blockquote{margin:16px 0;border-left:3px solid #dee0e3;padding:0 16px;color:#707070}img{max-width:100%;height:auto}:focus-visible{outline:2px solid #0060bf;outline-offset:3px}</style></head><body><main><article class="reading-document" data-document="project" data-title="项目说明"><header class="reading-source"><p>项目入口、目录和现有命令</p><p>源文件：<code>README.md</code></p></header><h1 id="project--fs-design-space">FS Design Space</h1>
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>项目阅读资料</title><meta name="fs-reading-source-sha256" content="88602827ce182de03ad8d98f1fe9337e3a5cc03482a6c7881e9595154dfd28ec"><link rel="stylesheet" href="../components/tokens.css"><style>body{margin:0;color:#19191a;background:#fff;font:14px/1.8 var(--font-family-base);overflow-wrap:anywhere}main{max-width:1100px;margin:32px auto;padding:0 24px}.reading-document[hidden]{display:none}.reading-source{border-bottom:1px solid #dee0e3;padding-bottom:16px;margin-bottom:24px;color:#707070;font-size:12px}.reading-source p{margin:0 0 4px}h1{font-size:28px;line-height:38px;margin:0 0 24px}h2{font-size:22px;line-height:30px;margin:32px 0 16px}h3{font-size:18px;margin:24px 0 12px}a{color:#0060bf;text-underline-offset:3px}p,ul,ol{margin:0 0 16px}code{font-size:12px;background:#fafbfb;padding:2px 4px}pre{max-width:100%;overflow:auto;padding:16px;background:#fafbfb}pre code{padding:0}table{width:100%;table-layout:fixed;border-collapse:collapse;margin:20px 0}th,td{border:1px solid #dee0e3;padding:10px;text-align:left;vertical-align:top}th{background:#fafbfb}blockquote{margin:16px 0;border-left:3px solid #dee0e3;padding:0 16px;color:#707070}img{max-width:100%;height:auto}:focus-visible{outline:2px solid #0060bf;outline-offset:3px}</style></head><body><main><article class="reading-document" data-document="project" data-title="项目说明"><header class="reading-source"><p>项目入口、目录和现有命令</p><p>源文件：<code>README.md</code></p></header><h1 id="project--fs-design-space">FS Design Space</h1>
 <p>本项目使用本地页面工作流：读取规范 → 确认组件 → 来源品牌过滤 → 模块映射 → 编写页面 → 自动检查 → 实际渲染核对。完整要求以根目录 <a href="../component-library.html#view/workflow" target="_top">AGENTS.md</a> 为准。</p>
 <h2 id="project--当前入口">当前入口</h2>
 <table>
@@ -107,11 +107,11 @@
 <p>组件源仍在<code>design-system/components/</code>，资料日期不代表已废弃。以上内容不建立第二套页面流程；检查输出由原命令按需生成。</p>
 <h2 id="project--页面调用">页面调用</h2>
 <p>新版组件规范与维护来源为 <code>design-system/</code>，统一调用登记为 <code>fs-components/component-registry.json</code>；新页面使用 <code>library-*</code>。原未加前缀的组件登记和旧预览依赖已退役，新调用只使用已登记的<code>library-*</code>变体；既有5个回归页面继续使用其原固定版本。</p>
-<p>首次安装执行 <code>npm ci</code> 和 <code>npm run design:install</code>。<code>npm run preview</code> 启动本地预览，默认端口5188，以终端实际地址为准。</p>
+<p>首次安装执行 <code>npm ci</code> 和 <code>npm run design:install</code>。<code>npm run preview</code> 启动本地预览，默认端口5188，以终端实际地址为准；<code>npm run preview:live</code> 启动带共享 CSS 实时热更新与页面组件 Inspector 浮层的预览；<code>npm run design:preview</code> 直接打开统一组件库与阅读中心 <code>design-system/component-library.html</code>。</p>
 <p>普通页面保存在 <code>pages/</code>，使用现有调用语法：</p>
 <pre><code class="language-html">&lt;div data-component="library-button" data-fragment="outline-black" data-props='{"label":"Download"}'&gt;&lt;/div&gt;
 </code></pre>
-<p>可使用 <code>build.js</code> 导出的 <code>assemblePage(source, loadRegistry(), new Map(), sourceName, { targetDir })</code> 完成片段装配。只有页面级标杆规范走 <code>fs-components/page-sources/ → build.js → fs-components/page-specs/</code>；普通页面不进入该批量构建管线。</p>
+<p>可使用 <code>build.js</code> 导出的 <code>assemblePage(source, loadRegistry(), new Map(), sourceName, { targetDir })</code> 或辅助库 <code>scripts/page-helpers.cjs</code>（提供 <code>assembleLocalPage</code>、<code>cardProps</code>、<code>iconCardProps</code>、<code>faqItemsHtml</code> 等，自动读取当前 <code>catalog.json</code> 版本）完成片段装配。只有页面级标杆规范走 <code>fs-components/page-sources/ → build.js → fs-components/page-specs/</code>；普通页面不进入该批量构建管线。</p>
 <h3 id="project--纯新版查询与原页预扫描">纯新版查询与原页预扫描</h3>
 <pre><code class="language-bash">node build.js --inspect                                              # 列出 30 族可调用组件及新版样板
 node build.js --inspect library-card                                 # 查看某组件全部变体决策
@@ -218,7 +218,9 @@ npm run release:prune                                                # 清理无
 </ol>
 <pre><code class="language-bash">npm run impact -- button
 npm run component:check
+npm run component:check:impact   # 按 git status 变更自动推导受影响组件并增量运行回归测试
 npm run component:sync
+npm run variants:slim            # 清理 variants/*.html 内部编译源中的冗余历史说明区块
 </code></pre>
 <p><code>component:check</code> 只检查当前导出；过期时先查来源差异。<code>component:sync</code> 更新父组件预览、本地片段、选型、依赖、统一规范页和固定资源版本；<code>component:watch</code> 使用同一同步链。新调用取当前资源，已交付页保持原版本。保留当前调用、规范展示和回归检查所需的固定版本。不自动清理版本，也不为清理或消除过期提示而重新发布。</p>
 <p>组件迁移或协调多文件修改时，沿用现有隔离副本完成中间检查与导出，稳定后在正式项目发布一次。修改组件或验收工具时，才执行相关工程、同步或故障注入测试，不将其加入普通页面流程。</p>
@@ -234,7 +236,7 @@ npm run component:sync
 <h2 id="workflow--首版直出-10-条必过红线-checklist-生成与交付前逐项核对">首版直出 10 条必过红线 Checklist（生成与交付前逐项核对）</h2>
 <ol>
 <li><strong>Rule 0 固定头尾</strong>：必须原样调用 <code>library-navigation/header</code> 与 <code>footer</code>，严禁扩展（<code>data-fs-extend</code> 禁用）、严禁混入原站头尾/Logo/品牌色/渐变。</li>
-<li><strong>仅面向 PC 桌面端</strong>：视口固定 <code>1085 / 1440 / 1920px</code>（0 横向滚动条）；版心 <code>1200px</code> 居中无水平 padding，区块上下 <code>40px</code> 白（<code>#FFFFFF</code>）灰（<code>#FAFBFB</code>）交替，网格 <code>20px</code>（最多 4 列）。</li>
+<li><strong>仅面向 PC 桌面端</strong>：视口固定 <code>1085 / 1440 / 1920px</code>（0 横向滚动条）；版心 <code>1200px</code> 居中无水平 padding，区块上下 <code>40px</code> 白（<code>#FFFFFF</code>）/灰（<code>#FAFBFB</code>）按视觉层次自然搭配（不强求机械交替），网格 <code>20px</code>（最多 4 列）。</li>
 <li><strong>表面与描边铁律</strong>：<strong>灰底区块（<code>#FAFBFB</code>）上的白卡/白容器严禁加描边</strong>；<strong>白底区块（<code>#FFFFFF</code>）上的同色卡片必须加描边</strong>（如 <code>*-bordered</code> 变体或合规容器描边）。</li>
 <li><strong>表单控件同套系、全宽与原生表单优先</strong>：含多行长文本（<code>Message</code>/<code>Comments</code>）的留资表单优先使用 <code>library-form/gray</code> + <code>sourceFields</code>（置于 <code>1200px</code> 无描边白卡内，通过 <code>#section-id .inquiry-form-card &gt; form { width: 100%; }</code> 撑满版心，原生自带全宽 <code>textarea</code> 与<strong>左下角对齐</strong>提交按钮），严禁裸写 <code>&lt;textarea&gt;</code> 或手写居中提交按钮；组合单行表单内严禁白底描边与灰底控件混用，网格内控件必传 <code>layout: "fill"</code> 严格等宽，顶部 label 统一 <code>14px/400/#4B4B4D</code>。</li>
 <li><strong>严禁杜撰按钮文案</strong>：原站卡片无显式 CTA 按钮文案时，必须通过 <code>sourceAbsent</code> 省略 <code>link</code> 插槽并将整卡外包 <code>&lt;a&gt;</code>，严禁硬造 <code>Explore &gt;</code> / <code>Learn More &gt;</code>。</li>

@@ -14,7 +14,7 @@
  *                 container width, color palette) without requiring data-library-*.
  *
  * Usage:
- *   npm run audit:page -- pages/renogy-store-pc.html [--out=/tmp/shots] [--no-shots]
+ *   npm run audit:page -- pages/xtool-store-pc.html [--out=/tmp/shots] [--no-shots]
  *   npm run audit:page -- https://www.fs.com/... --mode=audit
  */
 
