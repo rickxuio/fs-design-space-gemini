@@ -22,6 +22,27 @@
 
 内容顺序与功能意图以实际来源为准，不拿某个旧示例的模块顺序替代需求。页面分隔线留在版心内，不加源站品牌装饰线。容器、page-section、section-header和grid是页面骨架；组件内部不使用页面CSS覆盖。
 
+## 1.5 顶部导航栏下拉菜单与浮层规范（对齐 `fs.com` 线上实测）
+
+当前组件库固定外壳 `library-navigation/header` 仅实现了 5 项主导航与 240px 单列 `All Products` 菜单；**线上 `https://www.fs.com/` 完整顶部导航规范如下**（供后续升级 `library-navigation/header` 组件与维护页时作为单一依据）：
+
+### 主导航栏结构
+- **顶栏 Utility Bar**：全宽 `#F6F6F8`，高 `32px`，版心 `1200px` 居中，字号 `12px/#707070`（hover `#19191A`），项间 `1px×10px` `#E5E5E5` 竖线。左：`FS United States`、`FREE SHIPPING on Orders Over US$79`；右：`Contact Us`、`United States / $ USD` 下拉触发器。
+- **主导航条 Main Nav**：全宽 `#FFFFFF`，高 `70px`（`69px` 内容 + `1px solid #E5E5E5` 底边），Logo `76×36px`。主入口共 **6 项**（项间距 `48px`）：`All Products`、`Software`、`Solutions`、`Services`、`Resources`、`Contact Us`；文字 `14px/22px/400/#19191A`，悬停/激活态保持 `400` 字重并在底部呈现 `2px solid #C00000` 红线（`border-radius: 3px`）。
+- **下拉面板统一容器**：宽 **`1200px`** 居中贴紧主导航底边（`top: 69px`，`border-top: 1px solid #E5E5E5`），下圆角 `4px`，最大高度 `calc(100vh - 149px)` 内部滚动，`z-index: 110`，背后覆盖全屏半透明遮罩 `rgba(51, 51, 51, 0.3)`。
+
+### 下拉 Mega Menu 两套标准模板
+
+| 模板 | 适用入口 | 布局结构与尺寸 | 排版与交互规范 |
+|---|---|---|---|
+| **模板 A：左灰导航栏 + 右白内容区** | `All Products`<br>`Software`<br>`Solutions` | **左栏**：宽 `240px`（20%），`#F6F6F8` 底，`padding: 32px 0`；每项高 `48px`，激活项浮现白色左圆角胶囊（`border-radius: 3px 0 0 3px`，`left: 12px`）+ 文字下方 `2px solid #C00000` 红线。<br>**右栏**：宽 `960px`，`#FFFFFF` 底，`padding: 32px 40px 40px`。 | - **`All Products`**：左栏 8 类目带线性图标；右栏 **4 列网格（`gap: 20px`）**，组标题 `14px/600/#19191A`（hover 出红底线），子链接 `12px/20px/#707070`（hover `#19191A` 下划线），支持行内 `Hot`（`#F56300`）/ `New`（`#10A300`）角标。<br>- **`Software`**：左栏 4 类目无图标；右栏 `16px/600` 分区标题 + **2 列网格（`gap: 20px`）**（每项 `14px/600` 标题 + `12px/20px/#707070` 描述）。<br>- **`Solutions`**：左栏 4 类目无图标；右栏 `16px/600` 标题 + `12px/#707070` 副标题 + **3 列分组链接网格（`gap: 20px`）**。 |
+| **模板 B：左 2 列链接 + 竖线 + 右宣传图卡** | `Services`<br>`Resources`<br>`Contact Us` | 全宽 `#FFFFFF`，`padding: 32px 40px 40px`，水平 Flex：<br>**左区**：`flex: 1`，顶部标题 `16px/24px/600/#19191A` + 副标题 `12px/20px/#707070`，下方 **2 列链接网格（`gap: 20px 32px`）**。<br>**竖分割线**：`1px` 宽 `#E5E5E5`，左右间距 `32px`。<br>**右区图卡**：固定 **`360×225px`**，`border-radius: 8px`。 | - **`Services` / `Resources`**：右图卡叠白字标题（`20px/28px/600`）+ 副标题（`14px/22px`）+ 红底按钮（`32px` 高、`12px` 字、`4px` 圆角，如 `Project Inquiry` / `Explore Documentation`）。<br>- **`Contact Us`**：左区为 2×2 网格（`Explore FS`、`Contact Us`、`Follow Us` 6 社媒图标、`FS Branch`）；右图卡为纯实景仓库照片（无叠字按钮）。 |
+
+### 顶栏与右侧辅助交互浮层（3 类）
+1. **国家/语言/币种选择器**（点击 `United States / $ USD` 展开）：`292×424px` 白色浮层，`border-radius: 8px`，投影 `0 2px 8px rgba(0,0,0,0.1)`；内含当前选中项 + 关闭按钮、带放大镜的搜索框、可滚动国家/语言/币种列表（语言币种高亮 `#0060BF`）。
+2. **全宽搜索展开面板**（点击搜索图标展开）：全宽 `100%`、最小高 `360px` 白底面板，右上角 `×` 关闭；内含 `900×42px` `#F6F6F8` 输入框无缝拼接红底 `Search` 按钮（左/右 `4px` 圆角），下方展示 `Recent Searches` 与 `Hot Searches`（`Change` 蓝链 + `999px` 圆角 `1px solid #EEE` 胶囊词条）。
+3. **账户下拉浮层**（悬停账户图标展开）：`288×114px` 白色浮层，`border-radius: 8px`，投影 `0 2px 8px rgba(0,0,0,0.1)`，`padding: 12px 16px`；未登录态上下堆叠全宽红底 `Sign in` 与灰底 `Sign up` 按钮。
+
 ## 2. 内容、图片与图标
 
 原站头尾和Logo替换为同版固定FS外壳；品牌字体、色块、渐变和装饰过滤。忠实保留正文、链接、模块和可见交互，不编造宣传文案，不删内容掩盖组件缺口。

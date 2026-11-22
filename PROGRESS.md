@@ -15,9 +15,9 @@
 | **0** | **项目健康度清理 & 适配器升级** | **已完成** | 清理旧竞品试作页（`renogy-*`、`xtool-education-v2`、`xtool-store`、`local-library-integration`）、修剪废弃 release；动态读取 `ACTIVE_RELEASE`；永久修复 macOS 字体假加粗问题；升级 `Stepper / Form / IconCard` 适配能力。 |
 | **1** | **解决方案 / 专题页 (Solutions)** | **已完成 & 验收通过** | `pages/fs-campus-fabric-network-pc.html`（源页：`https://www.fs.com/solutions/fs-campus-fabric-network-s10121.html`），已登记到 `index.html`，模式沉淀为 `section-patterns.md` 的 **Pattern 9**。 |
 | **2** | **官网首页 (Homepage)** | **已完成 & 用户确认通过** | `pages/fs-homepage-pc.html`（源页：`https://www.fs.com/`），已登记到 `index.html`，模式沉淀为 `section-patterns.md` 的 **Pattern 10**。 |
-| **3** | **产品列表页 (PLP)** | **待开始（下一步）** | 待用户提供目标 URL 后开展。 |
-| **4** | **商品详情页 (PDP)** | **待开始** | 待后续推进。 |
-| **5** | **账户中心页 (Account Center)** | **待开始** | 待后续推进。 |
+| **3** | **产品列表页 (PLP)** | **已完成 & 验收通过** | `pages/fs-plp-switches-pc.html`（源页：`https://www.fs.com/c/picos-enterprise-switches-4223`），已登记到 `index.html`，构建脚本归档在 `scripts/benchmarks/build-fs-plp-switches.cjs`。 |
+| **4** | **商品详情页 (PDP)** | **已完成 & 验收通过** | `pages/fs-pdp-s5810-pc.html`（源页：`https://www.fs.com/products/206801.html?now_cid=1368`），已登记到 `index.html`，构建脚本归档在 `scripts/benchmarks/build-fs-pdp-s5810.cjs`。 |
+| **5** | **账户中心页 (Account Center)** | **已完成 & 验收通过** | `pages/fs-account-center-pc.html`（源稿：MasterGo《账户中心设计稿合集》`Business homepage`），已登记到 `index.html`，构建脚本归档在 `scripts/benchmarks/build-fs-account-center.cjs`。 |
 
 > **可复用构建脚本已入库**：两张已交付 FS 原生标杆页的生成脚本均已保存在 `scripts/benchmarks/` 下（`build-fs-campus-fabric.cjs`、`build-fs-homepage.cjs`），随时可重新生成或微调。
 
@@ -59,6 +59,13 @@
 5. **多卡片轮播翻页步长（单张 vs 整页）**：
    - 现状：`library-carousel/external-cards` 的 `carousel-external.js` 写死每次滚 1 张卡片（8 张卡出 5 点、10 张卡出 7 点）。
    - 线上实测：按整页 4 张翻页（`slidesPerGroup: 4`，8 张卡出 **2 点**、10 张卡出 **3 点**）。建议为 `external-cards` 增加可选属性 `stepMode: "item" | "page"`。
+6. **PLP 产品列表页 3 项新增组件缺口（自 `fs-plp-switches-pc.html` 发现）**：
+   - **Pagination 分页组件缺失**：当前 30 族组件库尚未收录独立 `library-pagination` 组件，PLP 页面底部分页栏暂由页面按 FS Token 实现。
+   - **Tag 缺少橙底 `Hot` 语义角标**：`library-tag` 目前只有绿色 `semantic-new` 和 `featured`，缺少官网 PLP 高频使用的 `Hot`（`#FFEBDD` 底 / `#F56300` 字）变体。
+   - **无兼容标签的精简版 PLP 商品卡变体**：现有 `library-card/embedded-product-full` 强绑定 `compatibility` 品牌标签组与 `items` 列表，而官网交换机 PLP 卡片无兼容标签、采用单行 `|` 分隔参数条 + 双仓库存行 + 悬浮才展开的红色 `Add` 购物车按钮。
+7. **顶部导航栏下拉菜单规范缺口（自 `https://www.fs.com/` 线上实测补齐至 `design-spec/fs-design-system.md` §1.5）**：
+   - **现状问题**：当前 `library-navigation/header` 仅有 5 项主入口（缺少 `Software`），且仅 `All Products` 挂了一个 `240px` 单列一级菜单（无右侧 4 列子分类面板）；`Solutions` / `Services` / `Resources` / `Contact Us` 均无 Mega Menu，顶部国家切换、全宽搜索面板与账户下拉浮层也尚未实现。
+   - **线上实测完整规范已入档**：已将 `fs.com` 全部 6 项主导航 Mega Menu（模板 A：`240px` 灰栏 + `960px` 白区；模板 B：左 2 列链接 + `1px` 竖线 + 右 `360×225px` 图卡）及 3 类辅助 Popover（Country / Search / Account）的完整尺寸、配色与交互细节补充进 `design-spec/fs-design-system.md` §1.5，待后续升级 `library-navigation/header` 并同步发布新版 release 时统一落地。
 
 ---
 
@@ -80,6 +87,13 @@
 
 ## 五、迭代日志（每次阶段提交追加一条）
 
+- **2026-11-22（续）**：
+  - 完成 **标杆页 #3（产品列表页 PLP）** `pages/fs-plp-switches-pc.html`（`PicOS® Enterprise Switches`，实测对齐 6 项子分类 SPA 切换、胶囊多选计数 + `Clear All`、`320×428` `More Filters` 双列下拉浮层、商品卡悬浮加购与分页）。
+  - 完成 **标杆页 #4（商品详情页 PDP）** `pages/fs-pdp-s5810-pc.html`（`S5810-48TS-P`，覆盖 6 图画廊、6 款型号选型联动、`library-input-number`、`library-anchor-nav`、`library-tab/capsule`、`library-video-button`、`library-comment/qa-thread`、`library-rate/summary`、规格与机型对比表及吸底快速加购栏）。
+  - 完成 **标杆页 #5（账户中心页 Account Center）** `pages/fs-account-center-pc.html`（MasterGo `Business homepage`，覆盖左侧手风琴导航与客户经理卡片、信息横幅、Orders KPI 筛选与列表、Quotes 缩略图与操作、Cases 实时搜索，代表性交互 `9/9` 通过，并完成官方线性图标与搜索框自检精修）。
+  - **补齐顶部导航栏下拉菜单与浮层规范**：实测线上 `fs.com` 6 项主导航 Mega Menu（模板 A/B）与 3 类辅助浮层（Country / Search / Account），补充至 `design-spec/fs-design-system.md` §1.5 并产出交互预览页 `maintenance/header-mega-menu-preview.html`。
+  - **5 大 FS 核心题型原生标杆页已全部交付完成**，均已登记至 `index.html`，构建脚本均入库至 `scripts/benchmarks/`。
+  - **换机接续待办**：① 另一台电脑如使用 MasterGo MCP，需在本地 `~/.gemini/config/mcp_config.json` 配置 `mastergo-magic-mcp`；② 后续继续优化重点：精修剩余样式问题、决定组件库升级项（第 1–7 项差异与 Bug 修复）、将 PLP/PDP/Account Center 规则沉淀至 `design-spec/section-patterns.md`（Pattern 11–13）。
 - **2026-11-22**：
   - 完成项目健康度清理（移除 `renogy-*`、`xtool-education-v2`、`xtool-store` 等外部参考页与废弃快照），动态读取 `ACTIVE_RELEASE`，修复 macOS Open Sans 字体渲染假加粗问题。
   - 完成 **标杆页 #1（解决方案页）** `pages/fs-campus-fabric-network-pc.html` + `section-patterns.md` Pattern 9。

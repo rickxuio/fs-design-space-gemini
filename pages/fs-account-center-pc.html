@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html data-fs-library="f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Account Center - FS Business Account</title>
+  <style>body { margin: 0; font-family: "Open Sans", Arial, sans-serif; color: #19191A; background: #FFFFFF; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+.container { max-width: 1200px; width: 100%; margin: 0 auto; padding: 0; box-sizing: border-box; }
+.page-section { padding: 40px 0; background: #FFFFFF; }
+.page-section--gray { background: #FAFBFB; }
+.section-header { text-align: center; margin-bottom: 24px; }
+.section-header__tag { display: flex; justify-content: center; margin-bottom: 8px; }
+.section-header__title { margin: 0; font-size: 24px; line-height: 32px; font-weight: 600; color: #19191A; }
+.section-header__desc { margin: 12px auto 0; max-width: 960px; font-size: 14px; line-height: 22px; font-weight: 400; color: #4B4B4D; }
+.section-header__action { margin-top: 12px; display: flex; justify-content: center; }
+.center-tabs-layout { display: flex; justify-content: center; margin-bottom: 24px; }
+.grid { display: grid; gap: 20px; align-items: stretch; }
+.grid--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.grid--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.grid--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.card-full-link { display: grid; text-decoration: none; color: inherit; height: 100%; }
+.hero-surface { position: relative; width: 100%; overflow: hidden; background: #19191A; }
+.hero-surface__bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+.hero-surface__scrim { position: absolute; inset: 0; background: rgba(0, 0, 0, 0.48); z-index: 1; }
+.hero-surface__inner { position: relative; z-index: 2; }
+.store-card-tag-row { display: flex; align-items: center; gap: 6px; margin-bottom: 6px; }
+.store-card-price-row { display: flex; align-items: baseline; gap: 8px; margin-top: 8px; }
+.store-price-current { font-size: 16px; line-height: 24px; font-weight: 600; color: #19191A; }
+.store-price-compare { font-size: 13px; line-height: 20px; color: #707070; text-decoration: line-through; }
+.subscribe-card-1200 { display: grid; grid-template-columns: 600px 600px; width: 1200px; max-width: 100%; min-height: 338px; background: #FFFFFF; border-radius: 8px; overflow: hidden; box-sizing: border-box; }
+.subscribe-card-1200__media { height: 338px; overflow: hidden; }
+.subscribe-card-1200__img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.subscribe-card-1200__body { padding: 40px 48px; display: flex; flex-direction: column; justify-content: center; box-sizing: border-box; }
+.subscribe-form__row { display: flex; align-items: flex-end; gap: 12px; margin-bottom: 16px; }
+@media (max-width: 1220px) { .subscribe-card-1200 { grid-template-columns: 1fr 1fr; width: 100%; } }
+.acct-section { padding: 40px 0; background: #FFFFFF; }
+.acct-layout { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 24px; align-items: start; }
+.acct-sidebar { display: flex; flex-direction: column; gap: 16px; }
+.acct-nav-card { background: #FAFBFB; border-radius: 8px; padding: 12px 0; }
+.acct-nav-group__head { appearance: none; width: 100%; border: 0; background: transparent; padding: 10px 20px; display: flex; align-items: center; justify-content: space-between; font-family: inherit; font-size: 13px; line-height: 20px; font-weight: 600; color: #19191A; cursor: pointer; text-align: left; }
+.acct-nav-chevron { width: 12px; height: 12px; transition: transform 0.15s ease; transform: rotate(180deg); }
+.acct-nav-chevron.is-collapsed { transform: rotate(0deg); }
+.acct-nav-list { margin: 0; padding: 0; list-style: none; }
+.acct-nav-list[hidden] { display: none; }
+.acct-nav-item { appearance: none; width: 100%; border: 0; background: transparent; padding: 9px 20px 9px 32px; text-align: left; font-family: inherit; font-size: 13px; line-height: 20px; font-weight: 400; color: #4B4B4D; cursor: pointer; display: block; }
+.acct-nav-item:hover { color: #19191A; background: #F2F2F2; }
+.acct-nav-item.is-active { background: #FFFFFF; color: #19191A; font-weight: 600; }
+.acct-nav-item.is-active .acct-nav-item__label { display: inline-block; padding-bottom: 3px; border-bottom: 2px solid #C00000; }
+.acct-mgr-card { background: #FAFBFB; border-radius: 8px; padding: 20px; }
+.acct-mgr-card__title { font-size: 12px; line-height: 18px; color: #707070; margin-bottom: 14px; }
+.acct-mgr-person { display: flex; align-items: flex-start; gap: 8px; }
+.acct-mgr-svg { width: 16px; height: 16px; flex-shrink: 0; margin-top: 2px; display: block; opacity: 0.78; }
+.acct-mgr-action .acct-mgr-svg { margin-top: 0; }
+.acct-mgr-name { font-size: 13px; line-height: 20px; font-weight: 600; color: #19191A; }
+.acct-mgr-email { font-size: 12px; line-height: 18px; color: #4B4B4D; word-break: break-all; }
+.acct-mgr-divider { height: 1px; background: #ECEEF0; margin: 14px 0; }
+.acct-mgr-contact { display: flex; flex-direction: column; gap: 10px; }
+.acct-mgr-row { display: flex; align-items: flex-start; gap: 8px; }
+.acct-mgr-phone { font-size: 12px; line-height: 18px; font-weight: 600; color: #19191A; }
+.acct-mgr-sub { font-size: 11px; line-height: 16px; color: #707070; }
+.acct-mgr-action { display: flex; align-items: center; gap: 8px; font-size: 12px; line-height: 20px; color: #19191A; text-decoration: none; }
+.acct-mgr-action:hover { color: #0060BF; text-decoration: underline; }
+.acct-main { display: flex; flex-direction: column; gap: 20px; min-width: 0; }
+.acct-greeting__title { margin: 0 0 4px; font-size: 24px; line-height: 32px; font-weight: 600; color: #19191A; }
+.acct-greeting__sub { margin: 0; font-size: 13px; line-height: 20px; color: #707070; }
+.acct-greeting__num { color: #19191A; font-weight: 600; }
+.acct-info-banner { display: flex; align-items: center; gap: 8px; padding: 12px 16px; border-radius: 6px; background: #F4F7FC; font-size: 13px; line-height: 20px; color: #4B4B4D; }
+.acct-info-banner__icon { width: 16px; height: 16px; border-radius: 50%; border: 1.5px solid #0060BF; color: #0060BF; font-size: 11px; line-height: 13px; font-weight: 600; text-align: center; flex-shrink: 0; box-sizing: border-box; }
+.acct-info-banner__link { color: #0060BF; text-decoration: none; margin-left: 4px; }
+.acct-info-banner__link:hover { text-decoration: underline; }
+.acct-card { background: #FFFFFF; border: 1px solid #F0F0F2; border-radius: 8px; padding: 24px; box-sizing: border-box; box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05); }
+.acct-card__head { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 20px; flex-wrap: wrap; }
+.acct-card__head--divided { padding-bottom: 18px; margin-bottom: 16px; border-bottom: 1px solid #F0F0F2; }
+.acct-card__title { margin: 0; font-size: 18px; line-height: 26px; font-weight: 600; color: #19191A; }
+.acct-card__tools { display: flex; align-items: center; gap: 16px; }
+.acct-view-all { font-size: 13px; line-height: 20px; color: #0060BF; text-decoration: none; white-space: nowrap; }
+.acct-view-all:hover { text-decoration: underline; }
+.acct-search-wrap { position: relative; width: 240px; }
+.acct-search-icon { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); width: 16px; height: 16px; opacity: 0.55; pointer-events: none; z-index: 2; }
+.acct-kpi-strip { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); padding: 12px 0 24px; margin-bottom: 8px; }
+.acct-kpi-item { appearance: none; border: 0; border-right: 1px solid #ECEEF0; background: transparent; padding: 6px 12px; display: flex; flex-direction: column; align-items: center; gap: 4px; cursor: pointer; font-family: inherit; border-radius: 4px; transition: background-color 0.15s ease; }
+.acct-kpi-item:last-child { border-right: 0; }
+.acct-kpi-item:hover { background: #FAFBFB; }
+.acct-kpi-item.is-active { background: #F4F7FC; }
+.acct-kpi-item:hover .acct-kpi-label, .acct-kpi-item.is-active .acct-kpi-label, .acct-kpi-item.is-active .acct-kpi-num { color: #0060BF; }
+.acct-kpi-num { font-size: 24px; line-height: 32px; font-weight: 600; color: #19191A; }
+.acct-kpi-label { font-size: 12px; line-height: 18px; font-weight: 600; color: #19191A; }
+.acct-empty-row { padding: 24px 0; text-align: center; font-size: 13px; color: #707070; }
+.acct-empty-row[hidden] { display: none; }
+.acct-table-head { display: grid; padding: 10px 0 12px; border-bottom: 1px solid #ECEEF0; font-size: 12px; line-height: 18px; font-weight: 600; color: #19191A; }
+.acct-table-head--orders { grid-template-columns: 1.4fr 0.7fr 1fr 0.9fr 0.9fr 1.2fr 152px; gap: 12px; }
+.acct-table-head--quotes { grid-template-columns: 1.4fr 1fr 0.95fr 0.95fr 1.5fr 152px; gap: 12px; }
+.acct-table-head--cases { grid-template-columns: 1.3fr 1fr 1.7fr 1.5fr 0.9fr; gap: 12px; }
+.acct-order-row { display: grid; grid-template-columns: 1.4fr 0.7fr 1fr 0.9fr 0.9fr 1.2fr 152px; gap: 12px; align-items: center; padding: 18px 0; border-bottom: 1px solid #F2F2F2; font-size: 13px; line-height: 20px; color: #19191A; }
+.acct-order-row:last-child { border-bottom: 0; padding-bottom: 4px; }
+.acct-quote-block { padding: 18px 0; border-bottom: 1px solid #F2F2F2; }
+.acct-quote-block:last-child { border-bottom: 0; padding-bottom: 4px; }
+.acct-quote-row { display: grid; grid-template-columns: 1.4fr 1fr 0.95fr 0.95fr 1.5fr 152px; gap: 12px; align-items: center; font-size: 13px; line-height: 20px; color: #19191A; }
+.acct-quote-thumbs { display: flex; align-items: center; gap: 12px; margin-top: 14px; flex-wrap: wrap; }
+.acct-quote-thumb { width: 52px; height: 52px; border-radius: 4px; background: #FFFFFF; padding: 4px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; }
+.acct-quote-thumb__img { max-width: 100%; max-height: 100%; object-fit: contain; mix-blend-mode: multiply; display: block; }
+.acct-case-row { display: grid; grid-template-columns: 1.3fr 1fr 1.7fr 1.5fr 0.9fr; gap: 12px; align-items: center; padding: 16px 0; border-bottom: 1px solid #F2F2F2; font-size: 13px; line-height: 20px; color: #19191A; }
+.acct-case-row:last-child { border-bottom: 0; padding-bottom: 4px; }
+.acct-ccol-contact { text-align: right; }
+.acct-table-head--cases > :last-child { text-align: right; }
+.acct-id-link { color: #19191A; text-decoration: underline; }
+.acct-id-link:hover { color: #0060BF; }
+.acct-col-status { display: flex; align-items: center; gap: 6px; }
+.acct-status-line { display: flex; align-items: center; gap: 6px; }
+.acct-status-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+.acct-status-dot--pending { background: #F5B800; }
+.acct-status-dot--open { background: #10A300; }
+.acct-status-dot--canceled { background: #89898C; }
+.acct-status-text { font-weight: 600; color: #19191A; }
+.acct-status-sub { font-size: 12px; line-height: 18px; color: #707070; margin-top: 2px; }
+.acct-col-actions { display: flex; align-items: center; justify-content: flex-end; gap: 8px; }
+.acct-toast { position: fixed; right: 24px; bottom: 24px; z-index: 60; background: #19191A; color: #FFFFFF; padding: 10px 16px; border-radius: 6px; font-size: 13px; opacity: 0; pointer-events: none; transition: opacity 0.2s ease; }
+.acct-toast.is-show { opacity: 1; }
+</style>
+<link rel="stylesheet" data-library-resource="f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5" href="../fs-components/component-specs/library/releases/f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5/components/tokens.css">
+<link rel="stylesheet" data-library-resource="f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5" href="../fs-components/component-specs/library/releases/f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5/components/icon-button-current.css">
+<link rel="stylesheet" data-library-resource="f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5" href="../fs-components/component-specs/library/releases/f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5/components/components.css">
+<link rel="stylesheet" data-library-resource="f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5" href="../fs-components/component-specs/library/releases/f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5/components/dropdown-current.css">
+<link rel="stylesheet" data-library-resource="f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5" href="../fs-components/component-specs/library/releases/f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5/components/navigation-current.css">
+<link rel="stylesheet" data-library-resource="f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5" href="../fs-components/component-specs/library/releases/f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5/components/input-current.css">
+<link rel="stylesheet" data-library-resource="f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5" href="../fs-components/component-specs/library/releases/f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5/components/dropdown-command-current.css">
+<link rel="stylesheet" data-library-resource="f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5" href="../fs-components/component-specs/library/releases/f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5/components/navigation-header-web-atom.css">
+<link rel="stylesheet" data-library-resource="f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5" href="../fs-components/component-specs/library/releases/f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5/components/button-current.css">
+<link rel="stylesheet" data-library-resource="f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5" href="../fs-components/component-specs/library/releases/f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5/components/button-runtime-current.css">
+<link rel="stylesheet" data-library-resource="f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5" href="../fs-components/component-specs/library/releases/f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5/components/input-footer-source.css">
+<link rel="stylesheet" data-library-resource="f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5" href="../fs-components/component-specs/library/releases/f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5/components/cart-current.css">
+<link rel="stylesheet" data-library-resource="f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5" href="../fs-components/component-specs/library/releases/f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5/components/checkbox-current.css">
+<link rel="stylesheet" data-library-resource="f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5" href="../fs-components/component-specs/library/releases/f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5/components/navigation-footer-current.css">
+<link rel="stylesheet" data-library-resource="f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5" href="../fs-components/component-specs/library/releases/f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5/components/navigation-header-action-atom.css">
+<link rel="stylesheet" data-library-resource="f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5" href="../fs-components/component-specs/library/releases/f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5/components/menu-navigation-current.css">
+<link rel="stylesheet" data-library-resource="f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5" href="../fs-components/component-specs/library/releases/f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5/components/navigation-products-current.css">
+<link rel="stylesheet" data-library-resource="f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5" href="../fs-components/component-specs/library/releases/f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5/local-fonts.css">
+</head>
+<body>
+  <header class="ds-nav-header" data-fragment="header" data-ai-example="ai-navigation-fixed-header" data-header-products-current="pc" data-library-component="library-navigation" data-library-fragment="header" data-library-release="f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5" data-library-props="{}">
+    <div class="ds-nav-header__topbar">
+      <div class="ds-nav-header__topbar-inner">
+        <div class="ds-nav-header__topbar-left">
+          <span class="ds-nav-header__topbar-text">FS United States</span>
+          <span class="ds-nav-header__topbar-divider"></span>
+          <span class="ds-nav-header__topbar-text">FREE SHIPPING on Orders Over US$79</span>
+        </div>
+        <div class="ds-nav-header__topbar-right">
+          <a href="#" class="ds-nav-header__topbar-link">Contact Us</a>
+          <span class="ds-nav-header__topbar-divider"></span>
+          <a href="#" class="ds-nav-header__topbar-link">
+            United States / $ USD
+            <svg class="ds-nav-header__dropdown-icon" width="12" height="12" viewBox="0 0 12 12" fill="none">
+              <path d="M3 4.5L6 7.5L9 4.5" stroke="#707070" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <nav class="ds-nav-header__main">
+      <div class="ds-nav-header__main-inner">
+        <a id="library-instance-1-icon-usage-icon-logo-fs" href="#" class="ds-nav-header__logo" aria-label="FS.com Home" style="scroll-margin-top: 40px;">
+          <img src="../fs-components/component-specs/library/releases/f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5/components/icons/icon-logo-fs.svg" alt="FS Logo" width="76" height="36">
+        </a>
+        <ul class="ds-nav-header__links">
+          <li class="ds-nav-header__link-item"><a href="#" class="ds-nav-header__link" data-header-products-trigger="" role="button" aria-haspopup="true" aria-expanded="false" aria-controls="library-instance-1-header-product-menu-panel">All Products</a></li>
+          <li class="ds-nav-header__link-item"><a href="#" class="ds-nav-header__link">Solutions</a></li>
+          <li class="ds-nav-header__link-item"><a href="#" class="ds-nav-header__link">Services</a></li>
+          <li class="ds-nav-header__link-item"><a href="#" class="ds-nav-header__link">Resources</a></li>
+          <li class="ds-nav-header__link-item"><a href="#" class="ds-nav-header__link">Contact Us</a></li>
+        </ul>
+        <div class="ds-nav-header__actions">
+          <button id="library-instance-1-icon-usage-icon-search" class="ds-nav-header__action-btn" type="button" aria-label="Search" style="scroll-margin-top: 40px;">
+            <img src="../fs-components/component-specs/library/releases/f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5/components/icons/navigation-header-search-1013.png" alt="" width="24" height="24">
+          </button>
+          <button id="library-instance-1-icon-usage-icon-cart" class="ds-nav-header__action-btn" type="button" aria-label="Cart" style="scroll-margin-top: 40px;">
+            <img src="../fs-components/component-specs/library/releases/f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5/components/icons/icon-cart.svg" alt="" width="24" height="24">
+          </button>
+          <button id="library-instance-1-icon-usage-icon-account" class="ds-nav-header__action-btn" type="button" aria-label="Account" style="scroll-margin-top: 40px;">
+            <img src="../fs-components/component-specs/library/releases/f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5/components/icons/icon-account.svg" alt="" width="24" height="24">
+          </button>
+        </div>
+      </div>
+    </nav>
+  <div class="ds-nav-header__product-menu" id="library-instance-1-header-product-menu-panel" hidden=""><nav class="ds-menu-navigation ds-menu-navigation--public-header" data-menu-navigation="" aria-label="Public header product menu">
+        <ul class="ds-menu-navigation__list">
+          <li><button class="ds-menu-navigation__item ds-menu-navigation__item--selected" type="button" data-value="switches" aria-pressed="true"><img class="ds-menu-navigation__product-icon" src="../fs-components/component-specs/library/releases/f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5/components/icons/icon-menu-switches.svg" alt=""><span class="ds-menu-navigation__item-label">Switches</span></button></li>
+          <li><button class="ds-menu-navigation__item" type="button" data-value="networking"><img class="ds-menu-navigation__product-icon" src="../fs-components/component-specs/library/releases/f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5/components/icons/icon-menu-networking.svg" alt=""><span class="ds-menu-navigation__item-label">Networking</span></button></li>
+          <li><button class="ds-menu-navigation__item" type="button" data-value="optical-transceivers"><img class="ds-menu-navigation__product-icon" src="../fs-components/component-specs/library/releases/f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5/components/icons/icon-menu-optical-transceivers.svg" alt=""><span class="ds-menu-navigation__item-label">Optical Transceivers</span></button></li>
+          <li><button class="ds-menu-navigation__item" type="button" data-value="fiber-optic-cables"><img class="ds-menu-navigation__product-icon" src="../fs-components/component-specs/library/releases/f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5/components/icons/icon-menu-fiber-optic-cables.svg" alt=""><span class="ds-menu-navigation__item-label">Fiber Optic Cables</span></button></li>
+          <li><button class="ds-menu-navigation__item" type="button" data-value="panels-enclosures-racks"><img class="ds-menu-navigation__product-icon" src="../fs-components/component-specs/library/releases/f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5/components/icons/icon-menu-panels-enclosures-racks.svg" alt=""><span class="ds-menu-navigation__item-label">Panels, Enclosures &amp; Racks</span></button></li>
+          <li><button class="ds-menu-navigation__item" type="button" data-value="optical-networking"><img class="ds-menu-navigation__product-icon" src="../fs-components/component-specs/library/releases/f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5/components/icons/icon-menu-optical-networking.svg" alt=""><span class="ds-menu-navigation__item-label">Optical Networking</span></button></li>
+          <li><button class="ds-menu-navigation__item" type="button" data-value="copper-systems"><img class="ds-menu-navigation__product-icon" src="../fs-components/component-specs/library/releases/f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5/components/icons/icon-menu-copper-systems.svg" alt=""><span class="ds-menu-navigation__item-label">Copper Systems</span></button></li>
+          <li><button class="ds-menu-navigation__item" type="button" data-value="testers-tools"><img class="ds-menu-navigation__product-icon" src="../fs-components/component-specs/library/releases/f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5/components/icons/icon-menu-testers-tools.svg" alt=""><span class="ds-menu-navigation__item-label">Testers &amp; Tools</span></button></li>
+        </ul>
+      </nav></div></header>
+
+  <main>
+    <section id="account-center" class="page-section acct-section">
+      <div class="container">
+        <div class="acct-layout">
+          <aside class="acct-sidebar" aria-label="Account navigation">
+            
+<div class="acct-nav-card">
+  <div class="acct-nav-group">
+    <button type="button" class="acct-nav-group__head" data-acct-group-toggle="grp-account" aria-expanded="true" aria-controls="grp-account">
+      <span>Your Account</span>
+      <img class="acct-nav-chevron" src="../fs-components/component-specs/library/releases/f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5/components/icons/icon-chevron-down.svg" alt="">
+    </button>
+    <ul id="grp-account" class="acct-nav-list">
+      <li><button type="button" class="acct-nav-item is-active" data-acct-nav="account-center"><span class="acct-nav-item__label">Account Center</span></button></li>
+      <li><button type="button" class="acct-nav-item" data-acct-nav="orders"><span class="acct-nav-item__label">Orders</span></button></li>
+      <li><button type="button" class="acct-nav-item" data-acct-nav="quotes"><span class="acct-nav-item__label">Quotes</span></button></li>
+      <li><button type="button" class="acct-nav-item" data-acct-nav="saved-carts"><span class="acct-nav-item__label">Saved Carts</span></button></li>
+      <li><button type="button" class="acct-nav-item" data-acct-nav="invoices"><span class="acct-nav-item__label">Invoices</span></button></li>
+      <li><button type="button" class="acct-nav-item" data-acct-nav="credits"><span class="acct-nav-item__label">Credits</span></button></li>
+      <li><button type="button" class="acct-nav-item" data-acct-nav="rmas"><span class="acct-nav-item__label">RMAs</span></button></li>
+    </ul>
+  </div>
+  <div class="acct-nav-group">
+    <button type="button" class="acct-nav-group__head" data-acct-group-toggle="grp-interactions" aria-expanded="false" aria-controls="grp-interactions">
+      <span>Your Interactions</span>
+      <img class="acct-nav-chevron is-collapsed" src="../fs-components/component-specs/library/releases/f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5/components/icons/icon-chevron-down.svg" alt="">
+    </button>
+    <ul id="grp-interactions" class="acct-nav-list" hidden>
+      <li><button type="button" class="acct-nav-item" data-acct-nav="cases"><span class="acct-nav-item__label">Cases</span></button></li>
+      <li><button type="button" class="acct-nav-item" data-acct-nav="messages"><span class="acct-nav-item__label">Messages</span></button></li>
+      <li><button type="button" class="acct-nav-item" data-acct-nav="reviews"><span class="acct-nav-item__label">Product Reviews</span></button></li>
+    </ul>
+  </div>
+  <div class="acct-nav-group">
+    <button type="button" class="acct-nav-group__head" data-acct-group-toggle="grp-settings" aria-expanded="false" aria-controls="grp-settings">
+      <span>Account Setting</span>
+      <img class="acct-nav-chevron is-collapsed" src="../fs-components/component-specs/library/releases/f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5/components/icons/icon-chevron-down.svg" alt="">
+    </button>
+    <ul id="grp-settings" class="acct-nav-list" hidden>
+      <li><button type="button" class="acct-nav-item" data-acct-nav="profile"><span class="acct-nav-item__label">Company Profile</span></button></li>
+      <li><button type="button" class="acct-nav-item" data-acct-nav="addresses"><span class="acct-nav-item__label">Address Book</span></button></li>
+      <li><button type="button" class="acct-nav-item" data-acct-nav="security"><span class="acct-nav-item__label">Security &amp; Users</span></button></li>
+    </ul>
+  </div>
+</div>
+
+<div class="acct-mgr-card">
+  <div class="acct-mgr-card__title">Your Account Manager</div>
+  <div class="acct-mgr-person">
+    <img class="acct-mgr-svg" src="../fs-components/component-specs/library/releases/f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5/components/icons/mastergo-library/%E9%80%9A%E7%94%A8Icon/2536-3359.svg" alt="" width="16" height="16">
+    <div>
+      <div class="acct-mgr-name">Mollie.Hu</div>
+      <div class="acct-mgr-email">mollie.hu@feisu.com</div>
+    </div>
+  </div>
+  <div class="acct-mgr-divider"></div>
+  <div class="acct-mgr-contact">
+    <div class="acct-mgr-row">
+      <img class="acct-mgr-svg" src="../fs-components/component-specs/library/releases/f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5/components/icons/mastergo-library/%E9%80%9A%E7%94%A8Icon/1634-7872.svg" alt="" width="16" height="16">
+      <div>
+        <div class="acct-mgr-phone">+1 (888) 468 7419</div>
+        <div class="acct-mgr-sub">5x24 Phone Support</div>
+      </div>
+    </div>
+    <a class="acct-mgr-action" href="#start-chat" data-acct-toast="Connecting to Mollie.Hu live chat...">
+      <img class="acct-mgr-svg" src="../fs-components/component-specs/library/releases/f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5/components/icons/mastergo-library/%E9%80%9A%E7%94%A8Icon/53104-019975.svg" alt="" width="16" height="16">
+      <span>Start a Chat</span>
+    </a>
+    <a class="acct-mgr-action" href="mailto:mollie.hu@feisu.com">
+      <img class="acct-mgr-svg" src="../fs-components/component-specs/library/releases/f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5/components/icons/mastergo-library/%E9%80%9A%E7%94%A8Icon/53104-020284.svg" alt="" width="16" height="16">
+      <span>Email Us</span>
+    </a>
+  </div>
+</div>
+
+          </aside>
+
+          <div class="acct-main">
+            <header class="acct-greeting">
+              <h1 class="acct-greeting__title">Hello Rain!</h1>
+              <p class="acct-greeting__sub">Business Account #: <span class="acct-greeting__num">456590</span></p>
+            </header>
+
+            <div class="acct-info-banner" role="note">
+              <span class="acct-info-banner__icon" aria-hidden="true">i</span>
+              <span>We have found a business account that matches your email address.<a class="acct-info-banner__link" href="#account-details" data-acct-toast="Viewing matched business account #456590">See more</a></span>
+            </div>
+
+            <div id="orders-panel" class="acct-card">
+              <div class="acct-card__head acct-card__head--divided">
+                <h2 class="acct-card__title">Orders</h2>
+                <div class="acct-card__tools">
+                  <a class="acct-view-all" href="#orders-panel" data-reset-filter="orders" data-acct-toast="Showing all Orders">View All Orders</a>
+                  <div class="acct-search-wrap" data-acct-search="orders" data-fs-extend="search-input-icon">
+                    <div class="ds-input-field" data-input-current="" data-ai-example="ai-input-white" data-fragment="white" data-library-component="library-input" data-library-fragment="white" data-library-release="f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5" data-library-props="{&quot;label&quot;:&quot;Search Orders&quot;,&quot;placeholder&quot;:&quot;Case #, Content&quot;,&quot;name&quot;:&quot;orders-search&quot;}">
+<label class="ds-input-field__label" for="library-instance-2-input-white-default">Search Orders</label>
+<input id="library-instance-2-input-white-default" class="ds-input-field__input ds-input-field__input--white" type="text" placeholder="Case #, Content" name="orders-search">
+<div class="ds-input-field__error" id="library-instance-2-input-white-default-error" hidden="">
+<span class="ds-input-field__error-icon" aria-hidden="true">
+</span>
+<span class="ds-input-field__error-text">Please enter Prompt word.</span>
+</div>
+</div>
+                    <img class="acct-search-icon" src="../fs-components/component-specs/library/releases/f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5/components/icons/icon-search.svg" alt="" width="16" height="16">
+                  </div>
+                </div>
+              </div>
+
+              <div class="acct-kpi-strip" role="group" aria-label="Order status summary">
+                <button type="button" class="acct-kpi-item" data-kpi-filter="pending">
+                  <span class="acct-kpi-num">6</span>
+                  <span class="acct-kpi-label">Pending</span>
+                </button>
+                <button type="button" class="acct-kpi-item" data-kpi-filter="open">
+                  <span class="acct-kpi-num">7</span>
+                  <span class="acct-kpi-label">Open</span>
+                </button>
+                <button type="button" class="acct-kpi-item" data-kpi-filter="completed">
+                  <span class="acct-kpi-num">4</span>
+                  <span class="acct-kpi-label">Completed</span>
+                </button>
+                <button type="button" class="acct-kpi-item" data-kpi-filter="canceled">
+                  <span class="acct-kpi-num">4</span>
+                  <span class="acct-kpi-label">Canceled</span>
+                </button>
+              </div>
+
+              <div class="acct-table-head acct-table-head--orders">
+                <div>Order #</div>
+                <div>From</div>
+                <div>Purchased By</div>
+                <div>Created Date</div>
+                <div>Order Total</div>
+                <div>Status</div>
+                <div></div>
+              </div>
+              <div id="acct-orders-list">
+                <div class="acct-order-row" data-order-row="" data-status-key="pending" data-search-text="fs191011177503 kraliex.e pending">
+    <div class="acct-col-id"><a class="acct-id-link" href="#order-FS191011177503">FS191011177503</a></div>
+    <div class="acct-col-from">Online</div>
+    <div class="acct-col-by">KRALIEX.E</div>
+    <div class="acct-col-date">07/03/2021</div>
+    <div class="acct-col-total">US$ 337.21</div>
+    <div class="acct-col-status">
+      <span class="acct-status-dot acct-status-dot--pending" aria-hidden="true"></span>
+      <span class="acct-status-text">Pending</span>
+    </div>
+    <div class="acct-col-actions">
+      <div class="acct-row-btn" data-row-toast="Pay Now: FS191011177503"><button id="library-instance-3-ai-button-filled-red-m" type="button" class="ds-btn ds-btn--filled-red ds-btn--m" data-library-event-actioncallback="onOrderAction" data-button-current="mg-20261112" data-fragment="filled-red" data-library-component="library-button" data-library-fragment="filled-red" data-library-release="f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5" data-library-props="{&quot;label&quot;:&quot;Pay Now&quot;,&quot;size&quot;:&quot;m&quot;,&quot;actionCallback&quot;:&quot;onOrderAction&quot;}"><span class="ds-btn__icon-loading" data-button-icon="loading" aria-hidden="true" hidden=""></span><span class="ds-btn__leading" hidden=""><span class="ds-btn__leading-icon" data-button-icon="download" aria-hidden="true"></span></span><span class="ds-btn__text">Pay Now</span><span class="ds-btn__trailing-icon" data-button-icon="right" aria-hidden="true" hidden=""></span></button></div>
+      <div class="ds-dropdown-command" data-dropdown-command="command-dot" data-dropdown-trigger="click" data-dropdown-placement="br" data-ai-example="ai-dropdown-command-dot" data-fragment="command-dot" data-library-component="library-dropdown" data-library-fragment="command-dot" data-library-release="f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5" data-library-event-actioncallback="onAccountRowCommand" data-library-props="{&quot;panelIdentity&quot;:&quot;acct-order-more-0&quot;,&quot;items&quot;:&quot;<button type=\&quot;button\&quot; class=\&quot;ds-dropdown-command__item\&quot; role=\&quot;menuitem\&quot; tabindex=\&quot;-1\&quot; value=\&quot;view\&quot;><span class=\&quot;ds-dropdown-command__label\&quot;>View Order Details</span></button><button type=\&quot;button\&quot; class=\&quot;ds-dropdown-command__item\&quot; role=\&quot;menuitem\&quot; tabindex=\&quot;-1\&quot; value=\&quot;invoice\&quot;><span class=\&quot;ds-dropdown-command__label\&quot;>Download Invoice</span></button><button type=\&quot;button\&quot; class=\&quot;ds-dropdown-command__item\&quot; role=\&quot;menuitem\&quot; tabindex=\&quot;-1\&quot; value=\&quot;reorder\&quot;><span class=\&quot;ds-dropdown-command__label\&quot;>Buy Again</span></button>&quot;,&quot;actionCallback&quot;:&quot;onAccountRowCommand&quot;}"><button type="button" class="ds-icon-btn ds-icon-btn--plain ds-icon-btn--m" aria-label="More actions" aria-haspopup="menu" aria-expanded="false" aria-controls="library-instance-4-acct-order-more-0"><img class="ds-icon-btn__icon" src="../fs-components/component-specs/library/releases/f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5/components/icons/icon-more.svg" alt=""></button><div class="ds-dropdown-command__panel" id="library-instance-4-acct-order-more-0" hidden=""><div class="ds-dropdown-command__menu" role="menu" aria-label="Dot图标操作命令"><button type="button" class="ds-dropdown-command__item" role="menuitem" tabindex="-1" value="view"><span class="ds-dropdown-command__label">View Order Details</span></button><button type="button" class="ds-dropdown-command__item" role="menuitem" tabindex="-1" value="invoice"><span class="ds-dropdown-command__label">Download Invoice</span></button><button type="button" class="ds-dropdown-command__item" role="menuitem" tabindex="-1" value="reorder"><span class="ds-dropdown-command__label">Buy Again</span></button></div></div></div>
+    </div>
+  </div>
+<div class="acct-order-row" data-order-row="" data-status-key="open" data-search-text="fs191011177504 kraliex.e in production">
+    <div class="acct-col-id"><a class="acct-id-link" href="#order-FS191011177504">FS191011177504</a></div>
+    <div class="acct-col-from">Online</div>
+    <div class="acct-col-by">KRALIEX.E</div>
+    <div class="acct-col-date">07/03/2021</div>
+    <div class="acct-col-total">US$ 337.21</div>
+    <div class="acct-col-status">
+      <span class="acct-status-dot acct-status-dot--open" aria-hidden="true"></span>
+      <span class="acct-status-text">In Production</span>
+    </div>
+    <div class="acct-col-actions">
+      <div class="acct-row-btn" data-row-toast="View Order: FS191011177504"><button id="library-instance-5-ai-button-outline-black-xl" type="button" class="ds-btn ds-btn--outline-black ds-btn--xl" data-library-event-actioncallback="onOrderAction" data-button-current="mg-20261112" data-fragment="outline-black" data-library-component="library-button" data-library-fragment="outline-black" data-library-release="f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5" data-library-props="{&quot;label&quot;:&quot;View Order&quot;,&quot;size&quot;:&quot;xl&quot;,&quot;actionCallback&quot;:&quot;onOrderAction&quot;}"><span class="ds-btn__icon-loading" data-button-icon="loading" aria-hidden="true" hidden=""></span><span class="ds-btn__leading" hidden=""><span class="ds-btn__leading-icon" data-button-icon="download" aria-hidden="true"></span></span><span class="ds-btn__text">View Order</span><span class="ds-btn__trailing-icon" data-button-icon="right" aria-hidden="true" hidden=""></span></button></div>
+      <div class="ds-dropdown-command" data-dropdown-command="command-dot" data-dropdown-trigger="click" data-dropdown-placement="br" data-ai-example="ai-dropdown-command-dot" data-fragment="command-dot" data-library-component="library-dropdown" data-library-fragment="command-dot" data-library-release="f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5" data-library-event-actioncallback="onAccountRowCommand" data-library-props="{&quot;panelIdentity&quot;:&quot;acct-order-more-1&quot;,&quot;items&quot;:&quot;<button type=\&quot;button\&quot; class=\&quot;ds-dropdown-command__item\&quot; role=\&quot;menuitem\&quot; tabindex=\&quot;-1\&quot; value=\&quot;view\&quot;><span class=\&quot;ds-dropdown-command__label\&quot;>View Order Details</span></button><button type=\&quot;button\&quot; class=\&quot;ds-dropdown-command__item\&quot; role=\&quot;menuitem\&quot; tabindex=\&quot;-1\&quot; value=\&quot;invoice\&quot;><span class=\&quot;ds-dropdown-command__label\&quot;>Download Invoice</span></button><button type=\&quot;button\&quot; class=\&quot;ds-dropdown-command__item\&quot; role=\&quot;menuitem\&quot; tabindex=\&quot;-1\&quot; value=\&quot;reorder\&quot;><span class=\&quot;ds-dropdown-command__label\&quot;>Buy Again</span></button>&quot;,&quot;actionCallback&quot;:&quot;onAccountRowCommand&quot;}"><button type="button" class="ds-icon-btn ds-icon-btn--plain ds-icon-btn--m" aria-label="More actions" aria-haspopup="menu" aria-expanded="false" aria-controls="library-instance-6-acct-order-more-1"><img class="ds-icon-btn__icon" src="../fs-components/component-specs/library/releases/f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5/components/icons/icon-more.svg" alt=""></button><div class="ds-dropdown-command__panel" id="library-instance-6-acct-order-more-1" hidden=""><div class="ds-dropdown-command__menu" role="menu" aria-label="Dot图标操作命令"><button type="button" class="ds-dropdown-command__item" role="menuitem" tabindex="-1" value="view"><span class="ds-dropdown-command__label">View Order Details</span></button><button type="button" class="ds-dropdown-command__item" role="menuitem" tabindex="-1" value="invoice"><span class="ds-dropdown-command__label">Download Invoice</span></button><button type="button" class="ds-dropdown-command__item" role="menuitem" tabindex="-1" value="reorder"><span class="ds-dropdown-command__label">Buy Again</span></button></div></div></div>
+    </div>
+  </div>
+<div class="acct-order-row" data-order-row="" data-status-key="canceled" data-search-text="fs191011177505 kraliex.e canceled">
+    <div class="acct-col-id"><a class="acct-id-link" href="#order-FS191011177505">FS191011177505</a></div>
+    <div class="acct-col-from">Online</div>
+    <div class="acct-col-by">KRALIEX.E</div>
+    <div class="acct-col-date">07/03/2021</div>
+    <div class="acct-col-total">US$ 337.21</div>
+    <div class="acct-col-status">
+      <span class="acct-status-dot acct-status-dot--canceled" aria-hidden="true"></span>
+      <span class="acct-status-text">Canceled</span>
+    </div>
+    <div class="acct-col-actions">
+      <div class="acct-row-btn" data-row-toast="View Order: FS191011177505"><button id="library-instance-7-ai-button-outline-black-xl" type="button" class="ds-btn ds-btn--outline-black ds-btn--xl" data-library-event-actioncallback="onOrderAction" data-button-current="mg-20261112" data-fragment="outline-black" data-library-component="library-button" data-library-fragment="outline-black" data-library-release="f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5" data-library-props="{&quot;label&quot;:&quot;View Order&quot;,&quot;size&quot;:&quot;xl&quot;,&quot;actionCallback&quot;:&quot;onOrderAction&quot;}"><span class="ds-btn__icon-loading" data-button-icon="loading" aria-hidden="true" hidden=""></span><span class="ds-btn__leading" hidden=""><span class="ds-btn__leading-icon" data-button-icon="download" aria-hidden="true"></span></span><span class="ds-btn__text">View Order</span><span class="ds-btn__trailing-icon" data-button-icon="right" aria-hidden="true" hidden=""></span></button></div>
+      <div class="ds-dropdown-command" data-dropdown-command="command-dot" data-dropdown-trigger="click" data-dropdown-placement="br" data-ai-example="ai-dropdown-command-dot" data-fragment="command-dot" data-library-component="library-dropdown" data-library-fragment="command-dot" data-library-release="f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5" data-library-event-actioncallback="onAccountRowCommand" data-library-props="{&quot;panelIdentity&quot;:&quot;acct-order-more-2&quot;,&quot;items&quot;:&quot;<button type=\&quot;button\&quot; class=\&quot;ds-dropdown-command__item\&quot; role=\&quot;menuitem\&quot; tabindex=\&quot;-1\&quot; value=\&quot;view\&quot;><span class=\&quot;ds-dropdown-command__label\&quot;>View Order Details</span></button><button type=\&quot;button\&quot; class=\&quot;ds-dropdown-command__item\&quot; role=\&quot;menuitem\&quot; tabindex=\&quot;-1\&quot; value=\&quot;invoice\&quot;><span class=\&quot;ds-dropdown-command__label\&quot;>Download Invoice</span></button><button type=\&quot;button\&quot; class=\&quot;ds-dropdown-command__item\&quot; role=\&quot;menuitem\&quot; tabindex=\&quot;-1\&quot; value=\&quot;reorder\&quot;><span class=\&quot;ds-dropdown-command__label\&quot;>Buy Again</span></button>&quot;,&quot;actionCallback&quot;:&quot;onAccountRowCommand&quot;}"><button type="button" class="ds-icon-btn ds-icon-btn--plain ds-icon-btn--m" aria-label="More actions" aria-haspopup="menu" aria-expanded="false" aria-controls="library-instance-8-acct-order-more-2"><img class="ds-icon-btn__icon" src="../fs-components/component-specs/library/releases/f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5/components/icons/icon-more.svg" alt=""></button><div class="ds-dropdown-command__panel" id="library-instance-8-acct-order-more-2" hidden=""><div class="ds-dropdown-command__menu" role="menu" aria-label="Dot图标操作命令"><button type="button" class="ds-dropdown-command__item" role="menuitem" tabindex="-1" value="view"><span class="ds-dropdown-command__label">View Order Details</span></button><button type="button" class="ds-dropdown-command__item" role="menuitem" tabindex="-1" value="invoice"><span class="ds-dropdown-command__label">Download Invoice</span></button><button type="button" class="ds-dropdown-command__item" role="menuitem" tabindex="-1" value="reorder"><span class="ds-dropdown-command__label">Buy Again</span></button></div></div></div>
+    </div>
+  </div>
+                <div class="acct-empty-row" id="acct-orders-empty" hidden>No matching orders in recent view. Click "View All Orders" to reset.</div>
+              </div>
+            </div>
+
+            <div id="quotes-panel" class="acct-card">
+              <div class="acct-card__head">
+                <h2 class="acct-card__title">Quotes</h2>
+                <div class="acct-card__tools">
+                  <a class="acct-view-all" href="#quotes-panel" data-reset-filter="quotes" data-acct-toast="Showing all Quotes">View All Quotes</a>
+                  <div class="acct-search-wrap" data-acct-search="quotes" data-fs-extend="search-input-icon">
+                    <div class="ds-input-field" data-input-current="" data-ai-example="ai-input-white" data-fragment="white" data-library-component="library-input" data-library-fragment="white" data-library-release="f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5" data-library-props="{&quot;label&quot;:&quot;Search Quotes&quot;,&quot;placeholder&quot;:&quot;Search Quotes&quot;,&quot;name&quot;:&quot;quotes-search&quot;}">
+<label class="ds-input-field__label" for="library-instance-9-input-white-default">Search Quotes</label>
+<input id="library-instance-9-input-white-default" class="ds-input-field__input ds-input-field__input--white" type="text" placeholder="Search Quotes" name="quotes-search">
+<div class="ds-input-field__error" id="library-instance-9-input-white-default-error" hidden="">
+<span class="ds-input-field__error-icon" aria-hidden="true">
+</span>
+<span class="ds-input-field__error-text">Please enter Prompt word.</span>
+</div>
+</div>
+                    <img class="acct-search-icon" src="../fs-components/component-specs/library/releases/f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5/components/icons/icon-search.svg" alt="" width="16" height="16">
+                  </div>
+                </div>
+              </div>
+
+              <div class="acct-table-head acct-table-head--quotes">
+                <div>Quote #</div>
+                <div>Requested By</div>
+                <div>Purchased Date</div>
+                <div>Grand Total</div>
+                <div>Status</div>
+                <div></div>
+              </div>
+              <div id="acct-quotes-list">
+                <div class="acct-quote-block" data-quote-row="" data-search-text="fs191011177503 kraliex.e active">
+    <div class="acct-quote-row">
+      <div class="acct-qcol-id"><a class="acct-id-link" href="#quote-FS191011177503">FS191011177503</a></div>
+      <div class="acct-qcol-by">KRALIEX.E</div>
+      <div class="acct-qcol-date">07/03/2022</div>
+      <div class="acct-qcol-total">US$ 337.21</div>
+      <div class="acct-qcol-status">
+        <div class="acct-status-line">
+          <span class="acct-status-dot acct-status-dot--open" aria-hidden="true"></span>
+          <span class="acct-status-text">Active</span>
+        </div>
+        <div class="acct-status-sub">Expire on Jan 6, 2022</div>
+      </div>
+      <div class="acct-col-actions">
+        <div class="acct-row-btn" data-row-toast="Checkout: FS191011177503"><button id="library-instance-10-ai-button-filled-red-m" type="button" class="ds-btn ds-btn--filled-red ds-btn--m" data-library-event-actioncallback="onQuoteAction" data-button-current="mg-20261112" data-fragment="filled-red" data-library-component="library-button" data-library-fragment="filled-red" data-library-release="f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5" data-library-props="{&quot;label&quot;:&quot;Checkout&quot;,&quot;size&quot;:&quot;m&quot;,&quot;actionCallback&quot;:&quot;onQuoteAction&quot;}"><span class="ds-btn__icon-loading" data-button-icon="loading" aria-hidden="true" hidden=""></span><span class="ds-btn__leading" hidden=""><span class="ds-btn__leading-icon" data-button-icon="download" aria-hidden="true"></span></span><span class="ds-btn__text">Checkout</span><span class="ds-btn__trailing-icon" data-button-icon="right" aria-hidden="true" hidden=""></span></button></div>
+        <div class="ds-dropdown-command" data-dropdown-command="command-dot" data-dropdown-trigger="click" data-dropdown-placement="br" data-ai-example="ai-dropdown-command-dot" data-fragment="command-dot" data-library-component="library-dropdown" data-library-fragment="command-dot" data-library-release="f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5" data-library-event-actioncallback="onAccountRowCommand" data-library-props="{&quot;panelIdentity&quot;:&quot;acct-quote-more-0&quot;,&quot;items&quot;:&quot;<button type=\&quot;button\&quot; class=\&quot;ds-dropdown-command__item\&quot; role=\&quot;menuitem\&quot; tabindex=\&quot;-1\&quot; value=\&quot;pdf\&quot;><span class=\&quot;ds-dropdown-command__label\&quot;>Download PDF Quote</span></button><button type=\&quot;button\&quot; class=\&quot;ds-dropdown-command__item\&quot; role=\&quot;menuitem\&quot; tabindex=\&quot;-1\&quot; value=\&quot;duplicate\&quot;><span class=\&quot;ds-dropdown-command__label\&quot;>Duplicate Quote</span></button><button type=\&quot;button\&quot; class=\&quot;ds-dropdown-command__item\&quot; role=\&quot;menuitem\&quot; tabindex=\&quot;-1\&quot; value=\&quot;email\&quot;><span class=\&quot;ds-dropdown-command__label\&quot;>Email Quote</span></button>&quot;,&quot;actionCallback&quot;:&quot;onAccountRowCommand&quot;}"><button type="button" class="ds-icon-btn ds-icon-btn--plain ds-icon-btn--m" aria-label="More actions" aria-haspopup="menu" aria-expanded="false" aria-controls="library-instance-11-acct-quote-more-0"><img class="ds-icon-btn__icon" src="../fs-components/component-specs/library/releases/f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5/components/icons/icon-more.svg" alt=""></button><div class="ds-dropdown-command__panel" id="library-instance-11-acct-quote-more-0" hidden=""><div class="ds-dropdown-command__menu" role="menu" aria-label="Dot图标操作命令"><button type="button" class="ds-dropdown-command__item" role="menuitem" tabindex="-1" value="pdf"><span class="ds-dropdown-command__label">Download PDF Quote</span></button><button type="button" class="ds-dropdown-command__item" role="menuitem" tabindex="-1" value="duplicate"><span class="ds-dropdown-command__label">Duplicate Quote</span></button><button type="button" class="ds-dropdown-command__item" role="menuitem" tabindex="-1" value="email"><span class="ds-dropdown-command__label">Email Quote</span></button></div></div></div>
+      </div>
+    </div>
+    <div class="acct-quote-thumbs"><div class="acct-quote-thumb"><img class="acct-quote-thumb__img" src="assets/fs-homepage/img-77-02103018.jpg" alt="Product item"></div></div>
+  </div>
+<div class="acct-quote-block" data-quote-row="" data-search-text="fs191011177504 kraliex.e expired">
+    <div class="acct-quote-row">
+      <div class="acct-qcol-id"><a class="acct-id-link" href="#quote-FS191011177504">FS191011177504</a></div>
+      <div class="acct-qcol-by">KRALIEX.E</div>
+      <div class="acct-qcol-date">07/03/2022</div>
+      <div class="acct-qcol-total">US$ 337.21</div>
+      <div class="acct-qcol-status">
+        <div class="acct-status-line">
+          <span class="acct-status-dot acct-status-dot--canceled" aria-hidden="true"></span>
+          <span class="acct-status-text">Expired</span>
+        </div>
+        <div class="acct-status-sub">Expire on Jan 6, 2022</div>
+      </div>
+      <div class="acct-col-actions">
+        <div class="acct-row-btn" data-row-toast="Add to Cart: FS191011177504"><button id="library-instance-12-ai-button-outline-black-xl" type="button" class="ds-btn ds-btn--outline-black ds-btn--xl" data-library-event-actioncallback="onQuoteAction" data-button-current="mg-20261112" data-fragment="outline-black" data-library-component="library-button" data-library-fragment="outline-black" data-library-release="f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5" data-library-props="{&quot;label&quot;:&quot;Add to Cart&quot;,&quot;size&quot;:&quot;xl&quot;,&quot;actionCallback&quot;:&quot;onQuoteAction&quot;}"><span class="ds-btn__icon-loading" data-button-icon="loading" aria-hidden="true" hidden=""></span><span class="ds-btn__leading" hidden=""><span class="ds-btn__leading-icon" data-button-icon="download" aria-hidden="true"></span></span><span class="ds-btn__text">Add to Cart</span><span class="ds-btn__trailing-icon" data-button-icon="right" aria-hidden="true" hidden=""></span></button></div>
+        <div class="ds-dropdown-command" data-dropdown-command="command-dot" data-dropdown-trigger="click" data-dropdown-placement="br" data-ai-example="ai-dropdown-command-dot" data-fragment="command-dot" data-library-component="library-dropdown" data-library-fragment="command-dot" data-library-release="f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5" data-library-event-actioncallback="onAccountRowCommand" data-library-props="{&quot;panelIdentity&quot;:&quot;acct-quote-more-1&quot;,&quot;items&quot;:&quot;<button type=\&quot;button\&quot; class=\&quot;ds-dropdown-command__item\&quot; role=\&quot;menuitem\&quot; tabindex=\&quot;-1\&quot; value=\&quot;pdf\&quot;><span class=\&quot;ds-dropdown-command__label\&quot;>Download PDF Quote</span></button><button type=\&quot;button\&quot; class=\&quot;ds-dropdown-command__item\&quot; role=\&quot;menuitem\&quot; tabindex=\&quot;-1\&quot; value=\&quot;duplicate\&quot;><span class=\&quot;ds-dropdown-command__label\&quot;>Duplicate Quote</span></button><button type=\&quot;button\&quot; class=\&quot;ds-dropdown-command__item\&quot; role=\&quot;menuitem\&quot; tabindex=\&quot;-1\&quot; value=\&quot;email\&quot;><span class=\&quot;ds-dropdown-command__label\&quot;>Email Quote</span></button>&quot;,&quot;actionCallback&quot;:&quot;onAccountRowCommand&quot;}"><button type="button" class="ds-icon-btn ds-icon-btn--plain ds-icon-btn--m" aria-label="More actions" aria-haspopup="menu" aria-expanded="false" aria-controls="library-instance-13-acct-quote-more-1"><img class="ds-icon-btn__icon" src="../fs-components/component-specs/library/releases/f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5/components/icons/icon-more.svg" alt=""></button><div class="ds-dropdown-command__panel" id="library-instance-13-acct-quote-more-1" hidden=""><div class="ds-dropdown-command__menu" role="menu" aria-label="Dot图标操作命令"><button type="button" class="ds-dropdown-command__item" role="menuitem" tabindex="-1" value="pdf"><span class="ds-dropdown-command__label">Download PDF Quote</span></button><button type="button" class="ds-dropdown-command__item" role="menuitem" tabindex="-1" value="duplicate"><span class="ds-dropdown-command__label">Duplicate Quote</span></button><button type="button" class="ds-dropdown-command__item" role="menuitem" tabindex="-1" value="email"><span class="ds-dropdown-command__label">Email Quote</span></button></div></div></div>
+      </div>
+    </div>
+    <div class="acct-quote-thumbs"><div class="acct-quote-thumb"><img class="acct-quote-thumb__img" src="assets/fs-plp-switches/img-07-dcff5fe9.webp" alt="Product item"></div></div>
+  </div>
+<div class="acct-quote-block" data-quote-row="" data-search-text="fs191011177505 kraliex.e expired">
+    <div class="acct-quote-row">
+      <div class="acct-qcol-id"><a class="acct-id-link" href="#quote-FS191011177505">FS191011177505</a></div>
+      <div class="acct-qcol-by">KRALIEX.E</div>
+      <div class="acct-qcol-date">07/03/2022</div>
+      <div class="acct-qcol-total">US$ 337.21</div>
+      <div class="acct-qcol-status">
+        <div class="acct-status-line">
+          <span class="acct-status-dot acct-status-dot--canceled" aria-hidden="true"></span>
+          <span class="acct-status-text">Expired</span>
+        </div>
+        <div class="acct-status-sub">Expire on Jan 6, 2022</div>
+      </div>
+      <div class="acct-col-actions">
+        <div class="acct-row-btn" data-row-toast="Add to Cart: FS191011177505"><button id="library-instance-14-ai-button-outline-black-xl" type="button" class="ds-btn ds-btn--outline-black ds-btn--xl" data-library-event-actioncallback="onQuoteAction" data-button-current="mg-20261112" data-fragment="outline-black" data-library-component="library-button" data-library-fragment="outline-black" data-library-release="f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5" data-library-props="{&quot;label&quot;:&quot;Add to Cart&quot;,&quot;size&quot;:&quot;xl&quot;,&quot;actionCallback&quot;:&quot;onQuoteAction&quot;}"><span class="ds-btn__icon-loading" data-button-icon="loading" aria-hidden="true" hidden=""></span><span class="ds-btn__leading" hidden=""><span class="ds-btn__leading-icon" data-button-icon="download" aria-hidden="true"></span></span><span class="ds-btn__text">Add to Cart</span><span class="ds-btn__trailing-icon" data-button-icon="right" aria-hidden="true" hidden=""></span></button></div>
+        <div class="ds-dropdown-command" data-dropdown-command="command-dot" data-dropdown-trigger="click" data-dropdown-placement="br" data-ai-example="ai-dropdown-command-dot" data-fragment="command-dot" data-library-component="library-dropdown" data-library-fragment="command-dot" data-library-release="f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5" data-library-event-actioncallback="onAccountRowCommand" data-library-props="{&quot;panelIdentity&quot;:&quot;acct-quote-more-2&quot;,&quot;items&quot;:&quot;<button type=\&quot;button\&quot; class=\&quot;ds-dropdown-command__item\&quot; role=\&quot;menuitem\&quot; tabindex=\&quot;-1\&quot; value=\&quot;pdf\&quot;><span class=\&quot;ds-dropdown-command__label\&quot;>Download PDF Quote</span></button><button type=\&quot;button\&quot; class=\&quot;ds-dropdown-command__item\&quot; role=\&quot;menuitem\&quot; tabindex=\&quot;-1\&quot; value=\&quot;duplicate\&quot;><span class=\&quot;ds-dropdown-command__label\&quot;>Duplicate Quote</span></button><button type=\&quot;button\&quot; class=\&quot;ds-dropdown-command__item\&quot; role=\&quot;menuitem\&quot; tabindex=\&quot;-1\&quot; value=\&quot;email\&quot;><span class=\&quot;ds-dropdown-command__label\&quot;>Email Quote</span></button>&quot;,&quot;actionCallback&quot;:&quot;onAccountRowCommand&quot;}"><button type="button" class="ds-icon-btn ds-icon-btn--plain ds-icon-btn--m" aria-label="More actions" aria-haspopup="menu" aria-expanded="false" aria-controls="library-instance-15-acct-quote-more-2"><img class="ds-icon-btn__icon" src="../fs-components/component-specs/library/releases/f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5/components/icons/icon-more.svg" alt=""></button><div class="ds-dropdown-command__panel" id="library-instance-15-acct-quote-more-2" hidden=""><div class="ds-dropdown-command__menu" role="menu" aria-label="Dot图标操作命令"><button type="button" class="ds-dropdown-command__item" role="menuitem" tabindex="-1" value="pdf"><span class="ds-dropdown-command__label">Download PDF Quote</span></button><button type="button" class="ds-dropdown-command__item" role="menuitem" tabindex="-1" value="duplicate"><span class="ds-dropdown-command__label">Duplicate Quote</span></button><button type="button" class="ds-dropdown-command__item" role="menuitem" tabindex="-1" value="email"><span class="ds-dropdown-command__label">Email Quote</span></button></div></div></div>
+      </div>
+    </div>
+    <div class="acct-quote-thumbs"><div class="acct-quote-thumb"><img class="acct-quote-thumb__img" src="assets/fs-homepage/img-79-ed09e534.jpg" alt="Product item"></div><div class="acct-quote-thumb"><img class="acct-quote-thumb__img" src="assets/fs-plp-switches/img-08-4119333f.webp" alt="Product item"></div><div class="acct-quote-thumb"><img class="acct-quote-thumb__img" src="assets/fs-homepage/img-77-02103018.jpg" alt="Product item"></div><div class="acct-quote-thumb"><img class="acct-quote-thumb__img" src="assets/fs-plp-switches/img-07-dcff5fe9.webp" alt="Product item"></div><div class="acct-quote-thumb"><img class="acct-quote-thumb__img" src="assets/fs-homepage/img-78-504f2f94.jpg" alt="Product item"></div><div class="acct-quote-thumb"><img class="acct-quote-thumb__img" src="assets/fs-plp-switches/img-07-e4fb18f8.webp" alt="Product item"></div></div>
+  </div>
+                <div class="acct-empty-row" id="acct-quotes-empty" hidden>No matching quotes found.</div>
+              </div>
+            </div>
+
+            <div id="cases-panel" class="acct-card">
+              <div class="acct-card__head">
+                <h2 class="acct-card__title">Cases</h2>
+                <div class="acct-card__tools">
+                  <a class="acct-view-all" href="#cases-panel" data-reset-filter="cases" data-acct-toast="Showing all Cases">View All Cases</a>
+                  <div class="acct-search-wrap" data-acct-search="cases" data-fs-extend="search-input-icon">
+                    <div class="ds-input-field" data-input-current="" data-ai-example="ai-input-white" data-fragment="white" data-library-component="library-input" data-library-fragment="white" data-library-release="f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5" data-library-props="{&quot;label&quot;:&quot;Search Cases&quot;,&quot;placeholder&quot;:&quot;Case #, Content&quot;,&quot;name&quot;:&quot;cases-search&quot;}">
+<label class="ds-input-field__label" for="library-instance-16-input-white-default">Search Cases</label>
+<input id="library-instance-16-input-white-default" class="ds-input-field__input ds-input-field__input--white" type="text" placeholder="Case #, Content" name="cases-search">
+<div class="ds-input-field__error" id="library-instance-16-input-white-default-error" hidden="">
+<span class="ds-input-field__error-icon" aria-hidden="true">
+</span>
+<span class="ds-input-field__error-text">Please enter Prompt word.</span>
+</div>
+</div>
+                    <img class="acct-search-icon" src="../fs-components/component-specs/library/releases/f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5/components/icons/icon-search.svg" alt="" width="16" height="16">
+                  </div>
+                </div>
+              </div>
+
+              <div class="acct-table-head acct-table-head--cases">
+                <div>Case #</div>
+                <div>Created Date</div>
+                <div>Type</div>
+                <div>Status</div>
+                <div>Contact Full Name</div>
+              </div>
+              <div id="acct-cases-list">
+                <div class="acct-case-row" data-case-row="" data-search-text="cn202203240011 order &amp; payment issue new rita.he">
+    <div class="acct-ccol-id"><a class="acct-id-link" href="#case-CN202203240011">CN202203240011</a></div>
+    <div class="acct-ccol-date">07/03/2021</div>
+    <div class="acct-ccol-type">Order &amp; Payment Issue</div>
+    <div class="acct-ccol-status">New</div>
+    <div class="acct-ccol-contact">Rita.He</div>
+  </div>
+<div class="acct-case-row" data-case-row="" data-search-text="cn202203240011 order status working rita.he">
+    <div class="acct-ccol-id"><a class="acct-id-link" href="#case-CN202203240011">CN202203240011</a></div>
+    <div class="acct-ccol-date">07/03/2021</div>
+    <div class="acct-ccol-type">Order Status</div>
+    <div class="acct-ccol-status">Working</div>
+    <div class="acct-ccol-contact">Rita.He</div>
+  </div>
+<div class="acct-case-row" data-case-row="" data-search-text="cn202203240011 product &amp; technical support need more information rita.he">
+    <div class="acct-ccol-id"><a class="acct-id-link" href="#case-CN202203240011">CN202203240011</a></div>
+    <div class="acct-ccol-date">07/03/2021</div>
+    <div class="acct-ccol-type">Product &amp; Technical Support</div>
+    <div class="acct-ccol-status">Need More Information</div>
+    <div class="acct-ccol-contact">Rita.He</div>
+  </div>
+<div class="acct-case-row" data-case-row="" data-search-text="cn202203240011 customize product need more information rita.he">
+    <div class="acct-ccol-id"><a class="acct-id-link" href="#case-CN202203240011">CN202203240011</a></div>
+    <div class="acct-ccol-date">07/03/2021</div>
+    <div class="acct-ccol-type">Customize Product</div>
+    <div class="acct-ccol-status">Need More Information</div>
+    <div class="acct-ccol-contact">Rita.He</div>
+  </div>
+                <div class="acct-empty-row" id="acct-cases-empty" hidden>No matching cases found.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div id="acct-toast" class="acct-toast" role="status" aria-live="polite"></div>
+  </main>
+
+  <footer class="ds-nav-footer" data-fragment="footer" data-footer-pc-current="" data-ai-example="ai-navigation-fixed-footer" data-library-component="library-navigation" data-library-fragment="footer" data-library-release="f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5" data-library-props="{}">
+    <div class="ds-nav-footer__inner">
+      <div class="ds-nav-footer__columns">
+        <div class="ds-nav-footer__col">
+          <h4 class="ds-nav-footer__col-title">About Us</h4>
+          <ul class="ds-nav-footer__col-links">
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Overview</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Global Warehouse</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Advanced R&amp;D Center</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Quality Control</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Compliance Center</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Test Center</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="ds-nav-footer__col ds-nav-footer__col--service">
+          <h4 class="ds-nav-footer__col-title">Service</h4>
+          <ul class="ds-nav-footer__col-links">
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Payment Methods</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Shipping Guide</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Business Account</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Net Terms</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Return Policy</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Product Warranty</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Give us your Feedback</a></li>
+          </ul>
+        </div>
+        <div class="ds-nav-footer__col">
+          <h4 class="ds-nav-footer__col-title">Resource</h4>
+          <ul class="ds-nav-footer__col-links">
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Documentation</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Glossary</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Audio &amp; Video</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">FS Blog</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Case Studies</a></li>
+          </ul>
+        </div>
+        <div class="ds-nav-footer__col">
+          <h4 class="ds-nav-footer__col-title">Support</h4>
+          <ul class="ds-nav-footer__col-links">
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">FAQ &amp; Help Center</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Solution Support</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Query Tool</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">WDM Tranceiver Stock List</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Products Verification</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Track My Order</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">RMA Checklist</a></li>
+          </ul>
+        </div>
+        <div class="ds-nav-footer__sidebar">
+          <div class="ds-nav-footer__subscribe">
+            <h4 class="ds-nav-footer__col-title">Stay in Touch</h4>
+            <div class="ds-nav-footer__subscribe-form">
+              <input type="email" class="ds-input-footer-source" placeholder="Email" aria-label="Email" data-footer-input-retained-source="">
+              <button class="ds-btn ds-btn--filled-red ds-btn--s" type="button" data-footer-button-current=""><span class="ds-btn__text">Subscribe</span></button>
+            </div>
+          </div>
+          <div class="ds-nav-footer__app">
+            <h4 class="ds-nav-footer__col-title">Download FS APP</h4>
+            <div class="ds-nav-footer__app-badges"><a id="library-instance-17-icon-usage-img-google-play" aria-label="Get it on Google Play" style="scroll-margin-top: 40px;" aria-disabled="true"><img src="../fs-components/component-specs/library/releases/f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5/components/sources/navigation/footer-assets-1013/68908-047170.png" alt="Google Play" height="28" style="width: 88px;"></a>
+              <a id="library-instance-17-icon-usage-img-app-store" aria-label="Download on the App Store" style="scroll-margin-top: 40px;" aria-disabled="true"><img src="../fs-components/component-specs/library/releases/f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5/components/sources/navigation/footer-assets-1013/68908-047171.png" alt="App Store" height="28" style="width: 87.73px;"></a>
+              
+            </div>
+          </div>
+          <div class="ds-nav-footer__social"><img src="../fs-components/component-specs/library/releases/f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5/components/sources/navigation/footer-assets-1013/68908-047164.png" alt="LinkedIn, YouTube, Facebook, X, Instagram, Reddit" data-footer-source-social=""></div>
+        </div>
+      </div>
+
+      <div class="ds-nav-footer__badges">
+        <div class="ds-nav-footer__badges-left">
+          <img src="../fs-components/component-specs/library/releases/f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5/components/sources/navigation/footer-assets-1013/68908-047076.png" alt="DigiCert" height="28" style="scroll-margin-top: 40px; width: 59px;">
+          <img src="../fs-components/component-specs/library/releases/f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5/components/sources/navigation/footer-assets-1013/68908-047074.png" alt="TrustedSite" height="28" style="scroll-margin-top: 40px; width: 58px;">
+          <img src="../fs-components/component-specs/library/releases/f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5/components/sources/navigation/footer-assets-1013/68908-047075.png" alt="BBB" height="28" style="scroll-margin-top: 40px; width: 58px;">
+          <img src="../fs-components/component-specs/library/releases/f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5/components/sources/navigation/footer-assets-1013/68908-047073.png" alt="Google Reviews" height="28" style="scroll-margin-top: 40px; width: 74px;">
+        </div>
+        <div class="ds-nav-footer__badges-right">
+          <a class="ds-nav-footer__region-link" aria-disabled="true">
+            United States / $ USD
+            <svg class="ds-nav-footer__dropdown-icon" width="12" height="12" viewBox="0 0 12 12" fill="none">
+              <path d="M3 4.5L6 7.5L9 4.5" stroke="#707070" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <hr class="ds-nav-footer__divider">
+
+      <div class="ds-nav-footer__legal">
+        <div class="ds-nav-footer__legal-links">
+          <a class="ds-nav-footer__legal-link" aria-disabled="true">Site Map</a>
+          <span class="ds-nav-footer__legal-divider"></span>
+          <a class="ds-nav-footer__legal-link" aria-disabled="true">Accessibility</a>
+          <span class="ds-nav-footer__legal-divider"></span>
+          <a class="ds-nav-footer__legal-link" aria-disabled="true">Privacy Policy and Notice at Collection</a>
+          <span class="ds-nav-footer__legal-divider"></span>
+          <a class="ds-nav-footer__legal-link" aria-disabled="true">Cookies Notice</a>
+          <span class="ds-nav-footer__legal-divider"></span>
+          <a class="ds-nav-footer__legal-link" aria-disabled="true">Terms and Conditions</a>
+          <span class="ds-nav-footer__legal-divider"></span>
+          <a class="ds-nav-footer__legal-link" aria-disabled="true">Report a Vulnerability</a>
+          <span class="ds-nav-footer__legal-divider"></span>
+          <a class="ds-nav-footer__legal-link" aria-disabled="true">Do Not Sell or Share My Personal Information</a>
+          <span class="ds-nav-footer__legal-divider"></span>
+          <a class="ds-nav-footer__legal-link" aria-disabled="true">Company Policies</a>
+          <span class="ds-nav-footer__legal-divider"></span>
+          <a class="ds-nav-footer__legal-link" aria-disabled="true">Cookie Settings</a>
+        </div>
+        <div class="ds-nav-footer__copyright">
+          Copyright © 2009-2026 FS.COM INC. All Rights Reserved.
+        </div>
+      </div>
+    
+  </div>
+  </footer>
+
+  <script>
+    (function () {
+      // 1. Compact search input styling (hide visible label while preserving accessible label, 36px height)
+      document.querySelectorAll('.acct-search-wrap .ds-input-field__label').forEach(function (lbl) {
+        lbl.style.position = 'absolute';
+        lbl.style.width = '1px';
+        lbl.style.height = '1px';
+        lbl.style.overflow = 'hidden';
+        lbl.style.clip = 'rect(0, 0, 0, 0)';
+      });
+      document.querySelectorAll('.acct-search-wrap .ds-input-field__input').forEach(function (inp) {
+        inp.style.height = '36px';
+        inp.style.fontSize = '13px';
+        inp.style.paddingRight = '34px';
+      });
+      // Compact action button width matching MasterGo (~104px, 36px height, 13px font)
+      document.querySelectorAll('.acct-row-btn .ds-btn').forEach(function (btn) {
+        btn.style.minWidth = '104px';
+        btn.style.height = '36px';
+        btn.style.fontSize = '13px';
+        btn.style.padding = '0 14px';
+      });
+
+      // 2. Sidebar accordion groups & active nav item switching
+      document.querySelectorAll('[data-acct-group-toggle]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var targetId = btn.getAttribute('data-acct-group-toggle');
+          var panel = document.getElementById(targetId);
+          var chev = btn.querySelector('.acct-nav-chevron');
+          if (!panel) return;
+          var willOpen = panel.hidden;
+          panel.hidden = !willOpen;
+          btn.setAttribute('aria-expanded', String(willOpen));
+          if (chev) chev.classList.toggle('is-collapsed', !willOpen);
+        });
+      });
+
+      var navItems = Array.prototype.slice.call(document.querySelectorAll('[data-acct-nav]'));
+      navItems.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          navItems.forEach(function (b) { b.classList.remove('is-active'); });
+          btn.classList.add('is-active');
+          var targetMap = { orders: 'orders-panel', quotes: 'quotes-panel', cases: 'cases-panel' };
+          var sec = document.getElementById(targetMap[btn.dataset.acctNav]);
+          if (sec) sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      });
+
+      // 3. Orders KPI click filter + Live search filters
+      var kpiBtns = Array.prototype.slice.call(document.querySelectorAll('[data-kpi-filter]'));
+      var orderRows = Array.prototype.slice.call(document.querySelectorAll('[data-order-row]'));
+      var ordersInput = document.querySelector('input[name="orders-search"]');
+      var ordersEmpty = document.getElementById('acct-orders-empty');
+      var activeKpi = null;
+
+      function applyOrdersFilter() {
+        var q = ordersInput ? ordersInput.value.trim().toLowerCase() : '';
+        var visible = 0;
+        orderRows.forEach(function (row) {
+          var matchKpi = !activeKpi || row.dataset.statusKey === activeKpi;
+          var matchQ = !q || (row.dataset.searchText || '').indexOf(q) !== -1;
+          var show = matchKpi && matchQ;
+          row.style.display = show ? '' : 'none';
+          if (show) visible += 1;
+        });
+        if (ordersEmpty) ordersEmpty.hidden = visible > 0;
+      }
+
+      kpiBtns.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var key = btn.dataset.kpiFilter;
+          activeKpi = activeKpi === key ? null : key;
+          kpiBtns.forEach(function (b) { b.classList.toggle('is-active', b.dataset.kpiFilter === activeKpi); });
+          applyOrdersFilter();
+        });
+      });
+      if (ordersInput) ordersInput.addEventListener('input', applyOrdersFilter);
+
+      function wireSearch(inputName, rowSelector, emptyId) {
+        var inp = document.querySelector('input[name="' + inputName + '"]');
+        var rows = Array.prototype.slice.call(document.querySelectorAll(rowSelector));
+        var emptyEl = document.getElementById(emptyId);
+        if (!inp) return;
+        inp.addEventListener('input', function () {
+          var q = inp.value.trim().toLowerCase();
+          var visible = 0;
+          rows.forEach(function (row) {
+            var txt = row.dataset.searchText || '';
+            var show = !q || txt.indexOf(q) !== -1;
+            row.style.display = show ? '' : 'none';
+            if (show) visible += 1;
+          });
+          if (emptyEl) emptyEl.hidden = visible > 0;
+        });
+      }
+      wireSearch('quotes-search', '[data-quote-row]', 'acct-quotes-empty');
+      wireSearch('cases-search', '[data-case-row]', 'acct-cases-empty');
+
+      document.querySelectorAll('[data-reset-filter]').forEach(function (link) {
+        link.addEventListener('click', function () {
+          var which = link.dataset.resetFilter;
+          if (which === 'orders') {
+            activeKpi = null;
+            kpiBtns.forEach(function (b) { b.classList.remove('is-active'); });
+            if (ordersInput) ordersInput.value = '';
+            applyOrdersFilter();
+          } else if (which === 'quotes') {
+            var qi = document.querySelector('input[name="quotes-search"]');
+            if (qi) { qi.value = ''; qi.dispatchEvent(new Event('input')); }
+          } else if (which === 'cases') {
+            var ci = document.querySelector('input[name="cases-search"]');
+            if (ci) { ci.value = ''; ci.dispatchEvent(new Event('input')); }
+          }
+        });
+      });
+
+      // 5. Toast feedback for action buttons, row command menus & manager links
+      var toast = document.getElementById('acct-toast');
+      var toastTimer = null;
+      function showToast(msg) {
+        if (!toast) return;
+        toast.textContent = msg;
+        toast.classList.add('is-show');
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(function () { toast.classList.remove('is-show'); }, 2000);
+      }
+      window.onAccountRowCommand = function (detail) {
+        var label = (detail && (detail.label || detail.value)) || 'Action selected';
+        showToast(label);
+      };
+      document.querySelectorAll('.ds-dropdown-command__item').forEach(function (item) {
+        item.addEventListener('click', function () {
+          showToast(item.textContent.trim());
+        });
+      });
+      document.querySelectorAll('[data-acct-toast]').forEach(function (el) {
+        el.addEventListener('click', function (e) {
+          e.preventDefault();
+          showToast(el.dataset.acctToast);
+        });
+      });
+      document.querySelectorAll('[data-row-toast]').forEach(function (el) {
+        el.addEventListener('click', function () {
+          showToast(el.dataset.rowToast);
+        });
+      });
+    })();
+  </script>
+<script data-library-resource="f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5" src="../fs-components/component-specs/library/releases/f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5/components/menu-navigation-current.js"></script>
+<script data-library-resource="f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5" src="../fs-components/component-specs/library/releases/f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5/components/input-current.js"></script>
+<script data-library-resource="f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5" src="../fs-components/component-specs/library/releases/f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5/components/dropdown-current.js"></script>
+<script data-library-resource="f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5" src="../fs-components/component-specs/library/releases/f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5/components/navigation-products-current.js"></script>
+<script data-library-resource="f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5" src="../fs-components/component-specs/library/releases/f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5/components/dropdown-command-current.js"></script>
+</body>
+</html>
