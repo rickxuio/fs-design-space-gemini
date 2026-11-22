@@ -35,9 +35,9 @@
 @media (max-width: 1220px) { .subscribe-card-1200 { grid-template-columns: 1fr 1fr; width: 100%; } }
 .pdp-top-section { padding: 40px 0; background: #FFFFFF; }
 .pdp-breadcrumb-wrap { margin-bottom: 20px; }
-.pdp-hero-grid { display: grid; grid-template-columns: minmax(0, 480px) minmax(0, 1fr); gap: 40px; align-items: start; }
+.pdp-hero-grid { display: grid; grid-template-columns: minmax(0, 600fr) minmax(0, 540fr); gap: 60px; align-items: start; }
 .pdp-gallery { position: sticky; top: 88px; }
-.pdp-main-stage { width: 100%; height: 420px; background: #FFFFFF; display: flex; align-items: center; justify-content: center; border-radius: 8px; overflow: hidden; }
+.pdp-main-stage { width: 100%; height: 460px; background: #FFFFFF; display: flex; align-items: center; justify-content: center; border-radius: 8px; overflow: hidden; }
 .pdp-main-img { max-width: 100%; max-height: 100%; object-fit: contain; display: block; }
 .pdp-stage-hint { text-align: center; font-size: 12px; line-height: 18px; color: #707070; margin: 8px 0 16px; }
 .pdp-thumbs-row { display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap; }
@@ -46,28 +46,43 @@
 .pdp-thumb.is-active { border-color: #19191A; border-width: 1.5px; }
 .pdp-thumb__img { max-width: 100%; max-height: 100%; object-fit: contain; display: block; }
 .pdp-thumb__play { position: absolute; width: 22px; height: 22px; border-radius: 50%; background: rgba(25, 25, 26, 0.72); color: #FFFFFF; font-size: 9px; line-height: 22px; text-align: center; padding-left: 2px; box-sizing: border-box; }
-.pdp-buybox__title { margin: 0 0 8px; font-size: 22px; line-height: 30px; font-weight: 600; color: #19191A; }
-.pdp-hot-pill { display: inline-flex; align-items: center; height: 20px; padding: 0 7px; border-radius: 4px; background: #FFEBDD; color: #F56300; font-size: 12px; line-height: 20px; font-weight: 600; vertical-align: middle; margin-left: 6px; }
-.pdp-buybox__meta { font-size: 12px; line-height: 20px; color: #707070; margin-bottom: 14px; display: flex; gap: 16px; }
-.pdp-price-bar { background: #FAFBFB; border-radius: 8px; padding: 16px 20px; display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
-.pdp-price-val { font-size: 22px; line-height: 28px; font-weight: 600; color: #19191A; }
-.pdp-price-stats { display: flex; align-items: center; gap: 10px; font-size: 12px; line-height: 18px; color: #707070; }
-.pdp-stat-sold { color: #A65300; }
-.pdp-stat-rev { color: #0060BF; text-decoration: none; }
+.pdp-buybox__title { margin: 0 0 8px; font-size: 24px; line-height: 32px; font-weight: 600; color: #19191A; }
+.pdp-hot-pill { display: inline-flex; align-items: center; height: 20px; padding: 0 6px; border-radius: 4px; background: #FFEBDD; color: #F56300; font-size: 12px; line-height: 20px; font-weight: 600; vertical-align: middle; margin-left: 8px; }
+.pdp-buybox__meta { font-size: 13px; line-height: 20px; color: #707070; margin-bottom: 16px; display: flex; gap: 12px; }
+.pdp-price-bar { background: #F7F7F7; border-radius: 8px; padding: 20px 28px; min-height: 90px; box-sizing: border-box; display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; }
+.pdp-price-val { font-size: 20px; line-height: 28px; font-weight: 600; color: #19191A; }
+.pdp-price-stats { display: flex; align-items: center; gap: 8px; font-size: 13px; line-height: 20px; color: #707070; }
+.pdp-stat-sold { color: #A65300; font-weight: 400; }
+.pdp-stat-rev { color: #707070; text-decoration: none; }
+.pdp-stat-rev__num { color: #0060BF; }
+.pdp-stat-qa__num { color: #19191A; }
 .pdp-stat-rev:hover { text-decoration: underline; }
-.pdp-stat-sep { display: inline-block; width: 1px; height: 10px; background: #DEE0E3; }
-.pdp-variants-row { display: grid; grid-template-columns: 72px minmax(0, 1fr); gap: 12px; align-items: start; margin-bottom: 20px; }
-.pdp-variants-label { font-size: 13px; line-height: 36px; color: #707070; }
+.pdp-stat-sep { display: inline-block; width: 1px; height: 10px; background: #CCCCCC; }
+.pdp-variants-row { display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 12px; align-items: start; margin-bottom: 24px; }
+.pdp-variants-label { font-size: 13px; line-height: 30px; color: #707070; }
 .pdp-variants-list { display: flex; flex-direction: column; gap: 8px; align-items: flex-start; }
-.pdp-variant-pill { appearance: none; display: inline-flex; align-items: center; gap: 8px; height: 36px; padding: 0 12px 0 8px; border-radius: 4px; border: 1px solid #E5E5E5; background: #FFFFFF; color: #19191A; font-family: inherit; font-size: 12px; line-height: 20px; cursor: pointer; transition: border-color 0.15s ease; }
+.pdp-variant-pill { appearance: none; display: inline-flex; align-items: center; gap: 8px; height: 30px; padding: 0 10px 0 8px; border-radius: 4px; border: 1px solid #EEEEEE; background: #FFFFFF; color: #19191A; font-family: inherit; font-size: 13px; line-height: 20px; cursor: pointer; transition: border-color 0.15s ease; }
 .pdp-variant-pill:hover { border-color: #19191A; }
 .pdp-variant-pill.is-active { border-color: #19191A; background: #F6F6F8; font-weight: 600; }
 .pdp-variant-pill.is-custom { color: #0060BF; }
-.pdp-variant-pill__img { width: 24px; height: 24px; object-fit: contain; display: block; }
-.pdp-stock-box { border-top: 1px solid #F2F2F2; padding-top: 16px; margin-bottom: 18px; display: flex; flex-direction: column; gap: 6px; font-size: 13px; line-height: 20px; color: #4B4B4D; }
-.pdp-stock-line--muted { color: #707070; font-size: 12px; }
-.pdp-trust-row { display: flex; align-items: center; gap: 12px; font-size: 12px; line-height: 20px; color: #19191A; margin-top: 6px; }
-.pdp-cta-row { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; }
+.pdp-variant-pill__img { width: 24px; height: 24px; object-fit: contain; mix-blend-mode: multiply; display: block; }
+.pdp-stock-box { padding-top: 4px; margin-bottom: 20px; display: flex; flex-direction: column; gap: 10px; font-size: 13px; line-height: 20px; color: #19191A; }
+.pdp-info-group { display: flex; flex-direction: column; gap: 2px; }
+.pdp-info-row { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.pdp-info-icon { width: 16px; height: 16px; flex-shrink: 0; display: block; opacity: 0.85; }
+.pdp-info-help { width: 14px; height: 14px; flex-shrink: 0; display: inline-block; opacity: 0.55; }
+.pdp-info-sub { padding-left: 22px; font-size: 13px; line-height: 20px; color: #707070; display: flex; align-items: center; gap: 6px; }
+.pdp-info-link { color: #0060BF; text-decoration: none; }
+.pdp-info-link:hover { text-decoration: underline; }
+.pdp-acc-box { border-top: 1px solid #F2F2F2; padding-top: 16px; margin-bottom: 20px; }
+.pdp-acc-title { font-size: 13px; line-height: 20px; font-weight: 600; color: #19191A; margin-bottom: 10px; }
+.pdp-acc-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.pdp-acc-card { appearance: none; display: flex; align-items: center; gap: 10px; padding: 8px 10px; border-radius: 6px; border: 1px solid #EEEEEE; background: #FFFFFF; text-align: left; cursor: pointer; font-family: inherit; transition: border-color 0.15s ease; }
+.pdp-acc-card:hover, .pdp-acc-card.is-selected { border-color: #19191A; background: #FAFBFB; }
+.pdp-acc-card__img { width: 40px; height: 40px; object-fit: contain; flex-shrink: 0; mix-blend-mode: multiply; }
+.pdp-acc-card__name { font-size: 12px; line-height: 18px; color: #19191A; font-weight: 400; display: block; }
+.pdp-acc-card__price { font-size: 12px; line-height: 18px; color: #707070; font-weight: 600; display: block; }
+.pdp-cta-row { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; }
 .pdp-highlights { border-top: 1px solid #F2F2F2; padding-top: 16px; }
 .pdp-highlights__title { margin: 0 0 10px; font-size: 14px; line-height: 22px; font-weight: 600; color: #19191A; }
 .pdp-highlights__list { margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 6px; font-size: 13px; line-height: 20px; color: #4B4B4D; }
@@ -146,11 +161,11 @@
 .pdp-review-actions { font-size: 12px; line-height: 18px; color: #707070; }
 .pdp-res-tabs { margin-bottom: 20px; }
 .pdp-capsule-tabs-center { display: flex; justify-content: center; margin-bottom: 20px; }
-.pdp-res-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.pdp-res-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; }
 .pdp-res-grid[hidden] { display: none; }
-.pdp-doc-card { display: flex; align-items: flex-start; gap: 10px; padding: 16px; border-radius: 8px; background: #FAFBFB; border: 1px solid #F2F2F2; text-decoration: none; color: #19191A; transition: border-color 0.15s ease; }
+.pdp-doc-card { display: flex; align-items: center; gap: 12px; min-height: 76px; padding: 14px 16px; box-sizing: border-box; border-radius: 8px; background: #FAFBFB; border: 1px solid #F2F2F2; text-decoration: none; color: #19191A; transition: border-color 0.15s ease; }
 .pdp-doc-card:hover { border-color: #19191A; }
-.pdp-doc-card__icon { font-size: 16px; line-height: 20px; flex-shrink: 0; }
+.pdp-doc-card__icon { width: 24px; height: 24px; flex-shrink: 0; display: block; }
 .pdp-doc-card__title { font-size: 13px; line-height: 20px; color: #19191A; }
 .pdp-doc-new { color: #10A300; font-size: 11px; font-weight: 600; margin-left: 4px; }
 .pdp-sticky-bottom { position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; background: #FFFFFF; border-top: 1px solid #ECEEF0; box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.06); transform: translateY(100%); pointer-events: none; transition: transform 0.2s ease; }
@@ -302,16 +317,16 @@
             <div class="pdp-price-bar">
               <div id="pdp-price" class="pdp-price-val">US$2,369.00</div>
               <div class="pdp-price-stats">
-                <span><strong class="pdp-stat-sold">283</strong> Sold</span>
+                <span><span class="pdp-stat-sold">283</span> Sold</span>
                 <span class="pdp-stat-sep" aria-hidden="true"></span>
-                <a class="pdp-stat-rev" href="#reviews">5 Reviews</a>
+                <a class="pdp-stat-rev" href="#reviews"><span class="pdp-stat-rev__num">5</span> Reviews</a>
                 <span class="pdp-stat-sep" aria-hidden="true"></span>
-                <a class="pdp-stat-rev" href="#qa">31 Questions</a>
+                <a class="pdp-stat-rev" href="#qa"><span class="pdp-stat-qa__num">31</span> Questions</a>
               </div>
             </div>
 
             <div class="pdp-variants-row">
-              <div class="pdp-variants-label">Products:</div>
+              <div class="pdp-variants-label">Product:</div>
               <div class="pdp-variants-list" role="group" aria-label="Switch model variants">
                 <button type="button" class="pdp-variant-pill is-active" data-variant-idx="0" data-variant-pn="S5810-48TS-P" data-variant-sku="206801" data-variant-label="S5810-48TS-P | 48x PoE+, 4x 10G SFP+" data-variant-price="US$2,369.00" data-variant-stock="310 in Global Warehouse, Get it Nov 26, 2026" data-variant-img="assets/fs-pdp-s5810/img-03-5a89657c.webp" aria-pressed="true">
       <img class="pdp-variant-pill__img" src="assets/fs-pdp-s5810/img-03-5a89657c.webp" alt="">
@@ -336,15 +351,60 @@
             </div>
 
             <div class="pdp-stock-box">
-              <div id="pdp-stock-main">310 in Global Warehouse, Get it Nov 26, 2026</div>
-              <div class="pdp-stock-line--muted">250 Back in Stock, Expected to ship Jan 18, 2027</div>
-              <div class="pdp-stock-line--muted">Delivery to <strong>New York, 10010</strong> &middot; Free Shipping via FedEx International Priority</div>
-              <div class="pdp-trust-row">
-                <span>&#10003; 5-Year Warranty</span>
+              <div class="pdp-info-group">
+                <div class="pdp-info-row">
+                  <img class="pdp-info-icon" src="../fs-components/component-specs/library/releases/f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5/components/icons/icon-fs-goods-12.svg" alt="" width="16" height="16">
+                  <span id="pdp-stock-main">310 in Global Warehouse, Get it Nov 26, 2026</span>
+                  <img class="pdp-info-help" src="../fs-components/component-specs/library/releases/f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5/components/icons/icon-info.svg" alt="" width="14" height="14">
+                </div>
+                <div class="pdp-info-sub">
+                  <a class="pdp-info-link" href="#overview">see more warehouse</a>
+                  <img class="pdp-info-help" src="../fs-components/component-specs/library/releases/f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5/components/icons/icon-info.svg" alt="" width="14" height="14">
+                </div>
+              </div>
+
+              <div class="pdp-info-group">
+                <div class="pdp-info-row">
+                  <img class="pdp-info-icon" src="../fs-components/component-specs/library/releases/f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5/components/icons/icon-fs-shipping-truck-16.svg" alt="" width="16" height="16">
+                  <span>Deliver to <a class="pdp-info-link" href="#overview">New York, 10010</a></span>
+                </div>
+                <div class="pdp-info-sub">Free Shipping via FedEx International Priority</div>
+              </div>
+
+              <div class="pdp-info-row">
+                <img class="pdp-info-icon" src="../fs-components/component-specs/library/releases/f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5/components/icons/icon-comment.svg" alt="" width="16" height="16">
+                <span>Product and Project Inquiry</span>
+                <span class="pdp-stat-sep" aria-hidden="true"></span>
+                <span>PicOS&reg; Hardware Support Request</span>
+              </div>
+
+              <div class="pdp-info-row">
+                <img class="pdp-info-icon" src="../fs-components/component-specs/library/releases/f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5/components/icons/icon-verified.svg" alt="" width="16" height="16">
+                <span>5-Year Warranty</span>
                 <span class="pdp-stat-sep" aria-hidden="true"></span>
                 <span>30-Day Returns</span>
                 <span class="pdp-stat-sep" aria-hidden="true"></span>
                 <span>30-Day Exchange</span>
+              </div>
+            </div>
+
+            <div class="pdp-acc-box">
+              <div class="pdp-acc-title">Accessories (2)</div>
+              <div class="pdp-acc-grid">
+                <button type="button" class="pdp-acc-card" data-acc-toggle="">
+                  <img class="pdp-acc-card__img" src="assets/fs-pdp-s5810/img-06-d98938ca.webp" alt="1 Year Service">
+                  <span>
+                    <span class="pdp-acc-card__name">1 Year Service</span>
+                    <span class="pdp-acc-card__price">US$109.00</span>
+                  </span>
+                </button>
+                <button type="button" class="pdp-acc-card" data-acc-toggle="">
+                  <img class="pdp-acc-card__img" src="assets/fs-pdp-s5810/img-07-86cf561c.webp" alt="3 Year Service">
+                  <span>
+                    <span class="pdp-acc-card__name">3 Year Service</span>
+                    <span class="pdp-acc-card__price">US$269.00</span>
+                  </span>
+                </button>
               </div>
             </div>
 
@@ -923,47 +983,47 @@
         </div>
         <div class="pdp-res-grid" data-res-panel="0">
       <a class="pdp-doc-card" href="https://www.fs.com/products_support/search.html?keyword=206801" target="_blank" rel="noopener">
-            <span class="pdp-doc-card__icon" aria-hidden="true">&#128196;</span>
+            <img class="pdp-doc-card__icon" src="../fs-components/component-specs/library/releases/f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5/components/icons/icon-fs-pdf-file-current-36.svg" alt="" width="24" height="24">
             <span class="pdp-doc-card__title">S5810-48TS-P PicOS® Switch Hardware Guide <span class="pdp-doc-new">New</span></span>
           </a><a class="pdp-doc-card" href="https://www.fs.com/products_support/search.html?keyword=206801" target="_blank" rel="noopener">
-            <span class="pdp-doc-card__icon" aria-hidden="true">&#128196;</span>
+            <img class="pdp-doc-card__icon" src="../fs-components/component-specs/library/releases/f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5/components/icons/icon-fs-pdf-file-current-36.svg" alt="" width="24" height="24">
             <span class="pdp-doc-card__title">S5810 Series PicOS® Switches Data Sheet <span class="pdp-doc-new">New</span></span>
           </a><a class="pdp-doc-card" href="https://www.fs.com/products_support/search.html?keyword=206801" target="_blank" rel="noopener">
-            <span class="pdp-doc-card__icon" aria-hidden="true">&#128196;</span>
+            <img class="pdp-doc-card__icon" src="../fs-components/component-specs/library/releases/f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5/components/icons/icon-fs-pdf-file-current-36.svg" alt="" width="24" height="24">
             <span class="pdp-doc-card__title">PicOS® Software Release Notes V4.7.1M-EC <span class="pdp-doc-new">New</span></span>
           </a>
     </div><div class="pdp-res-grid" data-res-panel="1" hidden>
       <a class="pdp-doc-card" href="https://www.fs.com/products_support/search.html?keyword=206801" target="_blank" rel="noopener">
-            <span class="pdp-doc-card__icon" aria-hidden="true">&#128196;</span>
+            <img class="pdp-doc-card__icon" src="../fs-components/component-specs/library/releases/f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5/components/icons/icon-fs-pdf-file-current-36.svg" alt="" width="24" height="24">
             <span class="pdp-doc-card__title">AmpCon-Campus Quick Deployment Guide V2.3.0</span>
           </a><a class="pdp-doc-card" href="https://resource.fs.com/mall/resource/s5810-48ts-p-and-s5810-28ts-and-s5810-48ts-switches-quick-start-guide-v21.pdf" target="_blank" rel="noopener">
-            <span class="pdp-doc-card__icon" aria-hidden="true">&#128196;</span>
+            <img class="pdp-doc-card__icon" src="../fs-components/component-specs/library/releases/f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5/components/icons/icon-fs-pdf-file-current-36.svg" alt="" width="24" height="24">
             <span class="pdp-doc-card__title">S5810-48TS-P Switches Quick Start Guide V2.1 <span class="pdp-doc-new">New</span></span>
           </a><a class="pdp-doc-card" href="https://www.fs.com/products_support/search.html?keyword=206801" target="_blank" rel="noopener">
-            <span class="pdp-doc-card__icon" aria-hidden="true">&#128196;</span>
+            <img class="pdp-doc-card__icon" src="../fs-components/component-specs/library/releases/f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5/components/icons/icon-fs-pdf-file-current-36.svg" alt="" width="24" height="24">
             <span class="pdp-doc-card__title">PicOS® Quick Deployment Guide <span class="pdp-doc-new">New</span></span>
           </a><a class="pdp-doc-card" href="https://resource.fs.com/mall/resource/picos-configuration-guide-v47-ec.pdf" target="_blank" rel="noopener">
-            <span class="pdp-doc-card__icon" aria-hidden="true">&#128196;</span>
+            <img class="pdp-doc-card__icon" src="../fs-components/component-specs/library/releases/f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5/components/icons/icon-fs-pdf-file-current-36.svg" alt="" width="24" height="24">
             <span class="pdp-doc-card__title">PicOS® Configuration Guide V4.7-EC <span class="pdp-doc-new">New</span></span>
           </a>
     </div><div class="pdp-res-grid" data-res-panel="2" hidden>
       <a class="pdp-doc-card" href="https://resource.fs.com/mall/resource/ampcon-campus-management-platform-user-manual-v211.pdf" target="_blank" rel="noopener">
-            <span class="pdp-doc-card__icon" aria-hidden="true">&#128196;</span>
+            <img class="pdp-doc-card__icon" src="../fs-components/component-specs/library/releases/f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5/components/icons/icon-fs-pdf-file-current-36.svg" alt="" width="24" height="24">
             <span class="pdp-doc-card__title">AmpCon-Campus Management Platform User Manual V2.1.1</span>
           </a><a class="pdp-doc-card" href="https://www.fs.com/products_support/search.html?keyword=206801" target="_blank" rel="noopener">
-            <span class="pdp-doc-card__icon" aria-hidden="true">&#128196;</span>
+            <img class="pdp-doc-card__icon" src="../fs-components/component-specs/library/releases/f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5/components/icons/icon-fs-pdf-file-current-36.svg" alt="" width="24" height="24">
             <span class="pdp-doc-card__title">PicOS® Enterprise Switches Web-based Configuration Guide <span class="pdp-doc-new">New</span></span>
           </a><a class="pdp-doc-card" href="https://resource.fs.com/mall/resource/picos-configuration-guide-v47-ec.pdf" target="_blank" rel="noopener">
-            <span class="pdp-doc-card__icon" aria-hidden="true">&#128196;</span>
+            <img class="pdp-doc-card__icon" src="../fs-components/component-specs/library/releases/f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5/components/icons/icon-fs-pdf-file-current-36.svg" alt="" width="24" height="24">
             <span class="pdp-doc-card__title">PicOS® Enterprise Switches CLI Reference Guide V4.7-EC <span class="pdp-doc-new">New</span></span>
           </a><a class="pdp-doc-card" href="https://www.fs.com/products_support/search.html?keyword=206801" target="_blank" rel="noopener">
-            <span class="pdp-doc-card__icon" aria-hidden="true">&#128196;</span>
+            <img class="pdp-doc-card__icon" src="../fs-components/component-specs/library/releases/f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5/components/icons/icon-fs-pdf-file-current-36.svg" alt="" width="24" height="24">
             <span class="pdp-doc-card__title">PicOS® Access Assurance Guide <span class="pdp-doc-new">New</span></span>
           </a><a class="pdp-doc-card" href="https://www.fs.com/products_support/search.html?keyword=206801" target="_blank" rel="noopener">
-            <span class="pdp-doc-card__icon" aria-hidden="true">&#128196;</span>
+            <img class="pdp-doc-card__icon" src="../fs-components/component-specs/library/releases/f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5/components/icons/icon-fs-pdf-file-current-36.svg" alt="" width="24" height="24">
             <span class="pdp-doc-card__title">PicOS® Troubleshooting Guide <span class="pdp-doc-new">New</span></span>
           </a><a class="pdp-doc-card" href="https://www.fs.com/products_support/search.html?keyword=206801" target="_blank" rel="noopener">
-            <span class="pdp-doc-card__icon" aria-hidden="true">&#128196;</span>
+            <img class="pdp-doc-card__icon" src="../fs-components/component-specs/library/releases/f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5/components/icons/icon-fs-pdf-file-current-36.svg" alt="" width="24" height="24">
             <span class="pdp-doc-card__title">S5810 Series PicOS® Switches FAQ <span class="pdp-doc-new">New</span></span>
           </a>
     </div>

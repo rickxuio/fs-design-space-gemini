@@ -46,19 +46,11 @@
 
 1. **`library-tab/product`（首页 8 大产品线 Tab）**：
    - 现状：`components.css` 将未选中图标强制 `filter: brightness(0) opacity(0.4)` 压成单色灰，图标 `48×48px`，且仅支持点击切换。
-   - 线上实测：默认即展示**原色红黑双色图标（`64×64px`）**，且**鼠标悬停（`mouseenter`）立即切换面板**。
-2. **白底区块上的浅灰商品卡（`New Products` / `Recommended`）**：
-   - 现状：`library-card/spliced-vertical-single-event` 仅提供纯白背景。
-   - 线上实测：白底区块（`#FFFFFF`）上放**无描边 `#FAFAFA` 浅灰卡片**，配 `object-fit: contain` + `mix-blend-mode: multiply` 商品实拍图。建议给 `library-card` 增加 `surface: "gray"` 变体并补充进 `fs-design-system.md`。
-3. **白底卡片描边颜色深浅**：
-   - 现状：组件库 `--border-color-default` 使用 `--color-gray-5`（`#DEE0E3`），视觉偏深。
-   - 线上实测：官网首页所有白卡（分类卡、PicOS、Solutions、Case Studies）描边统一使用更轻盈的 **`#F2F2F2`**（`--color-gray-7`）。需讨论是否全站统一调浅。
-4. **Hero 轮播箭头尺寸（`48px` vs `56px`）**：
-   - 现状：`library-carousel` 仅开放 `48px`（`navigation-solid-xl`），`carousel.json` 注明 Banner `56px` 待源件核对。
-   - 线上实测：首页 Hero 左右方向按钮为 **`56×56px`**，激活态轮播胶囊宽度 **`40px`**。
-5. **多卡片轮播翻页步长（单张 vs 整页）**：
-   - 现状：`library-carousel/external-cards` 的 `carousel-external.js` 写死每次滚 1 张卡片（8 张卡出 5 点、10 张卡出 7 点）。
-   - 线上实测：按整页 4 张翻页（`slidesPerGroup: 4`，8 张卡出 **2 点**、10 张卡出 **3 点**）。建议为 `external-cards` 增加可选属性 `stepMode: "item" | "page"`。
+   - MasterGo 原件（《英文站组件库 v2.32.2611B》`68908:014155`）& 线上实测：无论默认态还是选中态，图标外框 `64×64px`（内含 `48×48px`）均展示**原色红黑双色图标**（`#19191A` + `rgba(192,0,0,0.3)`），且线上支持**鼠标悬停（`mouseenter`）切换面板**。待决定合入组件库。
+2. **白底区块上的浅灰商品卡（`New Products` / `Recommended`）**：**【已拍板：首页特例，不改全局规范】** 全站通用规范仍保持白底加描边白卡，首页保留 `#FAFAFA` 灰卡特例。
+3. **白底卡片描边颜色深浅（`#DEE0E3` vs `#F2F2F2`）**：**【已拍板：首页特例，不改全局规范】**。
+4. **Hero 轮播箭头尺寸 / `40×8px` 进度胶囊 / 404px 内缩**：**【已拍板：均仅作首页特例】** MasterGo 原件确认首页 `1920×420px` 为 `padding: 0 404px`（版心内缩 `44px`），其他所有页面 Banner 为 `padding: 0 360px`（`0` 缩进）。
+5. **多卡片轮播翻页步长（单张 vs 整页）**：**【已拍板：保持现状，不改点数】** 继续沿用 `external-cards` 单卡滚动。
 6. **PLP 产品列表页 3 项新增组件缺口（自 `fs-plp-switches-pc.html` 发现）**：
    - **Pagination 分页组件缺失**：当前 30 族组件库尚未收录独立 `library-pagination` 组件，PLP 页面底部分页栏暂由页面按 FS Token 实现。
    - **Tag 缺少橙底 `Hot` 语义角标**：`library-tag` 目前只有绿色 `semantic-new` 和 `featured`，缺少官网 PLP 高频使用的 `Hot`（`#FFEBDD` 底 / `#F56300` 字）变体。
@@ -87,6 +79,10 @@
 
 ## 五、迭代日志（每次阶段提交追加一条）
 
+- **2026-11-22（晚间精修）**：
+  - **官网首页（`fs-homepage-pc.html`）**：对齐 MasterGo《英文站组件库 v2.32.2611B》`平台首页 1920×420px` 原件 `padding: 0 404px`（版心内缩 `44px`），补齐 Hero `40×8px` 3 秒进度条自动轮播与 5 个卡片区块悬停标题下划线+底部投影；已在 `section-patterns.md` Pattern 10 与 `AGENTS.md` 明确“首页特例边界”与“优先用 `mastergo-magic-mcp` 核对原件”的工作流规则。
+  - **PLP 产品列表页（`fs-plp-switches-pc.html`）**：对齐线上 `fs.com` 筛选排序栏——`More Filters` 换为 MasterGo 官方 `Select-筛选` 三横滑块图标（`65994-008368.svg`）、5 颗筛选/排序胶囊统一 `36px` 内容自适应紧凑间距（`padding: 0 16px`、`gap: 6px`、`12px/400` 字重）、移除蓝色聚焦环改细黑激活边、`Port Count` / `Downlink Ports` 多选项下拉改为 2 列紧凑网格。
+  - **PDP 商品详情页（`fs-pdp-s5810-pc.html`）**：通过 `mastergo-magic-mcp` 直接对齐 MasterGo《【详情页】设计规范 ✅》（`4️⃣ 盒式交换机属性`）——修正 `600fr / 540fr` + `60px` 间距、主标题 `24px/32px`、`#F7F7F7` `90px` 价格条与 Sold/Reviews/Questions 双色数据、`30px` 型号选择胶囊、补齐库存/物流/服务/担保 4 行官方图标与蓝链及 `Accessories (2)` 配件推荐卡、Resources 改为 4 列 `285×76px` 官方 PDF 图标卡片。
 - **2026-11-22（续）**：
   - 完成 **标杆页 #3（产品列表页 PLP）** `pages/fs-plp-switches-pc.html`（`PicOS® Enterprise Switches`，实测对齐 6 项子分类 SPA 切换、胶囊多选计数 + `Clear All`、`320×428` `More Filters` 双列下拉浮层、商品卡悬浮加购与分页）。
   - 完成 **标杆页 #4（商品详情页 PDP）** `pages/fs-pdp-s5810-pc.html`（`S5810-48TS-P`，覆盖 6 图画廊、6 款型号选型联动、`library-input-number`、`library-anchor-nav`、`library-tab/capsule`、`library-video-button`、`library-comment/qa-thread`、`library-rate/summary`、规格与机型对比表及吸底快速加购栏）。

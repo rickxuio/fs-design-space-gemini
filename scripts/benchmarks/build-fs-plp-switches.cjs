@@ -226,12 +226,9 @@ const pageCss = `${H.basePageCss()}
 .plp-subcat__title { font-size: 12px; line-height: 16px; font-weight: 400; color: #19191A; }
 .plp-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 20px; flex-wrap: wrap; }
 .plp-filters-left { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
-.plp-filter-slot { min-width: 88px; }
-.plp-filter-slot--port { width: 128px; }
-.plp-filter-slot--poe { width: 92px; }
-.plp-filter-slot--downlink { width: 148px; }
+.plp-filter-slot { width: auto; min-width: 0; }
 .plp-more-wrap { position: relative; }
-.plp-more-filters-btn { appearance: none; display: inline-flex; align-items: center; justify-content: center; gap: 6px; height: 32px; padding: 0 16px; border-radius: 999px; border: 1px solid #E5E5E5; background: #FFFFFF; color: #19191A; font-family: inherit; font-size: 12px; line-height: 20px; font-weight: 400; cursor: pointer; transition: border-color 0.15s ease; }
+.plp-more-filters-btn { appearance: none; display: inline-flex; align-items: center; justify-content: center; gap: 6px; height: 36px; padding: 0 16px; border-radius: 999px; border: 1px solid #E5E5E5; background: #FFFFFF; color: #19191A; font-family: inherit; font-size: 12px; line-height: 20px; font-weight: 400; cursor: pointer; transition: border-color 0.15s ease; }
 .plp-more-filters-btn:hover, .plp-more-filters-btn.is-open, .plp-more-filters-btn.is-checked { border-color: #19191A; }
 .plp-more-popover { position: absolute; top: calc(100% + 8px); left: 0; z-index: 30; width: 320px; max-height: 428px; overflow-y: auto; background: #FFFFFF; border: 1px solid #E5E5E5; border-radius: 8px; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12); padding: 16px; box-sizing: border-box; }
 .plp-more-popover[hidden] { display: none; }
@@ -250,7 +247,7 @@ const pageCss = `${H.basePageCss()}
 .plp-clear-all-btn[hidden] { display: none; }
 .plp-filters-right { display: flex; align-items: center; gap: 16px; }
 .plp-results-count { font-size: 12px; line-height: 20px; color: #707070; }
-.plp-sort-wrap { display: inline-flex; align-items: center; height: 32px; padding: 0 14px; border-radius: 999px; border: 1px solid #E5E5E5; background: #FFFFFF; transition: border-color 0.15s ease; }
+.plp-sort-wrap { display: inline-flex; align-items: center; height: 36px; box-sizing: border-box; padding: 0 16px; border-radius: 999px; border: 1px solid #E5E5E5; background: #FFFFFF; transition: border-color 0.15s ease; }
 .plp-sort-wrap:hover { border-color: #19191A; }
 .plp-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; }
 .plp-card { position: relative; display: flex; flex-direction: column; background: #FAFAFB; border-radius: 4px; padding: 20px; box-sizing: border-box; transition: box-shadow 0.2s ease, background-color 0.2s ease; }
@@ -321,7 +318,7 @@ const pageSource = `<!DOCTYPE html>
             <div class="plp-more-wrap">
               <button type="button" id="plp-more-filters-trigger" class="plp-more-filters-btn" aria-haspopup="true" aria-expanded="false" aria-controls="plp-more-filters-popover">
                 <span id="plp-more-filters-label">More Filters</span>
-                <span aria-hidden="true">&#9776;</span>
+                <img src="../fs-components/component-specs/library/releases/${RELEASE}/components/icons/mastergo-library/%E7%B3%BB%E7%BB%9FIcon/65994-008368.svg" alt="" width="14" height="14">
               </button>
               <div id="plp-more-filters-popover" class="plp-more-popover" hidden>
                 ${moreFiltersPopoverHtml}
@@ -371,20 +368,87 @@ const pageSource = `<!DOCTYPE html>
         var selectEl = slot.querySelector('.ds-select');
         var trigger = slot.querySelector('.ds-select__trigger');
         var val = slot.querySelector('.ds-select__value');
-        if (selectEl) selectEl.style.width = '100%';
+        var panel = slot.querySelector('.ds-select__panel');
+        var list = slot.querySelector('.ds-select__list');
+        if (selectEl) {
+          selectEl.style.width = 'auto';
+          selectEl.style.display = 'inline-block';
+        }
         if (trigger) {
-          trigger.style.height = '32px';
+          trigger.style.width = 'auto';
+          trigger.style.minWidth = '0';
+          trigger.style.height = '36px';
           trigger.style.borderRadius = '999px';
-          trigger.style.padding = '0 14px';
+          trigger.style.padding = '0 16px';
+          trigger.style.gap = '6px';
+          trigger.style.justifyContent = 'center';
           trigger.style.borderColor = '#E5E5E5';
           trigger.style.fontSize = '12px';
+          trigger.style.boxShadow = 'none';
+          trigger.style.outline = 'none';
+          var syncTriggerBorder = function () {
+            var isOpen = trigger.getAttribute('aria-expanded') === 'true';
+            var hasVal = slot.querySelectorAll('[role="option"][aria-selected="true"]').length > 0;
+            trigger.style.borderColor = (isOpen || hasVal) ? '#19191A' : '#E5E5E5';
+            trigger.style.boxShadow = 'none';
+          };
+          new MutationObserver(syncTriggerBorder).observe(trigger, { attributes: true, attributeFilter: ['aria-expanded'] });
+          trigger.addEventListener('focus', function () { trigger.style.boxShadow = 'none'; trigger.style.outline = 'none'; });
         }
         if (val) {
           val.setAttribute('data-placeholder', placeholders[key]);
           val.textContent = placeholders[key];
           val.style.color = '#19191A';
+          val.style.flex = '0 0 auto';
+          val.style.whiteSpace = 'nowrap';
+        }
+        if (panel) {
+          panel.style.width = 'max-content';
+          panel.style.minWidth = '180px';
+          panel.style.right = 'auto';
+          panel.style.padding = '12px 16px';
+          panel.style.borderRadius = '8px';
+          panel.style.boxShadow = '0 8px 24px rgba(0, 0, 0, 0.12)';
+          panel.style.border = '1px solid #F0F0F2';
+          panel.style.maxHeight = 'none';
+          var opts = panel.querySelectorAll('.ds-select__option');
+          if (list && opts.length > 4) {
+            list.style.display = 'grid';
+            list.style.gridTemplateColumns = 'repeat(2, minmax(120px, max-content))';
+            list.style.gap = '4px 20px';
+            list.style.padding = '0';
+          } else if (list) {
+            list.style.padding = '0';
+          }
+          opts.forEach(function (opt) {
+            opt.style.padding = '6px 4px';
+            opt.style.minHeight = '32px';
+            opt.style.height = 'auto';
+          });
+          panel.querySelectorAll('.ds-select__option-label').forEach(function (lbl) {
+            lbl.style.whiteSpace = 'nowrap';
+            lbl.style.fontSize = '12px';
+            lbl.style.lineHeight = '20px';
+            lbl.style.color = '#707070';
+          });
         }
       });
+
+      // Align Sort dropdown trigger text to 12px Regular (#19191A) matching filter pills & live fs.com
+      var sortTrigger = document.querySelector('.plp-sort-wrap .ds-dropdown-command__trigger');
+      var sortLabel = document.querySelector('.plp-sort-wrap .ds-dropdown-command__trigger-label');
+      if (sortTrigger) {
+        sortTrigger.style.fontSize = '12px';
+        sortTrigger.style.lineHeight = '20px';
+        sortTrigger.style.fontWeight = '400';
+        sortTrigger.style.color = '#19191A';
+      }
+      if (sortLabel) {
+        sortLabel.style.fontSize = '12px';
+        sortLabel.style.lineHeight = '20px';
+        sortLabel.style.fontWeight = '400';
+        sortLabel.style.color = '#19191A';
+      }
 
       var grid = document.getElementById('plp-product-grid');
       var cards = Array.prototype.slice.call(document.querySelectorAll('[data-plp-card]'));
