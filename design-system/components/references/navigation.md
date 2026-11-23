@@ -52,6 +52,7 @@ Frozen authored native Header literal, including actual logo/link/action hierarc
         </a>
         <ul class="ds-nav-header__links">
           <li class="ds-nav-header__link-item"><a href="#" class="ds-nav-header__link" data-header-products-trigger="" role="button" aria-haspopup="true" aria-expanded="false" aria-controls="header-product-menu-panel">All Products</a></li>
+          <li class="ds-nav-header__link-item"><a href="#" class="ds-nav-header__link">Software</a></li>
           <li class="ds-nav-header__link-item"><a href="#" class="ds-nav-header__link">Solutions</a></li>
           <li class="ds-nav-header__link-item"><a href="#" class="ds-nav-header__link">Services</a></li>
           <li class="ds-nav-header__link-item"><a href="#" class="ds-nav-header__link">Resources</a></li>

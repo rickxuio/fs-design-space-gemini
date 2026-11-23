@@ -15,16 +15,16 @@
 | 描述 | 14px、400、22px行高，居中，最大宽960px，颜色#707070 |
 | 页面字体 | Open Sans，400/600 |
 | 页面表面 | #FFFFFF、#FAFBFB；原规则允许的深色区按具体组件用途使用 |
-| 卡片/容器描边 | **灰色背景（#FAFBFB）上的白色卡片或容器禁止加描边**；描边（border）仅在白色背景（#FFFFFF）上用于区分边界 |
+| 卡片/容器描边 | **灰色背景（#FAFBFB）上的白色卡片或容器禁止加描边**；描边（border）仅在白色背景（#FFFFFF）上用于区分边界。**特例边界：仅允许「官网首页」与「PLP 产品列表页」两个特定页面在白底区块放 `#FAFAFB` 无描边商品灰卡，其他任何新页面一律禁止** |
 | 图文/视频面板宽度 | 独立展示大图、视频面板默认撑满 1200px 版心；仅纯文字描述限制最大宽 960px |
 | 表单控件配套与对齐 | 含多行长文本的留资表单优先使用 `library-form/gray` + `sourceFields`（撑满 `1200px` 卡片内宽，原生全宽 `textarea` 与**左下角对齐**提交按钮），严禁裸写 `<textarea>`；组合单行表单严禁白灰混用，网格内控件传 `layout: "fill"` 严格等宽，label 统一为 `14px/400/#4B4B4D` |
 | 轮播分页点 | 对齐 FS 官方规格（未选中 `8×8px` 圆点 `opacity: 0.4`、当前项 `20×8px` 胶囊 `opacity: 1`、`#707070`、`gap: 10px`）；严禁在非 `library-carousel` 宿主外零散调用方向原子 |
 
 内容顺序与功能意图以实际来源为准，不拿某个旧示例的模块顺序替代需求。页面分隔线留在版心内，不加源站品牌装饰线。容器、page-section、section-header和grid是页面骨架；组件内部不使用页面CSS覆盖。
 
-## 1.5 顶部导航栏下拉菜单与浮层规范（对齐 `fs.com` 线上实测）
+## 1.5 顶部导航栏下拉菜单与浮层规范（已合入 `library-navigation/header`，对齐 `fs.com` 线上实测）
 
-当前组件库固定外壳 `library-navigation/header` 仅实现了 5 项主导航与 240px 单列 `All Products` 菜单；**线上 `https://www.fs.com/` 完整顶部导航规范如下**（供后续升级 `library-navigation/header` 组件与维护页时作为单一依据）：
+当前组件库固定外壳 `library-navigation/header`（Release `89cd38bf7136` 起）已正式内置完整的 **6 项主导航 Mega Menu（模板 A / B）及 3 类辅助交互浮层**，规范如下：
 
 ### 主导航栏结构
 - **顶栏 Utility Bar**：全宽 `#F6F6F8`，高 `32px`，版心 `1200px` 居中，字号 `12px/#707070`（hover `#19191A`），项间 `1px×10px` `#E5E5E5` 竖线。左：`FS United States`、`FREE SHIPPING on Orders Over US$79`；右：`Contact Us`、`United States / $ USD` 下拉触发器。

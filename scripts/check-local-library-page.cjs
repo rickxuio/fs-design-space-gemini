@@ -25,7 +25,8 @@ function nativeTextarea(node, data, JSDOM) {
 function validateFile(file, { root = L.ROOT, requireShell = true, context = C.createContext() } = {}) {
   context.stats.staticRuns++;
   const issues = [],
-    fail = (code, msg) => issues.push({ level: "error", code, msg });
+    fail = (code, msg) => issues.push({ level: "error", code, msg }),
+    warn = (code, msg) => issues.push({ level: "warn", code, msg });
   let dom;
   try {
     const html = fs.readFileSync(file, "utf8"),
@@ -52,7 +53,6 @@ function validateFile(file, { root = L.ROOT, requireShell = true, context = C.cr
         );
       }
     }
-    // Visual Rule 2: Never mix white-bordered and gray form controls in the same form
     const LEGACY_REGRESSION_RELEASES = new Set([
       "140882ce617cdc8b67dfe2da93a9d59bab5926ad3941d8723ad4a0b638e03658",
       "8eb2dc24439210cc01e421e94e820b4e49756fb103698539919abfa2ed26164e",
@@ -62,6 +62,61 @@ function validateFile(file, { root = L.ROOT, requireShell = true, context = C.cr
       "d7dd2d6a244026644b4bb1568816e814e46df131d0534fd7fe43732b0eb392da",
       "da9a0a1c942ccd7ef3c9f6e7c8a790c84624b90dcd39b7509b8d95cfb44127e7",
     ]);
+    const fileName = path.basename(file);
+    const isEngineeringFixture =
+      fileName === "variants-59.html" || fileName === "review-calls.html";
+    const WHITE_SECTION_GRAY_CARD_ALLOWLIST = new Set([
+      "fs-homepage-pc.html",
+      "fs-plp-switches-pc.html",
+    ]);
+    const CUSTOM_GRID_ALLOWLIST = new Set([
+      "fs-plp-switches-pc.html",
+      "fs-pdp-s5810-pc.html",
+      "fs-account-center-pc.html",
+    ]);
+    // Visual Rule 1B: White sections (#FFFFFF) must use bordered cards (only Homepage & PLP allow borderless #FAFAFB product cards)
+    if (
+      !isSpecDoc &&
+      !isEngineeringFixture &&
+      !LEGACY_REGRESSION_RELEASES.has(version) &&
+      !WHITE_SECTION_GRAY_CARD_ALLOWLIST.has(fileName)
+    ) {
+      for (const badCard of doc.querySelectorAll(
+        '.page-section:not(.page-section--gray) [data-library-component="library-card"][data-library-fragment="spliced-vertical-single-event"], .page-section:not(.page-section--gray) .ds-card--no-border'
+      )) {
+        if (badCard.closest(".page-section--gray")) continue;
+        fail(
+          "PAGE_WHITE_SECTION_BORDER",
+          "White section (#FFFFFF) must use bordered library-card variants (borderless cards are only allowed on gray sections or Homepage/PLP exceptions): " +
+            (badCard.getAttribute("data-library-fragment") || "ds-card--no-border")
+        );
+      }
+    }
+    // Visual Rule 1C: Warn if a non-specialized page builds a custom <article> card grid bypassing library-card
+    if (
+      !isSpecDoc &&
+      !isEngineeringFixture &&
+      !LEGACY_REGRESSION_RELEASES.has(version) &&
+      !CUSTOM_GRID_ALLOWLIST.has(fileName)
+    ) {
+      for (const grid of doc.querySelectorAll("main .grid")) {
+        const directArticles = [...grid.children].filter(
+          (el) => el.tagName === "ARTICLE" && !el.hasAttribute("data-library-component")
+        );
+        if (
+          directArticles.length >= 3 &&
+          !grid.querySelector('[data-library-component="library-card"], [data-library-component="library-icon-card"]')
+        ) {
+          warn(
+            "PAGE_CUSTOM_CARD_GRID",
+            "Grid contains " +
+              directArticles.length +
+              " hand-written <article> cards without library-card/library-icon-card; prefer native components"
+          );
+        }
+      }
+    }
+    // Visual Rule 2: Never mix white-bordered and gray form controls in the same form
     const WHITE_SELECTS = new Set(["single-radio", "multi-checkbox", "search", "phone-search", "grouped-combination"]);
     const GRAY_SELECTS = new Set(["single-basic", "single-check", "multi-basic", "two-column"]);
     const formScopes = isSpecDoc

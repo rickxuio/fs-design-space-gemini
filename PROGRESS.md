@@ -1,8 +1,8 @@
 # FS Design Space — 持续进度账本（PROGRESS）
 
 > **用途**：本文件是跨电脑、反复 `git push` / `git pull` 协作时的**唯一持续进度账本**（已在 `AGENTS.md` 顶部声明自动读取）。每次换机接手先读本文件，每次阶段交付前同步更新本文件并随代码提交。
-> **最后更新时间**：2026-11-22
-> **当前活跃组件库版本（Release）**：`f9fa6649b18ff4de5f1138868fde0f4e5e4f2054657a9991824df6861c4314d5`（30/30 组件已集成，147 个可调用变体，0 gaps）
+> **最后更新时间**：2026-11-23
+> **当前活跃组件库版本（Release）**：`89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87`（30/30 组件已集成，147 个可调用变体，0 gaps）
 
 ---
 
@@ -55,9 +55,8 @@
    - **Pagination 分页组件缺失**：当前 30 族组件库尚未收录独立 `library-pagination` 组件，PLP 页面底部分页栏暂由页面按 FS Token 实现。
    - **Tag 缺少橙底 `Hot` 语义角标**：`library-tag` 目前只有绿色 `semantic-new` 和 `featured`，缺少官网 PLP 高频使用的 `Hot`（`#FFEBDD` 底 / `#F56300` 字）变体。
    - **无兼容标签的精简版 PLP 商品卡变体**：现有 `library-card/embedded-product-full` 强绑定 `compatibility` 品牌标签组与 `items` 列表，而官网交换机 PLP 卡片无兼容标签、采用单行 `|` 分隔参数条 + 双仓库存行 + 悬浮才展开的红色 `Add` 购物车按钮。
-7. **顶部导航栏下拉菜单规范缺口（自 `https://www.fs.com/` 线上实测补齐至 `design-spec/fs-design-system.md` §1.5）**：
-   - **现状问题**：当前 `library-navigation/header` 仅有 5 项主入口（缺少 `Software`），且仅 `All Products` 挂了一个 `240px` 单列一级菜单（无右侧 4 列子分类面板）；`Solutions` / `Services` / `Resources` / `Contact Us` 均无 Mega Menu，顶部国家切换、全宽搜索面板与账户下拉浮层也尚未实现。
-   - **线上实测完整规范已入档**：已将 `fs.com` 全部 6 项主导航 Mega Menu（模板 A：`240px` 灰栏 + `960px` 白区；模板 B：左 2 列链接 + `1px` 竖线 + 右 `360×225px` 图卡）及 3 类辅助 Popover（Country / Search / Account）的完整尺寸、配色与交互细节补充进 `design-spec/fs-design-system.md` §1.5，待后续升级 `library-navigation/header` 并同步发布新版 release 时统一落地。
+7. **顶部导航栏下拉菜单升级（【已完成并合入 `library-navigation/header`】）**：
+   - 已将 `fs.com` 完整的 **6 项主导航（All Products / Software / Solutions / Services / Resources / Contact Us）Mega Menu（模板 A/B）与 3 类辅助浮层（Country / Search / Account）** 正式合入 `design-system/` 的 `library-navigation/header`（Release `89cd38bf7136`），并通过全部组件工程验收与 5 张标杆页升级。
 
 ---
 
@@ -79,6 +78,15 @@
 
 ## 五、迭代日志（每次阶段提交追加一条）
 
+- **2026-11-23（实战压测：xTool F2 Ultra UV 全功能交互详情页 + 原页内容优先原则）**：
+  - **规则进化（`AGENTS.md` Step 2.5）**：明确「内容与板块构图以原页面为主（防过度模板化）」，不再为迎合标杆模板强插原页没有的模块（如吸顶锚点条）或拉平强主次结构。
+  - **工作流实战验证（`pages/xtool-f2-ultra-uv-pc.html` + `scripts/benchmarks/build-xtool-f2-ultra-uv.cjs`）**：完整摄入并重构 `xtool.com` F2 Ultra UV 详情页，补齐 6 项原站前端交互（画廊 `<`/`>` + `1 / 6` 计数、分期/免税/积分原生 `library-dialog/information` 弹窗、延保与配件 `library-checkbox/sm` 勾选联动计价、滚动吸底快捷加购栏、`library-tab/standard` 评论/问答切换 + `library-rate/summary` 星级筛选与排序、Materials 卡片快捷 `+ Add`），`npm run check` 与 `npm run audit:page` 均 **0 error / 0 warning** 并完成截图视觉验收。
+  - **仓库瘦身**：清理 3 个孤儿 Release 快照（`aae0b4ca6c09`、`024d23145876`、`f9fa6649b18f`），仅保留 2 个活跃/历史回归 Release。
+- **2026-11-23（Header Mega Menu 正式合入组件库 + P0–P2 漏洞修复与工程加固）**：
+  - **组件库升级 `library-navigation/header`（Release `89cd38bf7136`）**：将 6 项主导航（新增 `Software`）、模板 A/B 完整 `1200px` Mega Menu 与 3 类辅助浮层（Country / Search / Account）正式合入 `design-system/`，修复 `mouseenter` + `click` 双重触发秒关菜单 Bug，完成 `navigation` 及 4 个子组件工程验收并同步发布（30/30 集成，147 变体，0 gaps）；全部 5 张 FS 原生标杆页已一键升级并 0 error / 0 warning 通过 `npm run check`。
+  - **P0 静态门禁堵漏（`scripts/check-local-library-page.cjs`）**：补齐白底区块卡片描边反向校验（`PAGE_WHITE_SECTION_BORDER`，仅豁免首页与 PLP 特例）及非特例页手写 `<article>` 卡片网格提醒（`PAGE_CUSTOM_CARD_GRID`）。
+  - **P1 浏览器巡检与一键级联验收**：在 `scripts/browser-page-check.cjs` 中新增新版 Header 6 项 Mega Menu 展开、图卡加载与 `elementFromPoint()` `z-index` 无遮挡巡检；新增 `npm run component:accept -- <id>`（`scripts/accept-component.cjs`）一键完成目标组件及所有级联 `stale` 关联组件验收与同步。
+  - **P2 资产清理与规则边界固化**：删除 3.4MB 孤儿目录 `pages/assets/xtool-store-pc/` 与已冗余的 `maintenance/header-mega-menu-preview.html`；在 `AGENTS.md`、`design-spec/fs-design-system.md`、`design-spec/section-patterns.md` 中明确“仅允许首页与 PLP 保留白底 `#FAFAFB` 无描边灰卡特例”、厘清纯 UI 交互 vs 后端演示态边界，并补齐 **Pattern 11（PLP）/ Pattern 12（PDP）/ Pattern 13（Account Center）**。
 - **2026-11-22（晚间精修）**：
   - **官网首页（`fs-homepage-pc.html`）**：对齐 MasterGo《英文站组件库 v2.32.2611B》`平台首页 1920×420px` 原件 `padding: 0 404px`（版心内缩 `44px`），补齐 Hero `40×8px` 3 秒进度条自动轮播与 5 个卡片区块悬停标题下划线+底部投影；已在 `section-patterns.md` Pattern 10 与 `AGENTS.md` 明确“首页特例边界”与“优先用 `mastergo-magic-mcp` 核对原件”的工作流规则。
   - **PLP 产品列表页（`fs-plp-switches-pc.html`）**：对齐线上 `fs.com` 筛选排序栏——`More Filters` 换为 MasterGo 官方 `Select-筛选` 三横滑块图标（`65994-008368.svg`）、5 颗筛选/排序胶囊统一 `36px` 内容自适应紧凑间距（`padding: 0 16px`、`gap: 6px`、`12px/400` 字重）、移除蓝色聚焦环改细黑激活边、`Port Count` / `Downlink Ports` 多选项下拉改为 2 列紧凑网格。

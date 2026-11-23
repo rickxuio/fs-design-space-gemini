@@ -1,6 +1,10 @@
 # FS PC 页面黄金区块样板库（Section Patterns）
 
-本样板库提炼自已通过自动门禁与逐帧视觉验收的 FS 原生标杆页 [fs-campus-fabric-network-pc.html](../pages/fs-campus-fabric-network-pc.html) 与 [xtool-store-pc.html](../pages/xtool-store-pc.html)。合成新页面时，遇到同类业务模块**直接整块复用对应骨架与表面规则**，不在单页临时发明新构图。
+本样板库提炼自已通过自动门禁与逐帧视觉验收的 **FS 5 大核心题型原生标杆页**（`fs-homepage-pc.html`、`fs-campus-fabric-network-pc.html`、`fs-plp-switches-pc.html`、`fs-pdp-s5810-pc.html`、`fs-account-center-pc.html`）。合成新页面时，遇到同类业务模块**直接整块复用对应骨架与表面规则**，不在单页临时发明新构图。
+
+> **跨题型防误导铁律（必读）**：
+> 1. **严禁跨题型抄写手写 DOM**：PLP 商品卡（`.plp-card` / `.plp-badge-hot` / `.plp-pagination`）、PDP Buy-Box 规格参数表与账户中心侧栏/业务表格（`.acct-nav-card` / `.acct-order-row`）仅限对应电商列表、商品详情或后台账户题型使用；**常规解决方案页、营销专题页、落地页一律必须优先使用 `library-card` / `library-tag` / `library-collapse` 等原生组件，严禁模仿 PLP/Account 手写卡片或自造标签**。
+> 2. **严守白底无描边灰卡特例边界**：**仅允许「官网首页（Homepage）」与「PLP 产品列表页」两个特定页面在白底区块（`#FFFFFF`）上放 `#FAFAFB` 无描边硬件商品灰卡**；其他任何新页面一律严格执行原铁律——白底区块放卡片必加描边，灰底区块（`#FAFBFB`）放白卡严禁加描边。
 
 ---
 
@@ -251,6 +255,34 @@
    - 在白底区块（`#FFFFFF`）上调用原生自带浅灰底的 `library-icon-card/center-single-event`（3×2）与 `library-icon-card/left-single-event`（3 列），传入 `titleHref` 并在 `.ds-icon-card__title-slot > a` 内通过 `data-fs-extend="icon-card-title-arrow"` 追加官方 `icon-text-button-arrow-right-regular.svg`（`12×12px`），还原官网标题右侧紧跟 `>` 箭头的视觉规范。
 5. **客户案例 3 列卡片（`Case Studies`）**：
    - 使用整卡 `<a>` 外包 `library-card/spliced-vertical-single-event-bordered`，`category` 槽传入国家/地区（`United States` / `Germany` / `Japan`），在 `.ds-card__body` 底部通过 `data-fs-extend="case-industry-tags"` 注入以 `|` 分隔的单行不换行（`flex-wrap: nowrap; white-space: nowrap; gap: 6px`）行业标签行。
+
+---
+
+## Pattern 11：FS 产品列表页专属区块（PLP，提炼自 `fs-plp-switches-pc.html`）
+
+> **题型边界**：仅限电商分类/产品列表页（PLP）使用；常规营销/解决方案页严禁照搬 `.plp-card` 或手写 `.plp-badge-hot`。
+
+1. **面包屑 + 6 项子分类图文导航条**：`library-breadcrumb/default` + 紧凑图文分类条（`120×96px`，激活态 `#F6F6F8` 底 + `#19191A` 细边 + 右上角勾选圆徽）。
+2. **多选筛选排序栏**：`library-select/multi-checkbox`（3 组常用筛选，高度 `36px`、`padding: 0 16px`、细黑激活边）+ `More Filters` 官方滑块图标（`65994-008368.svg`）驱动的 `320×428px` 双列浮层 + `Clear All` + 右侧结果数与 `library-dropdown/command-text` 排序。
+3. **4 列硬件商品灰卡托盘（白底区块特例）**：白底区块上允许放无描边 `#FAFAFB` 硬件商品卡（`object-fit: contain; mix-blend-mode: multiply`），含单行 `|` 分隔参数条、双仓库存行、销量/评价数及悬浮展开红色 `Add` 加购按钮 + 底部分页条。
+
+---
+
+## Pattern 12：FS 商品详情页专属区块（PDP，提炼自 `fs-pdp-s5810-pc.html`）
+
+> **题型边界**：仅限单品硬件详情页（PDP）使用。
+
+1. **Buy-Box 双栏（`600fr / 540fr`，`gap: 60px`）**：左栏 6 图媒体画廊（含主图放大与视频缩略图）；右栏 `24px/32px` 主标题、`#F7F7F7` `90px` 价格条（含 Sold / Reviews / Questions 双色统计）、`30px` 型号选择胶囊、`library-input-number` 步进器 + `library-button/filled-red` 主加购、库存/物流/服务/担保 4 行官方图标与蓝链、以及 `Accessories (2)` 配件推荐卡。
+2. **吸顶锚点 + 多维详情内容**：`library-anchor-nav` 吸顶联动 8 大章节，依次组合双列参数表、1200px 全宽 Connectivity 拓扑图、交替特性块与机型对比表、`library-video-button` 视频网格、`library-comment/qa-thread`、`library-rate/summary` 评分分布、以及 4 列 `285×76px` 官方 PDF 图标 Resources 文档卡片。
+
+---
+
+## Pattern 13：FS 账户中心专属区块（Account Center，提炼自 `fs-account-center-pc.html`）
+
+> **题型边界**：仅限 B2B 客户后台/账户工作台（Dashboard / Account Center）使用。
+
+1. **左 `220px` 手风琴侧栏 + 客户经理卡 + 右自适应工作区**：左侧手风琴分组菜单与 `Your Account Manager` 联系卡使用 MasterGo 官方线性图标；右侧顶部公告横幅 + `Orders`（4 项 KPI 筛选 + 订单列表 + `library-dropdown/command-dot` 更多菜单）+ `Quotes`（商品缩略图条 + 主次操作按钮）+ `Cases`（实时搜索过滤表格）。
+
 
 
 

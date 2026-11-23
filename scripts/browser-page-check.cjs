@@ -52,6 +52,26 @@ async function interactions(page,result,{root}){
   if(!await button.isVisible())continue;await action('disclosure',async row=>{const before=await button.evaluate(n=>n.getAttribute('aria-expanded'));await button.click();await page.waitForFunction((n,before)=>{const p=document.getElementById(n.getAttribute('aria-controls'));return n.getAttribute('aria-expanded')!==before&&p&&((n.getAttribute('aria-expanded')==='true')===(!p.hidden&&p.getClientRects().length>0));},{timeout:2000},button,before);await button.click();row.target=true;});
  }
  const video=await page.$('video:not([hidden])');if(video&&await video.evaluate(v=>v.getClientRects().length>0))await action('media',async row=>{await video.evaluate(v=>{v.muted=true;v.load();});await page.waitForFunction(v=>v.readyState>=2,{timeout:5000},video);await video.evaluate(v=>v.play());await page.waitForFunction(v=>v.currentTime>.05,{timeout:2000},video);await video.evaluate(v=>{v.pause();v.currentTime=0;});row.played=true;});
+ // Upgraded Header 6-item Mega Menu & z-index occlusion check (applies to releases with 6+ main nav links)
+ const hasUpgradedHeader=await page.evaluate(()=>!!document.querySelector('.ds-nav-header[data-header-products-current]')&&document.querySelectorAll('.ds-nav-header__links .ds-nav-header__link').length>=6);
+ if(hasUpgradedHeader)await action('headerMega',async row=>{
+  await page.evaluate(()=>window.scrollTo(0,0));
+  const prodTrigger=await page.$('.ds-nav-header [data-header-products-trigger]');
+  if(!prodTrigger)throw Error('Missing All Products trigger');
+  await prodTrigger.click();
+  await page.waitForFunction(()=>{const p=document.querySelector('.ds-nav-header__product-menu');return p&&!p.hidden&&p.getBoundingClientRect().width>=900&&!!p.querySelector('.ds-nav-header__product-detail');},{timeout:2000});
+  const prodHit=await page.evaluate(()=>{const d=document.querySelector('.ds-nav-header__product-detail');const r=d.getBoundingClientRect();const el=document.elementFromPoint(r.x+r.width/2,r.y+Math.min(80,r.height/2));return!!el&&d.contains(el);});
+  if(!prodHit)throw Error('All Products Mega Menu occluded by page layer');
+  const servicesLink=await page.evaluateHandle(()=>[...document.querySelectorAll('.ds-nav-header__links .ds-nav-header__link')].find(a=>a.textContent.trim()==='Services'));
+  if(!servicesLink.asElement())throw Error('Missing Services nav link');
+  await servicesLink.asElement().click();
+  await page.waitForFunction(()=>{const p=document.querySelector('.ds-nav-header__mega-panel');if(!p||p.hidden)return false;const img=p.querySelector('.ds-nav-mega-b__card img');return!!img&&img.complete&&img.naturalWidth>0;},{timeout:3000});
+  const servicesHit=await page.evaluate(()=>{const p=document.querySelector('.ds-nav-header__mega-panel');const r=p.getBoundingClientRect();const el=document.elementFromPoint(r.x+r.width/2,r.y+Math.min(100,r.height/2));return!!el&&p.contains(el);});
+  if(!servicesHit)throw Error('Services Mega Menu occluded by page layer');
+  await page.keyboard.press('Escape');
+  await page.waitForFunction(()=>{const p1=document.querySelector('.ds-nav-header__product-menu'),p2=document.querySelector('.ds-nav-header__mega-panel'),bg=document.querySelector('.ds-nav-header__backdrop');return(!p1||p1.hidden)&&(!p2||p2.hidden)&&(!bg||bg.hidden);},{timeout:2000});
+  row.megaPanelsChecked=2;
+ });
 }
 async function runBrowserChecks(files,{root=L.ROOT,context=C.createContext(),legacyProbe,viewports=[1085,1440,1920],artifactsDir=null}={}){
  const chrome=process.env.CHROME_PATH||'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';if(!fs.existsSync(chrome))throw Error('Chrome not found: '+chrome);
