@@ -1,0 +1,1316 @@
+<!DOCTYPE html>
+<html data-fs-library="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alibaba Cloud for Automotive — FS Design Standard</title>
+  <style>body { margin: 0; font-family: "Open Sans", Arial, sans-serif; color: #19191A; background: #FFFFFF; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+.container { max-width: 1200px; width: 100%; margin: 0 auto; padding: 0; box-sizing: border-box; }
+.page-section { padding: 40px 0; background: #FFFFFF; }
+.page-section--gray { background: #FAFBFB; }
+.section-header { text-align: center; margin-bottom: 24px; }
+.section-header__tag { display: flex; justify-content: center; margin-bottom: 8px; }
+.section-header__title { margin: 0; font-size: 24px; line-height: 32px; font-weight: 600; color: #19191A; }
+.section-header__desc { margin: 12px auto 0; max-width: 960px; font-size: 14px; line-height: 22px; font-weight: 400; color: #4B4B4D; }
+.section-header__action { margin-top: 12px; display: flex; justify-content: center; }
+.center-tabs-layout { display: flex; justify-content: center; margin-bottom: 24px; }
+.grid { display: grid; gap: 20px; align-items: stretch; }
+.grid--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.grid--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.grid--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.card-full-link { display: grid; text-decoration: none; color: inherit; height: 100%; }
+.hero-surface { position: relative; width: 100%; overflow: hidden; background: #19191A; }
+.hero-surface__bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+.hero-surface__scrim { position: absolute; inset: 0; background: rgba(0, 0, 0, 0.48); z-index: 1; }
+.hero-surface__inner { position: relative; z-index: 2; }
+.store-card-tag-row { display: flex; align-items: center; gap: 6px; margin-bottom: 6px; }
+.store-card-price-row { display: flex; align-items: baseline; gap: 8px; margin-top: 8px; }
+.store-price-current { font-size: 16px; line-height: 24px; font-weight: 600; color: #19191A; }
+.store-price-compare { font-size: 13px; line-height: 20px; color: #707070; text-decoration: line-through; }
+.subscribe-card-1200 { display: grid; grid-template-columns: 600px 600px; width: 1200px; max-width: 100%; min-height: 338px; background: #FFFFFF; border-radius: 8px; overflow: hidden; box-sizing: border-box; }
+.subscribe-card-1200__media { height: 338px; overflow: hidden; }
+.subscribe-card-1200__img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.subscribe-card-1200__body { padding: 40px 48px; display: flex; flex-direction: column; justify-content: center; box-sizing: border-box; }
+.subscribe-form__row { display: flex; align-items: flex-end; gap: 12px; margin-bottom: 16px; }
+@media (max-width: 1220px) { .subscribe-card-1200 { grid-template-columns: 1fr 1fr; width: 100%; } }
+  .auto-container {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  .auto-section {
+    padding: 40px 0;
+    scroll-margin-top: 68px;
+  }
+  .auto-section--white { background: #FFFFFF; }
+  .auto-section--gray { background: #FAFBFB; }
+
+  .auto-section-header {
+    text-align: center;
+    margin-bottom: 24px;
+  }
+  .auto-section-title {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 32px;
+    color: #19191A;
+  }
+  .auto-section-desc {
+    margin: 12px auto 0;
+    max-width: 960px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 22px;
+    color: #4B4B4D;
+  }
+
+  /* Hero section — automotive AI background + solid dark scrim for crisp white text */
+  .auto-hero-section {
+    position: relative;
+    width: 100%;
+    background-image: url("assets/alibabacloud-automotive/img-19-5fc562f8.webp");
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+  }
+  .auto-hero-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.58);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .auto-hero-content {
+    position: relative;
+    z-index: 1;
+  }
+  .auto-btn-anchor {
+    display: inline-block;
+    text-decoration: none;
+  }
+
+  /* Sticky Anchor Nav */
+  .auto-anchor-sticky {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    background: #FFFFFF;
+    border-bottom: 1px solid #E5E5E5;
+  }
+
+  /* Neutral independent tag */
+  .auto-tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 3px 10px;
+    border-radius: 4px;
+    background: #F3F4F6;
+    color: #4B4B4D;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 18px;
+    width: fit-content;
+  }
+
+  /* Card clickable title — stays #19191A with black underline on hover */
+  .auto-card-title-link {
+    color: #19191A;
+    text-decoration: none;
+  }
+  .auto-card-title-link:hover {
+    color: #19191A;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  /* Section 3: What's New (on #FAFBFB gray -> white cards have NO border) */
+  .auto-featured-news {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    background: #FFFFFF;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 20px;
+  }
+  .auto-featured-news__body {
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .auto-featured-news__title {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 28px;
+    color: #19191A;
+  }
+  .auto-featured-news__desc {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 22px;
+    color: #4B4B4D;
+  }
+  .auto-featured-news__cta {
+    margin-top: auto;
+    padding-top: 8px;
+  }
+  .auto-featured-news__media {
+    min-height: 280px;
+    background: #19191A;
+  }
+  .auto-featured-news__img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .auto-news-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 20px;
+  }
+  .auto-news-card {
+    background: #FFFFFF;
+    border-radius: 8px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  .auto-news-card__top {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .auto-news-card__title {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+    color: #19191A;
+  }
+  .auto-news-card__desc {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 22px;
+    color: #4B4B4D;
+  }
+  .auto-news-card__footer {
+    margin-top: auto;
+  }
+
+  /* Section 4: Overview */
+  .auto-overview-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+  }
+  .auto-overview-title {
+    margin: 0 0 16px;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 32px;
+    color: #19191A;
+  }
+  .auto-overview-p {
+    margin: 0 0 14px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+    color: #4B4B4D;
+  }
+  .auto-overview-p:last-child {
+    margin-bottom: 0;
+  }
+  .auto-overview-media {
+    border-radius: 8px;
+    overflow: hidden;
+    background: #FAFBFB;
+  }
+  .auto-overview-img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+
+  /* Section 5: Why Alibaba Cloud (3x2 open icon-text grid directly on #FAFBFB, no card box or hover shadow) */
+  .auto-why-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 32px 36px;
+  }
+  .auto-why-card {
+    background: transparent;
+    padding: 8px 4px;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    min-width: 0;
+  }
+  .auto-why-card__icon-wrap {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .auto-why-card__icon {
+    display: block;
+    width: 36px;
+    height: 36px;
+  }
+  .auto-why-card__body {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 0;
+  }
+  .auto-why-card__title {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+    color: #19191A;
+  }
+  .auto-why-card__desc {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 22px;
+    color: #4B4B4D;
+  }
+
+  /* Section 6: Solutions Accordion (white cards on #FFFFFF -> MUST have border) */
+  .auto-sol-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .auto-sol-item {
+    background: #FFFFFF;
+    border: 1px solid #E5E5E5;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .auto-sol-trigger {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 20px 24px;
+    background: #FFFFFF;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    font-family: inherit;
+  }
+  .auto-sol-trigger:hover {
+    background: #FAFBFB;
+  }
+  .auto-sol-trigger__title {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 26px;
+    color: #19191A;
+  }
+  .auto-sol-trigger__indicator {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    background: #FAFBFB;
+    border: 1px solid #E5E5E5;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1;
+    color: #19191A;
+  }
+  .auto-sol-item.is-open .auto-sol-trigger {
+    border-bottom: 1px solid #E5E5E5;
+  }
+  .auto-sol-panel {
+    padding: 24px;
+  }
+  .auto-sol-panel__grid {
+    display: grid;
+    grid-template-columns: 1.25fr 0.75fr;
+    gap: 32px;
+    align-items: start;
+  }
+  .auto-sol-panel__copy {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .auto-sol-subhead {
+    margin: 0 0 6px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+    color: #19191A;
+  }
+  .auto-sol-text {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 22px;
+    color: #4B4B4D;
+  }
+  .auto-sol-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+  .auto-sol-pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 12px;
+    border-radius: 4px;
+    background: #FAFBFB;
+    border: 1px solid #E5E5E5;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 18px;
+    color: #19191A;
+  }
+  .auto-sol-note {
+    margin: 0;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #6B6B6E;
+  }
+  .auto-sol-cta {
+    padding-top: 4px;
+  }
+  .auto-sol-panel__media {
+    border-radius: 8px;
+    overflow: hidden;
+    background: #FAFBFB;
+  }
+  .auto-sol-img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 360px;
+    object-fit: cover;
+  }
+
+  /* Section 7: Customer Testimonial (white card on #FAFBFB -> NO border) */
+  .auto-testimonial-card {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 32px;
+    align-items: center;
+    background: #FFFFFF;
+    border-radius: 8px;
+    padding: 32px;
+  }
+  .auto-testimonial-card__body {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .auto-testimonial-quote {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 26px;
+    color: #19191A;
+  }
+  .auto-testimonial-author {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 22px;
+    color: #4B4B4D;
+  }
+  .auto-testimonial-cta {
+    padding-top: 4px;
+  }
+  .auto-testimonial-card__media {
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .auto-testimonial-img {
+    display: block;
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+  }
+
+  /* Section 8: AI Tools (white cards on #FFFFFF -> MUST have border) */
+  .auto-tool-featured {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: #FFFFFF;
+    border: 1px solid #E5E5E5;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 20px;
+  }
+  .auto-tool-featured__body {
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 14px;
+  }
+  .auto-tool-featured__title {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 28px;
+    color: #19191A;
+  }
+  .auto-tool-featured__desc {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 22px;
+    color: #4B4B4D;
+  }
+  .auto-tool-featured__media {
+    background: #FAFBFB;
+  }
+  .auto-tool-featured__img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 240px;
+    max-height: 300px;
+    object-fit: cover;
+  }
+
+  .auto-tool-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+  }
+  .auto-tool-card {
+    background: #FFFFFF;
+    border: 1px solid #E5E5E5;
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .auto-tool-card__media {
+    aspect-ratio: 16 / 10;
+    background: #FAFBFB;
+    border-bottom: 1px solid #E5E5E5;
+    overflow: hidden;
+  }
+  .auto-tool-card__img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .auto-tool-card__body {
+    padding: 20px 24px 24px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 10px;
+  }
+  .auto-tool-card__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .auto-tool-card__title {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+    color: #19191A;
+  }
+  .auto-tool-card__desc {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 22px;
+    color: #4B4B4D;
+  }
+  .auto-tool-card__footer {
+    margin-top: auto;
+    padding-top: 8px;
+  }
+
+  /* Section 9: Bottom Dark CTA Band (solid scrim, zero gradient) */
+  .auto-cta-band {
+    background-color: #19191A;
+    background-image: url("assets/alibabacloud-automotive/img-08-977e82eb.webp");
+    background-size: cover;
+    background-position: center;
+  }
+  .auto-cta-band__scrim {
+    background: rgba(0, 0, 0, 0.72);
+    padding: 56px 0;
+  }
+  .auto-cta-band__inner {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+  .auto-cta-band__title {
+    margin: 0;
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 36px;
+    color: #FFFFFF;
+  }
+  .auto-cta-band__desc {
+    margin: 0;
+    max-width: 720px;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 24px;
+    color: #E5E5E5;
+  }
+  .auto-cta-band__action {
+    margin-top: 12px;
+  }
+
+  /* Section 10: Contact Us Form (white card on #FAFBFB -> NO border, full-width form) */
+  .inquiry-form-card {
+    box-sizing: border-box;
+    background: #FFFFFF;
+    border-radius: 8px;
+    padding: 32px;
+    width: 100%;
+  }
+  #contact-us .inquiry-form-card > form {
+    width: 100%;
+    max-width: none;
+  }
+
+  @media (max-width: 1180px) {
+    .auto-news-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .auto-why-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+</style>
+<link rel="stylesheet" data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" href="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/tokens.css">
+<link rel="stylesheet" data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" href="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/components.css">
+<link rel="stylesheet" data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" href="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/navigation-current.css">
+<link rel="stylesheet" data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" href="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/banner-responsive.css">
+<link rel="stylesheet" data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" href="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/form-current.css">
+<link rel="stylesheet" data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" href="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/navigation-header-web-atom.css">
+<link rel="stylesheet" data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" href="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/banner-current.css">
+<link rel="stylesheet" data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" href="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/button-current.css">
+<link rel="stylesheet" data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" href="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/button-runtime-current.css">
+<link rel="stylesheet" data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" href="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/input-footer-source.css">
+<link rel="stylesheet" data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" href="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/breadcrumb-current.css">
+<link rel="stylesheet" data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" href="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/cart-current.css">
+<link rel="stylesheet" data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" href="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/input-current.css">
+<link rel="stylesheet" data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" href="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/navigation-footer-current.css">
+<link rel="stylesheet" data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" href="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/text-button-current.css">
+<link rel="stylesheet" data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" href="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/checkbox-current.css">
+<link rel="stylesheet" data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" href="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/navigation-header-action-atom.css">
+<link rel="stylesheet" data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" href="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/carousel-current.css">
+<link rel="stylesheet" data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" href="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/select-current.css">
+<link rel="stylesheet" data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" href="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/menu-navigation-current.css">
+<link rel="stylesheet" data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" href="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/form-dialog-content.css">
+<link rel="stylesheet" data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" href="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/navigation-products-current.css">
+<link rel="stylesheet" data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" href="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/local-fonts.css">
+</head>
+<body>
+  <header class="ds-nav-header" data-fragment="header" data-ai-example="ai-navigation-fixed-header" data-header-products-current="pc" data-library-component="library-navigation" data-library-fragment="header" data-library-release="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" data-library-props="{}">
+    <div class="ds-nav-header__topbar">
+      <div class="ds-nav-header__topbar-inner">
+        <div class="ds-nav-header__topbar-left">
+          <span class="ds-nav-header__topbar-text">FS United States</span>
+          <span class="ds-nav-header__topbar-divider"></span>
+          <span class="ds-nav-header__topbar-text">FREE SHIPPING on Orders Over US$79</span>
+        </div>
+        <div class="ds-nav-header__topbar-right">
+          <a href="#" class="ds-nav-header__topbar-link">Contact Us</a>
+          <span class="ds-nav-header__topbar-divider"></span>
+          <a href="#" class="ds-nav-header__topbar-link">
+            United States / $ USD
+            <svg class="ds-nav-header__dropdown-icon" width="12" height="12" viewBox="0 0 12 12" fill="none">
+              <path d="M3 4.5L6 7.5L9 4.5" stroke="#707070" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <nav class="ds-nav-header__main">
+      <div class="ds-nav-header__main-inner">
+        <a id="library-instance-1-icon-usage-icon-logo-fs" href="#" class="ds-nav-header__logo" aria-label="FS.com Home" style="scroll-margin-top: 40px;">
+          <img src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/icon-logo-fs.svg" alt="FS Logo" width="76" height="36">
+        </a>
+        <ul class="ds-nav-header__links">
+          <li class="ds-nav-header__link-item"><a href="#" class="ds-nav-header__link" data-header-products-trigger="" role="button" aria-haspopup="true" aria-expanded="false" aria-controls="library-instance-1-header-product-menu-panel">All Products</a></li>
+          <li class="ds-nav-header__link-item"><a href="#" class="ds-nav-header__link">Software</a></li>
+          <li class="ds-nav-header__link-item"><a href="#" class="ds-nav-header__link">Solutions</a></li>
+          <li class="ds-nav-header__link-item"><a href="#" class="ds-nav-header__link">Services</a></li>
+          <li class="ds-nav-header__link-item"><a href="#" class="ds-nav-header__link">Resources</a></li>
+          <li class="ds-nav-header__link-item"><a href="#" class="ds-nav-header__link">Contact Us</a></li>
+        </ul>
+        <div class="ds-nav-header__actions">
+          <button id="library-instance-1-icon-usage-icon-search" class="ds-nav-header__action-btn" type="button" aria-label="Search" style="scroll-margin-top: 40px;">
+            <img src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/navigation-header-search-1013.png" alt="" width="24" height="24">
+          </button>
+          <button id="library-instance-1-icon-usage-icon-cart" class="ds-nav-header__action-btn" type="button" aria-label="Cart" style="scroll-margin-top: 40px;">
+            <img src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/icon-cart.svg" alt="" width="24" height="24">
+          </button>
+          <button id="library-instance-1-icon-usage-icon-account" class="ds-nav-header__action-btn" type="button" aria-label="Account" style="scroll-margin-top: 40px;">
+            <img src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/icon-account.svg" alt="" width="24" height="24">
+          </button>
+        </div>
+      </div>
+    </nav>
+  <div class="ds-nav-header__product-menu" id="library-instance-1-header-product-menu-panel" hidden=""><nav class="ds-menu-navigation ds-menu-navigation--public-header" data-menu-navigation="" aria-label="Public header product menu">
+        <ul class="ds-menu-navigation__list">
+          <li><button class="ds-menu-navigation__item ds-menu-navigation__item--selected" type="button" data-value="switches" aria-pressed="true"><img class="ds-menu-navigation__product-icon" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/icon-menu-switches.svg" alt=""><span class="ds-menu-navigation__item-label">Switches</span></button></li>
+          <li><button class="ds-menu-navigation__item" type="button" data-value="networking"><img class="ds-menu-navigation__product-icon" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/icon-menu-networking.svg" alt=""><span class="ds-menu-navigation__item-label">Networking</span></button></li>
+          <li><button class="ds-menu-navigation__item" type="button" data-value="optical-transceivers"><img class="ds-menu-navigation__product-icon" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/icon-menu-optical-transceivers.svg" alt=""><span class="ds-menu-navigation__item-label">Optical Transceivers</span></button></li>
+          <li><button class="ds-menu-navigation__item" type="button" data-value="fiber-optic-cables"><img class="ds-menu-navigation__product-icon" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/icon-menu-fiber-optic-cables.svg" alt=""><span class="ds-menu-navigation__item-label">Fiber Optic Cables</span></button></li>
+          <li><button class="ds-menu-navigation__item" type="button" data-value="panels-enclosures-racks"><img class="ds-menu-navigation__product-icon" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/icon-menu-panels-enclosures-racks.svg" alt=""><span class="ds-menu-navigation__item-label">Panels, Enclosures &amp; Racks</span></button></li>
+          <li><button class="ds-menu-navigation__item" type="button" data-value="optical-networking"><img class="ds-menu-navigation__product-icon" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/icon-menu-optical-networking.svg" alt=""><span class="ds-menu-navigation__item-label">Optical Networking</span></button></li>
+          <li><button class="ds-menu-navigation__item" type="button" data-value="copper-systems"><img class="ds-menu-navigation__product-icon" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/icon-menu-copper-systems.svg" alt=""><span class="ds-menu-navigation__item-label">Copper Systems</span></button></li>
+          <li><button class="ds-menu-navigation__item" type="button" data-value="testers-tools"><img class="ds-menu-navigation__product-icon" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/icon-menu-testers-tools.svg" alt=""><span class="ds-menu-navigation__item-label">Testers &amp; Tools</span></button></li>
+        </ul>
+      </nav></div></header>
+
+  <main>
+    
+  <section id="hero" class="auto-hero-section">
+    <div class="auto-hero-content">
+      <div class="ds-banner ds-banner--hero ds-banner--hero-responsive" data-preview-skeleton="hero-responsive" data-banner-current="" data-ai-example="ai-banner-hero-current" data-fragment="hero-responsive" data-library-component="library-banner" data-library-fragment="hero-responsive" data-library-release="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" data-banner-surface="image" data-library-props="{&quot;title&quot;:&quot;Alibaba Cloud for Automotive&quot;,&quot;description&quot;:&quot;Turn automotive complexity into competitive advantage with AI&quot;,&quot;actionLabel&quot;:&quot;Talk to an Automotive Specialist&quot;,&quot;actionCallback&quot;:&quot;scrollToContact&quot;,&quot;secondaryActionLabel&quot;:&quot;AI Tools for Automotive&quot;,&quot;secondaryActionHref&quot;:&quot;https://www.alibabacloud.com/campaign/ai-data-construction&quot;,&quot;surface&quot;:&quot;image&quot;}"><div class="ds-banner__responsive-inner"><p class="ds-banner__title">Alibaba Cloud for Automotive</p><p class="ds-banner__desc">Turn automotive complexity into competitive advantage with AI</p><div class="ds-banner__actions"><button type="button" class="ds-btn ds-btn--outline-white ds-btn--xl" data-library-event-actioncallback="scrollToContact"><span class="ds-btn__text">Talk to an Automotive Specialist</span></button><a class="ds-btn ds-btn--outline-white ds-btn--xl" data-banner-secondary-action="" href="https://www.alibabacloud.com/campaign/ai-data-construction"><span class="ds-btn__text">AI Tools for Automotive</span></a></div></div></div>
+    </div>
+  </section>
+    
+  <nav id="anchor-nav" class="auto-anchor-sticky" aria-label="Section navigation">
+    <div class="ds-anchor-nav" data-anchor-group="" data-anchor-current="" data-fragment="anchor-nav" data-ai-example="ai-anchor-nav" data-library-component="library-anchor-nav" data-library-fragment="anchor-nav" data-library-release="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" data-library-props="{&quot;tabs&quot;:&quot;<div class=\&quot;ds-anchor-nav__tab ds-anchor-nav__tab--active\&quot; data-anchor-tab=\&quot;\&quot;>What&amp;#39;s New</div><div class=\&quot;ds-anchor-nav__tab\&quot; data-anchor-tab=\&quot;\&quot;>Overview</div><div class=\&quot;ds-anchor-nav__tab\&quot; data-anchor-tab=\&quot;\&quot;>Why Alibaba Cloud</div><div class=\&quot;ds-anchor-nav__tab\&quot; data-anchor-tab=\&quot;\&quot;>Solutions</div><div class=\&quot;ds-anchor-nav__tab\&quot; data-anchor-tab=\&quot;\&quot;>Customers</div><div class=\&quot;ds-anchor-nav__tab\&quot; data-anchor-tab=\&quot;\&quot;>AI Tools</div>&quot;,&quot;actionLabel&quot;:&quot;Contact Us&quot;,&quot;actionCallback&quot;:&quot;scrollToContact&quot;}">
+      <div class="ds-anchor-nav__inner">
+        <div class="ds-anchor-nav__tabs"><div class="ds-anchor-nav__tab ds-anchor-nav__tab--active" data-anchor-tab="">What's New</div><div class="ds-anchor-nav__tab" data-anchor-tab="">Overview</div><div class="ds-anchor-nav__tab" data-anchor-tab="">Why Alibaba Cloud</div><div class="ds-anchor-nav__tab" data-anchor-tab="">Solutions</div><div class="ds-anchor-nav__tab" data-anchor-tab="">Customers</div><div class="ds-anchor-nav__tab" data-anchor-tab="">AI Tools</div></div>
+        <div class="ds-anchor-nav__action">
+          <button class="ds-btn ds-btn--filled-red ds-btn--xl-regular" type="button" data-library-event-actioncallback="scrollToContact"><span class="ds-btn__text">Contact Us</span></button>
+        </div>
+      </div>
+    </div>
+  </nav>
+    
+  <section id="whats-new" class="auto-section auto-section--gray">
+    <div class="auto-container">
+      <div class="auto-section-header">
+        <h2 class="auto-section-title">What's New</h2>
+      </div>
+
+      <article class="auto-featured-news" data-fs-extend="featured-news-split-card">
+        <div class="auto-featured-news__body">
+          <span class="auto-tag">Automotive Industry News</span>
+          <h3 class="auto-featured-news__title">
+            <a class="auto-card-title-link" href="https://www.alibabacloud.com/blog/leading-chinese-automakers-announce-integration-with-qwen-at-2026-beijing-auto-show_603065" target="_blank" rel="noopener noreferrer">Leading Chinese Automakers Announce Integration with Qwen at 2026 Beijing Auto Show</a>
+          </h3>
+          <p class="auto-featured-news__desc">On the opening day of the 2026 Beijing Auto Show, leading Chinese automakers announced the integration of Qwen into their intelligent vehicle systems. In the near future, select models from these manufacturers will offer Qwen-powered AI services directly within the cabin, enabling users to book hotels, purchase attraction tickets, order food delivery, track parcels, and more.</p>
+          <div class="auto-featured-news__cta"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--blue-link ds-text-btn--m" href="https://www.alibabacloud.com/blog/leading-chinese-automakers-announce-integration-with-qwen-at-2026-beijing-auto-show_603065" data-ai-example="ai-text-button-inline-blue-link-m" data-fragment="inline-blue-link" data-library-component="library-text-button" data-library-fragment="inline-blue-link" data-library-release="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" data-library-props="{&quot;label&quot;:&quot;Read More&quot;,&quot;href&quot;:&quot;https://www.alibabacloud.com/blog/leading-chinese-automakers-announce-integration-with-qwen-at-2026-beijing-auto-show_603065&quot;}">
+          <span class="ds-text-btn__text">Read More</span>
+          <img class="ds-text-btn__icon" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/icon-text-button-arrow-right-blue-s.svg" alt="">
+        </a></div>
+        </div>
+        <div class="auto-featured-news__media">
+          <img class="auto-featured-news__img" src="assets/alibabacloud-automotive/img-02-4543cc0d.webp" alt="Leading Chinese automakers Qwen booth at 2026 Beijing Auto Show">
+        </div>
+      </article>
+
+      <div class="auto-news-grid">
+      <article class="auto-news-card" data-fs-extend="news-grid-card">
+        <div class="auto-news-card__top">
+          <span class="auto-tag">Automotive Industry News</span>
+          <h3 class="auto-news-card__title">
+            <a class="auto-card-title-link" href="https://www.alibabacloud.com/blog/leading-chinese-automakers-announce-integration-with-qwen-at-2026-beijing-auto-show_603065" target="_blank" rel="noopener noreferrer">BMW Intelligent Cockpit Based on Qwen</a>
+          </h3>
+          <p class="auto-news-card__desc">BMW introduced three AI agents powered by the Qwen models, addressing every facet of the driving journey.</p>
+        </div>
+        <div class="auto-news-card__footer"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--blue-link ds-text-btn--m" href="https://www.alibabacloud.com/blog/leading-chinese-automakers-announce-integration-with-qwen-at-2026-beijing-auto-show_603065" data-ai-example="ai-text-button-inline-blue-link-m" data-fragment="inline-blue-link" data-library-component="library-text-button" data-library-fragment="inline-blue-link" data-library-release="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" data-library-props="{&quot;label&quot;:&quot;Learn More&quot;,&quot;href&quot;:&quot;https://www.alibabacloud.com/blog/leading-chinese-automakers-announce-integration-with-qwen-at-2026-beijing-auto-show_603065&quot;}">
+          <span class="ds-text-btn__text">Learn More</span>
+          <img class="ds-text-btn__icon" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/icon-text-button-arrow-right-blue-s.svg" alt="">
+        </a></div>
+      </article>
+      <article class="auto-news-card" data-fs-extend="news-grid-card">
+        <div class="auto-news-card__top">
+          <span class="auto-tag">Automotive Industry News</span>
+          <h3 class="auto-news-card__title">
+            <a class="auto-card-title-link" href="https://www.alibabacloud.com/blog/alibaba-cloud-enables-ryt-bank%E2%80%99s-smart-digital-banking-and-pro-net%E2%80%99s-national-ev-platform-through-strategic-collaborations_602716" target="_blank" rel="noopener noreferrer">Accelerating EV innovation in Malaysia</a>
+          </h3>
+          <p class="auto-news-card__desc">Alibaba Cloud partners with PRO-NET to advance Malaysia’s cloud-first, AI-powered new energy mobility ecosystem.</p>
+        </div>
+        <div class="auto-news-card__footer"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--blue-link ds-text-btn--m" href="https://www.alibabacloud.com/blog/alibaba-cloud-enables-ryt-bank%E2%80%99s-smart-digital-banking-and-pro-net%E2%80%99s-national-ev-platform-through-strategic-collaborations_602716" data-ai-example="ai-text-button-inline-blue-link-m" data-fragment="inline-blue-link" data-library-component="library-text-button" data-library-fragment="inline-blue-link" data-library-release="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" data-library-props="{&quot;label&quot;:&quot;Learn More&quot;,&quot;href&quot;:&quot;https://www.alibabacloud.com/blog/alibaba-cloud-enables-ryt-bank%E2%80%99s-smart-digital-banking-and-pro-net%E2%80%99s-national-ev-platform-through-strategic-collaborations_602716&quot;}">
+          <span class="ds-text-btn__text">Learn More</span>
+          <img class="ds-text-btn__icon" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/icon-text-button-arrow-right-blue-s.svg" alt="">
+        </a></div>
+      </article>
+      <article class="auto-news-card" data-fs-extend="news-grid-card">
+        <div class="auto-news-card__top">
+          <span class="auto-tag">Campaign</span>
+          <h3 class="auto-news-card__title">
+            <a class="auto-card-title-link" href="https://www.alibabacloud.com/campaign/ai-tools-for-e-commerse-and-advertising#plans" target="_blank" rel="noopener noreferrer">AI Savings Plans</a>
+          </h3>
+          <p class="auto-news-card__desc">Save Up to 47%: Unlock Savings Across Every Modality (Video, Text, Image, and Speech)</p>
+        </div>
+        <div class="auto-news-card__footer"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--blue-link ds-text-btn--m" href="https://www.alibabacloud.com/campaign/ai-tools-for-e-commerse-and-advertising#plans" data-ai-example="ai-text-button-inline-blue-link-m" data-fragment="inline-blue-link" data-library-component="library-text-button" data-library-fragment="inline-blue-link" data-library-release="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" data-library-props="{&quot;label&quot;:&quot;Learn More&quot;,&quot;href&quot;:&quot;https://www.alibabacloud.com/campaign/ai-tools-for-e-commerse-and-advertising#plans&quot;}">
+          <span class="ds-text-btn__text">Learn More</span>
+          <img class="ds-text-btn__icon" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/icon-text-button-arrow-right-blue-s.svg" alt="">
+        </a></div>
+      </article>
+      <article class="auto-news-card" data-fs-extend="news-grid-card">
+        <div class="auto-news-card__top">
+          <span class="auto-tag">Analyst Report</span>
+          <h3 class="auto-news-card__title">
+            <a class="auto-card-title-link" href="https://www.alibabacloud.com/en/solutions/automotive" target="_blank" rel="noopener noreferrer">Leader of Agentic AI Cloud Providers</a>
+          </h3>
+          <p class="auto-news-card__desc">Alibaba Cloud named as a Leader in the “Omdia Market Radar: Agentic AI Cloud Titans in Asia &amp; Oceania, 2026”.</p>
+        </div>
+        <div class="auto-news-card__footer"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--blue-link ds-text-btn--m" href="https://www.alibabacloud.com/en/solutions/automotive" data-ai-example="ai-text-button-inline-blue-link-m" data-fragment="inline-blue-link" data-library-component="library-text-button" data-library-fragment="inline-blue-link" data-library-release="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" data-library-props="{&quot;label&quot;:&quot;Learn More&quot;,&quot;href&quot;:&quot;https://www.alibabacloud.com/en/solutions/automotive&quot;}">
+          <span class="ds-text-btn__text">Learn More</span>
+          <img class="ds-text-btn__icon" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/icon-text-button-arrow-right-blue-s.svg" alt="">
+        </a></div>
+      </article></div>
+    </div>
+  </section>
+    
+  <section id="overview" class="auto-section auto-section--white">
+    <div class="auto-container">
+      <div class="auto-overview-grid" data-fs-extend="overview-split-layout">
+        <div class="auto-overview-copy">
+          <h2 class="auto-overview-title">The AI-Driven Automotive Shift</h2>
+          <p class="auto-overview-p">The automotive industry today faces pressure from explosive autonomous vehicle data, supply chains under strain, and rising consumer expectations for intelligent in-vehicle experiences.</p>
+          <p class="auto-overview-p">Alibaba Cloud's comprehensive automotive AI platform empowers manufacturers to transform these challenges into competitive advantages, delivering petabyte-scale data processing for accelerated autonomy development, predictive supply chain intelligence for operational resilience, and next-generation cockpit experiences powered by multimodal AI. Built on enterprise-grade infrastructure, our solution enables automakers to innovate faster, reduce costs, and lead in the software-defined vehicle era.</p>
+        </div>
+        <div class="auto-overview-media">
+          <img class="auto-overview-img" src="assets/alibabacloud-automotive/img-03-cb0fe955.webp" alt="Isometric illustration of AI-driven automotive platform shift">
+        </div>
+      </div>
+    </div>
+  </section>
+    
+  <section id="why-alibaba-cloud" class="auto-section auto-section--gray">
+    <div class="auto-container">
+      <div class="auto-section-header">
+        <h2 class="auto-section-title">Why Alibaba Cloud</h2>
+      </div>
+      <div class="auto-why-grid">
+      <article class="auto-why-card" data-fs-extend="why-pillar-static-card">
+        <div class="auto-why-card__icon-wrap">
+          <img class="auto-why-card__icon" src="assets/alibabacloud-automotive/icon-why-ai.svg" alt="AI Built for Automotive" width="36" height="36">
+        </div>
+        <div class="auto-why-card__body">
+          <h3 class="auto-why-card__title">AI Built for Automotive</h3>
+          <p class="auto-why-card__desc">Leverage Qwen models and automotive-optimized AI pipelines that accelerate perception model development, automate data labeling, and deliver ultra-low latency cockpit inference.</p>
+        </div>
+      </article>
+      <article class="auto-why-card" data-fs-extend="why-pillar-static-card">
+        <div class="auto-why-card__icon-wrap">
+          <img class="auto-why-card__icon" src="assets/alibabacloud-automotive/icon-why-ecosystem.svg" alt="Ecosystem Intelligence" width="36" height="36">
+        </div>
+        <div class="auto-why-card__body">
+          <h3 class="auto-why-card__title">Ecosystem Intelligence</h3>
+          <p class="auto-why-card__desc">Enrich your solutions with data and capabilities from Alibaba&#39;s logistics, navigation, and marketplace ecosystem, combined with proven deployment experience and partner integrations that generic cloud providers cannot replicate.</p>
+        </div>
+      </article>
+      <article class="auto-why-card" data-fs-extend="why-pillar-static-card">
+        <div class="auto-why-card__icon-wrap">
+          <img class="auto-why-card__icon" src="assets/alibabacloud-automotive/icon-why-ops.svg" alt="Operational Excellence" width="36" height="36">
+        </div>
+        <div class="auto-why-card__body">
+          <h3 class="auto-why-card__title">Operational Excellence</h3>
+          <p class="auto-why-card__desc">Unify your tooling on a single platform that dramatically reduces tool sprawl, deploys production-ready automotive AI templates in under an hour, and automates MLOps to compress model deployment from weeks to hours.</p>
+        </div>
+      </article>
+      <article class="auto-why-card" data-fs-extend="why-pillar-static-card">
+        <div class="auto-why-card__icon-wrap">
+          <img class="auto-why-card__icon" src="assets/alibabacloud-automotive/icon-why-security.svg" alt="Industry-Certified Security" width="36" height="36">
+        </div>
+        <div class="auto-why-card__body">
+          <h3 class="auto-why-card__title">Industry-Certified Security</h3>
+          <p class="auto-why-card__desc">Operate on ISO 26262 ASIL-D compliant infrastructure with end-to-end V2X encryption, full regulatory compliance, and a dedicated automotive security operations center that meets the industry&#39;s strictest standards.</p>
+        </div>
+      </article>
+      <article class="auto-why-card" data-fs-extend="why-pillar-static-card">
+        <div class="auto-why-card__icon-wrap">
+          <img class="auto-why-card__icon" src="assets/alibabacloud-automotive/icon-why-reliability.svg" alt="Proven Reliability and Performance" width="36" height="36">
+        </div>
+        <div class="auto-why-card__body">
+          <h3 class="auto-why-card__title">Proven Reliability and Performance</h3>
+          <p class="auto-why-card__desc">Rely on high-availability infrastructure with multi-zone redundancy, massive AI compute clusters, high-speed networking, and proven resilience at peak scale, so your critical services remain stable under heavy workloads.</p>
+        </div>
+      </article>
+      <article class="auto-why-card" data-fs-extend="why-pillar-static-card">
+        <div class="auto-why-card__icon-wrap">
+          <img class="auto-why-card__icon" src="assets/alibabacloud-automotive/icon-why-cost.svg" alt="Cost Optimization" width="36" height="36">
+        </div>
+        <div class="auto-why-card__body">
+          <h3 class="auto-why-card__title">Cost Optimization</h3>
+          <p class="auto-why-card__desc">Eliminate upfront capital expenditure with pay-as-you-go HPC, reduce simulation costs through intelligent spot instance scheduling, and optimize storage spending with automatic hot and cold data tiering.</p>
+        </div>
+      </article></div>
+    </div>
+  </section>
+    
+  <section id="solutions" class="auto-section auto-section--white">
+    <div class="auto-container">
+      <div class="auto-section-header">
+        <h2 class="auto-section-title">Alibaba Cloud Turns Automotive Complexity into AI-Powered Advantage</h2>
+      </div>
+      <div class="auto-sol-list">
+      <article class="auto-sol-item is-open" data-sol-item="" data-fs-extend="solution-accordion-card">
+        <button class="auto-sol-trigger" type="button" aria-expanded="true" aria-controls="sol-ad-panel">
+          <span class="auto-sol-trigger__title">Accelerate Autonomous Driving Innovation</span>
+          <span class="auto-sol-trigger__indicator" aria-hidden="true"><img src="assets/alibabacloud-automotive/icon-minus.svg" alt="" width="16" height="16"></span>
+        </button>
+        <div class="auto-sol-panel" id="sol-ad-panel">
+          <div class="auto-sol-panel__grid">
+            <div class="auto-sol-panel__copy">
+              <div class="auto-sol-block">
+                <h3 class="auto-sol-subhead">The Challenge</h3>
+                <p class="auto-sol-text">Autonomous driving development is slowing under the weight of explosive sensor data growth and manual workflows that stretch development timelines. How do you deliver the experience your customers expect when your infrastructure cannot scale and every cycle costs you weeks?</p>
+              </div>
+              <div class="auto-sol-block">
+                <h3 class="auto-sol-subhead">Our Solution</h3>
+                <p class="auto-sol-text">Object Storage Service (OSS) and Data Lake Analytics ingest and preprocess petabyte-scale sensor data without infrastructure bottlenecks. AI-powered auto-labeling then transforms that data into training-ready assets, compressing annotation cycles while improving accuracy. Elastic high-performance computing clusters run millions of simulation scenarios in parallel, validating models in hours instead of weeks. Pre-trained perception models eliminate months of foundational development, so your team iterates faster and reaches autonomy milestones ahead of schedule.</p>
+              </div>
+              <div class="auto-sol-block">
+                <h3 class="auto-sol-subhead">Core Products</h3>
+                <div class="auto-sol-pills"><span class="auto-sol-pill">OSS + Data Lake Analytics</span><span class="auto-sol-pill">PAI (Platform for AI)</span><span class="auto-sol-pill">E-HPC</span><span class="auto-sol-pill">Alibaba Cloud Model Studio</span></div>
+                <p class="auto-sol-note">Ingests and processes massive sensor datasets with the scalability autonomous programs demand.</p>
+              </div>
+              <div class="auto-sol-cta"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--blue-link ds-text-btn--m" href="https://www.alibabacloud.com/solutions/data-lake" data-ai-example="ai-text-button-inline-blue-link-m" data-fragment="inline-blue-link" data-library-component="library-text-button" data-library-fragment="inline-blue-link" data-library-release="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" data-library-props="{&quot;label&quot;:&quot;Learn More&quot;,&quot;href&quot;:&quot;https://www.alibabacloud.com/solutions/data-lake&quot;}">
+          <span class="ds-text-btn__text">Learn More</span>
+          <img class="ds-text-btn__icon" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/icon-text-button-arrow-right-blue-s.svg" alt="">
+        </a></div>
+            </div>
+            <div class="auto-sol-panel__media">
+              <img class="auto-sol-img" src="assets/alibabacloud-automotive/img-08-977e82eb.webp" alt="Autonomous driving sensor perception and simulation scene">
+            </div>
+          </div>
+        </div>
+      </article>
+      <article class="auto-sol-item" data-sol-item="" data-fs-extend="solution-accordion-card">
+        <button class="auto-sol-trigger" type="button" aria-expanded="false" aria-controls="sol-cockpit-panel">
+          <span class="auto-sol-trigger__title">Deliver Smarter, More Connected Customer Journey</span>
+          <span class="auto-sol-trigger__indicator" aria-hidden="true"><img src="assets/alibabacloud-automotive/icon-plus.svg" alt="" width="16" height="16"></span>
+        </button>
+        <div class="auto-sol-panel" id="sol-cockpit-panel" hidden>
+          <div class="auto-sol-panel__grid">
+            <div class="auto-sol-panel__copy">
+              <div class="auto-sol-block">
+                <h3 class="auto-sol-subhead">The Challenge</h3>
+                <p class="auto-sol-text">Drivers expect intuitive and personalized experiences, which means a one-size-fits-all voice assistant and slow software updates will push your customers away. How do you turn the cockpit that your customers interact with every day into a competitive advantage?</p>
+              </div>
+              <div class="auto-sol-block">
+                <h3 class="auto-sol-subhead">Our Solution</h3>
+                <p class="auto-sol-text">Our intelligent cockpit platform redefines the in-vehicle experience with a multimodal AI assistant that understands voice, vision, and gesture with high accuracy across dozens of languages. Advanced driver monitoring enhances safety through gaze tracking and fatigue detection, while intelligent personalization provides information on routes, climate, and entertainment tailored to each driver. OTA delta upgrades minimize downtime and ensure seamless, reliable software evolution.</p>
+              </div>
+              <div class="auto-sol-block">
+                <h3 class="auto-sol-subhead">Core Product</h3>
+                <div class="auto-sol-pills"><span class="auto-sol-pill">Qwen</span></div>
+                <p class="auto-sol-note">Powers natural voice and visual interactions that make every drive feel intuitive and responsive.</p>
+              </div>
+              <div class="auto-sol-cta"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--blue-link ds-text-btn--m" href="https://modelstudio.console.alibabacloud.com/ap-southeast-1" data-ai-example="ai-text-button-inline-blue-link-m" data-fragment="inline-blue-link" data-library-component="library-text-button" data-library-fragment="inline-blue-link" data-library-release="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" data-library-props="{&quot;label&quot;:&quot;Learn More&quot;,&quot;href&quot;:&quot;https://modelstudio.console.alibabacloud.com/ap-southeast-1&quot;}">
+          <span class="ds-text-btn__text">Learn More</span>
+          <img class="ds-text-btn__icon" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/icon-text-button-arrow-right-blue-s.svg" alt="">
+        </a></div>
+            </div>
+            <div class="auto-sol-panel__media">
+              <img class="auto-sol-img" src="assets/alibabacloud-automotive/img-10-e371d2be.webp" alt="Intelligent connected vehicle cockpit multimodal assistant">
+            </div>
+          </div>
+        </div>
+      </article>
+      <article class="auto-sol-item" data-sol-item="" data-fs-extend="solution-accordion-card">
+        <button class="auto-sol-trigger" type="button" aria-expanded="false" aria-controls="sol-supply-panel">
+          <span class="auto-sol-trigger__title">Build Resilient, Data-Driven Supply Chains</span>
+          <span class="auto-sol-trigger__indicator" aria-hidden="true"><img src="assets/alibabacloud-automotive/icon-plus.svg" alt="" width="16" height="16"></span>
+        </button>
+        <div class="auto-sol-panel" id="sol-supply-panel" hidden>
+          <div class="auto-sol-panel__grid">
+            <div class="auto-sol-panel__copy">
+              <div class="auto-sol-block">
+                <h3 class="auto-sol-subhead">The Challenge</h3>
+                <p class="auto-sol-text">Global automotive supply chains remain vulnerable to hidden disruptions beyond Tier-1 suppliers, while traditional forecasting methods struggle to anticipate rapid market shifts. How do you protect margins and maintain production continuity when visibility and predictive accuracy fall short?</p>
+              </div>
+              <div class="auto-sol-block">
+                <h3 class="auto-sol-subhead">Our Solution</h3>
+                <p class="auto-sol-text">Our supply chain solution delivers end-to-end visibility with a real-time control tower that monitors multi-tier suppliers, flags risks before they disrupt operations, and surfaces optimization strategies when anomalies appear. It predicts demand with high accuracy by integrating sales trends and external signals. You can also use our Digital Twin to simulate the supply chain, enabling inventory optimization and confident scenario planning.</p>
+              </div>
+              <div class="auto-sol-block">
+                <h3 class="auto-sol-subhead">Core Products</h3>
+                <div class="auto-sol-pills"><span class="auto-sol-pill">Supply Chain Control Tower</span><span class="auto-sol-pill">AI Demand Forecasting Engine</span><span class="auto-sol-pill">Digital Twin Platform</span></div>
+                <p class="auto-sol-note">Provides unified, real-time visibility across your entire supplier network so you can act before disruptions impact production.</p>
+              </div>
+              <div class="auto-sol-cta"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--blue-link ds-text-btn--m" href="https://www.alibabacloud.com/en/solutions/supply-chain/dchain#J_8529741030" data-ai-example="ai-text-button-inline-blue-link-m" data-fragment="inline-blue-link" data-library-component="library-text-button" data-library-fragment="inline-blue-link" data-library-release="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" data-library-props="{&quot;label&quot;:&quot;Learn More&quot;,&quot;href&quot;:&quot;https://www.alibabacloud.com/en/solutions/supply-chain/dchain#J_8529741030&quot;}">
+          <span class="ds-text-btn__text">Learn More</span>
+          <img class="ds-text-btn__icon" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/icon-text-button-arrow-right-blue-s.svg" alt="">
+        </a></div>
+            </div>
+            <div class="auto-sol-panel__media">
+              <img class="auto-sol-img" src="assets/alibabacloud-automotive/img-14-cd951406.webp" alt="Resilient data-driven automotive supply chain digital twin">
+            </div>
+          </div>
+        </div>
+      </article></div>
+    </div>
+  </section>
+    
+  <section id="customers" class="auto-section auto-section--gray">
+    <div class="auto-container">
+      <div class="auto-section-header">
+        <h2 class="auto-section-title">Alibaba Cloud Accelerates EV Innovation in Malaysia</h2>
+      </div>
+      <article class="auto-testimonial-card" data-fs-extend="customer-testimonial-split-card">
+        <div class="auto-testimonial-card__body">
+          <blockquote class="auto-testimonial-quote">“Alibaba Cloud has been a key partner to PRO-NET, and their support in building our cloud-first and data-driven foundation has been instrumental as we advance Malaysia’s new energy mobility ecosystem. As we move into the next phase with AI, this impactful collaboration will empower us to unlock deeper insights, elevate customer experiences, and accelerate our vision of shaping a smarter, more connected future of mobility for Malaysia”</blockquote>
+          <p class="auto-testimonial-author">— Zhang Qiang, Chief Executive Officer of PRO-NET</p>
+          <div class="auto-testimonial-cta"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--blue-link ds-text-btn--m" href="https://www.alibabacloud.com/blog/alibaba-cloud-enables-ryt-bank%E2%80%99s-smart-digital-banking-and-pro-net%E2%80%99s-national-ev-platform-through-strategic-collaborations_602716" data-ai-example="ai-text-button-inline-blue-link-m" data-fragment="inline-blue-link" data-library-component="library-text-button" data-library-fragment="inline-blue-link" data-library-release="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" data-library-props="{&quot;label&quot;:&quot;Read More&quot;,&quot;href&quot;:&quot;https://www.alibabacloud.com/blog/alibaba-cloud-enables-ryt-bank%E2%80%99s-smart-digital-banking-and-pro-net%E2%80%99s-national-ev-platform-through-strategic-collaborations_602716&quot;}">
+          <span class="ds-text-btn__text">Read More</span>
+          <img class="ds-text-btn__icon" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/icon-text-button-arrow-right-blue-s.svg" alt="">
+        </a></div>
+        </div>
+        <div class="auto-testimonial-card__media">
+          <img class="auto-testimonial-img" src="assets/alibabacloud-automotive/img-15-d740888f.webp" alt="Alibaba Cloud and PRO-NET strategic partnership in Malaysia">
+        </div>
+      </article>
+    </div>
+  </section>
+    
+  <section id="ai-tools" class="auto-section auto-section--white">
+    <div class="auto-container">
+      <div class="auto-section-header">
+        <h2 class="auto-section-title">Try Our AI Tools for Automotive</h2>
+      </div>
+
+      <article class="auto-tool-featured" data-fs-extend="ai-tool-featured-split-card">
+        <div class="auto-tool-featured__body">
+          <h3 class="auto-tool-featured__title">Physical-World AI Simulation &amp; Data Pipeline</h3>
+          <p class="auto-tool-featured__desc">Turn real-world data bottlenecks into your competitive advantage. Reconstruct, augment, and synthesize infinite physical-world scenarios at scale.</p>
+          <div class="auto-tool-featured__cta"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--blue-link ds-text-btn--m" href="https://www.alibabacloud.com/campaign/ai-data-construction" data-ai-example="ai-text-button-inline-blue-link-m" data-fragment="inline-blue-link" data-library-component="library-text-button" data-library-fragment="inline-blue-link" data-library-release="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" data-library-props="{&quot;label&quot;:&quot;Learn More&quot;,&quot;href&quot;:&quot;https://www.alibabacloud.com/campaign/ai-data-construction&quot;}">
+          <span class="ds-text-btn__text">Learn More</span>
+          <img class="ds-text-btn__icon" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/icon-text-button-arrow-right-blue-s.svg" alt="">
+        </a></div>
+        </div>
+        <div class="auto-tool-featured__media">
+          <img class="auto-tool-featured__img" src="assets/alibabacloud-automotive/img-19-5fc562f8.webp" alt="Physical-world AI simulation pipeline for automotive">
+        </div>
+      </article>
+
+      <div class="auto-tool-grid">
+      <article class="auto-tool-card" data-fs-extend="ai-tool-grid-card">
+        <div class="auto-tool-card__media">
+          <img class="auto-tool-card__img" src="assets/alibabacloud-automotive/img-16-fda805da.webp" alt="Multimodal AI Model Family capabilities overview">
+        </div>
+        <div class="auto-tool-card__body">
+          <div class="auto-tool-card__tags"><span class="auto-tag">All Modality</span><span class="auto-tag">Try for Free</span></div>
+          <h3 class="auto-tool-card__title">
+            <a class="auto-card-title-link" href="https://www.alibabacloud.com/en/campaign/ai-data-construction?#pricing-section" target="_blank" rel="noopener noreferrer">The Right Models for Your Business</a>
+          </h3>
+          <p class="auto-tool-card__desc">Compare capabilities, free quotas, and pricing for the models powering your simulation data pipeline.</p>
+          <div class="auto-tool-card__footer"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--blue-link ds-text-btn--m" href="https://www.alibabacloud.com/en/campaign/ai-data-construction?#pricing-section" data-ai-example="ai-text-button-inline-blue-link-m" data-fragment="inline-blue-link" data-library-component="library-text-button" data-library-fragment="inline-blue-link" data-library-release="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" data-library-props="{&quot;label&quot;:&quot;See All Models&quot;,&quot;href&quot;:&quot;https://www.alibabacloud.com/en/campaign/ai-data-construction?#pricing-section&quot;}">
+          <span class="ds-text-btn__text">See All Models</span>
+          <img class="ds-text-btn__icon" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/icon-text-button-arrow-right-blue-s.svg" alt="">
+        </a></div>
+        </div>
+      </article>
+      <article class="auto-tool-card" data-fs-extend="ai-tool-grid-card">
+        <div class="auto-tool-card__media">
+          <img class="auto-tool-card__img" src="assets/alibabacloud-automotive/img-17-9f5217ad.webp" alt="Token Plan flexible pricing illustration">
+        </div>
+        <div class="auto-tool-card__body">
+          <div class="auto-tool-card__tags"><span class="auto-tag">For Individuals</span><span class="auto-tag">For Teams</span></div>
+          <h3 class="auto-tool-card__title">
+            <a class="auto-card-title-link" href="https://www.alibabacloud.com/campaign/ai-tools-for-e-commerse-and-advertising#plans" target="_blank" rel="noopener noreferrer">Get Started with Token Plan</a>
+          </h3>
+          <p class="auto-tool-card__desc">Starting from $6 / month, with discount of up to 35% off.</p>
+          <div class="auto-tool-card__footer"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--blue-link ds-text-btn--m" href="https://www.alibabacloud.com/campaign/ai-tools-for-e-commerse-and-advertising#plans" data-ai-example="ai-text-button-inline-blue-link-m" data-fragment="inline-blue-link" data-library-component="library-text-button" data-library-fragment="inline-blue-link" data-library-release="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" data-library-props="{&quot;label&quot;:&quot;Learn More&quot;,&quot;href&quot;:&quot;https://www.alibabacloud.com/campaign/ai-tools-for-e-commerse-and-advertising#plans&quot;}">
+          <span class="ds-text-btn__text">Learn More</span>
+          <img class="ds-text-btn__icon" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/icon-text-button-arrow-right-blue-s.svg" alt="">
+        </a></div>
+        </div>
+      </article>
+      <article class="auto-tool-card" data-fs-extend="ai-tool-grid-card">
+        <div class="auto-tool-card__media">
+          <img class="auto-tool-card__img" src="assets/alibabacloud-automotive/img-18-c8c9b203.webp" alt="New user Token Plan coupon illustration">
+        </div>
+        <div class="auto-tool-card__body">
+          <div class="auto-tool-card__tags"><span class="auto-tag">From $4 / month</span></div>
+          <h3 class="auto-tool-card__title">
+            <a class="auto-card-title-link" href="https://www.alibabacloud.com/campaign/ai-coupon" target="_blank" rel="noopener noreferrer">Token Discount for New Users</a>
+          </h3>
+          <p class="auto-tool-card__desc">Take an extra $2 off your Token Plan.</p>
+          <div class="auto-tool-card__footer"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--blue-link ds-text-btn--m" href="https://www.alibabacloud.com/campaign/ai-coupon" data-ai-example="ai-text-button-inline-blue-link-m" data-fragment="inline-blue-link" data-library-component="library-text-button" data-library-fragment="inline-blue-link" data-library-release="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" data-library-props="{&quot;label&quot;:&quot;Learn More&quot;,&quot;href&quot;:&quot;https://www.alibabacloud.com/campaign/ai-coupon&quot;}">
+          <span class="ds-text-btn__text">Learn More</span>
+          <img class="ds-text-btn__icon" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/icon-text-button-arrow-right-blue-s.svg" alt="">
+        </a></div>
+        </div>
+      </article></div>
+    </div>
+  </section>
+    
+  <section id="ready-cta" class="auto-cta-band" data-fs-extend="bottom-dark-cta-band">
+    <div class="auto-cta-band__scrim">
+      <div class="auto-container auto-cta-band__inner">
+        <h2 class="auto-cta-band__title">Ready to Transform Your Automotive Business?</h2>
+        <p class="auto-cta-band__desc">From autonomous driving to intelligent cockpit — our automotive specialists are ready to help.</p>
+        <div class="auto-cta-band__action"><button id="library-instance-17-ai-button-filled-red-xl-regular" type="button" class="ds-btn ds-btn--filled-red ds-btn--xl-regular" data-library-event-actioncallback="scrollToContact" data-button-current="mg-20261112" data-fragment="filled-red" data-library-component="library-button" data-library-fragment="filled-red" data-library-release="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" data-library-props="{&quot;label&quot;:&quot;Talk to an Automotive Specialist&quot;,&quot;size&quot;:&quot;xl-regular&quot;,&quot;actionCallback&quot;:&quot;scrollToContact&quot;}"><span class="ds-btn__icon-loading" data-button-icon="loading" aria-hidden="true" hidden=""></span><span class="ds-btn__leading" hidden=""><span class="ds-btn__leading-icon" data-button-icon="download" aria-hidden="true"></span></span><span class="ds-btn__text">Talk to an Automotive Specialist</span><span class="ds-btn__trailing-icon" data-button-icon="right" aria-hidden="true" hidden=""></span></button></div>
+      </div>
+    </div>
+  </section>
+    
+  <section id="contact-us" class="auto-section auto-section--gray">
+    <div class="auto-container">
+      <div class="auto-section-header">
+        <h2 class="auto-section-title">Contact Us</h2>
+        <p class="auto-section-desc">Connect with our automotive cloud and AI specialists to discuss autonomous driving, intelligent cockpit, or supply chain initiatives.</p>
+      </div>
+      <div class="inquiry-form-card" data-fs-extend="contact-form-container">
+        <form class="ds-form" data-form-current="" data-ai-example="ai-form-gray-current" data-fragment="gray" data-library-component="library-form" data-library-fragment="gray" data-library-release="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" data-library-event-submitcallback="handleAutomotiveInquiry" data-form-fields-source="v1" data-library-props="{&quot;sourceFields&quot;:{&quot;reference&quot;:&quot;reference-inputs/alibabacloud-automotive/content.json&quot;,&quot;objectId&quot;:&quot;automotive-contact-form&quot;},&quot;submitLabel&quot;:&quot;Register Now&quot;,&quot;submitCallback&quot;:&quot;handleAutomotiveInquiry&quot;}"><div class="ds-form__row"><div class="ds-form__field" data-form-field-name="firstName" data-form-required="true"><div class="ds-input-field" data-input-current="" data-input-layout="fill"><label class="ds-input-field__label" for="library-instance-20-source-field-1-firstName">First Name</label><input class="ds-input-field__input ds-input-field__input--gray" placeholder="Enter your first name" id="library-instance-20-source-field-1-firstName" type="text" name="firstName" required=""><div class="ds-input-field__error" id="library-instance-20-source-field-1-firstName-error" hidden=""><span class="ds-input-field__error-icon" aria-hidden="true"></span><span class="ds-input-field__error-text">Please enter text.</span></div></div></div><div class="ds-form__field" data-form-field-name="lastName" data-form-required="true"><div class="ds-input-field" data-input-current="" data-input-layout="fill"><label class="ds-input-field__label" for="library-instance-20-source-field-2-lastName">Last Name</label><input class="ds-input-field__input ds-input-field__input--gray" placeholder="Enter your last name" id="library-instance-20-source-field-2-lastName" type="text" name="lastName" required=""><div class="ds-input-field__error" id="library-instance-20-source-field-2-lastName-error" hidden=""><span class="ds-input-field__error-icon" aria-hidden="true"></span><span class="ds-input-field__error-text">Please enter text.</span></div></div></div></div><div class="ds-form__row"><div class="ds-form__field" data-form-field-name="email" data-form-required="true"><div class="ds-input-field" data-input-current="" data-input-layout="fill"><label class="ds-input-field__label" for="library-instance-20-source-field-3-email">E-Mail</label><input class="ds-input-field__input ds-input-field__input--gray" placeholder="name@company.com" id="library-instance-20-source-field-3-email" type="email" name="email" required=""><div class="ds-input-field__error" id="library-instance-20-source-field-3-email-error" hidden=""><span class="ds-input-field__error-icon" aria-hidden="true"></span><span class="ds-input-field__error-text">Please enter text.</span></div></div></div><div class="ds-form__field" data-form-field-name="mobilePhone" data-form-required="true"><div class="ds-input-field" data-input-current="" data-input-layout="fill"><label class="ds-input-field__label" for="library-instance-20-source-field-4-mobilePhone">Mobile Phone</label><input class="ds-input-field__input ds-input-field__input--gray" placeholder="+1 (555) 000-0000" id="library-instance-20-source-field-4-mobilePhone" type="text" name="mobilePhone" required=""><div class="ds-input-field__error" id="library-instance-20-source-field-4-mobilePhone-error" hidden=""><span class="ds-input-field__error-icon" aria-hidden="true"></span><span class="ds-input-field__error-text">Please enter text.</span></div></div></div></div><div class="ds-form__row"><div class="ds-form__field" data-form-field-name="jobTitle" data-form-required="true"><label class="ds-input-field__label" for="library-instance-18-ai-select-single-basic-trigger">Job Title</label><div class="ds-form__select-slot"><div class="ds-select ds-select--single-basic" data-select-mode="single" data-ai-example="ai-select-single-basic" id="library-instance-18-ai-select-single-basic" data-input-current="" data-input-adapter="select-trigger" data-fragment="single-basic" data-library-component="library-select" data-library-fragment="single-basic" data-library-release="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" data-select-layout="fill" data-library-props="{&quot;options&quot;:&quot;<div class=\&quot;ds-select__option\&quot; role=\&quot;option\&quot; aria-selected=\&quot;false\&quot; data-value=\&quot;C-Level / Executive\&quot; id=\&quot;source-field-5-jobTitle-option-0\&quot;><span class=\&quot;ds-select__option-label\&quot;>C-Level / Executive</span></div><div class=\&quot;ds-select__option\&quot; role=\&quot;option\&quot; aria-selected=\&quot;false\&quot; data-value=\&quot;VP / Director of Engineering\&quot; id=\&quot;source-field-5-jobTitle-option-1\&quot;><span class=\&quot;ds-select__option-label\&quot;>VP / Director of Engineering</span></div><div class=\&quot;ds-select__option\&quot; role=\&quot;option\&quot; aria-selected=\&quot;false\&quot; data-value=\&quot;Automotive AI / ADAS Architect\&quot; id=\&quot;source-field-5-jobTitle-option-2\&quot;><span class=\&quot;ds-select__option-label\&quot;>Automotive AI / ADAS Architect</span></div><div class=\&quot;ds-select__option\&quot; role=\&quot;option\&quot; aria-selected=\&quot;false\&quot; data-value=\&quot;Intelligent Cockpit Product Manager\&quot; id=\&quot;source-field-5-jobTitle-option-3\&quot;><span class=\&quot;ds-select__option-label\&quot;>Intelligent Cockpit Product Manager</span></div><div class=\&quot;ds-select__option\&quot; role=\&quot;option\&quot; aria-selected=\&quot;false\&quot; data-value=\&quot;Supply Chain &amp;amp; Operations Lead\&quot; id=\&quot;source-field-5-jobTitle-option-4\&quot;><span class=\&quot;ds-select__option-label\&quot;>Supply Chain &amp;amp; Operations Lead</span></div><div class=\&quot;ds-select__option\&quot; role=\&quot;option\&quot; aria-selected=\&quot;false\&quot; data-value=\&quot;IT / Cloud Infrastructure Manager\&quot; id=\&quot;source-field-5-jobTitle-option-5\&quot;><span class=\&quot;ds-select__option-label\&quot;>IT / Cloud Infrastructure Manager</span></div><div class=\&quot;ds-select__option\&quot; role=\&quot;option\&quot; aria-selected=\&quot;false\&quot; data-value=\&quot;Other\&quot; id=\&quot;source-field-5-jobTitle-option-6\&quot;><span class=\&quot;ds-select__option-label\&quot;>Other</span></div>&quot;,&quot;layout&quot;:&quot;fill&quot;,&quot;placeholder&quot;:&quot;Select your job title&quot;}">
+            <button class="ds-select__trigger ds-input-field__input ds-input-field__input--gray" type="button" role="combobox" aria-haspopup="listbox" aria-expanded="false" aria-controls="library-instance-18-ai-select-single-basic-panel" id="library-instance-18-ai-select-single-basic-trigger"><span class="ds-select__value" data-placeholder="Select your job title">Select your job title</span><img class="ds-select__arrow" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/icon-select-down.svg" alt=""></button>
+            <div class="ds-select__panel" role="listbox" hidden="" id="library-instance-18-ai-select-single-basic-panel" aria-labelledby="library-instance-18-ai-select-single-basic-trigger">
+              <div class="ds-select__list"><div class="ds-select__option" role="option" aria-selected="false" data-value="C-Level / Executive" id="library-instance-18-source-field-5-jobTitle-option-0"><span class="ds-select__option-label">C-Level / Executive</span></div><div class="ds-select__option" role="option" aria-selected="false" data-value="VP / Director of Engineering" id="library-instance-18-source-field-5-jobTitle-option-1"><span class="ds-select__option-label">VP / Director of Engineering</span></div><div class="ds-select__option" role="option" aria-selected="false" data-value="Automotive AI / ADAS Architect" id="library-instance-18-source-field-5-jobTitle-option-2"><span class="ds-select__option-label">Automotive AI / ADAS Architect</span></div><div class="ds-select__option" role="option" aria-selected="false" data-value="Intelligent Cockpit Product Manager" id="library-instance-18-source-field-5-jobTitle-option-3"><span class="ds-select__option-label">Intelligent Cockpit Product Manager</span></div><div class="ds-select__option" role="option" aria-selected="false" data-value="Supply Chain &amp; Operations Lead" id="library-instance-18-source-field-5-jobTitle-option-4"><span class="ds-select__option-label">Supply Chain &amp; Operations Lead</span></div><div class="ds-select__option" role="option" aria-selected="false" data-value="IT / Cloud Infrastructure Manager" id="library-instance-18-source-field-5-jobTitle-option-5"><span class="ds-select__option-label">IT / Cloud Infrastructure Manager</span></div><div class="ds-select__option" role="option" aria-selected="false" data-value="Other" id="library-instance-18-source-field-5-jobTitle-option-6"><span class="ds-select__option-label">Other</span></div></div>
+            </div>
+          </div></div></div><div class="ds-form__field" data-form-field-name="companyName" data-form-required="true"><div class="ds-input-field" data-input-current="" data-input-layout="fill"><label class="ds-input-field__label" for="library-instance-20-source-field-6-companyName">Company Name</label><input class="ds-input-field__input ds-input-field__input--gray" placeholder="Enter your company name" id="library-instance-20-source-field-6-companyName" type="text" name="companyName" required=""><div class="ds-input-field__error" id="library-instance-20-source-field-6-companyName-error" hidden=""><span class="ds-input-field__error-icon" aria-hidden="true"></span><span class="ds-input-field__error-text">Please enter text.</span></div></div></div></div><div class="ds-form__field" data-form-field-name="companyIndustry" data-form-required="true"><label class="ds-input-field__label" for="library-instance-19-ai-select-single-basic-trigger">Company Industry</label><div class="ds-form__select-slot"><div class="ds-select ds-select--single-basic" data-select-mode="single" data-ai-example="ai-select-single-basic" id="library-instance-19-ai-select-single-basic" data-input-current="" data-input-adapter="select-trigger" data-fragment="single-basic" data-library-component="library-select" data-library-fragment="single-basic" data-library-release="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" data-select-layout="fill" data-library-props="{&quot;options&quot;:&quot;<div class=\&quot;ds-select__option\&quot; role=\&quot;option\&quot; aria-selected=\&quot;false\&quot; data-value=\&quot;Automotive OEM / Manufacturer\&quot; id=\&quot;source-field-7-companyIndustry-option-0\&quot;><span class=\&quot;ds-select__option-label\&quot;>Automotive OEM / Manufacturer</span></div><div class=\&quot;ds-select__option\&quot; role=\&quot;option\&quot; aria-selected=\&quot;false\&quot; data-value=\&quot;Tier-1 / Tier-2 Automotive Supplier\&quot; id=\&quot;source-field-7-companyIndustry-option-1\&quot;><span class=\&quot;ds-select__option-label\&quot;>Tier-1 / Tier-2 Automotive Supplier</span></div><div class=\&quot;ds-select__option\&quot; role=\&quot;option\&quot; aria-selected=\&quot;false\&quot; data-value=\&quot;Autonomous Driving &amp;amp; Mobility Tech\&quot; id=\&quot;source-field-7-companyIndustry-option-2\&quot;><span class=\&quot;ds-select__option-label\&quot;>Autonomous Driving &amp;amp; Mobility Tech</span></div><div class=\&quot;ds-select__option\&quot; role=\&quot;option\&quot; aria-selected=\&quot;false\&quot; data-value=\&quot;EV &amp;amp; New Energy Infrastructure\&quot; id=\&quot;source-field-7-companyIndustry-option-3\&quot;><span class=\&quot;ds-select__option-label\&quot;>EV &amp;amp; New Energy Infrastructure</span></div><div class=\&quot;ds-select__option\&quot; role=\&quot;option\&quot; aria-selected=\&quot;false\&quot; data-value=\&quot;Automotive Retail &amp;amp; Connected Services\&quot; id=\&quot;source-field-7-companyIndustry-option-4\&quot;><span class=\&quot;ds-select__option-label\&quot;>Automotive Retail &amp;amp; Connected Services</span></div><div class=\&quot;ds-select__option\&quot; role=\&quot;option\&quot; aria-selected=\&quot;false\&quot; data-value=\&quot;Logistics &amp;amp; Fleet Management\&quot; id=\&quot;source-field-7-companyIndustry-option-5\&quot;><span class=\&quot;ds-select__option-label\&quot;>Logistics &amp;amp; Fleet Management</span></div><div class=\&quot;ds-select__option\&quot; role=\&quot;option\&quot; aria-selected=\&quot;false\&quot; data-value=\&quot;Other\&quot; id=\&quot;source-field-7-companyIndustry-option-6\&quot;><span class=\&quot;ds-select__option-label\&quot;>Other</span></div>&quot;,&quot;layout&quot;:&quot;fill&quot;,&quot;placeholder&quot;:&quot;Select your industry&quot;}">
+            <button class="ds-select__trigger ds-input-field__input ds-input-field__input--gray" type="button" role="combobox" aria-haspopup="listbox" aria-expanded="false" aria-controls="library-instance-19-ai-select-single-basic-panel" id="library-instance-19-ai-select-single-basic-trigger"><span class="ds-select__value" data-placeholder="Select your industry">Select your industry</span><img class="ds-select__arrow" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/icon-select-down.svg" alt=""></button>
+            <div class="ds-select__panel" role="listbox" hidden="" id="library-instance-19-ai-select-single-basic-panel" aria-labelledby="library-instance-19-ai-select-single-basic-trigger">
+              <div class="ds-select__list"><div class="ds-select__option" role="option" aria-selected="false" data-value="Automotive OEM / Manufacturer" id="library-instance-19-source-field-7-companyIndustry-option-0"><span class="ds-select__option-label">Automotive OEM / Manufacturer</span></div><div class="ds-select__option" role="option" aria-selected="false" data-value="Tier-1 / Tier-2 Automotive Supplier" id="library-instance-19-source-field-7-companyIndustry-option-1"><span class="ds-select__option-label">Tier-1 / Tier-2 Automotive Supplier</span></div><div class="ds-select__option" role="option" aria-selected="false" data-value="Autonomous Driving &amp; Mobility Tech" id="library-instance-19-source-field-7-companyIndustry-option-2"><span class="ds-select__option-label">Autonomous Driving &amp; Mobility Tech</span></div><div class="ds-select__option" role="option" aria-selected="false" data-value="EV &amp; New Energy Infrastructure" id="library-instance-19-source-field-7-companyIndustry-option-3"><span class="ds-select__option-label">EV &amp; New Energy Infrastructure</span></div><div class="ds-select__option" role="option" aria-selected="false" data-value="Automotive Retail &amp; Connected Services" id="library-instance-19-source-field-7-companyIndustry-option-4"><span class="ds-select__option-label">Automotive Retail &amp; Connected Services</span></div><div class="ds-select__option" role="option" aria-selected="false" data-value="Logistics &amp; Fleet Management" id="library-instance-19-source-field-7-companyIndustry-option-5"><span class="ds-select__option-label">Logistics &amp; Fleet Management</span></div><div class="ds-select__option" role="option" aria-selected="false" data-value="Other" id="library-instance-19-source-field-7-companyIndustry-option-6"><span class="ds-select__option-label">Other</span></div></div>
+            </div>
+          </div></div></div><div class="ds-form__field" data-form-field-name="howCanWeHelp" data-form-required="false"><div class="ds-input-field" data-input-current="" data-input-layout="fill" data-input-kind="textarea">
+            <div class="ds-input-field__header"><label class="ds-input-field__label" for="library-instance-20-source-field-8-howCanWeHelp">How can we help? (optional)</label><span class="ds-input-field__count" id="library-instance-20-source-field-8-howCanWeHelp-count">0/5000</span></div>
+            <textarea class="ds-input-field__input ds-input-field__input--gray" placeholder="Tell us about your autonomous driving, intelligent cockpit, or supply chain goals." id="library-instance-20-source-field-8-howCanWeHelp" name="howCanWeHelp" maxlength="5000" aria-describedby="library-instance-20-source-field-8-howCanWeHelp-count"></textarea>
+          </div></div><label class="ds-form__consent"><span class="ds-checkbox ds-checkbox--sm" data-checkbox-current="" data-checkbox-control=""><input class="ds-checkbox__input" type="checkbox" name="consent" value="agreed"><span class="ds-checkbox__box" aria-hidden="true"></span></span><span class="ds-form__consent-copy">I have read and agree to the FS.COM <a aria-disabled="true" role="link">Terms and Conditions</a> and acknowledge the <a aria-disabled="true" role="link">Privacy Policy and Notice at Collection</a>.</span></label><div><button class="ds-btn ds-btn--filled-red ds-btn--xl-regular" type="submit"><span class="ds-btn__text">Register Now</span></button></div><p class="ds-form__status" role="status" hidden=""></p></form>
+      </div>
+    </div>
+  </section>
+  </main>
+
+  <footer class="ds-nav-footer" data-fragment="footer" data-footer-pc-current="" data-ai-example="ai-navigation-fixed-footer" data-library-component="library-navigation" data-library-fragment="footer" data-library-release="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" data-library-props="{}">
+    <div class="ds-nav-footer__inner">
+      <div class="ds-nav-footer__columns">
+        <div class="ds-nav-footer__col">
+          <h4 class="ds-nav-footer__col-title">About Us</h4>
+          <ul class="ds-nav-footer__col-links">
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Overview</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Global Warehouse</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Advanced R&amp;D Center</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Quality Control</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Compliance Center</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Test Center</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="ds-nav-footer__col ds-nav-footer__col--service">
+          <h4 class="ds-nav-footer__col-title">Service</h4>
+          <ul class="ds-nav-footer__col-links">
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Payment Methods</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Shipping Guide</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Business Account</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Net Terms</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Return Policy</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Product Warranty</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Give us your Feedback</a></li>
+          </ul>
+        </div>
+        <div class="ds-nav-footer__col">
+          <h4 class="ds-nav-footer__col-title">Resource</h4>
+          <ul class="ds-nav-footer__col-links">
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Documentation</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Glossary</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Audio &amp; Video</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">FS Blog</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Case Studies</a></li>
+          </ul>
+        </div>
+        <div class="ds-nav-footer__col">
+          <h4 class="ds-nav-footer__col-title">Support</h4>
+          <ul class="ds-nav-footer__col-links">
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">FAQ &amp; Help Center</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Solution Support</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Query Tool</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">WDM Tranceiver Stock List</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Products Verification</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Track My Order</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">RMA Checklist</a></li>
+          </ul>
+        </div>
+        <div class="ds-nav-footer__sidebar">
+          <div class="ds-nav-footer__subscribe">
+            <h4 class="ds-nav-footer__col-title">Stay in Touch</h4>
+            <div class="ds-nav-footer__subscribe-form">
+              <input type="email" class="ds-input-footer-source" placeholder="Email" aria-label="Email" data-footer-input-retained-source="">
+              <button class="ds-btn ds-btn--filled-red ds-btn--s" type="button" data-footer-button-current=""><span class="ds-btn__text">Subscribe</span></button>
+            </div>
+          </div>
+          <div class="ds-nav-footer__app">
+            <h4 class="ds-nav-footer__col-title">Download FS APP</h4>
+            <div class="ds-nav-footer__app-badges"><a id="library-instance-21-icon-usage-img-google-play" aria-label="Get it on Google Play" style="scroll-margin-top: 40px;" aria-disabled="true"><img src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/sources/navigation/footer-assets-1013/68908-047170.png" alt="Google Play" height="28" style="width: 88px;"></a>
+              <a id="library-instance-21-icon-usage-img-app-store" aria-label="Download on the App Store" style="scroll-margin-top: 40px;" aria-disabled="true"><img src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/sources/navigation/footer-assets-1013/68908-047171.png" alt="App Store" height="28" style="width: 87.73px;"></a>
+              
+            </div>
+          </div>
+          <div class="ds-nav-footer__social"><img src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/sources/navigation/footer-assets-1013/68908-047164.png" alt="LinkedIn, YouTube, Facebook, X, Instagram, Reddit" data-footer-source-social=""></div>
+        </div>
+      </div>
+
+      <div class="ds-nav-footer__badges">
+        <div class="ds-nav-footer__badges-left">
+          <img src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/sources/navigation/footer-assets-1013/68908-047076.png" alt="DigiCert" height="28" style="scroll-margin-top: 40px; width: 59px;">
+          <img src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/sources/navigation/footer-assets-1013/68908-047074.png" alt="TrustedSite" height="28" style="scroll-margin-top: 40px; width: 58px;">
+          <img src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/sources/navigation/footer-assets-1013/68908-047075.png" alt="BBB" height="28" style="scroll-margin-top: 40px; width: 58px;">
+          <img src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/sources/navigation/footer-assets-1013/68908-047073.png" alt="Google Reviews" height="28" style="scroll-margin-top: 40px; width: 74px;">
+        </div>
+        <div class="ds-nav-footer__badges-right">
+          <a class="ds-nav-footer__region-link" aria-disabled="true">
+            United States / $ USD
+            <svg class="ds-nav-footer__dropdown-icon" width="12" height="12" viewBox="0 0 12 12" fill="none">
+              <path d="M3 4.5L6 7.5L9 4.5" stroke="#707070" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <hr class="ds-nav-footer__divider">
+
+      <div class="ds-nav-footer__legal">
+        <div class="ds-nav-footer__legal-links">
+          <a class="ds-nav-footer__legal-link" aria-disabled="true">Site Map</a>
+          <span class="ds-nav-footer__legal-divider"></span>
+          <a class="ds-nav-footer__legal-link" aria-disabled="true">Accessibility</a>
+          <span class="ds-nav-footer__legal-divider"></span>
+          <a class="ds-nav-footer__legal-link" aria-disabled="true">Privacy Policy and Notice at Collection</a>
+          <span class="ds-nav-footer__legal-divider"></span>
+          <a class="ds-nav-footer__legal-link" aria-disabled="true">Cookies Notice</a>
+          <span class="ds-nav-footer__legal-divider"></span>
+          <a class="ds-nav-footer__legal-link" aria-disabled="true">Terms and Conditions</a>
+          <span class="ds-nav-footer__legal-divider"></span>
+          <a class="ds-nav-footer__legal-link" aria-disabled="true">Report a Vulnerability</a>
+          <span class="ds-nav-footer__legal-divider"></span>
+          <a class="ds-nav-footer__legal-link" aria-disabled="true">Do Not Sell or Share My Personal Information</a>
+          <span class="ds-nav-footer__legal-divider"></span>
+          <a class="ds-nav-footer__legal-link" aria-disabled="true">Company Policies</a>
+          <span class="ds-nav-footer__legal-divider"></span>
+          <a class="ds-nav-footer__legal-link" aria-disabled="true">Cookie Settings</a>
+        </div>
+        <div class="ds-nav-footer__copyright">
+          Copyright © 2009-2026 FS.COM INC. All Rights Reserved.
+        </div>
+      </div>
+    
+  </div>
+  </footer>
+  <script>
+(function () {
+  var anchorIds = ["whats-new","overview","why-alibaba-cloud","solutions","customers","ai-tools"];
+
+  window.scrollToContact = function () {
+    var target = document.getElementById('contact-us');
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
+  window.handleAutomotiveInquiry = function (evt) {
+    if (evt && evt.preventDefault) evt.preventDefault();
+    var form = document.querySelector('#contact-us form');
+    if (!form) return;
+    var status = form.querySelector('.ds-form__status');
+    if (status) {
+      status.textContent = 'Thank you. Your automotive specialist inquiry has been recorded (preview demo mode).';
+      status.hidden = false;
+    }
+  };
+
+  // Wire AnchorNav tabs by DOM index
+  var tabs = Array.from(document.querySelectorAll('#anchor-nav .ds-anchor-nav__tab'));
+  function setActiveTab(activeIndex) {
+    tabs.forEach(function (tab, i) {
+      tab.classList.toggle('ds-anchor-nav__tab--active', i === activeIndex);
+    });
+  }
+  tabs.forEach(function (tab, idx) {
+    function activate() {
+      setActiveTab(idx);
+      var target = document.getElementById(anchorIds[idx]);
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    tab.addEventListener('click', activate);
+    tab.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        activate();
+      }
+    });
+  });
+
+  // Wire AnchorNav right CTA button & Hero primary button
+  var anchorCta = document.querySelector('#anchor-nav .ds-anchor-nav__action button');
+  if (anchorCta) anchorCta.addEventListener('click', window.scrollToContact);
+  var heroBtns = document.querySelectorAll('#hero .ds-banner__actions button');
+  if (heroBtns[0]) heroBtns[0].addEventListener('click', window.scrollToContact);
+
+  // Sync active anchor tab on scroll
+  if ('IntersectionObserver' in window && tabs.length) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          var idx = anchorIds.indexOf(entry.target.id);
+          if (idx !== -1) setActiveTab(idx);
+        }
+      });
+    }, { rootMargin: '-120px 0px -65% 0px', threshold: 0 });
+    anchorIds.forEach(function (id) {
+      var el = document.getElementById(id);
+      if (el) io.observe(el);
+    });
+  }
+
+  // Wire Solution Accordion
+  var solItems = Array.from(document.querySelectorAll('[data-sol-item]'));
+  solItems.forEach(function (item) {
+    var trigger = item.querySelector('.auto-sol-trigger');
+    var panel = item.querySelector('.auto-sol-panel');
+    var indicator = item.querySelector('.auto-sol-trigger__indicator');
+    if (!trigger || !panel) return;
+    trigger.addEventListener('click', function () {
+      var isOpen = item.classList.contains('is-open');
+      item.classList.toggle('is-open', !isOpen);
+      trigger.setAttribute('aria-expanded', String(!isOpen));
+      panel.hidden = isOpen;
+      var indicatorImg = indicator && indicator.querySelector('img');
+      if (indicatorImg) indicatorImg.setAttribute('src', !isOpen ? 'assets/alibabacloud-automotive/icon-minus.svg' : 'assets/alibabacloud-automotive/icon-plus.svg');
+    });
+  });
+})();
+</script>
+<script data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/menu-navigation-current.js"></script>
+<script data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/anchor-nav-current.js"></script>
+<script data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/input-current.js"></script>
+<script data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/navigation-products-current.js"></script>
+<script data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/checkbox-current.js"></script>
+<script data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/form-current.js"></script>
+<script data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/select-current.js"></script>
+</body>
+</html>

@@ -1,0 +1,278 @@
+{
+  "id": "comp_pagination_001",
+  "name": "Pagination",
+  "chineseName": "分页器",
+  "description": "页码分页导航组件，用于 PLP 商品列表页、搜索结果页与长评价列表的页码切换，支持上一页/下一页、当前页高亮与 ds:pagination-change 事件。",
+  "category": "导航 Navigation",
+  "isComplete": true,
+  "tokenReferences": [
+    "color.gray-1",
+    "color.gray-3",
+    "color.gray-7",
+    "color.gray-8",
+    "typography.font-size-md",
+    "typography.font-weight-regular",
+    "typography.font-weight-semibold",
+    "typography.h7-regular",
+    "spacing.sm",
+    "border-radius.md"
+  ],
+  "variants": [
+    {
+      "name": "default",
+      "chineseName": "默认分页器",
+      "cssClass": "ds-pagination",
+      "styleProperties": {
+        "buttonSize": "32x32px",
+        "borderRadius": "4px",
+        "gap": "8px",
+        "font": "14px / 22px Regular400（激活态 SemiBold600）",
+        "activeBg": "#F2F2F2",
+        "hoverBg": "#F6F6F8",
+        "disabledColor": "#CCCCCC"
+      },
+      "isComplete": true,
+      "pendingParts": [],
+      "requiredChildren": [
+        "button.ds-pagination__btn"
+      ],
+      "selectionDecisionType": "默认分页器 default",
+      "whenToUse": "PLP 商品列表页、搜索结果页或长评价列表需要页码翻页导航。",
+      "whenNotToUse": "轮播指示点（请使用 Carousel）或章节锚点导航（请使用 AnchorNav）。",
+      "usage": "PLP 商品列表页、搜索结果页或长评价列表需要页码翻页导航。"
+    }
+  ],
+  "states": [
+    {
+      "name": "default",
+      "chineseName": "默认",
+      "styleOverrides": {},
+      "description": "透明底色，#19191A 文字。"
+    },
+    {
+      "name": "hover",
+      "chineseName": "悬停",
+      "styleOverrides": {
+        "background": "#F6F6F8"
+      },
+      "description": "非激活非禁用页码 hover 呈浅灰底。"
+    },
+    {
+      "name": "active",
+      "chineseName": "当前页",
+      "styleOverrides": {
+        "background": "#F2F2F2",
+        "fontWeight": "600"
+      },
+      "description": "当前页具备 ds-pagination__btn--active 与 aria-current=page。"
+    },
+    {
+      "name": "disabled",
+      "chineseName": "禁用",
+      "styleOverrides": {
+        "color": "#CCCCCC"
+      },
+      "description": "首页时上一页禁用，末页时下一页禁用。"
+    }
+  ],
+  "contentSlots": {
+    "items": {
+      "required": true,
+      "description": "上一页、页码按钮（含可选省略号）与下一页按钮集合。"
+    }
+  },
+  "editable": [
+    "items",
+    "changeCallback",
+    "accessibleLabel"
+  ],
+  "integration": {
+    "styles": [
+      "components/tokens.css",
+      "components/pagination-current.css"
+    ],
+    "scripts": [
+      "components/pagination.js"
+    ]
+  },
+  "relations": {
+    "borderDependencies": [],
+    "fontSizeDependencies": [
+      {
+        "token": "typography.font-size-md",
+        "value": "14px",
+        "usage": "页码按钮与省略号字号",
+        "appliesTo": ["default"]
+      }
+    ],
+    "fontWeightDependencies": [
+      {
+        "token": "typography.font-weight-regular",
+        "value": "400",
+        "usage": "常规页码字重",
+        "properties": ["font-weight"],
+        "selectors": [".ds-pagination__btn"],
+        "appliesTo": ["default"]
+      },
+      {
+        "token": "typography.font-weight-semibold",
+        "value": "600",
+        "usage": "当前激活页码字重",
+        "properties": ["font-weight"],
+        "selectors": [".ds-pagination__btn--active"],
+        "appliesTo": ["default"]
+      }
+    ],
+    "colorDependencies": [
+      {
+        "token": "color.gray-1",
+        "value": "#19191A",
+        "usage": "默认页码与箭头文字",
+        "appliesTo": ["default"]
+      },
+      {
+        "token": "color.gray-7",
+        "value": "#F2F2F2",
+        "usage": "当前激活页背景",
+        "appliesTo": ["default"]
+      },
+      {
+        "token": "color.gray-8",
+        "value": "#F6F6F8",
+        "usage": "悬停态背景",
+        "appliesTo": ["default"]
+      }
+    ],
+    "typographyDependencies": [
+      {
+        "token": "typography.h7-regular",
+        "fontSizeToken": "typography.font-size-md",
+        "fontSizeValue": "14px",
+        "fontWeightToken": "typography.font-weight-regular",
+        "fontWeightValue": "400",
+        "weightEvidence": "explicit-css",
+        "usage": "页码按钮文字",
+        "appliesTo": ["default"]
+      }
+    ],
+    "spacingDependencies": [
+      {
+        "token": "spacing.sm",
+        "value": "8px",
+        "usage": "页码按钮间距与左右内边距",
+        "appliesTo": ["default"]
+      }
+    ],
+    "radiusDependencies": [
+      {
+        "token": "border-radius.md",
+        "value": "4px",
+        "usage": "页码按钮圆角",
+        "appliesTo": ["default"]
+      }
+    ],
+    "variantDecisions": [
+      {
+        "type": "默认分页器 default",
+        "className": "ds-pagination",
+        "whenToUse": "PLP 商品列表页、搜索结果页或长评价列表需要页码翻页导航。",
+        "whenNotToUse": "轮播指示点（请使用 Carousel）或章节锚点导航（请使用 AnchorNav）。",
+        "nestedComponents": [],
+        "status": "基于线上 FS.com PLP 分页标杆参数建立；调用资格读同版 catalog。",
+        "variant": "default",
+        "fragment": "default",
+        "selectionCases": [
+          {
+            "id": "pagination.default.1",
+            "kind": "use",
+            "condition": "PLP 商品列表页、搜索结果页或长评价列表需要页码翻页导航。",
+            "result": "调用 library-pagination/default，通过 changeCallback 响应 ds:pagination-change 事件。",
+            "targetVariant": "default",
+            "strength": "candidate"
+          },
+          {
+            "id": "pagination.default.2",
+            "kind": "avoid",
+            "condition": "轮播指示点或同页章节锚点。",
+            "result": "不使用分页器，改用 Carousel 或 AnchorNav。",
+            "targetVariant": "default",
+            "strength": "avoid"
+          }
+        ]
+      }
+    ]
+  },
+  "aiContract": {
+    "schemaVersion": "1.0.0",
+    "rootTag": "nav",
+    "scope": "desktop-pc-pagination-default",
+    "supported": [
+      "default"
+    ],
+    "unsupported": [
+      "jump-to-page-input",
+      "page-size-selector",
+      "mobile"
+    ],
+    "reviewStatus": {
+      "engineering": "pending",
+      "visual": "pending",
+      "familyCoverage": "partial"
+    },
+    "previewAssets": [
+      "components/preview/reference-live.js"
+    ],
+    "selectionPolicy": "用于 PLP 商品列表、搜索结果或评价列表页码切换；轮播圆点与章节锚点禁止套用。",
+    "identity": {
+      "rule": "保留 nav.ds-pagination[data-pagination-current=default] 根元素与 button.ds-pagination__btn 子节点，当前页带 ds-pagination__btn--active 与 aria-current=page。",
+      "labelRule": "可访问名称默认 Pagination，支持通过 accessibleLabel 覆盖。"
+    },
+    "locked": [
+      "nav.ds-pagination 根结构与 data-pagination-current=default",
+      "32x32px 页码按钮与 4px 圆角、#F2F2F2 激活背景、#F6F6F8 悬停背景",
+      "由 pagination.js 统一管理上一页/下一页禁用态、aria-current 与 ds:pagination-change 事件"
+    ],
+    "behavior": {
+      "selection": "点击页码或上一页/下一页更新激活态并派发 ds:pagination-change 事件，由宿主页面响应数据翻页。",
+      "scope": "当前仅提供标准页码条，不包含每页条数选择器和跳页输入框。"
+    },
+    "evidence": {
+      "localImplementation": "components/variants/pagination.html"
+    },
+    "variants": {
+      "default": {
+        "purpose": "desktop-pc-list-pagination",
+        "exampleSelector": "[data-ai-example=\"ai-pagination-default\"]",
+        "allowedEdits": [
+          "items",
+          "changeCallback",
+          "accessibleLabel"
+        ],
+        "slots": {
+          "items": {
+            "selector": ":scope",
+            "mode": "structured-content",
+            "required": true,
+            "preserve": [
+              "button.ds-pagination__btn"
+            ],
+            "rule": "保留 button.ds-pagination__btn（含 data-page-nav prev/next 与 data-page-num）及可选 span.ds-pagination__ellipsis。"
+          }
+        },
+        "bindings": {
+          "changeCallback": {
+            "mode": "event-handler",
+            "target": "root",
+            "event": "ds:pagination-change"
+          },
+          "accessibleLabel": {
+            "mode": "accessible-label",
+            "target": "root",
+            "attribute": "aria-label",
+            "nonEmpty": true
+          }
+        }
+      }
+    }
+  }
+}

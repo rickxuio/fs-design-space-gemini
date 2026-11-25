@@ -41,6 +41,8 @@ def validate_tag(el, name):
         return text(left) and left['attrs']=={'data-tag-value':'first'} and text(right) and right['attrs']=={'data-tag-value':'second'} and divider['tag']=='span' and divider['attrs']=={'class':'ds-tag-meta__divider','aria-hidden':'true'} and not divider['children'] and not divider.get('text','').strip()
     if name=='semantic-new':
         return sorted(cls)==sorted(['ds-tag','ds-tag--semantic','ds-tag--new','ds-tag--emphasis']) and el['attrs'].get('data-tag-source-new')=='official' and len(children)==1 and text(children[0]) and children[0]['attrs'].get('class')=='ds-tag__label' and children[0].get('text','').strip()=='New'
+    if name=='semantic-hot':
+        return sorted(cls)==sorted(['ds-tag','ds-tag--semantic','ds-tag--hot','ds-tag--emphasis']) and el['attrs'].get('data-tag-source-hot')=='official' and len(children)==1 and text(children[0]) and children[0]['attrs'].get('class')=='ds-tag__label' and children[0].get('text','').strip()=='Hot'
     if name=='semantic':
         if sorted(cls)!=sorted(['ds-tag','ds-tag--semantic','ds-tag--neutral']) or len(children)!=2 or el['attrs'].get('data-tag-source-individual-info')!='official':return False
         label,icon=children

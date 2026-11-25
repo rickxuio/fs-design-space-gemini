@@ -6,7 +6,7 @@ def validate_card(el,name):
     if name in ['spliced.horizontal.with-sidebar','spliced.horizontal.with-sidebar.bordered-background']:
         from component_reference_five import sidebar
         return sidebar(el,name)
-    if name in ['embedded.product-detail','embedded.product-full']:
+    if name in ['embedded.product-detail','embedded.product-full','embedded.product-plp']:
         from component_reference_completion import validate_card_completion
         return validate_card_completion(el,name)
     if name=='spliced.vertical.category-nav':

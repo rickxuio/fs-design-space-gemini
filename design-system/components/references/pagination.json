@@ -1,0 +1,232 @@
+{
+  "schemaVersion": "fs-component-reference/1.0.0",
+  "component": {
+    "id": "pagination",
+    "name": "Pagination",
+    "scope": "desktop-pc-pagination-default",
+    "reviewStatus": {
+      "engineering": "pending",
+      "visual": "pending",
+      "familyCoverage": "partial"
+    }
+  },
+  "selection": {
+    "policy": "用于 PLP 商品列表、搜索结果或评价列表页码切换；轮播圆点与章节锚点禁止套用。",
+    "supported": [
+      "default"
+    ],
+    "unsupported": [
+      "jump-to-page-input",
+      "page-size-selector",
+      "mobile"
+    ]
+  },
+  "runtime": {
+    "styles": [
+      "components/tokens.css",
+      "components/pagination-current.css"
+    ],
+    "scripts": [
+      "components/pagination.js"
+    ]
+  },
+  "identity": {
+    "rule": "保留 nav.ds-pagination[data-pagination-current=default] 根元素与 button.ds-pagination__btn 子节点，当前页带 ds-pagination__btn--active 与 aria-current=page。",
+    "labelRule": "可访问名称默认 Pagination，支持通过 accessibleLabel 覆盖。"
+  },
+  "locked": [
+    "nav.ds-pagination 根结构与 data-pagination-current=default",
+    "32x32px 页码按钮与 4px 圆角、#F2F2F2 激活背景、#F6F6F8 悬停背景",
+    "由 pagination.js 统一管理上一页/下一页禁用态、aria-current 与 ds:pagination-change 事件"
+  ],
+  "behavior": {
+    "selection": "点击页码或上一页/下一页更新激活态并派发 ds:pagination-change 事件，由宿主页面响应数据翻页。",
+    "scope": "当前仅提供标准页码条，不包含每页条数选择器和跳页输入框。"
+  },
+  "examples": [
+    {
+      "name": "default",
+      "publication": {
+        "key": "pagination/default",
+        "disposition": "restricted",
+        "newPages": true,
+        "reason": "Standard PC list pagination bar for PLP, search, and review lists; dispatches ds:pagination-change.",
+        "constraints": [
+          "Standard PC list pagination bar for PLP, search, and review lists; do not use for carousel dots or section anchor nav."
+        ],
+        "contractPolicy": "用于 PLP 商品列表、搜索结果或评价列表页码切换；轮播圆点与章节锚点禁止套用。",
+        "use": "finite-new-page-candidate",
+        "evidence": "components/contracts/pagination.json#aiContract/evidence",
+        "requiresCurrentEngineering": true,
+        "visualApproval": "separate-not-granted"
+      },
+      "rootTag": "nav",
+      "sizeOptions": [],
+      "bindings": {
+        "changeCallback": {
+          "mode": "event-handler",
+          "target": "root",
+          "event": "ds:pagination-change"
+        },
+        "accessibleLabel": {
+          "mode": "accessible-label",
+          "target": "root",
+          "attribute": "aria-label",
+          "nonEmpty": true
+        }
+      },
+      "purpose": "desktop-pc-list-pagination",
+      "whenToUse": "PLP 商品列表页、搜索结果页或长评价列表需要页码翻页导航。",
+      "whenNotToUse": "轮播指示点（请使用 Carousel）或章节锚点导航（请使用 AnchorNav）。",
+      "rootClasses": "ds-pagination",
+      "requiredStructure": [
+        "button.ds-pagination__btn"
+      ],
+      "slots": {
+        "items": {
+          "selector": ":scope",
+          "mode": "structured-content",
+          "required": true,
+          "preserve": [
+            "button.ds-pagination__btn"
+          ],
+          "rule": "保留 button.ds-pagination__btn（含 data-page-nav prev/next 与 data-page-num）及可选 span.ds-pagination__ellipsis。"
+        }
+      },
+      "allowedEdits": [
+        "items",
+        "changeCallback",
+        "accessibleLabel"
+      ],
+      "exampleHtml": "<nav class=\"ds-pagination\" data-pagination-current=\"default\" aria-label=\"Pagination\" data-ai-example=\"ai-pagination-default\">\n        <button type=\"button\" class=\"ds-pagination__btn\" data-page-nav=\"prev\" disabled aria-label=\"Previous page\">&lsaquo;</button>\n        <button type=\"button\" class=\"ds-pagination__btn ds-pagination__btn--active\" data-page-num=\"1\" aria-current=\"page\">1</button>\n        <button type=\"button\" class=\"ds-pagination__btn\" data-page-num=\"2\">2</button>\n        <button type=\"button\" class=\"ds-pagination__btn\" data-page-num=\"3\">3</button>\n        <button type=\"button\" class=\"ds-pagination__btn\" data-page-num=\"4\">4</button>\n        <button type=\"button\" class=\"ds-pagination__btn\" data-page-num=\"5\">5</button>\n        <button type=\"button\" class=\"ds-pagination__btn\" data-page-num=\"6\">6</button>\n        <button type=\"button\" class=\"ds-pagination__btn\" data-page-nav=\"next\" aria-label=\"Next page\">&rsaquo;</button>\n      </nav>"
+    }
+  ],
+  "relationships": {
+    "children": [],
+    "parents": [],
+    "parentStatus": "no-declared-hosts",
+    "icons": [],
+    "tokens": [
+      {
+        "name": "color.gray-1",
+        "value": "#19191A",
+        "unit": null,
+        "cssVar": "--color-gray-1",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.gray-3",
+        "value": "#707070",
+        "unit": null,
+        "cssVar": "--color-gray-3",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.gray-7",
+        "value": "#F2F2F2",
+        "unit": null,
+        "cssVar": "--color-gray-7",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "color.gray-8",
+        "value": "#F6F6F8",
+        "unit": null,
+        "cssVar": "--color-gray-8",
+        "primitiveReferences": null,
+        "source": "components/token-specs/colors.json"
+      },
+      {
+        "name": "typography.font-size-md",
+        "value": 14,
+        "unit": "px",
+        "cssVar": "--font-size-md",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-weight-regular",
+        "value": 400,
+        "unit": null,
+        "cssVar": "--font-weight-regular",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.font-weight-semibold",
+        "value": 600,
+        "unit": null,
+        "cssVar": "--font-weight-semibold",
+        "primitiveReferences": null,
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "typography.h7-regular",
+        "value": {
+          "fontSize": "14px",
+          "lineHeight": "22px",
+          "fontWeight": 400
+        },
+        "unit": null,
+        "cssVar": null,
+        "primitiveReferences": {
+          "fontSize": "typography.font-size-md",
+          "fontWeight": "typography.font-weight-regular"
+        },
+        "source": "components/token-specs/typography.json"
+      },
+      {
+        "name": "spacing.sm",
+        "value": 8,
+        "unit": "px",
+        "cssVar": "--spacing-sm",
+        "primitiveReferences": null,
+        "source": "components/token-specs/spacing.json"
+      },
+      {
+        "name": "border-radius.md",
+        "value": 4,
+        "unit": "px",
+        "cssVar": "--border-radius-md",
+        "primitiveReferences": null,
+        "source": "components/token-specs/border-radius.json"
+      }
+    ]
+  },
+  "evidence": {
+    "localImplementation": "components/variants/pagination.html"
+  },
+  "sourceValidation": {
+    "componentIdentity": {
+      "status": "not-established",
+      "files": []
+    },
+    "specificationBody": {
+      "status": "not-established",
+      "files": []
+    },
+    "originalOnlineFrontendCode": false,
+    "browserComputedStyles": false,
+    "completeSpecificationCoverage": false
+  },
+  "freshness": {
+    "fingerprints": {
+      "components/contracts/pagination.json": "a8634cc81e589e9d8c0cf8f979bf98613c803c7f067f00e42e7fe8ce9d00aa5b",
+      "components/pagination-current.css": "e3b35b5cdde929f37101010c0cf5da9a220dfd384e55285ea7dcf5ea46b558f1",
+      "components/pagination.js": "d324a40d740d63f293aa0406d402909cc99be058be7904f105803ca38efa15f4",
+      "components/preview/reference-live.js": "4839383529a3ee82df1d8efe675d430567abc1986034499107aa429d21a18ea6",
+      "components/reference-policy.json": "4c75d5fa51d79e1fcc04ddca92677390d5179a556e23cde6ecdc455efd29c5db",
+      "components/token-specs/border-radius.json": "b01e4c23fbc7e19983d9592b59b0303155b79d66c52459356eda0ea9f4ca74b5",
+      "components/token-specs/colors.json": "5267d59fdc687b54496977280c00c97f0beb6ffce013f87853504f5b736d3389",
+      "components/token-specs/spacing.json": "351b14cfce4411248ad41e00eaaf2b1cab9b705997980dfed1fc65693740e65c",
+      "components/token-specs/typography.json": "93b7dc07547218a33c075b7cdcd942f89094353a7847d483d8378b8883327e16",
+      "components/tokens.css": "f63f3c8fea511d8029902bc3905b01853ac5e92049c1b18ca35ebc9a680c3e69",
+      "components/variants/pagination.html": "57d34159244c92d138fc639452fda4058d1045428199af97cec7d1b5c27c8cae"
+    },
+    "graphFingerprint": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "note": "从本地源文件生成；不是 MasterGo 在线实时状态。"
+  }
+}

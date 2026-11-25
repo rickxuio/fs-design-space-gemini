@@ -329,10 +329,10 @@ function compileComponent(componentKey, contract, contractFile, css, tokenRegist
     if (!full.startsWith(COMPONENT_DIR + path.sep) || !fs.existsSync(full)) throw new Error('Missing or invalid runtime stylesheet: '+f);
     return fs.readFileSync(full,'utf8');
   }).join('\n');
-  const section = baseSection && baseSection + '\n' + corrections;
+  const section = [baseSection, corrections].filter(Boolean).join('\n');
   if (!section) throw new Error(`Missing CSS section for contract ${componentKey}`);
   const dependencies = collectDependencies(contract);
-  const sectionOffset = css.indexOf(baseSection);
+  const sectionOffset = baseSection ? css.indexOf(baseSection) : 0;
   const assertions = [];
   const unknownCssVariables = new Set();
   const locallyDeclaredVariables = new Set();

@@ -1,7 +1,23 @@
 /* Opt-in full-copy Hero. MG Pad Hero + closest M solution layout; see contract. */
+.ds-banner--hero-responsive[data-banner-height="200"] { height: 200px; }
+.ds-banner--hero-responsive[data-banner-height="360"] { height: 360px; }
+.ds-banner--hero-responsive[data-banner-height="420"] { height: 420px; }
+.ds-banner--hero-responsive[data-banner-height="480"] { height: 480px; }
+
 .ds-banner--hero-responsive .ds-banner__responsive-inner {
   max-width: 1200px; margin: 0 auto; height: 100%; display: flex;
   flex-direction: column; justify-content: center; align-items: flex-start; gap: var(--spacing-20);
+}
+.ds-banner--hero-responsive[data-banner-align="center"] .ds-banner__responsive-inner {
+  align-items: center;
+  text-align: center;
+}
+.ds-banner--hero-responsive[data-banner-align="center"] .ds-banner__title,
+.ds-banner--hero-responsive[data-banner-align="center"] .ds-banner__desc {
+  max-width: 960px;
+}
+.ds-banner--hero-responsive[data-banner-align="center"] .ds-banner__actions {
+  justify-content: center;
 }
 @media (max-width: 1248px) {
   .ds-banner--hero-responsive > .ds-breadcrumb { display: none; }

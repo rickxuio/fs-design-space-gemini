@@ -75,7 +75,7 @@ const breadcrumbItemsHtml = rawData.breadcrumbs
 const subCatsHtml = rawData.categoryTabs
   .map(
     (t, idx) => `<button type="button" class="plp-subcat" data-subcat-idx="${idx}" data-subcat-key="${subcatKeys[idx]}" data-subcat-title="${H.esc(t.title)}" aria-pressed="false">
-      <span class="plp-subcat__check" aria-hidden="true">&#10003;</span>
+      <span class="plp-subcat__check" aria-hidden="true"><img src="assets/fs-plp-switches/icon-check.svg" alt="" width="10" height="10"></span>
       <div class="plp-subcat__img-wrap">
         <img class="plp-subcat__img" src="${H.esc(localAsset(t.imageUrl))}" alt="${H.esc(t.title)}">
       </div>
@@ -150,66 +150,49 @@ const moreFiltersPopoverHtml = moreFilterGroups
   )
   .join('');
 
-// 5. 12 Product Cards (4 cols x 3 rows) matching live fs.com exact visual & hover interactions
-const cartIconSrc = `../fs-components/component-specs/library/releases/${RELEASE}/components/icons/icon-cart-add.svg`;
+// 5. 12 Product Cards (4 cols x 3 rows) using native library-card/embedded-product-plp + library-tag/semantic-new|semantic-hot
 const productsHtml = rawData.products
   .map((p, idx) => {
     const badgeHtml =
       p.badge === 'New'
-        ? `<div class="plp-card__badge">${H.compTag('library-tag', 'semantic-new', {})}</div>`
-        : `<div class="plp-card__badge"><span class="plp-badge-hot">${H.esc(p.badge)}</span></div>`;
-
-    const specsHtml = p.specs
-      .map((s, si) =>
-        si === 0
-          ? `<span class="plp-spec-item">${H.esc(s)}</span>`
-          : `<span class="plp-spec-divider" aria-hidden="true"></span><span class="plp-spec-item">${H.esc(s)}</span>`
-      )
-      .join('');
-
-    const stockHtml = p.stockLines
-      .map((line) => `<p class="plp-card__stock-line">${H.esc(line)}</p>`)
-      .join('');
-
-    const statsParts = [];
-    if (p.sold) {
-      statsParts.push(
-        `<a class="plp-stat-link" href="${H.esc(p.href)}#reviews" target="_blank" rel="noopener"><strong class="plp-stat-sold__num">${H.esc(p.sold)}</strong> Sold</a>`
-      );
-    }
-    if (p.reviews) {
-      if (statsParts.length) statsParts.push('<span class="plp-stat-divider" aria-hidden="true"></span>');
-      const revLabel = Number(p.reviews) === 1 ? 'Review' : 'Reviews';
-      statsParts.push(
-        `<a class="plp-stat-link" href="${H.esc(p.href)}#reviews" target="_blank" rel="noopener"><strong class="plp-stat-rev__num">${H.esc(p.reviews)}</strong> ${revLabel}</a>`
-      );
-    }
+        ? '<span class="ds-tag ds-tag--semantic ds-tag--new ds-tag--emphasis" data-tag-source-new="official"><span class="ds-tag__label">New</span></span>'
+        : '<span class="ds-tag ds-tag--semantic ds-tag--hot ds-tag--emphasis" data-tag-source-hot="official"><span class="ds-tag__label">Hot</span></span>';
 
     const subcat = inferSubcat(p);
     const hasUsStock = p.stockLines.some((l) => l.includes('U.S. Warehouse')) ? '1' : '0';
     const layer = p.title.includes('L3') ? 'L3 Managed' : 'L2+ Managed';
 
-    return `<article class="plp-card" data-plp-card="${idx}" data-subcat="${subcat}" data-port="${H.esc(p.portCount)}" data-poe="${H.esc(p.poe)}" data-downlink="${H.esc(p.downlink)}" data-layer="${H.esc(layer)}" data-us-stock="${hasUsStock}" data-specs="${H.esc(p.specs.join('|'))}" data-price="${p.priceNum}" data-sold="${p.soldNum}" data-reviews="${p.reviewNum}" data-is-new="${p.badge === 'New' ? '1' : '0'}">
-      ${badgeHtml}
-      <a class="plp-card__img-link" href="${H.esc(p.href)}" target="_blank" rel="noopener">
-        <img class="plp-card__img" src="${H.esc(localAsset(p.imageUrl))}" alt="${H.esc(p.title)}">
-      </a>
-      <div class="plp-card__body">
-        <h3 class="plp-card__title"><a class="plp-card__title-link" href="${H.esc(p.href)}" title="${H.esc(p.title)}" target="_blank" rel="noopener">${H.esc(p.title)}</a></h3>
-        <div class="plp-card__specs">${specsHtml}</div>
-        <p class="plp-card__price">${H.esc(p.price)}</p>
-        <div class="plp-card__stock">${stockHtml}</div>
-        <div class="plp-card__footer">
-          <div class="plp-card__stats">${statsParts.join('')}</div>
-          <button type="button" class="plp-card__cart-btn" data-add-cart="${H.esc(p.sku)}" aria-label="Add ${H.esc(p.sku)} to cart">
-            <img class="plp-card__cart-icon" src="${H.esc(cartIconSrc)}" alt="">
-            <span class="plp-card__cart-text">Add</span>
-          </button>
-        </div>
-      </div>
-    </article>`;
+    const cardTag = H.compTag('library-card', 'embedded-product-plp', {
+      image: `<img class="ds-card__product-image" src="${H.esc(localAsset(p.imageUrl))}" alt="${H.esc(p.title)}">`,
+      title: p.title,
+      specs: p.specs.join(' | '),
+      price: p.price,
+      stock: p.stockLines[0] || 'In stock',
+      ...(p.stockLines[1] ? { stockSecondary: p.stockLines[1] } : {}),
+      soldCount: String(p.sold || '0'),
+      reviewCount: String(p.reviews || '0'),
+      badge: badgeHtml,
+    });
+
+    return `<div class="plp-card-item" data-plp-card="${idx}" data-sku="${H.esc(p.sku)}" data-subcat="${subcat}" data-port="${H.esc(p.portCount)}" data-poe="${H.esc(p.poe)}" data-downlink="${H.esc(p.downlink)}" data-layer="${H.esc(layer)}" data-us-stock="${hasUsStock}" data-specs="${H.esc(p.specs.join('|'))}" data-price="${p.priceNum}" data-sold="${p.soldNum}" data-reviews="${p.reviewNum}" data-is-new="${p.badge === 'New' ? '1' : '0'}">${cardTag}</div>`;
   })
   .join('\n');
+
+const paginationItemsHtml = [
+  '<button type="button" class="ds-pagination__btn" data-page-nav="prev" disabled aria-label="Previous page">&lsaquo;</button>',
+  '<button type="button" class="ds-pagination__btn ds-pagination__btn--active" data-page-num="1" aria-current="page">1</button>',
+  '<button type="button" class="ds-pagination__btn" data-page-num="2">2</button>',
+  '<button type="button" class="ds-pagination__btn" data-page-num="3">3</button>',
+  '<button type="button" class="ds-pagination__btn" data-page-num="4">4</button>',
+  '<button type="button" class="ds-pagination__btn" data-page-num="5">5</button>',
+  '<button type="button" class="ds-pagination__btn" data-page-num="6">6</button>',
+  '<button type="button" class="ds-pagination__btn" data-page-nav="next" aria-label="Next page">&rsaquo;</button>',
+].join('');
+const paginationTag = H.compTag('library-pagination', 'default', {
+  items: paginationItemsHtml,
+  changeCallback: 'onPlpPageChange',
+  accessibleLabel: 'Pagination',
+});
 
 const pageCss = `${H.basePageCss()}
 .plp-section { padding: 40px 0; background: #FFFFFF; }
@@ -250,38 +233,8 @@ const pageCss = `${H.basePageCss()}
 .plp-sort-wrap { display: inline-flex; align-items: center; height: 36px; box-sizing: border-box; padding: 0 16px; border-radius: 999px; border: 1px solid #E5E5E5; background: #FFFFFF; transition: border-color 0.15s ease; }
 .plp-sort-wrap:hover { border-color: #19191A; }
 .plp-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; }
-.plp-card { position: relative; display: flex; flex-direction: column; background: #FAFAFB; border-radius: 4px; padding: 20px; box-sizing: border-box; transition: box-shadow 0.2s ease, background-color 0.2s ease; }
-.plp-card:hover { background: #FFFFFF; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); }
-.plp-card__badge { position: absolute; top: 16px; left: 16px; z-index: 2; }
-.plp-badge-hot { display: inline-flex; align-items: center; justify-content: center; height: 22px; padding: 0 8px; border-radius: 4px; background: #FFEBDD; color: #F56300; font-size: 12px; line-height: 20px; font-weight: 600; }
-.plp-card__img-link { display: flex; align-items: center; justify-content: center; height: 180px; margin: 12px 0 16px; text-decoration: none; }
-.plp-card__img { max-width: 180px; max-height: 180px; width: auto; height: auto; object-fit: contain; mix-blend-mode: multiply; display: block; }
-.plp-card__body { display: flex; flex-direction: column; flex: 1; }
-.plp-card__title { margin: 0 0 8px; font-size: 14px; line-height: 22px; font-weight: 600; color: #19191A; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; min-height: 44px; }
-.plp-card__title-link { color: inherit; text-decoration: none; }
-.plp-card__title-link:hover { text-decoration: underline; }
-.plp-card__specs { display: block; overflow: hidden; text-overflow: ellipsis; margin-bottom: 10px; font-size: 12px; line-height: 18px; color: #707070; white-space: nowrap; }
-.plp-spec-divider { display: inline-block; width: 1px; height: 10px; background: #DEE0E3; margin: 0 5px; vertical-align: -1px; }
-.plp-card__price { margin: 0 0 8px; font-size: 16px; line-height: 24px; font-weight: 600; color: #19191A; }
-.plp-card__stock { min-height: 36px; margin-bottom: 14px; }
-.plp-card__stock-line { margin: 0; font-size: 12px; line-height: 18px; color: #707070; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.plp-card__footer { margin-top: auto; display: flex; align-items: center; justify-content: space-between; min-height: 32px; gap: 8px; }
-.plp-card__stats { display: flex; align-items: center; font-size: 12px; line-height: 18px; color: #707070; }
-.plp-stat-link { color: inherit; text-decoration: none; }
-.plp-stat-link:hover { text-decoration: underline; }
-.plp-stat-sold__num { color: #A65300; font-weight: 400; }
-.plp-stat-rev__num { color: #0060BF; font-weight: 400; }
-.plp-stat-divider { display: inline-block; width: 1px; height: 10px; background: #DEE0E3; margin: 0 6px; }
-.plp-card__cart-btn { appearance: none; visibility: hidden; display: inline-flex; align-items: center; justify-content: center; gap: 4px; height: 32px; padding: 6px 10px; border-radius: 4px; border: 0; background: #C00000; color: #FFFFFF; font-family: inherit; font-size: 12px; line-height: 20px; font-weight: 400; cursor: pointer; }
-.plp-card__cart-btn:hover { background: #A00000; }
-.plp-card__cart-icon { width: 14px; height: 14px; display: block; }
-.plp-card:hover .plp-card__cart-btn, .plp-card__cart-btn:focus-visible, .plp-card__cart-btn.is-added { visibility: visible; }
-.plp-card__cart-btn.is-added { background: #10A300; }
-.plp-pagination { margin-top: 32px; display: flex; justify-content: center; align-items: center; gap: 8px; }
-.plp-page-btn { appearance: none; min-width: 32px; height: 32px; padding: 0 8px; border-radius: 4px; border: 0; background: transparent; color: #19191A; font-family: inherit; font-size: 14px; line-height: 22px; font-weight: 400; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; }
-.plp-page-btn:hover:not(:disabled) { background: #F6F6F8; }
-.plp-page-btn.is-active { background: #F2F2F2; font-weight: 600; }
-.plp-page-btn:disabled { color: #CCCCCC; cursor: not-allowed; }
+.plp-card-item { display: grid; height: 100%; }
+.plp-pagination-wrap { margin-top: 32px; display: flex; justify-content: center; }
 .plp-cart-toast { position: fixed; right: 24px; bottom: 24px; z-index: 60; background: #19191A; color: #FFFFFF; padding: 10px 16px; border-radius: 6px; font-size: 13px; line-height: 20px; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18); opacity: 0; pointer-events: none; transition: opacity 0.2s ease; }
 .plp-cart-toast.is-show { opacity: 1; }
 `;
@@ -336,16 +289,9 @@ const pageSource = `<!DOCTYPE html>
           ${productsHtml}
         </div>
 
-        <nav class="plp-pagination" aria-label="Pagination">
-          <button type="button" class="plp-page-btn" data-page-nav="prev" disabled aria-label="Previous page">&lsaquo;</button>
-          <button type="button" class="plp-page-btn is-active" data-page-num="1" aria-current="page">1</button>
-          <button type="button" class="plp-page-btn" data-page-num="2">2</button>
-          <button type="button" class="plp-page-btn" data-page-num="3">3</button>
-          <button type="button" class="plp-page-btn" data-page-num="4">4</button>
-          <button type="button" class="plp-page-btn" data-page-num="5">5</button>
-          <button type="button" class="plp-page-btn" data-page-num="6">6</button>
-          <button type="button" class="plp-page-btn" data-page-nav="next" aria-label="Next page">&rsaquo;</button>
-        </nav>
+        <div class="plp-pagination-wrap">
+          ${paginationTag}
+        </div>
       </div>
     </section>
 
@@ -611,14 +557,14 @@ const pageSource = `<!DOCTYPE html>
         });
       });
 
-      // 7. Add to Cart button feedback + subtle toast
+      // 7. Add to Cart button feedback + subtle toast (listening to native ds-cart--product-card buttons)
       var toastEl = document.getElementById('plp-cart-toast');
       var toastTimer = null;
-      document.querySelectorAll('[data-add-cart]').forEach(function (btn) {
+      document.querySelectorAll('.plp-card-item .ds-cart--product-card').forEach(function (btn) {
         btn.addEventListener('click', function () {
-          var sku = btn.dataset.addCart;
-          var text = btn.querySelector('.plp-card__cart-text');
-          btn.classList.add('is-added');
+          var item = btn.closest('.plp-card-item');
+          var sku = item ? item.dataset.sku : 'Product';
+          var text = btn.querySelector('.ds-cart__text');
           if (text) text.textContent = 'Added';
           if (toastEl) {
             toastEl.textContent = sku + ' added to cart';
@@ -627,33 +573,20 @@ const pageSource = `<!DOCTYPE html>
             toastTimer = setTimeout(function () { toastEl.classList.remove('is-show'); }, 1800);
           }
           setTimeout(function () {
-            btn.classList.remove('is-added');
             if (text) text.textContent = 'Add';
           }, 1500);
         });
       });
 
-      // 8. Pagination active state
-      var pageBtns = Array.prototype.slice.call(document.querySelectorAll('[data-page-num]'));
-      var prevBtn = document.querySelector('[data-page-nav="prev"]');
-      var nextBtn = document.querySelector('[data-page-nav="next"]');
-      var curPage = 1;
-      function setPage(p) {
-        curPage = Math.max(1, Math.min(6, p));
-        pageBtns.forEach(function (b) {
-          var active = Number(b.dataset.pageNum) === curPage;
-          b.classList.toggle('is-active', active);
-          if (active) b.setAttribute('aria-current', 'page');
-          else b.removeAttribute('aria-current');
-        });
-        if (prevBtn) prevBtn.disabled = curPage === 1;
-        if (nextBtn) nextBtn.disabled = curPage === 6;
-      }
-      pageBtns.forEach(function (b) {
-        b.addEventListener('click', function () { setPage(Number(b.dataset.pageNum)); });
-      });
-      if (prevBtn) prevBtn.addEventListener('click', function () { setPage(curPage - 1); });
-      if (nextBtn) nextBtn.addEventListener('click', function () { setPage(curPage + 1); });
+      // 8. Native library-pagination/default change event hook
+      window.onPlpPageChange = function (event) {
+        if (toastEl && event && event.detail) {
+          toastEl.textContent = 'Page ' + event.detail.page + ' of ' + event.detail.totalPages;
+          toastEl.classList.add('is-show');
+          clearTimeout(toastTimer);
+          toastTimer = setTimeout(function () { toastEl.classList.remove('is-show'); }, 1400);
+        }
+      };
     })();
   </script>
 </body>

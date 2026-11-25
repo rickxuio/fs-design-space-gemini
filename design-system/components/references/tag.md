@@ -122,6 +122,18 @@ selectable保留唯一label；filter保留唯一prefix/value及原关闭图标�
 <span class="ds-tag ds-tag--semantic ds-tag--new ds-tag--emphasis" data-tag-source-new="official" data-ai-example="ai-tag-semantic-new"><span class="ds-tag__label">New</span></span>
 ```
 
+## semantic-hot
+
+用：固定橙色Hot热销展示标记。
+
+不用：把展示标记作为可选产品属性。
+
+可修改：。
+
+```html
+<span class="ds-tag ds-tag--semantic ds-tag--hot ds-tag--emphasis" data-tag-source-hot="official" data-ai-example="ai-tag-semantic-hot"><span class="ds-tag__label">Hot</span></span>
+```
+
 ## product-regular-small
 
 用：现有22px产品属性，原件产品图=false。

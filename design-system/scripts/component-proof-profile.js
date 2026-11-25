@@ -11,6 +11,7 @@ const SUITES = Object.freeze({
   'option-selector': ['local-canonical-component','list-option-source'],
   'badge': ['local-canonical-component'],
   'breadcrumb': ['local-canonical-component'],
+  'pagination': ['local-canonical-component'],
   'checkbox': ['local-canonical-component'],
   'dialog': ['local-canonical-component','remaining-component-capabilities'],
   'dropdown': ['local-canonical-component','remaining-component-capabilities'],

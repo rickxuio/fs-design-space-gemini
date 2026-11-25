@@ -294,6 +294,30 @@
       ]
     },
     {
+      "name": "embedded.product-plp",
+      "chineseName": "嵌入式 · PLP精简产品卡片",
+      "description": "PLP商品列表页精简产品卡：无兼容品牌标签行，含180×180产品图、两行标题、单行竖线分隔参数条、价格、双仓库存行、销量评价及hover浮现原生Cart加购按钮。",
+      "cssClass": "ds-card--embedded ds-card--embedded-full ds-card--embedded-plp ds-card--embedded-bg-gray ds-card",
+      "whenToUse": "PLP商品列表页精简产品卡：无兼容品牌标签行，含单行竖线分隔参数、价格、双仓库存、销量评价与hover浮现加购按钮。",
+      "styleProperties": {
+        "width": "285-300px"
+      },
+      "selectionDecisionType": "嵌入式·PLP精简产品卡片",
+      "whenNotToUse": "普通图文展示，或需要兼容品牌标签行（请用 embedded.product-full）。",
+      "usage": "PLP商品列表页精简产品卡：无兼容品牌标签行，含单行竖线分隔参数、价格、双仓库存、销量评价与hover浮现加购按钮。",
+      "isComplete": true,
+      "pendingParts": [],
+      "requiredChildren": [
+        "img.ds-card__product-image",
+        "p.ds-card__title",
+        "p.ds-card__specs",
+        "p.ds-card__price",
+        "div.ds-card__stock",
+        "div.ds-card__stats",
+        "button.ds-cart--product-card"
+      ]
+    },
+    {
       "name": "spliced.horizontal.full-width.responsive",
       "chineseName": "拼接式 · 通栏 · 响应式（当前MG）",
       "description": "Opt-in current source-backed PC052289/image052290580×326/text052293padding0; existing Pad/M queries retained without new adaptation approval.",
@@ -774,6 +798,38 @@
             "condition": "普通图文展示，或来源没有兼容标签、库存与选购数据。",
             "result": "按内容和交互另选变体。",
             "targetVariant": "embedded.product-full"
+          }
+        ]
+      },
+      {
+        "type": "嵌入式·PLP精简产品卡片",
+        "className": "ds-card--embedded ds-card--embedded-full ds-card--embedded-plp ds-card--embedded-bg-gray ds-card",
+        "whenToUse": "PLP商品列表页精简产品卡：无兼容品牌标签行，含单行竖线分隔参数、价格、双仓库存、销量评价与hover浮现加购按钮。",
+        "whenNotToUse": "普通图文展示，或需要兼容品牌标签行（请用 embedded.product-full）。",
+        "nestedComponents": [
+          {
+            "component": "Button",
+            "label": "Button · Cart加购（产品卡片）",
+            "href": "button.html#cart-product-card"
+          }
+        ],
+        "status": "基于线上FS PLP标杆页对齐核实；调用资格读同版catalog。",
+        "variant": "embedded.product-plp",
+        "fragment": "embedded-product-plp",
+        "selectionCases": [
+          {
+            "id": "card-embedded-product-plp-use",
+            "kind": "use",
+            "condition": "PLP商品列表页精简产品卡：无兼容品牌标签行，含单行竖线分隔参数、价格、双仓库存、销量评价与hover浮现加购按钮。",
+            "result": "调用embedded.product-plp，保留真实子原子及当前资源。",
+            "targetVariant": "embedded.product-plp"
+          },
+          {
+            "id": "card-embedded-product-plp-exclude",
+            "kind": "exclude",
+            "condition": "普通图文展示，或需要兼容品牌标签行。",
+            "result": "按内容和交互另选变体。",
+            "targetVariant": "embedded.product-plp"
           }
         ]
       },
@@ -2150,6 +2206,22 @@
     },
     "spacingDependencies": [
       {
+        "token": "spacing.10",
+        "value": "10px",
+        "usage": "PLP精简卡片参数条下间距",
+        "properties": ["margin"],
+        "selectors": [".ds-card[data-card-current=\"embedded-plp\"] .ds-card__specs"],
+        "appliesTo": ["embedded.product-plp"]
+      },
+      {
+        "token": "spacing.14",
+        "value": "14px",
+        "usage": "PLP精简卡片库存区下间距",
+        "properties": ["margin-bottom"],
+        "selectors": [".ds-card[data-card-current=\"embedded-plp\"] .ds-card__stock"],
+        "appliesTo": ["embedded.product-plp"]
+      },
+      {
         "token": "spacing.40",
         "value": "40px",
         "usage": "gap：.ds-card--horizontal、.ds-card--horizontal-reverse、.ds-card--horizontal-sidebar .ds-card__content-area",
@@ -2724,6 +2796,8 @@
     "typography.font-size-h4",
     "spacing.40",
     "spacing.20",
+    "spacing.14",
+    "spacing.10",
     "spacing.md",
     "spacing.xs",
     "spacing.sm",
@@ -2952,7 +3026,10 @@
     "reviewCount",
     "compatibility",
     "linkHref",
-    "sidebar"
+    "sidebar",
+    "specs",
+    "stockSecondary",
+    "badge"
   ],
   "integration": {
     "styles": [
@@ -2994,6 +3071,7 @@
       "spliced.vertical.category-nav",
       "embedded.product-detail",
       "embedded.product-full",
+      "embedded.product-plp",
       "spliced.horizontal.full-width.bordered-background",
       "spliced.horizontal.with-sidebar",
       "spliced.horizontal.with-sidebar.bordered-background"
@@ -3819,6 +3897,78 @@
         "bindings": {},
         "purpose": "current-source-embedded.product-full",
         "exampleSelector": "[data-ai-example=\"ai-card-completion-embedded-product-full\"]"
+      },
+      "embedded.product-plp": {
+        "allowedEdits": [
+          "image",
+          "title",
+          "specs",
+          "price",
+          "stock",
+          "stockSecondary",
+          "soldCount",
+          "reviewCount",
+          "badge"
+        ],
+        "slots": {
+          "image": {
+            "selector": "div.ds-card__product-image",
+            "mode": "structured-content",
+            "required": true,
+            "preserve": [
+              "img.ds-card__product-image"
+            ],
+            "rule": "One actual product picture and descriptive alt."
+          },
+          "title": {
+            "selector": ".ds-card__title",
+            "mode": "text",
+            "required": true
+          },
+          "specs": {
+            "selector": ".ds-card__specs",
+            "mode": "text",
+            "required": true
+          },
+          "price": {
+            "selector": ".ds-card__price",
+            "mode": "text",
+            "required": true
+          },
+          "stock": {
+            "selector": ".ds-card__stock-text",
+            "mode": "text",
+            "required": true
+          },
+          "stockSecondary": {
+            "selector": ".ds-card__stock-text-secondary",
+            "mode": "text",
+            "required": false
+          },
+          "soldCount": {
+            "selector": ".ds-card__sold-count",
+            "mode": "text",
+            "required": true
+          },
+          "reviewCount": {
+            "selector": ".ds-card__review-count",
+            "mode": "text",
+            "required": true
+          },
+          "badge": {
+            "selector": ".ds-card__tag-slot",
+            "mode": "structured-content",
+            "required": false,
+            "preserve": [
+              "span.ds-tag",
+              "span.ds-tag__label"
+            ],
+            "rule": "Official Tag/semantic-new or Tag/semantic-hot atom only."
+          }
+        },
+        "bindings": {},
+        "purpose": "current-source-embedded.product-plp",
+        "exampleSelector": "[data-ai-example=\"ai-card-completion-embedded-product-plp\"]"
       },
       "spliced.horizontal.with-sidebar": {
         "purpose": "source-PC-sidebar-plain-card-composition",

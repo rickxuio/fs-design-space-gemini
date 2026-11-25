@@ -446,7 +446,7 @@ const galleryThumbsHtml = DATA.gallery
   .map(
     (g, i) => `<button type="button" class="pdp-thumb${g.active ? ' is-active' : ''}" data-gallery-idx="${i}" data-gallery-src="${H.esc(localAsset(g.full))}" data-gallery-title="${H.esc(g.title)}" aria-label="${H.esc(g.title)}">
       <img class="pdp-thumb__img" src="${H.esc(localAsset(g.thumb))}" alt="${H.esc(g.title)}">
-      ${g.type === 'video' ? '<span class="pdp-thumb__play" aria-hidden="true">&#9654;</span>' : ''}
+      ${g.type === 'video' ? '<span class="pdp-thumb__play" aria-hidden="true"><img src="assets/fs-pdp-s5810/icon-play.svg" alt="" width="10" height="10"></span>' : ''}
     </button>`
   )
   .join('');

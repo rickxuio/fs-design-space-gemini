@@ -69,7 +69,8 @@ function main() {
   if (remaining.length) {
     throw new Error('Remaining non-current components after sync: ' + remaining.map((r) => `${r.id}(${r.status})`).join(', '));
   }
-  console.log('✓ All 30 components accepted and synchronized cleanly.');
+  const total = quality.buildQualityReport(DS_ROOT).components.length;
+  console.log(`✓ All ${total} components accepted and synchronized cleanly.`);
 }
 
 try {

@@ -1,9 +1,21 @@
 "use strict";
-const path = require("node:path"),
+const fs = require("node:fs"),
+  path = require("node:path"),
   { spawnSync } = require("node:child_process"),
   L = require("./local-component-library.cjs");
 const source = path.join(L.ROOT, "design-system"),
   native = require(path.join(source, "scripts/sync-component-reference.js"));
+function runOptionalScript(root, relScript) {
+  const scriptPath = path.join(root, relScript);
+  if (!fs.existsSync(scriptPath)) return;
+  const res = spawnSync(process.execPath, [scriptPath], {
+    cwd: root,
+    stdio: "inherit",
+  });
+  if (res.status !== 0) {
+    throw Error(`Post-sync script failed (${res.status}): ${relScript}`);
+  }
+}
 function sync({ root = L.ROOT } = {}) {
   const source = path.join(root, "design-system");
   const result = spawnSync(
@@ -17,6 +29,8 @@ function sync({ root = L.ROOT } = {}) {
     );
   const c = L.compile(root);
   require(path.join(root,"scripts/build-component-docs.cjs")).build({root});
+  runOptionalScript(root, "scripts/export-design-core.cjs");
+  runOptionalScript(root, "scripts/build-design-portal.cjs");
   console.log(
     "Local registry, variant selection, dependencies and versioned resources synchronized:",
     c.version,

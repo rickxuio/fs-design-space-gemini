@@ -34,7 +34,8 @@
     "dropdown",
     "form",
     "navigation",
-    "carousel"
+    "carousel",
+    "pagination"
   ],
   "deliveryBaseline": {
     "schemaVersion": "fs-call-delivery-baseline/1.0.0",
@@ -201,6 +202,19 @@
         "requiresCurrentEngineering": true,
         "visualApproval": "separate-not-granted",
         "viewportWidth": 1920
+      },
+      "pagination/default": {
+        "disposition": "restricted",
+        "newPages": true,
+        "reason": "Standard PC list pagination bar for PLP, search, and review lists; dispatches ds:pagination-change.",
+        "constraints": [
+          "Standard PC list pagination bar for PLP, search, and review lists; do not use for carousel dots or section anchor nav."
+        ],
+        "contractPolicy": "用于 PLP 商品列表、搜索结果或评价列表页码切换；轮播圆点与章节锚点禁止套用。",
+        "use": "finite-new-page-candidate",
+        "evidence": "components/contracts/pagination.json#aiContract/evidence",
+        "requiresCurrentEngineering": true,
+        "visualApproval": "separate-not-granted"
       },
       "button/cart-product-card": {
         "disposition": "restricted",
@@ -1440,6 +1454,19 @@
         "requiresCurrentEngineering": true,
         "visualApproval": "separate-not-granted"
       },
+      "tag/semantic-hot": {
+        "disposition": "restricted",
+        "newPages": true,
+        "reason": "Only exact authored shape for official orange Hot badge (#FFEBDD / #F56300). No arbitrary colors/sizes.",
+        "constraints": [
+          "Only exact authored shape for official orange Hot badge (#FFEBDD / #F56300). No arbitrary colors/sizes."
+        ],
+        "contractPolicy": "Use one finite authored example for fixed orange Hot semantic badge (ds-tag--semantic ds-tag--hot ds-tag--emphasis).",
+        "use": "finite-new-page-candidate",
+        "evidence": "components/contracts/tag.json#aiContract/evidence",
+        "requiresCurrentEngineering": true,
+        "visualApproval": "separate-not-granted"
+      },
       "tag/status-text": {
         "disposition": "restricted",
         "newPages": true,
@@ -1872,6 +1899,19 @@
           "完整产品选购卡：兼容标签、参数、价格、库存、销量评价及真实Cart加购按钮同时存在。",
           "普通图文展示，或来源没有兼容标签、库存与选购数据。",
           "Only allowedEdits; real current dependencies and runtime required; visual approval separate."
+        ],
+        "evidence": "components/contracts/card.json#aiContract/evidence",
+        "requiresCurrentEngineering": true,
+        "visualApproval": "separate-not-granted"
+      },
+      "card/embedded.product-plp": {
+        "disposition": "restricted",
+        "newPages": true,
+        "reason": "Simplified PLP product card without compatibility tags; single-line spec bar, dual-warehouse stock, and hover-revealed native Cart button.",
+        "constraints": [
+          "PLP商品列表页精简产品卡：无兼容品牌标签行，含单行竖线分隔参数、价格、双仓库存、销量评价与hover浮现加购按钮。",
+          "普通内容图文卡不得套用；若需兼容品牌标签行请使用 embedded.product-full。",
+          "Only allowedEdits; real current dependencies and runtime required."
         ],
         "evidence": "components/contracts/card.json#aiContract/evidence",
         "requiresCurrentEngineering": true,
@@ -2520,6 +2560,15 @@
           "visualApproval": "separate-not-granted"
         }
       }
+    },
+    "expansionPlpP1_1123": {
+      "date": "2026-11-23",
+      "scope": "Close 4 remaining P1 component gaps (Tag/semantic-hot, Tab/product color icons & hover switch, Card/embedded.product-plp, Pagination/default)",
+      "addedCalls": [
+        "tag/semantic-hot",
+        "card/embedded.product-plp",
+        "pagination/default"
+      ]
     }
   }
 }

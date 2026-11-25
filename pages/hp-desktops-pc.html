@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html data-fs-library="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1440">
+  <title>Desktop Computers & All-in-One PCs | FS</title>
+  <style>
+    body { margin: 0; font-family: "Open Sans", Arial, sans-serif; color: #19191A; background: #FFFFFF; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+.container { max-width: 1200px; width: 100%; margin: 0 auto; padding: 0; box-sizing: border-box; }
+.page-section { padding: 40px 0; background: #FFFFFF; }
+.page-section--gray { background: #FAFBFB; }
+.section-header { text-align: center; margin-bottom: 24px; }
+.section-header__tag { display: flex; justify-content: center; margin-bottom: 8px; }
+.section-header__title { margin: 0; font-size: 24px; line-height: 32px; font-weight: 600; color: #19191A; }
+.section-header__desc { margin: 12px auto 0; max-width: 960px; font-size: 14px; line-height: 22px; font-weight: 400; color: #4B4B4D; }
+.section-header__action { margin-top: 12px; display: flex; justify-content: center; }
+.center-tabs-layout { display: flex; justify-content: center; margin-bottom: 24px; }
+.grid { display: grid; gap: 20px; align-items: stretch; }
+.grid--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.grid--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.grid--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.card-full-link { display: grid; text-decoration: none; color: inherit; height: 100%; }
+.hero-surface { position: relative; width: 100%; overflow: hidden; background: #19191A; }
+.hero-surface__bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+.hero-surface__scrim { position: absolute; inset: 0; background: rgba(0, 0, 0, 0.48); z-index: 1; }
+.hero-surface__inner { position: relative; z-index: 2; }
+.store-card-tag-row { display: flex; align-items: center; gap: 6px; margin-bottom: 6px; }
+.store-card-price-row { display: flex; align-items: baseline; gap: 8px; margin-top: 8px; }
+.store-price-current { font-size: 16px; line-height: 24px; font-weight: 600; color: #19191A; }
+.store-price-compare { font-size: 13px; line-height: 20px; color: #707070; text-decoration: line-through; }
+.subscribe-card-1200 { display: grid; grid-template-columns: 600px 600px; width: 1200px; max-width: 100%; min-height: 338px; background: #FFFFFF; border-radius: 8px; overflow: hidden; box-sizing: border-box; }
+.subscribe-card-1200__media { height: 338px; overflow: hidden; }
+.subscribe-card-1200__img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.subscribe-card-1200__body { padding: 40px 48px; display: flex; flex-direction: column; justify-content: center; box-sizing: border-box; }
+.subscribe-form__row { display: flex; align-items: flex-end; gap: 12px; margin-bottom: 16px; }
+@media (max-width: 1220px) { .subscribe-card-1200 { grid-template-columns: 1fr 1fr; width: 100%; } }
+    .hero-surface__scrim { background: rgba(0, 0, 0, 0.35); }
+    .hp-breadcrumb-bar {
+      background: #FFFFFF;
+      border-bottom: 1px solid #F0F0F2;
+    }
+    .hp-breadcrumb-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      min-height: 44px;
+      padding: 10px 0;
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+    }
+    .hp-trending-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 24px;
+    }
+    .hp-trending-title {
+      margin: 0;
+      font-size: 24px;
+      line-height: 32px;
+      font-weight: 600;
+      color: #19191A;
+    }
+    .hp-partner-strip {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-shrink: 0;
+    }
+    .hp-partner-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: #4B4B4D;
+    }
+    .hp-partner-intel {
+      height: 32px;
+      width: auto;
+      display: block;
+    }
+    .hp-partner-win11 {
+      height: 28px;
+      width: auto;
+      display: block;
+    }
+    .hp-partner-caption {
+      display: flex;
+      flex-direction: column;
+      font-size: 11px;
+      line-height: 15px;
+      color: #4B4B4D;
+    }
+    .hp-partner-caption-strong {
+      font-weight: 600;
+      color: #19191A;
+    }
+    .hp-partner-footer {
+      display: flex;
+      justify-content: center;
+      margin-top: 28px;
+      padding-top: 20px;
+      border-top: 1px solid #EAECEF;
+    }
+
+    /* Lifestyle tabbed 3-column product showcase (Gray section -> borderless white cards) */
+    .hp-tab-bar {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 24px;
+    }
+    .hp-lifestyle-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+    .hp-prod-card {
+      background: #FFFFFF;
+      border-radius: 8px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 16px;
+      transition: box-shadow 0.2s ease;
+    }
+    .hp-prod-card:hover {
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+    }
+    .hp-prod-media {
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #FAFBFB;
+      border-radius: 4px;
+      padding: 16px;
+    }
+    .hp-prod-img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+    .hp-prod-title {
+      margin: 14px 0 6px;
+      font-size: 16px;
+      line-height: 24px;
+      font-weight: 600;
+      color: #19191A;
+    }
+    .hp-prod-sub {
+      margin: 0;
+      font-size: 13px;
+      line-height: 20px;
+      color: #646466;
+    }
+    .hp-prod-foot {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      padding-top: 12px;
+      border-top: 1px solid #F0F0F2;
+    }
+    .hp-prod-prices {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+    }
+    .hp-prod-msrp {
+      font-size: 13px;
+      color: #71717A;
+      text-decoration: line-through;
+    }
+    .hp-prod-sale {
+      font-size: 20px;
+      line-height: 28px;
+      font-weight: 600;
+      color: #C00000;
+    }
+    .hp-view-all-row {
+      display: flex;
+      justify-content: center;
+      margin-top: 24px;
+    }
+    .hp-hidden-tpl {
+      display: none;
+    }
+
+    /* Section 9: Pre-Footer Quick Links & Need help? (White Section -> borderless clean horizontal strip) */
+    .hp-support-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+      padding: 8px 0;
+    }
+    .hp-quick-links {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px 32px;
+      flex: 1;
+    }
+    .hp-quick-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: #19191A;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 22px;
+      white-space: nowrap;
+      transition: color 0.15s;
+    }
+    .hp-quick-link:hover {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .hp-quick-icon {
+      width: 20px;
+      height: 20px;
+      display: block;
+      flex-shrink: 0;
+      opacity: 0.78;
+    }
+    .hp-help-card {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding-left: 32px;
+      border-left: 1px solid #EAECEF;
+      flex-shrink: 0;
+    }
+    .hp-help-avatar-wrap {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #F4F5F7;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .hp-help-avatar {
+      width: 22px;
+      height: 22px;
+      display: block;
+      opacity: 0.78;
+    }
+    .hp-help-title {
+      margin: 0 0 2px;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 20px;
+      color: #19191A;
+    }
+    .hp-help-actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .hp-help-link {
+      font-size: 13px;
+      line-height: 20px;
+      color: #0060BF;
+      text-decoration: none;
+    }
+    .hp-help-link:hover {
+      text-decoration: underline;
+    }
+
+    /* Section 10: Pre-Footer Horizontal Disclosure Bar (Pattern 14, Gray Band) */
+    .hp-info-band {
+      background: #FAFBFB;
+      border-top: 1px solid #EAECEF;
+      padding: 18px 0;
+    }
+    .hp-info-triggers {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+    }
+    .hp-info-trigger {
+      appearance: none;
+      border: none;
+      background: transparent;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 28px;
+      font-family: inherit;
+      font-size: 13px;
+      line-height: 20px;
+      font-weight: 600;
+      color: #4B4B4D;
+      cursor: pointer;
+      position: relative;
+      transition: color 0.15s ease;
+    }
+    .hp-info-trigger + .hp-info-trigger {
+      border-left: 1px solid #E5E5E5;
+    }
+    .hp-info-trigger:hover,
+    .hp-info-trigger[aria-expanded="true"] {
+      color: #19191A;
+    }
+    .hp-info-trigger[aria-expanded="true"]::after {
+      content: "";
+      position: absolute;
+      left: 28px;
+      right: 28px;
+      bottom: -2px;
+      height: 2px;
+      background: #C00000;
+    }
+    .hp-info-chevron {
+      width: 14px;
+      height: 14px;
+      display: block;
+      opacity: 0.65;
+      transition: transform 0.2s ease, opacity 0.15s ease;
+    }
+    .hp-info-trigger[aria-expanded="true"] .hp-info-chevron {
+      transform: rotate(180deg);
+      opacity: 1;
+    }
+    .hp-info-drawer {
+      margin-top: 18px;
+      background: #FFFFFF;
+      border-radius: 8px;
+      padding: 24px 28px;
+    }
+    .hp-info-drawer[hidden] {
+      display: none;
+    }
+    .hp-info-links-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px 24px;
+    }
+    .hp-info-link {
+      font-size: 13px;
+      line-height: 20px;
+      color: #4B4B4D;
+      text-decoration: none;
+    }
+    .hp-info-link:hover {
+      color: #19191A;
+      text-decoration: underline;
+    }
+    .hp-info-guide-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+    }
+    .hp-info-guide-title {
+      margin: 0 0 8px;
+      font-size: 14px;
+      line-height: 20px;
+      font-weight: 600;
+      color: #19191A;
+    }
+    .hp-info-guide-text {
+      margin: 0;
+      font-size: 13px;
+      line-height: 20px;
+      color: #4B4B4D;
+    }
+    .hp-info-disclaimer {
+      margin: 0;
+      font-size: 12px;
+      line-height: 20px;
+      color: #6B6E75;
+    }
+  </style>
+<link rel="stylesheet" data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" href="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/tokens.css">
+<link rel="stylesheet" data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" href="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/components.css">
+<link rel="stylesheet" data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" href="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/navigation-current.css">
+<link rel="stylesheet" data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" href="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/banner-responsive.css">
+<link rel="stylesheet" data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" href="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/card-responsive.css">
+<link rel="stylesheet" data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" href="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/tab-current.css">
+<link rel="stylesheet" data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" href="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/navigation-header-web-atom.css">
+<link rel="stylesheet" data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" href="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/banner-current.css">
+<link rel="stylesheet" data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" href="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/button-current.css">
+<link rel="stylesheet" data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" href="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/button-runtime-current.css">
+<link rel="stylesheet" data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" href="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/input-footer-source.css">
+<link rel="stylesheet" data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" href="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/breadcrumb-current.css">
+<link rel="stylesheet" data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" href="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/card-current.css">
+<link rel="stylesheet" data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" href="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/navigation-footer-current.css">
+<link rel="stylesheet" data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" href="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/text-button-current.css">
+<link rel="stylesheet" data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" href="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/cart-current.css">
+<link rel="stylesheet" data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" href="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/navigation-header-action-atom.css">
+<link rel="stylesheet" data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" href="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/tag-current.css">
+<link rel="stylesheet" data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" href="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/menu-navigation-current.css">
+<link rel="stylesheet" data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" href="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/list-unordered-current.css">
+<link rel="stylesheet" data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" href="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/navigation-products-current.css">
+<link rel="stylesheet" data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" href="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/tag-product-current.css">
+<link rel="stylesheet" data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" href="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icon-card-current.css">
+<link rel="stylesheet" data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" href="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/carousel-current.css">
+<link rel="stylesheet" data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" href="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/carousel-external.css">
+<link rel="stylesheet" data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" href="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/local-fonts.css">
+</head>
+<body>
+  <header class="ds-nav-header" data-fragment="header" data-ai-example="ai-navigation-fixed-header" data-header-products-current="pc" data-library-component="library-navigation" data-library-fragment="header" data-library-release="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" data-library-props="{}">
+    <div class="ds-nav-header__topbar">
+      <div class="ds-nav-header__topbar-inner">
+        <div class="ds-nav-header__topbar-left">
+          <span class="ds-nav-header__topbar-text">FS United States</span>
+          <span class="ds-nav-header__topbar-divider"></span>
+          <span class="ds-nav-header__topbar-text">FREE SHIPPING on Orders Over US$79</span>
+        </div>
+        <div class="ds-nav-header__topbar-right">
+          <a href="#" class="ds-nav-header__topbar-link">Contact Us</a>
+          <span class="ds-nav-header__topbar-divider"></span>
+          <a href="#" class="ds-nav-header__topbar-link">
+            United States / $ USD
+            <svg class="ds-nav-header__dropdown-icon" width="12" height="12" viewBox="0 0 12 12" fill="none">
+              <path d="M3 4.5L6 7.5L9 4.5" stroke="#707070" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <nav class="ds-nav-header__main">
+      <div class="ds-nav-header__main-inner">
+        <a id="library-instance-1-icon-usage-icon-logo-fs" href="#" class="ds-nav-header__logo" aria-label="FS.com Home" style="scroll-margin-top: 40px;">
+          <img src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/icon-logo-fs.svg" alt="FS Logo" width="76" height="36">
+        </a>
+        <ul class="ds-nav-header__links">
+          <li class="ds-nav-header__link-item"><a href="#" class="ds-nav-header__link" data-header-products-trigger="" role="button" aria-haspopup="true" aria-expanded="false" aria-controls="library-instance-1-header-product-menu-panel">All Products</a></li>
+          <li class="ds-nav-header__link-item"><a href="#" class="ds-nav-header__link">Software</a></li>
+          <li class="ds-nav-header__link-item"><a href="#" class="ds-nav-header__link">Solutions</a></li>
+          <li class="ds-nav-header__link-item"><a href="#" class="ds-nav-header__link">Services</a></li>
+          <li class="ds-nav-header__link-item"><a href="#" class="ds-nav-header__link">Resources</a></li>
+          <li class="ds-nav-header__link-item"><a href="#" class="ds-nav-header__link">Contact Us</a></li>
+        </ul>
+        <div class="ds-nav-header__actions">
+          <button id="library-instance-1-icon-usage-icon-search" class="ds-nav-header__action-btn" type="button" aria-label="Search" style="scroll-margin-top: 40px;">
+            <img src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/navigation-header-search-1013.png" alt="" width="24" height="24">
+          </button>
+          <button id="library-instance-1-icon-usage-icon-cart" class="ds-nav-header__action-btn" type="button" aria-label="Cart" style="scroll-margin-top: 40px;">
+            <img src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/icon-cart.svg" alt="" width="24" height="24">
+          </button>
+          <button id="library-instance-1-icon-usage-icon-account" class="ds-nav-header__action-btn" type="button" aria-label="Account" style="scroll-margin-top: 40px;">
+            <img src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/icon-account.svg" alt="" width="24" height="24">
+          </button>
+        </div>
+      </div>
+    </nav>
+  <div class="ds-nav-header__product-menu" id="library-instance-1-header-product-menu-panel" hidden=""><nav class="ds-menu-navigation ds-menu-navigation--public-header" data-menu-navigation="" aria-label="Public header product menu">
+        <ul class="ds-menu-navigation__list">
+          <li><button class="ds-menu-navigation__item ds-menu-navigation__item--selected" type="button" data-value="switches" aria-pressed="true"><img class="ds-menu-navigation__product-icon" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/icon-menu-switches.svg" alt=""><span class="ds-menu-navigation__item-label">Switches</span></button></li>
+          <li><button class="ds-menu-navigation__item" type="button" data-value="networking"><img class="ds-menu-navigation__product-icon" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/icon-menu-networking.svg" alt=""><span class="ds-menu-navigation__item-label">Networking</span></button></li>
+          <li><button class="ds-menu-navigation__item" type="button" data-value="optical-transceivers"><img class="ds-menu-navigation__product-icon" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/icon-menu-optical-transceivers.svg" alt=""><span class="ds-menu-navigation__item-label">Optical Transceivers</span></button></li>
+          <li><button class="ds-menu-navigation__item" type="button" data-value="fiber-optic-cables"><img class="ds-menu-navigation__product-icon" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/icon-menu-fiber-optic-cables.svg" alt=""><span class="ds-menu-navigation__item-label">Fiber Optic Cables</span></button></li>
+          <li><button class="ds-menu-navigation__item" type="button" data-value="panels-enclosures-racks"><img class="ds-menu-navigation__product-icon" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/icon-menu-panels-enclosures-racks.svg" alt=""><span class="ds-menu-navigation__item-label">Panels, Enclosures &amp; Racks</span></button></li>
+          <li><button class="ds-menu-navigation__item" type="button" data-value="optical-networking"><img class="ds-menu-navigation__product-icon" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/icon-menu-optical-networking.svg" alt=""><span class="ds-menu-navigation__item-label">Optical Networking</span></button></li>
+          <li><button class="ds-menu-navigation__item" type="button" data-value="copper-systems"><img class="ds-menu-navigation__product-icon" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/icon-menu-copper-systems.svg" alt=""><span class="ds-menu-navigation__item-label">Copper Systems</span></button></li>
+          <li><button class="ds-menu-navigation__item" type="button" data-value="testers-tools"><img class="ds-menu-navigation__product-icon" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/icon-menu-testers-tools.svg" alt=""><span class="ds-menu-navigation__item-label">Testers &amp; Tools</span></button></li>
+        </ul>
+      </nav></div></header>
+  <main>
+    
+    <!-- Section 1: Breadcrumb -->
+    <div class="hp-breadcrumb-bar">
+      <div class="hp-breadcrumb-inner">
+        <nav class="ds-breadcrumb" aria-label="Breadcrumb" data-breadcrumb-current="" data-ai-example="ai-breadcrumb-default" data-fragment="default" data-library-component="library-breadcrumb" data-library-fragment="default" data-library-release="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" data-library-props="{&quot;items&quot;:&quot;<div class=\&quot;ds-breadcrumb__item\&quot;><a href=\&quot;https://www.hp.com/us-en/shop\&quot; class=\&quot;ds-breadcrumb__link\&quot;>Home</a><span class=\&quot;ds-breadcrumb__separator\&quot; aria-hidden=\&quot;true\&quot;>/</span></div><div class=\&quot;ds-breadcrumb__item\&quot;><span class=\&quot;ds-breadcrumb__current\&quot;>Desktops</span></div>&quot;}"><div class="ds-breadcrumb__item"><a href="https://www.hp.com/us-en/shop" class="ds-breadcrumb__link">Home</a><span class="ds-breadcrumb__separator" aria-hidden="true">/</span></div><div class="ds-breadcrumb__item"><span class="ds-breadcrumb__current">Desktops</span></div></nav>
+      </div>
+    </div>
+
+    <!-- Section 2: Black Friday Sale Hero Banner (FS Default Left-Aligned 360px) -->
+    <section class="hero-surface" aria-label="Black Friday Sale">
+      <img class="hero-surface__bg" src="assets/hp-desktops/hero-bf.jpg" alt="All-in-One and tower desktops">
+      <div class="hero-surface__scrim"></div>
+      <div class="hero-surface__inner">
+        <div class="ds-banner ds-banner--hero ds-banner--hero-responsive" data-preview-skeleton="hero-responsive" data-banner-current="" data-ai-example="ai-banner-hero-current" data-fragment="hero-responsive" data-library-component="library-banner" data-library-fragment="hero-responsive" data-library-release="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" data-banner-surface="image" data-banner-height="360" data-banner-align="left" data-library-props="{&quot;title&quot;:&quot;Black Friday Sale&quot;,&quot;description&quot;:&quot;Save up to 50% on select desktop doorbusters, plus pay with HP Financing. Protect your brand-new PC and get 35% off select HP Care Packs.&quot;,&quot;actionLabel&quot;:&quot;Shop&quot;,&quot;actionHref&quot;:&quot;https://www.hp.com/us-en/shop/slp/black-friday-sale/desktops&quot;,&quot;surface&quot;:&quot;image&quot;,&quot;height&quot;:&quot;360&quot;,&quot;align&quot;:&quot;left&quot;}"><div class="ds-banner__responsive-inner"><p class="ds-banner__title">Black Friday Sale</p><p class="ds-banner__desc">Save up to 50% on select desktop doorbusters, plus pay with HP Financing. Protect your brand-new PC and get 35% off select HP Care Packs.</p><div class="ds-banner__actions"><a class="ds-btn ds-btn--outline-white ds-btn--xl" href="https://www.hp.com/us-en/shop/slp/black-friday-sale/desktops"><span class="ds-btn__text">Shop</span></a></div></div></div>
+      </div>
+    </section>
+
+    <!-- Section 3: Trending desktops: See what's new! (White Section -> Bordered 3x2 Cards) -->
+    <section id="trending-desktops" class="page-section">
+      <div class="container">
+        <div class="hp-trending-head" data-fs-extend="trending-header-with-partner-badges">
+          <h1 class="hp-trending-title">Trending desktops: See what’s new!</h1>
+          
+    <div class="hp-partner-strip">
+      <a class="hp-partner-link" href="https://www.hp.com/us-en/shop/cv/hp-intel">
+        <img class="hp-partner-intel" src="assets/hp-desktops/badge-intel.png" alt="Intel Core Ultra Series 3">
+        <span class="hp-partner-caption">
+          <span class="hp-partner-caption-strong">Intel® Core™ Ultra Series 3</span>
+          <span>That’s the power of Intel Inside®</span>
+        </span>
+      </a>
+      <a class="hp-partner-link" href="https://www.hp.com/us-en/software/microsoft-windows-11.html">
+        <img class="hp-partner-win11" src="assets/hp-desktops/badge-win11.jpg" alt="Get to know Windows 11 devices">
+      </a>
+    </div>
+  
+        </div>
+        <div class="grid grid--3">
+          <div class="ds-card ds-card--vertical ds-card--bordered" data-card-current="vertical-single-event" data-ai-example="ai-card-spliced-vertical-single-event-bordered" data-fragment="spliced-vertical-single-event-bordered" data-library-component="library-card" data-library-fragment="spliced-vertical-single-event-bordered" data-library-release="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" data-library-props="{&quot;title&quot;:&quot;All-in-One PCs&quot;,&quot;description&quot;:&quot;<p>These devices combine the computer and display into a single unit to enhance your productivity!</p>&quot;,&quot;image&quot;:&quot;<img src=\&quot;assets/hp-desktops/cat-01.jpg\&quot; alt=\&quot;All-in-One desktop workspace\&quot;>&quot;,&quot;linkLabel&quot;:&quot;Shop&quot;,&quot;href&quot;:&quot;https://www.hp.com/us-en/shop/vwa/desktops/segm=Home&amp;form=All-in-One&quot;,&quot;sourceAbsent&quot;:{&quot;reference&quot;:&quot;reference-inputs/hp-desktops/content.json&quot;,&quot;objectId&quot;:&quot;cat-01&quot;,&quot;slots&quot;:[&quot;category&quot;]}}"><div class="ds-card__image"><img src="assets/hp-desktops/cat-01.jpg" alt="All-in-One desktop workspace"></div><div class="ds-card__body"><p class="ds-card__title">All-in-One PCs</p><div class="ds-card__desc"><p>These devices combine the computer and display into a single unit to enhance your productivity!</p></div><div class="ds-card__link"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="https://www.hp.com/us-en/shop/vwa/desktops/segm=Home&amp;form=All-in-One"><span class="ds-text-btn__text">Shop</span><img class="ds-text-btn__icon" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/icon-text-button-arrow-right-regular.svg" alt=""></a></div></div></div>
+<div class="ds-card ds-card--vertical ds-card--bordered" data-card-current="vertical-single-event" data-ai-example="ai-card-spliced-vertical-single-event-bordered" data-fragment="spliced-vertical-single-event-bordered" data-library-component="library-card" data-library-fragment="spliced-vertical-single-event-bordered" data-library-release="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" data-library-props="{&quot;title&quot;:&quot;Desktops for home&quot;,&quot;description&quot;:&quot;<p>For work, play, gaming, or entertainment, there&amp;#39;s an HP desktop or All-in-One just for you.</p>&quot;,&quot;image&quot;:&quot;<img src=\&quot;assets/hp-desktops/cat-02.jpg\&quot; alt=\&quot;HP desktops and All-in-One lineup for home\&quot;>&quot;,&quot;linkLabel&quot;:&quot;Shop&quot;,&quot;href&quot;:&quot;https://www.hp.com/us-en/shop/vwa/desktops/segm=Home&quot;,&quot;sourceAbsent&quot;:{&quot;reference&quot;:&quot;reference-inputs/hp-desktops/content.json&quot;,&quot;objectId&quot;:&quot;cat-02&quot;,&quot;slots&quot;:[&quot;category&quot;]}}"><div class="ds-card__image"><img src="assets/hp-desktops/cat-02.jpg" alt="HP desktops and All-in-One lineup for home"></div><div class="ds-card__body"><p class="ds-card__title">Desktops for home</p><div class="ds-card__desc"><p>For work, play, gaming, or entertainment, there's an HP desktop or All-in-One just for you.</p></div><div class="ds-card__link"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="https://www.hp.com/us-en/shop/vwa/desktops/segm=Home"><span class="ds-text-btn__text">Shop</span><img class="ds-text-btn__icon" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/icon-text-button-arrow-right-regular.svg" alt=""></a></div></div></div>
+<div class="ds-card ds-card--vertical ds-card--bordered" data-card-current="vertical-single-event" data-ai-example="ai-card-spliced-vertical-single-event-bordered" data-fragment="spliced-vertical-single-event-bordered" data-library-component="library-card" data-library-fragment="spliced-vertical-single-event-bordered" data-library-release="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" data-library-props="{&quot;title&quot;:&quot;Dominate the game&quot;,&quot;description&quot;:&quot;<p>Power up with the ultimate gaming PC, built with cutting-edge processors and next-gen graphics.</p>&quot;,&quot;image&quot;:&quot;<img src=\&quot;assets/hp-desktops/cat-03.jpg\&quot; alt=\&quot;OMEN gaming desktop PC\&quot;>&quot;,&quot;linkLabel&quot;:&quot;Shop&quot;,&quot;href&quot;:&quot;https://www.hp.com/us-en/shop/slp/hp-gaming/desktops&quot;,&quot;sourceAbsent&quot;:{&quot;reference&quot;:&quot;reference-inputs/hp-desktops/content.json&quot;,&quot;objectId&quot;:&quot;cat-03&quot;,&quot;slots&quot;:[&quot;category&quot;]}}"><div class="ds-card__image"><img src="assets/hp-desktops/cat-03.jpg" alt="OMEN gaming desktop PC"></div><div class="ds-card__body"><p class="ds-card__title">Dominate the game</p><div class="ds-card__desc"><p>Power up with the ultimate gaming PC, built with cutting-edge processors and next-gen graphics.</p></div><div class="ds-card__link"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="https://www.hp.com/us-en/shop/slp/hp-gaming/desktops"><span class="ds-text-btn__text">Shop</span><img class="ds-text-btn__icon" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/icon-text-button-arrow-right-regular.svg" alt=""></a></div></div></div>
+<div class="ds-card ds-card--vertical ds-card--bordered" data-card-current="vertical-single-event" data-ai-example="ai-card-spliced-vertical-single-event-bordered" data-fragment="spliced-vertical-single-event-bordered" data-library-component="library-card" data-library-fragment="spliced-vertical-single-event-bordered" data-library-release="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" data-library-props="{&quot;title&quot;:&quot;HP OmniDesk PCs&quot;,&quot;description&quot;:&quot;<p>Meet the latest collection: Designed with built-in AI to streamline your everyday tasks effortlessly.</p>&quot;,&quot;image&quot;:&quot;<img src=\&quot;assets/hp-desktops/cat-04.jpg\&quot; alt=\&quot;HP OmniDesk PC workspace\&quot;>&quot;,&quot;linkLabel&quot;:&quot;Shop&quot;,&quot;href&quot;:&quot;https://www.hp.com/us-en/shop/mdp/hp-omnidesk/hp-omnidesk-desktop&quot;,&quot;sourceAbsent&quot;:{&quot;reference&quot;:&quot;reference-inputs/hp-desktops/content.json&quot;,&quot;objectId&quot;:&quot;cat-04&quot;,&quot;slots&quot;:[&quot;category&quot;]}}"><div class="ds-card__image"><img src="assets/hp-desktops/cat-04.jpg" alt="HP OmniDesk PC workspace"></div><div class="ds-card__body"><p class="ds-card__title">HP OmniDesk PCs</p><div class="ds-card__desc"><p>Meet the latest collection: Designed with built-in AI to streamline your everyday tasks effortlessly.</p></div><div class="ds-card__link"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="https://www.hp.com/us-en/shop/mdp/hp-omnidesk/hp-omnidesk-desktop"><span class="ds-text-btn__text">Shop</span><img class="ds-text-btn__icon" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/icon-text-button-arrow-right-regular.svg" alt=""></a></div></div></div>
+<div class="ds-card ds-card--vertical ds-card--bordered" data-card-current="vertical-single-event" data-ai-example="ai-card-spliced-vertical-single-event-bordered" data-fragment="spliced-vertical-single-event-bordered" data-library-component="library-card" data-library-fragment="spliced-vertical-single-event-bordered" data-library-release="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" data-library-props="{&quot;title&quot;:&quot;HP OmniStudio &amp; OmniStudio X PCs&quot;,&quot;description&quot;:&quot;<p>All-in-one desktops with immersive displays, and built-in AI tools to help you create, collaborate, and stay productive.</p>&quot;,&quot;image&quot;:&quot;<img src=\&quot;assets/hp-desktops/cat-05.jpg\&quot; alt=\&quot;HP OmniStudio All-in-One desktop\&quot;>&quot;,&quot;linkLabel&quot;:&quot;Shop&quot;,&quot;href&quot;:&quot;https://www.hp.com/us-en/shop/vwa/desktops/brand=OmniStudio,OmniStudio-X&quot;,&quot;sourceAbsent&quot;:{&quot;reference&quot;:&quot;reference-inputs/hp-desktops/content.json&quot;,&quot;objectId&quot;:&quot;cat-05&quot;,&quot;slots&quot;:[&quot;category&quot;]}}"><div class="ds-card__image"><img src="assets/hp-desktops/cat-05.jpg" alt="HP OmniStudio All-in-One desktop"></div><div class="ds-card__body"><p class="ds-card__title">HP OmniStudio &amp; OmniStudio X PCs</p><div class="ds-card__desc"><p>All-in-one desktops with immersive displays, and built-in AI tools to help you create, collaborate, and stay productive.</p></div><div class="ds-card__link"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="https://www.hp.com/us-en/shop/vwa/desktops/brand=OmniStudio,OmniStudio-X"><span class="ds-text-btn__text">Shop</span><img class="ds-text-btn__icon" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/icon-text-button-arrow-right-regular.svg" alt=""></a></div></div></div>
+<div class="ds-card ds-card--vertical ds-card--bordered" data-card-current="vertical-single-event" data-ai-example="ai-card-spliced-vertical-single-event-bordered" data-fragment="spliced-vertical-single-event-bordered" data-library-component="library-card" data-library-fragment="spliced-vertical-single-event-bordered" data-library-release="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" data-library-props="{&quot;title&quot;:&quot;Desktops for work&quot;,&quot;description&quot;:&quot;<p>Power every workday with secure, high-performance business desktops.</p>&quot;,&quot;image&quot;:&quot;<img src=\&quot;assets/hp-desktops/cat-06.jpg\&quot; alt=\&quot;Business desktop workstation\&quot;>&quot;,&quot;linkLabel&quot;:&quot;Shop&quot;,&quot;href&quot;:&quot;https://www.hp.com/us-en/shop/vwa/desktops/segm=Business&quot;,&quot;sourceAbsent&quot;:{&quot;reference&quot;:&quot;reference-inputs/hp-desktops/content.json&quot;,&quot;objectId&quot;:&quot;cat-06&quot;,&quot;slots&quot;:[&quot;category&quot;]}}"><div class="ds-card__image"><img src="assets/hp-desktops/cat-06.jpg" alt="Business desktop workstation"></div><div class="ds-card__body"><p class="ds-card__title">Desktops for work</p><div class="ds-card__desc"><p>Power every workday with secure, high-performance business desktops.</p></div><div class="ds-card__link"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="https://www.hp.com/us-en/shop/vwa/desktops/segm=Business"><span class="ds-text-btn__text">Shop</span><img class="ds-text-btn__icon" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/icon-text-button-arrow-right-regular.svg" alt=""></a></div></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4: A desktop for every lifestyle (Gray Section -> Tabs + 3-Col Borderless White Product Cards) -->
+    <section id="lifestyle-desktops" class="page-section page-section--gray">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-header__title">A desktop for every lifestyle</h2>
+        </div>
+        <div class="hp-tab-bar" id="hp-lifestyle-tabs">
+          <div class="ds-tab ds-tab--product" data-tab-current="product-color-icons" data-tab-hover-switch="true" data-tab-group="" data-ai-example="ai-tab-product" data-fragment="product" data-library-component="library-tab" data-library-fragment="product" data-library-release="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" data-library-props="{&quot;items&quot;:&quot;<div class=\&quot;ds-tab__item ds-tab__item--active\&quot; data-tab-item=\&quot;\&quot;><div class=\&quot;ds-tab__item-icon\&quot;><img src=\&quot;assets/hp-desktops/tab-performance.svg\&quot; alt=\&quot;\&quot;></div><div class=\&quot;ds-tab__item-inner\&quot;><span class=\&quot;ds-tab__item-text\&quot;>High performance</span><div class=\&quot;ds-tab__indicator\&quot;></div></div></div><div class=\&quot;ds-tab__item\&quot; data-tab-item=\&quot;\&quot;><div class=\&quot;ds-tab__item-icon\&quot;><img src=\&quot;assets/hp-desktops/tab-aio.svg\&quot; alt=\&quot;\&quot;></div><div class=\&quot;ds-tab__item-inner\&quot;><span class=\&quot;ds-tab__item-text\&quot;>All-in-Ones</span></div></div><div class=\&quot;ds-tab__item\&quot; data-tab-item=\&quot;\&quot;><div class=\&quot;ds-tab__item-icon\&quot;><img src=\&quot;assets/hp-desktops/tab-gaming.svg\&quot; alt=\&quot;\&quot;></div><div class=\&quot;ds-tab__item-inner\&quot;><span class=\&quot;ds-tab__item-text\&quot;>Gaming</span></div></div><div class=\&quot;ds-tab__item\&quot; data-tab-item=\&quot;\&quot;><div class=\&quot;ds-tab__item-icon\&quot;><img src=\&quot;assets/hp-desktops/tab-value.svg\&quot; alt=\&quot;\&quot;></div><div class=\&quot;ds-tab__item-inner\&quot;><span class=\&quot;ds-tab__item-text\&quot;>Great value</span></div></div><div class=\&quot;ds-tab__item\&quot; data-tab-item=\&quot;\&quot;><div class=\&quot;ds-tab__item-icon\&quot;><img src=\&quot;assets/hp-desktops/tab-towers.svg\&quot; alt=\&quot;\&quot;></div><div class=\&quot;ds-tab__item-inner\&quot;><span class=\&quot;ds-tab__item-text\&quot;>Towers</span></div></div><div class=\&quot;ds-tab__item\&quot; data-tab-item=\&quot;\&quot;><div class=\&quot;ds-tab__item-icon\&quot;><img src=\&quot;assets/hp-desktops/tab-business.svg\&quot; alt=\&quot;\&quot;></div><div class=\&quot;ds-tab__item-inner\&quot;><span class=\&quot;ds-tab__item-text\&quot;>Business</span></div></div>&quot;}"><div class="ds-tab__item ds-tab__item--active" data-tab-item=""><div class="ds-tab__item-icon"><img src="assets/hp-desktops/tab-performance.svg" alt=""></div><div class="ds-tab__item-inner"><span class="ds-tab__item-text">High performance</span><div class="ds-tab__indicator"></div></div></div><div class="ds-tab__item" data-tab-item=""><div class="ds-tab__item-icon"><img src="assets/hp-desktops/tab-aio.svg" alt=""></div><div class="ds-tab__item-inner"><span class="ds-tab__item-text">All-in-Ones</span></div></div><div class="ds-tab__item" data-tab-item=""><div class="ds-tab__item-icon"><img src="assets/hp-desktops/tab-gaming.svg" alt=""></div><div class="ds-tab__item-inner"><span class="ds-tab__item-text">Gaming</span></div></div><div class="ds-tab__item" data-tab-item=""><div class="ds-tab__item-icon"><img src="assets/hp-desktops/tab-value.svg" alt=""></div><div class="ds-tab__item-inner"><span class="ds-tab__item-text">Great value</span></div></div><div class="ds-tab__item" data-tab-item=""><div class="ds-tab__item-icon"><img src="assets/hp-desktops/tab-towers.svg" alt=""></div><div class="ds-tab__item-inner"><span class="ds-tab__item-text">Towers</span></div></div><div class="ds-tab__item" data-tab-item=""><div class="ds-tab__item-icon"><img src="assets/hp-desktops/tab-business.svg" alt=""></div><div class="ds-tab__item-inner"><span class="ds-tab__item-text">Business</span></div></div></div>
+        </div>
+        <div class="hp-lifestyle-grid" id="hp-lifestyle-grid" data-fs-extend="lifestyle-product-cards">
+          
+      <article class="hp-prod-card">
+        <div>
+          <div class="hp-prod-media"><img class="hp-prod-img" src="assets/hp-desktops/p-omen45l.webp" alt="HyperX OMEN MAX 45L Gaming Desktop"></div>
+          <h3 class="hp-prod-title">HyperX OMEN MAX 45L Gaming Desktop</h3>
+          <p class="hp-prod-sub">Revolutionary cooling. Limitless performance.</p>
+        </div>
+        <div class="hp-prod-foot">
+          <div class="hp-prod-prices">
+            <span class="hp-prod-msrp">$3,959.99</span>
+            <span class="hp-prod-sale">$2,809.99</span>
+          </div>
+          <div>
+            <button id="library-instance-11-ai-button-outline-black-xl" type="button" class="ds-btn ds-btn--outline-black ds-btn--xl" data-library-event-actioncallback="onProductShop" data-button-current="mg-20261112" data-fragment="outline-black" data-library-component="library-button" data-library-fragment="outline-black" data-library-release="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" data-library-props="{&quot;label&quot;:&quot;Shop&quot;,&quot;actionCallback&quot;:&quot;onProductShop&quot;}"><span class="ds-btn__icon-loading" data-button-icon="loading" aria-hidden="true" hidden=""></span><span class="ds-btn__leading" hidden=""><span class="ds-btn__leading-icon" data-button-icon="download" aria-hidden="true"></span></span><span class="ds-btn__text">Shop</span><span class="ds-btn__trailing-icon" data-button-icon="right" aria-hidden="true" hidden=""></span></button>
+          </div>
+        </div>
+      </article>
+    
+
+      <article class="hp-prod-card">
+        <div>
+          <div class="hp-prod-media"><img class="hp-prod-img" src="assets/hp-desktops/p-omnistudiox.webp" alt="HP OmniStudio X"></div>
+          <h3 class="hp-prod-title">HP OmniStudio X</h3>
+          <p class="hp-prod-sub">Ultimate entertainment. Genuine connections.</p>
+        </div>
+        <div class="hp-prod-foot">
+          <div class="hp-prod-prices">
+            <span class="hp-prod-msrp">$1,760.99</span>
+            <span class="hp-prod-sale">$879.99</span>
+          </div>
+          <div>
+            <button id="library-instance-12-ai-button-outline-black-xl" type="button" class="ds-btn ds-btn--outline-black ds-btn--xl" data-library-event-actioncallback="onProductShop" data-button-current="mg-20261112" data-fragment="outline-black" data-library-component="library-button" data-library-fragment="outline-black" data-library-release="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" data-library-props="{&quot;label&quot;:&quot;Shop&quot;,&quot;actionCallback&quot;:&quot;onProductShop&quot;}"><span class="ds-btn__icon-loading" data-button-icon="loading" aria-hidden="true" hidden=""></span><span class="ds-btn__leading" hidden=""><span class="ds-btn__leading-icon" data-button-icon="download" aria-hidden="true"></span></span><span class="ds-btn__text">Shop</span><span class="ds-btn__trailing-icon" data-button-icon="right" aria-hidden="true" hidden=""></span></button>
+          </div>
+        </div>
+      </article>
+    
+
+      <article class="hp-prod-card">
+        <div>
+          <div class="hp-prod-media"><img class="hp-prod-img" src="assets/hp-desktops/p-omen35l.webp" alt="HyperX OMEN 35L Gaming Desktop"></div>
+          <h3 class="hp-prod-title">HyperX OMEN 35L Gaming Desktop</h3>
+          <p class="hp-prod-sub">Get ready, it&#39;s play time.</p>
+        </div>
+        <div class="hp-prod-foot">
+          <div class="hp-prod-prices">
+            <span class="hp-prod-msrp">$2,579.99</span>
+            <span class="hp-prod-sale">$1,869.99</span>
+          </div>
+          <div>
+            <button id="library-instance-13-ai-button-outline-black-xl" type="button" class="ds-btn ds-btn--outline-black ds-btn--xl" data-library-event-actioncallback="onProductShop" data-button-current="mg-20261112" data-fragment="outline-black" data-library-component="library-button" data-library-fragment="outline-black" data-library-release="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" data-library-props="{&quot;label&quot;:&quot;Shop&quot;,&quot;actionCallback&quot;:&quot;onProductShop&quot;}"><span class="ds-btn__icon-loading" data-button-icon="loading" aria-hidden="true" hidden=""></span><span class="ds-btn__leading" hidden=""><span class="ds-btn__leading-icon" data-button-icon="download" aria-hidden="true"></span></span><span class="ds-btn__text">Shop</span><span class="ds-btn__trailing-icon" data-button-icon="right" aria-hidden="true" hidden=""></span></button>
+          </div>
+        </div>
+      </article>
+    
+        </div>
+        <div class="hp-view-all-row" id="hp-view-all-wrap">
+          <a class="ds-text-btn ds-text-btn--inline ds-text-btn--blue-link ds-text-btn--m" href="https://www.hp.com/us-en/shop/mlp/desktops/envy---sprout" data-ai-example="ai-text-button-inline-blue-link-m" data-fragment="inline-blue-link" data-library-component="library-text-button" data-library-fragment="inline-blue-link" data-library-release="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" data-library-props="{&quot;label&quot;:&quot;View All High performance&quot;,&quot;href&quot;:&quot;https://www.hp.com/us-en/shop/mlp/desktops/envy---sprout&quot;}">
+          <span class="ds-text-btn__text">View All High performance</span>
+          <img class="ds-text-btn__icon" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/icon-text-button-arrow-right-blue-s.svg" alt="">
+        </a>
+        </div>
+        <div class="hp-hidden-tpl" id="hp-shop-btn-tpl" aria-hidden="true">
+          <button id="library-instance-15-ai-button-outline-black-xl" type="button" class="ds-btn ds-btn--outline-black ds-btn--xl" data-library-event-actioncallback="onProductShop" data-button-current="mg-20261112" data-fragment="outline-black" data-library-component="library-button" data-library-fragment="outline-black" data-library-release="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" data-library-props="{&quot;label&quot;:&quot;Shop&quot;,&quot;actionCallback&quot;:&quot;onProductShop&quot;}"><span class="ds-btn__icon-loading" data-button-icon="loading" aria-hidden="true" hidden=""></span><span class="ds-btn__leading" hidden=""><span class="ds-btn__leading-icon" data-button-icon="download" aria-hidden="true"></span></span><span class="ds-btn__text">Shop</span><span class="ds-btn__trailing-icon" data-button-icon="right" aria-hidden="true" hidden=""></span></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5: Holiday Gift Guide (White Section -> Horizontal Full-Width Card) -->
+    <section id="holiday-gift-guide" class="page-section">
+      <div class="container">
+        <div class="ds-card ds-card--horizontal ds-card--source-responsive" data-preview-skeleton="horizontal-responsive" data-card-current="horizontal-unbordered" data-ai-example="ai-card-horizontal-current" data-fragment="spliced-horizontal-full-width-responsive" data-library-component="library-card" data-library-fragment="spliced-horizontal-full-width-responsive" data-library-release="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" data-card-image-position="right" data-library-props="{&quot;title&quot;:&quot;Holiday Gift Guide&quot;,&quot;description&quot;:&quot;Discover exceptional technology chosen to inspire and delight.&quot;,&quot;image&quot;:&quot;<img src=\&quot;assets/hp-desktops/promo-holiday.jpg\&quot; alt=\&quot;Holiday Gift Guide laptop and desktop\&quot;>&quot;,&quot;linkLabel&quot;:&quot;Shop&quot;,&quot;href&quot;:&quot;https://www.hp.com/us-en/shop/slp/holiday-gift-guide&quot;,&quot;imagePosition&quot;:&quot;right&quot;}"><div class="ds-card__image"><img src="assets/hp-desktops/promo-holiday.jpg" alt="Holiday Gift Guide laptop and desktop"></div><div class="ds-card__body"><div class="ds-card__content-stack"><p class="ds-card__title">Holiday Gift Guide</p><p class="ds-card__desc">Discover exceptional technology chosen to inspire and delight.</p></div><div class="ds-card__link"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="https://www.hp.com/us-en/shop/slp/holiday-gift-guide"><span class="ds-text-btn__text">Shop</span><img class="ds-text-btn__icon" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/icon-text-button-arrow-right-regular.svg" alt=""></a></div></div></div>
+      </div>
+    </section>
+
+    <!-- Section 6: Shop our desktop brands (Gray Section -> 4-Col External Cards Carousel) -->
+    <section id="desktop-brands" class="page-section page-section--gray">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-header__title">Shop our desktop brands</h2>
+        </div>
+        <div class="ds-carousel-external" data-carousel-external="v1" data-rail="external-cards" data-carousel-columns="4" role="region" aria-roledescription="carousel" aria-label="Shop our desktop brands" data-ai-example="ai-carousel-external-cards" data-fragment="external-cards" data-library-component="library-carousel" data-library-fragment="external-cards" data-library-release="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" data-library-props="{&quot;columns&quot;:4,&quot;accessibleLabel&quot;:&quot;Shop our desktop brands&quot;,&quot;items&quot;:[{&quot;component&quot;:&quot;library-card&quot;,&quot;fragment&quot;:&quot;spliced-vertical-single-event&quot;,&quot;props&quot;:{&quot;title&quot;:&quot;HP OmniStudio&quot;,&quot;description&quot;:&quot;<p>Ultimate entertainment. Genuine connections.</p>&quot;,&quot;image&quot;:&quot;<img src=\&quot;assets/hp-desktops/p-omnistudiox.webp\&quot; alt=\&quot;HP OmniStudio\&quot;>&quot;,&quot;linkLabel&quot;:&quot;Shop&quot;,&quot;href&quot;:&quot;https://www.hp.com/us-en/shop/mlp/desktops/hp-omnistudio&quot;,&quot;sourceAbsent&quot;:{&quot;reference&quot;:&quot;reference-inputs/hp-desktops/content.json&quot;,&quot;objectId&quot;:&quot;brand-01&quot;,&quot;slots&quot;:[&quot;category&quot;]}}},{&quot;component&quot;:&quot;library-card&quot;,&quot;fragment&quot;:&quot;spliced-vertical-single-event&quot;,&quot;props&quot;:{&quot;title&quot;:&quot;HP OmniDesk&quot;,&quot;description&quot;:&quot;<p>Effortless tech for at-home productivity.</p>&quot;,&quot;image&quot;:&quot;<img src=\&quot;assets/hp-desktops/p-omnidesk-mini.webp\&quot; alt=\&quot;HP OmniDesk\&quot;>&quot;,&quot;linkLabel&quot;:&quot;Shop&quot;,&quot;href&quot;:&quot;https://www.hp.com/us-en/shop/mlp/desktops/hp-omnidesk&quot;,&quot;sourceAbsent&quot;:{&quot;reference&quot;:&quot;reference-inputs/hp-desktops/content.json&quot;,&quot;objectId&quot;:&quot;brand-02&quot;,&quot;slots&quot;:[&quot;category&quot;]}}},{&quot;component&quot;:&quot;library-card&quot;,&quot;fragment&quot;:&quot;spliced-vertical-single-event&quot;,&quot;props&quot;:{&quot;title&quot;:&quot;HP Desktop&quot;,&quot;description&quot;:&quot;<p>Practically priced and feature-rich.</p>&quot;,&quot;image&quot;:&quot;<img src=\&quot;assets/hp-desktops/b-hpdesktop.webp\&quot; alt=\&quot;HP Desktop\&quot;>&quot;,&quot;linkLabel&quot;:&quot;Shop&quot;,&quot;href&quot;:&quot;https://www.hp.com/us-en/shop/mlp/desktops/hp--1&quot;,&quot;sourceAbsent&quot;:{&quot;reference&quot;:&quot;reference-inputs/hp-desktops/content.json&quot;,&quot;objectId&quot;:&quot;brand-03&quot;,&quot;slots&quot;:[&quot;category&quot;]}}},{&quot;component&quot;:&quot;library-card&quot;,&quot;fragment&quot;:&quot;spliced-vertical-single-event&quot;,&quot;props&quot;:{&quot;title&quot;:&quot;HP EliteBoard (AMD)&quot;,&quot;description&quot;:&quot;<p>Desktop-grade power. Keyboard-sized freedom.</p>&quot;,&quot;image&quot;:&quot;<img src=\&quot;assets/hp-desktops/p-eliteboard.webp\&quot; alt=\&quot;HP EliteBoard (AMD)\&quot;>&quot;,&quot;linkLabel&quot;:&quot;Shop&quot;,&quot;href&quot;:&quot;https://www.hp.com/us-en/shop/mlp/desktops/eliteboard-(amd)&quot;,&quot;sourceAbsent&quot;:{&quot;reference&quot;:&quot;reference-inputs/hp-desktops/content.json&quot;,&quot;objectId&quot;:&quot;brand-04&quot;,&quot;slots&quot;:[&quot;category&quot;]}}},{&quot;component&quot;:&quot;library-card&quot;,&quot;fragment&quot;:&quot;spliced-vertical-single-event&quot;,&quot;props&quot;:{&quot;title&quot;:&quot;HP Pro&quot;,&quot;description&quot;:&quot;<p>Commercial-grade reliability, hardware security solutions.</p>&quot;,&quot;image&quot;:&quot;<img src=\&quot;assets/hp-desktops/b-hppro.webp\&quot; alt=\&quot;HP Pro\&quot;>&quot;,&quot;linkLabel&quot;:&quot;Shop&quot;,&quot;href&quot;:&quot;https://www.hp.com/us-en/shop/mlp/desktops/pro&quot;,&quot;sourceAbsent&quot;:{&quot;reference&quot;:&quot;reference-inputs/hp-desktops/content.json&quot;,&quot;objectId&quot;:&quot;brand-05&quot;,&quot;slots&quot;:[&quot;category&quot;]}}},{&quot;component&quot;:&quot;library-card&quot;,&quot;fragment&quot;:&quot;spliced-vertical-single-event&quot;,&quot;props&quot;:{&quot;title&quot;:&quot;HyperX OMEN&quot;,&quot;description&quot;:&quot;<p>Revolutionary cooling. Limitless performance.</p>&quot;,&quot;image&quot;:&quot;<img src=\&quot;assets/hp-desktops/p-omen35l.webp\&quot; alt=\&quot;HyperX OMEN\&quot;>&quot;,&quot;linkLabel&quot;:&quot;Shop&quot;,&quot;href&quot;:&quot;https://www.hp.com/us-en/shop/mlp/desktops/hyperx-omen-desktops-tab9-module22&quot;,&quot;sourceAbsent&quot;:{&quot;reference&quot;:&quot;reference-inputs/hp-desktops/content.json&quot;,&quot;objectId&quot;:&quot;brand-06&quot;,&quot;slots&quot;:[&quot;category&quot;]}}},{&quot;component&quot;:&quot;library-card&quot;,&quot;fragment&quot;:&quot;spliced-vertical-single-event&quot;,&quot;props&quot;:{&quot;title&quot;:&quot;OMEN&quot;,&quot;description&quot;:&quot;<p>Gaming reinvented. Ominous.</p>&quot;,&quot;image&quot;:&quot;<img src=\&quot;assets/hp-desktops/b-omen.webp\&quot; alt=\&quot;OMEN\&quot;>&quot;,&quot;linkLabel&quot;:&quot;Shop&quot;,&quot;href&quot;:&quot;https://www.hp.com/us-en/shop/mlp/desktops/hp-omen-407503--1&quot;,&quot;sourceAbsent&quot;:{&quot;reference&quot;:&quot;reference-inputs/hp-desktops/content.json&quot;,&quot;objectId&quot;:&quot;brand-07&quot;,&quot;slots&quot;:[&quot;category&quot;]}}},{&quot;component&quot;:&quot;library-card&quot;,&quot;fragment&quot;:&quot;spliced-vertical-single-event&quot;,&quot;props&quot;:{&quot;title&quot;:&quot;Z by HP&quot;,&quot;description&quot;:&quot;<p>Max performance, Remote Boost, ISV certification.</p>&quot;,&quot;image&quot;:&quot;<img src=\&quot;assets/hp-desktops/b-zbyhp.webp\&quot; alt=\&quot;Z by HP\&quot;>&quot;,&quot;linkLabel&quot;:&quot;Shop&quot;,&quot;href&quot;:&quot;https://www.hp.com/us-en/shop/mlp/desktops/z-workstation&quot;,&quot;sourceAbsent&quot;:{&quot;reference&quot;:&quot;reference-inputs/hp-desktops/content.json&quot;,&quot;objectId&quot;:&quot;brand-08&quot;,&quot;slots&quot;:[&quot;category&quot;]}}},{&quot;component&quot;:&quot;library-card&quot;,&quot;fragment&quot;:&quot;spliced-vertical-single-event&quot;,&quot;props&quot;:{&quot;title&quot;:&quot;HP Thin Clients&quot;,&quot;description&quot;:&quot;<p>ITDM design, cloud computing, fleet managed.</p>&quot;,&quot;image&quot;:&quot;<img src=\&quot;assets/hp-desktops/b-thinclients.webp\&quot; alt=\&quot;HP Thin Clients\&quot;>&quot;,&quot;linkLabel&quot;:&quot;Shop&quot;,&quot;href&quot;:&quot;https://www.hp.com/us-en/shop/mlp/desktops/thin-clients&quot;,&quot;sourceAbsent&quot;:{&quot;reference&quot;:&quot;reference-inputs/hp-desktops/content.json&quot;,&quot;objectId&quot;:&quot;brand-09&quot;,&quot;slots&quot;:[&quot;category&quot;]}}},{&quot;component&quot;:&quot;library-card&quot;,&quot;fragment&quot;:&quot;spliced-vertical-single-event&quot;,&quot;props&quot;:{&quot;title&quot;:&quot;HP Elite desktops&quot;,&quot;description&quot;:&quot;<p>Expandability, quite design, enhanced manageability.</p>&quot;,&quot;image&quot;:&quot;<img src=\&quot;assets/hp-desktops/b-elitedesktops.webp\&quot; alt=\&quot;HP Elite desktops\&quot;>&quot;,&quot;linkLabel&quot;:&quot;Shop&quot;,&quot;href&quot;:&quot;https://www.hp.com/us-en/shop/mlp/desktops/elite-349506--1&quot;,&quot;sourceAbsent&quot;:{&quot;reference&quot;:&quot;reference-inputs/hp-desktops/content.json&quot;,&quot;objectId&quot;:&quot;brand-10&quot;,&quot;slots&quot;:[&quot;category&quot;]}}},{&quot;component&quot;:&quot;library-card&quot;,&quot;fragment&quot;:&quot;spliced-vertical-single-event&quot;,&quot;props&quot;:{&quot;title&quot;:&quot;HP EliteDesk 8&quot;,&quot;description&quot;:&quot;<p>Designed to perform, impress, and protect.</p>&quot;,&quot;image&quot;:&quot;<img src=\&quot;assets/hp-desktops/b-elitedesk8.webp\&quot; alt=\&quot;HP EliteDesk 8\&quot;>&quot;,&quot;linkLabel&quot;:&quot;Shop&quot;,&quot;href&quot;:&quot;https://www.hp.com/us-en/shop/mlp/desktops/hp-elitedesk-8-mini-(intel)-3074457345618066175--1&quot;,&quot;sourceAbsent&quot;:{&quot;reference&quot;:&quot;reference-inputs/hp-desktops/content.json&quot;,&quot;objectId&quot;:&quot;brand-11&quot;,&quot;slots&quot;:[&quot;category&quot;]}}},{&quot;component&quot;:&quot;library-card&quot;,&quot;fragment&quot;:&quot;spliced-vertical-single-event&quot;,&quot;props&quot;:{&quot;title&quot;:&quot;HP EliteStudio 8 All-in-One&quot;,&quot;description&quot;:&quot;<p>Collaborate seamlessly with a sophisticated AiO design</p>&quot;,&quot;image&quot;:&quot;<img src=\&quot;assets/hp-desktops/p-elitestudio8.webp\&quot; alt=\&quot;HP EliteStudio 8 All-in-One\&quot;>&quot;,&quot;linkLabel&quot;:&quot;Shop&quot;,&quot;href&quot;:&quot;https://www.hp.com/us-en/shop/mlp/desktops/hp-elitestudio-8-all-in-one-3074457345618081671--1&quot;,&quot;sourceAbsent&quot;:{&quot;reference&quot;:&quot;reference-inputs/hp-desktops/content.json&quot;,&quot;objectId&quot;:&quot;brand-12&quot;,&quot;slots&quot;:[&quot;category&quot;]}}}]}"><div class="ds-carousel-external__viewport" data-rail-viewport=""><div class="ds-carousel-external__track rail-track"><div class="ds-carousel-external__item"><div class="ds-card ds-card--vertical ds-card--no-border" data-card-current="vertical-single-event" data-card-layout="parent-grid" data-ai-example="ai-card-spliced-vertical-single-event" data-fragment="spliced-vertical-single-event" data-library-component="library-card" data-library-fragment="spliced-vertical-single-event" data-library-release="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" data-library-props="{&quot;title&quot;:&quot;HP OmniStudio&quot;,&quot;description&quot;:&quot;<p>Ultimate entertainment. Genuine connections.</p>&quot;,&quot;image&quot;:&quot;<img src=\&quot;assets/hp-desktops/p-omnistudiox.webp\&quot; alt=\&quot;HP OmniStudio\&quot;>&quot;,&quot;linkLabel&quot;:&quot;Shop&quot;,&quot;href&quot;:&quot;https://www.hp.com/us-en/shop/mlp/desktops/hp-omnistudio&quot;,&quot;sourceAbsent&quot;:{&quot;reference&quot;:&quot;reference-inputs/hp-desktops/content.json&quot;,&quot;objectId&quot;:&quot;brand-01&quot;,&quot;slots&quot;:[&quot;category&quot;]}}"><div class="ds-card__image"><img src="assets/hp-desktops/p-omnistudiox.webp" alt="HP OmniStudio"></div><div class="ds-card__body"><p class="ds-card__title">HP OmniStudio</p><div class="ds-card__desc"><p>Ultimate entertainment. Genuine connections.</p></div><div class="ds-card__link"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="https://www.hp.com/us-en/shop/mlp/desktops/hp-omnistudio"><span class="ds-text-btn__text">Shop</span><img class="ds-text-btn__icon" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/icon-text-button-arrow-right-regular.svg" alt=""></a></div></div></div></div><div class="ds-carousel-external__item"><div class="ds-card ds-card--vertical ds-card--no-border" data-card-current="vertical-single-event" data-card-layout="parent-grid" data-ai-example="ai-card-spliced-vertical-single-event" data-fragment="spliced-vertical-single-event" data-library-component="library-card" data-library-fragment="spliced-vertical-single-event" data-library-release="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" data-library-props="{&quot;title&quot;:&quot;HP OmniDesk&quot;,&quot;description&quot;:&quot;<p>Effortless tech for at-home productivity.</p>&quot;,&quot;image&quot;:&quot;<img src=\&quot;assets/hp-desktops/p-omnidesk-mini.webp\&quot; alt=\&quot;HP OmniDesk\&quot;>&quot;,&quot;linkLabel&quot;:&quot;Shop&quot;,&quot;href&quot;:&quot;https://www.hp.com/us-en/shop/mlp/desktops/hp-omnidesk&quot;,&quot;sourceAbsent&quot;:{&quot;reference&quot;:&quot;reference-inputs/hp-desktops/content.json&quot;,&quot;objectId&quot;:&quot;brand-02&quot;,&quot;slots&quot;:[&quot;category&quot;]}}"><div class="ds-card__image"><img src="assets/hp-desktops/p-omnidesk-mini.webp" alt="HP OmniDesk"></div><div class="ds-card__body"><p class="ds-card__title">HP OmniDesk</p><div class="ds-card__desc"><p>Effortless tech for at-home productivity.</p></div><div class="ds-card__link"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="https://www.hp.com/us-en/shop/mlp/desktops/hp-omnidesk"><span class="ds-text-btn__text">Shop</span><img class="ds-text-btn__icon" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/icon-text-button-arrow-right-regular.svg" alt=""></a></div></div></div></div><div class="ds-carousel-external__item"><div class="ds-card ds-card--vertical ds-card--no-border" data-card-current="vertical-single-event" data-card-layout="parent-grid" data-ai-example="ai-card-spliced-vertical-single-event" data-fragment="spliced-vertical-single-event" data-library-component="library-card" data-library-fragment="spliced-vertical-single-event" data-library-release="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" data-library-props="{&quot;title&quot;:&quot;HP Desktop&quot;,&quot;description&quot;:&quot;<p>Practically priced and feature-rich.</p>&quot;,&quot;image&quot;:&quot;<img src=\&quot;assets/hp-desktops/b-hpdesktop.webp\&quot; alt=\&quot;HP Desktop\&quot;>&quot;,&quot;linkLabel&quot;:&quot;Shop&quot;,&quot;href&quot;:&quot;https://www.hp.com/us-en/shop/mlp/desktops/hp--1&quot;,&quot;sourceAbsent&quot;:{&quot;reference&quot;:&quot;reference-inputs/hp-desktops/content.json&quot;,&quot;objectId&quot;:&quot;brand-03&quot;,&quot;slots&quot;:[&quot;category&quot;]}}"><div class="ds-card__image"><img src="assets/hp-desktops/b-hpdesktop.webp" alt="HP Desktop"></div><div class="ds-card__body"><p class="ds-card__title">HP Desktop</p><div class="ds-card__desc"><p>Practically priced and feature-rich.</p></div><div class="ds-card__link"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="https://www.hp.com/us-en/shop/mlp/desktops/hp--1"><span class="ds-text-btn__text">Shop</span><img class="ds-text-btn__icon" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/icon-text-button-arrow-right-regular.svg" alt=""></a></div></div></div></div><div class="ds-carousel-external__item"><div class="ds-card ds-card--vertical ds-card--no-border" data-card-current="vertical-single-event" data-card-layout="parent-grid" data-ai-example="ai-card-spliced-vertical-single-event" data-fragment="spliced-vertical-single-event" data-library-component="library-card" data-library-fragment="spliced-vertical-single-event" data-library-release="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" data-library-props="{&quot;title&quot;:&quot;HP EliteBoard (AMD)&quot;,&quot;description&quot;:&quot;<p>Desktop-grade power. Keyboard-sized freedom.</p>&quot;,&quot;image&quot;:&quot;<img src=\&quot;assets/hp-desktops/p-eliteboard.webp\&quot; alt=\&quot;HP EliteBoard (AMD)\&quot;>&quot;,&quot;linkLabel&quot;:&quot;Shop&quot;,&quot;href&quot;:&quot;https://www.hp.com/us-en/shop/mlp/desktops/eliteboard-(amd)&quot;,&quot;sourceAbsent&quot;:{&quot;reference&quot;:&quot;reference-inputs/hp-desktops/content.json&quot;,&quot;objectId&quot;:&quot;brand-04&quot;,&quot;slots&quot;:[&quot;category&quot;]}}"><div class="ds-card__image"><img src="assets/hp-desktops/p-eliteboard.webp" alt="HP EliteBoard (AMD)"></div><div class="ds-card__body"><p class="ds-card__title">HP EliteBoard (AMD)</p><div class="ds-card__desc"><p>Desktop-grade power. Keyboard-sized freedom.</p></div><div class="ds-card__link"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="https://www.hp.com/us-en/shop/mlp/desktops/eliteboard-(amd)"><span class="ds-text-btn__text">Shop</span><img class="ds-text-btn__icon" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/icon-text-button-arrow-right-regular.svg" alt=""></a></div></div></div></div><div class="ds-carousel-external__item"><div class="ds-card ds-card--vertical ds-card--no-border" data-card-current="vertical-single-event" data-card-layout="parent-grid" data-ai-example="ai-card-spliced-vertical-single-event" data-fragment="spliced-vertical-single-event" data-library-component="library-card" data-library-fragment="spliced-vertical-single-event" data-library-release="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" data-library-props="{&quot;title&quot;:&quot;HP Pro&quot;,&quot;description&quot;:&quot;<p>Commercial-grade reliability, hardware security solutions.</p>&quot;,&quot;image&quot;:&quot;<img src=\&quot;assets/hp-desktops/b-hppro.webp\&quot; alt=\&quot;HP Pro\&quot;>&quot;,&quot;linkLabel&quot;:&quot;Shop&quot;,&quot;href&quot;:&quot;https://www.hp.com/us-en/shop/mlp/desktops/pro&quot;,&quot;sourceAbsent&quot;:{&quot;reference&quot;:&quot;reference-inputs/hp-desktops/content.json&quot;,&quot;objectId&quot;:&quot;brand-05&quot;,&quot;slots&quot;:[&quot;category&quot;]}}"><div class="ds-card__image"><img src="assets/hp-desktops/b-hppro.webp" alt="HP Pro"></div><div class="ds-card__body"><p class="ds-card__title">HP Pro</p><div class="ds-card__desc"><p>Commercial-grade reliability, hardware security solutions.</p></div><div class="ds-card__link"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="https://www.hp.com/us-en/shop/mlp/desktops/pro"><span class="ds-text-btn__text">Shop</span><img class="ds-text-btn__icon" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/icon-text-button-arrow-right-regular.svg" alt=""></a></div></div></div></div><div class="ds-carousel-external__item"><div class="ds-card ds-card--vertical ds-card--no-border" data-card-current="vertical-single-event" data-card-layout="parent-grid" data-ai-example="ai-card-spliced-vertical-single-event" data-fragment="spliced-vertical-single-event" data-library-component="library-card" data-library-fragment="spliced-vertical-single-event" data-library-release="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" data-library-props="{&quot;title&quot;:&quot;HyperX OMEN&quot;,&quot;description&quot;:&quot;<p>Revolutionary cooling. Limitless performance.</p>&quot;,&quot;image&quot;:&quot;<img src=\&quot;assets/hp-desktops/p-omen35l.webp\&quot; alt=\&quot;HyperX OMEN\&quot;>&quot;,&quot;linkLabel&quot;:&quot;Shop&quot;,&quot;href&quot;:&quot;https://www.hp.com/us-en/shop/mlp/desktops/hyperx-omen-desktops-tab9-module22&quot;,&quot;sourceAbsent&quot;:{&quot;reference&quot;:&quot;reference-inputs/hp-desktops/content.json&quot;,&quot;objectId&quot;:&quot;brand-06&quot;,&quot;slots&quot;:[&quot;category&quot;]}}"><div class="ds-card__image"><img src="assets/hp-desktops/p-omen35l.webp" alt="HyperX OMEN"></div><div class="ds-card__body"><p class="ds-card__title">HyperX OMEN</p><div class="ds-card__desc"><p>Revolutionary cooling. Limitless performance.</p></div><div class="ds-card__link"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="https://www.hp.com/us-en/shop/mlp/desktops/hyperx-omen-desktops-tab9-module22"><span class="ds-text-btn__text">Shop</span><img class="ds-text-btn__icon" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/icon-text-button-arrow-right-regular.svg" alt=""></a></div></div></div></div><div class="ds-carousel-external__item"><div class="ds-card ds-card--vertical ds-card--no-border" data-card-current="vertical-single-event" data-card-layout="parent-grid" data-ai-example="ai-card-spliced-vertical-single-event" data-fragment="spliced-vertical-single-event" data-library-component="library-card" data-library-fragment="spliced-vertical-single-event" data-library-release="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" data-library-props="{&quot;title&quot;:&quot;OMEN&quot;,&quot;description&quot;:&quot;<p>Gaming reinvented. Ominous.</p>&quot;,&quot;image&quot;:&quot;<img src=\&quot;assets/hp-desktops/b-omen.webp\&quot; alt=\&quot;OMEN\&quot;>&quot;,&quot;linkLabel&quot;:&quot;Shop&quot;,&quot;href&quot;:&quot;https://www.hp.com/us-en/shop/mlp/desktops/hp-omen-407503--1&quot;,&quot;sourceAbsent&quot;:{&quot;reference&quot;:&quot;reference-inputs/hp-desktops/content.json&quot;,&quot;objectId&quot;:&quot;brand-07&quot;,&quot;slots&quot;:[&quot;category&quot;]}}"><div class="ds-card__image"><img src="assets/hp-desktops/b-omen.webp" alt="OMEN"></div><div class="ds-card__body"><p class="ds-card__title">OMEN</p><div class="ds-card__desc"><p>Gaming reinvented. Ominous.</p></div><div class="ds-card__link"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="https://www.hp.com/us-en/shop/mlp/desktops/hp-omen-407503--1"><span class="ds-text-btn__text">Shop</span><img class="ds-text-btn__icon" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/icon-text-button-arrow-right-regular.svg" alt=""></a></div></div></div></div><div class="ds-carousel-external__item"><div class="ds-card ds-card--vertical ds-card--no-border" data-card-current="vertical-single-event" data-card-layout="parent-grid" data-ai-example="ai-card-spliced-vertical-single-event" data-fragment="spliced-vertical-single-event" data-library-component="library-card" data-library-fragment="spliced-vertical-single-event" data-library-release="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" data-library-props="{&quot;title&quot;:&quot;Z by HP&quot;,&quot;description&quot;:&quot;<p>Max performance, Remote Boost, ISV certification.</p>&quot;,&quot;image&quot;:&quot;<img src=\&quot;assets/hp-desktops/b-zbyhp.webp\&quot; alt=\&quot;Z by HP\&quot;>&quot;,&quot;linkLabel&quot;:&quot;Shop&quot;,&quot;href&quot;:&quot;https://www.hp.com/us-en/shop/mlp/desktops/z-workstation&quot;,&quot;sourceAbsent&quot;:{&quot;reference&quot;:&quot;reference-inputs/hp-desktops/content.json&quot;,&quot;objectId&quot;:&quot;brand-08&quot;,&quot;slots&quot;:[&quot;category&quot;]}}"><div class="ds-card__image"><img src="assets/hp-desktops/b-zbyhp.webp" alt="Z by HP"></div><div class="ds-card__body"><p class="ds-card__title">Z by HP</p><div class="ds-card__desc"><p>Max performance, Remote Boost, ISV certification.</p></div><div class="ds-card__link"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="https://www.hp.com/us-en/shop/mlp/desktops/z-workstation"><span class="ds-text-btn__text">Shop</span><img class="ds-text-btn__icon" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/icon-text-button-arrow-right-regular.svg" alt=""></a></div></div></div></div><div class="ds-carousel-external__item"><div class="ds-card ds-card--vertical ds-card--no-border" data-card-current="vertical-single-event" data-card-layout="parent-grid" data-ai-example="ai-card-spliced-vertical-single-event" data-fragment="spliced-vertical-single-event" data-library-component="library-card" data-library-fragment="spliced-vertical-single-event" data-library-release="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" data-library-props="{&quot;title&quot;:&quot;HP Thin Clients&quot;,&quot;description&quot;:&quot;<p>ITDM design, cloud computing, fleet managed.</p>&quot;,&quot;image&quot;:&quot;<img src=\&quot;assets/hp-desktops/b-thinclients.webp\&quot; alt=\&quot;HP Thin Clients\&quot;>&quot;,&quot;linkLabel&quot;:&quot;Shop&quot;,&quot;href&quot;:&quot;https://www.hp.com/us-en/shop/mlp/desktops/thin-clients&quot;,&quot;sourceAbsent&quot;:{&quot;reference&quot;:&quot;reference-inputs/hp-desktops/content.json&quot;,&quot;objectId&quot;:&quot;brand-09&quot;,&quot;slots&quot;:[&quot;category&quot;]}}"><div class="ds-card__image"><img src="assets/hp-desktops/b-thinclients.webp" alt="HP Thin Clients"></div><div class="ds-card__body"><p class="ds-card__title">HP Thin Clients</p><div class="ds-card__desc"><p>ITDM design, cloud computing, fleet managed.</p></div><div class="ds-card__link"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="https://www.hp.com/us-en/shop/mlp/desktops/thin-clients"><span class="ds-text-btn__text">Shop</span><img class="ds-text-btn__icon" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/icon-text-button-arrow-right-regular.svg" alt=""></a></div></div></div></div><div class="ds-carousel-external__item"><div class="ds-card ds-card--vertical ds-card--no-border" data-card-current="vertical-single-event" data-card-layout="parent-grid" data-ai-example="ai-card-spliced-vertical-single-event" data-fragment="spliced-vertical-single-event" data-library-component="library-card" data-library-fragment="spliced-vertical-single-event" data-library-release="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" data-library-props="{&quot;title&quot;:&quot;HP Elite desktops&quot;,&quot;description&quot;:&quot;<p>Expandability, quite design, enhanced manageability.</p>&quot;,&quot;image&quot;:&quot;<img src=\&quot;assets/hp-desktops/b-elitedesktops.webp\&quot; alt=\&quot;HP Elite desktops\&quot;>&quot;,&quot;linkLabel&quot;:&quot;Shop&quot;,&quot;href&quot;:&quot;https://www.hp.com/us-en/shop/mlp/desktops/elite-349506--1&quot;,&quot;sourceAbsent&quot;:{&quot;reference&quot;:&quot;reference-inputs/hp-desktops/content.json&quot;,&quot;objectId&quot;:&quot;brand-10&quot;,&quot;slots&quot;:[&quot;category&quot;]}}"><div class="ds-card__image"><img src="assets/hp-desktops/b-elitedesktops.webp" alt="HP Elite desktops"></div><div class="ds-card__body"><p class="ds-card__title">HP Elite desktops</p><div class="ds-card__desc"><p>Expandability, quite design, enhanced manageability.</p></div><div class="ds-card__link"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="https://www.hp.com/us-en/shop/mlp/desktops/elite-349506--1"><span class="ds-text-btn__text">Shop</span><img class="ds-text-btn__icon" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/icon-text-button-arrow-right-regular.svg" alt=""></a></div></div></div></div><div class="ds-carousel-external__item"><div class="ds-card ds-card--vertical ds-card--no-border" data-card-current="vertical-single-event" data-card-layout="parent-grid" data-ai-example="ai-card-spliced-vertical-single-event" data-fragment="spliced-vertical-single-event" data-library-component="library-card" data-library-fragment="spliced-vertical-single-event" data-library-release="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" data-library-props="{&quot;title&quot;:&quot;HP EliteDesk 8&quot;,&quot;description&quot;:&quot;<p>Designed to perform, impress, and protect.</p>&quot;,&quot;image&quot;:&quot;<img src=\&quot;assets/hp-desktops/b-elitedesk8.webp\&quot; alt=\&quot;HP EliteDesk 8\&quot;>&quot;,&quot;linkLabel&quot;:&quot;Shop&quot;,&quot;href&quot;:&quot;https://www.hp.com/us-en/shop/mlp/desktops/hp-elitedesk-8-mini-(intel)-3074457345618066175--1&quot;,&quot;sourceAbsent&quot;:{&quot;reference&quot;:&quot;reference-inputs/hp-desktops/content.json&quot;,&quot;objectId&quot;:&quot;brand-11&quot;,&quot;slots&quot;:[&quot;category&quot;]}}"><div class="ds-card__image"><img src="assets/hp-desktops/b-elitedesk8.webp" alt="HP EliteDesk 8"></div><div class="ds-card__body"><p class="ds-card__title">HP EliteDesk 8</p><div class="ds-card__desc"><p>Designed to perform, impress, and protect.</p></div><div class="ds-card__link"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="https://www.hp.com/us-en/shop/mlp/desktops/hp-elitedesk-8-mini-(intel)-3074457345618066175--1"><span class="ds-text-btn__text">Shop</span><img class="ds-text-btn__icon" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/icon-text-button-arrow-right-regular.svg" alt=""></a></div></div></div></div><div class="ds-carousel-external__item"><div class="ds-card ds-card--vertical ds-card--no-border" data-card-current="vertical-single-event" data-card-layout="parent-grid" data-ai-example="ai-card-spliced-vertical-single-event" data-fragment="spliced-vertical-single-event" data-library-component="library-card" data-library-fragment="spliced-vertical-single-event" data-library-release="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" data-library-props="{&quot;title&quot;:&quot;HP EliteStudio 8 All-in-One&quot;,&quot;description&quot;:&quot;<p>Collaborate seamlessly with a sophisticated AiO design</p>&quot;,&quot;image&quot;:&quot;<img src=\&quot;assets/hp-desktops/p-elitestudio8.webp\&quot; alt=\&quot;HP EliteStudio 8 All-in-One\&quot;>&quot;,&quot;linkLabel&quot;:&quot;Shop&quot;,&quot;href&quot;:&quot;https://www.hp.com/us-en/shop/mlp/desktops/hp-elitestudio-8-all-in-one-3074457345618081671--1&quot;,&quot;sourceAbsent&quot;:{&quot;reference&quot;:&quot;reference-inputs/hp-desktops/content.json&quot;,&quot;objectId&quot;:&quot;brand-12&quot;,&quot;slots&quot;:[&quot;category&quot;]}}"><div class="ds-card__image"><img src="assets/hp-desktops/p-elitestudio8.webp" alt="HP EliteStudio 8 All-in-One"></div><div class="ds-card__body"><p class="ds-card__title">HP EliteStudio 8 All-in-One</p><div class="ds-card__desc"><p>Collaborate seamlessly with a sophisticated AiO design</p></div><div class="ds-card__link"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="https://www.hp.com/us-en/shop/mlp/desktops/hp-elitestudio-8-all-in-one-3074457345618081671--1"><span class="ds-text-btn__text">Shop</span><img class="ds-text-btn__icon" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/icon-text-button-arrow-right-regular.svg" alt=""></a></div></div></div></div></div></div><div class="ds-carousel-external__control rail-prev"><button class="ds-carousel__btn ds-carousel__btn--xl" data-carousel-source-solid48="left-default" type="button" aria-label="Previous slide"><img src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/icon-carousel-solid48-left-current.svg" alt=""></button></div><div class="ds-carousel-external__control rail-next"><button class="ds-carousel__btn ds-carousel__btn--xl" data-carousel-source-solid48="right-default" type="button" aria-label="Next slide"><img src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/icon-carousel-solid48-right-current.svg" alt=""></button></div><div class="ds-carousel-external__pagination" aria-label="Carousel positions"></div><p class="ds-carousel-external__status" aria-live="polite" aria-atomic="true"></p></div>
+      </div>
+    </section>
+
+    <!-- Section 7: Two-Column Promo Offers (White Section -> 2-Col Bordered Cards) -->
+    <section id="promo-offers" class="page-section">
+      <div class="container">
+        <div class="grid grid--2">
+          <div class="ds-card ds-card--vertical ds-card--bordered" data-card-current="vertical-single-event" data-ai-example="ai-card-spliced-vertical-single-event-bordered" data-fragment="spliced-vertical-single-event-bordered" data-library-component="library-card" data-library-fragment="spliced-vertical-single-event-bordered" data-library-release="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" data-library-props="{&quot;title&quot;:&quot;Power your productivity&quot;,&quot;description&quot;:&quot;<p>Explore HP monitors engineered for today&amp;#39;s AI-powered workflows.</p>&quot;,&quot;image&quot;:&quot;<img src=\&quot;assets/hp-desktops/offer-01.jpg\&quot; alt=\&quot;HP 49-inch ultrawide monitor\&quot;>&quot;,&quot;linkLabel&quot;:&quot;Shop&quot;,&quot;href&quot;:&quot;https://www.hp.com/us-en/shop/slp/hp-monitors/hp-series-5-pro&quot;,&quot;sourceAbsent&quot;:{&quot;reference&quot;:&quot;reference-inputs/hp-desktops/content.json&quot;,&quot;objectId&quot;:&quot;offer-01&quot;,&quot;slots&quot;:[&quot;category&quot;]}}"><div class="ds-card__image"><img src="assets/hp-desktops/offer-01.jpg" alt="HP 49-inch ultrawide monitor"></div><div class="ds-card__body"><p class="ds-card__title">Power your productivity</p><div class="ds-card__desc"><p>Explore HP monitors engineered for today's AI-powered workflows.</p></div><div class="ds-card__link"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="https://www.hp.com/us-en/shop/slp/hp-monitors/hp-series-5-pro"><span class="ds-text-btn__text">Shop</span><img class="ds-text-btn__icon" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/icon-text-button-arrow-right-regular.svg" alt=""></a></div></div></div>
+<div class="ds-card ds-card--vertical ds-card--bordered" data-card-current="vertical-single-event" data-ai-example="ai-card-spliced-vertical-single-event-bordered" data-fragment="spliced-vertical-single-event-bordered" data-library-component="library-card" data-library-fragment="spliced-vertical-single-event-bordered" data-library-release="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" data-library-props="{&quot;title&quot;:&quot;Accelerate your creativity&quot;,&quot;description&quot;:&quot;<p>HP desktops with AMD Ryzen™ AI processors power accelerate rendering, editing, and AI-powered tools so your creativity stays in motion.</p>&quot;,&quot;image&quot;:&quot;<img src=\&quot;assets/hp-desktops/offer-02.jpg\&quot; alt=\&quot;HP desktop tower with AMD Ryzen AI\&quot;>&quot;,&quot;linkLabel&quot;:&quot;Shop&quot;,&quot;href&quot;:&quot;https://www.hp.com/us-en/shop/slp/amd-ryzen/desktops&quot;,&quot;sourceAbsent&quot;:{&quot;reference&quot;:&quot;reference-inputs/hp-desktops/content.json&quot;,&quot;objectId&quot;:&quot;offer-02&quot;,&quot;slots&quot;:[&quot;category&quot;]}}"><div class="ds-card__image"><img src="assets/hp-desktops/offer-02.jpg" alt="HP desktop tower with AMD Ryzen AI"></div><div class="ds-card__body"><p class="ds-card__title">Accelerate your creativity</p><div class="ds-card__desc"><p>HP desktops with AMD Ryzen™ AI processors power accelerate rendering, editing, and AI-powered tools so your creativity stays in motion.</p></div><div class="ds-card__link"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="https://www.hp.com/us-en/shop/slp/amd-ryzen/desktops"><span class="ds-text-btn__text">Shop</span><img class="ds-text-btn__icon" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/icon-text-button-arrow-right-regular.svg" alt=""></a></div></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 8: Related articles (Gray Section -> 4-Col External Cards Carousel) -->
+    <section id="related-articles" class="page-section page-section--gray">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-header__title">Related articles</h2>
+        </div>
+        <div class="ds-carousel-external" data-carousel-external="v1" data-rail="external-cards" data-carousel-columns="4" role="region" aria-roledescription="carousel" aria-label="Related articles" data-ai-example="ai-carousel-external-cards" data-fragment="external-cards" data-library-component="library-carousel" data-library-fragment="external-cards" data-library-release="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" data-library-props="{&quot;columns&quot;:4,&quot;accessibleLabel&quot;:&quot;Related articles&quot;,&quot;items&quot;:[{&quot;component&quot;:&quot;library-card&quot;,&quot;fragment&quot;:&quot;spliced-vertical-single-event&quot;,&quot;props&quot;:{&quot;title&quot;:&quot;Meet the New HP OMEN Obelisk Gaming Desktop&quot;,&quot;description&quot;:&quot;<p>Learn all about the new HP® OMEN Obelisk gaming desktop and its features for pro gamers on HP® Tech Takes.</p>&quot;,&quot;image&quot;:&quot;<img src=\&quot;assets/hp-desktops/art-01.jpg\&quot; alt=\&quot;Meet the New HP OMEN Obelisk Gaming Desktop\&quot;>&quot;,&quot;linkLabel&quot;:&quot;Read more&quot;,&quot;href&quot;:&quot;https://www.hp.com/us-en/shop/tech-takes/hp-omen-obelisk-gaming-desktop&quot;,&quot;sourceAbsent&quot;:{&quot;reference&quot;:&quot;reference-inputs/hp-desktops/content.json&quot;,&quot;objectId&quot;:&quot;art-01&quot;,&quot;slots&quot;:[&quot;category&quot;]}}},{&quot;component&quot;:&quot;library-card&quot;,&quot;fragment&quot;:&quot;spliced-vertical-single-event&quot;,&quot;props&quot;:{&quot;title&quot;:&quot;The 10 Best HP Desktops for Everyday Use&quot;,&quot;description&quot;:&quot;<p>Discover which are the 10 Best HP Desktops for everyday use at home, PC gaming and for work convenience on HP® Tech Takes.</p>&quot;,&quot;image&quot;:&quot;<img src=\&quot;assets/hp-desktops/art-02.jpg\&quot; alt=\&quot;The 10 Best HP Desktops for Everyday Use\&quot;>&quot;,&quot;linkLabel&quot;:&quot;Read more&quot;,&quot;href&quot;:&quot;https://www.hp.com/us-en/shop/tech-takes/best-10-hp-desktops-for-everyday-use&quot;,&quot;sourceAbsent&quot;:{&quot;reference&quot;:&quot;reference-inputs/hp-desktops/content.json&quot;,&quot;objectId&quot;:&quot;art-02&quot;,&quot;slots&quot;:[&quot;category&quot;]}}},{&quot;component&quot;:&quot;library-card&quot;,&quot;fragment&quot;:&quot;spliced-vertical-single-event&quot;,&quot;props&quot;:{&quot;title&quot;:&quot;Best Desktop Computers to Gift: HP's Top Holiday PC Picks&quot;,&quot;description&quot;:&quot;<p>Find the perfect desktop computer gift for everyone on your list with HP&amp;#39;s top holiday picks, from family PCs to gaming powerhouses with exceptional value.</p>&quot;,&quot;image&quot;:&quot;<img src=\&quot;assets/hp-desktops/art-03.jpg\&quot; alt=\&quot;Best Desktop Computers to Gift: HP&amp;#39;s Top Holiday PC Picks\&quot;>&quot;,&quot;linkLabel&quot;:&quot;Read more&quot;,&quot;href&quot;:&quot;https://www.hp.com/us-en/shop/tech-takes/5-best-hp-desktops-to-give-as-gifts&quot;,&quot;sourceAbsent&quot;:{&quot;reference&quot;:&quot;reference-inputs/hp-desktops/content.json&quot;,&quot;objectId&quot;:&quot;art-03&quot;,&quot;slots&quot;:[&quot;category&quot;]}}},{&quot;component&quot;:&quot;library-card&quot;,&quot;fragment&quot;:&quot;spliced-vertical-single-event&quot;,&quot;props&quot;:{&quot;title&quot;:&quot;5 Best Desktop Computers for Business from HP&quot;,&quot;description&quot;:&quot;<p>Powerful, secure desktop computers still reign supreme for running a small- or medium-sized business. Here are the best 5 desktop computers for business from HP.</p>&quot;,&quot;image&quot;:&quot;<img src=\&quot;assets/hp-desktops/art-04.jpg\&quot; alt=\&quot;5 Best Desktop Computers for Business from HP\&quot;>&quot;,&quot;linkLabel&quot;:&quot;Read more&quot;,&quot;href&quot;:&quot;https://www.hp.com/us-en/shop/tech-takes/5-best-desktop-computers-for-business&quot;,&quot;sourceAbsent&quot;:{&quot;reference&quot;:&quot;reference-inputs/hp-desktops/content.json&quot;,&quot;objectId&quot;:&quot;art-04&quot;,&quot;slots&quot;:[&quot;category&quot;]}}},{&quot;component&quot;:&quot;library-card&quot;,&quot;fragment&quot;:&quot;spliced-vertical-single-event&quot;,&quot;props&quot;:{&quot;title&quot;:&quot;Best Gifts for Someone Who Works from Home&quot;,&quot;description&quot;:&quot;<p>Looking for the perfect gift for that person in your life who works remotely? Check out our picks for the perfect present for work-from-home professionals.</p>&quot;,&quot;image&quot;:&quot;<img src=\&quot;assets/hp-desktops/art-05.jpg\&quot; alt=\&quot;Best Gifts for Someone Who Works from Home\&quot;>&quot;,&quot;linkLabel&quot;:&quot;Read more&quot;,&quot;href&quot;:&quot;https://www.hp.com/us-en/shop/tech-takes/best-gifts-for-someone-who-works-from-home&quot;,&quot;sourceAbsent&quot;:{&quot;reference&quot;:&quot;reference-inputs/hp-desktops/content.json&quot;,&quot;objectId&quot;:&quot;art-05&quot;,&quot;slots&quot;:[&quot;category&quot;]}}},{&quot;component&quot;:&quot;library-card&quot;,&quot;fragment&quot;:&quot;spliced-vertical-single-event&quot;,&quot;props&quot;:{&quot;title&quot;:&quot;Workstation vs. desktop: Key differences for your business&quot;,&quot;description&quot;:&quot;<p>Learn the key differences between workstations and desktops to determine which is best for your business needs. Explore HP’s powerful workstation options.</p>&quot;,&quot;image&quot;:&quot;<img src=\&quot;assets/hp-desktops/art-06.jpg\&quot; alt=\&quot;Workstation vs. desktop: Key differences for your business\&quot;>&quot;,&quot;linkLabel&quot;:&quot;Read more&quot;,&quot;href&quot;:&quot;https://www.hp.com/us-en/shop/tech-takes/workstation-vs-desktop-business&quot;,&quot;sourceAbsent&quot;:{&quot;reference&quot;:&quot;reference-inputs/hp-desktops/content.json&quot;,&quot;objectId&quot;:&quot;art-06&quot;,&quot;slots&quot;:[&quot;category&quot;]}}},{&quot;component&quot;:&quot;library-card&quot;,&quot;fragment&quot;:&quot;spliced-vertical-single-event&quot;,&quot;props&quot;:{&quot;title&quot;:&quot;Desktops vs. Laptops vs. All-in-Ones for Small Businesses&quot;,&quot;description&quot;:&quot;<p>Explore a comprehensive comparison of desktops, laptops, and all-in-ones to determine the ideal PC solution for your small business. Weigh the pros, cons, and cost implications to make an informed choice.</p>&quot;,&quot;image&quot;:&quot;<img src=\&quot;assets/hp-desktops/art-07.jpg\&quot; alt=\&quot;Desktops vs. Laptops vs. All-in-Ones for Small Businesses\&quot;>&quot;,&quot;linkLabel&quot;:&quot;Read more&quot;,&quot;href&quot;:&quot;https://www.hp.com/us-en/shop/tech-takes/desktops-vs-laptops-all-in-ones-smb&quot;,&quot;sourceAbsent&quot;:{&quot;reference&quot;:&quot;reference-inputs/hp-desktops/content.json&quot;,&quot;objectId&quot;:&quot;art-07&quot;,&quot;slots&quot;:[&quot;category&quot;]}}}]}"><div class="ds-carousel-external__viewport" data-rail-viewport=""><div class="ds-carousel-external__track rail-track"><div class="ds-carousel-external__item"><div class="ds-card ds-card--vertical ds-card--no-border" data-card-current="vertical-single-event" data-card-layout="parent-grid" data-ai-example="ai-card-spliced-vertical-single-event" data-fragment="spliced-vertical-single-event" data-library-component="library-card" data-library-fragment="spliced-vertical-single-event" data-library-release="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" data-library-props="{&quot;title&quot;:&quot;Meet the New HP OMEN Obelisk Gaming Desktop&quot;,&quot;description&quot;:&quot;<p>Learn all about the new HP® OMEN Obelisk gaming desktop and its features for pro gamers on HP® Tech Takes.</p>&quot;,&quot;image&quot;:&quot;<img src=\&quot;assets/hp-desktops/art-01.jpg\&quot; alt=\&quot;Meet the New HP OMEN Obelisk Gaming Desktop\&quot;>&quot;,&quot;linkLabel&quot;:&quot;Read more&quot;,&quot;href&quot;:&quot;https://www.hp.com/us-en/shop/tech-takes/hp-omen-obelisk-gaming-desktop&quot;,&quot;sourceAbsent&quot;:{&quot;reference&quot;:&quot;reference-inputs/hp-desktops/content.json&quot;,&quot;objectId&quot;:&quot;art-01&quot;,&quot;slots&quot;:[&quot;category&quot;]}}"><div class="ds-card__image"><img src="assets/hp-desktops/art-01.jpg" alt="Meet the New HP OMEN Obelisk Gaming Desktop"></div><div class="ds-card__body"><p class="ds-card__title">Meet the New HP OMEN Obelisk Gaming Desktop</p><div class="ds-card__desc"><p>Learn all about the new HP® OMEN Obelisk gaming desktop and its features for pro gamers on HP® Tech Takes.</p></div><div class="ds-card__link"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="https://www.hp.com/us-en/shop/tech-takes/hp-omen-obelisk-gaming-desktop"><span class="ds-text-btn__text">Read more</span><img class="ds-text-btn__icon" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/icon-text-button-arrow-right-regular.svg" alt=""></a></div></div></div></div><div class="ds-carousel-external__item"><div class="ds-card ds-card--vertical ds-card--no-border" data-card-current="vertical-single-event" data-card-layout="parent-grid" data-ai-example="ai-card-spliced-vertical-single-event" data-fragment="spliced-vertical-single-event" data-library-component="library-card" data-library-fragment="spliced-vertical-single-event" data-library-release="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" data-library-props="{&quot;title&quot;:&quot;The 10 Best HP Desktops for Everyday Use&quot;,&quot;description&quot;:&quot;<p>Discover which are the 10 Best HP Desktops for everyday use at home, PC gaming and for work convenience on HP® Tech Takes.</p>&quot;,&quot;image&quot;:&quot;<img src=\&quot;assets/hp-desktops/art-02.jpg\&quot; alt=\&quot;The 10 Best HP Desktops for Everyday Use\&quot;>&quot;,&quot;linkLabel&quot;:&quot;Read more&quot;,&quot;href&quot;:&quot;https://www.hp.com/us-en/shop/tech-takes/best-10-hp-desktops-for-everyday-use&quot;,&quot;sourceAbsent&quot;:{&quot;reference&quot;:&quot;reference-inputs/hp-desktops/content.json&quot;,&quot;objectId&quot;:&quot;art-02&quot;,&quot;slots&quot;:[&quot;category&quot;]}}"><div class="ds-card__image"><img src="assets/hp-desktops/art-02.jpg" alt="The 10 Best HP Desktops for Everyday Use"></div><div class="ds-card__body"><p class="ds-card__title">The 10 Best HP Desktops for Everyday Use</p><div class="ds-card__desc"><p>Discover which are the 10 Best HP Desktops for everyday use at home, PC gaming and for work convenience on HP® Tech Takes.</p></div><div class="ds-card__link"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="https://www.hp.com/us-en/shop/tech-takes/best-10-hp-desktops-for-everyday-use"><span class="ds-text-btn__text">Read more</span><img class="ds-text-btn__icon" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/icon-text-button-arrow-right-regular.svg" alt=""></a></div></div></div></div><div class="ds-carousel-external__item"><div class="ds-card ds-card--vertical ds-card--no-border" data-card-current="vertical-single-event" data-card-layout="parent-grid" data-ai-example="ai-card-spliced-vertical-single-event" data-fragment="spliced-vertical-single-event" data-library-component="library-card" data-library-fragment="spliced-vertical-single-event" data-library-release="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" data-library-props="{&quot;title&quot;:&quot;Best Desktop Computers to Gift: HP's Top Holiday PC Picks&quot;,&quot;description&quot;:&quot;<p>Find the perfect desktop computer gift for everyone on your list with HP&amp;#39;s top holiday picks, from family PCs to gaming powerhouses with exceptional value.</p>&quot;,&quot;image&quot;:&quot;<img src=\&quot;assets/hp-desktops/art-03.jpg\&quot; alt=\&quot;Best Desktop Computers to Gift: HP&amp;#39;s Top Holiday PC Picks\&quot;>&quot;,&quot;linkLabel&quot;:&quot;Read more&quot;,&quot;href&quot;:&quot;https://www.hp.com/us-en/shop/tech-takes/5-best-hp-desktops-to-give-as-gifts&quot;,&quot;sourceAbsent&quot;:{&quot;reference&quot;:&quot;reference-inputs/hp-desktops/content.json&quot;,&quot;objectId&quot;:&quot;art-03&quot;,&quot;slots&quot;:[&quot;category&quot;]}}"><div class="ds-card__image"><img src="assets/hp-desktops/art-03.jpg" alt="Best Desktop Computers to Gift: HP's Top Holiday PC Picks"></div><div class="ds-card__body"><p class="ds-card__title">Best Desktop Computers to Gift: HP's Top Holiday PC Picks</p><div class="ds-card__desc"><p>Find the perfect desktop computer gift for everyone on your list with HP's top holiday picks, from family PCs to gaming powerhouses with exceptional value.</p></div><div class="ds-card__link"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="https://www.hp.com/us-en/shop/tech-takes/5-best-hp-desktops-to-give-as-gifts"><span class="ds-text-btn__text">Read more</span><img class="ds-text-btn__icon" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/icon-text-button-arrow-right-regular.svg" alt=""></a></div></div></div></div><div class="ds-carousel-external__item"><div class="ds-card ds-card--vertical ds-card--no-border" data-card-current="vertical-single-event" data-card-layout="parent-grid" data-ai-example="ai-card-spliced-vertical-single-event" data-fragment="spliced-vertical-single-event" data-library-component="library-card" data-library-fragment="spliced-vertical-single-event" data-library-release="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" data-library-props="{&quot;title&quot;:&quot;5 Best Desktop Computers for Business from HP&quot;,&quot;description&quot;:&quot;<p>Powerful, secure desktop computers still reign supreme for running a small- or medium-sized business. Here are the best 5 desktop computers for business from HP.</p>&quot;,&quot;image&quot;:&quot;<img src=\&quot;assets/hp-desktops/art-04.jpg\&quot; alt=\&quot;5 Best Desktop Computers for Business from HP\&quot;>&quot;,&quot;linkLabel&quot;:&quot;Read more&quot;,&quot;href&quot;:&quot;https://www.hp.com/us-en/shop/tech-takes/5-best-desktop-computers-for-business&quot;,&quot;sourceAbsent&quot;:{&quot;reference&quot;:&quot;reference-inputs/hp-desktops/content.json&quot;,&quot;objectId&quot;:&quot;art-04&quot;,&quot;slots&quot;:[&quot;category&quot;]}}"><div class="ds-card__image"><img src="assets/hp-desktops/art-04.jpg" alt="5 Best Desktop Computers for Business from HP"></div><div class="ds-card__body"><p class="ds-card__title">5 Best Desktop Computers for Business from HP</p><div class="ds-card__desc"><p>Powerful, secure desktop computers still reign supreme for running a small- or medium-sized business. Here are the best 5 desktop computers for business from HP.</p></div><div class="ds-card__link"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="https://www.hp.com/us-en/shop/tech-takes/5-best-desktop-computers-for-business"><span class="ds-text-btn__text">Read more</span><img class="ds-text-btn__icon" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/icon-text-button-arrow-right-regular.svg" alt=""></a></div></div></div></div><div class="ds-carousel-external__item"><div class="ds-card ds-card--vertical ds-card--no-border" data-card-current="vertical-single-event" data-card-layout="parent-grid" data-ai-example="ai-card-spliced-vertical-single-event" data-fragment="spliced-vertical-single-event" data-library-component="library-card" data-library-fragment="spliced-vertical-single-event" data-library-release="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" data-library-props="{&quot;title&quot;:&quot;Best Gifts for Someone Who Works from Home&quot;,&quot;description&quot;:&quot;<p>Looking for the perfect gift for that person in your life who works remotely? Check out our picks for the perfect present for work-from-home professionals.</p>&quot;,&quot;image&quot;:&quot;<img src=\&quot;assets/hp-desktops/art-05.jpg\&quot; alt=\&quot;Best Gifts for Someone Who Works from Home\&quot;>&quot;,&quot;linkLabel&quot;:&quot;Read more&quot;,&quot;href&quot;:&quot;https://www.hp.com/us-en/shop/tech-takes/best-gifts-for-someone-who-works-from-home&quot;,&quot;sourceAbsent&quot;:{&quot;reference&quot;:&quot;reference-inputs/hp-desktops/content.json&quot;,&quot;objectId&quot;:&quot;art-05&quot;,&quot;slots&quot;:[&quot;category&quot;]}}"><div class="ds-card__image"><img src="assets/hp-desktops/art-05.jpg" alt="Best Gifts for Someone Who Works from Home"></div><div class="ds-card__body"><p class="ds-card__title">Best Gifts for Someone Who Works from Home</p><div class="ds-card__desc"><p>Looking for the perfect gift for that person in your life who works remotely? Check out our picks for the perfect present for work-from-home professionals.</p></div><div class="ds-card__link"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="https://www.hp.com/us-en/shop/tech-takes/best-gifts-for-someone-who-works-from-home"><span class="ds-text-btn__text">Read more</span><img class="ds-text-btn__icon" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/icon-text-button-arrow-right-regular.svg" alt=""></a></div></div></div></div><div class="ds-carousel-external__item"><div class="ds-card ds-card--vertical ds-card--no-border" data-card-current="vertical-single-event" data-card-layout="parent-grid" data-ai-example="ai-card-spliced-vertical-single-event" data-fragment="spliced-vertical-single-event" data-library-component="library-card" data-library-fragment="spliced-vertical-single-event" data-library-release="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" data-library-props="{&quot;title&quot;:&quot;Workstation vs. desktop: Key differences for your business&quot;,&quot;description&quot;:&quot;<p>Learn the key differences between workstations and desktops to determine which is best for your business needs. Explore HP’s powerful workstation options.</p>&quot;,&quot;image&quot;:&quot;<img src=\&quot;assets/hp-desktops/art-06.jpg\&quot; alt=\&quot;Workstation vs. desktop: Key differences for your business\&quot;>&quot;,&quot;linkLabel&quot;:&quot;Read more&quot;,&quot;href&quot;:&quot;https://www.hp.com/us-en/shop/tech-takes/workstation-vs-desktop-business&quot;,&quot;sourceAbsent&quot;:{&quot;reference&quot;:&quot;reference-inputs/hp-desktops/content.json&quot;,&quot;objectId&quot;:&quot;art-06&quot;,&quot;slots&quot;:[&quot;category&quot;]}}"><div class="ds-card__image"><img src="assets/hp-desktops/art-06.jpg" alt="Workstation vs. desktop: Key differences for your business"></div><div class="ds-card__body"><p class="ds-card__title">Workstation vs. desktop: Key differences for your business</p><div class="ds-card__desc"><p>Learn the key differences between workstations and desktops to determine which is best for your business needs. Explore HP’s powerful workstation options.</p></div><div class="ds-card__link"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="https://www.hp.com/us-en/shop/tech-takes/workstation-vs-desktop-business"><span class="ds-text-btn__text">Read more</span><img class="ds-text-btn__icon" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/icon-text-button-arrow-right-regular.svg" alt=""></a></div></div></div></div><div class="ds-carousel-external__item"><div class="ds-card ds-card--vertical ds-card--no-border" data-card-current="vertical-single-event" data-card-layout="parent-grid" data-ai-example="ai-card-spliced-vertical-single-event" data-fragment="spliced-vertical-single-event" data-library-component="library-card" data-library-fragment="spliced-vertical-single-event" data-library-release="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" data-library-props="{&quot;title&quot;:&quot;Desktops vs. Laptops vs. All-in-Ones for Small Businesses&quot;,&quot;description&quot;:&quot;<p>Explore a comprehensive comparison of desktops, laptops, and all-in-ones to determine the ideal PC solution for your small business. Weigh the pros, cons, and cost implications to make an informed choice.</p>&quot;,&quot;image&quot;:&quot;<img src=\&quot;assets/hp-desktops/art-07.jpg\&quot; alt=\&quot;Desktops vs. Laptops vs. All-in-Ones for Small Businesses\&quot;>&quot;,&quot;linkLabel&quot;:&quot;Read more&quot;,&quot;href&quot;:&quot;https://www.hp.com/us-en/shop/tech-takes/desktops-vs-laptops-all-in-ones-smb&quot;,&quot;sourceAbsent&quot;:{&quot;reference&quot;:&quot;reference-inputs/hp-desktops/content.json&quot;,&quot;objectId&quot;:&quot;art-07&quot;,&quot;slots&quot;:[&quot;category&quot;]}}"><div class="ds-card__image"><img src="assets/hp-desktops/art-07.jpg" alt="Desktops vs. Laptops vs. All-in-Ones for Small Businesses"></div><div class="ds-card__body"><p class="ds-card__title">Desktops vs. Laptops vs. All-in-Ones for Small Businesses</p><div class="ds-card__desc"><p>Explore a comprehensive comparison of desktops, laptops, and all-in-ones to determine the ideal PC solution for your small business. Weigh the pros, cons, and cost implications to make an informed choice.</p></div><div class="ds-card__link"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="https://www.hp.com/us-en/shop/tech-takes/desktops-vs-laptops-all-in-ones-smb"><span class="ds-text-btn__text">Read more</span><img class="ds-text-btn__icon" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/icon-text-button-arrow-right-regular.svg" alt=""></a></div></div></div></div></div></div><div class="ds-carousel-external__control rail-prev"><button class="ds-carousel__btn ds-carousel__btn--xl" data-carousel-source-solid48="left-default" type="button" aria-label="Previous slide"><img src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/icon-carousel-solid48-left-current.svg" alt=""></button></div><div class="ds-carousel-external__control rail-next"><button class="ds-carousel__btn ds-carousel__btn--xl" data-carousel-source-solid48="right-default" type="button" aria-label="Next slide"><img src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/icon-carousel-solid48-right-current.svg" alt=""></button></div><div class="ds-carousel-external__pagination" aria-label="Carousel positions"></div><p class="ds-carousel-external__status" aria-live="polite" aria-atomic="true"></p></div>
+      </div>
+    </section>
+
+    <!-- Section 9: Quick Links & Need help? (White Section -> Bordered Cards) -->
+    <section id="support-quick-links" class="page-section">
+      <div class="container">
+        <div class="hp-support-row" data-fs-extend="pre-footer-quick-links">
+          <div class="hp-quick-links">
+            <a class="hp-quick-link" href="https://www.hp.com/us-en/shop/cv/coupons-promo">
+              <img class="hp-quick-icon" src="assets/hp-desktops/svc-coupons.svg" alt="">
+              <span>Coupons &amp; Promos</span>
+            </a>
+            <a class="hp-quick-link" href="tel:877-203-4758">
+              <img class="hp-quick-icon" src="assets/hp-desktops/svc-phone.svg" alt="">
+              <span>Order by Phone 877-203-4758</span>
+            </a>
+            <a class="hp-quick-link" href="tel:888-860-9635">
+              <img class="hp-quick-icon" src="assets/hp-desktops/svc-advisor.svg" alt="">
+              <span>HP Sales Advisors</span>
+            </a>
+            <a class="hp-quick-link" href="https://www.hp.com/us-en/shop/cat/business-solutions">
+              <img class="hp-quick-icon" src="assets/hp-desktops/svc-business.svg" alt="">
+              <span>HP for Business</span>
+            </a>
+            <a class="hp-quick-link" href="https://www.hp.com/us-en/shop/slp/holiday-gift-guide">
+              <img class="hp-quick-icon" src="assets/hp-desktops/svc-gift.svg" alt="">
+              <span>HP Holiday Gift Guide</span>
+            </a>
+          </div>
+          <div class="hp-help-card">
+            <div class="hp-help-avatar-wrap"><img class="hp-help-avatar" src="assets/hp-desktops/svc-support-rep.svg" alt="Chat with a sales rep"></div>
+            <div>
+              <h2 class="hp-help-title">Need help?</h2>
+              <div class="hp-help-actions">
+                <a class="hp-help-link" href="#support-quick-links">Chat with a sales rep</a>
+                <a class="hp-help-link" href="https://www.hp.com/us-en/shop/SendEmailView?catalogId=10051&amp;langId=-1&amp;storeId=10151">Send us an email</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 10: Pre-Footer Horizontal Disclosure Bar (Pattern 14 — no forced FAQ component) -->
+    <section id="more-information" class="hp-info-band" data-fs-extend="pre-footer-disclosure-bar">
+      <div class="container">
+        <div class="hp-info-triggers" role="group" aria-label="Additional desktop information">
+          <button type="button" class="hp-info-trigger" data-hp-drawer="links" aria-expanded="false" aria-controls="hp-drawer-links">
+            <span>More Useful Links</span>
+            <img class="hp-info-chevron" src="assets/hp-desktops/icon-chevron-down.svg" alt="">
+          </button>
+          <button type="button" class="hp-info-trigger" data-hp-drawer="products" aria-expanded="false" aria-controls="hp-drawer-products">
+            <span>More About These Products</span>
+            <img class="hp-info-chevron" src="assets/hp-desktops/icon-chevron-down.svg" alt="">
+          </button>
+          <button type="button" class="hp-info-trigger" data-hp-drawer="disclaimers" aria-expanded="false" aria-controls="hp-drawer-disclaimers">
+            <span>Site Disclaimers</span>
+            <img class="hp-info-chevron" src="assets/hp-desktops/icon-chevron-down.svg" alt="">
+          </button>
+        </div>
+
+        <div id="hp-drawer-links" class="hp-info-drawer" data-hp-panel="links" hidden>
+          <div class="hp-info-links-grid">
+            <a class="hp-info-link" href="https://www.hp.com/us-en/shop/cat/desktops">Learn About Business Desktop Computers</a>
+            <a class="hp-info-link" href="https://www.hp.com/us-en/shop/cv/weekly-deals">Weekly Deals on HP Desktop Computers</a>
+            <a class="hp-info-link" href="https://www.hp.com/us-en/shop/cat/desktops">Best Desktops For Home &amp; Office</a>
+            <a class="hp-info-link" href="https://www.hp.com/us-en/shop/slp/desktop-deals">Desktop Deals (Updated Daily)</a>
+            <a class="hp-info-link" href="https://www.hp.com/us-en/shop/cat/desktops">Learn About Desktops &amp; All-in-One Computers</a>
+            <a class="hp-info-link" href="https://www.hp.com/us-en/shop/mdp/desktops/hp-envy-desktop">HP Envy Desktops</a>
+            <a class="hp-info-link" href="https://www.hp.com/us-en/shop/slp/ai-pc">AI PCs</a>
+            <a class="hp-info-link" href="https://www.hp.com/us-en/shop/cat/desktops">HP OmniDesk Desktop PCs</a>
+          </div>
+        </div>
+
+        <div id="hp-drawer-products" class="hp-info-drawer" data-hp-panel="products" hidden>
+          <div class="hp-info-guide-grid">
+            <div>
+              <h3 class="hp-info-guide-title">HyperX OMEN Gaming</h3>
+              <p class="hp-info-guide-text">HyperX OMEN gaming desktops ship with RTX 5080 / RTX 5090 graphics, up to 32GB DDR5 RAM, and Wi-Fi 7 connectivity in a tool-free chassis.</p>
+            </div>
+            <div>
+              <h3 class="hp-info-guide-title">HP Z Workstations</h3>
+              <p class="hp-info-guide-text">HP Z4 &amp; Z8 workstations configure with Xeon W-3400 processors, up to 256GB ECC RAM, and ISV-certified NVIDIA RTX 4000/5000 Ada graphics for CAD, simulation, and AI workloads.</p>
+            </div>
+            <div>
+              <h3 class="hp-info-guide-title">HP Business Desktops</h3>
+              <p class="hp-info-guide-text">HP EliteDesk towers and HP EliteOne all-in-ones deliver Intel vPro manageability and HP Wolf Security for enterprise fleets.</p>
+            </div>
+          </div>
+        </div>
+
+        <div id="hp-drawer-disclaimers" class="hp-info-drawer" data-hp-panel="disclaimers" hidden>
+          <p class="hp-info-disclaimer">Product availability, features, and specifications mentioned in this content are subject to change without notice and may vary by country or region. Microsoft and Windows are registered trademarks of Microsoft Corporation. Intel, Intel Core, and Intel Inside are trademarks of Intel Corporation.</p>
+        </div>
+      </div>
+    </section>
+  
+  </main>
+  <footer class="ds-nav-footer" data-fragment="footer" data-footer-pc-current="" data-ai-example="ai-navigation-fixed-footer" data-library-component="library-navigation" data-library-fragment="footer" data-library-release="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" data-library-props="{}">
+    <div class="ds-nav-footer__inner">
+      <div class="ds-nav-footer__columns">
+        <div class="ds-nav-footer__col">
+          <h4 class="ds-nav-footer__col-title">About Us</h4>
+          <ul class="ds-nav-footer__col-links">
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Overview</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Global Warehouse</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Advanced R&amp;D Center</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Quality Control</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Compliance Center</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Test Center</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="ds-nav-footer__col ds-nav-footer__col--service">
+          <h4 class="ds-nav-footer__col-title">Service</h4>
+          <ul class="ds-nav-footer__col-links">
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Payment Methods</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Shipping Guide</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Business Account</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Net Terms</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Return Policy</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Product Warranty</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Give us your Feedback</a></li>
+          </ul>
+        </div>
+        <div class="ds-nav-footer__col">
+          <h4 class="ds-nav-footer__col-title">Resource</h4>
+          <ul class="ds-nav-footer__col-links">
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Documentation</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Glossary</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Audio &amp; Video</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">FS Blog</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Case Studies</a></li>
+          </ul>
+        </div>
+        <div class="ds-nav-footer__col">
+          <h4 class="ds-nav-footer__col-title">Support</h4>
+          <ul class="ds-nav-footer__col-links">
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">FAQ &amp; Help Center</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Solution Support</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Query Tool</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">WDM Tranceiver Stock List</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Products Verification</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Track My Order</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">RMA Checklist</a></li>
+          </ul>
+        </div>
+        <div class="ds-nav-footer__sidebar">
+          <div class="ds-nav-footer__subscribe">
+            <h4 class="ds-nav-footer__col-title">Stay in Touch</h4>
+            <div class="ds-nav-footer__subscribe-form">
+              <input type="email" class="ds-input-footer-source" placeholder="Email" aria-label="Email" data-footer-input-retained-source="">
+              <button class="ds-btn ds-btn--filled-red ds-btn--s" type="button" data-footer-button-current=""><span class="ds-btn__text">Subscribe</span></button>
+            </div>
+          </div>
+          <div class="ds-nav-footer__app">
+            <h4 class="ds-nav-footer__col-title">Download FS APP</h4>
+            <div class="ds-nav-footer__app-badges"><a id="library-instance-40-icon-usage-img-google-play" aria-label="Get it on Google Play" style="scroll-margin-top: 40px;" aria-disabled="true"><img src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/sources/navigation/footer-assets-1013/68908-047170.png" alt="Google Play" height="28" style="width: 88px;"></a>
+              <a id="library-instance-40-icon-usage-img-app-store" aria-label="Download on the App Store" style="scroll-margin-top: 40px;" aria-disabled="true"><img src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/sources/navigation/footer-assets-1013/68908-047171.png" alt="App Store" height="28" style="width: 87.73px;"></a>
+              
+            </div>
+          </div>
+          <div class="ds-nav-footer__social"><img src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/sources/navigation/footer-assets-1013/68908-047164.png" alt="LinkedIn, YouTube, Facebook, X, Instagram, Reddit" data-footer-source-social=""></div>
+        </div>
+      </div>
+
+      <div class="ds-nav-footer__badges">
+        <div class="ds-nav-footer__badges-left">
+          <img src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/sources/navigation/footer-assets-1013/68908-047076.png" alt="DigiCert" height="28" style="scroll-margin-top: 40px; width: 59px;">
+          <img src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/sources/navigation/footer-assets-1013/68908-047074.png" alt="TrustedSite" height="28" style="scroll-margin-top: 40px; width: 58px;">
+          <img src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/sources/navigation/footer-assets-1013/68908-047075.png" alt="BBB" height="28" style="scroll-margin-top: 40px; width: 58px;">
+          <img src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/sources/navigation/footer-assets-1013/68908-047073.png" alt="Google Reviews" height="28" style="scroll-margin-top: 40px; width: 74px;">
+        </div>
+        <div class="ds-nav-footer__badges-right">
+          <a class="ds-nav-footer__region-link" aria-disabled="true">
+            United States / $ USD
+            <svg class="ds-nav-footer__dropdown-icon" width="12" height="12" viewBox="0 0 12 12" fill="none">
+              <path d="M3 4.5L6 7.5L9 4.5" stroke="#707070" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <hr class="ds-nav-footer__divider">
+
+      <div class="ds-nav-footer__legal">
+        <div class="ds-nav-footer__legal-links">
+          <a class="ds-nav-footer__legal-link" aria-disabled="true">Site Map</a>
+          <span class="ds-nav-footer__legal-divider"></span>
+          <a class="ds-nav-footer__legal-link" aria-disabled="true">Accessibility</a>
+          <span class="ds-nav-footer__legal-divider"></span>
+          <a class="ds-nav-footer__legal-link" aria-disabled="true">Privacy Policy and Notice at Collection</a>
+          <span class="ds-nav-footer__legal-divider"></span>
+          <a class="ds-nav-footer__legal-link" aria-disabled="true">Cookies Notice</a>
+          <span class="ds-nav-footer__legal-divider"></span>
+          <a class="ds-nav-footer__legal-link" aria-disabled="true">Terms and Conditions</a>
+          <span class="ds-nav-footer__legal-divider"></span>
+          <a class="ds-nav-footer__legal-link" aria-disabled="true">Report a Vulnerability</a>
+          <span class="ds-nav-footer__legal-divider"></span>
+          <a class="ds-nav-footer__legal-link" aria-disabled="true">Do Not Sell or Share My Personal Information</a>
+          <span class="ds-nav-footer__legal-divider"></span>
+          <a class="ds-nav-footer__legal-link" aria-disabled="true">Company Policies</a>
+          <span class="ds-nav-footer__legal-divider"></span>
+          <a class="ds-nav-footer__legal-link" aria-disabled="true">Cookie Settings</a>
+        </div>
+        <div class="ds-nav-footer__copyright">
+          Copyright © 2009-2026 FS.COM INC. All Rights Reserved.
+        </div>
+      </div>
+    
+  </div>
+  </footer>
+  <script>
+  (function () {
+    const LIFESTYLE_TABS = [{"label":"High performance","viewAllLabel":"View All High performance","viewAllHref":"https://www.hp.com/us-en/shop/mlp/desktops/envy---sprout","products":[{"title":"HyperX OMEN MAX 45L Gaming Desktop","subtitle":"Revolutionary cooling. Limitless performance.","msrp":"$3,959.99","price":"$2,809.99","href":"https://www.hp.com/us-en/shop/mdp/envy---sprout/hyperx-omen-max-45l-gaming-desktop-desktops-tab4-module1-hyperxomenmax45l","image":"assets/hp-desktops/p-omen45l.webp"},{"title":"HP OmniStudio X","subtitle":"Ultimate entertainment. Genuine connections.","msrp":"$1,760.99","price":"$879.99","href":"https://www.hp.com/us-en/shop/mdp/envy---sprout/hp-omnistudio-3074457345617987669--1","image":"assets/hp-desktops/p-omnistudiox.webp"},{"title":"HyperX OMEN 35L Gaming Desktop","subtitle":"Get ready, it's play time.","msrp":"$2,579.99","price":"$1,869.99","href":"https://www.hp.com/us-en/shop/mdp/envy---sprout/hyperx-omen-35l-tower-3074457345618127171--1","image":"assets/hp-desktops/p-omen35l.webp"}]},{"label":"All-in-Ones","viewAllLabel":"View All All-in-Ones","viewAllHref":"https://www.hp.com/us-en/shop/mlp/desktops/all-in-ones-349502--1","products":[{"title":"HP OmniStudio 24","subtitle":"Built for home. Ready for everyone.","msrp":"$800.99","price":"$549.99","href":"https://www.hp.com/us-en/shop/mdp/all-in-ones-349502--1/hp-omnistudio-24-3074457345618100673--1","image":"assets/hp-desktops/p-omnistudio24.webp"},{"title":"HP OmniStudio 27","subtitle":"Peak performer by day, entertainer by night.","msrp":"$1,129.99","price":"$649.99","href":"https://www.hp.com/us-en/shop/mdp/all-in-ones-349502--1/hp-omnistudio-27-3074457345618100674--1","image":"assets/hp-desktops/p-omnistudio27.webp"},{"title":"HP OmniStudio X","subtitle":"Ultimate entertainment. Genuine connections.","msrp":"$1,760.99","price":"$879.99","href":"https://www.hp.com/us-en/shop/mdp/all-in-ones-349502--1/omnistudio","image":"assets/hp-desktops/p-omnistudiox.webp"}]},{"label":"Gaming","viewAllLabel":"View All Gaming","viewAllHref":"https://www.hp.com/us-en/shop/mlp/desktops/gaming-367001--1","products":[{"title":"HyperX OMEN 35L Gaming Desktop","subtitle":"Get ready, it's play time.","msrp":"$2,579.99","price":"$1,869.99","href":"https://www.hp.com/us-en/shop/mdp/gaming-367001--1/hyperx-omen-35l-tower-3074457345618127169--1","image":"assets/hp-desktops/p-omen35l.webp"},{"title":"HyperX OMEN MAX 45L Gaming Desktop","subtitle":"Revolutionary cooling. Limitless performance.","msrp":"$3,959.99","price":"$2,809.99","href":"https://www.hp.com/us-en/shop/mdp/gaming-367001--1/hyperx-omen-max-45l-gaming-desktop-desktops-tab4-module8-hyperxomenmax45l","image":"assets/hp-desktops/p-omen45l.webp"},{"title":"OMEN 16L Gaming Desktop","subtitle":"Enter your new gaming era.","msrp":"$1,499.99","price":"$1,099.99","href":"https://www.hp.com/us-en/shop/mdp/gaming-367001--1/omen-16l-gaming-desktop-3074457345618008169--1","image":"assets/hp-desktops/p-omen16l.webp"}]},{"label":"Great value","viewAllLabel":"View All Great value","viewAllHref":"https://www.hp.com/us-en/shop/mlp/desktops/hp---pavilion","products":[{"title":"HP OmniDesk Slim","subtitle":"Slim, productive, and connected.","msrp":"$889.99","price":"$619.99","href":"https://www.hp.com/us-en/shop/mdp/hp---pavilion/hp-omnidesk-slim","image":"assets/hp-desktops/p-omnidesk-slim.webp"},{"title":"HP OmniStudio 24","subtitle":"Built for home. Ready for everyone.","msrp":"$800.99","price":"$549.99","href":"https://www.hp.com/us-en/shop/mdp/hp---pavilion/hp-omnistudio-24-3074457345618167170--1","image":"assets/hp-desktops/p-omnistudio24.webp"},{"title":"HP OmniDesk Mini","subtitle":"More space to think. Full power to create.","msrp":"$799.99","price":"$399.99","href":"https://www.hp.com/us-en/shop/mdp/hp---pavilion/hp-omnidesk-mini","image":"assets/hp-desktops/p-omnidesk-mini.webp"}]},{"label":"Towers","viewAllLabel":"View All Towers","viewAllHref":"https://www.hp.com/us-en/shop/mlp/desktops/towers-349501--1","products":[{"title":"HP OmniDesk Mini","subtitle":"More space to think. Full power to create.","msrp":"$799.99","price":"$399.99","href":"https://www.hp.com/us-en/shop/mdp/towers-349501--1/hp-omnidesk-mini-3074457345618166676--1","image":"assets/hp-desktops/p-omnidesk-mini.webp"},{"title":"HP OmniDesk Slim","subtitle":"Slim, productive, and connected.","msrp":"$889.99","price":"$619.99","href":"https://www.hp.com/us-en/shop/mdp/towers-349501--1/hp-omnidesk-slim-3074457345618166677--1","image":"assets/hp-desktops/p-omnidesk-slim.webp"},{"title":"HP OmniDesk","subtitle":"Effortless tech for at-home productivity.","msrp":"$1,029.99","price":"$559.99","href":"https://www.hp.com/us-en/shop/mdp/towers-349501--1/hp-omnidesk-desktop-3074457345618013171--1","image":"assets/hp-desktops/p-omnidesk.webp"}]},{"label":"Business","viewAllLabel":"View All Business","viewAllHref":"https://www.hp.com/us-en/shop/mlp/desktops/elitedesk--prodesk---workstations","products":[{"title":"HP ProDesk 2 Mini (Intel)","subtitle":"Compact business power designed for space-conscious teams.","msrp":"","price":"$2,086.00","href":"https://www.hp.com/us-en/shop/mdp/elitedesk--prodesk---workstations/hp-prodesk-2-mini-(intel)-3074457345618166673--1","image":"assets/hp-desktops/p-prodesk2mini.webp"},{"title":"HP EliteBoard (AMD)","subtitle":"Desktop-grade power. Keyboard-sized freedom.","msrp":"$1,549.00","price":"$1,299.00","href":"https://www.hp.com/us-en/shop/mdp/elitedesk--prodesk---workstations/hp-eliteboard-(amd)-3074457345618116671--1","image":"assets/hp-desktops/p-eliteboard.webp"},{"title":"HP EliteStudio 8 All-in-One","subtitle":"Collaborate seamlessly with a sophisticated AiO design","msrp":"$2,965.00","price":"$1,799.00","href":"https://www.hp.com/us-en/shop/mdp/elitedesk--prodesk---workstations/hp-elitestudio-8-all-in-one-3074457345618081673--1","image":"assets/hp-desktops/p-elitestudio8.webp"}]}];
+    window.onProductShop = function () {
+      const target = document.getElementById('desktop-brands');
+      if (target) target.scrollIntoView({ behavior: 'smooth' });
+    };
+
+    const tabHost = document.getElementById('hp-lifestyle-tabs');
+    const gridEl = document.getElementById('hp-lifestyle-grid');
+    const viewAllWrap = document.getElementById('hp-view-all-wrap');
+    const shopBtnTpl = document.getElementById('hp-shop-btn-tpl')?.innerHTML || '';
+
+    if (tabHost && gridEl) {
+      const renderTab = (idx) => {
+        const tab = LIFESTYLE_TABS[idx] || LIFESTYLE_TABS[0];
+        gridEl.innerHTML = tab.products
+          .map(
+            (p) =>
+              '<article class="hp-prod-card">' +
+                '<div>' +
+                  '<div class="hp-prod-media"><img class="hp-prod-img" src="' + p.image + '" alt="' + p.title + '"></div>' +
+                  '<h3 class="hp-prod-title">' + p.title + '</h3>' +
+                  '<p class="hp-prod-sub">' + p.subtitle + '</p>' +
+                '</div>' +
+                '<div class="hp-prod-foot">' +
+                  '<div class="hp-prod-prices">' +
+                    (p.msrp ? '<span class="hp-prod-msrp">' + p.msrp + '</span>' : '') +
+                    '<span class="hp-prod-sale">' + p.price + '</span>' +
+                  '</div>' +
+                  '<div>' + shopBtnTpl + '</div>' +
+                '</div>' +
+              '</article>'
+          )
+          .join('');
+        gridEl.querySelectorAll('[data-library-event-actioncallback="onProductShop"]').forEach((b) => {
+          b.addEventListener('click', window.onProductShop);
+        });
+        if (viewAllWrap) {
+          const link = viewAllWrap.querySelector('a');
+          const lbl = viewAllWrap.querySelector('.ds-text-btn__text');
+          if (link) link.setAttribute('href', tab.viewAllHref);
+          if (lbl) lbl.textContent = tab.viewAllLabel;
+        }
+      };
+
+      const handleSwitch = (e) => {
+        const item = e.target.closest('[data-tab-item]');
+        if (!item) return;
+        const all = Array.from(tabHost.querySelectorAll('[data-tab-item]'));
+        const idx = all.indexOf(item);
+        if (idx >= 0) renderTab(idx);
+      };
+      tabHost.addEventListener('click', handleSwitch);
+      tabHost.addEventListener('mouseover', handleSwitch);
+      tabHost.addEventListener('ds:tab-change', (e) => {
+        if (typeof e.detail?.index === 'number') renderTab(e.detail.index);
+      });
+    }
+
+    const triggers = Array.from(document.querySelectorAll('[data-hp-drawer]'));
+    const panels = Array.from(document.querySelectorAll('[data-hp-panel]'));
+    triggers.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const key = btn.getAttribute('data-hp-drawer');
+        const wasOpen = btn.getAttribute('aria-expanded') === 'true';
+        triggers.forEach((t) => t.setAttribute('aria-expanded', 'false'));
+        panels.forEach((p) => { p.hidden = true; });
+        if (!wasOpen) {
+          btn.setAttribute('aria-expanded', 'true');
+          const target = panels.find((p) => p.getAttribute('data-hp-panel') === key);
+          if (target) target.hidden = false;
+        }
+      });
+    });
+  })();
+  </script>
+<script data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/menu-navigation-current.js"></script>
+<script data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/card-current.js"></script>
+<script data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/tab.js"></script>
+<script data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/navigation-products-current.js"></script>
+<script data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/tag-product-current.js"></script>
+<script data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/carousel-external.js"></script>
+</body>
+</html>

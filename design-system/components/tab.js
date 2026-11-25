@@ -28,7 +28,8 @@
       var target = items.find(function (item) { return !unavailable(item) && item.classList.contains('ds-tab__item--active'); }) || items.find(function (item) { return !unavailable(item); });
       items.forEach(function (item) { item.tabIndex = item === target ? 0 : -1; });
     }
-    function selectItem(selected, moveFocus) {
+    function selectItem(selected, moveFocus, emitEvent) {
+      var prevActive = items.find(function (item) { return item.classList.contains('ds-tab__item--active'); });
       items.forEach(function (item) {
         var active = item === selected;
         item.classList.toggle('ds-tab__item--active', active);
@@ -41,10 +42,29 @@
       ensureInner(selected).appendChild(indicator);
       syncTabstop();
       if (moveFocus) selected.focus({ preventScroll: true });
+      if (emitEvent && prevActive !== selected) {
+        var textNode = selected.querySelector('.ds-tab__item-text');
+        group.dispatchEvent(new CustomEvent('ds:tab-change', {
+          bubbles: true,
+          detail: {
+            index: items.indexOf(selected),
+            item: selected,
+            text: textNode ? textNode.textContent.trim() : ''
+          }
+        }));
+      }
     }
+    var hoverSwitch = group.classList.contains('ds-tab--product') || group.getAttribute('data-tab-hover-switch') === 'true';
     items.forEach(function (item, index) {
       item.setAttribute('role', 'tab');
-      item.addEventListener('click', function (event) { if (!event.defaultPrevented && !unavailable(item)) selectItem(item, false); });
+      item.addEventListener('click', function (event) { if (!event.defaultPrevented && !unavailable(item)) selectItem(item, false, true); });
+      if (hoverSwitch) {
+        item.addEventListener('mouseenter', function () {
+          if (!unavailable(item) && !item.classList.contains('ds-tab__item--active')) {
+            selectItem(item, false, true);
+          }
+        });
+      }
       item.addEventListener('keydown', function (event) {
         if (event.defaultPrevented || unavailable(item) || event.isComposing) return;
         var enabled = items.filter(function (candidate) { return !unavailable(candidate); });
@@ -58,10 +78,10 @@
         else return;
         // Also consume Home/End when already at the boundary.
         event.preventDefault();
-        selectItem(enabled[targetIndex], true);
+        selectItem(enabled[targetIndex], true, true);
       });
     });
-    selectItem(items.find(function (item) { return item.classList.contains('ds-tab__item--active'); }) || items[0], false);
+    selectItem(items.find(function (item) { return item.classList.contains('ds-tab__item--active'); }) || items[0], false, false);
     new MutationObserver(syncTabstop).observe(document.documentElement, { subtree: true, attributes: true, attributeFilter: ['hidden', 'disabled', 'aria-disabled'] });
   }
   function initialize() {

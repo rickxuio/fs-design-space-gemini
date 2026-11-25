@@ -463,7 +463,12 @@ function sanitizeStructure(node, slot) {
 }
 function applyLibraryProps(el, v, props, root, data, targetDir) {
   const allowed = new Set(v.allowedEdits || []);
-  for (const [field, value] of Object.entries(props || {})) {
+  const entries = Object.entries(props || {}).sort(([a], [b]) => {
+    const da = v.bindings?.[a]?.mode === "banner-secondary-action" ? 1 : 0;
+    const db = v.bindings?.[b]?.mode === "banner-secondary-action" ? 1 : 0;
+    return da - db;
+  });
+  for (const [field, value] of entries) {
     if (!allowed.has(field)) throw Error("Property not editable: " + field);
     const slot = v.slots?.[field],
       binding = v.bindings?.[field];
@@ -471,6 +476,9 @@ function applyLibraryProps(el, v, props, root, data, targetDir) {
       const nodes = targets(el, slot.selector);
       if (nodes.length !== 1) throw Error("Ambiguous slot: " + field);
       if (slot.mode === "text") {
+        if (el.dataset.libraryComponent === "library-banner" && v.name === "hero-responsive" && slot.required === false && (value === "" || value === null)) {
+          continue;
+        }
         Slots.text(nodes[0],slot,value,field);
       } else if (slot.mode === "structured-content") {
         if (nodes[0].tagName === "IMG") {
@@ -503,6 +511,84 @@ function applyLibraryProps(el, v, props, root, data, targetDir) {
     if(binding.mode==='comment-media-list'){
       if(el.dataset.libraryComponent!=='library-comment'||v.name!=='customer-gallery')throw Error('Comment media binding outside actual gallery');
       require('./local-comment-media.cjs').apply(el,value,binding);continue;
+    }
+    if(binding.mode==='banner-title-html'){
+      if(el.dataset.libraryComponent!=='library-banner'||v.name!=='hero-responsive')throw Error('Banner titleHtml outside hero-responsive');
+      if(typeof value!=='string'||!value.trim())throw Error('Banner titleHtml requires non-empty HTML');
+      const titleNode=el.querySelector(binding.target||'p.ds-banner__title');
+      if(!titleNode)throw Error('Banner title container missing');
+      titleNode.innerHTML=value;
+      if(titleNode.querySelector('script,style,iframe,object,embed'))throw Error('Unsafe banner titleHtml');
+      for(const n of titleNode.querySelectorAll('*')){
+        if(!['BR','SPAN','STRONG','EM'].includes(n.tagName))throw Error('Banner titleHtml only allows inline br/span/strong/em');
+        for(const attr of [...n.attributes]){
+          if(/^on/i.test(attr.name)||!['class','style'].includes(attr.name))throw Error('Banner titleHtml attribute not allowed: '+attr.name);
+        }
+      }
+      continue;
+    }
+    if(binding.mode==='banner-primary-action'){
+      if(el.dataset.libraryComponent!=='library-banner'||v.name!=='hero-responsive')throw Error('Banner primary action outside hero-responsive');
+      const actions=el.querySelector(binding.target||'div.ds-banner__actions');
+      if(!actions)throw Error('Banner actions container missing');
+      let pri=actions.querySelector(':scope > button:not([data-banner-secondary-action]), :scope > a:not([data-banner-secondary-action])');
+      if(!pri)throw Error('Banner primary action missing');
+      const doc=el.ownerDocument;
+      if(binding.part==='href'){
+        if(typeof value!=='string'||!value.trim()||/[\u0000-\u0020]/.test(value)||value.startsWith('//')||value.startsWith('\\')||/^(?:javascript|data|vbscript):/i.test(value.trim()))throw Error('Unsafe primary action href');
+        if(pri.tagName!=='A'){
+          const a=doc.createElement('a');
+          a.className=pri.className;
+          for(const attr of [...pri.attributes]){if(attr.name.startsWith('data-library-event-'))a.setAttribute(attr.name,attr.value);}
+          while(pri.firstChild)a.appendChild(pri.firstChild);
+          pri.replaceWith(a);
+          pri=a;
+        }
+        pri.setAttribute('href',value.trim());
+      }else if(binding.part==='variant'){
+        if(binding.values&&!binding.values.includes(value))throw Error('Banner primary action variant not allowed: '+value);
+        for(const cls of [...pri.classList]){if(/^ds-btn--(outline|filled)-/.test(cls))pri.classList.remove(cls);}
+        pri.classList.add('ds-btn--'+value);
+      }
+      continue;
+    }
+    if(binding.mode==='banner-secondary-action'){
+      if(el.dataset.libraryComponent!=='library-banner'||v.name!=='hero-responsive')throw Error('Banner secondary action outside hero-responsive');
+      const actions=el.querySelector(binding.target||'div.ds-banner__actions');
+      if(!actions)throw Error('Banner actions container missing');
+      let sec=actions.querySelector('[data-banner-secondary-action]');
+      const doc=el.ownerDocument;
+      if(!sec){
+        sec=doc.createElement('button');
+        sec.setAttribute('type','button');
+        sec.className='ds-btn ds-btn--outline-white ds-btn--xl';
+        sec.setAttribute('data-banner-secondary-action','');
+        const sp=doc.createElement('span');
+        sp.className='ds-btn__text';
+        sec.appendChild(sp);
+        actions.appendChild(sec);
+      }
+      if(binding.part==='label'){
+        if(typeof value!=='string'||!value.trim())throw Error('Secondary action label requires non-empty text');
+        const sp=sec.querySelector('.ds-btn__text')||sec.appendChild(Object.assign(doc.createElement('span'),{className:'ds-btn__text'}));
+        sp.textContent=value.trim();
+      }else if(binding.part==='callback'){
+        if(typeof value!=='string'||!/^[a-zA-Z][\w-]*$/.test(value))throw Error('Event callbacks are declarative hook names, not code');
+        sec.setAttribute('data-library-event-secondaryactioncallback',value);
+      }else if(binding.part==='href'){
+        if(typeof value!=='string'||!value.trim()||/[\u0000-\u0020]/.test(value)||value.startsWith('//')||value.startsWith('\\')||/^(?:javascript|data|vbscript):/i.test(value.trim()))throw Error('Unsafe secondary action href');
+        if(sec.tagName!=='A'){
+          const a=doc.createElement('a');
+          a.className=sec.className;
+          a.setAttribute('data-banner-secondary-action','');
+          for(const attr of [...sec.attributes]){if(attr.name.startsWith('data-library-event-'))a.setAttribute(attr.name,attr.value);}
+          while(sec.firstChild)a.appendChild(sec.firstChild);
+          sec.replaceWith(a);
+          sec=a;
+        }
+        sec.setAttribute('href',value.trim());
+      }
+      continue;
     }
     const nodes = targets(el, binding.target || "root");
     if (nodes.length !== 1) throw Error("Ambiguous binding: " + field);
@@ -568,6 +654,19 @@ function applyLibraryProps(el, v, props, root, data, targetDir) {
       } else node.setAttribute(binding.attribute, String(validated));
       if (field === 'placeholder' && binding.attribute === 'data-placeholder' && node.matches('span.ds-select__value') && !el.querySelector('[role="option"][aria-selected="true"]')) node.textContent = validated;
     } else throw Error("Binding not supported by local adapter: " + field);
+  }
+  if (el.dataset.libraryComponent === "library-banner" && v.name === "hero-responsive" && props && Object.keys(props).length > 0) {
+    const hasDesc = Object.hasOwn(props, "description") && typeof props.description === "string" && props.description.trim() !== "";
+    if (!hasDesc) {
+      el.querySelector("p.ds-banner__desc")?.remove();
+    }
+    const hasPrimary = Object.hasOwn(props, "actionLabel") && typeof props.actionLabel === "string" && props.actionLabel.trim() !== "";
+    const hasSecondary = Object.hasOwn(props, "secondaryActionLabel") && typeof props.secondaryActionLabel === "string" && props.secondaryActionLabel.trim() !== "";
+    if (!hasPrimary && !hasSecondary) {
+      el.querySelector("div.ds-banner__actions")?.remove();
+    } else if (!hasPrimary && hasSecondary) {
+      el.querySelector("div.ds-banner__actions > button:not([data-banner-secondary-action]), div.ds-banner__actions > a:not([data-banner-secondary-action])")?.remove();
+    }
   }
 }
 function assertFreshSource(root, data) {

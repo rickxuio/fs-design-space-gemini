@@ -1,0 +1,60 @@
+/* FS Design System — Pagination (PC Desktop, aligned with live FS.com PLP pagination). */
+.ds-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  font-family: var(--font-family-base);
+}
+
+.ds-pagination__btn {
+  appearance: none;
+  min-width: 32px;
+  height: 32px;
+  padding: 0 var(--spacing-sm);
+  border: 0;
+  border-radius: var(--border-radius-md);
+  background: transparent;
+  color: var(--color-gray-1);
+  font-family: inherit;
+  font-size: var(--font-size-md);
+  line-height: 22px;
+  font-weight: var(--font-weight-regular);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.ds-pagination__btn:hover:not(:disabled):not(.ds-pagination__btn--active) {
+  background: var(--color-gray-8);
+}
+
+.ds-pagination__btn:focus-visible {
+  outline: 2px solid var(--color-gray-1);
+  outline-offset: 1px;
+}
+
+.ds-pagination__btn--active {
+  background: var(--color-gray-7);
+  font-weight: var(--font-weight-semibold);
+}
+
+.ds-pagination__btn:disabled {
+  color: #CCCCCC;
+  cursor: not-allowed;
+}
+
+.ds-pagination__ellipsis {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  height: 32px;
+  color: var(--color-gray-3);
+  font-size: var(--font-size-md);
+  line-height: 22px;
+  user-select: none;
+}

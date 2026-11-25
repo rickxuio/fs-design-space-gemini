@@ -5,7 +5,7 @@
     "previews": "components/variants/*.html",
     "fragmentAssembly": "components/registry.json"
   },
-  "componentCount": 30,
+  "componentCount": 31,
   "components": [
     {
       "id": "anchor-nav",
@@ -1257,6 +1257,36 @@
             "disposition": "restricted",
             "newPages": true,
             "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/card~1embedded.product-full"
+          }
+        },
+        {
+          "name": "embedded.product-plp",
+          "type": null,
+          "label": "嵌入式 · PLP精简产品卡片",
+          "usage": "PLP商品列表页精简产品卡：无兼容品牌标签行，含单行竖线分隔参数、价格、双仓库存、销量评价与hover浮现加购按钮。",
+          "classes": [
+            "ds-card",
+            "ds-card--embedded",
+            "ds-card--embedded-bg-gray",
+            "ds-card--embedded-full",
+            "ds-card--embedded-plp"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-card--embedded",
+            ".ds-card--embedded-bg-gray",
+            ".ds-card--embedded-full",
+            ".ds-card--embedded-plp",
+            ".ds-card--embedded.ds-card--embedded-bg-gray.ds-card--embedded-full.ds-card--embedded-plp",
+            ".ds-card.ds-card--embedded"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/card~1embedded.product-plp"
           }
         },
         {
@@ -3804,6 +3834,55 @@
       }
     },
     {
+      "id": "pagination",
+      "contractId": "comp_pagination_001",
+      "name": "Pagination",
+      "chineseName": "分页器",
+      "category": "导航 Navigation",
+      "description": "页码分页导航组件，用于 PLP 商品列表页、搜索结果页与长评价列表的页码切换，支持上一页/下一页、当前页高亮与 ds:pagination-change 事件。",
+      "available": true,
+      "fullyAvailable": true,
+      "isComplete": true,
+      "pendingParts": [],
+      "contractPath": "components/contracts/pagination.json",
+      "previewPath": "components/variants/pagination.html",
+      "searchIntents": [],
+      "variants": [
+        {
+          "name": "default",
+          "type": null,
+          "label": "默认分页器",
+          "usage": "PLP 商品列表页、搜索结果页或长评价列表需要页码翻页导航。",
+          "classes": [
+            "ds-pagination"
+          ],
+          "sizes": [],
+          "selectorCandidates": [],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/pagination~1default"
+          }
+        }
+      ],
+      "fragmentAssembly": {
+        "registryPath": "components/registry.json",
+        "previewPath": null,
+        "fragmentsVerified": false,
+        "fragments": []
+      },
+      "relationSummary": {
+        "parentContexts": [],
+        "componentDependencies": [],
+        "mutuallyExclusiveWith": [],
+        "hardRuleCount": 0,
+        "hasVariantSelectionRules": false
+      }
+    },
+    {
       "id": "radio",
       "contractId": "comp_radio_001",
       "name": "Radio",
@@ -5094,6 +5173,34 @@
             "disposition": "restricted",
             "newPages": true,
             "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/tag~1semantic-new"
+          }
+        },
+        {
+          "name": "semantic-hot",
+          "type": null,
+          "label": "语义标签·Hot",
+          "usage": "固定橙色Hot热销展示标记。",
+          "classes": [
+            "ds-tag",
+            "ds-tag--emphasis",
+            "ds-tag--hot",
+            "ds-tag--semantic"
+          ],
+          "sizes": [],
+          "selectorCandidates": [
+            ".ds-tag--emphasis",
+            ".ds-tag--hot",
+            ".ds-tag--semantic",
+            ".ds-tag--emphasis.ds-tag--hot.ds-tag--semantic",
+            ".ds-tag.ds-tag--emphasis"
+          ],
+          "isComplete": true,
+          "pendingParts": [],
+          "available": true,
+          "publication": {
+            "disposition": "restricted",
+            "newPages": true,
+            "policyRef": "components/reference-policy.json#/deliveryBaseline/calls/tag~1semantic-hot"
           }
         },
         {

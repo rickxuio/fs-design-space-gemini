@@ -54,12 +54,6 @@ function validateFile(file, { root = L.ROOT, requireShell = true, context = C.cr
       }
     }
     const LEGACY_REGRESSION_RELEASES = new Set([
-      "140882ce617cdc8b67dfe2da93a9d59bab5926ad3941d8723ad4a0b638e03658",
-      "8eb2dc24439210cc01e421e94e820b4e49756fb103698539919abfa2ed26164e",
-      "a22a4bab5096efb427a40675637449319261479fdf1380e42bb44ac93c8381e9",
-      "d3d1a37d8ef7e691e72a4a75e7cbd2546a023aace81dce5058d9ef040fa645c4",
-      "e682b031f8e8a2fa1e80f0e9254300f440d35db94f084f3e639e5da9d3f4768c",
-      "d7dd2d6a244026644b4bb1568816e814e46df131d0534fd7fe43732b0eb392da",
       "da9a0a1c942ccd7ef3c9f6e7c8a790c84624b90dcd39b7509b8d95cfb44127e7",
     ]);
     const fileName = path.basename(file);
@@ -114,6 +108,221 @@ function validateFile(file, { root = L.ROOT, requireShell = true, context = C.cr
               " hand-written <article> cards without library-card/library-icon-card; prefer native components"
           );
         }
+      }
+    }
+    // Visual Rule 1D: Enforce native horizontal card/banner, official solid carousel arrows, native sort select, and 16px icon resolution match
+    if (
+      !isSpecDoc &&
+      !isEngineeringFixture &&
+      !LEGACY_REGRESSION_RELEASES.has(version)
+    ) {
+      for (const badHub of doc.querySelectorAll("main .pdp-hub-card, main .pdp-guide-banner, main .pdp-guide-card")) {
+        fail(
+          "PAGE_HANDCRAFTED_HORIZONTAL_CARD",
+          "Do not hand-code horizontal feature cards/banners (" +
+            (badHub.className || badHub.tagName) +
+            "); use native library-card/spliced-horizontal-full-width"
+        );
+      }
+      for (const badSort of doc.querySelectorAll("main [data-rev-sort], main .pdp-sort-btn")) {
+        fail(
+          "PAGE_HANDCRAFTED_SORT_BUTTONS",
+          "Do not hand-code review sort buttons (" +
+            (badSort.className || "data-rev-sort") +
+            "); use native library-select"
+        );
+      }
+      for (const navBtn of doc.querySelectorAll("main .pdp-gallery__nav img, main .pdp-media-quote__nav img")) {
+        const s = navBtn.getAttribute("src") || "";
+        if (!/icon-carousel-solid(?:36|48)-(?:left|right)-current\.svg/.test(s)) {
+          fail(
+            "PAGE_CAROUSEL_ARROW_ICON",
+            "Carousel/gallery prev-next buttons must use official FS solid dark circular arrow icons (icon-carousel-solid36/48-*-current.svg): " + s
+          );
+        }
+      }
+      for (const iconImg of doc.querySelectorAll("main .pdp-perk-icon, main .duo-card__rewards-icon, main .pdp-trust-icon")) {
+        const s = iconImg.getAttribute("src") || "";
+        if (/-(?:36|48|68)\.svg$/i.test(s) || /icon-verified\.svg$/i.test(s)) {
+          fail(
+            "PAGE_ICON_SIZE_MISMATCH",
+            "Inline 16px icon slot must use crisp 16px/18px linear icons, not downscaled 36/48px icons or solid green check badges: " + s
+          );
+        }
+      }
+      // Visual Rule 1D-bis: Same section must NOT mix different display icon styleFamilies (e.g. duotone-line vs duotone-surface)
+      const styleFamiliesPath = path.join(root, "design-spec/icon-style-families.json");
+      if (fs.existsSync(styleFamiliesPath)) {
+        try {
+          const styleCfg = JSON.parse(fs.readFileSync(styleFamiliesPath, "utf8"));
+          const displaySet = new Set(Array.isArray(styleCfg.displayFamilies) ? styleCfg.displayFamilies : []);
+          const byFile = styleCfg.byFile || {};
+          const iconSections = doc.querySelectorAll("main section");
+          const scopes = iconSections.length ? [...iconSections] : [doc.querySelector("main")].filter(Boolean);
+          for (const sec of scopes) {
+            const found = new Map();
+            const inferLocalSvgFamily = (relHref) => {
+              try {
+                const abs = path.resolve(path.dirname(filePath), relHref.split("?")[0]);
+                if (!abs.endsWith(".svg") || !fs.existsSync(abs)) return null;
+                const svg = fs.readFileSync(abs, "utf8");
+                const hasRed = /#c00000/i.test(svg);
+                const hasSurfaceOp = /fill-opacity="0\.[1-8]/.test(svg);
+                if (hasRed && hasSurfaceOp) return "duotone-surface";
+                if (hasRed) return "duotone-line";
+                const vb = svg.match(/viewBox="0 0 (\d+(?:\.\d+)?) (\d+(?:\.\d+)?)"/i);
+                if (vb && Number(vb[1]) >= 32) return "line-mono-lg";
+              } catch {}
+              return null;
+            };
+            const collectFile = (raw) => {
+              if (!raw) return;
+              const matches = String(raw).match(/(?:assets\/[^"'\s)\\?]+|(?:icon|img|goods)-[^"'\s)\\?]+)\.(?:svg|png)/gi) || [];
+              for (const m of matches) {
+                const fname = path.basename(m);
+                let fam = byFile[fname];
+                if (!fam && /^assets\//i.test(m) && m.toLowerCase().endsWith(".svg")) {
+                  fam = inferLocalSvgFamily(m);
+                }
+                if (fam && displaySet.has(fam)) {
+                  if (!found.has(fam)) found.set(fam, new Set());
+                  found.get(fam).add(fname);
+                }
+              }
+            };
+            for (const img of sec.querySelectorAll("img[src]")) collectFile(img.getAttribute("src"));
+            for (const el of sec.querySelectorAll("[style]")) collectFile(el.getAttribute("style"));
+            for (const el of sec.querySelectorAll("[data-props]")) collectFile(el.getAttribute("data-props"));
+            if (found.size > 1) {
+              const detail = [...found.entries()].map(([fam, files]) => `${fam}: [${[...files].join(", ")}]`).join(" vs ");
+              const secId = sec.getAttribute("id") || sec.className || "section";
+              fail(
+                "PAGE_ICON_STYLE_MIXED",
+                `Section (${secId}) mixes incompatible display icon styleFamilies (${detail}); keep a single styleFamily per section.`
+              );
+            }
+          }
+        } catch {}
+      }
+      // Visual Rule 1E (P0): Source Coverage & Anti-Carousel-Flattening check against reference-inputs/<slug>/page-ir.json
+      const baseSlug = fileName.replace(/\.html$/i, "");
+      const irCandidates = [
+        path.join(root, "reference-inputs", baseSlug, "page-ir.json"),
+        path.join(root, "reference-inputs", baseSlug.replace(/-pc$/i, ""), "page-ir.json"),
+      ];
+      const irPath = irCandidates.find((p) => fs.existsSync(p));
+      if (irPath) {
+        try {
+          const ir = JSON.parse(fs.readFileSync(irPath, "utf8"));
+          const irSections = Array.isArray(ir.sections) ? ir.sections : [];
+          const renderedText = (doc.querySelector("main")?.textContent || "").replace(/\s+/g, " ").toLowerCase();
+          const noiseHeadingRe = /^(menu|search|cart|account|cookie|subscribe|newsletter|sign in|log in|privacy|terms|free shipping|black friday|limited[- ]time)/i;
+          const majorSourceHeadings = [];
+          for (const s of irSections) {
+            const firstH = (Array.isArray(s.headings) ? s.headings : []).find(
+              (h) => typeof h === "string" && h.trim().length >= 6 && h.trim().length <= 90 && !noiseHeadingRe.test(h.trim())
+            );
+            if (firstH) majorSourceHeadings.push(firstH.trim());
+          }
+          if (majorSourceHeadings.length >= 3) {
+            const missing = majorSourceHeadings.filter((h) => {
+              const tokens = h.toLowerCase().split(/[^a-z0-9\u4e00-\u9fff]+/).filter((w) => w.length >= 4);
+              if (!tokens.length) return false;
+              const matched = tokens.filter((w) => renderedText.includes(w)).length;
+              return matched / tokens.length < 0.5;
+            });
+            if (missing.length >= Math.max(2, Math.ceil(majorSourceHeadings.length * 0.4))) {
+              warn(
+                "PAGE_SOURCE_COVERAGE_MISSING",
+                `Synthesized page may be missing ${missing.length}/${majorSourceHeadings.length} major source sections from page-ir.json (e.g. "${missing.slice(0, 3).join('", "')}")`
+              );
+            }
+          }
+          const sourceCarouselCount = irSections.filter(
+            (s) => s.hasCarousel && (s.carouselMeta?.itemCount || 0) >= 4
+          ).length;
+          if (sourceCarouselCount > 0) {
+            const renderedCarousels = doc.querySelectorAll(
+              'main [data-library-component="library-carousel"], main .ds-carousel, main .ds-carousel-external'
+            ).length;
+            if (renderedCarousels === 0) {
+              warn(
+                "PAGE_SOURCE_CAROUSEL_FLATTENED",
+                `Source page-ir.json has ${sourceCarouselCount} multi-item carousel section(s), but synthesized page has 0 library-carousel components`
+              );
+            }
+          }
+          // Reverse check: detect fabricated headings, Hero/section descriptions, table headers, and card copy not in source
+          let rawHtmlText = "";
+          for (const candidate of ["live-main.html", "source.html"]) {
+            const p = path.join(path.dirname(irPath), candidate);
+            if (fs.existsSync(p)) {
+              rawHtmlText = fs
+                .readFileSync(p, "utf8")
+                .replace(/<script[\s\S]*?<\/script>/gi, " ")
+                .replace(/<style[\s\S]*?<\/style>/gi, " ")
+                .replace(/<[^>]+>/g, " ");
+              break;
+            }
+          }
+          const sourceAllText = (
+            irSections
+              .map(
+                (s) =>
+                  `${(s.headings || []).join(" ")} ${s.visibleText || ""} ${(s.hiddenCopy || []).join(" ")} ${(s.collapsedDrawers || []).join(" ")} ${(s.tables || []).map((t) => JSON.stringify(t)).join(" ")}`
+              )
+              .join(" ") +
+            " " +
+            rawHtmlText
+          )
+            .toLowerCase()
+            .replace(/[^a-z0-9\u4e00-\u9fa5\s]+/g, " ")
+            .replace(/\s+/g, " ");
+          if (sourceAllText.length > 80) {
+            const checkNodes = [
+              { sel: "main .section-header__title", kind: "Section title", minLen: 6 },
+              { sel: "main .section-header__desc", kind: "Section description", minLen: 12 },
+              { sel: "main .ds-banner__desc", kind: "Hero description", minLen: 12 },
+              { sel: "main table thead th", kind: "Table header", minLen: 4 },
+              { sel: "main [data-fs-extend] p:not(.ds-card__desc)", kind: "Extended card/body copy", minLen: 28, useNgram: true },
+            ];
+            for (const { sel, kind, minLen, useNgram } of checkNodes) {
+              for (const el of doc.querySelectorAll(sel)) {
+                if (el.querySelector("img, button") || (useNgram && el.closest(".ds-card__desc"))) continue;
+                const text = (el.textContent || "").replace(/\s+/g, " ").trim();
+                if (text.length < minLen) continue;
+                const words = text
+                  .toLowerCase()
+                  .replace(/[^a-z0-9\u4e00-\u9fa5\s]+/g, " ")
+                  .split(/\s+/)
+                  .filter(Boolean);
+                if (useNgram && words.length >= 6) {
+                  const ngrams = [];
+                  for (let i = 0; i <= words.length - 3; i++) {
+                    ngrams.push(`${words[i]} ${words[i + 1]} ${words[i + 2]}`);
+                  }
+                  const ngramHits = ngrams.filter((g) => sourceAllText.includes(g)).length;
+                  if (ngramHits === 0) {
+                    warn(
+                      "PAGE_SOURCE_TEXT_FABRICATED",
+                      `${kind} "${text.slice(0, 60)}" has zero 3-word phrase overlap with source (likely fabricated or rewritten copy)`
+                    );
+                  }
+                  continue;
+                }
+                const tokens = words.filter((w) => w.length >= 4);
+                if (!tokens.length) continue;
+                const hits = tokens.filter((w) => sourceAllText.includes(w)).length;
+                if (hits === 0) {
+                  warn(
+                    "PAGE_SOURCE_TEXT_FABRICATED",
+                    `${kind} "${text.slice(0, 60)}" has zero word overlap with source page-ir.json (possible fabricated copy)`
+                  );
+                }
+              }
+            }
+          }
+        } catch (_) {}
       }
     }
     // Visual Rule 2: Never mix white-bordered and gray form controls in the same form
@@ -285,6 +494,24 @@ function validateFile(file, { root = L.ROOT, requireShell = true, context = C.cr
         const plain=value.replace(/\s+/g,'').toLowerCase();
         if(/^(?:#[0-9a-f]{3,8}|[a-z]+|rgba?\([^)]*\))$/i.test(plain) && !['#fff','#ffffff','#fafbfb','#19191a','white','transparent','inherit','initial','unset','none','rgb(255,255,255)','rgb(250,251,251)','rgb(25,25,26)','rgba(0,0,0,0)'].includes(plain)) fail('PAGE_BACKGROUND','Page surface color is outside local layout specification: '+value+' in '+selector);
       }
+      if(!isSpecDoc && !LEGACY_REGRESSION_RELEASES.has(version)) {
+        const isErrorSel=/error|invalid|danger|alert|red-cta|filled-red/i.test(selector);
+        if(!isErrorSel) {
+          for(const prop of ['border','border-color','border-top','border-top-color','border-right','border-right-color','outline','outline-color']) {
+            const val=rule.style.getPropertyValue(prop).trim();
+            if(val && /(?:#c00000\b|rgb\(\s*192\s*,\s*0\s*,\s*0\s*\)|var\(\s*--color-red\s*\))/i.test(val)) {
+              fail('PAGE_RED_BORDER_MISUSE','Selected/non-error containers must use #19191A dark border, not #C00000 red border: '+selector+' ('+prop+': '+val+')');
+              break;
+            }
+          }
+        }
+        if(/:hover\b/i.test(selector)) {
+          const hColor=rule.style.getPropertyValue('color').trim();
+          if(hColor && /(?:#0060bf\b|rgb\(\s*0\s*,\s*96\s*,\s*191\s*\))/i.test(hColor)) {
+            fail('PAGE_HOVER_BLUE_MISUSE','#0060BF is reserved for resting inline blue links; dark/gray text links and triggers must stay #19191A on :hover (with underline or active border): '+selector);
+          }
+        }
+      }
       if(rule.cssRules?.length) walk(rule.cssRules);
     }};
     for(const style of doc.querySelectorAll('style')) { if(style.textContent.trim() && !style.sheet) fail('PAGE_CSS_PARSE','Page stylesheet could not be parsed'); else if(style.sheet) walk(style.sheet.cssRules); }
@@ -302,6 +529,42 @@ function validateFile(file, { root = L.ROOT, requireShell = true, context = C.cr
           if (!doc.getElementById(id)) fail("MISSING_CHILD", a + ": " + id);
     if (!doc.querySelector("main"))
       fail("PAGE_MAIN", "Local page requires main");
+    if (!isSpecDoc && !LEGACY_REGRESSION_RELEASES.has(version)) {
+      const SKIP_LIB = '[data-library-component="library-input-number"],[data-library-component="library-pagination"],[data-library-component="library-select"],[data-library-component="library-carousel"],[data-library-component="library-navigation"]';
+      for (const btn of doc.querySelectorAll('main button, main [role="button"], main a.ds-btn')) {
+        if (btn.closest(SKIP_LIB)) continue;
+        const txt = (btn.textContent || "").replace(/\s+/g, " ").trim();
+        if (!txt) continue;
+        if (/^[×✕✖+−✓✔→←↑↓‹›«»▶▼▲<>]+$/.test(txt) || /^[×✕✖+−✓✔→←↑↓‹›«»▶▼▲]\s+\S|\S\s+[×✕✖+−✓✔→←↑↓‹›«»▶▼▲]$/.test(txt)) {
+          fail("PAGE_BUTTON_UNICODE_ICON", `Button "${txt}" uses raw Unicode symbol instead of registered SVG icon or fs-icon.cjs --mono`);
+        }
+      }
+      for (const img of doc.querySelectorAll('main .ds-tab--product .ds-tab__item-icon img[src]')) {
+        const src = (img.getAttribute("src") || "").split(/[?#]/)[0];
+        if (!/\.svg$/i.test(src) || /^(?:https?:|\/\/)/i.test(src)) continue;
+        const svgFile = path.resolve(path.dirname(file), decodeURIComponent(src));
+        if (fs.existsSync(svgFile)) {
+          const svgRaw = fs.readFileSync(svgFile, "utf8");
+          if (!/#c00000\b/i.test(svgRaw)) {
+            fail("PAGE_PRODUCT_TAB_ICON_MONO", `library-tab/product icon "${src}" must be red-black duotone (#19191A + #C00000 accent), not pure monochrome`);
+          }
+        }
+      }
+      for (const lbl of doc.querySelectorAll('main .ds-input__label, main .ds-select__label')) {
+        const txt = (lbl.textContent || "").trim();
+        if (/^lable$/i.test(txt)) {
+          fail("PAGE_UNEDITED_DEFAULT_LABEL", `Form control still renders default template label "${txt}" — pass an explicit label prop`);
+        }
+      }
+      for (const el of doc.querySelectorAll('main span, main div, main p, main strong')) {
+        if (el.children.length > 0) continue;
+        if (el.closest('[data-library-component="library-rate"]')) continue;
+        const txt = (el.textContent || "").replace(/\s+/g, " ").trim();
+        if (/^[★☆]+\s*\d(?:\.\d)?(?:\s*\(\d+\))?$/.test(txt)) {
+          fail("PAGE_UNICODE_STAR_RATING", `Element "${txt}" uses raw Unicode star rating instead of native library-rate/display`);
+        }
+      }
+    }
   } catch (e) {
     const hint = /^Unknown library (?:component|fragment):/.test(e.message)
       ? "；调用清单未命中不代表规范不存在，请先核对对应契约和 Preview，区分未接入与缺规范；当前调用仍失败，不自动降级。" : "";
@@ -339,6 +602,16 @@ function pageProbe() {
   for (const n of document.querySelectorAll("main .container > *:not(.section-header)")) {
     if (n.querySelector("video") && getComputedStyle(n).maxWidth === "960px") {
       errors.push("PAGE_MEDIA_CONTAINER_WIDTH: standalone media panel must fill 1200px container, not 960px");
+    }
+  }
+  // Visual Rule 4: Multi-product comparison tables must center-align product columns
+  for (const tbl of document.querySelectorAll("main table")) {
+    if (tbl.querySelectorAll("thead th img").length >= 2) {
+      const cells = [...tbl.querySelectorAll("thead th:not(:first-child), tbody td:not(:first-child)")];
+      if (cells.some((c) => getComputedStyle(c).textAlign !== "center")) {
+        errors.push("PAGE_COMPARE_TABLE_ALIGN: product comparison table columns must be center-aligned");
+        break;
+      }
     }
   }
   for (const img of document.images)

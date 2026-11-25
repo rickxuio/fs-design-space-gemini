@@ -22,7 +22,7 @@ For hero take the complete native single-action root with data-banner-native-her
 
 不用：按MG首页M233原件原样还原，或缺少必需描述/CTA。
 
-可修改：title、description、actionLabel、actionCallback、surface。
+可修改：title、titleHtml、description、actionLabel、actionCallback、actionHref、actionVariant、secondaryActionLabel、secondaryActionCallback、secondaryActionHref、surface、height、align。
 
 ```html
 <div class="ds-banner ds-banner--hero ds-banner--hero-responsive" data-preview-skeleton="hero-responsive" data-banner-current="" data-ai-example="ai-banner-hero-current"><div class="ds-banner__responsive-inner"><p class="ds-banner__title">This is a banner title</p><p class="ds-banner__desc">This is a Banner description text</p><div class="ds-banner__actions"><button type="button" class="ds-btn ds-btn--outline-white ds-btn--xl"><span class="ds-btn__text">Primary action</span></button></div></div></div>

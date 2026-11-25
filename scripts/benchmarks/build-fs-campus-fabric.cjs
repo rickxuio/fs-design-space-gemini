@@ -563,7 +563,7 @@ const pageCss = `${H.basePageCss()}
 .fs-benefit-bullet { margin: 0; color: #707070; font-size: 14px; line-height: 22px; font-weight: 400; }
 .fs-sku-list { margin: 12px 0 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .fs-sku-link { color: #707070; font-size: 13px; line-height: 20px; font-weight: 400; text-decoration: none; word-break: break-word; }
-.fs-sku-link:hover { color: #0060BF; text-decoration: underline; }
+.fs-sku-link:hover { color: #19191A; text-decoration: underline; }
 .product-card-cell, .case-card-cell { display: grid; height: 100%; }
 .stack-40 { display: flex; flex-direction: column; gap: 40px; }
 .arch-panel { background: #FFFFFF; border: 1px solid #ECEEF0; border-radius: 8px; padding: 24px; width: 100%; box-sizing: border-box; }
@@ -589,7 +589,7 @@ const pageCss = `${H.basePageCss()}
 .support-item__links li { margin-bottom: 6px; }
 .support-item__links li:last-child { margin-bottom: 0; }
 .support-item__link { color: #4B4B4D; text-decoration: none; }
-.support-item__link:hover { color: #0060BF; text-decoration: underline; }
+.support-item__link:hover { color: #19191A; text-decoration: underline; }
 .contact-layout { display: grid; grid-template-columns: 420px minmax(0, 1fr); gap: 48px; align-items: start; }
 .contact-info__eyebrow { margin: 0 0 8px; font-size: 13px; line-height: 20px; font-weight: 600; letter-spacing: 0.4px; color: #19191A; text-transform: uppercase; }
 .contact-info__title { margin: 0 0 12px; font-size: 24px; line-height: 32px; font-weight: 600; color: #19191A; }

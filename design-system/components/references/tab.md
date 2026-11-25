@@ -20,7 +20,7 @@ items replaces existing visible labels and item count, min two; retain product i
 
 用：商品详情页，选项全部可见。
 
-不用：仅因分类筛选或用于普通专题。
+不用：原页为线性底线分区、或超过一行折叠的多级分类侧栏。
 
 可修改：items。
 
@@ -76,7 +76,7 @@ items replaces existing visible labels and item count, min two; retain product i
 可修改：items。
 
 ```html
-<div class="ds-tab ds-tab--product" data-tab-group="" data-ai-example="ai-tab-product">
+<div class="ds-tab ds-tab--product" data-tab-current="product-color-icons" data-tab-hover-switch="true" data-tab-group="" data-ai-example="ai-tab-product">
         <div class="ds-tab__item ds-tab__item--active" data-tab-item="">
           <div class="ds-tab__item-icon"><img src="../icons/icon-placeholder-switch.svg" alt=""></div>
           <div class="ds-tab__item-inner"><span class="ds-tab__item-text">Title A</span><div class="ds-tab__indicator"></div></div>

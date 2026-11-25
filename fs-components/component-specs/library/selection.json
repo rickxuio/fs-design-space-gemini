@@ -1,5 +1,5 @@
 {
-  "version": "89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87",
+  "version": "98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03",
   "source": "design-system",
   "priority": "Select callable library-* variants from the current catalog; retired unprefixed names are not registered",
   "components": [
@@ -840,10 +840,18 @@
           "sizeOptions": [],
           "allowedEdits": [
             "title",
+            "titleHtml",
             "description",
             "actionLabel",
             "actionCallback",
-            "surface"
+            "actionHref",
+            "actionVariant",
+            "secondaryActionLabel",
+            "secondaryActionCallback",
+            "secondaryActionHref",
+            "surface",
+            "height",
+            "align"
           ],
           "review": {
             "component": "banner",
@@ -3217,6 +3225,38 @@
           ]
         },
         {
+          "type": "嵌入式·PLP精简产品卡片",
+          "className": "ds-card--embedded ds-card--embedded-full ds-card--embedded-plp ds-card--embedded-bg-gray ds-card",
+          "whenToUse": "PLP商品列表页精简产品卡：无兼容品牌标签行，含单行竖线分隔参数、价格、双仓库存、销量评价与hover浮现加购按钮。",
+          "whenNotToUse": "普通图文展示，或需要兼容品牌标签行（请用 embedded.product-full）。",
+          "nestedComponents": [
+            {
+              "component": "Button",
+              "label": "Button · Cart加购（产品卡片）",
+              "href": "button.html#cart-product-card"
+            }
+          ],
+          "status": "基于线上FS PLP标杆页对齐核实；调用资格读同版catalog。",
+          "variant": "embedded.product-plp",
+          "fragment": "embedded-product-plp",
+          "selectionCases": [
+            {
+              "id": "card-embedded-product-plp-use",
+              "kind": "use",
+              "condition": "PLP商品列表页精简产品卡：无兼容品牌标签行，含单行竖线分隔参数、价格、双仓库存、销量评价与hover浮现加购按钮。",
+              "result": "调用embedded.product-plp，保留真实子原子及当前资源。",
+              "targetVariant": "embedded.product-plp"
+            },
+            {
+              "id": "card-embedded-product-plp-exclude",
+              "kind": "exclude",
+              "condition": "普通图文展示，或需要兼容品牌标签行。",
+              "result": "按内容和交互另选变体。",
+              "targetVariant": "embedded.product-plp"
+            }
+          ]
+        },
+        {
           "type": "左右结构·通栏·响应式",
           "className": "ds-card--source-responsive",
           "whenToUse": "明确需适配的左右图文通栏。",
@@ -3931,6 +3971,29 @@
             "complete": true,
             "acceptanceScope": "finite-PC-current-norm"
           },
+          "adapterScope": "Exact canonical example; alternative sizes require real-source extraction, not arbitrary class replacement"
+        },
+        {
+          "fragment": "embedded-product-plp",
+          "sourceVariant": "embedded.product-plp",
+          "callable": true,
+          "status": "integrated",
+          "reason": "Actual canonical Preview, preserved published scope and current source engineering record.",
+          "purpose": "current-source-embedded.product-plp",
+          "whenToUse": "PLP商品列表页精简产品卡：无兼容品牌标签行，含单行竖线分隔参数、价格、双仓库存、销量评价与hover浮现加购按钮。",
+          "whenNotToUse": "普通图文展示，或需要兼容品牌标签行（请用 embedded.product-full）。",
+          "sizeOptions": [],
+          "allowedEdits": [
+            "image",
+            "title",
+            "specs",
+            "price",
+            "stock",
+            "stockSecondary",
+            "soldCount",
+            "reviewCount",
+            "badge"
+          ],
           "adapterScope": "Exact canonical example; alternative sizes require real-source extraction, not arbitrary class replacement"
         },
         {
@@ -11412,6 +11475,71 @@
       ]
     },
     {
+      "key": "library-pagination",
+      "status": "integrated",
+      "contract": "design-system/components/contracts/pagination.json",
+      "preview": "maintenance/foundation-prototypes-20261114/pagination.html",
+      "engineering": {
+        "status": "current",
+        "tests": [
+          "scripts/local-canonical-component.test.js",
+          "scripts/component-publication.test.js"
+        ],
+        "visual": "pending"
+      },
+      "decisions": [
+        {
+          "type": "默认分页器 default",
+          "className": "ds-pagination",
+          "whenToUse": "PLP 商品列表页、搜索结果页或长评价列表需要页码翻页导航。",
+          "whenNotToUse": "轮播指示点（请使用 Carousel）或章节锚点导航（请使用 AnchorNav）。",
+          "nestedComponents": [],
+          "status": "基于线上 FS.com PLP 分页标杆参数建立；调用资格读同版 catalog。",
+          "variant": "default",
+          "fragment": "default",
+          "selectionCases": [
+            {
+              "id": "pagination.default.1",
+              "kind": "use",
+              "condition": "PLP 商品列表页、搜索结果页或长评价列表需要页码翻页导航。",
+              "result": "调用 library-pagination/default，通过 changeCallback 响应 ds:pagination-change 事件。",
+              "targetVariant": "default",
+              "strength": "candidate"
+            },
+            {
+              "id": "pagination.default.2",
+              "kind": "avoid",
+              "condition": "轮播指示点或同页章节锚点。",
+              "result": "不使用分页器，改用 Carousel 或 AnchorNav。",
+              "targetVariant": "default",
+              "strength": "avoid"
+            }
+          ]
+        }
+      ],
+      "variantReviews": [],
+      "dependencies": [],
+      "variants": [
+        {
+          "fragment": "default",
+          "sourceVariant": "default",
+          "callable": true,
+          "status": "integrated",
+          "reason": "Actual canonical Preview, preserved published scope and current source engineering record.",
+          "purpose": "desktop-pc-list-pagination",
+          "whenToUse": "PLP 商品列表页、搜索结果页或长评价列表需要页码翻页导航。",
+          "whenNotToUse": "轮播指示点（请使用 Carousel）或章节锚点导航（请使用 AnchorNav）。",
+          "sizeOptions": [],
+          "allowedEdits": [
+            "items",
+            "changeCallback",
+            "accessibleLabel"
+          ],
+          "adapterScope": "Exact canonical example; alternative sizes require real-source extraction, not arbitrary class replacement"
+        }
+      ]
+    },
+    {
       "key": "library-radio",
       "status": "integrated",
       "contract": "design-system/components/contracts/radio.json",
@@ -13392,7 +13520,7 @@
           "reason": "Actual canonical Preview, preserved published scope and current source engineering record.",
           "purpose": "capsule-local-selection-tabs",
           "whenToUse": "商品详情页，选项全部可见。",
-          "whenNotToUse": "仅因分类筛选或用于普通专题。",
+          "whenNotToUse": "原页为线性底线分区、或超过一行折叠的多级分类侧栏。",
           "sizeOptions": [],
           "allowedEdits": [
             "items"
@@ -14199,6 +14327,34 @@
           ]
         },
         {
+          "type": "语义标签·Hot",
+          "className": "ds-tag ds-tag--semantic ds-tag--hot ds-tag--emphasis",
+          "whenToUse": "固定橙色Hot热销展示标记。",
+          "whenNotToUse": "把展示标记作为可选产品属性。",
+          "nestedComponents": [],
+          "status": "当前FS语义Token与现有有限调用已核对；资格读同版catalog。",
+          "variant": "semantic-hot",
+          "fragment": "semantic-hot",
+          "selectionCases": [
+            {
+              "id": "tag.semantic-hot.1",
+              "kind": "use",
+              "condition": "固定橙色Hot热销展示标记。",
+              "result": "调用semantic-hot；固定Hot原子，仅由父组件定位。",
+              "targetVariant": "semantic-hot",
+              "strength": "candidate"
+            },
+            {
+              "id": "tag.semantic-hot.2",
+              "kind": "avoid",
+              "condition": "把展示标记作为可选产品属性。",
+              "result": "不使用此变体；先核对相邻组件和实际调用范围。",
+              "targetVariant": "semantic-hot",
+              "strength": "avoid"
+            }
+          ]
+        },
+        {
           "type": "产品属性·常规小号",
           "className": "ds-tag ds-tag--product-small",
           "whenToUse": "现有22px产品属性，原件产品图=false。",
@@ -14446,6 +14602,19 @@
           "reason": "Actual canonical Preview, preserved published scope and current source engineering record.",
           "purpose": "display-original-green-new-tag",
           "whenToUse": "固定绿色New展示标记。",
+          "whenNotToUse": "把展示标记作为可选产品属性。",
+          "sizeOptions": [],
+          "allowedEdits": [],
+          "adapterScope": "Exact canonical example; alternative sizes require real-source extraction, not arbitrary class replacement"
+        },
+        {
+          "fragment": "semantic-hot",
+          "sourceVariant": "semantic-hot",
+          "callable": true,
+          "status": "integrated",
+          "reason": "Actual canonical Preview, preserved published scope and current source engineering record.",
+          "purpose": "display-original-orange-hot-tag",
+          "whenToUse": "固定橙色Hot热销展示标记。",
           "whenNotToUse": "把展示标记作为可选产品属性。",
           "sizeOptions": [],
           "allowedEdits": [],

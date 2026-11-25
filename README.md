@@ -6,13 +6,11 @@
 
 | 用途 | 入口 |
 |---|---|
-| 统一阅读入口 | [项目说明、页面规范、维护与验收资料](design-system/component-library.html#view/project) |
+| **设计师唯一规范与组件门户（首选）** | [design-system/portal.html](design-system/portal.html)（`npm run design:preview`） |
 | 项目首页 | [index.html](index.html) |
-| 组件库及统一侧边导航 | [组件库](design-system/component-library.html#library) |
-| 页面工作流 | [原执行要求阅读页](design-system/component-library.html#view/workflow) |
-| 组件维护说明 | [维护说明](design-system/component-library.html#view/help) |
-| 颜色、字体及间距 | [现有 Token 规范](design-system/component-library.html#tokens) |
-| 页面布局规则 | [本地规范阅读页](design-system/component-library.html#view/local-layout) |
+| 组件维护与发版手册 | [design-system/MAINTENANCE.md](design-system/MAINTENANCE.md) |
+| 独立便携规范知识底座（<100 KB） | [dist/fs-design-core/README.md](dist/fs-design-core/README.md)（`npm run core:export`） |
+| 底层组件规范索引（机器验收用） | [design-system/component-library.html](design-system/component-library.html#library) |
 | 当前调用及固定资源版本 | [catalog.json](fs-components/component-specs/library/catalog.json) |
 | AI 选型、变体决策和复核分类 | [selection.json](fs-components/component-specs/library/selection.json) |
 
@@ -47,7 +45,7 @@
 
 新版组件规范与维护来源为 `design-system/`，统一调用登记为 `fs-components/component-registry.json`；新页面使用 `library-*`。原未加前缀的组件登记和旧预览依赖已退役，新调用只使用已登记的`library-*`变体；既有5个回归页面继续使用其原固定版本。
 
-首次安装执行 `npm ci` 和 `npm run design:install`。`npm run preview` 启动本地预览，默认端口5188，以终端实际地址为准；`npm run preview:live` 启动带共享 CSS 实时热更新与页面组件 Inspector 浮层的预览；`npm run design:preview` 直接打开统一组件库与阅读中心 `design-system/component-library.html`。
+首次安装执行 `npm ci` 和 `npm run design:install`。`npm run preview` 启动本地预览，默认端口5188，以终端实际地址为准；`npm run preview:live` 启动带共享 CSS 实时热更新的预览；`npm run design:preview` 直接打开统一设计规范门户 `design-system/portal.html`；`npm run component:accept -- <组件名>` 一键完成组件级联验收、发布新 Release 并自动刷新 `dist/fs-design-core/` 与 `design-system/portal.html`。
 
 普通页面保存在 `pages/`，使用现有调用语法：
 
@@ -68,6 +66,9 @@ npm run ingest -- <原页HTML或URL> <page-slug> [--render]              # 一�
 npm run audit:page -- pages/<目标页>.html [--mode=strict|audit]       # 3秒分块截图 + 等高/控件/Token审计（--mode=audit 可直查线上 fs.com）
 npm run page:upgrade -- pages/<目标页>.html                          # 将已生成页面一键升级到最新组件库版本并自动跑 check
 npm run release:prune                                                # 清理无引用的孤儿发布包快照与过期验收日志
+npm run component:accept -- <组件名>                                  # 一键级联验收组件、发布新 Release 并自动刷新门户与知识底座包
+npm run core:export                                                  # 导出独立零依赖规范知识底座 dist/fs-design-core/（<100 KB）
+npm run portal:build                                                 # 重新构建设计师唯一规范门户 design-system/portal.html
 ```
 
 ### 高频业务场景 → 纯新版选型速查表

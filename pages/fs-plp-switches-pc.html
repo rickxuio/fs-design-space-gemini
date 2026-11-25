@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-fs-library="89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87" lang="en">
+<html data-fs-library="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -71,66 +71,43 @@
 .plp-sort-wrap { display: inline-flex; align-items: center; height: 36px; box-sizing: border-box; padding: 0 16px; border-radius: 999px; border: 1px solid #E5E5E5; background: #FFFFFF; transition: border-color 0.15s ease; }
 .plp-sort-wrap:hover { border-color: #19191A; }
 .plp-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; }
-.plp-card { position: relative; display: flex; flex-direction: column; background: #FAFAFB; border-radius: 4px; padding: 20px; box-sizing: border-box; transition: box-shadow 0.2s ease, background-color 0.2s ease; }
-.plp-card:hover { background: #FFFFFF; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); }
-.plp-card__badge { position: absolute; top: 16px; left: 16px; z-index: 2; }
-.plp-badge-hot { display: inline-flex; align-items: center; justify-content: center; height: 22px; padding: 0 8px; border-radius: 4px; background: #FFEBDD; color: #F56300; font-size: 12px; line-height: 20px; font-weight: 600; }
-.plp-card__img-link { display: flex; align-items: center; justify-content: center; height: 180px; margin: 12px 0 16px; text-decoration: none; }
-.plp-card__img { max-width: 180px; max-height: 180px; width: auto; height: auto; object-fit: contain; mix-blend-mode: multiply; display: block; }
-.plp-card__body { display: flex; flex-direction: column; flex: 1; }
-.plp-card__title { margin: 0 0 8px; font-size: 14px; line-height: 22px; font-weight: 600; color: #19191A; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; min-height: 44px; }
-.plp-card__title-link { color: inherit; text-decoration: none; }
-.plp-card__title-link:hover { text-decoration: underline; }
-.plp-card__specs { display: block; overflow: hidden; text-overflow: ellipsis; margin-bottom: 10px; font-size: 12px; line-height: 18px; color: #707070; white-space: nowrap; }
-.plp-spec-divider { display: inline-block; width: 1px; height: 10px; background: #DEE0E3; margin: 0 5px; vertical-align: -1px; }
-.plp-card__price { margin: 0 0 8px; font-size: 16px; line-height: 24px; font-weight: 600; color: #19191A; }
-.plp-card__stock { min-height: 36px; margin-bottom: 14px; }
-.plp-card__stock-line { margin: 0; font-size: 12px; line-height: 18px; color: #707070; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.plp-card__footer { margin-top: auto; display: flex; align-items: center; justify-content: space-between; min-height: 32px; gap: 8px; }
-.plp-card__stats { display: flex; align-items: center; font-size: 12px; line-height: 18px; color: #707070; }
-.plp-stat-link { color: inherit; text-decoration: none; }
-.plp-stat-link:hover { text-decoration: underline; }
-.plp-stat-sold__num { color: #A65300; font-weight: 400; }
-.plp-stat-rev__num { color: #0060BF; font-weight: 400; }
-.plp-stat-divider { display: inline-block; width: 1px; height: 10px; background: #DEE0E3; margin: 0 6px; }
-.plp-card__cart-btn { appearance: none; visibility: hidden; display: inline-flex; align-items: center; justify-content: center; gap: 4px; height: 32px; padding: 6px 10px; border-radius: 4px; border: 0; background: #C00000; color: #FFFFFF; font-family: inherit; font-size: 12px; line-height: 20px; font-weight: 400; cursor: pointer; }
-.plp-card__cart-btn:hover { background: #A00000; }
-.plp-card__cart-icon { width: 14px; height: 14px; display: block; }
-.plp-card:hover .plp-card__cart-btn, .plp-card__cart-btn:focus-visible, .plp-card__cart-btn.is-added { visibility: visible; }
-.plp-card__cart-btn.is-added { background: #10A300; }
-.plp-pagination { margin-top: 32px; display: flex; justify-content: center; align-items: center; gap: 8px; }
-.plp-page-btn { appearance: none; min-width: 32px; height: 32px; padding: 0 8px; border-radius: 4px; border: 0; background: transparent; color: #19191A; font-family: inherit; font-size: 14px; line-height: 22px; font-weight: 400; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; }
-.plp-page-btn:hover:not(:disabled) { background: #F6F6F8; }
-.plp-page-btn.is-active { background: #F2F2F2; font-weight: 600; }
-.plp-page-btn:disabled { color: #CCCCCC; cursor: not-allowed; }
+.plp-card-item { display: grid; height: 100%; }
+.plp-pagination-wrap { margin-top: 32px; display: flex; justify-content: center; }
 .plp-cart-toast { position: fixed; right: 24px; bottom: 24px; z-index: 60; background: #19191A; color: #FFFFFF; padding: 10px 16px; border-radius: 6px; font-size: 13px; line-height: 20px; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18); opacity: 0; pointer-events: none; transition: opacity 0.2s ease; }
 .plp-cart-toast.is-show { opacity: 1; }
 </style>
-<link rel="stylesheet" data-library-resource="89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87" href="../fs-components/component-specs/library/releases/89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87/components/tokens.css">
-<link rel="stylesheet" data-library-resource="89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87" href="../fs-components/component-specs/library/releases/89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87/components/icon-button-current.css">
-<link rel="stylesheet" data-library-resource="89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87" href="../fs-components/component-specs/library/releases/89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87/components/components.css">
-<link rel="stylesheet" data-library-resource="89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87" href="../fs-components/component-specs/library/releases/89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87/components/dropdown-current.css">
-<link rel="stylesheet" data-library-resource="89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87" href="../fs-components/component-specs/library/releases/89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87/components/navigation-current.css">
-<link rel="stylesheet" data-library-resource="89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87" href="../fs-components/component-specs/library/releases/89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87/components/breadcrumb-current.css">
-<link rel="stylesheet" data-library-resource="89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87" href="../fs-components/component-specs/library/releases/89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87/components/tag-current.css">
-<link rel="stylesheet" data-library-resource="89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87" href="../fs-components/component-specs/library/releases/89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87/components/dropdown-command-current.css">
-<link rel="stylesheet" data-library-resource="89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87" href="../fs-components/component-specs/library/releases/89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87/components/navigation-header-web-atom.css">
-<link rel="stylesheet" data-library-resource="89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87" href="../fs-components/component-specs/library/releases/89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87/components/tag-product-current.css">
-<link rel="stylesheet" data-library-resource="89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87" href="../fs-components/component-specs/library/releases/89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87/components/button-current.css">
-<link rel="stylesheet" data-library-resource="89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87" href="../fs-components/component-specs/library/releases/89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87/components/tag-configuration-current.css">
-<link rel="stylesheet" data-library-resource="89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87" href="../fs-components/component-specs/library/releases/89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87/components/button-runtime-current.css">
-<link rel="stylesheet" data-library-resource="89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87" href="../fs-components/component-specs/library/releases/89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87/components/input-footer-source.css">
-<link rel="stylesheet" data-library-resource="89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87" href="../fs-components/component-specs/library/releases/89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87/components/input-current.css">
-<link rel="stylesheet" data-library-resource="89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87" href="../fs-components/component-specs/library/releases/89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87/components/navigation-footer-current.css">
-<link rel="stylesheet" data-library-resource="89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87" href="../fs-components/component-specs/library/releases/89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87/components/checkbox-current.css">
-<link rel="stylesheet" data-library-resource="89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87" href="../fs-components/component-specs/library/releases/89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87/components/navigation-header-action-atom.css">
-<link rel="stylesheet" data-library-resource="89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87" href="../fs-components/component-specs/library/releases/89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87/components/select-current.css">
-<link rel="stylesheet" data-library-resource="89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87" href="../fs-components/component-specs/library/releases/89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87/components/menu-navigation-current.css">
-<link rel="stylesheet" data-library-resource="89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87" href="../fs-components/component-specs/library/releases/89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87/components/navigation-products-current.css">
-<link rel="stylesheet" data-library-resource="89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87" href="../fs-components/component-specs/library/releases/89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87/local-fonts.css">
+<link rel="stylesheet" data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" href="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/tokens.css">
+<link rel="stylesheet" data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" href="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icon-button-current.css">
+<link rel="stylesheet" data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" href="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/components.css">
+<link rel="stylesheet" data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" href="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/pagination-current.css">
+<link rel="stylesheet" data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" href="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/dropdown-current.css">
+<link rel="stylesheet" data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" href="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/navigation-current.css">
+<link rel="stylesheet" data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" href="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/breadcrumb-current.css">
+<link rel="stylesheet" data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" href="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/card-responsive.css">
+<link rel="stylesheet" data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" href="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/dropdown-command-current.css">
+<link rel="stylesheet" data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" href="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/navigation-header-web-atom.css">
+<link rel="stylesheet" data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" href="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/text-button-current.css">
+<link rel="stylesheet" data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" href="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/button-current.css">
+<link rel="stylesheet" data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" href="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/button-runtime-current.css">
+<link rel="stylesheet" data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" href="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/input-footer-source.css">
+<link rel="stylesheet" data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" href="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/input-current.css">
+<link rel="stylesheet" data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" href="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/card-current.css">
+<link rel="stylesheet" data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" href="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/navigation-footer-current.css">
+<link rel="stylesheet" data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" href="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/checkbox-current.css">
+<link rel="stylesheet" data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" href="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/cart-current.css">
+<link rel="stylesheet" data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" href="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/navigation-header-action-atom.css">
+<link rel="stylesheet" data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" href="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/select-current.css">
+<link rel="stylesheet" data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" href="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/menu-navigation-current.css">
+<link rel="stylesheet" data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" href="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/navigation-products-current.css">
+<link rel="stylesheet" data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" href="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/tag-current.css">
+<link rel="stylesheet" data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" href="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/list-unordered-current.css">
+<link rel="stylesheet" data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" href="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/tag-product-current.css">
+<link rel="stylesheet" data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" href="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/card-completion-current.css">
+<link rel="stylesheet" data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" href="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/card-sidebar-current.css">
+<link rel="stylesheet" data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" href="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/local-fonts.css">
 </head>
 <body>
-  <header class="ds-nav-header" data-fragment="header" data-ai-example="ai-navigation-fixed-header" data-header-products-current="pc" data-library-component="library-navigation" data-library-fragment="header" data-library-release="89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87" data-library-props="{}">
+  <header class="ds-nav-header" data-fragment="header" data-ai-example="ai-navigation-fixed-header" data-header-products-current="pc" data-library-component="library-navigation" data-library-fragment="header" data-library-release="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" data-library-props="{}">
     <div class="ds-nav-header__topbar">
       <div class="ds-nav-header__topbar-inner">
         <div class="ds-nav-header__topbar-left">
@@ -153,7 +130,7 @@
     <nav class="ds-nav-header__main">
       <div class="ds-nav-header__main-inner">
         <a id="library-instance-1-icon-usage-icon-logo-fs" href="#" class="ds-nav-header__logo" aria-label="FS.com Home" style="scroll-margin-top: 40px;">
-          <img src="../fs-components/component-specs/library/releases/89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87/components/icons/icon-logo-fs.svg" alt="FS Logo" width="76" height="36">
+          <img src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/icon-logo-fs.svg" alt="FS Logo" width="76" height="36">
         </a>
         <ul class="ds-nav-header__links">
           <li class="ds-nav-header__link-item"><a href="#" class="ds-nav-header__link" data-header-products-trigger="" role="button" aria-haspopup="true" aria-expanded="false" aria-controls="library-instance-1-header-product-menu-panel">All Products</a></li>
@@ -165,27 +142,27 @@
         </ul>
         <div class="ds-nav-header__actions">
           <button id="library-instance-1-icon-usage-icon-search" class="ds-nav-header__action-btn" type="button" aria-label="Search" style="scroll-margin-top: 40px;">
-            <img src="../fs-components/component-specs/library/releases/89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87/components/icons/navigation-header-search-1013.png" alt="" width="24" height="24">
+            <img src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/navigation-header-search-1013.png" alt="" width="24" height="24">
           </button>
           <button id="library-instance-1-icon-usage-icon-cart" class="ds-nav-header__action-btn" type="button" aria-label="Cart" style="scroll-margin-top: 40px;">
-            <img src="../fs-components/component-specs/library/releases/89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87/components/icons/icon-cart.svg" alt="" width="24" height="24">
+            <img src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/icon-cart.svg" alt="" width="24" height="24">
           </button>
           <button id="library-instance-1-icon-usage-icon-account" class="ds-nav-header__action-btn" type="button" aria-label="Account" style="scroll-margin-top: 40px;">
-            <img src="../fs-components/component-specs/library/releases/89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87/components/icons/icon-account.svg" alt="" width="24" height="24">
+            <img src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/icon-account.svg" alt="" width="24" height="24">
           </button>
         </div>
       </div>
     </nav>
   <div class="ds-nav-header__product-menu" id="library-instance-1-header-product-menu-panel" hidden=""><nav class="ds-menu-navigation ds-menu-navigation--public-header" data-menu-navigation="" aria-label="Public header product menu">
         <ul class="ds-menu-navigation__list">
-          <li><button class="ds-menu-navigation__item ds-menu-navigation__item--selected" type="button" data-value="switches" aria-pressed="true"><img class="ds-menu-navigation__product-icon" src="../fs-components/component-specs/library/releases/89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87/components/icons/icon-menu-switches.svg" alt=""><span class="ds-menu-navigation__item-label">Switches</span></button></li>
-          <li><button class="ds-menu-navigation__item" type="button" data-value="networking"><img class="ds-menu-navigation__product-icon" src="../fs-components/component-specs/library/releases/89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87/components/icons/icon-menu-networking.svg" alt=""><span class="ds-menu-navigation__item-label">Networking</span></button></li>
-          <li><button class="ds-menu-navigation__item" type="button" data-value="optical-transceivers"><img class="ds-menu-navigation__product-icon" src="../fs-components/component-specs/library/releases/89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87/components/icons/icon-menu-optical-transceivers.svg" alt=""><span class="ds-menu-navigation__item-label">Optical Transceivers</span></button></li>
-          <li><button class="ds-menu-navigation__item" type="button" data-value="fiber-optic-cables"><img class="ds-menu-navigation__product-icon" src="../fs-components/component-specs/library/releases/89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87/components/icons/icon-menu-fiber-optic-cables.svg" alt=""><span class="ds-menu-navigation__item-label">Fiber Optic Cables</span></button></li>
-          <li><button class="ds-menu-navigation__item" type="button" data-value="panels-enclosures-racks"><img class="ds-menu-navigation__product-icon" src="../fs-components/component-specs/library/releases/89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87/components/icons/icon-menu-panels-enclosures-racks.svg" alt=""><span class="ds-menu-navigation__item-label">Panels, Enclosures &amp; Racks</span></button></li>
-          <li><button class="ds-menu-navigation__item" type="button" data-value="optical-networking"><img class="ds-menu-navigation__product-icon" src="../fs-components/component-specs/library/releases/89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87/components/icons/icon-menu-optical-networking.svg" alt=""><span class="ds-menu-navigation__item-label">Optical Networking</span></button></li>
-          <li><button class="ds-menu-navigation__item" type="button" data-value="copper-systems"><img class="ds-menu-navigation__product-icon" src="../fs-components/component-specs/library/releases/89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87/components/icons/icon-menu-copper-systems.svg" alt=""><span class="ds-menu-navigation__item-label">Copper Systems</span></button></li>
-          <li><button class="ds-menu-navigation__item" type="button" data-value="testers-tools"><img class="ds-menu-navigation__product-icon" src="../fs-components/component-specs/library/releases/89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87/components/icons/icon-menu-testers-tools.svg" alt=""><span class="ds-menu-navigation__item-label">Testers &amp; Tools</span></button></li>
+          <li><button class="ds-menu-navigation__item ds-menu-navigation__item--selected" type="button" data-value="switches" aria-pressed="true"><img class="ds-menu-navigation__product-icon" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/icon-menu-switches.svg" alt=""><span class="ds-menu-navigation__item-label">Switches</span></button></li>
+          <li><button class="ds-menu-navigation__item" type="button" data-value="networking"><img class="ds-menu-navigation__product-icon" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/icon-menu-networking.svg" alt=""><span class="ds-menu-navigation__item-label">Networking</span></button></li>
+          <li><button class="ds-menu-navigation__item" type="button" data-value="optical-transceivers"><img class="ds-menu-navigation__product-icon" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/icon-menu-optical-transceivers.svg" alt=""><span class="ds-menu-navigation__item-label">Optical Transceivers</span></button></li>
+          <li><button class="ds-menu-navigation__item" type="button" data-value="fiber-optic-cables"><img class="ds-menu-navigation__product-icon" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/icon-menu-fiber-optic-cables.svg" alt=""><span class="ds-menu-navigation__item-label">Fiber Optic Cables</span></button></li>
+          <li><button class="ds-menu-navigation__item" type="button" data-value="panels-enclosures-racks"><img class="ds-menu-navigation__product-icon" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/icon-menu-panels-enclosures-racks.svg" alt=""><span class="ds-menu-navigation__item-label">Panels, Enclosures &amp; Racks</span></button></li>
+          <li><button class="ds-menu-navigation__item" type="button" data-value="optical-networking"><img class="ds-menu-navigation__product-icon" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/icon-menu-optical-networking.svg" alt=""><span class="ds-menu-navigation__item-label">Optical Networking</span></button></li>
+          <li><button class="ds-menu-navigation__item" type="button" data-value="copper-systems"><img class="ds-menu-navigation__product-icon" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/icon-menu-copper-systems.svg" alt=""><span class="ds-menu-navigation__item-label">Copper Systems</span></button></li>
+          <li><button class="ds-menu-navigation__item" type="button" data-value="testers-tools"><img class="ds-menu-navigation__product-icon" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/icon-menu-testers-tools.svg" alt=""><span class="ds-menu-navigation__item-label">Testers &amp; Tools</span></button></li>
         </ul>
       </nav></div></header>
 
@@ -193,49 +170,49 @@
     <section id="plp-catalog" class="page-section plp-section">
       <div class="container">
         <div class="plp-breadcrumb-row">
-          <nav class="ds-breadcrumb" aria-label="Breadcrumb" data-breadcrumb-current="" data-ai-example="ai-breadcrumb-default" data-fragment="default" data-library-component="library-breadcrumb" data-library-fragment="default" data-library-release="89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87" data-library-props="{&quot;items&quot;:&quot;<div class=\&quot;ds-breadcrumb__item\&quot;><a href=\&quot;https://www.fs.com/\&quot; class=\&quot;ds-breadcrumb__link\&quot;>Home</a><span class=\&quot;ds-breadcrumb__separator\&quot; aria-hidden=\&quot;true\&quot;>/</span></div><div class=\&quot;ds-breadcrumb__item\&quot;><a href=\&quot;https://www.fs.com/c/switches-4222\&quot; class=\&quot;ds-breadcrumb__link\&quot;>Switches</a><span class=\&quot;ds-breadcrumb__separator\&quot; aria-hidden=\&quot;true\&quot;>/</span></div><div class=\&quot;ds-breadcrumb__item\&quot;><span class=\&quot;ds-breadcrumb__current\&quot;>PicOS® Enterprise Switches</span></div>&quot;}"><div class="ds-breadcrumb__item"><a href="https://www.fs.com/" class="ds-breadcrumb__link">Home</a><span class="ds-breadcrumb__separator" aria-hidden="true">/</span></div><div class="ds-breadcrumb__item"><a href="https://www.fs.com/c/switches-4222" class="ds-breadcrumb__link">Switches</a><span class="ds-breadcrumb__separator" aria-hidden="true">/</span></div><div class="ds-breadcrumb__item"><span class="ds-breadcrumb__current">PicOS® Enterprise Switches</span></div></nav>
+          <nav class="ds-breadcrumb" aria-label="Breadcrumb" data-breadcrumb-current="" data-ai-example="ai-breadcrumb-default" data-fragment="default" data-library-component="library-breadcrumb" data-library-fragment="default" data-library-release="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" data-library-props="{&quot;items&quot;:&quot;<div class=\&quot;ds-breadcrumb__item\&quot;><a href=\&quot;https://www.fs.com/\&quot; class=\&quot;ds-breadcrumb__link\&quot;>Home</a><span class=\&quot;ds-breadcrumb__separator\&quot; aria-hidden=\&quot;true\&quot;>/</span></div><div class=\&quot;ds-breadcrumb__item\&quot;><a href=\&quot;https://www.fs.com/c/switches-4222\&quot; class=\&quot;ds-breadcrumb__link\&quot;>Switches</a><span class=\&quot;ds-breadcrumb__separator\&quot; aria-hidden=\&quot;true\&quot;>/</span></div><div class=\&quot;ds-breadcrumb__item\&quot;><span class=\&quot;ds-breadcrumb__current\&quot;>PicOS® Enterprise Switches</span></div>&quot;}"><div class="ds-breadcrumb__item"><a href="https://www.fs.com/" class="ds-breadcrumb__link">Home</a><span class="ds-breadcrumb__separator" aria-hidden="true">/</span></div><div class="ds-breadcrumb__item"><a href="https://www.fs.com/c/switches-4222" class="ds-breadcrumb__link">Switches</a><span class="ds-breadcrumb__separator" aria-hidden="true">/</span></div><div class="ds-breadcrumb__item"><span class="ds-breadcrumb__current">PicOS® Enterprise Switches</span></div></nav>
         </div>
 
         <h1 id="plp-page-title" class="plp-page-title">PicOS® Enterprise Switches</h1>
 
         <nav class="plp-subcat-strip" aria-label="Switch subcategories">
           <button type="button" class="plp-subcat" data-subcat-idx="0" data-subcat-key="1-2.5g" data-subcat-title="1/2.5G PicOS® Switches" aria-pressed="false">
-      <span class="plp-subcat__check" aria-hidden="true">&#10003;</span>
+      <span class="plp-subcat__check" aria-hidden="true"><img src="assets/fs-plp-switches/icon-check.svg" alt="" width="10" height="10"></span>
       <div class="plp-subcat__img-wrap">
         <img class="plp-subcat__img" src="assets/fs-plp-switches/img-01-e38c0cf9.png" alt="1/2.5G PicOS® Switches">
       </div>
       <span class="plp-subcat__title">1/2.5G PicOS® Switches</span>
     </button>
 <button type="button" class="plp-subcat" data-subcat-idx="1" data-subcat-key="10-25g" data-subcat-title="10/25G PicOS® Switches" aria-pressed="false">
-      <span class="plp-subcat__check" aria-hidden="true">&#10003;</span>
+      <span class="plp-subcat__check" aria-hidden="true"><img src="assets/fs-plp-switches/icon-check.svg" alt="" width="10" height="10"></span>
       <div class="plp-subcat__img-wrap">
         <img class="plp-subcat__img" src="assets/fs-plp-switches/img-02-719fcdf1.png" alt="10/25G PicOS® Switches">
       </div>
       <span class="plp-subcat__title">10/25G PicOS® Switches</span>
     </button>
 <button type="button" class="plp-subcat" data-subcat-idx="2" data-subcat-key="40-100g" data-subcat-title="40/100G PicOS® Switches" aria-pressed="false">
-      <span class="plp-subcat__check" aria-hidden="true">&#10003;</span>
+      <span class="plp-subcat__check" aria-hidden="true"><img src="assets/fs-plp-switches/icon-check.svg" alt="" width="10" height="10"></span>
       <div class="plp-subcat__img-wrap">
         <img class="plp-subcat__img" src="assets/fs-plp-switches/img-03-c45841ab.png" alt="40/100G PicOS® Switches">
       </div>
       <span class="plp-subcat__title">40/100G PicOS® Switches</span>
     </button>
 <button type="button" class="plp-subcat" data-subcat-idx="3" data-subcat-key="200-400g" data-subcat-title="200/400G PicOS® Switches" aria-pressed="false">
-      <span class="plp-subcat__check" aria-hidden="true">&#10003;</span>
+      <span class="plp-subcat__check" aria-hidden="true"><img src="assets/fs-plp-switches/icon-check.svg" alt="" width="10" height="10"></span>
       <div class="plp-subcat__img-wrap">
         <img class="plp-subcat__img" src="assets/fs-plp-switches/img-04-f2559f41.png" alt="200/400G PicOS® Switches">
       </div>
       <span class="plp-subcat__title">200/400G PicOS® Switches</span>
     </button>
 <button type="button" class="plp-subcat" data-subcat-idx="4" data-subcat-key="license" data-subcat-title="PicOS® License &amp; Service" aria-pressed="false">
-      <span class="plp-subcat__check" aria-hidden="true">&#10003;</span>
+      <span class="plp-subcat__check" aria-hidden="true"><img src="assets/fs-plp-switches/icon-check.svg" alt="" width="10" height="10"></span>
       <div class="plp-subcat__img-wrap">
         <img class="plp-subcat__img" src="assets/fs-plp-switches/img-05-d309c527.png" alt="PicOS® License &amp; Service">
       </div>
       <span class="plp-subcat__title">PicOS® License &amp; Service</span>
     </button>
 <button type="button" class="plp-subcat" data-subcat-idx="5" data-subcat-key="accessories" data-subcat-title="Switch Accessories" aria-pressed="false">
-      <span class="plp-subcat__check" aria-hidden="true">&#10003;</span>
+      <span class="plp-subcat__check" aria-hidden="true"><img src="assets/fs-plp-switches/icon-check.svg" alt="" width="10" height="10"></span>
       <div class="plp-subcat__img-wrap">
         <img class="plp-subcat__img" src="assets/fs-plp-switches/img-06-39a92b6f.png" alt="Switch Accessories">
       </div>
@@ -245,22 +222,22 @@
 
         <div class="plp-toolbar">
           <div class="plp-filters-left">
-            <div class="plp-filter-slot plp-filter-slot--port" data-filter-group="port"><div class="ds-select ds-select--multi-checkbox" data-select-mode="multiple" data-ai-example="ai-select-multi-checkbox" id="library-instance-3-ai-select-multi-checkbox" data-input-current="" data-input-adapter="select-trigger" data-fragment="multi-checkbox" data-library-component="library-select" data-library-fragment="multi-checkbox" data-library-release="89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87" data-library-event-changecallback="onPlpFilterChange" data-library-props="{&quot;options&quot;:&quot;<div class=\&quot;ds-select__option\&quot; role=\&quot;option\&quot; aria-selected=\&quot;false\&quot; id=\&quot;plp-port-opt-0\&quot;><label class=\&quot;ds-checkbox ds-checkbox--sm\&quot; data-checkbox-current=\&quot;\&quot;><span class=\&quot;ds-checkbox__box\&quot;></span><span class=\&quot;ds-checkbox__label ds-select__option-label\&quot;>8 Ports</span></label></div><div class=\&quot;ds-select__option\&quot; role=\&quot;option\&quot; aria-selected=\&quot;false\&quot; id=\&quot;plp-port-opt-1\&quot;><label class=\&quot;ds-checkbox ds-checkbox--sm\&quot; data-checkbox-current=\&quot;\&quot;><span class=\&quot;ds-checkbox__box\&quot;></span><span class=\&quot;ds-checkbox__label ds-select__option-label\&quot;>10 Ports</span></label></div><div class=\&quot;ds-select__option\&quot; role=\&quot;option\&quot; aria-selected=\&quot;false\&quot; id=\&quot;plp-port-opt-2\&quot;><label class=\&quot;ds-checkbox ds-checkbox--sm\&quot; data-checkbox-current=\&quot;\&quot;><span class=\&quot;ds-checkbox__box\&quot;></span><span class=\&quot;ds-checkbox__label ds-select__option-label\&quot;>12 Ports</span></label></div><div class=\&quot;ds-select__option\&quot; role=\&quot;option\&quot; aria-selected=\&quot;false\&quot; id=\&quot;plp-port-opt-3\&quot;><label class=\&quot;ds-checkbox ds-checkbox--sm\&quot; data-checkbox-current=\&quot;\&quot;><span class=\&quot;ds-checkbox__box\&quot;></span><span class=\&quot;ds-checkbox__label ds-select__option-label\&quot;>16 Ports</span></label></div><div class=\&quot;ds-select__option\&quot; role=\&quot;option\&quot; aria-selected=\&quot;false\&quot; id=\&quot;plp-port-opt-4\&quot;><label class=\&quot;ds-checkbox ds-checkbox--sm\&quot; data-checkbox-current=\&quot;\&quot;><span class=\&quot;ds-checkbox__box\&quot;></span><span class=\&quot;ds-checkbox__label ds-select__option-label\&quot;>20 Ports</span></label></div><div class=\&quot;ds-select__option\&quot; role=\&quot;option\&quot; aria-selected=\&quot;false\&quot; id=\&quot;plp-port-opt-5\&quot;><label class=\&quot;ds-checkbox ds-checkbox--sm\&quot; data-checkbox-current=\&quot;\&quot;><span class=\&quot;ds-checkbox__box\&quot;></span><span class=\&quot;ds-checkbox__label ds-select__option-label\&quot;>24 Ports</span></label></div><div class=\&quot;ds-select__option\&quot; role=\&quot;option\&quot; aria-selected=\&quot;false\&quot; id=\&quot;plp-port-opt-6\&quot;><label class=\&quot;ds-checkbox ds-checkbox--sm\&quot; data-checkbox-current=\&quot;\&quot;><span class=\&quot;ds-checkbox__box\&quot;></span><span class=\&quot;ds-checkbox__label ds-select__option-label\&quot;>28 Ports</span></label></div><div class=\&quot;ds-select__option\&quot; role=\&quot;option\&quot; aria-selected=\&quot;false\&quot; id=\&quot;plp-port-opt-7\&quot;><label class=\&quot;ds-checkbox ds-checkbox--sm\&quot; data-checkbox-current=\&quot;\&quot;><span class=\&quot;ds-checkbox__box\&quot;></span><span class=\&quot;ds-checkbox__label ds-select__option-label\&quot;>32 Ports</span></label></div><div class=\&quot;ds-select__option\&quot; role=\&quot;option\&quot; aria-selected=\&quot;false\&quot; id=\&quot;plp-port-opt-8\&quot;><label class=\&quot;ds-checkbox ds-checkbox--sm\&quot; data-checkbox-current=\&quot;\&quot;><span class=\&quot;ds-checkbox__box\&quot;></span><span class=\&quot;ds-checkbox__label ds-select__option-label\&quot;>48 Ports</span></label></div><div class=\&quot;ds-select__option\&quot; role=\&quot;option\&quot; aria-selected=\&quot;false\&quot; id=\&quot;plp-port-opt-9\&quot;><label class=\&quot;ds-checkbox ds-checkbox--sm\&quot; data-checkbox-current=\&quot;\&quot;><span class=\&quot;ds-checkbox__box\&quot;></span><span class=\&quot;ds-checkbox__label ds-select__option-label\&quot;>64 Ports</span></label></div>&quot;,&quot;changeCallback&quot;:&quot;onPlpFilterChange&quot;}">
-            <button class="ds-select__trigger ds-select__trigger--white ds-input-field__input ds-input-field__input--white" type="button" role="combobox" aria-haspopup="listbox" aria-expanded="false" aria-controls="library-instance-3-ai-select-multi-checkbox-panel" id="library-instance-3-ai-select-multi-checkbox-trigger"><span class="ds-select__value" data-placeholder="Select">Select</span><span class="ds-select__count" hidden=""></span><img class="ds-select__arrow" src="../fs-components/component-specs/library/releases/89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87/components/icons/icon-chevron-down.svg" alt=""></button>
+            <div class="plp-filter-slot plp-filter-slot--port" data-filter-group="port"><div class="ds-select ds-select--multi-checkbox" data-select-mode="multiple" data-ai-example="ai-select-multi-checkbox" id="library-instance-3-ai-select-multi-checkbox" data-input-current="" data-input-adapter="select-trigger" data-fragment="multi-checkbox" data-library-component="library-select" data-library-fragment="multi-checkbox" data-library-release="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" data-library-event-changecallback="onPlpFilterChange" data-library-props="{&quot;options&quot;:&quot;<div class=\&quot;ds-select__option\&quot; role=\&quot;option\&quot; aria-selected=\&quot;false\&quot; id=\&quot;plp-port-opt-0\&quot;><label class=\&quot;ds-checkbox ds-checkbox--sm\&quot; data-checkbox-current=\&quot;\&quot;><span class=\&quot;ds-checkbox__box\&quot;></span><span class=\&quot;ds-checkbox__label ds-select__option-label\&quot;>8 Ports</span></label></div><div class=\&quot;ds-select__option\&quot; role=\&quot;option\&quot; aria-selected=\&quot;false\&quot; id=\&quot;plp-port-opt-1\&quot;><label class=\&quot;ds-checkbox ds-checkbox--sm\&quot; data-checkbox-current=\&quot;\&quot;><span class=\&quot;ds-checkbox__box\&quot;></span><span class=\&quot;ds-checkbox__label ds-select__option-label\&quot;>10 Ports</span></label></div><div class=\&quot;ds-select__option\&quot; role=\&quot;option\&quot; aria-selected=\&quot;false\&quot; id=\&quot;plp-port-opt-2\&quot;><label class=\&quot;ds-checkbox ds-checkbox--sm\&quot; data-checkbox-current=\&quot;\&quot;><span class=\&quot;ds-checkbox__box\&quot;></span><span class=\&quot;ds-checkbox__label ds-select__option-label\&quot;>12 Ports</span></label></div><div class=\&quot;ds-select__option\&quot; role=\&quot;option\&quot; aria-selected=\&quot;false\&quot; id=\&quot;plp-port-opt-3\&quot;><label class=\&quot;ds-checkbox ds-checkbox--sm\&quot; data-checkbox-current=\&quot;\&quot;><span class=\&quot;ds-checkbox__box\&quot;></span><span class=\&quot;ds-checkbox__label ds-select__option-label\&quot;>16 Ports</span></label></div><div class=\&quot;ds-select__option\&quot; role=\&quot;option\&quot; aria-selected=\&quot;false\&quot; id=\&quot;plp-port-opt-4\&quot;><label class=\&quot;ds-checkbox ds-checkbox--sm\&quot; data-checkbox-current=\&quot;\&quot;><span class=\&quot;ds-checkbox__box\&quot;></span><span class=\&quot;ds-checkbox__label ds-select__option-label\&quot;>20 Ports</span></label></div><div class=\&quot;ds-select__option\&quot; role=\&quot;option\&quot; aria-selected=\&quot;false\&quot; id=\&quot;plp-port-opt-5\&quot;><label class=\&quot;ds-checkbox ds-checkbox--sm\&quot; data-checkbox-current=\&quot;\&quot;><span class=\&quot;ds-checkbox__box\&quot;></span><span class=\&quot;ds-checkbox__label ds-select__option-label\&quot;>24 Ports</span></label></div><div class=\&quot;ds-select__option\&quot; role=\&quot;option\&quot; aria-selected=\&quot;false\&quot; id=\&quot;plp-port-opt-6\&quot;><label class=\&quot;ds-checkbox ds-checkbox--sm\&quot; data-checkbox-current=\&quot;\&quot;><span class=\&quot;ds-checkbox__box\&quot;></span><span class=\&quot;ds-checkbox__label ds-select__option-label\&quot;>28 Ports</span></label></div><div class=\&quot;ds-select__option\&quot; role=\&quot;option\&quot; aria-selected=\&quot;false\&quot; id=\&quot;plp-port-opt-7\&quot;><label class=\&quot;ds-checkbox ds-checkbox--sm\&quot; data-checkbox-current=\&quot;\&quot;><span class=\&quot;ds-checkbox__box\&quot;></span><span class=\&quot;ds-checkbox__label ds-select__option-label\&quot;>32 Ports</span></label></div><div class=\&quot;ds-select__option\&quot; role=\&quot;option\&quot; aria-selected=\&quot;false\&quot; id=\&quot;plp-port-opt-8\&quot;><label class=\&quot;ds-checkbox ds-checkbox--sm\&quot; data-checkbox-current=\&quot;\&quot;><span class=\&quot;ds-checkbox__box\&quot;></span><span class=\&quot;ds-checkbox__label ds-select__option-label\&quot;>48 Ports</span></label></div><div class=\&quot;ds-select__option\&quot; role=\&quot;option\&quot; aria-selected=\&quot;false\&quot; id=\&quot;plp-port-opt-9\&quot;><label class=\&quot;ds-checkbox ds-checkbox--sm\&quot; data-checkbox-current=\&quot;\&quot;><span class=\&quot;ds-checkbox__box\&quot;></span><span class=\&quot;ds-checkbox__label ds-select__option-label\&quot;>64 Ports</span></label></div>&quot;,&quot;changeCallback&quot;:&quot;onPlpFilterChange&quot;}">
+            <button class="ds-select__trigger ds-select__trigger--white ds-input-field__input ds-input-field__input--white" type="button" role="combobox" aria-haspopup="listbox" aria-expanded="false" aria-controls="library-instance-3-ai-select-multi-checkbox-panel" id="library-instance-3-ai-select-multi-checkbox-trigger"><span class="ds-select__value" data-placeholder="Select">Select</span><span class="ds-select__count" hidden=""></span><img class="ds-select__arrow" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/icon-chevron-down.svg" alt=""></button>
             <div class="ds-select__panel" role="listbox" aria-multiselectable="true" hidden="" id="library-instance-3-ai-select-multi-checkbox-panel" aria-labelledby="library-instance-3-ai-select-multi-checkbox-trigger"><div class="ds-select__list"><div class="ds-select__option" role="option" aria-selected="false" id="library-instance-3-plp-port-opt-0"><label class="ds-checkbox ds-checkbox--sm" data-checkbox-current=""><span class="ds-checkbox__box"></span><span class="ds-checkbox__label ds-select__option-label">8 Ports</span></label></div><div class="ds-select__option" role="option" aria-selected="false" id="library-instance-3-plp-port-opt-1"><label class="ds-checkbox ds-checkbox--sm" data-checkbox-current=""><span class="ds-checkbox__box"></span><span class="ds-checkbox__label ds-select__option-label">10 Ports</span></label></div><div class="ds-select__option" role="option" aria-selected="false" id="library-instance-3-plp-port-opt-2"><label class="ds-checkbox ds-checkbox--sm" data-checkbox-current=""><span class="ds-checkbox__box"></span><span class="ds-checkbox__label ds-select__option-label">12 Ports</span></label></div><div class="ds-select__option" role="option" aria-selected="false" id="library-instance-3-plp-port-opt-3"><label class="ds-checkbox ds-checkbox--sm" data-checkbox-current=""><span class="ds-checkbox__box"></span><span class="ds-checkbox__label ds-select__option-label">16 Ports</span></label></div><div class="ds-select__option" role="option" aria-selected="false" id="library-instance-3-plp-port-opt-4"><label class="ds-checkbox ds-checkbox--sm" data-checkbox-current=""><span class="ds-checkbox__box"></span><span class="ds-checkbox__label ds-select__option-label">20 Ports</span></label></div><div class="ds-select__option" role="option" aria-selected="false" id="library-instance-3-plp-port-opt-5"><label class="ds-checkbox ds-checkbox--sm" data-checkbox-current=""><span class="ds-checkbox__box"></span><span class="ds-checkbox__label ds-select__option-label">24 Ports</span></label></div><div class="ds-select__option" role="option" aria-selected="false" id="library-instance-3-plp-port-opt-6"><label class="ds-checkbox ds-checkbox--sm" data-checkbox-current=""><span class="ds-checkbox__box"></span><span class="ds-checkbox__label ds-select__option-label">28 Ports</span></label></div><div class="ds-select__option" role="option" aria-selected="false" id="library-instance-3-plp-port-opt-7"><label class="ds-checkbox ds-checkbox--sm" data-checkbox-current=""><span class="ds-checkbox__box"></span><span class="ds-checkbox__label ds-select__option-label">32 Ports</span></label></div><div class="ds-select__option" role="option" aria-selected="false" id="library-instance-3-plp-port-opt-8"><label class="ds-checkbox ds-checkbox--sm" data-checkbox-current=""><span class="ds-checkbox__box"></span><span class="ds-checkbox__label ds-select__option-label">48 Ports</span></label></div><div class="ds-select__option" role="option" aria-selected="false" id="library-instance-3-plp-port-opt-9"><label class="ds-checkbox ds-checkbox--sm" data-checkbox-current=""><span class="ds-checkbox__box"></span><span class="ds-checkbox__label ds-select__option-label">64 Ports</span></label></div></div></div>
           </div></div>
-            <div class="plp-filter-slot plp-filter-slot--poe" data-filter-group="poe"><div class="ds-select ds-select--multi-checkbox" data-select-mode="multiple" data-ai-example="ai-select-multi-checkbox" id="library-instance-4-ai-select-multi-checkbox" data-input-current="" data-input-adapter="select-trigger" data-fragment="multi-checkbox" data-library-component="library-select" data-library-fragment="multi-checkbox" data-library-release="89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87" data-library-event-changecallback="onPlpFilterChange" data-library-props="{&quot;options&quot;:&quot;<div class=\&quot;ds-select__option\&quot; role=\&quot;option\&quot; aria-selected=\&quot;false\&quot; id=\&quot;plp-poe-opt-0\&quot;><label class=\&quot;ds-checkbox ds-checkbox--sm\&quot; data-checkbox-current=\&quot;\&quot;><span class=\&quot;ds-checkbox__box\&quot;></span><span class=\&quot;ds-checkbox__label ds-select__option-label\&quot;>Non-PoE</span></label></div><div class=\&quot;ds-select__option\&quot; role=\&quot;option\&quot; aria-selected=\&quot;false\&quot; id=\&quot;plp-poe-opt-1\&quot;><label class=\&quot;ds-checkbox ds-checkbox--sm\&quot; data-checkbox-current=\&quot;\&quot;><span class=\&quot;ds-checkbox__box\&quot;></span><span class=\&quot;ds-checkbox__label ds-select__option-label\&quot;>PoE+ (30W)</span></label></div><div class=\&quot;ds-select__option\&quot; role=\&quot;option\&quot; aria-selected=\&quot;false\&quot; id=\&quot;plp-poe-opt-2\&quot;><label class=\&quot;ds-checkbox ds-checkbox--sm\&quot; data-checkbox-current=\&quot;\&quot;><span class=\&quot;ds-checkbox__box\&quot;></span><span class=\&quot;ds-checkbox__label ds-select__option-label\&quot;>PoE++ (90W)</span></label></div>&quot;,&quot;changeCallback&quot;:&quot;onPlpFilterChange&quot;}">
-            <button class="ds-select__trigger ds-select__trigger--white ds-input-field__input ds-input-field__input--white" type="button" role="combobox" aria-haspopup="listbox" aria-expanded="false" aria-controls="library-instance-4-ai-select-multi-checkbox-panel" id="library-instance-4-ai-select-multi-checkbox-trigger"><span class="ds-select__value" data-placeholder="Select">Select</span><span class="ds-select__count" hidden=""></span><img class="ds-select__arrow" src="../fs-components/component-specs/library/releases/89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87/components/icons/icon-chevron-down.svg" alt=""></button>
+            <div class="plp-filter-slot plp-filter-slot--poe" data-filter-group="poe"><div class="ds-select ds-select--multi-checkbox" data-select-mode="multiple" data-ai-example="ai-select-multi-checkbox" id="library-instance-4-ai-select-multi-checkbox" data-input-current="" data-input-adapter="select-trigger" data-fragment="multi-checkbox" data-library-component="library-select" data-library-fragment="multi-checkbox" data-library-release="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" data-library-event-changecallback="onPlpFilterChange" data-library-props="{&quot;options&quot;:&quot;<div class=\&quot;ds-select__option\&quot; role=\&quot;option\&quot; aria-selected=\&quot;false\&quot; id=\&quot;plp-poe-opt-0\&quot;><label class=\&quot;ds-checkbox ds-checkbox--sm\&quot; data-checkbox-current=\&quot;\&quot;><span class=\&quot;ds-checkbox__box\&quot;></span><span class=\&quot;ds-checkbox__label ds-select__option-label\&quot;>Non-PoE</span></label></div><div class=\&quot;ds-select__option\&quot; role=\&quot;option\&quot; aria-selected=\&quot;false\&quot; id=\&quot;plp-poe-opt-1\&quot;><label class=\&quot;ds-checkbox ds-checkbox--sm\&quot; data-checkbox-current=\&quot;\&quot;><span class=\&quot;ds-checkbox__box\&quot;></span><span class=\&quot;ds-checkbox__label ds-select__option-label\&quot;>PoE+ (30W)</span></label></div><div class=\&quot;ds-select__option\&quot; role=\&quot;option\&quot; aria-selected=\&quot;false\&quot; id=\&quot;plp-poe-opt-2\&quot;><label class=\&quot;ds-checkbox ds-checkbox--sm\&quot; data-checkbox-current=\&quot;\&quot;><span class=\&quot;ds-checkbox__box\&quot;></span><span class=\&quot;ds-checkbox__label ds-select__option-label\&quot;>PoE++ (90W)</span></label></div>&quot;,&quot;changeCallback&quot;:&quot;onPlpFilterChange&quot;}">
+            <button class="ds-select__trigger ds-select__trigger--white ds-input-field__input ds-input-field__input--white" type="button" role="combobox" aria-haspopup="listbox" aria-expanded="false" aria-controls="library-instance-4-ai-select-multi-checkbox-panel" id="library-instance-4-ai-select-multi-checkbox-trigger"><span class="ds-select__value" data-placeholder="Select">Select</span><span class="ds-select__count" hidden=""></span><img class="ds-select__arrow" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/icon-chevron-down.svg" alt=""></button>
             <div class="ds-select__panel" role="listbox" aria-multiselectable="true" hidden="" id="library-instance-4-ai-select-multi-checkbox-panel" aria-labelledby="library-instance-4-ai-select-multi-checkbox-trigger"><div class="ds-select__list"><div class="ds-select__option" role="option" aria-selected="false" id="library-instance-4-plp-poe-opt-0"><label class="ds-checkbox ds-checkbox--sm" data-checkbox-current=""><span class="ds-checkbox__box"></span><span class="ds-checkbox__label ds-select__option-label">Non-PoE</span></label></div><div class="ds-select__option" role="option" aria-selected="false" id="library-instance-4-plp-poe-opt-1"><label class="ds-checkbox ds-checkbox--sm" data-checkbox-current=""><span class="ds-checkbox__box"></span><span class="ds-checkbox__label ds-select__option-label">PoE+ (30W)</span></label></div><div class="ds-select__option" role="option" aria-selected="false" id="library-instance-4-plp-poe-opt-2"><label class="ds-checkbox ds-checkbox--sm" data-checkbox-current=""><span class="ds-checkbox__box"></span><span class="ds-checkbox__label ds-select__option-label">PoE++ (90W)</span></label></div></div></div>
           </div></div>
-            <div class="plp-filter-slot plp-filter-slot--downlink" data-filter-group="downlink"><div class="ds-select ds-select--multi-checkbox" data-select-mode="multiple" data-ai-example="ai-select-multi-checkbox" id="library-instance-5-ai-select-multi-checkbox" data-input-current="" data-input-adapter="select-trigger" data-fragment="multi-checkbox" data-library-component="library-select" data-library-fragment="multi-checkbox" data-library-release="89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87" data-library-event-changecallback="onPlpFilterChange" data-library-props="{&quot;options&quot;:&quot;<div class=\&quot;ds-select__option\&quot; role=\&quot;option\&quot; aria-selected=\&quot;false\&quot; id=\&quot;plp-downlink-opt-0\&quot;><label class=\&quot;ds-checkbox ds-checkbox--sm\&quot; data-checkbox-current=\&quot;\&quot;><span class=\&quot;ds-checkbox__box\&quot;></span><span class=\&quot;ds-checkbox__label ds-select__option-label\&quot;>Multigigabit</span></label></div><div class=\&quot;ds-select__option\&quot; role=\&quot;option\&quot; aria-selected=\&quot;false\&quot; id=\&quot;plp-downlink-opt-1\&quot;><label class=\&quot;ds-checkbox ds-checkbox--sm\&quot; data-checkbox-current=\&quot;\&quot;><span class=\&quot;ds-checkbox__box\&quot;></span><span class=\&quot;ds-checkbox__label ds-select__option-label\&quot;>1G RJ45</span></label></div><div class=\&quot;ds-select__option\&quot; role=\&quot;option\&quot; aria-selected=\&quot;false\&quot; id=\&quot;plp-downlink-opt-2\&quot;><label class=\&quot;ds-checkbox ds-checkbox--sm\&quot; data-checkbox-current=\&quot;\&quot;><span class=\&quot;ds-checkbox__box\&quot;></span><span class=\&quot;ds-checkbox__label ds-select__option-label\&quot;>1G SFP</span></label></div><div class=\&quot;ds-select__option\&quot; role=\&quot;option\&quot; aria-selected=\&quot;false\&quot; id=\&quot;plp-downlink-opt-3\&quot;><label class=\&quot;ds-checkbox ds-checkbox--sm\&quot; data-checkbox-current=\&quot;\&quot;><span class=\&quot;ds-checkbox__box\&quot;></span><span class=\&quot;ds-checkbox__label ds-select__option-label\&quot;>2.5G RJ45</span></label></div><div class=\&quot;ds-select__option\&quot; role=\&quot;option\&quot; aria-selected=\&quot;false\&quot; id=\&quot;plp-downlink-opt-4\&quot;><label class=\&quot;ds-checkbox ds-checkbox--sm\&quot; data-checkbox-current=\&quot;\&quot;><span class=\&quot;ds-checkbox__box\&quot;></span><span class=\&quot;ds-checkbox__label ds-select__option-label\&quot;>5G RJ45</span></label></div><div class=\&quot;ds-select__option\&quot; role=\&quot;option\&quot; aria-selected=\&quot;false\&quot; id=\&quot;plp-downlink-opt-5\&quot;><label class=\&quot;ds-checkbox ds-checkbox--sm\&quot; data-checkbox-current=\&quot;\&quot;><span class=\&quot;ds-checkbox__box\&quot;></span><span class=\&quot;ds-checkbox__label ds-select__option-label\&quot;>10G RJ45</span></label></div><div class=\&quot;ds-select__option\&quot; role=\&quot;option\&quot; aria-selected=\&quot;false\&quot; id=\&quot;plp-downlink-opt-6\&quot;><label class=\&quot;ds-checkbox ds-checkbox--sm\&quot; data-checkbox-current=\&quot;\&quot;><span class=\&quot;ds-checkbox__box\&quot;></span><span class=\&quot;ds-checkbox__label ds-select__option-label\&quot;>10G SFP+</span></label></div><div class=\&quot;ds-select__option\&quot; role=\&quot;option\&quot; aria-selected=\&quot;false\&quot; id=\&quot;plp-downlink-opt-7\&quot;><label class=\&quot;ds-checkbox ds-checkbox--sm\&quot; data-checkbox-current=\&quot;\&quot;><span class=\&quot;ds-checkbox__box\&quot;></span><span class=\&quot;ds-checkbox__label ds-select__option-label\&quot;>25G SFP28</span></label></div><div class=\&quot;ds-select__option\&quot; role=\&quot;option\&quot; aria-selected=\&quot;false\&quot; id=\&quot;plp-downlink-opt-8\&quot;><label class=\&quot;ds-checkbox ds-checkbox--sm\&quot; data-checkbox-current=\&quot;\&quot;><span class=\&quot;ds-checkbox__box\&quot;></span><span class=\&quot;ds-checkbox__label ds-select__option-label\&quot;>40G QSFP+</span></label></div><div class=\&quot;ds-select__option\&quot; role=\&quot;option\&quot; aria-selected=\&quot;false\&quot; id=\&quot;plp-downlink-opt-9\&quot;><label class=\&quot;ds-checkbox ds-checkbox--sm\&quot; data-checkbox-current=\&quot;\&quot;><span class=\&quot;ds-checkbox__box\&quot;></span><span class=\&quot;ds-checkbox__label ds-select__option-label\&quot;>100G QSFP28</span></label></div>&quot;,&quot;changeCallback&quot;:&quot;onPlpFilterChange&quot;}">
-            <button class="ds-select__trigger ds-select__trigger--white ds-input-field__input ds-input-field__input--white" type="button" role="combobox" aria-haspopup="listbox" aria-expanded="false" aria-controls="library-instance-5-ai-select-multi-checkbox-panel" id="library-instance-5-ai-select-multi-checkbox-trigger"><span class="ds-select__value" data-placeholder="Select">Select</span><span class="ds-select__count" hidden=""></span><img class="ds-select__arrow" src="../fs-components/component-specs/library/releases/89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87/components/icons/icon-chevron-down.svg" alt=""></button>
+            <div class="plp-filter-slot plp-filter-slot--downlink" data-filter-group="downlink"><div class="ds-select ds-select--multi-checkbox" data-select-mode="multiple" data-ai-example="ai-select-multi-checkbox" id="library-instance-5-ai-select-multi-checkbox" data-input-current="" data-input-adapter="select-trigger" data-fragment="multi-checkbox" data-library-component="library-select" data-library-fragment="multi-checkbox" data-library-release="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" data-library-event-changecallback="onPlpFilterChange" data-library-props="{&quot;options&quot;:&quot;<div class=\&quot;ds-select__option\&quot; role=\&quot;option\&quot; aria-selected=\&quot;false\&quot; id=\&quot;plp-downlink-opt-0\&quot;><label class=\&quot;ds-checkbox ds-checkbox--sm\&quot; data-checkbox-current=\&quot;\&quot;><span class=\&quot;ds-checkbox__box\&quot;></span><span class=\&quot;ds-checkbox__label ds-select__option-label\&quot;>Multigigabit</span></label></div><div class=\&quot;ds-select__option\&quot; role=\&quot;option\&quot; aria-selected=\&quot;false\&quot; id=\&quot;plp-downlink-opt-1\&quot;><label class=\&quot;ds-checkbox ds-checkbox--sm\&quot; data-checkbox-current=\&quot;\&quot;><span class=\&quot;ds-checkbox__box\&quot;></span><span class=\&quot;ds-checkbox__label ds-select__option-label\&quot;>1G RJ45</span></label></div><div class=\&quot;ds-select__option\&quot; role=\&quot;option\&quot; aria-selected=\&quot;false\&quot; id=\&quot;plp-downlink-opt-2\&quot;><label class=\&quot;ds-checkbox ds-checkbox--sm\&quot; data-checkbox-current=\&quot;\&quot;><span class=\&quot;ds-checkbox__box\&quot;></span><span class=\&quot;ds-checkbox__label ds-select__option-label\&quot;>1G SFP</span></label></div><div class=\&quot;ds-select__option\&quot; role=\&quot;option\&quot; aria-selected=\&quot;false\&quot; id=\&quot;plp-downlink-opt-3\&quot;><label class=\&quot;ds-checkbox ds-checkbox--sm\&quot; data-checkbox-current=\&quot;\&quot;><span class=\&quot;ds-checkbox__box\&quot;></span><span class=\&quot;ds-checkbox__label ds-select__option-label\&quot;>2.5G RJ45</span></label></div><div class=\&quot;ds-select__option\&quot; role=\&quot;option\&quot; aria-selected=\&quot;false\&quot; id=\&quot;plp-downlink-opt-4\&quot;><label class=\&quot;ds-checkbox ds-checkbox--sm\&quot; data-checkbox-current=\&quot;\&quot;><span class=\&quot;ds-checkbox__box\&quot;></span><span class=\&quot;ds-checkbox__label ds-select__option-label\&quot;>5G RJ45</span></label></div><div class=\&quot;ds-select__option\&quot; role=\&quot;option\&quot; aria-selected=\&quot;false\&quot; id=\&quot;plp-downlink-opt-5\&quot;><label class=\&quot;ds-checkbox ds-checkbox--sm\&quot; data-checkbox-current=\&quot;\&quot;><span class=\&quot;ds-checkbox__box\&quot;></span><span class=\&quot;ds-checkbox__label ds-select__option-label\&quot;>10G RJ45</span></label></div><div class=\&quot;ds-select__option\&quot; role=\&quot;option\&quot; aria-selected=\&quot;false\&quot; id=\&quot;plp-downlink-opt-6\&quot;><label class=\&quot;ds-checkbox ds-checkbox--sm\&quot; data-checkbox-current=\&quot;\&quot;><span class=\&quot;ds-checkbox__box\&quot;></span><span class=\&quot;ds-checkbox__label ds-select__option-label\&quot;>10G SFP+</span></label></div><div class=\&quot;ds-select__option\&quot; role=\&quot;option\&quot; aria-selected=\&quot;false\&quot; id=\&quot;plp-downlink-opt-7\&quot;><label class=\&quot;ds-checkbox ds-checkbox--sm\&quot; data-checkbox-current=\&quot;\&quot;><span class=\&quot;ds-checkbox__box\&quot;></span><span class=\&quot;ds-checkbox__label ds-select__option-label\&quot;>25G SFP28</span></label></div><div class=\&quot;ds-select__option\&quot; role=\&quot;option\&quot; aria-selected=\&quot;false\&quot; id=\&quot;plp-downlink-opt-8\&quot;><label class=\&quot;ds-checkbox ds-checkbox--sm\&quot; data-checkbox-current=\&quot;\&quot;><span class=\&quot;ds-checkbox__box\&quot;></span><span class=\&quot;ds-checkbox__label ds-select__option-label\&quot;>40G QSFP+</span></label></div><div class=\&quot;ds-select__option\&quot; role=\&quot;option\&quot; aria-selected=\&quot;false\&quot; id=\&quot;plp-downlink-opt-9\&quot;><label class=\&quot;ds-checkbox ds-checkbox--sm\&quot; data-checkbox-current=\&quot;\&quot;><span class=\&quot;ds-checkbox__box\&quot;></span><span class=\&quot;ds-checkbox__label ds-select__option-label\&quot;>100G QSFP28</span></label></div>&quot;,&quot;changeCallback&quot;:&quot;onPlpFilterChange&quot;}">
+            <button class="ds-select__trigger ds-select__trigger--white ds-input-field__input ds-input-field__input--white" type="button" role="combobox" aria-haspopup="listbox" aria-expanded="false" aria-controls="library-instance-5-ai-select-multi-checkbox-panel" id="library-instance-5-ai-select-multi-checkbox-trigger"><span class="ds-select__value" data-placeholder="Select">Select</span><span class="ds-select__count" hidden=""></span><img class="ds-select__arrow" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/icon-chevron-down.svg" alt=""></button>
             <div class="ds-select__panel" role="listbox" aria-multiselectable="true" hidden="" id="library-instance-5-ai-select-multi-checkbox-panel" aria-labelledby="library-instance-5-ai-select-multi-checkbox-trigger"><div class="ds-select__list"><div class="ds-select__option" role="option" aria-selected="false" id="library-instance-5-plp-downlink-opt-0"><label class="ds-checkbox ds-checkbox--sm" data-checkbox-current=""><span class="ds-checkbox__box"></span><span class="ds-checkbox__label ds-select__option-label">Multigigabit</span></label></div><div class="ds-select__option" role="option" aria-selected="false" id="library-instance-5-plp-downlink-opt-1"><label class="ds-checkbox ds-checkbox--sm" data-checkbox-current=""><span class="ds-checkbox__box"></span><span class="ds-checkbox__label ds-select__option-label">1G RJ45</span></label></div><div class="ds-select__option" role="option" aria-selected="false" id="library-instance-5-plp-downlink-opt-2"><label class="ds-checkbox ds-checkbox--sm" data-checkbox-current=""><span class="ds-checkbox__box"></span><span class="ds-checkbox__label ds-select__option-label">1G SFP</span></label></div><div class="ds-select__option" role="option" aria-selected="false" id="library-instance-5-plp-downlink-opt-3"><label class="ds-checkbox ds-checkbox--sm" data-checkbox-current=""><span class="ds-checkbox__box"></span><span class="ds-checkbox__label ds-select__option-label">2.5G RJ45</span></label></div><div class="ds-select__option" role="option" aria-selected="false" id="library-instance-5-plp-downlink-opt-4"><label class="ds-checkbox ds-checkbox--sm" data-checkbox-current=""><span class="ds-checkbox__box"></span><span class="ds-checkbox__label ds-select__option-label">5G RJ45</span></label></div><div class="ds-select__option" role="option" aria-selected="false" id="library-instance-5-plp-downlink-opt-5"><label class="ds-checkbox ds-checkbox--sm" data-checkbox-current=""><span class="ds-checkbox__box"></span><span class="ds-checkbox__label ds-select__option-label">10G RJ45</span></label></div><div class="ds-select__option" role="option" aria-selected="false" id="library-instance-5-plp-downlink-opt-6"><label class="ds-checkbox ds-checkbox--sm" data-checkbox-current=""><span class="ds-checkbox__box"></span><span class="ds-checkbox__label ds-select__option-label">10G SFP+</span></label></div><div class="ds-select__option" role="option" aria-selected="false" id="library-instance-5-plp-downlink-opt-7"><label class="ds-checkbox ds-checkbox--sm" data-checkbox-current=""><span class="ds-checkbox__box"></span><span class="ds-checkbox__label ds-select__option-label">25G SFP28</span></label></div><div class="ds-select__option" role="option" aria-selected="false" id="library-instance-5-plp-downlink-opt-8"><label class="ds-checkbox ds-checkbox--sm" data-checkbox-current=""><span class="ds-checkbox__box"></span><span class="ds-checkbox__label ds-select__option-label">40G QSFP+</span></label></div><div class="ds-select__option" role="option" aria-selected="false" id="library-instance-5-plp-downlink-opt-9"><label class="ds-checkbox ds-checkbox--sm" data-checkbox-current=""><span class="ds-checkbox__box"></span><span class="ds-checkbox__label ds-select__option-label">100G QSFP28</span></label></div></div></div>
           </div></div>
             <div class="plp-more-wrap">
               <button type="button" id="plp-more-filters-trigger" class="plp-more-filters-btn" aria-haspopup="true" aria-expanded="false" aria-controls="plp-more-filters-popover">
                 <span id="plp-more-filters-label">More Filters</span>
-                <img src="../fs-components/component-specs/library/releases/89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87/components/icons/mastergo-library/%E7%B3%BB%E7%BB%9FIcon/65994-008368.svg" alt="" width="14" height="14">
+                <img src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/mastergo-library/%E7%B3%BB%E7%BB%9FIcon/65994-008368.svg" alt="" width="14" height="14">
               </button>
               <div id="plp-more-filters-popover" class="plp-more-popover" hidden>
                 <div class="plp-more-group">
@@ -361,258 +338,251 @@
           </div>
           <div class="plp-filters-right">
             <span id="plp-results-count" class="plp-results-count">69 Results</span>
-            <div class="plp-sort-wrap"><div class="ds-dropdown-command" data-dropdown-command="command-text" data-dropdown-trigger="click" data-dropdown-placement="bottom" data-ai-example="ai-dropdown-command-text" data-fragment="command-text" data-library-component="library-dropdown" data-library-fragment="command-text" data-library-release="89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87" data-library-event-actioncallback="onPlpSortChange" data-library-props="{&quot;triggerLabel&quot;:&quot;Popularity&quot;,&quot;panelIdentity&quot;:&quot;plp-sort-panel&quot;,&quot;items&quot;:&quot;<button type=\&quot;button\&quot; class=\&quot;ds-dropdown-command__item\&quot; role=\&quot;menuitem\&quot; tabindex=\&quot;-1\&quot; value=\&quot;popularity\&quot;><span class=\&quot;ds-dropdown-command__label\&quot;>Popularity</span></button><button type=\&quot;button\&quot; class=\&quot;ds-dropdown-command__item\&quot; role=\&quot;menuitem\&quot; tabindex=\&quot;-1\&quot; value=\&quot;newest-first\&quot;><span class=\&quot;ds-dropdown-command__label\&quot;>Newest First</span></button><button type=\&quot;button\&quot; class=\&quot;ds-dropdown-command__item\&quot; role=\&quot;menuitem\&quot; tabindex=\&quot;-1\&quot; value=\&quot;price-low-to-high\&quot;><span class=\&quot;ds-dropdown-command__label\&quot;>Price: Low to High</span></button><button type=\&quot;button\&quot; class=\&quot;ds-dropdown-command__item\&quot; role=\&quot;menuitem\&quot; tabindex=\&quot;-1\&quot; value=\&quot;price-high-to-low\&quot;><span class=\&quot;ds-dropdown-command__label\&quot;>Price: High to Low</span></button><button type=\&quot;button\&quot; class=\&quot;ds-dropdown-command__item\&quot; role=\&quot;menuitem\&quot; tabindex=\&quot;-1\&quot; value=\&quot;rate-high-to-low\&quot;><span class=\&quot;ds-dropdown-command__label\&quot;>Rate: High to Low</span></button>&quot;,&quot;actionCallback&quot;:&quot;onPlpSortChange&quot;}"><button type="button" class="ds-dropdown-command__text-trigger" aria-haspopup="menu" aria-expanded="false" aria-controls="library-instance-6-plp-sort-panel"><span class="ds-dropdown-command__trigger-label">Popularity</span><img class="ds-dropdown-command__arrow" src="../fs-components/component-specs/library/releases/89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87/components/icons/icon-chevron-down.svg" alt=""></button><div class="ds-dropdown-command__panel" id="library-instance-6-plp-sort-panel" hidden=""><div class="ds-dropdown-command__menu" role="menu" aria-label="文本操作命令"><button type="button" class="ds-dropdown-command__item" role="menuitem" tabindex="-1" value="popularity"><span class="ds-dropdown-command__label">Popularity</span></button><button type="button" class="ds-dropdown-command__item" role="menuitem" tabindex="-1" value="newest-first"><span class="ds-dropdown-command__label">Newest First</span></button><button type="button" class="ds-dropdown-command__item" role="menuitem" tabindex="-1" value="price-low-to-high"><span class="ds-dropdown-command__label">Price: Low to High</span></button><button type="button" class="ds-dropdown-command__item" role="menuitem" tabindex="-1" value="price-high-to-low"><span class="ds-dropdown-command__label">Price: High to Low</span></button><button type="button" class="ds-dropdown-command__item" role="menuitem" tabindex="-1" value="rate-high-to-low"><span class="ds-dropdown-command__label">Rate: High to Low</span></button></div></div></div></div>
+            <div class="plp-sort-wrap"><div class="ds-dropdown-command" data-dropdown-command="command-text" data-dropdown-trigger="click" data-dropdown-placement="bottom" data-ai-example="ai-dropdown-command-text" data-fragment="command-text" data-library-component="library-dropdown" data-library-fragment="command-text" data-library-release="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" data-library-event-actioncallback="onPlpSortChange" data-library-props="{&quot;triggerLabel&quot;:&quot;Popularity&quot;,&quot;panelIdentity&quot;:&quot;plp-sort-panel&quot;,&quot;items&quot;:&quot;<button type=\&quot;button\&quot; class=\&quot;ds-dropdown-command__item\&quot; role=\&quot;menuitem\&quot; tabindex=\&quot;-1\&quot; value=\&quot;popularity\&quot;><span class=\&quot;ds-dropdown-command__label\&quot;>Popularity</span></button><button type=\&quot;button\&quot; class=\&quot;ds-dropdown-command__item\&quot; role=\&quot;menuitem\&quot; tabindex=\&quot;-1\&quot; value=\&quot;newest-first\&quot;><span class=\&quot;ds-dropdown-command__label\&quot;>Newest First</span></button><button type=\&quot;button\&quot; class=\&quot;ds-dropdown-command__item\&quot; role=\&quot;menuitem\&quot; tabindex=\&quot;-1\&quot; value=\&quot;price-low-to-high\&quot;><span class=\&quot;ds-dropdown-command__label\&quot;>Price: Low to High</span></button><button type=\&quot;button\&quot; class=\&quot;ds-dropdown-command__item\&quot; role=\&quot;menuitem\&quot; tabindex=\&quot;-1\&quot; value=\&quot;price-high-to-low\&quot;><span class=\&quot;ds-dropdown-command__label\&quot;>Price: High to Low</span></button><button type=\&quot;button\&quot; class=\&quot;ds-dropdown-command__item\&quot; role=\&quot;menuitem\&quot; tabindex=\&quot;-1\&quot; value=\&quot;rate-high-to-low\&quot;><span class=\&quot;ds-dropdown-command__label\&quot;>Rate: High to Low</span></button>&quot;,&quot;actionCallback&quot;:&quot;onPlpSortChange&quot;}"><button type="button" class="ds-dropdown-command__text-trigger" aria-haspopup="menu" aria-expanded="false" aria-controls="library-instance-6-plp-sort-panel"><span class="ds-dropdown-command__trigger-label">Popularity</span><img class="ds-dropdown-command__arrow" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/icon-chevron-down.svg" alt=""></button><div class="ds-dropdown-command__panel" id="library-instance-6-plp-sort-panel" hidden=""><div class="ds-dropdown-command__menu" role="menu" aria-label="文本操作命令"><button type="button" class="ds-dropdown-command__item" role="menuitem" tabindex="-1" value="popularity"><span class="ds-dropdown-command__label">Popularity</span></button><button type="button" class="ds-dropdown-command__item" role="menuitem" tabindex="-1" value="newest-first"><span class="ds-dropdown-command__label">Newest First</span></button><button type="button" class="ds-dropdown-command__item" role="menuitem" tabindex="-1" value="price-low-to-high"><span class="ds-dropdown-command__label">Price: Low to High</span></button><button type="button" class="ds-dropdown-command__item" role="menuitem" tabindex="-1" value="price-high-to-low"><span class="ds-dropdown-command__label">Price: High to Low</span></button><button type="button" class="ds-dropdown-command__item" role="menuitem" tabindex="-1" value="rate-high-to-low"><span class="ds-dropdown-command__label">Rate: High to Low</span></button></div></div></div></div>
           </div>
         </div>
 
         <div id="plp-product-grid" class="grid grid--4 plp-grid">
-          <article class="plp-card" data-plp-card="0" data-subcat="40-100g" data-port="24 Ports" data-poe="Non-PoE" data-downlink="10G SFP+" data-layer="L3 Managed" data-us-stock="1" data-specs="BCM56170|L3|BGP OSPF|MLAG" data-price="2199" data-sold="643" data-reviews="20" data-is-new="0">
-      <div class="plp-card__badge"><span class="plp-badge-hot">Hot</span></div>
-      <a class="plp-card__img-link" href="https://www.fs.com/products/207189.html?now_cid=4223" target="_blank" rel="noopener">
-        <img class="plp-card__img" src="assets/fs-plp-switches/img-07-dcff5fe9.webp" alt="S5860-20SQ, 20 x 10Gb SFP+, 4 x 25Gb SFP28, 2 x 40Gb QSFP+, PicOS®, L3 Managed Switch">
-      </a>
-      <div class="plp-card__body">
-        <h3 class="plp-card__title"><a class="plp-card__title-link" href="https://www.fs.com/products/207189.html?now_cid=4223" title="S5860-20SQ, 20 x 10Gb SFP+, 4 x 25Gb SFP28, 2 x 40Gb QSFP+, PicOS®, L3 Managed Switch" target="_blank" rel="noopener">S5860-20SQ, 20 x 10Gb SFP+, 4 x 25Gb SFP28, 2 x 40Gb QSFP+, PicOS®, L3 Managed Switch</a></h3>
-        <div class="plp-card__specs"><span class="plp-spec-item">BCM56170</span><span class="plp-spec-divider" aria-hidden="true"></span><span class="plp-spec-item">L3</span><span class="plp-spec-divider" aria-hidden="true"></span><span class="plp-spec-item">BGP OSPF</span><span class="plp-spec-divider" aria-hidden="true"></span><span class="plp-spec-item">MLAG</span></div>
-        <p class="plp-card__price">US$2,199.00</p>
-        <div class="plp-card__stock"><p class="plp-card__stock-line">3 in U.S. Warehouse, Get it Nov 24, 2026</p><p class="plp-card__stock-line">733 in Global Warehouse, Get it Nov 26, 2026</p></div>
-        <div class="plp-card__footer">
-          <div class="plp-card__stats"><a class="plp-stat-link" href="https://www.fs.com/products/207189.html?now_cid=4223#reviews" target="_blank" rel="noopener"><strong class="plp-stat-sold__num">643</strong> Sold</a><span class="plp-stat-divider" aria-hidden="true"></span><a class="plp-stat-link" href="https://www.fs.com/products/207189.html?now_cid=4223#reviews" target="_blank" rel="noopener"><strong class="plp-stat-rev__num">20</strong> Reviews</a></div>
-          <button type="button" class="plp-card__cart-btn" data-add-cart="S5860-20SQ" aria-label="Add S5860-20SQ to cart">
-            <img class="plp-card__cart-icon" src="../fs-components/component-specs/library/releases/89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87/components/icons/icon-cart-add.svg" alt="">
-            <span class="plp-card__cart-text">Add</span>
-          </button>
-        </div>
-      </div>
-    </article>
-<article class="plp-card" data-plp-card="1" data-subcat="1-2.5g" data-port="48 Ports" data-poe="PoE+ (30W)" data-downlink="1G RJ45" data-layer="L3 Managed" data-us-stock="0" data-specs="BCM56340|BGP OSPF|PoE+ 740W|MLAG" data-price="2369" data-sold="283" data-reviews="5" data-is-new="0">
-      <div class="plp-card__badge"><span class="plp-badge-hot">Hot</span></div>
-      <a class="plp-card__img-link" href="https://www.fs.com/products/206801.html?now_cid=4223" target="_blank" rel="noopener">
-        <img class="plp-card__img" src="assets/fs-plp-switches/img-08-d45046af.webp" alt="S5810-48TS-P, 48 x 1Gb RJ45, 4 x 10Gb SFP+, PicOS®, L3 Managed PoE+ Switch">
-      </a>
-      <div class="plp-card__body">
-        <h3 class="plp-card__title"><a class="plp-card__title-link" href="https://www.fs.com/products/206801.html?now_cid=4223" title="S5810-48TS-P, 48 x 1Gb RJ45, 4 x 10Gb SFP+, PicOS®, L3 Managed PoE+ Switch" target="_blank" rel="noopener">S5810-48TS-P, 48 x 1Gb RJ45, 4 x 10Gb SFP+, PicOS®, L3 Managed PoE+ Switch</a></h3>
-        <div class="plp-card__specs"><span class="plp-spec-item">BCM56340</span><span class="plp-spec-divider" aria-hidden="true"></span><span class="plp-spec-item">BGP OSPF</span><span class="plp-spec-divider" aria-hidden="true"></span><span class="plp-spec-item">PoE+ 740W</span><span class="plp-spec-divider" aria-hidden="true"></span><span class="plp-spec-item">MLAG</span></div>
-        <p class="plp-card__price">US$2,369.00</p>
-        <div class="plp-card__stock"><p class="plp-card__stock-line">310 in Global Warehouse, Get it Nov 26, 2026</p><p class="plp-card__stock-line">250 Back in Stock, Expected to ship Jan 18, 2027</p></div>
-        <div class="plp-card__footer">
-          <div class="plp-card__stats"><a class="plp-stat-link" href="https://www.fs.com/products/206801.html?now_cid=4223#reviews" target="_blank" rel="noopener"><strong class="plp-stat-sold__num">283</strong> Sold</a><span class="plp-stat-divider" aria-hidden="true"></span><a class="plp-stat-link" href="https://www.fs.com/products/206801.html?now_cid=4223#reviews" target="_blank" rel="noopener"><strong class="plp-stat-rev__num">5</strong> Reviews</a></div>
-          <button type="button" class="plp-card__cart-btn" data-add-cart="S5810-48TS-P" aria-label="Add S5810-48TS-P to cart">
-            <img class="plp-card__cart-icon" src="../fs-components/component-specs/library/releases/89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87/components/icons/icon-cart-add.svg" alt="">
-            <span class="plp-card__cart-text">Add</span>
-          </button>
-        </div>
-      </div>
-    </article>
-<article class="plp-card" data-plp-card="2" data-subcat="1-2.5g" data-port="48 Ports" data-poe="Non-PoE" data-downlink="1G RJ45" data-layer="L2+ Managed" data-us-stock="0" data-specs="BCM56150|L2+|OSPF|MLAG" data-price="989" data-sold="319" data-reviews="1" data-is-new="0">
-      <div class="plp-card__badge"><span class="plp-badge-hot">Hot</span></div>
-      <a class="plp-card__img-link" href="https://www.fs.com/products/223001.html?now_cid=4223" target="_blank" rel="noopener">
-        <img class="plp-card__img" src="assets/fs-plp-switches/img-09-1edf660c.webp" alt="S3410-48TS, 48 x 1Gb RJ45, 4 x 10Gb SFP+, PicOS®, L2+ Managed Switch">
-      </a>
-      <div class="plp-card__body">
-        <h3 class="plp-card__title"><a class="plp-card__title-link" href="https://www.fs.com/products/223001.html?now_cid=4223" title="S3410-48TS, 48 x 1Gb RJ45, 4 x 10Gb SFP+, PicOS®, L2+ Managed Switch" target="_blank" rel="noopener">S3410-48TS, 48 x 1Gb RJ45, 4 x 10Gb SFP+, PicOS®, L2+ Managed Switch</a></h3>
-        <div class="plp-card__specs"><span class="plp-spec-item">BCM56150</span><span class="plp-spec-divider" aria-hidden="true"></span><span class="plp-spec-item">L2+</span><span class="plp-spec-divider" aria-hidden="true"></span><span class="plp-spec-item">OSPF</span><span class="plp-spec-divider" aria-hidden="true"></span><span class="plp-spec-item">MLAG</span></div>
-        <p class="plp-card__price">US$989.00</p>
-        <div class="plp-card__stock"><p class="plp-card__stock-line">504 in Global Warehouse, Get it Nov 26, 2026</p></div>
-        <div class="plp-card__footer">
-          <div class="plp-card__stats"><a class="plp-stat-link" href="https://www.fs.com/products/223001.html?now_cid=4223#reviews" target="_blank" rel="noopener"><strong class="plp-stat-sold__num">319</strong> Sold</a><span class="plp-stat-divider" aria-hidden="true"></span><a class="plp-stat-link" href="https://www.fs.com/products/223001.html?now_cid=4223#reviews" target="_blank" rel="noopener"><strong class="plp-stat-rev__num">1</strong> Review</a></div>
-          <button type="button" class="plp-card__cart-btn" data-add-cart="S3410-48TS" aria-label="Add S3410-48TS to cart">
-            <img class="plp-card__cart-icon" src="../fs-components/component-specs/library/releases/89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87/components/icons/icon-cart-add.svg" alt="">
-            <span class="plp-card__cart-text">Add</span>
-          </button>
-        </div>
-      </div>
-    </article>
-<article class="plp-card" data-plp-card="3" data-subcat="1-2.5g" data-port="48 Ports" data-poe="PoE+ (30W)" data-downlink="1G RJ45" data-layer="L2+ Managed" data-us-stock="0" data-specs="BCM56150|OSPF|PoE+ 740W|MLAG" data-price="1619" data-sold="341" data-reviews="0" data-is-new="0">
-      <div class="plp-card__badge"><span class="plp-badge-hot">Hot</span></div>
-      <a class="plp-card__img-link" href="https://www.fs.com/products/223013.html?now_cid=4223" target="_blank" rel="noopener">
-        <img class="plp-card__img" src="assets/fs-plp-switches/img-10-6f1b89a6.webp" alt="S3410-48TS-P, 48 x 1Gb RJ45, 2 x 10Gb SFP+, 2 x 1Gb RJ45/SFP, PicOS®, L2+ Managed PoE+ Switch">
-      </a>
-      <div class="plp-card__body">
-        <h3 class="plp-card__title"><a class="plp-card__title-link" href="https://www.fs.com/products/223013.html?now_cid=4223" title="S3410-48TS-P, 48 x 1Gb RJ45, 2 x 10Gb SFP+, 2 x 1Gb RJ45/SFP, PicOS®, L2+ Managed PoE+ Switch" target="_blank" rel="noopener">S3410-48TS-P, 48 x 1Gb RJ45, 2 x 10Gb SFP+, 2 x 1Gb RJ45/SFP, PicOS®, L2+ Managed PoE+ Switch</a></h3>
-        <div class="plp-card__specs"><span class="plp-spec-item">BCM56150</span><span class="plp-spec-divider" aria-hidden="true"></span><span class="plp-spec-item">OSPF</span><span class="plp-spec-divider" aria-hidden="true"></span><span class="plp-spec-item">PoE+ 740W</span><span class="plp-spec-divider" aria-hidden="true"></span><span class="plp-spec-item">MLAG</span></div>
-        <p class="plp-card__price">US$1,619.00</p>
-        <div class="plp-card__stock"><p class="plp-card__stock-line">155 in Global Warehouse, Get it Nov 26, 2026</p><p class="plp-card__stock-line">444 Back in Stock, Estimated to ship Jan 01, 2027</p></div>
-        <div class="plp-card__footer">
-          <div class="plp-card__stats"><a class="plp-stat-link" href="https://www.fs.com/products/223013.html?now_cid=4223#reviews" target="_blank" rel="noopener"><strong class="plp-stat-sold__num">341</strong> Sold</a></div>
-          <button type="button" class="plp-card__cart-btn" data-add-cart="S3410-48TS-P" aria-label="Add S3410-48TS-P to cart">
-            <img class="plp-card__cart-icon" src="../fs-components/component-specs/library/releases/89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87/components/icons/icon-cart-add.svg" alt="">
-            <span class="plp-card__cart-text">Add</span>
-          </button>
-        </div>
-      </div>
-    </article>
-<article class="plp-card" data-plp-card="4" data-subcat="1-2.5g" data-port="16 Ports" data-poe="PoE+ (30W)" data-downlink="1G RJ45" data-layer="L2+ Managed" data-us-stock="0" data-specs="BCM56150|OSPF|PoE+ 125W|5G mGig" data-price="569" data-sold="237" data-reviews="1" data-is-new="0">
-      <div class="plp-card__badge"><span class="plp-badge-hot">Hot</span></div>
-      <a class="plp-card__img-link" href="https://www.fs.com/products/222981.html?now_cid=4223" target="_blank" rel="noopener">
-        <img class="plp-card__img" src="assets/fs-plp-switches/img-11-32f5138e.webp" alt="S3410C-16TMS-P, 16 x 1Gb RJ45, 2 x 5Gb RJ45, 2 x 10Gb SFP+, PicOS®, L2+ Managed PoE+ Switch">
-      </a>
-      <div class="plp-card__body">
-        <h3 class="plp-card__title"><a class="plp-card__title-link" href="https://www.fs.com/products/222981.html?now_cid=4223" title="S3410C-16TMS-P, 16 x 1Gb RJ45, 2 x 5Gb RJ45, 2 x 10Gb SFP+, PicOS®, L2+ Managed PoE+ Switch" target="_blank" rel="noopener">S3410C-16TMS-P, 16 x 1Gb RJ45, 2 x 5Gb RJ45, 2 x 10Gb SFP+, PicOS®, L2+ Managed PoE+ Switch</a></h3>
-        <div class="plp-card__specs"><span class="plp-spec-item">BCM56150</span><span class="plp-spec-divider" aria-hidden="true"></span><span class="plp-spec-item">OSPF</span><span class="plp-spec-divider" aria-hidden="true"></span><span class="plp-spec-item">PoE+ 125W</span><span class="plp-spec-divider" aria-hidden="true"></span><span class="plp-spec-item">5G mGig</span></div>
-        <p class="plp-card__price">US$569.00</p>
-        <div class="plp-card__stock"><p class="plp-card__stock-line">202 in Global Warehouse, Get it Nov 26, 2026</p><p class="plp-card__stock-line">10 Back in Stock, Estimated to ship Jan 01, 2027</p></div>
-        <div class="plp-card__footer">
-          <div class="plp-card__stats"><a class="plp-stat-link" href="https://www.fs.com/products/222981.html?now_cid=4223#reviews" target="_blank" rel="noopener"><strong class="plp-stat-sold__num">237</strong> Sold</a><span class="plp-stat-divider" aria-hidden="true"></span><a class="plp-stat-link" href="https://www.fs.com/products/222981.html?now_cid=4223#reviews" target="_blank" rel="noopener"><strong class="plp-stat-rev__num">1</strong> Review</a></div>
-          <button type="button" class="plp-card__cart-btn" data-add-cart="S3410C-16TMS-P" aria-label="Add S3410C-16TMS-P to cart">
-            <img class="plp-card__cart-icon" src="../fs-components/component-specs/library/releases/89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87/components/icons/icon-cart-add.svg" alt="">
-            <span class="plp-card__cart-text">Add</span>
-          </button>
-        </div>
-      </div>
-    </article>
-<article class="plp-card" data-plp-card="5" data-subcat="1-2.5g" data-port="48 Ports" data-poe="Non-PoE" data-downlink="1G RJ45" data-layer="L3 Managed" data-us-stock="1" data-specs="BCM56340|L3|BGP OSPF|MLAG" data-price="1579" data-sold="208" data-reviews="5" data-is-new="0">
-      <div class="plp-card__badge"><span class="plp-badge-hot">Hot</span></div>
-      <a class="plp-card__img-link" href="https://www.fs.com/products/207065.html?now_cid=4223" target="_blank" rel="noopener">
-        <img class="plp-card__img" src="assets/fs-plp-switches/img-12-a802b746.webp" alt="S5810-48TS, 48 x 1Gb RJ45, 4 x 10Gb SFP+, PicOS®, L3 Managed Switch">
-      </a>
-      <div class="plp-card__body">
-        <h3 class="plp-card__title"><a class="plp-card__title-link" href="https://www.fs.com/products/207065.html?now_cid=4223" title="S5810-48TS, 48 x 1Gb RJ45, 4 x 10Gb SFP+, PicOS®, L3 Managed Switch" target="_blank" rel="noopener">S5810-48TS, 48 x 1Gb RJ45, 4 x 10Gb SFP+, PicOS®, L3 Managed Switch</a></h3>
-        <div class="plp-card__specs"><span class="plp-spec-item">BCM56340</span><span class="plp-spec-divider" aria-hidden="true"></span><span class="plp-spec-item">L3</span><span class="plp-spec-divider" aria-hidden="true"></span><span class="plp-spec-item">BGP OSPF</span><span class="plp-spec-divider" aria-hidden="true"></span><span class="plp-spec-item">MLAG</span></div>
-        <p class="plp-card__price">US$1,579.00</p>
-        <div class="plp-card__stock"><p class="plp-card__stock-line">4 in U.S. Warehouse, Get it Nov 24, 2026</p><p class="plp-card__stock-line">26 in Global Warehouse, Get it Dec 01, 2026</p></div>
-        <div class="plp-card__footer">
-          <div class="plp-card__stats"><a class="plp-stat-link" href="https://www.fs.com/products/207065.html?now_cid=4223#reviews" target="_blank" rel="noopener"><strong class="plp-stat-sold__num">208</strong> Sold</a><span class="plp-stat-divider" aria-hidden="true"></span><a class="plp-stat-link" href="https://www.fs.com/products/207065.html?now_cid=4223#reviews" target="_blank" rel="noopener"><strong class="plp-stat-rev__num">5</strong> Reviews</a></div>
-          <button type="button" class="plp-card__cart-btn" data-add-cart="S5810-48TS" aria-label="Add S5810-48TS to cart">
-            <img class="plp-card__cart-icon" src="../fs-components/component-specs/library/releases/89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87/components/icons/icon-cart-add.svg" alt="">
-            <span class="plp-card__cart-text">Add</span>
-          </button>
-        </div>
-      </div>
-    </article>
-<article class="plp-card" data-plp-card="6" data-subcat="40-100g" data-port="48 Ports" data-poe="PoE++ (90W)" data-downlink="10G RJ45" data-layer="L3 Managed" data-us-stock="0" data-specs="BCM56170|PoE++ 1600W|MLAG|10G mGig" data-price="6449" data-sold="159" data-reviews="3" data-is-new="0">
-      <div class="plp-card__badge"><span class="plp-badge-hot">Hot</span></div>
-      <a class="plp-card__img-link" href="https://www.fs.com/products/206805.html?now_cid=4223" target="_blank" rel="noopener">
-        <img class="plp-card__img" src="assets/fs-plp-switches/img-13-8087b8ed.webp" alt="S5860-48XMG-U, 48 x 10Gb RJ45, 4 x 25Gb SFP28, 2 x 40Gb QSFP+, PicOS®, L3 Managed PoE++ Switch">
-      </a>
-      <div class="plp-card__body">
-        <h3 class="plp-card__title"><a class="plp-card__title-link" href="https://www.fs.com/products/206805.html?now_cid=4223" title="S5860-48XMG-U, 48 x 10Gb RJ45, 4 x 25Gb SFP28, 2 x 40Gb QSFP+, PicOS®, L3 Managed PoE++ Switch" target="_blank" rel="noopener">S5860-48XMG-U, 48 x 10Gb RJ45, 4 x 25Gb SFP28, 2 x 40Gb QSFP+, PicOS®, L3 Managed PoE++ Switch</a></h3>
-        <div class="plp-card__specs"><span class="plp-spec-item">BCM56170</span><span class="plp-spec-divider" aria-hidden="true"></span><span class="plp-spec-item">PoE++ 1600W</span><span class="plp-spec-divider" aria-hidden="true"></span><span class="plp-spec-item">MLAG</span><span class="plp-spec-divider" aria-hidden="true"></span><span class="plp-spec-item">10G mGig</span></div>
-        <p class="plp-card__price">US$6,449.00</p>
-        <div class="plp-card__stock"><p class="plp-card__stock-line">64 in Global Warehouse, Get it Nov 26, 2026</p><p class="plp-card__stock-line">10 Back in Stock, Expected to ship Mar 09, 2027</p></div>
-        <div class="plp-card__footer">
-          <div class="plp-card__stats"><a class="plp-stat-link" href="https://www.fs.com/products/206805.html?now_cid=4223#reviews" target="_blank" rel="noopener"><strong class="plp-stat-sold__num">159</strong> Sold</a><span class="plp-stat-divider" aria-hidden="true"></span><a class="plp-stat-link" href="https://www.fs.com/products/206805.html?now_cid=4223#reviews" target="_blank" rel="noopener"><strong class="plp-stat-rev__num">3</strong> Reviews</a></div>
-          <button type="button" class="plp-card__cart-btn" data-add-cart="S5860-48XMG-U" aria-label="Add S5860-48XMG-U to cart">
-            <img class="plp-card__cart-icon" src="../fs-components/component-specs/library/releases/89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87/components/icons/icon-cart-add.svg" alt="">
-            <span class="plp-card__cart-text">Add</span>
-          </button>
-        </div>
-      </div>
-    </article>
-<article class="plp-card" data-plp-card="7" data-subcat="1-2.5g" data-port="10 Ports" data-poe="Non-PoE" data-downlink="1G RJ45" data-layer="L2+ Managed" data-us-stock="1" data-specs="BCM53547|L2+|OSPF" data-price="249" data-sold="105" data-reviews="0" data-is-new="0">
-      <div class="plp-card__badge"><span class="plp-badge-hot">Hot</span></div>
-      <a class="plp-card__img-link" href="https://www.fs.com/products/222983.html?now_cid=4223" target="_blank" rel="noopener">
-        <img class="plp-card__img" src="assets/fs-plp-switches/img-14-2b878abf.webp" alt="S3270-10TM, 10 x 1Gb RJ45, 2 x 1/2.5Gb SFP, PicOS®, L2+ Managed Switch">
-      </a>
-      <div class="plp-card__body">
-        <h3 class="plp-card__title"><a class="plp-card__title-link" href="https://www.fs.com/products/222983.html?now_cid=4223" title="S3270-10TM, 10 x 1Gb RJ45, 2 x 1/2.5Gb SFP, PicOS®, L2+ Managed Switch" target="_blank" rel="noopener">S3270-10TM, 10 x 1Gb RJ45, 2 x 1/2.5Gb SFP, PicOS®, L2+ Managed Switch</a></h3>
-        <div class="plp-card__specs"><span class="plp-spec-item">BCM53547</span><span class="plp-spec-divider" aria-hidden="true"></span><span class="plp-spec-item">L2+</span><span class="plp-spec-divider" aria-hidden="true"></span><span class="plp-spec-item">OSPF</span></div>
-        <p class="plp-card__price">US$249.00</p>
-        <div class="plp-card__stock"><p class="plp-card__stock-line">3 in U.S. Warehouse, Get it Nov 24, 2026</p><p class="plp-card__stock-line">1 in Global Warehouse, Get it Dec 01, 2026</p></div>
-        <div class="plp-card__footer">
-          <div class="plp-card__stats"><a class="plp-stat-link" href="https://www.fs.com/products/222983.html?now_cid=4223#reviews" target="_blank" rel="noopener"><strong class="plp-stat-sold__num">105</strong> Sold</a></div>
-          <button type="button" class="plp-card__cart-btn" data-add-cart="S3270-10TM" aria-label="Add S3270-10TM to cart">
-            <img class="plp-card__cart-icon" src="../fs-components/component-specs/library/releases/89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87/components/icons/icon-cart-add.svg" alt="">
-            <span class="plp-card__cart-text">Add</span>
-          </button>
-        </div>
-      </div>
-    </article>
-<article class="plp-card" data-plp-card="8" data-subcat="1-2.5g" data-port="8 Ports" data-poe="PoE+ (30W)" data-downlink="1G RJ45" data-layer="L2+ Managed" data-us-stock="0" data-specs="BCM56150|OSPF|PoE+ 125W|5G mGig" data-price="469" data-sold="186" data-reviews="2" data-is-new="0">
-      <div class="plp-card__badge"><span class="plp-badge-hot">Hot</span></div>
-      <a class="plp-card__img-link" href="https://www.fs.com/products/222979.html?now_cid=4223" target="_blank" rel="noopener">
-        <img class="plp-card__img" src="assets/fs-plp-switches/img-15-f4162313.webp" alt="S3410C-8TMS-P, 8 x 1Gb RJ45, 2 x 5Gb RJ45, 2 x 10Gb SFP+, PicOS®, L2+ Managed PoE+ Switch">
-      </a>
-      <div class="plp-card__body">
-        <h3 class="plp-card__title"><a class="plp-card__title-link" href="https://www.fs.com/products/222979.html?now_cid=4223" title="S3410C-8TMS-P, 8 x 1Gb RJ45, 2 x 5Gb RJ45, 2 x 10Gb SFP+, PicOS®, L2+ Managed PoE+ Switch" target="_blank" rel="noopener">S3410C-8TMS-P, 8 x 1Gb RJ45, 2 x 5Gb RJ45, 2 x 10Gb SFP+, PicOS®, L2+ Managed PoE+ Switch</a></h3>
-        <div class="plp-card__specs"><span class="plp-spec-item">BCM56150</span><span class="plp-spec-divider" aria-hidden="true"></span><span class="plp-spec-item">OSPF</span><span class="plp-spec-divider" aria-hidden="true"></span><span class="plp-spec-item">PoE+ 125W</span><span class="plp-spec-divider" aria-hidden="true"></span><span class="plp-spec-item">5G mGig</span></div>
-        <p class="plp-card__price">US$469.00</p>
-        <div class="plp-card__stock"><p class="plp-card__stock-line">563 in Global Warehouse, Get it Nov 26, 2026</p></div>
-        <div class="plp-card__footer">
-          <div class="plp-card__stats"><a class="plp-stat-link" href="https://www.fs.com/products/222979.html?now_cid=4223#reviews" target="_blank" rel="noopener"><strong class="plp-stat-sold__num">186</strong> Sold</a><span class="plp-stat-divider" aria-hidden="true"></span><a class="plp-stat-link" href="https://www.fs.com/products/222979.html?now_cid=4223#reviews" target="_blank" rel="noopener"><strong class="plp-stat-rev__num">2</strong> Reviews</a></div>
-          <button type="button" class="plp-card__cart-btn" data-add-cart="S3410C-8TMS-P" aria-label="Add S3410C-8TMS-P to cart">
-            <img class="plp-card__cart-icon" src="../fs-components/component-specs/library/releases/89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87/components/icons/icon-cart-add.svg" alt="">
-            <span class="plp-card__cart-text">Add</span>
-          </button>
-        </div>
-      </div>
-    </article>
-<article class="plp-card" data-plp-card="9" data-subcat="40-100g" data-port="48 Ports" data-poe="PoE++ (90W)" data-downlink="2.5G RJ45" data-layer="L3 Managed" data-us-stock="0" data-specs="L3|PoE++ 2000W|MLAG|EVPN-VXLAN" data-price="3369" data-sold="0" data-reviews="0" data-is-new="1">
-      <div class="plp-card__badge"><span class="ds-tag ds-tag--semantic ds-tag--new ds-tag--emphasis" data-tag-source-new="official" data-ai-example="ai-tag-semantic-new" data-fragment="semantic-new" data-library-component="library-tag" data-library-fragment="semantic-new" data-library-release="89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87" data-library-props="{}"><span class="ds-tag__label">New</span></span></div>
-      <a class="plp-card__img-link" href="https://www.fs.com/products/500011.html?now_cid=4223" target="_blank" rel="noopener">
-        <img class="plp-card__img" src="assets/fs-plp-switches/img-16-9c80bfa4.webp" alt="S5440-48MU, 40 x 2.5Gb RJ45, 8 x 10Gb RJ45, 4 x 25Gb SFP28, 2 x 40Gb QSFP+, PicOS®, L3 Managed PoE++ Switch">
-      </a>
-      <div class="plp-card__body">
-        <h3 class="plp-card__title"><a class="plp-card__title-link" href="https://www.fs.com/products/500011.html?now_cid=4223" title="S5440-48MU, 40 x 2.5Gb RJ45, 8 x 10Gb RJ45, 4 x 25Gb SFP28, 2 x 40Gb QSFP+, PicOS®, L3 Managed PoE++ Switch" target="_blank" rel="noopener">S5440-48MU, 40 x 2.5Gb RJ45, 8 x 10Gb RJ45, 4 x 25Gb SFP28, 2 x 40Gb QSFP+, PicOS®, L3 Managed PoE++ Switch</a></h3>
-        <div class="plp-card__specs"><span class="plp-spec-item">L3</span><span class="plp-spec-divider" aria-hidden="true"></span><span class="plp-spec-item">PoE++ 2000W</span><span class="plp-spec-divider" aria-hidden="true"></span><span class="plp-spec-item">MLAG</span><span class="plp-spec-divider" aria-hidden="true"></span><span class="plp-spec-item">EVPN-VXLAN</span></div>
-        <p class="plp-card__price">US$3,369.00</p>
-        <div class="plp-card__stock"><p class="plp-card__stock-line">41 in Global Warehouse, Get it Nov 26, 2026</p></div>
-        <div class="plp-card__footer">
-          <div class="plp-card__stats"></div>
-          <button type="button" class="plp-card__cart-btn" data-add-cart="S5440-48MU" aria-label="Add S5440-48MU to cart">
-            <img class="plp-card__cart-icon" src="../fs-components/component-specs/library/releases/89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87/components/icons/icon-cart-add.svg" alt="">
-            <span class="plp-card__cart-text">Add</span>
-          </button>
-        </div>
-      </div>
-    </article>
-<article class="plp-card" data-plp-card="10" data-subcat="10-25g" data-port="48 Ports" data-poe="PoE++ (90W)" data-downlink="2.5G RJ45" data-layer="L3 Managed" data-us-stock="0" data-specs="L3|PoE++ 2000W|MLAG|EVPN-VXLAN" data-price="3599" data-sold="0" data-reviews="0" data-is-new="1">
-      <div class="plp-card__badge"><span class="ds-tag ds-tag--semantic ds-tag--new ds-tag--emphasis" data-tag-source-new="official" data-ai-example="ai-tag-semantic-new" data-fragment="semantic-new" data-library-component="library-tag" data-library-fragment="semantic-new" data-library-release="89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87" data-library-props="{}"><span class="ds-tag__label">New</span></span></div>
-      <a class="plp-card__img-link" href="https://www.fs.com/products/500007.html?now_cid=4223" target="_blank" rel="noopener">
-        <img class="plp-card__img" src="assets/fs-plp-switches/img-17-5679dc0a.webp" alt="S5440H-48MU, 32 x 2.5Gb RJ45, 16 x 10Gb RJ45, 8 x 25Gb SFP28, PicOS®, L3 Managed PoE++ Switch">
-      </a>
-      <div class="plp-card__body">
-        <h3 class="plp-card__title"><a class="plp-card__title-link" href="https://www.fs.com/products/500007.html?now_cid=4223" title="S5440H-48MU, 32 x 2.5Gb RJ45, 16 x 10Gb RJ45, 8 x 25Gb SFP28, PicOS®, L3 Managed PoE++ Switch" target="_blank" rel="noopener">S5440H-48MU, 32 x 2.5Gb RJ45, 16 x 10Gb RJ45, 8 x 25Gb SFP28, PicOS®, L3 Managed PoE++ Switch</a></h3>
-        <div class="plp-card__specs"><span class="plp-spec-item">L3</span><span class="plp-spec-divider" aria-hidden="true"></span><span class="plp-spec-item">PoE++ 2000W</span><span class="plp-spec-divider" aria-hidden="true"></span><span class="plp-spec-item">MLAG</span><span class="plp-spec-divider" aria-hidden="true"></span><span class="plp-spec-item">EVPN-VXLAN</span></div>
-        <p class="plp-card__price">US$3,599.00</p>
-        <div class="plp-card__stock"><p class="plp-card__stock-line">69 in Global Warehouse, Get it Nov 26, 2026</p></div>
-        <div class="plp-card__footer">
-          <div class="plp-card__stats"></div>
-          <button type="button" class="plp-card__cart-btn" data-add-cart="S5440H-48MU" aria-label="Add S5440H-48MU to cart">
-            <img class="plp-card__cart-icon" src="../fs-components/component-specs/library/releases/89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87/components/icons/icon-cart-add.svg" alt="">
-            <span class="plp-card__cart-text">Add</span>
-          </button>
-        </div>
-      </div>
-    </article>
-<article class="plp-card" data-plp-card="11" data-subcat="10-25g" data-port="24 Ports" data-poe="PoE++ (90W)" data-downlink="2.5G RJ45" data-layer="L3 Managed" data-us-stock="0" data-specs="L3|PoE++ 1000W|MLAG|EVPN-VXLAN" data-price="2699" data-sold="1" data-reviews="0" data-is-new="1">
-      <div class="plp-card__badge"><span class="ds-tag ds-tag--semantic ds-tag--new ds-tag--emphasis" data-tag-source-new="official" data-ai-example="ai-tag-semantic-new" data-fragment="semantic-new" data-library-component="library-tag" data-library-fragment="semantic-new" data-library-release="89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87" data-library-props="{}"><span class="ds-tag__label">New</span></span></div>
-      <a class="plp-card__img-link" href="https://www.fs.com/products/500009.html?now_cid=4223" target="_blank" rel="noopener">
-        <img class="plp-card__img" src="assets/fs-plp-switches/img-18-9c366fea.webp" alt="S5440H-24MU, 16 x 2.5Gb RJ45, 8 x 10Gb RJ45, 8 x 25Gb SFP28, PicOS®, L3 Managed PoE++ Switch">
-      </a>
-      <div class="plp-card__body">
-        <h3 class="plp-card__title"><a class="plp-card__title-link" href="https://www.fs.com/products/500009.html?now_cid=4223" title="S5440H-24MU, 16 x 2.5Gb RJ45, 8 x 10Gb RJ45, 8 x 25Gb SFP28, PicOS®, L3 Managed PoE++ Switch" target="_blank" rel="noopener">S5440H-24MU, 16 x 2.5Gb RJ45, 8 x 10Gb RJ45, 8 x 25Gb SFP28, PicOS®, L3 Managed PoE++ Switch</a></h3>
-        <div class="plp-card__specs"><span class="plp-spec-item">L3</span><span class="plp-spec-divider" aria-hidden="true"></span><span class="plp-spec-item">PoE++ 1000W</span><span class="plp-spec-divider" aria-hidden="true"></span><span class="plp-spec-item">MLAG</span><span class="plp-spec-divider" aria-hidden="true"></span><span class="plp-spec-item">EVPN-VXLAN</span></div>
-        <p class="plp-card__price">US$2,699.00</p>
-        <div class="plp-card__stock"><p class="plp-card__stock-line">48 in Global Warehouse, Get it Nov 26, 2026</p></div>
-        <div class="plp-card__footer">
-          <div class="plp-card__stats"><a class="plp-stat-link" href="https://www.fs.com/products/500009.html?now_cid=4223#reviews" target="_blank" rel="noopener"><strong class="plp-stat-sold__num">1</strong> Sold</a></div>
-          <button type="button" class="plp-card__cart-btn" data-add-cart="S5440H-24MU" aria-label="Add S5440H-24MU to cart">
-            <img class="plp-card__cart-icon" src="../fs-components/component-specs/library/releases/89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87/components/icons/icon-cart-add.svg" alt="">
-            <span class="plp-card__cart-text">Add</span>
-          </button>
-        </div>
-      </div>
-    </article>
+          <div class="plp-card-item" data-plp-card="0" data-sku="S5860-20SQ" data-subcat="40-100g" data-port="24 Ports" data-poe="Non-PoE" data-downlink="10G SFP+" data-layer="L3 Managed" data-us-stock="1" data-specs="BCM56170|L3|BGP OSPF|MLAG" data-price="2199" data-sold="643" data-reviews="20" data-is-new="0"><div class="ds-card--embedded ds-card--embedded-full ds-card--embedded-plp ds-card--embedded-bg-gray ds-card" data-card-current="embedded-plp" data-ai-example="ai-card-completion-embedded-product-plp" data-fragment="embedded-product-plp" data-library-component="library-card" data-library-fragment="embedded-product-plp" data-library-release="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" data-library-props="{&quot;image&quot;:&quot;<img class=\&quot;ds-card__product-image\&quot; src=\&quot;assets/fs-plp-switches/img-07-dcff5fe9.webp\&quot; alt=\&quot;S5860-20SQ, 20 x 10Gb SFP+, 4 x 25Gb SFP28, 2 x 40Gb QSFP+, PicOS®, L3 Managed Switch\&quot;>&quot;,&quot;title&quot;:&quot;S5860-20SQ, 20 x 10Gb SFP+, 4 x 25Gb SFP28, 2 x 40Gb QSFP+, PicOS®, L3 Managed Switch&quot;,&quot;specs&quot;:&quot;BCM56170 | L3 | BGP OSPF | MLAG&quot;,&quot;price&quot;:&quot;US$2,199.00&quot;,&quot;stock&quot;:&quot;3 in U.S. Warehouse, Get it Nov 24, 2026&quot;,&quot;stockSecondary&quot;:&quot;733 in Global Warehouse, Get it Nov 26, 2026&quot;,&quot;soldCount&quot;:&quot;643&quot;,&quot;reviewCount&quot;:&quot;20&quot;,&quot;badge&quot;:&quot;<span class=\&quot;ds-tag ds-tag--semantic ds-tag--hot ds-tag--emphasis\&quot; data-tag-source-hot=\&quot;official\&quot;><span class=\&quot;ds-tag__label\&quot;>Hot</span></span>&quot;}">
+          <div class="ds-card__product-image"><img class="ds-card__product-image" src="assets/fs-plp-switches/img-07-dcff5fe9.webp" alt="S5860-20SQ, 20 x 10Gb SFP+, 4 x 25Gb SFP28, 2 x 40Gb QSFP+, PicOS®, L3 Managed Switch"></div>
+          <div class="ds-card__product-body">
+            <p class="ds-card__title">S5860-20SQ, 20 x 10Gb SFP+, 4 x 25Gb SFP28, 2 x 40Gb QSFP+, PicOS®, L3 Managed Switch</p>
+            <p class="ds-card__specs">BCM56170 | L3 | BGP OSPF | MLAG</p>
+            <p class="ds-card__price">US$2,199.00</p>
+            <div class="ds-card__stock">
+              <span class="ds-card__stock-text">3 in U.S. Warehouse, Get it Nov 24, 2026</span>
+              <span class="ds-card__stock-text-secondary">733 in Global Warehouse, Get it Nov 26, 2026</span>
+            </div>
+            <div class="ds-card__stats">
+              <span><span class="ds-card__sold-count">643</span><span class="ds-card__sold-label"> Sold</span></span>
+              <div class="ds-card__stats-divider"></div>
+              <span><span class="ds-card__review-count">20</span><span class="ds-card__review-label"> Reviews</span></span>
+              <div class="ds-card__add-btn ds-card__cart-slot"><button class="ds-cart ds-cart--product-card" type="button"><img class="ds-cart__icon" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/icon-cart-add.svg" alt=""><span class="ds-cart__text">Add</span></button></div>
+            </div>
+          </div>
+          <div class="ds-card__tag-slot"><span class="ds-tag ds-tag--semantic ds-tag--hot ds-tag--emphasis" data-tag-source-hot="official"><span class="ds-tag__label">Hot</span></span></div>
+        </div></div>
+<div class="plp-card-item" data-plp-card="1" data-sku="S5810-48TS-P" data-subcat="1-2.5g" data-port="48 Ports" data-poe="PoE+ (30W)" data-downlink="1G RJ45" data-layer="L3 Managed" data-us-stock="0" data-specs="BCM56340|BGP OSPF|PoE+ 740W|MLAG" data-price="2369" data-sold="283" data-reviews="5" data-is-new="0"><div class="ds-card--embedded ds-card--embedded-full ds-card--embedded-plp ds-card--embedded-bg-gray ds-card" data-card-current="embedded-plp" data-ai-example="ai-card-completion-embedded-product-plp" data-fragment="embedded-product-plp" data-library-component="library-card" data-library-fragment="embedded-product-plp" data-library-release="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" data-library-props="{&quot;image&quot;:&quot;<img class=\&quot;ds-card__product-image\&quot; src=\&quot;assets/fs-plp-switches/img-08-d45046af.webp\&quot; alt=\&quot;S5810-48TS-P, 48 x 1Gb RJ45, 4 x 10Gb SFP+, PicOS®, L3 Managed PoE+ Switch\&quot;>&quot;,&quot;title&quot;:&quot;S5810-48TS-P, 48 x 1Gb RJ45, 4 x 10Gb SFP+, PicOS®, L3 Managed PoE+ Switch&quot;,&quot;specs&quot;:&quot;BCM56340 | BGP OSPF | PoE+ 740W | MLAG&quot;,&quot;price&quot;:&quot;US$2,369.00&quot;,&quot;stock&quot;:&quot;310 in Global Warehouse, Get it Nov 26, 2026&quot;,&quot;stockSecondary&quot;:&quot;250 Back in Stock, Expected to ship Jan 18, 2027&quot;,&quot;soldCount&quot;:&quot;283&quot;,&quot;reviewCount&quot;:&quot;5&quot;,&quot;badge&quot;:&quot;<span class=\&quot;ds-tag ds-tag--semantic ds-tag--hot ds-tag--emphasis\&quot; data-tag-source-hot=\&quot;official\&quot;><span class=\&quot;ds-tag__label\&quot;>Hot</span></span>&quot;}">
+          <div class="ds-card__product-image"><img class="ds-card__product-image" src="assets/fs-plp-switches/img-08-d45046af.webp" alt="S5810-48TS-P, 48 x 1Gb RJ45, 4 x 10Gb SFP+, PicOS®, L3 Managed PoE+ Switch"></div>
+          <div class="ds-card__product-body">
+            <p class="ds-card__title">S5810-48TS-P, 48 x 1Gb RJ45, 4 x 10Gb SFP+, PicOS®, L3 Managed PoE+ Switch</p>
+            <p class="ds-card__specs">BCM56340 | BGP OSPF | PoE+ 740W | MLAG</p>
+            <p class="ds-card__price">US$2,369.00</p>
+            <div class="ds-card__stock">
+              <span class="ds-card__stock-text">310 in Global Warehouse, Get it Nov 26, 2026</span>
+              <span class="ds-card__stock-text-secondary">250 Back in Stock, Expected to ship Jan 18, 2027</span>
+            </div>
+            <div class="ds-card__stats">
+              <span><span class="ds-card__sold-count">283</span><span class="ds-card__sold-label"> Sold</span></span>
+              <div class="ds-card__stats-divider"></div>
+              <span><span class="ds-card__review-count">5</span><span class="ds-card__review-label"> Reviews</span></span>
+              <div class="ds-card__add-btn ds-card__cart-slot"><button class="ds-cart ds-cart--product-card" type="button"><img class="ds-cart__icon" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/icon-cart-add.svg" alt=""><span class="ds-cart__text">Add</span></button></div>
+            </div>
+          </div>
+          <div class="ds-card__tag-slot"><span class="ds-tag ds-tag--semantic ds-tag--hot ds-tag--emphasis" data-tag-source-hot="official"><span class="ds-tag__label">Hot</span></span></div>
+        </div></div>
+<div class="plp-card-item" data-plp-card="2" data-sku="S3410-48TS" data-subcat="1-2.5g" data-port="48 Ports" data-poe="Non-PoE" data-downlink="1G RJ45" data-layer="L2+ Managed" data-us-stock="0" data-specs="BCM56150|L2+|OSPF|MLAG" data-price="989" data-sold="319" data-reviews="1" data-is-new="0"><div class="ds-card--embedded ds-card--embedded-full ds-card--embedded-plp ds-card--embedded-bg-gray ds-card" data-card-current="embedded-plp" data-ai-example="ai-card-completion-embedded-product-plp" data-fragment="embedded-product-plp" data-library-component="library-card" data-library-fragment="embedded-product-plp" data-library-release="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" data-library-props="{&quot;image&quot;:&quot;<img class=\&quot;ds-card__product-image\&quot; src=\&quot;assets/fs-plp-switches/img-09-1edf660c.webp\&quot; alt=\&quot;S3410-48TS, 48 x 1Gb RJ45, 4 x 10Gb SFP+, PicOS®, L2+ Managed Switch\&quot;>&quot;,&quot;title&quot;:&quot;S3410-48TS, 48 x 1Gb RJ45, 4 x 10Gb SFP+, PicOS®, L2+ Managed Switch&quot;,&quot;specs&quot;:&quot;BCM56150 | L2+ | OSPF | MLAG&quot;,&quot;price&quot;:&quot;US$989.00&quot;,&quot;stock&quot;:&quot;504 in Global Warehouse, Get it Nov 26, 2026&quot;,&quot;soldCount&quot;:&quot;319&quot;,&quot;reviewCount&quot;:&quot;1&quot;,&quot;badge&quot;:&quot;<span class=\&quot;ds-tag ds-tag--semantic ds-tag--hot ds-tag--emphasis\&quot; data-tag-source-hot=\&quot;official\&quot;><span class=\&quot;ds-tag__label\&quot;>Hot</span></span>&quot;}">
+          <div class="ds-card__product-image"><img class="ds-card__product-image" src="assets/fs-plp-switches/img-09-1edf660c.webp" alt="S3410-48TS, 48 x 1Gb RJ45, 4 x 10Gb SFP+, PicOS®, L2+ Managed Switch"></div>
+          <div class="ds-card__product-body">
+            <p class="ds-card__title">S3410-48TS, 48 x 1Gb RJ45, 4 x 10Gb SFP+, PicOS®, L2+ Managed Switch</p>
+            <p class="ds-card__specs">BCM56150 | L2+ | OSPF | MLAG</p>
+            <p class="ds-card__price">US$989.00</p>
+            <div class="ds-card__stock">
+              <span class="ds-card__stock-text">504 in Global Warehouse, Get it Nov 26, 2026</span>
+              <span class="ds-card__stock-text-secondary">Ships within 1-2 business days</span>
+            </div>
+            <div class="ds-card__stats">
+              <span><span class="ds-card__sold-count">319</span><span class="ds-card__sold-label"> Sold</span></span>
+              <div class="ds-card__stats-divider"></div>
+              <span><span class="ds-card__review-count">1</span><span class="ds-card__review-label"> Reviews</span></span>
+              <div class="ds-card__add-btn ds-card__cart-slot"><button class="ds-cart ds-cart--product-card" type="button"><img class="ds-cart__icon" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/icon-cart-add.svg" alt=""><span class="ds-cart__text">Add</span></button></div>
+            </div>
+          </div>
+          <div class="ds-card__tag-slot"><span class="ds-tag ds-tag--semantic ds-tag--hot ds-tag--emphasis" data-tag-source-hot="official"><span class="ds-tag__label">Hot</span></span></div>
+        </div></div>
+<div class="plp-card-item" data-plp-card="3" data-sku="S3410-48TS-P" data-subcat="1-2.5g" data-port="48 Ports" data-poe="PoE+ (30W)" data-downlink="1G RJ45" data-layer="L2+ Managed" data-us-stock="0" data-specs="BCM56150|OSPF|PoE+ 740W|MLAG" data-price="1619" data-sold="341" data-reviews="0" data-is-new="0"><div class="ds-card--embedded ds-card--embedded-full ds-card--embedded-plp ds-card--embedded-bg-gray ds-card" data-card-current="embedded-plp" data-ai-example="ai-card-completion-embedded-product-plp" data-fragment="embedded-product-plp" data-library-component="library-card" data-library-fragment="embedded-product-plp" data-library-release="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" data-library-props="{&quot;image&quot;:&quot;<img class=\&quot;ds-card__product-image\&quot; src=\&quot;assets/fs-plp-switches/img-10-6f1b89a6.webp\&quot; alt=\&quot;S3410-48TS-P, 48 x 1Gb RJ45, 2 x 10Gb SFP+, 2 x 1Gb RJ45/SFP, PicOS®, L2+ Managed PoE+ Switch\&quot;>&quot;,&quot;title&quot;:&quot;S3410-48TS-P, 48 x 1Gb RJ45, 2 x 10Gb SFP+, 2 x 1Gb RJ45/SFP, PicOS®, L2+ Managed PoE+ Switch&quot;,&quot;specs&quot;:&quot;BCM56150 | OSPF | PoE+ 740W | MLAG&quot;,&quot;price&quot;:&quot;US$1,619.00&quot;,&quot;stock&quot;:&quot;155 in Global Warehouse, Get it Nov 26, 2026&quot;,&quot;stockSecondary&quot;:&quot;444 Back in Stock, Estimated to ship Jan 01, 2027&quot;,&quot;soldCount&quot;:&quot;341&quot;,&quot;reviewCount&quot;:&quot;0&quot;,&quot;badge&quot;:&quot;<span class=\&quot;ds-tag ds-tag--semantic ds-tag--hot ds-tag--emphasis\&quot; data-tag-source-hot=\&quot;official\&quot;><span class=\&quot;ds-tag__label\&quot;>Hot</span></span>&quot;}">
+          <div class="ds-card__product-image"><img class="ds-card__product-image" src="assets/fs-plp-switches/img-10-6f1b89a6.webp" alt="S3410-48TS-P, 48 x 1Gb RJ45, 2 x 10Gb SFP+, 2 x 1Gb RJ45/SFP, PicOS®, L2+ Managed PoE+ Switch"></div>
+          <div class="ds-card__product-body">
+            <p class="ds-card__title">S3410-48TS-P, 48 x 1Gb RJ45, 2 x 10Gb SFP+, 2 x 1Gb RJ45/SFP, PicOS®, L2+ Managed PoE+ Switch</p>
+            <p class="ds-card__specs">BCM56150 | OSPF | PoE+ 740W | MLAG</p>
+            <p class="ds-card__price">US$1,619.00</p>
+            <div class="ds-card__stock">
+              <span class="ds-card__stock-text">155 in Global Warehouse, Get it Nov 26, 2026</span>
+              <span class="ds-card__stock-text-secondary">444 Back in Stock, Estimated to ship Jan 01, 2027</span>
+            </div>
+            <div class="ds-card__stats">
+              <span><span class="ds-card__sold-count">341</span><span class="ds-card__sold-label"> Sold</span></span>
+              <div class="ds-card__stats-divider"></div>
+              <span><span class="ds-card__review-count">0</span><span class="ds-card__review-label"> Reviews</span></span>
+              <div class="ds-card__add-btn ds-card__cart-slot"><button class="ds-cart ds-cart--product-card" type="button"><img class="ds-cart__icon" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/icon-cart-add.svg" alt=""><span class="ds-cart__text">Add</span></button></div>
+            </div>
+          </div>
+          <div class="ds-card__tag-slot"><span class="ds-tag ds-tag--semantic ds-tag--hot ds-tag--emphasis" data-tag-source-hot="official"><span class="ds-tag__label">Hot</span></span></div>
+        </div></div>
+<div class="plp-card-item" data-plp-card="4" data-sku="S3410C-16TMS-P" data-subcat="1-2.5g" data-port="16 Ports" data-poe="PoE+ (30W)" data-downlink="1G RJ45" data-layer="L2+ Managed" data-us-stock="0" data-specs="BCM56150|OSPF|PoE+ 125W|5G mGig" data-price="569" data-sold="237" data-reviews="1" data-is-new="0"><div class="ds-card--embedded ds-card--embedded-full ds-card--embedded-plp ds-card--embedded-bg-gray ds-card" data-card-current="embedded-plp" data-ai-example="ai-card-completion-embedded-product-plp" data-fragment="embedded-product-plp" data-library-component="library-card" data-library-fragment="embedded-product-plp" data-library-release="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" data-library-props="{&quot;image&quot;:&quot;<img class=\&quot;ds-card__product-image\&quot; src=\&quot;assets/fs-plp-switches/img-11-32f5138e.webp\&quot; alt=\&quot;S3410C-16TMS-P, 16 x 1Gb RJ45, 2 x 5Gb RJ45, 2 x 10Gb SFP+, PicOS®, L2+ Managed PoE+ Switch\&quot;>&quot;,&quot;title&quot;:&quot;S3410C-16TMS-P, 16 x 1Gb RJ45, 2 x 5Gb RJ45, 2 x 10Gb SFP+, PicOS®, L2+ Managed PoE+ Switch&quot;,&quot;specs&quot;:&quot;BCM56150 | OSPF | PoE+ 125W | 5G mGig&quot;,&quot;price&quot;:&quot;US$569.00&quot;,&quot;stock&quot;:&quot;202 in Global Warehouse, Get it Nov 26, 2026&quot;,&quot;stockSecondary&quot;:&quot;10 Back in Stock, Estimated to ship Jan 01, 2027&quot;,&quot;soldCount&quot;:&quot;237&quot;,&quot;reviewCount&quot;:&quot;1&quot;,&quot;badge&quot;:&quot;<span class=\&quot;ds-tag ds-tag--semantic ds-tag--hot ds-tag--emphasis\&quot; data-tag-source-hot=\&quot;official\&quot;><span class=\&quot;ds-tag__label\&quot;>Hot</span></span>&quot;}">
+          <div class="ds-card__product-image"><img class="ds-card__product-image" src="assets/fs-plp-switches/img-11-32f5138e.webp" alt="S3410C-16TMS-P, 16 x 1Gb RJ45, 2 x 5Gb RJ45, 2 x 10Gb SFP+, PicOS®, L2+ Managed PoE+ Switch"></div>
+          <div class="ds-card__product-body">
+            <p class="ds-card__title">S3410C-16TMS-P, 16 x 1Gb RJ45, 2 x 5Gb RJ45, 2 x 10Gb SFP+, PicOS®, L2+ Managed PoE+ Switch</p>
+            <p class="ds-card__specs">BCM56150 | OSPF | PoE+ 125W | 5G mGig</p>
+            <p class="ds-card__price">US$569.00</p>
+            <div class="ds-card__stock">
+              <span class="ds-card__stock-text">202 in Global Warehouse, Get it Nov 26, 2026</span>
+              <span class="ds-card__stock-text-secondary">10 Back in Stock, Estimated to ship Jan 01, 2027</span>
+            </div>
+            <div class="ds-card__stats">
+              <span><span class="ds-card__sold-count">237</span><span class="ds-card__sold-label"> Sold</span></span>
+              <div class="ds-card__stats-divider"></div>
+              <span><span class="ds-card__review-count">1</span><span class="ds-card__review-label"> Reviews</span></span>
+              <div class="ds-card__add-btn ds-card__cart-slot"><button class="ds-cart ds-cart--product-card" type="button"><img class="ds-cart__icon" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/icon-cart-add.svg" alt=""><span class="ds-cart__text">Add</span></button></div>
+            </div>
+          </div>
+          <div class="ds-card__tag-slot"><span class="ds-tag ds-tag--semantic ds-tag--hot ds-tag--emphasis" data-tag-source-hot="official"><span class="ds-tag__label">Hot</span></span></div>
+        </div></div>
+<div class="plp-card-item" data-plp-card="5" data-sku="S5810-48TS" data-subcat="1-2.5g" data-port="48 Ports" data-poe="Non-PoE" data-downlink="1G RJ45" data-layer="L3 Managed" data-us-stock="1" data-specs="BCM56340|L3|BGP OSPF|MLAG" data-price="1579" data-sold="208" data-reviews="5" data-is-new="0"><div class="ds-card--embedded ds-card--embedded-full ds-card--embedded-plp ds-card--embedded-bg-gray ds-card" data-card-current="embedded-plp" data-ai-example="ai-card-completion-embedded-product-plp" data-fragment="embedded-product-plp" data-library-component="library-card" data-library-fragment="embedded-product-plp" data-library-release="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" data-library-props="{&quot;image&quot;:&quot;<img class=\&quot;ds-card__product-image\&quot; src=\&quot;assets/fs-plp-switches/img-12-a802b746.webp\&quot; alt=\&quot;S5810-48TS, 48 x 1Gb RJ45, 4 x 10Gb SFP+, PicOS®, L3 Managed Switch\&quot;>&quot;,&quot;title&quot;:&quot;S5810-48TS, 48 x 1Gb RJ45, 4 x 10Gb SFP+, PicOS®, L3 Managed Switch&quot;,&quot;specs&quot;:&quot;BCM56340 | L3 | BGP OSPF | MLAG&quot;,&quot;price&quot;:&quot;US$1,579.00&quot;,&quot;stock&quot;:&quot;4 in U.S. Warehouse, Get it Nov 24, 2026&quot;,&quot;stockSecondary&quot;:&quot;26 in Global Warehouse, Get it Dec 01, 2026&quot;,&quot;soldCount&quot;:&quot;208&quot;,&quot;reviewCount&quot;:&quot;5&quot;,&quot;badge&quot;:&quot;<span class=\&quot;ds-tag ds-tag--semantic ds-tag--hot ds-tag--emphasis\&quot; data-tag-source-hot=\&quot;official\&quot;><span class=\&quot;ds-tag__label\&quot;>Hot</span></span>&quot;}">
+          <div class="ds-card__product-image"><img class="ds-card__product-image" src="assets/fs-plp-switches/img-12-a802b746.webp" alt="S5810-48TS, 48 x 1Gb RJ45, 4 x 10Gb SFP+, PicOS®, L3 Managed Switch"></div>
+          <div class="ds-card__product-body">
+            <p class="ds-card__title">S5810-48TS, 48 x 1Gb RJ45, 4 x 10Gb SFP+, PicOS®, L3 Managed Switch</p>
+            <p class="ds-card__specs">BCM56340 | L3 | BGP OSPF | MLAG</p>
+            <p class="ds-card__price">US$1,579.00</p>
+            <div class="ds-card__stock">
+              <span class="ds-card__stock-text">4 in U.S. Warehouse, Get it Nov 24, 2026</span>
+              <span class="ds-card__stock-text-secondary">26 in Global Warehouse, Get it Dec 01, 2026</span>
+            </div>
+            <div class="ds-card__stats">
+              <span><span class="ds-card__sold-count">208</span><span class="ds-card__sold-label"> Sold</span></span>
+              <div class="ds-card__stats-divider"></div>
+              <span><span class="ds-card__review-count">5</span><span class="ds-card__review-label"> Reviews</span></span>
+              <div class="ds-card__add-btn ds-card__cart-slot"><button class="ds-cart ds-cart--product-card" type="button"><img class="ds-cart__icon" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/icon-cart-add.svg" alt=""><span class="ds-cart__text">Add</span></button></div>
+            </div>
+          </div>
+          <div class="ds-card__tag-slot"><span class="ds-tag ds-tag--semantic ds-tag--hot ds-tag--emphasis" data-tag-source-hot="official"><span class="ds-tag__label">Hot</span></span></div>
+        </div></div>
+<div class="plp-card-item" data-plp-card="6" data-sku="S5860-48XMG-U" data-subcat="40-100g" data-port="48 Ports" data-poe="PoE++ (90W)" data-downlink="10G RJ45" data-layer="L3 Managed" data-us-stock="0" data-specs="BCM56170|PoE++ 1600W|MLAG|10G mGig" data-price="6449" data-sold="159" data-reviews="3" data-is-new="0"><div class="ds-card--embedded ds-card--embedded-full ds-card--embedded-plp ds-card--embedded-bg-gray ds-card" data-card-current="embedded-plp" data-ai-example="ai-card-completion-embedded-product-plp" data-fragment="embedded-product-plp" data-library-component="library-card" data-library-fragment="embedded-product-plp" data-library-release="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" data-library-props="{&quot;image&quot;:&quot;<img class=\&quot;ds-card__product-image\&quot; src=\&quot;assets/fs-plp-switches/img-13-8087b8ed.webp\&quot; alt=\&quot;S5860-48XMG-U, 48 x 10Gb RJ45, 4 x 25Gb SFP28, 2 x 40Gb QSFP+, PicOS®, L3 Managed PoE++ Switch\&quot;>&quot;,&quot;title&quot;:&quot;S5860-48XMG-U, 48 x 10Gb RJ45, 4 x 25Gb SFP28, 2 x 40Gb QSFP+, PicOS®, L3 Managed PoE++ Switch&quot;,&quot;specs&quot;:&quot;BCM56170 | PoE++ 1600W | MLAG | 10G mGig&quot;,&quot;price&quot;:&quot;US$6,449.00&quot;,&quot;stock&quot;:&quot;64 in Global Warehouse, Get it Nov 26, 2026&quot;,&quot;stockSecondary&quot;:&quot;10 Back in Stock, Expected to ship Mar 09, 2027&quot;,&quot;soldCount&quot;:&quot;159&quot;,&quot;reviewCount&quot;:&quot;3&quot;,&quot;badge&quot;:&quot;<span class=\&quot;ds-tag ds-tag--semantic ds-tag--hot ds-tag--emphasis\&quot; data-tag-source-hot=\&quot;official\&quot;><span class=\&quot;ds-tag__label\&quot;>Hot</span></span>&quot;}">
+          <div class="ds-card__product-image"><img class="ds-card__product-image" src="assets/fs-plp-switches/img-13-8087b8ed.webp" alt="S5860-48XMG-U, 48 x 10Gb RJ45, 4 x 25Gb SFP28, 2 x 40Gb QSFP+, PicOS®, L3 Managed PoE++ Switch"></div>
+          <div class="ds-card__product-body">
+            <p class="ds-card__title">S5860-48XMG-U, 48 x 10Gb RJ45, 4 x 25Gb SFP28, 2 x 40Gb QSFP+, PicOS®, L3 Managed PoE++ Switch</p>
+            <p class="ds-card__specs">BCM56170 | PoE++ 1600W | MLAG | 10G mGig</p>
+            <p class="ds-card__price">US$6,449.00</p>
+            <div class="ds-card__stock">
+              <span class="ds-card__stock-text">64 in Global Warehouse, Get it Nov 26, 2026</span>
+              <span class="ds-card__stock-text-secondary">10 Back in Stock, Expected to ship Mar 09, 2027</span>
+            </div>
+            <div class="ds-card__stats">
+              <span><span class="ds-card__sold-count">159</span><span class="ds-card__sold-label"> Sold</span></span>
+              <div class="ds-card__stats-divider"></div>
+              <span><span class="ds-card__review-count">3</span><span class="ds-card__review-label"> Reviews</span></span>
+              <div class="ds-card__add-btn ds-card__cart-slot"><button class="ds-cart ds-cart--product-card" type="button"><img class="ds-cart__icon" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/icon-cart-add.svg" alt=""><span class="ds-cart__text">Add</span></button></div>
+            </div>
+          </div>
+          <div class="ds-card__tag-slot"><span class="ds-tag ds-tag--semantic ds-tag--hot ds-tag--emphasis" data-tag-source-hot="official"><span class="ds-tag__label">Hot</span></span></div>
+        </div></div>
+<div class="plp-card-item" data-plp-card="7" data-sku="S3270-10TM" data-subcat="1-2.5g" data-port="10 Ports" data-poe="Non-PoE" data-downlink="1G RJ45" data-layer="L2+ Managed" data-us-stock="1" data-specs="BCM53547|L2+|OSPF" data-price="249" data-sold="105" data-reviews="0" data-is-new="0"><div class="ds-card--embedded ds-card--embedded-full ds-card--embedded-plp ds-card--embedded-bg-gray ds-card" data-card-current="embedded-plp" data-ai-example="ai-card-completion-embedded-product-plp" data-fragment="embedded-product-plp" data-library-component="library-card" data-library-fragment="embedded-product-plp" data-library-release="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" data-library-props="{&quot;image&quot;:&quot;<img class=\&quot;ds-card__product-image\&quot; src=\&quot;assets/fs-plp-switches/img-14-2b878abf.webp\&quot; alt=\&quot;S3270-10TM, 10 x 1Gb RJ45, 2 x 1/2.5Gb SFP, PicOS®, L2+ Managed Switch\&quot;>&quot;,&quot;title&quot;:&quot;S3270-10TM, 10 x 1Gb RJ45, 2 x 1/2.5Gb SFP, PicOS®, L2+ Managed Switch&quot;,&quot;specs&quot;:&quot;BCM53547 | L2+ | OSPF&quot;,&quot;price&quot;:&quot;US$249.00&quot;,&quot;stock&quot;:&quot;3 in U.S. Warehouse, Get it Nov 24, 2026&quot;,&quot;stockSecondary&quot;:&quot;1 in Global Warehouse, Get it Dec 01, 2026&quot;,&quot;soldCount&quot;:&quot;105&quot;,&quot;reviewCount&quot;:&quot;0&quot;,&quot;badge&quot;:&quot;<span class=\&quot;ds-tag ds-tag--semantic ds-tag--hot ds-tag--emphasis\&quot; data-tag-source-hot=\&quot;official\&quot;><span class=\&quot;ds-tag__label\&quot;>Hot</span></span>&quot;}">
+          <div class="ds-card__product-image"><img class="ds-card__product-image" src="assets/fs-plp-switches/img-14-2b878abf.webp" alt="S3270-10TM, 10 x 1Gb RJ45, 2 x 1/2.5Gb SFP, PicOS®, L2+ Managed Switch"></div>
+          <div class="ds-card__product-body">
+            <p class="ds-card__title">S3270-10TM, 10 x 1Gb RJ45, 2 x 1/2.5Gb SFP, PicOS®, L2+ Managed Switch</p>
+            <p class="ds-card__specs">BCM53547 | L2+ | OSPF</p>
+            <p class="ds-card__price">US$249.00</p>
+            <div class="ds-card__stock">
+              <span class="ds-card__stock-text">3 in U.S. Warehouse, Get it Nov 24, 2026</span>
+              <span class="ds-card__stock-text-secondary">1 in Global Warehouse, Get it Dec 01, 2026</span>
+            </div>
+            <div class="ds-card__stats">
+              <span><span class="ds-card__sold-count">105</span><span class="ds-card__sold-label"> Sold</span></span>
+              <div class="ds-card__stats-divider"></div>
+              <span><span class="ds-card__review-count">0</span><span class="ds-card__review-label"> Reviews</span></span>
+              <div class="ds-card__add-btn ds-card__cart-slot"><button class="ds-cart ds-cart--product-card" type="button"><img class="ds-cart__icon" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/icon-cart-add.svg" alt=""><span class="ds-cart__text">Add</span></button></div>
+            </div>
+          </div>
+          <div class="ds-card__tag-slot"><span class="ds-tag ds-tag--semantic ds-tag--hot ds-tag--emphasis" data-tag-source-hot="official"><span class="ds-tag__label">Hot</span></span></div>
+        </div></div>
+<div class="plp-card-item" data-plp-card="8" data-sku="S3410C-8TMS-P" data-subcat="1-2.5g" data-port="8 Ports" data-poe="PoE+ (30W)" data-downlink="1G RJ45" data-layer="L2+ Managed" data-us-stock="0" data-specs="BCM56150|OSPF|PoE+ 125W|5G mGig" data-price="469" data-sold="186" data-reviews="2" data-is-new="0"><div class="ds-card--embedded ds-card--embedded-full ds-card--embedded-plp ds-card--embedded-bg-gray ds-card" data-card-current="embedded-plp" data-ai-example="ai-card-completion-embedded-product-plp" data-fragment="embedded-product-plp" data-library-component="library-card" data-library-fragment="embedded-product-plp" data-library-release="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" data-library-props="{&quot;image&quot;:&quot;<img class=\&quot;ds-card__product-image\&quot; src=\&quot;assets/fs-plp-switches/img-15-f4162313.webp\&quot; alt=\&quot;S3410C-8TMS-P, 8 x 1Gb RJ45, 2 x 5Gb RJ45, 2 x 10Gb SFP+, PicOS®, L2+ Managed PoE+ Switch\&quot;>&quot;,&quot;title&quot;:&quot;S3410C-8TMS-P, 8 x 1Gb RJ45, 2 x 5Gb RJ45, 2 x 10Gb SFP+, PicOS®, L2+ Managed PoE+ Switch&quot;,&quot;specs&quot;:&quot;BCM56150 | OSPF | PoE+ 125W | 5G mGig&quot;,&quot;price&quot;:&quot;US$469.00&quot;,&quot;stock&quot;:&quot;563 in Global Warehouse, Get it Nov 26, 2026&quot;,&quot;soldCount&quot;:&quot;186&quot;,&quot;reviewCount&quot;:&quot;2&quot;,&quot;badge&quot;:&quot;<span class=\&quot;ds-tag ds-tag--semantic ds-tag--hot ds-tag--emphasis\&quot; data-tag-source-hot=\&quot;official\&quot;><span class=\&quot;ds-tag__label\&quot;>Hot</span></span>&quot;}">
+          <div class="ds-card__product-image"><img class="ds-card__product-image" src="assets/fs-plp-switches/img-15-f4162313.webp" alt="S3410C-8TMS-P, 8 x 1Gb RJ45, 2 x 5Gb RJ45, 2 x 10Gb SFP+, PicOS®, L2+ Managed PoE+ Switch"></div>
+          <div class="ds-card__product-body">
+            <p class="ds-card__title">S3410C-8TMS-P, 8 x 1Gb RJ45, 2 x 5Gb RJ45, 2 x 10Gb SFP+, PicOS®, L2+ Managed PoE+ Switch</p>
+            <p class="ds-card__specs">BCM56150 | OSPF | PoE+ 125W | 5G mGig</p>
+            <p class="ds-card__price">US$469.00</p>
+            <div class="ds-card__stock">
+              <span class="ds-card__stock-text">563 in Global Warehouse, Get it Nov 26, 2026</span>
+              <span class="ds-card__stock-text-secondary">Ships within 1-2 business days</span>
+            </div>
+            <div class="ds-card__stats">
+              <span><span class="ds-card__sold-count">186</span><span class="ds-card__sold-label"> Sold</span></span>
+              <div class="ds-card__stats-divider"></div>
+              <span><span class="ds-card__review-count">2</span><span class="ds-card__review-label"> Reviews</span></span>
+              <div class="ds-card__add-btn ds-card__cart-slot"><button class="ds-cart ds-cart--product-card" type="button"><img class="ds-cart__icon" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/icon-cart-add.svg" alt=""><span class="ds-cart__text">Add</span></button></div>
+            </div>
+          </div>
+          <div class="ds-card__tag-slot"><span class="ds-tag ds-tag--semantic ds-tag--hot ds-tag--emphasis" data-tag-source-hot="official"><span class="ds-tag__label">Hot</span></span></div>
+        </div></div>
+<div class="plp-card-item" data-plp-card="9" data-sku="S5440-48MU" data-subcat="40-100g" data-port="48 Ports" data-poe="PoE++ (90W)" data-downlink="2.5G RJ45" data-layer="L3 Managed" data-us-stock="0" data-specs="L3|PoE++ 2000W|MLAG|EVPN-VXLAN" data-price="3369" data-sold="0" data-reviews="0" data-is-new="1"><div class="ds-card--embedded ds-card--embedded-full ds-card--embedded-plp ds-card--embedded-bg-gray ds-card" data-card-current="embedded-plp" data-ai-example="ai-card-completion-embedded-product-plp" data-fragment="embedded-product-plp" data-library-component="library-card" data-library-fragment="embedded-product-plp" data-library-release="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" data-library-props="{&quot;image&quot;:&quot;<img class=\&quot;ds-card__product-image\&quot; src=\&quot;assets/fs-plp-switches/img-16-9c80bfa4.webp\&quot; alt=\&quot;S5440-48MU, 40 x 2.5Gb RJ45, 8 x 10Gb RJ45, 4 x 25Gb SFP28, 2 x 40Gb QSFP+, PicOS®, L3 Managed PoE++ Switch\&quot;>&quot;,&quot;title&quot;:&quot;S5440-48MU, 40 x 2.5Gb RJ45, 8 x 10Gb RJ45, 4 x 25Gb SFP28, 2 x 40Gb QSFP+, PicOS®, L3 Managed PoE++ Switch&quot;,&quot;specs&quot;:&quot;L3 | PoE++ 2000W | MLAG | EVPN-VXLAN&quot;,&quot;price&quot;:&quot;US$3,369.00&quot;,&quot;stock&quot;:&quot;41 in Global Warehouse, Get it Nov 26, 2026&quot;,&quot;soldCount&quot;:&quot;0&quot;,&quot;reviewCount&quot;:&quot;0&quot;,&quot;badge&quot;:&quot;<span class=\&quot;ds-tag ds-tag--semantic ds-tag--new ds-tag--emphasis\&quot; data-tag-source-new=\&quot;official\&quot;><span class=\&quot;ds-tag__label\&quot;>New</span></span>&quot;}">
+          <div class="ds-card__product-image"><img class="ds-card__product-image" src="assets/fs-plp-switches/img-16-9c80bfa4.webp" alt="S5440-48MU, 40 x 2.5Gb RJ45, 8 x 10Gb RJ45, 4 x 25Gb SFP28, 2 x 40Gb QSFP+, PicOS®, L3 Managed PoE++ Switch"></div>
+          <div class="ds-card__product-body">
+            <p class="ds-card__title">S5440-48MU, 40 x 2.5Gb RJ45, 8 x 10Gb RJ45, 4 x 25Gb SFP28, 2 x 40Gb QSFP+, PicOS®, L3 Managed PoE++ Switch</p>
+            <p class="ds-card__specs">L3 | PoE++ 2000W | MLAG | EVPN-VXLAN</p>
+            <p class="ds-card__price">US$3,369.00</p>
+            <div class="ds-card__stock">
+              <span class="ds-card__stock-text">41 in Global Warehouse, Get it Nov 26, 2026</span>
+              <span class="ds-card__stock-text-secondary">Ships within 1-2 business days</span>
+            </div>
+            <div class="ds-card__stats">
+              <span><span class="ds-card__sold-count">0</span><span class="ds-card__sold-label"> Sold</span></span>
+              <div class="ds-card__stats-divider"></div>
+              <span><span class="ds-card__review-count">0</span><span class="ds-card__review-label"> Reviews</span></span>
+              <div class="ds-card__add-btn ds-card__cart-slot"><button class="ds-cart ds-cart--product-card" type="button"><img class="ds-cart__icon" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/icon-cart-add.svg" alt=""><span class="ds-cart__text">Add</span></button></div>
+            </div>
+          </div>
+          <div class="ds-card__tag-slot"><span class="ds-tag ds-tag--semantic ds-tag--new ds-tag--emphasis" data-tag-source-new="official"><span class="ds-tag__label">New</span></span></div>
+        </div></div>
+<div class="plp-card-item" data-plp-card="10" data-sku="S5440H-48MU" data-subcat="10-25g" data-port="48 Ports" data-poe="PoE++ (90W)" data-downlink="2.5G RJ45" data-layer="L3 Managed" data-us-stock="0" data-specs="L3|PoE++ 2000W|MLAG|EVPN-VXLAN" data-price="3599" data-sold="0" data-reviews="0" data-is-new="1"><div class="ds-card--embedded ds-card--embedded-full ds-card--embedded-plp ds-card--embedded-bg-gray ds-card" data-card-current="embedded-plp" data-ai-example="ai-card-completion-embedded-product-plp" data-fragment="embedded-product-plp" data-library-component="library-card" data-library-fragment="embedded-product-plp" data-library-release="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" data-library-props="{&quot;image&quot;:&quot;<img class=\&quot;ds-card__product-image\&quot; src=\&quot;assets/fs-plp-switches/img-17-5679dc0a.webp\&quot; alt=\&quot;S5440H-48MU, 32 x 2.5Gb RJ45, 16 x 10Gb RJ45, 8 x 25Gb SFP28, PicOS®, L3 Managed PoE++ Switch\&quot;>&quot;,&quot;title&quot;:&quot;S5440H-48MU, 32 x 2.5Gb RJ45, 16 x 10Gb RJ45, 8 x 25Gb SFP28, PicOS®, L3 Managed PoE++ Switch&quot;,&quot;specs&quot;:&quot;L3 | PoE++ 2000W | MLAG | EVPN-VXLAN&quot;,&quot;price&quot;:&quot;US$3,599.00&quot;,&quot;stock&quot;:&quot;69 in Global Warehouse, Get it Nov 26, 2026&quot;,&quot;soldCount&quot;:&quot;0&quot;,&quot;reviewCount&quot;:&quot;0&quot;,&quot;badge&quot;:&quot;<span class=\&quot;ds-tag ds-tag--semantic ds-tag--new ds-tag--emphasis\&quot; data-tag-source-new=\&quot;official\&quot;><span class=\&quot;ds-tag__label\&quot;>New</span></span>&quot;}">
+          <div class="ds-card__product-image"><img class="ds-card__product-image" src="assets/fs-plp-switches/img-17-5679dc0a.webp" alt="S5440H-48MU, 32 x 2.5Gb RJ45, 16 x 10Gb RJ45, 8 x 25Gb SFP28, PicOS®, L3 Managed PoE++ Switch"></div>
+          <div class="ds-card__product-body">
+            <p class="ds-card__title">S5440H-48MU, 32 x 2.5Gb RJ45, 16 x 10Gb RJ45, 8 x 25Gb SFP28, PicOS®, L3 Managed PoE++ Switch</p>
+            <p class="ds-card__specs">L3 | PoE++ 2000W | MLAG | EVPN-VXLAN</p>
+            <p class="ds-card__price">US$3,599.00</p>
+            <div class="ds-card__stock">
+              <span class="ds-card__stock-text">69 in Global Warehouse, Get it Nov 26, 2026</span>
+              <span class="ds-card__stock-text-secondary">Ships within 1-2 business days</span>
+            </div>
+            <div class="ds-card__stats">
+              <span><span class="ds-card__sold-count">0</span><span class="ds-card__sold-label"> Sold</span></span>
+              <div class="ds-card__stats-divider"></div>
+              <span><span class="ds-card__review-count">0</span><span class="ds-card__review-label"> Reviews</span></span>
+              <div class="ds-card__add-btn ds-card__cart-slot"><button class="ds-cart ds-cart--product-card" type="button"><img class="ds-cart__icon" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/icon-cart-add.svg" alt=""><span class="ds-cart__text">Add</span></button></div>
+            </div>
+          </div>
+          <div class="ds-card__tag-slot"><span class="ds-tag ds-tag--semantic ds-tag--new ds-tag--emphasis" data-tag-source-new="official"><span class="ds-tag__label">New</span></span></div>
+        </div></div>
+<div class="plp-card-item" data-plp-card="11" data-sku="S5440H-24MU" data-subcat="10-25g" data-port="24 Ports" data-poe="PoE++ (90W)" data-downlink="2.5G RJ45" data-layer="L3 Managed" data-us-stock="0" data-specs="L3|PoE++ 1000W|MLAG|EVPN-VXLAN" data-price="2699" data-sold="1" data-reviews="0" data-is-new="1"><div class="ds-card--embedded ds-card--embedded-full ds-card--embedded-plp ds-card--embedded-bg-gray ds-card" data-card-current="embedded-plp" data-ai-example="ai-card-completion-embedded-product-plp" data-fragment="embedded-product-plp" data-library-component="library-card" data-library-fragment="embedded-product-plp" data-library-release="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" data-library-props="{&quot;image&quot;:&quot;<img class=\&quot;ds-card__product-image\&quot; src=\&quot;assets/fs-plp-switches/img-18-9c366fea.webp\&quot; alt=\&quot;S5440H-24MU, 16 x 2.5Gb RJ45, 8 x 10Gb RJ45, 8 x 25Gb SFP28, PicOS®, L3 Managed PoE++ Switch\&quot;>&quot;,&quot;title&quot;:&quot;S5440H-24MU, 16 x 2.5Gb RJ45, 8 x 10Gb RJ45, 8 x 25Gb SFP28, PicOS®, L3 Managed PoE++ Switch&quot;,&quot;specs&quot;:&quot;L3 | PoE++ 1000W | MLAG | EVPN-VXLAN&quot;,&quot;price&quot;:&quot;US$2,699.00&quot;,&quot;stock&quot;:&quot;48 in Global Warehouse, Get it Nov 26, 2026&quot;,&quot;soldCount&quot;:&quot;1&quot;,&quot;reviewCount&quot;:&quot;0&quot;,&quot;badge&quot;:&quot;<span class=\&quot;ds-tag ds-tag--semantic ds-tag--new ds-tag--emphasis\&quot; data-tag-source-new=\&quot;official\&quot;><span class=\&quot;ds-tag__label\&quot;>New</span></span>&quot;}">
+          <div class="ds-card__product-image"><img class="ds-card__product-image" src="assets/fs-plp-switches/img-18-9c366fea.webp" alt="S5440H-24MU, 16 x 2.5Gb RJ45, 8 x 10Gb RJ45, 8 x 25Gb SFP28, PicOS®, L3 Managed PoE++ Switch"></div>
+          <div class="ds-card__product-body">
+            <p class="ds-card__title">S5440H-24MU, 16 x 2.5Gb RJ45, 8 x 10Gb RJ45, 8 x 25Gb SFP28, PicOS®, L3 Managed PoE++ Switch</p>
+            <p class="ds-card__specs">L3 | PoE++ 1000W | MLAG | EVPN-VXLAN</p>
+            <p class="ds-card__price">US$2,699.00</p>
+            <div class="ds-card__stock">
+              <span class="ds-card__stock-text">48 in Global Warehouse, Get it Nov 26, 2026</span>
+              <span class="ds-card__stock-text-secondary">Ships within 1-2 business days</span>
+            </div>
+            <div class="ds-card__stats">
+              <span><span class="ds-card__sold-count">1</span><span class="ds-card__sold-label"> Sold</span></span>
+              <div class="ds-card__stats-divider"></div>
+              <span><span class="ds-card__review-count">0</span><span class="ds-card__review-label"> Reviews</span></span>
+              <div class="ds-card__add-btn ds-card__cart-slot"><button class="ds-cart ds-cart--product-card" type="button"><img class="ds-cart__icon" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/icons/icon-cart-add.svg" alt=""><span class="ds-cart__text">Add</span></button></div>
+            </div>
+          </div>
+          <div class="ds-card__tag-slot"><span class="ds-tag ds-tag--semantic ds-tag--new ds-tag--emphasis" data-tag-source-new="official"><span class="ds-tag__label">New</span></span></div>
+        </div></div>
         </div>
 
-        <nav class="plp-pagination" aria-label="Pagination">
-          <button type="button" class="plp-page-btn" data-page-nav="prev" disabled aria-label="Previous page">&lsaquo;</button>
-          <button type="button" class="plp-page-btn is-active" data-page-num="1" aria-current="page">1</button>
-          <button type="button" class="plp-page-btn" data-page-num="2">2</button>
-          <button type="button" class="plp-page-btn" data-page-num="3">3</button>
-          <button type="button" class="plp-page-btn" data-page-num="4">4</button>
-          <button type="button" class="plp-page-btn" data-page-num="5">5</button>
-          <button type="button" class="plp-page-btn" data-page-num="6">6</button>
-          <button type="button" class="plp-page-btn" data-page-nav="next" aria-label="Next page">&rsaquo;</button>
-        </nav>
+        <div class="plp-pagination-wrap">
+          <nav class="ds-pagination" data-pagination-current="default" aria-label="Pagination" data-ai-example="ai-pagination-default" data-fragment="default" data-library-component="library-pagination" data-library-fragment="default" data-library-release="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" data-library-event-changecallback="onPlpPageChange" data-library-props="{&quot;items&quot;:&quot;<button type=\&quot;button\&quot; class=\&quot;ds-pagination__btn\&quot; data-page-nav=\&quot;prev\&quot; disabled aria-label=\&quot;Previous page\&quot;>&amp;lsaquo;</button><button type=\&quot;button\&quot; class=\&quot;ds-pagination__btn ds-pagination__btn--active\&quot; data-page-num=\&quot;1\&quot; aria-current=\&quot;page\&quot;>1</button><button type=\&quot;button\&quot; class=\&quot;ds-pagination__btn\&quot; data-page-num=\&quot;2\&quot;>2</button><button type=\&quot;button\&quot; class=\&quot;ds-pagination__btn\&quot; data-page-num=\&quot;3\&quot;>3</button><button type=\&quot;button\&quot; class=\&quot;ds-pagination__btn\&quot; data-page-num=\&quot;4\&quot;>4</button><button type=\&quot;button\&quot; class=\&quot;ds-pagination__btn\&quot; data-page-num=\&quot;5\&quot;>5</button><button type=\&quot;button\&quot; class=\&quot;ds-pagination__btn\&quot; data-page-num=\&quot;6\&quot;>6</button><button type=\&quot;button\&quot; class=\&quot;ds-pagination__btn\&quot; data-page-nav=\&quot;next\&quot; aria-label=\&quot;Next page\&quot;>&amp;rsaquo;</button>&quot;,&quot;changeCallback&quot;:&quot;onPlpPageChange&quot;,&quot;accessibleLabel&quot;:&quot;Pagination&quot;}"><button type="button" class="ds-pagination__btn" data-page-nav="prev" disabled="" aria-label="Previous page">‹</button><button type="button" class="ds-pagination__btn ds-pagination__btn--active" data-page-num="1" aria-current="page">1</button><button type="button" class="ds-pagination__btn" data-page-num="2">2</button><button type="button" class="ds-pagination__btn" data-page-num="3">3</button><button type="button" class="ds-pagination__btn" data-page-num="4">4</button><button type="button" class="ds-pagination__btn" data-page-num="5">5</button><button type="button" class="ds-pagination__btn" data-page-num="6">6</button><button type="button" class="ds-pagination__btn" data-page-nav="next" aria-label="Next page">›</button></nav>
+        </div>
       </div>
     </section>
 
     <div id="plp-cart-toast" class="plp-cart-toast" role="status" aria-live="polite"></div>
   </main>
 
-  <footer class="ds-nav-footer" data-fragment="footer" data-footer-pc-current="" data-ai-example="ai-navigation-fixed-footer" data-library-component="library-navigation" data-library-fragment="footer" data-library-release="89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87" data-library-props="{}">
+  <footer class="ds-nav-footer" data-fragment="footer" data-footer-pc-current="" data-ai-example="ai-navigation-fixed-footer" data-library-component="library-navigation" data-library-fragment="footer" data-library-release="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" data-library-props="{}">
     <div class="ds-nav-footer__inner">
       <div class="ds-nav-footer__columns">
         <div class="ds-nav-footer__col">
@@ -671,21 +641,21 @@
           </div>
           <div class="ds-nav-footer__app">
             <h4 class="ds-nav-footer__col-title">Download FS APP</h4>
-            <div class="ds-nav-footer__app-badges"><a id="library-instance-10-icon-usage-img-google-play" aria-label="Get it on Google Play" style="scroll-margin-top: 40px;" aria-disabled="true"><img src="../fs-components/component-specs/library/releases/89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87/components/sources/navigation/footer-assets-1013/68908-047170.png" alt="Google Play" height="28" style="width: 88px;"></a>
-              <a id="library-instance-10-icon-usage-img-app-store" aria-label="Download on the App Store" style="scroll-margin-top: 40px;" aria-disabled="true"><img src="../fs-components/component-specs/library/releases/89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87/components/sources/navigation/footer-assets-1013/68908-047171.png" alt="App Store" height="28" style="width: 87.73px;"></a>
+            <div class="ds-nav-footer__app-badges"><a id="library-instance-20-icon-usage-img-google-play" aria-label="Get it on Google Play" style="scroll-margin-top: 40px;" aria-disabled="true"><img src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/sources/navigation/footer-assets-1013/68908-047170.png" alt="Google Play" height="28" style="width: 88px;"></a>
+              <a id="library-instance-20-icon-usage-img-app-store" aria-label="Download on the App Store" style="scroll-margin-top: 40px;" aria-disabled="true"><img src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/sources/navigation/footer-assets-1013/68908-047171.png" alt="App Store" height="28" style="width: 87.73px;"></a>
               
             </div>
           </div>
-          <div class="ds-nav-footer__social"><img src="../fs-components/component-specs/library/releases/89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87/components/sources/navigation/footer-assets-1013/68908-047164.png" alt="LinkedIn, YouTube, Facebook, X, Instagram, Reddit" data-footer-source-social=""></div>
+          <div class="ds-nav-footer__social"><img src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/sources/navigation/footer-assets-1013/68908-047164.png" alt="LinkedIn, YouTube, Facebook, X, Instagram, Reddit" data-footer-source-social=""></div>
         </div>
       </div>
 
       <div class="ds-nav-footer__badges">
         <div class="ds-nav-footer__badges-left">
-          <img src="../fs-components/component-specs/library/releases/89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87/components/sources/navigation/footer-assets-1013/68908-047076.png" alt="DigiCert" height="28" style="scroll-margin-top: 40px; width: 59px;">
-          <img src="../fs-components/component-specs/library/releases/89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87/components/sources/navigation/footer-assets-1013/68908-047074.png" alt="TrustedSite" height="28" style="scroll-margin-top: 40px; width: 58px;">
-          <img src="../fs-components/component-specs/library/releases/89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87/components/sources/navigation/footer-assets-1013/68908-047075.png" alt="BBB" height="28" style="scroll-margin-top: 40px; width: 58px;">
-          <img src="../fs-components/component-specs/library/releases/89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87/components/sources/navigation/footer-assets-1013/68908-047073.png" alt="Google Reviews" height="28" style="scroll-margin-top: 40px; width: 74px;">
+          <img src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/sources/navigation/footer-assets-1013/68908-047076.png" alt="DigiCert" height="28" style="scroll-margin-top: 40px; width: 59px;">
+          <img src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/sources/navigation/footer-assets-1013/68908-047074.png" alt="TrustedSite" height="28" style="scroll-margin-top: 40px; width: 58px;">
+          <img src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/sources/navigation/footer-assets-1013/68908-047075.png" alt="BBB" height="28" style="scroll-margin-top: 40px; width: 58px;">
+          <img src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/sources/navigation/footer-assets-1013/68908-047073.png" alt="Google Reviews" height="28" style="scroll-margin-top: 40px; width: 74px;">
         </div>
         <div class="ds-nav-footer__badges-right">
           <a class="ds-nav-footer__region-link" aria-disabled="true">
@@ -984,14 +954,14 @@
         });
       });
 
-      // 7. Add to Cart button feedback + subtle toast
+      // 7. Add to Cart button feedback + subtle toast (listening to native ds-cart--product-card buttons)
       var toastEl = document.getElementById('plp-cart-toast');
       var toastTimer = null;
-      document.querySelectorAll('[data-add-cart]').forEach(function (btn) {
+      document.querySelectorAll('.plp-card-item .ds-cart--product-card').forEach(function (btn) {
         btn.addEventListener('click', function () {
-          var sku = btn.dataset.addCart;
-          var text = btn.querySelector('.plp-card__cart-text');
-          btn.classList.add('is-added');
+          var item = btn.closest('.plp-card-item');
+          var sku = item ? item.dataset.sku : 'Product';
+          var text = btn.querySelector('.ds-cart__text');
           if (text) text.textContent = 'Added';
           if (toastEl) {
             toastEl.textContent = sku + ' added to cart';
@@ -1000,41 +970,29 @@
             toastTimer = setTimeout(function () { toastEl.classList.remove('is-show'); }, 1800);
           }
           setTimeout(function () {
-            btn.classList.remove('is-added');
             if (text) text.textContent = 'Add';
           }, 1500);
         });
       });
 
-      // 8. Pagination active state
-      var pageBtns = Array.prototype.slice.call(document.querySelectorAll('[data-page-num]'));
-      var prevBtn = document.querySelector('[data-page-nav="prev"]');
-      var nextBtn = document.querySelector('[data-page-nav="next"]');
-      var curPage = 1;
-      function setPage(p) {
-        curPage = Math.max(1, Math.min(6, p));
-        pageBtns.forEach(function (b) {
-          var active = Number(b.dataset.pageNum) === curPage;
-          b.classList.toggle('is-active', active);
-          if (active) b.setAttribute('aria-current', 'page');
-          else b.removeAttribute('aria-current');
-        });
-        if (prevBtn) prevBtn.disabled = curPage === 1;
-        if (nextBtn) nextBtn.disabled = curPage === 6;
-      }
-      pageBtns.forEach(function (b) {
-        b.addEventListener('click', function () { setPage(Number(b.dataset.pageNum)); });
-      });
-      if (prevBtn) prevBtn.addEventListener('click', function () { setPage(curPage - 1); });
-      if (nextBtn) nextBtn.addEventListener('click', function () { setPage(curPage + 1); });
+      // 8. Native library-pagination/default change event hook
+      window.onPlpPageChange = function (event) {
+        if (toastEl && event && event.detail) {
+          toastEl.textContent = 'Page ' + event.detail.page + ' of ' + event.detail.totalPages;
+          toastEl.classList.add('is-show');
+          clearTimeout(toastTimer);
+          toastTimer = setTimeout(function () { toastEl.classList.remove('is-show'); }, 1400);
+        }
+      };
     })();
   </script>
-<script data-library-resource="89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87" src="../fs-components/component-specs/library/releases/89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87/components/menu-navigation-current.js"></script>
-<script data-library-resource="89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87" src="../fs-components/component-specs/library/releases/89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87/components/select-current.js"></script>
-<script data-library-resource="89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87" src="../fs-components/component-specs/library/releases/89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87/components/dropdown-current.js"></script>
-<script data-library-resource="89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87" src="../fs-components/component-specs/library/releases/89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87/components/tag-current.js"></script>
-<script data-library-resource="89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87" src="../fs-components/component-specs/library/releases/89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87/components/navigation-products-current.js"></script>
-<script data-library-resource="89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87" src="../fs-components/component-specs/library/releases/89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87/components/dropdown-command-current.js"></script>
-<script data-library-resource="89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87" src="../fs-components/component-specs/library/releases/89cd38bf713610c6ddfee153b69704dfed89cdf59006f9c57a7a8848bf7a4c87/components/tag-product-current.js"></script>
+<script data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/select-current.js"></script>
+<script data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/dropdown-current.js"></script>
+<script data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/card-current.js"></script>
+<script data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/pagination.js"></script>
+<script data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/dropdown-command-current.js"></script>
+<script data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/tag-product-current.js"></script>
+<script data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/menu-navigation-current.js"></script>
+<script data-library-resource="98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03" src="../fs-components/component-specs/library/releases/98d6fd30548f297ae62ab98949c5555cf5966d8d4f4c6551aa01e9345678aa03/components/navigation-products-current.js"></script>
 </body>
 </html>

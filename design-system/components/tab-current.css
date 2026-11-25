@@ -22,3 +22,17 @@
   border-bottom: 0;
   box-shadow: 0 1px 0 var(--color-gray-5);
 }
+
+/* Product Nav full-color dual-tone icons (MasterGo 68908:014155): remove grayscale desaturation filter while keeping 64x64 frame / 48x48 icon. */
+.ds-tab--product[data-tab-current="product-color-icons"] .ds-tab__item-icon img {
+  width: 48px;
+  height: 48px;
+  filter: none;
+  opacity: 0.72;
+  transition: opacity 0.15s ease;
+}
+.ds-tab--product[data-tab-current="product-color-icons"] .ds-tab__item--active .ds-tab__item-icon img,
+.ds-tab--product[data-tab-current="product-color-icons"] .ds-tab__item:hover .ds-tab__item-icon img {
+  filter: none;
+  opacity: 1;
+}

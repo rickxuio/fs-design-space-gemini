@@ -16,12 +16,16 @@
     "component:export": "node scripts/local-component-library.cjs",
     "component:check": "node scripts/local-component-library.cjs --check",
     "component:check:impact": "node scripts/check-component-impact.cjs",
+    "component:visual-diff": "node scripts/component-visual-diff.cjs",
     "component:accept": "node scripts/accept-component.cjs",
+    "core:export": "node scripts/export-design-core.cjs",
+    "portal:build": "node scripts/build-design-portal.cjs",
+    "icon:promote": "node scripts/promote-icon.cjs",
     "component:sync": "node scripts/local-component-maintenance.cjs",
     "component:watch": "node scripts/local-component-maintenance.cjs --watch",
     "impact": "node scripts/local-component-maintenance.cjs --impact",
     "design:install": "npm --prefix design-system ci",
-    "design:preview": "node scripts/local-preview.cjs --page design-system/component-library.html",
+    "design:preview": "node scripts/local-preview.cjs --page design-system/portal.html",
     "design:check": "node scripts/check-new-design-system.mjs",
     "design:verify-workflow": "node --test scripts/local-workflow.test.cjs",
     "test": "node --test scripts/local-workflow.test.cjs scripts/local-variant-integration.test.cjs scripts/local-restriction-review.test.cjs scripts/button-prototype-sync.test.cjs scripts/text-button-prototype-sync.test.cjs scripts/icon-button-prototype-sync.test.cjs scripts/foundation-prototype.test.cjs scripts/foundation-source-review.test.cjs scripts/tab-collapse-prototype.test.cjs scripts/card-carousel-prototype.test.cjs scripts/external-carousel.test.cjs scripts/donation-three.test.cjs scripts/banner-navigation-prototype.test.cjs scripts/form-stepper-list-prototype.test.cjs scripts/remaining-prototypes.test.cjs scripts/five-variant-current.test.cjs",
@@ -36,5 +40,10 @@
   },
   "dependencies": {
     "puppeteer-core": "25.1.0"
+  },
+  "devDependencies": {
+    "@carbon/icons": "^11.92.0",
+    "@carbon/pictograms": "^12.88.0",
+    "lucide-static": "^1.78.0"
   }
 }

@@ -40,7 +40,7 @@ function resolveLiveCss(root, rel) {
   return null;
 }
 
-function startPreview(root = ROOT, { port = 5188, liveCss = false, inspector = false } = {}) {
+function startPreview(root = ROOT, { port = 5188, liveCss = false } = {}) {
   const server = http.createServer((req, res) => {
     try {
       if (!["GET", "HEAD"].includes(req.method)) {
@@ -56,54 +56,28 @@ function startPreview(root = ROOT, { port = 5188, liveCss = false, inspector = f
         return res.end();
       }
       const ext = path.extname(rel).toLowerCase();
-      const isInspectorAsset = rel === "scripts/preview-inspector.js";
       if (ext === ".md" && !/^(?:README\.md|design-spec\/fs-design-system\.md|design-system\/docs\/[^/]+\.md)$/.test(rel))
         throw Error("Not a public document");
       if (
-        !isInspectorAsset &&
-        (!/^(?:index\.html$|README\.md$|(?:pages|fs-components|design-spec|design-system|maintenance|reference-inputs)\/)/.test(
+        !/^(?:index\.html$|README\.md$|(?:pages|fs-components|design-spec|design-system|maintenance|reference-inputs|dist)\/)/.test(
           rel,
         ) ||
-          rel.split("/").some((p) => p.startsWith(".") || p === "node_modules") ||
-          !TYPES[ext])
+        rel.split("/").some((p) => p.startsWith(".") || p === "node_modules") ||
+        !TYPES[ext]
       )
         throw Error("Not allowed");
 
       const wantLiveCss = liveCss || parsedUrl.searchParams.get("live-css") === "1";
       const liveCssPath = wantLiveCss ? resolveLiveCss(root, rel) : null;
-      const file = isInspectorAsset
-        ? path.join(__dirname, "preview-inspector.js")
-        : liveCssPath || path.resolve(root, rel);
-      const allowedRoot = isInspectorAsset ? __dirname : root;
+      const file = liveCssPath || path.resolve(root, rel);
       if (
-        !file.startsWith(allowedRoot + path.sep) ||
-        !fs.realpathSync(file).startsWith(fs.realpathSync(allowedRoot) + path.sep) ||
+        !file.startsWith(root + path.sep) ||
+        !fs.realpathSync(file).startsWith(fs.realpathSync(root) + path.sep) ||
         !fs.statSync(file).isFile()
       )
         throw Error("Not found");
 
       const fileExt = path.extname(file).toLowerCase();
-      // Non-invasive Preview Inspector injection for pages/*.html (skipped when ?raw=1)
-      const shouldInjectInspector =
-        inspector &&
-        req.method === "GET" &&
-        /^pages\/[^/]+\.html$/i.test(rel) &&
-        parsedUrl.searchParams.get("raw") !== "1";
-
-      if (shouldInjectInspector) {
-        let html = fs.readFileSync(file, "utf8");
-        const tag = '\n<script src="/scripts/preview-inspector.js" defer></script>\n';
-        html = /<\/body>/i.test(html) ? html.replace(/<\/body>/i, tag + "</body>") : html + tag;
-        const buf = Buffer.from(html, "utf8");
-        res.writeHead(200, {
-          "Content-Type": TYPES[".html"],
-          "Cache-Control": "no-store",
-          "X-Content-Type-Options": "nosniff",
-          "X-FS-Preview-Inspector": "1",
-          "Content-Length": buf.length,
-        });
-        return res.end(buf);
-      }
 
       const size = fs.statSync(file).size;
       const media = [".mp4", ".mov"].includes(fileExt);
@@ -147,11 +121,9 @@ if (require.main === module) {
     value = (key) => (args.includes(key) ? args[args.indexOf(key) + 1] : null);
   const page = value("--page") || "index.html";
   const liveCss = args.includes("--live-css");
-  const noInspector = args.includes("--no-inspector");
   startPreview(ROOT, {
     port: Number(value("--port") || 5188),
     liveCss,
-    inspector: !noInspector,
   })
     .then((s) =>
       console.log(

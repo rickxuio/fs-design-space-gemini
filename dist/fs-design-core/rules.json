@@ -1,0 +1,102 @@
+{
+  "schemaVersion": "1.0.0",
+  "coreVersion": "1.1.0",
+  "rules": [
+    {
+      "id": "FS_NO_HORIZONTAL_OVERFLOW",
+      "severity": "error",
+      "category": "layout",
+      "description": "Zero horizontal overflow across PC viewports (1085 / 1440 / 1920px).",
+      "appliesTo": [
+        "page-synthesis",
+        "staging-audit"
+      ]
+    },
+    {
+      "id": "FS_SURFACE_BORDER_LAW",
+      "severity": "error",
+      "category": "surface",
+      "description": "White cards on gray (#FAFBFB) sections must NOT have borders; white cards on white (#FFFFFF) sections MUST have a border (#DEE0E3 / #E5E5E5). Gray borderless product cards on white sections are restricted solely to Homepage and PLP.",
+      "appliesTo": [
+        "page-synthesis",
+        "staging-audit",
+        "design-review"
+      ]
+    },
+    {
+      "id": "FS_NO_GRADIENTS",
+      "severity": "error",
+      "category": "color",
+      "description": "No CSS linear/radial gradients on backgrounds or scrims; use solid rgba(0,0,0,0.45~0.58) overlays for white text on imagery.",
+      "appliesTo": [
+        "page-synthesis",
+        "staging-audit",
+        "design-review"
+      ]
+    },
+    {
+      "id": "FS_BRAND_RED_BOUNDARY",
+      "severity": "warning",
+      "category": "color",
+      "description": "#C00000 is restricted to primary conversion buttons, active nav indicators, prices, form errors, and duotone-line icon accents. Never use on content-reading Read More buttons, brand names, ordinary tags, or 4-sided card borders.",
+      "appliesTo": [
+        "page-synthesis",
+        "staging-audit",
+        "design-review"
+      ]
+    },
+    {
+      "id": "FS_CARD_TITLE_HOVER_BLACK_UNDERLINE",
+      "severity": "warning",
+      "category": "interaction",
+      "description": "Clickable card titles stay #19191A on hover with underline (text-underline-offset: 3px); never turn #0060BF blue on hover.",
+      "appliesTo": [
+        "page-synthesis",
+        "staging-audit"
+      ]
+    },
+    {
+      "id": "FS_STATIC_ICON_GRID_NO_BOX_NO_SHADOW",
+      "severity": "warning",
+      "category": "composition",
+      "description": "Non-clickable feature/benefit icon grids should sit directly on the section surface (transparent, no card box, no hover shadow). Never wrap static items in clickable *-single-event cards with hover elevation.",
+      "appliesTo": [
+        "page-synthesis",
+        "staging-audit",
+        "design-review"
+      ]
+    },
+    {
+      "id": "FS_ICON_STYLE_FAMILY_CONSISTENCY",
+      "severity": "error",
+      "category": "iconography",
+      "description": "Never mix icons from different styleFamily groups (e.g. duotone-line vs duotone-surface vs flat-illustration) within the same section.",
+      "appliesTo": [
+        "page-synthesis",
+        "staging-audit",
+        "design-review"
+      ]
+    },
+    {
+      "id": "FS_IMAGE_INTEGRITY",
+      "severity": "error",
+      "category": "media",
+      "description": "All content images must load (naturalWidth > 0) with valid aspect ratio and zero solid-color placeholder blocks.",
+      "appliesTo": [
+        "page-synthesis",
+        "staging-audit"
+      ]
+    },
+    {
+      "id": "FS_CTA_HIERARCHY_PARITY",
+      "severity": "warning",
+      "category": "hierarchy",
+      "description": "Same-weight featured horizontal cards on a page must share the same CTA component (TextButton inline-blue-link per FS horizontal card spec), reserving filled-red strictly for lead-gen/purchase conversion CTAs.",
+      "appliesTo": [
+        "page-synthesis",
+        "staging-audit",
+        "design-review"
+      ]
+    }
+  ]
+}

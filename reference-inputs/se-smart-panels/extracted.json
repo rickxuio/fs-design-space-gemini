@@ -1,0 +1,503 @@
+{
+  "title": "Smart panels connect you to energy savings | Schneider Electric Singapore",
+  "totalH": 6724,
+  "sections": [
+    {
+      "idx": 0,
+      "tag": "SCRIPT",
+      "id": "",
+      "cls": "",
+      "y": 5824,
+      "h": 0,
+      "texts": [
+        "window.builderIoAbTest = function updateCookiesAndStyles(contentId, variants, isHydrationTarget, isAngularSDK) {\n  function getAndSetVariantId() {\n    function setCookie(name, value, days) {\n      let expires = '';\n      if (days) {\n        const date = new Date();\n        date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);\n        expires = '; expires=' + date.toUTCString();\n      }\n      document.cookie = name + '=' + (value || '') + expires + '; path=/' + '; Secure; SameSite=None';\n    }\n    function getCookie(name) {\n      const nameEQ = name + '=';\n      const ca = document.cookie.split(';');\n      for (let i = 0; i < ca.length; i++) {\n        let c = ca[i];\n        while (c.charAt(0) === ' ') c = c.substring(1, c.length);\n        if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);\n      }\n      return null;\n    }\n    const cookieName = `builder.tests.${contentId}`;\n    const variantInCookie = getCookie(cookieName);\n    const availableIDs = variants.map(vr => vr.id).concat(contentId);\n    if (variantInCookie && availableIDs.includes(variantInCookie)) {\n      return variantInCookie;\n    }\n    let n = 0;\n    const random = Math.random();\n    for (let i = 0; i < variants.length; i++) {\n      const variant = variants[i];\n      const testRatio = variant.testRatio;\n      n += testRatio;\n      if (random < n) {\n        setCookie(cookieName, variant.id);\n        return variant.id;\n      }\n    }\n    setCookie(cookieName, contentId);\n    return contentId;\n  }\n  const winningVariantId = getAndSetVariantId();\n  let styleEl = document.currentScript?.previousElementSibling;\n  if (isAngularSDK) {\n    styleEl = document.currentScript?.parentElement?.previousElementSibling?.querySelector('style');\n  }\n  if (isHydrationTarget) {\n    styleEl.remove();\n    const thisScriptEl = document.currentScript;\n    thisScriptEl?.remove();\n  } else {\n    const newStyleStr = variants.concat({\n      id: contentId\n    }).filter(variant => variant.id !== winningVariantId).map(value => {\n      return `.variant-${value.id} {  display: none; }\n        `;\n    }).join('');\n    styleEl.innerHTML = newStyleStr;\n  }\n}\n  window.builderIoRenderContent = function updateVariantVisibility(variantContentId, defaultContentId, isHydrationTarget) {\n  if (!navigator.cookieEnabled) {\n    return;\n  }\n  function getCookie(name) {\n    const nameEQ = name + '=';\n    const ca = document.cookie.split(';');\n    for (let i = 0; i < ca.length; i++) {\n      let c = ca[i];\n      while (c.charAt(0) === ' ') c = c.substring(1, c.length);\n      if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);\n    }\n    return null;\n  }\n  const cookieName = `builder.tests.${defaultContentId}`;\n  const winningVariant = getCookie(cookieName);\n  const parentDiv = document.currentScript?.parentElement;\n  const isDefaultContent = variantContentId === defaultContentId;\n  const isWinningVariant = winningVariant === variantContentId;\n  if (isWinningVariant && !isDefaultContent) {\n    parentDiv?.removeAttribute('hidden');\n    parentDiv?.removeAttribute('aria-hidden');\n  } else if (!isWinningVariant && isDefaultContent) {\n    parentDiv?.setAttribute('hidden', 'true');\n    parentDiv?.setAttribute('aria-hidden', 'true');\n  }\n  if (isHydrationTarget) {\n    if (!isWinningVariant) {\n      parentDiv?.remove();\n    }\n    const thisScriptEl = document.currentScript;\n    thisScriptEl?.remove();\n  }\n  return;\n}"
+      ]
+    },
+    {
+      "idx": 1,
+      "tag": "SCRIPT",
+      "id": "",
+      "cls": "",
+      "y": 5824,
+      "h": 0,
+      "texts": [
+        "window.filterWithCustomTargeting = function filterWithCustomTargeting(userAttributes, query, startDate, endDate) {\n  function isString(val) {\n    return typeof val === 'string';\n  }\n  function isNumber(val) {\n    return typeof val === 'number';\n  }\n  function objectMatchesQuery(userattr, query) {\n    const result = (() => {\n      const property = query.property;\n      const operator = query.operator;\n      let testValue = query.value;\n      if (query && query.property === 'urlPath' && query.value && typeof query.value === 'string' && query.value !== '/' && query.value.endsWith('/')) {\n        testValue = query.value.slice(0, -1);\n      }\n      if (!(property && operator)) {\n        return true;\n      }\n      if (Array.isArray(testValue)) {\n        if (operator === 'isNot') {\n          return testValue.every(val => objectMatchesQuery(userattr, {\n            property,\n            operator,\n            value: val\n          }));\n        }\n        return !!testValue.find(val => objectMatchesQuery(userattr, {\n          property,\n          operator,\n          value: val\n        }));\n      }\n      const value = userattr[property];\n      if (Array.isArray(value)) {\n        return value.includes(testValue);\n      }\n      switch (operator) {\n        case 'is':\n          return value === testValue;\n        case 'isNot':\n          return value !== testValue;\n        case 'contains':\n          return (isString(value) || Array.isArray(value)) && value.includes(String(testValue));\n        case 'startsWith':\n          return isString(value) && value.startsWith(String(testValue));\n        case 'endsWith':\n          return isString(value) && value.endsWith(String(testValue));\n        case 'greaterThan':\n          return isNumber(value) && isNumber(testValue) && value > testValue;\n        case 'lessThan':\n          return isNumber(value) && isNumber(testValue) && value < testValue;\n        case 'greaterThanOrEqualTo':\n          return isNumber(value) && isNumber(testValue) && value >= testValue;\n        case 'lessThanOrEqualTo':\n          return isNumber(value) && isNumber(testValue) && value <= testValue;\n        default:\n          return false;\n      }\n    })();\n    return result;\n  }\n  const item = {\n    query,\n    startDate,\n    endDate\n  };\n  const now = userAttributes.date && new Date(userAttributes.date) || new Date();\n  if (item.startDate && new Date(item.startDate) > now) {\n    return false;\n  } else if (item.endDate && new Date(item.endDate) < now) {\n    return false;\n  }\n  if (!item.query || !item.query.length) {\n    return true;\n  }\n  return item.query.every(filter => {\n    return objectMatchesQuery(userAttributes, filter);\n  });\n}\n  window.builderIoPersonalization = function getPersonalizedVariant(variants, blockId, isHydrationTarget, locale) {\n  if (!navigator.cookieEnabled) {\n    return;\n  }\n  function getCookie(name) {\n    const nameEQ = name + '=';\n    const ca = document.cookie.split(';');\n    for (let i = 0; i < ca.length; i++) {\n      let c = ca[i];\n      while (c.charAt(0) == ' ') c = c.substring(1, c.length);\n      if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);\n    }\n    return null;\n  }\n  const attributes = JSON.parse(getCookie('builder.userAttributes') || '{}');\n  if (locale) {\n    attributes.locale = locale;\n  }\n  const winningVariantIndex = variants?.findIndex(function (variant) {\n    return window.filterWithCustomTargeting(attributes, variant.query, variant.startDate, variant.endDate);\n  });\n  const parentDiv = document.currentScript?.parentElement;\n  const variantId = parentDiv?.getAttribute('data-variant-id');\n  const isDefaultVariant = variantId === `${blockId}-default`;\n  const isWinningVariant = winningVariantIndex !== -1 && variantId === `${blockId}-${winningVariantIndex}` || winningVariantIndex === -1 && isDefaultVariant;\n  if (isWinningVariant && !isDefaultVariant) {\n    parentDiv?.removeAttribute('hidden');\n    parentDiv?.removeAttribute('aria-hidden');\n  } else if (!isWinningVariant && isDefaultVariant) {\n    parentDiv?.setAttribute('hidden', 'true');\n    parentDiv?.setAttribute('aria-hidden', 'true');\n  }\n  if (isHydrationTarget) {\n    if (!isWinningVariant) {\n      const itsStyleEl = parentDiv?.previousElementSibling;\n      if (itsStyleEl) {\n        itsStyleEl.remove();\n      }\n      parentDiv?.remove();\n    }\n    const thisScript = document.currentScript;\n    if (thisScript) {\n      thisScript.remove();\n    }\n  }\n}\n  window.updateVisibilityStylesScript = function updateVisibilityStylesScript(variants, blockId, isHydrationTarget, locale) {\n  function getCookie(name) {\n    const nameEQ = name + '=';\n    const ca = document.cookie.split(';');\n    for (let i = 0; i < ca.length; i++) {\n      let c = ca[i];\n      while (c.charAt(0) == ' ') c = c.substring(1, c.length);\n      if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);\n    }\n    return null;\n  }\n  const visibilityStylesEl = document.currentScript?.previousElementSibling;\n  if (!visibilityStylesEl) {\n    return;\n  }\n  if (isHydrationTarget) {\n    visibilityStylesEl.remove();\n    const currentScript = document.currentScript;\n    if (currentScript) {\n      currentScript.remove();\n    }\n  } else {\n    const attributes = JSON.parse(getCookie('builder.userAttributes') || '{}');\n    if (locale) {\n      attributes.locale = locale;\n    }\n    const winningVariantIndex = variants?.findIndex(function (variant) {\n      return window.filterWithCustomTargeting(attributes, variant.query, variant.startDate, variant.endDate);\n    });\n    if (winningVariantIndex !== -1) {\n      let newStyleStr = variants?.map((_, index) => {\n        if (index === winningVariantIndex) return '';\n        return `div[data-variant-id=\"${blockId}-${index}\"] { display: none !important; } `;\n      }).join('') || '';\n      newStyleStr += `div[data-variant-id=\"${blockId}-default\"] { display: none !important; } `;\n      visibilityStylesEl.innerHTML = newStyleStr;\n    }\n  }\n}"
+      ]
+    },
+    {
+      "idx": 3,
+      "tag": "DIV",
+      "id": "",
+      "cls": "overflow-hidden",
+      "y": 64,
+      "h": 5813,
+      "texts": [
+        "Home",
+        "/",
+        "...",
+        "For Your Business",
+        "/",
+        "/",
+        "For Your Business",
+        "Smart Panels",
+        "Home",
+        "/",
+        "...",
+        "For Your Business",
+        "/",
+        "/",
+        "For Your Business",
+        "Smart Panels",
+        "Choose a video",
+        "Smart Panels give your electrical system a voice",
+        "Get relevant and informative data to make the right decisions, at the right time with Smart Panels and EcoStruxure technologies.",
+        "Watch the video",
+        "View the brochure",
+        "Watch the video",
+        "View the brochure",
+        "Choose a video",
+        "Introducing EcoStruxure™ Power",
+        "IoT-connected solutions ready to improve every aspect of your power distribution system. Take total control with real-time data and smart analytics for predictive maintenance.",
+        "Discover EcoStruxure Power",
+        "Discover EcoStruxure Power",
+        "Choose a video",
+        "How can you get the proper expertise on Smart Panels?",
+        "The EcoXpert programme will provide the right digital expertise and competency certification. It is a worldwide network of expert system integrators, applications providers, and technology companies. It can help you understand how EcoStruxure can address your specific needs.",
+        "Discover the partner programme",
+        "Discover the partner programme",
+        "Say hello to Smart Panels, an EcoStruxure Power solution",
+        "Now your electrical panel is your partner.",
+        "By connecting cutting-edge hardware with innovative software, Smart Panels enable you to pinpoint overloads and inefficiencies proactively, make informed decisions that improve operational efficiency, and finally stop chasing vague alarms.",
+        "Protect",
+        "Help safeguard people and equipment with reliable, high-performance technology in every breaker and residual current device.",
+        "Measure",
+        "Smart sensors and connected offers enable your panel to send you all the data you need for better energy efficiency with alarming and maintenance notifications.",
+        "Connect",
+        "Smart Panels connect via Ethernet or wirelessly, so you can use minimal bandwidth and monitor your building in real-time.",
+        "Why Smart Panels?",
+        "Smart Panels are simple, Ethernet-connected solutions for managing power distribution. They give your electrical equipment the ability to directly communicate to you. Instead of spending hours or days gathering the information you need, it arrives in real time. Data is presented clearly on your computer or smart device, giving you the big picture so you can easily keep track of your building’s electrical system status.",
+        "Easy set-up with EcoStruxure Power Commission",
+        "Configure and commission your Smart Panels easily with EcoStruxure Power Commission software, featuring smart device discovery, connectivity testing and one-click manufacturer test reporting.",
+        "Discover now",
+        "Design, build, test and connect your digital panels",
+        "Digital Panel certified EcoXperts are panel builders and electrical contractors with extensive knowledge and proven competence in delivering efficient, tested, and ethernet-ready panels. With this certification, panel builders and electrical contractors receive training to design, build, configure, test, commission, and connect their digital panels to EcoStruxure Facility Expert.",
+        "Certified EcoXperts are sought-after experts in their field and bring the expertise of the EcoStruxure Power architecture to their customers.",
+        "Join EcoXperts",
+        "Related Products",
+        "MasterPact MTZ",
+        "MasterPact MTZ",
+        "Din rail modular devices",
+        "Din rail modular devices",
+        "PowerLogic™ PowerTag",
+        "PowerLogic™ PowerTag",
+        "Power Monitoring and Control",
+        "Power Monitoring and Control"
+      ]
+    }
+  ],
+  "imgs": [
+    {
+      "src": "https://www.se.com/sg/en/assets/v2/597/media/12277/FM_HEADER-IC-2560x600.jpg",
+      "alt": "",
+      "w": 1440,
+      "h": 556,
+      "y": 121
+    },
+    {
+      "src": "https://www.se.com/sg/en/assets/v2/597/media/53864/523415913-2560x600.jpg",
+      "alt": "",
+      "w": 1440,
+      "h": 556,
+      "y": 121
+    },
+    {
+      "src": "https://www.se.com/sg/en/assets/v2/597/media/54168/SE-Atrium-2560x600.jpg",
+      "alt": "",
+      "w": 1440,
+      "h": 556,
+      "y": 121
+    },
+    {
+      "src": "https://www.se.com/sg/en/assets/v2/597/media/303396/1200/Coffret_PrismaSeT-profil_BM-IC-1360x775.jpg",
+      "alt": "",
+      "w": 580,
+      "h": 400,
+      "y": 789
+    },
+    {
+      "src": "https://www.se.com/sg/en/assets/v2/597/media/30813/1200/82A3605-490x280.jpg",
+      "alt": "",
+      "w": 400,
+      "h": 225,
+      "y": 1405
+    },
+    {
+      "src": "https://www.se.com/sg/en/assets/v2/597/media/303398/1200/Flex-sca-IC-980x560.jpg",
+      "alt": "",
+      "w": 400,
+      "h": 225,
+      "y": 1405
+    },
+    {
+      "src": "https://www.se.com/sg/en/assets/v2/597/media/59388/1200/Connect-IC-490x280.jpg",
+      "alt": "",
+      "w": 400,
+      "h": 225,
+      "y": 1405
+    },
+    {
+      "src": "https://img.youtube.com/vi/PVBBUIqnXcA/hqdefault.jpg",
+      "alt": "",
+      "w": 580,
+      "h": 400,
+      "y": 2028
+    },
+    {
+      "src": "https://www.se.com/sg/en/assets/v2/597/media/187818/130035556-2400x706.jpg",
+      "alt": "",
+      "w": 1328,
+      "h": 450,
+      "y": 2596
+    },
+    {
+      "src": "https://www.se.com/sg/en/assets/v2/597/media/229314/1200/Kafkas-Customer-Story_reportage-17-IC-980x560.jpg",
+      "alt": "",
+      "w": 580,
+      "h": 400,
+      "y": 3215
+    },
+    {
+      "src": "https://download.schneider-electric.com/files?p_Doc_Ref=63545_main&p_File_Type=rendition_369_jpg&default_image=DefaultProductImage.png",
+      "alt": "MasterPact MTZ",
+      "w": 304,
+      "h": 171,
+      "y": 3920
+    },
+    {
+      "src": "https://download.schneider-electric.com/files?p_Doc_Ref=PB120902_new&p_File_Type=rendition_369_jpg&default_image=DefaultProductImage.png",
+      "alt": "Din rail modular devices",
+      "w": 304,
+      "h": 171,
+      "y": 3920
+    },
+    {
+      "src": "https://download.schneider-electric.com/files?p_Doc_Ref=PB120401&p_File_Type=rendition_369_jpg&default_image=DefaultProductImage.png",
+      "alt": "PowerLogic™ PowerTag",
+      "w": 304,
+      "h": 171,
+      "y": 3920
+    },
+    {
+      "src": "https://download.schneider-electric.com/files?p_Doc_Ref=PB111120&p_File_Type=rendition_369_jpg&default_image=DefaultProductImage.png",
+      "alt": "Power Monitoring and Control",
+      "w": 304,
+      "h": 171,
+      "y": 3920
+    },
+    {
+      "src": "https://download.schneider-electric.com/files?p_Doc_Ref=62413_EnerlinX_main&p_File_Type=rendition_369_jpg&default_image=DefaultProductImage.png",
+      "alt": "Enerlin’X IFE, EIFE, IFM",
+      "w": 304,
+      "h": 171,
+      "y": 3920
+    },
+    {
+      "src": "https://download.schneider-electric.com/files?p_Doc_Ref=61356_main&p_File_Type=rendition_369_jpg&default_image=DefaultProductImage.png",
+      "alt": "Acti 9 Smartlink Modbus",
+      "w": 304,
+      "h": 171,
+      "y": 3920
+    },
+    {
+      "src": "https://download.schneider-electric.com/files?p_Doc_Ref=7223&p_File_Type=rendition_369_jpg&default_image=DefaultProductImage.png",
+      "alt": "MicroLogic",
+      "w": 304,
+      "h": 171,
+      "y": 3920
+    },
+    {
+      "src": "https://download.schneider-electric.com/files?p_Doc_Ref=40739468_range-image&p_File_Type=rendition_369_jpg&default_image=DefaultProductImage.png",
+      "alt": "EcoStruxure™ Panel Server",
+      "w": 304,
+      "h": 171,
+      "y": 3920
+    },
+    {
+      "src": "https://download.schneider-electric.com/files?p_Doc_Ref=C16H3TM160_39910531&p_File_Type=rendition_369_jpg&default_image=DefaultProductImage.png",
+      "alt": "ComPacT NSX, new generation",
+      "w": 304,
+      "h": 171,
+      "y": 3920
+    },
+    {
+      "src": "https://download.schneider-electric.com/files?p_Doc_Ref=C123160BS-image&p_File_Type=rendition_369_jpg&default_image=DefaultProductImage.png",
+      "alt": "ComPacT NSXm, new generation",
+      "w": 304,
+      "h": 171,
+      "y": 3920
+    },
+    {
+      "src": "https://img.youtube.com/vi/9-ek5cCr1uc/hqdefault.jpg",
+      "alt": "",
+      "w": 580,
+      "h": 400,
+      "y": 4350
+    },
+    {
+      "src": "https://www.se.com/sg/en/assets/v2/597/media/11381/1200/Slide-2-IC-900x500.jpg",
+      "alt": "",
+      "w": 580,
+      "h": 400,
+      "y": 4350
+    },
+    {
+      "src": "https://www.se.com/sg/en/assets/v2/597/media/38567/1200/82A3064-900x500.jpg",
+      "alt": "",
+      "w": 580,
+      "h": 400,
+      "y": 4350
+    }
+  ],
+  "links": [
+    {
+      "tag": "A",
+      "text": "Home",
+      "href": "/sg/en/",
+      "y": 83
+    },
+    {
+      "tag": "A",
+      "text": "For Your Business",
+      "href": "/sg/en/work",
+      "y": 83
+    },
+    {
+      "tag": "A",
+      "text": "Home",
+      "href": "/sg/en/",
+      "y": 5907
+    },
+    {
+      "tag": "A",
+      "text": "For Your Business",
+      "href": "/sg/en/work",
+      "y": 5907
+    },
+    {
+      "tag": "A",
+      "text": "Watch the video",
+      "href": "https://www.youtube.com/embed/OgrNHh-zexw",
+      "y": 517
+    },
+    {
+      "tag": "A",
+      "text": "View the brochure",
+      "href": "https://download.se.com/files?p_enDocType=Brochure&p_File_Name=998-20135902_GMA-US.pdf&p_Doc_Ref=998-20135902_GMA-US",
+      "y": 517
+    },
+    {
+      "tag": "A",
+      "text": "Discover EcoStruxure Power",
+      "href": "/sg/en/work/campaign/innovation/power-distribution",
+      "y": 517
+    },
+    {
+      "tag": "A",
+      "text": "Discover the partner programme",
+      "href": "/sg/en/partners/ecoxpert",
+      "y": 517
+    },
+    {
+      "tag": "A",
+      "text": "Discover now",
+      "href": "/sg/en/product-range/62980-ecostruxure-power-commission/?parent-category-id=26426075&parent-subcategory-id=26426260&filter=business-4-low-voltage-products-and-systems",
+      "y": 2893
+    },
+    {
+      "tag": "A",
+      "text": "Join EcoXperts",
+      "href": "/sg/en/partners/ecoxpert",
+      "y": 3601
+    },
+    {
+      "tag": "A",
+      "text": "MasterPact MTZ MasterPact MTZ",
+      "href": "/sg/en/product-range/63545-masterpact-mtz/?parent-category-id=4200&parent-subcategory-id=4220&filter=business-4-low-voltage-products-and-systems",
+      "y": 3919
+    },
+    {
+      "tag": "A",
+      "text": "MasterPact MTZ",
+      "href": "",
+      "y": 3919
+    },
+    {
+      "tag": "A",
+      "text": "Din rail modular devices Din rail modular devices",
+      "href": "/sg/en/product-category/1600-din-rail-modular-devices/?filter=business-4-low-voltage-products-and-systems",
+      "y": 3919
+    },
+    {
+      "tag": "A",
+      "text": "Din rail modular devices",
+      "href": "",
+      "y": 3919
+    },
+    {
+      "tag": "A",
+      "text": "PowerLogic™ PowerTag PowerLogic™ PowerTag",
+      "href": "/sg/en/product-range/63626-powerlogic-powertag/?parent-category-id=4100&parent-subcategory-id=4125&filter=business-2-building-automation-and-control",
+      "y": 3919
+    },
+    {
+      "tag": "A",
+      "text": "PowerLogic™ PowerTag",
+      "href": "",
+      "y": 3919
+    },
+    {
+      "tag": "A",
+      "text": "Power Monitoring and Control Power Monitoring and Control",
+      "href": "/sg/en/product-category/4100-power-monitoring-and-control/?filter=business-2-building-automation-and-control",
+      "y": 3919
+    },
+    {
+      "tag": "A",
+      "text": "Power Monitoring and Control",
+      "href": "",
+      "y": 3919
+    },
+    {
+      "tag": "A",
+      "text": "Enerlin’X IFE, EIFE, IFM Enerlin’X IFE, EIFE, IFM",
+      "href": "/sg/en/product-range/62413-enerlinx-ife-eife-ifm/?parent-category-id=4200&parent-subcategory-id=86477&filter=business-4-low-voltage-products-and-systems",
+      "y": 3919
+    },
+    {
+      "tag": "A",
+      "text": "Enerlin’X IFE, EIFE, IFM",
+      "href": "",
+      "y": 3919
+    },
+    {
+      "tag": "A",
+      "text": "Acti 9 Smartlink Modbus Acti 9 Smartlink Modbus",
+      "href": "/sg/en/product-range/61356-acti-9-smartlink-modbus/?parent-category-id=4100&parent-subcategory-id=4160&filter=business-4-low-voltage-products-and-systems",
+      "y": 3919
+    },
+    {
+      "tag": "A",
+      "text": "Acti 9 Smartlink Modbus",
+      "href": "",
+      "y": 3919
+    },
+    {
+      "tag": "A",
+      "text": "MicroLogic MicroLogic",
+      "href": "/sg/en/product-range/1008-micrologic/?parent-category-id=4200&parent-subcategory-id=4220&filter=business-4-low-voltage-products-and-systems",
+      "y": 3919
+    },
+    {
+      "tag": "A",
+      "text": "MicroLogic",
+      "href": "",
+      "y": 3919
+    },
+    {
+      "tag": "A",
+      "text": "EcoStruxure™ Panel Server EcoStruxure™ Panel Server",
+      "href": "/sg/en/product-range/40739468-ecostruxure-panel-server/?parent-category-id=4100&parent-subcategory-id=4160&filter=business-4-low-voltage-products-and-systems",
+      "y": 3919
+    },
+    {
+      "tag": "A",
+      "text": "EcoStruxure™ Panel Server",
+      "href": "",
+      "y": 3919
+    },
+    {
+      "tag": "A",
+      "text": "ComPacT NSX, new generation ComPacT NSX, new generation",
+      "href": "/sg/en/product-range/39910531-compact-nsx-new-generation/?parent-category-id=4200&parent-subcategory-id=4230&filter=business-4-low-voltage-products-and-systems",
+      "y": 3919
+    },
+    {
+      "tag": "A",
+      "text": "ComPacT NSX, new generation",
+      "href": "",
+      "y": 3919
+    },
+    {
+      "tag": "A",
+      "text": "ComPacT NSXm, new generation ComPacT NSXm, new generation",
+      "href": "/sg/en/product-range/39910433-compact-nsxm-new-generation/?parent-category-id=4200&parent-subcategory-id=4230&filter=business-4-low-voltage-products-and-systems",
+      "y": 3919
+    },
+    {
+      "tag": "A",
+      "text": "ComPacT NSXm, new generation",
+      "href": "",
+      "y": 3919
+    },
+    {
+      "tag": "A",
+      "text": "Learn more about EcoStruxure Power",
+      "href": "/sg/en/work/campaign/innovation/power-distribution",
+      "y": 4602
+    },
+    {
+      "tag": "A",
+      "text": "Learn more about our Partner Programme",
+      "href": "/sg/en/partners/",
+      "y": 4602
+    },
+    {
+      "tag": "A",
+      "text": "The Fire-Preventing Advantages of IIoT Digitised Power",
+      "href": "https://blog.se.com/power-management-metering-monitoring-power-quality/2020/06/02/the-fire-preventing-advantages-of-iiot-digitized-power/?utm_source=se.com&utm_medium=referral",
+      "y": 5194
+    },
+    {
+      "tag": "A",
+      "text": "Business Interruption Prevention-The Advantages of IIoT Digitised Power",
+      "href": "https://blog.se.com/power-management-metering-monitoring-power-quality/2020/07/22/business-interruption-prevention-the-advantages-of-iiot-digitized-power/?utm_source=se.com&utm_medium=referral",
+      "y": 5194
+    },
+    {
+      "tag": "A",
+      "text": "Compliance & Risk Management – The Advantages of IIoT Digitised Power",
+      "href": "https://blog.se.com/power-management-metering-monitoring-power-quality/2020/10/15/compliance-risk-management-the-advantages-of-iiot-digitized-power/?utm_source=se.com&utm_medium=referral",
+      "y": 5308
+    },
+    {
+      "tag": "A",
+      "text": "21 Power Distribution Facts",
+      "href": "https://blog.se.com/power-management-metering-monitoring-power-quality/2019/07/18/infographic-21-power-distribution-facts/?utm_source=se.com&utm_medium=referral",
+      "y": 5308
+    },
+    {
+      "tag": "A",
+      "text": "Product Selector",
+      "href": "/sg/en/work/support/product-selector/",
+      "y": 5576
+    },
+    {
+      "tag": "A",
+      "text": "Get a Quote",
+      "href": "https://www.se.com/sg/en/work/support/customer-care/contact-sales.jsp",
+      "y": 5576
+    },
+    {
+      "tag": "A",
+      "text": "Where to buy?",
+      "href": "/sg/en/locate/325",
+      "y": 5576
+    },
+    {
+      "tag": "A",
+      "text": "Help Centre",
+      "href": "/sg/en/work/support/",
+      "y": 5576
+    }
+  ]
+}

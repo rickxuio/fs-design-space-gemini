@@ -189,6 +189,36 @@ Complete actual image + body, selected stack/meta/description wrappers, and real
         </div>
 ```
 
+## embedded.product-plp
+
+用：PLP商品列表页精简产品卡：无兼容品牌标签行，含单行竖线分隔参数、价格、双仓库存、销量评价与hover浮现加购按钮。
+
+不用：普通图文展示，或需要兼容品牌标签行（请用 embedded.product-full）。
+
+可修改：image、title、specs、price、stock、stockSecondary、soldCount、reviewCount、badge。
+
+```html
+<div class="ds-card--embedded ds-card--embedded-full ds-card--embedded-plp ds-card--embedded-bg-gray ds-card" data-card-current="embedded-plp" data-ai-example="ai-card-completion-embedded-product-plp">
+          <div class="ds-card__product-image"><img class="ds-card__product-image" src="../sources/card/preview-assets/img-placeholder.svg" alt="Reference PLP product image"></div>
+          <div class="ds-card__product-body">
+            <p class="ds-card__title">S5860-24XB-U, 24-Port Multi-Gigabit Ethernet L3 Fully Managed Switch</p>
+            <p class="ds-card__specs">24x 10G RJ45 | 4x 25G SFP28 | L3 Managed</p>
+            <p class="ds-card__price">US$ 1,299.00</p>
+            <div class="ds-card__stock">
+              <span class="ds-card__stock-text">In stock at the U.S. Warehouse</span>
+              <span class="ds-card__stock-text-secondary">Ships within 1-2 business days</span>
+            </div>
+            <div class="ds-card__stats">
+              <span><span class="ds-card__sold-count">120</span><span class="ds-card__sold-label"> Sold</span></span>
+              <div class="ds-card__stats-divider"></div>
+              <span><span class="ds-card__review-count">18</span><span class="ds-card__review-label"> Reviews</span></span>
+              <div class="ds-card__add-btn ds-card__cart-slot"><button class="ds-cart ds-cart--product-card" type="button"><img class="ds-cart__icon" src="../icons/icon-cart-add.svg" alt=""><span class="ds-cart__text">Add</span></button></div>
+            </div>
+          </div>
+          <div class="ds-card__tag-slot"><span class="ds-tag ds-tag--semantic ds-tag--new ds-tag--emphasis" data-tag-source-new="official"><span class="ds-tag__label">New</span></span></div>
+        </div>
+```
+
 ## spliced.horizontal.full-width.bordered-background
 
 用：左右图文通栏，文本区明确为描边/白底，包含可滚动参数列表。

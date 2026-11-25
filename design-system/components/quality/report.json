@@ -2,14 +2,14 @@
   "schemaVersion": "fs-component-quality/1.0.0",
   "standard": "docs/component-quality-standard.md",
   "summary": {
-    "componentCount": 30,
-    "variantCount": 164,
-    "newPageCandidateCount": 147,
-    "exactVariantCount": 150,
+    "componentCount": 31,
+    "variantCount": 167,
+    "newPageCandidateCount": 150,
+    "exactVariantCount": 153,
     "uncoveredVariantCount": 14,
     "maintenanceRegistered": 30,
-    "aiStructured": 30,
-    "currentEngineering": 30,
+    "aiStructured": 31,
+    "currentEngineering": 31,
     "visualApproved": 0
   },
   "components": [
@@ -1293,7 +1293,7 @@
     {
       "id": "card",
       "name": "Card",
-      "variantCount": 12,
+      "variantCount": 13,
       "variants": [
         {
           "name": "spliced.vertical.single-event",
@@ -1416,6 +1416,18 @@
           ]
         },
         {
+          "name": "embedded.product-plp",
+          "available": true,
+          "decisions": [
+            {
+              "type": "嵌入式·PLP精简产品卡片",
+              "whenToUse": "PLP商品列表页精简产品卡：无兼容品牌标签行，含单行竖线分隔参数、价格、双仓库存、销量评价与hover浮现加购按钮。 → 调用embedded.product-plp，保留真实子原子及当前资源。",
+              "whenNotToUse": "",
+              "className": "ds-card--embedded ds-card--embedded-full ds-card--embedded-plp ds-card--embedded-bg-gray ds-card"
+            }
+          ]
+        },
+        {
           "name": "spliced.horizontal.full-width.responsive",
           "available": true,
           "decisions": [
@@ -1452,6 +1464,7 @@
           "embedded.product-standard",
           "embedded.product-detail",
           "embedded.product-full",
+          "embedded.product-plp",
           "spliced.horizontal.full-width.responsive",
           "spliced.vertical.single-event.bordered"
         ],
@@ -1605,6 +1618,21 @@
             "visualApproval": "separate-not-granted"
           },
           {
+            "variant": "embedded.product-plp",
+            "key": "card/embedded.product-plp",
+            "disposition": "restricted",
+            "newPages": true,
+            "reason": "Simplified PLP product card without compatibility tags; single-line spec bar, dual-warehouse stock, and hover-revealed native Cart button.",
+            "constraints": [
+              "PLP商品列表页精简产品卡：无兼容品牌标签行，含单行竖线分隔参数、价格、双仓库存、销量评价与hover浮现加购按钮。",
+              "普通内容图文卡不得套用；若需兼容品牌标签行请使用 embedded.product-full。",
+              "Only allowedEdits; real current dependencies and runtime required."
+            ],
+            "evidence": "components/contracts/card.json#aiContract/evidence",
+            "requiresCurrentEngineering": true,
+            "visualApproval": "separate-not-granted"
+          },
+          {
             "variant": "spliced.horizontal.full-width.bordered-background",
             "key": "card/spliced.horizontal.full-width.bordered-background",
             "disposition": "restricted",
@@ -1656,6 +1684,7 @@
           "spliced.vertical.category-nav",
           "embedded.product-detail",
           "embedded.product-full",
+          "embedded.product-plp",
           "spliced.horizontal.full-width.bordered-background",
           "spliced.horizontal.with-sidebar",
           "spliced.horizontal.with-sidebar.bordered-background"
@@ -1887,6 +1916,7 @@
           "spliced.vertical.category-nav",
           "embedded.product-detail",
           "embedded.product-full",
+          "embedded.product-plp",
           "spliced.horizontal.full-width.bordered-background",
           "spliced.horizontal.with-sidebar",
           "spliced.horizontal.with-sidebar.bordered-background"
@@ -1917,6 +1947,10 @@
         {
           "type": "selection-gap",
           "variant": "embedded.product-full"
+        },
+        {
+          "type": "selection-gap",
+          "variant": "embedded.product-plp"
         }
       ]
     },
@@ -5910,6 +5944,101 @@
       "issues": []
     },
     {
+      "id": "pagination",
+      "name": "Pagination",
+      "variantCount": 1,
+      "variants": [
+        {
+          "name": "default",
+          "available": true,
+          "decisions": [
+            {
+              "type": "默认分页器 default",
+              "whenToUse": "PLP 商品列表页、搜索结果页或长评价列表需要页码翻页导航。 → 调用 library-pagination/default，通过 changeCallback 响应 ds:pagination-change 事件。",
+              "whenNotToUse": "轮播指示点或同页章节锚点。 → 不使用分页器，改用 Carousel 或 AnchorNav。",
+              "className": "ds-pagination"
+            }
+          ]
+        }
+      ],
+      "coverage": {
+        "exactVariants": [
+          "default"
+        ],
+        "uncoveredVariants": [],
+        "familyStatus": "partial",
+        "note": "Exact variants are finite authored calls; counts do not establish all sizes/states/hosts, source approval or browser acceptance."
+      },
+      "publication": {
+        "entries": [
+          {
+            "variant": "default",
+            "key": "pagination/default",
+            "disposition": "restricted",
+            "newPages": true,
+            "reason": "Standard PC list pagination bar for PLP, search, and review lists; dispatches ds:pagination-change.",
+            "constraints": [
+              "Standard PC list pagination bar for PLP, search, and review lists; do not use for carousel dots or section anchor nav."
+            ],
+            "contractPolicy": "用于 PLP 商品列表、搜索结果或评价列表页码切换；轮播圆点与章节锚点禁止套用。",
+            "use": "finite-new-page-candidate",
+            "evidence": "components/contracts/pagination.json#aiContract/evidence",
+            "requiresCurrentEngineering": true,
+            "visualApproval": "separate-not-granted"
+          }
+        ],
+        "newPageCandidates": [
+          "default"
+        ]
+      },
+      "sourceEvidence": {
+        "specificationIndex": null,
+        "specificationScope": "not-indexed",
+        "specificationFile": null,
+        "originalComponents": null,
+        "sourceInventory": null,
+        "inventoryStatus": "not-established",
+        "inventorySummary": null,
+        "validation": {
+          "componentIdentity": {
+            "status": "not-established",
+            "files": []
+          },
+          "specificationBody": {
+            "status": "not-established",
+            "files": []
+          },
+          "originalOnlineFrontendCode": false,
+          "browserComputedStyles": false,
+          "completeSpecificationCoverage": false
+        },
+        "acceptanceBoundary": "Source paths and finite indices do not establish complete specification/family coverage, original frontend code, browser geometry or visual approval."
+      },
+      "maintenanceRegistered": false,
+      "source": "local-library-not-online-revalidated",
+      "ai": {
+        "status": "structure-checked",
+        "supported": [
+          "default"
+        ],
+        "acceptance": {
+          "status": "current",
+          "tests": [
+            "scripts/local-canonical-component.test.js",
+            "scripts/component-publication.test.js"
+          ],
+          "visual": "pending"
+        }
+      },
+      "visual": "pending",
+      "grade": "engineering-reference-visual-pending",
+      "issues": [
+        {
+          "type": "maintenance-profile-missing"
+        }
+      ]
+    },
+    {
       "id": "radio",
       "name": "Radio",
       "variantCount": 4,
@@ -7386,7 +7515,7 @@
     {
       "id": "tag",
       "name": "Tag",
-      "variantCount": 13,
+      "variantCount": 14,
       "variants": [
         {
           "name": "status-text",
@@ -7485,6 +7614,18 @@
           ]
         },
         {
+          "name": "semantic-hot",
+          "available": true,
+          "decisions": [
+            {
+              "type": "语义标签·Hot",
+              "whenToUse": "固定橙色Hot热销展示标记。 → 调用semantic-hot；固定Hot原子，仅由父组件定位。",
+              "whenNotToUse": "把展示标记作为可选产品属性。 → 不使用此变体；先核对相邻组件和实际调用范围。",
+              "className": "ds-tag ds-tag--semantic ds-tag--hot ds-tag--emphasis"
+            }
+          ]
+        },
+        {
           "name": "product-regular-small",
           "available": true,
           "decisions": [
@@ -7541,6 +7682,7 @@
           "filter",
           "featured",
           "semantic-new",
+          "semantic-hot",
           "product-regular-small",
           "product-custom-small",
           "product-color-small"
@@ -7675,6 +7817,21 @@
             "visualApproval": "separate-not-granted"
           },
           {
+            "variant": "semantic-hot",
+            "key": "tag/semantic-hot",
+            "disposition": "restricted",
+            "newPages": true,
+            "reason": "Only exact authored shape for official orange Hot badge (#FFEBDD / #F56300). No arbitrary colors/sizes.",
+            "constraints": [
+              "Only exact authored shape for official orange Hot badge (#FFEBDD / #F56300). No arbitrary colors/sizes."
+            ],
+            "contractPolicy": "Use one finite authored example for fixed orange Hot semantic badge (ds-tag--semantic ds-tag--hot ds-tag--emphasis).",
+            "use": "finite-new-page-candidate",
+            "evidence": "components/contracts/tag.json#aiContract/evidence",
+            "requiresCurrentEngineering": true,
+            "visualApproval": "separate-not-granted"
+          },
+          {
             "variant": "product-regular-small",
             "key": "tag/product-regular-small",
             "disposition": "restricted",
@@ -7732,6 +7889,7 @@
           "semantic",
           "featured",
           "semantic-new",
+          "semantic-hot",
           "product-regular-small",
           "product-custom-small",
           "product-color-small"
@@ -7777,6 +7935,7 @@
           "semantic",
           "featured",
           "semantic-new",
+          "semantic-hot",
           "product-regular-small",
           "product-custom-small",
           "product-color-small"

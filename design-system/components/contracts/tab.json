@@ -20,7 +20,7 @@
         "background": "var(--color-white)",
         "color": "var(--color-gray-1)"
       },
-      "usage": "商品详情胶囊导航，全部选项可见。",
+      "usage": "胶囊形态内容切换导航（商品详情页、专题能力切换、选项全部可见的胶囊 Tab）。",
       "cssClass": "ds-tab ds-tab--capsule",
       "isComplete": true,
       "requiredChildren": [
@@ -31,7 +31,7 @@
       ],
       "selectionDecisionType": "Capsule 胶囊",
       "whenToUse": "商品详情页，选项全部可见。",
-      "whenNotToUse": "仅因分类筛选或用于普通专题。"
+      "whenNotToUse": "原页为线性底线分区、或超过一行折叠的多级分类侧栏。"
     },
     {
       "name": "standard",
@@ -86,9 +86,10 @@
         "width": "100%（铺满父级版心，不是浏览器视口）",
         "itemLayout": "flex: 1 1 0; min-width: 0；各项等宽，内部图标与文字居中；1200px 版心 8 项各占 150px",
         "borderBottom": "1px solid var(--color-gray-5)",
-        "iconSize": "64x64px 容器内 48x48px 图标",
-        "iconOpacityDefault": "0.4",
-        "iconOpacityActive": "1"
+        "iconSize": "64x64px 容器内 48x48px 全彩双色图标（移除灰度去色滤镜）",
+        "iconOpacityDefault": "0.72",
+        "iconOpacityActive": "1",
+        "hoverSwitch": "支持 mouseenter 悬停切换并派发 ds:tab-change 事件"
       },
       "usage": "首页产品大类，图标语义匹配。",
       "cssClass": "ds-tab ds-tab--product",

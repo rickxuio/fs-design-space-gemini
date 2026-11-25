@@ -87,8 +87,8 @@ test("default entries remain local; requiring build never starts a build", () =>
 });
 test("current registry needs no legacy files; exact variants, selection and dependencies are preserved", () => {
   const registry = B.loadRegistry(), data = L.catalog();
-  assert.equal(data.summary.components, 30);
-  assert.equal(Object.keys(registry.components).length, 30);
+  assert.equal(data.summary.components, 31);
+  assert.equal(Object.keys(registry.components).length, 31);
   assert.ok(Object.keys(registry.components).every(k => k.startsWith("library-")));
   assert.deepEqual(data.preexistingGaps, []);
   for (const retired of ["fs-components/component-specs/preview", "fs-components/component-specs/icons", "fs-components/component-specs/tokens.css", "fs-components/component-specs/components.css", "scripts/fixtures/legacy-component-registry.json"])

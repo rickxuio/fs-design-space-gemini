@@ -51,3 +51,77 @@ test('static and HTTP browser acceptance catch real faults without touching deli
  if(process.env.FS_ACCEPTANCE_REPORT)fs.writeFileSync(process.env.FS_ACCEPTANCE_REPORT,JSON.stringify({results,stats:context.stats,protectedPagesUnchanged:true},null,2));
  console.log('22 isolated faults detected; positive pages retained; resource change invalidated context');
 });
+
+test('P0 structured source extraction and source-coverage warnings work cleanly', () => {
+  const { scanSourceHtml, buildStaticPageIr } = require('./scan-source-page.cjs');
+  const sampleHtml = `<!DOCTYPE html><html><body><main>
+    <section id="sec-carousel">
+      <h2>Explore Featured Applications</h2>
+      <div class="swiper"><div class="swiper-wrapper">
+        <article class="swiper-slide"><h3>Glass Engraving</h3><p>Sub-surface 3D crystal engraving.</p><span class="price">$3,799</span><img src="https://example.com/a.jpg" alt="Glass"></article>
+        <article class="swiper-slide"><h3>Wood Crafting</h3><p>Precision wood detail.</p><img src="https://example.com/b.jpg" alt="Wood"></article>
+        <article class="swiper-slide"><h3>Metal Marking</h3><p>High contrast marking.</p><img src="https://example.com/c.jpg" alt="Metal"></article>
+        <article class="swiper-slide"><h3>Acrylic Cutting</h3><p>Clean polished edges.</p><img src="https://example.com/d.jpg" alt="Acrylic"></article>
+      </div></div>
+    </section>
+    <section id="sec-specs">
+      <h2>Technical Specifications</h2>
+      <table><thead><tr><th>Parameter</th><th>Value</th></tr></thead><tbody>
+        <tr><td>Laser Power</td><td>5W UV</td></tr>
+        <tr><td>Work Area</td><td>200 x 200 mm</td></tr>
+      </tbody></table>
+    </section>
+    <section id="sec-faq">
+      <h2>Frequently Asked Questions</h2>
+      <details><summary>What materials can UV laser process?</summary><p>Glass, crystal, plastics, wood, leather, and coated metals.</p></details>
+      <details><summary>Does it include warranty?</summary><p>Yes, 12 months standard warranty.</p></details>
+    </section>
+  </main></body></html>`;
+
+  const scan = scanSourceHtml(sampleHtml, 'inline-sample.html');
+  assert.equal(scan.visibleBlocks, 3);
+  assert.equal(scan.sections[0].hasCarousel, true);
+  assert.equal(scan.sections[0].cardCount, 4);
+  assert.equal(scan.sections[1].tableCount, 1);
+  assert.equal(scan.sections[2].faqCount, 2);
+
+  const J = L.domAPI(ROOT);
+  const dom = new J(sampleHtml);
+  const ir = buildStaticPageIr(dom.window.document, 'https://example.com/sample');
+  dom.window.close();
+  assert.equal(ir.schemaVersion, 'fs-page-ir/1.2.0');
+  assert.equal(ir.sections.length, 3);
+  assert.equal(ir.sections[0].hasCarousel, true);
+  assert.equal(ir.sections[0].carouselMeta.itemCount, 4);
+  assert.equal(ir.sections[0].cards.length, 4);
+  assert.equal(ir.sections[0].cards[0].price, '$3,799');
+  assert.equal(ir.sections[1].tables[0].rows.length, 3);
+  assert.equal(ir.sections[2].faqItems.length, 2);
+  assert.equal(ir.sections[2].faqItems[0].question, 'What materials can UV laser process?');
+
+  // Verify PAGE_SOURCE_COVERAGE_MISSING and PAGE_SOURCE_CAROUSEL_FLATTENED warnings on a temp active-release page
+  const tmpRoot = fs.mkdtempSync(path.join(os.tmpdir(), 'fs-p0-coverage-'));
+  try {
+    const minimalPage = fs.readFileSync(path.join(ROOT, 'pages/fs-plp-switches-pc.html'), 'utf8');
+    const activeRel = /data-fs-library="([a-f0-9]+)"/.exec(minimalPage)[1];
+    fs.mkdirSync(path.join(tmpRoot, 'design-system/node_modules'), { recursive: true });
+    fs.symlinkSync(path.join(ROOT, 'design-system/node_modules/jsdom'), path.join(tmpRoot, 'design-system/node_modules/jsdom'), 'dir');
+    fs.mkdirSync(path.join(tmpRoot, 'fs-components/component-specs/library/releases'), { recursive: true });
+    fs.cpSync(
+      path.join(ROOT, 'fs-components/component-specs/library/releases', activeRel),
+      path.join(tmpRoot, 'fs-components/component-specs/library/releases', activeRel),
+      { recursive: true }
+    );
+    fs.mkdirSync(path.join(tmpRoot, 'reference-inputs/sample-demo'), { recursive: true });
+    fs.writeFileSync(path.join(tmpRoot, 'reference-inputs/sample-demo/page-ir.json'), JSON.stringify(ir, null, 2));
+    fs.mkdirSync(path.join(tmpRoot, 'pages'), { recursive: true });
+    const targetPage = path.join(tmpRoot, 'pages/sample-demo-pc.html');
+    fs.writeFileSync(targetPage, minimalPage);
+    const issues = V.validateFile(targetPage, { root: tmpRoot, requireShell: false });
+    const warnCodes = issues.filter((i) => i.level === 'warn').map((i) => i.code);
+    assert.ok(warnCodes.includes('PAGE_SOURCE_COVERAGE_MISSING'), 'Expected PAGE_SOURCE_COVERAGE_MISSING warning');
+    assert.ok(warnCodes.includes('PAGE_SOURCE_CAROUSEL_FLATTENED'), 'Expected PAGE_SOURCE_CAROUSEL_FLATTENED warning');
+  } finally {
+    fs.rmSync(tmpRoot, { recursive: true, force: true });
+  }
+});

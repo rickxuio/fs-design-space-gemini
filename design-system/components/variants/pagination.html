@@ -1,0 +1,89 @@
+<!-- INTERNAL VARIANT SOURCE: for compile/sync scripts only. Human-facing spec: maintenance/foundation-prototypes-20261114/pagination.html -->
+<!DOCTYPE html>
+<html data-component-reference="pagination" lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pagination 分页器 - 组件预览</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../tokens.css">
+  <link rel="stylesheet" href="../pagination-current.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { padding: 40px; background: var(--color-white); color: var(--color-gray-1); font-family: var(--font-family-base); }
+    h1 { margin-bottom: 8px; font-size: 24px; font-weight: 600; }
+    .subtitle { margin-bottom: 32px; color: var(--color-gray-3); font-size: 14px; }
+    .section { margin-bottom: 40px; }
+    .section-title { margin-bottom: 16px; padding-bottom: 8px; border-bottom: 1px solid var(--color-gray-5); font-size: 18px; font-weight: 600; }
+    .demo-row { display: flex; flex-direction: column; gap: 16px; padding: 24px; border: 1px solid var(--color-gray-5); border-radius: 4px; }
+  </style>
+</head>
+<body>
+  <h1>Pagination 分页器 <span style="margin-left:10px;color:var(--color-gray-3);font-size:18px;vertical-align:middle;">v1.0</span></h1>
+  <p class="subtitle">页码导航组件，用于商品列表页（PLP）、搜索结果页与评价列表的翻页交互。</p>
+
+  <div style="margin-bottom:0;padding:24px;background:#FAFBFC;border:1px solid var(--color-gray-5);border-radius:8px;">
+    <!-- AUTO-GENERATED-DECISION-TABLE:START -->
+    <p style="font-size:14px;font-weight:600;margin-bottom:4px;">变体决策</p>
+    <p style="font-size:12px;color:#707070;margin-bottom:12px;"></p>
+    <table style="width:100%;border-collapse:collapse;table-layout:fixed;">
+      <colgroup><col style="width:18%"><col style="width:38%"><col style="width:44%"></colgroup>
+      <thead><tr><th scope="col" style="background:#F6F6F8;font-size:12px;font-weight:600;text-align:left;padding:8px 10px;border:1px solid #DEE0E3;">变体</th><th scope="col" style="background:#F6F6F8;font-size:12px;font-weight:600;text-align:left;padding:8px 10px;border:1px solid #DEE0E3;">匹配条件</th><th scope="col" style="background:#F6F6F8;font-size:12px;font-weight:600;text-align:left;padding:8px 10px;border:1px solid #DEE0E3;">选型结论</th></tr></thead>
+<tbody><tr><th scope="rowgroup" rowspan="2" style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">默认分页器 default</th><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">PLP 商品列表页、搜索结果页或长评价列表需要页码翻页导航。</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>候选 · </strong>调用 library-pagination/default，通过 changeCallback 响应 ds:pagination-change 事件。</td></tr>
+<tr><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;">轮播指示点或同页章节锚点。</td><td style="font-size:12px;padding:8px 10px;border:1px solid #DEE0E3;vertical-align:top;line-height:18px;word-break:break-word;"><strong>不用 · </strong>不使用分页器，改用 Carousel 或 AnchorNav。</td></tr></tbody>
+    </table>
+    <!-- AUTO-GENERATED-DECISION-TABLE:END -->
+  </div>
+  <div style="height:24px;"></div>
+  <!-- AUTO-GENERATED-DEPENDENCY-SUMMARY-TABLE:START -->
+    <div style="margin-bottom: 0; padding: 24px; background: #FAFBFC; border: 1px solid var(--color-gray-5); border-radius: 8px;">
+      <p style="font-size: 14px; font-weight: 600; margin-bottom: 4px;">依赖汇总表</p>
+      <p style="font-size: 12px; color: #707070; margin-bottom: 12px;">按组件类型汇总组件关系、颜色、字体、间距、描边、圆角、阴影和图标依赖；未填写 <code>appliesTo</code> 的组件级依赖不猜测变体归属，不参与本表归类。「组件关系」列用标签区分：<span style="display:inline-block;font-size:11px;line-height:16px;padding:0 5px;border-radius:3px;background:#EAF2FF;color:#0060BF;">子组件</span> = 嵌入本组件内部；<span style="display:inline-block;font-size:11px;line-height:16px;padding:0 5px;border-radius:3px;background:#F3EEFA;color:#512971;">父组件·类名证据／仅声明</span> = 从宿主 <code>componentDependencies</code> 自动推导；类名出现不等于具体变体、尺寸、必需结构或交互已验证，链接仅供打开 Preview 复核；<span style="display:inline-block;font-size:11px;line-height:16px;padding:0 5px;border-radius:3px;background:#FFF3E0;color:#A65300;">参考·未验证</span> = 仅保留设计意图，宿主 preview 尚无真实结构，不可作为已实现依赖。</p>
+      <div class="dep-summary-scroll">
+        <div class="dep-summary-grid" style="grid-template-columns:minmax(max-content, auto) repeat(8, minmax(max-content, 1fr));">
+          <div class="dep-cell dep-cell--sticky dep-cell--head" role="columnheader">组件类型</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">颜色</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">字体</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">间距</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">描边</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">圆角</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">阴影</div>
+          <div class="dep-cell dep-cell--head" role="columnheader">图标</div>
+          <div class="dep-cell dep-cell--head dep-cell--right-edge" role="columnheader">组件关系</div>
+          <div class="dep-cell dep-cell--sticky dep-cell--bottom-edge" role="rowheader"><strong>默认分页器</strong><br><code>default</code></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#19191A;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-1" style="color:#0060BF;text-decoration:underline;"><code>color.gray-1</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#F2F2F2;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-7" style="color:#0060BF;text-decoration:underline;"><code>color.gray-7</code></a></span><br><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,0.1);background:#F6F6F8;vertical-align:-3px;margin-right:8px;flex:0 0 auto;"></span><a href="color.html#tok-color-gray-8" style="color:#0060BF;text-decoration:underline;"><code>color.gray-8</code></a></span></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">14px · md · Regular 400</span><a href="font.html#tok-typography-h7-regular" style="color:#0060BF;text-decoration:underline;"><code>typography.h7-regular</code></a></span></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">8px</span><a href="spacing.html#tok-spacing-sm" style="color:#0060BF;text-decoration:underline;"><code>spacing.sm</code></a></span></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="display:inline-flex;align-items:center;min-height:24px;white-space:nowrap;"><span style="display:inline-flex;align-items:center;height:18px;padding:0 6px;margin-right:8px;border-radius:3px;background:#EEF0F2;color:#19191A;font-size:11px;font-weight:600;line-height:1;flex:0 0 auto;white-space:nowrap;">4px</span><a href="radius.html#tok-border-radius-md" style="color:#0060BF;text-decoration:underline;"><code>border-radius.md</code></a></span></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell dep-cell--bottom-edge" role="cell"><span style="color:#A6A6A6;">—</span></div>
+          <div class="dep-cell dep-cell--right-edge dep-cell--bottom-edge" role="cell"><span style="color:#A6A6A6;">—</span></div>
+        </div>
+      </div>
+    </div>
+    <!-- AUTO-GENERATED-DEPENDENCY-SUMMARY-TABLE:END -->
+
+  <section class="section">
+    <h2 class="section-title">1. 默认页码分页器 (default)</h2>
+    <div class="demo-row">
+      <nav class="ds-pagination" data-pagination-current="default" aria-label="Pagination" data-ai-example="ai-pagination-default">
+        <button type="button" class="ds-pagination__btn" data-page-nav="prev" disabled aria-label="Previous page">&lsaquo;</button>
+        <button type="button" class="ds-pagination__btn ds-pagination__btn--active" data-page-num="1" aria-current="page">1</button>
+        <button type="button" class="ds-pagination__btn" data-page-num="2">2</button>
+        <button type="button" class="ds-pagination__btn" data-page-num="3">3</button>
+        <button type="button" class="ds-pagination__btn" data-page-num="4">4</button>
+        <button type="button" class="ds-pagination__btn" data-page-num="5">5</button>
+        <button type="button" class="ds-pagination__btn" data-page-num="6">6</button>
+        <button type="button" class="ds-pagination__btn" data-page-nav="next" aria-label="Next page">&rsaquo;</button>
+      </nav>
+    </div>
+  </section>
+
+  <script src="../pagination.js"></script>
+  <script src="../preview/preview-link.js"></script>
+  <script src="../preview/reference-live.js"></script>
+</body>
+</html>

@@ -1551,15 +1551,21 @@
   },
   "editable": [
     "title",
+    "titleHtml",
     "description",
     "actionLabel",
     "actionCallback",
+    "actionHref",
+    "actionVariant",
     "breadcrumb",
     "primaryActionLabel",
     "secondaryActionLabel",
     "primaryActionCallback",
     "secondaryActionCallback",
+    "secondaryActionHref",
     "surface",
+    "height",
+    "align",
     "placeholder",
     "searchLabel",
     "searchCallback",
@@ -1670,33 +1676,76 @@
         "exampleSelector": "[data-ai-example=\"ai-banner-hero-current\"]",
         "allowedEdits": [
           "title",
+          "titleHtml",
           "description",
           "actionLabel",
           "actionCallback",
-          "surface"
+          "actionHref",
+          "actionVariant",
+          "secondaryActionLabel",
+          "secondaryActionCallback",
+          "secondaryActionHref",
+          "surface",
+          "height",
+          "align"
         ],
         "slots": {
           "title": {
             "selector": "p.ds-banner__title",
             "mode": "text",
-            "required": true
+            "required": false
           },
           "description": {
             "selector": "p.ds-banner__desc",
             "mode": "text",
-            "required": true
+            "required": false
           },
           "actionLabel": {
             "selector": "span.ds-btn__text",
             "mode": "text",
-            "required": true
+            "required": false
           }
         },
         "bindings": {
+          "titleHtml": {
+            "mode": "banner-title-html",
+            "target": "p.ds-banner__title"
+          },
           "actionCallback": {
             "mode": "event-handler",
             "target": "button.ds-btn",
             "event": "click"
+          },
+          "actionHref": {
+            "mode": "banner-primary-action",
+            "target": "div.ds-banner__actions",
+            "part": "href"
+          },
+          "actionVariant": {
+            "mode": "banner-primary-action",
+            "target": "div.ds-banner__actions",
+            "part": "variant",
+            "values": [
+              "outline-white",
+              "filled-gray",
+              "filled-black",
+              "outline-black"
+            ]
+          },
+          "secondaryActionLabel": {
+            "mode": "banner-secondary-action",
+            "target": "div.ds-banner__actions",
+            "part": "label"
+          },
+          "secondaryActionCallback": {
+            "mode": "banner-secondary-action",
+            "target": "div.ds-banner__actions",
+            "part": "callback"
+          },
+          "secondaryActionHref": {
+            "mode": "banner-secondary-action",
+            "target": "div.ds-banner__actions",
+            "part": "href"
           },
           "surface": {
             "mode": "native-attribute",
@@ -1706,6 +1755,28 @@
               "image"
             ],
             "sourceProperty": "Existing dark background image and mandatory host overlay"
+          },
+          "height": {
+            "mode": "native-attribute",
+            "target": "root",
+            "attribute": "data-banner-height",
+            "values": [
+              "200",
+              "360",
+              "420",
+              "480"
+            ],
+            "sourceProperty": "Banner height tier matched from source section bounds"
+          },
+          "align": {
+            "mode": "native-attribute",
+            "target": "root",
+            "attribute": "data-banner-align",
+            "values": [
+              "left",
+              "center"
+            ],
+            "sourceProperty": "Content alignment matched from source layout"
           }
         },
         "runtime": {

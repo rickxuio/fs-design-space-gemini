@@ -316,7 +316,7 @@ const pageCss = `${H.basePageCss()}
 .acct-mgr-phone { font-size: 12px; line-height: 18px; font-weight: 600; color: #19191A; }
 .acct-mgr-sub { font-size: 11px; line-height: 16px; color: #707070; }
 .acct-mgr-action { display: flex; align-items: center; gap: 8px; font-size: 12px; line-height: 20px; color: #19191A; text-decoration: none; }
-.acct-mgr-action:hover { color: #0060BF; text-decoration: underline; }
+.acct-mgr-action:hover { color: #19191A; text-decoration: underline; }
 .acct-main { display: flex; flex-direction: column; gap: 20px; min-width: 0; }
 .acct-greeting__title { margin: 0 0 4px; font-size: 24px; line-height: 32px; font-weight: 600; color: #19191A; }
 .acct-greeting__sub { margin: 0; font-size: 13px; line-height: 20px; color: #707070; }
@@ -339,7 +339,8 @@ const pageCss = `${H.basePageCss()}
 .acct-kpi-item:last-child { border-right: 0; }
 .acct-kpi-item:hover { background: #FAFBFB; }
 .acct-kpi-item.is-active { background: #F4F7FC; }
-.acct-kpi-item:hover .acct-kpi-label, .acct-kpi-item.is-active .acct-kpi-label, .acct-kpi-item.is-active .acct-kpi-num { color: #0060BF; }
+.acct-kpi-item:hover .acct-kpi-label { color: #19191A; }
+.acct-kpi-item.is-active .acct-kpi-label, .acct-kpi-item.is-active .acct-kpi-num { color: #0060BF; }
 .acct-kpi-num { font-size: 24px; line-height: 32px; font-weight: 600; color: #19191A; }
 .acct-kpi-label { font-size: 12px; line-height: 18px; font-weight: 600; color: #19191A; }
 .acct-empty-row { padding: 24px 0; text-align: center; font-size: 13px; color: #707070; }
@@ -361,7 +362,7 @@ const pageCss = `${H.basePageCss()}
 .acct-ccol-contact { text-align: right; }
 .acct-table-head--cases > :last-child { text-align: right; }
 .acct-id-link { color: #19191A; text-decoration: underline; }
-.acct-id-link:hover { color: #0060BF; }
+.acct-id-link:hover { color: #19191A; }
 .acct-col-status { display: flex; align-items: center; gap: 6px; }
 .acct-status-line { display: flex; align-items: center; gap: 6px; }
 .acct-status-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }

@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html data-fs-library="7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Panels Overview — FS Design Standard</title>
+  <style>body { margin: 0; font-family: "Open Sans", Arial, sans-serif; color: #19191A; background: #FFFFFF; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+.container { max-width: 1200px; width: 100%; margin: 0 auto; padding: 0; box-sizing: border-box; }
+.page-section { padding: 40px 0; background: #FFFFFF; }
+.page-section--gray { background: #FAFBFB; }
+.section-header { text-align: center; margin-bottom: 24px; }
+.section-header__tag { display: flex; justify-content: center; margin-bottom: 8px; }
+.section-header__title { margin: 0; font-size: 24px; line-height: 32px; font-weight: 600; color: #19191A; }
+.section-header__desc { margin: 12px auto 0; max-width: 960px; font-size: 14px; line-height: 22px; font-weight: 400; color: #4B4B4D; }
+.section-header__action { margin-top: 12px; display: flex; justify-content: center; }
+.center-tabs-layout { display: flex; justify-content: center; margin-bottom: 24px; }
+.grid { display: grid; gap: 20px; align-items: stretch; }
+.grid--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.grid--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.grid--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.card-full-link { display: grid; text-decoration: none; color: inherit; height: 100%; }
+.hero-surface { position: relative; width: 100%; overflow: hidden; background: #19191A; }
+.hero-surface__bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+.hero-surface__scrim { position: absolute; inset: 0; background: rgba(0, 0, 0, 0.48); z-index: 1; }
+.hero-surface__inner { position: relative; z-index: 2; }
+.store-card-tag-row { display: flex; align-items: center; gap: 6px; margin-bottom: 6px; }
+.store-card-price-row { display: flex; align-items: baseline; gap: 8px; margin-top: 8px; }
+.store-price-current { font-size: 16px; line-height: 24px; font-weight: 600; color: #19191A; }
+.store-price-compare { font-size: 13px; line-height: 20px; color: #707070; text-decoration: line-through; }
+.subscribe-card-1200 { display: grid; grid-template-columns: 600px 600px; width: 1200px; max-width: 100%; min-height: 338px; background: #FFFFFF; border-radius: 8px; overflow: hidden; box-sizing: border-box; }
+.subscribe-card-1200__media { height: 338px; overflow: hidden; }
+.subscribe-card-1200__img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.subscribe-card-1200__body { padding: 40px 48px; display: flex; flex-direction: column; justify-content: center; box-sizing: border-box; }
+.subscribe-form__row { display: flex; align-items: flex-end; gap: 12px; margin-bottom: 16px; }
+@media (max-width: 1220px) { .subscribe-card-1200 { grid-template-columns: 1fr 1fr; width: 100%; } }
+.sp-breadcrumb-bar { background: #FFFFFF; border-bottom: 1px solid #F2F2F2; padding: 12px 0; }
+.sp-hero-wrap { position: relative; background-image: url('assets/se-smart-panels/hero-1.jpg'); background-size: cover; background-position: center; overflow: hidden; transition: background-image 0.3s ease; }
+.sp-hero-wrap::before { content: ''; position: absolute; inset: 0; background: rgba(0, 0, 0, 0.52); pointer-events: none; z-index: 0; }
+.sp-banner-layer { position: relative; z-index: 1; }
+.sp-hero-dots { position: relative; z-index: 2; display: flex; align-items: center; justify-content: center; gap: 10px; padding: 0 0 20px; margin-top: -12px; }
+.sp-dot { width: 8px; height: 8px; border-radius: 999px; border: none; padding: 0; background: #FFFFFF; opacity: 0.4; cursor: pointer; transition: width 0.2s ease, opacity 0.2s ease; }
+.sp-dot[aria-selected="true"] { width: 20px; opacity: 1; }
+.sp-commission-wrap { position: relative; background-image: url('assets/se-smart-panels/commission-banner.jpg'); background-size: cover; background-position: center; overflow: hidden; }
+.sp-commission-wrap::before { content: ''; position: absolute; inset: 0; background: rgba(0, 0, 0, 0.55); pointer-events: none; z-index: 0; }
+.sp-intro-card-wrap { background: #FFFFFF; border-radius: 8px; padding: 32px; }
+.sp-eco-dots { display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 24px; }
+.sp-eco-dot { width: 8px; height: 8px; border-radius: 999px; border: none; padding: 0; background: #707070; opacity: 0.4; cursor: pointer; transition: width 0.2s ease, opacity 0.2s ease; }
+.sp-eco-dot[aria-selected="true"] { width: 20px; opacity: 1; }
+.sp-blog-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; align-items: stretch; }
+.sp-blog-card { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 24px; border-radius: 8px; background: #FFFFFF; color: #19191A; text-decoration: none; font-size: 16px; line-height: 24px; font-weight: 600; transition: box-shadow 0.2s ease; }
+.sp-blog-card__title { text-decoration: none; }
+.sp-blog-card:hover { color: #19191A; box-shadow: 0 4px 16px rgba(25, 25, 26, 0.08); }
+.sp-blog-card:hover .sp-blog-card__title { text-decoration: underline; text-underline-offset: 3px; }
+.sp-blog-card__arrow { flex: 0 0 auto; font-size: 18px; line-height: 1; color: #707070; }
+.sp-blog-card:hover .sp-blog-card__arrow { color: #19191A; }
+.sp-help-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; align-items: stretch; }
+.sp-dialog-backdrop { position: fixed; inset: 0; background: rgba(25, 25, 26, 0.55); display: flex; align-items: center; justify-content: center; z-index: 1200; padding: 24px; }
+.sp-dialog-backdrop[hidden] { display: none; }
+</style>
+<link rel="stylesheet" data-library-resource="7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1" href="../fs-components/component-specs/library/releases/7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1/components/tokens.css">
+<link rel="stylesheet" data-library-resource="7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1" href="../fs-components/component-specs/library/releases/7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1/components/icon-button-current.css">
+<link rel="stylesheet" data-library-resource="7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1" href="../fs-components/component-specs/library/releases/7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1/components/components.css">
+<link rel="stylesheet" data-library-resource="7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1" href="../fs-components/component-specs/library/releases/7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1/components/input-number-current.css">
+<link rel="stylesheet" data-library-resource="7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1" href="../fs-components/component-specs/library/releases/7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1/components/navigation-current.css">
+<link rel="stylesheet" data-library-resource="7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1" href="../fs-components/component-specs/library/releases/7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1/components/banner-responsive.css">
+<link rel="stylesheet" data-library-resource="7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1" href="../fs-components/component-specs/library/releases/7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1/components/card-responsive.css">
+<link rel="stylesheet" data-library-resource="7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1" href="../fs-components/component-specs/library/releases/7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1/components/dialog-current.css">
+<link rel="stylesheet" data-library-resource="7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1" href="../fs-components/component-specs/library/releases/7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1/components/form-dialog-content.css">
+<link rel="stylesheet" data-library-resource="7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1" href="../fs-components/component-specs/library/releases/7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1/components/navigation-header-web-atom.css">
+<link rel="stylesheet" data-library-resource="7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1" href="../fs-components/component-specs/library/releases/7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1/components/banner-current.css">
+<link rel="stylesheet" data-library-resource="7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1" href="../fs-components/component-specs/library/releases/7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1/components/form-current.css">
+<link rel="stylesheet" data-library-resource="7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1" href="../fs-components/component-specs/library/releases/7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1/components/list-dialog-cart.css">
+<link rel="stylesheet" data-library-resource="7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1" href="../fs-components/component-specs/library/releases/7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1/components/button-current.css">
+<link rel="stylesheet" data-library-resource="7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1" href="../fs-components/component-specs/library/releases/7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1/components/dialog-templates-current.css">
+<link rel="stylesheet" data-library-resource="7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1" href="../fs-components/component-specs/library/releases/7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1/components/button-runtime-current.css">
+<link rel="stylesheet" data-library-resource="7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1" href="../fs-components/component-specs/library/releases/7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1/components/input-footer-source.css">
+<link rel="stylesheet" data-library-resource="7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1" href="../fs-components/component-specs/library/releases/7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1/components/breadcrumb-current.css">
+<link rel="stylesheet" data-library-resource="7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1" href="../fs-components/component-specs/library/releases/7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1/components/card-current.css">
+<link rel="stylesheet" data-library-resource="7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1" href="../fs-components/component-specs/library/releases/7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1/components/input-current.css">
+<link rel="stylesheet" data-library-resource="7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1" href="../fs-components/component-specs/library/releases/7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1/components/navigation-footer-current.css">
+<link rel="stylesheet" data-library-resource="7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1" href="../fs-components/component-specs/library/releases/7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1/components/text-button-current.css">
+<link rel="stylesheet" data-library-resource="7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1" href="../fs-components/component-specs/library/releases/7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1/components/cart-current.css">
+<link rel="stylesheet" data-library-resource="7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1" href="../fs-components/component-specs/library/releases/7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1/components/checkbox-current.css">
+<link rel="stylesheet" data-library-resource="7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1" href="../fs-components/component-specs/library/releases/7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1/components/navigation-header-action-atom.css">
+<link rel="stylesheet" data-library-resource="7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1" href="../fs-components/component-specs/library/releases/7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1/components/tag-current.css">
+<link rel="stylesheet" data-library-resource="7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1" href="../fs-components/component-specs/library/releases/7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1/components/menu-navigation-current.css">
+<link rel="stylesheet" data-library-resource="7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1" href="../fs-components/component-specs/library/releases/7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1/components/list-unordered-current.css">
+<link rel="stylesheet" data-library-resource="7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1" href="../fs-components/component-specs/library/releases/7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1/components/navigation-products-current.css">
+<link rel="stylesheet" data-library-resource="7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1" href="../fs-components/component-specs/library/releases/7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1/components/tag-product-current.css">
+<link rel="stylesheet" data-library-resource="7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1" href="../fs-components/component-specs/library/releases/7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1/components/icon-card-current.css">
+<link rel="stylesheet" data-library-resource="7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1" href="../fs-components/component-specs/library/releases/7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1/components/carousel-current.css">
+<link rel="stylesheet" data-library-resource="7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1" href="../fs-components/component-specs/library/releases/7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1/components/carousel-external.css">
+<link rel="stylesheet" data-library-resource="7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1" href="../fs-components/component-specs/library/releases/7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1/local-fonts.css">
+</head>
+<body>
+  <header class="ds-nav-header" data-fragment="header" data-ai-example="ai-navigation-fixed-header" data-header-products-current="pc" data-library-component="library-navigation" data-library-fragment="header" data-library-release="7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1" data-library-props="{}">
+    <div class="ds-nav-header__topbar">
+      <div class="ds-nav-header__topbar-inner">
+        <div class="ds-nav-header__topbar-left">
+          <span class="ds-nav-header__topbar-text">FS United States</span>
+          <span class="ds-nav-header__topbar-divider"></span>
+          <span class="ds-nav-header__topbar-text">FREE SHIPPING on Orders Over US$79</span>
+        </div>
+        <div class="ds-nav-header__topbar-right">
+          <a href="#" class="ds-nav-header__topbar-link">Contact Us</a>
+          <span class="ds-nav-header__topbar-divider"></span>
+          <a href="#" class="ds-nav-header__topbar-link">
+            United States / $ USD
+            <svg class="ds-nav-header__dropdown-icon" width="12" height="12" viewBox="0 0 12 12" fill="none">
+              <path d="M3 4.5L6 7.5L9 4.5" stroke="#707070" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <nav class="ds-nav-header__main">
+      <div class="ds-nav-header__main-inner">
+        <a id="library-instance-1-icon-usage-icon-logo-fs" href="#" class="ds-nav-header__logo" aria-label="FS.com Home" style="scroll-margin-top: 40px;">
+          <img src="../fs-components/component-specs/library/releases/7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1/components/icons/icon-logo-fs.svg" alt="FS Logo" width="76" height="36">
+        </a>
+        <ul class="ds-nav-header__links">
+          <li class="ds-nav-header__link-item"><a href="#" class="ds-nav-header__link" data-header-products-trigger="" role="button" aria-haspopup="true" aria-expanded="false" aria-controls="library-instance-1-header-product-menu-panel">All Products</a></li>
+          <li class="ds-nav-header__link-item"><a href="#" class="ds-nav-header__link">Software</a></li>
+          <li class="ds-nav-header__link-item"><a href="#" class="ds-nav-header__link">Solutions</a></li>
+          <li class="ds-nav-header__link-item"><a href="#" class="ds-nav-header__link">Services</a></li>
+          <li class="ds-nav-header__link-item"><a href="#" class="ds-nav-header__link">Resources</a></li>
+          <li class="ds-nav-header__link-item"><a href="#" class="ds-nav-header__link">Contact Us</a></li>
+        </ul>
+        <div class="ds-nav-header__actions">
+          <button id="library-instance-1-icon-usage-icon-search" class="ds-nav-header__action-btn" type="button" aria-label="Search" style="scroll-margin-top: 40px;">
+            <img src="../fs-components/component-specs/library/releases/7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1/components/icons/navigation-header-search-1013.png" alt="" width="24" height="24">
+          </button>
+          <button id="library-instance-1-icon-usage-icon-cart" class="ds-nav-header__action-btn" type="button" aria-label="Cart" style="scroll-margin-top: 40px;">
+            <img src="../fs-components/component-specs/library/releases/7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1/components/icons/icon-cart.svg" alt="" width="24" height="24">
+          </button>
+          <button id="library-instance-1-icon-usage-icon-account" class="ds-nav-header__action-btn" type="button" aria-label="Account" style="scroll-margin-top: 40px;">
+            <img src="../fs-components/component-specs/library/releases/7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1/components/icons/icon-account.svg" alt="" width="24" height="24">
+          </button>
+        </div>
+      </div>
+    </nav>
+  <div class="ds-nav-header__product-menu" id="library-instance-1-header-product-menu-panel" hidden=""><nav class="ds-menu-navigation ds-menu-navigation--public-header" data-menu-navigation="" aria-label="Public header product menu">
+        <ul class="ds-menu-navigation__list">
+          <li><button class="ds-menu-navigation__item ds-menu-navigation__item--selected" type="button" data-value="switches" aria-pressed="true"><img class="ds-menu-navigation__product-icon" src="../fs-components/component-specs/library/releases/7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1/components/icons/icon-menu-switches.svg" alt=""><span class="ds-menu-navigation__item-label">Switches</span></button></li>
+          <li><button class="ds-menu-navigation__item" type="button" data-value="networking"><img class="ds-menu-navigation__product-icon" src="../fs-components/component-specs/library/releases/7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1/components/icons/icon-menu-networking.svg" alt=""><span class="ds-menu-navigation__item-label">Networking</span></button></li>
+          <li><button class="ds-menu-navigation__item" type="button" data-value="optical-transceivers"><img class="ds-menu-navigation__product-icon" src="../fs-components/component-specs/library/releases/7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1/components/icons/icon-menu-optical-transceivers.svg" alt=""><span class="ds-menu-navigation__item-label">Optical Transceivers</span></button></li>
+          <li><button class="ds-menu-navigation__item" type="button" data-value="fiber-optic-cables"><img class="ds-menu-navigation__product-icon" src="../fs-components/component-specs/library/releases/7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1/components/icons/icon-menu-fiber-optic-cables.svg" alt=""><span class="ds-menu-navigation__item-label">Fiber Optic Cables</span></button></li>
+          <li><button class="ds-menu-navigation__item" type="button" data-value="panels-enclosures-racks"><img class="ds-menu-navigation__product-icon" src="../fs-components/component-specs/library/releases/7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1/components/icons/icon-menu-panels-enclosures-racks.svg" alt=""><span class="ds-menu-navigation__item-label">Panels, Enclosures &amp; Racks</span></button></li>
+          <li><button class="ds-menu-navigation__item" type="button" data-value="optical-networking"><img class="ds-menu-navigation__product-icon" src="../fs-components/component-specs/library/releases/7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1/components/icons/icon-menu-optical-networking.svg" alt=""><span class="ds-menu-navigation__item-label">Optical Networking</span></button></li>
+          <li><button class="ds-menu-navigation__item" type="button" data-value="copper-systems"><img class="ds-menu-navigation__product-icon" src="../fs-components/component-specs/library/releases/7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1/components/icons/icon-menu-copper-systems.svg" alt=""><span class="ds-menu-navigation__item-label">Copper Systems</span></button></li>
+          <li><button class="ds-menu-navigation__item" type="button" data-value="testers-tools"><img class="ds-menu-navigation__product-icon" src="../fs-components/component-specs/library/releases/7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1/components/icons/icon-menu-testers-tools.svg" alt=""><span class="ds-menu-navigation__item-label">Testers &amp; Tools</span></button></li>
+        </ul>
+      </nav></div></header>
+  
+  <main>
+    <div class="sp-breadcrumb-bar">
+      <div class="container">
+        <nav class="ds-breadcrumb" aria-label="Breadcrumb" data-breadcrumb-current="" data-ai-example="ai-breadcrumb-default" data-fragment="default" data-library-component="library-breadcrumb" data-library-fragment="default" data-library-release="7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1" data-library-props="{&quot;items&quot;:&quot;<div class=\&quot;ds-breadcrumb__item\&quot;><a href=\&quot;https://www.se.com/sg/en/\&quot; class=\&quot;ds-breadcrumb__link\&quot;>Home</a><span class=\&quot;ds-breadcrumb__separator\&quot; aria-hidden=\&quot;true\&quot;>/</span></div><div class=\&quot;ds-breadcrumb__item\&quot;><a href=\&quot;https://www.se.com/sg/en/work\&quot; class=\&quot;ds-breadcrumb__link\&quot;>For Your Business</a><span class=\&quot;ds-breadcrumb__separator\&quot; aria-hidden=\&quot;true\&quot;>/</span></div><div class=\&quot;ds-breadcrumb__item\&quot;><span class=\&quot;ds-breadcrumb__current\&quot;>Smart Panels</span></div>&quot;}"><div class="ds-breadcrumb__item"><a href="https://www.se.com/sg/en/" class="ds-breadcrumb__link">Home</a><span class="ds-breadcrumb__separator" aria-hidden="true">/</span></div><div class="ds-breadcrumb__item"><a href="https://www.se.com/sg/en/work" class="ds-breadcrumb__link">For Your Business</a><span class="ds-breadcrumb__separator" aria-hidden="true">/</span></div><div class="ds-breadcrumb__item"><span class="ds-breadcrumb__current">Smart Panels</span></div></nav>
+      </div>
+    </div>
+
+    <section id="hero" class="sp-hero-wrap" aria-label="Smart Panels Hero Carousel">
+      <div class="sp-banner-layer"><div class="ds-banner ds-banner--hero ds-banner--hero-responsive" data-preview-skeleton="hero-responsive" data-banner-current="" data-ai-example="ai-banner-hero-current" data-fragment="hero-responsive" data-library-component="library-banner" data-library-fragment="hero-responsive" data-library-release="7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1" data-banner-surface="image" data-library-props="{&quot;title&quot;:&quot;Smart Panels give your electrical system a voice&quot;,&quot;description&quot;:&quot;Get relevant and informative data to make the right decisions, at the right time with Smart Panels and EcoStruxure technologies.&quot;,&quot;actionLabel&quot;:&quot;Watch the video&quot;,&quot;actionCallback&quot;:&quot;handleHeroPrimaryAction&quot;,&quot;secondaryActionLabel&quot;:&quot;View the brochure&quot;,&quot;secondaryActionHref&quot;:&quot;https://download.se.com/files?p_enDocType=Brochure&amp;p_File_Name=998-20135902_GMA-US.pdf&amp;p_Doc_Ref=998-20135902_GMA-US&quot;,&quot;surface&quot;:&quot;image&quot;}"><div class="ds-banner__responsive-inner"><p class="ds-banner__title">Smart Panels give your electrical system a voice</p><p class="ds-banner__desc">Get relevant and informative data to make the right decisions, at the right time with Smart Panels and EcoStruxure technologies.</p><div class="ds-banner__actions"><button type="button" class="ds-btn ds-btn--outline-white ds-btn--xl" data-library-event-actioncallback="handleHeroPrimaryAction"><span class="ds-btn__text">Watch the video</span></button><a class="ds-btn ds-btn--outline-white ds-btn--xl" data-banner-secondary-action="" href="https://download.se.com/files?p_enDocType=Brochure&amp;p_File_Name=998-20135902_GMA-US.pdf&amp;p_Doc_Ref=998-20135902_GMA-US"><span class="ds-btn__text">View the brochure</span></a></div></div></div></div>
+      <div class="sp-hero-dots" role="tablist" aria-label="Hero slides" data-fs-extend="hero-slide-dots">
+        <button type="button" class="sp-dot" role="tab" aria-selected="true" aria-label="Slide 1" data-hero-dot="0"></button>
+        <button type="button" class="sp-dot" role="tab" aria-selected="false" aria-label="Slide 2" data-hero-dot="1"></button>
+        <button type="button" class="sp-dot" role="tab" aria-selected="false" aria-label="Slide 3" data-hero-dot="2"></button>
+      </div>
+    </section>
+
+    <section id="intro" class="page-section page-section--gray">
+      <div class="container">
+        <div class="sp-intro-card-wrap sp-intro-media-fit" data-fs-extend="intro-panel-surface">
+          <div class="ds-card ds-card--horizontal ds-card--source-responsive" data-preview-skeleton="horizontal-responsive" data-card-current="horizontal-unbordered" data-ai-example="ai-card-horizontal-current" data-fragment="spliced-horizontal-full-width-responsive" data-library-component="library-card" data-library-fragment="spliced-horizontal-full-width-responsive" data-library-release="7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1" data-card-image-position="left" data-library-props="{&quot;title&quot;:&quot;Say hello to Smart Panels, an EcoStruxure Power solution&quot;,&quot;description&quot;:&quot;Now your electrical panel is your partner. By connecting cutting-edge hardware with innovative software, Smart Panels enable you to pinpoint overloads and inefficiencies proactively, make informed decisions that improve operational efficiency, and finally stop chasing vague alarms.&quot;,&quot;image&quot;:&quot;<img src=\&quot;assets/se-smart-panels/intro-panel.jpg\&quot; alt=\&quot;Smart Panel connected electrical switchboard\&quot;>&quot;,&quot;imagePosition&quot;:&quot;left&quot;,&quot;sourceAbsent&quot;:{&quot;reference&quot;:&quot;reference-inputs/se-smart-panels/content.json&quot;,&quot;objectId&quot;:&quot;intro-panel&quot;,&quot;slots&quot;:[&quot;link&quot;]}}"><div class="ds-card__image"><img src="assets/se-smart-panels/intro-panel.jpg" alt="Smart Panel connected electrical switchboard"></div><div class="ds-card__body"><div class="ds-card__content-stack"><p class="ds-card__title">Say hello to Smart Panels, an EcoStruxure Power solution</p><p class="ds-card__desc">Now your electrical panel is your partner. By connecting cutting-edge hardware with innovative software, Smart Panels enable you to pinpoint overloads and inefficiencies proactively, make informed decisions that improve operational efficiency, and finally stop chasing vague alarms.</p></div></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="pillars" class="page-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Protect, Measure, and Connect</h2>
+          <p class="section-desc">End-to-end connected electrical distribution capabilities built into every Smart Panel.</p>
+        </div>
+        <div class="grid grid--3">
+          <div class="ds-card ds-card--vertical ds-card--bordered" data-card-current="vertical-single-event" data-ai-example="ai-card-spliced-vertical-single-event-bordered" data-fragment="spliced-vertical-single-event-bordered" data-library-component="library-card" data-library-fragment="spliced-vertical-single-event-bordered" data-library-release="7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1" data-library-props="{&quot;title&quot;:&quot;Protect&quot;,&quot;description&quot;:&quot;<p>Help safeguard people and equipment with reliable, high-performance technology in every breaker and residual current device.</p>&quot;,&quot;image&quot;:&quot;<img src=\&quot;assets/se-smart-panels/feat-protect.jpg\&quot; alt=\&quot;Smart Panel circuit breaker protection\&quot;>&quot;,&quot;sourceAbsent&quot;:{&quot;reference&quot;:&quot;reference-inputs/se-smart-panels/content.json&quot;,&quot;objectId&quot;:&quot;pillar-protect&quot;,&quot;slots&quot;:[&quot;category&quot;,&quot;link&quot;]}}"><div class="ds-card__image"><img src="assets/se-smart-panels/feat-protect.jpg" alt="Smart Panel circuit breaker protection"></div><div class="ds-card__body"><p class="ds-card__title">Protect</p><div class="ds-card__desc"><p>Help safeguard people and equipment with reliable, high-performance technology in every breaker and residual current device.</p></div></div></div>
+<div class="ds-card ds-card--vertical ds-card--bordered" data-card-current="vertical-single-event" data-ai-example="ai-card-spliced-vertical-single-event-bordered" data-fragment="spliced-vertical-single-event-bordered" data-library-component="library-card" data-library-fragment="spliced-vertical-single-event-bordered" data-library-release="7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1" data-library-props="{&quot;title&quot;:&quot;Measure&quot;,&quot;description&quot;:&quot;<p>Smart sensors and connected offers enable your panel to send you all the data you need for better energy efficiency with alarming and maintenance notifications.</p>&quot;,&quot;image&quot;:&quot;<img src=\&quot;assets/se-smart-panels/feat-measure.jpg\&quot; alt=\&quot;Engineer installing smart energy sensors inside electrical panel\&quot;>&quot;,&quot;sourceAbsent&quot;:{&quot;reference&quot;:&quot;reference-inputs/se-smart-panels/content.json&quot;,&quot;objectId&quot;:&quot;pillar-measure&quot;,&quot;slots&quot;:[&quot;category&quot;,&quot;link&quot;]}}"><div class="ds-card__image"><img src="assets/se-smart-panels/feat-measure.jpg" alt="Engineer installing smart energy sensors inside electrical panel"></div><div class="ds-card__body"><p class="ds-card__title">Measure</p><div class="ds-card__desc"><p>Smart sensors and connected offers enable your panel to send you all the data you need for better energy efficiency with alarming and maintenance notifications.</p></div></div></div>
+<div class="ds-card ds-card--vertical ds-card--bordered" data-card-current="vertical-single-event" data-ai-example="ai-card-spliced-vertical-single-event-bordered" data-fragment="spliced-vertical-single-event-bordered" data-library-component="library-card" data-library-fragment="spliced-vertical-single-event-bordered" data-library-release="7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1" data-library-props="{&quot;title&quot;:&quot;Connect&quot;,&quot;description&quot;:&quot;<p>Smart Panels connect via Ethernet or wirelessly, so you can use minimal bandwidth and monitor your building in real-time.</p>&quot;,&quot;image&quot;:&quot;<img src=\&quot;assets/se-smart-panels/feat-connect.jpg\&quot; alt=\&quot;Connecting Ethernet cable to Smart Panel communication module\&quot;>&quot;,&quot;sourceAbsent&quot;:{&quot;reference&quot;:&quot;reference-inputs/se-smart-panels/content.json&quot;,&quot;objectId&quot;:&quot;pillar-connect&quot;,&quot;slots&quot;:[&quot;category&quot;,&quot;link&quot;]}}"><div class="ds-card__image"><img src="assets/se-smart-panels/feat-connect.jpg" alt="Connecting Ethernet cable to Smart Panel communication module"></div><div class="ds-card__body"><p class="ds-card__title">Connect</p><div class="ds-card__desc"><p>Smart Panels connect via Ethernet or wirelessly, so you can use minimal bandwidth and monitor your building in real-time.</p></div></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="why-smart-panels" class="page-section page-section--gray">
+      <div class="container">
+        <div class="sp-intro-card-wrap" data-fs-extend="why-panel-surface">
+          <div class="ds-card ds-card--horizontal ds-card--source-responsive" data-preview-skeleton="horizontal-responsive" data-card-current="horizontal-unbordered" data-ai-example="ai-card-horizontal-current" data-fragment="spliced-horizontal-full-width-responsive" data-library-component="library-card" data-library-fragment="spliced-horizontal-full-width-responsive" data-library-release="7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1" data-card-image-position="left" data-library-props="{&quot;title&quot;:&quot;Why Smart Panels?&quot;,&quot;description&quot;:&quot;Smart Panels are simple, Ethernet-connected solutions for managing power distribution. They give your electrical equipment the ability to directly communicate to you. Instead of spending hours or days gathering the information you need, it arrives in real time. Data is presented clearly on your computer or smart device, giving you the big picture so you can easily keep track of your building’s electrical system status.&quot;,&quot;image&quot;:&quot;<img src=\&quot;assets/se-smart-panels/why-video.jpg\&quot; alt=\&quot;Say Hello to Smart Panels overview video\&quot;>&quot;,&quot;linkLabel&quot;:&quot;Watch overview video&quot;,&quot;href&quot;:&quot;#why-smart-panels-video&quot;,&quot;imagePosition&quot;:&quot;left&quot;}"><div class="ds-card__image"><img src="assets/se-smart-panels/why-video.jpg" alt="Say Hello to Smart Panels overview video"></div><div class="ds-card__body"><div class="ds-card__content-stack"><p class="ds-card__title">Why Smart Panels?</p><p class="ds-card__desc">Smart Panels are simple, Ethernet-connected solutions for managing power distribution. They give your electrical equipment the ability to directly communicate to you. Instead of spending hours or days gathering the information you need, it arrives in real time. Data is presented clearly on your computer or smart device, giving you the big picture so you can easily keep track of your building’s electrical system status.</p></div><div class="ds-card__link"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="#why-smart-panels-video"><span class="ds-text-btn__text">Watch overview video</span><img class="ds-text-btn__icon" src="../fs-components/component-specs/library/releases/7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1/components/icons/icon-text-button-arrow-right-regular.svg" alt=""></a></div></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="power-commission" class="sp-commission-wrap" aria-label="EcoStruxure Power Commission">
+      <div class="sp-banner-layer"><div class="ds-banner ds-banner--hero ds-banner--hero-responsive" data-preview-skeleton="hero-responsive" data-banner-current="" data-ai-example="ai-banner-hero-current" data-fragment="hero-responsive" data-library-component="library-banner" data-library-fragment="hero-responsive" data-library-release="7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1" data-banner-surface="image" data-library-props="{&quot;title&quot;:&quot;Easy set-up with EcoStruxure Power Commission&quot;,&quot;description&quot;:&quot;Configure and commission your Smart Panels easily with EcoStruxure Power Commission software, featuring smart device discovery, connectivity testing and one-click manufacturer test reporting.&quot;,&quot;actionLabel&quot;:&quot;Discover now&quot;,&quot;actionCallback&quot;:&quot;openCommissionLink&quot;,&quot;surface&quot;:&quot;image&quot;}"><div class="ds-banner__responsive-inner"><p class="ds-banner__title">Easy set-up with EcoStruxure Power Commission</p><p class="ds-banner__desc">Configure and commission your Smart Panels easily with EcoStruxure Power Commission software, featuring smart device discovery, connectivity testing and one-click manufacturer test reporting.</p><div class="ds-banner__actions"><button type="button" class="ds-btn ds-btn--outline-white ds-btn--xl" data-library-event-actioncallback="openCommissionLink"><span class="ds-btn__text">Discover now</span></button></div></div></div></div>
+    </section>
+
+    <section id="ecoxperts" class="page-section">
+      <div class="container">
+        <div class="ds-card ds-card--horizontal ds-card--source-responsive" data-preview-skeleton="horizontal-responsive" data-card-current="horizontal-unbordered" data-ai-example="ai-card-horizontal-current" data-fragment="spliced-horizontal-full-width-responsive" data-library-component="library-card" data-library-fragment="spliced-horizontal-full-width-responsive" data-library-release="7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1" data-card-image-position="left" data-library-props="{&quot;title&quot;:&quot;Design, build, test and connect your digital panels&quot;,&quot;description&quot;:&quot;Digital Panel certified EcoXperts are panel builders and electrical contractors with extensive knowledge and proven competence in delivering efficient, tested, and ethernet-ready panels. With this certification, panel builders and electrical contractors receive training to design, build, configure, test, commission, and connect their digital panels to EcoStruxure Facility Expert. Certified EcoXperts are sought-after experts in their field and bring the expertise of the EcoStruxure Power architecture to their customers.&quot;,&quot;image&quot;:&quot;<img src=\&quot;assets/se-smart-panels/ecoxpert-panel.jpg\&quot; alt=\&quot;Digital Panel certified EcoXpert engineers testing electrical panels\&quot;>&quot;,&quot;linkLabel&quot;:&quot;Join EcoXperts&quot;,&quot;href&quot;:&quot;https://www.se.com/sg/en/partners/ecoxpert&quot;,&quot;imagePosition&quot;:&quot;left&quot;}"><div class="ds-card__image"><img src="assets/se-smart-panels/ecoxpert-panel.jpg" alt="Digital Panel certified EcoXpert engineers testing electrical panels"></div><div class="ds-card__body"><div class="ds-card__content-stack"><p class="ds-card__title">Design, build, test and connect your digital panels</p><p class="ds-card__desc">Digital Panel certified EcoXperts are panel builders and electrical contractors with extensive knowledge and proven competence in delivering efficient, tested, and ethernet-ready panels. With this certification, panel builders and electrical contractors receive training to design, build, configure, test, commission, and connect their digital panels to EcoStruxure Facility Expert. Certified EcoXperts are sought-after experts in their field and bring the expertise of the EcoStruxure Power architecture to their customers.</p></div><div class="ds-card__link"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="https://www.se.com/sg/en/partners/ecoxpert"><span class="ds-text-btn__text">Join EcoXperts</span><img class="ds-text-btn__icon" src="../fs-components/component-specs/library/releases/7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1/components/icons/icon-text-button-arrow-right-regular.svg" alt=""></a></div></div></div>
+      </div>
+    </section>
+
+    <section id="related-products" class="page-section page-section--gray">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Related Products</h2>
+          <p class="section-desc">Explore connected circuit breakers, wireless sensors, gateways, and power monitoring devices for Smart Panels.</p>
+        </div>
+        <div class="sp-products-fit" data-fs-extend="product-image-contain">
+          <div class="ds-carousel-external" data-carousel-external="v1" data-rail="external-cards" data-carousel-columns="4" role="region" aria-roledescription="carousel" aria-label="Related Products" data-ai-example="ai-carousel-external-cards" data-fragment="external-cards" data-library-component="library-carousel" data-library-fragment="external-cards" data-library-release="7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1" data-library-props="{&quot;columns&quot;:4,&quot;accessibleLabel&quot;:&quot;Related Products&quot;,&quot;items&quot;:[{&quot;component&quot;:&quot;library-card&quot;,&quot;fragment&quot;:&quot;spliced-vertical-single-event&quot;,&quot;props&quot;:{&quot;title&quot;:&quot;MasterPact MTZ&quot;,&quot;description&quot;:&quot;<p>High-current air circuit breakers with embedded digital metering and connectivity.</p>&quot;,&quot;image&quot;:&quot;<img src=\&quot;assets/se-smart-panels/prod-01-masterpact.jpg\&quot; alt=\&quot;MasterPact MTZ\&quot;>&quot;,&quot;linkLabel&quot;:&quot;View product&quot;,&quot;href&quot;:&quot;https://www.se.com/sg/en/product-range/63545-masterpact-mtz/&quot;,&quot;sourceAbsent&quot;:{&quot;reference&quot;:&quot;reference-inputs/se-smart-panels/content.json&quot;,&quot;objectId&quot;:&quot;prod-01&quot;,&quot;slots&quot;:[&quot;category&quot;]}}},{&quot;component&quot;:&quot;library-card&quot;,&quot;fragment&quot;:&quot;spliced-vertical-single-event&quot;,&quot;props&quot;:{&quot;title&quot;:&quot;Din rail modular devices&quot;,&quot;description&quot;:&quot;<p>Modular protection, control, and energy metering devices for final distribution.</p>&quot;,&quot;image&quot;:&quot;<img src=\&quot;assets/se-smart-panels/prod-02-dinrail.jpg\&quot; alt=\&quot;Din rail modular devices\&quot;>&quot;,&quot;linkLabel&quot;:&quot;View product&quot;,&quot;href&quot;:&quot;https://www.se.com/sg/en/product-category/1600-din-rail-modular-devices/&quot;,&quot;sourceAbsent&quot;:{&quot;reference&quot;:&quot;reference-inputs/se-smart-panels/content.json&quot;,&quot;objectId&quot;:&quot;prod-02&quot;,&quot;slots&quot;:[&quot;category&quot;]}}},{&quot;component&quot;:&quot;library-card&quot;,&quot;fragment&quot;:&quot;spliced-vertical-single-event&quot;,&quot;props&quot;:{&quot;title&quot;:&quot;PowerLogic™ PowerTag&quot;,&quot;description&quot;:&quot;<p>Wireless energy sensors delivering real-time load monitoring and power alarming.</p>&quot;,&quot;image&quot;:&quot;<img src=\&quot;assets/se-smart-panels/prod-03-powertag.jpg\&quot; alt=\&quot;PowerLogic™ PowerTag\&quot;>&quot;,&quot;linkLabel&quot;:&quot;View product&quot;,&quot;href&quot;:&quot;https://www.se.com/sg/en/product-range/63626-powerlogic-powertag/&quot;,&quot;sourceAbsent&quot;:{&quot;reference&quot;:&quot;reference-inputs/se-smart-panels/content.json&quot;,&quot;objectId&quot;:&quot;prod-03&quot;,&quot;slots&quot;:[&quot;category&quot;]}}},{&quot;component&quot;:&quot;library-card&quot;,&quot;fragment&quot;:&quot;spliced-vertical-single-event&quot;,&quot;props&quot;:{&quot;title&quot;:&quot;Power Monitoring and Control&quot;,&quot;description&quot;:&quot;<p>Meters, gateways, and software for facility-wide power quality and energy visibility.</p>&quot;,&quot;image&quot;:&quot;<img src=\&quot;assets/se-smart-panels/prod-04-powermon.jpg\&quot; alt=\&quot;Power Monitoring and Control\&quot;>&quot;,&quot;linkLabel&quot;:&quot;View product&quot;,&quot;href&quot;:&quot;https://www.se.com/sg/en/product-category/4100-power-monitoring-and-control/&quot;,&quot;sourceAbsent&quot;:{&quot;reference&quot;:&quot;reference-inputs/se-smart-panels/content.json&quot;,&quot;objectId&quot;:&quot;prod-04&quot;,&quot;slots&quot;:[&quot;category&quot;]}}},{&quot;component&quot;:&quot;library-card&quot;,&quot;fragment&quot;:&quot;spliced-vertical-single-event&quot;,&quot;props&quot;:{&quot;title&quot;:&quot;Enerlin’X IFE, EIFE, IFM&quot;,&quot;description&quot;:&quot;<p>Ethernet and Modbus communication interfaces for connected circuit breakers.</p>&quot;,&quot;image&quot;:&quot;<img src=\&quot;assets/se-smart-panels/prod-05-enerlinx.jpg\&quot; alt=\&quot;Enerlin’X IFE, EIFE, IFM\&quot;>&quot;,&quot;linkLabel&quot;:&quot;View product&quot;,&quot;href&quot;:&quot;https://www.se.com/sg/en/product-range/62413-enerlinx-ife-eife-ifm/&quot;,&quot;sourceAbsent&quot;:{&quot;reference&quot;:&quot;reference-inputs/se-smart-panels/content.json&quot;,&quot;objectId&quot;:&quot;prod-05&quot;,&quot;slots&quot;:[&quot;category&quot;]}}},{&quot;component&quot;:&quot;library-card&quot;,&quot;fragment&quot;:&quot;spliced-vertical-single-event&quot;,&quot;props&quot;:{&quot;title&quot;:&quot;Acti 9 Smartlink Modbus&quot;,&quot;description&quot;:&quot;<p>Smart communication gateway aggregating metering and status data from DIN rail devices.</p>&quot;,&quot;image&quot;:&quot;<img src=\&quot;assets/se-smart-panels/prod-06-acti9.jpg\&quot; alt=\&quot;Acti 9 Smartlink Modbus\&quot;>&quot;,&quot;linkLabel&quot;:&quot;View product&quot;,&quot;href&quot;:&quot;https://www.se.com/sg/en/product-range/61356-acti-9-smartlink-modbus/&quot;,&quot;sourceAbsent&quot;:{&quot;reference&quot;:&quot;reference-inputs/se-smart-panels/content.json&quot;,&quot;objectId&quot;:&quot;prod-06&quot;,&quot;slots&quot;:[&quot;category&quot;]}}},{&quot;component&quot;:&quot;library-card&quot;,&quot;fragment&quot;:&quot;spliced-vertical-single-event&quot;,&quot;props&quot;:{&quot;title&quot;:&quot;MicroLogic&quot;,&quot;description&quot;:&quot;<p>Electronic trip units providing advanced protection, measurement, and diagnostics.</p>&quot;,&quot;image&quot;:&quot;<img src=\&quot;assets/se-smart-panels/prod-07-micrologic.jpg\&quot; alt=\&quot;MicroLogic\&quot;>&quot;,&quot;linkLabel&quot;:&quot;View product&quot;,&quot;href&quot;:&quot;https://www.se.com/sg/en/product-range/1008-micrologic/&quot;,&quot;sourceAbsent&quot;:{&quot;reference&quot;:&quot;reference-inputs/se-smart-panels/content.json&quot;,&quot;objectId&quot;:&quot;prod-07&quot;,&quot;slots&quot;:[&quot;category&quot;]}}},{&quot;component&quot;:&quot;library-card&quot;,&quot;fragment&quot;:&quot;spliced-vertical-single-event&quot;,&quot;props&quot;:{&quot;title&quot;:&quot;EcoStruxure™ Panel Server&quot;,&quot;description&quot;:&quot;<p>High-performance IoT gateway connecting wireless and wired devices to cloud analytics.</p>&quot;,&quot;image&quot;:&quot;<img src=\&quot;assets/se-smart-panels/prod-08-panelserver.jpg\&quot; alt=\&quot;EcoStruxure™ Panel Server\&quot;>&quot;,&quot;linkLabel&quot;:&quot;View product&quot;,&quot;href&quot;:&quot;https://www.se.com/sg/en/product-range/40739468-ecostruxure-panel-server/&quot;,&quot;sourceAbsent&quot;:{&quot;reference&quot;:&quot;reference-inputs/se-smart-panels/content.json&quot;,&quot;objectId&quot;:&quot;prod-08&quot;,&quot;slots&quot;:[&quot;category&quot;]}}},{&quot;component&quot;:&quot;library-card&quot;,&quot;fragment&quot;:&quot;spliced-vertical-single-event&quot;,&quot;props&quot;:{&quot;title&quot;:&quot;ComPacT NSX, new generation&quot;,&quot;description&quot;:&quot;<p>Moulded case circuit breakers engineered for reliability and wireless auxiliary connectivity.</p>&quot;,&quot;image&quot;:&quot;<img src=\&quot;assets/se-smart-panels/prod-09-nsx.jpg\&quot; alt=\&quot;ComPacT NSX, new generation\&quot;>&quot;,&quot;linkLabel&quot;:&quot;View product&quot;,&quot;href&quot;:&quot;https://www.se.com/sg/en/product-range/39910531-compact-nsx-new-generation/&quot;,&quot;sourceAbsent&quot;:{&quot;reference&quot;:&quot;reference-inputs/se-smart-panels/content.json&quot;,&quot;objectId&quot;:&quot;prod-09&quot;,&quot;slots&quot;:[&quot;category&quot;]}}},{&quot;component&quot;:&quot;library-card&quot;,&quot;fragment&quot;:&quot;spliced-vertical-single-event&quot;,&quot;props&quot;:{&quot;title&quot;:&quot;ComPacT NSXm, new generation&quot;,&quot;description&quot;:&quot;<p>Compact circuit breakers with EverLink connectors and integrated energy monitoring.</p>&quot;,&quot;image&quot;:&quot;<img src=\&quot;assets/se-smart-panels/prod-10-nsxm.jpg\&quot; alt=\&quot;ComPacT NSXm, new generation\&quot;>&quot;,&quot;linkLabel&quot;:&quot;View product&quot;,&quot;href&quot;:&quot;https://www.se.com/sg/en/product-range/39910433-compact-nsxm-new-generation/&quot;,&quot;sourceAbsent&quot;:{&quot;reference&quot;:&quot;reference-inputs/se-smart-panels/content.json&quot;,&quot;objectId&quot;:&quot;prod-10&quot;,&quot;slots&quot;:[&quot;category&quot;]}}}]}"><div class="ds-carousel-external__viewport" data-rail-viewport=""><div class="ds-carousel-external__track rail-track"><div class="ds-carousel-external__item"><div class="ds-card ds-card--vertical ds-card--no-border" data-card-current="vertical-single-event" data-card-layout="parent-grid" data-ai-example="ai-card-spliced-vertical-single-event" data-fragment="spliced-vertical-single-event" data-library-component="library-card" data-library-fragment="spliced-vertical-single-event" data-library-release="7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1" data-library-props="{&quot;title&quot;:&quot;MasterPact MTZ&quot;,&quot;description&quot;:&quot;<p>High-current air circuit breakers with embedded digital metering and connectivity.</p>&quot;,&quot;image&quot;:&quot;<img src=\&quot;assets/se-smart-panels/prod-01-masterpact.jpg\&quot; alt=\&quot;MasterPact MTZ\&quot;>&quot;,&quot;linkLabel&quot;:&quot;View product&quot;,&quot;href&quot;:&quot;https://www.se.com/sg/en/product-range/63545-masterpact-mtz/&quot;,&quot;sourceAbsent&quot;:{&quot;reference&quot;:&quot;reference-inputs/se-smart-panels/content.json&quot;,&quot;objectId&quot;:&quot;prod-01&quot;,&quot;slots&quot;:[&quot;category&quot;]}}"><div class="ds-card__image"><img src="assets/se-smart-panels/prod-01-masterpact.jpg" alt="MasterPact MTZ"></div><div class="ds-card__body"><p class="ds-card__title">MasterPact MTZ</p><div class="ds-card__desc"><p>High-current air circuit breakers with embedded digital metering and connectivity.</p></div><div class="ds-card__link"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="https://www.se.com/sg/en/product-range/63545-masterpact-mtz/"><span class="ds-text-btn__text">View product</span><img class="ds-text-btn__icon" src="../fs-components/component-specs/library/releases/7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1/components/icons/icon-text-button-arrow-right-regular.svg" alt=""></a></div></div></div></div><div class="ds-carousel-external__item"><div class="ds-card ds-card--vertical ds-card--no-border" data-card-current="vertical-single-event" data-card-layout="parent-grid" data-ai-example="ai-card-spliced-vertical-single-event" data-fragment="spliced-vertical-single-event" data-library-component="library-card" data-library-fragment="spliced-vertical-single-event" data-library-release="7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1" data-library-props="{&quot;title&quot;:&quot;Din rail modular devices&quot;,&quot;description&quot;:&quot;<p>Modular protection, control, and energy metering devices for final distribution.</p>&quot;,&quot;image&quot;:&quot;<img src=\&quot;assets/se-smart-panels/prod-02-dinrail.jpg\&quot; alt=\&quot;Din rail modular devices\&quot;>&quot;,&quot;linkLabel&quot;:&quot;View product&quot;,&quot;href&quot;:&quot;https://www.se.com/sg/en/product-category/1600-din-rail-modular-devices/&quot;,&quot;sourceAbsent&quot;:{&quot;reference&quot;:&quot;reference-inputs/se-smart-panels/content.json&quot;,&quot;objectId&quot;:&quot;prod-02&quot;,&quot;slots&quot;:[&quot;category&quot;]}}"><div class="ds-card__image"><img src="assets/se-smart-panels/prod-02-dinrail.jpg" alt="Din rail modular devices"></div><div class="ds-card__body"><p class="ds-card__title">Din rail modular devices</p><div class="ds-card__desc"><p>Modular protection, control, and energy metering devices for final distribution.</p></div><div class="ds-card__link"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="https://www.se.com/sg/en/product-category/1600-din-rail-modular-devices/"><span class="ds-text-btn__text">View product</span><img class="ds-text-btn__icon" src="../fs-components/component-specs/library/releases/7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1/components/icons/icon-text-button-arrow-right-regular.svg" alt=""></a></div></div></div></div><div class="ds-carousel-external__item"><div class="ds-card ds-card--vertical ds-card--no-border" data-card-current="vertical-single-event" data-card-layout="parent-grid" data-ai-example="ai-card-spliced-vertical-single-event" data-fragment="spliced-vertical-single-event" data-library-component="library-card" data-library-fragment="spliced-vertical-single-event" data-library-release="7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1" data-library-props="{&quot;title&quot;:&quot;PowerLogic™ PowerTag&quot;,&quot;description&quot;:&quot;<p>Wireless energy sensors delivering real-time load monitoring and power alarming.</p>&quot;,&quot;image&quot;:&quot;<img src=\&quot;assets/se-smart-panels/prod-03-powertag.jpg\&quot; alt=\&quot;PowerLogic™ PowerTag\&quot;>&quot;,&quot;linkLabel&quot;:&quot;View product&quot;,&quot;href&quot;:&quot;https://www.se.com/sg/en/product-range/63626-powerlogic-powertag/&quot;,&quot;sourceAbsent&quot;:{&quot;reference&quot;:&quot;reference-inputs/se-smart-panels/content.json&quot;,&quot;objectId&quot;:&quot;prod-03&quot;,&quot;slots&quot;:[&quot;category&quot;]}}"><div class="ds-card__image"><img src="assets/se-smart-panels/prod-03-powertag.jpg" alt="PowerLogic™ PowerTag"></div><div class="ds-card__body"><p class="ds-card__title">PowerLogic™ PowerTag</p><div class="ds-card__desc"><p>Wireless energy sensors delivering real-time load monitoring and power alarming.</p></div><div class="ds-card__link"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="https://www.se.com/sg/en/product-range/63626-powerlogic-powertag/"><span class="ds-text-btn__text">View product</span><img class="ds-text-btn__icon" src="../fs-components/component-specs/library/releases/7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1/components/icons/icon-text-button-arrow-right-regular.svg" alt=""></a></div></div></div></div><div class="ds-carousel-external__item"><div class="ds-card ds-card--vertical ds-card--no-border" data-card-current="vertical-single-event" data-card-layout="parent-grid" data-ai-example="ai-card-spliced-vertical-single-event" data-fragment="spliced-vertical-single-event" data-library-component="library-card" data-library-fragment="spliced-vertical-single-event" data-library-release="7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1" data-library-props="{&quot;title&quot;:&quot;Power Monitoring and Control&quot;,&quot;description&quot;:&quot;<p>Meters, gateways, and software for facility-wide power quality and energy visibility.</p>&quot;,&quot;image&quot;:&quot;<img src=\&quot;assets/se-smart-panels/prod-04-powermon.jpg\&quot; alt=\&quot;Power Monitoring and Control\&quot;>&quot;,&quot;linkLabel&quot;:&quot;View product&quot;,&quot;href&quot;:&quot;https://www.se.com/sg/en/product-category/4100-power-monitoring-and-control/&quot;,&quot;sourceAbsent&quot;:{&quot;reference&quot;:&quot;reference-inputs/se-smart-panels/content.json&quot;,&quot;objectId&quot;:&quot;prod-04&quot;,&quot;slots&quot;:[&quot;category&quot;]}}"><div class="ds-card__image"><img src="assets/se-smart-panels/prod-04-powermon.jpg" alt="Power Monitoring and Control"></div><div class="ds-card__body"><p class="ds-card__title">Power Monitoring and Control</p><div class="ds-card__desc"><p>Meters, gateways, and software for facility-wide power quality and energy visibility.</p></div><div class="ds-card__link"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="https://www.se.com/sg/en/product-category/4100-power-monitoring-and-control/"><span class="ds-text-btn__text">View product</span><img class="ds-text-btn__icon" src="../fs-components/component-specs/library/releases/7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1/components/icons/icon-text-button-arrow-right-regular.svg" alt=""></a></div></div></div></div><div class="ds-carousel-external__item"><div class="ds-card ds-card--vertical ds-card--no-border" data-card-current="vertical-single-event" data-card-layout="parent-grid" data-ai-example="ai-card-spliced-vertical-single-event" data-fragment="spliced-vertical-single-event" data-library-component="library-card" data-library-fragment="spliced-vertical-single-event" data-library-release="7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1" data-library-props="{&quot;title&quot;:&quot;Enerlin’X IFE, EIFE, IFM&quot;,&quot;description&quot;:&quot;<p>Ethernet and Modbus communication interfaces for connected circuit breakers.</p>&quot;,&quot;image&quot;:&quot;<img src=\&quot;assets/se-smart-panels/prod-05-enerlinx.jpg\&quot; alt=\&quot;Enerlin’X IFE, EIFE, IFM\&quot;>&quot;,&quot;linkLabel&quot;:&quot;View product&quot;,&quot;href&quot;:&quot;https://www.se.com/sg/en/product-range/62413-enerlinx-ife-eife-ifm/&quot;,&quot;sourceAbsent&quot;:{&quot;reference&quot;:&quot;reference-inputs/se-smart-panels/content.json&quot;,&quot;objectId&quot;:&quot;prod-05&quot;,&quot;slots&quot;:[&quot;category&quot;]}}"><div class="ds-card__image"><img src="assets/se-smart-panels/prod-05-enerlinx.jpg" alt="Enerlin’X IFE, EIFE, IFM"></div><div class="ds-card__body"><p class="ds-card__title">Enerlin’X IFE, EIFE, IFM</p><div class="ds-card__desc"><p>Ethernet and Modbus communication interfaces for connected circuit breakers.</p></div><div class="ds-card__link"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="https://www.se.com/sg/en/product-range/62413-enerlinx-ife-eife-ifm/"><span class="ds-text-btn__text">View product</span><img class="ds-text-btn__icon" src="../fs-components/component-specs/library/releases/7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1/components/icons/icon-text-button-arrow-right-regular.svg" alt=""></a></div></div></div></div><div class="ds-carousel-external__item"><div class="ds-card ds-card--vertical ds-card--no-border" data-card-current="vertical-single-event" data-card-layout="parent-grid" data-ai-example="ai-card-spliced-vertical-single-event" data-fragment="spliced-vertical-single-event" data-library-component="library-card" data-library-fragment="spliced-vertical-single-event" data-library-release="7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1" data-library-props="{&quot;title&quot;:&quot;Acti 9 Smartlink Modbus&quot;,&quot;description&quot;:&quot;<p>Smart communication gateway aggregating metering and status data from DIN rail devices.</p>&quot;,&quot;image&quot;:&quot;<img src=\&quot;assets/se-smart-panels/prod-06-acti9.jpg\&quot; alt=\&quot;Acti 9 Smartlink Modbus\&quot;>&quot;,&quot;linkLabel&quot;:&quot;View product&quot;,&quot;href&quot;:&quot;https://www.se.com/sg/en/product-range/61356-acti-9-smartlink-modbus/&quot;,&quot;sourceAbsent&quot;:{&quot;reference&quot;:&quot;reference-inputs/se-smart-panels/content.json&quot;,&quot;objectId&quot;:&quot;prod-06&quot;,&quot;slots&quot;:[&quot;category&quot;]}}"><div class="ds-card__image"><img src="assets/se-smart-panels/prod-06-acti9.jpg" alt="Acti 9 Smartlink Modbus"></div><div class="ds-card__body"><p class="ds-card__title">Acti 9 Smartlink Modbus</p><div class="ds-card__desc"><p>Smart communication gateway aggregating metering and status data from DIN rail devices.</p></div><div class="ds-card__link"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="https://www.se.com/sg/en/product-range/61356-acti-9-smartlink-modbus/"><span class="ds-text-btn__text">View product</span><img class="ds-text-btn__icon" src="../fs-components/component-specs/library/releases/7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1/components/icons/icon-text-button-arrow-right-regular.svg" alt=""></a></div></div></div></div><div class="ds-carousel-external__item"><div class="ds-card ds-card--vertical ds-card--no-border" data-card-current="vertical-single-event" data-card-layout="parent-grid" data-ai-example="ai-card-spliced-vertical-single-event" data-fragment="spliced-vertical-single-event" data-library-component="library-card" data-library-fragment="spliced-vertical-single-event" data-library-release="7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1" data-library-props="{&quot;title&quot;:&quot;MicroLogic&quot;,&quot;description&quot;:&quot;<p>Electronic trip units providing advanced protection, measurement, and diagnostics.</p>&quot;,&quot;image&quot;:&quot;<img src=\&quot;assets/se-smart-panels/prod-07-micrologic.jpg\&quot; alt=\&quot;MicroLogic\&quot;>&quot;,&quot;linkLabel&quot;:&quot;View product&quot;,&quot;href&quot;:&quot;https://www.se.com/sg/en/product-range/1008-micrologic/&quot;,&quot;sourceAbsent&quot;:{&quot;reference&quot;:&quot;reference-inputs/se-smart-panels/content.json&quot;,&quot;objectId&quot;:&quot;prod-07&quot;,&quot;slots&quot;:[&quot;category&quot;]}}"><div class="ds-card__image"><img src="assets/se-smart-panels/prod-07-micrologic.jpg" alt="MicroLogic"></div><div class="ds-card__body"><p class="ds-card__title">MicroLogic</p><div class="ds-card__desc"><p>Electronic trip units providing advanced protection, measurement, and diagnostics.</p></div><div class="ds-card__link"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="https://www.se.com/sg/en/product-range/1008-micrologic/"><span class="ds-text-btn__text">View product</span><img class="ds-text-btn__icon" src="../fs-components/component-specs/library/releases/7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1/components/icons/icon-text-button-arrow-right-regular.svg" alt=""></a></div></div></div></div><div class="ds-carousel-external__item"><div class="ds-card ds-card--vertical ds-card--no-border" data-card-current="vertical-single-event" data-card-layout="parent-grid" data-ai-example="ai-card-spliced-vertical-single-event" data-fragment="spliced-vertical-single-event" data-library-component="library-card" data-library-fragment="spliced-vertical-single-event" data-library-release="7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1" data-library-props="{&quot;title&quot;:&quot;EcoStruxure™ Panel Server&quot;,&quot;description&quot;:&quot;<p>High-performance IoT gateway connecting wireless and wired devices to cloud analytics.</p>&quot;,&quot;image&quot;:&quot;<img src=\&quot;assets/se-smart-panels/prod-08-panelserver.jpg\&quot; alt=\&quot;EcoStruxure™ Panel Server\&quot;>&quot;,&quot;linkLabel&quot;:&quot;View product&quot;,&quot;href&quot;:&quot;https://www.se.com/sg/en/product-range/40739468-ecostruxure-panel-server/&quot;,&quot;sourceAbsent&quot;:{&quot;reference&quot;:&quot;reference-inputs/se-smart-panels/content.json&quot;,&quot;objectId&quot;:&quot;prod-08&quot;,&quot;slots&quot;:[&quot;category&quot;]}}"><div class="ds-card__image"><img src="assets/se-smart-panels/prod-08-panelserver.jpg" alt="EcoStruxure™ Panel Server"></div><div class="ds-card__body"><p class="ds-card__title">EcoStruxure™ Panel Server</p><div class="ds-card__desc"><p>High-performance IoT gateway connecting wireless and wired devices to cloud analytics.</p></div><div class="ds-card__link"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="https://www.se.com/sg/en/product-range/40739468-ecostruxure-panel-server/"><span class="ds-text-btn__text">View product</span><img class="ds-text-btn__icon" src="../fs-components/component-specs/library/releases/7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1/components/icons/icon-text-button-arrow-right-regular.svg" alt=""></a></div></div></div></div><div class="ds-carousel-external__item"><div class="ds-card ds-card--vertical ds-card--no-border" data-card-current="vertical-single-event" data-card-layout="parent-grid" data-ai-example="ai-card-spliced-vertical-single-event" data-fragment="spliced-vertical-single-event" data-library-component="library-card" data-library-fragment="spliced-vertical-single-event" data-library-release="7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1" data-library-props="{&quot;title&quot;:&quot;ComPacT NSX, new generation&quot;,&quot;description&quot;:&quot;<p>Moulded case circuit breakers engineered for reliability and wireless auxiliary connectivity.</p>&quot;,&quot;image&quot;:&quot;<img src=\&quot;assets/se-smart-panels/prod-09-nsx.jpg\&quot; alt=\&quot;ComPacT NSX, new generation\&quot;>&quot;,&quot;linkLabel&quot;:&quot;View product&quot;,&quot;href&quot;:&quot;https://www.se.com/sg/en/product-range/39910531-compact-nsx-new-generation/&quot;,&quot;sourceAbsent&quot;:{&quot;reference&quot;:&quot;reference-inputs/se-smart-panels/content.json&quot;,&quot;objectId&quot;:&quot;prod-09&quot;,&quot;slots&quot;:[&quot;category&quot;]}}"><div class="ds-card__image"><img src="assets/se-smart-panels/prod-09-nsx.jpg" alt="ComPacT NSX, new generation"></div><div class="ds-card__body"><p class="ds-card__title">ComPacT NSX, new generation</p><div class="ds-card__desc"><p>Moulded case circuit breakers engineered for reliability and wireless auxiliary connectivity.</p></div><div class="ds-card__link"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="https://www.se.com/sg/en/product-range/39910531-compact-nsx-new-generation/"><span class="ds-text-btn__text">View product</span><img class="ds-text-btn__icon" src="../fs-components/component-specs/library/releases/7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1/components/icons/icon-text-button-arrow-right-regular.svg" alt=""></a></div></div></div></div><div class="ds-carousel-external__item"><div class="ds-card ds-card--vertical ds-card--no-border" data-card-current="vertical-single-event" data-card-layout="parent-grid" data-ai-example="ai-card-spliced-vertical-single-event" data-fragment="spliced-vertical-single-event" data-library-component="library-card" data-library-fragment="spliced-vertical-single-event" data-library-release="7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1" data-library-props="{&quot;title&quot;:&quot;ComPacT NSXm, new generation&quot;,&quot;description&quot;:&quot;<p>Compact circuit breakers with EverLink connectors and integrated energy monitoring.</p>&quot;,&quot;image&quot;:&quot;<img src=\&quot;assets/se-smart-panels/prod-10-nsxm.jpg\&quot; alt=\&quot;ComPacT NSXm, new generation\&quot;>&quot;,&quot;linkLabel&quot;:&quot;View product&quot;,&quot;href&quot;:&quot;https://www.se.com/sg/en/product-range/39910433-compact-nsxm-new-generation/&quot;,&quot;sourceAbsent&quot;:{&quot;reference&quot;:&quot;reference-inputs/se-smart-panels/content.json&quot;,&quot;objectId&quot;:&quot;prod-10&quot;,&quot;slots&quot;:[&quot;category&quot;]}}"><div class="ds-card__image"><img src="assets/se-smart-panels/prod-10-nsxm.jpg" alt="ComPacT NSXm, new generation"></div><div class="ds-card__body"><p class="ds-card__title">ComPacT NSXm, new generation</p><div class="ds-card__desc"><p>Compact circuit breakers with EverLink connectors and integrated energy monitoring.</p></div><div class="ds-card__link"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="https://www.se.com/sg/en/product-range/39910433-compact-nsxm-new-generation/"><span class="ds-text-btn__text">View product</span><img class="ds-text-btn__icon" src="../fs-components/component-specs/library/releases/7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1/components/icons/icon-text-button-arrow-right-regular.svg" alt=""></a></div></div></div></div></div></div><div class="ds-carousel-external__control rail-prev"><button class="ds-carousel__btn ds-carousel__btn--xl" data-carousel-source-solid48="left-default" type="button" aria-label="Previous slide"><img src="../fs-components/component-specs/library/releases/7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1/components/icons/icon-carousel-solid48-left-current.svg" alt=""></button></div><div class="ds-carousel-external__control rail-next"><button class="ds-carousel__btn ds-carousel__btn--xl" data-carousel-source-solid48="right-default" type="button" aria-label="Next slide"><img src="../fs-components/component-specs/library/releases/7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1/components/icons/icon-carousel-solid48-right-current.svg" alt=""></button></div><div class="ds-carousel-external__pagination" aria-label="Carousel positions"></div><p class="ds-carousel-external__status" aria-live="polite" aria-atomic="true"></p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="ecostruxure-power" class="page-section">
+      <div class="container">
+        <div id="sp-eco-stage">
+          <div class="ds-card ds-card--horizontal ds-card--source-responsive" data-preview-skeleton="horizontal-responsive" data-card-current="horizontal-unbordered" data-ai-example="ai-card-horizontal-current" data-fragment="spliced-horizontal-full-width-responsive" data-library-component="library-card" data-library-fragment="spliced-horizontal-full-width-responsive" data-library-release="7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1" data-card-image-position="left" data-library-props="{&quot;title&quot;:&quot;Introducing EcoStruxure Power&quot;,&quot;description&quot;:&quot;EcoStruxure Power delivers safe, highly reliable, and energy-efficient electrical distribution systems for low and medium voltage architectures.&quot;,&quot;image&quot;:&quot;<img src=\&quot;assets/se-smart-panels/eco-slide-1.jpg\&quot; alt=\&quot;Introducing EcoStruxure Power overview video\&quot;>&quot;,&quot;linkLabel&quot;:&quot;Learn more about EcoStruxure Power&quot;,&quot;href&quot;:&quot;https://www.se.com/sg/en/work/campaign/innovation/power-distribution&quot;,&quot;imagePosition&quot;:&quot;left&quot;}"><div class="ds-card__image"><img src="assets/se-smart-panels/eco-slide-1.jpg" alt="Introducing EcoStruxure Power overview video"></div><div class="ds-card__body"><div class="ds-card__content-stack"><p class="ds-card__title">Introducing EcoStruxure Power</p><p class="ds-card__desc">EcoStruxure Power delivers safe, highly reliable, and energy-efficient electrical distribution systems for low and medium voltage architectures.</p></div><div class="ds-card__link"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--black ds-text-btn--m" href="https://www.se.com/sg/en/work/campaign/innovation/power-distribution"><span class="ds-text-btn__text">Learn more about EcoStruxure Power</span><img class="ds-text-btn__icon" src="../fs-components/component-specs/library/releases/7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1/components/icons/icon-text-button-arrow-right-regular.svg" alt=""></a></div></div></div>
+        </div>
+        <div class="sp-eco-dots" role="tablist" aria-label="EcoStruxure Power slides" data-fs-extend="eco-slide-dots">
+          <button type="button" class="sp-eco-dot" role="tab" aria-selected="true" aria-label="Slide 1" data-eco-dot="0"></button>
+          <button type="button" class="sp-eco-dot" role="tab" aria-selected="false" aria-label="Slide 2" data-eco-dot="1"></button>
+          <button type="button" class="sp-eco-dot" role="tab" aria-selected="false" aria-label="Slide 3" data-eco-dot="2"></button>
+        </div>
+      </div>
+    </section>
+
+    <section id="stay-up-to-date" class="page-section page-section--gray">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Stay up to date</h2>
+          <p class="section-desc">Visit our blog to get the latest on trends, technologies, best practices, and hot topics in your market. Join the conversation today!</p>
+        </div>
+        <div class="sp-blog-grid" data-fs-extend="blog-article-links">
+          <a class="sp-blog-card" href="https://blog.se.com/power-management-metering-monitoring-power-quality/2020/06/02/the-fire-preventing-advantages-of-iiot-digitized-power/" target="_blank" rel="noopener noreferrer"><span class="sp-blog-card__title">The Fire-Preventing Advantages of IIoT Digitised Power</span><span class="sp-blog-card__arrow" aria-hidden="true">›</span></a>
+<a class="sp-blog-card" href="https://blog.se.com/power-management-metering-monitoring-power-quality/2020/07/22/business-interruption-prevention-the-advantages-of-iiot-digitized-power/" target="_blank" rel="noopener noreferrer"><span class="sp-blog-card__title">Business Interruption Prevention-The Advantages of IIoT Digitised Power</span><span class="sp-blog-card__arrow" aria-hidden="true">›</span></a>
+<a class="sp-blog-card" href="https://blog.se.com/power-management-metering-monitoring-power-quality/2020/10/15/compliance-risk-management-the-advantages-of-iiot-digitized-power/" target="_blank" rel="noopener noreferrer"><span class="sp-blog-card__title">Compliance &amp; Risk Management – The Advantages of IIoT Digitised Power</span><span class="sp-blog-card__arrow" aria-hidden="true">›</span></a>
+<a class="sp-blog-card" href="https://blog.se.com/power-management-metering-monitoring-power-quality/2019/07/18/infographic-21-power-distribution-facts/" target="_blank" rel="noopener noreferrer"><span class="sp-blog-card__title">21 Power Distribution Facts</span><span class="sp-blog-card__arrow" aria-hidden="true">›</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section id="need-help" class="page-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Need help?</h2>
+          <p class="section-desc">Access product selection tools, sales enquiries, local distributors, and technical support resources.</p>
+        </div>
+        <div class="sp-help-grid">
+          <div class="ds-icon-card ds-icon-card--left ds-icon-card--bg-gray" data-icon-card-current="left-atom" data-ai-example="ai-icon-card-left" data-fragment="left-single-event" data-library-component="library-icon-card" data-library-fragment="left-single-event" data-library-release="7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1" data-library-props="{&quot;icon&quot;:&quot;assets/se-smart-panels/icon-product-selector.svg&quot;,&quot;title&quot;:&quot;Product Selector&quot;,&quot;description&quot;:&quot;Quickly and easily find the right products and accessories for your applications.&quot;,&quot;titleHref&quot;:&quot;https://www.se.com/sg/en/work/support/product-selector/&quot;,&quot;sourceAbsent&quot;:{&quot;reference&quot;:&quot;reference-inputs/se-smart-panels/content.json&quot;,&quot;objectId&quot;:&quot;help-selector&quot;,&quot;slots&quot;:[&quot;bullets&quot;,&quot;link&quot;]}}">
+          <img class="ds-icon-card__icon" src="assets/se-smart-panels/icon-product-selector.svg" alt="">
+          <div class="ds-icon-card__body">
+            <div class="ds-icon-card__title-slot"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--black-bold ds-text-btn--l" href="https://www.se.com/sg/en/work/support/product-selector/"><span class="ds-text-btn__text">Product Selector</span></a></div>
+            <p class="ds-icon-card__desc">Quickly and easily find the right products and accessories for your applications.</p>
+            
+            
+          </div>
+        </div>
+<div class="ds-icon-card ds-icon-card--left ds-icon-card--bg-gray" data-icon-card-current="left-atom" data-ai-example="ai-icon-card-left" data-fragment="left-single-event" data-library-component="library-icon-card" data-library-fragment="left-single-event" data-library-release="7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1" data-library-props="{&quot;icon&quot;:&quot;assets/se-smart-panels/icon-get-quote.svg&quot;,&quot;title&quot;:&quot;Get a Quote&quot;,&quot;description&quot;:&quot;Start your sales enquiry online and an expert will connect with you.&quot;,&quot;titleHref&quot;:&quot;https://www.se.com/sg/en/work/support/customer-care/contact-sales.jsp&quot;,&quot;sourceAbsent&quot;:{&quot;reference&quot;:&quot;reference-inputs/se-smart-panels/content.json&quot;,&quot;objectId&quot;:&quot;help-quote&quot;,&quot;slots&quot;:[&quot;bullets&quot;,&quot;link&quot;]}}">
+          <img class="ds-icon-card__icon" src="assets/se-smart-panels/icon-get-quote.svg" alt="">
+          <div class="ds-icon-card__body">
+            <div class="ds-icon-card__title-slot"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--black-bold ds-text-btn--l" href="https://www.se.com/sg/en/work/support/customer-care/contact-sales.jsp"><span class="ds-text-btn__text">Get a Quote</span></a></div>
+            <p class="ds-icon-card__desc">Start your sales enquiry online and an expert will connect with you.</p>
+            
+            
+          </div>
+        </div>
+<div class="ds-icon-card ds-icon-card--left ds-icon-card--bg-gray" data-icon-card-current="left-atom" data-ai-example="ai-icon-card-left" data-fragment="left-single-event" data-library-component="library-icon-card" data-library-fragment="left-single-event" data-library-release="7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1" data-library-props="{&quot;icon&quot;:&quot;assets/se-smart-panels/icon-where-to-buy.svg&quot;,&quot;title&quot;:&quot;Where to buy?&quot;,&quot;description&quot;:&quot;Easily find the nearest Schneider Electric distributor in your location.&quot;,&quot;titleHref&quot;:&quot;https://www.se.com/sg/en/locate/325&quot;,&quot;sourceAbsent&quot;:{&quot;reference&quot;:&quot;reference-inputs/se-smart-panels/content.json&quot;,&quot;objectId&quot;:&quot;help-buy&quot;,&quot;slots&quot;:[&quot;bullets&quot;,&quot;link&quot;]}}">
+          <img class="ds-icon-card__icon" src="assets/se-smart-panels/icon-where-to-buy.svg" alt="">
+          <div class="ds-icon-card__body">
+            <div class="ds-icon-card__title-slot"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--black-bold ds-text-btn--l" href="https://www.se.com/sg/en/locate/325"><span class="ds-text-btn__text">Where to buy?</span></a></div>
+            <p class="ds-icon-card__desc">Easily find the nearest Schneider Electric distributor in your location.</p>
+            
+            
+          </div>
+        </div>
+<div class="ds-icon-card ds-icon-card--left ds-icon-card--bg-gray" data-icon-card-current="left-atom" data-ai-example="ai-icon-card-left" data-fragment="left-single-event" data-library-component="library-icon-card" data-library-fragment="left-single-event" data-library-release="7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1" data-library-props="{&quot;icon&quot;:&quot;assets/se-smart-panels/icon-help-centre.svg&quot;,&quot;title&quot;:&quot;Help Centre&quot;,&quot;description&quot;:&quot;Find support resources for all your needs, in one place.&quot;,&quot;titleHref&quot;:&quot;https://www.se.com/sg/en/work/support/&quot;,&quot;sourceAbsent&quot;:{&quot;reference&quot;:&quot;reference-inputs/se-smart-panels/content.json&quot;,&quot;objectId&quot;:&quot;help-centre&quot;,&quot;slots&quot;:[&quot;bullets&quot;,&quot;link&quot;]}}">
+          <img class="ds-icon-card__icon" src="assets/se-smart-panels/icon-help-centre.svg" alt="">
+          <div class="ds-icon-card__body">
+            <div class="ds-icon-card__title-slot"><a class="ds-text-btn ds-text-btn--inline ds-text-btn--black-bold ds-text-btn--l" href="https://www.se.com/sg/en/work/support/"><span class="ds-text-btn__text">Help Centre</span></a></div>
+            <p class="ds-icon-card__desc">Find support resources for all your needs, in one place.</p>
+            
+            
+          </div>
+        </div>
+        </div>
+      </div>
+    </section>
+
+    <div id="sp-video-backdrop" class="sp-dialog-backdrop" hidden>
+      <dialog id="library-instance-27-dialog-info" class="ds-dialog ds-dialog--information" aria-labelledby="library-instance-27-dialog-info-title" data-fragment="information" data-library-component="library-dialog" data-library-fragment="information" data-library-release="7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1" data-library-props="{&quot;title&quot;:&quot;Smart Panels Overview Video&quot;,&quot;body&quot;:&quot;<div class=\&quot;ds-dialog__section\&quot;><h3 class=\&quot;ds-dialog__subtitle\&quot;>Give Your Electrical System a Voice</h3><div class=\&quot;ds-dialog__content\&quot;><p>Discover how Ethernet-connected Smart Panels with EcoStruxure Power technologies deliver real-time energy monitoring, proactive overload alerts, and predictive maintenance insights across your facility.</p></div></div>&quot;}"><header class="ds-dialog__header"><h2 id="library-instance-27-dialog-info-title" class="ds-dialog__title">Smart Panels Overview Video</h2><button class="ds-dialog__close-position ds-icon-btn ds-icon-btn--plain ds-icon-btn--l" type="button" aria-label="Close" data-dialog-close=""><img class="ds-icon-btn__icon" src="../fs-components/component-specs/library/releases/7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1/components/icons/icon-close.svg" alt=""></button></header><div class="ds-dialog__body"><div class="ds-dialog__section"><h3 class="ds-dialog__subtitle">Give Your Electrical System a Voice</h3><div class="ds-dialog__content"><p>Discover how Ethernet-connected Smart Panels with EcoStruxure Power technologies deliver real-time energy monitoring, proactive overload alerts, and predictive maintenance insights across your facility.</p></div></div></div></dialog>
+    </div>
+  </main>
+  <footer class="ds-nav-footer" data-fragment="footer" data-footer-pc-current="" data-ai-example="ai-navigation-fixed-footer" data-library-component="library-navigation" data-library-fragment="footer" data-library-release="7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1" data-library-props="{}">
+    <div class="ds-nav-footer__inner">
+      <div class="ds-nav-footer__columns">
+        <div class="ds-nav-footer__col">
+          <h4 class="ds-nav-footer__col-title">About Us</h4>
+          <ul class="ds-nav-footer__col-links">
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Overview</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Global Warehouse</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Advanced R&amp;D Center</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Quality Control</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Compliance Center</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Test Center</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="ds-nav-footer__col ds-nav-footer__col--service">
+          <h4 class="ds-nav-footer__col-title">Service</h4>
+          <ul class="ds-nav-footer__col-links">
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Payment Methods</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Shipping Guide</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Business Account</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Net Terms</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Return Policy</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Product Warranty</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Give us your Feedback</a></li>
+          </ul>
+        </div>
+        <div class="ds-nav-footer__col">
+          <h4 class="ds-nav-footer__col-title">Resource</h4>
+          <ul class="ds-nav-footer__col-links">
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Documentation</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Glossary</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Audio &amp; Video</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">FS Blog</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Case Studies</a></li>
+          </ul>
+        </div>
+        <div class="ds-nav-footer__col">
+          <h4 class="ds-nav-footer__col-title">Support</h4>
+          <ul class="ds-nav-footer__col-links">
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">FAQ &amp; Help Center</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Solution Support</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Query Tool</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">WDM Tranceiver Stock List</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Products Verification</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">Track My Order</a></li>
+            <li><a class="ds-nav-footer__col-link" aria-disabled="true">RMA Checklist</a></li>
+          </ul>
+        </div>
+        <div class="ds-nav-footer__sidebar">
+          <div class="ds-nav-footer__subscribe">
+            <h4 class="ds-nav-footer__col-title">Stay in Touch</h4>
+            <div class="ds-nav-footer__subscribe-form">
+              <input type="email" class="ds-input-footer-source" placeholder="Email" aria-label="Email" data-footer-input-retained-source="">
+              <button class="ds-btn ds-btn--filled-red ds-btn--s" type="button" data-footer-button-current=""><span class="ds-btn__text">Subscribe</span></button>
+            </div>
+          </div>
+          <div class="ds-nav-footer__app">
+            <h4 class="ds-nav-footer__col-title">Download FS APP</h4>
+            <div class="ds-nav-footer__app-badges"><a id="library-instance-28-icon-usage-img-google-play" aria-label="Get it on Google Play" style="scroll-margin-top: 40px;" aria-disabled="true"><img src="../fs-components/component-specs/library/releases/7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1/components/sources/navigation/footer-assets-1013/68908-047170.png" alt="Google Play" height="28" style="width: 88px;"></a>
+              <a id="library-instance-28-icon-usage-img-app-store" aria-label="Download on the App Store" style="scroll-margin-top: 40px;" aria-disabled="true"><img src="../fs-components/component-specs/library/releases/7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1/components/sources/navigation/footer-assets-1013/68908-047171.png" alt="App Store" height="28" style="width: 87.73px;"></a>
+              
+            </div>
+          </div>
+          <div class="ds-nav-footer__social"><img src="../fs-components/component-specs/library/releases/7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1/components/sources/navigation/footer-assets-1013/68908-047164.png" alt="LinkedIn, YouTube, Facebook, X, Instagram, Reddit" data-footer-source-social=""></div>
+        </div>
+      </div>
+
+      <div class="ds-nav-footer__badges">
+        <div class="ds-nav-footer__badges-left">
+          <img src="../fs-components/component-specs/library/releases/7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1/components/sources/navigation/footer-assets-1013/68908-047076.png" alt="DigiCert" height="28" style="scroll-margin-top: 40px; width: 59px;">
+          <img src="../fs-components/component-specs/library/releases/7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1/components/sources/navigation/footer-assets-1013/68908-047074.png" alt="TrustedSite" height="28" style="scroll-margin-top: 40px; width: 58px;">
+          <img src="../fs-components/component-specs/library/releases/7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1/components/sources/navigation/footer-assets-1013/68908-047075.png" alt="BBB" height="28" style="scroll-margin-top: 40px; width: 58px;">
+          <img src="../fs-components/component-specs/library/releases/7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1/components/sources/navigation/footer-assets-1013/68908-047073.png" alt="Google Reviews" height="28" style="scroll-margin-top: 40px; width: 74px;">
+        </div>
+        <div class="ds-nav-footer__badges-right">
+          <a class="ds-nav-footer__region-link" aria-disabled="true">
+            United States / $ USD
+            <svg class="ds-nav-footer__dropdown-icon" width="12" height="12" viewBox="0 0 12 12" fill="none">
+              <path d="M3 4.5L6 7.5L9 4.5" stroke="#707070" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <hr class="ds-nav-footer__divider">
+
+      <div class="ds-nav-footer__legal">
+        <div class="ds-nav-footer__legal-links">
+          <a class="ds-nav-footer__legal-link" aria-disabled="true">Site Map</a>
+          <span class="ds-nav-footer__legal-divider"></span>
+          <a class="ds-nav-footer__legal-link" aria-disabled="true">Accessibility</a>
+          <span class="ds-nav-footer__legal-divider"></span>
+          <a class="ds-nav-footer__legal-link" aria-disabled="true">Privacy Policy and Notice at Collection</a>
+          <span class="ds-nav-footer__legal-divider"></span>
+          <a class="ds-nav-footer__legal-link" aria-disabled="true">Cookies Notice</a>
+          <span class="ds-nav-footer__legal-divider"></span>
+          <a class="ds-nav-footer__legal-link" aria-disabled="true">Terms and Conditions</a>
+          <span class="ds-nav-footer__legal-divider"></span>
+          <a class="ds-nav-footer__legal-link" aria-disabled="true">Report a Vulnerability</a>
+          <span class="ds-nav-footer__legal-divider"></span>
+          <a class="ds-nav-footer__legal-link" aria-disabled="true">Do Not Sell or Share My Personal Information</a>
+          <span class="ds-nav-footer__legal-divider"></span>
+          <a class="ds-nav-footer__legal-link" aria-disabled="true">Company Policies</a>
+          <span class="ds-nav-footer__legal-divider"></span>
+          <a class="ds-nav-footer__legal-link" aria-disabled="true">Cookie Settings</a>
+        </div>
+        <div class="ds-nav-footer__copyright">
+          Copyright © 2009-2026 FS.COM INC. All Rights Reserved.
+        </div>
+      </div>
+    
+  </div>
+  </footer>
+  <script>
+(function () {
+  var heroSlides = [{"title":"Smart Panels give your electrical system a voice","description":"Get relevant and informative data to make the right decisions, at the right time with Smart Panels and EcoStruxure technologies.","primaryLabel":"Watch the video","primaryAction":"video","secondaryLabel":"View the brochure","secondaryHref":"https://download.se.com/files?p_enDocType=Brochure&p_File_Name=998-20135902_GMA-US.pdf&p_Doc_Ref=998-20135902_GMA-US","image":"assets/se-smart-panels/hero-1.jpg"},{"title":"Introducing EcoStruxure™ Power","description":"IoT-connected solutions ready to improve every aspect of your power distribution system. Take total control with real-time data and smart analytics for predictive maintenance.","primaryLabel":"Discover EcoStruxure Power","primaryHref":"https://www.se.com/sg/en/work/campaign/innovation/power-distribution","secondaryLabel":"","secondaryHref":"","image":"assets/se-smart-panels/hero-2.jpg"},{"title":"How can you get the proper expertise on Smart Panels?","description":"The EcoXpert programme will provide the right digital expertise and competency certification. It is a worldwide network of expert system integrators, applications providers, and technology companies.","primaryLabel":"Discover the partner programme","primaryHref":"https://www.se.com/sg/en/partners/ecoxpert","secondaryLabel":"","secondaryHref":"","image":"assets/se-smart-panels/hero-3.jpg"}];
+  var ecoSlides = [{"title":"Introducing EcoStruxure Power","description":"EcoStruxure Power delivers safe, highly reliable, and energy-efficient electrical distribution systems for low and medium voltage architectures.","linkLabel":"Learn more about EcoStruxure Power","href":"https://www.se.com/sg/en/work/campaign/innovation/power-distribution","image":"assets/se-smart-panels/eco-slide-1.jpg","alt":"Introducing EcoStruxure Power overview video"},{"title":"Think big. Partner up.","description":"The Schneider Electric Partner Program provides software, tools, and educational resources you can use to stay on top of the latest trends, and ahead of the competition.","linkLabel":"Learn more about our Partner Programme","href":"https://www.se.com/sg/en/partners/","image":"assets/se-smart-panels/eco-slide-2.jpg","alt":"Schneider Electric Partner Program"},{"title":"Discover Masterpact MTZ","description":"Integrate seamlessly and improve uptime with Smart Panels and EcoStruxure energy and asset monitoring technologies.","linkLabel":"Explore MasterPact MTZ","href":"https://www.se.com/sg/en/product-range/63545-masterpact-mtz/","image":"assets/se-smart-panels/eco-slide-3.jpg","alt":"MasterPact MTZ connected circuit breaker inside Smart Panel"}];
+  var heroIdx = 0;
+
+  var videoBackdrop = document.getElementById('sp-video-backdrop');
+  function openVideoDialog() {
+    if (videoBackdrop) videoBackdrop.hidden = false;
+  }
+  function closeVideoDialog() {
+    if (videoBackdrop) videoBackdrop.hidden = true;
+  }
+  if (videoBackdrop) {
+    videoBackdrop.addEventListener('click', function (e) {
+      if (e.target === videoBackdrop || e.target.closest('.ds-dialog__close-position')) closeVideoDialog();
+    });
+  }
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeVideoDialog();
+  });
+
+  // Hero primary action
+  var heroPrimaryBtn = document.querySelector('#hero [data-library-event-actioncallback="handleHeroPrimaryAction"]');
+  if (heroPrimaryBtn) {
+    heroPrimaryBtn.addEventListener('click', function () {
+      var s = heroSlides[heroIdx];
+      if (s.primaryAction === 'video') openVideoDialog();
+      else if (s.primaryHref) window.open(s.primaryHref, '_blank', 'noopener');
+    });
+  }
+
+  // Why Smart Panels video trigger
+  var whyLink = document.querySelector('#why-smart-panels a[href="#why-smart-panels-video"]');
+  if (whyLink) {
+    whyLink.addEventListener('click', function (e) {
+      e.preventDefault();
+      openVideoDialog();
+    });
+  }
+
+  // Commission CTA
+  var commBtn = document.querySelector('#power-commission [data-library-event-actioncallback="openCommissionLink"]');
+  if (commBtn) {
+    commBtn.addEventListener('click', function () {
+      window.open('https://www.se.com/sg/en/product-range/62980-ecostruxure-power-commission/', '_blank', 'noopener');
+    });
+  }
+
+  // Hero 3-slide dots
+  var heroWrap = document.getElementById('hero');
+  var heroDots = document.querySelectorAll('[data-hero-dot]');
+  heroDots.forEach(function (dot) {
+    dot.addEventListener('click', function () {
+      heroIdx = Number(dot.getAttribute('data-hero-dot')) || 0;
+      var s = heroSlides[heroIdx];
+      if (heroWrap) heroWrap.style.backgroundImage = "url('" + s.image + "')";
+      var t = heroWrap && heroWrap.querySelector('.ds-banner__title');
+      var d = heroWrap && heroWrap.querySelector('.ds-banner__desc');
+      var pText = heroPrimaryBtn && heroPrimaryBtn.querySelector('.ds-btn__text');
+      var secBtn = heroWrap && heroWrap.querySelector('[data-banner-secondary-action]');
+      if (t) t.textContent = s.title;
+      if (d) d.textContent = s.description;
+      if (pText) pText.textContent = s.primaryLabel;
+      if (secBtn) {
+        if (s.secondaryLabel) {
+          secBtn.style.display = '';
+          var sp = secBtn.querySelector('.ds-btn__text');
+          if (sp) sp.textContent = s.secondaryLabel;
+          if (s.secondaryHref) secBtn.setAttribute('href', s.secondaryHref);
+        } else {
+          secBtn.style.display = 'none';
+        }
+      }
+      heroDots.forEach(function (b, idx) {
+        b.setAttribute('aria-selected', idx === heroIdx ? 'true' : 'false');
+      });
+    });
+  });
+
+  // EcoStruxure Power 3-slide switcher
+  var ecoStage = document.getElementById('sp-eco-stage');
+  var ecoDots = document.querySelectorAll('[data-eco-dot]');
+  ecoDots.forEach(function (dot) {
+    dot.addEventListener('click', function () {
+      var idx = Number(dot.getAttribute('data-eco-dot')) || 0;
+      var s = ecoSlides[idx];
+      if (!ecoStage || !s) return;
+      var img = ecoStage.querySelector('img');
+      var title = ecoStage.querySelector('.ds-card__title');
+      var desc = ecoStage.querySelector('.ds-card__desc');
+      var link = ecoStage.querySelector('a.ds-text-btn');
+      var linkText = link && link.querySelector('.ds-text-btn__text');
+      if (img) { img.setAttribute('src', s.image); img.setAttribute('alt', s.alt); }
+      if (title) title.textContent = s.title;
+      if (desc) desc.textContent = s.description;
+      if (link) link.setAttribute('href', s.href);
+      if (linkText) linkText.textContent = s.linkLabel;
+      ecoDots.forEach(function (b, i) {
+        b.setAttribute('aria-selected', i === idx ? 'true' : 'false');
+      });
+    });
+  });
+})();
+</script>
+<script data-library-resource="7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1" src="../fs-components/component-specs/library/releases/7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1/components/menu-navigation-current.js"></script>
+<script data-library-resource="7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1" src="../fs-components/component-specs/library/releases/7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1/components/card-current.js"></script>
+<script data-library-resource="7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1" src="../fs-components/component-specs/library/releases/7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1/components/dialog-current.js"></script>
+<script data-library-resource="7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1" src="../fs-components/component-specs/library/releases/7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1/components/navigation-products-current.js"></script>
+<script data-library-resource="7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1" src="../fs-components/component-specs/library/releases/7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1/components/tag-product-current.js"></script>
+<script data-library-resource="7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1" src="../fs-components/component-specs/library/releases/7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1/components/input-current.js"></script>
+<script data-library-resource="7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1" src="../fs-components/component-specs/library/releases/7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1/components/carousel-external.js"></script>
+<script data-library-resource="7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1" src="../fs-components/component-specs/library/releases/7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1/components/checkbox-current.js"></script>
+<script data-library-resource="7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1" src="../fs-components/component-specs/library/releases/7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1/components/form-current.js"></script>
+<script data-library-resource="7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1" src="../fs-components/component-specs/library/releases/7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1/components/input-number-current.js"></script>
+<script data-library-resource="7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1" src="../fs-components/component-specs/library/releases/7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1/components/list-products-current.js"></script>
+<script data-library-resource="7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1" src="../fs-components/component-specs/library/releases/7139a5d4a3e0a7781a39c8edb78a47a1ef68d7521f89d297241d075f1839a2f1/components/dialog-templates-current.js"></script>
+</body>
+</html>

@@ -254,7 +254,7 @@ function assemblePage(pageSourceHtml, registry, fragmentCache, sourceFile, optio
 
     if (component.startsWith('library-')) {
       const use = library.render(component, fragment, props || {}, { targetDir: toDir });
-      result = result.replace(fullMatch, use.html);
+      result = result.replace(fullMatch, () => use.html);
       uses.push(use);
       dependencies.push(`${component}/${fragment}`);
       continue;
@@ -285,7 +285,7 @@ function assemblePage(pageSourceHtml, registry, fragmentCache, sourceFile, optio
     fragmentHtml = applyProps(fragmentHtml, props);
 
     // Replace placeholder
-    result = result.replace(fullMatch, fragmentHtml);
+    result = result.replace(fullMatch, () => fragmentHtml);
     dependencies.push(`${component}/${fragment}`);
   }
 

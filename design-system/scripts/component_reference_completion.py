@@ -86,10 +86,14 @@ def validate_card_completion(n, name):
     from component_reference_cart import validate_cart
     from component_reference_tag import validate_tag
     detail = name == 'embedded.product-detail'
+    plp = name == 'embedded.product-plp'
     expected = {'ds-card', 'ds-card--embedded', 'ds-card--embedded-detail' if detail else 'ds-card--embedded-full'}
+    if plp:
+        expected.add('ds-card--embedded-plp')
     if not detail:
         expected.add('ds-card--embedded-bg-gray')
-    if n['tag'] != 'div' or set(n['attrs'].get('class', '').split()) != expected or not clean(n) or n['attrs'].get('data-card-current') != ('embedded-detail' if detail else 'embedded-full') or len(n['children']) != (2 if detail else 3):
+    expected_marker = 'embedded-detail' if detail else ('embedded-plp' if plp else 'embedded-full')
+    if n['tag'] != 'div' or set(n['attrs'].get('class', '').split()) != expected or not clean(n) or n['attrs'].get('data-card-current') != expected_marker or len(n['children']) != (2 if detail else 3):
         return False
     media, body = n['children'][:2]
     if not exact(media, 'div', 'ds-card__product-image-wrap' if detail else 'ds-card__product-image') or len(media['children']) != 1:
@@ -102,6 +106,17 @@ def validate_card_completion(n, name):
             return False
         heading, listing = body['children']
         return heading['tag'] == 'div' and len(heading['children']) == 2 and plain(heading['children'][0], 'p', 'ds-card__product-title') and plain(heading['children'][1], 'p', 'ds-card__product-subtitle') and validate_list(listing, 'unordered-12')
+    if plp:
+        if len(body['children']) != 5:
+            return False
+        title, specs, price, stock, stats = body['children']
+        if not plain(title, 'p', 'ds-card__title') or not plain(specs, 'p', 'ds-card__specs') or not plain(price, 'p', 'ds-card__price') or not exact(stock, 'div', 'ds-card__stock') or not exact(stats, 'div', 'ds-card__stats'):
+            return False
+        carts = [x for x in nodes(stats) if 'ds-cart' in x['attrs'].get('class', '').split()]
+        if len(carts) != 1 or not validate_cart(carts[0]):
+            return False
+        badge = n['children'][2]
+        return exact(badge, 'div', 'ds-card__tag-slot') and len(badge['children']) == 1 and (validate_tag(badge['children'][0], 'semantic-new') or validate_tag(badge['children'][0], 'semantic-hot'))
     if len(body['children']) != 6:
         return False
     tags, title, price, listing, stock, stats = body['children']

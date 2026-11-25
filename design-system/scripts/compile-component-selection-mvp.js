@@ -7,7 +7,7 @@ const path = require('path');
 const ROOT = path.resolve(__dirname, '..');
 const POLICY_FILE = path.join(ROOT, 'components', 'selection-mvp-policy.json');
 const OUTPUT_FILE = path.join(ROOT, 'components', 'component-selection-mvp.json');
-const MAX_BYTES = 100 * 1024;
+const MAX_BYTES = 120 * 1024;
 
 function readJson(file) {
   return JSON.parse(fs.readFileSync(file, 'utf8'));

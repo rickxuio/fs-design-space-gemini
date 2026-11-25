@@ -144,7 +144,7 @@
 ## Pattern 5：FAQ / 手风琴折叠面板（`library-collapse/faq` 或 `split`）
 
 - **适用场景**：常见问题解答（FAQ）、左文右图或分栏手风琴特性说明。
-- **铁律**：直接使用原生 `library-collapse/faq`（纯问答列表）或 `library-collapse/split`（分栏手风琴），不手写带红条或自定义箭头的假折叠卡片。
+- **铁律**：直接使用原生 `library-collapse/faq`（纯问答列表）或 `library-collapse/split`（分栏手风琴），不手写带红条或自定义箭头的假折叠卡片；**`library-collapse/faq` 直接置于 `<div class="container">` 1200px 版心内，外层不再额外套带缩进 padding 的白卡容器（避免首行距顶过近、左右内缩失衡）**。
 
 ---
 
@@ -282,6 +282,38 @@
 > **题型边界**：仅限 B2B 客户后台/账户工作台（Dashboard / Account Center）使用。
 
 1. **左 `220px` 手风琴侧栏 + 客户经理卡 + 右自适应工作区**：左侧手风琴分组菜单与 `Your Account Manager` 联系卡使用 MasterGo 官方线性图标；右侧顶部公告横幅 + `Orders`（4 项 KPI 筛选 + 订单列表 + `library-dropdown/command-dot` 更多菜单）+ `Quotes`（商品缩略图条 + 主次操作按钮）+ `Cases`（实时搜索过滤表格）。
+
+---
+
+## Pattern 14：客户证言引文卡、双 CTA Banner 与横向图文卡要点（反教条组合范式）
+
+> **核心原则（禁止削足适履强套不匹配组件）**：组件库负责高频原子与标准模板；当原站区块的结构语义与现有组件不匹配（如客户证言引文、品牌 Logo 墙、数据 KPI 指标卡等）时，**严禁强行塞进 `library-card/spliced-vertical-*` 封面图卡片**，应直接基于 FS Token（配色、Open Sans 400/600、`24px` 内边距、`8px` 圆角、白底描边 / 灰底无描边铁律）配合 `data-fs-extend` 自然构建。
+
+1. **客户证言引文卡（Testimonial Quote Card）**：
+   - **禁止**：严禁套用 16:9 封面图卡片（会导致人物头像被拉成巨幅海报、引文被 `line-clamp` 截断、多出无意义跳转链接）。
+   - **标准结构**：3 列等高网格（`grid--3`，`align-items: stretch`），灰底区块放无描边白卡 / 白底区块放 `#DEE0E3` 描边白卡，`padding: 24px`、`border-radius: 8px`、`display: flex; flex-direction: column`；顶部标题（`16px/600/#19191A`）+ **完整不截断引文**（`14px/22px/#4B4B4D`，`flex: 1`）+ 底部顶线分隔与 `48×48px` 圆形头像（`object-fit: cover; object-position: top center` 防切头）+ 署名与头衔。
+2. **双白色描边按钮 Hero / CTA Banner（`library-banner/hero-responsive`）**：
+   - 原站 Banner 存在双 CTA 时，**严禁因单插槽惯性丢弃第二个按钮**，直接使用 `library-banner/hero-responsive` 原生参数 `secondaryActionLabel` + `secondaryActionHref` / `secondaryActionCallback` 渲染两颗完全一致的 `42px` 白色描边按钮（`ds-btn--outline-white ds-btn--xl`，原生 `12px` 间距）；
+   - 原站 Hero 内部自带的顶部徽章/胶囊（主标题上方）或底部卖点勾选行（按钮下方），必须通过 `data-fs-extend` 保留在 `.ds-banner__responsive-inner` 内部原位，**严禁挤出 Hero 外部拆成独立横条**。
+3. **横向图文卡内嵌无序要点列表**：
+   - 原站横向图文块（`library-card/spliced-horizontal-full-width-responsive`）包含 bullet list 要点时，严禁因卡片默认无列表插槽而省略要点；在 `.ds-card__content-stack` 内通过 `data-fs-extend` 完整保留要点，并优先使用已重置透明背景的原生 `library-list/unordered-14`。
+4. **深色/灰色可交互文字与触发器的悬停态铁律（全页适用）**：
+   - 常态为黑色/灰色（`#19191A` / `#4B4B4D` / `#6B6E75`）的卡片标题、快捷服务链接、页脚链接、折叠抽屉触发按钮等，在 `:hover` 时**统一保持 `#19191A` 黑色不变**，仅增加**黑色文字下划线**（`text-decoration: underline; text-underline-offset: 3px`）或激活底线（`2px solid #C00000`），**严禁在 `:hover` 时突变为蓝色（`#0060BF`）**。`#0060BF` 仅用于常态本身即为蓝色的行内链接（如 `library-text-button/inline-blue-link`）。
+5. **`#C00000` 品牌红使用边界（指示器可用红，内容文字与整框绝不红）**：
+   - **✅ 允许使用 `#C00000`**：原生主操作按钮（`filled-red`）、**导航/切换类激活指示器**（横向 Tab 底部红线、竖向分类导航左侧 `3px` 激活竖条）、价格数字、错误校验提示、以及 `duotone-line` 双色图标内约 20% 面积的核心语义点缀；
+   - **❌ 严禁使用 `#C00000`**：客户/第三方品牌名、普通技术/产品标签、普通标题正文，以及大面积卡片四周外框（统一保持 `#19191A` 深黑与 `#707070` / `#DEE0E3` 中性灰，客户品牌优先保留原站高清 Logo）。
+6. **多分类竖向侧栏导航 + 右侧 3 列产品矩阵（适用 6+ 分类切换）**：
+   - 原站存在 6 项以上分类且左侧竖向导航时，优先复用此范式（不强塞顶部横向 Tab）：左侧 `240px` 白底描边圆角侧栏（`border: 1px solid #DEE0E3; border-radius: 8px; padding: 12px 0`），激活项带左侧 `3px` `#C00000` 指示竖条 + `#FAFBFB` 浅灰底 + `600` 加粗 `#19191A`，底部加细分隔线放原生 `All Products >`（`library-text-button/inline-black`）；右侧 `3 列` 描边产品卡片网格，1085 / 1440 / 1920 零溢出。
+7. **纯展示型图标特性网格 vs 可点击图标卡（“无链接不上盒、无点击不投影”）**：
+   - **纯展示型卖点/优势网格**（如 `Why Alibaba Cloud`、核心价值、能力亮点，**无跳转链接/无按钮**）：**严禁套用带悬停投影的 `library-icon-card/*-single-event`**（不可点击元素悬停浮起投影会误导用户，且 `#FAFBFB` 灰卡落在 `#FAFBFB` 灰底区块上会出现“默认隐形、悬停突兀弹框”）；应直接使用**无框通透图标网格**（`background: transparent; padding: 8px 4px; gap: 32px 36px` 直接落在 `#FAFBFB` 灰底或 `#FFFFFF` 白底上，左 `36px` 同风格 `duotone-line` 图标 + 右标题与正文，无卡片框、无描边、无悬停投影）。
+   - **可点击入口型图标卡**（含跳转链接或 `Learn More`）：在白底区块（`#FFFFFF`）上调用 `library-icon-card/*-single-event`（浅灰卡有清晰边界与合理的可点击悬停反馈）；在灰底区块（`#FAFBFB`）上使用 `#FFFFFF` 纯白无描边卡片。
+8. **参数对比表 & 轻量圆形展开/收起按钮（`data-fs-extend` 统一视觉标准）**：
+   - **参数对比表**：表头产品信息（缩略图、型号、简介、徽章）、所有参数数据列及底部原生 `library-button/filled-red` 必须**严格居中对齐**；最左侧参数名称列左对齐，原页含左侧图标时必须配 `18×18px` 单色线性 SVG（`scripts/fs-icon.cjs --mono`）；表头左上角与底部左下角原页留空时严禁凭空编造 `Specification` / `Order` 等多余表头文字。
+   - **轻量圆形展开/收起按钮（Bento 卡片右下角等辅助操作）**：统一采用 **`28×28px` 轻盈圆形细描边**——白底卡片上用 `background: #FFFFFF; border: 1px solid #DEE0E3` + `14px` 单色线性箭头 SVG（hover 变柔和浅灰 `#F4F5F7` + `#B4B7BD` 中灰描边，勿用死黑 `#19191A` 描边）；深色展开卡上用 `background: rgba(255,255,255,0.16); border: 1px solid rgba(255,255,255,0.45)` + 白色箭头。**优先复用原生 `library-icon-button` / 28px 方向圆钮，避免实心黑圆坨**。
+9. **同源减槽位铁律（如无右侧 CTA 按钮的吸顶锚点导航 `AnchorNav`）**：
+   - 当原站模块与某个 FS 原生组件 90% 一致、仅缺少某写死槽位（例如原站吸顶锚点条无右侧 CTA 按钮，而 `library-anchor-nav/anchor-nav` 契约写死必带右侧红色按钮）而需走 `data-fs-extend` 时，**必须 100% 原样复制该组件在 `components.css` 中的精确 Token**（对 `AnchorNav` 即：`height: 56px; background: var(--color-gray-6);`、容器 `max-width: 1200px`、页签 `gap: var(--spacing-lg); padding: 0 var(--spacing-lg)` 且首项 `padding-left: 0`、字号 `var(--font-size-md)` / `var(--font-weight-semibold)` / `line-height: 22px`、常态 `var(--color-gray-3)`、悬停与激活 `var(--color-gray-1)` + 底部 `2px solid var(--border-color-brand)`），**只移除多余槽位，严禁凭记忆篡改组件高度、背景色或字重**。
+
+
 
 
 

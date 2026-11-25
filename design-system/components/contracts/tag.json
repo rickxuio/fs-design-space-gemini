@@ -171,6 +171,29 @@
       "usage": "固定绿色New展示标记。"
     },
     {
+      "name": "semantic-hot",
+      "chineseName": "语义标签·Hot",
+      "cssClass": "ds-tag ds-tag--semantic ds-tag--hot ds-tag--emphasis",
+      "styleProperties": {
+        "height": "20px",
+        "padding": "0 4px",
+        "borderRadius": "4px",
+        "fontSize": "12px",
+        "fontWeight": "600",
+        "lineHeight": "20px",
+        "background": "#FFEBDD",
+        "color": "#F56300"
+      },
+      "isComplete": true,
+      "requiredChildren": [
+        "span.ds-tag__label"
+      ],
+      "selectionDecisionType": "语义标签·Hot",
+      "whenToUse": "固定橙色Hot热销展示标记。",
+      "whenNotToUse": "把展示标记作为可选产品属性。",
+      "usage": "固定橙色Hot热销展示标记。"
+    },
+    {
       "name": "product-regular-small",
       "chineseName": "产品属性·常规小号",
       "cssClass": "ds-tag ds-tag--product-small",
@@ -591,6 +614,34 @@
         ]
       },
       {
+        "type": "语义标签·Hot",
+        "className": "ds-tag ds-tag--semantic ds-tag--hot ds-tag--emphasis",
+        "whenToUse": "固定橙色Hot热销展示标记。",
+        "whenNotToUse": "把展示标记作为可选产品属性。",
+        "nestedComponents": [],
+        "status": "当前FS语义Token与现有有限调用已核对；资格读同版catalog。",
+        "variant": "semantic-hot",
+        "fragment": "semantic-hot",
+        "selectionCases": [
+          {
+            "id": "tag.semantic-hot.1",
+            "kind": "use",
+            "condition": "固定橙色Hot热销展示标记。",
+            "result": "调用semantic-hot；固定Hot原子，仅由父组件定位。",
+            "targetVariant": "semantic-hot",
+            "strength": "candidate"
+          },
+          {
+            "id": "tag.semantic-hot.2",
+            "kind": "avoid",
+            "condition": "把展示标记作为可选产品属性。",
+            "result": "不使用此变体；先核对相邻组件和实际调用范围。",
+            "targetVariant": "semantic-hot",
+            "strength": "avoid"
+          }
+        ]
+      },
+      {
         "type": "产品属性·常规小号",
         "className": "ds-tag ds-tag--product-small",
         "whenToUse": "现有22px产品属性，原件产品图=false。",
@@ -988,6 +1039,7 @@
           "semantic",
           "filter",
           "semantic-new",
+          "semantic-hot",
           "featured"
         ]
       },
@@ -1475,6 +1527,7 @@
       "semantic",
       "featured",
       "semantic-new",
+      "semantic-hot",
       "product-regular-small",
       "product-custom-small",
       "product-color-small"
@@ -1667,6 +1720,14 @@
       "semantic-new": {
         "exampleSelector": "[data-ai-example=\"ai-tag-semantic-new\"]",
         "purpose": "display-original-green-new-tag",
+        "rootTag": "span",
+        "allowedEdits": [],
+        "slots": {},
+        "bindings": {}
+      },
+      "semantic-hot": {
+        "exampleSelector": "[data-ai-example=\"ai-tag-semantic-hot\"]",
+        "purpose": "display-original-orange-hot-tag",
         "rootTag": "span",
         "allowedEdits": [],
         "slots": {},
